@@ -236,7 +236,7 @@ signed char addAlien()
 			randEnemy = CD_TRANSPORTSHIP;
 	}
 
-	delete(alienArray);
+	delete[] alienArray;
 
 	enemy[index] = defEnemy[randEnemy];
 	enemy[index].active = 1;
