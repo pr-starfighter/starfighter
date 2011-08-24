@@ -504,7 +504,7 @@ void buy(int i)
 		case 3:
 			if (player.ammo[0] == currentGame.maxPlasmaAmmo)
 				{shopSelectedItem = -4; return;}
-			Math::limitChar(&(player.ammo[0] += 10), 0, currentGame.maxPlasmaAmmo);
+			Math::limitCharAdd(&player.ammo[0], 10, 0, currentGame.maxPlasmaAmmo);
 			break;
 		case 4:
 			if ((player.weaponType[1] == W_CHARGER) || (player.weaponType[1] == W_LASER))
@@ -543,7 +543,7 @@ void buy(int i)
 		case 8:
 			if (currentGame.maxPlasmaAmmo == 250)
 				{shopSelectedItem = -3; return;}
-			Math::limitChar(&(currentGame.maxPlasmaAmmo += 10), 0, 250);
+			Math::limitCharAdd(&currentGame.maxPlasmaAmmo, 10, 0, 250);
 			break;
 		case 9:
 			if ((player.weaponType[1] == W_CHARGER) || (player.weaponType[1] == W_LASER))
@@ -628,7 +628,7 @@ void sell(int i)
 			if (player.ammo[0] == 0)
 				{shopSelectedItem = -6; return;}
 			if (player.ammo[0] > 9)
-				Math::limitChar(&(player.ammo[0] -= 10), 0, currentGame.maxPlasmaAmmo);
+				Math::limitCharAdd(&player.ammo[0], -10, 0, currentGame.maxPlasmaAmmo);
 			else
 				player.ammo[0] = 0;
 			break;

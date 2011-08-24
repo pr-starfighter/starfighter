@@ -107,7 +107,7 @@ void doPlayer()
 			{
 				if (engine.keyState[SDLK_SPACE])
 				{
-					Math::limitChar(&(++player.ammo[1]), 0, 200);
+					Math::limitCharAdd(&player.ammo[1], 1, 0, 200);
 				}
 				else
 				{
@@ -193,8 +193,8 @@ void doPlayer()
 				engine.keyState[SDLK_LSHIFT] = engine.keyState[SDLK_RSHIFT] = 0;
 			}
 
-			Math::limitChar(&--player.reload[0], 0, 999);
-			Math::limitChar(&--player.reload[1], 0, 999);
+			Math::limitCharAdd(&player.reload[0], -1, 0, 999);
+			Math::limitCharAdd(&player.reload[1], -1, 0, 999);
 
 			if (engine.keyState[SDLK_UP])
 			{
@@ -278,7 +278,7 @@ void doPlayer()
 			if (player.hit)
 				shapeToUse += SHIP_HIT_INDEX;
 
-			Math::limitChar(&--player.hit, 0, 100);
+			Math::limitCharAdd(&player.hit, -1, 0, 100);
 
 			graphics.blit(graphics.shipShape[shapeToUse], (int)player.x, (int)player.y);
 			if ((player.shield <= engine.lowShield) && (rand() % 5 < 1))

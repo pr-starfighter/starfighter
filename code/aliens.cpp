@@ -1105,8 +1105,8 @@ void doAliens()
 
 				// ----------------------------------------
 
-				Math::limitChar(&--theEnemy->reload[0], 0, 999);
-				Math::limitChar(&--theEnemy->reload[1], 0, 999);
+				Math::limitCharAdd(&theEnemy->reload[0], -1, 0, 999);
+				Math::limitCharAdd(&theEnemy->reload[1], -1, 0, 999);
 
     			if ((!(theEnemy->flags & FL_DISABLED)) && (!(theEnemy->flags & FL_NOFIRE)))
 				{
@@ -1154,7 +1154,7 @@ void doAliens()
 				}
 				else
 				{
-					Math::limitChar(&++theEnemy->ammo[0], 0, 250);
+					Math::limitCharAdd(&theEnemy->ammo[0], 1, 0, 250);
 				}
 				// -------------------------------------------------------
 
@@ -1185,7 +1185,7 @@ void doAliens()
 				if (theEnemy->hit)
 					shapeToUse += SHIP_HIT_INDEX;
 
-				Math::limitChar(&--theEnemy->hit, 0, 100);
+				Math::limitCharAdd(&theEnemy->hit, -1, 0, 100);
 
 				if ((theEnemy->x + theEnemy->image[0]->w > 0) && (theEnemy->x < 800) && (theEnemy->y + theEnemy->image[0]->h > 0) && (theEnemy->y < 600))
 				{

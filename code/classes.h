@@ -107,6 +107,26 @@ class Math {
 			*in = high;
 	}
 
+	static void limitCharAdd(signed char *in, int add, int low, int high)
+	{
+		int tmp = (int)*in + add;
+		if (tmp < low)
+			tmp = low;
+		if (tmp > high)
+			tmp = high;
+		*in = tmp;
+	}
+
+	static void limitCharAdd(unsigned char *in, int add, int low, int high)
+	{
+		int tmp = (int)*in + add;
+		if (tmp < low)
+			tmp = low;
+		if (tmp > high)
+			tmp = high;
+		*in = tmp;
+	}
+
 	static void limitInt(int *in, int low, int high)
 	{
 		if (*in < low)

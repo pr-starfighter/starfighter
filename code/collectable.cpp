@@ -264,7 +264,7 @@ void doCollectables()
 						break;
 
 					case P_ROCKET:
-						Math::limitChar(&(player.ammo[1] += collectable->value), 0, currentGame.maxRocketAmmo);
+						Math::limitCharAdd(&player.ammo[1], collectable->value, 0, currentGame.maxRocketAmmo);
 						if (player.ammo[1] == currentGame.maxRocketAmmo)
 							sprintf(temp, "Rocket Ammo at Maximum");
 						else
@@ -284,7 +284,7 @@ void doCollectables()
 						break;
 
 					case P_PLASMA_RATE:
-						Math::limitChar(&(weapon[1].reload[0] -= 2), currentGame.maxPlasmaRate, 15);
+						Math::limitCharAdd(&weapon[1].reload[0], -2, currentGame.maxPlasmaRate, 15);
 						player.weaponType[0] = 1;
 						if (player.ammo[0] < 50)
 							player.ammo[0] = 50;
@@ -297,7 +297,7 @@ void doCollectables()
 						break;
 
 					case P_PLASMA_SHOT:
-						Math::limitChar(&(weapon[1].ammo[0] += 1), 1, currentGame.maxPlasmaOutput);
+						Math::limitCharAdd(&weapon[1].ammo[0], 1, 1, currentGame.maxPlasmaOutput);
 						if (player.ammo[0] < 50)
 							player.ammo[0] = 50;
 						Math::limitChar(&(player.ammo[0]), 0, currentGame.maxPlasmaAmmo);
@@ -310,7 +310,7 @@ void doCollectables()
 						break;
 
 					case P_PLASMA_DAMAGE:
-						Math::limitChar(&(weapon[1].damage += 1), 1, currentGame.maxPlasmaDamage);
+						Math::limitCharAdd(&weapon[1].damage, 1, 1, currentGame.maxPlasmaDamage);
 						if (player.ammo[0] < 50)
 							player.ammo[0] = 50;
 						Math::limitChar(&(player.ammo[0]), 0, currentGame.maxPlasmaAmmo);
@@ -345,7 +345,7 @@ void doCollectables()
 						break;
 
 					case P_PLASMA_AMMO:
-						Math::limitChar(&(player.ammo[0] += collectable->value), 0, currentGame.maxPlasmaAmmo);
+						Math::limitCharAdd(&player.ammo[0], collectable->value, 0, currentGame.maxPlasmaAmmo);
 						if (player.ammo[0] == currentGame.maxPlasmaAmmo)
 							sprintf(temp, "Plasma cells at Maximum");
 						else
