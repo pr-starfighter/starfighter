@@ -544,7 +544,7 @@ void showStory()
 		{
 			for (int i = 0 ; i < 9 ; i++)
 			{
-				graphics.textShape[i].y -= 0.25;
+				graphics.textShape[i].y -= 0.33333;
 				graphics.blitText(i);
 			}
 		}
