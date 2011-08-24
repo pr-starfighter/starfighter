@@ -414,9 +414,9 @@ int doTitle()
 							SDL_WM_ToggleFullScreen(graphics.screen);
 							#else
 							if (currentGame.fullScreen)
-								graphics.screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWSURFACE|SDL_HWPALETTE|SDL_FULLSCREEN);
+								graphics.screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE|SDL_FULLSCREEN);
 							else
-								graphics.screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWSURFACE|SDL_HWPALETTE);
+								graphics.screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE);
 
 							graphics.drawBackground();
 							flushBuffer();
