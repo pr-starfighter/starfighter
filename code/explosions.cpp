@@ -76,22 +76,25 @@ void doExplosions()
 
 		if (explosion->active == 1)
 		{
-			explosion->thinktime--;
-						
 			explosion->x += engine.ssx;
 			explosion->y += engine.ssy;
 	
 			if (isOnScreen((int)explosion->x, (int)explosion->y, explosion->image[0]->w, explosion->image[0]->h))
 				graphics.blit(explosion->image[0], (int)explosion->x, (int)explosion->y);
 
-			if (explosion->thinktime < 1)
+			if(rand() % 7 == 0)
 			{
-				explosion->active = 0;
-			}
-			else if (explosion->thinktime % 7 == 0)
-			{
-				explosion->face++;
-				explosion->image[0] = graphics.shape[explosion->face];
+				explosion->thinktime -= 7;
+
+				if(explosion->thinktime < 1)
+				{
+					explosion->active = 0;
+				}
+				else
+				{
+					explosion->face++;
+					explosion->image[0] = graphics.shape[explosion->face];
+				}
 			}
 		}
 
