@@ -76,7 +76,6 @@ void createMissionDetailSurface(SDL_Surface *comms, int missionSlot)
 	{
 		if ((systemPlanet[i].messageSlot == missionSlot) && (systemPlanet[i].missionCompleted == 0))
 		{
-			//printf("Slot %d - Mission %d - Completed %d\n", missionSlot, systemPlanet[i].messageMission, systemPlanet[i].missionCompleted);
 			mission = systemPlanet[i].messageMission;
 		}
 	}

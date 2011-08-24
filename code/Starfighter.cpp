@@ -97,28 +97,6 @@ int main(int argc, char *argv[])
 
 	newGame();
 
-	/*
-	currentGame.system = 3;
-	currentGame.area = 24;
-	currentGame.shieldUnits = 4;
-	currentGame.hasWingMate1 = 1;
-	currentGame.hasWingMate2 = 1;
-
-	player.shield = (currentGame.shieldUnits * 25);
-
-	player.weaponType[1] = W_LASER;
-
-	player.ammo[0] = 1;
-	weapon[1].ammo[0] = 3;
-	weapon[1].damage = 5;
-	weapon[1].reload[0] = 7;
-
-	engine.cheatAmmo = 1;
-	engine.cheatShield = 1;
-	engine.cheatCash = 1;
-	updateSystemStatus();
-	*/
-
 	while (true)
 	{
 		switch(section)
@@ -137,12 +115,6 @@ int main(int argc, char *argv[])
 				break;
 		}
 	}
-
-	//doTitle();
-	//galaxyMap();
-	//mainGameLoop();
-	//doCutscene(2);
-	//doCredits();
 
 	return(0);
 }

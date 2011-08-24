@@ -96,8 +96,6 @@ void unpack(const char *file, signed char fileType)
 	if ((fileType != PAK_MOD) && (fileType != PAK_S3M))
 		engine.sdlrw = SDL_RWFromMem(packBuffer, packFSize);
 
-	//printf("Extracted: %s\n", file);
-
 	fclose(pak);
 }
 
@@ -107,8 +105,6 @@ When it is found, return the location.
 */
 int locateDataInPak(const char *file, signed char required)
 {
-	//printf("Looking for %s...", file);
-
 	char packFilename[60];
 	int packFSize;
 	int location = 0;
@@ -145,8 +141,6 @@ int locateDataInPak(const char *file, signed char required)
 			location = ftell(pak);
 			fclose(pak);
 
-			//printf("found it!\n");
-
 			return location;
 		}
 		else
@@ -154,8 +148,6 @@ int locateDataInPak(const char *file, signed char required)
 			fseek(pak, packFSize, SEEK_CUR);
 		}
 	}
-
-	//printf("not found (skipping)\n");
 
 	return -1; // we only get this if it isn't required
 }
