@@ -184,9 +184,9 @@ void initSystem()
 	SDL_WM_SetIcon(loadImage("gfx/alienDevice.png"), NULL);
 
 	if (currentGame.fullScreen)
-		graphics.screen = SDL_SetVideoMode(800, 600, 16, SDL_HWPALETTE|SDL_FULLSCREEN);
+		graphics.screen = SDL_SetVideoMode(800, 600, 16, SDL_DOUBLEBUF|SDL_HWPALETTE|SDL_FULLSCREEN);
 	else
-		graphics.screen = SDL_SetVideoMode(800, 600, 0, SDL_HWPALETTE);
+		graphics.screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE);
 
 	if (graphics.screen == NULL) {
 		printf("Couldn't set 800x600x16 video mode: %s\n", SDL_GetError());
