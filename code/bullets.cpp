@@ -46,7 +46,7 @@ void addBullet(object *theWeapon, object *attacker, int y, int dy)
 	{
 		bullet->dx = theWeapon->speed;
 		if ((currentGame.area == 18) || (currentGame.area == 24))
-			bullet->dx += fabs(engine.ssx);
+			bullet->dx += fabsf(engine.ssx);
 	}
 	else
 	{
@@ -106,8 +106,8 @@ void addBullet(object *theWeapon, object *attacker, int y, int dy)
 
 	if (bullet->flags & WF_AIMED)
 	{
-		tempX = (int)fabs(attacker->target->x - attacker->x);
-		tempY = (int)fabs(attacker->target->y - attacker->y);
+		tempX = (int)fabsf(attacker->target->x - attacker->x);
+		tempY = (int)fabsf(attacker->target->y - attacker->y);
 		steps = max(tempX, tempY);
 
 		if (steps < 12)
@@ -392,8 +392,8 @@ char checkPlayerShockDamage(float x, float y)
 	if ((engine.cheatShield) || (engine.missionCompleteTimer != 0))
 		return 0;
 
-	float distX = fabs(x - player.x);
-	float distY = fabs(y - player.y);
+	float distX = fabsf(x - player.x);
+	float distY = fabsf(y - player.y);
 
 	if ((distX <= 50) && (distY <= 50))
 	{

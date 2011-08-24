@@ -256,8 +256,8 @@ signed char showSystem(float x, float y)
 
 		graphics.circle(400, 250, i, graphics.screen, graphics.darkGrey);
 
-		r.x = int(400 + (sin(x) * i));
-		r.y = int(250 + (cos(y) * i));
+		r.x = int(400 + (sinf(x) * i));
+		r.y = int(250 + (cosf(y) * i));
 		r.w = 10;
 		r.h = 10;
 

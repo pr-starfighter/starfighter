@@ -801,8 +801,8 @@ void moveAndSeparate(object *theEnemy)
 				theEnemy->dy -= 0.02;
 			}
 
-			theEnemy->x -= (sin(theEnemy->dx) * 4);
-			theEnemy->y -= (cos(theEnemy->dy) * 4);
+			theEnemy->x -= (sinf(theEnemy->dx) * 4);
+			theEnemy->y -= (cosf(theEnemy->dy) * 4);
 		}
 		else
 		{
@@ -899,8 +899,8 @@ void moveAndSeparate(object *theEnemy)
 					theEnemy->dy += 0.02;
 				}
 
-				theEnemy->x += (sin(theEnemy->dx) * 4);
-				theEnemy->y += (cos(theEnemy->dy) * 4);
+				theEnemy->x += (sinf(theEnemy->dx) * 4);
+				theEnemy->y += (cosf(theEnemy->dy) * 4);
 
 				theEnemy->thinktime = 0;
 			}
@@ -1090,8 +1090,8 @@ void doAliens()
 
 				if (theEnemy->classDef == CD_BARRIER)
 				{
-					theEnemy->dx = -10 + (sin(barrierLoop + theEnemy->speed) * 60);
-					theEnemy->dy = 20 + (cos(barrierLoop + theEnemy->speed) * 40);
+					theEnemy->dx = -10 + (sinf(barrierLoop + theEnemy->speed) * 60);
+					theEnemy->dy = 20 + (cosf(barrierLoop + theEnemy->speed) * 40);
 				}
 
 				// ----------------------------------------
