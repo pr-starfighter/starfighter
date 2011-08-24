@@ -871,23 +871,7 @@ void missionFinishedScreen()
 
 		currentGame.timeTaken += engine.timeTaken;
 
-		signed char clock = 0;
-		while (engine.timeTaken > 3599)
-		{
-			clock++;
-			engine.timeTaken -= 3600;
-		}
-
-		sprintf(temp, "Mission Time: %.2d", clock);
-
-		clock = 0;
-		while (engine.timeTaken > 59)
-		{
-			clock++;
-			engine.timeTaken -= 60;
-		}
-
-		sprintf(temp, "%s:%.2d:%.2d", temp, clock, engine.timeTaken);
+		snprintf(temp, sizeof temp, "Mission Time: %2d:%02d:%02d", engine.timeTaken / 3600, (engine.timeTaken / 60) % 60, engine.timeTaken % 60);
 
 		graphics.drawString(temp, -1, 500, FONT_WHITE);
 

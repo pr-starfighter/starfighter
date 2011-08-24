@@ -142,23 +142,8 @@ void setStatusLines()
 
 	int timeTaken = currentGame.timeTaken;
 
-	signed char clock = 0;
-	while (timeTaken > 3599)
-	{
-		clock++;
-		timeTaken -= 3600;
-	}
+	snprintf(string, sizeof string, "Total Time : %2d:%02d:%02d", timeTaken / 3600, (timeTaken / 60) % 60, timeTaken % 60);
 
-	sprintf(string, "Total Time : %.2d", clock);
-
-	clock = 0;
-	while (timeTaken > 59)
-	{
-		clock++;
-		timeTaken -= 60;
-	}
-
-	sprintf(string, "%s:%.2d:%.2d", string, clock, timeTaken);
 	graphics.textSurface(26, string, -1, 0, FONT_WHITE);
 	graphics.textSurface(27, "Current Status", -1, 0, FONT_WHITE);
 
