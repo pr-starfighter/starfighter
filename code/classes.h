@@ -232,8 +232,15 @@ class Graphics {
 		for (int i = 0 ; i < MAX_SHOPSHAPES ; i++)
 			shopSurface[i] = NULL;
 
+		for (int i = 0 ; i < MAX_FONTSHAPES ; i++)
+			fontShape[i] = NULL;
+
 		background = NULL;
 		messageBox = NULL;
+
+		frameLimit = 0;
+		thirds = 0;
+		screen = NULL;
 	}
 
 	SDL_Surface *setTransparent(SDL_Surface *sprite)
