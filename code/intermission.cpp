@@ -428,7 +428,7 @@ void showOptions(SDL_Surface *optionsSurface)
 				#if LINUX
 				SDL_WM_ToggleFullScreen(graphics.screen);
 				#else
-				graphics.screen = SDL_SetVideoMode(800, 600, 16, SDL_HWSURFACE|SDL_HWPALETTE|SDL_FULLSCREEN);
+				graphics.screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWSURFACE|SDL_HWPALETTE|SDL_FULLSCREEN);
 				graphics.drawBackground();
 				flushBuffer();
 				#endif
@@ -443,7 +443,7 @@ void showOptions(SDL_Surface *optionsSurface)
 				#if LINUX
 				SDL_WM_ToggleFullScreen(graphics.screen);
 				#else
-				graphics.screen = SDL_SetVideoMode(800, 600, 0, SDL_HWSURFACE|SDL_HWPALETTE);
+				graphics.screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWSURFACE|SDL_HWPALETTE);
 				graphics.drawBackground();
 				flushBuffer();
 				#endif
