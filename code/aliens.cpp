@@ -768,7 +768,7 @@ int traceView(object *theEnemy)
 			}
 		}
 
-		*anEnemy++;
+		anEnemy++;
 	}
 
 	return 0;
@@ -819,7 +819,7 @@ void moveAndSeparate(object *theEnemy)
 		{
 			if ((theEnemy->flags & FL_LEAVESECTOR) || (theEnemy->classDef == CD_DRONE) || (theEnemy->classDef == CD_ASTEROID2) || (theEnemy->owner == anEnemy->owner) || (theEnemy->owner->owner == anEnemy->owner) || (anEnemy->shield < 1))
 			{
-				*anEnemy++;
+				anEnemy++;
 				continue;
 			}
 
@@ -838,7 +838,7 @@ void moveAndSeparate(object *theEnemy)
 					hasCollided = 1;
 			}
 
-			*anEnemy++;
+			anEnemy++;
 		}
 	}
 
@@ -1238,7 +1238,7 @@ void doAliens()
 			theEnemy->y += engine.ssy;
 		}
 
-		*theEnemy++;
+		theEnemy++;
 	}
 }
 

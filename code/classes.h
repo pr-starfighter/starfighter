@@ -373,7 +373,7 @@ class Graphics {
 				}
 			}
 
-			*in++;
+			in++;
 		}
 
 		return area.y;

@@ -484,7 +484,7 @@ void fireRay(object *attacker)
 			}
 		}
 
-		*anEnemy++;
+		anEnemy++;
 	}
 
 	attacker->ammo[0]--;
