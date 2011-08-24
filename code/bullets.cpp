@@ -110,7 +110,7 @@ void addBullet(object *theWeapon, object *attacker, int y, int dy)
 		tempY = (int)fabs(attacker->target->y - attacker->y);
 		steps = max(tempX, tempY);
 
-		if (steps == 0)
+		if (steps < 12)
 			steps = 12;
 
 		if (!(bullet->flags & WF_TIMEDEXPLOSION))
