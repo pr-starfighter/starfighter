@@ -29,10 +29,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "structs.h"
 #include "classes.h"
 
-extern void unpack(char *file, signed char fileType);
-extern SDL_Surface *loadImage(char *filename);
-extern Mix_Chunk *loadSound(char *filename);
-extern int locateDataInPak(char *file, signed char required);
+extern void unpack(const char *file, signed char fileType);
+extern SDL_Surface *loadImage(const char *filename);
+extern Mix_Chunk *loadSound(const char *filename);
+extern int locateDataInPak(const char *file, signed char required);
 extern void setAlienShapes();
 extern void setWeaponShapes();
 extern void loadGameGraphics();

@@ -56,7 +56,7 @@ void playSound(int sid)
 	}
 }
 
-Mix_Chunk *loadSound(char *filename)
+Mix_Chunk *loadSound(const char *filename)
 {
 	Mix_Chunk *chunk;
 
@@ -70,7 +70,7 @@ Mix_Chunk *loadSound(char *filename)
 	return chunk;
 }
 
-void loadMusic(char *filename)
+void loadMusic(const char *filename)
 {
 	if (Mix_PlayingMusic())
 		Mix_HaltMusic();

@@ -29,16 +29,16 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "structs.h"
 #include "classes.h"
 
-extern SDL_Surface *loadImage(char *file_name);
+extern SDL_Surface *loadImage(const char *file_name);
 extern void playRandomTrack();
 extern void getPlayerInput();
-extern void setInfoLine(char *in, int color);
+extern void setInfoLine(const char *in, int color);
 extern void loadGameGraphics();
 extern void killAllAliens();
-extern int locateDataInPak(char *file, signed char required);
-extern void setRadioMessage(signed char face, char *in, int priority);
+extern int locateDataInPak(const char *file, signed char required);
+extern void setRadioMessage(signed char face, const char *in, int priority);
 extern void syncScriptEvents();
-extern void loadMusic(char *filename);
+extern void loadMusic(const char *filename);
 extern void setTarget(int index);
 extern void flushInput();
 

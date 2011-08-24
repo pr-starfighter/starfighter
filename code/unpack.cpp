@@ -24,7 +24,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 Searches the pak file for the required data. When
 it is found, the data is read into a character buffer.
 */
-void unpack(char *file, signed char fileType)
+void unpack(const char *file, signed char fileType)
 {
 	unsigned char *packBuffer;
 	char packFilename[60];
@@ -105,7 +105,7 @@ void unpack(char *file, signed char fileType)
 Search the data package for the required file.
 When it is found, return the location.
 */
-int locateDataInPak(char *file, signed char required)
+int locateDataInPak(const char *file, signed char required)
 {
 	//printf("Looking for %s...", file);
 

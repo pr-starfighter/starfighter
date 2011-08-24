@@ -48,7 +48,7 @@ Something went wrong. This stops the game, present the error message and
 prompts the user to press space or ctrl to exit the game. This is unlikely to
 be seen by people unless something really stoopid happens!
 */
-void showErrorAndExit(int errorId, char *name)
+void showErrorAndExit(int errorId, const char *name)
 {
 	graphics.clearScreen(graphics.black);
 

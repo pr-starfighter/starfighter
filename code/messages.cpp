@@ -146,9 +146,9 @@ void getKillMessage(object *ally)
 	setRadioMessage(faceToUse, in, 0);
 }
 
-char *getKlineInsult()
+const char *getKlineInsult()
 {
-	static char insult[][40] = {
+	static const char insult[][40] = {
 	"Pathetic", "How very disappointing...", "Heroic. And stupid", "Fool", "And now you're nothing but a DEAD hero"
 	};
 

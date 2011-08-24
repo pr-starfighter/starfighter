@@ -38,13 +38,13 @@ extern void addEngine(object *craft);
 extern void fireRay(object *attacker);
 extern void addDebris(int x, int y, int amount);
 extern void playSound(int sid);
-extern int locateDataInPak(char *file, signed char required);
+extern int locateDataInPak(const char *file, signed char required);
 extern object *addCargo(object *owner, int cargoType);
 extern void addCollectable(float x, float y, int type, int value, int life);
 extern void updateMissionRequirements(int type, int id, int value);
-extern void setInfoLine(char *in, int color);
+extern void setInfoLine(const char *in, int color);
 extern void addBullet(object *theWeapon, object *attacker, int y, int dy);
-extern void showErrorAndExit(int errorId, char *name);
+extern void showErrorAndExit(int errorId, const char *name);
 
 extern globalEngineVariables engine;
 extern devVariables dev;

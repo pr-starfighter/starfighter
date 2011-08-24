@@ -30,7 +30,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "classes.h"
 
 extern void updateMissionRequirements(int type, int id, int value);
-extern void setInfoLine(char *in, int color);
+extern void setInfoLine(const char *in, int color);
 extern object *addCargo(object *owner, int cargoType);
 extern void addExplosion(float x, float y, int type);
 extern void playSound(int sid);

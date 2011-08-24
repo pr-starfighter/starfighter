@@ -29,8 +29,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "structs.h"
 #include "classes.h"
 
-extern void unpack(char *file, signed char fileType);
-extern void showErrorAndExit(int errorId, char *name);
+extern void unpack(const char *file, signed char fileType);
+extern void showErrorAndExit(int errorId, const char *name);
 
 extern Star star[200];
 extern globalEngineVariables engine;

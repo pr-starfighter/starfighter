@@ -30,7 +30,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "classes.h"
 
 extern void addCollectable(float x, float y, int type, int value, int life);
-extern void setRadioMessage(signed char face, char *in, int priority);
+extern void setRadioMessage(signed char face, const char *in, int priority);
 
 extern globalEngineVariables engine;
 extern Game currentGame;

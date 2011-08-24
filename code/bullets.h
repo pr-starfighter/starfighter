@@ -35,13 +35,13 @@ extern void updateMissionRequirements(int type, int id, int value);
 extern void addCollectable(float x, float y, int type, int value, int life);
 extern void addExplosion(float x, float y, int type);
 extern void generateShockWave(object *bullet);
-extern void setInfoLine(char *in, int color);
+extern void setInfoLine(const char *in, int color);
 extern void getKillMessage(object *ally);
 extern void getMissFireMessage(object *ally);
 extern void getPlayerHitMessage(object *ally);
 extern void checkMineBulletCollisions(object *bullet);
 extern void setKlineAttackMethod(object *theEnemy);
-extern void setRadioMessage(signed char face, char *in, int priority);
+extern void setRadioMessage(signed char face, const char *in, int priority);
 
 extern globalEngineVariables engine;
 extern devVariables dev;

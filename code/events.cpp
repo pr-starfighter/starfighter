@@ -55,7 +55,7 @@ void compareLastKeyInputs()
 		{engine.cheatCredits = 1; memset(lastKeyEvents, ' ', 25);}
 }
 
-void addKeyEvent(char *keyName)
+void addKeyEvent(const char *keyName)
 {
 	if (strlen(keyName) > 1)
 		return;

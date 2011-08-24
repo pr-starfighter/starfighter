@@ -30,7 +30,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "structs.h"
 #include "classes.h"
 
-extern SDL_Surface *loadImage(char *filename);
+extern SDL_Surface *loadImage(const char *filename);
 extern void doStarfield();
 extern void getPlayerInput();
 extern void showShop();
@@ -38,15 +38,15 @@ extern void initShop();
 extern int initSaveSlots();
 extern int showSaveSlots(SDL_Surface *savesSurface, signed char saveSlot);
 extern void saveGame(int slot);
-extern void loadMusic(char *filename);
-extern void loadBackground(char *filename);
+extern void loadMusic(const char *filename);
+extern void loadBackground(const char *filename);
 extern void createCommsSurface(SDL_Surface *comms);
 extern void updateCommsSurface(SDL_Surface *comms);
 extern void createSavesSurface(SDL_Surface *savesSurface, signed char clickedSlot);
 extern void checkForBossMission();
 extern void doComms(SDL_Surface *comms);
-extern int locateDataInPak(char *file, signed char required);
-extern int getFace(char *face);
+extern int locateDataInPak(const char *file, signed char required);
+extern int getFace(const char *face);
 extern void flushInput();
 
 extern globalEngineVariables engine;

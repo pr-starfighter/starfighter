@@ -20,7 +20,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "resources.h"
 
-void loadBackground(char *filename)
+void loadBackground(const char *filename)
 {
 	if (graphics.background != NULL)
 	{

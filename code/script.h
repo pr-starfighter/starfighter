@@ -32,14 +32,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 extern void doStarfield();
 extern void getPlayerInput();
 extern void loadGameGraphics();
-extern void loadBackground(char *filename);
-extern void setRadioMessage(signed char face, char *in, int priority);
+extern void loadBackground(const char *filename);
+extern void setRadioMessage(signed char face, const char *in, int priority);
 extern void doExplosions();
 extern void addEngine(object *craft);
 extern void doExplosions();
 extern void resetLists();
-extern int getFace(char *face);
-extern int locateDataInPak(char *file, signed char required);
+extern int getFace(const char *face);
+extern int locateDataInPak(const char *file, signed char required);
 extern void flushInput();
 
 extern Game currentGame;

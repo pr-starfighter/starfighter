@@ -18,7 +18,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-extern void showErrorAndExit(int errorId, char *name);
+extern void showErrorAndExit(int errorId, const char *name);
 
 class Collision {
 
@@ -333,7 +333,7 @@ class Graphics {
 	In 16 bit mode this is slow. VERY slow. Don't write directly to a surface
 	that constantly needs updating (eg - the main game screen)
 	*/
-	int renderString(char *in, int x, int y, int fontColor, signed char wrap, SDL_Surface *dest)
+	int renderString(const char *in, int x, int y, int fontColor, signed char wrap, SDL_Surface *dest)
 	{
 		SDL_Rect area;
 		area.x = x;
@@ -379,7 +379,7 @@ class Graphics {
 		return area.y;
 	}
 
-	int drawString(char *in, int x, int y, int fontColor, signed char wrap, SDL_Surface *dest)
+	int drawString(const char *in, int x, int y, int fontColor, signed char wrap, SDL_Surface *dest)
 	{
 		renderString(in, x, y - 1, FONT_OUTLINE, wrap, dest);
 		renderString(in, x, y + 1, FONT_OUTLINE, wrap, dest);
@@ -390,14 +390,14 @@ class Graphics {
 		return renderString(in, x, y, fontColor, wrap, dest);
 	}
 
-	int drawString(char *in, int x, int y, int fontColor, SDL_Surface *dest)
+	int drawString(const char *in, int x, int y, int fontColor, SDL_Surface *dest)
 	{
 		if (x == -1)
 			x = (dest->w - (strlen(in) * 9)) / 2;
 		return drawString(in, x, y, fontColor, 0, dest);
 	}
 
-	int drawString(char *in, int x, int y, int fontColor)
+	int drawString(const char *in, int x, int y, int fontColor)
 	{
 		if (x == -1)
 			x = (800 - (strlen(in) * 9)) / 2;
@@ -619,7 +619,7 @@ class Graphics {
 		return newImage;
 	}
 
-	SDL_Surface *textSurface(char *inString, int color)
+	SDL_Surface *textSurface(const char *inString, int color)
 	{
 		SDL_Surface *surface = createSurface(strlen(inString) * 9, 16);
 
@@ -628,7 +628,7 @@ class Graphics {
 		return setTransparent(surface);
 	}
 
-	void textSurface(int index, char *inString, int x, int y, int fontColor)
+	void textSurface(int index, const char *inString, int x, int y, int fontColor)
 	{
 		strcpy(textShape[index].text, inString);
 		textShape[index].x = x;
@@ -654,7 +654,7 @@ class Graphics {
 		return surface;
 	}
 
-	void createMessageBox(SDL_Surface *face, char *message, signed char transparent)
+	void createMessageBox(SDL_Surface *face, const char *message, signed char transparent)
 	{
 		if (messageBox != NULL)
 		{

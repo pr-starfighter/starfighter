@@ -29,9 +29,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "structs.h"
 #include "classes.h"
 
-extern SDL_Surface *loadImage(char *filename);
-extern void unpack(char *file);
-extern void loadMusic(char *filename);
+extern SDL_Surface *loadImage(const char *filename);
+extern void unpack(const char *file);
+extern void loadMusic(const char *filename);
 extern void doStarfield();
 extern void doExplosions();
 extern void addEngine(object *craft);
@@ -41,9 +41,9 @@ extern signed char loadGame(int slot);
 extern int initSaveSlots();
 extern void newGame();
 extern void loadGameGraphics();
-extern void loadBackground(char *filename);
+extern void loadBackground(const char *filename);
 extern void doCredits();
-extern int locateDataInPak(char *file, signed char required);
+extern int locateDataInPak(const char *file, signed char required);
 extern void flushInput();
 
 extern globalEngineVariables engine;

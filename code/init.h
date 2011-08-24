@@ -40,8 +40,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 extern void freeSound();
 extern void resetLists();
 extern void getPlayerInput();
-extern void drawString(char *in, int x, int y, int fontColor);
-extern SDL_Surface *loadImage(char *filename);
+extern void drawString(const char *in, int x, int y, int fontColor);
+extern SDL_Surface *loadImage(const char *filename);
 
 extern globalEngineVariables engine;
 extern Game currentGame;

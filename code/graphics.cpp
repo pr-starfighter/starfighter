@@ -20,7 +20,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "graphics.h"
 
-SDL_Surface *loadImage(char *filename)
+SDL_Surface *loadImage(const char *filename)
 {
 	 SDL_Surface *image, *newImage;
 

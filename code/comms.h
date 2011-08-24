@@ -29,8 +29,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "structs.h"
 #include "classes.h"
 
-extern int locateDataInPak(char *file, signed char required);
-extern int getFace(char *face);
+extern int locateDataInPak(const char *file, signed char required);
+extern int getFace(const char *face);
 
 extern globalEngineVariables engine;
 extern Game currentGame;

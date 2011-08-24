@@ -41,7 +41,7 @@ string and colors. It will set the information to the first free infoline
 it finds (top to bottom). If it doesn't find any free ones, it will push
 all the other info lines down one and add itself to the top.
 */
-void setInfoLine(char *in, int color)
+void setInfoLine(const char *in, int color)
 {
 	int index = -1;
 
@@ -70,7 +70,7 @@ Sets a radio message that appears at the top of the screen. Used for
 script events, etc. We send a message priority too, since we don't want
 Phoebe or Ursula's banter to interrupt an important message
 */
-void setRadioMessage(signed char face, char *in, int priority)
+void setRadioMessage(signed char face, const char *in, int priority)
 {
 	if ((graphics.textShape[3].life > 0) && (priority == 0))
 		return;
@@ -400,7 +400,7 @@ void doInfo()
 	}
 }
 
-int getFace(char *face)
+int getFace(const char *face)
 {
 	for (int i = 0 ; i < 7 ; i++)
 	{
