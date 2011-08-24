@@ -81,8 +81,6 @@ void newGame()
 
 int mainGameLoop()
 {
-	Uint32 then, now, frames;
-
 	resetLists();
 
 	setMission(currentGame.area);
@@ -99,7 +97,6 @@ int mainGameLoop()
 	engine.ssy = 0;
 
 	engine.done = 0;
-	frames = 0;
 
 	engine.counter = (SDL_GetTicks() + 1000);
 	engine.counter2 = (SDL_GetTicks() + 1000);
@@ -128,8 +125,6 @@ int mainGameLoop()
 		}
 	}
 
-	then = SDL_GetTicks();
-
 	graphics.drawBackGround();
 	graphics.flushBuffer();
 
@@ -141,8 +136,6 @@ int mainGameLoop()
 
 	while (engine.done != 1)
 	{
-		++frames;
-
 		graphics.updateScreen();
 
 		if ((allMissionsCompleted()) && (engine.missionCompleteTimer == 0))
@@ -236,8 +229,6 @@ int mainGameLoop()
 		while (engine.paused)
 		{
 			engine.done = checkPauseRequest();
-			then = SDL_GetTicks();
-			frames = 0;
 			graphics.updateScreen();
 		}
 
@@ -279,12 +270,6 @@ int mainGameLoop()
 	}
 
 	graphics.flushBuffer();
-
-	now = SDL_GetTicks();
-	if ( now > then )
-	{
-		//printf("Mission %d: %2.2f frames per second\n", currentGame.area, ((double)frames*1000)/(now-then));
-	}
 
 	if ((player.shield > 0) && (!missionFailed()))
 	{
