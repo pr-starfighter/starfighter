@@ -93,7 +93,7 @@ void showErrorAndExit(int errorId, const char *name)
 	while (!engine.keyState[SDLK_SPACE])
 	{
 		getPlayerInput();
-		graphics.updateScreen();
+		graphics.delayFrame();
 	}
 
 	exit(1);
