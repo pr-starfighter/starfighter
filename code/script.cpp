@@ -237,7 +237,6 @@ void doCutscene(int scene)
 		enemy[i].engineY = (enemy[i].image[0]->h / 2);
 	}
 
-	unsigned long frameLimit = SDL_GetTicks();
 	signed char showMessage = 0;
 	signed char currentMessage = -1;
 	int timer = 60 * 4;
@@ -298,9 +297,8 @@ void doCutscene(int scene)
 		if ((showMessage) && (graphics.messageBox != NULL))
 			graphics.blit(graphics.messageBox, (800 - graphics.messageBox->w) / 2, 500);
 
-		while (SDL_GetTicks() < (frameLimit + 16)){}
-		frameLimit = SDL_GetTicks();
-		
+		graphics.delayFrame();
+
 		if (engine.keyState[SDLK_ESCAPE])
 			break;
 	}

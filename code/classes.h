@@ -185,6 +185,8 @@ class Math {
 
 
 class Graphics {
+		unsigned long frameLimit;
+		int thirds;
 
 	public:
 
@@ -446,8 +448,28 @@ class Graphics {
 	void updateScreen()
 	{
 		SDL_Flip(screen);
-		// Give the audio (and possibly the X server) time to work...
-		SDL_Delay(1);
+	}
+
+	/*
+	 * Delay until the next 60 Hz frame
+	 */
+	void delayFrame()
+	{
+		unsigned long now = SDL_GetTicks();
+
+		// Add 16 2/3 to frameLimit
+		frameLimit += 16;
+		if(thirds >= 2) {
+			thirds = 0;
+		} else {
+			thirds++;
+			frameLimit++;
+		}
+
+		if(now < frameLimit)
+			SDL_Delay(frameLimit - now);
+		else
+			frameLimit = now;
 	}
 
 	/*

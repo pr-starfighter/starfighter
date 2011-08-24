@@ -108,7 +108,6 @@ int mainGameLoop()
 	engine.musicVolume = 100;
 
 	int rtn = 0;
-	unsigned long frameLimit = SDL_GetTicks();
 
 	int allowableAliens = 999999999;
 
@@ -276,13 +275,7 @@ int mainGameLoop()
 			break;
 		}
 
-		// (Attempt to) Limit us to 60 frame a second
-		while (SDL_GetTicks() < (frameLimit + 16))
-		{
-			// Do nothing. If we were to insert an SDL_Delay(1) in here
-			// then we would actually lose around 10 frames per second!!
-		}
-		frameLimit = SDL_GetTicks();
+		graphics.delayFrame();
 	}
 
 	graphics.flushBuffer();

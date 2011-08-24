@@ -234,7 +234,6 @@ int doTitle()
 	signed char menuType = 0;
 
 	graphics.drawBackGround();
-	unsigned long frameLimit = SDL_GetTicks();
 
 	engine.done = 0;
 	flushInput();
@@ -453,8 +452,7 @@ int doTitle()
 			engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = engine.keyState[SDLK_SPACE] = 0;
 		}
 
-		while (SDL_GetTicks() < (frameLimit + 16)){}
-		frameLimit = SDL_GetTicks();
+		graphics.delayFrame();
 	}
 
 	Mix_HaltMusic();
@@ -529,8 +527,6 @@ void showStory()
 	graphics.blit(graphics.background, 0, 0);
 	graphics.flushBuffer();
 
-	unsigned long frameLimit = SDL_GetTicks();
-
 	flushInput();
 	engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = engine.keyState[SDLK_SPACE] = 0;
 
@@ -558,8 +554,7 @@ void showStory()
 			break;
 		}
 
-		while (SDL_GetTicks() < (frameLimit + 16)){}
-		frameLimit = SDL_GetTicks();
+		graphics.delayFrame();
 	}
 }
 
@@ -593,7 +588,6 @@ void gameover()
 	int x = (800 - gameover->w) / 2;
 	int y = (600 - gameover->h) / 2;
 
-	unsigned long frameLimit = SDL_GetTicks();
 	graphics.updateScreen();
 
 	flushInput();
@@ -613,9 +607,7 @@ void gameover()
 		y = ((600 - gameover->h) / 2)  - Math::rrand(-2, 2);
 		graphics.blit(gameover, x,  y);
 
-		// Limit us to 60 frame a second
-		while (SDL_GetTicks() < (frameLimit + 16)){}
-		frameLimit = SDL_GetTicks();
+		graphics.delayFrame();
 	}
 
 	SDL_FreeSurface(gameover);
@@ -693,7 +685,6 @@ void doCredits()
  	SDL_Delay(10000);
 	graphics.drawBackGround();
 
-	unsigned long frameLimit = SDL_GetTicks();
 	engine.done = 0;
 
 	lastCredit = numberOfCredits - 1;
@@ -724,8 +715,7 @@ void doCredits()
 		SDL_FillRect(graphics.screen, &r1, graphics.black);
 		SDL_FillRect(graphics.screen, &r2, graphics.black);
 
-		while (SDL_GetTicks() < (frameLimit + 16)){}
-		frameLimit = SDL_GetTicks();
+		graphics.delayFrame();
 	}
 
 	for (int i = 0 ; i < numberOfCredits ; i++)

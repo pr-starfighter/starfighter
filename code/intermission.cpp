@@ -596,8 +596,6 @@ int galaxyMap()
 	else
 		player.shield = player.maxShield;
 
-	unsigned long frameLimit = SDL_GetTicks();
-
 	flushInput();
 	engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = engine.keyState[SDLK_SPACE] = 0;
 	engine.done = 0;
@@ -832,9 +830,7 @@ int galaxyMap()
 		engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = engine.keyState[SDLK_SPACE] = 0;
 		doCursor();
 
-		// Limit us to 60 frame a second
-		while (SDL_GetTicks() < (frameLimit + 16)){}
-		frameLimit = SDL_GetTicks();
+		graphics.delayFrame();
 	}
 
 	Mix_HaltMusic();
