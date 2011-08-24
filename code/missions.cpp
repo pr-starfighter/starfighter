@@ -791,7 +791,7 @@ void missionBriefScreen()
 
 		while (true)
 		{
-			graphics.updateScreen();
+			graphics.delayFrame();
 			getPlayerInput();
 			if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
 				break;
@@ -893,7 +893,7 @@ void missionFinishedScreen()
 
 		while (true)
 		{
-			graphics.updateScreen();
+			graphics.delayFrame();
 			getPlayerInput();
 			if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
 				break;

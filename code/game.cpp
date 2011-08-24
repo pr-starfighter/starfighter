@@ -229,7 +229,7 @@ int mainGameLoop()
 		while (engine.paused)
 		{
 			engine.done = checkPauseRequest();
-			graphics.updateScreen();
+			graphics.delayFrame();
 		}
 
 		if ((currentGame.area == 24) && (engine.addAliens > -1))
