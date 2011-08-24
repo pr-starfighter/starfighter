@@ -385,7 +385,7 @@ void destroyAlien(object *bullet, object *theEnemy)
 	}
 }
 
-char checkPlayerShockDamage(float x, float y, int radius)
+char checkPlayerShockDamage(float x, float y)
 {
 	// Don't let the player be hurt by an explosion after they have completed
 	// all the mission objectives. That would be *really* annoying!
@@ -775,7 +775,7 @@ void doBullets()
 					addExplosion(bullet->x + Math::rrand(-35, 35), bullet->y + Math::rrand(-35, 35), E_BIG_EXPLOSION);
 
 				if (bullet->flags & WF_TIMEDEXPLOSION)
-					if (checkPlayerShockDamage(bullet->x, bullet->y, 75))
+					if (checkPlayerShockDamage(bullet->x, bullet->y))
 						setInfoLine("Warning: Missile Shockwave Damage!!", FONT_RED);
 			}
 			bullet->active = 0;

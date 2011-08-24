@@ -169,7 +169,7 @@ void explodeMine(collectables *collectable)
 	for (int i = 0 ; i < 10 ; i++)
 		addExplosion(collectable->x + rand() % 25 - rand() % 25, collectable->y + rand() % 25 - rand() % 25, E_BIG_EXPLOSION);
 
-	if (checkPlayerShockDamage(collectable->x, collectable->y, 50))
+	if (checkPlayerShockDamage(collectable->x, collectable->y))
 		setInfoLine("Warning: Mine damage to shield!!", FONT_RED);
 }
 

@@ -303,7 +303,7 @@ void checkTimer()
 	}
 }
 
-void evaluteRequirement(int type, int id, int value, int *completed, int *targetValue, int fontColor)
+void evaluteRequirement(int type, int id, int *completed, int *targetValue, int fontColor)
 {
 	char message[25];
 
@@ -417,7 +417,7 @@ void updateMissionRequirements(int type, int id, int value)
 			{
 				matched = 1;
 				currentMission.targetValue1[i] -= value;
-				evaluteRequirement(type, id, value, &currentMission.completed1[i], &currentMission.targetValue1[i], FONT_CYAN);
+				evaluteRequirement(type, id, &currentMission.completed1[i], &currentMission.targetValue1[i], FONT_CYAN);
 			}
 		}
 	}
@@ -433,7 +433,7 @@ void updateMissionRequirements(int type, int id, int value)
 			if ((currentMission.secondaryType[i] == type) && ((currentMission.target2[i] == id) || (currentMission.target2[i] == CD_ANY)))
 			{
 				currentMission.targetValue2[i] -= value;
-				evaluteRequirement(type, id, value, &currentMission.completed2[i], &currentMission.targetValue2[i], FONT_YELLOW);
+				evaluteRequirement(type, id, &currentMission.completed2[i], &currentMission.targetValue2[i], FONT_YELLOW);
 				return;
 			}
 		}

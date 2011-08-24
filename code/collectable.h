@@ -34,7 +34,7 @@ extern void setInfoLine(const char *in, int color);
 extern object *addCargo(object *owner, int cargoType);
 extern void addExplosion(float x, float y, int type);
 extern void playSound(int sid);
-extern char checkPlayerShockDamage(float x, float y, int radius);
+extern char checkPlayerShockDamage(float x, float y);
 
 extern globalEngineVariables engine;
 extern object player;
