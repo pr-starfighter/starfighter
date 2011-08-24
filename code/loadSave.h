@@ -23,9 +23,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <sys/types.h>
 #include <sys/stat.h>
 
-#include "SDL/SDL.h"
-#include "SDL/SDL_image.h"
-#include "SDL/SDL_mixer.h"
+#include <SDL/SDL.h>
+#include <SDL/SDL_image.h>
+#include <SDL/SDL_mixer.h>
 
 #include "defs.h"
 #include "structs.h"
