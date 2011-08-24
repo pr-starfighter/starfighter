@@ -18,7 +18,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-typedef struct object {
+struct object {
 
 	signed char active;
 	signed char classDef; // Used by aliens to determine what they are
@@ -65,9 +65,9 @@ typedef struct object {
 
 	object *next;
 
-} object;
+};
 
-typedef struct mission {
+struct mission {
 
 	char primaryObjective[3][50]; // Description
 	signed char primaryType[3]; // The type of mission this is
@@ -89,14 +89,14 @@ typedef struct mission {
 
 };
 
-typedef struct Star {
+struct Star {
 
 	float x, y, dx, dy;
 	signed char speed; // How fast the star moves
 
 };
 
-typedef struct collectables {
+struct collectables {
 
 	signed char active;
 	float x, y, dx, dy;
@@ -109,7 +109,7 @@ typedef struct collectables {
 
 };
 
-typedef struct textObject {
+struct textObject {
 
 	SDL_Surface *image;
 	unsigned char life;
@@ -119,7 +119,7 @@ typedef struct textObject {
 
 };
 
-typedef struct Game {
+struct Game {
 
 	object thePlayer;
 	object playerWeapon;
@@ -172,7 +172,7 @@ typedef struct Game {
 
 };
 
-typedef struct ShopItem {
+struct ShopItem {
 
 	int x, y;
 	unsigned int price;
@@ -181,14 +181,14 @@ typedef struct ShopItem {
 	unsigned char image;
 };
 
-typedef struct bRect {
+struct bRect {
 
 	int x, y, w, h;
 	bRect *next;
 
-} bRect;
+};
 
-typedef struct Planet {
+struct Planet {
 
 	int y;
 	char name[50];
@@ -205,7 +205,7 @@ typedef struct Planet {
 };
 
 
-typedef struct globalEngineVariables {
+struct globalEngineVariables {
 
 	SDL_Event event;
 	signed char done;
@@ -279,7 +279,7 @@ typedef struct globalEngineVariables {
 	signed char cheatCredits;
 };
 
-typedef struct event {
+struct event {
 
 	int time;
 	char message[255];
@@ -288,14 +288,14 @@ typedef struct event {
 	int flag;
 };
 
-typedef struct cutMsg {
+struct cutMsg {
 
 	int face;
 	char message[255];
 
 };
 
-typedef struct devVariables {
+struct devVariables {
 
 	signed char moveAliens;
 	signed char fireAliens;
