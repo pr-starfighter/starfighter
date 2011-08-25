@@ -158,19 +158,22 @@ void doInfo()
 			fontColor = FONT_WHITE;
 		graphics.blitText(10); // time remaining
 		sprintf(text, "%.2d:%.2d", engine.minutes, engine.seconds);
-		graphics.drawString(text, 410, 21, fontColor);
+		graphics.textSurface(30, text, 410, 21, fontColor);
+		graphics.blitText(30);
 	}
 
 	if (currentGame.area != MAX_MISSIONS - 1)
 	{
 		graphics.blitText(9); // mission objectives
 		sprintf(text, "%d", (currentMission.remainingObjectives1 + currentMission.remainingObjectives2));
-		graphics.drawString(text, 745, 21, FONT_WHITE);
+		graphics.textSurface(39, text, 745, 21, FONT_WHITE);
+		graphics.blitText(39);
 	}
 
 	graphics.blitText(8); // cash
 	sprintf(text, "%.6d", currentGame.cash);
-	graphics.drawString(text, 90, 21, FONT_WHITE);
+	graphics.textSurface(38, text, 90, 21, FONT_WHITE);
+	graphics.blitText(38);
 
 	doTargetArrow();
 
@@ -182,7 +185,8 @@ void doInfo()
 	}
 	graphics.blitText(5); // plasma ammo
 	sprintf(text, "%.3d", player.ammo[0]);
-	graphics.drawString(text, 320, 551, fontColor);
+	graphics.textSurface(35, text, 320, 551, fontColor);
+	graphics.blitText(35);
 
 	graphics.blitText(6);
 
@@ -193,7 +197,8 @@ void doInfo()
 		else
 			fontColor = FONT_WHITE;
 		sprintf(text, "%.3d", player.ammo[1]); // rocket ammo
-		graphics.drawString(text, 465, 551, fontColor);
+		graphics.textSurface(36, text, 465, 551, fontColor);
+		graphics.blitText(36);
 	}
 
 	if (((player.weaponType[1] == W_CHARGER) || (player.weaponType[1] == W_LASER)) && (player.ammo[1] > 0))
