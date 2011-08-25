@@ -659,6 +659,15 @@ class Graphics {
 
 	void textSurface(int index, const char *inString, int x, int y, int fontColor)
 	{
+		/* Shortcut: if we already rendered the same string in the same color, don't render it again. */
+		if(textShape[index].text && textShape[index].image && textShape[index].fontColor == fontColor && !strcmp(textShape[index].text, inString)) {
+			textShape[index].x = x;
+			textShape[index].y = y;
+			if (x == -1)
+				textShape[index].x = (800 - textShape[index].image->w) / 2;
+			return;
+		}
+
 		strcpy(textShape[index].text, inString);
 		textShape[index].x = x;
 		textShape[index].y = y;
