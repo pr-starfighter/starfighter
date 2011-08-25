@@ -265,20 +265,26 @@ class Graphics {
 
 	void blit(SDL_Surface *image, int x, int y, SDL_Surface *dest)
 	{
+		// Exit early if image is not on dest at all
+		if(x + image->w < 0 || x >= dest->w || y + image->h < 0 || y >= dest->h)
+			return;
+
 		// Set up a rectangle to draw to
 		blitRect.x = x;
 		blitRect.y = y;
 		blitRect.w = image->w;
 		blitRect.h = image->h;
 
-		/* Blit onto the screen surface */
+		/* Blit onto the destination surface */
 		if(SDL_BlitSurface(image, NULL, dest, &blitRect) < 0)
 		{
 			printf("BlitSurface error: %s\n", SDL_GetError());
 			showErrorAndExit(2, "");
 		}
 
-		addBuffer(blitRect.x, blitRect.y, blitRect.w, blitRect.h);
+		// Only ff it is to the screen, mark the region as damaged
+		if(dest == screen)
+			addBuffer(blitRect.x, blitRect.y, blitRect.w, blitRect.h);
 	}
 
 	void blit(SDL_Surface *image, int x, int y)
