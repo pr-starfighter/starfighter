@@ -20,7 +20,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 struct object {
 
-	signed char active;
+	bool active;
 	signed char classDef; // Used by aliens to determine what they are
 	signed char AIType; // Type of articifial intelligence
 
@@ -98,7 +98,7 @@ struct Star {
 
 struct collectables {
 
-	signed char active;
+	bool active;
 	float x, y, dx, dy;
 	SDL_Surface *image;
 	signed char type; // What kind of collectable is it?
@@ -130,9 +130,9 @@ struct Game {
 	unsigned char musicVolume;
 	unsigned char sfxVolume;
 
-	signed char fullScreen;
-	signed char useMusic;
-	signed char useSound;
+	bool fullScreen;
+	bool useMusic;
+	bool useSound;
 	signed char autoSaveSlot;
 
 	unsigned int cash;
@@ -261,22 +261,22 @@ struct globalEngineVariables {
 	signed char allAliensDead;
 	int addAliens;
 
-	signed char paused;
+	bool paused;
 	signed char gameSection;
 
-	signed char useAudio;
+	bool useAudio;
 
 	// This really only applies to Linux users.
 	char userHomeDirectory[1024];
 	
 	char keyState[350];
 
-	signed char cheat; // overall cheat
-	signed char cheatShield;
-	signed char cheatCash;
-	signed char cheatAmmo;
-	signed char cheatTime;
-	signed char cheatCredits;
+	bool cheat; // overall cheat
+	bool cheatShield;
+	bool cheatCash;
+	bool cheatAmmo;
+	bool cheatTime;
+	bool cheatCredits;
 };
 
 struct event {

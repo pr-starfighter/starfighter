@@ -89,7 +89,7 @@ void addCollectable(float x, float y, int type, int value, int life)
 	collectables *collectable = new collectables;
 
 	collectable->next = NULL;
-	collectable->active = 1;
+	collectable->active = true;
 	collectable->x = x;
 	collectable->y = y;
 
@@ -187,17 +187,17 @@ void checkMineBulletCollisions(object *bullet)
 		{
 			if (Collision::collision(collectable, bullet))
 			{
-				collectable->active = 0;
+				collectable->active = false;
 				
 				if (bullet->id != WT_CHARGER)
 				{
-					bullet->active = 0;
+					bullet->active = false;
 				}
 				else
 				{
 					bullet->shield--;
 					if (bullet->shield < 0)
-						bullet->active = 0;
+						bullet->active = false;
 				}
 
 				if (bullet->owner == &player)
@@ -208,7 +208,7 @@ void checkMineBulletCollisions(object *bullet)
 			}
 		}
 
-		if (collectable->active == 1)
+		if (collectable->active)
 		{
 			prevCollectable = collectable;
 			engine.collectableTail = collectable;
@@ -240,7 +240,7 @@ void doCollectables()
 	{
 		collectable = collectable->next;
 
-		if (collectable->active == 1)
+		if (collectable->active)
 		{
 			if ((collectable->x + collectable->image->w > 0) && (collectable->x < 800) && (collectable->y + collectable->image->h > 0) && (collectable->y < 600))
 				graphics.blit(collectable->image, (int)collectable->x, (int)collectable->y);
@@ -386,7 +386,7 @@ void doCollectables()
 
 				updateMissionRequirements(M_COLLECT, collectable->type, collectable->value);
 
-				collectable->active = 0;
+				collectable->active = false;
 				if (collectable->type != P_MINE)
 				{
 					setInfoLine(temp, FONT_WHITE);
@@ -407,12 +407,12 @@ void doCollectables()
 
 		if (collectable->life < 1)
 		{
-			collectable->active = 0;
+			collectable->active = false;
 			if ((collectable->type == P_CARGO) || (collectable->type == P_ESCAPEPOD) || (collectable->type == P_SLAVES))
 				updateMissionRequirements(M_PROTECT_PICKUP, collectable->type, 1);
 		}
 
-		if (collectable->active == 1)
+		if (collectable->active)
 		{
 			prevCollectable = collectable;
 			engine.collectableTail = collectable;

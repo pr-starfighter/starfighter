@@ -346,7 +346,7 @@ int doTitle()
 		if (engine.cheatCredits)
 		{
 			doCredits();
-			engine.cheatCredits = 0;
+			engine.cheatCredits = false;
 		}
 
 		if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]) || (engine.keyState[SDLK_SPACE]))
@@ -389,10 +389,10 @@ int doTitle()
 
 					case 2:
 						if ((selectedOption == 1) && (engine.useAudio))
-							currentGame.useSound = 1 - currentGame.useSound;
+							currentGame.useSound = !currentGame.useSound;
 						else if ((selectedOption == 2) && (engine.useAudio))
 						{
-							currentGame.useMusic = 1 - currentGame.useMusic;
+							currentGame.useMusic = !currentGame.useMusic;
 
 							if (currentGame.useMusic)
 							{
@@ -408,7 +408,7 @@ int doTitle()
 						}
 						else if (selectedOption == 3)
 						{
-							currentGame.fullScreen = 1 - currentGame.fullScreen;
+							currentGame.fullScreen = !currentGame.fullScreen;
 							#if LINUX
 							SDL_WM_ToggleFullScreen(graphics.screen);
 							#else
@@ -430,13 +430,13 @@ int doTitle()
 
 					case 3:
 						if (selectedOption == 1)
-							engine.cheatShield = 1 - engine.cheatShield;
+							engine.cheatShield = !engine.cheatShield;
 						else if (selectedOption == 2)
-							engine.cheatAmmo = 1 - engine.cheatAmmo;
+							engine.cheatAmmo = !engine.cheatAmmo;
 						else if (selectedOption == 3)
-							engine.cheatCash = 1 - engine.cheatCash;
+							engine.cheatCash = !engine.cheatCash;
 						else if (selectedOption == 4)
-							engine.cheatTime = 1 - engine.cheatTime;
+							engine.cheatTime = !engine.cheatTime;
 						else if (selectedOption == listLength)
 							{menuType = 0; selectedOption = 1;}
 						createCheatMenu();

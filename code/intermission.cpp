@@ -396,15 +396,15 @@ void showOptions(SDL_Surface *optionsSurface)
 	if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
 	{
 		if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 172, 45, 22))
-			currentGame.useSound = 1;
+			currentGame.useSound = true;
 
 		if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 172, 45, 22))
-			currentGame.useSound = 0;
+			currentGame.useSound = false;
 
 
 		if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 222, 45, 22))
 		{
-			currentGame.useMusic = 1;
+			currentGame.useMusic = true;
 			if (engine.useAudio)
 			{
 				if (Mix_PausedMusic() == 1)
@@ -416,7 +416,7 @@ void showOptions(SDL_Surface *optionsSurface)
 
 		if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 222, 45, 22))
 		{
-			currentGame.useMusic = 0;
+			currentGame.useMusic = false;
 			if (engine.useAudio)
 				Mix_PauseMusic();
 		}
@@ -432,7 +432,7 @@ void showOptions(SDL_Surface *optionsSurface)
 				graphics.drawBackground();
 				flushBuffer();
 				#endif
-				currentGame.fullScreen = 1;
+				currentGame.fullScreen = true;
 			}
 		}
 
@@ -447,7 +447,7 @@ void showOptions(SDL_Surface *optionsSurface)
 				graphics.drawBackground();
 				flushBuffer();
 				#endif
-				currentGame.fullScreen = 0;
+				currentGame.fullScreen = false;
 			}
 		}
 		

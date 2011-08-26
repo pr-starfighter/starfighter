@@ -497,7 +497,7 @@ char revealHiddenObjectives()
 		{
 			killAllAliens();
 			syncScriptEvents();
-			enemy[WC_KLINE].active = 1;
+			enemy[WC_KLINE].active = true;
 			enemy[WC_KLINE].x = player.x + 1000;
 			enemy[WC_KLINE].y = player.y;
 			enemy[WC_KLINE].flags += FL_IMMORTAL + FL_NOFIRE;

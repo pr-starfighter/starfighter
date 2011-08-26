@@ -24,7 +24,7 @@ void initCargo()
 {
 	for (int i = 0 ; i < MAX_CARGO ; i++)
 	{
-		cargo[i].active = 0;
+		cargo[i].active = false;
 		cargo[i].owner = NULL;
 	}
 }
@@ -36,7 +36,7 @@ int getCargo()
 {
 	for (int i = 0 ; i < MAX_CARGO ; i++)
 	{
-		if (cargo[i].active == 0)
+		if (!cargo[i].active)
 			return i;
 	}
 
@@ -50,7 +50,7 @@ object *addCargo(object *owner, int cargoType)
 	if (index == -1)
 		return NULL;
 
-	cargo[index].active = 1;
+	cargo[index].active = false;
 	cargo[index].owner = owner;
 	cargo[index].x = owner->x;
 	cargo[index].y = owner->y;
@@ -72,13 +72,13 @@ void becomeCollectable(int i)
 	}
 	else
 	{
-		enemy[FR_PHOEBE].active = 1;
+		enemy[FR_PHOEBE].active = true;
 		enemy[FR_PHOEBE].x = cargo[i].x;
 		enemy[FR_PHOEBE].y = cargo[i].y;
 		setRadioMessage(FACE_PHOEBE, "Thanks!! Watch out, WEAPCO! Phoebe's loose and she's ANGRY!!!", 1);
 	}
 
-	cargo[i].active = 0;
+	cargo[i].active = false;
 }
 
 void doCargo()

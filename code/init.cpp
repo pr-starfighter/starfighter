@@ -159,10 +159,6 @@ void initSystem()
 		exit(1);
 	}
 
-	currentGame.useSound = 1;
-	currentGame.useMusic = 1;
-	currentGame.fullScreen = 0;
-
 	char filename[PATH_MAX];
 	int fullScreen = 0, useSound = 1, useMusic = 1;
 
@@ -199,7 +195,7 @@ void initSystem()
 		{
 			printf("Warning: Couldn't set 22050 Hz 16-bit audio - Reason: %s\n", Mix_GetError());
 			printf("Sound and Music will be disabled\n");
-			engine.useAudio = 0;
+			engine.useAudio = false;
 		}
 	}
 

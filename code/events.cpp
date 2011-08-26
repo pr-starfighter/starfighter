@@ -31,7 +31,7 @@ signed char checkPauseRequest()
 		
 	if (engine.keyState[SDLK_ESCAPE])
 	{
-		engine.paused = 0;
+		engine.paused = false;
 		engine.done = 1;
 		player.shield = 0;
 		return 1;
@@ -39,7 +39,7 @@ signed char checkPauseRequest()
 	
 	if (engine.keyState[SDLK_p])
 	{
-		engine.paused = 0;
+		engine.paused = false;
 		engine.keyState[SDLK_p] = 0;
 	}
 
@@ -49,10 +49,10 @@ signed char checkPauseRequest()
 void compareLastKeyInputs()
 {
 	if (strstr(lastKeyEvents, "humansdoitbetter") != NULL)
-		{engine.cheat = 1; memset(lastKeyEvents, ' ', 25);}
+		{engine.cheat = true; memset(lastKeyEvents, ' ', 25);}
 
 	if (strstr(lastKeyEvents, "credits") != NULL)
-		{engine.cheatCredits = 1; memset(lastKeyEvents, ' ', 25);}
+		{engine.cheatCredits = true; memset(lastKeyEvents, ' ', 25);}
 }
 
 void addKeyEvent(const char *keyName)

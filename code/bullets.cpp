@@ -32,7 +32,7 @@ void addBullet(object *theWeapon, object *attacker, int y, int dy)
 		currentGame.shots++;
 
 	bullet->next = NULL;
-	bullet->active = 1;
+	bullet->active = true;
 	bullet->x = attacker->x - ((attacker->image[0]->w / 2) * attacker->face);
 	bullet->y = attacker->y + y;
 	bullet->flags = theWeapon->flags;
@@ -517,7 +517,7 @@ void doBullets()
 	{
 		bullet = bullet->next;
 
-		if (bullet->active == 1)
+		if (bullet->active)
 		{
 			if (bullet->flags & WF_HOMING)
 			{
@@ -602,7 +602,7 @@ void doBullets()
 
 				if (okayToHit)
 				{
-					if ((bullet->active == 1) && (Collision::collision(bullet, theEnemy)))
+					if ((bullet->active) && (Collision::collision(bullet, theEnemy)))
 					{
 						if (bullet->owner == &player)
 						{
@@ -654,14 +654,14 @@ void doBullets()
 
 						if (bullet->id != WT_CHARGER)
 						{
-							bullet->active = 0;
+							bullet->active = false;
 							bullet->shield = 0;
 						}
 						else if (bullet->id == WT_CHARGER)
 						{
 							bullet->shield -= theEnemy->shield;
 							if (bullet->shield < 0)
-								bullet->active = 0;
+								bullet->active = false;
 						}
 
 						playSound(SFX_HIT);
@@ -695,7 +695,7 @@ void doBullets()
 			// Check for bullets hitting player
 			if ((bullet->flags & WF_WEAPCO) || (bullet->id == WT_ROCKET) || (bullet->id == WT_LASER) || (bullet->id == WT_CHARGER))
 			{
-				if ((bullet->active == 1) && (player.shield > 0) && (Collision::collision(bullet, &player)) && (bullet->owner != &player))
+				if ((bullet->active) && (player.shield > 0) && (Collision::collision(bullet, &player)) && (bullet->owner != &player))
 				{
 					if ((!engine.cheatShield) || (engine.missionCompleteTimer != 0))
 					{
@@ -716,14 +716,14 @@ void doBullets()
 
 					if (bullet->id != WT_CHARGER)
 					{
-						bullet->active = 0;
+						bullet->active = false;
 						bullet->shield = 0;
 					}
 					else if (bullet->id == WT_CHARGER)
 					{
 						bullet->shield -= theEnemy->shield;
 						if (bullet->shield < 0)
-							bullet->active = 0;
+							bullet->active = false;
 					}
 
 					playSound(SFX_HIT);
@@ -745,12 +745,12 @@ void doBullets()
 				{
 					if (Collision::collision(bullet, theCargo))
 					{
-						bullet->active = 0;
+						bullet->active = false;
 						addExplosion(bullet->x, bullet->y, E_SMALL_EXPLOSION);
 						playSound(SFX_HIT);
 						if (theCargo->collectType != P_PHOEBE)
 						{
-							theCargo->active = 0;
+							theCargo->active = false;
 							playSound(SFX_EXPLOSION);
 							for (int i = 0 ; i < 10 ; i++)
 								addExplosion(theCargo->x + Math::rrand(-15, 15), theCargo->y + Math::rrand(-15, 15), E_BIG_EXPLOSION);
@@ -778,10 +778,10 @@ void doBullets()
 					if (checkPlayerShockDamage(bullet->x, bullet->y))
 						setInfoLine("Warning: Missile Shockwave Damage!!", FONT_RED);
 			}
-			bullet->active = 0;
+			bullet->active = false;
 		}
 
-		if (bullet->active == 1)
+		if (bullet->active)
 		{
 			prevBullet = bullet;
 			engine.bulletTail = bullet;

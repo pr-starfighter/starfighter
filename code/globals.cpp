@@ -23,7 +23,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 void defineGlobals()
 {
 	engine.musicVolume = 100;
-	engine.useAudio = 2;
+	engine.useAudio = true;
 
    engine.maxAliens = 9;
 
@@ -58,16 +58,16 @@ void defineGlobals()
 	engine.counter = 0;
 	engine.seconds = 0;
 	engine.minutes = 0;
-	engine.paused = 0;
+	engine.paused = false;
 	engine.gameSection = SECTION_TITLE;
 	
 	engine.targetArrow = -1;
 	engine.targetArrowTimer = 0;
 
-	engine.cheat = 0;
-	engine.cheatShield = 0;
-	engine.cheatAmmo = 0;
-	engine.cheatCash = 0;
+	engine.cheat = false;
+	engine.cheatShield = false;
+	engine.cheatAmmo = false;
+	engine.cheatCash = false;
 
    // All Development Stuff...
 	dev.moveAliens = 1;

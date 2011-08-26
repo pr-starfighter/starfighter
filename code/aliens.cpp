@@ -76,7 +76,7 @@ void addDrone(object *host)
 		return;
 
 	enemy[index] = defEnemy[CD_DRONE];
-	enemy[index].active = 1;
+	enemy[index].active = true;
 	enemy[index].face = rand() % 2;
 	enemy[index].owner = &enemy[index]; // Most enemies will own themselves
 	enemy[index].target = &enemy[index];
@@ -101,7 +101,7 @@ void addSmallAsteroid(object *host)
 		addBullet(&weapon[W_ROCKETS], host, 0, 0);
 
 	for (int i = 10 ; i < 20 ; i++)
-		if (enemy[i].active == 0)
+		if (!enemy[i].active)
 			index = i;
 
 	if (index == -1)
@@ -128,7 +128,7 @@ void addSmallAsteroid(object *host)
 
 	enemy[index].x = host->x;
 	enemy[index].y = host->y;
-	enemy[index].active = 1;
+	enemy[index].active = true;
 }
 
 signed char addAlien()
@@ -239,7 +239,7 @@ signed char addAlien()
 	delete[] alienArray;
 
 	enemy[index] = defEnemy[randEnemy];
-	enemy[index].active = 1;
+	enemy[index].active = true;
 	enemy[index].face = rand() % 2;
 	enemy[index].owner = &enemy[index]; // Most enemies will own themselves
 	enemy[index].target = &enemy[index];
@@ -255,7 +255,7 @@ signed char addAlien()
 	{
 		if (placeAlien(&enemy[index]))
 			break;
-		enemy[index].active = 0;
+		enemy[index].active = false;
 
 		return 0;
 	}
@@ -314,7 +314,7 @@ void getPreDefinedAliens()
 		enemy[index].owner = &enemy[index];
 		enemy[index].target = &enemy[index];
 		enemy[index].face = rand() % 2;
-		enemy[index].active = 1;
+		enemy[index].active = true;
 
 		/*
 		we make 1000 attempts to place this enemy since it is required. If after 1000 attempts
@@ -346,7 +346,7 @@ void getPreDefinedAliens()
 
 		if (enemy[index].classDef == CD_CLOAKFIGHTER)
 		{
-			enemy[index].active = 0;
+			enemy[index].active = false;
 			enemy[index].maxShield = enemy[index].shield = 400;
 			enemy[index].flags -= FL_RUNSAWAY;
 			enemy[index].speed = 3;
@@ -354,12 +354,12 @@ void getPreDefinedAliens()
 
 		if ((enemy[index].classDef == CD_MOBILE_RAY) && (index >= 11))
 		{
-			enemy[index].active = 0;
+			enemy[index].active = false;
 		}
 
 		if (enemy[index].classDef == CD_FIREFLY)
 		{
-			enemy[index].active = 0;
+			enemy[index].active = false;
 		}
 
 		if (enemy[index].classDef == CD_BARRIER)
@@ -469,7 +469,7 @@ void addFriendly(int type)
 
 	enemy[type].owner = &enemy[type];
 	enemy[type].target = &enemy[type];
-	enemy[type].active = 1;
+	enemy[type].active = true;
 
 	if (rand() % 2 == 0)
 		enemy[type].x = Math::rrand(400, 550);
@@ -507,7 +507,7 @@ void initAliens()
 {
 	for (int i = 0 ; i < MAX_ALIENS ; i++)
 	{
-		enemy[i].active = 0;
+		enemy[i].active = false;
 		enemy[i].shield = -1;
 		enemy[i].flags = 0;
 	}
@@ -521,7 +521,7 @@ void initAliens()
 		currentGame.hasWingMate1 = 1;
 
 	if (currentGame.area == 11)
-		enemy[WC_KLINE].active = 0;
+		enemy[WC_KLINE].active = false;
 
 	for (int i = 0 ; i < engine.maxAliens ; i++)
 		addAlien();
@@ -546,8 +546,8 @@ void initAliens()
 		case 18:
 		case 24:
 		case 26:
-			enemy[FR_PHOEBE].active = 0;
-			enemy[FR_URSULA].active = 0;
+			enemy[FR_PHOEBE].active = false;
+			enemy[FR_URSULA].active = false;
 			break;
 	}
 
@@ -566,7 +566,7 @@ void initAliens()
 			enemy[WC_KLINE].owner = &enemy[WC_KLINE];
 			enemy[WC_KLINE].target = &player;
 			enemy[WC_KLINE].shield = 100;
-			enemy[WC_KLINE].active = 1;
+			enemy[WC_KLINE].active = true;
 			enemy[WC_KLINE].x = player.x + 1000;
 			enemy[WC_KLINE].y = player.y;
 			setTarget(WC_KLINE);
@@ -580,7 +580,7 @@ void initAliens()
 				enemy[10].owner = &enemy[10];
 				enemy[10].target = &enemy[10];
 				enemy[10].shield = 1000;
-				enemy[10].active = 1;
+				enemy[10].active = true;
 				enemy[10].x = player.x - 1000;
 				enemy[10].y = player.y;
 				setTarget(10);
@@ -1056,7 +1056,7 @@ void doAliens()
 					{
 						theEnemy->flags -= FL_LEAVESECTOR;
 						theEnemy->flags += FL_ESCAPED;
-						theEnemy->active = 0;
+						theEnemy->active = false;
 
 						if (theEnemy->classDef == CD_CLOAKFIGHTER)
 						{
@@ -1201,7 +1201,7 @@ void doAliens()
 				}
 
 				if ((currentGame.area == 24) && (theEnemy->x < -300))
-					theEnemy->active = 0;
+					theEnemy->active = false;
 			}
 			else
 			{
@@ -1213,7 +1213,7 @@ void doAliens()
 				}
 				if (theEnemy->shield < theEnemy->deathCounter)
 				{
-					theEnemy->active = 0;
+					theEnemy->active = false;
 					if ((theEnemy->classDef == CD_BOSS) || (theEnemy->owner == &enemy[WC_BOSS]) || (theEnemy->flags & FL_FRIEND) || (theEnemy->classDef == CD_ASTEROID) || (theEnemy->classDef == CD_KLINE))
 						addDebris((int)theEnemy->x, (int)theEnemy->y, theEnemy->maxShield);
 

@@ -31,7 +31,7 @@ void addExplosion(float x, float y, int type)
 	object *explosion = new object;
 
 	explosion->next = NULL;
-	explosion->active = 1;
+	explosion->active = true;
 	explosion->x = x;
 	explosion->y = y;
 	explosion->thinktime = 28;
@@ -74,7 +74,7 @@ void doExplosions()
 	{
 		explosion = explosion->next;
 
-		if (explosion->active == 1)
+		if (explosion->active)
 		{
 			explosion->x += engine.ssx;
 			explosion->y += engine.ssy;
@@ -88,7 +88,7 @@ void doExplosions()
 
 				if(explosion->thinktime < 1)
 				{
-					explosion->active = 0;
+					explosion->active = false;
 				}
 				else
 				{
@@ -98,7 +98,7 @@ void doExplosions()
 			}
 		}
 
-		if (explosion->active == 1)
+		if (explosion->active)
 		{
 			prevExplosion = explosion;
 			engine.explosionTail = explosion;

@@ -25,7 +25,7 @@ Initialises the player for a new game.
 */
 void initPlayer()
 {
-	player.active = 1;
+	player.active = true;
 	player.x = 200;
 	player.y = 200;
 	player.speed = 2;
@@ -234,7 +234,7 @@ void doPlayer()
 
 			if (engine.keyState[SDLK_p])
 			{
-				engine.paused = 1;
+				engine.paused = true;
 				engine.keyState[SDLK_p] = 0;
 			}
 
@@ -286,7 +286,7 @@ void doPlayer()
 		}
 		else
 		{
-			player.active = 0;
+			player.active = false;
 			player.shield--;
 			if (player.shield == -1)
 			{
@@ -374,7 +374,7 @@ void getPlayerInput()
 				engine.keyState[engine.event.key.keysym.sym] = 1;
 
 				if (engine.gameSection != SECTION_GAME)
-					engine.paused = 0;
+					engine.paused = false;
 
 				break;
 

@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 {
 	defineGlobals(); // Must do this first!
 
-	signed char cheatAttempt = 0;
+	bool cheatAttempt = false;
 
 	if (argc > 1)
 	{
@@ -54,11 +54,11 @@ int main(int argc, char *argv[])
 			{printf("Enemy firing disabled\n"); dev.fireAliens = 0;}
 		#endif
 		if (strcmp(argv[i], "-cheat") == 0)
-			cheatAttempt = 1;
+			cheatAttempt = true;
 		if (strcmp(argv[i], "-noaudio") == 0)
-			{printf("No Audio\n"); engine.useAudio = 0;}
+			{printf("No Audio\n"); engine.useAudio = false;}
 		if (strcmp(argv[i], "-mono") == 0)
-			{printf("Mono sound output\n"); engine.useAudio = 1;}
+			{printf("Mono sound output\n"); engine.useAudio = true;}
 	}
 
 	atexit(cleanUp);

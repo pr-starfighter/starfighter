@@ -111,7 +111,7 @@ void checkScriptEvents()
 				}
 				else
 				{
-					enemy[gameEvent[i].entity].active = 1;
+					enemy[gameEvent[i].entity].active = true;
 					enemy[gameEvent[i].entity].x = Math::rrand((int)player.x + 400, (int)player.x + 800);
 					enemy[gameEvent[i].entity].y = Math::rrand((int)player.y - 400, (int)player.y + 800);
 				}
@@ -175,7 +175,7 @@ void setScene(int scene)
 			enemy[index].x = x;
 			enemy[index].y = y;
 			enemy[index].dx = speed;
-			enemy[index].active = 1;
+			enemy[index].active = true;
 		}
 	}
 
@@ -215,7 +215,7 @@ void doCutscene(int scene)
 	{
 		enemy[i] = defEnemy[0];
 		enemy[i].face = 0;
-		enemy[i].active = 0;
+		enemy[i].active = false;
 	}
 
 	for (int i = 0 ; i < 10 ; i++)
