@@ -6,6 +6,7 @@ VERSION = 1.1
 PROG = starfighter
 PACK = starfighter.pak
 DOCS = docs/*
+DATA = data/* gfx/* music/* sound/*
 
 BINDIR = /usr/games/
 DATADIR = /usr/share/games/parallelrealities/
@@ -35,3 +36,11 @@ install:
 	install -o root -g games -m 755 $(PROG) $(BINDIR)$(PROG)
 	install -o root -g games -m 644 $(PACK) $(DATADIR)$(PACK)
 	cp $(DOCS) $(DOCDIR)
+
+$(PACK): pack.py $(DATA)
+	./pack.py $(PACK) $(DATA)
+
+unpack: unpack.py
+	./unpack.py $(PACK)
+
+.PHONY: all clean distclean unpack
