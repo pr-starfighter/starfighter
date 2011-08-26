@@ -18,10 +18,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include "version.h"
-#include "title.h"
+#include "Starfighter.h"
 
-signed char showGameMenu(signed char continueSaveSlot)
+static signed char showGameMenu(signed char continueSaveSlot)
 {
 	graphics.blitText(2);
 	if (continueSaveSlot != 0)
@@ -47,7 +46,7 @@ signed char showGameMenu(signed char continueSaveSlot)
 	return 5;
 }
 
-signed char showLoadMenu()
+static signed char showLoadMenu()
 {
 	signed char rtn = 1;
 
@@ -65,7 +64,7 @@ signed char showLoadMenu()
 	return rtn;
 }
 
-void createOptionsMenu()
+static void createOptionsMenu()
 {
 	if (currentGame.useSound)
 		graphics.textSurface(8, "SOUND - ON", -1, 350, FONT_WHITE);
@@ -89,7 +88,7 @@ void createOptionsMenu()
 	graphics.textSurface(11, string, -1, 410, FONT_WHITE);
 }
 
-signed char showOptionsMenu()
+static signed char showOptionsMenu()
 {
 	graphics.textShape[12].y = 450;
 
@@ -102,7 +101,7 @@ signed char showOptionsMenu()
 	return 5;
 }
 
-void createCheatMenu()
+static void createCheatMenu()
 {
 	if (engine.cheatShield)
 		graphics.textSurface(18, "UNLIMITED SHIELD - ON", -1, 350, FONT_WHITE);
@@ -125,7 +124,7 @@ void createCheatMenu()
 		graphics.textSurface(21, "UNLIMITED TIME - OFF", -1, 410, FONT_WHITE);
 }
 
-signed char showCheatMenu()
+static signed char showCheatMenu()
 {
 	graphics.textShape[12].y = 450;
 

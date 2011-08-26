@@ -18,7 +18,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include "cargo.h"
+#include "Starfighter.h"
+
+object cargo[MAX_CARGO];
 
 void initCargo()
 {
@@ -32,7 +34,7 @@ void initCargo()
 /*
 * I think you all know what this does by now! ;)
 */
-int getCargo()
+static int getCargo()
 {
 	for (int i = 0 ; i < MAX_CARGO ; i++)
 	{
@@ -64,7 +66,7 @@ object *addCargo(object *owner, int cargoType)
 	return &cargo[index];
 }
 
-void becomeCollectable(int i)
+static void becomeCollectable(int i)
 {
 	if (cargo[i].collectType != P_PHOEBE)
 	{

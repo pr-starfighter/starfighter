@@ -18,9 +18,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include "script.h"
+#include "Starfighter.h"
 
-void setKlineGreeting()
+static cutMsg cutMessage[10];
+static event gameEvent[10];
+
+static void setKlineGreeting()
 {
 	char greet[][50] = {
 		"How nice to see you again, Bainfield!",
@@ -133,7 +136,7 @@ void syncScriptEvents()
 	}
 }
 
-void setScene(int scene)
+static void setScene(int scene)
 {
 	FILE *fp;
 	char string[255], face[255];

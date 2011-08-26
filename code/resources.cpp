@@ -18,7 +18,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include "resources.h"
+#include "Starfighter.h"
 
 void loadBackground(const char *filename)
 {
@@ -155,7 +155,7 @@ void freeSound()
 }
 
 
-void setFontColor(SDL_Surface *image, int red, int green, int blue)
+static void setFontColor(SDL_Surface *image, int red, int green, int blue)
 {
 	SDL_Color colors[256];
 	colors[0].r = 0;

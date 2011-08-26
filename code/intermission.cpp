@@ -18,12 +18,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include "intermission.h"
+#include "Starfighter.h"
 
 /*
 Drives the cursor. Is used by some other screens too
 */
-void doCursor()
+static void doCursor()
 {
 	getPlayerInput();
 
@@ -37,7 +37,7 @@ Sets the player's current status information lines. These are the lines
 that are scrolled up the screen when the player clicks on Current Status
 These are set only once.
 */
-void setStatusLines()
+static void setStatusLines()
 {
 	char string[50];
 
@@ -167,7 +167,7 @@ void setStatusLines()
 Sets the names and stats of the planets within the current system.
 This will later be placed into a data file.
 */
-void setSystemPlanets()
+static void setSystemPlanets()
 {
 	FILE *fp;
 
@@ -239,7 +239,7 @@ Spins the planets around the sun, spaced according to their Y value
 as defined in setSystemPlanets(). Moving the cursor over the planet
 will show their name and their current status
 */
-bool showSystem(float x, float y)
+static bool showSystem(float x, float y)
 {
 	SDL_Rect r;
 	signed char planet = 0;
@@ -303,7 +303,7 @@ the specified status line reaches a certain Y value, the entire
 list is reset and the information lines begin again from the bottom
 (in other words, they loop around).
 */
-void showStatus(SDL_Surface *infoSurface)
+static void showStatus(SDL_Surface *infoSurface)
 {
 	graphics.blit(infoSurface, 100, 80);
 
@@ -334,7 +334,7 @@ void showStatus(SDL_Surface *infoSurface)
 	graphics.blitText(27);
 }
 
-void createOptions(SDL_Surface *optionsSurface)
+static void createOptions(SDL_Surface *optionsSurface)
 {
 	SDL_FillRect(optionsSurface, NULL, graphics.black);
 
@@ -391,7 +391,7 @@ void createOptions(SDL_Surface *optionsSurface)
 	graphics.drawString("AUTOSAVE SLOT", 30, 200, FONT_WHITE, optionsSurface);
 }
 
-void showOptions(SDL_Surface *optionsSurface)
+static void showOptions(SDL_Surface *optionsSurface)
 {
 	if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
 	{

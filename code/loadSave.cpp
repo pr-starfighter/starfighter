@@ -18,7 +18,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include "loadSave.h"
+#include "Starfighter.h"
+
+static char saveSlot[10][25];
 
 /*
 Reads in each save game that it finds and gives it an appropriate

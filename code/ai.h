@@ -18,20 +18,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-
-#include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
-#include <SDL/SDL_mixer.h>
-
-#include "defs.h"
-#include "structs.h"
-#include "classes.h"
-
-extern void setRadioMessage(signed char face, const char *in, int priority);
-
-extern object enemy[MAX_ALIENS];
-extern object player;
-extern Game currentGame;
+extern void setEnemyAI(object *theEnemy);
+extern void setKlineAttackMethod(object *theEnemy);
+extern void setKlineAI(object *theEnemy);

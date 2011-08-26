@@ -18,27 +18,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include <stdlib.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-
-#include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
-#include <SDL/SDL_mixer.h>
-
-#include "defs.h"
-#include "structs.h"
-#include "classes.h"
-
-char saveSlot[10][25];
-
-extern void getPlayerInput();
-extern void initPlanetMissions(signed char system);
-
-extern globalEngineVariables engine;
-extern object player;
-extern object weapon[MAX_WEAPONS];
-extern Game currentGame;
-extern Graphics graphics;
-extern Planet systemPlanet[10];
+extern int initSaveSlots();
+extern bool loadGame(int slot);
+extern void saveGame(int slot);
+extern void createSavesSurface(SDL_Surface *savesSurface, signed char clickedSlot);
+extern int showSaveSlots(SDL_Surface *savesSurface, signed char saveSlot);

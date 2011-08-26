@@ -18,21 +18,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include <stdlib.h>
-#include <string.h>
-
-#include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
-#include <SDL/SDL_mixer.h>
-
-#include "defs.h"
-#include "structs.h"
-#include "classes.h"
-
-extern int locateDataInPak(const char *file, bool required);
-extern int getFace(const char *face);
-
-extern globalEngineVariables engine;
-extern Game currentGame;
-extern Graphics graphics;
-extern Planet systemPlanet[10];
+extern void updateCommsSurface(SDL_Surface *comms);
+extern void createCommsSurface(SDL_Surface *comms);
+extern void doComms(SDL_Surface *comms);

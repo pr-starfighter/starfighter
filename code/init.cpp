@@ -18,7 +18,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include "init.h"
+#include "Starfighter.h"
+
+#if LINUX
+#include <sys/stat.h>
+#include <pwd.h>
+#include <unistd.h>
+#include <errno.h>
+#endif
 
 /*
 Initalises a whole load of variables
@@ -105,7 +112,7 @@ home directory, then creates the .parallelrealities and .parallelrealities/starf
 directories so that saves and temporary data files can be written there. Good, eh? :)
 */
 #if LINUX
-void setupUserHomeDirectory()
+static void setupUserHomeDirectory()
 {
 	char *userHome;
 

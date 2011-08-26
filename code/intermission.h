@@ -18,39 +18,4 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-
-#include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
-#include <SDL/SDL_mixer.h>
-
-#include "defs.h"
-#include "structs.h"
-#include "classes.h"
-
-extern SDL_Surface *loadImage(const char *filename);
-extern void doStarfield();
-extern void getPlayerInput();
-extern void showShop();
-extern void initShop();
-extern int initSaveSlots();
-extern int showSaveSlots(SDL_Surface *savesSurface, signed char saveSlot);
-extern void saveGame(int slot);
-extern void loadMusic(const char *filename);
-extern void loadBackground(const char *filename);
-extern void createCommsSurface(SDL_Surface *comms);
-extern void updateCommsSurface(SDL_Surface *comms);
-extern void createSavesSurface(SDL_Surface *savesSurface, signed char clickedSlot);
-extern void checkForBossMission();
-extern void doComms(SDL_Surface *comms);
-extern int locateDataInPak(const char *file, bool required);
-extern int getFace(const char *face);
-extern void flushInput();
-
-extern globalEngineVariables engine;
-extern object player;
-extern Game currentGame;
-extern Graphics graphics;
-extern Planet systemPlanet[10];
+extern int galaxyMap();

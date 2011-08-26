@@ -18,9 +18,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include "shop.h"
+#include "Starfighter.h"
 
-void drawSecondaryWeaponSurface()
+static ShopItem shopItems[MAX_SHOPITEMS];
+static signed char shopSelectedItem;
+
+static void drawSecondaryWeaponSurface()
 {
 	char description[50];
 	strcpy(description, "");
@@ -66,7 +69,7 @@ void drawSecondaryWeaponSurface()
 	}
 }
 
-void adjustShopPrices()
+static void adjustShopPrices()
 {
 	shopItems[0].price = (500 * currentGame.maxPlasmaOutput);
 	shopItems[1].price = (500 * currentGame.maxPlasmaDamage);
@@ -98,7 +101,7 @@ void adjustShopPrices()
 		shopItems[7].price = 0;
 }
 
-void drawShop()
+static void drawShop()
 {
 	adjustShopPrices();
 
@@ -260,7 +263,7 @@ void drawShop()
 
 #if USEPACK
 
-void loadShop()
+static void loadShop()
 {
 	char name[255], description[255];
 	int price, image, x, y;
@@ -307,7 +310,7 @@ void initShop(){loadShop();}
 
 #else
 
-void saveShop()
+static void saveShop()
 {
 	FILE *fp;
 
@@ -475,7 +478,7 @@ void initShop()
 
 #endif
 
-void buy(int i)
+static void buy(int i)
 {
 	if ((currentGame.cash < shopItems[i].price) && (!engine.cheatCash))
 	{
@@ -605,7 +608,7 @@ void buy(int i)
 		currentGame.cash -= shopItems[i].price;
 }
 
-void sell(int i)
+static void sell(int i)
 {
 	switch (i)
 	{

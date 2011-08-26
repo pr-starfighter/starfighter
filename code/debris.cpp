@@ -18,7 +18,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include "debris.h"
+#include "Starfighter.h"
 
 void addDebris(int x, int y, int amount)
 {

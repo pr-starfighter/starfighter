@@ -18,9 +18,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include "missions.h"
+#include "Starfighter.h"
 
 // God, I hate this file! :((
+
+Planet systemPlanet[10];
+mission currentMission;
+static mission missions[MAX_MISSIONS];
 
 void initPlanetMissions(signed char system)
 {
@@ -202,7 +206,7 @@ Timer Variable:
 -1 : Time up
 -2 : No timer
 */
-void clearAllMissions()
+static void clearAllMissions()
 {
 	for (int m = 0 ; m < MAX_MISSIONS ; m++)
 	{
@@ -303,7 +307,7 @@ void checkTimer()
 	}
 }
 
-void evaluteRequirement(int type, int id, int *completed, int *targetValue, int fontColor)
+static void evaluateRequirement(int type, int id, int *completed, int *targetValue, int fontColor)
 {
 	char message[25];
 
@@ -417,7 +421,7 @@ void updateMissionRequirements(int type, int id, int value)
 			{
 				matched = 1;
 				currentMission.targetValue1[i] -= value;
-				evaluteRequirement(type, id, &currentMission.completed1[i], &currentMission.targetValue1[i], FONT_CYAN);
+				evaluateRequirement(type, id, &currentMission.completed1[i], &currentMission.targetValue1[i], FONT_CYAN);
 			}
 		}
 	}
@@ -433,7 +437,7 @@ void updateMissionRequirements(int type, int id, int value)
 			if ((currentMission.secondaryType[i] == type) && ((currentMission.target2[i] == id) || (currentMission.target2[i] == CD_ANY)))
 			{
 				currentMission.targetValue2[i] -= value;
-				evaluteRequirement(type, id, &currentMission.completed2[i], &currentMission.targetValue2[i], FONT_YELLOW);
+				evaluateRequirement(type, id, &currentMission.completed2[i], &currentMission.targetValue2[i], FONT_YELLOW);
 				return;
 			}
 		}
@@ -473,7 +477,7 @@ void updateMissionRequirements(int type, int id, int value)
 This is only used as few times in the game.
 Missions 11 and 23 to be exact!
 */
-char revealHiddenObjectives()
+static char revealHiddenObjectives()
 {
 	char allDone = 1;
 	char string[255];
@@ -665,7 +669,7 @@ bool missionFailed()
 	return false;
 }
 
-void drawBriefScreen()
+static void drawBriefScreen()
 {
 	SDL_Rect r = {0, 0, 800, 2};
 
@@ -903,7 +907,7 @@ void missionFinishedScreen()
 
 #if USEPACK
 
-void loadMissions()
+static void loadMissions()
 {
 	clearAllMissions();
 
@@ -974,7 +978,7 @@ void initMissions(){loadMissions();}
 
 #else
 
-void saveMissions()
+static void saveMissions()
 {
 	FILE *fp;
 	char filename[65];

@@ -18,23 +18,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include <stdlib.h>
-#include <string.h>
-
-#include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
-#include <SDL/SDL_mixer.h>
-
-#include "defs.h"
-#include "structs.h"
-
-extern void setRadioMessage(signed char face, const char *in, int priority);
-
-char killMessage[10][50];
-char deathMessage[6][50];
-char missFireMessage[5][50];
-char playerHitMessage[3][50];
-
-extern object enemy[MAX_ALIENS];
-extern Game currentGame;
-
+extern void setAllyMessages();
+extern void getKillMessage(object *ally);
+extern const char *getKlineInsult();
+extern void getPlayerDeathMessage();
+extern void getMissFireMessage(object *ally);
+extern void getPlayerHitMessage(object *ally);

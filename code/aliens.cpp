@@ -18,9 +18,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include "aliens.h"
+#include "Starfighter.h"
 
-bool placeAlien(object *theEnemy)
+object defEnemy[MAX_DEFALIENS];
+object enemy[MAX_ALIENS];
+
+static bool placeAlien(object *theEnemy)
 {
 	if (rand() % 2 == 0)
 		theEnemy->x = Math::rrand(800, 1600);
@@ -55,7 +58,7 @@ This simply pulls back an alien from the array that is
 "dead" (no shield) and returns the index number so we can have
 a new one.
 */
-int getAlien()
+static int getAlien()
 {
 	for (int i = 0 ; i < engine.maxAliens ; i++)
 	{
@@ -68,7 +71,7 @@ int getAlien()
 	return -1;
 }
 
-void addDrone(object *host)
+static void addDrone(object *host)
 {
 	int index = getAlien();
 
@@ -89,7 +92,7 @@ void addDrone(object *host)
 	enemy[index].y = host->y + rand() % 50;
 }
 
-void addSmallAsteroid(object *host)
+static void addSmallAsteroid(object *host)
 {
 	if (engine.missionCompleteTimer != 0)
 		return;
@@ -280,7 +283,7 @@ bool addAlien()
 	return true;
 }
 
-void getPreDefinedAliens()
+static void getPreDefinedAliens()
 {
 	FILE *fp;
 	char string[255];
@@ -460,7 +463,7 @@ void getPreDefinedAliens()
 	}
 }
 
-void addFriendly(int type)
+static void addFriendly(int type)
 {
 	if (type != FR_SID)
 		enemy[type] = defEnemy[CD_FRIEND];
@@ -649,7 +652,7 @@ void initAliens()
 "Looks" for an enemy by picking a randomly active enemy and using them
 as a target. If the target is too far away, it will be ignored.
 */
-void searchForTarget(object *theEnemy)
+static void searchForTarget(object *theEnemy)
 {
 	int i;
 
@@ -708,7 +711,7 @@ void searchForTarget(object *theEnemy)
 	theEnemy->target = targetEnemy;
 }
 
-int traceTarget(object *theEnemy)
+static int traceTarget(object *theEnemy)
 {
 	// Do various checks to see if the alien can fire at
 	// the target. Start with the most obvious checks.
@@ -751,7 +754,7 @@ int traceTarget(object *theEnemy)
 Currently only used for the allies. Whilst flying around, the allies will fire on
 any enemy craft that enter their line of sight.
 */
-int traceView(object *theEnemy)
+static int traceView(object *theEnemy)
 {
 	object *anEnemy = enemy;
 
@@ -774,7 +777,7 @@ int traceView(object *theEnemy)
 	return 0;
 }
 
-void moveAndSeparate(object *theEnemy)
+static void moveAndSeparate(object *theEnemy)
 {
 	bool checkCollisions = true;
 	bool hasCollided = false;
@@ -1258,7 +1261,7 @@ void setAlienShapes()
 
 #if USEPACK
 
-void loadAliens()
+static void loadAliens()
 {
 	int dataLocation = locateDataInPak("data/aliens.dat", 1);
 	int def, ai, speed, shield, max, image1, image2, weapon1, weapon2, chance1, chance2, score;
@@ -1313,7 +1316,7 @@ void defineAliens(){loadAliens();}
 
 #else
 
-void saveAliens()
+static void saveAliens()
 {
 	FILE *fp;
 

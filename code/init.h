@@ -18,32 +18,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-
-#if LINUX
-#include <sys/stat.h>
-#include <pwd.h>
-#include <unistd.h>
-#include <errno.h>
-#endif
-
-#include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
-#include <SDL/SDL_mixer.h>
-
-#include "defs.h"
-#include "structs.h"
-#include "classes.h"
-
-extern void freeSound();
-extern void resetLists();
-extern void getPlayerInput();
-extern void drawString(const char *in, int x, int y, int fontColor);
-extern SDL_Surface *loadImage(const char *filename);
-
-extern globalEngineVariables engine;
-extern Game currentGame;
-extern Graphics graphics;
-extern Star star[200];
+extern void initVars();
+extern void showErrorAndExit(int errorId, const char *name);
+extern void initSystem();
+extern void cleanUp();

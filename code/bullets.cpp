@@ -18,7 +18,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include "bullets.h"
+#include "Starfighter.h"
 
 void addBullet(object *theWeapon, object *attacker, int y, int dy)
 {
@@ -252,7 +252,7 @@ one attempt per call (one call per frame) to find a suitable target. If the targ
 it picks is dead or outside the screen range, then it returns NULL. A suitable
 target will be returned as the object address.
 */
-object *getRandomEnemy(object *bullet)
+static object *getRandomEnemy(object *bullet)
 {
 	int i;
 
@@ -287,7 +287,7 @@ object *getRandomEnemy(object *bullet)
 /*
 Fill in later...
 */
-void destroyAlien(object *bullet, object *theEnemy)
+static void destroyAlien(object *bullet, object *theEnemy)
 {
 	playSound(SFX_EXPLOSION);
 

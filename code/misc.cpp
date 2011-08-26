@@ -18,7 +18,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include "misc.h"
+#include "Starfighter.h"
 
 void clearInfoLines()
 {
@@ -29,7 +29,7 @@ void clearInfoLines()
 }
 
 // from a to b
-void copyInfoLine(int a, int b)
+static void copyInfoLine(int a, int b)
 {
 	graphics.textSurface(b, graphics.textShape[a].text, -1, 0, graphics.textShape[a].fontColor);
 	graphics.textShape[b].life = graphics.textShape[a].life;
@@ -85,7 +85,7 @@ void setRadioMessage(signed char face, const char *in, int priority)
 	graphics.createMessageBox(faceShape, in, 1);
 }
 
-void doTargetArrow()
+static void doTargetArrow()
 {
 	if ((engine.targetArrowTimer == 0) || (enemy[engine.targetIndex].shield < 1))
 		return;

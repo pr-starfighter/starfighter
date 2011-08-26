@@ -18,7 +18,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include "weapons.h"
+#include "Starfighter.h"
+
+object weapon[MAX_WEAPONS];
 
 void setWeaponShapes()
 {
@@ -31,7 +33,7 @@ void setWeaponShapes()
 
 #if USEPACK
 
-void loadWeapons()
+static void loadWeapons()
 {
 	int dataLocation = locateDataInPak("data/weapons.dat", 1);
 	int id, ammo, damage, reload, speed, image1, image2, flags;
@@ -69,7 +71,7 @@ void initWeapons() {loadWeapons();}
 
 #else
 
-void saveWeapons()
+static void saveWeapons()
 {
 	FILE *fp;
 

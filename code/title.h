@@ -18,37 +18,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include <stdlib.h>
-#include <string.h>
-
-#include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
-#include <SDL/SDL_mixer.h>
-
-#include "defs.h"
-#include "structs.h"
-#include "classes.h"
-
-extern SDL_Surface *loadImage(const char *filename);
-extern void unpack(const char *file);
-extern void loadMusic(const char *filename);
-extern void doStarfield();
-extern void doExplosions();
-extern void addEngine(object *craft);
-extern void getPlayerInput();
-extern void resetLists();
-extern signed char loadGame(int slot);
-extern int initSaveSlots();
-extern void newGame();
-extern void loadGameGraphics();
-extern void loadBackground(const char *filename);
+extern int doTitle();
+extern void showStory();
+extern void gameover();
 extern void doCredits();
-extern int locateDataInPak(const char *file, bool required);
-extern void flushInput();
-
-extern globalEngineVariables engine;
-extern devVariables dev;
-extern object defEnemy[MAX_DEFALIENS];
-extern object enemy[MAX_ALIENS];
-extern Game currentGame;
-extern Graphics graphics;

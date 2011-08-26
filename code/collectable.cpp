@@ -18,7 +18,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include "collectable.h"
+#include "Starfighter.h"
 
 /*
 Create a new collectable item based on supplied arguments.
@@ -161,7 +161,7 @@ void addCollectable(float x, float y, int type, int value, int life)
 	engine.collectableTail = collectable;
 }
 
-void explodeMine(collectables *collectable)
+static void explodeMine(collectables *collectable)
 {
 	if ((collectable->x >= 0) && (collectable->x <= 800) && (collectable->y >= 0) && (collectable->y <= 600))
 		playSound(SFX_EXPLOSION);

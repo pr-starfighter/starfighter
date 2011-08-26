@@ -18,26 +18,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include <stdlib.h>
-#include <string.h>
-
-#include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
-#include <SDL/SDL_mixer.h>
-
-#include "defs.h"
-#include "structs.h"
-#include "classes.h"
-
-extern void updateMissionRequirements(int type, int id, int value);
-extern void setInfoLine(const char *in, int color);
-extern object *addCargo(object *owner, int cargoType);
-extern void addExplosion(float x, float y, int type);
-extern void playSound(int sid);
-extern char checkPlayerShockDamage(float x, float y);
-
-extern globalEngineVariables engine;
-extern object player;
-extern Game currentGame;
-extern object weapon[MAX_WEAPONS];
-extern Graphics graphics;
+extern void addCollectable(float x, float y, int type, int value, int life);
+extern void checkMineBulletCollisions(object *bullet);
+extern void doCollectables();

@@ -18,7 +18,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include "graphics.h"
+#include "Starfighter.h"
+
+Graphics graphics;
+Star star[200];
 
 SDL_Surface *loadImage(const char *filename)
 {

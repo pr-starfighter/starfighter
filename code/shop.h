@@ -18,26 +18,5 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include <stdlib.h>
-#include <string.h>
-
-#include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
-#include <SDL/SDL_mixer.h>
-
-#include "defs.h"
-#include "structs.h"
-#include "classes.h"
-
-extern int locateDataInPak(const char *file, bool required);
-
-extern object player;
-extern globalEngineVariables engine;
-extern object weapon[MAX_WEAPONS];
-extern Game currentGame;
-extern Graphics graphics;
-extern devVariables dev;
-extern ShopItem shopItems[MAX_SHOPITEMS];
-
-signed char shopSelectedItem;
-
+extern void initShop();
+extern void showShop();

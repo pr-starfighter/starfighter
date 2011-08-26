@@ -18,27 +18,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include <stdlib.h>
-#include <string.h>
-
-#include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
-#include <SDL/SDL_mixer.h>
-
-#include "defs.h"
-#include "structs.h"
-#include "classes.h"
-
-extern signed char allMissionsCompleted();
-extern void playSound(int sid);
-extern void checkTimer();
-extern void checkScriptEvents();
-
-extern globalEngineVariables engine;
-extern devVariables dev;
-extern object player;
-extern object enemy[MAX_ALIENS];
-extern object weapon[MAX_WEAPONS];
-extern mission currentMission;
-extern Game currentGame;
-extern Graphics graphics;
+extern void clearInfoLines();
+extern void setInfoLine(const char *in, int color);
+extern void setRadioMessage(signed char face, const char *in, int priority);
+extern void doInfo();
+extern int getFace(const char *face);
+extern void resetLists();

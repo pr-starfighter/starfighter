@@ -18,18 +18,5 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-
-#include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
-#include <SDL/SDL_mixer.h>
-#include <SDL/SDL_endian.h>
-
-#include "defs.h"
-#include "structs.h"
-
-extern void showErrorAndExit(int errorId, const char *name);
-
-extern globalEngineVariables engine;
+extern void unpack(const char *file, signed char fileType);
+extern int locateDataInPak(const char *file, bool required);

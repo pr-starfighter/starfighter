@@ -18,37 +18,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-
-#include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
-#include <SDL/SDL_mixer.h>
-
-#include "defs.h"
-#include "structs.h"
-#include "classes.h"
-
-extern void playSound(int sid);
-extern void updateMissionRequirements(int type, int id, int value);
-extern void addCollectable(float x, float y, int type, int value, int life);
-extern void addExplosion(float x, float y, int type);
-extern void generateShockWave(object *bullet);
-extern void setInfoLine(const char *in, int color);
-extern void getKillMessage(object *ally);
-extern void getMissFireMessage(object *ally);
-extern void getPlayerHitMessage(object *ally);
-extern void checkMineBulletCollisions(object *bullet);
-extern void setKlineAttackMethod(object *theEnemy);
-extern void setRadioMessage(signed char face, const char *in, int priority);
-
-extern globalEngineVariables engine;
-extern devVariables dev;
-extern object weapon[MAX_WEAPONS];
-extern object player;
-extern mission currentMission;
-extern object enemy[MAX_ALIENS];
-extern object cargo[20];
-extern Game currentGame;
-extern Graphics graphics;
+extern void addBullet(object *theWeapon, object *attacker, int y, int dy);
+extern void fireBullet(object *attacker, int weaponType);
+extern char checkPlayerShockDamage(float x, float y);
+extern void fireRay(object *attacker);
+extern void doBullets();

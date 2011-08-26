@@ -18,9 +18,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include "messages.h"
+#include "Starfighter.h"
 
-void setKillMessages()
+static char deathMessage[6][50];
+static char killMessage[10][50];
+static char missFireMessage[5][50];
+static char playerHitMessage[3][50];
+
+static void setKillMessages()
 {
 	strcpy(killMessage[0], "Chalk another one up for me!");
 	strcpy(killMessage[1], "That'll teach you!");
@@ -37,7 +42,7 @@ void setKillMessages()
 	strcpy(killMessage[9], "Number One, Baby!");
 }
 
-void setPlayerDeadMessages()
+static void setPlayerDeadMessages()
 {
 	strcpy(deathMessage[0], "Oh my God... No!");
 	strcpy(deathMessage[1], "NOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!!");
@@ -47,7 +52,7 @@ void setPlayerDeadMessages()
 	strcpy(deathMessage[5], "Chriiiiiiiiiiiiiiiiiiiiiiiiiiis!!!!");
 }
 
-void setMissFireMessages()
+static void setMissFireMessages()
 {
 	strcpy(missFireMessage[0], "I am NOT your enemy!");
 	strcpy(missFireMessage[1], "Hey! Watch it!");
@@ -56,7 +61,7 @@ void setMissFireMessages()
 	strcpy(missFireMessage[4], "Open your eyes!!");
 }
 
-void setHitPlayerMessages()
+static void setHitPlayerMessages()
 {
 	strcpy(playerHitMessage[0], "Oops! Sorry!");
 	strcpy(playerHitMessage[1], "Get out of the way!");

@@ -18,7 +18,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include "events.h"
+#include "Starfighter.h"
+
+static char lastKeyEvents[] = "                         ";
 
 /*
 Checked during the main game loop. When the game is paused
@@ -46,7 +48,7 @@ bool checkPauseRequest()
 	return false;
 }
 
-void compareLastKeyInputs()
+static void compareLastKeyInputs()
 {
 	if (strstr(lastKeyEvents, "humansdoitbetter") != NULL)
 		{engine.cheat = true; memset(lastKeyEvents, ' ', 25);}

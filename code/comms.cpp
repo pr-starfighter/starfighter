@@ -18,7 +18,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#include "comms.h"
+#include "Starfighter.h"
 
 void updateCommsSurface(SDL_Surface *comms)
 {
@@ -60,7 +60,7 @@ void createCommsSurface(SDL_Surface *comms)
 	updateCommsSurface(comms);
 }
 
-void createMissionDetailSurface(SDL_Surface *comms, int missionSlot)
+static void createMissionDetailSurface(SDL_Surface *comms, int missionSlot)
 {
 	char name[50];
 	char string[2000];
