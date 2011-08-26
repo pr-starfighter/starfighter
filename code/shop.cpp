@@ -710,6 +710,7 @@ void sell(int i)
 			break;
 	}
 
+	adjustShopPrices();
 	currentGame.cash += (shopItems[i].price / 2);
 }
 
