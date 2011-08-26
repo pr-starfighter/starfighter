@@ -345,7 +345,7 @@ static void createOptions(SDL_Surface *optionsSurface)
 	graphics.blevelRect(optionsSurface, 190, 45, 50, 22, 0x00, 0x00, 0x00);
 	graphics.blevelRect(optionsSurface, 250, 45, 50, 22, 0x00, 0x00, 0x00);
 	graphics.blevelRect(optionsSurface, 20, 45, 150, 22, 0x00, 0x00, 0x00);
-	if (currentGame.useSound)
+	if (engine.useSound)
 		graphics.blevelRect(optionsSurface, 190, 45, 50, 22, 0xff, 0x00, 0x00);
 	else
 		graphics.blevelRect(optionsSurface, 250, 45, 50, 22, 0xff, 0x00, 0x00);
@@ -356,7 +356,7 @@ static void createOptions(SDL_Surface *optionsSurface)
 	graphics.blevelRect(optionsSurface, 190, 95, 50, 22, 0x00, 0x00, 0x00);
 	graphics.blevelRect(optionsSurface, 250, 95, 50, 22, 0x00, 0x00, 0x00);
 	graphics.blevelRect(optionsSurface, 20, 95, 150, 22, 0x00, 0x00, 0x00);
-	if (currentGame.useMusic)
+	if (engine.useMusic)
 		graphics.blevelRect(optionsSurface, 190, 95, 50, 22, 0xff, 0x00, 0x00);
 	else
 		graphics.blevelRect(optionsSurface, 250, 95, 50, 22, 0xff, 0x00, 0x00);
@@ -367,7 +367,7 @@ static void createOptions(SDL_Surface *optionsSurface)
  	graphics.blevelRect(optionsSurface, 190, 145, 50, 22, 0x00, 0x00, 0x00);
 	graphics.blevelRect(optionsSurface, 250, 145, 50, 22, 0x00, 0x00, 0x00);
 	graphics.blevelRect(optionsSurface, 20, 145, 150, 22, 0x00, 0x00, 0x00);
-	if (currentGame.fullScreen)
+	if (engine.fullScreen)
 		graphics.blevelRect(optionsSurface, 190, 145, 50, 22, 0xff, 0x00, 0x00);
 	else
 		graphics.blevelRect(optionsSurface, 250, 145, 50, 22, 0xff, 0x00, 0x00);
@@ -396,15 +396,15 @@ static void showOptions(SDL_Surface *optionsSurface)
 	if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
 	{
 		if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 172, 45, 22))
-			currentGame.useSound = true;
+			engine.useSound = true;
 
 		if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 172, 45, 22))
-			currentGame.useSound = false;
+			engine.useSound = false;
 
 
 		if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 222, 45, 22))
 		{
-			currentGame.useMusic = true;
+			engine.useMusic = true;
 			if (engine.useAudio)
 			{
 				if (Mix_PausedMusic() == 1)
@@ -416,14 +416,14 @@ static void showOptions(SDL_Surface *optionsSurface)
 
 		if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 222, 45, 22))
 		{
-			currentGame.useMusic = false;
+			engine.useMusic = false;
 			if (engine.useAudio)
 				Mix_PauseMusic();
 		}
 
 		if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 272, 45, 22))
 		{
-			if (!currentGame.fullScreen)
+			if (!engine.fullScreen)
 			{
 				#if LINUX
 				SDL_WM_ToggleFullScreen(graphics.screen);
@@ -432,13 +432,13 @@ static void showOptions(SDL_Surface *optionsSurface)
 				graphics.drawBackground();
 				flushBuffer();
 				#endif
-				currentGame.fullScreen = true;
+				engine.fullScreen = true;
 			}
 		}
 
 		if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 272, 45, 22))
 		{
-			if (currentGame.fullScreen)
+			if (engine.fullScreen)
 			{
 				#if LINUX
 				SDL_WM_ToggleFullScreen(graphics.screen);
@@ -447,7 +447,7 @@ static void showOptions(SDL_Surface *optionsSurface)
 				graphics.drawBackground();
 				flushBuffer();
 				#endif
-				currentGame.fullScreen = false;
+				engine.fullScreen = false;
 			}
 		}
 		
@@ -556,7 +556,7 @@ int galaxyMap()
 
 	int rtn = 0;
 
-	if ((engine.useAudio) && (currentGame.useMusic))
+	if ((engine.useAudio) && (engine.useMusic))
 		Mix_PlayMusic(engine.music, -1);
 
 	textObject iconInfo[12];

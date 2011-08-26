@@ -179,14 +179,14 @@ void initSystem()
 		fclose(fp);
 	}
 
-	currentGame.fullScreen = fullScreen;
-	currentGame.useSound = useSound;
-	currentGame.useMusic = useMusic;
+	engine.fullScreen = fullScreen;
+	engine.useSound = useSound;
+	engine.useMusic = useMusic;
 
 	SDL_WM_SetCaption("Project: Starfighter", "starfighter");
 	SDL_WM_SetIcon(loadImage("gfx/alienDevice.png"), NULL);
 
-	if (currentGame.fullScreen)
+	if (engine.fullScreen)
 		graphics.screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE|SDL_FULLSCREEN);
 	else
 		graphics.screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE);
@@ -260,7 +260,7 @@ void cleanUp()
 	fp = fopen(filename, "wb");
 	if (fp != NULL)
 	{
-		fprintf(fp, "%d %d %d\n", currentGame.fullScreen, currentGame.useSound, currentGame.useMusic);
+		fprintf(fp, "%d %d %d\n", engine.fullScreen, engine.useSound, engine.useMusic);
 		fclose(fp);
 	}
 	else

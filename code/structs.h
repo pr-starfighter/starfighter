@@ -130,9 +130,12 @@ struct Game {
 	unsigned char musicVolume;
 	unsigned char sfxVolume;
 
-	bool fullScreen;
-	bool useMusic;
-	bool useSound;
+	// First three variable below are here for save game compatibility only.
+
+	signed char fullScreen; // Do not use!
+	signed char useMusic; // Do not use!
+	signed char useSound; // Do not use!
+
 	signed char autoSaveSlot;
 
 	unsigned int cash;
@@ -265,6 +268,9 @@ struct globalEngineVariables {
 	signed char gameSection;
 
 	bool useAudio;
+	bool useSound;
+	bool useMusic;
+	bool fullScreen;
 
 	// This really only applies to Linux users.
 	char userHomeDirectory[1024];

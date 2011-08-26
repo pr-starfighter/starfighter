@@ -24,7 +24,7 @@ Mix_Chunk *sound[MAX_SOUNDS];
 
 void playSound(int sid)
 {
-	if ((!currentGame.useSound) || (!engine.useAudio))
+	if ((!engine.useSound) || (!engine.useAudio))
 		return;
 
 	switch(sid)
@@ -95,7 +95,7 @@ void loadMusic(const char *filename)
 
 void playRandomTrack()
 {
-	if ((!currentGame.useMusic) || (!engine.useAudio))
+	if ((!engine.useMusic) || (!engine.useAudio))
 		return;
 
 	int tracks = 0;

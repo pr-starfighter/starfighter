@@ -66,17 +66,17 @@ static signed char showLoadMenu()
 
 static void createOptionsMenu()
 {
-	if (currentGame.useSound)
+	if (engine.useSound)
 		graphics.textSurface(8, "SOUND - ON", -1, 350, FONT_WHITE);
 	else
 		graphics.textSurface(8, "SOUND - OFF", -1, 350, FONT_WHITE);
 
-	if (currentGame.useMusic)
+	if (engine.useMusic)
 		graphics.textSurface(9, "MUSIC - ON", -1, 370, FONT_WHITE);
 	else
 		graphics.textSurface(9, "MUSIC - OFF", -1, 370, FONT_WHITE);
 
-	if (currentGame.fullScreen)
+	if (engine.fullScreen)
 		graphics.textSurface(10, "FULLSCREEN - ON", -1, 390, FONT_WHITE);
 	else
 		graphics.textSurface(10, "FULLSCREEN - OFF", -1, 390, FONT_WHITE);
@@ -237,7 +237,7 @@ int doTitle()
 	flushInput();
 	engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
 
-	if ((currentGame.useMusic) && (engine.useAudio))
+	if ((engine.useMusic) && (engine.useAudio))
 		Mix_PlayMusic(engine.music, 1);
 
 	while (!engine.done)
@@ -388,12 +388,12 @@ int doTitle()
 
 					case 2:
 						if ((selectedOption == 1) && (engine.useAudio))
-							currentGame.useSound = !currentGame.useSound;
+							engine.useSound = !engine.useSound;
 						else if ((selectedOption == 2) && (engine.useAudio))
 						{
-							currentGame.useMusic = !currentGame.useMusic;
+							engine.useMusic = !engine.useMusic;
 
-							if (currentGame.useMusic)
+							if (engine.useMusic)
 							{
 								if (Mix_PausedMusic() == 1)
 									Mix_ResumeMusic();
@@ -407,11 +407,11 @@ int doTitle()
 						}
 						else if (selectedOption == 3)
 						{
-							currentGame.fullScreen = !currentGame.fullScreen;
+							engine.fullScreen = !engine.fullScreen;
 							#if LINUX
 							SDL_WM_ToggleFullScreen(graphics.screen);
 							#else
-							if (currentGame.fullScreen)
+							if (engine.fullScreen)
 								graphics.screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE|SDL_FULLSCREEN);
 							else
 								graphics.screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE);
@@ -577,7 +577,7 @@ void gameover()
 	graphics.clearScreen(graphics.black);
 	SDL_Delay(1000);
 
-	if ((currentGame.useMusic) && (engine.useAudio))
+	if ((engine.useMusic) && (engine.useAudio))
 	{
 		Mix_VolumeMusic(100);
 		Mix_PlayMusic(engine.music, 1);
@@ -610,7 +610,7 @@ void gameover()
 
 	SDL_FreeSurface(gameover);
 
-	if ((currentGame.useMusic) && (engine.useAudio))
+	if ((engine.useMusic) && (engine.useAudio))
 		Mix_HaltMusic();
 
 	graphics.flushBuffer();
@@ -622,7 +622,7 @@ void doCredits()
 	graphics.flushBuffer();
 	graphics.freeGraphics();
 
-	if ((currentGame.useMusic) && (engine.useAudio))
+	if ((engine.useMusic) && (engine.useAudio))
 		loadMusic("music/Solace.s3m");
 
 	FILE *fp;
@@ -670,7 +670,7 @@ void doCredits()
 
 	fclose(fp);
 
-	if ((currentGame.useMusic) && (engine.useAudio))
+	if ((engine.useMusic) && (engine.useAudio))
 	{
 		Mix_VolumeMusic(100);
 		Mix_PlayMusic(engine.music, 1);

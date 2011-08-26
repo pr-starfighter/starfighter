@@ -31,8 +31,8 @@ void newGame()
 
 	if (!engine.useAudio)
 	{
-		currentGame.useSound = false;
-		currentGame.useMusic = false;
+		engine.useSound = false;
+		engine.useMusic = false;
 	}
 
 	currentGame.autoSaveSlot = -1;
