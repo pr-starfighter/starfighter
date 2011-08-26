@@ -630,7 +630,7 @@ void doCredits()
 	int lastCredit = 0;
 
 	int yPos = 0;
-	int yPos2 = 510;
+	int yPos2 = 600;
 	char text[255];
 
 	textObject *credit;
@@ -676,8 +676,6 @@ void doCredits()
 		Mix_PlayMusic(engine.music, 1);
 	}
 
-	SDL_Delay(3000);
-
 	updateScreen();
  	SDL_Delay(10000);
 	drawBackGround();
@@ -685,9 +683,6 @@ void doCredits()
 	engine.done = 0;
 
 	lastCredit = numberOfCredits - 1;
-
-	SDL_Rect r1 = {0, 80, 800, 20};
-	SDL_Rect r2 = {0, 500, 800, 20};
 
 	engine.keyState[SDLK_ESCAPE] = 0;
 	flushInput();
@@ -701,16 +696,21 @@ void doCredits()
 		if (engine.keyState[SDLK_ESCAPE])
 			break;
 
+		float speed = 0.5;
+		if(engine.keyState[SDLK_DOWN])
+			speed = 2;
+		else if(engine.keyState[SDLK_UP])
+			speed = -2;
+
 		for (int i = 0 ; i < numberOfCredits ; i++)
 		{
-			if ((credit[i].y > 80) && (credit[i].y < 500))
+			if ((credit[i].y > -10) && (credit[i].y < 610))
 				blit(credit[i].image, (int)credit[i].x, (int)credit[i].y);
-			if (credit[lastCredit].y > 400)
-				credit[i].y -= 0.3;
+			if (speed > 0 && credit[lastCredit].y > 400)
+				credit[i].y -= speed;
+			else if(speed < 0 && credit[0].y < 600)
+				credit[i].y -= speed;
 		}
-
-		SDL_FillRect(screen, &r1, black);
-		SDL_FillRect(screen, &r2, black);
 
 		delayFrame();
 	}
