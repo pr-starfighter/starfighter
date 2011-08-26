@@ -58,6 +58,11 @@ void addEngine(object *craft)
 	addExplosion(x, y, E_TINY_EXPLOSION);
 }
 
+static bool isOnScreen(int x, int y, int w, int h)
+{
+	return (x + w > 0) && (x < 800) && (y + h > 0) && (y < 600);
+}
+
 /*
 Loops through active explosions and decrements their think time.
 If their thinktime is divisable by 5, then the frame is changed to

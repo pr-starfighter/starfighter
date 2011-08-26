@@ -79,4 +79,3 @@ extern void freeGraphics();
 
 extern SDL_Surface *loadImage(const char *filename);
 extern void doStarfield();
-extern int isOnScreen(int x, int y, int w, int h);

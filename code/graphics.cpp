@@ -737,11 +737,3 @@ void doStarfield()
 		SDL_UnlockSurface(screen);
 	}
 }
-
-int isOnScreen(int x, int y, int w, int h)
-{
-	if ((x + w > 0) && (x < 800) && (y + h > 0) && (y < 600))
-		return 1;
-		
-	return 0;
-}
