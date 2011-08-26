@@ -720,8 +720,6 @@ void missionBriefScreen()
 	graphics.clearScreen(graphics.black);
 	graphics.updateScreen();
 
-	SDL_Delay(1000);
-
 	if (currentGame.area != MAX_MISSIONS - 1)
 	{
 		graphics.clearScreen(graphics.black);
@@ -800,8 +798,6 @@ void missionBriefScreen()
 		graphics.clearScreen(graphics.black);
 		graphics.updateScreen();
 		graphics.clearScreen(graphics.black);
-
-		SDL_Delay(1000);
 	}
 
 	engine.gameSection = SECTION_GAME;
@@ -819,8 +815,6 @@ void missionFinishedScreen()
 	{
 		graphics.clearScreen(graphics.black);
 		graphics.updateScreen();
-
-		SDL_Delay(1000);
 
 		if (currentGame.shots > 0)
 			currentGame.accuracy = (currentGame.hits * 100) / currentGame.shots;

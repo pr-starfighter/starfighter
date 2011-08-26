@@ -200,7 +200,6 @@ void doCutscene(int scene)
 	graphics.clearScreen(graphics.black);
 	graphics.updateScreen();
 	graphics.clearScreen(graphics.black);
-	SDL_Delay(1000);
 
 	engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = engine.keyState[SDLK_SPACE] = 0;
 

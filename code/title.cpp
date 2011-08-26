@@ -161,7 +161,6 @@ int doTitle()
 	graphics.clearScreen(graphics.black);
 	graphics.updateScreen();
 	graphics.clearScreen(graphics.black);
-	SDL_Delay(1000);
 
 	signed char continueSaveSlot = initSaveSlots();
 
@@ -640,7 +639,6 @@ void doCredits()
 	graphics.clearScreen(graphics.black);
 	graphics.updateScreen();
 	graphics.clearScreen(graphics.black);
-	SDL_Delay(1000);
 
 	graphics.drawBackGround();
 

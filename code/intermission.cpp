@@ -483,8 +483,6 @@ int galaxyMap()
 
 	initSaveSlots();
 
-	SDL_Delay(1000);
-
 	loadMusic("music/3DParadise.mod");
 
 	loadBackground((char *)systemBackground[currentGame.system]);
