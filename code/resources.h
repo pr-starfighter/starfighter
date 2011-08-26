@@ -32,7 +32,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 extern void unpack(const char *file, signed char fileType);
 extern SDL_Surface *loadImage(const char *filename);
 extern Mix_Chunk *loadSound(const char *filename);
-extern int locateDataInPak(const char *file, signed char required);
+extern int locateDataInPak(const char *file, bool required);
 extern void setAlienShapes();
 extern void setWeaponShapes();
 extern void loadGameGraphics();

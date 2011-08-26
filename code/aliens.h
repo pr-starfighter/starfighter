@@ -38,7 +38,7 @@ extern void addEngine(object *craft);
 extern void fireRay(object *attacker);
 extern void addDebris(int x, int y, int amount);
 extern void playSound(int sid);
-extern int locateDataInPak(const char *file, signed char required);
+extern int locateDataInPak(const char *file, bool required);
 extern object *addCargo(object *owner, int cargoType);
 extern void addCollectable(float x, float y, int type, int value, int life);
 extern void updateMissionRequirements(int type, int id, int value);

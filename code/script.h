@@ -39,7 +39,7 @@ extern void addEngine(object *craft);
 extern void doExplosions();
 extern void resetLists();
 extern int getFace(const char *face);
-extern int locateDataInPak(const char *file, signed char required);
+extern int locateDataInPak(const char *file, bool required);
 extern void flushInput();
 
 extern Game currentGame;

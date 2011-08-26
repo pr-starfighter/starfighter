@@ -236,7 +236,7 @@ void doCutscene(int scene)
 		enemy[i].engineY = (enemy[i].image[0]->h / 2);
 	}
 
-	signed char showMessage = 0;
+	bool showMessage = false;
 	signed char currentMessage = -1;
 	int timer = 60 * 4;
 
@@ -273,7 +273,7 @@ void doCutscene(int scene)
 		timer--;
 		if (timer == 0)
 		{
-			showMessage = 1 - showMessage;
+			showMessage = !showMessage;
 			timer = 120;
 			if (showMessage)
 			{

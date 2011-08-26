@@ -510,7 +510,7 @@ void doBullets()
 
 	object *theEnemy, *theCargo;
 
-	signed char okayToHit = 0;
+	bool okayToHit = false;
 	float homingMissileSpeed = 0;
 
 	while (bullet->next != NULL)
@@ -588,17 +588,17 @@ void doBullets()
 				if ((theEnemy->shield < 1) || (!theEnemy->active))
 					continue;
 
-				okayToHit = 0;
+				okayToHit = false;
 
 				if ((bullet->flags & WF_FRIEND) && (theEnemy->flags & FL_WEAPCO))
-					okayToHit = 1;
+					okayToHit = true;
 				if ((bullet->flags & WF_WEAPCO) && (theEnemy->flags & FL_FRIEND))
-					okayToHit = 1;
+					okayToHit = true;
 				if ((bullet->id == WT_ROCKET) || (bullet->id == WT_LASER) || (bullet->id == WT_CHARGER))
-					okayToHit = 1;
+					okayToHit = true;
 
 				if (bullet->owner == theEnemy->owner)
-					okayToHit = 0;
+					okayToHit = false;
 
 				if (okayToHit)
 				{

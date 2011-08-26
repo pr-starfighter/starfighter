@@ -20,7 +20,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "aliens.h"
 
-signed char placeAlien(object *theEnemy)
+bool placeAlien(object *theEnemy)
 {
 	if (rand() % 2 == 0)
 		theEnemy->x = Math::rrand(800, 1600);
@@ -43,11 +43,11 @@ signed char placeAlien(object *theEnemy)
 		if ((enemy[i].owner != theEnemy) && (enemy[i].shield > 0))
 		{
 			if (Collision::collision(theEnemy->x, theEnemy->y, theEnemy->image[0]->w, theEnemy->image[0]->h, enemy[i].x, enemy[i].y, enemy[i].image[0]->w, enemy[i].image[0]->h))
-				return 0;
+				return false;
 		}
 	}
 
-	return 1;
+	return true;
 }
 
 /*
@@ -131,7 +131,7 @@ void addSmallAsteroid(object *host)
 	enemy[index].active = true;
 }
 
-signed char addAlien()
+bool addAlien()
 {
 	int index = getAlien();
 
@@ -257,7 +257,7 @@ signed char addAlien()
 			break;
 		enemy[index].active = false;
 
-		return 0;
+		return false;
 	}
 
 	if (enemy[index].classDef == CD_CARGOSHIP)
@@ -277,7 +277,7 @@ signed char addAlien()
 	if (currentGame.area == 18)
 		enemy[index].flags += FL_HASMINIMUMSPEED;
 
-	return 1;
+	return true;
 }
 
 void getPreDefinedAliens()
@@ -776,15 +776,15 @@ int traceView(object *theEnemy)
 
 void moveAndSeparate(object *theEnemy)
 {
-	signed char checkCollisions = 1;
-	signed char hasCollided = 0;
+	bool checkCollisions = true;
+	bool hasCollided = false;
 
 	// don't worry about bumping into other craft
 	if ((theEnemy->flags & FL_LEAVESECTOR) || (theEnemy->classDef == CD_DRONE) || (currentGame.area == 18))
-		checkCollisions = 0;
+		checkCollisions = false;
 
 	if (theEnemy->shield < 1)
-		checkCollisions = 0;
+		checkCollisions = false;
 
 	if (theEnemy->owner == theEnemy)
 	{
@@ -835,7 +835,7 @@ void moveAndSeparate(object *theEnemy)
 				}
 
 				if (anEnemy->owner == anEnemy)
-					hasCollided = 1;
+					hasCollided = true;
 			}
 
 			anEnemy++;
@@ -847,7 +847,7 @@ void moveAndSeparate(object *theEnemy)
 	{
 		if (Collision::collision(theEnemy, &player))
 		{
-			hasCollided = 1;
+			hasCollided = true;
 
 			if (theEnemy->classDef == CD_ASTEROID)
 			{
@@ -943,7 +943,7 @@ void doAliens()
 	// A global variable for checking if all the aliens are dead
 	engine.allAliensDead = 1;
 
-	signed char canFire;
+	bool canFire;
 	int shapeToUse;
 
 	object *theEnemy = enemy;
@@ -984,7 +984,7 @@ void doAliens()
 					}
 				}
 
-				canFire = 1; // The alien is allowed to fire
+				canFire = true; // The alien is allowed to fire
 
 				Math::limitInt(&--theEnemy->thinktime, 0, 250);
 
@@ -1118,10 +1118,10 @@ void doAliens()
 				}
 				else
 				{
-					canFire = 0;
+					canFire = false;
 				}
 
-				if ((canFire == 1) && (dev.fireAliens))
+				if ((canFire) && (dev.fireAliens))
 				{
 					if ((theEnemy->reload[0] == 0) && ((rand() % 1000 < theEnemy->chance[0]) || (theEnemy->flags & FL_CONTINUOUS_FIRE)))
 					{

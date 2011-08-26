@@ -103,7 +103,7 @@ void unpack(const char *file, signed char fileType)
 Search the data package for the required file.
 When it is found, return the location.
 */
-int locateDataInPak(const char *file, signed char required)
+int locateDataInPak(const char *file, bool required)
 {
 	char packFilename[60];
 	int packFSize;

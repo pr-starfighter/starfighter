@@ -43,7 +43,7 @@ extern void newGame();
 extern void loadGameGraphics();
 extern void loadBackground(const char *filename);
 extern void doCredits();
-extern int locateDataInPak(const char *file, signed char required);
+extern int locateDataInPak(const char *file, bool required);
 extern void flushInput();
 
 extern globalEngineVariables engine;

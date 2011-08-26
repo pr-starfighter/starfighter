@@ -228,7 +228,7 @@ int doTitle()
 	if (continueSaveSlot > 0)
 		{selectedOption = 3; optionRec.y += 40;}
 
-	signed char skip = 0;
+	bool skip = false;
 	signed char listLength = 5; // menu list length
 	signed char menuType = 0;
 
@@ -335,7 +335,7 @@ int doTitle()
 					graphics.drawString("Copyright Parallel Realities 2003", 5, 580, FONT_WHITE, graphics.background);
 					graphics.drawString(buildVersion, 695, 580, FONT_WHITE, graphics.background);
 					graphics.addBuffer(0, 580, 800, 20);
-					skip = 1;
+					skip = true;
 				}
 			}
 		}
@@ -356,7 +356,7 @@ int doTitle()
 				graphics.drawString("Copyright Parallel Realities 2003", 5, 580, FONT_WHITE, graphics.background);
 				graphics.drawString(buildVersion, 695, 580, FONT_WHITE, graphics.background);
 				graphics.addBuffer(0, 580, 800, 20);
-				skip = 1;
+				skip = true;
 			}
 			else
 			{

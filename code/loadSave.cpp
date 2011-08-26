@@ -79,7 +79,7 @@ int initSaveSlots()
 /*
 Fill in later...
 */
-signed char loadGame(int slot)
+bool loadGame(int slot)
 {
 	char filename[PATH_MAX];
 	FILE *fp;
@@ -88,13 +88,13 @@ signed char loadGame(int slot)
 	fp = fopen(filename, "rb");
 
 	if (fp == NULL)
-		return 0;
+		return false;
 
 	if (fread(&currentGame, sizeof(Game), 1, fp) != 1)
 	{
 		printf("Save game error. The file was not of the expected format.\n");
 		fclose(fp);
-		return 0;
+		return false;
 	}
 
 	fclose(fp);
@@ -110,7 +110,7 @@ signed char loadGame(int slot)
 	for (int i = 0 ; i < 10 ; i++)
 		systemPlanet[i].missionCompleted = currentGame.missionCompleted[i];
 
-	return 1;
+	return true;
 }
 
 void saveGame(int slot)

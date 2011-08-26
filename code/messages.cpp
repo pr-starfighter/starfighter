@@ -75,7 +75,7 @@ void getKillMessage(object *ally)
 {
 	char in[50], name[30], otherName[30];
 	int kills, difference;
-	signed char firstPlace = 0;
+	bool firstPlace = false;
 	int faceToUse = FACE_PHOEBE;
 
 	if (ally == &enemy[FR_PHOEBE])
@@ -85,7 +85,7 @@ void getKillMessage(object *ally)
 		kills = currentGame.wingMate1Kills;
 		difference = currentGame.wingMate1Kills - currentGame.wingMate2Kills;
 		if ((currentGame.wingMate1Kills > currentGame.wingMate2Kills) && (currentGame.wingMate1Kills > currentGame.totalKills))
-			firstPlace = 1;
+			firstPlace = true;
 		faceToUse = FACE_PHOEBE;
 	}
 	else
@@ -95,7 +95,7 @@ void getKillMessage(object *ally)
 		kills = currentGame.wingMate2Kills;
 		difference = currentGame.wingMate2Kills - currentGame.wingMate1Kills;
 		if ((currentGame.wingMate2Kills > currentGame.wingMate1Kills) && (currentGame.wingMate2Kills > currentGame.totalKills))
-			firstPlace = 1;
+			firstPlace = true;
 		faceToUse = FACE_URSULA;
 	}
 
@@ -132,7 +132,7 @@ void getKillMessage(object *ally)
 			break;
 
 		case 9:
-			if (firstPlace == 1)
+			if (firstPlace)
 			{
 				sprintf(in, killMessage[9]);
 			}

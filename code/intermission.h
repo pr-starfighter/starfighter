@@ -45,7 +45,7 @@ extern void updateCommsSurface(SDL_Surface *comms);
 extern void createSavesSurface(SDL_Surface *savesSurface, signed char clickedSlot);
 extern void checkForBossMission();
 extern void doComms(SDL_Surface *comms);
-extern int locateDataInPak(const char *file, signed char required);
+extern int locateDataInPak(const char *file, bool required);
 extern int getFace(const char *face);
 extern void flushInput();
 

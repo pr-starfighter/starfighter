@@ -25,7 +25,7 @@ Checked during the main game loop. When the game is paused
 it goes into a constant loop checking this routine. If escape is
 pressed, the game automatically ends and goes back to the title screen
 */
-signed char checkPauseRequest()
+bool checkPauseRequest()
 {
 	getPlayerInput();
 		
@@ -34,7 +34,7 @@ signed char checkPauseRequest()
 		engine.paused = false;
 		engine.done = 1;
 		player.shield = 0;
-		return 1;
+		return true;
 	}
 	
 	if (engine.keyState[SDLK_p])
@@ -43,7 +43,7 @@ signed char checkPauseRequest()
 		engine.keyState[SDLK_p] = 0;
 	}
 
-	return 0;
+	return false;
 }
 
 void compareLastKeyInputs()

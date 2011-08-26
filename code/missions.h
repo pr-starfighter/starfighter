@@ -35,7 +35,7 @@ extern void getPlayerInput();
 extern void setInfoLine(const char *in, int color);
 extern void loadGameGraphics();
 extern void killAllAliens();
-extern int locateDataInPak(const char *file, signed char required);
+extern int locateDataInPak(const char *file, bool required);
 extern void setRadioMessage(signed char face, const char *in, int priority);
 extern void syncScriptEvents();
 extern void loadMusic(const char *filename);

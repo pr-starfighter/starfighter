@@ -239,12 +239,12 @@ Spins the planets around the sun, spaced according to their Y value
 as defined in setSystemPlanets(). Moving the cursor over the planet
 will show their name and their current status
 */
-signed char showSystem(float x, float y)
+bool showSystem(float x, float y)
 {
 	SDL_Rect r;
 	signed char planet = 0;
 	int planetSpace = systemPlanet[planet].y;
-	signed char rtn = 0;
+	bool rtn = false;
 
 	// Blit the sun
 	graphics.blit(graphics.shape[30], 370, 220);
@@ -283,7 +283,7 @@ signed char showSystem(float x, float y)
 					strcpy(currentGame.destinationName, systemPlanet[currentGame.destinationPlanet].name);
 				}
 
-				rtn = 1;
+				rtn = true;
 				engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
 			}
 		}
@@ -544,7 +544,7 @@ int galaxyMap()
 
 	float sinX = 300;
 	float cosY = 300;
-	signed char movePlanets = 1;
+	bool movePlanets = true;
 	signed char saveSlot = -1;
 
 	if (currentGame.system > 0)
@@ -585,7 +585,7 @@ int galaxyMap()
 
 	iconInfo[11].image = graphics.textSurface("Go to Destination Planet", FONT_WHITE);
 
-	signed char redrawBackGround = 1;
+	bool redrawBackGround = true;
 
 	player.maxShield = (25 * currentGame.shieldUnits);
 
@@ -605,7 +605,7 @@ int galaxyMap()
 		if (redrawBackGround)
 		{
 			graphics.drawBackGround();
-			redrawBackGround = 0;
+			redrawBackGround = false;
 		}
 		else
 		{
@@ -763,7 +763,7 @@ int galaxyMap()
 					iconInfo[9].image = graphics.textSurface(string, FONT_WHITE);
 					updateCommsSurface(commsSurface);
 					section = 1;
-					redrawBackGround = 1;
+					redrawBackGround = true;
 				}
 
 				if (interceptionChance > 0)
@@ -817,7 +817,7 @@ int galaxyMap()
 
 					if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
 					{
-						redrawBackGround = 1;
+						redrawBackGround = true;
 						section = i;
 						engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
 					}

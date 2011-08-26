@@ -510,7 +510,7 @@ char revealHiddenObjectives()
 	return allDone;
 }
 
-signed char allMissionsCompleted()
+bool allMissionsCompleted()
 {
 	for (int i = 0 ; i < 3 ; i++)
 	{
@@ -605,9 +605,9 @@ signed char allMissionsCompleted()
 		}
 	}
 
-	signed char remaining = 0;
-	signed char add = 0;
-	signed char allDone = 1;
+	bool remaining = false;
+	bool add = false;
+	bool allDone = true;
 
 	// Zero objective list for a recount
 	currentMission.remainingObjectives1 = currentMission.remainingObjectives2 = 0;
@@ -620,12 +620,12 @@ signed char allMissionsCompleted()
 			{
 				currentMission.remainingObjectives1++;
 				if (currentMission.primaryType[i] == M_DESTROY_ALL_TARGETS)
-					add = 1;
-				allDone = 0;
+					add = true;
+				allDone = false;
 			}
 
 			if (currentMission.completed1[i] < 0)
-				return 0;
+				return false;
 		}
 		if (currentMission.secondaryType[i] != NONE)
 		{
@@ -633,8 +633,8 @@ signed char allMissionsCompleted()
 			{
 				currentMission.remainingObjectives2++;
 				if (currentMission.secondaryType[i] == M_DESTROY_ALL_TARGETS)
-					add = 1;
-				allDone = 0;
+					add = true;
+				allDone = false;
 			}
 		}
 	}
@@ -646,23 +646,23 @@ signed char allMissionsCompleted()
 
 	// We've only got one objective left and it's destroy all targets,
 	// so stop adding aliens (otherwise it might be impossible to finish!)
-	if ((add == 1) && (remaining == 1))
+	if ((add) && (remaining))
 		engine.addAliens = -1;
 
 	return allDone;
 }
 
-signed char missionFailed()
+bool missionFailed()
 {
 	for (int i = 0 ; i < 3 ; i++)
 	{
 		if (currentMission.completed1[i] < 0)
 		{
-			return 1;
+			return true;
 		}
 	}
 
-	return 0;
+	return false;
 }
 
 void drawBriefScreen()
