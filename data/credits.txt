@@ -1,0 +1,109 @@
+And so it was that in the year 2579 the galactic weapons corporation
+WEAPCO was defeated. The people rejoiced that the darkness had
+been lifted and once again the galaxy knew freedom.
+Their prayers had been answered thanks to the valiant efforts of a few determined
+individuals; A cause that would be remembered throughout the rest of
+human history as Project: Starfighter
+102
+000 +++ CAST +++
+030 Chris Bainfield
+020 Krass Tylar
+020 Sid Wilson
+020 Kline Kethlan
+020 Phoebe Lexx
+020 Ursula Lexx
+050 +++ MAIN PROGRAMMING AND DESIGN +++
+020 Stephen Sweeney
+030 +++ ADDITIONAL PROGRAMMING +++
+020 Richard Sweeney
+050 +++ PRODUCTION SOFTWARE +++
+050 LINUX MANDRAKE 9.0
+020 Copyright Mandrakesoft 2002
+020 All Rights Reserved
+020 http://www.linux-mandrake.com
+050 KDE 3.0
+020 Copyright 2002, The KDE Team
+020 All Rights Reserved
+020 http://www.kde.org
+050 GNU GCC
+020 http://www.gcc.org
+050 SIMPLE DIRECTMEDIA LAYER
+020 Created by Sam Lantinga
+020 http://www.libsdl.org
+050 KATE
+020 Copyright 2000 - 2003, The Kate Authors
+020 http://kate.sourceforge.net
+050 POV RAY
+020 Copyright 2003, The POV RAY Team
+020 http://www.pov-ray.org
+050 POV RAY GALAXY INCLUDE
+020 Created by Chris Colefax
+020 http://www.geocities.com/SiliconValley/Lakes/1434/
+050 THE GIMP
+020 http://www.gimp.org
+050 +++ QUALITY ASSURANCE AND ADVICE +++
+030 Sam Lantinga  Ian Bissett
+020 Chris Taylor  Xan  Christoph Reichenbach
+020 Kevin Mills  Michael Edwards  Kyle
+020 Michael Edwards  Halfabee  Doug
+020 Boris  Frank S  Martin Svensson
+020 Willy Gardiol  Liam  Keith Frost
+050 +++ SOUND +++
+030 Sounds contained within this game are taken from
+020 various sources around the internet. In all these cases the
+020 sound effects are assumed to be placed into the public
+020 domain. Parallel Realities accepts no responsibility for
+020 audio contained herein that was not available at the
+020 author's permission
+050 +++ MUSIC +++
+050 3D PARADISE
+020 Written by Scorpik
+020 Copyright Scorpik, 1995
+050 ARTIFICIAL INSPIRATION
+020 Written by Ola Lindeldt
+020 Copyright Old Lindeldt, 1996
+050 DIGITAL INFERNO
+020 Written by SLICE
+020 Copyright Ola Lindfelt 1995
+050 FRANTIC CONFUSION
+020 Written by SLICE
+020 Copyright Ola Lindfelt 1995
+050 HARDTRANCE DUB
+020 Written by SLICE
+020 Copyright Ola Lindfelt 1995
+050 LUNATIC WAVES
+020 Written by SLICE
+020 Copyright Ola Lindfelt 1995
+050 LOOPS AND TINGS
+020 Copyright Jens
+020 Original by Jens
+020 All Rights Reserved
+050 PLATINUM
+020 Written by Scorpik
+020 Copyright Scorpik, 1995
+050 SOLACE
+020 Written by Snowman
+020 Copyright Snowman 1995
+050 TEMPO TRANCE
+020 Written by SLICE
+020 Copyright Ola Lindfelt 1995
+050 TOXIC FRIEND
+020 Written by Bee Hunter / Jazz
+020 Copyright Bee Hunter 1994
+050 TRANCE GENERATION
+020 Written by SLICE
+020 Copyright Ola Lindfelt 1995
+050 +++ SPECIAL THANKS +++
+030 Wes Whitmore  Ceri Done
+020 Faye Price  Emma Hamilton
+020 Rob Jones  Ian Bissett  Maria Kalashnikoff
+020 Sam Lantinga  Claus Windeler  Jolan Luff
+020 Torbjorn Andersson  Atrix Wolfe
+020 and all on the SDL mailing list
+080 Parallel Realities and the Alien Device
+020 Copyright Parallel Realities 2003
+020 All Rights Reserved
+350 Project: Starfighter
+020 Copyright Parallel Realities 2003
+020 All Rights Reserved
+120 http://www.parallelrealities.co.uk

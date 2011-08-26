@@ -1,0 +1,37 @@
+2
+FACE_KLINE
+-1
+0
+Always have to be the hero don't you, Bainfield?
+
+8
+FACE_CHRIS
+-1
+0
+It doesn't have to be this way, Kethlan...
+
+14
+FACE_KLINE
+-1
+0
+You expect me to surrender and go quietly?! You're an even bigger fool than I first imagined.
+
+20
+FACE_CHRIS
+-1
+0
+There is no where else you can go! WEAPCO is finished! The galaxy is free!
+
+26
+FACE_KLINE
+-1
+0
+Then I will die a warrior's death. In battle; With dignity...
+
+26
+-1
+15
+-28
+@none@
+
+0

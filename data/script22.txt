@@ -1,0 +1,37 @@
+45
+FACE_SID
+-1
+0
+Chris! Another two of those ray cannons just arrived in your sector!!
+
+45
+-1
+11
+-1048576
+@none@
+
+45
+-1
+12
+-1048576
+@none@
+
+90
+FACE_SID
+-1
+0
+Two more!!!!
+
+90
+-1
+13
+-1048576
+@none@
+
+90
+-1
+14
+-1048576
+@none@
+
+0

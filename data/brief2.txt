@@ -1,0 +1,11 @@
+Sid Wilson
+8
+FACE_CHRIS
+Hey, Sid, what's up?
+FACE_SID
+Chris, I've intercepted a communication from WEAPCO. Seems they're transporting some medical supplies around Ceradse. We need to get hold of those pods to save some lives!
+FACE_CHRIS
+How many do we need?
+FACE_SID
+All six, Chris! If you lose even a single one, thousands of people could perish in Spirit within the next few months.
+

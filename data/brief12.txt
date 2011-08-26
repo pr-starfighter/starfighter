@@ -1,0 +1,10 @@
+Sid Wilson
+8
+FACE_CHRIS
+What have you managed to find out about that experimental fighter?
+FACE_SID
+It's got some kind of cloaking device that makes it invisible to radar. Could prove hard to trackdown.
+FACE_CHRIS
+I'll scout the system and see if I can intercept it.
+FACE_SID
+It's likely to run away if you engage it in battle, so try and do as much damage to it as possible.

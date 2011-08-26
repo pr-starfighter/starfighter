@@ -1,0 +1,12 @@
+Sid Wilson
+10
+FACE_SID
+I need some resources before we leave, it'll make life a lot easier in Mordor. Problem is that the parts are proprietry of WEAPCO
+FACE_PHOEBE
+Can't we just salvage some from previous encounters?
+FACE_SID
+No, even if we manage to find them in all that space, they'll probably be too heavily damaged to be of any use.
+FACE_CHRIS
+We'll need to capture some WEAPCO supply craft then.
+FACE_SID
+Looks like I'm coming with you on this one!

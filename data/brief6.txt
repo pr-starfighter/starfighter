@@ -1,0 +1,8 @@
+Sid Wilson
+6
+FACE_CHRIS
+WEAPCO has many slaves in this system. If we free a large number of them, it might help to spark a rebellion movement.
+FACE_SID
+Attacking the ore mines directly would be dangerous. You'd be better off intercepting slave transports. What you'll have to do is fly around and see if you can intercept a WEAPCO patrol. Of course, they might not be escorting any slave units, so be careful!
+FACE_CHRIS
+I estimate that we will need to rescue around 250 to make a difference.

@@ -1,0 +1,52 @@
+Plasma channel splitter
+Improves poweredup plasma output
+1000 9 100 200
+Plasma capacity condensor
+Increases poweredup plasma damage
+1000 10 150 200
+Liquid nitrogen capsules
+Increases plasma firing rate
+1000 11 200 200
+10 Plasma cells
+Plasma ammunition
+50 12 350 200
+Rocket Ammo
+High velocity dumb fire rocket
+50 13 400 200
+Additional Plasma Cannon
+Adds an extra plasma cannon to the Firefly
+2000 14 100 260
+Plasma Power Booster
+Increases power of plasma shots
+2000 15 150 260
+Plasma Cooling Booster
+Permanently increases firing rate
+2000 16 200 260
+Plasma compressor
+Increases plasma ammo capacity
+250 17 450 200
+Rocket Pod
+Allows for an additional 5 rockets to be carried
+250 18 500 200
+Dual Rocket Launcher
+Allows for two rockets to be fired at once
+2000 19 350 260
+Micro Rocket Launcher
+Launches several less powerful rockets at once
+2500 20 400 260
+Laser Cannon
+Laser Cannon
+5000 21 450 260
+Homing Missile Launcher
+Fires homing missile
+7500 22 500 260
+Charge Cannon
+A charge up cannon
+10000 23 550 260
+Dual Homing Missile Launcher
+Fires two homing missiles
+20000 24 600 260
+Homing Micro Missile Launcher
+Fires several small homing missiles
+25000 25 650 260
+

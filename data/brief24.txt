@@ -1,0 +1,6 @@
+Sid Wilson
+4
+FACE_SID
+Chris, we've got a small problem. WEAPCO have mined the asteroid belt in the system. We'll need to clear a way through!
+FACE_CHRIS
+Fine. You guys stay behind. It's too risky having so many of us out there with all those mines and asteroids floating about. I'll radio in once I've cleared a safe path...

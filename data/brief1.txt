@@ -1,0 +1,11 @@
+Krass Tyler
+8
+FACE_KRASS
+Hey, boy! You still owe me money for the Firefly I stole for you! But instead, I want you to go to the WEAPCO training ground and destroy all the craft there.
+FACE_CHRIS
+Wait, I contracted YOU to do that job!
+FACE_KRASS
+I know, but you will still owe me money for the Firefly. Do this job, and also collect $500, and we will call it quits. And if you die... Well, I guess the ship was not worth stealing! HA HA HA!!
+FACE_CHRIS
+...
+

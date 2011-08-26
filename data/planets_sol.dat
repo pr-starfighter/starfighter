@@ -1,0 +1,81 @@
+15
+Mercury
+33
+20
+Venus
+34
+20
+Earth
+32
+20
+Mars
+33
+30
+Jupiter
+34
+20
+Saturn
+31
+20
+Uranus
+31
+20
+Neptune
+31
+20
+Pluto
+31
+-1
+NONE
+0
+
+-1
+-1
+NONE
+NONE
+NONE
+26
+0
+FACE_KLINE
+Kline Kethlan (Venus)
+End Game
+25
+0
+FACE_CHRIS
+Everyone (Earth)
+Take back Earth
+24
+0
+FACE_SID
+Sid Wilson (Mars)
+Destroy inner defence system
+23
+0
+FACE_SID
+Sid Wilson (Jupiter)
+Investigate distress call
+22
+0
+FACE_SID
+Sid Wilson (Saturn)
+Destroy outer defence system
+21
+2
+FACE_URSULA
+Ursula Lexx (Uranus)
+Secure Uranus
+20
+1
+FACE_PHOEBE
+Phoebe Lexx (Neptune)
+Secure Neptune
+19
+0
+FACE_SID
+Sid Wilson (Pluto)
+Secure Pluto
+-1
+-1
+NONE
+NONE
+NONE

@@ -1,0 +1,12 @@
+(unknown)
+10
+FACE_PHOEBE
+Help!! This is an SOS!! Can anyone hear me??! I was intercepted by a large WEAPCO force near Nerod! I'm in need of assistance!!
+FACE_CHRIS
+I don't think we can help, it would attract far too much attention.
+FACE_SID
+Chris, our mission is to save lives.
+FACE_CHRIS
+Yes, but this could be a trap!
+FACE_SID
+WEAPCO are building up a large force in that area. We need to put a stop to it now, so we may as well do her a favour.

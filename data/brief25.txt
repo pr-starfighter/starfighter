@@ -1,0 +1,10 @@
+Everyone
+8
+FACE_CHRIS
+Okay people, this is the big one. We go in fast and we go in hard. Don't hold back and hit them with everything we've got!
+FACE_SID
+We've come too far to turn back now. None of us better die out there!
+FACE_PHOEBE
+Right with you, Chris.
+FACE_URSULA
+WEAPCO'll regret sticking probes into my head!

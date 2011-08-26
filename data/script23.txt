@@ -1,0 +1,55 @@
+1
+-1
+10
+-1048576
+@none@
+
+2
+FACE_URSULA
+-1
+0
+It's a trap!! My God! It's Tyler!!!
+
+8
+FACE_CHRIS
+-1
+0
+Tyler?! What's going on???
+
+14
+FACE_KRASS
+-1
+0
+I'm a mercenary, what do you expect?! WEAPCO hired me to do a job, just like you have been doing.
+
+15
+-1
+11
+-1048576
+@none@
+
+20
+FACE_KRASS
+-1
+0
+Now if you'll assist me in dying quickly, I have a cheque to earn, boy...
+
+25
+FACE_CHRIS
+-1
+0
+STOP CALLING ME "BOY"!!!
+
+45
+-1
+12
+-1048576
+@none@
+
+45
+-1
+13
+-1048576
+@none@
+
+0

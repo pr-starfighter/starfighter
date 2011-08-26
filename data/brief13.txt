@@ -1,0 +1,12 @@
+Phoebe Lexx
+10
+FACE_PHOEBE
+I've located my sister's ship currently in orbit around Odeon. She's ignoring my hails though.
+FACE_CHRIS
+Odeon's a heavy controlled WEAPCO research planet. Sounds like she's planning some mass destruction.
+FACE_SID
+I don't think so. I've just pin pointed her to be freely travelling with a WEAPCO flight group.
+FACE_CHRIS
+Sounds like your sister may have turned traitor.
+FACE_SID
+Sounds more like she's been brainwashed. WEAPCO were developing a new AI training program. We'd better rescue her!

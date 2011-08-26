@@ -1,0 +1,6 @@
+Sid Wilson
+4
+FACE_SID
+A rebel group in this sector have organised a counter strike. If we can help them secure a victory it will be a real boost to morale.
+FACE_CHRIS
+We can lend a hand, but we'll have to make sure those stolen WEAPCO craft aren't destroyed. That won't help at all.

@@ -1,0 +1,13 @@
+2
+FACE_KLINE
+-1
+0
+That's far enough, Bainfield. You've been lucky so far!
+
+8
+FACE_CHRIS
+-1
+0
+I didn't come this far to lose now, Kethlan!
+
+0
