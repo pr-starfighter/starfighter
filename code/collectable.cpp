@@ -93,11 +93,11 @@ void addCollectable(float x, float y, int type, int value, int life)
 	collectable->x = x;
 	collectable->y = y;
 
-	collectable->dx = Math::rrand(-100, 100);
+	collectable->dx = rrand(-100, 100);
 	if (collectable->dx != 0)
 		collectable->dx /= 100;
 
-	collectable->dy = Math::rrand(-100, 100);
+	collectable->dy = rrand(-100, 100);
 	if (collectable->dy != 0)
 		collectable->dy /= 100;
 
@@ -185,7 +185,7 @@ void checkMineBulletCollisions(object *bullet)
 
 		if (collectable->type == P_MINE)
 		{
-			if (Collision::collision(collectable, bullet))
+			if (collision(collectable, bullet))
 			{
 				collectable->active = false;
 				
@@ -252,7 +252,7 @@ void doCollectables()
 
 			collectable->life--;
 
-			if ((player.shield > 0) && (Collision::collision(collectable, &player)))
+			if ((player.shield > 0) && (collision(collectable, &player)))
 			{
 				char temp[40];
 				switch(collectable->type)
@@ -264,7 +264,7 @@ void doCollectables()
 						break;
 
 					case P_ROCKET:
-						Math::limitCharAdd(&player.ammo[1], collectable->value, 0, currentGame.maxRocketAmmo);
+						limitCharAdd(&player.ammo[1], collectable->value, 0, currentGame.maxRocketAmmo);
 						if (player.ammo[1] == currentGame.maxRocketAmmo)
 							sprintf(temp, "Rocket Ammo at Maximum");
 						else
@@ -278,17 +278,17 @@ void doCollectables()
 						break;
 
 					case P_SHIELD:
-						Math::limitInt(&(player.shield += 10), 0, player.maxShield);
+						limitInt(&(player.shield += 10), 0, player.maxShield);
 						currentGame.shieldPickups ++;
 						sprintf(temp, "Restored 10 shield points");
 						break;
 
 					case P_PLASMA_RATE:
-						Math::limitCharAdd(&weapon[1].reload[0], -2, currentGame.maxPlasmaRate, 15);
+						limitCharAdd(&weapon[1].reload[0], -2, currentGame.maxPlasmaRate, 15);
 						player.weaponType[0] = 1;
 						if (player.ammo[0] < 50)
 							player.ammo[0] = 50;
-						Math::limitChar(&(player.ammo[0]), 0, currentGame.maxPlasmaAmmo);
+						limitChar(&(player.ammo[0]), 0, currentGame.maxPlasmaAmmo);
 						if (weapon[1].reload[0] == currentGame.maxPlasmaRate)
 							sprintf(temp, "Firing Rate at Maximum");
 						else
@@ -297,10 +297,10 @@ void doCollectables()
 						break;
 
 					case P_PLASMA_SHOT:
-						Math::limitCharAdd(&weapon[1].ammo[0], 1, 1, currentGame.maxPlasmaOutput);
+						limitCharAdd(&weapon[1].ammo[0], 1, 1, currentGame.maxPlasmaOutput);
 						if (player.ammo[0] < 50)
 							player.ammo[0] = 50;
-						Math::limitChar(&(player.ammo[0]), 0, currentGame.maxPlasmaAmmo);
+						limitChar(&(player.ammo[0]), 0, currentGame.maxPlasmaAmmo);
 						if (weapon[1].ammo[0] == currentGame.maxPlasmaOutput)
 							sprintf(temp, "Plasma output at Maximum");
 						else
@@ -310,10 +310,10 @@ void doCollectables()
 						break;
 
 					case P_PLASMA_DAMAGE:
-						Math::limitCharAdd(&weapon[1].damage, 1, 1, currentGame.maxPlasmaDamage);
+						limitCharAdd(&weapon[1].damage, 1, 1, currentGame.maxPlasmaDamage);
 						if (player.ammo[0] < 50)
 							player.ammo[0] = 50;
-						Math::limitChar(&(player.ammo[0]), 0, currentGame.maxPlasmaAmmo);
+						limitChar(&(player.ammo[0]), 0, currentGame.maxPlasmaAmmo);
 						if (weapon[1].damage == currentGame.maxPlasmaDamage)
 							sprintf(temp, "Plasma damage at Maximum");
 						else
@@ -345,7 +345,7 @@ void doCollectables()
 						break;
 
 					case P_PLASMA_AMMO:
-						Math::limitCharAdd(&player.ammo[0], collectable->value, 0, currentGame.maxPlasmaAmmo);
+						limitCharAdd(&player.ammo[0], collectable->value, 0, currentGame.maxPlasmaAmmo);
 						if (player.ammo[0] == currentGame.maxPlasmaAmmo)
 							sprintf(temp, "Plasma cells at Maximum");
 						else

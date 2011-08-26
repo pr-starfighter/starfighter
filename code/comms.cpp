@@ -136,7 +136,7 @@ void doComms(SDL_Surface *comms)
 		{
 			for (int i = 0 ; i < 4 ; i++)
 			{
-				if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 170, 180 + (i * 60), 430, 50))
+				if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 170, 180 + (i * 60), 430, 50))
 				{
 					createMissionDetailSurface(comms, i);
 					engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
@@ -145,7 +145,7 @@ void doComms(SDL_Surface *comms)
 		}
 		else
 		{
-			if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 170, 440, 160, 20))
+			if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 170, 440, 160, 20))
 			{
 				createCommsSurface(comms);
 				engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;

@@ -21,6 +21,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 extern Graphics graphics;
 extern Star star[200];
 
+extern bool collision(float x0, float y0, int w0, int h0, float x2, float y2, int w1, int h1);
+extern bool collision(object *object1, object *object2);
+extern bool collision(collectables *object1, object *object2);
+
 extern SDL_Surface *loadImage(const char *filename);
 extern void doStarfield();
 extern int isOnScreen(int x, int y, int w, int h);

@@ -115,8 +115,8 @@ void checkScriptEvents()
 				else
 				{
 					enemy[gameEvent[i].entity].active = true;
-					enemy[gameEvent[i].entity].x = Math::rrand((int)player.x + 400, (int)player.x + 800);
-					enemy[gameEvent[i].entity].y = Math::rrand((int)player.y - 400, (int)player.y + 800);
+					enemy[gameEvent[i].entity].x = rrand((int)player.x + 400, (int)player.x + 800);
+					enemy[gameEvent[i].entity].y = rrand((int)player.y - 400, (int)player.y + 800);
 				}
 			}
 

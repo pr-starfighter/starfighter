@@ -308,7 +308,7 @@ int doTitle()
 				if (engine.keyState[SDLK_UP])
 				{
 					engine.keyState[SDLK_UP] = 0;
-					Math::wrapChar(&(--selectedOption), 1, listLength);
+					wrapChar(&(--selectedOption), 1, listLength);
 					if (menuType == 0)
 						if ((selectedOption == 2) || (selectedOption == 3))
 							if (continueSaveSlot == 0)
@@ -317,7 +317,7 @@ int doTitle()
 				if (engine.keyState[SDLK_DOWN])
 				{
 					engine.keyState[SDLK_DOWN] = 0;
-					Math::wrapChar(&(++selectedOption), 1, listLength);
+					wrapChar(&(++selectedOption), 1, listLength);
 					if (menuType == 0)
 						if ((selectedOption == 2) || (selectedOption == 3))
 							if (continueSaveSlot == 0)
@@ -421,7 +421,7 @@ int doTitle()
 							#endif
 						}
 						else if (selectedOption == 4)
-							Math::wrapChar(&(++currentGame.autoSaveSlot), -1, 4);
+							wrapChar(&(++currentGame.autoSaveSlot), -1, 4);
 						else if (selectedOption == listLength)
 							{menuType = 0; selectedOption = 1;}
 						createOptionsMenu();
@@ -601,8 +601,8 @@ void gameover()
 		graphics.updateScreen();
 
 		graphics.unBuffer();
-		x = ((800 - gameover->w) / 2) - Math::rrand(-2, 2);
-		y = ((600 - gameover->h) / 2)  - Math::rrand(-2, 2);
+		x = ((800 - gameover->w) / 2) - rrand(-2, 2);
+		y = ((600 - gameover->h) / 2)  - rrand(-2, 2);
 		graphics.blit(gameover, x,  y);
 
 		graphics.delayFrame();

@@ -109,7 +109,7 @@ void doPlayer()
 			{
 				if (engine.keyState[SDLK_SPACE])
 				{
-					Math::limitCharAdd(&player.ammo[1], 1, 0, 200);
+					limitCharAdd(&player.ammo[1], 1, 0, 200);
 				}
 				else
 				{
@@ -195,8 +195,8 @@ void doPlayer()
 				engine.keyState[SDLK_LSHIFT] = engine.keyState[SDLK_RSHIFT] = 0;
 			}
 
-			Math::limitCharAdd(&player.reload[0], -1, 0, 999);
-			Math::limitCharAdd(&player.reload[1], -1, 0, 999);
+			limitCharAdd(&player.reload[0], -1, 0, 999);
+			limitCharAdd(&player.reload[1], -1, 0, 999);
 
 			if (engine.keyState[SDLK_UP])
 			{
@@ -268,8 +268,8 @@ void doPlayer()
 
 			if (engine.done == 0)
 			{
-				Math::limitFloat(&player.x, 100, 700);
-				Math::limitFloat(&player.y, 100, 500);
+				limitFloat(&player.x, 100, 700);
+				limitFloat(&player.y, 100, 500);
 			}
 
 			if (player.shield > engine.lowShield)
@@ -280,11 +280,11 @@ void doPlayer()
 			if (player.hit)
 				shapeToUse += SHIP_HIT_INDEX;
 
-			Math::limitCharAdd(&player.hit, -1, 0, 100);
+			limitCharAdd(&player.hit, -1, 0, 100);
 
 			graphics.blit(graphics.shipShape[shapeToUse], (int)player.x, (int)player.y);
 			if ((player.shield <= engine.lowShield) && (rand() % 5 < 1))
-				addExplosion(player.x + Math::rrand(-10, 10), player.y + Math::rrand(-10, 20), E_SMOKE);
+				addExplosion(player.x + rrand(-10, 10), player.y + rrand(-10, 20), E_SMOKE);
 		}
 		else
 		{
@@ -308,14 +308,14 @@ void doPlayer()
 
 			engine.keyState[SDLK_UP] = engine.keyState[SDLK_DOWN] = engine.keyState[SDLK_LEFT] = engine.keyState[SDLK_RIGHT] = 0;
 			if ((rand() % 3) == 0)
-				addExplosion(player.x + Math::rrand(-10, 10), player.y + Math::rrand(-10, 10), E_BIG_EXPLOSION);
+				addExplosion(player.x + rrand(-10, 10), player.y + rrand(-10, 10), E_BIG_EXPLOSION);
 			if (player.shield == -99)
 				addDebris((int)player.x, (int)player.y, player.maxShield);
 		}
 	}
 
-	Math::limitFloat(&engine.ssx, -3, 3);
-	Math::limitFloat(&engine.ssy, -3, 3);
+	limitFloat(&engine.ssx, -3, 3);
+	limitFloat(&engine.ssy, -3, 3);
 
 	// Specific for the mission were you have to chase the Executive Transport
 	if ((currentGame.area == 18) && (enemy[WC_BOSS].shield > 0) && (player.shield > 0))

@@ -26,26 +26,26 @@ object enemy[MAX_ALIENS];
 static bool placeAlien(object *theEnemy)
 {
 	if (rand() % 2 == 0)
-		theEnemy->x = Math::rrand(800, 1600);
+		theEnemy->x = rrand(800, 1600);
 	else
-		theEnemy->x = Math::rrand(-800, 0);
+		theEnemy->x = rrand(-800, 0);
 
 	if (rand() % 2 == 0)
-		theEnemy->y = Math::rrand(600, 1200);
+		theEnemy->y = rrand(600, 1200);
 	else
-		theEnemy->y = Math::rrand(-600, 0);
+		theEnemy->y = rrand(-600, 0);
 
 	if (currentGame.area == 24)
 	{
 		theEnemy->x = 800;
-		theEnemy->y = Math::rrand(200, 400);
+		theEnemy->y = rrand(200, 400);
 	}
 
 	for (int i = 0 ; i < MAX_ALIENS ; i++)
 	{
 		if ((enemy[i].owner != theEnemy) && (enemy[i].shield > 0))
 		{
-			if (Collision::collision(theEnemy->x, theEnemy->y, theEnemy->image[0]->w, theEnemy->image[0]->h, enemy[i].x, enemy[i].y, enemy[i].image[0]->w, enemy[i].image[0]->h))
+			if (collision(theEnemy->x, theEnemy->y, theEnemy->image[0]->w, theEnemy->image[0]->h, enemy[i].x, enemy[i].y, enemy[i].image[0]->w, enemy[i].image[0]->h))
 				return false;
 		}
 	}
@@ -251,7 +251,7 @@ bool addAlien()
 	enemy[index].deathCounter = 0 - (enemy[index].maxShield * 3);
 	enemy[index].hit = 0;
 
-	Math::limitInt(&enemy[index].deathCounter, -250, 0);
+	limitInt(&enemy[index].deathCounter, -250, 0);
 
 	// Attempts to place an alien. If it fails, the alien is deactivated.
 	for (int i = 0 ; i < 100 ; i++)
@@ -272,8 +272,8 @@ bool addAlien()
 	if (enemy[index].classDef == CD_ESCORT)
 		enemy[index].shield = 50;
 
-	enemy[index].dx = Math::rrand(-2, 2);
-	enemy[index].dy = Math::rrand(-2, 2);
+	enemy[index].dx = rrand(-2, 2);
+	enemy[index].dy = rrand(-2, 2);
 
 	enemy[index].ammo[0] = 0;
 
@@ -475,14 +475,14 @@ static void addFriendly(int type)
 	enemy[type].active = true;
 
 	if (rand() % 2 == 0)
-		enemy[type].x = Math::rrand(400, 550);
+		enemy[type].x = rrand(400, 550);
 	else
-		enemy[type].x = Math::rrand(250, 400);
+		enemy[type].x = rrand(250, 400);
 
 	if (rand() % 2 == 0)
-		enemy[type].y = Math::rrand(300, 450);
+		enemy[type].y = rrand(300, 450);
 	else
-		enemy[type].y = Math::rrand(150, 300);
+		enemy[type].y = rrand(150, 300);
 
 	if (type == FR_PHOEBE)
 		enemy[type].classDef = CD_PHOEBE;
@@ -610,7 +610,7 @@ void initAliens()
 	{
 		enemy[i].systemPower = enemy[i].maxShield;
 		enemy[i].deathCounter = 0 - (enemy[i].maxShield * 3);
-		Math::limitInt(&enemy[i].deathCounter, -350, 0);
+		limitInt(&enemy[i].deathCounter, -350, 0);
 	}
 
 	// Set target energy meter
@@ -826,7 +826,7 @@ static void moveAndSeparate(object *theEnemy)
 				continue;
 			}
 
-			if (Collision::collision(theEnemy, anEnemy))
+			if (collision(theEnemy, anEnemy))
 			{
 				if ((anEnemy->classDef == CD_BARRIER) && (anEnemy->owner != theEnemy))
 				{
@@ -848,7 +848,7 @@ static void moveAndSeparate(object *theEnemy)
 	// Handle a collision with the player
 	if ((player.shield > 0) && (theEnemy->shield > 0) && (checkCollisions))
 	{
-		if (Collision::collision(theEnemy, &player))
+		if (collision(theEnemy, &player))
 		{
 			hasCollided = true;
 
@@ -918,7 +918,7 @@ static void moveAndSeparate(object *theEnemy)
 				theEnemy->dx *= 0.2;
 				theEnemy->dy *= 0.2;
 
-				Math::limitInt(&theEnemy->thinktime, 0, 15);
+				limitInt(&theEnemy->thinktime, 0, 15);
 			}
 		}
 	}
@@ -989,7 +989,7 @@ void doAliens()
 
 				canFire = true; // The alien is allowed to fire
 
-				Math::limitInt(&--theEnemy->thinktime, 0, 250);
+				limitInt(&--theEnemy->thinktime, 0, 250);
 
 				if (theEnemy->target->shield < 1)
 					theEnemy->target = theEnemy;
@@ -1031,8 +1031,8 @@ void doAliens()
 						if (theEnemy->dx > 0) theEnemy->face = 1;
 					}
 
-					Math::limitFloat(&theEnemy->dx, 0 - theEnemy->speed, theEnemy->speed);
-					Math::limitFloat(&theEnemy->dy, 0 - theEnemy->speed, theEnemy->speed);
+					limitFloat(&theEnemy->dx, 0 - theEnemy->speed, theEnemy->speed);
+					limitFloat(&theEnemy->dy, 0 - theEnemy->speed, theEnemy->speed);
 
 				}
 
@@ -1050,7 +1050,7 @@ void doAliens()
 
 				if (theEnemy->flags & FL_LEAVESECTOR)
 				{
-					Math::limitFloat(&(theEnemy->dx -= 0.5), 0, -15);
+					limitFloat(&(theEnemy->dx -= 0.5), 0, -15);
 					theEnemy->dy = 0;
 					theEnemy->thinktime = 999;
 					theEnemy->face = 0;
@@ -1103,13 +1103,13 @@ void doAliens()
 
 				if (theEnemy->classDef == CD_MOBILESHIELD)
 				{
-					Math::limitInt(&(++enemy[WC_BOSS].shield), 0, enemy[WC_BOSS].maxShield);
+					limitInt(&(++enemy[WC_BOSS].shield), 0, enemy[WC_BOSS].maxShield);
 				}
 
 				// ----------------------------------------
 
-				Math::limitCharAdd(&theEnemy->reload[0], -1, 0, 999);
-				Math::limitCharAdd(&theEnemy->reload[1], -1, 0, 999);
+				limitCharAdd(&theEnemy->reload[0], -1, 0, 999);
+				limitCharAdd(&theEnemy->reload[1], -1, 0, 999);
 
     			if ((!(theEnemy->flags & FL_DISABLED)) && (!(theEnemy->flags & FL_NOFIRE)))
 				{
@@ -1157,7 +1157,7 @@ void doAliens()
 				}
 				else
 				{
-					Math::limitCharAdd(&theEnemy->ammo[0], 1, 0, 250);
+					limitCharAdd(&theEnemy->ammo[0], 1, 0, 250);
 				}
 				// -------------------------------------------------------
 
@@ -1188,7 +1188,7 @@ void doAliens()
 				if (theEnemy->hit)
 					shapeToUse += SHIP_HIT_INDEX;
 
-				Math::limitCharAdd(&theEnemy->hit, -1, 0, 100);
+				limitCharAdd(&theEnemy->hit, -1, 0, 100);
 
 				if ((theEnemy->x + theEnemy->image[0]->w > 0) && (theEnemy->x < 800) && (theEnemy->y + theEnemy->image[0]->h > 0) && (theEnemy->y < 600))
 				{

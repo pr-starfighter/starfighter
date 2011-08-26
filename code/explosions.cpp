@@ -54,7 +54,7 @@ void addEngine(object *craft)
 	float x = craft->x + (craft->engineX * craft->face);
 	float y = craft->y + craft->engineY;
 
-	y += Math::rrand(-3, 3);
+	y += rrand(-3, 3);
 	addExplosion(x, y, E_TINY_EXPLOSION);
 }
 

@@ -55,7 +55,7 @@ void addBullet(object *theWeapon, object *attacker, int y, int dy)
 
 	if (bullet->flags & WF_VARIABLE_SPEED)
 	{
-		bullet->dx = Math::rrand(100, 200);
+		bullet->dx = rrand(100, 200);
 		bullet->dx /= 10;
 		if (attacker->face == 1)
 			bullet->dx = 0 - bullet->dx;
@@ -65,7 +65,7 @@ void addBullet(object *theWeapon, object *attacker, int y, int dy)
 
 	if (bullet->flags & WF_SCATTER)
 	{
-		bullet->dy = Math::rrand(-200, 200);
+		bullet->dy = rrand(-200, 200);
 		if (bullet->dy != 0)
 			bullet->dy /= 200;
 	}
@@ -127,8 +127,8 @@ void addBullet(object *theWeapon, object *attacker, int y, int dy)
 
 	if (attacker->classDef == CD_ASTEROID)
 	{
-		bullet->dx = Math::rrand(-20, 20);
-		bullet->dy = Math::rrand(-20, 20);
+		bullet->dx = rrand(-20, 20);
+		bullet->dy = rrand(-20, 20);
 		bullet->image[0] = graphics.shape[4];
 	}
 
@@ -405,7 +405,7 @@ char checkPlayerShockDamage(float x, float y)
 
 		player.shield -= (int)(10 - distX);
 		player.shield -= (int)(10 - distY);
-		Math::limitInt(&player.shield, 0, player.maxShield);
+		limitInt(&player.shield, 0, player.maxShield);
 		player.hit = 10;
 
 		return 1;
@@ -441,7 +441,7 @@ void fireRay(object *attacker)
 	{
 		if (player.shield > 0)
 		{
-			if (Collision::collision(player.x, player.y, player.image[0]->w, player.image[0]->h, ray.x, ray.y, ray.w, ray.h) && (!engine.cheatShield))
+			if (collision(player.x, player.y, player.image[0]->w, player.image[0]->h, ray.x, ray.y, ray.w, ray.h) && (!engine.cheatShield))
 			{
 				if (player.shield > engine.lowShield)
 				{
@@ -472,7 +472,7 @@ void fireRay(object *attacker)
 
 		if ((anEnemy->shield > 0) && (attacker != anEnemy) && (attacker->classDef != anEnemy->classDef))
 		{
-			if (Collision::collision(anEnemy->x, anEnemy->y, anEnemy->image[0]->w, anEnemy->image[0]->h, ray.x, ray.y, ray.w, ray.h))
+			if (collision(anEnemy->x, anEnemy->y, anEnemy->image[0]->w, anEnemy->image[0]->h, ray.x, ray.y, ray.w, ray.h))
 			{
 				anEnemy->shield--;
 				addExplosion(anEnemy->x, anEnemy->y, E_SMALL_EXPLOSION);
@@ -547,7 +547,7 @@ void doBullets()
 			if (bullet->id == WT_CHARGER)
 			{
 				for (int i = 0 ; i < bullet->damage ; i++)
-					graphics.blit(bullet->image[0], (int)(bullet->x - Math::rrand(-(bullet->damage / 3), 0)), (int)(bullet->y + Math::rrand(-3, 3)));
+					graphics.blit(bullet->image[0], (int)(bullet->x - rrand(-(bullet->damage / 3), 0)), (int)(bullet->y + rrand(-3, 3)));
 			}
 
 			graphics.blit(bullet->image[0], (int)bullet->x, (int)bullet->y);
@@ -557,18 +557,18 @@ void doBullets()
 			if (bullet->target != NULL)
 			{
 				if (bullet->x < bullet->target->x)
-					Math::limitFloat(&(bullet->dx += homingMissileSpeed), -15, 15);
+					limitFloat(&(bullet->dx += homingMissileSpeed), -15, 15);
 				if (bullet->x > bullet->target->x)
-					Math::limitFloat(&(bullet->dx -= homingMissileSpeed), -15, 15);
+					limitFloat(&(bullet->dx -= homingMissileSpeed), -15, 15);
 
 				//Rocket is (more or less) inline with target. Fly straight
 				if ((bullet->x > bullet->target->x - 1) && (bullet->x < bullet->target->x + 5))
 					bullet->dx = 0;
 
 				if (bullet->y < bullet->target->y)
-					Math::limitFloat(&(bullet->dy += homingMissileSpeed), -15, 15);
+					limitFloat(&(bullet->dy += homingMissileSpeed), -15, 15);
 				if (bullet->y > bullet->target->y)
-					Math::limitFloat(&(bullet->dy -= homingMissileSpeed), -15, 15);
+					limitFloat(&(bullet->dy -= homingMissileSpeed), -15, 15);
 
 				//Rocket is (more or less) inline with target. Fly straight
 				if ((bullet->y > bullet->target->y - 1) && (bullet->y < bullet->target->y + 5))
@@ -602,7 +602,7 @@ void doBullets()
 
 				if (okayToHit)
 				{
-					if ((bullet->active) && (Collision::collision(bullet, theEnemy)))
+					if ((bullet->active) && (collision(bullet, theEnemy)))
 					{
 						if (bullet->owner == &player)
 						{
@@ -623,7 +623,7 @@ void doBullets()
 
 						if (theEnemy->flags & FL_CANNOTDIE)
 						{
-							Math::limitInt(&theEnemy->shield, 1, theEnemy->maxShield);
+							limitInt(&theEnemy->shield, 1, theEnemy->maxShield);
 							if (theEnemy->shield == 1)
 							{
 								if (currentGame.area != 26)
@@ -695,7 +695,7 @@ void doBullets()
 			// Check for bullets hitting player
 			if ((bullet->flags & WF_WEAPCO) || (bullet->id == WT_ROCKET) || (bullet->id == WT_LASER) || (bullet->id == WT_CHARGER))
 			{
-				if ((bullet->active) && (player.shield > 0) && (Collision::collision(bullet, &player)) && (bullet->owner != &player))
+				if ((bullet->active) && (player.shield > 0) && (collision(bullet, &player)) && (bullet->owner != &player))
 				{
 					if ((!engine.cheatShield) || (engine.missionCompleteTimer != 0))
 					{
@@ -707,7 +707,7 @@ void doBullets()
 							}
 						}
 						player.shield -= bullet->damage;
-						Math::limitInt(&player.shield, 0, player.maxShield);
+						limitInt(&player.shield, 0, player.maxShield);
 						player.hit = 5;
 					}
 
@@ -743,7 +743,7 @@ void doBullets()
 				theCargo = &cargo[j];
 				if (theCargo->active)
 				{
-					if (Collision::collision(bullet, theCargo))
+					if (collision(bullet, theCargo))
 					{
 						bullet->active = false;
 						addExplosion(bullet->x, bullet->y, E_SMALL_EXPLOSION);
@@ -753,7 +753,7 @@ void doBullets()
 							theCargo->active = false;
 							playSound(SFX_EXPLOSION);
 							for (int i = 0 ; i < 10 ; i++)
-								addExplosion(theCargo->x + Math::rrand(-15, 15), theCargo->y + Math::rrand(-15, 15), E_BIG_EXPLOSION);
+								addExplosion(theCargo->x + rrand(-15, 15), theCargo->y + rrand(-15, 15), E_BIG_EXPLOSION);
 							updateMissionRequirements(M_PROTECT_PICKUP, P_CARGO, 1);
 						}
 					}
@@ -772,7 +772,7 @@ void doBullets()
 			{
 				playSound(SFX_EXPLOSION);
 				for (int i = 0 ; i < 10 ; i++)
-					addExplosion(bullet->x + Math::rrand(-35, 35), bullet->y + Math::rrand(-35, 35), E_BIG_EXPLOSION);
+					addExplosion(bullet->x + rrand(-35, 35), bullet->y + rrand(-35, 35), E_BIG_EXPLOSION);
 
 				if (bullet->flags & WF_TIMEDEXPLOSION)
 					if (checkPlayerShockDamage(bullet->x, bullet->y))

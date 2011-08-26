@@ -221,7 +221,7 @@ int showSaveSlots(SDL_Surface *savesSurface, signed char saveSlot)
 	{
 		for (int i = 0 ; i < 5 ; i++)
 		{
-			if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, r.x, r.y, r.w, r.h))
+			if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, r.x, r.y, r.w, r.h))
 			{
 				clickedSlot = i;
 				createSavesSurface(savesSurface, i);
@@ -229,16 +229,16 @@ int showSaveSlots(SDL_Surface *savesSurface, signed char saveSlot)
 			r.y += 30;
 		}
 
-		if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 215, 365, 100, 25))
+		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 215, 365, 100, 25))
 		{
 			saveGame(saveSlot + 1);
 			createSavesSurface(savesSurface, -10);
 		}
 
-		if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 335, 365, 100, 25))
+		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 335, 365, 100, 25))
 			createSavesSurface(savesSurface, -1);
 
-		if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 453, 365, 100, 25))
+		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 453, 365, 100, 25))
 		{
 			char filename[PATH_MAX];
 			sprintf(filename, "%ssave%.2d.dat", engine.userHomeDirectory, (saveSlot + 1));

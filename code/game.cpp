@@ -187,7 +187,7 @@ int mainGameLoop()
 					}
 					else if ((currentGame.area == 26) && (engine.musicVolume > 0))
 					{
-						Math::limitFloat(&(engine.musicVolume -= 0.2), 0, 100);
+						limitFloat(&(engine.musicVolume -= 0.2), 0, 100);
 						Mix_VolumeMusic((int)engine.musicVolume);
 					}
 					else
@@ -202,7 +202,7 @@ int mainGameLoop()
 			}
 			else
 			{
-				Math::limitFloat(&(engine.musicVolume -= 0.2), 0, 100);
+				limitFloat(&(engine.musicVolume -= 0.2), 0, 100);
 				Mix_VolumeMusic((int)engine.musicVolume);
 				if (SDL_GetTicks() >= engine.missionCompleteTimer)
 				{
@@ -226,7 +226,7 @@ int mainGameLoop()
 		doExplosions();
 		doInfo();
 
-		Math::wrapChar(&(--engine.eventTimer), 0, 60);
+		wrapChar(&(--engine.eventTimer), 0, 60);
 
 		while (engine.paused)
 		{
@@ -237,12 +237,12 @@ int mainGameLoop()
 		if ((currentGame.area == 24) && (engine.addAliens > -1))
 		{
 			if ((rand() % 10) == 0)
-				addCollectable(Math::rrand(800, 100), player.y, P_MINE, 25, 180 + rand() % 60);
+				addCollectable(rrand(800, 100), player.y, P_MINE, 25, 180 + rand() % 60);
 		}
 
 		if (engine.addAliens > -1)
 		{
-   		Math::wrapInt(&(--engine.addAliens), 0, currentMission.addAliens);
+   		wrapInt(&(--engine.addAliens), 0, currentMission.addAliens);
 			if ((engine.addAliens == 0) && (allowableAliens > 0))
 			{
 				allowableAliens -= addAlien();

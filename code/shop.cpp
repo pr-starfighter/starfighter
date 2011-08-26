@@ -507,7 +507,7 @@ static void buy(int i)
 		case 3:
 			if (player.ammo[0] == currentGame.maxPlasmaAmmo)
 				{shopSelectedItem = -4; return;}
-			Math::limitCharAdd(&player.ammo[0], 10, 0, currentGame.maxPlasmaAmmo);
+			limitCharAdd(&player.ammo[0], 10, 0, currentGame.maxPlasmaAmmo);
 			break;
 		case 4:
 			if ((player.weaponType[1] == W_CHARGER) || (player.weaponType[1] == W_LASER))
@@ -546,7 +546,7 @@ static void buy(int i)
 		case 8:
 			if (currentGame.maxPlasmaAmmo == 250)
 				{shopSelectedItem = -3; return;}
-			Math::limitCharAdd(&currentGame.maxPlasmaAmmo, 10, 0, 250);
+			limitCharAdd(&currentGame.maxPlasmaAmmo, 10, 0, 250);
 			break;
 		case 9:
 			if ((player.weaponType[1] == W_CHARGER) || (player.weaponType[1] == W_LASER))
@@ -578,7 +578,7 @@ static void buy(int i)
 			if (player.weaponType[1] == W_HOMING_MISSILE)
 				{shopSelectedItem = -8; return;}
 			player.weaponType[1] = W_HOMING_MISSILE;
-			Math::limitChar(&player.ammo[1], 0, 20);
+			limitChar(&player.ammo[1], 0, 20);
 			shopSelectedItem = -1;
 			break;
 		case 14:
@@ -592,14 +592,14 @@ static void buy(int i)
 			if (player.weaponType[1] == W_DOUBLE_HOMING_MISSILES)
 				{shopSelectedItem = -8; return;}
 			player.weaponType[1] = W_DOUBLE_HOMING_MISSILES;
-			Math::limitChar(&player.ammo[1], 0, 10);
+			limitChar(&player.ammo[1], 0, 10);
 			shopSelectedItem = -1;
 			break;
 		case 16:
 			if (player.weaponType[1] == W_MICRO_HOMING_MISSILES)
 				{shopSelectedItem = -8; return;}
 			player.weaponType[1] = W_MICRO_HOMING_MISSILES;
-			Math::limitChar(&player.ammo[1], 0, 10);
+			limitChar(&player.ammo[1], 0, 10);
 			shopSelectedItem = -1;
 			break;
 	}
@@ -631,7 +631,7 @@ static void sell(int i)
 			if (player.ammo[0] == 0)
 				{shopSelectedItem = -6; return;}
 			if (player.ammo[0] > 9)
-				Math::limitCharAdd(&player.ammo[0], -10, 0, currentGame.maxPlasmaAmmo);
+				limitCharAdd(&player.ammo[0], -10, 0, currentGame.maxPlasmaAmmo);
 			else
 				player.ammo[0] = 0;
 			break;
@@ -659,13 +659,13 @@ static void sell(int i)
 			if (currentGame.maxPlasmaAmmo == 100)
 				{shopSelectedItem = -1; return;}
 			currentGame.maxPlasmaAmmo -= 10;
-			Math::limitChar(&player.ammo[0], 0, currentGame.maxPlasmaAmmo);
+			limitChar(&player.ammo[0], 0, currentGame.maxPlasmaAmmo);
 			break;
 		case 9:
 			if (currentGame.maxRocketAmmo == 0)
 				{shopSelectedItem = -1; return;}
 			currentGame.maxRocketAmmo -= 5;
-			Math::limitChar(&player.ammo[1], 0, currentGame.maxRocketAmmo);
+			limitChar(&player.ammo[1], 0, currentGame.maxRocketAmmo);
 			break;
 		case 10:
 			if (player.weaponType[1] != W_DOUBLE_ROCKETS)
@@ -747,7 +747,7 @@ void showShop()
 	{
 		for (int i = 0 ; i < icons ; i++)
 		{
-			if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, shopItems[i].x, shopItems[i].y, 32, 25))
+			if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, shopItems[i].x, shopItems[i].y, 32, 25))
 			{
 				shopSelectedItem = i;
 				engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
@@ -757,14 +757,14 @@ void showShop()
 
 		if (shopSelectedItem > -1)
 		{
-			if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 60, 350, 24, 16))
+			if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 60, 350, 24, 16))
 			{
 				buy(shopSelectedItem);
 				engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
 				drawShop();
 			}
 
-			if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 700, 350, 24, 16))
+			if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 700, 350, 24, 16))
 			{
 				sell(shopSelectedItem);
 				engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;

@@ -378,7 +378,7 @@ void doInfo()
 		return;
 
 	if ((!engine.keyState[SDLK_SPACE]) && (player.weaponType[1] == W_LASER) && (engine.eventTimer % 8 == 1))
-		Math::limitCharAdd(&player.ammo[1], -1, 1, 255);
+		limitCharAdd(&player.ammo[1], -1, 1, 255);
 
 	if ((engine.eventTimer < 30) && (player.shield <= engine.lowShield))
 		return;

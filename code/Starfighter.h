@@ -53,6 +53,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "init.h"
 #include "intermission.h"
 #include "loadSave.h"
+#include "math.h"
 #include "messages.h"
 #include "misc.h"
 #include "missions.h"

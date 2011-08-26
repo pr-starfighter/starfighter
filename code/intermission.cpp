@@ -27,8 +27,8 @@ static void doCursor()
 {
 	getPlayerInput();
 
-	Math::limitInt(&engine.cursor_x, 10, 790);
-	Math::limitInt(&engine.cursor_y, 10, 590);
+	limitInt(&engine.cursor_x, 10, 790);
+	limitInt(&engine.cursor_y, 10, 590);
 	graphics.blit(graphics.shape[0], engine.cursor_x, engine.cursor_y);
 }
 
@@ -265,7 +265,7 @@ static bool showSystem(float x, float y)
 		r.y -= (systemPlanet[planet].image->h / 2);
 		graphics.blit(systemPlanet[planet].image, r.x, r.y);
 
-		if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, r.x, r.y, systemPlanet[planet].image->w, systemPlanet[planet].image->h))
+		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, r.x, r.y, systemPlanet[planet].image->w, systemPlanet[planet].image->h))
 		{
 			graphics.drawString(systemPlanet[planet].name, -1, 545, FONT_WHITE);
 			if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
@@ -395,14 +395,14 @@ static void showOptions(SDL_Surface *optionsSurface)
 {
 	if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
 	{
-		if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 172, 45, 22))
+		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 172, 45, 22))
 			engine.useSound = true;
 
-		if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 172, 45, 22))
+		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 172, 45, 22))
 			engine.useSound = false;
 
 
-		if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 222, 45, 22))
+		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 222, 45, 22))
 		{
 			engine.useMusic = true;
 			if (engine.useAudio)
@@ -414,14 +414,14 @@ static void showOptions(SDL_Surface *optionsSurface)
 			}
 		}
 
-		if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 222, 45, 22))
+		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 222, 45, 22))
 		{
 			engine.useMusic = false;
 			if (engine.useAudio)
 				Mix_PauseMusic();
 		}
 
-		if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 272, 45, 22))
+		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 272, 45, 22))
 		{
 			if (!engine.fullScreen)
 			{
@@ -436,7 +436,7 @@ static void showOptions(SDL_Surface *optionsSurface)
 			}
 		}
 
-		if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 272, 45, 22))
+		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 272, 45, 22))
 		{
 			if (engine.fullScreen)
 			{
@@ -451,9 +451,9 @@ static void showOptions(SDL_Surface *optionsSurface)
 			}
 		}
 		
-		if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 322, 100, 22))
+		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 322, 100, 22))
 		{
-			Math::wrapChar(&(++currentGame.autoSaveSlot), -1, 4);
+			wrapChar(&(++currentGame.autoSaveSlot), -1, 4);
 			engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
 		}
 
@@ -637,8 +637,8 @@ int galaxyMap()
 
 		if (rand() % 1000 < 2)
 		{
-			engine.ssx = Math::rrand(100, 100);
-			engine.ssy = Math::rrand(100, 100);
+			engine.ssx = rrand(100, 100);
+			engine.ssy = rrand(100, 100);
 			engine.ssx /= 100;
 			engine.ssy /= 100;
 		}
@@ -801,7 +801,7 @@ int galaxyMap()
 					graphics.blit(graphics.shape[i + 1], 80 + (i * 90), 500);
 				}
 
-				if (Collision::collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 80 + (i * 90), 500, 32, 32))
+				if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 80 + (i * 90), 500, 32, 32))
 				{
 					if (i != 0)
 					{

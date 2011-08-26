@@ -102,8 +102,8 @@ void doCargo()
 			cargo[i].x += engine.ssx;
 			cargo[i].y += engine.ssy;
 
-			Math::limitFloat(&cargo[i].x, cargo[i].owner->x - 50, cargo[i].owner->x + 50);
-			Math::limitFloat(&cargo[i].y, cargo[i].owner->y - 50, cargo[i].owner->y + 50);
+			limitFloat(&cargo[i].x, cargo[i].owner->x - 50, cargo[i].owner->x + 50);
+			limitFloat(&cargo[i].y, cargo[i].owner->y - 50, cargo[i].owner->y + 50);
 
 			dx = (cargo[i].x - cargo[i].owner->x) / 10;
 			dy = (cargo[i].y - cargo[i].owner->y) / 10;
