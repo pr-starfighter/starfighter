@@ -18,12 +18,64 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-extern Graphics graphics;
 extern Star star[200];
+
+extern Uint32 red;
+extern Uint32 darkRed;
+extern Uint32 yellow;
+extern Uint32 darkYellow;
+extern Uint32 green;
+extern Uint32 darkGreen;
+extern Uint32 blue;
+extern Uint32 darkBlue;
+extern Uint32 darkerBlue;
+extern Uint32 black;
+extern Uint32 white;
+extern Uint32 lightGrey;
+extern Uint32 darkGrey;
+extern SDL_Surface *screen, *background;
+extern SDL_Surface *shape[MAX_SHAPES];
+extern SDL_Surface *shipShape[MAX_SHIPSHAPES];
+extern SDL_Surface *fontShape[MAX_FONTSHAPES];
+extern SDL_Surface *shopSurface[MAX_SHOPSHAPES];
+extern bRect *bufferHead;
+extern bRect *bufferTail;
+extern textObject textShape[MAX_TEXTSHAPES];
+extern SDL_Surface *messageBox;
+
 
 extern bool collision(float x0, float y0, int w0, int h0, float x2, float y2, int w1, int h1);
 extern bool collision(object *object1, object *object2);
 extern bool collision(collectables *object1, object *object2);
+
+extern void initGraphics();
+extern SDL_Surface *setTransparent(SDL_Surface *sprite);
+extern void addBuffer(int x, int y, int w, int h);
+extern void blit(SDL_Surface *image, int x, int y, SDL_Surface *dest);
+extern void blit(SDL_Surface *image, int x, int y);
+extern void blitText(int i);
+extern void flushBuffer();
+extern void unBuffer();
+extern int drawString(const char *in, int x, int y, int fontColor, signed char wrap, SDL_Surface *dest);
+extern int drawString(const char *in, int x, int y, int fontColor, SDL_Surface *dest);
+extern int drawString(const char *in, int x, int y, int fontColor);
+extern void setColorIndexes();
+extern void drawBackGround();
+extern void clearScreen(Uint32 color);
+extern void updateScreen();
+extern void delayFrame();
+extern void putpixel(SDL_Surface *surface, int x, int y, Uint32 pixel);
+extern void drawLine(SDL_Surface *dest, int x1, int y1, int x2, int y2, int col);
+extern void drawLine(int x1, int y1, int x2, int y2, int col);
+extern void circle(int xc, int yc, int R, SDL_Surface *PIX, int col);
+extern void blevelRect(SDL_Surface *dest, int x, int y, int w, int h, Uint8 red, Uint8 green, Uint8 blue);
+extern void blevelRect(int x, int y, int w, int h, Uint8 red, Uint8 green, Uint8 blue);
+extern SDL_Surface *createSurface(int width, int height);
+extern SDL_Surface *textSurface(const char *inString, int color);
+extern void textSurface(int index, const char *inString, int x, int y, int fontColor);
+extern SDL_Surface *alphaRect(int width, int height, Uint8 red, Uint8 green, Uint8 blue);
+extern void createMessageBox(SDL_Surface *face, const char *message, signed char transparent);
+extern void freeGraphics();
 
 extern SDL_Surface *loadImage(const char *filename);
 extern void doStarfield();

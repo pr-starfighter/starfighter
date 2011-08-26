@@ -174,7 +174,7 @@ static void setScene(int scene)
 
 		if (shape > -1)
 		{
-			enemy[index].image[0] = graphics.shipShape[shape];
+			enemy[index].image[0] = shipShape[shape];
 			enemy[index].x = x;
 			enemy[index].y = y;
 			enemy[index].dx = speed;
@@ -200,17 +200,17 @@ static void setScene(int scene)
 
 void doCutscene(int scene)
 {
-	graphics.clearScreen(graphics.black);
-	graphics.updateScreen();
-	graphics.clearScreen(graphics.black);
+	clearScreen(black);
+	updateScreen();
+	clearScreen(black);
 
 	engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = engine.keyState[SDLK_SPACE] = 0;
 
 	engine.ssx = -0.5;
 	engine.ssy = 0;
 
-	graphics.flushBuffer();
-	graphics.freeGraphics();
+	flushBuffer();
+	freeGraphics();
 	resetLists();
 	loadGameGraphics();
 
@@ -243,7 +243,7 @@ void doCutscene(int scene)
 	signed char currentMessage = -1;
 	int timer = 60 * 4;
 
-	graphics.drawBackGround();
+	drawBackGround();
 
 	SDL_Surface *face;
 	
@@ -251,8 +251,8 @@ void doCutscene(int scene)
 
 	while (true)
 	{
-		graphics.updateScreen();
-		graphics.unBuffer();
+		updateScreen();
+		unBuffer();
 		getPlayerInput();
 		doStarfield();
 		doExplosions();
@@ -264,7 +264,7 @@ void doCutscene(int scene)
 				addEngine(&enemy[i]);
 				enemy[i].x += enemy[i].dx;
 				enemy[i].x += engine.ssx;
-				graphics.blit(enemy[i].image[0], (int)enemy[i].x, (int)enemy[i].y);
+				blit(enemy[i].image[0], (int)enemy[i].x, (int)enemy[i].y);
 				if (enemy[i].x > 850)
 				{
 					enemy[i].x = -50;
@@ -291,22 +291,22 @@ void doCutscene(int scene)
 
 				face = NULL;
 				if (cutMessage[currentMessage].face != -1)
-					face = graphics.shape[cutMessage[currentMessage].face];
-				graphics.createMessageBox(face, cutMessage[currentMessage].message, 0);
+					face = shape[cutMessage[currentMessage].face];
+				createMessageBox(face, cutMessage[currentMessage].message, 0);
 			}
 		}
 
-		if ((showMessage) && (graphics.messageBox != NULL))
-			graphics.blit(graphics.messageBox, (800 - graphics.messageBox->w) / 2, 500);
+		if ((showMessage) && (messageBox != NULL))
+			blit(messageBox, (800 - messageBox->w) / 2, 500);
 
-		graphics.delayFrame();
+		delayFrame();
 
 		if (engine.keyState[SDLK_ESCAPE])
 			break;
 	}
 
-	graphics.flushBuffer();
-	graphics.freeGraphics();
-	graphics.clearScreen(graphics.black);
-	graphics.updateScreen();
+	flushBuffer();
+	freeGraphics();
+	clearScreen(black);
+	updateScreen();
 }

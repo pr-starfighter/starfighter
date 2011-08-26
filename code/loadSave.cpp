@@ -49,7 +49,7 @@ int initSaveSlots()
 		{
 			sprintf(saveSlot[i], "%.2d - Empty", (i + 1));
 			if (engine.gameSection == SECTION_TITLE)
-				graphics.textSurface(13 + i, saveSlot[i], -1, imagePos, FONT_WHITE);
+				textSurface(13 + i, saveSlot[i], -1, imagePos, FONT_WHITE);
 		}
 		else
 		{
@@ -61,7 +61,7 @@ int initSaveSlots()
 			{
 				sprintf(saveSlot[i], "%.2d - %s, %s", (i + 1), systemNames[tempGame.system], tempGame.stationedName);
 				if (engine.gameSection == SECTION_TITLE)
-					graphics.textSurface(13 + i, saveSlot[i], -1, imagePos, FONT_WHITE);
+					textSurface(13 + i, saveSlot[i], -1, imagePos, FONT_WHITE);
 			}
 
 			if (stat(fileName, &fileInfo) != -1)
@@ -154,21 +154,21 @@ void saveGame(int slot)
 
 void createSavesSurface(SDL_Surface *savesSurface, signed char clickedSlot)
 {
-	graphics.blevelRect(savesSurface, 0, 0, 348, 298, 0x00, 0x00, 0x00);
+	blevelRect(savesSurface, 0, 0, 348, 298, 0x00, 0x00, 0x00);
 
  	int y = 10;
 
 	for (int i = 0 ; i < 5 ; i++)
 	{
 		if (clickedSlot == i)
-			graphics.blevelRect(savesSurface, 5, y, 338, 25, 0x99, 0x00, 0x00);
+			blevelRect(savesSurface, 5, y, 338, 25, 0x99, 0x00, 0x00);
 		else
-			graphics.blevelRect(savesSurface, 5, y, 338, 25, 0x00, 0x00, 0x99);
-		graphics.drawString(saveSlot[i], 70, y + 5, FONT_WHITE, savesSurface);
+			blevelRect(savesSurface, 5, y, 338, 25, 0x00, 0x00, 0x99);
+		drawString(saveSlot[i], 70, y + 5, FONT_WHITE, savesSurface);
 		y += 30;
 	}
 
-	graphics.drawString("*** HELP ***", 120, 170, FONT_WHITE, savesSurface);
+	drawString("*** HELP ***", 120, 170, FONT_WHITE, savesSurface);
 
 	switch(clickedSlot)
 	{
@@ -177,25 +177,25 @@ void createSavesSurface(SDL_Surface *savesSurface, signed char clickedSlot)
 		case 2:
 		case 3:
 		case 4:
-			graphics.blevelRect(savesSurface, 5, 265, 100, 25, 0x00, 0x99, 0x00);
-			graphics.blevelRect(savesSurface, 125, 265, 100, 25, 0x99, 0x99, 0x00);
-			graphics.blevelRect(savesSurface, 243, 265, 100, 25, 0x99, 0x00, 0x00);
-			graphics.drawString("SAVE", 40, 270, FONT_WHITE, savesSurface);
-			graphics.drawString("CANCEL", 150, 270, FONT_WHITE, savesSurface);
-			graphics.drawString("DELETE", 270, 270, FONT_WHITE, savesSurface);
+			blevelRect(savesSurface, 5, 265, 100, 25, 0x00, 0x99, 0x00);
+			blevelRect(savesSurface, 125, 265, 100, 25, 0x99, 0x99, 0x00);
+			blevelRect(savesSurface, 243, 265, 100, 25, 0x99, 0x00, 0x00);
+			drawString("SAVE", 40, 270, FONT_WHITE, savesSurface);
+			drawString("CANCEL", 150, 270, FONT_WHITE, savesSurface);
+			drawString("DELETE", 270, 270, FONT_WHITE, savesSurface);
 
-			graphics.drawString("SAVE will save the game", 17, 200, FONT_WHITE, savesSurface);
-			graphics.drawString("CANCEL will unselect that slot", 17, 220, FONT_WHITE, savesSurface);
-			graphics.drawString("DELETE will remove the save", 17, 240, FONT_WHITE, savesSurface);
+			drawString("SAVE will save the game", 17, 200, FONT_WHITE, savesSurface);
+			drawString("CANCEL will unselect that slot", 17, 220, FONT_WHITE, savesSurface);
+			drawString("DELETE will remove the save", 17, 240, FONT_WHITE, savesSurface);
 			break;
 		case -1:
-			graphics.drawString("First click a Save game slot to use", 17, 200, FONT_WHITE, savesSurface);
+			drawString("First click a Save game slot to use", 17, 200, FONT_WHITE, savesSurface);
 			break;
 		case -10:
-			graphics.drawString("Game Saved", 130, 200, FONT_WHITE, savesSurface);
+			drawString("Game Saved", 130, 200, FONT_WHITE, savesSurface);
 			break;
 		case -11:
-			graphics.drawString("Save Deleted", 130, 200, FONT_WHITE, savesSurface);
+			drawString("Save Deleted", 130, 200, FONT_WHITE, savesSurface);
 			break;
 	}
 

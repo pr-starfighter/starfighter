@@ -26,8 +26,8 @@ void setWeaponShapes()
 {
 	for (int i = 0 ; i < MAX_WEAPONS ; i++)
 	{
-		weapon[i].image[0] = graphics.shape[weapon[i].imageIndex[0]];
-		weapon[i].image[1] = graphics.shape[weapon[i].imageIndex[1]];
+		weapon[i].image[0] = shape[weapon[i].imageIndex[0]];
+		weapon[i].image[1] = shape[weapon[i].imageIndex[1]];
 	}
 }
 

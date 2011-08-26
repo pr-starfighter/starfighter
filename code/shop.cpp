@@ -28,7 +28,7 @@ static void drawSecondaryWeaponSurface()
 	char description[50];
 	strcpy(description, "");
 
-	graphics.drawString("Secondary Weapon", 10, 3, FONT_WHITE, graphics.shopSurface[2]);
+	drawString("Secondary Weapon", 10, 3, FONT_WHITE, shopSurface[2]);
 
 	switch (player.weaponType[1])
 	{
@@ -60,12 +60,12 @@ static void drawSecondaryWeaponSurface()
 			strcpy(description, "Type : Mcr Homing Missiles");
 			break;
 	}
-	graphics.drawString(description, 10, 22, FONT_WHITE, graphics.shopSurface[2]);
+	drawString(description, 10, 22, FONT_WHITE, shopSurface[2]);
 
 	if ((player.weaponType[1] != W_LASER) && (player.weaponType[1] != W_CHARGER) && (player.weaponType[1] != W_NONE))
 	{
 		sprintf(description, "Capacity : %d", currentGame.maxRocketAmmo);
-		graphics.drawString(description, 10, 37, FONT_WHITE, graphics.shopSurface[2]);
+		drawString(description, 10, 37, FONT_WHITE, shopSurface[2]);
 	}
 }
 
@@ -107,23 +107,23 @@ static void drawShop()
 
 	for (int i = 0 ; i < MAX_SHOPSHAPES ; i++)
 	{
-		if (graphics.shopSurface[i] != NULL)
+		if (shopSurface[i] != NULL)
 		{
-			SDL_FreeSurface(graphics.shopSurface[i]);
+			SDL_FreeSurface(shopSurface[i]);
 		}
 	}
 
 	for (int i = 0 ; i < 3 ; i++)
-		graphics.shopSurface[i] = graphics.createSurface(246, 91);
+		shopSurface[i] = createSurface(246, 91);
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		graphics.blevelRect(graphics.shopSurface[i], 0, 0, 245, 90, 0x00, 0x00, 0x55);
-		graphics.blevelRect(graphics.shopSurface[i], 0, 0, 245, 20, 0x00, 0x00, 0x99);
+		blevelRect(shopSurface[i], 0, 0, 245, 90, 0x00, 0x00, 0x55);
+		blevelRect(shopSurface[i], 0, 0, 245, 20, 0x00, 0x00, 0x99);
 	}
 
-	graphics.shopSurface[4] = graphics.alphaRect(601, 101, 0x00, 0x00, 0x00);
-	graphics.blevelRect(graphics.shopSurface[4], 0, 0, 600, 100, 0x00, 0x00, 0x33);
+	shopSurface[4] = alphaRect(601, 101, 0x00, 0x00, 0x00);
+	blevelRect(shopSurface[4], 0, 0, 600, 100, 0x00, 0x00, 0x33);
 
 	switch (shopSelectedItem)
 	{
@@ -138,58 +138,58 @@ static void drawShop()
 		case 1:
 		case 2:
 		case 8:
-			graphics.blevelRect(graphics.shopSurface[1], 0, 0, 245, 90, 0x55, 0x00, 0x00);
-			graphics.blevelRect(graphics.shopSurface[1], 0, 0, 245, 20, 0x99, 0x00, 0x00);
+			blevelRect(shopSurface[1], 0, 0, 245, 90, 0x55, 0x00, 0x00);
+			blevelRect(shopSurface[1], 0, 0, 245, 20, 0x99, 0x00, 0x00);
 			break;
 		case 3:
 		case 4:
-			graphics.blevelRect(graphics.shopSurface[4], 0, 0, 600, 100, 0x33, 0x00, 0x00);
+			blevelRect(shopSurface[4], 0, 0, 600, 100, 0x33, 0x00, 0x00);
 			break;
 		case 5:
 		case 6:
 		case 7:
-			graphics.blevelRect(graphics.shopSurface[0], 0, 0, 245, 90, 0x55, 0x00, 0x00);
-			graphics.blevelRect(graphics.shopSurface[0], 0, 0, 245, 20, 0x99, 0x00, 0x00);
+			blevelRect(shopSurface[0], 0, 0, 245, 90, 0x55, 0x00, 0x00);
+			blevelRect(shopSurface[0], 0, 0, 245, 20, 0x99, 0x00, 0x00);
 			break;
 		default:
-			graphics.blevelRect(graphics.shopSurface[2], 0, 0, 245, 90, 0x55, 0x00, 0x00);
-			graphics.blevelRect(graphics.shopSurface[2], 0, 0, 245, 20, 0x99, 0x00, 0x00);
+			blevelRect(shopSurface[2], 0, 0, 245, 90, 0x55, 0x00, 0x00);
+			blevelRect(shopSurface[2], 0, 0, 245, 20, 0x99, 0x00, 0x00);
 			break;
 	}
 
 	char description[100];
 	strcpy(description, "");
 
-	graphics.drawString("Primary Weapon", 10, 3, FONT_WHITE, graphics.shopSurface[0]);
+	drawString("Primary Weapon", 10, 3, FONT_WHITE, shopSurface[0]);
 	sprintf(description, "Plasma Cannons : %d", weapon[0].ammo[0]);
-	graphics.drawString(description, 10, 22, FONT_WHITE, graphics.shopSurface[0]);
+	drawString(description, 10, 22, FONT_WHITE, shopSurface[0]);
 	sprintf(description, "Plasma Power   : Stage %d", weapon[0].damage);
-	graphics.drawString(description, 10, 37, FONT_WHITE, graphics.shopSurface[0]);
+	drawString(description, 10, 37, FONT_WHITE, shopSurface[0]);
 	sprintf(description, "Cooler         : Stage %d", ((15 - weapon[0].reload[0]) / 2) + 1);
-	graphics.drawString(description, 10, 52, FONT_WHITE, graphics.shopSurface[0]);
+	drawString(description, 10, 52, FONT_WHITE, shopSurface[0]);
 
-	graphics.drawString("Powerup Weapon", 10, 3, FONT_WHITE, graphics.shopSurface[1]);
+	drawString("Powerup Weapon", 10, 3, FONT_WHITE, shopSurface[1]);
 	sprintf(description, "Plasma Output    : Stage %d", currentGame.maxPlasmaOutput);
-	graphics.drawString(description, 10, 22, FONT_WHITE, graphics.shopSurface[1]);
+	drawString(description, 10, 22, FONT_WHITE, shopSurface[1]);
 	sprintf(description, "Plasma Condensor : Stage %d", currentGame.maxPlasmaDamage);
-	graphics.drawString(description, 10, 37, FONT_WHITE, graphics.shopSurface[1]);
+	drawString(description, 10, 37, FONT_WHITE, shopSurface[1]);
 	sprintf(description, "Liquid Nitrogen  : Stage %d", ((15 - currentGame.maxPlasmaRate) / 2) + 1);
-	graphics.drawString(description, 10, 52, FONT_WHITE, graphics.shopSurface[1]);
+	drawString(description, 10, 52, FONT_WHITE, shopSurface[1]);
 	sprintf(description, "Plasma Capacity  : %d", currentGame.maxPlasmaAmmo);
-	graphics.drawString(description, 10, 67, FONT_WHITE, graphics.shopSurface[1]);
+	drawString(description, 10, 67, FONT_WHITE, shopSurface[1]);
 
 	drawSecondaryWeaponSurface();
 
-	graphics.shopSurface[3] = graphics.createSurface(601, 121);
+	shopSurface[3] = createSurface(601, 121);
 
-	graphics.blevelRect(graphics.shopSurface[3], 0, 0, 600, 120, 0x00, 0x00, 0x22);
+	blevelRect(shopSurface[3], 0, 0, 600, 120, 0x00, 0x00, 0x22);
 
-	graphics.drawString("Temporary Weapons", 10, 2, FONT_WHITE, graphics.shopSurface[3]);
-	graphics.drawString("Ammo and Storage", 260, 2, FONT_WHITE, graphics.shopSurface[3]);
+	drawString("Temporary Weapons", 10, 2, FONT_WHITE, shopSurface[3]);
+	drawString("Ammo and Storage", 260, 2, FONT_WHITE, shopSurface[3]);
 
-	graphics.drawString("Primary Weapons", 10, 62, FONT_WHITE, graphics.shopSurface[3]);
+	drawString("Primary Weapons", 10, 62, FONT_WHITE, shopSurface[3]);
 
-	graphics.drawString("Secondary Weapons", 260, 62, FONT_WHITE, graphics.shopSurface[3]);
+	drawString("Secondary Weapons", 260, 62, FONT_WHITE, shopSurface[3]);
 
 	signed char icons = MAX_SHOPITEMS;
 
@@ -201,50 +201,50 @@ static void drawShop()
 		icons = 15;
 
 	for (int i = 0 ; i < icons ; i++)
-		graphics.blit(graphics.shape[shopItems[i].image], shopItems[i].x - 90, shopItems[i].y - 178, graphics.shopSurface[3]);
+		blit(shape[shopItems[i].image], shopItems[i].x - 90, shopItems[i].y - 178, shopSurface[3]);
 
 	sprintf(description, "Shield Units : %d", currentGame.shieldUnits * 25);
-	graphics.drawString(description, 10, 4, FONT_WHITE, graphics.shopSurface[4]);
+	drawString(description, 10, 4, FONT_WHITE, shopSurface[4]);
 	sprintf(description, "Cash : $%d", currentGame.cash);
-	graphics.drawString(description, 10, 80, FONT_WHITE, graphics.shopSurface[4]);
+	drawString(description, 10, 80, FONT_WHITE, shopSurface[4]);
 	sprintf(description, "Plasma Cells : %.3d", player.ammo[0]);
-	graphics.drawString(description, 430, 4, FONT_WHITE, graphics.shopSurface[4]);
+	drawString(description, 430, 4, FONT_WHITE, shopSurface[4]);
 	sprintf(description, "Rockets : %.3d", player.ammo[1]);
-	graphics.drawString(description, 475, 80, FONT_WHITE, graphics.shopSurface[4]);
+	drawString(description, 475, 80, FONT_WHITE, shopSurface[4]);
 
-	graphics.shopSurface[5] = graphics.createSurface(601, 56);
-	graphics.blevelRect(graphics.shopSurface[5], 0, 0, 600, 35, 0x00, 0x99, 0x00);
-	graphics.blevelRect(graphics.shopSurface[5], 0, 20, 600, 35, 0x00, 0x33, 0x00);
-	graphics.drawString("Information", 5, 4, FONT_WHITE, graphics.shopSurface[5]);
+	shopSurface[5] = createSurface(601, 56);
+	blevelRect(shopSurface[5], 0, 0, 600, 35, 0x00, 0x99, 0x00);
+	blevelRect(shopSurface[5], 0, 20, 600, 35, 0x00, 0x33, 0x00);
+	drawString("Information", 5, 4, FONT_WHITE, shopSurface[5]);
 
 	switch (shopSelectedItem)
 	{
 		case -1:
 			break;
 		case -2:
-			graphics.drawString("You don't have enough money", 20, 30, FONT_WHITE, graphics.shopSurface[5]);
+			drawString("You don't have enough money", 20, 30, FONT_WHITE, shopSurface[5]);
 			break;
 		case -3:
-			graphics.drawString("Cannot upgrade ship", 5, 22, FONT_WHITE, graphics.shopSurface[5]);
-			graphics.drawString("Hardware capacity has been reached", 20, 38, FONT_CYAN, graphics.shopSurface[5]);
+			drawString("Cannot upgrade ship", 5, 22, FONT_WHITE, shopSurface[5]);
+			drawString("Hardware capacity has been reached", 20, 38, FONT_CYAN, shopSurface[5]);
 			break;
 		case -4:
-			graphics.drawString("Ammunition limit reached", 20, 30, FONT_WHITE, graphics.shopSurface[5]);
+			drawString("Ammunition limit reached", 20, 30, FONT_WHITE, shopSurface[5]);
 			break;
 		case -5:
-			graphics.drawString("You cannot sell that item", 20, 30, FONT_WHITE, graphics.shopSurface[5]);
+			drawString("You cannot sell that item", 20, 30, FONT_WHITE, shopSurface[5]);
 			break;
 		case -6:
-			graphics.drawString("Nothing to sell", 20, 30, FONT_WHITE, graphics.shopSurface[5]);
+			drawString("Nothing to sell", 20, 30, FONT_WHITE, shopSurface[5]);
 			break;
 		case -7:
-			graphics.drawString("Rockets cannot be bought for Laser or Charger Cannon", 5, 30, FONT_WHITE, graphics.shopSurface[5]);
+			drawString("Rockets cannot be bought for Laser or Charger Cannon", 5, 30, FONT_WHITE, shopSurface[5]);
 			break;
 		case -8:
-			graphics.drawString("You already have that weapon", 20, 30, FONT_WHITE, graphics.shopSurface[5]);
+			drawString("You already have that weapon", 20, 30, FONT_WHITE, shopSurface[5]);
 			break;
 		case -9:
-			graphics.drawString("This weapon's ammo limit has been reached", 20, 30, FONT_WHITE, graphics.shopSurface[5]);
+			drawString("This weapon's ammo limit has been reached", 20, 30, FONT_WHITE, shopSurface[5]);
 			break;
 		default:
 			if (shopItems[shopSelectedItem].price != 0)
@@ -255,8 +255,8 @@ static void drawShop()
 			{
 				sprintf(description, "%s (N/A)", shopItems[shopSelectedItem].description);
 			}
-			graphics.drawString(shopItems[shopSelectedItem].name, 5, 22, FONT_WHITE, graphics.shopSurface[5]);
-			graphics.drawString(description, 20, 38, FONT_CYAN, graphics.shopSurface[5]);
+			drawString(shopItems[shopSelectedItem].name, 5, 22, FONT_WHITE, shopSurface[5]);
+			drawString(description, 20, 38, FONT_CYAN, shopSurface[5]);
 			break;
 	}
 }
@@ -299,7 +299,7 @@ static void loadShop()
 
 	shopSelectedItem = -1;
 
-	player.image[0] = graphics.shape[0];
+	player.image[0] = shape[0];
 	player.x = 380;
 	player.y = 95;
 
@@ -467,7 +467,7 @@ void initShop()
 
  	shopSelectedItem = -1;
 
-	player.image[0] = graphics.shape[0];
+	player.image[0] = shape[0];
 	player.x = 380;
 	player.y = 95;
 
@@ -719,20 +719,20 @@ static void sell(int i)
 
 void showShop()
 {
- 	graphics.blit(graphics.shopSurface[0], 20, 395);
-	graphics.blit(graphics.shopSurface[1], 275, 395);
-	graphics.blit(graphics.shopSurface[2], 530, 395);
-	graphics.blit(graphics.shopSurface[3], 100, 180);
-	graphics.blit(graphics.shopSurface[4], 100, 50);
-	graphics.blit(graphics.shopSurface[5], 100, 320);
+ 	blit(shopSurface[0], 20, 395);
+	blit(shopSurface[1], 275, 395);
+	blit(shopSurface[2], 530, 395);
+	blit(shopSurface[3], 100, 180);
+	blit(shopSurface[4], 100, 50);
+	blit(shopSurface[5], 100, 320);
 
 	if (shopSelectedItem > -1)
 	{
-		graphics.blit(graphics.shape[27], 60, 350);
-		graphics.blit(graphics.shape[28], 710, 350);
+		blit(shape[27], 60, 350);
+		blit(shape[28], 710, 350);
 	}
 
-	graphics.blit(graphics.shape[29], (int)player.x, (int)player.y);
+	blit(shape[29], (int)player.x, (int)player.y);
 
 	signed char icons = MAX_SHOPITEMS;
 

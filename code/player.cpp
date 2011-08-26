@@ -35,8 +35,8 @@ void initPlayer()
 	player.systemPower = player.maxShield;
 	player.face = 0;
 
-	player.image[0] = graphics.shipShape[0];
-	player.image[1] = graphics.shipShape[1];
+	player.image[0] = shipShape[0];
+	player.image[1] = shipShape[1];
 
 	player.engineX = player.image[0]->w;
 	player.engineY = (player.image[0]->h / 2);
@@ -282,7 +282,7 @@ void doPlayer()
 
 			limitCharAdd(&player.hit, -1, 0, 100);
 
-			graphics.blit(graphics.shipShape[shapeToUse], (int)player.x, (int)player.y);
+			blit(shipShape[shapeToUse], (int)player.x, (int)player.y);
 			if ((player.shield <= engine.lowShield) && (rand() % 5 < 1))
 				addExplosion(player.x + rrand(-10, 10), player.y + rrand(-10, 20), E_SMOKE);
 		}

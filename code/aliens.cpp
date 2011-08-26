@@ -114,8 +114,8 @@ static void addSmallAsteroid(object *host)
 	{
 		enemy[index] = defEnemy[CD_ASTEROID2];
 		enemy[index].imageIndex[0] = enemy[index].imageIndex[1] = 39 + rand() % 2;
-		enemy[index].image[0] = graphics.shipShape[enemy[index].imageIndex[0]];
-		enemy[index].image[1] = graphics.shipShape[enemy[index].imageIndex[1]];
+		enemy[index].image[0] = shipShape[enemy[index].imageIndex[0]];
+		enemy[index].image[1] = shipShape[enemy[index].imageIndex[1]];
 	}
 	else
 	{
@@ -444,8 +444,8 @@ static void getPreDefinedAliens()
 				enemy[i].imageIndex[0] += 15;
 				enemy[i].imageIndex[1] += 15;
 
-				enemy[i].image[0] = graphics.shipShape[enemy[i].imageIndex[0]];
-				enemy[i].image[1] = graphics.shipShape[enemy[i].imageIndex[1]];
+				enemy[i].image[0] = shipShape[enemy[i].imageIndex[0]];
+				enemy[i].image[1] = shipShape[enemy[i].imageIndex[1]];
 			}
 		}
 	}
@@ -1195,7 +1195,7 @@ void doAliens()
 					if ((!(theEnemy->flags & FL_DISABLED)) && (theEnemy->classDef != CD_ASTEROID) && (theEnemy->classDef != CD_ASTEROID2))
 						addEngine(theEnemy);
 					if ((!(theEnemy->flags & FL_ISCLOAKED)) || (theEnemy->hit > 0))
-						graphics.blit(graphics.shipShape[shapeToUse], (int)theEnemy->x, (int)theEnemy->y);
+						blit(shipShape[shapeToUse], (int)theEnemy->x, (int)theEnemy->y);
 					if (theEnemy->flags & FL_DISABLED)
 					{
 						if ((rand() % 10) == 0)
@@ -1211,7 +1211,7 @@ void doAliens()
 				theEnemy->shield--;
 				if ((theEnemy->x > 0) && (theEnemy->x < 800) && (theEnemy->y > 0) && (theEnemy->y < 600))
 				{
-					graphics.blit(theEnemy->image[theEnemy->face], (int)theEnemy->x, (int)theEnemy->y);
+					blit(theEnemy->image[theEnemy->face], (int)theEnemy->x, (int)theEnemy->y);
 					addExplosion(theEnemy->x + (rand() % theEnemy->image[0]->w), theEnemy->y + (rand() % theEnemy->image[0]->h), E_BIG_EXPLOSION);
 				}
 				if (theEnemy->shield < theEnemy->deathCounter)
@@ -1249,10 +1249,10 @@ void setAlienShapes()
 {
 	for (int i = 0 ; i < MAX_DEFALIENS ; i++)
 	{
-		if (graphics.shipShape[defEnemy[i].imageIndex[0]] != NULL)
+		if (shipShape[defEnemy[i].imageIndex[0]] != NULL)
 		{
-			defEnemy[i].image[0] = graphics.shipShape[defEnemy[i].imageIndex[0]];
-			defEnemy[i].image[1] = graphics.shipShape[defEnemy[i].imageIndex[1]];
+			defEnemy[i].image[0] = shipShape[defEnemy[i].imageIndex[0]];
+			defEnemy[i].image[1] = shipShape[defEnemy[i].imageIndex[1]];
 			defEnemy[i].engineX = defEnemy[i].image[0]->w;
 			defEnemy[i].engineY = (defEnemy[i].image[0]->h / 2);
 		}

@@ -127,8 +127,8 @@ int mainGameLoop()
 		}
 	}
 
-	graphics.drawBackGround();
-	graphics.flushBuffer();
+	drawBackGround();
+	flushBuffer();
 
 	// Default to no aliens dead...
 	engine.allAliensDead = 0;
@@ -138,7 +138,7 @@ int mainGameLoop()
 
 	while (engine.done != 1)
 	{
-		graphics.updateScreen();
+		updateScreen();
 
 		if ((allMissionsCompleted()) && (engine.missionCompleteTimer == 0))
 		{
@@ -215,7 +215,7 @@ int mainGameLoop()
 			getPlayerInput();
 		}
 
-		graphics.unBuffer();
+		unBuffer();
 		doStarfield();
 		doCollectables();
 		doBullets();
@@ -231,7 +231,7 @@ int mainGameLoop()
 		while (engine.paused)
 		{
 			engine.done = checkPauseRequest();
-			graphics.delayFrame();
+			delayFrame();
 		}
 
 		if ((currentGame.area == 24) && (engine.addAliens > -1))
@@ -256,8 +256,8 @@ int mainGameLoop()
 		if ((currentGame.area == 5) && (enemy[WC_BOSS].flags & FL_ESCAPED))
 		{
 			playSound(SFX_DEATH);
-			graphics.clearScreen(graphics.white);
-			graphics.updateScreen();
+			clearScreen(white);
+			updateScreen();
 			for (int i = 0 ; i < 300 ; i++)
 			{
 				SDL_Delay(10);
@@ -268,10 +268,10 @@ int mainGameLoop()
 			break;
 		}
 
-		graphics.delayFrame();
+		delayFrame();
 	}
 
-	graphics.flushBuffer();
+	flushBuffer();
 
 	if ((player.shield > 0) && (!missionFailed()))
 	{

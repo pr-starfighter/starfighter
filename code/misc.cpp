@@ -24,15 +24,15 @@ void clearInfoLines()
 {
 	for (int i = 0 ; i < 4 ; i++)
 	{
-		graphics.textShape[i].life = 0;
+		textShape[i].life = 0;
 	}
 }
 
 // from a to b
 static void copyInfoLine(int a, int b)
 {
-	graphics.textSurface(b, graphics.textShape[a].text, -1, 0, graphics.textShape[a].fontColor);
-	graphics.textShape[b].life = graphics.textShape[a].life;
+	textSurface(b, textShape[a].text, -1, 0, textShape[a].fontColor);
+	textShape[b].life = textShape[a].life;
 }
 
 /*
@@ -47,7 +47,7 @@ void setInfoLine(const char *in, int color)
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if ((graphics.textShape[i].life == 0) && (index == -1))
+		if ((textShape[i].life == 0) && (index == -1))
 		{
 			index = i;
 		}
@@ -61,8 +61,8 @@ void setInfoLine(const char *in, int color)
 		copyInfoLine(2, 1);
 	}
 
-	graphics.textSurface(index, in, -1, 0, color);
-	graphics.textShape[index].life = 240;
+	textSurface(index, in, -1, 0, color);
+	textShape[index].life = 240;
 }
 
 /*
@@ -72,17 +72,17 @@ Phoebe or Ursula's banter to interrupt an important message
 */
 void setRadioMessage(signed char face, const char *in, int priority)
 {
-	if ((graphics.textShape[3].life > 0) && (priority == 0))
+	if ((textShape[3].life > 0) && (priority == 0))
 		return;
 
-	graphics.textSurface(3, in, -1, 50, FONT_WHITE);
-	graphics.textShape[3].life = 240;
+	textSurface(3, in, -1, 50, FONT_WHITE);
+	textShape[3].life = 240;
 
 	SDL_Surface *faceShape = NULL;
 	if (face > -1)
-		faceShape = graphics.shape[face];
+		faceShape = shape[face];
 
-	graphics.createMessageBox(faceShape, in, 1);
+	createMessageBox(faceShape, in, 1);
 }
 
 static void doTargetArrow()
@@ -93,7 +93,7 @@ static void doTargetArrow()
 	if (enemy[engine.targetIndex].flags & FL_ISCLOAKED)
 		return;
 		
-	if (graphics.textShape[3].life > 0)
+	if (textShape[3].life > 0)
 		return;
 
 	engine.targetArrow = -1;
@@ -130,8 +130,8 @@ static void doTargetArrow()
 
 	if (engine.targetArrow != -1)
 	{
-		graphics.blit(graphics.shape[engine.targetArrow], 380, 50);
-		graphics.blit(graphics.shape[44], 365, 70);
+		blit(shape[engine.targetArrow], 380, 50);
+		blit(shape[44], 365, 70);
 	}
 }
 
@@ -145,8 +145,8 @@ void doInfo()
 	signed char fontColor;
 	char text[25];
 
-	graphics.addBuffer(0, 20, 800, 25);
-	graphics.addBuffer(0, 545, 800, 25);
+	addBuffer(0, 20, 800, 25);
+	addBuffer(0, 545, 800, 25);
 
 	if (engine.minutes > -1)
 	{
@@ -156,24 +156,24 @@ void doInfo()
 			fontColor = FONT_YELLOW;
 		else
 			fontColor = FONT_WHITE;
-		graphics.blitText(10); // time remaining
+		blitText(10); // time remaining
 		sprintf(text, "%.2d:%.2d", engine.minutes, engine.seconds);
-		graphics.textSurface(30, text, 410, 21, fontColor);
-		graphics.blitText(30);
+		textSurface(30, text, 410, 21, fontColor);
+		blitText(30);
 	}
 
 	if (currentGame.area != MAX_MISSIONS - 1)
 	{
-		graphics.blitText(9); // mission objectives
+		blitText(9); // mission objectives
 		sprintf(text, "%d", (currentMission.remainingObjectives1 + currentMission.remainingObjectives2));
-		graphics.textSurface(39, text, 745, 21, FONT_WHITE);
-		graphics.blitText(39);
+		textSurface(39, text, 745, 21, FONT_WHITE);
+		blitText(39);
 	}
 
-	graphics.blitText(8); // cash
+	blitText(8); // cash
 	sprintf(text, "%.6d", currentGame.cash);
-	graphics.textSurface(38, text, 90, 21, FONT_WHITE);
-	graphics.blitText(38);
+	textSurface(38, text, 90, 21, FONT_WHITE);
+	blitText(38);
 
 	doTargetArrow();
 
@@ -183,12 +183,12 @@ void doInfo()
 		if (player.ammo[0] <= 25) fontColor = FONT_YELLOW;
 		if (player.ammo[0] <= 10) fontColor = FONT_RED;
 	}
-	graphics.blitText(5); // plasma ammo
+	blitText(5); // plasma ammo
 	sprintf(text, "%.3d", player.ammo[0]);
-	graphics.textSurface(35, text, 320, 551, fontColor);
-	graphics.blitText(35);
+	textSurface(35, text, 320, 551, fontColor);
+	blitText(35);
 
-	graphics.blitText(6);
+	blitText(6);
 
 	if ((player.weaponType[1] != W_CHARGER) && (player.weaponType[1] != W_LASER))
 	{
@@ -197,15 +197,15 @@ void doInfo()
 		else
 			fontColor = FONT_WHITE;
 		sprintf(text, "%.3d", player.ammo[1]); // rocket ammo
-		graphics.textSurface(36, text, 465, 551, fontColor);
-		graphics.blitText(36);
+		textSurface(36, text, 465, 551, fontColor);
+		blitText(36);
 	}
 
 	if (((player.weaponType[1] == W_CHARGER) || (player.weaponType[1] == W_LASER)) && (player.ammo[1] > 0))
 	{
-		int c = graphics.white;
+		int c = white;
 		if (player.ammo[1] > 100)
-			c = graphics.red;
+			c = red;
 
 		bar.x = 450;
 		bar.y = 550;
@@ -214,7 +214,7 @@ void doInfo()
 		for (int i = 0 ; i < (player.ammo[1] / 5) ; i++)
 		{
 			bar.w = 1;
-			SDL_FillRect(graphics.screen, &bar, c);
+			SDL_FillRect(screen, &bar, c);
 			bar.x += 2;
 		}
 	}
@@ -276,26 +276,26 @@ void doInfo()
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if (graphics.textShape[i].life > 0)
+		if (textShape[i].life > 0)
 		{
-			graphics.textShape[i].y = (525 - (i * 20));
-			graphics.blitText(i);
-			graphics.textShape[i].life--;
+			textShape[i].y = (525 - (i * 20));
+			blitText(i);
+			textShape[i].life--;
 
-			if (graphics.textShape[i].life == 0)
+			if (textShape[i].life == 0)
 			{
 				copyInfoLine(i + 1, i);
 				copyInfoLine(i + 2, i + 1);
-				graphics.textShape[2].life = 0;
+				textShape[2].life = 0;
 			}
 		}
 	}
 
 	// Show the radio message if there is one
-	if (graphics.textShape[3].life > 0)
+	if (textShape[3].life > 0)
 	{
-		graphics.blit(graphics.messageBox, (800 - graphics.messageBox->w) / 2, 50);
-		graphics.textShape[3].life--;
+		blit(messageBox, (800 - messageBox->w) / 2, 50);
+		textShape[3].life--;
 	}
 
 	// Do the target's remaining shield (if required)
@@ -303,7 +303,7 @@ void doInfo()
 	{
 		if ((engine.targetIndex > -1) && (enemy[engine.targetIndex].shield > 0) && (engine.targetIndex > 9))
 		{
-			graphics.blitText(7);
+			blitText(7);
 			bar.w = 1;
 			bar.h = 12;
 			bar.x = 620;
@@ -312,52 +312,52 @@ void doInfo()
 			for (float i = 0 ; i < (engine.targetShield * enemy[engine.targetIndex].shield) ; i++)
 			{
 				if (i > 50)
-					shieldColor = graphics.green;
+					shieldColor = green;
 				else if ((i >= 25) && (i <= 50))
-					shieldColor = graphics.yellow;
+					shieldColor = yellow;
 				else
-					shieldColor = graphics.red;
-				SDL_FillRect(graphics.screen, &bar, shieldColor);
+					shieldColor = red;
+				SDL_FillRect(screen, &bar, shieldColor);
 				bar.x += 2;
 			}
 		}
 	}
 
-	graphics.blitText(11);
+	blitText(11);
 
 	bar.w = 25;
 	bar.h = 12;
 	bar.x = 80;
 	bar.y = 571;
-	SDL_FillRect(graphics.screen, &bar, graphics.green);
+	SDL_FillRect(screen, &bar, green);
 
 	for (int i = 1 ; i < currentGame.maxPlasmaDamage ; i++)
 	{
 		bar.x += 30;
 		if (weapon[1].damage >= (i + 1))
-			SDL_FillRect(graphics.screen, &bar, graphics.green);
+			SDL_FillRect(screen, &bar, green);
 		else
-			SDL_FillRect(graphics.screen, &bar, graphics.darkGreen);
+			SDL_FillRect(screen, &bar, darkGreen);
 	}
 
-	graphics.blitText(12);
+	blitText(12);
 
 	bar.w = 25;
 	bar.h = 12;
 	bar.x = 315;
 	bar.y = 571;
-	SDL_FillRect(graphics.screen, &bar, graphics.yellow);
+	SDL_FillRect(screen, &bar, yellow);
 
 	for (int i = 1 ; i < currentGame.maxPlasmaDamage ; i++)
 	{
 		bar.x += 30;
 		if (weapon[1].ammo[0] >= (i + 1))
-			SDL_FillRect(graphics.screen, &bar, graphics.yellow);
+			SDL_FillRect(screen, &bar, yellow);
 		else
-			SDL_FillRect(graphics.screen, &bar, graphics.darkYellow);
+			SDL_FillRect(screen, &bar, darkYellow);
 	}
 
-	graphics.blitText(13);
+	blitText(13);
 
 	bar.w = 25;
 	bar.h = 12;
@@ -367,13 +367,13 @@ void doInfo()
 	for (int i = 15 ; i > (currentGame.maxPlasmaRate - 1) ; i -= 2)
 	{
 		if (weapon[1].reload[0] <= i)
-			SDL_FillRect(graphics.screen, &bar, graphics.blue);
+			SDL_FillRect(screen, &bar, blue);
 		else
-			SDL_FillRect(graphics.screen, &bar, graphics.darkerBlue);
+			SDL_FillRect(screen, &bar, darkerBlue);
 		bar.x += 30;
 	}
 
-	graphics.blitText(4);
+	blitText(4);
 	if (player.shield < 1)
 		return;
 
@@ -393,12 +393,12 @@ void doInfo()
 	for (int i = 0 ; i < player.shield ; i += blockSize)
 	{
 		if (i >= engine.averageShield)
-			shieldColor = graphics.green;
+			shieldColor = green;
 		else if ((i >= engine.lowShield) && (i < engine.averageShield))
-			shieldColor = graphics.yellow;
+			shieldColor = yellow;
 		else
-			shieldColor = graphics.red;
-		SDL_FillRect(graphics.screen, &bar, shieldColor);
+			shieldColor = red;
+		SDL_FillRect(screen, &bar, shieldColor);
 		bar.x += blockSize;
 		if (player.maxShield < 75)
 			bar.x++;
@@ -453,7 +453,7 @@ void resetLists()
 	engine.collectableHead->next = NULL;
 	engine.collectableTail = engine.collectableHead;
 	
-	r1 = graphics.bufferHead->next;
+	r1 = bufferHead->next;
 	while (r1 != NULL)
 	{
 		r2 = r1;
@@ -461,8 +461,8 @@ void resetLists()
 		delete r2;
 	}
 	
-	graphics.bufferHead->next = NULL;
-	graphics.bufferTail = graphics.bufferHead;
+	bufferHead->next = NULL;
+	bufferTail = bufferHead;
 
 	ob = engine.debrisHead->next;
 	while(ob != NULL)

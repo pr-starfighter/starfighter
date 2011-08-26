@@ -22,13 +22,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 void loadBackground(const char *filename)
 {
-	if (graphics.background != NULL)
+	if (background != NULL)
 	{
-		SDL_FreeSurface(graphics.background);
-		graphics.background = NULL;
+		SDL_FreeSurface(background);
+		background = NULL;
 	}
-	graphics.background = loadImage(filename);
-	SDL_SetColorKey(graphics.background, 0, 0);
+	background = loadImage(filename);
+	SDL_SetColorKey(background, 0, 0);
 }
 
 void loadGameGraphics()
@@ -36,10 +36,10 @@ void loadGameGraphics()
 	int index;
 	char string[75];
 
-	graphics.freeGraphics();
+	freeGraphics();
 
-	graphics.shipShape[0] = loadImage("gfx/firefly1.png");
-	graphics.shipShape[1] = loadImage("gfx/firefly2.png");
+	shipShape[0] = loadImage("gfx/firefly1.png");
+	shipShape[1] = loadImage("gfx/firefly2.png");
 
 	strcpy(string, "");
 	switch(currentGame.system)
@@ -74,7 +74,7 @@ void loadGameGraphics()
 	fscanf(fp, "%d %s", &index, string);
 	while (index != -1)
 	{
-		graphics.shipShape[index] = loadImage(string);
+		shipShape[index] = loadImage(string);
 		fscanf(fp, "%d %s", &index, string);
 	}
 
@@ -86,13 +86,13 @@ void loadGameGraphics()
 	SDL_Surface *hitRect;
 	for (int i = SHIP_HIT_INDEX ; i < MAX_SHIPSHAPES ; i++)
 	{
-		if (graphics.shipShape[i - SHIP_HIT_INDEX] == NULL)
+		if (shipShape[i - SHIP_HIT_INDEX] == NULL)
 			continue;
-		graphics.shipShape[i] = graphics.createSurface(graphics.shipShape[i - SHIP_HIT_INDEX]->w, graphics.shipShape[i- SHIP_HIT_INDEX]->h);
-		graphics.blit(graphics.shipShape[i - SHIP_HIT_INDEX], 0, 0, graphics.shipShape[i]);
-		hitRect = graphics.alphaRect(graphics.shipShape[i]->w, graphics.shipShape[i]->h, 255, 0, 0);
-		graphics.blit(hitRect, 0, 0, graphics.shipShape[i]);
-		SDL_SetColorKey(graphics.shipShape[i], (SDL_SRCCOLORKEY|SDL_RLEACCEL), SDL_MapRGB(graphics.shipShape[i]->format, 127, 0, 0));
+		shipShape[i] = createSurface(shipShape[i - SHIP_HIT_INDEX]->w, shipShape[i- SHIP_HIT_INDEX]->h);
+		blit(shipShape[i - SHIP_HIT_INDEX], 0, 0, shipShape[i]);
+		hitRect = alphaRect(shipShape[i]->w, shipShape[i]->h, 255, 0, 0);
+		blit(hitRect, 0, 0, shipShape[i]);
+		SDL_SetColorKey(shipShape[i], (SDL_SRCCOLORKEY|SDL_RLEACCEL), SDL_MapRGB(shipShape[i]->format, 127, 0, 0));
 		SDL_FreeSurface(hitRect);
 	}
 
@@ -109,7 +109,7 @@ void loadGameGraphics()
 	fscanf(fp, "%d %s", &index, string);
 	while (index != -1)
 	{
-		graphics.shape[index] = loadImage(string);
+		shape[index] = loadImage(string);
 		fscanf(fp, "%d %s", &index, string);
 	}
 
@@ -214,7 +214,7 @@ void loadFont()
 
 		newImage = SDL_DisplayFormat(image);
 
-    	graphics.fontShape[i] = graphics.setTransparent(newImage);
+    	fontShape[i] = setTransparent(newImage);
 
 		SDL_FreeSurface(image);
  	}

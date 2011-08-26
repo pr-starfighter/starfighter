@@ -15,7 +15,7 @@ DOCDIR = /usr/share/doc/starfighter/
 all: $(PROG)
 
 # compiling other source files.
-%.o: code/%.cpp code/%.h code/structs.h code/defs.h code/classes.h
+%.o: code/%.cpp code/*.h
 	$(CXX) $(CFLAGS) -c -O3 -DVERSION=\"$(VERSION)\" -DPACKLOCATION=\"$(DATADIR)$(PACK)\" $<
 
 # linking the program.

@@ -29,7 +29,7 @@ static void doCursor()
 
 	limitInt(&engine.cursor_x, 10, 790);
 	limitInt(&engine.cursor_y, 10, 590);
-	graphics.blit(graphics.shape[0], engine.cursor_x, engine.cursor_y);
+	blit(shape[0], engine.cursor_x, engine.cursor_y);
 }
 
 /*
@@ -43,7 +43,7 @@ static void setStatusLines()
 
 	sprintf(string, "System : %s", systemNames[currentGame.system]);
 
-	graphics.textSurface(0, string, 0, 0, FONT_WHITE);
+	textSurface(0, string, 0, 0, FONT_WHITE);
 
 	signed char total = 0;
 	signed char completed = 0;
@@ -66,101 +66,101 @@ static void setStatusLines()
 	}
 
 	for (int i = 0 ; i < 30 ; i++)
-		graphics.textSurface(i, "", 0, 0, FONT_WHITE);
+		textSurface(i, "", 0, 0, FONT_WHITE);
 
 	sprintf(string, "Missions Completed : %d/%d", completed, total);
-	graphics.textSurface(1, string, 0, 0, FONT_WHITE);
+	textSurface(1, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Shots Fired : %d", currentGame.shots);
-	graphics.textSurface(2, string, 0, 0, FONT_WHITE);
+	textSurface(2, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Hits Scored : %d", currentGame.hits);
-	graphics.textSurface(3, string, 0, 0, FONT_WHITE);
+	textSurface(3, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Accuracy : %d%%", currentGame.accuracy);
-	graphics.textSurface(4, string, 0, 0, FONT_WHITE);
+	textSurface(4, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Enemies Killed by Others : %d", currentGame.totalOtherKills);
-	graphics.textSurface(5, string, 0, 0, FONT_WHITE);
+	textSurface(5, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Total Cash Earned : %d", currentGame.cashEarned);
-	graphics.textSurface(6, string, 0, 0, FONT_WHITE);
+	textSurface(6, string, 0, 0, FONT_WHITE);
 
-	graphics.textSurface(7, "*** Chris ***", 0, 0, FONT_WHITE);
+	textSurface(7, "*** Chris ***", 0, 0, FONT_WHITE);
 
 	sprintf(string, "Enemies Killed : %d", currentGame.totalKills);
-	graphics.textSurface(8, string, 0, 0, FONT_WHITE);
+	textSurface(8, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Shield Restores Picked Up : %d", currentGame.shieldPickups);
-	graphics.textSurface(9, string, 0, 0, FONT_WHITE);
+	textSurface(9, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Plasma Cells Picked Up : %d", currentGame.cellPickups);
-	graphics.textSurface(10, string, 0, 0, FONT_WHITE);
+	textSurface(10, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Rockets Picked Up : %d", currentGame.rocketPickups);
-	graphics.textSurface(11, string, 0, 0, FONT_WHITE);
+	textSurface(11, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Powerups Picked Up : %d", currentGame.rocketPickups);
-	graphics.textSurface(12, string, 0, 0, FONT_WHITE);
+	textSurface(12, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Mines Destroyed : %d", currentGame.minesKilled);
-	graphics.textSurface(13, string, 0, 0, FONT_WHITE);
+	textSurface(13, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Slaves Rescued : %d", currentGame.slavesRescued);
-	graphics.textSurface(14, string, 0, 0, FONT_WHITE);
+	textSurface(14, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Cargo Picked Up : %d", currentGame.cargoPickups);
-	graphics.textSurface(15, string, 0, 0, FONT_WHITE);
+	textSurface(15, string, 0, 0, FONT_WHITE);
 
 	if (currentGame.hasWingMate1)
 	{
-		graphics.textSurface(16, "*** Phoebe ***", 0, 0, FONT_WHITE);
+		textSurface(16, "*** Phoebe ***", 0, 0, FONT_WHITE);
 
 		sprintf(string, "Enemies Killed : %d", currentGame.wingMate1Kills);
-		graphics.textSurface(17, string, 0, 0, FONT_WHITE);
+		textSurface(17, string, 0, 0, FONT_WHITE);
 
 		sprintf(string, "Ejections : %d", currentGame.wingMate1Ejects);
-		graphics.textSurface(18, string, 0, 0, FONT_WHITE);
+		textSurface(18, string, 0, 0, FONT_WHITE);
 	}
 
 	if (currentGame.hasWingMate2)
 	{
-		graphics.textSurface(19, "*** Ursula ***", 0, 0, FONT_WHITE);
+		textSurface(19, "*** Ursula ***", 0, 0, FONT_WHITE);
 
 		sprintf(string, "Enemies Killed : %d", currentGame.wingMate2Kills);
-		graphics.textSurface(20, string, 0, 0, FONT_WHITE);
+		textSurface(20, string, 0, 0, FONT_WHITE);
 
 		sprintf(string, "Ejections : %d", currentGame.wingMate2Ejects);
-		graphics.textSurface(21, string, 0, 0, FONT_WHITE);
+		textSurface(21, string, 0, 0, FONT_WHITE);
 	}
 
 	signed char percentage = 0;
 	if ((currentGame.secondaryMissions > 0) && (currentGame.secondaryMissionsCompleted > 0))
 		percentage = (currentGame.secondaryMissionsCompleted / currentGame.secondaryMissions) * 100;
 	sprintf(string, "Seconday Missions Completed : %d / %d (%d%%)", currentGame.secondaryMissionsCompleted, currentGame.secondaryMissions, percentage);
-	graphics.textSurface(24, string, 0, 0, FONT_WHITE);
+	textSurface(24, string, 0, 0, FONT_WHITE);
 
 	int timeTaken = currentGame.timeTaken;
 
 	snprintf(string, sizeof string, "Total Time : %2d:%02d:%02d", timeTaken / 3600, (timeTaken / 60) % 60, timeTaken % 60);
 
-	graphics.textSurface(26, string, -1, 0, FONT_WHITE);
-	graphics.textSurface(27, "Current Status", -1, 0, FONT_WHITE);
+	textSurface(26, string, -1, 0, FONT_WHITE);
+	textSurface(27, "Current Status", -1, 0, FONT_WHITE);
 
-	graphics.textShape[0].y = 400;
-	graphics.textShape[0].x = 150;
+	textShape[0].y = 400;
+	textShape[0].x = 150;
 
 	for (int i = 1 ; i < 25 ; i++)
 	{
-		graphics.textShape[i].y = graphics.textShape[i - 1].y + 20;
+		textShape[i].y = textShape[i - 1].y + 20;
 		if ((i == 7) || (i == 16) || (i == 19))
-			graphics.textShape[i].y += 25;
+			textShape[i].y += 25;
 
-		graphics.textShape[i].x = 150;
+		textShape[i].x = 150;
 	}
 
-	graphics.textShape[26].y = 404;
-	graphics.textShape[27].y = 83;
+	textShape[26].y = 404;
+	textShape[27].y = 83;
 }
 
 /*
@@ -208,7 +208,7 @@ static void setSystemPlanets()
 
 		systemPlanet[i].y = distance;
 		strcpy(systemPlanet[i].name, name);
-		systemPlanet[i].image = graphics.shape[image];
+		systemPlanet[i].image = shape[image];
 	}
 
  	int messageMission;
@@ -247,14 +247,14 @@ static bool showSystem(float x, float y)
 	bool rtn = false;
 
 	// Blit the sun
-	graphics.blit(graphics.shape[30], 370, 220);
+	blit(shape[30], 370, 220);
 
 	for (int i = 50 ; i < 300 ; i+= planetSpace)
 	{
 		x *= 0.75;
 		y *= 0.75;
 
-		graphics.circle(400, 250, i, graphics.screen, graphics.darkGrey);
+		circle(400, 250, i, screen, darkGrey);
 
 		r.x = int(400 + (sinf(x) * i));
 		r.y = int(250 + (cosf(y) * i));
@@ -263,11 +263,11 @@ static bool showSystem(float x, float y)
 
 		r.x -= (systemPlanet[planet].image->w / 2);
 		r.y -= (systemPlanet[planet].image->h / 2);
-		graphics.blit(systemPlanet[planet].image, r.x, r.y);
+		blit(systemPlanet[planet].image, r.x, r.y);
 
 		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, r.x, r.y, systemPlanet[planet].image->w, systemPlanet[planet].image->h))
 		{
-			graphics.drawString(systemPlanet[planet].name, -1, 545, FONT_WHITE);
+			drawString(systemPlanet[planet].name, -1, 545, FONT_WHITE);
 			if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
 			{
 				if (currentGame.system == 0)
@@ -305,90 +305,90 @@ list is reset and the information lines begin again from the bottom
 */
 static void showStatus(SDL_Surface *infoSurface)
 {
-	graphics.blit(infoSurface, 100, 80);
+	blit(infoSurface, 100, 80);
 
 	for (int i = 0 ; i < 22 ; i++)
 	{
-		graphics.textShape[i].y -= 0.25;
-		if ((graphics.textShape[i].y > 80) && (graphics.textShape[i].y < 400))
-			graphics.blitText(i);
+		textShape[i].y -= 0.25;
+		if ((textShape[i].y > 80) && (textShape[i].y < 400))
+			blitText(i);
 	}
 
-	if (graphics.textShape[21].y < 65)
+	if (textShape[21].y < 65)
 	{
-		graphics.textShape[0].y = 400;
+		textShape[0].y = 400;
 
 		for (int i = 1 ; i < 25 ; i++)
 		{
-			graphics.textShape[i].y = graphics.textShape[i - 1].y + 20;
+			textShape[i].y = textShape[i - 1].y + 20;
 			if ((i == 7) || (i == 16) || (i == 19))
-				graphics.textShape[i].y += 25;
+				textShape[i].y += 25;
 		}
 	}
 
-	graphics.blevelRect(100, 80, 600, 20, 0x00, 0x00, 0x99);
+	blevelRect(100, 80, 600, 20, 0x00, 0x00, 0x99);
 
-	graphics.blevelRect(100, 400, 600, 20, 0x00, 0x00, 0x99);
+	blevelRect(100, 400, 600, 20, 0x00, 0x00, 0x99);
 
-	graphics.blitText(26);
-	graphics.blitText(27);
+	blitText(26);
+	blitText(27);
 }
 
 static void createOptions(SDL_Surface *optionsSurface)
 {
-	SDL_FillRect(optionsSurface, NULL, graphics.black);
+	SDL_FillRect(optionsSurface, NULL, black);
 
-	graphics.blevelRect(optionsSurface, 0, 0, optionsSurface->w - 2, optionsSurface->h - 2, 0x00, 0x00, 0x44);
+	blevelRect(optionsSurface, 0, 0, optionsSurface->w - 2, optionsSurface->h - 2, 0x00, 0x00, 0x44);
 
-	graphics.drawString("++ OPTIONS ++", 105, 8, FONT_WHITE, optionsSurface);
+	drawString("++ OPTIONS ++", 105, 8, FONT_WHITE, optionsSurface);
 
-	graphics.blevelRect(optionsSurface, 190, 45, 50, 22, 0x00, 0x00, 0x00);
-	graphics.blevelRect(optionsSurface, 250, 45, 50, 22, 0x00, 0x00, 0x00);
-	graphics.blevelRect(optionsSurface, 20, 45, 150, 22, 0x00, 0x00, 0x00);
+	blevelRect(optionsSurface, 190, 45, 50, 22, 0x00, 0x00, 0x00);
+	blevelRect(optionsSurface, 250, 45, 50, 22, 0x00, 0x00, 0x00);
+	blevelRect(optionsSurface, 20, 45, 150, 22, 0x00, 0x00, 0x00);
 	if (engine.useSound)
-		graphics.blevelRect(optionsSurface, 190, 45, 50, 22, 0xff, 0x00, 0x00);
+		blevelRect(optionsSurface, 190, 45, 50, 22, 0xff, 0x00, 0x00);
 	else
-		graphics.blevelRect(optionsSurface, 250, 45, 50, 22, 0xff, 0x00, 0x00);
-	graphics.drawString("ON", 207, 50, FONT_WHITE, optionsSurface);
-	graphics.drawString("OFF", 263, 50, FONT_WHITE, optionsSurface);
-	graphics.drawString("SOUND", 30, 50, FONT_WHITE, optionsSurface);
+		blevelRect(optionsSurface, 250, 45, 50, 22, 0xff, 0x00, 0x00);
+	drawString("ON", 207, 50, FONT_WHITE, optionsSurface);
+	drawString("OFF", 263, 50, FONT_WHITE, optionsSurface);
+	drawString("SOUND", 30, 50, FONT_WHITE, optionsSurface);
 
-	graphics.blevelRect(optionsSurface, 190, 95, 50, 22, 0x00, 0x00, 0x00);
-	graphics.blevelRect(optionsSurface, 250, 95, 50, 22, 0x00, 0x00, 0x00);
-	graphics.blevelRect(optionsSurface, 20, 95, 150, 22, 0x00, 0x00, 0x00);
+	blevelRect(optionsSurface, 190, 95, 50, 22, 0x00, 0x00, 0x00);
+	blevelRect(optionsSurface, 250, 95, 50, 22, 0x00, 0x00, 0x00);
+	blevelRect(optionsSurface, 20, 95, 150, 22, 0x00, 0x00, 0x00);
 	if (engine.useMusic)
-		graphics.blevelRect(optionsSurface, 190, 95, 50, 22, 0xff, 0x00, 0x00);
+		blevelRect(optionsSurface, 190, 95, 50, 22, 0xff, 0x00, 0x00);
 	else
-		graphics.blevelRect(optionsSurface, 250, 95, 50, 22, 0xff, 0x00, 0x00);
-	graphics.drawString("ON", 207, 100, FONT_WHITE, optionsSurface);
-	graphics.drawString("OFF", 263, 100, FONT_WHITE, optionsSurface);
-	graphics.drawString("MUSIC", 30, 100, FONT_WHITE, optionsSurface);
+		blevelRect(optionsSurface, 250, 95, 50, 22, 0xff, 0x00, 0x00);
+	drawString("ON", 207, 100, FONT_WHITE, optionsSurface);
+	drawString("OFF", 263, 100, FONT_WHITE, optionsSurface);
+	drawString("MUSIC", 30, 100, FONT_WHITE, optionsSurface);
 
- 	graphics.blevelRect(optionsSurface, 190, 145, 50, 22, 0x00, 0x00, 0x00);
-	graphics.blevelRect(optionsSurface, 250, 145, 50, 22, 0x00, 0x00, 0x00);
-	graphics.blevelRect(optionsSurface, 20, 145, 150, 22, 0x00, 0x00, 0x00);
+ 	blevelRect(optionsSurface, 190, 145, 50, 22, 0x00, 0x00, 0x00);
+	blevelRect(optionsSurface, 250, 145, 50, 22, 0x00, 0x00, 0x00);
+	blevelRect(optionsSurface, 20, 145, 150, 22, 0x00, 0x00, 0x00);
 	if (engine.fullScreen)
-		graphics.blevelRect(optionsSurface, 190, 145, 50, 22, 0xff, 0x00, 0x00);
+		blevelRect(optionsSurface, 190, 145, 50, 22, 0xff, 0x00, 0x00);
 	else
-		graphics.blevelRect(optionsSurface, 250, 145, 50, 22, 0xff, 0x00, 0x00);
-	graphics.drawString("ON", 207, 150, FONT_WHITE, optionsSurface);
-	graphics.drawString("OFF", 263, 150, FONT_WHITE, optionsSurface);
-	graphics.drawString("FULLSCREEN", 30, 150, FONT_WHITE, optionsSurface);
+		blevelRect(optionsSurface, 250, 145, 50, 22, 0xff, 0x00, 0x00);
+	drawString("ON", 207, 150, FONT_WHITE, optionsSurface);
+	drawString("OFF", 263, 150, FONT_WHITE, optionsSurface);
+	drawString("FULLSCREEN", 30, 150, FONT_WHITE, optionsSurface);
 
-	graphics.blevelRect(optionsSurface, 20, 195, 150, 22, 0x00, 0x00, 0x00);
-	graphics.blevelRect(optionsSurface, 190, 195, 110, 22, 0x00, 0x00, 0x00);
+	blevelRect(optionsSurface, 20, 195, 150, 22, 0x00, 0x00, 0x00);
+	blevelRect(optionsSurface, 190, 195, 110, 22, 0x00, 0x00, 0x00);
 	if (currentGame.autoSaveSlot == -1)
 	{
-		graphics.drawString("NONE", 225, 200, FONT_WHITE, optionsSurface);
+		drawString("NONE", 225, 200, FONT_WHITE, optionsSurface);
 	}
 	else
 	{
 		char string[] = "Slot %d";
 		sprintf(string, "Slot %d", currentGame.autoSaveSlot + 1);
-		graphics.blevelRect(optionsSurface, 190, 195, 110, 22, 0xff, 0x00, 0x00);
-		graphics.drawString(string, 225, 200, FONT_WHITE, optionsSurface);
+		blevelRect(optionsSurface, 190, 195, 110, 22, 0xff, 0x00, 0x00);
+		drawString(string, 225, 200, FONT_WHITE, optionsSurface);
 	}
-	graphics.drawString("AUTOSAVE SLOT", 30, 200, FONT_WHITE, optionsSurface);
+	drawString("AUTOSAVE SLOT", 30, 200, FONT_WHITE, optionsSurface);
 }
 
 static void showOptions(SDL_Surface *optionsSurface)
@@ -426,10 +426,10 @@ static void showOptions(SDL_Surface *optionsSurface)
 			if (!engine.fullScreen)
 			{
 				#if LINUX
-				SDL_WM_ToggleFullScreen(graphics.screen);
+				SDL_WM_ToggleFullScreen(screen);
 				#else
-				graphics.screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE|SDL_FULLSCREEN);
-				graphics.drawBackground();
+				screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE|SDL_FULLSCREEN);
+				drawBackground();
 				flushBuffer();
 				#endif
 				engine.fullScreen = true;
@@ -441,10 +441,10 @@ static void showOptions(SDL_Surface *optionsSurface)
 			if (engine.fullScreen)
 			{
 				#if LINUX
-				SDL_WM_ToggleFullScreen(graphics.screen);
+				SDL_WM_ToggleFullScreen(screen);
 				#else
-				graphics.screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE);
-				graphics.drawBackground();
+				screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE);
+				drawBackground();
 				flushBuffer();
 				#endif
 				engine.fullScreen = false;
@@ -469,7 +469,7 @@ functions when the player has selected an icon.
 */
 int galaxyMap()
 {
-	graphics.freeGraphics();
+	freeGraphics();
 
 	checkForBossMission(); // double check just to make sure!
 
@@ -477,9 +477,9 @@ int galaxyMap()
 	// do not perform certain keyboard actions
 	engine.gameSection = SECTION_INTERMISSION;
 
-	graphics.clearScreen(graphics.black);
-	graphics.updateScreen();
-	graphics.clearScreen(graphics.black);
+	clearScreen(black);
+	updateScreen();
+	clearScreen(black);
 
 	initSaveSlots();
 
@@ -490,33 +490,33 @@ int galaxyMap()
 	char string[25];
 
 	engine.cursor_x = engine.cursor_y = 500;
-	graphics.shape[0] = loadImage("gfx/cursor.bmp");
+	shape[0] = loadImage("gfx/cursor.bmp");
 
 	// Icons 1 - 29
 	for (int i = 0 ; i < 26 ; i++)
 	{
 		sprintf(string, "gfx/icon%d.bmp", (i + 1));
-		graphics.shape[i + 1] = loadImage(string);
+		shape[i + 1] = loadImage(string);
 	}
 
-	graphics.shape[27] = loadImage("gfx/buyIcon.bmp");
-	graphics.shape[28] = loadImage("gfx/sellIcon.bmp");
-	graphics.shape[29] = loadImage("gfx/firefly1.png");
+	shape[27] = loadImage("gfx/buyIcon.bmp");
+	shape[28] = loadImage("gfx/sellIcon.bmp");
+	shape[29] = loadImage("gfx/firefly1.png");
 
 	// Planets 30 - 39
-	graphics.shape[30] = loadImage("gfx/planet_sun.gif");
-	graphics.shape[31] = loadImage("gfx/planet_green.gif");
-	graphics.shape[32] = loadImage("gfx/planet_blue.gif");
-	graphics.shape[33] = loadImage("gfx/planet_red.gif");
-	graphics.shape[34] = loadImage("gfx/planet_orange.gif");
+	shape[30] = loadImage("gfx/planet_sun.gif");
+	shape[31] = loadImage("gfx/planet_green.gif");
+	shape[32] = loadImage("gfx/planet_blue.gif");
+	shape[33] = loadImage("gfx/planet_red.gif");
+	shape[34] = loadImage("gfx/planet_orange.gif");
 
 	// Faces (as defines)
-	graphics.shape[FACE_CHRIS] = loadImage("gfx/face_chris.png");
-	graphics.shape[FACE_SID] = loadImage("gfx/face_sid.png");
-	graphics.shape[FACE_KRASS] = loadImage("gfx/face_krass.png");
-	graphics.shape[FACE_PHOEBE] = loadImage("gfx/face_phoebe.png");
-	graphics.shape[FACE_URSULA] = loadImage("gfx/face_ursula.png");
-	graphics.shape[FACE_KLINE] = loadImage("gfx/face_kline.png");
+	shape[FACE_CHRIS] = loadImage("gfx/face_chris.png");
+	shape[FACE_SID] = loadImage("gfx/face_sid.png");
+	shape[FACE_KRASS] = loadImage("gfx/face_krass.png");
+	shape[FACE_PHOEBE] = loadImage("gfx/face_phoebe.png");
+	shape[FACE_URSULA] = loadImage("gfx/face_ursula.png");
+	shape[FACE_KLINE] = loadImage("gfx/face_kline.png");
 
 	engine.done = 0;
 	engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
@@ -531,10 +531,10 @@ int galaxyMap()
 	initShop();
 	setSystemPlanets();
 
-	SDL_Surface *statsSurface = graphics.alphaRect(600, 330, 0x00, 0x00, 0x99);
-	SDL_Surface *savesSurface = graphics.createSurface(350, 300);
-	SDL_Surface *optionsSurface = graphics.createSurface(320, 240);
-	SDL_Surface *commsSurface = graphics.createSurface(450, 400);
+	SDL_Surface *statsSurface = alphaRect(600, 330, 0x00, 0x00, 0x99);
+	SDL_Surface *savesSurface = createSurface(350, 300);
+	SDL_Surface *optionsSurface = createSurface(320, 240);
+	SDL_Surface *commsSurface = createSurface(450, 400);
 
 	createSavesSurface(savesSurface, -1);
 	createOptions(optionsSurface);
@@ -561,29 +561,29 @@ int galaxyMap()
 
 	textObject iconInfo[12];
 
-	iconInfo[0].image = graphics.textSurface("Start Next Mission", FONT_WHITE);
-	iconInfo[1].image = graphics.textSurface("View System Map", FONT_WHITE);
-	iconInfo[2].image = graphics.textSurface("Current Status", FONT_WHITE);
-	iconInfo[3].image = graphics.textSurface("Save Game", FONT_WHITE);
-	iconInfo[4].image = graphics.textSurface("Upgrade FIREFLY", FONT_WHITE);
-	iconInfo[5].image = graphics.textSurface("Comms", FONT_WHITE);
-	iconInfo[6].image = graphics.textSurface("Options", FONT_WHITE);
-	iconInfo[7].image = graphics.textSurface("Exit to Title Screen", FONT_WHITE);
+	iconInfo[0].image = textSurface("Start Next Mission", FONT_WHITE);
+	iconInfo[1].image = textSurface("View System Map", FONT_WHITE);
+	iconInfo[2].image = textSurface("Current Status", FONT_WHITE);
+	iconInfo[3].image = textSurface("Save Game", FONT_WHITE);
+	iconInfo[4].image = textSurface("Upgrade FIREFLY", FONT_WHITE);
+	iconInfo[5].image = textSurface("Comms", FONT_WHITE);
+	iconInfo[6].image = textSurface("Options", FONT_WHITE);
+	iconInfo[7].image = textSurface("Exit to Title Screen", FONT_WHITE);
 
 	sprintf(string, "System : %s", systemNames[currentGame.system]);
-	iconInfo[8].image = graphics.textSurface(string, FONT_WHITE);
+	iconInfo[8].image = textSurface(string, FONT_WHITE);
 
 	sprintf(string, "Stationed At: %s", systemPlanet[currentGame.stationedPlanet].name);
-	iconInfo[9].image = graphics.textSurface(string, FONT_WHITE);
+	iconInfo[9].image = textSurface(string, FONT_WHITE);
 
 	strcpy(string, "Destination: None");
 	if (currentGame.destinationPlanet > -1)
 		sprintf(string, "Destination: %s", systemPlanet[currentGame.destinationPlanet].name);
-	iconInfo[10].image = graphics.textSurface(string, FONT_WHITE);
+	iconInfo[10].image = textSurface(string, FONT_WHITE);
 	for (int i = 0 ; i < 9 ; i++)
 		iconInfo[i].x = (800 - iconInfo[i].image->w) / 2;
 
-	iconInfo[11].image = graphics.textSurface("Go to Destination Planet", FONT_WHITE);
+	iconInfo[11].image = textSurface("Go to Destination Planet", FONT_WHITE);
 
 	bool redrawBackGround = true;
 
@@ -600,16 +600,16 @@ int galaxyMap()
 
 	while (!engine.done)
 	{
-		graphics.updateScreen();
+		updateScreen();
 
 		if (redrawBackGround)
 		{
-			graphics.drawBackGround();
+			drawBackGround();
 			redrawBackGround = false;
 		}
 		else
 		{
-			graphics.unBuffer();
+			unBuffer();
 		}
 
   		doStarfield();
@@ -621,7 +621,7 @@ int galaxyMap()
 		for (int i = 40 ; i < 800 ; i+= 40)
 		{
 			r.x = i;
-			SDL_FillRect(graphics.screen, &r, graphics.darkerBlue);
+			SDL_FillRect(screen, &r, darkerBlue);
 		}
 
 		r.x = 0;
@@ -631,7 +631,7 @@ int galaxyMap()
 		for (int i = 40 ; i < 600 ; i+= 40)
 		{
 			r.y = i;
-			SDL_FillRect(graphics.screen, &r, graphics.darkerBlue);
+			SDL_FillRect(screen, &r, darkerBlue);
 		}
 
 
@@ -643,7 +643,7 @@ int galaxyMap()
 			engine.ssy /= 100;
 		}
 
-		graphics.blit(iconInfo[8].image, (int)iconInfo[8].x, 15);
+		blit(iconInfo[8].image, (int)iconInfo[8].x, 15);
 
 		switch(section)
 		{
@@ -662,10 +662,10 @@ int galaxyMap()
 						distance = 1;
 
 					SDL_FreeSurface(iconInfo[9].image);
-					iconInfo[9].image = graphics.textSurface(systemPlanet[currentGame.stationedPlanet].name, FONT_WHITE);
+					iconInfo[9].image = textSurface(systemPlanet[currentGame.stationedPlanet].name, FONT_WHITE);
 
 					SDL_FreeSurface(iconInfo[10].image);
-					iconInfo[10].image = graphics.textSurface(systemPlanet[currentGame.destinationPlanet].name, FONT_WHITE);
+					iconInfo[10].image = textSurface(systemPlanet[currentGame.destinationPlanet].name, FONT_WHITE);
 
 					section = 8;
 
@@ -697,20 +697,20 @@ int galaxyMap()
 					{
 						sprintf(string, "Stationed At: %s", systemPlanet[currentGame.stationedPlanet].name);
 						SDL_FreeSurface(iconInfo[9].image);
-						iconInfo[9].image = graphics.textSurface(string, FONT_WHITE);
+						iconInfo[9].image = textSurface(string, FONT_WHITE);
 						updateCommsSurface(commsSurface);
 					}
 					else
 					{
 						sprintf(string, "Destination: %s", systemPlanet[currentGame.destinationPlanet].name);
 						SDL_FreeSurface(iconInfo[10].image);
-						iconInfo[10].image = graphics.textSurface(string, FONT_WHITE);
+						iconInfo[10].image = textSurface(string, FONT_WHITE);
 					}
 				}
 
-				graphics.blit(iconInfo[9].image, 90, 450);
+				blit(iconInfo[9].image, 90, 450);
 				if ((currentGame.system > 0) && (currentGame.stationedPlanet != currentGame.destinationPlanet))
-					graphics.blit(iconInfo[10].image, 550, 450);
+					blit(iconInfo[10].image, 550, 450);
 				break;
 
 			case 2:
@@ -718,7 +718,7 @@ int galaxyMap()
 				break;
 
 			case 3:
-				graphics.blit(savesSurface, 200, 100);
+				blit(savesSurface, 200, 100);
 				saveSlot = showSaveSlots(savesSurface, saveSlot);
 				break;
 
@@ -727,12 +727,12 @@ int galaxyMap()
          	break;
 
 			case 5:
-				graphics.blit(commsSurface, 170, 70);
+				blit(commsSurface, 170, 70);
 				doComms(commsSurface);
 				break;
 
 			case 6:
-				graphics.blit(optionsSurface, 230, 130);
+				blit(optionsSurface, 230, 130);
 				showOptions(optionsSurface);
 				break;
 
@@ -744,13 +744,13 @@ int galaxyMap()
 			case 8:
 				showSystem(sinX, cosY);
 
-				graphics.blit(systemPlanet[currentGame.stationedPlanet].image, 150, 450);
-				graphics.blit(iconInfo[9].image, 135, 480);
-				graphics.blit(systemPlanet[currentGame.destinationPlanet].image, 650, 450);
-				graphics.blit(iconInfo[10].image, 635, 480);
+				blit(systemPlanet[currentGame.stationedPlanet].image, 150, 450);
+				blit(iconInfo[9].image, 135, 480);
+				blit(systemPlanet[currentGame.destinationPlanet].image, 650, 450);
+				blit(iconInfo[10].image, 635, 480);
 
 				destRect.w += distance;
-				SDL_FillRect(graphics.screen, &destRect, graphics.red);
+				SDL_FillRect(screen, &destRect, red);
 
 				if (destRect.w >= 450)
 				{
@@ -760,7 +760,7 @@ int galaxyMap()
 					sprintf(string, "Stationed At: %s", systemPlanet[currentGame.stationedPlanet].name);
 					strcpy(currentGame.stationedName, systemPlanet[currentGame.stationedPlanet].name);
 					SDL_FreeSurface(iconInfo[9].image);
-					iconInfo[9].image = graphics.textSurface(string, FONT_WHITE);
+					iconInfo[9].image = textSurface(string, FONT_WHITE);
 					updateCommsSurface(commsSurface);
 					section = 1;
 					redrawBackGround = true;
@@ -780,7 +780,7 @@ int galaxyMap()
 				break;
 		}
 
-		graphics.addBuffer(300, 545, 200, 15);
+		addBuffer(300, 545, 200, 15);
 
 		if (section != 8)
 		{
@@ -792,27 +792,27 @@ int galaxyMap()
 					if ((currentGame.stationedPlanet == currentGame.destinationPlanet) && (systemPlanet[currentGame.stationedPlanet].missionCompleted != 0))
 						continue;
 					else if (currentGame.stationedPlanet == currentGame.destinationPlanet)
-						graphics.blit(graphics.shape[1], 80 + (i * 90), 500);
+						blit(shape[1], 80 + (i * 90), 500);
 					else if (currentGame.stationedPlanet != currentGame.destinationPlanet)
-						graphics.blit(graphics.shape[26], 80 + (i * 90), 500);
+						blit(shape[26], 80 + (i * 90), 500);
 				}
 				else
 				{
-					graphics.blit(graphics.shape[i + 1], 80 + (i * 90), 500);
+					blit(shape[i + 1], 80 + (i * 90), 500);
 				}
 
 				if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 80 + (i * 90), 500, 32, 32))
 				{
 					if (i != 0)
 					{
-						graphics.blit(iconInfo[i].image, (int)iconInfo[i].x, 545);
+						blit(iconInfo[i].image, (int)iconInfo[i].x, 545);
 					}
 					else
 					{
 						if (currentGame.stationedPlanet == currentGame.destinationPlanet)
-							graphics.blit(iconInfo[0].image, (int)iconInfo[i].x, 545);
+							blit(iconInfo[0].image, (int)iconInfo[i].x, 545);
 						else
-							graphics.blit(iconInfo[11].image, (int)iconInfo[i].x, 545);
+							blit(iconInfo[11].image, (int)iconInfo[i].x, 545);
 					}
 
 					if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
@@ -828,7 +828,7 @@ int galaxyMap()
 		engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = engine.keyState[SDLK_SPACE] = 0;
 		doCursor();
 
-		graphics.delayFrame();
+		delayFrame();
 	}
 
 	Mix_HaltMusic();

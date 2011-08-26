@@ -108,52 +108,52 @@ void addCollectable(float x, float y, int type, int value, int life)
 	switch(type)
 	{
 		case P_CASH:
-			collectable->image = graphics.shape[24];
+			collectable->image = shape[24];
 			break;
 
 		case P_ROCKET:
-			collectable->image = graphics.shape[49];
+			collectable->image = shape[49];
 			break;
 
 		case P_PLASMA_AMMO:
-			collectable->image = graphics.shape[25];
+			collectable->image = shape[25];
 			break;
 
 		case P_SHIELD:
-			collectable->image = graphics.shape[26];
+			collectable->image = shape[26];
 			break;
 
 		case P_PLASMA_SHOT:
-			collectable->image = graphics.shape[27];
+			collectable->image = shape[27];
 			break;
 
 		case P_PLASMA_RATE:
-			collectable->image = graphics.shape[28];
+			collectable->image = shape[28];
 			break;
 
 		case P_PLASMA_DAMAGE:
-			collectable->image = graphics.shape[29];
+			collectable->image = shape[29];
 			break;
 
 		case P_CARGO:
-			collectable->image = graphics.shape[32];
+			collectable->image = shape[32];
 			break;
 
 		case P_SUPER:
-			collectable->image = graphics.shape[50];
+			collectable->image = shape[50];
 			break;
 
 		case P_MINE:
-			collectable->image = graphics.shape[31];
+			collectable->image = shape[31];
 			break;
 
 		case P_SLAVES:
 		case P_ESCAPEPOD:
-			collectable->image = graphics.shape[45];
+			collectable->image = shape[45];
 			break;
 
 		case P_ORE:
-			collectable->image = graphics.shape[46 + rand() % 3];
+			collectable->image = shape[46 + rand() % 3];
 			break;
 	}
 
@@ -243,7 +243,7 @@ void doCollectables()
 		if (collectable->active)
 		{
 			if ((collectable->x + collectable->image->w > 0) && (collectable->x < 800) && (collectable->y + collectable->image->h > 0) && (collectable->y < 600))
-				graphics.blit(collectable->image, (int)collectable->x, (int)collectable->y);
+				blit(collectable->image, (int)collectable->x, (int)collectable->y);
 
 			collectable->x += engine.ssx;
 			collectable->y += engine.ssy;

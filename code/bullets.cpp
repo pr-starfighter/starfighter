@@ -129,7 +129,7 @@ void addBullet(object *theWeapon, object *attacker, int y, int dy)
 	{
 		bullet->dx = rrand(-20, 20);
 		bullet->dy = rrand(-20, 20);
-		bullet->image[0] = graphics.shape[4];
+		bullet->image[0] = shape[4];
 	}
 
 	engine.bulletTail->next = bullet;
@@ -433,9 +433,9 @@ void fireRay(object *attacker)
 	ray.h = 3;
 	ray.w = 800;
 
-	int red = SDL_MapRGB(graphics.screen->format, rand() % 256, 0x00, 0x00);
-	SDL_FillRect(graphics.screen, &ray, red);
-	graphics.addBuffer(ray.x, ray.y, ray.w, ray.h);
+	int red = SDL_MapRGB(screen->format, rand() % 256, 0x00, 0x00);
+	SDL_FillRect(screen, &ray, red);
+	addBuffer(ray.x, ray.y, ray.w, ray.h);
 
 	if (attacker != &player)
 	{
@@ -541,16 +541,16 @@ void doBullets()
 
 			if ((bullet->flags & WF_AIMED) || (bullet->flags & WF_THIN_SPREAD))
 			{
-				graphics.blit(bullet->image[0], (int)(bullet->x - bullet->dx), (int)(bullet->y - bullet->dy));
+				blit(bullet->image[0], (int)(bullet->x - bullet->dx), (int)(bullet->y - bullet->dy));
 			}
 
 			if (bullet->id == WT_CHARGER)
 			{
 				for (int i = 0 ; i < bullet->damage ; i++)
-					graphics.blit(bullet->image[0], (int)(bullet->x - rrand(-(bullet->damage / 3), 0)), (int)(bullet->y + rrand(-3, 3)));
+					blit(bullet->image[0], (int)(bullet->x - rrand(-(bullet->damage / 3), 0)), (int)(bullet->y + rrand(-3, 3)));
 			}
 
-			graphics.blit(bullet->image[0], (int)bullet->x, (int)bullet->y);
+			blit(bullet->image[0], (int)bullet->x, (int)bullet->y);
 			bullet->x += bullet->dx;
 			bullet->y += bullet->dy;
 

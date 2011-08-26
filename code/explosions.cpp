@@ -36,7 +36,7 @@ void addExplosion(float x, float y, int type)
 	explosion->y = y;
 	explosion->thinktime = 28;
 	explosion->face = type;
-	explosion->image[0] = graphics.shape[type];
+	explosion->image[0] = shape[type];
 
 	engine.explosionTail->next = explosion;
 	engine.explosionTail = explosion;
@@ -80,7 +80,7 @@ void doExplosions()
 			explosion->y += engine.ssy;
 	
 			if (isOnScreen((int)explosion->x, (int)explosion->y, explosion->image[0]->w, explosion->image[0]->h))
-				graphics.blit(explosion->image[0], (int)explosion->x, (int)explosion->y);
+				blit(explosion->image[0], (int)explosion->x, (int)explosion->y);
 
 			if(rand() % 7 == 0)
 			{
@@ -93,7 +93,7 @@ void doExplosions()
 				else
 				{
 					explosion->face++;
-					explosion->image[0] = graphics.shape[explosion->face];
+					explosion->image[0] = shape[explosion->face];
 				}
 			}
 		}

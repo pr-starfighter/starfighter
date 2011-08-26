@@ -27,20 +27,20 @@ void updateCommsSurface(SDL_Surface *comms)
 
 	char string[255];
 
-	graphics.blevelRect(comms, 0, 10, comms->w - 1, 55, 0x00, 0x22, 0x00);
-	graphics.blit(graphics.shape[FACE_CHRIS], 20, 15, comms);
-	graphics.drawString("Chris Bainfield", 80, 15, FONT_WHITE, comms);
+	blevelRect(comms, 0, 10, comms->w - 1, 55, 0x00, 0x22, 0x00);
+	blit(shape[FACE_CHRIS], 20, 15, comms);
+	drawString("Chris Bainfield", 80, 15, FONT_WHITE, comms);
 	sprintf(string, "Current Location: %s", systemPlanet[currentGame.stationedPlanet].name);
-	graphics.drawString(string, 80, 35, FONT_WHITE, comms);
+	drawString(string, 80, 35, FONT_WHITE, comms);
 }
 
 void createCommsSurface(SDL_Surface *comms)
 {
 	engine.commsSection = 0;
 
-	graphics.blevelRect(comms, 0, 0, comms->w - 1, comms->h - 1, 0x00, 0x00, 0x25);
+	blevelRect(comms, 0, 0, comms->w - 1, comms->h - 1, 0x00, 0x00, 0x25);
 
-	graphics.drawString("+++ RECIEVED MESSAGES +++", 115, 80, FONT_GREEN, comms);
+	drawString("+++ RECIEVED MESSAGES +++", 115, 80, FONT_GREEN, comms);
 
 	int yOffset;
 
@@ -49,11 +49,11 @@ void createCommsSurface(SDL_Surface *comms)
 		if ((systemPlanet[i].messageSlot != -1) && (systemPlanet[i].missionCompleted == 0))
 		{
 			yOffset = systemPlanet[i].messageSlot * 60;
-			graphics.blevelRect(comms, 0, 105 + yOffset, comms->w - 1, 55, 0x00, 0x00, 0x77);
-			graphics.blit(graphics.shape[systemPlanet[i].faceImage], 20, 110 + yOffset, comms);
-			graphics.drawString(systemPlanet[i].from, 80, 110 + yOffset, FONT_WHITE, comms);
-			graphics.drawString(systemPlanet[i].subject, 80, 130 + yOffset, FONT_CYAN, comms);
-			graphics.drawString("INCOMPLETE", 350, 110 + yOffset, FONT_RED, comms);
+			blevelRect(comms, 0, 105 + yOffset, comms->w - 1, 55, 0x00, 0x00, 0x77);
+			blit(shape[systemPlanet[i].faceImage], 20, 110 + yOffset, comms);
+			drawString(systemPlanet[i].from, 80, 110 + yOffset, FONT_WHITE, comms);
+			drawString(systemPlanet[i].subject, 80, 130 + yOffset, FONT_CYAN, comms);
+			drawString("INCOMPLETE", 350, 110 + yOffset, FONT_RED, comms);
 		}
 	}
 
@@ -83,7 +83,7 @@ static void createMissionDetailSurface(SDL_Surface *comms, int missionSlot)
 	if (mission == -1)
 		return;
 
-	graphics.blevelRect(comms, 0, 0, comms->w - 1, comms->h - 1, 0x00, 0x00, 0x25);
+	blevelRect(comms, 0, 0, comms->w - 1, comms->h - 1, 0x00, 0x00, 0x25);
 
 	strcpy(string, "");
 	sprintf(string, "data/brief%d.txt", mission);
@@ -98,7 +98,7 @@ static void createMissionDetailSurface(SDL_Surface *comms, int missionSlot)
 
 	fscanf(fp, "%[^\n]%*c", name);
 	sprintf(string, "+++ Communication with %s +++", name);
-	graphics.drawString(string, -1, 20, FONT_GREEN, comms);
+	drawString(string, -1, 20, FONT_GREEN, comms);
 
 	fscanf(fp, "%d%*c", &lines);
 
@@ -108,12 +108,12 @@ static void createMissionDetailSurface(SDL_Surface *comms, int missionSlot)
 		faceNumber = getFace(string);
 		if (faceNumber > -1)
 		{
-			graphics.blit(graphics.shape[faceNumber], 10, y, comms);
+			blit(shape[faceNumber], 10, y, comms);
 			col = FONT_WHITE;
 		}
 		else
 		{
-			newY = graphics.drawString(string, 80, y, col, 1, comms) + 25;
+			newY = drawString(string, 80, y, col, 1, comms) + 25;
 			if (newY < y + 60)
 				newY += (60 - (newY - y));
 			y = newY;
@@ -122,8 +122,8 @@ static void createMissionDetailSurface(SDL_Surface *comms, int missionSlot)
 
 	fclose(fp);
 
-	graphics.blevelRect(comms, 5, comms->h - 28, 180, 20, 0x25, 0x00, 0x00);
-	graphics.drawString("RETURN TO MESSAGES", 15, comms->h - 25, FONT_WHITE, 1, comms);
+	blevelRect(comms, 5, comms->h - 28, 180, 20, 0x25, 0x00, 0x00);
+	drawString("RETURN TO MESSAGES", 15, comms->h - 25, FONT_WHITE, 1, comms);
 
 	engine.commsSection = 1;
 }

@@ -62,22 +62,23 @@ int main(int argc, char *argv[])
 
 	atexit(cleanUp);
 
+	initGraphics();
 	initSystem(); // Opens video mode and sound
 	loadFont();
 
 	if (cheatAttempt)
 	{
-		graphics.clearScreen(graphics.black);
-		graphics.drawString("That doesn't work anymore", -1, 285, FONT_WHITE);
-		graphics.drawString("Try harder...", -1, 315, FONT_WHITE);
-		graphics.updateScreen();
+		clearScreen(black);
+		drawString("That doesn't work anymore", -1, 285, FONT_WHITE);
+		drawString("Try harder...", -1, 315, FONT_WHITE);
+		updateScreen();
 		SDL_Delay(2000);
-		graphics.clearScreen(graphics.black);
-		graphics.updateScreen();
+		clearScreen(black);
+		updateScreen();
 		SDL_Delay(500);
 	}
 
-	graphics.freeGraphics();
+	freeGraphics();
 	loadSound();
 
 	initWeapons();
@@ -85,7 +86,7 @@ int main(int argc, char *argv[])
 	initVars();
 	defineAliens();
 
-	graphics.setColorIndexes();
+	setColorIndexes();
 
 	setAllyMessages();
 

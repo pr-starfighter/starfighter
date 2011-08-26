@@ -22,23 +22,23 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 static signed char showGameMenu(signed char continueSaveSlot)
 {
-	graphics.blitText(2);
+	blitText(2);
 	if (continueSaveSlot != 0)
 	{
-		graphics.blitText(3);
-		graphics.blitText(4);
+		blitText(3);
+		blitText(4);
 	}
-	graphics.blitText(5);
+	blitText(5);
 	if (engine.cheat)
 	{
-		graphics.textShape[7].y = 450;
-		graphics.blitText(6);
+		textShape[7].y = 450;
+		blitText(6);
 	}
 	else
 	{
-		graphics.textShape[7].y = 430;
+		textShape[7].y = 430;
 	}
-	graphics.blitText(7);
+	blitText(7);
 
 	if (engine.cheat)
 		return 6;
@@ -52,14 +52,14 @@ static signed char showLoadMenu()
 
 	for (int i = 13 ; i < 18 ; i++)
 	{
-		if (graphics.textShape[i].image != NULL)
+		if (textShape[i].image != NULL)
 		{
-			graphics.blitText(i);
+			blitText(i);
 			rtn++;
-			graphics.textShape[12].y = graphics.textShape[i].y + 40;
+			textShape[12].y = textShape[i].y + 40;
 		}
 	}
-	graphics.blitText(12);
+	blitText(12);
 
 	return rtn;
 }
@@ -67,36 +67,36 @@ static signed char showLoadMenu()
 static void createOptionsMenu()
 {
 	if (engine.useSound)
-		graphics.textSurface(8, "SOUND - ON", -1, 350, FONT_WHITE);
+		textSurface(8, "SOUND - ON", -1, 350, FONT_WHITE);
 	else
-		graphics.textSurface(8, "SOUND - OFF", -1, 350, FONT_WHITE);
+		textSurface(8, "SOUND - OFF", -1, 350, FONT_WHITE);
 
 	if (engine.useMusic)
-		graphics.textSurface(9, "MUSIC - ON", -1, 370, FONT_WHITE);
+		textSurface(9, "MUSIC - ON", -1, 370, FONT_WHITE);
 	else
-		graphics.textSurface(9, "MUSIC - OFF", -1, 370, FONT_WHITE);
+		textSurface(9, "MUSIC - OFF", -1, 370, FONT_WHITE);
 
 	if (engine.fullScreen)
-		graphics.textSurface(10, "FULLSCREEN - ON", -1, 390, FONT_WHITE);
+		textSurface(10, "FULLSCREEN - ON", -1, 390, FONT_WHITE);
 	else
-		graphics.textSurface(10, "FULLSCREEN - OFF", -1, 390, FONT_WHITE);
+		textSurface(10, "FULLSCREEN - OFF", -1, 390, FONT_WHITE);
 
 	char string[50];
 	strcpy(string, "AUTO SAVE SLOT - NONE");
 	if (currentGame.autoSaveSlot > -1)
 		sprintf(string, "AUTO SAVE SLOT - #%d", currentGame.autoSaveSlot + 1);
-	graphics.textSurface(11, string, -1, 410, FONT_WHITE);
+	textSurface(11, string, -1, 410, FONT_WHITE);
 }
 
 static signed char showOptionsMenu()
 {
-	graphics.textShape[12].y = 450;
+	textShape[12].y = 450;
 
-	graphics.blitText(8);
-	graphics.blitText(9);
-	graphics.blitText(10);
-	graphics.blitText(11);
-	graphics.blitText(12);
+	blitText(8);
+	blitText(9);
+	blitText(10);
+	blitText(11);
+	blitText(12);
 
 	return 5;
 }
@@ -104,35 +104,35 @@ static signed char showOptionsMenu()
 static void createCheatMenu()
 {
 	if (engine.cheatShield)
-		graphics.textSurface(18, "UNLIMITED SHIELD - ON", -1, 350, FONT_WHITE);
+		textSurface(18, "UNLIMITED SHIELD - ON", -1, 350, FONT_WHITE);
 	else
-		graphics.textSurface(18, "UNLIMITED SHIELD - OFF", -1, 350, FONT_WHITE);
+		textSurface(18, "UNLIMITED SHIELD - OFF", -1, 350, FONT_WHITE);
 
 	if (engine.cheatAmmo)
-		graphics.textSurface(19, "UNLIMITED AMMO - ON", -1, 370, FONT_WHITE);
+		textSurface(19, "UNLIMITED AMMO - ON", -1, 370, FONT_WHITE);
 	else
-		graphics.textSurface(19, "UNLIMITED AMMO - OFF", -1, 370, FONT_WHITE);
+		textSurface(19, "UNLIMITED AMMO - OFF", -1, 370, FONT_WHITE);
 
 	if (engine.cheatCash)
-		graphics.textSurface(20, "UNLIMITED CASH - ON", -1, 390, FONT_WHITE);
+		textSurface(20, "UNLIMITED CASH - ON", -1, 390, FONT_WHITE);
 	else
-		graphics.textSurface(20, "UNLIMITED CASH - OFF", -1, 390, FONT_WHITE);
+		textSurface(20, "UNLIMITED CASH - OFF", -1, 390, FONT_WHITE);
 
 	if (engine.cheatTime)
-		graphics.textSurface(21, "UNLIMITED TIME - ON", -1, 410, FONT_WHITE);
+		textSurface(21, "UNLIMITED TIME - ON", -1, 410, FONT_WHITE);
 	else
-		graphics.textSurface(21, "UNLIMITED TIME - OFF", -1, 410, FONT_WHITE);
+		textSurface(21, "UNLIMITED TIME - OFF", -1, 410, FONT_WHITE);
 }
 
 static signed char showCheatMenu()
 {
-	graphics.textShape[12].y = 450;
+	textShape[12].y = 450;
 
-	graphics.blitText(18);
-	graphics.blitText(19);
-	graphics.blitText(20);
-	graphics.blitText(21);
-	graphics.blitText(12);
+	blitText(18);
+	blitText(19);
+	blitText(20);
+	blitText(21);
+	blitText(12);
 
 	return 5;
 }
@@ -147,8 +147,8 @@ int doTitle()
 
 	engine.gameSection = SECTION_TITLE;
 
-	graphics.flushBuffer();
-	graphics.freeGraphics();
+	flushBuffer();
+	freeGraphics();
 	resetLists();
 	
 	// required to stop the title screen crashing
@@ -157,9 +157,9 @@ int doTitle()
 
 	loadGameGraphics();
 
-	graphics.clearScreen(graphics.black);
-	graphics.updateScreen();
-	graphics.clearScreen(graphics.black);
+	clearScreen(black);
+	updateScreen();
+	clearScreen(black);
 
 	signed char continueSaveSlot = initSaveSlots();
 
@@ -177,17 +177,17 @@ int doTitle()
 	int sfx = ((800 - sflogo->w) / 2);
 	int sfy = ((600 - sflogo->h) / 2);
 
-	graphics.textSurface(0, "PRESENTS", -1, 300, FONT_WHITE);
-	graphics.textSurface(1, "AN SDL GAME", -1, 300, FONT_WHITE);
-	graphics.textSurface(2, "START NEW GAME", -1, 350, FONT_WHITE);
-	graphics.textSurface(3, "LOAD GAME", -1, 370, FONT_WHITE);
-	graphics.textSurface(4, "CONTINUE CURRENT GAME", -1, 390, FONT_WHITE);
-	graphics.textSurface(5, "OPTIONS", -1, 410, FONT_WHITE);
-	graphics.textSurface(6, "CHEAT OPTIONS", -1, 430, FONT_WHITE);
-	graphics.textSurface(7, "QUIT", -1, 430, FONT_WHITE);
+	textSurface(0, "PRESENTS", -1, 300, FONT_WHITE);
+	textSurface(1, "AN SDL GAME", -1, 300, FONT_WHITE);
+	textSurface(2, "START NEW GAME", -1, 350, FONT_WHITE);
+	textSurface(3, "LOAD GAME", -1, 370, FONT_WHITE);
+	textSurface(4, "CONTINUE CURRENT GAME", -1, 390, FONT_WHITE);
+	textSurface(5, "OPTIONS", -1, 410, FONT_WHITE);
+	textSurface(6, "CHEAT OPTIONS", -1, 430, FONT_WHITE);
+	textSurface(7, "QUIT", -1, 430, FONT_WHITE);
 
 	createOptionsMenu();
-	graphics.textSurface(12, "BACK TO MAIN MENU", -1, 0, FONT_WHITE);
+	textSurface(12, "BACK TO MAIN MENU", -1, 0, FONT_WHITE);
 
 	createCheatMenu();
 
@@ -231,7 +231,7 @@ int doTitle()
 	signed char listLength = 5; // menu list length
 	signed char menuType = 0;
 
-	graphics.drawBackGround();
+	drawBackGround();
 
 	engine.done = 0;
 	flushInput();
@@ -242,8 +242,8 @@ int doTitle()
 
 	while (!engine.done)
 	{
-		graphics.updateScreen();
-		graphics.unBuffer();
+		updateScreen();
+		unBuffer();
 
 		now = SDL_GetTicks();
 
@@ -254,7 +254,7 @@ int doTitle()
 		{
 			addEngine(&enemy[i]);
 			enemy[i].x += enemy[i].dx;
-			graphics.blit(enemy[i].image[0], (int)enemy[i].x, (int)enemy[i].y);
+			blit(enemy[i].image[0], (int)enemy[i].x, (int)enemy[i].y);
 			if (enemy[i].x > 830)
 			{
 				enemy[i].x = -10;
@@ -265,25 +265,25 @@ int doTitle()
 
 		if ((now - then > 2000) && (now - then < 8000) && (!skip))
 		{
-			graphics.blit(prlogo, prx, pry);
+			blit(prlogo, prx, pry);
 		}
 		else if ((now - then > 9000) && (now - then < 15000) && (!skip))
 		{
-   		graphics.blitText(0);
+   		blitText(0);
 		}
 		else if ((now - then > 16000) && (now - then < 21000) && (!skip))
 		{
-			graphics.blitText(1);
+			blitText(1);
 		}
 		else if ((now - then > 25500) || (skip))
 		{
-			graphics.blit(sflogo, sfx, sfy);
+			blit(sflogo, sfx, sfy);
 
 			if ((now - then >= 27500) || (skip))
 			{
-				graphics.addBuffer(280, 345, 235, 145);
+				addBuffer(280, 345, 235, 145);
 
-				graphics.blevelRect(optionRec.x, optionRec.y, optionRec.w, optionRec.h, redGlow, 0x00, 0x00);
+				blevelRect(optionRec.x, optionRec.y, optionRec.w, optionRec.h, redGlow, 0x00, 0x00);
 
 				switch(menuType)
 				{
@@ -331,9 +331,9 @@ int doTitle()
 
 				if (!skip)
 				{
-					graphics.drawString("Copyright Parallel Realities 2003", 5, 580, FONT_WHITE, graphics.background);
-					graphics.drawString(buildVersion, 695, 580, FONT_WHITE, graphics.background);
-					graphics.addBuffer(0, 580, 800, 20);
+					drawString("Copyright Parallel Realities 2003", 5, 580, FONT_WHITE, background);
+					drawString(buildVersion, 695, 580, FONT_WHITE, background);
+					addBuffer(0, 580, 800, 20);
 					skip = true;
 				}
 			}
@@ -352,9 +352,9 @@ int doTitle()
 		{
 			if ((now - then <= 27500) && (!skip))
 			{
-				graphics.drawString("Copyright Parallel Realities 2003", 5, 580, FONT_WHITE, graphics.background);
-				graphics.drawString(buildVersion, 695, 580, FONT_WHITE, graphics.background);
-				graphics.addBuffer(0, 580, 800, 20);
+				drawString("Copyright Parallel Realities 2003", 5, 580, FONT_WHITE, background);
+				drawString(buildVersion, 695, 580, FONT_WHITE, background);
+				addBuffer(0, 580, 800, 20);
 				skip = true;
 			}
 			else
@@ -409,14 +409,14 @@ int doTitle()
 						{
 							engine.fullScreen = !engine.fullScreen;
 							#if LINUX
-							SDL_WM_ToggleFullScreen(graphics.screen);
+							SDL_WM_ToggleFullScreen(screen);
 							#else
 							if (engine.fullScreen)
-								graphics.screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE|SDL_FULLSCREEN);
+								screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE|SDL_FULLSCREEN);
 							else
-								graphics.screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE);
+								screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE);
 
-							graphics.drawBackground();
+							drawBackground();
 							flushBuffer();
 							#endif
 						}
@@ -450,7 +450,7 @@ int doTitle()
 			engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = engine.keyState[SDLK_SPACE] = 0;
 		}
 
-		graphics.delayFrame();
+		delayFrame();
 	}
 
 	Mix_HaltMusic();
@@ -487,7 +487,7 @@ into a data file when the game is finished.
 */
 void showStory()
 {
-	graphics.freeGraphics();
+	freeGraphics();
 
 	int y = 620;
 
@@ -512,7 +512,7 @@ void showStory()
 		fscanf(fp, "%[^\n]%*c", string);
 
 		y += nextPos;
-		graphics.textSurface(i, string, -1, y, FONT_WHITE);
+		textSurface(i, string, -1, y, FONT_WHITE);
 
 		i++;
 
@@ -522,28 +522,28 @@ void showStory()
 	fclose(fp);
 
 	loadBackground("gfx/startUp.jpg");
-	graphics.blit(graphics.background, 0, 0);
-	graphics.flushBuffer();
+	blit(background, 0, 0);
+	flushBuffer();
 
 	flushInput();
 	engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = engine.keyState[SDLK_SPACE] = 0;
 
 	while (true)
 	{
-		graphics.updateScreen();
-		graphics.unBuffer();
+		updateScreen();
+		unBuffer();
 
 		getPlayerInput();
 
 		if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]) || (engine.keyState[SDLK_SPACE]))
 			break;
 
-		if (graphics.textShape[8].y > 450)
+		if (textShape[8].y > 450)
 		{
 			for (int i = 0 ; i < 9 ; i++)
 			{
-				graphics.textShape[i].y -= 0.33333;
-				graphics.blitText(i);
+				textShape[i].y -= 0.33333;
+				blitText(i);
 			}
 		}
 		else
@@ -552,7 +552,7 @@ void showStory()
 			break;
 		}
 
-		graphics.delayFrame();
+		delayFrame();
 	}
 }
 
@@ -561,9 +561,9 @@ The game over screen :(
 */
 void gameover()
 {
-	graphics.flushBuffer();
-	graphics.freeGraphics();
-	SDL_FillRect(graphics.background, NULL, graphics.black);
+	flushBuffer();
+	freeGraphics();
+	SDL_FillRect(background, NULL, black);
 
 	engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = engine.keyState[SDLK_SPACE] = 0;
 	engine.gameSection = SECTION_INTERMISSION;
@@ -572,9 +572,9 @@ void gameover()
 
 	SDL_Surface *gameover = loadImage("gfx/gameover.png");
 
-	graphics.clearScreen(graphics.black);
-	graphics.updateScreen();
-	graphics.clearScreen(graphics.black);
+	clearScreen(black);
+	updateScreen();
+	clearScreen(black);
 	SDL_Delay(1000);
 
 	if ((engine.useMusic) && (engine.useAudio))
@@ -586,7 +586,7 @@ void gameover()
 	int x = (800 - gameover->w) / 2;
 	int y = (600 - gameover->h) / 2;
 
-	graphics.updateScreen();
+	updateScreen();
 
 	flushInput();
 	engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = engine.keyState[SDLK_SPACE] = 0;
@@ -598,14 +598,14 @@ void gameover()
 		if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]) || (engine.keyState[SDLK_SPACE]))
 			break;
 
-		graphics.updateScreen();
+		updateScreen();
 
-		graphics.unBuffer();
+		unBuffer();
 		x = ((800 - gameover->w) / 2) - rrand(-2, 2);
 		y = ((600 - gameover->h) / 2)  - rrand(-2, 2);
-		graphics.blit(gameover, x,  y);
+		blit(gameover, x,  y);
 
-		graphics.delayFrame();
+		delayFrame();
 	}
 
 	SDL_FreeSurface(gameover);
@@ -613,14 +613,14 @@ void gameover()
 	if ((engine.useMusic) && (engine.useAudio))
 		Mix_HaltMusic();
 
-	graphics.flushBuffer();
+	flushBuffer();
 }
 
 void doCredits()
 {
 	loadBackground("gfx/credits.jpg");
-	graphics.flushBuffer();
-	graphics.freeGraphics();
+	flushBuffer();
+	freeGraphics();
 
 	if ((engine.useMusic) && (engine.useAudio))
 		loadMusic("music/Solace.s3m");
@@ -635,11 +635,11 @@ void doCredits()
 
 	textObject *credit;
 
-	graphics.clearScreen(graphics.black);
-	graphics.updateScreen();
-	graphics.clearScreen(graphics.black);
+	clearScreen(black);
+	updateScreen();
+	clearScreen(black);
 
-	graphics.drawBackGround();
+	drawBackGround();
 
 	#if USEPACK
 	int dataLocation = locateDataInPak("data/credits.txt", 1);
@@ -652,7 +652,7 @@ void doCredits()
 	for (int i = 0 ; i < 6 ; i++)
 	{
 		fscanf(fp, "%[^\n]%*c", text);
-		graphics.drawString(text, -1, 240 + (i * 20), FONT_WHITE);
+		drawString(text, -1, 240 + (i * 20), FONT_WHITE);
 	}
 
 	fscanf(fp, "%d%*c", &numberOfCredits);
@@ -662,7 +662,7 @@ void doCredits()
 	for (int i = 0 ; i < numberOfCredits ; i++)
 	{
 		fscanf(fp, "%d %[^\n]%*c", &yPos, text);
-		credit[i].image = graphics.textSurface(text, FONT_WHITE);
+		credit[i].image = textSurface(text, FONT_WHITE);
 		credit[i].x = (800 - credit[i].image->w) / 2;
 		yPos2 += yPos;
 		credit[i].y = yPos2;
@@ -678,9 +678,9 @@ void doCredits()
 
 	SDL_Delay(3000);
 
-	graphics.updateScreen();
+	updateScreen();
  	SDL_Delay(10000);
-	graphics.drawBackGround();
+	drawBackGround();
 
 	engine.done = 0;
 
@@ -694,8 +694,8 @@ void doCredits()
 
 	while (true)
 	{
-		graphics.updateScreen();
-		graphics.unBuffer();
+		updateScreen();
+		unBuffer();
 
 		getPlayerInput();
 		if (engine.keyState[SDLK_ESCAPE])
@@ -704,15 +704,15 @@ void doCredits()
 		for (int i = 0 ; i < numberOfCredits ; i++)
 		{
 			if ((credit[i].y > 80) && (credit[i].y < 500))
-				graphics.blit(credit[i].image, (int)credit[i].x, (int)credit[i].y);
+				blit(credit[i].image, (int)credit[i].x, (int)credit[i].y);
 			if (credit[lastCredit].y > 400)
 				credit[i].y -= 0.3;
 		}
 
-		SDL_FillRect(graphics.screen, &r1, graphics.black);
-		SDL_FillRect(graphics.screen, &r2, graphics.black);
+		SDL_FillRect(screen, &r1, black);
+		SDL_FillRect(screen, &r2, black);
 
-		graphics.delayFrame();
+		delayFrame();
 	}
 
 	for (int i = 0 ; i < numberOfCredits ; i++)

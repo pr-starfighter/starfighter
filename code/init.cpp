@@ -57,11 +57,11 @@ be seen by people unless something really stoopid happens!
 */
 void showErrorAndExit(int errorId, const char *name)
 {
-	graphics.clearScreen(graphics.black);
+	clearScreen(black);
 
 	if (errorId != 2)
 	{
-		graphics.drawString("A file error has occurred", -1, 200, FONT_RED);
+		drawString("A file error has occurred", -1, 200, FONT_RED);
 	}
 	else
 	{
@@ -76,31 +76,31 @@ void showErrorAndExit(int errorId, const char *name)
 		case 0:
 			strcpy(string, "");
 			sprintf(string, "%s was not found in the Starfighter data package", name);
-			graphics.drawString(string, -1, 250, FONT_WHITE);
-			graphics.drawString("Please try again. If this error persists, contact Parallel Realities", -1, 275, FONT_WHITE);
-			graphics.drawString("or reinstall the game", -1, 300, FONT_WHITE);
+			drawString(string, -1, 250, FONT_WHITE);
+			drawString("Please try again. If this error persists, contact Parallel Realities", -1, 275, FONT_WHITE);
+			drawString("or reinstall the game", -1, 300, FONT_WHITE);
 			break;
 		case 1:
-			graphics.drawString("Project: Starfighter encountered an error whilst", -1, 250, FONT_WHITE);
-			graphics.drawString("attempting to load game data. Please try running", -1, 275, FONT_WHITE);
-			graphics.drawString("the game again. If the errors persist, reinstall the game", -1, 300, FONT_WHITE);
+			drawString("Project: Starfighter encountered an error whilst", -1, 250, FONT_WHITE);
+			drawString("attempting to load game data. Please try running", -1, 275, FONT_WHITE);
+			drawString("the game again. If the errors persist, reinstall the game", -1, 300, FONT_WHITE);
 			break;
 		case 2:
-			graphics.drawString("Project: Starfighter encountered a critical error", -1, 250, FONT_WHITE);
-			graphics.drawString("while attempting to perform a required program function.", -1, 275, FONT_WHITE);
-			graphics.drawString("Please contact Parallel Realities with details", -1, 300, FONT_WHITE);
+			drawString("Project: Starfighter encountered a critical error", -1, 250, FONT_WHITE);
+			drawString("while attempting to perform a required program function.", -1, 275, FONT_WHITE);
+			drawString("Please contact Parallel Realities with details", -1, 300, FONT_WHITE);
 			break;
 	}
 
-	graphics.drawString("Project: Starfighter will now exit", -1, 450, FONT_WHITE);
-	graphics.drawString("Press Space to continue", -1, 475, FONT_WHITE);
+	drawString("Project: Starfighter will now exit", -1, 450, FONT_WHITE);
+	drawString("Press Space to continue", -1, 475, FONT_WHITE);
 
 	engine.keyState[SDLK_SPACE] = 0;
 
 	while (!engine.keyState[SDLK_SPACE])
 	{
 		getPlayerInput();
-		graphics.delayFrame();
+		delayFrame();
 	}
 
 	exit(1);
@@ -187,11 +187,11 @@ void initSystem()
 	SDL_WM_SetIcon(loadImage("gfx/alienDevice.png"), NULL);
 
 	if (engine.fullScreen)
-		graphics.screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE|SDL_FULLSCREEN);
+		screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE|SDL_FULLSCREEN);
 	else
-		graphics.screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE);
+		screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE);
 
-	if (graphics.screen == NULL) {
+	if (screen == NULL) {
 		printf("Couldn't set 800x600x16 video mode: %s\n", SDL_GetError());
 		exit(1);
 	}
@@ -219,9 +219,9 @@ void cleanUp()
 {
 	printf("Cleaning Up...\n");
 	printf("Freeing Graphics\n");
-	graphics.freeGraphics();
+	freeGraphics();
 	printf("Freeing Background\n");
-	SDL_FreeSurface(graphics.background);
+	SDL_FreeSurface(background);
 	printf("Freeing Sounds\n");
 	freeSound();
 	printf("Resetting Lists\n");
@@ -229,13 +229,13 @@ void cleanUp()
 	delete(engine.bulletHead);
 	delete(engine.explosionHead);
 	delete(engine.collectableHead);
-	delete(graphics.bufferHead);
+	delete(bufferHead);
 
 	printf("Freeing Font\n");
 	for (int i = 0 ; i < MAX_FONTSHAPES ; i++)
 	{
-		if (graphics.fontShape[i] != NULL)
-			SDL_FreeSurface(graphics.fontShape[i]);
+		if (fontShape[i] != NULL)
+			SDL_FreeSurface(fontShape[i]);
 	}
 
 	printf("Removing Mod\n");

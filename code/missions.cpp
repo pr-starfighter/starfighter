@@ -676,42 +676,42 @@ static void drawBriefScreen()
 	for (int i = 0 ; i < 120 ; i++)
 	{
 		r.y = (i * 2) + 60;
-		SDL_FillRect(graphics.screen, &r, SDL_MapRGB(graphics.screen->format, 0, i, 0));
+		SDL_FillRect(screen, &r, SDL_MapRGB(screen->format, 0, i, 0));
 		r.y = (300 + (i * 2));
-		SDL_FillRect(graphics.screen, &r, SDL_MapRGB(graphics.screen->format, 0, (120 - i), 0));
+		SDL_FillRect(screen, &r, SDL_MapRGB(screen->format, 0, (120 - i), 0));
 	}
 
-	graphics.blevelRect(140, 70, 500, 20, 0x00, 0x77, 0x00);
-	graphics.blevelRect(140, 90, 500, 130, 0x00, 0x33, 0x00);
-	graphics.drawString("Primary Objectives", 150, 74, FONT_WHITE);
+	blevelRect(140, 70, 500, 20, 0x00, 0x77, 0x00);
+	blevelRect(140, 90, 500, 130, 0x00, 0x33, 0x00);
+	drawString("Primary Objectives", 150, 74, FONT_WHITE);
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
 		if ((currentMission.primaryType[i] != NONE) && (currentMission.completed1[i] != OB_HIDDEN))
 		{
-			graphics.drawString(currentMission.primaryObjective[i], 160, 114 + (i * 30), FONT_WHITE);
+			drawString(currentMission.primaryObjective[i], 160, 114 + (i * 30), FONT_WHITE);
 		}
 	}
 
 	if (currentMission.secondaryType[0] != NONE)
 	{
-		graphics.blevelRect(140, 230, 500, 20, 0x00, 0x77, 0x77);
-		graphics.blevelRect(140, 250, 500, 130, 0x00, 0x33, 0x33);
-		graphics.drawString("Secondary Objectives", 150, 234, FONT_WHITE);
+		blevelRect(140, 230, 500, 20, 0x00, 0x77, 0x77);
+		blevelRect(140, 250, 500, 130, 0x00, 0x33, 0x33);
+		drawString("Secondary Objectives", 150, 234, FONT_WHITE);
 
 		for (int i = 0 ; i < 3 ; i++)
 		{
 			if (currentMission.secondaryType[i] != NONE)
 			{
-				graphics.drawString(currentMission.secondaryObjective[i], 160, 274 + (i * 30), FONT_WHITE);
+				drawString(currentMission.secondaryObjective[i], 160, 274 + (i * 30), FONT_WHITE);
 				currentGame.secondaryMissions++;
 			}
 		}
 	}
 
-	graphics.blevelRect(140, 390, 500, 20, 0x77, 0x77, 0x00);
-	graphics.blevelRect(140, 410, 500, 130, 0x33, 0x33, 0x00);
-	graphics.drawString("Additional Information", 150, 394, FONT_WHITE);
+	blevelRect(140, 390, 500, 20, 0x77, 0x77, 0x00);
+	blevelRect(140, 410, 500, 130, 0x33, 0x33, 0x00);
+	drawString("Additional Information", 150, 394, FONT_WHITE);
 }
 
 /*
@@ -721,12 +721,12 @@ mission begins playing here.
 */
 void missionBriefScreen()
 {
-	graphics.clearScreen(graphics.black);
-	graphics.updateScreen();
+	clearScreen(black);
+	updateScreen();
 
 	if (currentGame.area != MAX_MISSIONS - 1)
 	{
-		graphics.clearScreen(graphics.black);
+		clearScreen(black);
 		drawBriefScreen();
 
 		if (currentMission.timeLimit1[0] > 0)
@@ -737,7 +737,7 @@ void missionBriefScreen()
 				sprintf(temp, "TIME LIMIT: %d minutes", currentMission.timeLimit1[0]);
 			else
 				sprintf(temp, "SURVIVAL FOR %d minutes", currentMission.timeLimit1[0]);
-			graphics.drawString(temp, -1, 500, FONT_RED);
+			drawString(temp, -1, 500, FONT_RED);
 		}
 
 		switch (currentGame.area)
@@ -749,43 +749,43 @@ void missionBriefScreen()
 			case 18:
 			case 24:
 			case 26:
-				graphics.drawString("Phoebe Lexx will not be present", 160, 420, FONT_WHITE);
+				drawString("Phoebe Lexx will not be present", 160, 420, FONT_WHITE);
 				if (currentGame.hasWingMate2)
-					graphics.drawString("Ursula Lexx will not be present", 160, 450, FONT_WHITE);
+					drawString("Ursula Lexx will not be present", 160, 450, FONT_WHITE);
 				break;
 		}
 
 		if ((currentGame.area == 9) || (currentGame.area == 17) || (currentGame.area == 25))
-			graphics.drawString("Sid Wilson will join you on this mission", 160, 480, FONT_WHITE);
+			drawString("Sid Wilson will join you on this mission", 160, 480, FONT_WHITE);
 
-		graphics.updateScreen();
+		updateScreen();
 	}
 
 	loadGameGraphics();
-	graphics.textSurface(4, "Shield", 25, 550, FONT_WHITE);
-	graphics.textSurface(5, "Plasma:", 250, 550, FONT_WHITE);
+	textSurface(4, "Shield", 25, 550, FONT_WHITE);
+	textSurface(5, "Plasma:", 250, 550, FONT_WHITE);
 
 	if (player.weaponType[1] == W_CHARGER)
-		graphics.textSurface(6, "Charge", 385, 550, FONT_WHITE);
+		textSurface(6, "Charge", 385, 550, FONT_WHITE);
 	else if (player.weaponType[1] == W_LASER)
-		graphics.textSurface(6, "Heat", 405, 550, FONT_WHITE);
+		textSurface(6, "Heat", 405, 550, FONT_WHITE);
 	else
-		graphics.textSurface(6, "Rockets:", 385, 550, FONT_WHITE);
+		textSurface(6, "Rockets:", 385, 550, FONT_WHITE);
 
-	graphics.textSurface(7, "Target", 550, 550, FONT_WHITE);
-	graphics.textSurface(8, "Cash: $", 25, 20, FONT_WHITE);
-	graphics.textSurface(9, "Objectives Remaining:", 550, 20, FONT_WHITE);
-	graphics.textSurface(10, "Time Remaining - ", 260, 20, FONT_WHITE);
-	graphics.textSurface(11, "Power", 25, 570, FONT_WHITE);
-	graphics.textSurface(12, "Output", 250, 570, FONT_WHITE);
-	graphics.textSurface(13, "Cooler", 485, 570, FONT_WHITE);
+	textSurface(7, "Target", 550, 550, FONT_WHITE);
+	textSurface(8, "Cash: $", 25, 20, FONT_WHITE);
+	textSurface(9, "Objectives Remaining:", 550, 20, FONT_WHITE);
+	textSurface(10, "Time Remaining - ", 260, 20, FONT_WHITE);
+	textSurface(11, "Power", 25, 570, FONT_WHITE);
+	textSurface(12, "Output", 250, 570, FONT_WHITE);
+	textSurface(13, "Cooler", 485, 570, FONT_WHITE);
 	playRandomTrack();
 
 	if (currentGame.area != MAX_MISSIONS - 1)
 	{
-		graphics.drawString("PRESS CTRL TO CONTINUE...", -1, 550, FONT_WHITE);
+		drawString("PRESS CTRL TO CONTINUE...", -1, 550, FONT_WHITE);
 
-		graphics.updateScreen();
+		updateScreen();
 
 		flushInput();
 		engine.done = 0;
@@ -793,15 +793,15 @@ void missionBriefScreen()
 
 		while (true)
 		{
-			graphics.delayFrame();
+			delayFrame();
 			getPlayerInput();
 			if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
 				break;
 		}
 
-		graphics.clearScreen(graphics.black);
-		graphics.updateScreen();
-		graphics.clearScreen(graphics.black);
+		clearScreen(black);
+		updateScreen();
+		clearScreen(black);
 	}
 
 	engine.gameSection = SECTION_GAME;
@@ -817,13 +817,13 @@ void missionFinishedScreen()
 {
 	if (currentGame.area != MAX_MISSIONS - 1)
 	{
-		graphics.clearScreen(graphics.black);
-		graphics.updateScreen();
+		clearScreen(black);
+		updateScreen();
 
 		if (currentGame.shots > 0)
 			currentGame.accuracy = (currentGame.hits * 100) / currentGame.shots;
 
-		graphics.clearScreen(graphics.black);
+		clearScreen(black);
 		drawBriefScreen();
 
 		char temp[100];
@@ -833,9 +833,9 @@ void missionFinishedScreen()
 			if (currentMission.primaryType[i] != NONE)
 			{
 				if ((currentGame.area != 17) || ((currentGame.area == 17) && (i != 1)))
-					graphics.drawString("COMPLETED", 550, 114 + (i * 30), FONT_GREEN);
+					drawString("COMPLETED", 550, 114 + (i * 30), FONT_GREEN);
 				else
-					graphics.drawString("FAILED", 550, 114 + (i * 30), FONT_RED);
+					drawString("FAILED", 550, 114 + (i * 30), FONT_RED);
 			}
 		}
 
@@ -848,12 +848,12 @@ void missionFinishedScreen()
 					sprintf(temp, currentMission.secondaryObjective[i]);
 					if (currentMission.completed2[i] >= 1)
 					{
-						graphics.drawString("COMPLETED", 550, 274 + (i * 30), FONT_GREEN);
+						drawString("COMPLETED", 550, 274 + (i * 30), FONT_GREEN);
 						currentGame.secondaryMissionsCompleted++;
 					}
 					else
 					{
-						graphics.drawString("FAILED", 550, 274 + (i * 30), FONT_RED);
+						drawString("FAILED", 550, 274 + (i * 30), FONT_RED);
 					}
 				}
 			}
@@ -862,7 +862,7 @@ void missionFinishedScreen()
 		if (currentMission.remainingObjectives1 + currentMission.remainingObjectives2 == 0)
 		{
 			sprintf(temp, "Shield Bonus: $%.3d", (player.shield * 10));
-			graphics.drawString(temp, -1, 430, FONT_WHITE);
+			drawString(temp, -1, 430, FONT_WHITE);
 			currentGame.cash += (player.shield * 10);
 			currentGame.cashEarned += (player.shield * 10);
 		}
@@ -871,7 +871,7 @@ void missionFinishedScreen()
 
 		snprintf(temp, sizeof temp, "Mission Time: %2d:%02d:%02d", engine.timeTaken / 3600, (engine.timeTaken / 60) % 60, engine.timeTaken % 60);
 
-		graphics.drawString(temp, -1, 500, FONT_WHITE);
+		drawString(temp, -1, 500, FONT_WHITE);
 
 		// Do some mission specific stuff here...
 		if (currentGame.area == 1)
@@ -883,7 +883,7 @@ void missionFinishedScreen()
 
 		checkForBossMission();
 
-		graphics.updateScreen();
+		updateScreen();
 
 		flushInput();
 		engine.done = 0;
@@ -891,7 +891,7 @@ void missionFinishedScreen()
 
 		while (true)
 		{
-			graphics.delayFrame();
+			delayFrame();
 			getPlayerInput();
 			if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
 				break;

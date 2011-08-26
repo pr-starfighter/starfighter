@@ -59,9 +59,9 @@ object *addCargo(object *owner, int cargoType)
 	cargo[index].dx = 0;
 	cargo[index].dy = 0;
 	cargo[index].collectType = cargoType;
-	cargo[index].image[0] = graphics.shape[32];
+	cargo[index].image[0] = shape[32];
 	if (cargoType == P_PHOEBE)
-		cargo[index].image[0] = graphics.shipShape[20];
+		cargo[index].image[0] = shipShape[20];
 
 	return &cargo[index];
 }
@@ -97,7 +97,7 @@ void doCargo()
 				continue;
 			}
 
-			graphics.blit(cargo[i].image[0], (int)cargo[i].x, (int)cargo[i].y);
+			blit(cargo[i].image[0], (int)cargo[i].x, (int)cargo[i].y);
 
 			cargo[i].x += engine.ssx;
 			cargo[i].y += engine.ssy;
@@ -113,7 +113,7 @@ void doCargo()
 			// draw the chain link line
 			for (int j = 0 ; j < 10 ; j++)
 			{
-				graphics.blit(graphics.shape[30], (int)chainX, (int)chainY);
+				blit(shape[30], (int)chainX, (int)chainY);
 				chainX -= dx;
 				chainY -= dy;
 			}
