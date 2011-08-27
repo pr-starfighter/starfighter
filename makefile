@@ -1,4 +1,5 @@
-CFLAGS = `sdl-config --cflags` -Wall -DLINUX
+CFLAGS ?= -O2 -Wall -g
+CFLAGS += `sdl-config --cflags` -DLINUX
 LIBS = `sdl-config --libs` -lSDL_mixer -lSDL_image
 OBJS = ai.o aliens.o audio.o bullets.o cargo.o collectable.o comms.o debris.o events.o explosions.o game.o globals.o graphics.o init.o intermission.o loadSave.o messages.o misc.o missions.o player.o resources.o script.o shop.o Starfighter.o title.o unpack.o weapons.o
 
@@ -6,13 +7,16 @@ VERSION = 1.1
 PROG = starfighter
 PACK = starfighter.pak
 DOCS = docs/*
-DATA = data/* gfx/* music/* sound/*
+DATA = data gfx music sound
+DATAFILES = data/* gfx/* music/* sound/*
 
 USEPACK ?= 1
 
-BINDIR = /usr/games/
-DATADIR = /usr/share/games/parallelrealities/
-DOCDIR = /usr/share/doc/starfighter/
+PREFIX ?= /usr
+BINDIR ?= $(PREFIX)/games/
+DATADIR ?= $(PREFIX)/share/games/parallelrealities/
+DOCDIR ?= $(PREFIX)/share/doc/$(PROG)/
+
 # top-level rule to create the program.
 ALL = $(PROG)
 ifeq ($(USEPACK), 1)
@@ -33,25 +37,24 @@ $(PROG): $(OBJS)
 clean:
 	$(RM) $(OBJS) $(ALL)
 
-distclean:
-	$(RM) $(PROG)
-
 # install
 install: $(ALL)
-	mkdir -p $(DATADIR)
-	strip $(PROG)
-	install -o root -g games -m 755 $(PROG) $(BINDIR)$(PROG)
-ifeq ($(USEPACK), 1)
-	install -o root -g games -m 644 $(DATA) $(DATADIR)
-else
-	install -o root -g games -m 644 $(PACK) $(DATADIR)$(PACK)
-endif
-	cp $(DOCS) $(DOCDIR)
+	mkdir -p $(DESTDIR)$(BINDIR)
+	mkdir -p $(DESTDIR)$(DATADIR)
+	mkdir -p $(DESTDIR)$(DOCDIR)
 
-$(PACK): pack.py $(DATA)
-	./pack.py $(PACK) $(DATA)
+	install -m 755 $(PROG) $(DESTDIR)$(BINDIR)$(PROG)
+ifeq ($(USEPACK), 1)
+	install -m 644 $(PACK) $(DESTDIR)$(DATADIR)$(PACK)
+else
+	cp -pr $(DATA) $(DESTDIR)$(DATADIR)
+endif
+	cp -p $(DOCS) $(DESTDIR)$(DOCDIR)
+
+$(PACK): pack.py $(DATAFILES)
+	./pack.py $(PACK) $(DATAFILES)
 
 unpack: unpack.py
 	./unpack.py $(PACK)
 
-.PHONY: all clean distclean unpack
+.PHONY: all clean install unpack
