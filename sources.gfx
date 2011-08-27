@@ -1,40 +1,29 @@
-13:08 * <guus> opengameart.org
-13:08 * >guus< ik denk dat ik eerst een bergje placeholders maak, die lame zijn, maar speelbaar, zodat ik weet dat ik 
-      niet iets doms aan het doen ben :]
-13:09 * >guus< weet jij wat die alienDevice is?
-13:09 * <guus> Volgens mij hebben ze die zelf gemaakt
-13:11 * >guus< wacht, welke files moeten er vervangen worden?
-13:12 * >guus< en welke licenties zijn ok?
-13:13 * <guus> GPL, BSD, LGPL, CC-BY en CC-BY-SA
-13:22 * <guus> cc0 is ook ok
-
-
-whatever license guus wants; author: Astrid
-icon11.bmp
-iconBase.bmp
+author: Astrid S. de Wijn, license: CC-BY-SA 3.0
+icon11.png
+iconBase.png
 arrow*.png
 stunBolt.png
 *Dir.png
-sellIcon.bmp
-buyIcon.bmp
+sellIcon.png
+buyIcon.png
 gameover.png
-explode13.bmp,explode14.bmp,explode15.bmp,explode16.bmp
-icon1.bmp,icon2.bmp,icon3.bmp,icon6.bmp,icon7.bmp
-explode9.bmp
-explode10.bmp
-explode11.bmp
-explode12.bmp
-explode1.bmp
-explode1.bmp
-explode3.bmp
-explode4.bmp
+explode13.png,explode14.png,explode15.png,explode16.png
+icon1.png,icon2.png,icon3.png,icon6.png,icon7.png
+explode9.png
+explode10.png
+explode11.png
+explode12.png
+explode1.png
+explode1.png
+explode3.png
+explode4.png
 elec*.png
 chainLink.png
 cursor.png
-smallFont.bmp: monospace bold 13 pt (gimp)  anti-aliasing is off.
+smallFont.png: monospace bold 13 pt (gimp)  anti-aliasing is off.
 targetText.png: same font, smaller, anti-aliasing on
 gameover.png: 72pt
-icon8.bmp
+icon8.png
 plasmaGreen.png
 plasmaRed.png
 
@@ -48,10 +37,10 @@ face_krass.png http://opengameart.org/content/48x48-faces-3rd-sheet
 
 face_kline.png: CCBY 3.0; author: Antifarea, remixed by Astrid, combination of http://opengameart.org/content/48x48-faces-2nd-sheet and http://opengameart.org/content/48x48-faces-4th-sheet 
 
-planet_sun.gif CC0; author: NASA; http://opengameart.org/content/the-sun (reduced in size)
+planet_sun.png CC0; author: NASA; http://opengameart.org/content/the-sun (reduced in size)
 
-planet_*.gif CC-BY 3.0: author: athile ; http://opengameart.org/content/planets-pack-8 (reduced in size)
-icon26.bmp
+planet_*.png CC-BY 3.0: author: athile ; http://opengameart.org/content/planets-pack-8 (reduced in size)
+icon26.png
 
 GPL 2.0 GPL 3.0 CC-BY-SA 3.0 http://opengameart.org/content/astrominer-sprites (remixed by astrid)
 drone*.png
@@ -65,7 +54,7 @@ transport*.png CC-BY 3.0 http://opengameart.org/content/iron-plague-cargo2bmp
 dualFighter*.png http://opengameart.org/content/iron-plague-hunter1bmp
 mobileCannon*.png http://opengameart.org/content/iron-plague-ship4bmp
 aimFighter*.png http://opengameart.org/content/iron-plague-doomdaybmp
-barrier.gif http://opengameart.org/content/iron-plague-beacon2bmp
+barrier.png http://opengameart.org/content/iron-plague-beacon2bmp
 wingmate*.png http://opengameart.org/content/iron-plague-bshipbmp
 evilUrsula*.png http://opengameart.org/content/iron-plague-bshipbmp
 rebelCarrier*.png http://opengameart.org/content/iron-plague-cargo1bmp
@@ -100,61 +89,51 @@ ore*.png: public domain ; author: NASA ; http://en.wikipedia.org/wiki/File:57142
 frigate*.png, execTrans* GPL 3.0 CC-BY-SA 3.0, Skorpio, http://opengameart.org/content/spaceships-top-down, remixed by Astrid
 miner*.png slaveTrans*.png http://opengameart.org/content/spaceships2-top-down
 
-icon5.bmp,firefly*.png CC0 http://opengameart.org/content/top-down-space-fighter-sprite
+icon5.png,firefly*.png CC0 http://opengameart.org/content/top-down-space-fighter-sprite
 
 GPL 2.0, GPL 3.0, CC-BY-SA 3.0; Ails, http://opengameart.org/content/420-pixel-art-icons-for-medievalfantasy-rpg remixed by Astrid
-icon23.bmp
-icon16.bmp
+icon23.png
+icon16.png
 icon17.png
-icon15.bmp
-icon10.bmp
-icon12.bmp
-icon14.bmp
-icon9.bmp
-rocket.gif
+icon15.png
+icon10.png
+icon12.png
+icon14.png
+icon9.png
+rocket.png
 superCharge.png
 cargo1.png
 plasmaDamage.png
 plasmaAmmo.png
 plasmaRate.png
-heart.gif
-dollar.gif
+heart.png
+dollar.png
 pod.png
 
 CC-BY 3.0 CC-BY-SA 3.0 ; OceansDream http://opengameart.org/content/various-inventory-24-pixel-icon-set, remixed by Astrid
-icon18.bmp
-icon19.bmp
-icon20.bmp
-icon22.bmp
-icon24.bmp
-icon25.bmp
+icon18.png
+icon19.png
+icon20.png
+icon22.png
+icon24.png
+icon25.png
 rocketAmmo.png
-icon13.bmp
-rocket[12].bmp
+icon13.png
+rocket[12].png
 
 public domain http://en.wikipedia.org/wiki/File:DIN_4844-2_Warnung_vor_Laserstrahl_D-W010.svg , remixed by Astrid
-icon21.bmp
+icon21.png
 
 old data:
-prlogo.gif
-sflogo.gif
+prlogo.png
+sflogo.png
 alienDevice.png
 
 
-icon4.bmp CC-BY-SA 3.0 http://opengameart.org/content/floppy-disk, remixed by astrid
+icon4.png CC-BY-SA 3.0 http://opengameart.org/content/floppy-disk, remixed by astrid
 
 CC-BY-SA 3.0 http://opengameart.org/content/spaceships2-top-down
 eliteFighter*.png 
 
-further, so far unused resources:
-
-buttonred.png: CC0, Cuzco, http://opengameart.org/content/buttons
-asteroid3.png,ore.png,ore.xcf: public domain ; author: NASA ; http://en.wikipedia.org/wiki/File:571423main_pia14316-full_full_Vesta.jpg (243 Ida)
- 
-icons34x34: GPL 2.0, GPL 3.0, CC-BY-SA 3.0; Ails, http://opengameart.org/content/420-pixel-art-icons-for-medievalfantasy-rpg
-
-useful links:
-http://opengameart.org/content/60-terrible-character-portraits
-
-CC-BY-SA 3.0 http://opengameart.org/content/spaceships2-top-down
-alt/dualFighter*.png
+All GIF and BMP images have been converted to PNG. PNG and JPEG files are
+optimised using advpng from AdvanceCOMP, and the jpegoptim utility.
