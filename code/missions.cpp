@@ -609,7 +609,7 @@ bool allMissionsCompleted()
 		}
 	}
 
-	bool remaining = false;
+	signed char remaining;
 	bool add = false;
 	bool allDone = true;
 
@@ -650,7 +650,7 @@ bool allMissionsCompleted()
 
 	// We've only got one objective left and it's destroy all targets,
 	// so stop adding aliens (otherwise it might be impossible to finish!)
-	if ((add) && (remaining))
+	if ((add) && (remaining == 1))
 		engine.addAliens = -1;
 
 	return allDone;
