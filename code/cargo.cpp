@@ -52,7 +52,7 @@ object *addCargo(object *owner, int cargoType)
 	if (index == -1)
 		return NULL;
 
-	cargo[index].active = false;
+	cargo[index].active = true;
 	cargo[index].owner = owner;
 	cargo[index].x = owner->x;
 	cargo[index].y = owner->y;
