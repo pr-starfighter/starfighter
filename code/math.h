@@ -73,25 +73,25 @@ static inline void limitFloat(float *in, float low, float high)
 static inline void wrapChar(signed char *in, signed char low, signed char high)
 {
 	if (*in < low)
-		*in = high;
+		*in += high - low;
 	if (*in > high)
-		*in = low;
+		*in -= high - low;
 }
 
 static inline void wrapInt(int *in, int low, int high)
 {
 	if (*in < low)
-		*in = high;
+		*in += high - low;
 	if (*in > high)
-		*in = low;
+		*in -= high - low;
 }
 
 static inline void wrapFloat(float *in, float low, float high)
 {
 	if (*in < low)
-		*in = high;
+		*in += high - low;
 	if (*in > high)
-		*in = low;
+		*in -= high - low;
 }
 
 static inline int rrand(int min, int max)
