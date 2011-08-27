@@ -1,7 +1,7 @@
 Sid Wilson
 8
 FACE_SID
-I've just recieved another SOS. This one is coming from a supply craft that is under attack.
+I've just received another SOS. This one is coming from a supply craft that is under attack.
 FACE_CHRIS
 What's it carrying?
 FACE_SID
