@@ -1,8 +1,8 @@
 Sid Wilson
 6
 FACE_SID
-Seems like taking out that WEAPCO mining ship wasn't such a good idea. The Ore it collected from those asteroids is needed in weapon production
+Seems like taking out that WEAPCO mining ship wasn't such a good idea. The Ore it collected from those asteroids is needed in weapon production.
 FACE_CHRIS
 I'll go mine some myself.
 FACE_SID
-Be careful, Chris. Your weapons were designed for that sort of work and could have some devestating results.
+Be careful, Chris. Your weapons weren't designed for that sort of work and could have some devastating results.

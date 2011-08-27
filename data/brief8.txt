@@ -7,4 +7,4 @@ What's it carrying?
 FACE_SID
 A bit of everything, including some highly radioactive materials. It's not unlikely that as a result of the explosion some planets could be put into a life threatening situation.
 FACE_CHRIS
-I'll get on it
+I'll get on it.

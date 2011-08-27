@@ -1,10 +1,10 @@
 Krass Tyler
 8
 FACE_CHRIS
-I need you to help we out with something. In order to give the rebellion here a chance we're taking out key WEAPCO plants.
+I need you to help us out with something. In order to give the rebellion here a chance we're taking out key WEAPCO plants.
 FACE_KRASS
 ...and you want me to help you create a diversion whilst your friends hit the installations.
 FACE_CHRIS
-Exactly
+Exactly.
 FACE_KRASS
 Sure, I can help you out, boy. But I'll be needing my fee...

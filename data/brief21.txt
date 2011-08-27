@@ -3,8 +3,8 @@ Sid Wilson
 FACE_CHRIS
 We've got to start from the outside and work our way in. That will give us less chance of being flanked during the final operation.
 FACE_PHOEBE
-Gotcha
+Gotcha.
 FACE_URSULA
-Okay
+Okay.
 FACE_SID
-Agreed
+Agreed.

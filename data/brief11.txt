@@ -1,7 +1,7 @@
 Phoebe Lexx
 10
 FACE_CHRIS
-I've recieved word that a rebellion is underway thanks to the slave being rescued.
+I've received word that a rebellion is underway thanks to the slave being rescued.
 FACE_PHOEBE
 WEAPCO have an automated mining ship in orbit around Elamale. I suggest we take it out and cause confusion.
 FACE_CHRIS

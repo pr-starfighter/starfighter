@@ -1,7 +1,7 @@
 Sid Wilson
 8
 FACE_SID
-Whilst you were gone I picked up a distress call coming from around Jupiter
+Whilst you were gone I picked up a distress call coming from around Jupiter.
 FACE_URSULA
 Who would be sending out a distress call within Sol???
 FACE_PHOEBE
