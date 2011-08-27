@@ -57,4 +57,8 @@ $(PACK): pack.py $(DATAFILES)
 unpack: unpack.py
 	./unpack.py $(PACK)
 
-.PHONY: all clean install unpack
+optimise:
+	advpng -z gfx/*.png
+	jpegoptim --strip-all gfx/*.jpg
+
+.PHONY: all clean install optimise unpack
