@@ -8,15 +8,22 @@ PACK = starfighter.pak
 DOCS = docs/*
 DATA = data/* gfx/* music/* sound/*
 
+USEPACK ?= 1
+
 BINDIR = /usr/games/
 DATADIR = /usr/share/games/parallelrealities/
 DOCDIR = /usr/share/doc/starfighter/
 # top-level rule to create the program.
-all: $(PROG)
+ALL = $(PROG)
+ifeq ($(USEPACK), 1)
+	ALL += $(PACK)
+endif
+
+all: $(ALL)
 
 # compiling other source files.
 %.o: code/%.cpp code/*.h
-	$(CXX) $(CFLAGS) -c -O3 -DVERSION=\"$(VERSION)\" -DPACKLOCATION=\"$(DATADIR)$(PACK)\" $<
+	$(CXX) $(CFLAGS) -c -DVERSION=\"$(VERSION)\" -DPACKLOCATION=\"$(DATADIR)$(PACK)\" -DUSEPACK=$(USEPACK) $<
 
 # linking the program.
 $(PROG): $(OBJS)
@@ -24,17 +31,21 @@ $(PROG): $(OBJS)
 
 # cleaning everything that can be automatically recreated with "make".
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(ALL)
 
 distclean:
 	$(RM) $(PROG)
 
 # install
-install:
+install: $(ALL)
 	mkdir -p $(DATADIR)
 	strip $(PROG)
 	install -o root -g games -m 755 $(PROG) $(BINDIR)$(PROG)
+ifeq ($(USEPACK), 1)
+	install -o root -g games -m 644 $(DATA) $(DATADIR)
+else
 	install -o root -g games -m 644 $(PACK) $(DATADIR)$(PACK)
+endif
 	cp $(DOCS) $(DOCDIR)
 
 $(PACK): pack.py $(DATA)
