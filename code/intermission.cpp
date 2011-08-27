@@ -490,25 +490,25 @@ int galaxyMap()
 	char string[25];
 
 	engine.cursor_x = engine.cursor_y = 500;
-	shape[0] = loadImage("gfx/cursor.bmp");
+	shape[0] = loadImage("gfx/cursor.png");
 
 	// Icons 1 - 29
 	for (int i = 0 ; i < 26 ; i++)
 	{
-		sprintf(string, "gfx/icon%d.bmp", (i + 1));
+		sprintf(string, "gfx/icon%d.png", (i + 1));
 		shape[i + 1] = loadImage(string);
 	}
 
-	shape[27] = loadImage("gfx/buyIcon.bmp");
-	shape[28] = loadImage("gfx/sellIcon.bmp");
+	shape[27] = loadImage("gfx/buyIcon.png");
+	shape[28] = loadImage("gfx/sellIcon.png");
 	shape[29] = loadImage("gfx/firefly1.png");
 
 	// Planets 30 - 39
-	shape[30] = loadImage("gfx/planet_sun.gif");
-	shape[31] = loadImage("gfx/planet_green.gif");
-	shape[32] = loadImage("gfx/planet_blue.gif");
-	shape[33] = loadImage("gfx/planet_red.gif");
-	shape[34] = loadImage("gfx/planet_orange.gif");
+	shape[30] = loadImage("gfx/planet_sun.png");
+	shape[31] = loadImage("gfx/planet_green.png");
+	shape[32] = loadImage("gfx/planet_blue.png");
+	shape[33] = loadImage("gfx/planet_red.png");
+	shape[34] = loadImage("gfx/planet_orange.png");
 
 	// Faces (as defines)
 	shape[FACE_CHRIS] = loadImage("gfx/face_chris.png");

@@ -168,8 +168,8 @@ int doTitle()
 	loadBackground("gfx/spirit.jpg");
 
 	SDL_Surface *prlogo, *sflogo;
-	prlogo = loadImage("gfx/prlogo.gif");
-	sflogo = loadImage("gfx/sflogo.gif");
+	prlogo = loadImage("gfx/prlogo.png");
+	sflogo = loadImage("gfx/sflogo.png");
 
 	int prx = ((800 - prlogo->w) / 2);
 	int pry = ((600 - prlogo->h) / 2);

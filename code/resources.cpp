@@ -182,10 +182,10 @@ void loadFont()
 	for (int i = 0 ; i < MAX_FONTSHAPES ; i++)
 	{
 		#if USEPACK
-		unpack("gfx/smallFont.bmp", PAK_FONT);
+		unpack("gfx/smallFont.png", PAK_FONT);
 		image = IMG_Load_RW(engine.sdlrw, 1);
 		#else
-		image = IMG_Load("gfx/smallFont.bmp");
+		image = IMG_Load("gfx/smallFont.png");
 		#endif
 
 		if (image == NULL) {
