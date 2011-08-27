@@ -29,6 +29,14 @@ explode1.bmp
 explode3.bmp
 explode4.bmp
 elec*.png
+chainLink.png
+cursor.png
+smallFont.bmp: monospace bold 13 pt (gimp)  anti-aliasing is off.
+targetText.png: same font, smaller, anti-aliasing on
+gameover.png: 72pt
+icon8.bmp
+plasmaGreen.png
+plasmaRed.png
 
 faces except kline: CC-BY 3.0; author: Antifarea
 face_chris.png http://opengameart.org/content/48x48-faces-2nd-sheet
@@ -45,10 +53,12 @@ planet_sun.gif CC0; author: NASA; http://opengameart.org/content/the-sun (reduce
 planet_*.gif CC-BY 3.0: author: athile ; http://opengameart.org/content/planets-pack-8 (reduced in size)
 icon26.bmp
 
-GPL 2.0 GPL 3.0 CC-BY-SA 3.0 http://opengameart.org/content/astrominer-sprites
+GPL 2.0 GPL 3.0 CC-BY-SA 3.0 http://opengameart.org/content/astrominer-sprites (remixed by astrid)
 drone*.png
 tug[12].png
-mineBoss*.png (remixed by astrid)
+mineBoss*.png 
+missileBoat*.png
+merc*.png
 
 mine.png CC-BY 3.0 http://opengameart.org/content/iron-plague-minebmp
 transport*.png CC-BY 3.0 http://opengameart.org/content/iron-plague-cargo2bmp
@@ -61,6 +71,9 @@ evilUrsula*.png http://opengameart.org/content/iron-plague-bshipbmp
 rebelCarrier*.png http://opengameart.org/content/iron-plague-cargo1bmp
 sid*.png http://opengameart.org/content/iron-plague-ship2bmp
 kline1*.png http://opengameart.org/content/iron-plague-hunter2bmp
+plutoBoss* http://opengameart.org/content/iron-plague-factory2bmp
+splitBoss* http://opengameart.org/content/iron-plague-factory2bmp
+mobileShield* http://opengameart.org/content/iron-plague-warpbmp
 
 
 cloakShip*.png http://opengameart.org/content/battlefront-operation-x-final-striker
@@ -68,7 +81,7 @@ goodTrans*.png http://opengameart.org/content/ship-recoloring-001-for-gm-game
 
 escort*.png http://opengameart.org/content/spaceship-360
 
-explosion0*.png CC0 http://opengameart.org/content/explosion, resized
+explode0*.png CC0 http://opengameart.org/content/explosion, resized
 
 asteroid1.png: public domain ; author: NASA ; http://en.wikipedia.org/wiki/File:571423main_pia14316-full_full_Vesta.jpg (21 Lutitia)
 asteroid2.png, asteroid3.png: public domain ; author: NASA ; http://en.wikipedia.org/wiki/File:571423main_pia14316-full_full_Vesta.jpg (253 Mathilde)
@@ -84,14 +97,15 @@ achtergrond5.jpg/credits.jpg: http://hubblesite.org/gallery/album/nebula/pr20050
 
 ore*.png: public domain ; author: NASA ; http://en.wikipedia.org/wiki/File:571423main_pia14316-full_full_Vesta.jpg (243 Ida), modified by Astrid
  
-frigate*.png GPL 3.0 CC-BY-SA 3.0, Skorpio, http://opengameart.org/content/spaceships-top-down, remixed by Astrid
-slaveTransport*.png http://opengameart.org/content/spaceships2-top-down
+frigate*.png, execTrans* GPL 3.0 CC-BY-SA 3.0, Skorpio, http://opengameart.org/content/spaceships-top-down, remixed by Astrid
+miner*.png slaveTrans*.png http://opengameart.org/content/spaceships2-top-down
 
 icon5.bmp,firefly*.png CC0 http://opengameart.org/content/top-down-space-fighter-sprite
 
 GPL 2.0, GPL 3.0, CC-BY-SA 3.0; Ails, http://opengameart.org/content/420-pixel-art-icons-for-medievalfantasy-rpg remixed by Astrid
 icon23.bmp
 icon16.bmp
+icon17.png
 icon15.bmp
 icon10.bmp
 icon12.bmp
@@ -104,9 +118,11 @@ plasmaDamage.png
 plasmaAmmo.png
 plasmaRate.png
 heart.gif
-dollar.png
+dollar.gif
+pod.png
 
 CC-BY 3.0 CC-BY-SA 3.0 ; OceansDream http://opengameart.org/content/various-inventory-24-pixel-icon-set, remixed by Astrid
+icon18.bmp
 icon19.bmp
 icon20.bmp
 icon22.bmp
@@ -114,6 +130,7 @@ icon24.bmp
 icon25.bmp
 rocketAmmo.png
 icon13.bmp
+rocket[12].bmp
 
 public domain http://en.wikipedia.org/wiki/File:DIN_4844-2_Warnung_vor_Laserstrahl_D-W010.svg , remixed by Astrid
 icon21.bmp
@@ -123,9 +140,6 @@ prlogo.gif
 sflogo.gif
 alienDevice.png
 
-smallFont.bmp: monospace bold 13 pt (gimp)  anti-aliasing is off.
-targetText.png: same font, smaller, anti-aliasing on
-gameover.png: 72pt
 
 icon4.bmp CC-BY-SA 3.0 http://opengameart.org/content/floppy-disk, remixed by astrid
 
