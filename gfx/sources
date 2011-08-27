@@ -1,0 +1,146 @@
+13:08 * <guus> opengameart.org
+13:08 * >guus< ik denk dat ik eerst een bergje placeholders maak, die lame zijn, maar speelbaar, zodat ik weet dat ik 
+      niet iets doms aan het doen ben :]
+13:09 * >guus< weet jij wat die alienDevice is?
+13:09 * <guus> Volgens mij hebben ze die zelf gemaakt
+13:11 * >guus< wacht, welke files moeten er vervangen worden?
+13:12 * >guus< en welke licenties zijn ok?
+13:13 * <guus> GPL, BSD, LGPL, CC-BY en CC-BY-SA
+13:22 * <guus> cc0 is ook ok
+
+
+whatever license guus wants; author: Astrid
+icon11.bmp
+iconBase.bmp
+arrow*.png
+stunBolt.png
+*Dir.png
+sellIcon.bmp
+buyIcon.bmp
+gameover.png
+explode13.bmp,explode14.bmp,explode15.bmp,explode16.bmp
+icon1.bmp,icon2.bmp,icon3.bmp,icon6.bmp,icon7.bmp
+explode9.bmp
+explode10.bmp
+explode11.bmp
+explode12.bmp
+explode1.bmp
+explode1.bmp
+explode3.bmp
+explode4.bmp
+elec*.png
+
+faces except kline: CC-BY 3.0; author: Antifarea
+face_chris.png http://opengameart.org/content/48x48-faces-2nd-sheet
+face_phoebe.png http://opengameart.org/content/48x48-faces-2nd-sheet
+face_sid.png http://opengameart.org/content/48x48-faces-2nd-sheet
+face_ursula.png http://opengameart.org/content/48x48-faces-2nd-sheet
+face_crew.png http://opengameart.org/content/48x48-faces-3rd-sheet
+face_krass.png http://opengameart.org/content/48x48-faces-3rd-sheet
+
+face_kline.png: CCBY 3.0; author: Antifarea, remixed by Astrid, combination of http://opengameart.org/content/48x48-faces-2nd-sheet and http://opengameart.org/content/48x48-faces-4th-sheet 
+
+planet_sun.gif CC0; author: NASA; http://opengameart.org/content/the-sun (reduced in size)
+
+planet_*.gif CC-BY 3.0: author: athile ; http://opengameart.org/content/planets-pack-8 (reduced in size)
+icon26.bmp
+
+GPL 2.0 GPL 3.0 CC-BY-SA 3.0 http://opengameart.org/content/astrominer-sprites
+drone*.png
+tug[12].png
+mineBoss*.png (remixed by astrid)
+
+mine.png CC-BY 3.0 http://opengameart.org/content/iron-plague-minebmp
+transport*.png CC-BY 3.0 http://opengameart.org/content/iron-plague-cargo2bmp
+dualFighter*.png http://opengameart.org/content/iron-plague-hunter1bmp
+mobileCannon*.png http://opengameart.org/content/iron-plague-ship4bmp
+aimFighter*.png http://opengameart.org/content/iron-plague-doomdaybmp
+barrier.gif http://opengameart.org/content/iron-plague-beacon2bmp
+wingmate*.png http://opengameart.org/content/iron-plague-bshipbmp
+evilUrsula*.png http://opengameart.org/content/iron-plague-bshipbmp
+rebelCarrier*.png http://opengameart.org/content/iron-plague-cargo1bmp
+sid*.png http://opengameart.org/content/iron-plague-ship2bmp
+kline1*.png http://opengameart.org/content/iron-plague-hunter2bmp
+
+
+cloakShip*.png http://opengameart.org/content/battlefront-operation-x-final-striker
+goodTrans*.png http://opengameart.org/content/ship-recoloring-001-for-gm-game
+
+escort*.png http://opengameart.org/content/spaceship-360
+
+explosion0*.png CC0 http://opengameart.org/content/explosion, resized
+
+asteroid1.png: public domain ; author: NASA ; http://en.wikipedia.org/wiki/File:571423main_pia14316-full_full_Vesta.jpg (21 Lutitia)
+asteroid2.png, asteroid3.png: public domain ; author: NASA ; http://en.wikipedia.org/wiki/File:571423main_pia14316-full_full_Vesta.jpg (253 Mathilde)
+
+startUp.jpg: public domain; author: NASA (Hubble space telescope) ; http://hubblesite.org/gallery/album/galaxy/pr2009014a/
+
+achtergrond*.jpg: public domain; author: NASA (Hubble space telescope)  (cropped and curves modified)
+achtergrond1.jpg/eyananth.jpg: http://hubblesite.org/gallery/album/nebula/pr2009025e/
+achtergrond2.jpg/mordor.jpg: http://hubblesite.org/gallery/album/nebula/pr2006001q/ 
+achtergrond3.jpg/spirit.jpg: http://hubblesite.org/gallery/album/star/pr1992029a/warn/npp/all/
+achtergrond4.jpg/sol.jpg: http://hubblesite.org/gallery/album/star/pr2007004a/npp/all/
+achtergrond5.jpg/credits.jpg: http://hubblesite.org/gallery/album/nebula/pr2005012b/
+
+ore*.png: public domain ; author: NASA ; http://en.wikipedia.org/wiki/File:571423main_pia14316-full_full_Vesta.jpg (243 Ida), modified by Astrid
+ 
+frigate*.png GPL 3.0 CC-BY-SA 3.0, Skorpio, http://opengameart.org/content/spaceships-top-down, remixed by Astrid
+slaveTransport*.png http://opengameart.org/content/spaceships2-top-down
+
+icon5.bmp,firefly*.png CC0 http://opengameart.org/content/top-down-space-fighter-sprite
+
+GPL 2.0, GPL 3.0, CC-BY-SA 3.0; Ails, http://opengameart.org/content/420-pixel-art-icons-for-medievalfantasy-rpg remixed by Astrid
+icon23.bmp
+icon16.bmp
+icon15.bmp
+icon10.bmp
+icon12.bmp
+icon14.bmp
+icon9.bmp
+rocket.gif
+superCharge.png
+cargo1.png
+plasmaDamage.png
+plasmaAmmo.png
+plasmaRate.png
+heart.gif
+dollar.png
+
+CC-BY 3.0 CC-BY-SA 3.0 ; OceansDream http://opengameart.org/content/various-inventory-24-pixel-icon-set, remixed by Astrid
+icon19.bmp
+icon20.bmp
+icon22.bmp
+icon24.bmp
+icon25.bmp
+rocketAmmo.png
+icon13.bmp
+
+public domain http://en.wikipedia.org/wiki/File:DIN_4844-2_Warnung_vor_Laserstrahl_D-W010.svg , remixed by Astrid
+icon21.bmp
+
+old data:
+prlogo.gif
+sflogo.gif
+alienDevice.png
+
+smallFont.bmp: monospace bold 13 pt (gimp)  anti-aliasing is off.
+targetText.png: same font, smaller, anti-aliasing on
+gameover.png: 72pt
+
+icon4.bmp CC-BY-SA 3.0 http://opengameart.org/content/floppy-disk, remixed by astrid
+
+CC-BY-SA 3.0 http://opengameart.org/content/spaceships2-top-down
+eliteFighter*.png 
+
+further, so far unused resources:
+
+buttonred.png: CC0, Cuzco, http://opengameart.org/content/buttons
+asteroid3.png,ore.png,ore.xcf: public domain ; author: NASA ; http://en.wikipedia.org/wiki/File:571423main_pia14316-full_full_Vesta.jpg (243 Ida)
+ 
+icons34x34: GPL 2.0, GPL 3.0, CC-BY-SA 3.0; Ails, http://opengameart.org/content/420-pixel-art-icons-for-medievalfantasy-rpg
+
+useful links:
+http://opengameart.org/content/60-terrible-character-portraits
+
+CC-BY-SA 3.0 http://opengameart.org/content/spaceships2-top-down
+alt/dualFighter*.png
