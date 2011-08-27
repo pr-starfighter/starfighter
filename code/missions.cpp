@@ -348,7 +348,7 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 				switch(id)
 				{
 					case P_CARGO:
-						sprintf(message, "Cargo pod destroy!");
+						sprintf(message, "Cargo pod destroyed!");
 						if (currentGame.area == 2) // Get lectured by Sid
 							setRadioMessage(FACE_SID, "Chris, we needed that pod!! I warned you that we couldn't afford to lose a single one!!", 1);
 						break;

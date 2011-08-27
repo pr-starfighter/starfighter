@@ -312,7 +312,7 @@ static void destroyAlien(object *bullet, object *theEnemy)
 			if ((theEnemy->classDef == CD_PHOEBE) || (theEnemy->classDef == CD_URSULA))
 				setInfoLine(">> Ally has ejected! <<\n", FONT_RED);
 			else
-				setInfoLine(">> Friendly craft has been destroy!! <<\n", FONT_RED);
+				setInfoLine(">> Friendly craft has been destroyed!! <<\n", FONT_RED);
 		}
 	}
 
