@@ -124,22 +124,22 @@ void loadGameGraphics()
 
 void loadSound()
 {
-	sound[SFX_EXPLOSION] = loadSound("sound/explode.wav");
-	sound[SFX_HIT] = loadSound("sound/explode2.wav");
-	sound[SFX_DEATH] = loadSound("sound/maledeath.wav");
-	sound[SFX_MISSILE] = loadSound("sound/missile.wav");
-	sound[SFX_PLASMA] = loadSound("sound/plasma.wav");
-	sound[SFX_CLOCK] = loadSound("sound/clock.wav");
-	sound[SFX_FLY] = loadSound("sound/flyby.wav");
-	sound[SFX_ENERGYRAY] = loadSound("sound/beamLaser.wav");
-	sound[SFX_PICKUP] = loadSound("sound/item.wav");
-	sound[SFX_SHIELDUP] = loadSound("sound/shield.wav");
-	sound[SFX_CLOAK] = loadSound("sound/cloak.wav");
-	sound[SFX_DEBRIS] = loadSound("sound/explode3.wav");
-	sound[SFX_DEBRIS2] = loadSound("sound/explode4.wav");
-	sound[SFX_LASER] = loadSound("sound/laser.wav");
-	sound[SFX_PLASMA2] = loadSound("sound/plasma2.wav");
-	sound[SFX_PLASMA3] = loadSound("sound/plasma3.wav");
+	sound[SFX_EXPLOSION] = loadSound("sound/explode.ogg");
+	sound[SFX_HIT] = loadSound("sound/explode2.ogg");
+	sound[SFX_DEATH] = loadSound("sound/maledeath.ogg");
+	sound[SFX_MISSILE] = loadSound("sound/missile.ogg");
+	sound[SFX_PLASMA] = loadSound("sound/plasma.ogg");
+	sound[SFX_CLOCK] = loadSound("sound/clock.ogg");
+	sound[SFX_FLY] = loadSound("sound/flyby.ogg");
+	sound[SFX_ENERGYRAY] = loadSound("sound/beamLaser.ogg");
+	sound[SFX_PICKUP] = loadSound("sound/item.ogg");
+	sound[SFX_SHIELDUP] = loadSound("sound/shield.ogg");
+	sound[SFX_CLOAK] = loadSound("sound/cloak.ogg");
+	sound[SFX_DEBRIS] = loadSound("sound/explode3.ogg");
+	sound[SFX_DEBRIS2] = loadSound("sound/explode4.ogg");
+	sound[SFX_LASER] = loadSound("sound/laser.ogg");
+	sound[SFX_PLASMA2] = loadSound("sound/plasma2.ogg");
+	sound[SFX_PLASMA3] = loadSound("sound/plasma3.ogg");
 }
 
 void freeSound()
