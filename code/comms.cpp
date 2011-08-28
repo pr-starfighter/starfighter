@@ -40,7 +40,7 @@ void createCommsSurface(SDL_Surface *comms)
 
 	blevelRect(comms, 0, 0, comms->w - 1, comms->h - 1, 0x00, 0x00, 0x25);
 
-	drawString("+++ RECIEVED MESSAGES +++", 115, 80, FONT_GREEN, comms);
+	drawString("+++ RECEIVED MESSAGES +++", 115, 80, FONT_GREEN, comms);
 
 	int yOffset;
 

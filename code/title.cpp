@@ -332,7 +332,7 @@ int doTitle()
 				if (!skip)
 				{
 					drawString("Copyright Parallel Realities 2003", 5, 580, FONT_WHITE, background);
-					drawString(buildVersion, 695, 580, FONT_WHITE, background);
+					drawString(buildVersion, 794 - strlen(buildVersion) * 9, 580, FONT_WHITE, background);
 					addBuffer(0, 580, 800, 20);
 					skip = true;
 				}
@@ -353,7 +353,7 @@ int doTitle()
 			if ((now - then <= 27500) && (!skip))
 			{
 				drawString("Copyright Parallel Realities 2003", 5, 580, FONT_WHITE, background);
-				drawString(buildVersion, 695, 580, FONT_WHITE, background);
+				drawString(buildVersion, 794 - strlen(buildVersion) * 9, 580, FONT_WHITE, background);
 				addBuffer(0, 580, 800, 20);
 				skip = true;
 			}
