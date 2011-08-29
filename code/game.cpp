@@ -320,5 +320,7 @@ int mainGameLoop()
 		rtn = 0;
 	}
 
+	exitPlayer();
+
 	return rtn;
 }

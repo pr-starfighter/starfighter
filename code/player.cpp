@@ -65,7 +65,16 @@ void initPlayer()
 		player.ammo[1] = 0;
 
 	if (player.weaponType[1] == W_LASER)
-		player.ammo[1] = 1;
+		player.ammo[1] = 0;
+}
+
+void exitPlayer()
+{
+	if (player.weaponType[1] == W_CHARGER)
+		player.ammo[1] = 0;
+
+	if (player.weaponType[1] == W_LASER)
+		player.ammo[1] = 0;
 }
 
 void doPlayer()
