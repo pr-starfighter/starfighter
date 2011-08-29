@@ -459,7 +459,7 @@ void initShop()
 		shopItems[i + 8].y = 200;
 	}
 
-	for (int i = 0 ; i < 8 ; i++)
+	for (int i = 0 ; i < 7 ; i++)
 	{
 		shopItems[i + 10].x = 350 + (i * 50);
 		shopItems[i + 10].y = 260;
