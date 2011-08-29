@@ -417,7 +417,7 @@ void initShop()
 
 	shopItems[13].price = 7500;
 	strcpy(shopItems[13].name, "Homing Missile Launcher");
-	strcpy(shopItems[13].description, "Fires homing missile");
+	strcpy(shopItems[13].description, "Fires homing missile (max 20 missiles)");
 	shopItems[13].image = 22;
 
 	shopItems[14].price = 10000;
@@ -427,12 +427,12 @@ void initShop()
 
 	shopItems[15].price = 20000;
 	strcpy(shopItems[15].name, "Dual Homing Missile Launcher");
-	strcpy(shopItems[15].description, "Fires two homing missiles");
+	strcpy(shopItems[15].description, "Fires two homing missiles (max 10 missiles)");
 	shopItems[15].image = 24;
 
 	shopItems[16].price = 25000;
 	strcpy(shopItems[16].name, "Homing Micro Missile Launcher");
-	strcpy(shopItems[16].description, "Fires several small homing missiles");
+	strcpy(shopItems[16].description, "Fires several small homing missiles (max 10)");
 	shopItems[16].image = 25;
 
 	for (int i = 0 ; i < 3 ; i++)
@@ -551,7 +551,13 @@ static void buy(int i)
 		case 9:
 			if ((player.weaponType[1] == W_CHARGER) || (player.weaponType[1] == W_LASER))
 				{shopSelectedItem = -7; return;}
-			if (currentGame.maxRocketAmmo == 50)
+			if ((player.weaponType[1] == W_HOMING_MISSILE) && (currentGame.maxRocketAmmo >= 20))
+				{shopSelectedItem = -9; return;}
+			if ((player.weaponType[1] == W_DOUBLE_HOMING_MISSILES) && (currentGame.maxRocketAmmo >= 10))
+				{shopSelectedItem = -9; return;}
+			if ((player.weaponType[1] == W_MICRO_HOMING_MISSILES) && (currentGame.maxRocketAmmo >= 10))
+				{shopSelectedItem = -9; return;}
+			if (currentGame.maxRocketAmmo >= 50)
 				{shopSelectedItem = -3; return;}
 			currentGame.maxRocketAmmo += 5;
 			break;
@@ -559,18 +565,21 @@ static void buy(int i)
 			if (player.weaponType[1] == W_DOUBLE_ROCKETS)
 				{shopSelectedItem = -8; return;}
 			player.weaponType[1] = W_DOUBLE_ROCKETS;
+			limitChar(&currentGame.maxRocketAmmo, 10, 50);
 			shopSelectedItem = -1;
 			break;
 		case 11:
 			if (player.weaponType[1] == W_MICRO_ROCKETS)
 				{shopSelectedItem = -8; return;}
 			player.weaponType[1] = W_MICRO_ROCKETS;
+			limitChar(&currentGame.maxRocketAmmo, 10, 50);
 			shopSelectedItem = -1;
 			break;
 		case 12:
 			if (player.weaponType[1] == W_LASER)
 				{shopSelectedItem = -8; return;}
 			player.weaponType[1] = W_LASER;
+			currentGame.maxRocketAmmo = 0;
 			player.ammo[1] = 0;
 			shopSelectedItem = -1;
 			break;
@@ -578,6 +587,7 @@ static void buy(int i)
 			if (player.weaponType[1] == W_HOMING_MISSILE)
 				{shopSelectedItem = -8; return;}
 			player.weaponType[1] = W_HOMING_MISSILE;
+			limitChar(&currentGame.maxRocketAmmo, 5, 20);
 			limitChar(&player.ammo[1], 0, 20);
 			shopSelectedItem = -1;
 			break;
@@ -585,6 +595,7 @@ static void buy(int i)
 			if (player.weaponType[1] == W_CHARGER)
 				{shopSelectedItem = -8; return;}
 			player.weaponType[1] = W_CHARGER;
+			currentGame.maxRocketAmmo = 0;
 			player.ammo[1] = 0;
 			shopSelectedItem = -1;
 			break;
@@ -592,6 +603,7 @@ static void buy(int i)
 			if (player.weaponType[1] == W_DOUBLE_HOMING_MISSILES)
 				{shopSelectedItem = -8; return;}
 			player.weaponType[1] = W_DOUBLE_HOMING_MISSILES;
+			limitChar(&currentGame.maxRocketAmmo, 5, 10);
 			limitChar(&player.ammo[1], 0, 10);
 			shopSelectedItem = -1;
 			break;
@@ -599,6 +611,7 @@ static void buy(int i)
 			if (player.weaponType[1] == W_MICRO_HOMING_MISSILES)
 				{shopSelectedItem = -8; return;}
 			player.weaponType[1] = W_MICRO_HOMING_MISSILES;
+			limitChar(&currentGame.maxRocketAmmo, 5, 10);
 			limitChar(&player.ammo[1], 0, 10);
 			shopSelectedItem = -1;
 			break;

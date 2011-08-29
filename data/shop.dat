@@ -38,15 +38,15 @@ Laser Cannon
 Laser Cannon
 5000 21 450 260
 Homing Missile Launcher
-Fires homing missile
+Fires homing missile (max 20 missiles)
 7500 22 500 260
 Charge Cannon
 A charge up cannon
 10000 23 550 260
 Dual Homing Missile Launcher
-Fires two homing missiles
+Fires two homing missiles (max 10 missiles)
 20000 24 600 260
 Homing Micro Missile Launcher
-Fires several small homing missiles
+Fires several small homing missiles (max 10)
 25000 25 650 260
 
