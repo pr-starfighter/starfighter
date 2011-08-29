@@ -257,7 +257,7 @@ int doTitle()
 			blit(enemy[i].image[0], (int)enemy[i].x, (int)enemy[i].y);
 			if (enemy[i].x > 830)
 			{
-				enemy[i].x = -10;
+				enemy[i].x = -40;
 				enemy[i].y = rand() % 580;
 				enemy[i].dx = 1 + rand() % 3;
 			}
