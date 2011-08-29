@@ -31,7 +31,7 @@ all: $(ALL)
 
 # linking the program.
 $(PROG): $(OBJS)
-	$(CXX) $(LIBS) $(OBJS) -o $(PROG)
+	$(CXX) $(LDFLAGS) $(OBJS) -o $(PROG) $(LIBS)
 
 # cleaning everything that can be automatically recreated with "make".
 clean:
