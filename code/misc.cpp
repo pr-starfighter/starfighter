@@ -87,6 +87,9 @@ void setRadioMessage(signed char face, const char *in, int priority)
 
 static void doTargetArrow()
 {
+	if (engine.targetIndex < 0)
+		return;
+
 	if ((engine.targetArrowTimer == 0) || (enemy[engine.targetIndex].shield < 1))
 		return;
 
