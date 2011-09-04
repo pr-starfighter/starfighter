@@ -135,9 +135,7 @@ enum {
 };
 
 // Weapon flags
-#define WF_STRAIGHT 1
-#define WF_THIN_SPREAD 2
-#define WF_WIDE_SPREAD 4
+#define WF_SPREAD 4
 #define WF_SCATTER 8
 #define WF_VARIABLE_SPEED 16
 #define WF_HOMING 32

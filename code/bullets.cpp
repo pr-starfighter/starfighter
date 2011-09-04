@@ -170,7 +170,22 @@ void fireBullet(object *attacker, int weaponType)
 			break;
 	}
 
-	if (theWeapon->flags & WF_STRAIGHT)
+	if (theWeapon->flags & WF_SPREAD && theWeapon->ammo[0] >= 3)
+	{
+		addBullet(theWeapon, attacker, y * 1, -2);
+
+		if(theWeapon->ammo[0] != 4)
+			addBullet(theWeapon, attacker, y * 3, 0);
+
+		if(theWeapon->ammo[0] != 3)
+		{
+			addBullet(theWeapon, attacker, y * 2, -1);
+			addBullet(theWeapon, attacker, y * 4, 1);
+		}
+
+		addBullet(theWeapon, attacker, y * 5, 2);
+	}
+	else
 	{
 		switch (theWeapon->ammo[0])
 		{
@@ -197,28 +212,6 @@ void fireBullet(object *attacker, int weaponType)
 					addBullet(theWeapon, attacker, y * i, 0);
 				break;
 		}
-	}
-	else if (theWeapon->flags & WF_THIN_SPREAD)
-	{
-		addBullet(theWeapon, attacker, y * 2, -1);
-		if (theWeapon->ammo[0] == 3)
-		{
-			addBullet(theWeapon, attacker, y * 3, 0);
-		}
-		else
-		{
-			addBullet(theWeapon, attacker, y * 2, 0);
-			addBullet(theWeapon, attacker, y * 4, 0);
-		}
-		addBullet(theWeapon, attacker, y * 4, 1);
-	}
-	else if (theWeapon->flags & WF_WIDE_SPREAD)
-	{
-		addBullet(theWeapon, attacker, y * 1, -2);
-		addBullet(theWeapon, attacker, y * 2, -1);
-		addBullet(theWeapon, attacker, y * 3, 0);
-		addBullet(theWeapon, attacker, y * 4, 1);
-		addBullet(theWeapon, attacker, y * 5, 2);
 	}
 
 	// Reset the weapon reload time. Double it if it is not friendly or a boss or Kline
@@ -539,7 +532,7 @@ void doBullets()
 				addExplosion(bullet->x, bullet->y, E_TINY_EXPLOSION);
 			}
 
-			if ((bullet->flags & WF_AIMED) || (bullet->flags & WF_THIN_SPREAD))
+			if ((bullet->flags & WF_AIMED) || (bullet->flags & WF_SPREAD))
 			{
 				blit(bullet->image[0], (int)(bullet->x - bullet->dx), (int)(bullet->y - bullet->dy));
 			}

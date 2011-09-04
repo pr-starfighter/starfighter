@@ -130,58 +130,22 @@ void doPlayer()
 
 			if ((engine.keyState[SDLK_LSHIFT]) || (engine.keyState[SDLK_RSHIFT]))
 			{
-				if (player.ammo[0] < 1)
+				int w = player.ammo[0] > 0;
+
+				if(weapon[w].ammo[0] >= 3)
 				{
-					if (weapon[0].ammo[0] == 3)
+					weapon[w].flags ^= WF_SPREAD;
+
+					if(weapon[w].flags & WF_SPREAD)
 					{
-						if (weapon[0].flags & WF_THIN_SPREAD)
-						{
-							weapon[0].flags &= ~WF_THIN_SPREAD;
-							weapon[0].flags |= WF_STRAIGHT;
-							setInfoLine("Weapon set to Concentrate", FONT_WHITE);
-						}
-						else
-						{
-							weapon[0].flags &= ~WF_STRAIGHT;
-							weapon[0].flags |= WF_THIN_SPREAD;
-							setInfoLine("Weapon set to Spread", FONT_WHITE);
-						}
+						setInfoLine("Weapon set to Spread", FONT_WHITE);
+					}
+					else
+					{
+						setInfoLine("Weapon set to Concentrate", FONT_WHITE);
 					}
 				}
-				else
-				{
-					if (weapon[1].ammo[0] == 3 || weapon[1].ammo[0] == 4)
-					{
-						if (weapon[1].flags & WF_THIN_SPREAD)
-						{
-							weapon[1].flags &= ~WF_THIN_SPREAD;
-							weapon[1].flags |= WF_STRAIGHT;
-							setInfoLine("Weapon set to Concentrate", FONT_WHITE);
-						}
-						else
-						{
-							weapon[1].flags &= ~WF_STRAIGHT;
-							weapon[1].flags |= WF_THIN_SPREAD;
-							setInfoLine("Weapon set to Spread", FONT_WHITE);
-						}
-					}
-					else if (weapon[1].ammo[0] == 5)
-					{
-						if (weapon[1].flags & WF_WIDE_SPREAD)
-						{
-							weapon[1].flags &= ~(WF_THIN_SPREAD | WF_WIDE_SPREAD);
-							weapon[1].flags |= WF_STRAIGHT;
-							setInfoLine("Weapon set to Concentrate", FONT_WHITE);
-						}
-						else
-						{
-							weapon[1].flags &= (WF_THIN_SPREAD | WF_STRAIGHT);
-							weapon[1].flags |= WF_WIDE_SPREAD;
-							setInfoLine("Weapon set to Spread", FONT_WHITE);
-						}
-					}
-				}
-				
+
 				engine.keyState[SDLK_LSHIFT] = engine.keyState[SDLK_RSHIFT] = 0;
 			}
 

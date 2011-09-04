@@ -114,7 +114,7 @@ void initWeapons()
 	weapon[W_PLAYER_WEAPON].speed = 10;
 	weapon[W_PLAYER_WEAPON].imageIndex[0] = 0;
 	weapon[W_PLAYER_WEAPON].imageIndex[1] = 0;
-   weapon[W_PLAYER_WEAPON].flags = WF_STRAIGHT;
+	weapon[W_PLAYER_WEAPON].flags = 0;
 
 	// Nor is this one!
 	weapon[W_PLAYER_WEAPON2] = weapon[W_PLAYER_WEAPON];
@@ -127,7 +127,7 @@ void initWeapons()
 	weapon[W_SINGLE_SHOT].speed = 10;
 	weapon[W_SINGLE_SHOT].imageIndex[0] = 0;
 	weapon[W_SINGLE_SHOT].imageIndex[1] = 1;
-   weapon[W_SINGLE_SHOT].flags = WF_STRAIGHT;
+	weapon[W_SINGLE_SHOT].flags = 0;
 
 	// Double Shot
 	weapon[W_DOUBLE_SHOT] = weapon[W_SINGLE_SHOT];
@@ -143,8 +143,8 @@ void initWeapons()
 	weapon[W_ROCKETS].damage = 15;
 	weapon[W_ROCKETS].reload[0] = 45;
 	weapon[W_ROCKETS].speed = 20;
-  	weapon[W_ROCKETS].flags = WF_STRAIGHT;
-  	weapon[W_ROCKETS].imageIndex[0] = 2;
+	weapon[W_ROCKETS].flags = 0;
+	weapon[W_ROCKETS].imageIndex[0] = 2;
 	weapon[W_ROCKETS].imageIndex[1] = 3;
 
 	// Double Rockets (uses ROCKETS as base)
@@ -158,7 +158,7 @@ void initWeapons()
 	weapon[W_MICRO_ROCKETS].damage = 3;
 	weapon[W_MICRO_ROCKETS].reload[0] = 30;
 	weapon[W_MICRO_ROCKETS].speed = 15;
-	weapon[W_MICRO_ROCKETS].flags = WF_STRAIGHT | WF_VARIABLE_SPEED;
+	weapon[W_MICRO_ROCKETS].flags = WF_VARIABLE_SPEED;
 	weapon[W_MICRO_ROCKETS].imageIndex[0] = 2;
 	weapon[W_MICRO_ROCKETS].imageIndex[1] = 3;
 
@@ -168,7 +168,7 @@ void initWeapons()
 	weapon[W_ENERGYRAY].damage = 1;
 	weapon[W_ENERGYRAY].reload[0] = 25; // reload for energy ray is never used
 	weapon[W_ENERGYRAY].speed = 15;
-	weapon[W_ENERGYRAY].flags = WF_STRAIGHT;
+	weapon[W_ENERGYRAY].flags = 0;
 
 	// Laser
 	weapon[W_LASER].id = WT_LASER;
@@ -178,7 +178,7 @@ void initWeapons()
 	weapon[W_LASER].speed = 10;
 	weapon[W_LASER].imageIndex[0] = 1;
 	weapon[W_LASER].imageIndex[1] = 1;
-   weapon[W_LASER].flags = WF_STRAIGHT;
+	weapon[W_LASER].flags = 0;
 
 	// Beam up weapon
 	weapon[W_CHARGER].id = WT_CHARGER;
@@ -186,25 +186,25 @@ void initWeapons()
 	weapon[W_CHARGER].damage = 1;
 	weapon[W_CHARGER].reload[0] = 0;
 	weapon[W_CHARGER].speed = 12;
-  	weapon[W_CHARGER].flags = WF_STRAIGHT;
-  	weapon[W_CHARGER].imageIndex[0] = 33;
+	weapon[W_CHARGER].flags = 0;
+	weapon[W_CHARGER].imageIndex[0] = 33;
 	weapon[W_CHARGER].imageIndex[1] = 34;
 
- 	// Homing missile
+	// Homing missile
 	weapon[W_HOMING_MISSILE].id = WT_ROCKET;
 	weapon[W_HOMING_MISSILE].ammo[0] = 1;
 	weapon[W_HOMING_MISSILE].damage = 15;
 	weapon[W_HOMING_MISSILE].reload[0] = 35;
 	weapon[W_HOMING_MISSILE].speed = 10;
-  	weapon[W_HOMING_MISSILE].flags = WF_STRAIGHT | WF_HOMING;
-  	weapon[W_HOMING_MISSILE].imageIndex[0] = 4;
+	weapon[W_HOMING_MISSILE].flags = WF_HOMING;
+	weapon[W_HOMING_MISSILE].imageIndex[0] = 4;
 	weapon[W_HOMING_MISSILE].imageIndex[1] = 4;
 
-  	// Double homing missile
+	// Double homing missile
 	weapon[W_DOUBLE_HOMING_MISSILES] = weapon[W_HOMING_MISSILE];
-  	weapon[W_DOUBLE_HOMING_MISSILES].ammo[0] = 2;
-  	weapon[W_DOUBLE_HOMING_MISSILES].reload[0] = 65;
-  	weapon[W_DOUBLE_HOMING_MISSILES].imageIndex[0] = 4;
+	weapon[W_DOUBLE_HOMING_MISSILES].ammo[0] = 2;
+	weapon[W_DOUBLE_HOMING_MISSILES].reload[0] = 65;
+	weapon[W_DOUBLE_HOMING_MISSILES].imageIndex[0] = 4;
 	weapon[W_DOUBLE_HOMING_MISSILES].imageIndex[1] = 4;
 
 	// Micro homing missiles
@@ -213,8 +213,8 @@ void initWeapons()
 	weapon[W_MICRO_HOMING_MISSILES].damage = 12;
 	weapon[W_MICRO_HOMING_MISSILES].reload[0] = 65;
 	weapon[W_MICRO_HOMING_MISSILES].speed = 3;
-  	weapon[W_MICRO_HOMING_MISSILES].flags = WF_STRAIGHT | WF_HOMING;
-  	weapon[W_MICRO_HOMING_MISSILES].imageIndex[0] = 4;
+	weapon[W_MICRO_HOMING_MISSILES].flags = WF_HOMING;
+	weapon[W_MICRO_HOMING_MISSILES].imageIndex[0] = 4;
 	weapon[W_MICRO_HOMING_MISSILES].imageIndex[1] = 4;
 
 	// Aimed plasma bolt (2x damage)
@@ -223,7 +223,7 @@ void initWeapons()
 	weapon[W_AIMED_SHOT].damage = 2;
 	weapon[W_AIMED_SHOT].reload[0] = 15;
 	weapon[W_AIMED_SHOT].speed = 0;
-	weapon[W_AIMED_SHOT].flags = WF_STRAIGHT | WF_AIMED;
+	weapon[W_AIMED_SHOT].flags = WF_AIMED;
 	weapon[W_AIMED_SHOT].imageIndex[0] = 33;
 	weapon[W_AIMED_SHOT].imageIndex[1] = 34;
 
@@ -233,7 +233,7 @@ void initWeapons()
 	weapon[W_SPREADSHOT].damage = 1;
 	weapon[W_SPREADSHOT].reload[0] = 10;
 	weapon[W_SPREADSHOT].speed = 10;
-	weapon[W_SPREADSHOT].flags = WF_THIN_SPREAD;
+	weapon[W_SPREADSHOT].flags = WF_SPREAD;
 	weapon[W_SPREADSHOT].imageIndex[0] = 0;
 	weapon[W_SPREADSHOT].imageIndex[1] = 1;
 
@@ -243,7 +243,7 @@ void initWeapons()
 	weapon[W_IONCANNON].damage = 1;
 	weapon[W_IONCANNON].reload[0] = 2;
 	weapon[W_IONCANNON].speed = 10;
-	weapon[W_IONCANNON].flags = WF_STRAIGHT | WF_DISABLE | WF_AIMED;
+	weapon[W_IONCANNON].flags = WF_DISABLE | WF_AIMED;
 	weapon[W_IONCANNON].imageIndex[0] = 35;
 	weapon[W_IONCANNON].imageIndex[1] = 35;
 
@@ -253,7 +253,7 @@ void initWeapons()
 	weapon[W_DIRSHOCKMISSILE].damage = 20;
 	weapon[W_DIRSHOCKMISSILE].reload[0] = 60;
 	weapon[W_DIRSHOCKMISSILE].speed = 0;
-	weapon[W_DIRSHOCKMISSILE].flags = WF_STRAIGHT | WF_AIMED | WF_TIMEDEXPLOSION;
+	weapon[W_DIRSHOCKMISSILE].flags = WF_AIMED | WF_TIMEDEXPLOSION;
 	weapon[W_DIRSHOCKMISSILE].imageIndex[0] = 4;
 	weapon[W_DIRSHOCKMISSILE].imageIndex[1] = 4;
 
