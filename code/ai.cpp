@@ -112,7 +112,7 @@ void setKlineAttackMethod(object *theEnemy)
 {
 	theEnemy->maxShield -= 500;
 	if (theEnemy->maxShield == 0)
-		theEnemy->flags -= FL_CANNOTDIE;
+		theEnemy->flags &= ~FL_CANNOTDIE;
 
 	if (theEnemy->maxShield == 1000)
 	{
@@ -127,14 +127,14 @@ void setKlineAttackMethod(object *theEnemy)
 		theEnemy->weaponType[1] = W_DIRSHOCKMISSILE;
 		theEnemy->chance[0] = 2;
 		theEnemy->chance[1] = 2;
-		theEnemy->flags += FL_AIMS;
+		theEnemy->flags |= FL_AIMS;
 	}
 	else if (theEnemy->maxShield == 0)
 	{
 		setRadioMessage(FACE_KLINE, "ENOUGH!! THIS ENDS NOW!!!", 1);
 		theEnemy->weaponType[0] = W_AIMED_SHOT;
 		theEnemy->weaponType[1] = W_MICRO_HOMING_MISSILES;
-		theEnemy->flags += FL_CANCLOAK;
+		theEnemy->flags |= FL_CANCLOAK;
 		theEnemy->chance[0] = 100;
 		theEnemy->chance[1] = 2;
 	}
@@ -152,8 +152,7 @@ void setKlineAI(object *theEnemy)
 	{
 		if (currentGame.area != 26)
 		{
-			if (theEnemy->flags & FL_AIMS)
-				theEnemy->flags -= FL_AIMS;
+			theEnemy->flags &= ~FL_AIMS;
 
 			switch(rand() % 2)
 			{
@@ -162,24 +161,19 @@ void setKlineAI(object *theEnemy)
 					break;
 				case 1:
 					theEnemy->weaponType[0] = W_AIMED_SHOT;
-					theEnemy->flags += FL_AIMS;
+					theEnemy->flags |= FL_AIMS;
 					break;
 			}
 		}
 	}
 
-	if (theEnemy->flags & FL_CIRCLES)
-		theEnemy->flags -= FL_CIRCLES;
-	if (theEnemy->flags & FL_CONTINUOUS_FIRE)
-		theEnemy->flags -= FL_CONTINUOUS_FIRE;
-	if (theEnemy->flags & FL_DROPMINES)
-		theEnemy->flags -= FL_DROPMINES;
+	theEnemy->flags &= ~(FL_CIRCLES | FL_CONTINUOUS_FIRE | FL_DROPMINES);
 
 	switch(rand() % 10)
 	{
 		case 0:
 			if ((theEnemy->weaponType[0] != W_DIRSHOCKMISSILE) && (theEnemy->weaponType[1] != W_MICRO_HOMING_MISSILES))
-				theEnemy->flags += FL_CONTINUOUS_FIRE;
+				theEnemy->flags |= FL_CONTINUOUS_FIRE;
 			theEnemy->dx = ((theEnemy->x - theEnemy->target->x) / ((300 / theEnemy->speed)  + rand() % 100));
 			theEnemy->dy = ((theEnemy->y - theEnemy->target->y) / ((300 / theEnemy->speed)  + rand() % 100));
 			break;
@@ -187,11 +181,11 @@ void setKlineAI(object *theEnemy)
 		case 2:
 			// Kline only attacks then he is ready!
 			if ((!(theEnemy->flags & FL_NOFIRE)) && (currentGame.area == 11))
-				theEnemy->flags += FL_DROPMINES;
+				theEnemy->flags |= FL_DROPMINES;
 			break;
 		case 3:
 		case 4:
-			theEnemy->flags += FL_CIRCLES;
+			theEnemy->flags |= FL_CIRCLES;
 			break;
 		default:
 			setEnemyAI(theEnemy);

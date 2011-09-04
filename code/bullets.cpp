@@ -71,9 +71,9 @@ void addBullet(object *theWeapon, object *attacker, int y, int dy)
 	}
 
 	if (attacker->flags & FL_WEAPCO)
-		bullet->flags += WF_WEAPCO;
+		bullet->flags |= WF_WEAPCO;
 	else
-		bullet->flags += WF_FRIEND;
+		bullet->flags |= WF_FRIEND;
 
 	bullet->owner = attacker->owner;
 
@@ -489,7 +489,7 @@ void fireRay(object *attacker)
 
 	attacker->ammo[0]--;
 	if (attacker->ammo[0] < 1)
-		attacker->flags -= FL_FIRERAY;
+		attacker->flags &= ~FL_FIRERAY;
 }
 
 /*
@@ -630,9 +630,8 @@ void doBullets()
 								{
 									if (!(theEnemy->flags & FL_LEAVESECTOR))
 									{
-										theEnemy->flags += FL_LEAVESECTOR;
-										if (theEnemy->flags & FL_CIRCLES)
-											theEnemy->flags -= FL_CIRCLES;
+										theEnemy->flags |= FL_LEAVESECTOR;
+										theEnemy->flags &= ~FL_CIRCLES;
 										if (currentGame.area == 11)
 											setRadioMessage(FACE_KLINE, "Seems I underestimated you, Bainfield! We'll meet again!", 1);
 										else if (currentGame.area == 25)
@@ -648,8 +647,7 @@ void doBullets()
 
 						if ((theEnemy->flags & FL_RUNSAWAY) && ((rand() % 50) == 0))
 						{
-							if (!(theEnemy->flags & FL_LEAVESECTOR))
-								theEnemy->flags += FL_LEAVESECTOR;
+							theEnemy->flags |= FL_LEAVESECTOR;
 						}
 
 						if (bullet->id != WT_CHARGER)

@@ -278,7 +278,7 @@ bool addAlien()
 	enemy[index].ammo[0] = 0;
 
 	if (currentGame.area == 18)
-		enemy[index].flags += FL_HASMINIMUMSPEED;
+		enemy[index].flags |= FL_HASMINIMUMSPEED;
 
 	return true;
 }
@@ -351,7 +351,7 @@ static void getPreDefinedAliens()
 		{
 			enemy[index].active = false;
 			enemy[index].maxShield = enemy[index].shield = 400;
-			enemy[index].flags -= FL_RUNSAWAY;
+			enemy[index].flags &= ~FL_RUNSAWAY;
 			enemy[index].speed = 3;
 		}
 
@@ -375,11 +375,11 @@ static void getPreDefinedAliens()
 		if ((currentGame.area == 17) && (enemy[index].classDef == CD_BOSS))
 		{
 			enemy[index].imageIndex[1] = 29;
-			enemy[index].flags += FL_IMMORTAL;
+			enemy[index].flags |= FL_IMMORTAL;
 		}
 
 		if (currentGame.area == 18)
-			enemy[index].flags += FL_HASMINIMUMSPEED;
+			enemy[index].flags |= FL_HASMINIMUMSPEED;
 
 		if (currentGame.area == 23)
 		{
@@ -492,7 +492,7 @@ static void addFriendly(int type)
 
 	// For the sake of it being the final battle :)
 	if (currentGame.area == 25)
-		enemy[type].flags += FL_IMMORTAL;
+		enemy[type].flags |= FL_IMMORTAL;
 }
 
 void setTarget(int index)
@@ -594,9 +594,7 @@ void initAliens()
 
 	if (currentGame.area == 26)
 	{
-		enemy[WC_KLINE].flags += FL_IMMORTAL;
-		enemy[WC_KLINE].flags += FL_NOFIRE;
-		enemy[WC_KLINE].flags += FL_NOMOVE;
+		enemy[WC_KLINE].flags |= FL_IMMORTAL | FL_NOFIRE | FL_NOMOVE;
 
 		enemy[WC_KLINE].x = 600;
 		enemy[WC_KLINE].y = 300;
@@ -980,7 +978,7 @@ void doAliens()
 						}
 						else
 						{
-							theEnemy->flags -= FL_IMMORTAL;
+							theEnemy->flags &= ~FL_IMMORTAL;
 							theEnemy->owner = theEnemy;
 							theEnemy->chance[0] = 25;
 						}
@@ -1463,7 +1461,7 @@ void defineAliens()
 	defEnemy[CD_FRIGATE_WING1].collectChance = 100;
 	defEnemy[CD_FRIGATE_WING1].collectType = P_ANYTHING;
 	defEnemy[CD_FRIGATE_WING1].collectValue = 250;
-	defEnemy[CD_FRIGATE_WING1].flags = FL_WEAPCO + FL_DAMAGEOWNER;
+	defEnemy[CD_FRIGATE_WING1].flags = FL_WEAPCO | FL_DAMAGEOWNER;
 
 	defEnemy[CD_FRIGATE_WING2].classDef = CD_FRIGATE_WING2;
 	defEnemy[CD_FRIGATE_WING2].AIType = AI_NORMAL;
@@ -1480,7 +1478,7 @@ void defineAliens()
 	defEnemy[CD_FRIGATE_WING2].collectChance = 100;
 	defEnemy[CD_FRIGATE_WING2].collectType = P_ANYTHING;
 	defEnemy[CD_FRIGATE_WING2].collectValue = 250;
-	defEnemy[CD_FRIGATE_WING2].flags = FL_WEAPCO + FL_DAMAGEOWNER;
+	defEnemy[CD_FRIGATE_WING2].flags = FL_WEAPCO | FL_DAMAGEOWNER;
 
 	// Transport ship
 	defEnemy[CD_TRANSPORTSHIP].classDef = CD_TRANSPORTSHIP;
@@ -1498,7 +1496,7 @@ void defineAliens()
 	defEnemy[CD_TRANSPORTSHIP].collectChance = 100;
 	defEnemy[CD_TRANSPORTSHIP].collectType = P_WEAPONS;
 	defEnemy[CD_TRANSPORTSHIP].collectValue = 30;
-	defEnemy[CD_TRANSPORTSHIP].flags = FL_WEAPCO + FL_NOFIRE;
+	defEnemy[CD_TRANSPORTSHIP].flags = FL_WEAPCO | FL_NOFIRE;
 
 	// Cargo ship
 	defEnemy[CD_CARGOSHIP].classDef = CD_CARGOSHIP;
@@ -1516,7 +1514,7 @@ void defineAliens()
 	defEnemy[CD_CARGOSHIP].collectChance = 50;
 	defEnemy[CD_CARGOSHIP].collectType = P_ANYTHING;
 	defEnemy[CD_CARGOSHIP].collectValue = 100;
-	defEnemy[CD_CARGOSHIP].flags = FL_WEAPCO + FL_NOFIRE;
+	defEnemy[CD_CARGOSHIP].flags = FL_WEAPCO | FL_NOFIRE;
 
 	// Weapco Miner
 	defEnemy[CD_MINER].classDef = CD_MINER;
@@ -1534,7 +1532,7 @@ void defineAliens()
 	defEnemy[CD_MINER].collectChance = 100;
 	defEnemy[CD_MINER].collectType = P_ANYTHING;
 	defEnemy[CD_MINER].collectValue = 30;
-	defEnemy[CD_MINER].flags = FL_WEAPCO + FL_NOFIRE + FL_DROPMINES;
+	defEnemy[CD_MINER].flags = FL_WEAPCO | FL_NOFIRE | FL_DROPMINES;
 
 	// Kline
 	defEnemy[CD_KLINE].classDef = CD_KLINE;
@@ -1552,7 +1550,7 @@ void defineAliens()
 	defEnemy[CD_KLINE].collectChance = 0;
 	defEnemy[CD_KLINE].collectType = P_ANYTHING;
 	defEnemy[CD_KLINE].collectValue = 0;
-	defEnemy[CD_KLINE].flags = FL_WEAPCO + FL_CANNOTDIE + FL_ALWAYSFACE + FL_CIRCLES;
+	defEnemy[CD_KLINE].flags = FL_WEAPCO | FL_CANNOTDIE | FL_ALWAYSFACE | FL_CIRCLES;
 
 	// Aim Fighter
 	defEnemy[CD_AIMFIGHTER].classDef = CD_AIMFIGHTER;
@@ -1570,7 +1568,7 @@ void defineAliens()
 	defEnemy[CD_AIMFIGHTER].collectChance = 75;
 	defEnemy[CD_AIMFIGHTER].collectType = P_ANYTHING;
 	defEnemy[CD_AIMFIGHTER].collectValue = 100;
-	defEnemy[CD_AIMFIGHTER].flags = FL_WEAPCO + FL_AIMS;
+	defEnemy[CD_AIMFIGHTER].flags = FL_WEAPCO | FL_AIMS;
 
 	// Slave ship
 	defEnemy[CD_SLAVETRANSPORT].classDef = CD_SLAVETRANSPORT;
@@ -1588,7 +1586,7 @@ void defineAliens()
 	defEnemy[CD_SLAVETRANSPORT].collectChance = 100;
 	defEnemy[CD_SLAVETRANSPORT].collectType = P_SLAVES;
 	defEnemy[CD_SLAVETRANSPORT].collectValue = 25;
-	defEnemy[CD_SLAVETRANSPORT].flags = FL_WEAPCO + FL_NOFIRE;
+	defEnemy[CD_SLAVETRANSPORT].flags = FL_WEAPCO | FL_NOFIRE;
 
 	// Good Transport
 	defEnemy[CD_GOODTRANSPORT].classDef = CD_GOODTRANSPORT;
@@ -1606,7 +1604,7 @@ void defineAliens()
 	defEnemy[CD_GOODTRANSPORT].collectChance = 0;
 	defEnemy[CD_GOODTRANSPORT].collectType = P_ANYTHING;
 	defEnemy[CD_GOODTRANSPORT].collectValue = 0;
-	defEnemy[CD_GOODTRANSPORT].flags = FL_FRIEND + FL_NOFIRE + FL_AIMS;
+	defEnemy[CD_GOODTRANSPORT].flags = FL_FRIEND | FL_NOFIRE | FL_AIMS;
 
 	// Sid Wilson
 	defEnemy[CD_SID].classDef = CD_SID;
@@ -1624,7 +1622,7 @@ void defineAliens()
 	defEnemy[CD_SID].collectChance = 0;
 	defEnemy[CD_SID].collectType = P_ANYTHING;
 	defEnemy[CD_SID].collectValue = 0;
-	defEnemy[CD_SID].flags = FL_FRIEND + FL_AIMS;
+	defEnemy[CD_SID].flags = FL_FRIEND | FL_AIMS;
 
 	// Mining Vessel Boss
 	defEnemy[CD_MINEBOSS].classDef = CD_BOSS;
@@ -1642,7 +1640,7 @@ void defineAliens()
 	defEnemy[CD_MINEBOSS].collectChance = 100;
 	defEnemy[CD_MINEBOSS].collectType = P_ANYTHING;
 	defEnemy[CD_MINEBOSS].collectValue = 255;
-	defEnemy[CD_MINEBOSS].flags = FL_WEAPCO + FL_IMMORTAL;
+	defEnemy[CD_MINEBOSS].flags = FL_WEAPCO | FL_IMMORTAL;
 
 	defEnemy[CD_BOSS2_WING1].classDef = CD_BOSS2_WING1;
 	defEnemy[CD_BOSS2_WING1].AIType = AI_NORMAL;
@@ -1659,7 +1657,7 @@ void defineAliens()
 	defEnemy[CD_BOSS2_WING1].collectChance = 100;
 	defEnemy[CD_BOSS2_WING1].collectType = P_ANYTHING;
 	defEnemy[CD_BOSS2_WING1].collectValue = 255;
-	defEnemy[CD_BOSS2_WING1].flags = FL_WEAPCO + FL_DAMAGEOWNER;
+	defEnemy[CD_BOSS2_WING1].flags = FL_WEAPCO | FL_DAMAGEOWNER;
 
 	defEnemy[CD_BOSS2_WING2].classDef = CD_BOSS2_WING2;
 	defEnemy[CD_BOSS2_WING2].AIType = AI_NORMAL;
@@ -1676,7 +1674,7 @@ void defineAliens()
 	defEnemy[CD_BOSS2_WING2].collectChance = 100;
 	defEnemy[CD_BOSS2_WING2].collectType = P_ANYTHING;
 	defEnemy[CD_BOSS2_WING2].collectValue = 255;
-	defEnemy[CD_BOSS2_WING2].flags = FL_WEAPCO + FL_DEPLOYDRONES + FL_DAMAGEOWNER;
+	defEnemy[CD_BOSS2_WING2].flags = FL_WEAPCO | FL_DEPLOYDRONES | FL_DAMAGEOWNER;
 
 	defEnemy[CD_BOSS2_WING3].classDef = CD_BOSS2_WING3;
 	defEnemy[CD_BOSS2_WING3].AIType = AI_NORMAL;
@@ -1693,7 +1691,7 @@ void defineAliens()
 	defEnemy[CD_BOSS2_WING3].collectChance = 100;
 	defEnemy[CD_BOSS2_WING3].collectType = P_ANYTHING;
 	defEnemy[CD_BOSS2_WING3].collectValue = 255;
-	defEnemy[CD_BOSS2_WING3].flags = FL_WEAPCO + FL_DEPLOYDRONES + FL_DAMAGEOWNER;
+	defEnemy[CD_BOSS2_WING3].flags = FL_WEAPCO | FL_DEPLOYDRONES | FL_DAMAGEOWNER;
 
 	defEnemy[CD_BOSS2_WING4].classDef = CD_BOSS2_WING4;
 	defEnemy[CD_BOSS2_WING4].AIType = AI_NORMAL;
@@ -1710,7 +1708,7 @@ void defineAliens()
 	defEnemy[CD_BOSS2_WING4].collectChance = 100;
 	defEnemy[CD_BOSS2_WING4].collectType = P_ANYTHING;
 	defEnemy[CD_BOSS2_WING4].collectValue = 255;
-	defEnemy[CD_BOSS2_WING4].flags = FL_WEAPCO + FL_DAMAGEOWNER;
+	defEnemy[CD_BOSS2_WING4].flags = FL_WEAPCO | FL_DAMAGEOWNER;
 
 	// Drone
 	defEnemy[CD_DRONE].classDef = CD_DRONE;
@@ -1746,7 +1744,7 @@ void defineAliens()
 	defEnemy[CD_CLOAKFIGHTER].collectChance = 100;
 	defEnemy[CD_CLOAKFIGHTER].collectType = P_CASH;
 	defEnemy[CD_CLOAKFIGHTER].collectValue = 255;
-	defEnemy[CD_CLOAKFIGHTER].flags = FL_WEAPCO + FL_CANCLOAK + FL_RUNSAWAY;
+	defEnemy[CD_CLOAKFIGHTER].flags = FL_WEAPCO | FL_CANCLOAK | FL_RUNSAWAY;
 
 	// Evil Ursula
 	defEnemy[CD_EVILURSULA].classDef = CD_EVILURSULA;
@@ -1782,7 +1780,7 @@ void defineAliens()
 	defEnemy[CD_KRASS].collectChance = 100;
 	defEnemy[CD_KRASS].collectType = P_ANYTHING;
 	defEnemy[CD_KRASS].collectValue = 255;
-	defEnemy[CD_KRASS].flags = FL_FRIEND + FL_IMMORTAL;
+	defEnemy[CD_KRASS].flags = FL_FRIEND | FL_IMMORTAL;
 
 	// Executive Transport
 	defEnemy[CD_EXEC].classDef = CD_BOSS;
@@ -1800,7 +1798,7 @@ void defineAliens()
 	defEnemy[CD_EXEC].collectChance = 0;
 	defEnemy[CD_EXEC].collectType = P_ANYTHING;
 	defEnemy[CD_EXEC].collectValue = 0;
-	defEnemy[CD_EXEC].flags = FL_WEAPCO + FL_NOFIRE;
+	defEnemy[CD_EXEC].flags = FL_WEAPCO | FL_NOFIRE;
 
 	// Asteroid
 	defEnemy[CD_ASTEROID].classDef = CD_ASTEROID;
@@ -1925,7 +1923,7 @@ void defineAliens()
 	defEnemy[CD_BARRIER].collectChance = 100;
 	defEnemy[CD_BARRIER].collectType = P_ANYTHING;
 	defEnemy[CD_BARRIER].collectValue = 25;
-	defEnemy[CD_BARRIER].flags = FL_WEAPCO + FL_NOFIRE;
+	defEnemy[CD_BARRIER].flags = FL_WEAPCO | FL_NOFIRE;
 
 	// Neptune Boss
 	defEnemy[CD_NEPTUNEBOSS].classDef = CD_NEPTUNEBOSS;
@@ -1961,7 +1959,7 @@ void defineAliens()
 	defEnemy[CD_MOBILESHIELD].collectChance = 100;
 	defEnemy[CD_MOBILESHIELD].collectType = P_ANYTHING;
 	defEnemy[CD_MOBILESHIELD].collectValue = 25;
-	defEnemy[CD_MOBILESHIELD].flags = FL_WEAPCO + FL_NOFIRE;
+	defEnemy[CD_MOBILESHIELD].flags = FL_WEAPCO | FL_NOFIRE;
 
 	// Firefly
 	defEnemy[CD_FIREFLY].classDef = CD_FIREFLY;
@@ -2015,7 +2013,7 @@ void defineAliens()
 	defEnemy[CD_URANUSBOSSWING1].collectChance = 100;
 	defEnemy[CD_URANUSBOSSWING1].collectType = P_ANYTHING;
 	defEnemy[CD_URANUSBOSSWING1].collectValue = 250;
-	defEnemy[CD_URANUSBOSSWING1].flags = FL_WEAPCO + FL_IMMORTAL;
+	defEnemy[CD_URANUSBOSSWING1].flags = FL_WEAPCO | FL_IMMORTAL;
 
 	// Uranus Boss Wing 2
 	defEnemy[CD_URANUSBOSSWING2].classDef = CD_URANUSBOSSWING2;
@@ -2033,7 +2031,7 @@ void defineAliens()
 	defEnemy[CD_URANUSBOSSWING2].collectChance = 100;
 	defEnemy[CD_URANUSBOSSWING2].collectType = P_ANYTHING;
 	defEnemy[CD_URANUSBOSSWING2].collectValue = 250;
-	defEnemy[CD_URANUSBOSSWING2].flags = FL_WEAPCO + FL_IMMORTAL;
+	defEnemy[CD_URANUSBOSSWING2].flags = FL_WEAPCO | FL_IMMORTAL;
 
 	saveAliens();
 }

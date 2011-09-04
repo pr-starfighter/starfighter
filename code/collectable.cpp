@@ -327,15 +327,9 @@ void doCollectables()
 						weapon[1].damage = 5;
 						weapon[1].reload[0] = 7;
 
-						if (weapon[1].flags & WF_STRAIGHT)
-							weapon[1].flags -= WF_STRAIGHT;
+						weapon[1].flags &= ~(WF_STRAIGHT | WF_THIN_SPREAD);
+						weapon[1].flags |= WF_WIDE_SPREAD;
 
-						if (weapon[1].flags & WF_THIN_SPREAD)
-							weapon[1].flags -= WF_THIN_SPREAD;
-
-						if (!(weapon[1].flags & WF_WIDE_SPREAD))
-							weapon[1].flags += WF_WIDE_SPREAD;
-							
 						sprintf(temp, "Picked up a Super Charge!!");
 
 						if (player.ammo[0] < 50)

@@ -136,47 +136,32 @@ void doPlayer()
 					{
 						if (weapon[0].flags & WF_THIN_SPREAD)
 						{
-							weapon[0].flags -= WF_THIN_SPREAD;
-							weapon[0].flags += WF_STRAIGHT;
+							weapon[0].flags &= ~WF_THIN_SPREAD;
+							weapon[0].flags |= WF_STRAIGHT;
 							setInfoLine("Weapon set to Concentrate", FONT_WHITE);
 						}
 						else
 						{
-							weapon[0].flags -= WF_STRAIGHT;
-							weapon[0].flags += WF_THIN_SPREAD;
+							weapon[0].flags &= ~WF_STRAIGHT;
+							weapon[0].flags |= WF_THIN_SPREAD;
 							setInfoLine("Weapon set to Spread", FONT_WHITE);
 						}
 					}
 				}
 				else
 				{
-					if (weapon[1].ammo[0] == 3)
+					if (weapon[1].ammo[0] == 3 || weapon[1].ammo[0] == 4)
 					{
 						if (weapon[1].flags & WF_THIN_SPREAD)
 						{
-							weapon[1].flags -= WF_THIN_SPREAD;
-							weapon[1].flags += WF_STRAIGHT;
+							weapon[1].flags &= ~WF_THIN_SPREAD;
+							weapon[1].flags |= WF_STRAIGHT;
 							setInfoLine("Weapon set to Concentrate", FONT_WHITE);
 						}
 						else
 						{
-							weapon[1].flags -= WF_STRAIGHT;
-							weapon[1].flags += WF_THIN_SPREAD;
-							setInfoLine("Weapon set to Spread", FONT_WHITE);
-						}
-					}
-					else if (weapon[1].ammo[0] == 4)
-					{
-						if (weapon[1].flags & WF_THIN_SPREAD)
-						{
-							weapon[1].flags -= WF_THIN_SPREAD;
-							weapon[1].flags += WF_STRAIGHT;
-							setInfoLine("Weapon set to Concentrate", FONT_WHITE);
-						}
-						else
-						{
-							weapon[1].flags -= WF_STRAIGHT;
-							weapon[1].flags += WF_THIN_SPREAD;
+							weapon[1].flags &= ~WF_STRAIGHT;
+							weapon[1].flags |= WF_THIN_SPREAD;
 							setInfoLine("Weapon set to Spread", FONT_WHITE);
 						}
 					}
@@ -184,18 +169,14 @@ void doPlayer()
 					{
 						if (weapon[1].flags & WF_WIDE_SPREAD)
 						{
-							if (weapon[1].flags & WF_THIN_SPREAD)
-								weapon[1].flags -= WF_THIN_SPREAD;
-							weapon[1].flags -= WF_WIDE_SPREAD;
-							weapon[1].flags += WF_STRAIGHT;
+							weapon[1].flags &= ~(WF_THIN_SPREAD | WF_WIDE_SPREAD);
+							weapon[1].flags |= WF_STRAIGHT;
 							setInfoLine("Weapon set to Concentrate", FONT_WHITE);
 						}
 						else
 						{
-							if (weapon[1].flags & WF_THIN_SPREAD)
-								weapon[1].flags -= WF_THIN_SPREAD;
-							weapon[1].flags -= WF_STRAIGHT;
-							weapon[1].flags += WF_WIDE_SPREAD;
+							weapon[1].flags &= (WF_THIN_SPREAD | WF_STRAIGHT);
+							weapon[1].flags |= WF_WIDE_SPREAD;
 							setInfoLine("Weapon set to Spread", FONT_WHITE);
 						}
 					}
@@ -308,7 +289,7 @@ void doPlayer()
 				if (currentGame.area == 18)
 				{
 					for (int i = 0 ; i < MAX_ALIENS ; i++)
-						enemy[i].flags += FL_LEAVESECTOR;
+						enemy[i].flags |= FL_LEAVESECTOR;
 				}
 
 				playSound(SFX_DEATH);

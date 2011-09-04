@@ -158,7 +158,7 @@ void initWeapons()
 	weapon[W_MICRO_ROCKETS].damage = 3;
 	weapon[W_MICRO_ROCKETS].reload[0] = 30;
 	weapon[W_MICRO_ROCKETS].speed = 15;
-	weapon[W_MICRO_ROCKETS].flags = WF_STRAIGHT + WF_VARIABLE_SPEED;
+	weapon[W_MICRO_ROCKETS].flags = WF_STRAIGHT | WF_VARIABLE_SPEED;
 	weapon[W_MICRO_ROCKETS].imageIndex[0] = 2;
 	weapon[W_MICRO_ROCKETS].imageIndex[1] = 3;
 
@@ -196,7 +196,7 @@ void initWeapons()
 	weapon[W_HOMING_MISSILE].damage = 15;
 	weapon[W_HOMING_MISSILE].reload[0] = 35;
 	weapon[W_HOMING_MISSILE].speed = 10;
-  	weapon[W_HOMING_MISSILE].flags = WF_STRAIGHT + WF_HOMING;
+  	weapon[W_HOMING_MISSILE].flags = WF_STRAIGHT | WF_HOMING;
   	weapon[W_HOMING_MISSILE].imageIndex[0] = 4;
 	weapon[W_HOMING_MISSILE].imageIndex[1] = 4;
 
@@ -213,7 +213,7 @@ void initWeapons()
 	weapon[W_MICRO_HOMING_MISSILES].damage = 12;
 	weapon[W_MICRO_HOMING_MISSILES].reload[0] = 65;
 	weapon[W_MICRO_HOMING_MISSILES].speed = 3;
-  	weapon[W_MICRO_HOMING_MISSILES].flags = WF_STRAIGHT + WF_HOMING;
+  	weapon[W_MICRO_HOMING_MISSILES].flags = WF_STRAIGHT | WF_HOMING;
   	weapon[W_MICRO_HOMING_MISSILES].imageIndex[0] = 4;
 	weapon[W_MICRO_HOMING_MISSILES].imageIndex[1] = 4;
 
@@ -223,7 +223,7 @@ void initWeapons()
 	weapon[W_AIMED_SHOT].damage = 2;
 	weapon[W_AIMED_SHOT].reload[0] = 15;
 	weapon[W_AIMED_SHOT].speed = 0;
-	weapon[W_AIMED_SHOT].flags = WF_STRAIGHT + WF_AIMED;
+	weapon[W_AIMED_SHOT].flags = WF_STRAIGHT | WF_AIMED;
 	weapon[W_AIMED_SHOT].imageIndex[0] = 33;
 	weapon[W_AIMED_SHOT].imageIndex[1] = 34;
 
@@ -243,7 +243,7 @@ void initWeapons()
 	weapon[W_IONCANNON].damage = 1;
 	weapon[W_IONCANNON].reload[0] = 2;
 	weapon[W_IONCANNON].speed = 10;
-	weapon[W_IONCANNON].flags = WF_STRAIGHT + WF_DISABLE + WF_AIMED;
+	weapon[W_IONCANNON].flags = WF_STRAIGHT | WF_DISABLE | WF_AIMED;
 	weapon[W_IONCANNON].imageIndex[0] = 35;
 	weapon[W_IONCANNON].imageIndex[1] = 35;
 
@@ -253,7 +253,7 @@ void initWeapons()
 	weapon[W_DIRSHOCKMISSILE].damage = 20;
 	weapon[W_DIRSHOCKMISSILE].reload[0] = 60;
 	weapon[W_DIRSHOCKMISSILE].speed = 0;
-	weapon[W_DIRSHOCKMISSILE].flags = WF_STRAIGHT + WF_AIMED + WF_TIMEDEXPLOSION;
+	weapon[W_DIRSHOCKMISSILE].flags = WF_STRAIGHT | WF_AIMED | WF_TIMEDEXPLOSION;
 	weapon[W_DIRSHOCKMISSILE].imageIndex[0] = 4;
 	weapon[W_DIRSHOCKMISSILE].imageIndex[1] = 4;
 
