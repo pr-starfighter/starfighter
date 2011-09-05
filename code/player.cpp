@@ -342,6 +342,13 @@ void getPlayerInput()
 			default:
 				break;
 		}
+
+		if ((engine.keyState[SDLK_F11]) || ((engine.keyState[SDLK_RETURN]) && (engine.keyState[SDLK_LALT])))
+		{
+			SDL_WM_ToggleFullScreen(screen);
+			engine.fullScreen = !engine.fullScreen;
+			engine.keyState[SDLK_F11] = engine.keyState[SDLK_LALT] = engine.keyState[SDLK_RETURN] = 0;
+		}
 	}
 }
 
