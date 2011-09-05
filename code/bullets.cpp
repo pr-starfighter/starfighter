@@ -187,30 +187,19 @@ void fireBullet(object *attacker, int weaponType)
 	}
 	else
 	{
-		switch (theWeapon->ammo[0])
+		if(theWeapon->ammo[0] & 1)
+			addBullet(theWeapon, attacker, y * 3, 0);
+
+		if(theWeapon->ammo[0] >= 2)
 		{
-			case 1:
-				addBullet(theWeapon, attacker, y * 3, 0);
-				break;
-			case 2:
-				addBullet(theWeapon, attacker, y * 2, 0);
-				addBullet(theWeapon, attacker, y * 4, 0);
-				break;
-			case 3:
-				addBullet(theWeapon, attacker, y * 2, 0);
-				addBullet(theWeapon, attacker, y * 3, 0);
-				addBullet(theWeapon, attacker, y * 4, 0);
-				break;
-			case 4:
-				addBullet(theWeapon, attacker, y, 0);
-				addBullet(theWeapon, attacker, y * 2, 0);
-				addBullet(theWeapon, attacker, y * 4, 0);
-				addBullet(theWeapon, attacker, y * 5, 0);
-				break;
-			case 5:
-				for (int i = 1 ; i < 6; i++)
-					addBullet(theWeapon, attacker, y * i, 0);
-				break;
+			addBullet(theWeapon, attacker, y * 2, 0);
+			addBullet(theWeapon, attacker, y * 4, 0);
+		}
+
+		if(theWeapon->ammo[0] >= 4)
+		{
+			addBullet(theWeapon, attacker, y * 1, 0);
+			addBullet(theWeapon, attacker, y * 5, 0);
 		}
 	}
 
@@ -532,7 +521,7 @@ void doBullets()
 				addExplosion(bullet->x, bullet->y, E_TINY_EXPLOSION);
 			}
 
-			if ((bullet->flags & WF_AIMED) || (bullet->flags & WF_SPREAD))
+			if ((bullet->flags & WF_AIMED))
 			{
 				blit(bullet->image[0], (int)(bullet->x - bullet->dx), (int)(bullet->y - bullet->dy));
 			}
