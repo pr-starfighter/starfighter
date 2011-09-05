@@ -228,10 +228,17 @@ int mainGameLoop()
 
 		wrapChar(&(--engine.eventTimer), 0, 60);
 
-		while (engine.paused)
+		if (engine.paused)
 		{
-			engine.done = checkPauseRequest();
-			delayFrame();
+			textSurface(22, "PAUSED", -1, 300, FONT_WHITE);
+			blitText(22);
+			updateScreen();
+
+			while (engine.paused)
+			{
+				engine.done = checkPauseRequest();
+				delayFrame();
+			}
 		}
 
 		if ((currentGame.area == 24) && (engine.addAliens > -1))
