@@ -188,7 +188,7 @@ void doPlayer()
 				}
 			}
 
-			if (engine.keyState[SDLK_p])
+			if (engine.keyState[SDLK_p] || !(SDL_GetAppState() & SDL_APPINPUTFOCUS))
 			{
 				engine.paused = true;
 				engine.keyState[SDLK_p] = 0;
