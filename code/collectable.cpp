@@ -284,65 +284,62 @@ void doCollectables()
 						break;
 
 					case P_PLASMA_RATE:
-						limitCharAdd(&weapon[1].reload[0], -2, currentGame.maxPlasmaRate, 15);
-						player.weaponType[0] = 1;
 						if (player.ammo[0] < 50)
 							player.ammo[0] = 50;
-						limitChar(&(player.ammo[0]), 0, currentGame.maxPlasmaAmmo);
-						if (weapon[1].reload[0] == currentGame.maxPlasmaRate)
-							sprintf(temp, "Firing Rate at Maximum");
+						if (weapon[0].reload[0] <= rate2reload[currentGame.maxPlasmaRate])
+							sprintf(temp, "Firing Rate already at Maximum");
 						else
+						{
+							weapon[0].reload[0] -= 2;
 							sprintf(temp, "Firing rate increased");
+						}
 						currentGame.powerups++;
 						break;
 
 					case P_PLASMA_SHOT:
-						limitCharAdd(&weapon[1].ammo[0], 1, 1, currentGame.maxPlasmaOutput);
 						if (player.ammo[0] < 50)
 							player.ammo[0] = 50;
-						limitChar(&(player.ammo[0]), 0, currentGame.maxPlasmaAmmo);
-						if (weapon[1].ammo[0] == currentGame.maxPlasmaOutput)
-							sprintf(temp, "Plasma output at Maximum");
+						if (weapon[0].ammo[0] >= currentGame.maxPlasmaOutput)
+							sprintf(temp, "Plasma output already at Maximum");
 						else
+						{
+							weapon[0].ammo[0]++;
 							sprintf(temp, "Plasma output increased");
-						player.weaponType[0] = 1;
+						}
 						currentGame.powerups++;
 						break;
 
 					case P_PLASMA_DAMAGE:
-						limitCharAdd(&weapon[1].damage, 1, 1, currentGame.maxPlasmaDamage);
 						if (player.ammo[0] < 50)
 							player.ammo[0] = 50;
-						limitChar(&(player.ammo[0]), 0, currentGame.maxPlasmaAmmo);
-						if (weapon[1].damage == currentGame.maxPlasmaDamage)
-							sprintf(temp, "Plasma damage at Maximum");
-						else
+						if (weapon[0].damage >= currentGame.maxPlasmaDamage)
+							sprintf(temp, "Plasma damage already at Maximum");
+						else {
+							weapon[0].damage++;
 							sprintf(temp, "Plasma damage increased");
-						player.weaponType[0] = 1;
+						}
 						currentGame.powerups++;
 						break;
 
 					case P_SUPER:
-						weapon[1].ammo[0] = 5;
-						weapon[1].damage = 5;
-						weapon[1].reload[0] = 7;
-
-						weapon[1].flags |= WF_SPREAD;
+						weapon[0].ammo[0] = 5;
+						weapon[0].damage = 5;
+						weapon[0].reload[0] = rate2reload[5];
+						weapon[0].flags |= WF_SPREAD;
 
 						sprintf(temp, "Picked up a Super Charge!!");
 
 						if (player.ammo[0] < 50)
 							player.ammo[0] = 50;
-						player.weaponType[0] = 1;
 						currentGame.powerups++;
 						break;
 
 					case P_PLASMA_AMMO:
-						limitCharAdd(&player.ammo[0], collectable->value, 0, currentGame.maxPlasmaAmmo);
-						if (player.ammo[0] == currentGame.maxPlasmaAmmo)
-							sprintf(temp, "Plasma cells at Maximum");
+						if (player.ammo[0] >= currentGame.maxPlasmaAmmo)
+							sprintf(temp, "Plasma cells already at Maximum");
 						else
 						{
+							limitCharAdd(&player.ammo[0], collectable->value, 0, currentGame.maxPlasmaAmmo);
 							if (collectable->value > 1)
 							{
 								sprintf(temp, "Got %d plasma cells", collectable->value);
@@ -354,7 +351,6 @@ void doCollectables()
 									sprintf(temp, "Got one whole plasma cell (wahoo!)");
 							}
 						}
-						player.weaponType[0] = 1;
 						currentGame.cellPickups += collectable->value;
 						break;
 
@@ -393,8 +389,9 @@ void doCollectables()
 			// stop people from exploiting a weapon check condition
 			if (player.ammo[0] == 0)
 			{
-				player.weaponType[0] = 0;
-				weapon[1] = weapon[0]; // reset to weapon 1 defaults
+                                weapon[0].ammo[0] = currentGame.minPlasmaOutput;
+                                weapon[0].damage = currentGame.minPlasmaDamage;
+                                weapon[0].reload[0] = rate2reload[currentGame.minPlasmaRate];
 			}
 		}
 

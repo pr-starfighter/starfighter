@@ -116,9 +116,6 @@ void initWeapons()
 	weapon[W_PLAYER_WEAPON].imageIndex[1] = 0;
 	weapon[W_PLAYER_WEAPON].flags = 0;
 
-	// Nor is this one!
-	weapon[W_PLAYER_WEAPON2] = weapon[W_PLAYER_WEAPON];
-
 	// Single Shot
 	weapon[W_SINGLE_SHOT].id = WT_PLASMA;
 	weapon[W_SINGLE_SHOT].ammo[0] = 1;

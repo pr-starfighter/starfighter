@@ -218,8 +218,9 @@ void fireBullet(object *attacker, int weaponType)
 			player.ammo[0]--;
 			if (player.ammo[0] == 0)
 			{
-				player.weaponType[0] = W_PLAYER_WEAPON;
-				weapon[W_PLAYER_WEAPON2] = weapon[W_PLAYER_WEAPON]; // reset to weapon 1 defaults
+				weapon[0].ammo[0] = currentGame.minPlasmaOutput;
+				weapon[0].damage = currentGame.minPlasmaDamage;
+				weapon[0].reload[0] = rate2reload[currentGame.minPlasmaRate];
 			}
 		}
 	}

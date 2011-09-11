@@ -149,7 +149,7 @@ void doInfo()
 	char text[25];
 
 	addBuffer(0, 20, 800, 25);
-	addBuffer(0, 545, 800, 25);
+	addBuffer(0, 550, 800, 34);
 
 	if (engine.minutes > -1)
 	{
@@ -332,15 +332,17 @@ void doInfo()
 	bar.h = 12;
 	bar.x = 80;
 	bar.y = 571;
-	SDL_FillRect(screen, &bar, green);
 
-	for (int i = 1 ; i < currentGame.maxPlasmaDamage ; i++)
+	for (int i = 1 ; i <= 5 ; i++)
 	{
-		bar.x += 30;
-		if (weapon[1].damage >= (i + 1))
-			SDL_FillRect(screen, &bar, green);
-		else
+		if (weapon[0].damage >= i) {
+			if(i <= currentGame.maxPlasmaDamage || (SDL_GetTicks() % 1000 > (unsigned)i * 100))
+			{
+				SDL_FillRect(screen, &bar, green);
+			}
+		} else if (i <= currentGame.maxPlasmaDamage)
 			SDL_FillRect(screen, &bar, darkGreen);
+		bar.x += 30;
 	}
 
 	blitText(12);
@@ -351,13 +353,17 @@ void doInfo()
 	bar.y = 571;
 	SDL_FillRect(screen, &bar, yellow);
 
-	for (int i = 1 ; i < currentGame.maxPlasmaDamage ; i++)
+	for (int i = 1 ; i <= 5 ; i++)
 	{
-		bar.x += 30;
-		if (weapon[1].ammo[0] >= (i + 1))
-			SDL_FillRect(screen, &bar, yellow);
-		else
+		if (weapon[0].ammo[0] >= i) {
+			if(i <= currentGame.maxPlasmaOutput || (SDL_GetTicks() % 1000 > (unsigned)i * 100))
+			{
+				SDL_FillRect(screen, &bar, yellow);
+			}
+		}
+		else if (i <= currentGame.maxPlasmaDamage)
 			SDL_FillRect(screen, &bar, darkYellow);
+		bar.x += 30;
 	}
 
 	blitText(13);
@@ -367,11 +373,15 @@ void doInfo()
 	bar.x = 550;
 	bar.y = 571;
 
-	for (int i = 15 ; i > (currentGame.maxPlasmaRate - 1) ; i -= 2)
+	for (int i = 1 ; i <= 5 ; i++)
 	{
-		if (weapon[1].reload[0] <= i)
-			SDL_FillRect(screen, &bar, blue);
-		else
+		if (weapon[0].reload[0] <= rate2reload[i]) {
+			if(i <= currentGame.maxPlasmaRate || (SDL_GetTicks() % 1000 > (unsigned)i * 100))
+			{
+				SDL_FillRect(screen, &bar, blue);
+			}
+		}
+		else if (i <= currentGame.maxPlasmaRate)
 			SDL_FillRect(screen, &bar, darkerBlue);
 		bar.x += 30;
 	}

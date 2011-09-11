@@ -123,7 +123,6 @@ struct Game {
 
 	object thePlayer;
 	object playerWeapon;
-	object playerWeapon2;
 
 	unsigned char system;
 	unsigned char area;
@@ -166,6 +165,9 @@ struct Game {
 	char destinationName[20];
 	int distanceCovered;
 
+	unsigned char minPlasmaRate;
+	unsigned char minPlasmaDamage;
+	unsigned char minPlasmaOutput;
 	unsigned char maxPlasmaRate;
 	unsigned char maxPlasmaDamage;
 	unsigned char maxPlasmaOutput;

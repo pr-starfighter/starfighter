@@ -46,15 +46,12 @@ void initPlayer()
 
 	player.weaponType[0] = W_PLAYER_WEAPON;
 
-	if (player.ammo[0] > 0)
-	{
-		player.weaponType[0] = W_PLAYER_WEAPON2;
-	}
-	else
-	{
-		player.weaponType[0] = W_PLAYER_WEAPON;
-		weapon[1] = weapon[0]; // reset to weapon 1 defaults
-	}
+	if(weapon[0].ammo[0] < currentGame.minPlasmaOutput)
+		weapon[0].ammo[0] = currentGame.minPlasmaOutput;
+	if(weapon[0].damage < currentGame.minPlasmaDamage)
+		weapon[0].damage = currentGame.minPlasmaDamage;
+	if(weapon[0].reload[0] > rate2reload[currentGame.minPlasmaRate])
+		weapon[0].reload[0] = rate2reload[currentGame.minPlasmaRate];
 
 	player.hit = 0;
 
@@ -130,13 +127,11 @@ void doPlayer()
 
 			if ((engine.keyState[SDLK_LSHIFT]) || (engine.keyState[SDLK_RSHIFT]))
 			{
-				int w = player.ammo[0] > 0;
-
-				if(weapon[w].ammo[0] >= 3)
+				if(weapon[0].ammo[0] >= 3 && weapon[0].ammo[0] <= currentGame.maxPlasmaOutput)
 				{
-					weapon[w].flags ^= WF_SPREAD;
+					weapon[0].flags ^= WF_SPREAD;
 
-					if(weapon[w].flags & WF_SPREAD)
+					if(weapon[0].flags & WF_SPREAD)
 					{
 						setInfoLine("Weapon set to Spread", FONT_WHITE);
 					}

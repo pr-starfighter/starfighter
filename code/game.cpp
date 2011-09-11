@@ -61,7 +61,10 @@ void newGame()
 		currentGame.missionCompleted[i] = 0;
 	currentGame.distanceCovered = 0;
 
-	currentGame.maxPlasmaRate = 13;
+	currentGame.minPlasmaRate = 1;
+	currentGame.minPlasmaOutput = 1;
+	currentGame.minPlasmaDamage = 1;
+	currentGame.maxPlasmaRate = 2;
 	currentGame.maxPlasmaOutput = 2;
 	currentGame.maxPlasmaDamage = 2;
 	currentGame.maxPlasmaAmmo = 100;

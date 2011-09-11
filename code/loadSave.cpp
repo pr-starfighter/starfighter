@@ -102,7 +102,6 @@ bool loadGame(int slot)
 	fclose(fp);
 
 	weapon[0] = currentGame.playerWeapon;
-	weapon[1] = currentGame.playerWeapon2;
 	player = currentGame.thePlayer;
 
 	// Re-init all the planets in this system...
@@ -129,7 +128,6 @@ void saveGame(int slot)
 	fp = fopen(fileName, "wb");
 
 	currentGame.playerWeapon = weapon[0];
-	currentGame.playerWeapon2 = weapon[1];
 	currentGame.thePlayer = player;
 	for (int i = 0 ; i < 10 ; i++)
 		currentGame.missionCompleted[i] = systemPlanet[i].missionCompleted;
