@@ -361,7 +361,7 @@ void doInfo()
 				SDL_FillRect(screen, &bar, yellow);
 			}
 		}
-		else if (i <= currentGame.maxPlasmaDamage)
+		else if (i <= currentGame.maxPlasmaOutput)
 			SDL_FillRect(screen, &bar, darkYellow);
 		bar.x += 30;
 	}
