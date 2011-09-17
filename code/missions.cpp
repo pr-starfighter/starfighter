@@ -507,7 +507,8 @@ static char revealHiddenObjectives()
 			enemy[WC_KLINE].flags |= FL_IMMORTAL | FL_NOFIRE;
 			setTarget(WC_KLINE);
 			loadMusic("music/TranceGeneration.mod");
-			Mix_PlayMusic(engine.music, -1);
+			if ((engine.useAudio) && (engine.useMusic))
+				Mix_PlayMusic(engine.music, -1);
 		}
 	}
 
