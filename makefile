@@ -3,12 +3,12 @@ CFLAGS += `sdl-config --cflags` -DLINUX
 LIBS = `sdl-config --libs` -lSDL_mixer -lSDL_image
 OBJS = ai.o aliens.o audio.o bullets.o cargo.o collectable.o comms.o debris.o events.o explosions.o game.o globals.o graphics.o init.o intermission.o loadSave.o messages.o misc.o missions.o player.o resources.o script.o shop.o Starfighter.o title.o unpack.o weapons.o
 
-VERSION = 1.1
+VERSION = 1.2
 PROG = starfighter
 PACK = starfighter.pak
 DOCS = docs/*
-DATA = data gfx music sound
-DATAFILES = data/* gfx/* music/* sound/*
+DATA = data gfx sound
+DATAFILES = data/* gfx/* sound/*
 
 USEPACK ?= 1
 
@@ -61,4 +61,12 @@ optimise:
 	advpng -z gfx/*.png
 	jpegoptim --strip-all gfx/*.jpg
 
-.PHONY: all clean install optimise unpack
+dist:
+	rm -rf starfighter-$(VERSION)
+	mkdir starfighter-$(VERSION)
+	cp --parents -lt starfighter-$(VERSION) `git ls-files`
+	git log >starfighter-$(VERSION)/ChangeLog
+	tar czf starfighter-$(VERSION).tar.gz starfighter-$(VERSION)
+	rm -rf starfighter-$(VERSION)
+
+.PHONY: all clean install optimise unpack dist

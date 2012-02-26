@@ -331,9 +331,10 @@ int doTitle()
 
 				if (!skip)
 				{
-					drawString("Copyright Parallel Realities 2003", 5, 580, FONT_WHITE, background);
+					drawString("Copyright Parallel Realities 2003", 5, 560, FONT_WHITE, background);
+					drawString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012", 5, 580, FONT_WHITE, background);
 					drawString(buildVersion, 794 - strlen(buildVersion) * 9, 580, FONT_WHITE, background);
-					addBuffer(0, 580, 800, 20);
+					addBuffer(0, 560, 800, 40);
 					skip = true;
 				}
 			}
@@ -352,9 +353,10 @@ int doTitle()
 		{
 			if ((now - then <= 27500) && (!skip))
 			{
-				drawString("Copyright Parallel Realities 2003", 5, 580, FONT_WHITE, background);
+				drawString("Copyright Parallel Realities 2003", 5, 560, FONT_WHITE, background);
+				drawString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012", 5, 580, FONT_WHITE, background);
 				drawString(buildVersion, 794 - strlen(buildVersion) * 9, 580, FONT_WHITE, background);
-				addBuffer(0, 580, 800, 20);
+				addBuffer(0, 560, 800, 40);
 				skip = true;
 			}
 			else

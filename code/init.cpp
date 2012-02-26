@@ -77,7 +77,7 @@ void showErrorAndExit(int errorId, const char *name)
 			strcpy(string, "");
 			sprintf(string, "%s was not found in the Starfighter data package", name);
 			drawString(string, -1, 250, FONT_WHITE);
-			drawString("Please try again. If this error persists, contact Parallel Realities", -1, 275, FONT_WHITE);
+			drawString("Please try again. If this error persists, contact the authors", -1, 275, FONT_WHITE);
 			drawString("or reinstall the game", -1, 300, FONT_WHITE);
 			break;
 		case 1:
@@ -88,7 +88,7 @@ void showErrorAndExit(int errorId, const char *name)
 		case 2:
 			drawString("Project: Starfighter encountered a critical error", -1, 250, FONT_WHITE);
 			drawString("while attempting to perform a required program function.", -1, 275, FONT_WHITE);
-			drawString("Please contact Parallel Realities with details", -1, 300, FONT_WHITE);
+			drawString("Please contact the authors with details.", -1, 300, FONT_WHITE);
 			break;
 	}
 

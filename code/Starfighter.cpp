@@ -33,11 +33,12 @@ int main(int argc, char *argv[])
 		if (strcmp("--help", argv[1]) == 0)
 		{
 			printf("\nProject: Starfighter %s\n", VERSION);
-			printf("Copyright Parallel Realities 2003\n\n");
+			printf("Copyright Parallel Realities 2003\n");
+			printf("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012\n");
 			printf("Additional Commands\n");
 			printf("\t-noaudio     Disables sound and music\n");
 			printf("\t-mono        Mono sound output (best for headphones)\n\n");
-			printf("www.parallelrealities.co.uk\n");
+			printf("http://sourceforge.net/projects/pr-starfighter/\n");
 			printf("\n");
 			exit(0);
 		}

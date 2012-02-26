@@ -161,5 +161,5 @@ human history as Project: Starfighter
 020 All Rights Reserved
 350 Project: Starfighter
 020 Copyright Parallel Realities 2003
-020 All Rights Reserved
-120 http://www.parallelrealities.co.uk
+020 Copyright Guus Sliepen, Astrid S. de Wijn and others 2012
+120 http://sourceforge.net/projects/pr-starfighter/
