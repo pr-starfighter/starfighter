@@ -95,6 +95,8 @@ void showErrorAndExit(int errorId, const char *name)
 	drawString("Project: Starfighter will now exit", -1, 450, FONT_WHITE);
 	drawString("Press Space to continue", -1, 475, FONT_WHITE);
 
+	updateScreen();
+
 	engine.keyState[SDLK_SPACE] = 0;
 
 	while (!engine.keyState[SDLK_SPACE])
