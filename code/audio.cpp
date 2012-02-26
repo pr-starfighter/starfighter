@@ -81,7 +81,8 @@ void loadMusic(const char *filename)
 		Mix_FreeMusic(engine.music);
 
 	#if USEPACK
-	unpack(filename, PAK_MOD);
+	if(!unpack(filename, PAK_MOD))
+		return;
 
 	char musicFilename[PATH_MAX];
 	strcpy(musicFilename, "");

@@ -18,5 +18,5 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-extern void unpack(const char *file, signed char fileType);
+extern bool unpack(const char *file, signed char fileType);
 extern int locateDataInPak(const char *file, bool required);

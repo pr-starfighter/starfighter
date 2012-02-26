@@ -24,7 +24,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 Searches the pak file for the required data. When
 it is found, the data is read into a character buffer.
 */
-void unpack(const char *file, signed char fileType)
+bool unpack(const char *file, signed char fileType)
 {
 	unsigned char *packBuffer;
 	char packFilename[60];
@@ -49,6 +49,10 @@ void unpack(const char *file, signed char fileType)
 		if (!fread(packFilename, 1, 56, pak))
 		{
 			fclose(pak);
+
+			if (fileType == PAK_MOD || fileType == PAK_S3M)
+				return false;
+
 			if (fileType != PAK_FONT)
 			{
 				showErrorAndExit(0, file);
@@ -97,6 +101,7 @@ void unpack(const char *file, signed char fileType)
 		engine.sdlrw = SDL_RWFromMem(packBuffer, packFSize);
 
 	fclose(pak);
+	return true;
 }
 
 /*
