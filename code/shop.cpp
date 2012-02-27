@@ -310,6 +310,7 @@ void initShop(){loadShop();}
 
 #else
 
+#if SAVEDATA
 static void saveShop()
 {
 	FILE *fp;
@@ -336,6 +337,7 @@ static void saveShop()
 
 	fclose(fp);
 }
+#endif
 
 /*
 Throw into a data file in final build
@@ -471,7 +473,9 @@ void initShop()
 	player.x = 380;
 	player.y = 95;
 
+#if SAVEDATA
 	saveShop();
+#endif
 
 	drawShop();
 }

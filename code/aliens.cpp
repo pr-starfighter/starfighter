@@ -1314,6 +1314,7 @@ void defineAliens(){loadAliens();}
 
 #else
 
+#if SAVEDATA
 static void saveAliens()
 {
 	FILE *fp;
@@ -1350,6 +1351,7 @@ static void saveAliens()
 
 	fclose(fp);
 }
+#endif
 
 /*
 Will be dumped into a data file at the end of the project
@@ -2033,7 +2035,9 @@ void defineAliens()
 	defEnemy[CD_URANUSBOSSWING2].collectValue = 250;
 	defEnemy[CD_URANUSBOSSWING2].flags = FL_WEAPCO | FL_IMMORTAL;
 
+#if SAVEDATA
 	saveAliens();
+#endif
 }
 
 #endif

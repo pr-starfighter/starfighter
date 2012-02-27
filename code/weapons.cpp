@@ -71,6 +71,7 @@ void initWeapons() {loadWeapons();}
 
 #else
 
+#if SAVEDATA
 static void saveWeapons()
 {
 	FILE *fp;
@@ -99,6 +100,7 @@ static void saveWeapons()
 
 	fclose(fp);
 }
+#endif
 
 /*
 A list of predefined weaponary. Will most probably
@@ -254,7 +256,9 @@ void initWeapons()
 	weapon[W_DIRSHOCKMISSILE].imageIndex[0] = 4;
 	weapon[W_DIRSHOCKMISSILE].imageIndex[1] = 4;
 
+#if SAVEDATA
 	saveWeapons();
+#endif
 }
 
 #endif

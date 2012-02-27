@@ -979,6 +979,7 @@ void initMissions(){loadMissions();}
 
 #else
 
+#if SAVEDATA
 static void saveMissions()
 {
 	FILE *fp;
@@ -1025,6 +1026,7 @@ static void saveMissions()
 		fclose(fp);
 	}
 }
+#endif
 
 /*
 This is where all the missions are defined. This will be placed
@@ -1438,6 +1440,8 @@ void initMissions()
 	missions[MAX_MISSIONS - 1].primaryType[0] = M_DESTROY_ALL_TARGETS;
 	missions[MAX_MISSIONS - 1].completed1[0] = OB_INCOMPLETE;
 
+#if SAVEDATA
 	saveMissions();
+#endif
 }
 #endif
