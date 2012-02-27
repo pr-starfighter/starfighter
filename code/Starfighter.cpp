@@ -24,6 +24,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 int main(int argc, char *argv[])
 {
+#if !USEPACK
+	char datadir[] = PACKLOCATION;
+	char *slash = strrchr(datadir, '/');
+	if(slash)
+		*slash = 0;
+	chdir(datadir);
+#endif
+
 	defineGlobals(); // Must do this first!
 
 	bool cheatAttempt = false;
