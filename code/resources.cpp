@@ -81,19 +81,19 @@ void loadGameGraphics()
 	fclose(fp);
 
 	/*
-	Overlay a red alpha surface onto
+	Create images of ships being hit that show a lot of red
 	*/
-	SDL_Surface *hitRect;
 	for (int i = SHIP_HIT_INDEX ; i < MAX_SHIPSHAPES ; i++)
 	{
 		if (shipShape[i - SHIP_HIT_INDEX] == NULL)
 			continue;
 		shipShape[i] = createSurface(shipShape[i - SHIP_HIT_INDEX]->w, shipShape[i- SHIP_HIT_INDEX]->h);
 		blit(shipShape[i - SHIP_HIT_INDEX], 0, 0, shipShape[i]);
-		hitRect = alphaRect(shipShape[i]->w, shipShape[i]->h, 255, 0, 0);
-		blit(hitRect, 0, 0, shipShape[i]);
-		SDL_SetColorKey(shipShape[i], (SDL_SRCCOLORKEY|SDL_RLEACCEL), SDL_MapRGB(shipShape[i]->format, 127, 0, 0));
-		SDL_FreeSurface(hitRect);
+		uint32_t *p = (uint32_t *)shipShape[i]->pixels;
+		for(int j = 0; j < shipShape[i]->w * shipShape[i]->h; j++)
+			if(p[j])
+				p[j] |= shipShape[i]->format->Rmask;
+		SDL_SetColorKey(shipShape[i], (SDL_SRCCOLORKEY|SDL_RLEACCEL), SDL_MapRGB(shipShape[i]->format, 0, 0, 0));
 	}
 
 	strcpy(string, "data/resources_all.dat");
