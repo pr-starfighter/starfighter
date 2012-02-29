@@ -1,0 +1,37 @@
+X:1
+T:Drums & Bass
+C:Guus Sliepen
+M:4/4
+L:1/4
+Q:150
+K:Bb
+%%MIDI drummap C 36
+%%MIDI drummap E 40
+%%MIDI drummap ^F 42
+%%MIDI drummap ^G 44
+%%MIDI drummap ^A 46
+%%MIDI drummap ^c 49
+V:1 clef=treble
+%%MIDI channel 10
+| CCCC | CCCC | CCCC | Czz/z//C//C/C/
+| CCCC | CCCC | CCCC | Czz/z//C//C/C/
+| CCCC | CCCC | CCCC | Czz/z//C//C/C/
+| CCCC | CCCC | CCCC | Czz/z//C//C/C/
+V:2 clef=treble
+%%MIDI channel 10
+| z4 | z4 | z4 | z4
+| z4 | z4 | z4 | z4
+| z4 | z4 | z4 | z2 ^c2
+| zEzE | zEzE | zEzE | z!p!^c!f!^c!fff!^c
+V:3 clef=treble transpose=-36
+%%MIDI channel 1
+| z4 | z4 | z4 | z _e d _d
+| c/c/c/c/c/c/c/c/ | c/c/c/c/c/c/c/_B/ | c/c/c/c/c/c/c/c/ | _B _B _B _B
+| c/c/c/c/c/c/c/c/ | c/c/c/c/c/c/c/_B/ | c/c/c/c/c/c/c/c/ | _B _B _B _B
+| c/c/c/c/c/c/c/c/ | c/c/c/c/c/c/c/_B/ | c/c/c/c/c/c/c/c/ | _B _B _B _B
+V:4 clef=treble
+%%MIDI channel 2
+| z4 | z4 | z4 | z4
+| z4 | z4 | z4 | z4
+| z[CEG]/z//[CEG]//z[CEG]/z/ | z[CEG]/z//[CEG]//z[CEG]/z/ | z[CEG]/z//[CEG]//z[CEG]/z/ | z[B,DF]/z/z2
+| z[CEG]/z//[CEG]//z[CEG]/z/ | z[CEG]/z//[CEG]//z[CEG]/z/ | z[CEG]/z//[CEG]//z[CEG]/z/ | z[B,DF]/z/z2
