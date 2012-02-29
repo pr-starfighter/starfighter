@@ -262,7 +262,16 @@ void doCutscene(int scene)
 			if (enemy[i].active)
 			{
 				addEngine(&enemy[i]);
+				if (scene == 0 && i > 0 && (timer % 15) == i) {
+					enemy[i].dx += (drand48() - 0.5) * 0.1;
+					enemy[i].dy += (drand48() - 0.5) * 0.1;
+					if (enemy[i].x > 500 - timer)
+						enemy[i].dx -= 0.2;
+					if (enemy[i].x < 0)
+						enemy[i].dx += 0.2;
+				}
 				enemy[i].x += enemy[i].dx;
+				enemy[i].y += enemy[i].dy;
 				enemy[i].x += engine.ssx;
 				blit(enemy[i].image[0], (int)enemy[i].x, (int)enemy[i].y);
 				if (enemy[i].x > 850)
@@ -270,6 +279,10 @@ void doCutscene(int scene)
 					enemy[i].x = -50;
 					enemy[i].y = rand() % 560;
 				}
+				if (enemy[i].y < -50)
+					enemy[i].y = 650;
+				if (enemy[i].y > 650)
+					enemy[i].y = -50;
 			}
 		}
 
