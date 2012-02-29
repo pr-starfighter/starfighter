@@ -239,7 +239,7 @@ Spins the planets around the sun, spaced according to their Y value
 as defined in setSystemPlanets(). Moving the cursor over the planet
 will show their name and their current status
 */
-static bool showSystem(float x, float y)
+static bool showSystem(float x, float y, bool selectable)
 {
 	SDL_Rect r;
 	signed char planet = 0;
@@ -265,7 +265,7 @@ static bool showSystem(float x, float y)
 		r.y -= (systemPlanet[planet].image->h / 2);
 		blit(systemPlanet[planet].image, r.x, r.y);
 
-		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, r.x, r.y, systemPlanet[planet].image->w, systemPlanet[planet].image->h))
+		if (selectable && collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, r.x, r.y, systemPlanet[planet].image->w, systemPlanet[planet].image->h))
 		{
 			drawString(systemPlanet[planet].name, -1, 545, FONT_WHITE);
 			if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
@@ -691,7 +691,7 @@ int galaxyMap()
 					cosY += 0.01;
 				}
 
-				if (showSystem(sinX, cosY))
+				if (showSystem(sinX, cosY, true))
 				{
 					if (currentGame.system == 0)
 					{
@@ -722,9 +722,9 @@ int galaxyMap()
 				saveSlot = showSaveSlots(savesSurface, saveSlot);
 				break;
 
-         case 4:
-         	showShop();
-         	break;
+			case 4:
+				showShop();
+				break;
 
 			case 5:
 				blit(commsSurface, 170, 70);
@@ -736,13 +736,13 @@ int galaxyMap()
 				showOptions(optionsSurface);
 				break;
 
-         case 7:
-         	rtn = 0;
+			case 7:
+				rtn = 0;
 				engine.done = 1;
 				break;
 
 			case 8:
-				showSystem(sinX, cosY);
+				showSystem(sinX, cosY, false);
 
 				blit(systemPlanet[currentGame.stationedPlanet].image, 150, 450);
 				blit(iconInfo[9].image, 135, 480);
