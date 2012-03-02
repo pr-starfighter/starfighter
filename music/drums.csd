@@ -10,19 +10,20 @@ nchnls = 2
 gifluid fluidEngine; start fluidsynth engine
 ifont fluidLoad "/usr/share/sounds/sf2/FluidR3_GM.sf2", gifluid, 1
 fluidProgramSelect gifluid, 1, ifont, 0, 38 ;Synth bass 1
-fluidProgramSelect gifluid, 2, ifont, 0, 29 ;Distortion guitar
+fluidProgramSelect gifluid, 2, ifont, 0, 2 ;Electric piano
+fluidProgramSelect gifluid, 3, ifont, 8, 50 ;Synth strings
 fluidProgramSelect gifluid, 10, ifont, 128, 25 ;TR-808 drums
 
-instr 1, 2, 10
+instr 1, 2, 3, 10
 	ikey	notnum
 	ivel	ampmidi 127
 		fluidNote gifluid, p1, ikey, ivel
 endin
 
 instr 99
+	iamp init 5
 	al, ar fluidOut gifluid
-	al, ar reverbsc al, ar, 0.6, 10000
-	outs al, ar
+	outs al * iamp, ar * iamp 
 endin
 </CsInstruments>
 <CsScore>
