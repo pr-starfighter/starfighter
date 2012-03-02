@@ -1,0 +1,8 @@
+In order to create the sound files, you need the following packages
+installed:
+
+- csound
+- vorbis-tools
+
+The .csd files contain the source code that describes the sound effect. These
+are rendered by csound to a .wav file, which is converted to .ogg using oggenc.

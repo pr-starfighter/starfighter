@@ -1,0 +1,22 @@
+In order to create the final soundtrack, you need the following packages
+installed:
+
+- csound
+- abcmidi
+- fluid-soundfont-gm
+- vorbis-tools
+
+The .abc files contain the music scores in ABC notation. These are converted to
+MIDI format with abc2midi.  For each .abc file there is a .csd file which sets
+up the instruments so csound can render the MIDI file. At the moment we are
+using only the fluid opcodes. These render notes using a General Midi
+soundfont.  After csound has rendered everything to a .wav file, oggenc is used
+to create the final .ogg file.
+
+If the abcm2ps package is installed, you can create sheet music from the .abc files.
+This can be helpful to spot mistakes.
+
+TODO:
+
+- Use ABC part notation to simulate module tracker patterns.
+- Use csound to add effects that cannot be represented by ABC (for example, filter sweeps).
