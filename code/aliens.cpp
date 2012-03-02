@@ -832,7 +832,7 @@ static void moveAndSeparate(object *theEnemy)
 					theEnemy->hit = 3;
 					theEnemy->dx *= -1;
 					theEnemy->dy *= -1;
-					playSound(SFX_HIT);
+					playSound(SFX_HIT, theEnemy->x);
 				}
 
 				if (anEnemy->owner == anEnemy)
@@ -855,10 +855,10 @@ static void moveAndSeparate(object *theEnemy)
 				if (!engine.cheatShield)
 					player.shield -= theEnemy->shield;
 				theEnemy->shield = 0;
-				playSound(SFX_EXPLOSION);
+				playSound(SFX_EXPLOSION, theEnemy->x);
 				setInfoLine("Warning: Asteroid Collision Damage!!", FONT_RED);
 				player.hit = 5;
-				playSound(SFX_HIT);
+				playSound(SFX_HIT, player.x);
 			}
 
 			if (theEnemy->classDef == CD_ASTEROID2)
@@ -866,10 +866,10 @@ static void moveAndSeparate(object *theEnemy)
 				if (!engine.cheatShield)
 					player.shield -= theEnemy->shield;
 				theEnemy->shield = 0;
-				playSound(SFX_EXPLOSION);
+				playSound(SFX_EXPLOSION, theEnemy->x);
 				setInfoLine("Warning: Asteroid Collision Damage!!", FONT_RED);
 				player.hit = 5;
-				playSound(SFX_HIT);
+				playSound(SFX_HIT, player.x);
 			}
 
 			if (theEnemy->classDef == CD_BARRIER)
@@ -877,7 +877,7 @@ static void moveAndSeparate(object *theEnemy)
 				if (!engine.cheatShield)
 					player.shield--;
 				player.hit = 5;
-				playSound(SFX_HIT);
+				playSound(SFX_HIT, player.x);
 			}
 		}
 	}
@@ -1084,7 +1084,7 @@ void doAliens()
 						theEnemy->flags -= FL_ISCLOAKED;
 					else
 						theEnemy->flags += FL_ISCLOAKED;
-					playSound(SFX_CLOAK);
+					playSound(SFX_CLOAK, theEnemy->x);
 				}
 
 				// ------------ Barriers ------------------
@@ -1143,7 +1143,7 @@ void doAliens()
 						else if ((theEnemy->weaponType[1] == W_ENERGYRAY) && (theEnemy->ammo[0] == 250))
 						{
 							theEnemy->flags += FL_FIRERAY;
-							playSound(SFX_ENERGYRAY);
+							playSound(SFX_ENERGYRAY, theEnemy->x);
 						}
 					}
 				}

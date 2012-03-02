@@ -23,9 +23,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 void addDebris(int x, int y, int amount)
 {
 	if ((rand() % 2) == 0)
-		playSound(SFX_DEBRIS);
+		playSound(SFX_DEBRIS, x);
 	else
-		playSound(SFX_DEBRIS2);
+		playSound(SFX_DEBRIS2, x);
 
 	object *debris;
 	

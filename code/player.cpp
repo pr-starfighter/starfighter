@@ -251,8 +251,8 @@ void doPlayer()
 						enemy[i].flags |= FL_LEAVESECTOR;
 				}
 
-				playSound(SFX_DEATH);
-				playSound(SFX_EXPLOSION);
+				playSound(SFX_DEATH, player.x);
+				playSound(SFX_EXPLOSION, player.x);
 			}
 
 			engine.keyState[SDLK_UP] = engine.keyState[SDLK_DOWN] = engine.keyState[SDLK_LEFT] = engine.keyState[SDLK_RIGHT] = 0;

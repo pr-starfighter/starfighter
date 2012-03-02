@@ -164,7 +164,7 @@ void addCollectable(float x, float y, int type, int value, int life)
 static void explodeMine(collectables *collectable)
 {
 	if ((collectable->x >= 0) && (collectable->x <= 800) && (collectable->y >= 0) && (collectable->y <= 600))
-		playSound(SFX_EXPLOSION);
+		playSound(SFX_EXPLOSION, collectable->x);
 
 	for (int i = 0 ; i < 10 ; i++)
 		addExplosion(collectable->x + rand() % 25 - rand() % 25, collectable->y + rand() % 25 - rand() % 25, E_BIG_EXPLOSION);
@@ -380,9 +380,9 @@ void doCollectables()
 				{
 					setInfoLine(temp, FONT_WHITE);
 					if (collectable->type == P_SHIELD)
-						playSound(SFX_SHIELDUP);
+						playSound(SFX_SHIELDUP, player.x);
 					else
-						playSound(SFX_PICKUP);
+						playSound(SFX_PICKUP, player.x);
 				}
 			}
 

@@ -22,10 +22,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 Mix_Chunk *sound[MAX_SOUNDS];
 
-void playSound(int sid)
+void playSound(int sid, float x)
 {
 	if ((!engine.useSound) || (!engine.useAudio))
 		return;
+
+	int channel;
+	static int freechannel = 4;
 
 	switch(sid)
 	{
@@ -37,25 +40,45 @@ void playSound(int sid)
 		case SFX_CLOAK:
 		case SFX_PLASMA2:
 		case SFX_PLASMA3:
-			Mix_PlayChannel(-1, sound[sid], 0);
+			channel = -1;	
 			break;
 		case SFX_PLASMA:
 		case SFX_LASER:
-			Mix_PlayChannel(0, sound[sid], 0);
+			channel = 0;
 			break;
 		case SFX_ENERGYRAY:
 		case SFX_MISSILE:
-			Mix_PlayChannel(1, sound[sid], 0);
+			channel = 1;
 			break;
 		case SFX_HIT:
-			Mix_PlayChannel(4, sound[sid], 0);
+			channel = 2;
 			break;
 		case SFX_EXPLOSION:
 		case SFX_DEBRIS:
 		case SFX_DEBRIS2:
-			Mix_PlayChannel(3, sound[sid], 0);
+			channel = 3;
 			break;
 	}
+
+	if(channel == -1) {
+		channel = freechannel++;
+		if(freechannel >= 8)
+			freechannel = 4;
+	}
+
+	fprintf(stderr, "%d\n", channel);
+
+	int angle = atanf((x - 400) / 400) * 180 / M_PI;
+	int attenuation = fabsf(x - 400) / 40;
+
+	if(angle < 0)
+		angle += 360;
+
+	if(attenuation > 255)
+		attenuation = 255;
+
+	Mix_SetPosition(channel, angle, attenuation);
+	Mix_PlayChannel(channel, sound[sid], 0);
 }
 
 Mix_Chunk *loadSound(const char *filename)

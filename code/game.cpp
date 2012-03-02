@@ -265,14 +265,14 @@ int mainGameLoop()
 		// specific to Boss 1
 		if ((currentGame.area == 5) && (enemy[WC_BOSS].flags & FL_ESCAPED))
 		{
-			playSound(SFX_DEATH);
+			playSound(SFX_DEATH, enemy[WC_BOSS].x);
 			clearScreen(white);
 			updateScreen();
 			for (int i = 0 ; i < 300 ; i++)
 			{
 				SDL_Delay(10);
 				if ((rand() % 25) == 0)
-					playSound(SFX_EXPLOSION);
+					playSound(SFX_EXPLOSION, enemy[WC_BOSS].x);
 			}
 			SDL_Delay(1000);
 			break;

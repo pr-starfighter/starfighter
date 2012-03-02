@@ -20,7 +20,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 extern Mix_Chunk *sound[MAX_SOUNDS];
 
-extern void playSound(int sid);
+extern void playSound(int sid, float x = 400);
 extern Mix_Chunk *loadSound(const char *filename);
 extern void loadMusic(const char *filename);
 extern void playRandomTrack();
