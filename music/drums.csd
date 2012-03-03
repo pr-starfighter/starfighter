@@ -21,7 +21,7 @@ instr 1, 2, 3, 10
 endin
 
 instr 99
-	iamp init 5
+	iamp init 3
 	al, ar fluidOut gifluid
 	outs al * iamp, ar * iamp 
 endin

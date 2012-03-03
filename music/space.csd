@@ -19,9 +19,10 @@ instr 1, 2
 endin
 
 instr 99
+	iamp init 1.6
 	al, ar fluidOut gifluid
-	al, ar reverbsc al * 0.5, ar * 0.5, 0.9, 10000
-	outs al, ar
+	arl, arr freeverb al, ar, 0.9, 0.1, sr
+	outs (arl + al) * iamp, (arr + ar) * iamp
 endin
 </CsInstruments>
 <CsScore>
