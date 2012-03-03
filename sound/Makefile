@@ -1,4 +1,4 @@
-SFX = plasma
+SFX = plasma explode
 OGG = $(SFX:%=%.ogg)
 WAV = $(SFX:%=%.wav)
 
