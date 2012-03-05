@@ -66,8 +66,6 @@ void playSound(int sid, float x)
 			freechannel = 4;
 	}
 
-	fprintf(stderr, "%d\n", channel);
-
 	int angle = atanf((x - 400) / 400) * 180 / M_PI;
 	int attenuation = fabsf(x - 400) / 40;
 
