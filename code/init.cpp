@@ -219,28 +219,21 @@ atexit();
 */
 void cleanUp()
 {
-	printf("Cleaning Up...\n");
-	printf("Freeing Graphics\n");
 	freeGraphics();
-	printf("Freeing Background\n");
 	SDL_FreeSurface(background);
-	printf("Freeing Sounds\n");
 	freeSound();
-	printf("Resetting Lists\n");
 	resetLists();
 	delete(engine.bulletHead);
 	delete(engine.explosionHead);
 	delete(engine.collectableHead);
 	delete(bufferHead);
 
-	printf("Freeing Font\n");
 	for (int i = 0 ; i < MAX_FONTSHAPES ; i++)
 	{
 		if (fontShape[i] != NULL)
 			SDL_FreeSurface(fontShape[i]);
 	}
 
-	printf("Removing Mod\n");
 	char filename[PATH_MAX];
 	strcpy(filename, "");
 	
@@ -252,7 +245,6 @@ void cleanUp()
 
 	if (engine.useAudio)
 	{
-		printf("Closing Audio\n");
 		Mix_CloseAudio();
 	}
 
@@ -271,6 +263,6 @@ void cleanUp()
 	}
 
 	SDL_Quit();
-	printf("Done Cleaning Up...\nThank You for playing Starfighter\n");
+	printf("Thank You for playing Starfighter\n");
 }
 
