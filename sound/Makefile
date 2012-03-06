@@ -1,4 +1,4 @@
-SFX = plasma explode explode2 explode3 explode4
+SFX = plasma explode explode2 explode3 explode4 laser item
 OGG = $(SFX:%=%.ogg)
 WAV = $(SFX:%=%.wav)
 
