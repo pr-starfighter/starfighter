@@ -89,10 +89,33 @@ void loadGameGraphics()
 			continue;
 		shipShape[i] = createSurface(shipShape[i - SHIP_HIT_INDEX]->w, shipShape[i- SHIP_HIT_INDEX]->h);
 		blit(shipShape[i - SHIP_HIT_INDEX], 0, 0, shipShape[i]);
-		uint32_t *p = (uint32_t *)shipShape[i]->pixels;
-		for(int j = 0; j < shipShape[i]->w * shipShape[i]->h; j++)
-			if(p[j])
-				p[j] |= shipShape[i]->format->Rmask;
+
+		switch(shipShape[i]->format->BytesPerPixel) {
+			case 4: {
+				uint32_t *p = (uint32_t *)shipShape[i]->pixels;
+				for (int j = 0; j < shipShape[i]->w * shipShape[i]->h; j++)
+					if (p[j])
+						p[j] |= shipShape[i]->format->Rmask;
+				break;
+			}
+
+			case 2: {
+				uint16_t *p = (uint16_t *)shipShape[i]->pixels;
+				for (int j = 0; j < shipShape[i]->w * shipShape[i]->h; j++)
+					if (p[j])
+						p[j] |= shipShape[i]->format->Rmask;
+				break;
+			}
+
+			case 1: {
+				uint8_t *p = (uint8_t *)shipShape[i]->pixels;
+				for (int j = 0; j < shipShape[i]->w * shipShape[i]->h; j++)
+					if (p[j])
+						p[j] = SDL_MapRGB(shipShape[i]->format, 255, 0, 0);
+				break;
+			}
+		}
+
 		SDL_SetColorKey(shipShape[i], (SDL_SRCCOLORKEY|SDL_RLEACCEL), SDL_MapRGB(shipShape[i]->format, 0, 0, 0));
 	}
 
