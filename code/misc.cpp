@@ -418,6 +418,12 @@ void doInfo()
 	}
 }
 
+static const char *faces[] = {
+			"FACE_CHRIS", "FACE_SID", "FACE_KRASS",
+			"FACE_KLINE", "FACE_PHOEBE", "FACE_URSULA",
+			"FACE_CREW"
+};
+
 int getFace(const char *face)
 {
 	for (int i = 0 ; i < 7 ; i++)
