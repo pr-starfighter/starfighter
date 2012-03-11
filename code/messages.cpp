@@ -61,14 +61,13 @@ static const char *playerHitMessage[3] = {
 
 void getKillMessage(object *ally)
 {
-	char in[50], name[30], otherName[30];
+	char in[50], otherName[30];
 	int kills, difference;
 	bool firstPlace = false;
 	int faceToUse = FACE_PHOEBE;
 
 	if (ally == &enemy[FR_PHOEBE])
 	{
-		strcpy(name, "Phoebe");
 		strcpy(otherName, "Ursula");
 		kills = currentGame.wingMate1Kills;
 		difference = currentGame.wingMate1Kills - currentGame.wingMate2Kills;
@@ -78,7 +77,6 @@ void getKillMessage(object *ally)
 	}
 	else
 	{
-		strcpy(name, "Ursula");
 		strcpy(otherName, "Phoebe");
 		kills = currentGame.wingMate2Kills;
 		difference = currentGame.wingMate2Kills - currentGame.wingMate1Kills;
@@ -136,7 +134,7 @@ void getKillMessage(object *ally)
 
 const char *getKlineInsult()
 {
-	static const char insult[][40] = {
+	static const char *insult[] = {
 	"Pathetic", "How very disappointing...", "Heroic. And stupid", "Fool", "And now you're nothing but a DEAD hero"
 	};
 
@@ -177,40 +175,24 @@ void getPlayerDeathMessage()
 
 void getMissFireMessage(object *ally)
 {
-	char name[30], in[50];
 	int faceToUse = FACE_PHOEBE;
 
 	if (ally == &enemy[FR_PHOEBE])
-	{
-		strcpy(name, "Phoebe");
 		faceToUse = FACE_PHOEBE;
-	}
 	else
-	{
-		strcpy(name, "Ursula");
 		faceToUse = FACE_URSULA;
-	}
 
-	sprintf(in, missFireMessage[rand() % 5]);
-	setRadioMessage(faceToUse, in, 0);
+	setRadioMessage(faceToUse, missFireMessage[rand() % 5], 0);
 }
 
 void getPlayerHitMessage(object *ally)
 {
-	char name[30], in[50];
 	int faceToUse = FACE_PHOEBE;
 
 	if (ally == &enemy[FR_PHOEBE])
-	{
-		strcpy(name, "Phoebe");
 		faceToUse = FACE_PHOEBE;
-	}
 	else
-	{
-		strcpy(name, "Ursula");
 		faceToUse = FACE_URSULA;
-	}
 
-	sprintf(in, playerHitMessage[rand() % 3]);
-	setRadioMessage(faceToUse, in, 0);
+	setRadioMessage(faceToUse, playerHitMessage[rand() % 3], 0);
 }
