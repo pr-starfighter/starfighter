@@ -20,61 +20,44 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "Starfighter.h"
 
-static char deathMessage[6][50];
-static char killMessage[10][50];
-static char missFireMessage[5][50];
-static char playerHitMessage[3][50];
+static const char *deathMessage[6] = {
+	"Oh my God... No!",
+	"NOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!!",
+	"Please tell me that didn't just happen...",
+	"Chris, Answer Me!!",
+	"What the hell happened?!",
+	"Chriiiiiiiiiiiiiiiiiiiiiiiiiiis!!!!",
+};
 
-static void setKillMessages()
-{
-	strcpy(killMessage[0], "Chalk another one up for me!");
-	strcpy(killMessage[1], "That'll teach you!");
-	strcpy(killMessage[2], "One more for me!");
-	strcpy(killMessage[3], "Target destroyed!");
-	strcpy(killMessage[4], "You aint so tough!");
-	strcpy(killMessage[5], "Kicked your ass!");
+static const char *killMessage[10] = {
+	"Chalk another one up for me!",
+	"That'll teach you!",
+	"One more for me!",
+	"Target destroyed!",
+	"You aint so tough!",
+	"Kicked your ass!",
 
-	strcpy(killMessage[6], "That takes me up to %d");
+	"That takes me up to %d",
 
-	strcpy(killMessage[7], "Hey %s, you asleep over there?!");
-	strcpy(killMessage[8], "I'm catching up with you, %s!");
+	"Hey %s, you asleep over there?!",
+	"I'm catching up with you, %s!",
 
-	strcpy(killMessage[9], "Number One, Baby!");
-}
+	"Number One, Baby!",
+};
 
-static void setPlayerDeadMessages()
-{
-	strcpy(deathMessage[0], "Oh my God... No!");
-	strcpy(deathMessage[1], "NOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!!");
-	strcpy(deathMessage[2], "Please tell me that didn't just happen...");
-	strcpy(deathMessage[3], "Chris, Answer Me!!");
-	strcpy(deathMessage[4], "What the hell happened?!");
-	strcpy(deathMessage[5], "Chriiiiiiiiiiiiiiiiiiiiiiiiiiis!!!!");
-}
+static const char *missFireMessage[5] = {
+	"I am NOT your enemy!",
+	"Hey! Watch it!",
+	"What are you doing?! Shoot THEM!",
+	"OW!!! I hope that was an accident!",
+	"Open your eyes!!",
+};
 
-static void setMissFireMessages()
-{
-	strcpy(missFireMessage[0], "I am NOT your enemy!");
-	strcpy(missFireMessage[1], "Hey! Watch it!");
-	strcpy(missFireMessage[2], "What are you doing?! Shoot THEM!");
-	strcpy(missFireMessage[3], "OW!!! I hope that was an accident!");
-	strcpy(missFireMessage[4], "Open your eyes!!");
-}
-
-static void setHitPlayerMessages()
-{
-	strcpy(playerHitMessage[0], "Oops! Sorry!");
-	strcpy(playerHitMessage[1], "Get out of the way!");
-	strcpy(playerHitMessage[2], "Don't fly into my missiles!");
-}
-
-void setAllyMessages()
-{
-	setKillMessages();
-	setPlayerDeadMessages();
-	setMissFireMessages();
-	setHitPlayerMessages();
-}
+static const char *playerHitMessage[3] = {
+	"Oops! Sorry!",
+	"Get out of the way!",
+	"Don't fly into my missiles!",
+};
 
 void getKillMessage(object *ally)
 {
