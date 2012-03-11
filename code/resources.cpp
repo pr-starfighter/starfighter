@@ -236,7 +236,7 @@ void loadFont()
 
 		newImage = SDL_DisplayFormat(image);
 
-    	fontShape[i] = setTransparent(newImage);
+		fontShape[i] = setTransparent(newImage);
 
 		SDL_FreeSurface(image);
  	}

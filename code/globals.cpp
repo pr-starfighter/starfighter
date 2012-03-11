@@ -28,12 +28,12 @@ void defineGlobals()
 	engine.musicVolume = 100;
 	engine.useAudio = true;
 
-   engine.maxAliens = 9;
+	engine.maxAliens = 9;
 
-   engine.ssx = 0;
+	engine.ssx = 0;
 	engine.ssy = 0;
 
-   engine.bulletHead = new object;
+	engine.bulletHead = new object;
 	engine.bulletHead->next = NULL;
 	engine.bulletTail = engine.bulletHead;
 
@@ -51,10 +51,10 @@ void defineGlobals()
 
 	engine.commsSection = 0;
 
-   for (int i = 0 ; i < 350 ; i++)
-   	engine.keyState[i] = 0;
+	for (int i = 0 ; i < 350 ; i++)
+		engine.keyState[i] = 0;
 
-   engine.eventTimer = 0;
+	engine.eventTimer = 0;
 	engine.counter2 = 0;
 	engine.timeTaken = 0;
 	engine.timeMission = 0;
@@ -72,7 +72,7 @@ void defineGlobals()
 	engine.cheatAmmo = false;
 	engine.cheatCash = false;
 
-   // All Development Stuff...
+	// All Development Stuff...
 	dev.moveAliens = 1;
 	dev.fireAliens = 1;
 }

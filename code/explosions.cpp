@@ -112,7 +112,7 @@ void doExplosions()
 		{
 			prevExplosion->next = explosion->next;
 			delete explosion;
-         explosion = prevExplosion;
+         		explosion = prevExplosion;
 		}
 	}
 }

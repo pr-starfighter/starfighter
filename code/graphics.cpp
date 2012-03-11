@@ -666,29 +666,29 @@ void freeGraphics()
 
 SDL_Surface *loadImage(const char *filename)
 {
- SDL_Surface *image, *newImage;
+	SDL_Surface *image, *newImage;
 
- #if USEPACK
- unpack(filename, PAK_IMG);
- image = IMG_Load_RW(engine.sdlrw, 1);
- #else
- image = IMG_Load(filename);
- #endif
+	#if USEPACK
+	unpack(filename, PAK_IMG);
+	image = IMG_Load_RW(engine.sdlrw, 1);
+	#else
+	image = IMG_Load(filename);
+	#endif
 
- if (image == NULL) {
-	  printf("Couldn't load %s: %s\n", filename, SDL_GetError());
-	  showErrorAndExit(0, filename);
- }
+	if (image == NULL) {
+		printf("Couldn't load %s: %s\n", filename, SDL_GetError());
+		showErrorAndExit(0, filename);
+	}
 
- newImage = SDL_DisplayFormat(image);
- if ( newImage ) {
-	SDL_FreeSurface(image);
- } else {
-	 // This happens when we are loading the window icon image
-	 newImage = image;
- }
+	newImage = SDL_DisplayFormat(image);
+	if ( newImage ) {
+		SDL_FreeSurface(image);
+	} else {
+		// This happens when we are loading the window icon image
+		newImage = image;
+	}
 
- return setTransparent(newImage);
+	return setTransparent(newImage);
 }
 
 /*
@@ -702,9 +702,7 @@ void doStarfield()
 	if (SDL_MUSTLOCK(screen))
 	{
 		if (SDL_LockSurface(screen) < 0 )
-		{
 			showErrorAndExit(2, "");
-		 }
 	}
 
 	int color = 0;

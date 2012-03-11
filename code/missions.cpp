@@ -1038,7 +1038,7 @@ void initMissions()
 	int NORMAL       = 15 * 60;
 	int FREQUENT     = 5 * 60;
 	int ALWAYS       = 1 * 60;
-	int NEVER		  = -1;
+	int NEVER        = -1;
 
 	// Mission 0
 	sprintf(missions[0].primaryObjective[0], "Escape from WEAPCO Persuit");
