@@ -27,7 +27,7 @@ void playSound(int sid, float x)
 	if ((!engine.useSound) || (!engine.useAudio))
 		return;
 
-	int channel;
+	int channel = -1;
 	static int freechannel = 4;
 
 	switch(sid)
