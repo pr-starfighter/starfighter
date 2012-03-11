@@ -765,8 +765,7 @@ int galaxyMap()
 					section = 1;
 					redrawBackGround = true;
 				}
-
-				if (interceptionChance > 0)
+				else if (interceptionChance > 0)
 				{
 					if ((rand() % interceptionChance) == 0)
 					{
