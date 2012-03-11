@@ -53,7 +53,6 @@ void loadScriptEvents()
 		setKlineGreeting();
 
 	char filename[255];
-	strcpy(filename, "");
 	sprintf(filename, "data/script%d.txt", currentGame.area);
 
 	FILE *fp;
@@ -143,7 +142,6 @@ static void setScene(int scene)
 	float sx, sy, x, y, speed;
 	int index, shape;
 
-	strcpy(string, "");
 	sprintf(string, "data/cutscene%d.dat", scene);
 
 	#if USEPACK

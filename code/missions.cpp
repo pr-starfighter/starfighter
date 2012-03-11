@@ -380,9 +380,10 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 			case M_DESTROY_TARGET_TYPE:
 				if ((*targetValue <= 10) || (*targetValue % 10 == 0))
 				{
-					sprintf(message, "Destroy %d more...", *targetValue);
 					if ((rand() % 2) == 0)
 						sprintf(message, "%d more to go...", *targetValue);
+					else
+						sprintf(message, "Destroy %d more...", *targetValue);
 				}
 				break;
 			case M_DISABLE_TARGET:
@@ -480,8 +481,7 @@ Missions 11 and 23 to be exact!
 static char revealHiddenObjectives()
 {
 	char allDone = 1;
-	char string[255];
-	strcpy(string, "");
+	char string[255] = "";
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
@@ -733,7 +733,6 @@ void missionBriefScreen()
 		if (currentMission.timeLimit1[0] > 0)
 		{
 			char temp[50];
-			strcpy(temp, "");
 			if (currentGame.area != 24)
 				sprintf(temp, "TIME LIMIT: %d minutes", currentMission.timeLimit1[0]);
 			else
@@ -921,7 +920,6 @@ static void loadMissions()
 
 	for (int i = 0 ; i < MAX_MISSIONS ; i++)
 	{
-		strcpy(filename, "");
 		sprintf(filename, "data/mission%.2d.dat", i);
 
 		#if USEPACK
@@ -987,7 +985,6 @@ static void saveMissions()
 
 	for (int i = 0 ; i < MAX_MISSIONS ; i++)
 	{
-		strcpy(filename, "");
 		sprintf(filename, "data/mission%.2d.dat", i);
 
 		//WRITE MISSION DATA

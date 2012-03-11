@@ -74,7 +74,6 @@ void showErrorAndExit(int errorId, const char *name)
 	switch(errorId)
 	{
 		case 0:
-			strcpy(string, "");
 			sprintf(string, "%s was not found in the Starfighter data package", name);
 			drawString(string, -1, 250, FONT_WHITE);
 			drawString("Please try again. If this error persists, contact the authors", -1, 275, FONT_WHITE);

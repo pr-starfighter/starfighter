@@ -110,13 +110,11 @@ When it is found, return the location.
 */
 int locateDataInPak(const char *file, bool required)
 {
-	char packFilename[60];
+	char packFilename[60] = "";
 	int packFSize;
 	int location = 0;
 
 	FILE *pak;
-
-	strcpy(packFilename, "");
 
 	pak = fopen(PACKLOCATION, "rb");
 	if (pak == NULL)

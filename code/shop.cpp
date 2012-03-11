@@ -25,8 +25,7 @@ static signed char shopSelectedItem;
 
 static void drawSecondaryWeaponSurface()
 {
-	char description[50];
-	strcpy(description, "");
+	char description[50] = "";
 
 	drawString("Secondary Weapon", 10, 3, FONT_WHITE, shopSurface[2]);
 

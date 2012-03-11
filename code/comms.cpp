@@ -85,7 +85,6 @@ static void createMissionDetailSurface(SDL_Surface *comms, int missionSlot)
 
 	blevelRect(comms, 0, 0, comms->w - 1, comms->h - 1, 0x00, 0x00, 0x25);
 
-	strcpy(string, "");
 	sprintf(string, "data/brief%d.txt", mission);
 
 	#if USEPACK

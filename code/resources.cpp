@@ -34,14 +34,13 @@ void loadBackground(const char *filename)
 void loadGameGraphics()
 {
 	int index;
-	char string[75];
+	char string[75] = "";
 
 	freeGraphics();
 
 	shipShape[0] = loadImage("gfx/firefly1.png");
 	shipShape[1] = loadImage("gfx/firefly2.png");
 
-	strcpy(string, "");
 	switch(currentGame.system)
 	{
 		case 0:
