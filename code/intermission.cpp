@@ -312,11 +312,18 @@ list is reset and the information lines begin again from the bottom
 */
 static void showStatus(SDL_Surface *infoSurface)
 {
+	float speed = 0.25;
+
+	if(engine.keyState[SDLK_DOWN])
+		speed = 1;
+	else if(engine.keyState[SDLK_UP])
+		speed = -1;
+
 	blit(infoSurface, 100, 80);
 
 	for (int i = 0 ; i < 22 ; i++)
 	{
-		textShape[i].y -= 0.25;
+		textShape[i].y -= speed;
 		if ((textShape[i].y > 80) && (textShape[i].y < 400))
 			blitText(i);
 	}
