@@ -177,23 +177,19 @@ void getPlayerDeathMessage()
 		return;
 	}
 
-	char name[30], in[50];
 	int faceToUse = FACE_PHOEBE;
 	
-	strcpy(name, "Phoebe");
-	faceToUse = FACE_PHOEBE;
 
-	if (currentGame.hasWingMate2)
+	if ((currentGame.area == 9) || (currentGame.area == 17) || (currentGame.area == 25)) {
+		faceToUse = FACE_SID;
+	}
+	else if (currentGame.hasWingMate2)
 	{
 		if ((rand() % 2) == 0)
-		{
-			strcpy(name, "Ursula");
 			faceToUse = FACE_URSULA;
-		}
 	}
 
-	sprintf(in, deathMessage[rand() % 6]);
-	setRadioMessage(faceToUse, in, 1);
+	setRadioMessage(faceToUse, deathMessage[rand() % 6], 1);
 }
 
 void getMissFireMessage(object *ally)
