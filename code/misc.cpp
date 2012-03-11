@@ -271,7 +271,6 @@ void doInfo()
 				}
 				checkTimer();
 				checkScriptEvents();
-				//engine.counter = 0;
 				engine.counter = (SDL_GetTicks() + 1000);
 			}
 		}

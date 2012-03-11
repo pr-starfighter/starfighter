@@ -25,7 +25,7 @@ static event gameEvent[10];
 
 static void setKlineGreeting()
 {
-	char greet[][50] = {
+	static const char *greet[] = {
 		"How nice to see you again, Bainfield!",
 		"It all ends here, rebel!",
 		"I hope you won't disappoint me this time...",

@@ -583,9 +583,10 @@ int galaxyMap()
 	sprintf(string, "Stationed At: %s", systemPlanet[currentGame.stationedPlanet].name);
 	iconInfo[9].image = textSurface(string, FONT_WHITE);
 
-	strcpy(string, "Destination: None");
 	if (currentGame.destinationPlanet > -1)
 		sprintf(string, "Destination: %s", systemPlanet[currentGame.destinationPlanet].name);
+	else
+		strcpy(string, "Destination: None");
 	iconInfo[10].image = textSurface(string, FONT_WHITE);
 	for (int i = 0 ; i < 9 ; i++)
 		iconInfo[i].x = (800 - iconInfo[i].image->w) / 2;
