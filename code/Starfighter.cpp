@@ -97,8 +97,6 @@ int main(int argc, char *argv[])
 
 	setColorIndexes();
 
-	setAllyMessages();
-
 	showStory();
 
 	// Determine which part of the game we will go to...
