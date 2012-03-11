@@ -20,6 +20,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "Starfighter.h"
 
+const char *systemNames[] = {"Spirit", "Eyananth", "Mordor", "Sol"};
+
+const char *systemBackground[] = {
+			"gfx/spirit.jpg", "gfx/eyananth.jpg",
+			"gfx/mordor.jpg", "gfx/sol.jpg"
+};
+
 /*
 Drives the cursor. Is used by some other screens too
 */
@@ -485,7 +492,7 @@ int galaxyMap()
 
 	loadMusic("music/3DParadise.mod");
 
-	loadBackground((char *)systemBackground[currentGame.system]);
+	loadBackground(systemBackground[currentGame.system]);
 
 	char string[25];
 

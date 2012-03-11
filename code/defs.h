@@ -300,15 +300,8 @@ enum {
 	PAK_S3M
 };
 
-static const char systemNames[][15] = {"Spirit", "Eyananth", "Mordor", "Sol"};
+extern const char *systemNames[];
 
-static const char faces[][12] = {
-			"FACE_CHRIS", "FACE_SID", "FACE_KRASS",
-			"FACE_KLINE", "FACE_PHOEBE", "FACE_URSULA",
-			"FACE_CREW"};
-
-static const char systemBackground[][20] = {
-			"gfx/spirit.jpg", "gfx/eyananth.jpg",
-			"gfx/mordor.jpg", "gfx/sol.jpg"};
+extern const char *systemBackground[];
 
 static const signed char rate2reload[6] = {15, 15, 13, 11, 9, 7};

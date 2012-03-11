@@ -137,7 +137,7 @@ void loadGameGraphics()
 
 	fclose(fp);
 
-	loadBackground((char *)systemBackground[currentGame.system]);
+	loadBackground(systemBackground[currentGame.system]);
 
 	setAlienShapes();
 
