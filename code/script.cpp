@@ -272,14 +272,14 @@ void doCutscene(int scene)
 				enemy[i].y += enemy[i].dy;
 				enemy[i].x += engine.ssx;
 				blit(enemy[i].image[0], (int)enemy[i].x, (int)enemy[i].y);
-				if (enemy[i].x > 850)
+				if (enemy[i].x > (screen->w + 50))
 				{
 					enemy[i].x = -50;
-					enemy[i].y = rand() % 560;
+					enemy[i].y = rand() % (screen->h - 40);
 				}
 				if (enemy[i].y < -50)
-					enemy[i].y = 650;
-				if (enemy[i].y > 650)
+					enemy[i].y = (screen->h + 50);
+				if (enemy[i].y > (screen->h + 50))
 					enemy[i].y = -50;
 			}
 		}
@@ -308,7 +308,7 @@ void doCutscene(int scene)
 		}
 
 		if ((showMessage) && (messageBox != NULL))
-			blit(messageBox, (800 - messageBox->w) / 2, 500);
+			blit(messageBox, (screen->w - messageBox->w) / 2, screen->h - 100);
 
 		delayFrame();
 

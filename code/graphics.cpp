@@ -718,8 +718,8 @@ void doStarfield()
 		else if (star[i].speed == 1)
 			color = darkGrey;
 
-		wrapFloat(&(star[i].x += (engine.ssx * star[i].speed)), 0, 799);
-		wrapFloat(&(star[i].y += (engine.ssy * star[i].speed)), 0, 599);
+		wrapFloat(&(star[i].x += (engine.ssx * star[i].speed)), 0, screen->w - 1);
+		wrapFloat(&(star[i].y += (engine.ssy * star[i].speed)), 0, screen->h - 1);
 
 		putpixel(screen, (int)star[i].x, (int)star[i].y, color);
 		r.x = (int)star[i].x;

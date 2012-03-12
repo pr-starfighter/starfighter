@@ -672,14 +672,14 @@ bool missionFailed()
 
 static void drawBriefScreen()
 {
-	SDL_Rect r = {0, 0, 800, 2};
+	SDL_Rect r = {0, 0, screen->w, 2};
 
-	for (int i = 0 ; i < 120 ; i++)
+	for (int i = 0 ; i < (int)(screen->h / 4) - 30 ; i++)
 	{
-		r.y = (i * 2) + 60;
+		r.y = (i * 2) + 62; // Not a typo; a black gap is left in the middle if it's 60.
 		SDL_FillRect(screen, &r, SDL_MapRGB(screen->format, 0, i, 0));
-		r.y = (300 + (i * 2));
-		SDL_FillRect(screen, &r, SDL_MapRGB(screen->format, 0, (120 - i), 0));
+		r.y = (screen->h - (i * 2) - 60);
+		SDL_FillRect(screen, &r, SDL_MapRGB(screen->format, 0, i, 0));
 	}
 
 	blevelRect(140, 70, 500, 20, 0x00, 0x77, 0x00);
