@@ -1,4 +1,4 @@
-SONGS = space drums
+SONGS = space warm-up
 OGG = $(SONGS:%=%.ogg)
 WAV = $(SONGS:%=%.wav)
 MID = $(SONGS:%=%.mid)
