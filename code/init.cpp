@@ -34,10 +34,10 @@ void initVars()
 {
 	srand(time(NULL));
 
-	for (int i = 0 ; i < 200 ; i++)
+	for (int i = 0 ; i < (int)(screen->w * screen->h / 2400) ; i++)
 	{
-		star[i].x = rand() % 800;
-		star[i].y = rand() % 600;
+		star[i].x = rand() % screen->w;
+		star[i].y = rand() % screen->h;
 		star[i].speed = 1 + (rand() % 3);
 	}
 
@@ -188,12 +188,12 @@ void initSystem()
 	SDL_WM_SetIcon(loadImage("gfx/alienDevice.png"), NULL);
 
 	if (engine.fullScreen)
-		screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE|SDL_FULLSCREEN);
+		screen = SDL_SetVideoMode(screenWidth, screenHeight, 0, SDL_DOUBLEBUF|SDL_HWPALETTE|SDL_FULLSCREEN);
 	else
-		screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE);
+		screen = SDL_SetVideoMode(screenWidth, screenHeight, 0, SDL_DOUBLEBUF|SDL_HWPALETTE);
 
 	if (screen == NULL) {
-		printf("Couldn't set 800x600x16 video mode: %s\n", SDL_GetError());
+		printf("Couldn't set %ix%ix16 video mode: %s\n", screenWidth, screenHeight, SDL_GetError());
 		exit(1);
 	}
 

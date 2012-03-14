@@ -233,7 +233,7 @@ int mainGameLoop()
 
 		if (engine.paused)
 		{
-			textSurface(22, "PAUSED", -1, 300, FONT_WHITE);
+			textSurface(22, "PAUSED", -1, screen->h / 2, FONT_WHITE);
 			blitText(22);
 			updateScreen();
 

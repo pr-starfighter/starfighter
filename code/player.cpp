@@ -28,8 +28,8 @@ Initialises the player for a new game.
 void initPlayer()
 {
 	player.active = true;
-	player.x = 200;
-	player.y = 200;
+	player.x = screen->w / 2;
+	player.y = screen->h / 2;
 	player.speed = 2;
 	player.maxShield = (25 * currentGame.shieldUnits);
 	player.systemPower = player.maxShield;
@@ -217,8 +217,8 @@ void doPlayer()
 
 			if (engine.done == 0)
 			{
-				limitFloat(&player.x, 100, 700);
-				limitFloat(&player.y, 100, 500);
+				limitFloat(&player.x, viewBorder, screen->w - viewBorder);
+				limitFloat(&player.y, viewBorder, screen->h - viewBorder);
 			}
 
 			if (player.shield > engine.lowShield)
@@ -362,9 +362,9 @@ void leaveSector()
 		{
 			player.x += engine.ssx;
 			engine.ssx -= 1;
-			if (player.y > 300)
+			if (player.y > screen->h)
 				player.y--;
-			if (player.y < 300)
+			if (player.y < screen->h)
 				player.y++;
 		}
 
@@ -380,7 +380,7 @@ void leaveSector()
 		player.face = 0;
 		player.x += 12;
 		engine.ssx -= 0.2;
-		if (player.x > 1600)
+		if (player.x > (2 * screen->w))
 			engine.done = 1;
 	}
 }

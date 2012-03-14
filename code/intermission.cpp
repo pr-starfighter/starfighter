@@ -34,8 +34,8 @@ static void doCursor()
 {
 	getPlayerInput();
 
-	limitInt(&engine.cursor_x, 10, 790);
-	limitInt(&engine.cursor_y, 10, 590);
+	limitInt(&engine.cursor_x, 10, screen->w - 10);
+	limitInt(&engine.cursor_y, 10, screen->h - 10);
 	blit(shape[0], engine.cursor_x, engine.cursor_y);
 }
 
@@ -442,7 +442,7 @@ static void showOptions(SDL_Surface *optionsSurface)
 				#if LINUX
 				SDL_WM_ToggleFullScreen(screen);
 				#else
-				screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE|SDL_FULLSCREEN);
+				screen = SDL_SetVideoMode(screen->w, screen->h, 0, SDL_DOUBLEBUF|SDL_HWPALETTE|SDL_FULLSCREEN);
 				drawBackground();
 				flushBuffer();
 				#endif
@@ -457,7 +457,7 @@ static void showOptions(SDL_Surface *optionsSurface)
 				#if LINUX
 				SDL_WM_ToggleFullScreen(screen);
 				#else
-				screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE);
+				screen = SDL_SetVideoMode(screen->w, screen->h, 0, SDL_DOUBLEBUF|SDL_HWPALETTE);
 				drawBackground();
 				flushBuffer();
 				#endif
@@ -503,7 +503,8 @@ int galaxyMap()
 
 	char string[25];
 
-	engine.cursor_x = engine.cursor_y = 500;
+	engine.cursor_x = screen->w / 2;
+	engine.cursor_y = screen->h / 2;
 	shape[0] = loadImage("gfx/cursor.png");
 
 	// Icons 1 - 29
@@ -631,9 +632,9 @@ int galaxyMap()
 
 		r.x = 0;
 		r.y = 0;
-		r.h = 600;
+		r.h = screen->h;
 		r.w = 1;
-		for (int i = 40 ; i < 800 ; i+= 40)
+		for (int i = 40 ; i < screen->w ; i+= 40)
 		{
 			r.x = i;
 			SDL_FillRect(screen, &r, darkerBlue);
@@ -642,8 +643,8 @@ int galaxyMap()
 		r.x = 0;
 		r.y = 0;
 		r.h = 1;
-		r.w = 800;
-		for (int i = 40 ; i < 600 ; i+= 40)
+		r.w = screen->w;
+		for (int i = 40 ; i < screen->h ; i+= 40)
 		{
 			r.y = i;
 			SDL_FillRect(screen, &r, darkerBlue);

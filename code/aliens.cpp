@@ -26,19 +26,19 @@ object enemy[MAX_ALIENS];
 static bool placeAlien(object *theEnemy)
 {
 	if (rand() % 2 == 0)
-		theEnemy->x = rrand(800, 1600);
+		theEnemy->x = rrand(screen->w, screen->w * 2);
 	else
-		theEnemy->x = rrand(-800, 0);
+		theEnemy->x = rrand(-screen->w, 0);
 
 	if (rand() % 2 == 0)
-		theEnemy->y = rrand(600, 1200);
+		theEnemy->y = rrand(screen->h, screen->h * 2);
 	else
-		theEnemy->y = rrand(-600, 0);
+		theEnemy->y = rrand(-screen->h, 0);
 
 	if (currentGame.area == 24)
 	{
-		theEnemy->x = 800;
-		theEnemy->y = rrand(200, 400);
+		theEnemy->x = screen->w;
+		theEnemy->y = rrand(screen->h / 3, (2 * screen->h) / 3);
 	}
 
 	for (int i = 0 ; i < MAX_ALIENS ; i++)
@@ -396,8 +396,8 @@ static void getPreDefinedAliens()
 	if (currentGame.area == 5)
 	{
 		enemy[WC_BOSS].target = &player;
-		enemy[WC_BOSS].x = -400;
-		enemy[WC_BOSS].y = 300;
+		enemy[WC_BOSS].x = -screen->w / 2;
+		enemy[WC_BOSS].y = screen->h / 2;
 
 		enemy[13].owner = &enemy[WC_BOSS];
 		enemy[13].target = &player;
@@ -412,8 +412,8 @@ static void getPreDefinedAliens()
 	else if ((currentGame.area == 11) || (currentGame.area == 14))
 	{
 		enemy[WC_BOSS].target = &player;
-		enemy[WC_BOSS].x = -400;
-		enemy[WC_BOSS].y = 300;
+		enemy[WC_BOSS].x = -screen->w / 2;
+		enemy[WC_BOSS].y = screen->h / 2;
 
 		enemy[13].owner = &enemy[WC_BOSS];
 		enemy[13].target = &player;
@@ -475,14 +475,14 @@ static void addFriendly(int type)
 	enemy[type].active = true;
 
 	if (rand() % 2 == 0)
-		enemy[type].x = rrand(400, 550);
+		enemy[type].x = rrand((int)(screen->w / 2), (int)(screen->w / 2) + 150);
 	else
-		enemy[type].x = rrand(250, 400);
+		enemy[type].x = rrand((int)(screen->w / 2) - 150, (int)(screen->w / 2));
 
 	if (rand() % 2 == 0)
-		enemy[type].y = rrand(300, 450);
+		enemy[type].y = rrand((int)(screen->h / 2), (int)(screen->h / 2) + 150);
 	else
-		enemy[type].y = rrand(150, 300);
+		enemy[type].y = rrand((int)(screen->h / 2) - 150, (int)(screen->h / 2));
 
 	if (type == FR_PHOEBE)
 		enemy[type].classDef = CD_PHOEBE;
@@ -596,8 +596,8 @@ void initAliens()
 	{
 		enemy[WC_KLINE].flags |= FL_IMMORTAL | FL_NOFIRE | FL_NOMOVE;
 
-		enemy[WC_KLINE].x = 600;
-		enemy[WC_KLINE].y = 300;
+		enemy[WC_KLINE].x = (screen->w * 2) / 3;
+		enemy[WC_KLINE].y = screen->h / 2;
 
 		enemy[WC_KLINE].deathCounter = -250;
 		enemy[WC_KLINE].maxShield = 1500;
@@ -1188,7 +1188,7 @@ void doAliens()
 
 				limitCharAdd(&theEnemy->hit, -1, 0, 100);
 
-				if ((theEnemy->x + theEnemy->image[0]->w > 0) && (theEnemy->x < 800) && (theEnemy->y + theEnemy->image[0]->h > 0) && (theEnemy->y < 600))
+				if ((theEnemy->x + theEnemy->image[0]->w > 0) && (theEnemy->x < screen->w) && (theEnemy->y + theEnemy->image[0]->h > 0) && (theEnemy->y < screen->h))
 				{
 					if ((!(theEnemy->flags & FL_DISABLED)) && (theEnemy->classDef != CD_ASTEROID) && (theEnemy->classDef != CD_ASTEROID2))
 						addEngine(theEnemy);
@@ -1207,7 +1207,7 @@ void doAliens()
 			else
 			{
 				theEnemy->shield--;
-				if ((theEnemy->x > 0) && (theEnemy->x < 800) && (theEnemy->y > 0) && (theEnemy->y < 600))
+				if ((theEnemy->x > 0) && (theEnemy->x < screen->w) && (theEnemy->y > 0) && (theEnemy->y < screen->h))
 				{
 					blit(theEnemy->image[theEnemy->face], (int)theEnemy->x, (int)theEnemy->y);
 					addExplosion(theEnemy->x + (rand() % theEnemy->image[0]->w), theEnemy->y + (rand() % theEnemy->image[0]->h), E_BIG_EXPLOSION);

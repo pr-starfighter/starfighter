@@ -171,11 +171,11 @@ int doTitle()
 	prlogo = loadImage("gfx/prlogo.png");
 	sflogo = loadImage("gfx/sflogo.png");
 
-	int prx = ((800 - prlogo->w) / 2);
-	int pry = ((600 - prlogo->h) / 2);
+	int prx = ((screen->w - prlogo->w) / 2);
+	int pry = ((screen->h - prlogo->h) / 2);
 
-	int sfx = ((800 - sflogo->w) / 2);
-	int sfy = ((600 - sflogo->h) / 2);
+	int sfx = ((screen->w - sflogo->w) / 2);
+	int sfy = ((screen->h - sflogo->h) / 2);
 
 	textSurface(0, "PRESENTS", -1, 300, FONT_WHITE);
 	textSurface(1, "AN SDL GAME", -1, 300, FONT_WHITE);
@@ -205,8 +205,8 @@ int doTitle()
 			enemy[i] = defEnemy[CD_TRANSPORTSHIP];
 		if ((rand() % 5) == 0)
 			enemy[i] = defEnemy[CD_MINER];
-		enemy[i].x = rand() % 800;
-		enemy[i].y = rand() % 560;
+		enemy[i].x = rand() % screen->w;
+		enemy[i].y = rand() % (screen->h - 40);
 		enemy[i].dx = 1 + rand() % 3;
 		enemy[i].face = 0;
 	}
@@ -258,7 +258,7 @@ int doTitle()
 			if (enemy[i].x > 830)
 			{
 				enemy[i].x = -40;
-				enemy[i].y = rand() % 580;
+				enemy[i].y = rand() % (screen->h - 20);
 				enemy[i].dx = 1 + rand() % 3;
 			}
 		}
@@ -414,9 +414,9 @@ int doTitle()
 							SDL_WM_ToggleFullScreen(screen);
 							#else
 							if (engine.fullScreen)
-								screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE|SDL_FULLSCREEN);
+								screen = SDL_SetVideoMode(screen->w, screen->h, 0, SDL_DOUBLEBUF|SDL_HWPALETTE|SDL_FULLSCREEN);
 							else
-								screen = SDL_SetVideoMode(800, 600, 0, SDL_DOUBLEBUF|SDL_HWPALETTE);
+								screen = SDL_SetVideoMode(screen->w, screen->h, 0, SDL_DOUBLEBUF|SDL_HWPALETTE);
 
 							drawBackground();
 							flushBuffer();
@@ -491,7 +491,7 @@ void showStory()
 {
 	freeGraphics();
 
-	int y = 620;
+	int y = screen->h + 20;
 
 	FILE *fp;
 
@@ -540,7 +540,7 @@ void showStory()
 		if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]) || (engine.keyState[SDLK_SPACE]))
 			break;
 
-		if (textShape[8].y > 450)
+		if (textShape[8].y > (screen->h / 2) + 150)
 		{
 			for (int i = 0 ; i < 9 ; i++)
 			{
@@ -585,8 +585,8 @@ void gameover()
 		Mix_PlayMusic(engine.music, 1);
 	}
 
-	int x = (800 - gameover->w) / 2;
-	int y = (600 - gameover->h) / 2;
+	int x = (screen->w - gameover->w) / 2;
+	int y = (screen->h - gameover->h) / 2;
 
 	updateScreen();
 
@@ -603,8 +603,8 @@ void gameover()
 		updateScreen();
 
 		unBuffer();
-		x = ((800 - gameover->w) / 2) - rrand(-2, 2);
-		y = ((600 - gameover->h) / 2)  - rrand(-2, 2);
+		x = ((screen->w - gameover->w) / 2) - rrand(-2, 2);
+		y = ((screen->h - gameover->h) / 2)  - rrand(-2, 2);
 		blit(gameover, x,  y);
 
 		delayFrame();
@@ -632,7 +632,7 @@ void doCredits()
 	int lastCredit = 0;
 
 	int yPos = 0;
-	int yPos2 = 600;
+	int yPos2 = screen->h;
 	char text[255];
 
 	textObject *credit;
@@ -665,7 +665,7 @@ void doCredits()
 	{
 		fscanf(fp, "%d %[^\n]%*c", &yPos, text);
 		credit[i].image = textSurface(text, FONT_WHITE);
-		credit[i].x = (800 - credit[i].image->w) / 2;
+		credit[i].x = (screen->w - credit[i].image->w) / 2;
 		yPos2 += yPos;
 		credit[i].y = yPos2;
 	}
@@ -706,11 +706,11 @@ void doCredits()
 
 		for (int i = 0 ; i < numberOfCredits ; i++)
 		{
-			if ((credit[i].y > -10) && (credit[i].y < 610))
+			if ((credit[i].y > -10) && (credit[i].y < (screen->h + 10)))
 				blit(credit[i].image, (int)credit[i].x, (int)credit[i].y);
-			if (speed > 0 && credit[lastCredit].y > 400)
+			if (speed > 0 && credit[lastCredit].y > ((screen->h / 2) + 100))
 				credit[i].y -= speed;
-			else if(speed < 0 && credit[0].y < 600)
+			else if(speed < 0 && credit[0].y < screen->h)
 				credit[i].y -= speed;
 		}
 
