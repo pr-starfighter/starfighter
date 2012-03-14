@@ -28,8 +28,8 @@ Initialises the player for a new game.
 void initPlayer()
 {
 	player.active = true;
-	player.x = (int)(screen->w / 2);
-	player.y = (int)(screen->h / 2);
+	player.x = screen->w / 2;
+	player.y = screen->h / 2;
 	player.speed = 2;
 	player.maxShield = (25 * currentGame.shieldUnits);
 	player.systemPower = player.maxShield;

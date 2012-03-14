@@ -503,8 +503,8 @@ int galaxyMap()
 
 	char string[25];
 
-	engine.cursor_x = (int)(screen->w / 2);
-	engine.cursor_y = (int)(screen->h / 2);
+	engine.cursor_x = screen->w / 2;
+	engine.cursor_y = screen->h / 2;
 	shape[0] = loadImage("gfx/cursor.png");
 
 	// Icons 1 - 29

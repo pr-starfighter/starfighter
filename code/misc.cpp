@@ -110,28 +110,28 @@ static void doTargetArrow()
 	// TODO: This is not very good. It assumes the player is always at (400,300),
 	// which is not always true, resulting in the arrows sometimes not appearing when
 	// the enemy is not visible and sometimes appearing when the enemy is visible.
-	if (distY < (int)(-screen->h / 2))
+	if (distY < -screen->h / 2)
 		engine.targetArrow = 36;
 
-	if (distY > (int)(screen->h / 2))
+	if (distY > screen->h / 2)
 		engine.targetArrow = 40;
 
-	if (distX < (int)(-screen->w / 2))
+	if (distX < -screen->w / 2)
 		engine.targetArrow = 42;
 
-	if (distX > (int)(screen->w / 2))
+	if (distX > screen->w / 2)
 		engine.targetArrow = 38;
 
-	if ((distY < (int)(-screen->h / 2)) && (distX > (int)(screen->w / 2)))
+	if ((distY < -screen->h / 2) && (distX > screen->w / 2))
 		engine.targetArrow = 37;
 
-	if ((distY > (int)(screen->h / 2)) && (distX > (int)(screen->w / 2)))
+	if ((distY > screen->h / 2) && (distX > screen->w / 2))
 		engine.targetArrow = 39;
 
-	if ((distY > (int)(screen->h / 2)) && (distX < (int)(-screen->w / 2)))
+	if ((distY > screen->h / 2) && (distX < -screen->w / 2))
 		engine.targetArrow = 41;
 
-	if ((distY < (int)(-screen->h / 2)) && (distX < (int)(-screen->w / 2)))
+	if ((distY < -screen->h / 2) && (distX < -screen->w / 2))
 		engine.targetArrow = 43;
 
 	if (engine.targetArrow != -1)

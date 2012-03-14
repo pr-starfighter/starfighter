@@ -38,7 +38,7 @@ static bool placeAlien(object *theEnemy)
 	if (currentGame.area == 24)
 	{
 		theEnemy->x = screen->w;
-		theEnemy->y = rrand((int)((1/3) * screen->h), (int)((2/3) * screen->h));
+		theEnemy->y = rrand(screen->h / 3, (2 * screen->h) / 3);
 	}
 
 	for (int i = 0 ; i < MAX_ALIENS ; i++)
@@ -396,8 +396,8 @@ static void getPreDefinedAliens()
 	if (currentGame.area == 5)
 	{
 		enemy[WC_BOSS].target = &player;
-		enemy[WC_BOSS].x = (int)(-screen->w / 2);
-		enemy[WC_BOSS].y = (int)(screen->h / 2);
+		enemy[WC_BOSS].x = -screen->w / 2;
+		enemy[WC_BOSS].y = screen->h / 2;
 
 		enemy[13].owner = &enemy[WC_BOSS];
 		enemy[13].target = &player;
@@ -412,8 +412,8 @@ static void getPreDefinedAliens()
 	else if ((currentGame.area == 11) || (currentGame.area == 14))
 	{
 		enemy[WC_BOSS].target = &player;
-		enemy[WC_BOSS].x = (int)(-screen->w / 2);
-		enemy[WC_BOSS].y = (int)(screen->h / 2);
+		enemy[WC_BOSS].x = -screen->w / 2;
+		enemy[WC_BOSS].y = screen->h / 2;
 
 		enemy[13].owner = &enemy[WC_BOSS];
 		enemy[13].target = &player;
@@ -596,8 +596,8 @@ void initAliens()
 	{
 		enemy[WC_KLINE].flags |= FL_IMMORTAL | FL_NOFIRE | FL_NOMOVE;
 
-		enemy[WC_KLINE].x = (int)(screen->w * (2 / 3));
-		enemy[WC_KLINE].y = (int)(screen->h / 2);
+		enemy[WC_KLINE].x = (screen->w * 2) / 3;
+		enemy[WC_KLINE].y = screen->h / 2;
 
 		enemy[WC_KLINE].deathCounter = -250;
 		enemy[WC_KLINE].maxShield = 1500;
