@@ -540,7 +540,7 @@ void showStory()
 		if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]) || (engine.keyState[SDLK_SPACE]))
 			break;
 
-		if (textShape[8].y > (int)(screen->h / 2) + 150)
+		if (textShape[8].y > (screen->h / 2) + 150)
 		{
 			for (int i = 0 ; i < 9 ; i++)
 			{
@@ -708,7 +708,7 @@ void doCredits()
 		{
 			if ((credit[i].y > -10) && (credit[i].y < (screen->h + 10)))
 				blit(credit[i].image, (int)credit[i].x, (int)credit[i].y);
-			if (speed > 0 && credit[lastCredit].y > ((int)(screen->h / 2) + 100))
+			if (speed > 0 && credit[lastCredit].y > ((screen->h / 2) + 100))
 				credit[i].y -= speed;
 			else if(speed < 0 && credit[0].y < screen->h)
 				credit[i].y -= speed;
