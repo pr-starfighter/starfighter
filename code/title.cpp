@@ -64,6 +64,35 @@ static signed char showLoadMenu()
 	return rtn;
 }
 
+static void createDifficultyMenu()
+{
+	textSurface(13, "START GAME", -1, 350, FONT_WHITE);
+
+	if (currentGame.difficulty == DIFFICULTY_EASY)
+		textSurface(14, "DIFFICULTY - EASY", -1, 370, FONT_WHITE);
+	else if(currentGame.difficulty == DIFFICULTY_HARD)
+		textSurface(14, "DIFFICULTY - HARD", -1, 370, FONT_WHITE);
+	else
+		textSurface(14, "DIFFICULTY - NORMAL", -1, 370, FONT_WHITE);
+
+	if (currentGame.gamePlay == GAMEPLAY_ONPON)
+		textSurface(15, "GAMEPLAY - ONPON", -1, 390, FONT_WHITE);
+	else
+		textSurface(15, "GAMEPLAY - NORMAL", -1, 390, FONT_WHITE);
+}
+
+static signed char showDifficultyMenu()
+{
+	textShape[12].y = 430;
+
+	blitText(13);
+	blitText(14);
+	blitText(15);
+	blitText(12);
+
+	return 4;
+}
+
 static void createOptionsMenu()
 {
 	if (engine.useSound)
@@ -187,6 +216,7 @@ int doTitle()
 	textSurface(7, "QUIT", -1, 430, FONT_WHITE);
 
 	createOptionsMenu();
+	createDifficultyMenu();
 	textSurface(12, "BACK TO MAIN MENU", -1, 0, FONT_WHITE);
 
 	createCheatMenu();
@@ -299,6 +329,9 @@ int doTitle()
 					case 3:
 						listLength = showCheatMenu();
 						break;
+					case 4:
+						listLength = showDifficultyMenu();
+						break;
 				}
 
 				redGlow += redDir;
@@ -363,11 +396,13 @@ int doTitle()
 			{
 				switch(menuType)
 				{
-					case 0:
-						if ((selectedOption == 1) || (selectedOption == 3))
-							engine.done = 1;
+					case 0: // Main menu
+						if (selectedOption == 1)
+							{menuType = 4; selectedOption = 1;}
 						else if (selectedOption == 2)
 							{menuType = 1; selectedOption = 1;}
+						else if (selectedOption == 3)
+							engine.done = 1;
 						else if (selectedOption == 4)
 							{menuType = 2; selectedOption = 1;}
 						else if (selectedOption == 5)
@@ -381,14 +416,14 @@ int doTitle()
 							engine.done = 1;
 						break;
 
-					case 1:
+					case 1: // Load game menu
 						if (selectedOption != listLength)
 							{engine.done = 1; continueSaveSlot = selectedOption; selectedOption = 3;}
 						else
 							{menuType = 0; selectedOption = 1;}
 						break;
 
-					case 2:
+					case 2: // Options menu
 						if ((selectedOption == 1) && (engine.useAudio))
 							engine.useSound = !engine.useSound;
 						else if ((selectedOption == 2) && (engine.useAudio))
@@ -429,7 +464,7 @@ int doTitle()
 						createOptionsMenu();
 						break;
 
-					case 3:
+					case 3: // Cheat menu
 						if (selectedOption == 1)
 							engine.cheatShield = !engine.cheatShield;
 						else if (selectedOption == 2)
@@ -443,9 +478,24 @@ int doTitle()
 						createCheatMenu();
 						break;
 
-					case 4:
-						if (selectedOption == listLength)
+					case 4: // Difficulty menu
+						if (selectedOption == 1)
+							engine.done = 1;
+						else if (selectedOption == 2)
+							currentGame.difficulty++;
+							if(currentGame.difficulty > DIFFICULTY_HARD)
+								currentGame.difficulty = DIFFICULTY_EASY;
+						else if (selectedOption == 3)
+							currentGame.gamePlay++;
+							if(currentGame.gamePlay > GAMEPLAY_ONPON)
+								currentGame.gamePlay = GAMEPLAY_ORIGINAL;
+						else if (selectedOption == listLength)
 							{menuType = 0; selectedOption = 1;}
+						createDifficultyMenu();
+						break;
+
+					default:
+						menuType = 0, selectedOption = 1;
 						break;
 				}
 			}
@@ -479,6 +529,8 @@ int doTitle()
 		selectedOption = -1;
 		exit(0);
 	}
+
+	fprintf(stderr, "Difficulty %d, gameplay %d\n", currentGame.difficulty, currentGame.gamePlay);
 
 	return selectedOption;
 }

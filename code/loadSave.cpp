@@ -101,6 +101,11 @@ bool loadGame(int slot)
 
 	fclose(fp);
 
+	if(currentGame.saveFormat < 2) {
+		currentGame.gamePlay = GAMEPLAY_ORIGINAL;
+		currentGame.difficulty = DIFFICULTY_NORMAL;
+	}
+
 	weapon[0] = currentGame.playerWeapon;
 	player = currentGame.thePlayer;
 
@@ -127,6 +132,7 @@ void saveGame(int slot)
 	sprintf(fileName, "%ssave%.2d.dat", engine.userHomeDirectory, slot);
 	fp = fopen(fileName, "wb");
 
+	currentGame.saveFormat = 2;
 	currentGame.playerWeapon = weapon[0];
 	currentGame.thePlayer = player;
 	for (int i = 0 ; i < 10 ; i++)

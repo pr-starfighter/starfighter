@@ -120,7 +120,6 @@ struct textObject {
 };
 
 struct Game {
-
 	object thePlayer;
 	object playerWeapon;
 
@@ -129,11 +128,9 @@ struct Game {
 	unsigned char musicVolume;
 	unsigned char sfxVolume;
 
-	// First three variable below are here for save game compatibility only.
-
-	signed char fullScreen; // Do not use!
-	signed char useMusic; // Do not use!
-	signed char useSound; // Do not use!
+	signed char saveFormat;
+	signed char gamePlay;
+	signed char difficulty;
 
 	signed char autoSaveSlot;
 
@@ -174,6 +171,7 @@ struct Game {
 	unsigned char maxPlasmaAmmo;
 	unsigned char maxRocketAmmo;
 	unsigned char shieldUnits;
+
 
 };
 
