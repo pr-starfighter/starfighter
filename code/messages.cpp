@@ -98,7 +98,7 @@ void getKillMessage(object *ally)
 		case 3:
 		case 4:
 		case 5:
-			sprintf(in, killMessage[rand() % 6]);
+			strcpy(in, killMessage[rand() % 6]);
 			break;
 
 		case 6:
@@ -120,11 +120,11 @@ void getKillMessage(object *ally)
 		case 9:
 			if (firstPlace)
 			{
-				sprintf(in, killMessage[9]);
+				strcpy(in, killMessage[9]);
 			}
 			else
 			{
-				sprintf(in, killMessage[rand() % 6]);
+				strcpy(in, killMessage[rand() % 6]);
 			}
 			break;
 	}

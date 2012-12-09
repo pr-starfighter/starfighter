@@ -498,7 +498,7 @@ void circle(int xc, int yc, int R, SDL_Surface *PIX, int col)
 
 void blevelRect(SDL_Surface *dest, int x, int y, int w, int h, Uint8 red, Uint8 green, Uint8 blue)
 {
-	SDL_Rect r = {x, y, w, h};
+	SDL_Rect r = {(int16_t)x, (int16_t)y, (uint16_t)w, (uint16_t)h};
 	SDL_FillRect(dest, &r, SDL_MapRGB(screen->format, red, green, blue));
 
 	drawLine(dest, x, y, x + w, y, SDL_MapRGB(screen->format, 255, 255, 255));

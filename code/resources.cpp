@@ -62,7 +62,8 @@ void loadGameGraphics()
 	#if USEPACK
 	int dataLocation = locateDataInPak(string, 1);
 	fp = fopen(PACKLOCATION, "rb");
-	fseek(fp, dataLocation, SEEK_SET);
+	if(fp)
+		fseek(fp, dataLocation, SEEK_SET);
 	#else
 	fp = fopen(string, "rb");
 	#endif

@@ -672,7 +672,7 @@ bool missionFailed()
 
 static void drawBriefScreen()
 {
-	SDL_Rect r = {0, 0, screen->w, 2};
+	SDL_Rect r = {0, 0, (uint16_t)screen->w, 2};
 
 	for (int i = 0 ; i < (int)(screen->h / 4) - 30 ; i++)
 	{
@@ -845,7 +845,7 @@ void missionFinishedScreen()
 			{
 				if (currentMission.secondaryType[i] != NONE)
 				{
-					sprintf(temp, currentMission.secondaryObjective[i]);
+					strcpy(temp, currentMission.secondaryObjective[i]);
 					if (currentMission.completed2[i] >= 1)
 					{
 						drawString("COMPLETED", 550, 274 + (i * 30), FONT_GREEN);
