@@ -66,28 +66,28 @@ static signed char showLoadMenu()
 
 static void createDifficultyMenu()
 {
-	textSurface(13, "START GAME", -1, 350, FONT_WHITE);
+	textSurface(23, "START GAME", -1, 350, FONT_WHITE);
 
 	if (currentGame.difficulty == DIFFICULTY_EASY)
-		textSurface(14, "DIFFICULTY - EASY", -1, 370, FONT_WHITE);
+		textSurface(24, "DIFFICULTY - EASY", -1, 370, FONT_WHITE);
 	else if(currentGame.difficulty == DIFFICULTY_HARD)
-		textSurface(14, "DIFFICULTY - HARD", -1, 370, FONT_WHITE);
+		textSurface(24, "DIFFICULTY - HARD", -1, 370, FONT_WHITE);
 	else
-		textSurface(14, "DIFFICULTY - NORMAL", -1, 370, FONT_WHITE);
+		textSurface(24, "DIFFICULTY - NORMAL", -1, 370, FONT_WHITE);
 
 	if (currentGame.gamePlay == GAMEPLAY_ONPON)
-		textSurface(15, "GAMEPLAY - ONPON", -1, 390, FONT_WHITE);
+		textSurface(25, "GAMEPLAY - ONPON", -1, 390, FONT_WHITE);
 	else
-		textSurface(15, "GAMEPLAY - NORMAL", -1, 390, FONT_WHITE);
+		textSurface(25, "GAMEPLAY - NORMAL", -1, 390, FONT_WHITE);
 }
 
 static signed char showDifficultyMenu()
 {
 	textShape[12].y = 430;
 
-	blitText(13);
-	blitText(14);
-	blitText(15);
+	blitText(23);
+	blitText(24);
+	blitText(25);
 	blitText(12);
 
 	return 4;
@@ -529,8 +529,6 @@ int doTitle()
 		selectedOption = -1;
 		exit(0);
 	}
-
-	fprintf(stderr, "Difficulty %d, gameplay %d\n", currentGame.difficulty, currentGame.gamePlay);
 
 	return selectedOption;
 }
