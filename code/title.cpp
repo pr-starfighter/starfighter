@@ -341,7 +341,7 @@ int doTitle()
 				if (engine.keyState[SDLK_UP])
 				{
 					engine.keyState[SDLK_UP] = 0;
-					wrapChar(&(--selectedOption), 1, listLength);
+					wrapChar(&(--selectedOption), 1, listLength + 1);
 					if (menuType == 0)
 						if ((selectedOption == 2) || (selectedOption == 3))
 							if (continueSaveSlot == 0)
@@ -350,7 +350,7 @@ int doTitle()
 				if (engine.keyState[SDLK_DOWN])
 				{
 					engine.keyState[SDLK_DOWN] = 0;
-					wrapChar(&(++selectedOption), 1, listLength);
+					wrapChar(&(++selectedOption), 0, listLength);
 					if (menuType == 0)
 						if ((selectedOption == 2) || (selectedOption == 3))
 							if (continueSaveSlot == 0)
