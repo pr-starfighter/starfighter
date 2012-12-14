@@ -244,7 +244,6 @@ struct globalEngineVariables {
 
 	float targetShield;
 	signed char targetIndex;
-	signed char targetArrow;
 	int targetArrowTimer;
 
 	// Mission completion timer (allows for 4 seconds before leaving sector)

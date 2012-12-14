@@ -191,10 +191,16 @@ void doPlayer()
 
 			if ((engine.keyState[SDLK_t]) && (currentGame.area != 10))
 			{
-				if (engine.targetArrowTimer == -1)
+				if (engine.targetArrowTimer == -1 && currentGame.difficulty < DIFFICULTY_HARD) {
+					engine.targetArrowTimer = -2;
+					setInfoLine("Showing all targets", FONT_WHITE);
+				} else if (engine.targetArrowTimer < 0) {
 					engine.targetArrowTimer = 0;
-				else
+					setInfoLine("Disabled target arrows", FONT_WHITE);
+				} else {
 					engine.targetArrowTimer = -1;
+					setInfoLine("Showing mission target", FONT_WHITE);
+				}
 
 				engine.keyState[SDLK_t] = 0;
 			}

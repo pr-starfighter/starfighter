@@ -64,7 +64,6 @@ void defineGlobals()
 	engine.paused = false;
 	engine.gameSection = SECTION_TITLE;
 	
-	engine.targetArrow = -1;
 	engine.targetArrowTimer = 0;
 
 	engine.cheat = false;

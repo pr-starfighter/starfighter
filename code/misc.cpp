@@ -85,60 +85,59 @@ void setRadioMessage(signed char face, const char *in, int priority)
 	createMessageBox(faceShape, in, 1);
 }
 
-static void doTargetArrow()
+/*
+Draw an arrow at the edge of the screen for each enemy ship that is not visible.
+*/
+static void doArrow(int i)
 {
-	if (engine.targetIndex < 0)
+	if (i < 0 || !enemy[i].active || enemy[i].shield <= 0 || enemy[i].flags & FL_ISCLOAKED)
 		return;
 
-	if ((engine.targetArrowTimer == 0) || (enemy[engine.targetIndex].shield < 1))
+	int x = enemy[i].x + enemy[i].image[0]->w / 2;
+	int y = enemy[i].y + enemy[i].image[0]->h / 2;
+
+	float sx = fabsf((x - (screen->w / 2)) / (screen->w / 2.0));
+	float sy = fabsf((y - (screen->h / 2)) / (screen->h / 2.0));
+	float sxy = max(sx, sy);
+
+	if (sxy < 1) 
 		return;
 
-	if (enemy[engine.targetIndex].flags & FL_ISCLOAKED)
-		return;
-		
-	if (textShape[3].life > 0)
+	x = screen->w / 2 + (x - screen->w / 2) / sxy;
+	y = screen->h / 2 + (y - screen->h / 2) / sxy;
+
+	int arrow;
+
+	if (sxy == sx) {
+		arrow = x < screen->w / 2 ? 42 : 38;
+		x -= x > screen->w / 2 ? shape[arrow]->w : 0;
+		y -= shape[arrow]->h / 2;
+	} else {
+		arrow = y < screen->h / 2 ? 36 : 40;
+		x -= shape[arrow]->w / 2;
+		y -= y > screen->h / 2 ? shape[arrow]->h : 0;
+	}
+
+	blit(shape[arrow], x, y);
+
+	if(i != engine.targetIndex)
 		return;
 
-	engine.targetArrow = -1;
+	if(engine.targetArrowTimer == 0 || textShape[3].life > 0)
+		return;
 
 	if (engine.targetArrowTimer > 0)
 		engine.targetArrowTimer--;
 
-	int distX = (int)(enemy[engine.targetIndex].x - player.x);
-	int distY = (int)(enemy[engine.targetIndex].y - player.y);
-
-	// TODO: This is not very good. It assumes the player is always at (400,300),
-	// which is not always true, resulting in the arrows sometimes not appearing when
-	// the enemy is not visible and sometimes appearing when the enemy is visible.
-	if (distY < -screen->h / 2)
-		engine.targetArrow = 36;
-
-	if (distY > screen->h / 2)
-		engine.targetArrow = 40;
-
-	if (distX < -screen->w / 2)
-		engine.targetArrow = 42;
-
-	if (distX > screen->w / 2)
-		engine.targetArrow = 38;
-
-	if ((distY < -screen->h / 2) && (distX > screen->w / 2))
-		engine.targetArrow = 37;
-
-	if ((distY > screen->h / 2) && (distX > screen->w / 2))
-		engine.targetArrow = 39;
-
-	if ((distY > screen->h / 2) && (distX < -screen->w / 2))
-		engine.targetArrow = 41;
-
-	if ((distY < -screen->h / 2) && (distX < -screen->w / 2))
-		engine.targetArrow = 43;
-
-	if (engine.targetArrow != -1)
-	{
-		blit(shape[engine.targetArrow], 380, 50);
-		blit(shape[44], 365, 70);
+	if (sxy == sx) {
+		x -= x > screen->w / 2 ? 5 + shape[44]->w : -5 - shape[arrow]->w;
+		y -= (shape[44]->h - shape[arrow]->h) / 2;
+	} else {
+		x -= (shape[44]->w - shape[arrow]->w) / 2;
+		y -= y > screen->h / 2 ? 5 + shape[44]->h : -5 - shape[arrow]->h;
 	}
+
+	blit(shape[44], x, y);
 }
 
 /*
@@ -181,7 +180,12 @@ void doInfo()
 	textSurface(38, text, 90, 21, FONT_WHITE);
 	blitText(38);
 
-	doTargetArrow();
+	if (engine.targetArrowTimer < -1) {
+		for (int i = 0; i < MAX_ALIENS; i++)
+			doArrow(i);
+	} else if (engine.targetArrowTimer != 0) {
+		doArrow(engine.targetIndex);
+	}
 
 	fontColor = FONT_WHITE;
 	if (player.ammo[0] > 0)
