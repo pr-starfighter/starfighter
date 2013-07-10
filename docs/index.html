@@ -1,362 +1,462 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
-<HTML>
-<HEAD>
-<TITLE></TITLE>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
-<STYLE>
-a {color: #499FFF; text-decoration: none; font-family: helvetica;}
-a:hover {color: #499FFF; text-decoration: underline}
-body {color: #FFFFFF; background: #000000; font: 10pt helvetica;}
-table {color: #FFFFFF; font: 10pt helvetica;}
-td {color: #FFFFFF;}
-</STYLE>
+<html>
+<head>
+  <title>Starfighter gameplay manual</title>
+  <style type="text/css">
+  a {color: #499FFF; text-decoration: none; font-family: helvetica;}
+  a:hover {color: #499FFF; text-decoration: underline}
+  body {color: white; background: black; font: 10pt helvetica;}
+  table {color: white; font: 10pt helvetica;}
+  td {color: white;}
+  h1 {color: white; font: 12pt helvetica; font-weight: bold;}
+  h2 {color: white; background: #000099; width: 100%; padding: 2px; font: 10pt helvetica; font-weight: bold;}
+  ul.menu li {color: white; background: #FF0000; border-style: solid; border-color: white; border-width: 1px; width: 14em; list-style-type: none; margin: 2px; text-align: center; text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black;}
+  dl dt {font-weight: bold;}
+  dl dd {margin: 1em 0 1em 2em;}
+  </style>
+</head>
 
-</HEAD>
+<body>
+  <center>
+    <img src="sflogo.png" alt="Starfighter">
 
-<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#FF0000" VLINK="#800000" ALINK="#FF00FF">
+    <h1>Gameplay Manual</h1>
+  </center>
 
-<CENTER>
-<IMG SRC="sflogo.png">
-<H3>Gameplay Manual</H3>
-</CENTER>
-<P></P>
+  <h2>License Agreement</h2>
 
-<TABLE BGCOLOR="#000099" WIDTH="100%"><TR><TD><B>License Agreement</B></TR></TR></TABLE>
-<P>Project: Starfighter<BR>
-Copyright &copy; 2003 Parallel Realities<BR>
-Copyright &copy; 2012 Guus Sliepen, Astrid S. de Wijn and others<BR>
-</P>
+  <pre>
+Project: Starfighter
+Copyright &copy; 2003 Parallel Realities
+Copyright &copy; 2012 Guus Sliepen, Astrid S. de Wijn and others
 
-<P>
-This program is free software; you can redistribute it and/or<BR>
-modify it under the terms of the GNU General Public License<BR>
-as published by the Free Software Foundation; either version 2<BR>
-of the License, or (at your option) any later version.<BR>
-</P>
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
 
-<P>
-This program is distributed in the hope that it will be useful,<BR>
-but WITHOUT ANY WARRANTY; without even the implied warranty of<BR>
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.<BR>
-</P>
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-<P>
-See the GNU General Public License for more details.<BR>
-</P>
+See the GNU General Public License for more details.
 
-<P>
-You should have received a copy of the GNU General Public License along<BR>
-with this program; if not, write to the Free Software Foundation, Inc.,<BR>
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.<BR>
-</P>
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+</pre>
 
-<TABLE BGCOLOR="#000099" WIDTH="100%"><TR><TD><B>Introduction</B></TR></TR></TABLE>
-<P>
-Project: Starfighter is an old school 2D shoot 'em up. In the game you take on the role of a 
-rebel pilot called Chris, who is attempting to overthrow a military corporation called Weapco. Weapco
-has seized control of the known universe and currently rules it with an iron fist. Chris can no longer
-stand back and watch as millions of people suffer and die. He steals an experimental craft known
-as "Firefly" and begins his mission to fight his way to Sol, freeing key systems along the way. The
-game opens with Chris attempting to escape a Weapco patrol that has intercepted him.
-</P>
+  <h2>Introduction</h2>
 
-<P>
-<TABLE BGCOLOR="#000099" WIDTH="100%"><TR><TD><B>Installation</B></TD></TR></TABLE>
-<P>Installation under Linux</P>
+  <p>Project: Starfighter is an old school 2D shoot 'em up. In the
+  game you take on the role of a rebel pilot called Chris, who is
+  attempting to overthrow a military corporation called Weapco.
+  Weapco has seized control of the known universe and currently
+  rules it with an iron fist. Chris can no longer stand back and
+  watch as millions of people suffer and die. He steals an
+  experimental craft known as "Firefly" and begins his mission to
+  fight his way to Sol, freeing key systems along the way. The game
+  opens with Chris attempting to escape a Weapco patrol that has
+  intercepted him.</p>
 
-<PRE>
+  <h2>Installation</h2>
+
+  <p>Installation under Linux:</p>
+  <pre>
 tar zxf starfighter-1.2.tar.gz
 cd starfighter-1.2
 make
 make install
-</PRE>
+</pre>
 
-	<P>When the game is first run it will attempt to create</P>
+  <p>When the game is first run it will attempt to create <code>~/.parallelrealities/starfighter/</code>.
+  Should this fail the game will not run.</p>
 
-<PRE>
-~/.parallelrealities/starfighter/
-</PRE>
+  <h2>Controls</h2>
 
-<P>Should this fail the game will not run.</P>
+  <p>Menus</p>
 
-<P>
-<TABLE BGCOLOR="#000099" WIDTH="100%"><TR><TD><B>Controls</B></TD></TR></TABLE>
+  <ul>
+  <li> Arrow Keys - Highlight option
+  <li> Control / Space - Select menu option
+  </ul>
 
-<P>Menus</P>
-<UL>
-Arrow Keys - Highlight option<BR>
-Control / Space - Select menu option<BR>
-</UL>
+  <p>Intermission Screen</p>
 
-<P>Intermission Screen</P>
-<UL>
-Mouse or Arrow Keys - Move cursor<BR>
-Left Mouse Button - Selected option<BR>
-Right Mouse Button - Toggle planet orbit On / Off<BR>
-</UL>
+  <ul>
+  <li>Mouse or Arrow Keys - Move cursor
+  <li>Left Mouse Button - Selected option
+  <li>Right Mouse Button - Toggle planet orbit On / Off
+  </ul>
 
-<P>In Game</P>
-<UL>
-Arrow Keys - Control Firefly<BR>
-Ctrl - Fire primary weapon<BR>
-Space - Fire secondary weapon<BR>
-Shift - Toggle Primary Weapon Concentrate / Spread (see Weaponry)<BR>
-T - Switch Targetting Arrow mode<BR>
-P - Pause / Unpause<BR>
-Escape - Flee (not possible until all primary missions completed)<BR>
-Escape whilst paused - Quit to title screen<BR>
-</UL>
+  <p>In Game</p>
 
-<P>Joystick and Gamepad support</P>
-<UL>
-Stick or Hat - Same as Arrow Keys<BR>
-Button 0 - Fire primary weapon / Select menu option<BR>
-Button 1 - Fire secondary weapon / Select menu option<BR>
-Button 2 - Toggle Primary Weapon Concentrate / Spread<BR>
-Button 3 - Switch Targetting Arrow mode<BR>
-</UL>
+  <ul>
+  <li>Arrow Keys - Control Firefly
+  <li>Ctrl - Fire primary weapon
+  <li>Space - Fire secondary weapon
+  <li>Shift - Toggle Primary Weapon Concentrate / Spread (see Weaponry)
+  <li>T - Switch Targetting Arrow mode
+  <li>P - Pause / Unpause
+  <li>Escape - Flee (not possible until all primary missions completed)
+  <li>Escape whilst paused - Quit to title screen
+  </ul>
 
-<P>Note - Keys cannot be changed</P>
+  <p>Joystick and Gamepad support</p>
 
-<P>
-<TABLE BGCOLOR="#000099" WIDTH="100%"><TR><TD><B>How to Play</B></TD></TR></TABLE>
-<P>When first starting Project: Starfighter you will see the text scrolling introduction. You can
-either wait for this to finish or you can skip it by pressing ctrl or space.</P>
-<P>The title sequence will begin. Once the menu is shown (or you opt to skip to it by pressing
-space or ctrl) you may select from the options shown</P>
+  <ul>
+  <li>Stick or Hat - Same as Arrow Keys
+  <li>Button 0 - Fire primary weapon / Select menu option
+  <li>Button 1 - Fire secondary weapon / Select menu option
+  <li>Button 2 - Toggle Primary Weapon Concentrate / Spread
+  <li>Button 3 - Switch Targetting Arrow mode
+  </ul>
 
-<TABLE>
-<TR><TD BGCOLOR="#FF0000"><CENTER> Start New Game </CENTER></TD></TR>
-<TR><TD BGCOLOR="#FF0000"><CENTER> Load Game* </CENTER></TD></TR>
-<TR><TD BGCOLOR="#FF0000"><CENTER> Continue Current Game* </CENTER></TD></TR>
-<TR><TD BGCOLOR="#FF0000"><CENTER> Options </CENTER></TD></TR>
-<TR><TD BGCOLOR="#FF0000"><CENTER> Quit </CENTER></TD></TR>
-</TABLE>
+  <p>Note - Keys cannot be changed</p>
 
-<P><I>* will only be shown if there are saved games available</I></P>
+  <h2>How to Play</h2>
 
-<P><B>Start New Game</B><BR>
-This will start a new game
-</P>
+  <p>When first starting Project: Starfighter you will see the text
+  scrolling introduction. You can either wait for this to finish or
+  you can skip it by pressing ctrl or space.</p>
 
-<P><B>Load Game</B><BR>
-This will bring up a list of currently available games to be loaded, along with the planet that
-the game was saved in. This option is only shown when there is at least one saved game available.
-</P>
+  <p>The title sequence will begin. Once the menu is shown (or you
+  opt to skip to it by pressing space or ctrl) you may select from
+  the options shown:</p>
 
-<P><B>Continue Current Game</B><BR>
-This will automatically load the most recently saved game. This option is only shown when there is
-at least one saved game available.
-</P>
+  <ul class="menu">
+  <li> Start New Game
+  <li> Load Game*
+  <li> Continue Current Game*
+  <li> Options
+  <li> Quit
+  </ul>
 
-<P><B>Options</B><BR>
-This will show a list of game options. Options for sound, music and an auto save slot can be changed.
-Music and Sound can be switched to either On or Off. The Auto Save Slot allows the player to select
-a save slot that will automatically be updated when the player finishes a mission. This can be
-switched from None to 1, 2, 3, 4 or 5. When this option is set to a number, that save slot will be
-used to save a game at the end of a mission. Note that any currently existing game will be
-automatically overwritten.
-</P>
+  <p><i>* will only be shown if there are saved games
+  available</i></p>
 
-<P><B>Quit</B><BR>
-This will quit the game. Quitting is immediate, without prompting (the game can also be quit at
-anytime by clicking the close button of the window).
-</P>
+  <dl>
+  <dt>Start New Game</dt>
+  <dd>This will start a new game.</dd>
 
-<P>
-<TABLE BGCOLOR="#000099" WIDTH="100%"><TR><TD><B>Loading and Saving Games</B></TD></TR></TABLE>
-<P>Games can be loaded from the title screen. When there are saved games available, the option "Load
-Game" will be shown. Selecting this will show a list of available games to be loaded. Select a game
-from the list to load, you will then be taken to the Intermission screen. To go back, selected
-Back to Main Menu.</P>
-<P>Games can be saved in two ways. The first way is to save a game on the Intermission screen. Move
-the cursor to the Save Game icon and select it. You will see a list of five game slots that can be
-used to save a game to. Click one of these and then click the "Save" button to save the game. The
-second way is to use the Auto Save function. This will automatically save your game after you have
-successfully completed a mission. To make use of this feature you must choose a save slot that
-you wish to auto save into. This can be done on the title screen in the options section or on
-the intermission screen at the options section.</P>
+  <dt>Load Game</dt>
+  <dd>This will bring up a list of currently available games to be
+  loaded, along with the planet that the game was saved in. This
+  option is only shown when there is at least one saved game
+  available.</dd>
 
-<P>
-<TABLE BGCOLOR="#000099" WIDTH="100%"><TR><TD><B>Getting Missions</B></TD></TR></TABLE>
-<P>In each System, the player can get missions by going to the Comms section of the Intermission
-screen. Here allies will inform you of tasks that need to be performed and what planet these tasks
-apply to. Once the player has decided which task they will perform, they must go to the corresponding
-planet in the system (see Moving Around for more details). Once stationed at the planet
-click "Start Mission" to proceed to the mission briefing screen. The "Start Mission" icon will not
-be shown if the mission of the planet has been completed.</P>
+  <dt>Continue Current Game</dt>
+  <dd>This will automatically load the most recently saved game. This
+  option is only shown when there is at least one saved game
+  available.</dd>
 
-<P>
-<TABLE BGCOLOR="#000099" WIDTH="100%"><TR><TD><B>Mission Briefing</B></TD></TR></TABLE>
-<P>Before the beginning of each mission you will be presented with a mission briefing screen. This
-will outline the mission's primary and (if any) secondary objectives. It will also inform you of
-mission restrictions, such as time limits. Once you have read this, press ctrl or space to
-continue</P>
+  <dt>Options</dt>
+  <dd>This will show a list of game options. Options for sound, music
+  and an auto save slot can be changed. Music and Sound can be
+  switched to either On or Off. The Auto Save Slot allows the
+  player to select a save slot that will automatically be updated
+  when the player finishes a mission. This can be switched from
+  None to 1, 2, 3, 4 or 5. When this option is set to a number,
+  that save slot will be used to save a game at the end of a
+  mission. Note that any currently existing game will be
+  automatically overwritten.</dd>
 
-<P>
-<TABLE BGCOLOR="#000099" WIDTH="100%"><TR><TD><B>Completing Missions</B></TD></TR></TABLE>
-<P>Each mission in the game has one or more objectives tied to it. These objectives are either
-Primary or Secondary objectives. In order to complete the mission, the player must complete all the
-primary mission objectives. For example, when the game begins Chris is fleeing a WEAPCO patrol. The
-primary objective for this mission is to destroy all the enemy fighters. Once this is achieved the
-Firefly will leave the sector and the mission will be marked as a success.</P>
-<P>One thing to note is that some missions will have both Primary and Secondary objectives. In this
-case, the Firefly does not leave the sector if all primary mission objectives are complete and
-secondary objectives remain. The player may then attempt to complete remaining secondary
-objectives or press Escape to leave the sector. Secondary objectives are optional.</P>
-<P>During the mission you will see messages appearing at the bottom of the screen. These messages
-can be related to items that you pick up, as well as mission related information.<P>
-<P>
-<FONT COLOR="#FFFFFF">White messages</FONT> are standard for picking up items such as cash and 
-power ups<BR>
-<FONT COLOR="#00FF00">Green messages</FONT> signify successful completion of mission objectives<BR>
-<FONT COLOR="#00FFFF">Light Blue messages </FONT>give further details about Primary mission 
-requirements<BR>
-<FONT COLOR="#FF0000">Red messages</FONT> indicate mission failures, warnings and wing mate 
-ejections<BR>
-<FONT COLOR="#FFFF00">Yellow messages</FONT> give further details about Secondary mission requirements
-<BR>
-</P>
+  <dt>Quit</dt>
+  <dd>This will quit the game. Quitting is immediate, without prompting
+  (the game can also be quit at anytime by clicking the close
+  button of the window).</dd>
+  </dl>
 
-<P>
-<TABLE BGCOLOR="#000099" WIDTH="100%"><TR><TD><B>The Target Arrow</B></TD></TR></TABLE>
-<P>
-<IMG SRC="arrowNorthEast.png" ALIGN="LEFT">
-The Target Arrow can be used to locate enemies and point you in the direction that the enemy craft
-is. You can toggle the Target Arrow between three mode by pressing "T" on the keyboard:
-Off, Mission target only, and All targets. This arrow is very
-useful for finding enemies that are evasive (such as transports) on missions that require you to
-destroy all present craft. Simply follow the arrows to find the enemy. The arrows will not be displayed
-when you are within the immediate vacinity of the target. On certain missions (such as Bosses) the
-mission target arrow will initially point towards a certain target that is part of the mission objective. The
-target's current remaining shield is also displayed in the bottom right hand corner of the screen.
-</P>
+  <h2>Loading and Saving Games</h2>
 
-<P>
-<TABLE BGCOLOR="#000099" WIDTH="100%"><TR><TD><B>Moving Around Systems</B></TD></TR></TABLE>
-<P>To play a mission in Starfighter you must be stationed at the relevant planet. To get to the
-planet you require, you will need to click on the planet whilst viewing it on the Show System section
-of the Intermission screen. Travelling between planets can be dangerous, but luckily Spirit is a 
-peaceful place and there are no chances of interceptions, so travel is instantaneous.</P>
-<P>Other systems are not as friendly and whilst travelling to a new destination the player runs
-the risk of being intercepted by a WEAPCO patrol. After Spirit the player will select a planet
-to travel to by clicking on it with the mouse. "Destination", followed by the planet's name
-will appear in the bottom right hand corner of the screen. A new icon labelled "Go To Destination"
-will also appear. Clicking this icon will make the player travel to the destination planet.</P>
-<P>Travelling to new planets is represented at the bottom of the screen by the two planets (the
-one being travelled from and the one being travelled to). A red bar will fill up as the journey
-progresses. The speed the bar fills up will vary occurring to how far away the planets are from
-one another. At any point during this time the planet can be intercepted (see Interceptions).
-Once the red bar has filled up completely the journey will be completed and you will be
-stationed that the new planet.</P>
+  <p>Games can be loaded from the title screen. When there are
+  saved games available, the option "Load Game" will be shown.
+  Selecting this will show a list of available games to be loaded.
+  Select a game from the list to load, you will then be taken to
+  the Intermission screen. To go back, selected Back to Main
+  Menu.</p>
 
-<P>
-<TABLE BGCOLOR="#000099" WIDTH="100%"><TR><TD><B>Interceptions</B></TD></TR></TABLE>
-<P>Interceptions can take place whilst travelling between two planets within a system. When the
-player is intercepted they will go directly into a mission-like scenario. The objective of this
-interception is to clear all attacking forces. Once this is done, the player will be free to
-leave.</P>
-<P>Interceptions also serve other purposes - Sometimes the WEAPCO patrol may have slave
-transports with them. One of the objectives of a later system is to rescue a certain amount of
-slaves. This is only possible during interceptions.</P>
-<P>One important thing to remember is that any damage the player receives during an interception
-will NOT be repaired until they have reached the destination planet. Therefore if the player
-is heavily damaged during one interception that damage will still be present if they are
-attacked again. This can make interceptions very dangerous.</P>
+  <p>Games can be saved in two ways. The first way is to save a
+  game on the Intermission screen. Move the cursor to the Save Game
+  icon and select it. You will see a list of five game slots that
+  can be used to save a game to. Click one of these and then click
+  the "Save" button to save the game. The second way is to use the
+  Auto Save function. This will automatically save your game after
+  you have successfully completed a mission. To make use of this
+  feature you must choose a save slot that you wish to auto save
+  into. This can be done on the title screen in the options section
+  or on the intermission screen at the options section.</p>
 
-<P>
-<TABLE BGCOLOR="#000099" WIDTH="100%"><TR><TD><B>Weaponry and Upgrades</B></TD></TR></TABLE>
-<P>During the course of the game you will receive money. Money is gained from destroying enemy craft 
-and picking up cash spheres in game (please be aware that due to the nature of the game cash is not
-earned for destroying ships during Interceptions).</P>
-<P>Money can be used to upgrade the Firefly and purchase additional ammunition for weapons. Items
-can be purchased from a shop on the Intermission screen.</P>
+  <h2>Getting Missions</h2>
 
-<P><B>Temporary Upgrades</B></P>
-<UL>Temporary upgrades are used to boost the Firefly's ability to be powered up. For example, at
-the start of the game the Firefly can only be powered up to fire two plasma bolts are once. By
-purchasing an upgrade for the Firefly, you can allow for power ups to enable you to fire a maximum
-of up to five plasma bolts at once. Note that this only affects power ups and these will still be
-ammunition limited. To upgrade your default weapon, you will need permanent power ups (see below).
-</UL>
+  <p>In each System, the player can get missions by going to the
+  Comms section of the Intermission screen. Here allies will inform
+  you of tasks that need to be performed and what planet these
+  tasks apply to. Once the player has decided which task they will
+  perform, they must go to the corresponding planet in the system
+  (see Moving Around for more details). Once stationed at the
+  planet click "Start Mission" to proceed to the mission briefing
+  screen. The "Start Mission" icon will not be shown if the mission
+  of the planet has been completed.</p>
 
-<P><B>Permanent Upgrades</B></P>
-<UL>These power ups are more expensive than temporary upgrades, but are permanent. Whereas a temporary
-upgrade requires you to make use of power ups on an ammunition limited base, permanent power ups are
-not limited. This is highly useful when facing heavily shielded and tough opponents, with no means
-of getting plasma ammo or transports in sight! When you power up your permanent weapon, your 
-powered up weapon level will also be automatically upgraded if it is less powerful than your new
-current power up level.<P/>
-When the Firefly's Primary Weapon has been upgraded to its maximum output (3 plasma cannons) the
-player can toggle the output type by pressing Shift. The output type can either be Concentrate (the
-default firing type) or Spread. Various situations can call for varying the output type.
-</UL>
+  <h2>Mission Briefing</h2>
 
-<P><B>Secondary Weapons</B></P>
-<UL>
-As well as primary weapons and temporary upgrades, the Firefly is also capable of using a 
-secondary weapon. At the start of the game this is a rocket launcher. Like the other weapons in the
-game this can be upgraded by purchasing a new weapon from the shop. At the start of the game, a 
-Double Rocket Launcher and Micro Rocket Launcher are available for purchase. Secondary weapons are
-used in the same way the rocket launcher is used (Space to fire). However the Laser Cannon and 
-Charge Cannon work differently.<P/>
-Neither the Charge Cannon or the Laser Cannon are ammunition limited (unlike the other rocket based
-weapons). The Charge Cannon works by the player holding down the Space bar and releasing it. A
-meter at the bottom of the screen shows how much charge has been built up. The Laser Cannon works
-by the player holding down the Space bar to fire a stream of laser fire. It is prone to over heating
-and must be allowed to cool after usage.
-</UL>
+  <p>Before the beginning of each mission you will be presented
+  with a mission briefing screen. This will outline the mission's
+  primary and (if any) secondary objectives. It will also inform
+  you of mission restrictions, such as time limits. Once you have
+  read this, press ctrl or space to continue</p>
 
-<P>Certain weapons and upgrades will not be available to you until later in the game, so remember
-to save your money for them</P>
+  <h2>Completing Missions</h2>
 
-<P>
-<TABLE BGCOLOR="#000099" WIDTH="100%"><TR><TD><B>Item Spheres</B></TD></TR></TABLE>
-<P>When an enemy craft is destroyed they will sometimes release ammo and cash spheres. Certain
-enemy craft will release power up spheres that can give your weapon a temporary boost. The following
-are spheres that can be picked up during missions,</P>
-<TABLE>
-<TR><TD><IMG SRC="dollar.png"></TD><TD><B>Cash</B> - Provides you with an additional cash bonus</TD></TR>
-<TR><TD><IMG SRC="rocket.png"></TD><TD><B>Plasma Ammo</B> - Increases your current plasma ammo</TD></TR>
-<TR><TD><IMG SRC="rocketAmmo.png"></TD><TD><B>Rocket Ammo</B> - Increases your current rocket ammo</TD></TR>
-<TR><TD><IMG SRC="heart.png"></TD><TD><B>Shield Sphere</B> - Replenishes your shield reserves</TD></TR>
-<TR><TD><IMG SRC="plasmaDamage.png"></TD><TD><B>Plasma Power</B> - Boosts your plasma power</TD></TR>
-<TR><TD><IMG SRC="plasmaAmmo.png"></TD><TD><B>Plasma Ouput</B> - Boosts the amount of plasma shots you can fire</TD></TR>
-<TR><TD><IMG SRC="plasmaRate.png"></TD><TD><B>Plasma Cooler</B> - Increases your plasma firing rate</TD></TR>
-<TR><TD><IMG SRC="superCharge.png"></TD><TD><B>Super Charge</B> - Three / Five way spread, full power and cooling (Rare)</TD></TR>
-</TABLE>
-</P>
+  <p>Each mission in the game has one or more objectives tied to
+  it. These objectives are either Primary or Secondary objectives.
+  In order to complete the mission, the player must complete all
+  the primary mission objectives. For example, when the game begins
+  Chris is fleeing a WEAPCO patrol. The primary objective for this
+  mission is to destroy all the enemy fighters. Once this is
+  achieved the Firefly will leave the sector and the mission will
+  be marked as a success.</p>
 
-<P>
-<TABLE BGCOLOR="#000099" WIDTH="100%"><TR><TD><B>Cut Scenes</B></TD></TR></TABLE>
-<P>During the course of the game mini cut scenes will be shown after certain missions. These scenes
-serve to extend the plot of the game and provide the player with gameplay tips. If you wish to
-skip a cut scene press Escape. It is advised that you only skip cut scenes if you have already seen
-them.</P>
+  <p>One thing to note is that some missions will have both Primary
+  and Secondary objectives. In this case, the Firefly does not
+  leave the sector if all primary mission objectives are complete
+  and secondary objectives remain. The player may then attempt to
+  complete remaining secondary objectives or press Escape to leave
+  the sector. Secondary objectives are optional.</p>
 
-<P>
-<TABLE BGCOLOR="#000099" WIDTH="100%"><TR><TD><B>Ending the Game</B></TD></TR></TABLE>
-<P>The game is over when the Firefly's shield units are reduced to 0 (zero), or a Primary Mission 
-objective is failed. At this point, you will see the Game Over screen. To continue, press Ctrl 
-or Space. You will then be taken back to the title screen. In certain missions the game will end
-if Sid Wilson is killed.</P>
+  <p>During the mission you will see messages appearing at the
+  bottom of the screen. These messages can be related to items that
+  you pick up, as well as mission related information.</p>
 
-<P>
-<TABLE BGCOLOR="#000099" WIDTH="100%"><TR><TD><B>About</B></TD></TR></TABLE>
+  <ul>
+  <li><font color="#FFFFFF">White messages</font> are standard for picking up items such as cash and power ups.
+  <li><font color="#00FF00">Green messages</font> signify successful completion of mission objectives.
+  <li><font color="#00FFFF">Light Blue messages</font> give further details about Primary mission requirements.
+  <li><font color="#FF0000">Red messages</font> indicate mission failures, warnings and wing mate ejections.
+  <li><font color="#FFFF00">Yellow messages</font> give further details about Secondary mission requirements.
+  </ul>
 
-<P>Parallel Realities started off writing games on the Amiga using AMOS and then, later, Blitz Basic
-2. Games written included the BOTSS Trilogy and most notably TANX Squadron. TANX Squadron was awarded
-Amiga Format's contributor prize of the month in the summer of 1999. Project: Starfighter originally
-started life on the Amiga but was never completed. Development began again for Linux in 2002 with this
-being our first C program. The game matured quickly from the initial ideas and this is the finished
-product. We do hope you enjoy playing it.</P>
+  <h2>The Target Arrow</h2>
 
-<P>Project: Starfighter<BR>
-Copyright &copy; 2003 Parallel Realities<BR>
-Copyright &copy; 2012 Guus Sliepen, Astrid S. de Wijn and others<BR>
-<P>Created using the <A HREF="http://www.libsdl.org">SDL library</A></P>
+  <p><img src="arrowNorthEast.png" align="left" alt="Target Arrow">
+  The Target Arrow can be used to locate enemies and point you in
+  the direction that the enemy craft is. You can toggle the Target
+  Arrow between three mode by pressing "T" on the keyboard: Off,
+  Mission target only, and All targets. This arrow is very useful
+  for finding enemies that are evasive (such as transports) on
+  missions that require you to destroy all present craft. Simply
+  follow the arrows to find the enemy. The arrows will not be
+  displayed when you are within the immediate vacinity of the
+  target. On certain missions (such as Bosses) the mission target
+  arrow will initially point towards a certain target that is part
+  of the mission objective. The target's current remaining shield
+  is also displayed in the bottom right hand corner of the
+  screen.</p>
 
-<P ALIGN="RIGHT"><A HREF="http://sourceforge.net/projects/pr-starfighter/">http://sourceforge.net/projects/pr-starfighter/</A></P>
+  <h2>Moving Around Systems</h2>
 
-</BODY>
-</HTML>
+  <p>To play a mission in Starfighter you must be stationed at the
+  relevant planet. To get to the planet you require, you will need
+  to click on the planet whilst viewing it on the Show System
+  section of the Intermission screen. Travelling between planets
+  can be dangerous, but luckily Spirit is a peaceful place and
+  there are no chances of interceptions, so travel is
+  instantaneous.</p>
+
+  <p>Other systems are not as friendly and whilst travelling to a
+  new destination the player runs the risk of being intercepted by
+  a WEAPCO patrol. After Spirit the player will select a planet to
+  travel to by clicking on it with the mouse. "Destination",
+  followed by the planet's name will appear in the bottom right
+  hand corner of the screen. A new icon labelled "Go To
+  Destination" will also appear. Clicking this icon will make the
+  player travel to the destination planet.</p>
+
+  <p>Travelling to new planets is represented at the bottom of the
+  screen by the two planets (the one being travelled from and the
+  one being travelled to). A red bar will fill up as the journey
+  progresses. The speed the bar fills up will vary occurring to how
+  far away the planets are from one another. At any point during
+  this time the planet can be intercepted (see Interceptions). Once
+  the red bar has filled up completely the journey will be
+  completed and you will be stationed that the new planet.</p>
+
+  <h2>Interceptions</h2>
+
+  <p>Interceptions can take place whilst travelling between two
+  planets within a system. When the player is intercepted they will
+  go directly into a mission-like scenario. The objective of this
+  interception is to clear all attacking forces. Once this is done,
+  the player will be free to leave.</p>
+
+  <p>Interceptions also serve other purposes - Sometimes the WEAPCO
+  patrol may have slave transports with them. One of the objectives
+  of a later system is to rescue a certain amount of slaves. This
+  is only possible during interceptions.</p>
+
+  <p>One important thing to remember is that any damage the player
+  receives during an interception will NOT be repaired until they
+  have reached the destination planet. Therefore if the player is
+  heavily damaged during one interception that damage will still be
+  present if they are attacked again. This can make interceptions
+  very dangerous.</p>
+
+  <h2>Weaponry and Upgrades</h2>
+
+  <p>During the course of the game you will receive money. Money is
+  gained from destroying enemy craft and picking up cash spheres in
+  game (please be aware that due to the nature of the game cash is
+  not earned for destroying ships during Interceptions).</p>
+
+  <p>Money can be used to upgrade the Firefly and purchase
+  additional ammunition for weapons. Items can be purchased from a
+  shop on the Intermission screen.</p>
+
+  <dl>
+  <dt>Temporary Upgrades</dt>
+
+  <dd>
+    Temporary upgrades are used to boost the Firefly's ability to
+    be powered up. For example, at the start of the game the
+    Firefly can only be powered up to fire two plasma bolts are
+    once. By purchasing an upgrade for the Firefly, you can allow
+    for power ups to enable you to fire a maximum of up to five
+    plasma bolts at once. Note that this only affects power ups and
+    these will still be ammunition limited. To upgrade your default
+    weapon, you will need permanent power ups (see below).
+  </dd>
+
+  <dt>Permanent Upgrades</dt>
+
+  <dd>
+    These power ups are more expensive than temporary upgrades, but
+    are permanent. Whereas a temporary upgrade requires you to make
+    use of power ups on an ammunition limited base, permanent power
+    ups are not limited. This is highly useful when facing heavily
+    shielded and tough opponents, with no means of getting plasma
+    ammo or transports in sight! When you power up your permanent
+    weapon, your powered up weapon level will also be automatically
+    upgraded if it is less powerful than your new current power up
+    level.When the Firefly's Primary Weapon has been upgraded to
+    its maximum output (3 plasma cannons) the player can toggle the
+    output type by pressing Shift. The output type can either be
+    Concentrate (the default firing type) or Spread. Various
+    situations can call for varying the output type.
+  </dd>
+
+  <dt>Secondary Weapons</dt>
+
+  <dd>
+    As well as primary weapons and temporary upgrades, the Firefly
+    is also capable of using a secondary weapon. At the start of
+    the game this is a rocket launcher. Like the other weapons in
+    the game this can be upgraded by purchasing a new weapon from
+    the shop. At the start of the game, a Double Rocket Launcher
+    and Micro Rocket Launcher are available for purchase. Secondary
+    weapons are used in the same way the rocket launcher is used
+    (Space to fire). However the Laser Cannon and Charge Cannon
+    work differently.Neither the Charge Cannon or the Laser Cannon
+    are ammunition limited (unlike the other rocket based weapons).
+    The Charge Cannon works by the player holding down the Space
+    bar and releasing it. A meter at the bottom of the screen shows
+    how much charge has been built up. The Laser Cannon works by
+    the player holding down the Space bar to fire a stream of laser
+    fire. It is prone to over heating and must be allowed to cool
+    after usage.
+  </dd>
+  </dl>
+
+  <p>Certain weapons and upgrades will not be available to you
+  until later in the game, so remember to save your money for
+  them.</p>
+
+  <h2>Item Spheres</h2>
+
+  <p>When an enemy craft is destroyed they will sometimes release
+  ammo and cash spheres. Certain enemy craft will release power up
+  spheres that can give your weapon a temporary boost. The
+  following are spheres that can be picked up during missions:</p>
+
+  <table summary="Description of all item spheres.">
+    <tr>
+      <td><img src="dollar.png" alt="Cash"></td>
+      <td><b>Cash</b> - Provides you with an additional cash bonus.</td>
+    </tr>
+
+    <tr>
+      <td><img src="rocket.png" alt="Plasma Ammo"></td>
+      <td><b>Plasma Ammo</b> - Increases your current plasma ammo.</td>
+    </tr>
+
+    <tr>
+      <td><img src="rocketAmmo.png" alt="Rocket Ammo"></td>
+      <td><b>Rocket Ammo</b> - Increases your current rocket ammo.</td>
+    </tr>
+
+    <tr>
+      <td><img src="heart.png" alt="Shield Sphere"></td>
+      <td><b>Shield Sphere</b> - Replenishes your shield reserves.</td>
+    </tr>
+
+    <tr>
+      <td><img src="plasmaDamage.png" alt="Plasma Power"></td>
+      <td><b>Plasma Power</b> - Boosts your plasma power.</td>
+    </tr>
+
+    <tr>
+      <td><img src="plasmaAmmo.png" alt="Plasma Output"></td>
+      <td><b>Plasma Ouput</b> - Boosts the amount of plasma shots you can fire.</td>
+    </tr>
+
+    <tr>
+      <td><img src="plasmaRate.png" alt="Plasma Coolor"></td>
+      <td><b>Plasma Cooler</b> - Increases your plasma firing rate.</td>
+    </tr>
+
+    <tr>
+      <td><img src="superCharge.png" alt="Super Charge"></td>
+      <td><b>Super Charge</b> - Three / Five way spread, full power and cooling (rare).</td>
+    </tr>
+  </table>
+
+  <h2>Cut Scenes</h2>
+
+  <p>During the course of the game mini cut scenes will be shown
+  after certain missions. These scenes serve to extend the plot of
+  the game and provide the player with gameplay tips. If you wish
+  to skip a cut scene press Escape. It is advised that you only
+  skip cut scenes if you have already seen them.</p>
+
+  <h2>Ending the Game</h2>
+
+  <p>The game is over when the Firefly's shield units are reduced
+  to 0 (zero), or a Primary Mission objective is failed. At this
+  point, you will see the Game Over screen. To continue, press Ctrl
+  or Space. You will then be taken back to the title screen. In
+  certain missions the game will end if Sid Wilson is killed.</p>
+
+  <h2>About</h2>
+
+  <p>Parallel Realities started off writing games on the Amiga
+  using AMOS and then, later, Blitz Basic 2. Games written included
+  the BOTSS Trilogy and most notably TANX Squadron. TANX Squadron
+  was awarded Amiga Format's contributor prize of the month in the
+  summer of 1999. Project: Starfighter originally started life on
+  the Amiga but was never completed. Development began again for
+  Linux in 2002 with this being our first C program. The game
+  matured quickly from the initial ideas and this is the finished
+  product. We do hope you enjoy playing it.</p>
+
+  <p>Project: Starfighter<br>
+  Copyright &copy; 2003 Parallel Realities<br>
+  Copyright &copy; 2012 Guus Sliepen, Astrid S. de Wijn and
+  others<br></p>
+
+  <p>Created using the <a href="http://www.libsdl.org">SDL
+  library</a></p>
+
+  <p align="right"><a href="http://sourceforge.net/projects/pr-starfighter/">http://sourceforge.net/projects/pr-starfighter/</a></p>
+</body>
+</html>
