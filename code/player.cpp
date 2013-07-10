@@ -308,7 +308,7 @@ void getPlayerInput()
 		engine.cursor_y = y;
 	}
 
-	if (SDL_PollEvent(&engine.event))
+	while (SDL_PollEvent(&engine.event))
 	{
 		switch (engine.event.type)
 		{
@@ -338,6 +338,42 @@ void getPlayerInput()
 			case SDL_KEYUP:
 				if (engine.event.key.keysym.sym != SDLK_p)
 					engine.keyState[engine.event.key.keysym.sym] = 0;
+				break;
+
+			case SDL_JOYBUTTONDOWN:
+			case SDL_JOYBUTTONUP:
+				switch (engine.event.jbutton.button)
+				{
+					case 0:
+						engine.keyState[SDLK_LCTRL] = engine.event.jbutton.state;
+						break;
+					case 1:
+						engine.keyState[SDLK_SPACE] = engine.event.jbutton.state;
+						break;
+					case 2:
+						engine.keyState[SDLK_LSHIFT] = engine.event.jbutton.state;
+						break;
+					case 3:
+						engine.keyState[SDLK_t] = engine.event.jbutton.state;
+						break;
+				}
+				break;
+
+			case SDL_JOYHATMOTION:
+				engine.keyState[SDLK_UP]    = engine.event.jhat.value & SDL_HAT_UP;
+				engine.keyState[SDLK_DOWN]  = engine.event.jhat.value & SDL_HAT_DOWN;
+				engine.keyState[SDLK_LEFT]  = engine.event.jhat.value & SDL_HAT_LEFT;
+				engine.keyState[SDLK_RIGHT] = engine.event.jhat.value & SDL_HAT_RIGHT;
+				break;
+
+			case SDL_JOYAXISMOTION:
+				if (engine.event.jaxis.axis & 1) {
+					engine.keyState[SDLK_UP] = engine.event.jaxis.value < -16384;
+					engine.keyState[SDLK_DOWN] = engine.event.jaxis.value >= 16384;
+				} else {
+					engine.keyState[SDLK_LEFT] = engine.event.jaxis.value < -16384;
+					engine.keyState[SDLK_RIGHT] = engine.event.jaxis.value >= 16384;
+				}
 				break;
 
 			default:

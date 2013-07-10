@@ -162,7 +162,7 @@ void initSystem()
 	#endif
 
 	/* Initialize the SDL library */
-	if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO) < 0) {
+	if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_JOYSTICK) < 0) {
 		printf("Couldn't initialize SDL: %s\n", SDL_GetError());
 		exit(1);
 	}
@@ -209,6 +209,9 @@ void initSystem()
 
 	SDL_ShowCursor(SDL_DISABLE);
 	SDL_EventState(SDL_MOUSEMOTION, SDL_DISABLE);
+
+        SDL_JoystickEventState(SDL_ENABLE);
+        SDL_JoystickOpen(0);
 }
 
 /*
