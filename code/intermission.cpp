@@ -34,8 +34,8 @@ static void doCursor()
 {
 	getPlayerInput();
 
-	limitInt(&engine.cursor_x, 10, screen->w - 10);
-	limitInt(&engine.cursor_y, 10, screen->h - 10);
+	limitInt(&engine.cursor_x, 10, screen->w - 10 - shape[0]->w);
+	limitInt(&engine.cursor_y, 10, screen->h - 10 - shape[0]->h);
 	blit(shape[0], engine.cursor_x, engine.cursor_y);
 }
 

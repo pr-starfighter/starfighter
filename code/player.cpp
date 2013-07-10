@@ -299,15 +299,6 @@ void flushInput()
 
 void getPlayerInput()
 {
-	if (engine.gameSection == SECTION_INTERMISSION)
-	{
-		// Get the current mouse position
-		int x, y;
-		SDL_GetMouseState(&x, &y);
-		engine.cursor_x = x;
-		engine.cursor_y = y;
-	}
-
 	while (SDL_PollEvent(&engine.event))
 	{
 		switch (engine.event.type)
@@ -387,6 +378,28 @@ void getPlayerInput()
 			engine.keyState[SDLK_F11] = engine.keyState[SDLK_LALT] = engine.keyState[SDLK_RETURN] = 0;
 		}
 	}
+
+	if (engine.gameSection == SECTION_INTERMISSION)
+	{
+		// Get the current mouse position
+		static int px = -1, py = -1;
+		int x, y;
+		SDL_GetMouseState(&x, &y);
+		if (px == x && py == y) {
+			if(engine.keyState[SDLK_UP] && engine.cursor_y > 0)
+				engine.cursor_y -= 4;
+			if(engine.keyState[SDLK_DOWN] && engine.cursor_y < screen->h - 4)
+				engine.cursor_y += 4;
+			if(engine.keyState[SDLK_LEFT] && engine.cursor_x > 0)
+				engine.cursor_x -= 4;
+			if(engine.keyState[SDLK_RIGHT] && engine.cursor_x < screen->w - 4)
+				engine.cursor_x += 4;
+		} else {
+			engine.cursor_x = px = x;
+			engine.cursor_y = py = y;
+		}
+	}
+
 }
 
 void leaveSector()
