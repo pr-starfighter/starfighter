@@ -31,80 +31,8 @@ void setWeaponShapes()
 	}
 }
 
-#if USEPACK
-
-static void loadWeapons()
-{
-	int dataLocation = locateDataInPak("data/weapons.dat", 1);
-	int id, ammo, damage, reload, speed, image1, image2, flags;
-
-	FILE *fp;
-
-	fp = fopen(PACKLOCATION, "rb");
-	fseek(fp, dataLocation, SEEK_SET);
-
-	for (int i = 0 ; i < MAX_WEAPONS ; i++)
-	{
-		fscanf(fp, "%d", &id);
-		fscanf(fp, "%d", &ammo);
-		fscanf(fp, "%d", &damage);
-		fscanf(fp, "%d", &reload);
-		fscanf(fp, "%d", &speed);
-		fscanf(fp, "%d", &image1);
-		fscanf(fp, "%d", &image2);
-		fscanf(fp, "%d", &flags);
-
-		weapon[i].id = id;
-		weapon[i].ammo[0] = ammo;
-		weapon[i].damage = damage;
-		weapon[i].reload[0] = reload;
-		weapon[i].speed = speed;
-		weapon[i].imageIndex[0] = image1;
-		weapon[i].imageIndex[1] = image2;
-		weapon[i].flags = flags;
-	}
-
-	fclose(fp);
-}
-
-void initWeapons() {loadWeapons();}
-
-#else
-
-#if SAVEDATA
-static void saveWeapons()
-{
-	FILE *fp;
-
-	fp = fopen("data/weapons.dat", "wb");
-	if (fp == NULL)
-	{
-		printf("Unable to write Weapon Data File\n");
-		exit(1);
-	}
-
-	for (int i = 0 ; i < MAX_WEAPONS ; i++)
-	{	
-		fprintf(fp, "%d ", weapon[i].id);
-		fprintf(fp, "%d ", weapon[i].ammo[0]);
-		fprintf(fp, "%d ", weapon[i].damage);
-		fprintf(fp, "%d ", weapon[i].reload[0]);
-		fprintf(fp, "%d ", weapon[i].speed);
-		fprintf(fp, "%d ", weapon[i].imageIndex[0]);
-		fprintf(fp, "%d ", weapon[i].imageIndex[1]);
-		fprintf(fp, "%d\n", weapon[i].flags);
-	}
-
-	// Put an extra line for the PAK file "just in case"
-	fprintf(fp, "\n");
-
-	fclose(fp);
-}
-#endif
-
 /*
-A list of predefined weaponary. Will most probably
-be placed into a data file in the final build.
+A list of predefined weaponary.
 */
 void initWeapons()
 {
@@ -255,10 +183,4 @@ void initWeapons()
 	weapon[W_DIRSHOCKMISSILE].flags = WF_AIMED | WF_TIMEDEXPLOSION;
 	weapon[W_DIRSHOCKMISSILE].imageIndex[0] = 4;
 	weapon[W_DIRSHOCKMISSILE].imageIndex[1] = 4;
-
-#if SAVEDATA
-	saveWeapons();
-#endif
 }
-
-#endif

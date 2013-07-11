@@ -1257,105 +1257,6 @@ void setAlienShapes()
 	}
 }
 
-#if USEPACK
-
-static void loadAliens()
-{
-	int dataLocation = locateDataInPak("data/aliens.dat", 1);
-	int def, ai, speed, shield, max, image1, image2, weapon1, weapon2, chance1, chance2, score;
-	int collectChance, collectType, collectVal, flags;
-
-	FILE *fp;
-
-	fp = fopen(PACKLOCATION, "rb");
-	fseek(fp, dataLocation, SEEK_SET);
-
-	for (int i = 0 ; i < MAX_DEFALIENS ; i++)
-	{
-		fscanf(fp, "%d", &def);
-		fscanf(fp, "%d", &ai);
-		fscanf(fp, "%d", &speed);
-		fscanf(fp, "%d", &shield);
-		fscanf(fp, "%d", &max);
-		fscanf(fp, "%d", &image1);
-		fscanf(fp, "%d", &image2);
-		fscanf(fp, "%d", &weapon1);
-		fscanf(fp, "%d", &weapon2);
-		fscanf(fp, "%d", &chance1);
-		fscanf(fp, "%d", &chance2);
-		fscanf(fp, "%d", &score);
-		fscanf(fp, "%d", &collectChance);
-		fscanf(fp, "%d", &collectType);
-		fscanf(fp, "%d", &collectVal);
-		fscanf(fp, "%d", &flags);
-
-		defEnemy[i].classDef = def;
-		defEnemy[i].AIType = ai;
-		defEnemy[i].speed = speed;
-		defEnemy[i].shield = shield;
-		defEnemy[i].maxShield = max;
-		defEnemy[i].imageIndex[0] = image1;
-		defEnemy[i].imageIndex[1] = image2;
-		defEnemy[i].weaponType[0] = weapon1;
-		defEnemy[i].weaponType[1] = weapon2;
-		defEnemy[i].chance[0] = chance1;
-		defEnemy[i].chance[1] = chance2;
-		defEnemy[i].score = score;
-		defEnemy[i].collectChance = collectChance;
-		defEnemy[i].collectType = collectType;
-		defEnemy[i].collectValue = collectVal;
-		defEnemy[i].flags = flags;
-	}
-
-	fclose(fp);
-}
-
-void defineAliens(){loadAliens();}
-
-#else
-
-#if SAVEDATA
-static void saveAliens()
-{
-	FILE *fp;
-
-	fp = fopen("data/aliens.dat", "wb");
-	if (fp == NULL)
-	{
-		printf("Unable to write Alien Data File\n");
-		exit(1);
-	}
-
-	for (int i = 0 ; i < MAX_DEFALIENS ; i++)
-	{
-		fprintf(fp, "%d ", defEnemy[i].classDef);
-		fprintf(fp, "%d ", defEnemy[i].AIType);
-		fprintf(fp, "%d ", defEnemy[i].speed);
-		fprintf(fp, "%d ", defEnemy[i].shield);
-		fprintf(fp, "%d ", defEnemy[i].maxShield);
-		fprintf(fp, "%d ", defEnemy[i].imageIndex[0]);
-		fprintf(fp, "%d ", defEnemy[i].imageIndex[1]);
-		fprintf(fp, "%d ", defEnemy[i].weaponType[0]);
-		fprintf(fp, "%d ", defEnemy[i].weaponType[1]);
-		fprintf(fp, "%d ", defEnemy[i].chance[0]);
-		fprintf(fp, "%d ", defEnemy[i].chance[1]);
-		fprintf(fp, "%d ", defEnemy[i].score);
-		fprintf(fp, "%d ", defEnemy[i].collectChance);
-		fprintf(fp, "%d ", defEnemy[i].collectType);
-		fprintf(fp, "%d ", defEnemy[i].collectValue);
-		fprintf(fp, "%d\n", defEnemy[i].flags);
-	}
-
-	// Put an extra line for the PAK file "just in case"
-	fprintf(fp, "\n");
-
-	fclose(fp);
-}
-#endif
-
-/*
-Will be dumped into a data file at the end of the project
-*/
 void defineAliens()
 {
 	// Dual Plasma Fighter.
@@ -2034,10 +1935,4 @@ void defineAliens()
 	defEnemy[CD_URANUSBOSSWING2].collectType = P_ANYTHING;
 	defEnemy[CD_URANUSBOSSWING2].collectValue = 250;
 	defEnemy[CD_URANUSBOSSWING2].flags = FL_WEAPCO | FL_IMMORTAL;
-
-#if SAVEDATA
-	saveAliens();
-#endif
 }
-
-#endif

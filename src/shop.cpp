@@ -260,87 +260,6 @@ static void drawShop()
 	}
 }
 
-#if USEPACK
-
-static void loadShop()
-{
-	char name[255], description[255];
-	int price, image, x, y;
-
-	FILE *fp;
-
-	#if USEPACK
-	int dataLocation = locateDataInPak("data/shop.dat", 1);
-	fp = fopen(PACKLOCATION, "rb");
-	fseek(fp, dataLocation, SEEK_SET);
-	#else
-	fp = fopen("data/shop.dat", "rb");
-	#endif
-
-	for (int i = 0 ; i < MAX_SHOPITEMS ; i++)
-	{
-		fscanf(fp, "%[^\n]%*c", name);
-		fscanf(fp, "%[^\n]%*c", description);
-		fscanf(fp, "%d", &price);
-		fscanf(fp, "%d", &image);
-		fscanf(fp, "%d", &x);
-		fscanf(fp, "%d%*c", &y);
-
-		strcpy(shopItems[i].name, name);
-		strcpy(shopItems[i].description, description);
-		shopItems[i].price = price;
-		shopItems[i].image = image;
-		shopItems[i].x = x;
-		shopItems[i].y = y;
-	}
-
-	fclose(fp);
-
-	shopSelectedItem = -1;
-
-	player.image[0] = shape[0];
-	player.x = 380;
-	player.y = 95;
-
-	drawShop();
-}
-
-void initShop(){loadShop();}
-
-#else
-
-#if SAVEDATA
-static void saveShop()
-{
-	FILE *fp;
-
-	fp = fopen("data/shop.dat", "wb");
-	if (fp == NULL)
-	{
-		printf("Unable to write Shop Data File\n");
-		exit(1);
-	}
-
-	for (int i = 0 ; i < MAX_SHOPITEMS ; i++)
-	{
-		fprintf(fp, "%s\n", shopItems[i].name);
-		fprintf(fp, "%s\n", shopItems[i].description);
-		fprintf(fp, "%d ", shopItems[i].price);
-		fprintf(fp, "%d ", shopItems[i].image);
-		fprintf(fp, "%d ", shopItems[i].x);
-		fprintf(fp, "%d\n", shopItems[i].y);
-	}
-
-	// Put an extra line for the PAK file "just in case"
-	fprintf(fp, "\n");
-
-	fclose(fp);
-}
-#endif
-
-/*
-Throw into a data file in final build
-*/
 void initShop()
 {
 	/* ----------- Temporary Items ----------- */
@@ -472,14 +391,8 @@ void initShop()
 	player.x = 380;
 	player.y = 95;
 
-#if SAVEDATA
-	saveShop();
-#endif
-
 	drawShop();
 }
-
-#endif
 
 static void buy(int i)
 {
@@ -789,4 +702,3 @@ void showShop()
 		}
 	}
 }
-
