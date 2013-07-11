@@ -26,7 +26,7 @@ endif
 all: $(ALL)
 
 # compiling other source files.
-%.o: code/%.cpp code/*.h
+%.o: src/%.cpp src/*.h
 	$(CXX) $(CXXFLAGS) -c -DVERSION=\"$(VERSION)\" -DPACKLOCATION=\"$(DATADIR)$(PACK)\" -DUSEPACK=$(USEPACK) $<
 
 # linking the program.
