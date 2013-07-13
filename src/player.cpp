@@ -358,12 +358,21 @@ void getPlayerInput()
 				break;
 
 			case SDL_JOYAXISMOTION:
+				static bool prevjoyup, prevjoydown, prevjoyleft, prevjoyright;
 				if (engine.event.jaxis.axis & 1) {
-					engine.keyState[SDLK_UP] = engine.event.jaxis.value < -16384;
-					engine.keyState[SDLK_DOWN] = engine.event.jaxis.value >= 16384;
+					bool joyup = engine.event.jaxis.value < -16384;
+					bool joydown = engine.event.jaxis.value >= 16384;
+					if(joyup != prevjoyup)
+						engine.keyState[SDLK_UP] = prevjoyup = joyup;
+					if(joydown != prevjoydown)
+						engine.keyState[SDLK_DOWN] = prevjoydown = joydown;
 				} else {
-					engine.keyState[SDLK_LEFT] = engine.event.jaxis.value < -16384;
-					engine.keyState[SDLK_RIGHT] = engine.event.jaxis.value >= 16384;
+					bool joyleft = engine.event.jaxis.value < -16384;
+					bool joyright = engine.event.jaxis.value >= 16384;
+					if(joyleft != prevjoyleft)
+						engine.keyState[SDLK_LEFT] = prevjoyleft = joyleft;
+					if(joyright != prevjoyright)
+						engine.keyState[SDLK_RIGHT] = prevjoyright = joyright;
 				}
 				break;
 
