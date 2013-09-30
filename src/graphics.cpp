@@ -38,6 +38,9 @@ Uint32 black;
 Uint32 white;
 Uint32 lightGrey;
 Uint32 darkGrey;
+SDL_Window *window;
+SDL_Renderer *renderer;
+SDL_Texture *texture;
 SDL_Surface *screen, *background;
 SDL_Surface *shape[MAX_SHAPES];
 SDL_Surface *shipShape[MAX_SHIPSHAPES];
@@ -132,7 +135,7 @@ void initGraphics()
 
 SDL_Surface *setTransparent(SDL_Surface *sprite)
 {
-	SDL_SetColorKey(sprite, (SDL_SRCCOLORKEY|SDL_RLEACCEL), SDL_MapRGB(sprite->format, 0, 0, 0));
+	SDL_SetColorKey(sprite, (SDL_TRUE|SDL_RLEACCEL), SDL_MapRGB(sprite->format, 0, 0, 0));
 	return sprite;
 }
 
@@ -351,7 +354,9 @@ void clearScreen(Uint32 color)
 
 void updateScreen()
 {
-	SDL_Flip(screen);
+	SDL_UpdateTexture(texture, NULL, screen->pixels, screen->w * 4);
+	SDL_RenderCopy(renderer, texture, NULL, NULL);
+	SDL_RenderPresent(renderer);
 }
 
 /*
@@ -514,7 +519,7 @@ void blevelRect(int x, int y, int w, int h, Uint8 red, Uint8 green, Uint8 blue)
 
 SDL_Surface *createSurface(int width, int height)
 {
-	SDL_Surface *surface, *newImage;
+	SDL_Surface *surface;
 	Uint32 rmask, gmask, bmask, amask;
 
 	/* SDL interprets each pixel as a 32-bit number, so our masks must depend
@@ -538,11 +543,7 @@ SDL_Surface *createSurface(int width, int height)
 		showErrorAndExit(2, "");
 	}
 
-	newImage = SDL_DisplayFormat(surface);
-
-	SDL_FreeSurface(surface);
-
-	return newImage;
+	return surface;
 }
 
 SDL_Surface *textSurface(const char *inString, int color)
@@ -584,7 +585,7 @@ SDL_Surface *alphaRect(int width, int height, Uint8 red, Uint8 green, Uint8 blue
 
 	SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, red, green, blue));
 
-	SDL_SetAlpha(surface, SDL_SRCALPHA|SDL_RLEACCEL, 128);
+	SDL_SetSurfaceAlphaMod(surface, 128);
 
 	return surface;
 }
@@ -680,7 +681,7 @@ SDL_Surface *loadImage(const char *filename)
 		showErrorAndExit(0, filename);
 	}
 
-	newImage = SDL_DisplayFormat(image);
+	newImage = SDL_ConvertSurface(image, screen->format, 0);
 	if ( newImage ) {
 		SDL_FreeSurface(image);
 	} else {

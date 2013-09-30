@@ -672,14 +672,14 @@ void showShop()
 	else if (currentGame.system == 2)
 		icons = 15;
 
-	if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
+	if ((engine.keyState[KEY_FIRE]))
 	{
 		for (int i = 0 ; i < icons ; i++)
 		{
 			if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, shopItems[i].x, shopItems[i].y, 32, 25))
 			{
 				shopSelectedItem = i;
-				engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
+				engine.keyState[KEY_FIRE] = 0;
 				drawShop();
 			}
 		}
@@ -689,14 +689,14 @@ void showShop()
 			if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 60, 350, 24, 16))
 			{
 				buy(shopSelectedItem);
-				engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
+				engine.keyState[KEY_FIRE] = 0;
 				drawShop();
 			}
 
 			if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 700, 350, 24, 16))
 			{
 				sell(shopSelectedItem);
-				engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
+				engine.keyState[KEY_FIRE] = 0;
 				drawShop();
 			}
 		}

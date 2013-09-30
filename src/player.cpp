@@ -86,10 +86,10 @@ void doPlayer()
 	{
 		if (player.shield > 0)
 		{
-			if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
+			if ((engine.keyState[KEY_FIRE]))
 				fireBullet(&player, 0);
 
-			if ((engine.keyState[SDLK_SPACE]) && (player.weaponType[1] != W_NONE))
+			if ((engine.keyState[KEY_ALTFIRE]) && (player.weaponType[1] != W_NONE))
 			{
 				if ((player.weaponType[1] != W_CHARGER) && (player.weaponType[1] != W_LASER) && (player.ammo[1] > 0))
 				{
@@ -113,7 +113,7 @@ void doPlayer()
 
 			if (player.weaponType[1] == W_CHARGER)
 			{
-				if (engine.keyState[SDLK_SPACE])
+				if (engine.keyState[KEY_ALTFIRE])
 				{
 					limitCharAdd(&player.ammo[1], 1, 0, 200);
 				}
@@ -125,7 +125,7 @@ void doPlayer()
 				}
 			}
 
-			if ((engine.keyState[SDLK_LSHIFT]) || (engine.keyState[SDLK_RSHIFT]))
+			if ((engine.keyState[KEY_SWITCH]))
 			{
 				if(weapon[0].ammo[0] >= 3 && weapon[0].ammo[0] <= currentGame.maxPlasmaOutput)
 				{
@@ -141,39 +141,39 @@ void doPlayer()
 					}
 				}
 
-				engine.keyState[SDLK_LSHIFT] = engine.keyState[SDLK_RSHIFT] = 0;
+				engine.keyState[KEY_SWITCH] = 0;
 			}
 
 			limitCharAdd(&player.reload[0], -1, 0, 999);
 			limitCharAdd(&player.reload[1], -1, 0, 999);
 
-			if (engine.keyState[SDLK_UP])
+			if (engine.keyState[KEY_UP])
 			{
 				player.y -= player.speed;
 				engine.ssy += 0.1;
 			}
 
-			if (engine.keyState[SDLK_DOWN])
+			if (engine.keyState[KEY_DOWN])
 			{
 				player.y += player.speed;
 				engine.ssy -= 0.1;
 			}
 
-			if (engine.keyState[SDLK_LEFT])
+			if (engine.keyState[KEY_LEFT])
 			{
 				player.x -= player.speed;
 				engine.ssx += 0.1;
 				player.face = 1;
 			}
 
-			if (engine.keyState[SDLK_RIGHT])
+			if (engine.keyState[KEY_RIGHT])
 			{
 				player.x += player.speed;
 				engine.ssx -= 0.1;
 				player.face = 0;
 			}
 
-			if (engine.keyState[SDLK_ESCAPE])
+			if (engine.keyState[KEY_ESCAPE])
 			{
 				if ((engine.done == 0) && (engine.gameSection == SECTION_GAME) && (currentMission.remainingObjectives1 == 0))
 				{
@@ -183,13 +183,13 @@ void doPlayer()
 				}
 			}
 
-			if (engine.keyState[SDLK_p] || !(SDL_GetAppState() & SDL_APPINPUTFOCUS))
+			if (engine.keyState[KEY_PAUSE])
 			{
 				engine.paused = true;
-				engine.keyState[SDLK_p] = 0;
+				engine.keyState[KEY_PAUSE] = 0;
 			}
 
-			if ((engine.keyState[SDLK_t]) && (currentGame.area != 10))
+			if ((engine.keyState[KEY_TARGET]) && (currentGame.area != 10))
 			{
 				if (engine.targetArrowTimer == -1 && currentGame.difficulty < DIFFICULTY_HARD) {
 					engine.targetArrowTimer = -2;
@@ -202,7 +202,7 @@ void doPlayer()
 					setInfoLine("Showing mission target", FONT_WHITE);
 				}
 
-				engine.keyState[SDLK_t] = 0;
+				engine.keyState[KEY_TARGET] = 0;
 			}
 
 			if ((engine.missionCompleteTimer == 0) && (engine.targetArrowTimer == -1))
@@ -261,7 +261,7 @@ void doPlayer()
 				playSound(SFX_EXPLOSION, player.x);
 			}
 
-			engine.keyState[SDLK_UP] = engine.keyState[SDLK_DOWN] = engine.keyState[SDLK_LEFT] = engine.keyState[SDLK_RIGHT] = 0;
+			engine.keyState[KEY_UP] = engine.keyState[KEY_DOWN] = engine.keyState[KEY_LEFT] = engine.keyState[KEY_RIGHT] = 0;
 			if ((rand() % 3) == 0)
 				addExplosion(player.x + rrand(-10, 10), player.y + rrand(-10, 10), E_BIG_EXPLOSION);
 			if (player.shield == -99)
@@ -291,10 +291,41 @@ void doPlayer()
 
 void flushInput()
 {
-	for (int i = 0 ; i < 350 ; i++)
+	for (int i = 0; i < KEY_LAST; i++)
 		engine.keyState[i] = 0;
 
 	while (SDL_PollEvent(&engine.event)){}
+}
+
+static enum keys mapkey(uint32_t code) {
+	switch (code) {
+		case SDLK_UP:
+			return KEY_UP;
+		case SDLK_DOWN:
+			return KEY_DOWN;
+		case SDLK_LEFT:
+			return KEY_LEFT;
+		case SDLK_RIGHT:
+			return KEY_RIGHT;
+		case SDLK_LCTRL:
+		case SDLK_RCTRL:
+			return KEY_FIRE;
+		case SDLK_SPACE:
+			return KEY_ALTFIRE;
+		case SDLK_t:
+			return KEY_TARGET;
+		case SDLK_LSHIFT:
+		case SDLK_RSHIFT:
+			return KEY_SWITCH;
+		case SDLK_p:
+			return KEY_PAUSE;
+		case SDLK_ESCAPE:
+			return KEY_ESCAPE;
+		case SDLK_F11:
+			return KEY_FULLSCREEN;
+		default:
+			return KEY_DUMMY;
+	}
 }
 
 void getPlayerInput()
@@ -310,16 +341,17 @@ void getPlayerInput()
 			case SDL_MOUSEBUTTONDOWN:
 				if (engine.gameSection == SECTION_INTERMISSION)
 				{
-					if (engine.event.button.button == SDL_BUTTON_LEFT) engine.keyState[SDLK_LCTRL] = 1;
-					if (engine.event.button.button == SDL_BUTTON_RIGHT) engine.keyState[SDLK_SPACE] = 1;
+					if (engine.event.button.button == SDL_BUTTON_LEFT) engine.keyState[KEY_FIRE] = 1;
+					if (engine.event.button.button == SDL_BUTTON_RIGHT) engine.keyState[KEY_ALTFIRE] = 1;
 				}
 				break;
 
 			case SDL_KEYDOWN:
-				if (engine.gameSection == SECTION_TITLE)
-					addKeyEvent(SDL_GetKeyName(engine.event.key.keysym.sym));
+				//TODO: reenable somehow?
+				//if (engine.gameSection == SECTION_TITLE)
+				//	addKeyEvent(SDL_GetKeyName(engine.event.key.keysym.sym));
 
-				engine.keyState[engine.event.key.keysym.sym] = 1;
+				engine.keyState[mapkey(engine.event.key.keysym.sym)] = 1;
 
 				if (engine.gameSection != SECTION_GAME)
 					engine.paused = false;
@@ -327,8 +359,8 @@ void getPlayerInput()
 				break;
 
 			case SDL_KEYUP:
-				if (engine.event.key.keysym.sym != SDLK_p)
-					engine.keyState[engine.event.key.keysym.sym] = 0;
+				if (engine.event.key.keysym.sym != SDLK_p && engine.event.key.keysym.sym != SDLK_t)
+					engine.keyState[mapkey(engine.event.key.keysym.sym)] = 0;
 				break;
 
 			case SDL_JOYBUTTONDOWN:
@@ -336,25 +368,25 @@ void getPlayerInput()
 				switch (engine.event.jbutton.button)
 				{
 					case 0:
-						engine.keyState[SDLK_LCTRL] = engine.event.jbutton.state;
+						engine.keyState[KEY_FIRE] = engine.event.jbutton.state;
 						break;
 					case 1:
-						engine.keyState[SDLK_SPACE] = engine.event.jbutton.state;
+						engine.keyState[KEY_ALTFIRE] = engine.event.jbutton.state;
 						break;
 					case 2:
-						engine.keyState[SDLK_LSHIFT] = engine.event.jbutton.state;
+						engine.keyState[KEY_SWITCH] = engine.event.jbutton.state;
 						break;
 					case 3:
-						engine.keyState[SDLK_t] = engine.event.jbutton.state;
+						engine.keyState[KEY_TARGET] = engine.event.jbutton.state;
 						break;
 				}
 				break;
 
 			case SDL_JOYHATMOTION:
-				engine.keyState[SDLK_UP]    = engine.event.jhat.value & SDL_HAT_UP;
-				engine.keyState[SDLK_DOWN]  = engine.event.jhat.value & SDL_HAT_DOWN;
-				engine.keyState[SDLK_LEFT]  = engine.event.jhat.value & SDL_HAT_LEFT;
-				engine.keyState[SDLK_RIGHT] = engine.event.jhat.value & SDL_HAT_RIGHT;
+				engine.keyState[KEY_UP]    = engine.event.jhat.value & SDL_HAT_UP;
+				engine.keyState[KEY_DOWN]  = engine.event.jhat.value & SDL_HAT_DOWN;
+				engine.keyState[KEY_LEFT]  = engine.event.jhat.value & SDL_HAT_LEFT;
+				engine.keyState[KEY_RIGHT] = engine.event.jhat.value & SDL_HAT_RIGHT;
 				break;
 
 			case SDL_JOYAXISMOTION:
@@ -363,28 +395,30 @@ void getPlayerInput()
 					bool joyup = engine.event.jaxis.value < -16384;
 					bool joydown = engine.event.jaxis.value >= 16384;
 					if(joyup != prevjoyup)
-						engine.keyState[SDLK_UP] = prevjoyup = joyup;
+						engine.keyState[KEY_UP] = prevjoyup = joyup;
 					if(joydown != prevjoydown)
-						engine.keyState[SDLK_DOWN] = prevjoydown = joydown;
+						engine.keyState[KEY_DOWN] = prevjoydown = joydown;
 				} else {
 					bool joyleft = engine.event.jaxis.value < -16384;
 					bool joyright = engine.event.jaxis.value >= 16384;
 					if(joyleft != prevjoyleft)
-						engine.keyState[SDLK_LEFT] = prevjoyleft = joyleft;
+						engine.keyState[KEY_LEFT] = prevjoyleft = joyleft;
 					if(joyright != prevjoyright)
-						engine.keyState[SDLK_RIGHT] = prevjoyright = joyright;
+						engine.keyState[KEY_RIGHT] = prevjoyright = joyright;
 				}
 				break;
 
-			default:
+			case SDL_WINDOWEVENT:
+				if(engine.event.window.event == SDL_WINDOWEVENT_FOCUS_LOST)
+					engine.paused = 1;
 				break;
 		}
 
-		if ((engine.keyState[SDLK_F11]) || ((engine.keyState[SDLK_RETURN]) && (engine.keyState[SDLK_LALT])))
+		if (engine.keyState[KEY_FULLSCREEN])
 		{
-			SDL_WM_ToggleFullScreen(screen);
 			engine.fullScreen = !engine.fullScreen;
-			engine.keyState[SDLK_F11] = engine.keyState[SDLK_LALT] = engine.keyState[SDLK_RETURN] = 0;
+			SDL_SetWindowFullscreen(window, engine.fullScreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
+			engine.keyState[KEY_FULLSCREEN] = 0;
 		}
 	}
 
@@ -395,13 +429,13 @@ void getPlayerInput()
 		int x, y;
 		SDL_GetMouseState(&x, &y);
 		if (px == x && py == y) {
-			if(engine.keyState[SDLK_UP] && engine.cursor_y > 0)
+			if(engine.keyState[KEY_UP] && engine.cursor_y > 0)
 				engine.cursor_y -= 4;
-			if(engine.keyState[SDLK_DOWN] && engine.cursor_y < screen->h - 4)
+			if(engine.keyState[KEY_DOWN] && engine.cursor_y < screen->h - 4)
 				engine.cursor_y += 4;
-			if(engine.keyState[SDLK_LEFT] && engine.cursor_x > 0)
+			if(engine.keyState[KEY_LEFT] && engine.cursor_x > 0)
 				engine.cursor_x -= 4;
-			if(engine.keyState[SDLK_RIGHT] && engine.cursor_x < screen->w - 4)
+			if(engine.keyState[KEY_RIGHT] && engine.cursor_x < screen->w - 4)
 				engine.cursor_x += 4;
 		} else {
 			engine.cursor_x = px = x;
@@ -413,8 +447,8 @@ void getPlayerInput()
 
 void leaveSector()
 {
-	engine.keyState[SDLK_UP] = engine.keyState[SDLK_DOWN] = engine.keyState[SDLK_LEFT] = engine.keyState[SDLK_RIGHT] = 0;
-	engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = engine.keyState[SDLK_SPACE] = 0;
+	engine.keyState[KEY_UP] = engine.keyState[KEY_DOWN] = engine.keyState[KEY_LEFT] = engine.keyState[KEY_RIGHT] = 0;
+	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 
 	if (engine.done == 0)
 		engine.done = 3;

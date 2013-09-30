@@ -202,7 +202,7 @@ void doCutscene(int scene)
 	updateScreen();
 	clearScreen(black);
 
-	engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = engine.keyState[SDLK_SPACE] = 0;
+	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 
 	engine.ssx = -0.5;
 	engine.ssy = 0;
@@ -314,7 +314,7 @@ void doCutscene(int scene)
 
 		delayFrame();
 
-		if (engine.keyState[SDLK_ESCAPE])
+		if (engine.keyState[KEY_ESCAPE])
 			break;
 	}
 

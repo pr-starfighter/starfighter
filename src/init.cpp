@@ -96,9 +96,9 @@ void showErrorAndExit(int errorId, const char *name)
 
 	updateScreen();
 
-	engine.keyState[SDLK_SPACE] = 0;
+	engine.keyState[KEY_ALTFIRE] = 0;
 
-	while (!engine.keyState[SDLK_SPACE])
+	while (!engine.keyState[KEY_ALTFIRE])
 	{
 		getPlayerInput();
 		delayFrame();
@@ -184,16 +184,36 @@ void initSystem()
 	engine.useSound = useSound;
 	engine.useMusic = useMusic;
 
-	SDL_WM_SetCaption("Project: Starfighter", "starfighter");
-	SDL_WM_SetIcon(loadImage("gfx/alienDevice.png"), NULL);
+	screen = SDL_CreateRGBSurface(0, screenWidth, screenHeight, 32, 0xff0000, 0xff00, 0xff, 0xff000000);
 
-	if (engine.fullScreen)
-		screen = SDL_SetVideoMode(screenWidth, screenHeight, 0, SDL_DOUBLEBUF|SDL_HWPALETTE|SDL_FULLSCREEN);
-	else
-		screen = SDL_SetVideoMode(screenWidth, screenHeight, 0, SDL_DOUBLEBUF|SDL_HWPALETTE);
+	if (!screen) {
+		printf("Couldn't create %ix%ix32 surface: %s\n", screenWidth, screenHeight, SDL_GetError());
+		exit(1);
+	}
 
-	if (screen == NULL) {
-		printf("Couldn't set %ix%ix16 video mode: %s\n", screenWidth, screenHeight, SDL_GetError());
+	window = SDL_CreateWindow("Project: Starfighter", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screen->w, screen->h, 0);
+
+	if (window == NULL) {
+		printf("Could not create window: %s\n", SDL_GetError());
+		exit(1);
+	}
+
+	SDL_SetWindowIcon(window, loadImage("gfx/alienDevice.png"));
+	SDL_SetWindowFullscreen(window, engine.fullScreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
+
+	renderer = SDL_CreateRenderer(window, -1, 0);
+
+	if (!renderer) {
+		printf("Could not create renderer: %s\n", SDL_GetError());
+		exit(1);
+	}
+
+	SDL_RenderSetLogicalSize(renderer, screen->w, screen->h);
+
+	texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, screen->w, screen->h);
+
+	if (!texture) {
+		printf("Couldn't create %ix%ix32 texture: %s\n", screen->w, screen->h, SDL_GetError());
 		exit(1);
 	}
 

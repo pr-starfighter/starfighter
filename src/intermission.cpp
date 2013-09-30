@@ -275,7 +275,7 @@ static bool showSystem(float x, float y, bool selectable)
 		if (selectable && collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, r.x, r.y, systemPlanet[planet].image->w, systemPlanet[planet].image->h))
 		{
 			drawString(systemPlanet[planet].name, -1, 545, FONT_WHITE);
-			if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
+			if ((engine.keyState[KEY_FIRE]))
 			{
 				if (currentGame.system == 0)
 				{
@@ -291,7 +291,7 @@ static bool showSystem(float x, float y, bool selectable)
 				}
 
 				rtn = true;
-				engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
+				engine.keyState[KEY_FIRE] = 0;
 			}
 		}
 
@@ -314,9 +314,9 @@ static void showStatus(SDL_Surface *infoSurface)
 {
 	float speed = 0.25;
 
-	if(engine.keyState[SDLK_DOWN])
+	if(engine.keyState[KEY_DOWN])
 		speed = 1;
-	else if(engine.keyState[SDLK_UP])
+	else if(engine.keyState[KEY_UP])
 		speed = -1;
 
 	blit(infoSurface, 100, 80);
@@ -407,7 +407,7 @@ static void createOptions(SDL_Surface *optionsSurface)
 
 static void showOptions(SDL_Surface *optionsSurface)
 {
-	if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
+	if ((engine.keyState[KEY_FIRE]))
 	{
 		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 172, 45, 22))
 			engine.useSound = true;
@@ -439,13 +439,7 @@ static void showOptions(SDL_Surface *optionsSurface)
 		{
 			if (!engine.fullScreen)
 			{
-				#if LINUX
-				SDL_WM_ToggleFullScreen(screen);
-				#else
-				screen = SDL_SetVideoMode(screen->w, screen->h, 0, SDL_DOUBLEBUF|SDL_HWPALETTE|SDL_FULLSCREEN);
-				drawBackground();
-				flushBuffer();
-				#endif
+				SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
 				engine.fullScreen = true;
 			}
 		}
@@ -454,13 +448,7 @@ static void showOptions(SDL_Surface *optionsSurface)
 		{
 			if (engine.fullScreen)
 			{
-				#if LINUX
-				SDL_WM_ToggleFullScreen(screen);
-				#else
-				screen = SDL_SetVideoMode(screen->w, screen->h, 0, SDL_DOUBLEBUF|SDL_HWPALETTE);
-				drawBackground();
-				flushBuffer();
-				#endif
+				SDL_SetWindowFullscreen(window, 0);
 				engine.fullScreen = false;
 			}
 		}
@@ -468,7 +456,7 @@ static void showOptions(SDL_Surface *optionsSurface)
 		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 322, 100, 22))
 		{
 			wrapChar(&(++currentGame.autoSaveSlot), -1, 4);
-			engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
+			engine.keyState[KEY_FIRE] = 0;
 		}
 
 		createOptions(optionsSurface);
@@ -534,7 +522,7 @@ int galaxyMap()
 	shape[FACE_KLINE] = loadImage("gfx/face_kline.png");
 
 	engine.done = 0;
-	engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
+	engine.keyState[KEY_FIRE] = 0;
 	engine.ssx = engine.ssy = 0;
 
 	SDL_Rect r;
@@ -611,7 +599,7 @@ int galaxyMap()
 		player.shield = player.maxShield;
 
 	flushInput();
-	engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = engine.keyState[SDLK_SPACE] = 0;
+	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 	engine.done = 0;
 
 	while (!engine.done)
@@ -695,10 +683,10 @@ int galaxyMap()
 				break;
 
 			case 1:
-				if (engine.keyState[SDLK_SPACE])
+				if (engine.keyState[KEY_ALTFIRE])
 				{
 					movePlanets = !movePlanets;
-					engine.keyState[SDLK_SPACE] = 0;
+					engine.keyState[KEY_ALTFIRE] = 0;
 				}
 
 				if (movePlanets)
@@ -830,17 +818,17 @@ int galaxyMap()
 							blit(iconInfo[11].image, (int)iconInfo[i].x, 545);
 					}
 
-					if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
+					if ((engine.keyState[KEY_FIRE]))
 					{
 						redrawBackGround = true;
 						section = i;
-						engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
+						engine.keyState[KEY_FIRE] = 0;
 					}
 				}
 			}
 		}
 
-		engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = engine.keyState[SDLK_SPACE] = 0;
+		engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 		doCursor();
 
 		delayFrame();

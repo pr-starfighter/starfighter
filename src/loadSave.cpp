@@ -153,7 +153,7 @@ void saveGame(int slot)
 
 	// Recall to update the save slots... (lazy, yes)
 	initSaveSlots();
-	engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
+	engine.keyState[KEY_FIRE] = 0;
 }
 
 void createSavesSurface(SDL_Surface *savesSurface, signed char clickedSlot)
@@ -203,7 +203,7 @@ void createSavesSurface(SDL_Surface *savesSurface, signed char clickedSlot)
 			break;
 	}
 
-	engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
+	engine.keyState[KEY_FIRE] = 0;
 }
 
 /*
@@ -221,7 +221,7 @@ int showSaveSlots(SDL_Surface *savesSurface, signed char saveSlot)
 
 	int clickedSlot = -1;
 
-	if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
+	if ((engine.keyState[KEY_FIRE]))
 	{
 		for (int i = 0 ; i < 5 ; i++)
 		{
