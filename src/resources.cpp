@@ -116,7 +116,7 @@ void loadGameGraphics()
 			}
 		}
 
-		SDL_SetColorKey(shipShape[i], (SDL_TRUE|SDL_RLEACCEL), SDL_MapRGB(shipShape[i]->format, 0, 0, 0));
+		SDL_SetColorKey(shipShape[i], SDL_TRUE, SDL_MapRGB(shipShape[i]->format, 0, 0, 0));
 	}
 
 	strcpy(string, "data/resources_all.dat");

@@ -135,7 +135,7 @@ void initGraphics()
 
 SDL_Surface *setTransparent(SDL_Surface *sprite)
 {
-	SDL_SetColorKey(sprite, (SDL_TRUE|SDL_RLEACCEL), SDL_MapRGB(sprite->format, 0, 0, 0));
+	SDL_SetColorKey(sprite, SDL_TRUE, SDL_MapRGB(sprite->format, 0, 0, 0));
 	return sprite;
 }
 
