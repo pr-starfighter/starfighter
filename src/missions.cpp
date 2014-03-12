@@ -160,7 +160,8 @@ void updateSystemStatus()
 		strcpy(currentGame.stationedName, "Nerod");
 		initPlanetMissions(currentGame.system);
 
-		currentGame.shieldUnits = 2;
+		if (currentGame.gamePlay != GAMEPLAY_ONPON)
+		    currentGame.shieldUnits = 2;
 	}
 	else if (currentGame.area == 11)
 	{
@@ -170,7 +171,8 @@ void updateSystemStatus()
 		strcpy(currentGame.stationedName, "Odeon");
 		initPlanetMissions(currentGame.system);
 
-		currentGame.shieldUnits = 3;
+		if (currentGame.gamePlay != GAMEPLAY_ONPON)
+		    currentGame.shieldUnits = 3;
 	}
 	else if (currentGame.area == 18)
 	{
@@ -180,7 +182,8 @@ void updateSystemStatus()
 		strcpy(currentGame.stationedName, "Pluto");
 		initPlanetMissions(currentGame.system);
 
-		currentGame.shieldUnits = 4;
+		if (currentGame.gamePlay != GAMEPLAY_ONPON)
+		    currentGame.shieldUnits = 4;
 	}
 	else // Update the mission for the planet
 	{

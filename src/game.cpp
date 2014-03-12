@@ -70,10 +70,19 @@ void newGame()
 	currentGame.maxPlasmaAmmo = 100;
 	currentGame.maxRocketAmmo = 10;
 
-	currentGame.shieldUnits = 1;
+    if (currentGame.gamePlay == GAMEPLAY_ONPON)
+    {
+        currentGame.shieldUnits = 2;
+        player.maxShield = 50;
+        player.shield = 50;
+    }
+    else
+    {
+	    currentGame.shieldUnits = 1;
+	    player.maxShield = 25;
+	    player.shield = 25;
+	}
 
-	player.maxShield = 25;
-	player.shield = 25;
 	player.ammo[0] = 0;
 	player.ammo[1] = 5;
 	player.weaponType[0] = W_PLAYER_WEAPON;

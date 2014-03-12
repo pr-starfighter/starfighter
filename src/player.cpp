@@ -113,7 +113,7 @@ void doPlayer()
 
 			if (player.weaponType[1] == W_CHARGER)
 			{
-				if (engine.keyState[SDLK_SPACE])
+				if (engine.keyState[SDLK_SPACE] && !(currentGame.gamePlay == GAMEPLAY_ONPON && (engine.keyState[SDLK_LCTRL] || engine.keyState[SDLK_RCTRL])))
 				{
 					limitCharAdd(&player.ammo[1], 1, 0, 200);
 				}
