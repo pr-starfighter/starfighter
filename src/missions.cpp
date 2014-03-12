@@ -161,7 +161,7 @@ void updateSystemStatus()
 		initPlanetMissions(currentGame.system);
 
 		if (currentGame.gamePlay != GAMEPLAY_ONPON)
-		    currentGame.shieldUnits = 2;
+			currentGame.shieldUnits = 2;
 	}
 	else if (currentGame.area == 11)
 	{
@@ -172,7 +172,7 @@ void updateSystemStatus()
 		initPlanetMissions(currentGame.system);
 
 		if (currentGame.gamePlay != GAMEPLAY_ONPON)
-		    currentGame.shieldUnits = 3;
+			currentGame.shieldUnits = 3;
 	}
 	else if (currentGame.area == 18)
 	{
@@ -183,7 +183,7 @@ void updateSystemStatus()
 		initPlanetMissions(currentGame.system);
 
 		if (currentGame.gamePlay != GAMEPLAY_ONPON)
-		    currentGame.shieldUnits = 4;
+			currentGame.shieldUnits = 4;
 	}
 	else // Update the mission for the planet
 	{
