@@ -129,7 +129,7 @@ static void createMissionDetailSurface(SDL_Surface *comms, int missionSlot)
 
 void doComms(SDL_Surface *comms)
 {
-	if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
+	if ((engine.keyState[KEY_FIRE]))
 	{
 		if (engine.commsSection == 0)
 		{
@@ -138,7 +138,7 @@ void doComms(SDL_Surface *comms)
 				if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 170, 180 + (i * 60), 430, 50))
 				{
 					createMissionDetailSurface(comms, i);
-					engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
+					engine.keyState[KEY_FIRE] = 0;
 				}
 			}
 		}
@@ -147,7 +147,7 @@ void doComms(SDL_Surface *comms)
 			if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 170, 440, 160, 20))
 			{
 				createCommsSurface(comms);
-				engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
+				engine.keyState[KEY_FIRE] = 0;
 			}
 		}
 	}

@@ -792,13 +792,13 @@ void missionBriefScreen()
 
 		flushInput();
 		engine.done = 0;
-		engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
+		engine.keyState[KEY_FIRE] = 0;
 
 		while (true)
 		{
 			delayFrame();
 			getPlayerInput();
-			if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
+			if ((engine.keyState[KEY_FIRE]))
 				break;
 		}
 
@@ -890,13 +890,13 @@ void missionFinishedScreen()
 
 		flushInput();
 		engine.done = 0;
-		engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
+		engine.keyState[KEY_FIRE] = 0;
 
 		while (true)
 		{
 			delayFrame();
 			getPlayerInput();
-			if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]))
+			if ((engine.keyState[KEY_FIRE]))
 				break;
 		}
 	}

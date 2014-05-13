@@ -31,7 +31,7 @@ bool checkPauseRequest()
 {
 	getPlayerInput();
 		
-	if (engine.keyState[SDLK_ESCAPE])
+	if (engine.keyState[KEY_ESCAPE])
 	{
 		engine.paused = false;
 		engine.done = 1;
@@ -39,10 +39,10 @@ bool checkPauseRequest()
 		return true;
 	}
 	
-	if (engine.keyState[SDLK_p])
+	if (engine.keyState[KEY_PAUSE])
 	{
 		engine.paused = false;
-		engine.keyState[SDLK_p] = 0;
+		engine.keyState[KEY_PAUSE] = 0;
 	}
 
 	return false;

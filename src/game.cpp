@@ -145,7 +145,7 @@ int mainGameLoop()
 	// Default to no aliens dead...
 	engine.allAliensDead = 0;
 
-	engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = engine.keyState[SDLK_SPACE] = 0;
+	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 	flushInput();
 
 	while (engine.done != 1)

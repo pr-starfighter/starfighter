@@ -51,7 +51,7 @@ void defineGlobals()
 
 	engine.commsSection = 0;
 
-	for (int i = 0 ; i < 350 ; i++)
+	for (int i = 0; i < KEY_LAST; i++)
 		engine.keyState[i] = 0;
 
 	engine.eventTimer = 0;

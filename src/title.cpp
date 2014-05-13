@@ -265,7 +265,7 @@ int doTitle()
 
 	engine.done = 0;
 	flushInput();
-	engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = 0;
+	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 
 	if ((engine.useMusic) && (engine.useAudio))
 		Mix_PlayMusic(engine.music, 1);
@@ -299,7 +299,7 @@ int doTitle()
 		}
 		else if ((now - then > 9000) && (now - then < 15000) && (!skip))
 		{
-   		blitText(0);
+			blitText(0);
 		}
 		else if ((now - then > 16000) && (now - then < 21000) && (!skip))
 		{
@@ -338,18 +338,18 @@ int doTitle()
 				if (redGlow <= 0) {redDir = 2; redGlow = 0;}
 				if (redGlow >= 255) {redDir = -2; redGlow = 255;}
 
-				if (engine.keyState[SDLK_UP])
+				if (engine.keyState[KEY_UP])
 				{
-					engine.keyState[SDLK_UP] = 0;
+					engine.keyState[KEY_UP] = 0;
 					wrapChar(&(--selectedOption), 1, listLength + 1);
 					if (menuType == 0)
 						if ((selectedOption == 2) || (selectedOption == 3))
 							if (continueSaveSlot == 0)
 								selectedOption = 1;
 				}
-				if (engine.keyState[SDLK_DOWN])
+				if (engine.keyState[KEY_DOWN])
 				{
-					engine.keyState[SDLK_DOWN] = 0;
+					engine.keyState[KEY_DOWN] = 0;
 					wrapChar(&(++selectedOption), 0, listLength);
 					if (menuType == 0)
 						if ((selectedOption == 2) || (selectedOption == 3))
@@ -382,7 +382,7 @@ int doTitle()
 			engine.cheatCredits = false;
 		}
 
-		if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]) || (engine.keyState[SDLK_SPACE]))
+		if ((engine.keyState[KEY_FIRE] || engine.keyState[KEY_ALTFIRE]))
 		{
 			if ((now - then <= 27500) && (!skip))
 			{
@@ -445,17 +445,7 @@ int doTitle()
 						else if (selectedOption == 3)
 						{
 							engine.fullScreen = !engine.fullScreen;
-							#if LINUX
-							SDL_WM_ToggleFullScreen(screen);
-							#else
-							if (engine.fullScreen)
-								screen = SDL_SetVideoMode(screen->w, screen->h, 0, SDL_DOUBLEBUF|SDL_HWPALETTE|SDL_FULLSCREEN);
-							else
-								screen = SDL_SetVideoMode(screen->w, screen->h, 0, SDL_DOUBLEBUF|SDL_HWPALETTE);
-
-							drawBackground();
-							flushBuffer();
-							#endif
+							SDL_SetWindowFullscreen(window, engine.fullScreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
 						}
 						else if (selectedOption == 4)
 							wrapChar(&(++currentGame.autoSaveSlot), -1, 4);
@@ -499,7 +489,7 @@ int doTitle()
 						break;
 				}
 			}
-			engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = engine.keyState[SDLK_SPACE] = 0;
+			engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 		}
 
 		delayFrame();
@@ -510,7 +500,7 @@ int doTitle()
 	SDL_FreeSurface(prlogo);
 	SDL_FreeSurface(sflogo);
 
-	engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = engine.keyState[SDLK_SPACE] = 0;
+	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 
 	resetLists();
 
@@ -578,7 +568,7 @@ void showStory()
 	flushBuffer();
 
 	flushInput();
-	engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = engine.keyState[SDLK_SPACE] = 0;
+	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 
 	while (true)
 	{
@@ -587,7 +577,7 @@ void showStory()
 
 		getPlayerInput();
 
-		if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]) || (engine.keyState[SDLK_SPACE]))
+		if ((engine.keyState[KEY_FIRE] || engine.keyState[KEY_ALTFIRE]))
 			break;
 
 		if (textShape[8].y > (screen->h / 2) + 150)
@@ -617,7 +607,7 @@ void gameover()
 	freeGraphics();
 	SDL_FillRect(background, NULL, black);
 
-	engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = engine.keyState[SDLK_SPACE] = 0;
+	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 	engine.gameSection = SECTION_INTERMISSION;
 
 	loadMusic("music/Wybierak.mod");
@@ -641,13 +631,13 @@ void gameover()
 	updateScreen();
 
 	flushInput();
-	engine.keyState[SDLK_LCTRL] = engine.keyState[SDLK_RCTRL] = engine.keyState[SDLK_SPACE] = 0;
+	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 
 	while (true)
 	{
 		getPlayerInput();
 
-		if ((engine.keyState[SDLK_LCTRL]) || (engine.keyState[SDLK_RCTRL]) || (engine.keyState[SDLK_SPACE]))
+		if ((engine.keyState[KEY_FIRE] || engine.keyState[KEY_ALTFIRE]))
 			break;
 
 		updateScreen();
@@ -736,7 +726,7 @@ void doCredits()
 
 	lastCredit = numberOfCredits - 1;
 
-	engine.keyState[SDLK_ESCAPE] = 0;
+	engine.keyState[KEY_ESCAPE] = 0;
 	flushInput();
 
 	while (true)
@@ -745,13 +735,13 @@ void doCredits()
 		unBuffer();
 
 		getPlayerInput();
-		if (engine.keyState[SDLK_ESCAPE])
+		if (engine.keyState[KEY_ESCAPE])
 			break;
 
 		float speed = 0.5;
-		if(engine.keyState[SDLK_DOWN])
+		if(engine.keyState[KEY_DOWN])
 			speed = 2;
-		else if(engine.keyState[SDLK_UP])
+		else if(engine.keyState[KEY_UP])
 			speed = -2;
 
 		for (int i = 0 ; i < numberOfCredits ; i++)

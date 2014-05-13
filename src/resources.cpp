@@ -116,7 +116,7 @@ void loadGameGraphics()
 			}
 		}
 
-		SDL_SetColorKey(shipShape[i], (SDL_SRCCOLORKEY|SDL_RLEACCEL), SDL_MapRGB(shipShape[i]->format, 0, 0, 0));
+		SDL_SetColorKey(shipShape[i], SDL_TRUE, SDL_MapRGB(shipShape[i]->format, 0, 0, 0));
 	}
 
 	strcpy(string, "data/resources_all.dat");
@@ -178,22 +178,6 @@ void freeSound()
 }
 
 
-static void setFontColor(SDL_Surface *image, int red, int green, int blue)
-{
-	SDL_Color colors[256];
-	colors[0].r = 0;
-	colors[0].g = 0;
-	colors[0].b = 0;
-	for (int i = 1 ; i < 256 ; i++)
-	{
-		colors[i].r = red;
-		colors[i].g = green;
-		colors[i].b = blue;
-	}
-
-	SDL_SetPalette(image, SDL_LOGPAL|SDL_PHYSPAL, colors, 0, 256);
-}
-
 /*
 Custom loading to alter the font color before doing
 all other things
@@ -219,23 +203,23 @@ void loadFont()
 		switch(i)
 		{
 			case 1:
-				setFontColor(image, 255, 0, 0);
+				SDL_SetSurfaceColorMod(image, 255, 0, 0);
 				break;
 			case 2:
-				setFontColor(image, 255, 255, 0);
+				SDL_SetSurfaceColorMod(image, 255, 255, 0);
 				break;
 			case 3:
-				setFontColor(image, 0, 255, 0);
+				SDL_SetSurfaceColorMod(image, 0, 255, 0);
 				break;
 			case 4:
-				setFontColor(image, 0, 255, 255);
+				SDL_SetSurfaceColorMod(image, 0, 255, 255);
 				break;
 			case 5:
-				setFontColor(image, 0, 0, 10);
+				SDL_SetSurfaceColorMod(image, 0, 0, 10);
 				break;
 		}
 
-		newImage = SDL_DisplayFormat(image);
+		newImage = SDL_ConvertSurface(image, screen->format, 0);
 
 		fontShape[i] = setTransparent(newImage);
 

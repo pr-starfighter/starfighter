@@ -207,6 +207,21 @@ struct Planet {
 	char subject[100];
 };
 
+enum keys {
+	KEY_UP,
+	KEY_DOWN,
+	KEY_LEFT,
+	KEY_RIGHT,
+	KEY_FIRE,
+	KEY_ALTFIRE,
+	KEY_TARGET,
+	KEY_SWITCH,
+	KEY_PAUSE,
+	KEY_ESCAPE,
+	KEY_FULLSCREEN,
+	KEY_DUMMY,
+	KEY_LAST
+};
 
 struct globalEngineVariables {
 
@@ -274,7 +289,7 @@ struct globalEngineVariables {
 	// This really only applies to Linux users.
 	char userHomeDirectory[1024];
 	
-	char keyState[350];
+	char keyState[KEY_LAST];
 
 	bool cheat; // overall cheat
 	bool cheatShield;
