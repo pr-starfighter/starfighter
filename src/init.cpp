@@ -219,9 +219,9 @@ void initSystem()
 
 	if (engine.useAudio)
 	{
-		if (Mix_OpenAudio(48000, AUDIO_S16, engine.useAudio * 2, 1024) < 0)
+		if (Mix_OpenAudio(44100, AUDIO_S16, engine.useAudio * 2, 1024) < 0)
 		{
-			printf("Warning: Couldn't set 48000 Hz 16-bit stereo audio - Reason: %s\n", Mix_GetError());
+			printf("Warning: Couldn't set 44100 Hz 16-bit stereo audio - Reason: %s\n", Mix_GetError());
 			printf("Sound and Music will be disabled\n");
 			engine.useAudio = false;
 		}
