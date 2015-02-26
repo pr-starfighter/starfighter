@@ -535,13 +535,7 @@ void showStory()
 
 	FILE *fp;
 
-	#if USEPACK
-	int dataLocation = locateDataInPak("data/intro.txt", 1);
-	fp = fopen(PACKLOCATION, "rb");
-	fseek(fp, dataLocation, SEEK_SET);
-	#else
 	fp = fopen("data/intro.txt", "rb");
-	#endif
 
 	int i = 0;
 	int nextPos = -1;
@@ -683,13 +677,7 @@ void doCredits()
 
 	drawBackGround();
 
-	#if USEPACK
-	int dataLocation = locateDataInPak("data/credits.txt", 1);
-	fp = fopen(PACKLOCATION, "rb");
-	fseek(fp, dataLocation, SEEK_SET);
-	#else
 	fp = fopen("data/credits.txt", "rb");
-	#endif
 
 	for (int i = 0 ; i < 6 ; i++)
 	{

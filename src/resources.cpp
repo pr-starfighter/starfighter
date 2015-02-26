@@ -59,14 +59,7 @@ void loadGameGraphics()
 
 	FILE *fp;
 
-	#if USEPACK
-	int dataLocation = locateDataInPak(string, 1);
-	fp = fopen(PACKLOCATION, "rb");
-	if(fp)
-		fseek(fp, dataLocation, SEEK_SET);
-	#else
 	fp = fopen(string, "rb");
-	#endif
 
 	if (fp == NULL)
 		exit(1);
@@ -121,13 +114,7 @@ void loadGameGraphics()
 
 	strcpy(string, "data/resources_all.dat");
 
-	#if USEPACK
-	dataLocation = locateDataInPak(string, 1);
-	fp = fopen(PACKLOCATION, "rb");
-	fseek(fp, dataLocation, SEEK_SET);
-	#else
 	fp = fopen(string, "rb");
-	#endif
 
 	fscanf(fp, "%d %s", &index, string);
 	while (index != -1)
@@ -188,12 +175,7 @@ void loadFont()
 
 	for (int i = 0 ; i < MAX_FONTSHAPES ; i++)
 	{
-		#if USEPACK
-		unpack("gfx/smallFont.png", PAK_FONT);
-		image = IMG_Load_RW(engine.sdlrw, 1);
-		#else
 		image = IMG_Load("gfx/smallFont.png");
-		#endif
 
 		if (image == NULL) {
 			printf("Couldn't load game font! (%s) Exitting.\n", SDL_GetError());

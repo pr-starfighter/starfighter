@@ -24,13 +24,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 int main(int argc, char *argv[])
 {
-#if !USEPACK
-	char datadir[] = PACKLOCATION;
-	char *slash = strrchr(datadir, '/');
-	if(slash)
-		*slash = 0;
-	chdir(datadir);
-#endif
+	chdir(DATADIR);
 
 	defineGlobals(); // Must do this first!
 
@@ -54,13 +48,10 @@ int main(int argc, char *argv[])
 
 	for (int i = 1 ; i < argc ; i++)
 	{
-		#if USEPACK
-		#else
 		if (strcmp(argv[i], "-nomove") == 0)
 			{printf("Enemy movement disabled\n"); dev.moveAliens = 0;}
 		if (strcmp(argv[i], "-nofire") == 0)
 			{printf("Enemy firing disabled\n"); dev.fireAliens = 0;}
-		#endif
 		if (strcmp(argv[i], "-cheat") == 0)
 			cheatAttempt = true;
 		if (strcmp(argv[i], "-noaudio") == 0)

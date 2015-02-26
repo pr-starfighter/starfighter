@@ -293,17 +293,9 @@ static void getPreDefinedAliens()
 	int barrierSpeed = 1;
 
 	sprintf(string, "data/aliens%d.dat", currentGame.area);
-	#if USEPACK
-	int dataLocation = locateDataInPak(string, 0);
-	if (dataLocation == -1)
-		return;
-	fp = fopen(PACKLOCATION, "rb");
-	fseek(fp, dataLocation, SEEK_SET);
-	#else
 	fp = fopen(string, "rb");
 	if (fp == NULL)
 		return;
-	#endif
 
 	fscanf(fp, "%d ", &index);
 

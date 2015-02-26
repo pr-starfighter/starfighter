@@ -87,13 +87,7 @@ static void createMissionDetailSurface(SDL_Surface *comms, int missionSlot)
 
 	sprintf(string, "data/brief%d.txt", mission);
 
-	#if USEPACK
-	int dataLocation = locateDataInPak(string, 1);
-	fp = fopen(PACKLOCATION, "rb");
-	fseek(fp, dataLocation, SEEK_SET);
-	#else
 	fp = fopen(string, "rb");
-	#endif
 
 	fscanf(fp, "%[^\n]%*c", name);
 	sprintf(string, "+++ Communication with %s +++", name);

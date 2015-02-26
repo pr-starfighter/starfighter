@@ -83,12 +83,7 @@ Mix_Chunk *loadSound(const char *filename)
 {
 	Mix_Chunk *chunk;
 
-	#if USEPACK
-	unpack(filename, PAK_WAV);
-	chunk = Mix_LoadWAV_RW(engine.sdlrw, 1);
-	#else
 	chunk = Mix_LoadWAV(filename);
-	#endif
 
 	return chunk;
 }
@@ -101,18 +96,7 @@ void loadMusic(const char *filename)
 	if (engine.music != NULL)
 		Mix_FreeMusic(engine.music);
 
-	#if USEPACK
-	if(!unpack(filename, PAK_MOD))
-		return;
-
-	char musicFilename[PATH_MAX];
-	strcpy(musicFilename, "");
-	sprintf(musicFilename, "%smusic.mod", engine.userHomeDirectory);
-
-	engine.music = Mix_LoadMUS(musicFilename);
-	#else
 	engine.music = Mix_LoadMUS(filename);
-	#endif
 }
 
 void playRandomTrack()

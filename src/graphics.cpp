@@ -669,12 +669,7 @@ SDL_Surface *loadImage(const char *filename)
 {
 	SDL_Surface *image, *newImage;
 
-	#if USEPACK
-	unpack(filename, PAK_IMG);
-	image = IMG_Load_RW(engine.sdlrw, 1);
-	#else
 	image = IMG_Load(filename);
-	#endif
 
 	if (image == NULL) {
 		printf("Couldn't load %s: %s\n", filename, SDL_GetError());

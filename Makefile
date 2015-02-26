@@ -5,12 +5,9 @@ OBJS = ai.o aliens.o audio.o bullets.o cargo.o collectable.o comms.o debris.o ev
 
 VERSION = 1.2-SDL2
 PROG = starfighter
-PACK = starfighter.pak
 DOCS = docs/*
 DATA = data gfx sound
 DATAFILES = data/* gfx/* sound/*
-
-USEPACK ?= 0
 
 PREFIX ?= /usr
 BINDIR ?= $(PREFIX)/games/
@@ -19,15 +16,12 @@ DOCDIR ?= $(PREFIX)/share/doc/$(PROG)/
 
 # top-level rule to create the program.
 ALL = $(PROG)
-ifeq ($(USEPACK), 1)
-	ALL += $(PACK)
-endif
 
 all: $(ALL)
 
 # compiling other source files.
 %.o: src/%.cpp src/*.h
-	$(CXX) $(CXXFLAGS) -c -DVERSION=\"$(VERSION)\" -DPACKLOCATION=\"$(DATADIR)$(PACK)\" -DUSEPACK=$(USEPACK) $<
+	$(CXX) $(CXXFLAGS) -c -DVERSION=\"$(VERSION)\" -DDATADIR=\"$(DATADIR)\" $<
 
 # linking the program.
 $(PROG): $(OBJS)
@@ -44,18 +38,8 @@ install: $(ALL)
 	mkdir -p $(DESTDIR)$(DOCDIR)
 
 	install -m 755 $(PROG) $(DESTDIR)$(BINDIR)$(PROG)
-ifeq ($(USEPACK), 1)
-	install -m 644 $(PACK) $(DESTDIR)$(DATADIR)$(PACK)
-else
 	cp -pr $(DATA) $(DESTDIR)$(DATADIR)
-endif
 	cp -p $(DOCS) $(DESTDIR)$(DOCDIR)
-
-$(PACK): pack.py $(DATAFILES)
-	./pack.py $(PACK) $(DATAFILES)
-
-unpack: unpack.py
-	./unpack.py $(PACK)
 
 optimise:
 	advpng -z gfx/*.png

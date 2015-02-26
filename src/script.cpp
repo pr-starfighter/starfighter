@@ -61,17 +61,9 @@ void loadScriptEvents()
 	int time, entity, flags;
 	char face[255], message[255];
 
-	#if USEPACK
-	int dataLocation = locateDataInPak(filename, 0);
-	if (dataLocation == -1)
-		return;
-	fp = fopen(PACKLOCATION, "rb");
-	fseek(fp, dataLocation, SEEK_SET);
-	#else
 	fp = fopen(filename, "rb");
 	if (fp == NULL)
 		return;
-	#endif
 
 	fscanf(fp, "%d ", &time);
 
@@ -144,13 +136,7 @@ static void setScene(int scene)
 
 	sprintf(string, "data/cutscene%d.dat", scene);
 
-	#if USEPACK
-	int dataLocation = locateDataInPak(string, 1);
-	fp = fopen(PACKLOCATION, "rb");
-	fseek(fp, dataLocation, SEEK_SET);
-	#else
 	fp = fopen(string, "rb");
-	#endif
 
 	// Load in the specified background
 	fscanf(fp, "%s", string);
