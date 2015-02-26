@@ -1,7 +1,7 @@
 CXXFLAGS ?= -O2 -Wall -g
 CXXFLAGS += `pkg-config --cflags sdl2 SDL2_image SDL2_mixer` -DLINUX
 LIBS = `pkg-config --libs sdl2 SDL2_image SDL2_mixer`
-OBJS = ai.o aliens.o audio.o bullets.o cargo.o collectable.o comms.o debris.o events.o explosions.o game.o globals.o graphics.o init.o intermission.o loadSave.o messages.o misc.o missions.o player.o resources.o script.o shop.o Starfighter.o title.o unpack.o weapons.o
+OBJS = ai.o aliens.o audio.o bullets.o cargo.o collectable.o comms.o debris.o events.o explosions.o game.o globals.o graphics.o init.o intermission.o loadSave.o messages.o misc.o missions.o player.o resources.o script.o shop.o Starfighter.o title.o weapons.o
 
 VERSION = 1.2-SDL2
 PROG = starfighter
@@ -53,4 +53,4 @@ dist:
 	tar czf starfighter-$(VERSION).tar.gz starfighter-$(VERSION)
 	rm -rf starfighter-$(VERSION)
 
-.PHONY: all clean install optimise unpack dist
+.PHONY: all clean install optimise dist
