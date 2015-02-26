@@ -10,7 +10,7 @@ DOCS = docs/*
 DATA = data gfx sound
 DATAFILES = data/* gfx/* sound/*
 
-USEPACK ?= 1
+USEPACK ?= 0
 
 PREFIX ?= /usr
 BINDIR ?= $(PREFIX)/games/
