@@ -104,8 +104,9 @@ void playRandomTrack()
 	int tracks = 0;
 
 	char track[][64] = {
-	"music/DST-RailJet_short-cut.ogg", "music/DST-RailJet_short-cut.ogg", "music/DST-RailJet_short-cut.ogg", "music/DST-RailJet_short-cut.ogg",
-	"music/DST-RailJet_short-cut.ogg", "music/DST-RailJet_short-cut.ogg", "music/tgfcoder-FrozenJam-SeamlessLoop.ogg"
+	"music/railjet_short.ogg", "music/railjet_short.ogg", "music/railjet_short.ogg",
+	"music/railjet_short.ogg", "music/railjet_short.ogg",
+	"music/space_dimensions.ogg", "music/frozen_jam.ogg"
 	};
 
 	switch(currentGame.system)
@@ -128,7 +129,7 @@ void playRandomTrack()
 		case 11:
 		case 18:
 		case 25:
-			loadMusic("music/space_dimensions.ogg");
+			loadMusic("music/orbital_colossus.ogg");
 			break;
 		case 26:
 			loadMusic("music/RE.ogg");
