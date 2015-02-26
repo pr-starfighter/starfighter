@@ -103,9 +103,9 @@ void playRandomTrack()
 
 	int tracks = 0;
 
-	char track[][30] = {
-	"music/Frantic.mod", "music/Artificial.mod", "music/Lunatic.mod", "music/ToxicFriend.mod",
-	"music/DigitalInferno.mod", "music/TempoTrance.mod", "music/IntoTheMachine.mod"
+	char track[][64] = {
+	"music/DST-RailJet_short-cut.ogg", "music/DST-RailJet_short-cut.ogg", "music/DST-RailJet_short-cut.ogg", "music/DST-RailJet_short-cut.ogg",
+	"music/DST-RailJet_short-cut.ogg", "music/DST-RailJet_short-cut.ogg", "music/tgfcoder-FrozenJam-SeamlessLoop.ogg"
 	};
 
 	switch(currentGame.system)
@@ -128,10 +128,10 @@ void playRandomTrack()
 		case 11:
 		case 18:
 		case 25:
-			loadMusic("music/HardTranceDub.mod");
+			loadMusic("music/space_dimensions.ogg");
 			break;
 		case 26:
-			loadMusic("music/LoopsAndTings.mod");
+			loadMusic("music/RE.ogg");
 			break;
 		default:
 			loadMusic(track[rand() % tracks]);

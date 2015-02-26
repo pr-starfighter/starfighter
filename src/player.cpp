@@ -457,9 +457,9 @@ void leaveSector()
 		{
 			player.x += engine.ssx;
 			engine.ssx -= 1;
-			if (player.y > screen->h)
+			if (player.y > screen->h / 2)
 				player.y--;
-			if (player.y < screen->h)
+			if (player.y < screen->h / 2)
 				player.y++;
 		}
 

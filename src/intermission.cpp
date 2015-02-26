@@ -476,7 +476,7 @@ int galaxyMap()
 
 	initSaveSlots();
 
-	loadMusic("music/3DParadise.mod");
+	loadMusic("music/through_space.ogg");
 
 	loadBackground(systemBackground[currentGame.system]);
 

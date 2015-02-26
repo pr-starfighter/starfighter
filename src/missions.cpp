@@ -506,7 +506,7 @@ static char revealHiddenObjectives()
 			enemy[WC_KLINE].y = player.y;
 			enemy[WC_KLINE].flags |= FL_IMMORTAL | FL_NOFIRE;
 			setTarget(WC_KLINE);
-			loadMusic("music/TranceGeneration.mod");
+			loadMusic("music/last_cyber_dance.ogg");
 			if ((engine.useAudio) && (engine.useMusic))
 				Mix_PlayMusic(engine.music, -1);
 		}

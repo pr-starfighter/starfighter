@@ -601,7 +601,7 @@ void gameover()
 	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 	engine.gameSection = SECTION_INTERMISSION;
 
-	loadMusic("music/Wybierak.mod");
+	loadMusic("music/death.ogg");
 
 	SDL_Surface *gameover = loadImage("gfx/gameover.png");
 
