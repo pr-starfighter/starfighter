@@ -489,10 +489,6 @@ void setTarget(int index)
 	engine.targetIndex = index;
 	engine.targetShield = 85;
 	engine.targetShield /= enemy[index].shield;
-
-	engine.targetArrowTimer = -1;
-	if (currentGame.area == 10)
-		engine.targetArrowTimer = 0;
 }
 
 void initAliens()

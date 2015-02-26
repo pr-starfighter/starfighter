@@ -349,8 +349,6 @@ static void destroyAlien(object *bullet, object *theEnemy)
 	if (theEnemy->classDef == CD_ASTEROID)
 	{
 		theEnemy->shield = -999;
-		if ((currentGame.area == 10) && (theEnemy != &enemy[0]) && (currentMission.completed1[0] == 0) && (currentMission.targetValue1[1] == 1))
-			engine.targetArrowTimer = 120;
 	}
 
 	if ((theEnemy->classDef == CD_KRASS) && (bullet->owner == &player))

@@ -189,7 +189,7 @@ int doTitle()
 
 	signed char continueSaveSlot = initSaveSlots();
 
-	loadMusic("music/Platinum.mod");
+	loadMusic("music/walking_among_androids.ogg");
 
 	loadBackground("gfx/spirit.jpg");
 
@@ -656,7 +656,7 @@ void doCredits()
 	freeGraphics();
 
 	if ((engine.useMusic) && (engine.useAudio))
-		loadMusic("music/Solace.s3m");
+		loadMusic("music/rise_of_spirit.ogg");
 
 	FILE *fp;
 	int numberOfCredits = 0;

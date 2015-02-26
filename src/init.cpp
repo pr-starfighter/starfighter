@@ -42,7 +42,7 @@ void initVars()
 
 	if (engine.useAudio)
 	{
-		Mix_Volume(-1, 25);
+		Mix_Volume(-1, 50);
 		Mix_VolumeMusic((int)engine.musicVolume);
 	}
 }

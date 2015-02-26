@@ -211,7 +211,6 @@ enum keys {
 	KEY_RIGHT,
 	KEY_FIRE,
 	KEY_ALTFIRE,
-	KEY_TARGET,
 	KEY_SWITCH,
 	KEY_PAUSE,
 	KEY_ESCAPE,
@@ -256,7 +255,6 @@ struct globalEngineVariables {
 
 	float targetShield;
 	signed char targetIndex;
-	int targetArrowTimer;
 
 	// Mission completion timer (allows for 4 seconds before leaving sector)
 	unsigned long missionCompleteTimer;

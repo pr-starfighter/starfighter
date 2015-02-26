@@ -186,35 +186,6 @@ void doPlayer()
 				engine.keyState[KEY_PAUSE] = 0;
 			}
 
-			if ((engine.keyState[KEY_TARGET]) && (currentGame.area != 10))
-			{
-				if (engine.targetArrowTimer == -1 && currentGame.difficulty < DIFFICULTY_HARD) {
-					engine.targetArrowTimer = -2;
-					setInfoLine("Showing all targets", FONT_WHITE);
-				} else if (engine.targetArrowTimer < 0) {
-					engine.targetArrowTimer = 0;
-					setInfoLine("Disabled target arrows", FONT_WHITE);
-				} else {
-					engine.targetArrowTimer = -1;
-					setInfoLine("Showing mission target", FONT_WHITE);
-				}
-
-				engine.keyState[KEY_TARGET] = 0;
-			}
-
-			if ((engine.missionCompleteTimer == 0) && (engine.targetArrowTimer == -1))
-			{
-				if ((enemy[engine.targetIndex].shield < 1) && (currentGame.area != 10))
-				{
-					engine.targetIndex = rand() % MAX_ALIENS;
-					
-					if (enemy[engine.targetIndex].flags & FL_FRIEND)
-						engine.targetIndex = 0;
-					else
-						setTarget(engine.targetIndex);
-				}
-			}
-
 			if (((currentGame.area == 18) && (enemy[WC_BOSS].shield > 0)) || (currentGame.area == 24))
 				player.face = 0;
 
@@ -309,8 +280,6 @@ static enum keys mapkey(uint32_t code) {
 			return KEY_FIRE;
 		case SDLK_SPACE:
 			return KEY_ALTFIRE;
-		case SDLK_t:
-			return KEY_TARGET;
 		case SDLK_LSHIFT:
 		case SDLK_RSHIFT:
 			return KEY_SWITCH;
@@ -372,9 +341,6 @@ void getPlayerInput()
 						break;
 					case 2:
 						engine.keyState[KEY_SWITCH] = engine.event.jbutton.state;
-						break;
-					case 3:
-						engine.keyState[KEY_TARGET] = engine.event.jbutton.state;
 						break;
 				}
 				break;

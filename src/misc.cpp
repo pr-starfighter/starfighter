@@ -117,14 +117,11 @@ static void doArrow(int i)
 
 	blit(shape[arrow], x, y);
 
-	if(i != engine.targetIndex)
+	if (i != engine.targetIndex)
 		return;
 
-	if(engine.targetArrowTimer == 0 || textShape[3].life > 0)
+	if (textShape[3].life > 0)
 		return;
-
-	if (engine.targetArrowTimer > 0)
-		engine.targetArrowTimer--;
 
 	if (sxy == sx) {
 		x -= x > screen->w / 2 ? 5 + shape[44]->w : -5 - shape[arrow]->w;
@@ -177,12 +174,8 @@ void doInfo()
 	textSurface(38, text, 90, 21, FONT_WHITE);
 	blitText(38);
 
-	if (engine.targetArrowTimer < -1) {
-		for (int i = 0; i < MAX_ALIENS; i++)
-			doArrow(i);
-	} else if (engine.targetArrowTimer != 0) {
-		doArrow(engine.targetIndex);
-	}
+	for (int i = 0; i < MAX_ALIENS; i++)
+		doArrow(i);
 
 	fontColor = FONT_WHITE;
 	if (player.ammo[0] > 0)
