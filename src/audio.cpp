@@ -101,24 +101,11 @@ void playRandomTrack()
 	if ((!engine.useMusic) || (!engine.useAudio))
 		return;
 
-	int tracks = 0;
-
+	int tracks = 3;
 	char track[][64] = {
-	"music/railjet_short.ogg", "music/grey_sector.ogg",
-	"music/space_dimensions.ogg", "music/frozen_jam.ogg"
+		"music/railjet_short.ogg", "music/space_dimensions.ogg",
+		"music/frozen_jam.ogg"
 	};
-
-	switch(currentGame.system)
-	{
-		case 0:
-		case 1:
-			tracks = 2;
-			break;
-		case 2:
-		case 3:
-			tracks = 4;
-			break;
-	}
 
 	switch(currentGame.area)
 	{
