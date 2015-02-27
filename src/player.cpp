@@ -387,10 +387,6 @@ void getPlayerInput()
 				break;
 
 			case SDL_KEYDOWN:
-				//TODO: reenable somehow?
-				//if (engine.gameSection == SECTION_TITLE)
-				//	addKeyEvent(SDL_GetKeyName(engine.event.key.keysym.sym));
-
 				engine.keyState[mapkey(engine.event.key.keysym.sym)] = 1;
 
 				if (engine.gameSection != SECTION_GAME)
