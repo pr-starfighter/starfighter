@@ -199,7 +199,7 @@ static void drawShop()
 	for (int i = 0 ; i < icons ; i++)
 		blit(shape[shopItems[i].image], shopItems[i].x - 90, shopItems[i].y - 178, shopSurface[3]);
 
-	sprintf(description, "Shield Units : %d", currentGame.shieldUnits * 25);
+	sprintf(description, "Shield Units : %d", player.maxShield);
 	drawString(description, 10, 4, FONT_WHITE, shopSurface[4]);
 	sprintf(description, "Cash : $%d", currentGame.cash);
 	drawString(description, 10, 80, FONT_WHITE, shopSurface[4]);

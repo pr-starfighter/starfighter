@@ -67,19 +67,22 @@ void newGame()
 	currentGame.maxPlasmaAmmo = 100;
 	currentGame.maxRocketAmmo = 10;
 
-	if (currentGame.gamePlay == GAMEPLAY_ONPON)
+	switch (currentGame.difficulty)
 	{
-		currentGame.shieldUnits = 2;
-		player.maxShield = 50;
-		player.shield = 50;
-	}
-	else
-	{
-		currentGame.shieldUnits = 1;
-		player.maxShield = 25;
-		player.shield = 25;
+		case DIFFICULTY_EASY:
+			player.maxShield = 100;
+			break;
+		case DIFFICULTY_HARD:
+			player.maxShield = 25;
+			break;
+		case DIFFICULTY_NIGHTMARE:
+			player.maxShield = 1;
+			break;
+		default:
+			player.maxShield = 50;
 	}
 
+	player.shield = player.maxShield;
 	player.ammo[0] = 0;
 	player.ammo[1] = 5;
 	player.weaponType[0] = W_PLAYER_WEAPON;

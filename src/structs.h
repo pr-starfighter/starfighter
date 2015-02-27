@@ -126,7 +126,6 @@ struct Game {
 	unsigned char sfxVolume;
 
 	signed char saveFormat;
-	signed char gamePlay;
 	signed char difficulty;
 
 	signed char autoSaveSlot;
@@ -167,7 +166,6 @@ struct Game {
 	unsigned char maxPlasmaOutput;
 	unsigned char maxPlasmaAmmo;
 	unsigned char maxRocketAmmo;
-	unsigned char shieldUnits;
 
 
 };

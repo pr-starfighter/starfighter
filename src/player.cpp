@@ -28,7 +28,6 @@ void initPlayer()
 	player.x = screen->w / 2;
 	player.y = screen->h / 2;
 	player.speed = 2;
-	player.maxShield = (25 * currentGame.shieldUnits);
 	player.systemPower = player.maxShield;
 	player.face = 0;
 
@@ -110,7 +109,7 @@ void doPlayer()
 
 			if (player.weaponType[1] == W_CHARGER)
 			{
-				if (engine.keyState[KEY_ALTFIRE] && !(currentGame.gamePlay == GAMEPLAY_ONPON && engine.keyState[KEY_FIRE]))
+				if (engine.keyState[KEY_ALTFIRE] && !(engine.keyState[KEY_FIRE]))
 				{
 					limitCharAdd(&player.ammo[1], 1, 0, 200);
 				}

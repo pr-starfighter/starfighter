@@ -99,7 +99,6 @@ bool loadGame(int slot)
 	fclose(fp);
 
 	if(currentGame.saveFormat < 2) {
-		currentGame.gamePlay = GAMEPLAY_ORIGINAL;
 		currentGame.difficulty = DIFFICULTY_NORMAL;
 	}
 

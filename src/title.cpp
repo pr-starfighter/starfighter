@@ -67,27 +67,23 @@ static void createDifficultyMenu()
 
 	if (currentGame.difficulty == DIFFICULTY_EASY)
 		textSurface(24, "DIFFICULTY - EASY", -1, 370, FONT_WHITE);
-	else if(currentGame.difficulty == DIFFICULTY_HARD)
+	else if (currentGame.difficulty == DIFFICULTY_HARD)
 		textSurface(24, "DIFFICULTY - HARD", -1, 370, FONT_WHITE);
+	else if (currentGame.difficulty == DIFFICULTY_NIGHTMARE)
+		textSurface(24, "DIFFICULTY - NIGHTMARE", -1, 370, FONT_WHITE);
 	else
 		textSurface(24, "DIFFICULTY - NORMAL", -1, 370, FONT_WHITE);
-
-	if (currentGame.gamePlay == GAMEPLAY_ONPON)
-		textSurface(25, "GAMEPLAY - ONPON", -1, 390, FONT_WHITE);
-	else
-		textSurface(25, "GAMEPLAY - NORMAL", -1, 390, FONT_WHITE);
 }
 
 static signed char showDifficultyMenu()
 {
-	textShape[12].y = 430;
+	textShape[12].y = 410;
 
 	blitText(23);
 	blitText(24);
-	blitText(25);
 	blitText(12);
 
-	return 4;
+	return 3;
 }
 
 static void createOptionsMenu()
@@ -470,12 +466,8 @@ int doTitle()
 							engine.done = 1;
 						else if (selectedOption == 2)
 							currentGame.difficulty++;
-							if(currentGame.difficulty > DIFFICULTY_HARD)
+							if (currentGame.difficulty > DIFFICULTY_NIGHTMARE)
 								currentGame.difficulty = DIFFICULTY_EASY;
-						else if (selectedOption == 3)
-							currentGame.gamePlay++;
-							if(currentGame.gamePlay > GAMEPLAY_ONPON)
-								currentGame.gamePlay = GAMEPLAY_ORIGINAL;
 						else if (selectedOption == listLength)
 							{menuType = 0; selectedOption = 1;}
 						createDifficultyMenu();
@@ -502,7 +494,10 @@ int doTitle()
 	resetLists();
 
 	if (selectedOption == 1)
+	{
+		newGame();
 		selectedOption = 2; // go straight to mission 0
+	}
 
 	if (selectedOption == 3)
 	{
@@ -521,8 +516,7 @@ int doTitle()
 }
 
 /*
-Scrolls the intro text up the screen and nothing else. The text will be placed
-into a data file when the game is finished.
+Scrolls the intro text up the screen and nothing else.
 */
 void showStory()
 {

@@ -582,8 +582,6 @@ int galaxyMap()
 
 	bool redrawBackGround = true;
 
-	player.maxShield = (25 * currentGame.shieldUnits);
-
 	if (currentGame.distanceCovered > 0)
 		section = 0;
 	else
@@ -833,7 +831,6 @@ int galaxyMap()
 	for (int i = 0 ; i < 12 ; i++)
 		SDL_FreeSurface(iconInfo[i].image);
 
-	player.maxShield = (25 * currentGame.shieldUnits);
 	if (currentGame.distanceCovered == 0)
 		player.shield = player.maxShield;
 

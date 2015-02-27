@@ -266,6 +266,14 @@ enum {
 	FACE_CREW
 };
 
+// Difficulties
+enum {
+	DIFFICULTY_EASY,
+	DIFFICULTY_NORMAL,
+	DIFFICULTY_HARD,
+	DIFFICULTY_NIGHTMARE
+};
+
 #define MAX_WEAPONS 20
 #define MAX_SHAPES 100
 #define MAX_SHIPSHAPES 120
@@ -307,11 +315,3 @@ const int screenWidth = 800;
 const int screenHeight = 600;
 
 const int viewBorder = 100;
-
-#define DIFFICULTY_EASY -1
-#define DIFFICULTY_NORMAL 0
-#define DIFFICULTY_HARD 1
-#define DIFFICULTY_NIGHTMARE 2
-
-#define GAMEPLAY_ORIGINAL 0
-#define GAMEPLAY_ONPON 1
