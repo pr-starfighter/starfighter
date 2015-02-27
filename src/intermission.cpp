@@ -202,7 +202,11 @@ static void setSystemPlanets()
 
 	for (int i = 0 ; i < 10 ; i++)
 	{
-		fscanf(fp, "%d %s %d", &distance, name, &image);
+		if (fscanf(fp, "%d %s %d", &distance, name, &image) < 3)
+		{
+			printf("Warning: Data file \"%s\" is not correctly formatted\n", string);
+			break;
+		}
 
 		systemPlanet[i].y = distance;
 		strcpy(systemPlanet[i].name, name);
@@ -217,9 +221,13 @@ static void setSystemPlanets()
 
 	for (int i = 0 ; i < 10 ; i++)
 	{
-		fscanf(fp, "%d %d %s%*c", &messageMission, &messageSlot, face);
-		fscanf(fp, "%[^\n]%*c", from);
-		fscanf(fp, "%[^\n]%*c", subject);
+		if ((fscanf(fp, "%d %d %s%*c", &messageMission, &messageSlot, face) < 3) ||
+			(fscanf(fp, "%[^\n]%*c", from) < 1) ||
+			(fscanf(fp, "%[^\n]%*c", subject) < 1))
+		{
+			printf("Warning: Data file \"%s\" is not correctly formatted\n", string);
+			break;
+		}
 
 		systemPlanet[i].messageMission = messageMission;
 		systemPlanet[i].messageSlot = messageSlot;

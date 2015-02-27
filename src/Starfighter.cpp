@@ -21,7 +21,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 int main(int argc, char *argv[])
 {
-	chdir(DATADIR);
+	if (chdir(DATADIR) == -1)
+		printf("Warning: failed to change directory to \"%s\"\n", DATADIR);
 
 	defineGlobals(); // Must do this first!
 

@@ -289,9 +289,6 @@ enum {
 
 #define SHIP_HIT_INDEX 60
 
-#ifndef PACKLOCATION
-#define PACKLOCATION "starfighter.pak"
-#endif
 #ifndef PATH_MAX
 #define PATH_MAX	4096
 #endif

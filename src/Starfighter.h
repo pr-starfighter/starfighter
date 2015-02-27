@@ -58,7 +58,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "script.h"
 #include "shop.h"
 #include "title.h"
-#include "version.h"
 #include "weapons.h"
 
 #endif
