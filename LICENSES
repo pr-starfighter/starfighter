@@ -1,0 +1,474 @@
+gfx/prlogo.png
+gfx/sflogo.png
+gfx/alienDevice.png
+
+Author: Parallel Realities <http://www.parallelrealities.co.uk/>
+License: GNU GPLv2 or later <https://gnu.org/licenses/old-licenses/gpl-2.0.html>
+
+------------------------------------------------------------------------
+
+gfx/iconBase.png
+gfx/arrowEast.png
+gfx/arrowNorth.png
+gfx/arrowNorthEast.png
+gfx/arrowNorthWest.png
+gfx/arrowSouth.png
+gfx/arrowSouthEast.png
+gfx/arrowSouthWest.png
+gfx/arrowWest.png
+gfx/stunBolt.png
+gfx/redDir.png
+gfx/greenDir.png
+gfx/sellIcon.png
+gfx/buyIcon.png
+gfx/gameover.png
+gfx/explode13.png
+gfx/explode14.png
+gfx/explode15.png
+gfx/explode16.png
+gfx/icon1.png
+gfx/icon2.png
+gfx/icon3.png
+gfx/icon6.png
+gfx/icon7.png
+gfx/icon11.png
+gfx/explode9.png
+gfx/explode10.png
+gfx/explode11.png
+gfx/explode12.png
+gfx/explode1.png
+gfx/explode1.png
+gfx/explode3.png
+gfx/explode4.png
+gfx/elec1.png
+gfx/elec2.png
+gfx/elec3.png
+gfx/elec4.png
+gfx/chainLink.png
+gfx/cursor.png
+gfx/smallFont.png
+gfx/targetText.png
+gfx/gameover.png
+gfx/icon8.png
+gfx/plasmaGreen.png
+gfx/plasmaRed.png
+
+Author: Astrid S. de Wijn
+License: CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0/>
+
+------------------------------------------------------------------------
+
+gfx/face_chris.png
+gfx/face_phoebe.png
+gfx/face_sid.png
+gfx/face_ursula.png
+
+Author: CharlesGabriel <http://cgartsenal.blogspot.com/>
+License: CC BY 3.0 <https://creativecommons.org/licenses/by/3.0/>
+Source: http://opengameart.org/content/48x48-faces-2nd-sheet
+
+------------------------------------------------------------------------
+
+gfx/face_crew.png
+gfx/face_krass.png
+
+Author: CharlesGabriel <http://cgartsenal.blogspot.com/>
+License: CC BY 3.0 <https://creativecommons.org/licenses/by/3.0/>
+Source: http://opengameart.org/content/48x48-faces-3rd-sheet
+
+------------------------------------------------------------------------
+
+gfx/face_kline.png
+
+Authors:
+  CharlesGabriel <http://cgartsenal.blogspot.com/>
+  Astrid
+License: CC BY 3.0 <https://creativecommons.org/licenses/by/3.0/>
+Sources:
+  http://opengameart.org/content/48x48-faces-2nd-sheet
+  http://opengameart.org/content/48x48-faces-4th-sheet
+Details:
+  Astrid combined parts from the two sheets.
+
+------------------------------------------------------------------------
+
+gfx/planet_sun.png
+
+Author: NASA <http://sdo.gsfc.nasa.gov/>
+License: Public Domain
+Source: http://opengameart.org/content/the-sun
+
+------------------------------------------------------------------------
+
+gfx/planet_blue.png
+gfx/planet_green.png
+gfx/planet_orange.png
+gfx/planet_red.png
+
+Author: athile <http://opengameart.org/users/athile>
+License: CC BY 3.0 <https://creativecommons.org/licenses/by/3.0/>
+Source: http://opengameart.org/content/planets-pack-8
+
+------------------------------------------------------------------------
+
+gfx/drone1.png
+gfx/drone2.png
+gfx/tug1.png
+gfx/tug2.png
+gfx/mineBoss1.png
+gfx/mineBoss2.png
+gfx/mineBossWing11.png
+gfx/mineBossWing12.png
+gfx/mineBossWing21.png
+gfx/mineBossWing22.png
+gfx/mineBossWing31.png
+gfx/mineBossWing32.png
+gfx/mineBossWing41.png
+gfx/mineBossWing42.png
+gfx/missileBoat1.png
+gfx/missileBoat2.png
+gfx/merc1.png
+gfx/merc2.png
+
+Authors:
+  surt <http://opengameart.org/users/surt>
+  astrid
+License: CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0/>
+Source: http://opengameart.org/content/astrominer-sprites
+
+------------------------------------------------------------------------
+
+gfx/mine.png
+
+Author: Daniel Cook <http://lostgarden.com/>
+License: CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>
+Source: http://opengameart.org/content/iron-plague-minebmp
+
+------------------------------------------------------------------------
+
+gfx/transport1.png
+gfx/transport2.png
+
+Author: Daniel Cook <http://lostgarden.com/>
+License: CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>
+Source: http://opengameart.org/content/iron-plague-cargo2bmp
+
+------------------------------------------------------------------------
+
+gfx/dualFighter1.png
+gfx/dualFighter2.png
+
+Author: Daniel Cook <http://lostgarden.com/>
+License: CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>
+Source: http://opengameart.org/content/iron-plague-hunter1bmp
+
+------------------------------------------------------------------------
+
+gfx/mobileCannon1.png
+gfx/mobileCannon2.png
+
+Author: Daniel Cook <http://lostgarden.com/>
+License: CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>
+Source: http://opengameart.org/content/iron-plague-ship4bmp
+
+------------------------------------------------------------------------
+
+gfx/aimFighter1.png
+gfx/aimFighter2.png
+
+Author: Daniel Cook <http://lostgarden.com/>
+License: CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>
+Source: http://opengameart.org/content/iron-plague-doomdaybmp
+
+------------------------------------------------------------------------
+
+gfx/barrier.png
+
+Author: Daniel Cook <http://lostgarden.com/>
+License: CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>
+Source: http://opengameart.org/content/iron-plague-beacon2bmp
+
+------------------------------------------------------------------------
+
+gfx/wingmate1.png
+gfx/wingmate2.png
+gfx/evilUrsula1.png
+gfx/evilUrsula2.png
+
+Author: Daniel Cook <http://lostgarden.com/>
+License: CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>
+Source: http://opengameart.org/content/iron-plague-bshipbmp
+
+------------------------------------------------------------------------
+
+gfx/rebelCarrier1.png
+gfx/rebelCarrier2.png
+
+Author: Daniel Cook <http://lostgarden.com/>
+License: CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>
+Source: http://opengameart.org/content/iron-plague-cargo1bmp
+
+------------------------------------------------------------------------
+
+gfx/sid1.png
+gfx/sid2.png
+
+Author: Daniel Cook <http://lostgarden.com/>
+License: CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>
+Source: http://opengameart.org/content/iron-plague-ship2bmp
+
+------------------------------------------------------------------------
+
+gfx/kline11.png
+gfx/kline12.png
+
+Author: Daniel Cook <http://lostgarden.com/>
+License: CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>
+Source: http://opengameart.org/content/iron-plague-hunter2bmp
+
+------------------------------------------------------------------------
+
+gfx/plutoBoss1.png
+gfx/plutoBoss2.png
+gfx/splitBoss11.png
+gfx/splitBoss12.png
+gfx/splitBoss21.png
+gfx/splitBoss22.png
+gfx/splitBoss31.png
+gfx/splitBoss32.png
+
+Author: Daniel Cook <http://lostgarden.com/>
+License: CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>
+Source: http://opengameart.org/content/iron-plague-factory2bmp
+
+------------------------------------------------------------------------
+
+gfx/mobileShield1.png
+gfx/mobileShield2.png
+
+Author: Daniel Cook <http://lostgarden.com/>
+License: CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>
+Source: http://opengameart.org/content/iron-plague-warpbmp
+
+------------------------------------------------------------------------
+
+gfx/cloakShip1.png
+gfx/cloakShip2.png
+
+Author: Archanix <http://www.archanix.webs.com/>
+License: CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>
+Source: http://opengameart.org/content/battlefront-operation-x-final-striker
+
+------------------------------------------------------------------------
+
+gfx/goodTrans1.png
+gfx/goodTrans2.png
+
+Authors:
+  Rusty
+  Archanix
+License: CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>
+Source: http://opengameart.org/content/ship-recoloring-001-for-gm-game
+
+------------------------------------------------------------------------
+
+gfx/escort1.png
+gfx/escort2.png
+
+Author: Clint Bellanger <http://opengameart.org/users/clint-bellanger>
+License: CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>
+Source: http://opengameart.org/content/spaceship-360
+
+------------------------------------------------------------------------
+
+gfx/frigateBody1.png
+gfx/frigateBody2.png
+gfx/frigateGun11.png
+gfx/frigateGun12.png
+gfx/frigateGun21.png
+gfx/frigateGun22.png
+
+Authors:
+  Skorpio <http://opengameart.org/users/skorpio>
+  Astrid
+License: CC BY-SA 3.0 <http://creativecommons.org/licenses/by/3.0/>
+Source: http://opengameart.org/content/spaceships-top-down
+
+------------------------------------------------------------------------
+
+gfx/miner1.png
+gfx/miner2.png
+gfx/slaveTrans1.png
+gfx/slaveTrans2.png
+gfx/eliteFighter1.png
+gfx/eliteFighter2.png
+
+Author: Skorpio <http://opengameart.org/users/skorpio>
+License: CC BY-SA 3.0 <http://creativecommons.org/licenses/by/3.0/>
+Source: http://opengameart.org/content/spaceships2-top-down
+
+------------------------------------------------------------------------
+
+gfx/icon5.png
+gfx/firefly1.png
+gfx/firefly2.png
+gfx/firefly-big.png
+
+Author: Lamoot
+License: CC0 <http://creativecommons.org/publicdomain/zero/1.0/>
+Source: http://opengameart.org/content/top-down-space-fighter-sprite
+
+------------------------------------------------------------------------
+
+gfx/icon9.png
+gfx/icon10.png
+gfx/icon12.png
+gfx/icon14.png
+gfx/icon15.png
+gfx/icon16.png
+gfx/icon17.png
+gfx/icon23.png
+gfx/rocket.png
+gfx/superCharge.png
+gfx/cargo1.png
+gfx/plasmaDamage.png
+gfx/plasmaAmmo.png
+gfx/plasmaRate.png
+gfx/heart.png
+gfx/dollar.png
+gfx/pod.png
+
+Authors:
+  Ails <http://ails.deviantart.com/>
+  Astrid
+License: CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>
+Source: http://opengameart.org/content/420-pixel-art-icons-for-medievalfantasy-rpg
+
+------------------------------------------------------------------------
+
+gfx/icon13.png
+gfx/icon18.png
+gfx/icon19.png
+gfx/icon20.png
+gfx/icon22.png
+gfx/icon24.png
+gfx/icon25.png
+gfx/rocketAmmo.png
+gfx/rocket1.png
+gfx/rocket2.png
+
+Authors:
+  OceansDream <http://oceansdream.deviantart.com/art/Pixel-Icons-available-for-use-121152370>
+  Astrid
+License: CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>
+Source: http://opengameart.org/content/various-inventory-24-pixel-icon-set
+
+------------------------------------------------------------------------
+
+icon21.png
+
+Authors:
+  Torsten Henning
+  Astrid
+License: Public Domain
+Source: http://en.wikipedia.org/wiki/File:DIN_4844-2_Warnung_vor_Laserstrahl_D-W010.svg
+
+------------------------------------------------------------------------
+
+icon4.png
+
+Authors:
+  Gobusto <http://opengameart.org/users/gobusto>
+  Astrid
+License: CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>
+Source: http://opengameart.org/content/floppy-disk
+
+------------------------------------------------------------------------
+
+gfx/explode05.png
+gfx/explode06.png
+gfx/explode07.png
+gfx/explode08.png
+
+Author: Cuzco <http://opengameart.org/users/cuzco>
+License: CC0 <http://creativecommons.org/publicdomain/zero/1.0/>
+Source: http://opengameart.org/content/explosion
+
+------------------------------------------------------------------------
+
+gfx/asteroid1.png
+gfx/asteroid2.png
+gfx/asteroid3.png
+
+Author: dczanik <http://opengameart.org/users/dczanik>
+License: CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>
+Source: http://opengameart.org/content/asteroid-rotating
+
+------------------------------------------------------------------------
+
+gfx/ore2.png
+
+Author: phaelax <http://opengameart.org/users/phaelax>
+License: CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>
+Source: http://opengameart.org/content/asteroids
+
+------------------------------------------------------------------------
+
+gfx/ore1.png
+gfx/ore3.png
+
+Authors:
+  phaelax <http://opengameart.org/users/phaelax>
+  onpon4 <https://onpon4.github.io>
+License: CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>
+Source: http://opengameart.org/content/asteroids
+Details:
+  Made by colorizing phaelax's white asteroids in the GIMP.
+
+------------------------------------------------------------------------
+
+gfx/startUp.jpg
+
+Author: NASA
+License: Public Domain
+Source: http://hubblesite.org/gallery/album/galaxy/pr2009014a/
+
+------------------------------------------------------------------------
+
+gfx/spirit.jpg
+
+Author: NASA
+License: Public Domain
+Source: http://hubblesite.org/gallery/album/star/pr1992029a/warn/npp/all/
+
+------------------------------------------------------------------------
+
+gfx/eyananth.jpg
+
+Author: NASA
+License: Public Domain
+Source: http://hubblesite.org/gallery/album/nebula/pr2009025e/
+
+------------------------------------------------------------------------
+
+gfx/mordor.jpg
+
+Author: NASA
+License: Public Domain
+Source: http://hubblesite.org/gallery/album/nebula/pr2006001q/
+
+------------------------------------------------------------------------
+
+gfx/sol.jpg
+
+Author: NASA
+License: Public Domain
+Source: http://hubblesite.org/gallery/album/star/pr2007004a/npp/all/
+
+------------------------------------------------------------------------
+
+gfx/credits.jpg
+
+Author: NASA
+License: Public Domain
+Source: http://hubblesite.org/gallery/album/nebula/pr2005012b/
