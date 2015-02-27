@@ -104,8 +104,8 @@ void playRandomTrack()
 	int tracks = 0;
 
 	char track[][64] = {
-	"music/railjet_short.ogg", "music/railjet_short.ogg", "music/railjet_short.ogg",
-	"music/railjet_short.ogg", "music/railjet_short.ogg",
+	"music/railjet_short.ogg", "music/big_boss.ogg", "music/railjet_short.ogg",
+	"music/grey_sector.ogg", "music/big_boss.ogg",
 	"music/space_dimensions.ogg", "music/frozen_jam.ogg"
 	};
 
