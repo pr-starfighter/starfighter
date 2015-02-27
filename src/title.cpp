@@ -217,6 +217,8 @@ int doTitle()
 	// Set the star motion
 	engine.ssx = -0.5;
 	engine.ssy = 0;
+	engine.smx = 0;
+	engine.smy = 0;
 
 	int then = SDL_GetTicks();
 	int now;

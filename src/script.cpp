@@ -189,6 +189,8 @@ void doCutscene(int scene)
 
 	engine.ssx = -0.5;
 	engine.ssy = 0;
+	engine.smx = 0;
+	engine.smy = 0;
 
 	flushBuffer();
 	freeGraphics();
@@ -253,7 +255,7 @@ void doCutscene(int scene)
 				}
 				enemy[i].x += enemy[i].dx;
 				enemy[i].y += enemy[i].dy;
-				enemy[i].x += engine.ssx;
+				enemy[i].x += engine.ssx + engine.smx;
 				blit(enemy[i].image[0], (int)enemy[i].x, (int)enemy[i].y);
 				if (enemy[i].x > (screen->w + 50))
 				{

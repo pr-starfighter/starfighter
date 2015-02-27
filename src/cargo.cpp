@@ -96,8 +96,8 @@ void doCargo()
 
 			blit(cargo[i].image[0], (int)cargo[i].x, (int)cargo[i].y);
 
-			cargo[i].x += engine.ssx;
-			cargo[i].y += engine.ssy;
+			cargo[i].x += engine.ssx + engine.smx;
+			cargo[i].y += engine.ssy + engine.smy;
 
 			limitFloat(&cargo[i].x, cargo[i].owner->x - 50, cargo[i].owner->x + 50);
 			limitFloat(&cargo[i].y, cargo[i].owner->y - 50, cargo[i].owner->y + 50);

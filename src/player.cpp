@@ -76,6 +76,9 @@ void doPlayer()
 	engine.ssx *= 0.99;
 	engine.ssy *= 0.99;
 
+	engine.smx = 0;
+	engine.smy = 0;
+
 	int shapeToUse;
 
 	if (player.shield > -100)
@@ -190,8 +193,26 @@ void doPlayer()
 
 			if (engine.done == 0)
 			{
-				limitFloat(&player.x, viewBorder, screen->w - viewBorder);
-				limitFloat(&player.y, viewBorder, screen->h - viewBorder);
+				if (player.x < viewBorder)
+				{
+					engine.smx += viewBorder - player.x;
+					player.x = viewBorder;
+				}
+				else if (player.x > screen->w - viewBorder)
+				{
+					engine.smx += (screen->w - viewBorder) - player.x;
+					player.x = screen->w - viewBorder;
+				}
+				if (player.y < viewBorder)
+				{
+					engine.smy += viewBorder - player.y;
+					player.y = viewBorder;
+				}
+				else if (player.y > screen->h - viewBorder)
+				{
+					engine.smy += (screen->h - viewBorder) - player.y;
+					player.y = screen->h - viewBorder;
+				}
 			}
 
 			if (player.shield > engine.lowShield)

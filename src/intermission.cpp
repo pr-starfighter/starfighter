@@ -514,7 +514,8 @@ int galaxyMap()
 
 	engine.done = 0;
 	engine.keyState[KEY_FIRE] = 0;
-	engine.ssx = engine.ssy = 0;
+	engine.ssx = 0;
+	engine.ssy = 0;
 
 	SDL_Rect r;
 	SDL_Rect destRect;

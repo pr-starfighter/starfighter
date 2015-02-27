@@ -242,8 +242,8 @@ void doCollectables()
 			if ((collectable->x + collectable->image->w > 0) && (collectable->x < 800) && (collectable->y + collectable->image->h > 0) && (collectable->y < 600))
 				blit(collectable->image, (int)collectable->x, (int)collectable->y);
 
-			collectable->x += engine.ssx;
-			collectable->y += engine.ssy;
+			collectable->x += engine.ssx + engine.smx;
+			collectable->y += engine.ssy + engine.smx;
 			collectable->x += collectable->dx;
 			collectable->y += collectable->dy;
 

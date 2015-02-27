@@ -109,6 +109,8 @@ int mainGameLoop()
 
 	engine.ssx = 0;
 	engine.ssy = 0;
+	engine.smx = 0;
+	engine.smy = 0;
 
 	engine.done = 0;
 

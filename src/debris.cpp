@@ -67,8 +67,8 @@ void doDebris()
 		{
 			debris->thinktime--;
 
-			debris->x += engine.ssx;
-			debris->y += engine.ssy;
+			debris->x += engine.ssx + engine.smx;
+			debris->y += engine.ssy + engine.smy;
 			debris->x += debris->dx;
 			debris->y += debris->dy;
 

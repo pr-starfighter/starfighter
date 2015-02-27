@@ -78,8 +78,8 @@ void doExplosions()
 
 		if (explosion->active)
 		{
-			explosion->x += engine.ssx;
-			explosion->y += engine.ssy;
+			explosion->x += engine.ssx + engine.smx;
+			explosion->y += engine.ssy + engine.smy;
 	
 			if (isOnScreen((int)explosion->x, (int)explosion->y, explosion->image[0]->w, explosion->image[0]->h))
 				blit(explosion->image[0], (int)explosion->x, (int)explosion->y);

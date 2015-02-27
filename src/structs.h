@@ -230,6 +230,8 @@ struct globalEngineVariables {
 
 	float ssx;
 	float ssy;
+	float smx;
+	float smy;
 
 	Mix_Music *music;
 

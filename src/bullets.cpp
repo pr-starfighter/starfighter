@@ -43,7 +43,7 @@ void addBullet(object *theWeapon, object *attacker, int y, int dy)
 	{
 		bullet->dx = theWeapon->speed;
 		if ((currentGame.area == 18) || (currentGame.area == 24))
-			bullet->dx += fabsf(engine.ssx);
+			bullet->dx += fabsf(engine.ssx + engine.smx);
 	}
 	else
 	{
@@ -556,8 +556,8 @@ void doBullets()
 					bullet->target = NULL;
 			}
 
-			bullet->x += engine.ssx;
-			bullet->y += engine.ssy;
+			bullet->x += engine.ssx + engine.smx;
+			bullet->y += engine.ssy + engine.smy;
 
 			for (int i = 0 ; i < MAX_ALIENS ; i++)
 			{

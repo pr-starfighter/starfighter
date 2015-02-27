@@ -29,6 +29,8 @@ void defineGlobals()
 
 	engine.ssx = 0;
 	engine.ssy = 0;
+	engine.smx = 0;
+	engine.smy = 0;
 
 	engine.bulletHead = new object;
 	engine.bulletHead->next = NULL;
