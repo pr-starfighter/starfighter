@@ -2,7 +2,7 @@ And so it was that in the year 2579 the galactic weapons corporation
 WEAPCO was defeated thanks to the valiant efforts of a few determined
 individuals; A cause that would be remembered throughout the rest of
 human history as Project: Starfighter.
-158
+66
 000 +++ CAST +++
 030 Chris Bainfield
 020 Krass Tylar
@@ -15,8 +15,7 @@ human history as Project: Starfighter.
 030 +++ ADDITIONAL PROGRAMMING +++
 020 Richard Sweeney
 020 Guus Sliepen
-030 +++ REPLACEMENT GRAPHICS AND SOUND +++
-020 Astrid S. de Wijn
+020 Julian Marchant
 050 +++ QUALITY ASSURANCE AND ADVICE +++
 030 Sam Lantinga  Ian Bissett
 020 Chris Taylor  Xan  Christoph Reichenbach
@@ -66,9 +65,6 @@ human history as Project: Starfighter.
 020 Sam Lantinga  Claus Windeler  Jolan Luff
 020 Torbjorn Andersson  Atrix Wolfe
 020 and all on the SDL mailing list
-080 Parallel Realities and the Alien Device
-020 Copyright Parallel Realities 2003
-020 All Rights Reserved
 350 Project: Starfighter
 020 Copyright Parallel Realities 2003
 020 Copyright Guus Sliepen, Astrid S. de Wijn and others 2012
