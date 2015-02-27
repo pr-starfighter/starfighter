@@ -1,5 +1,4 @@
 Sid Wilson
-8
 FACE_CHRIS
 What have you managed to find out about that experimental fighter?
 FACE_SID

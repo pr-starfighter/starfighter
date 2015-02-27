@@ -173,7 +173,8 @@ void initSystem()
 
 	if (fp != NULL)
 	{
-		fscanf(fp, "%d %d %d", &fullScreen, &useSound, &useMusic);
+		if (fscanf(fp, "%d %d %d", &fullScreen, &useSound, &useMusic) < 3)
+			printf("Warning: Config file \"%s\" is not correctly formatted\n", filename);
 		fclose(fp);
 	}
 

@@ -86,15 +86,16 @@ static void createMissionDetailSurface(SDL_Surface *comms, int missionSlot)
 
 	fp = fopen(string, "rb");
 
-	fscanf(fp, "%[^\n]%*c", name);
+	if (fscanf(fp, "%[^\n]%*c", name) < 1)
+	{
+		printf("Warning: Failed to retrieve name from \"%s\"\n", string);
+		strcpy(name, "Error");
+	}
 	sprintf(string, "+++ Communication with %s +++", name);
 	drawString(string, -1, 20, FONT_GREEN, comms);
 
-	fscanf(fp, "%d%*c", &lines);
-
-	for (int i = 0 ; i < lines ; i++)
+	while (fscanf(fp, "%[^\n]%*c", string) == 1)
 	{
-		fscanf(fp, "%[^\n]%*c", string);
 		faceNumber = getFace(string);
 		if (faceNumber > -1)
 		{

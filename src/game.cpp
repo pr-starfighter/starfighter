@@ -318,7 +318,7 @@ int mainGameLoop()
 				doCutscene(6);
 				break;
 			case 26:
-				doCredits();
+				doCredits(true);
 				break;
 		}
 		

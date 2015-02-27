@@ -294,13 +294,9 @@ static void getPreDefinedAliens()
 	if (fp == NULL)
 		return;
 
-	fscanf(fp, "%d ", &index);
-
-	while (index != -1)
+	while (fscanf(fp, "%d %d ", &index, &alienType) == 2)
 	{
 		placeAttempt = 0;
-
-		fscanf(fp, "%d ", &alienType);
 
 		enemy[index] = defEnemy[alienType];
 		enemy[index].owner = &enemy[index];
@@ -311,7 +307,7 @@ static void getPreDefinedAliens()
 		/*
 		we make 1000 attempts to place this enemy since it is required. If after 1000 attempts
 		we still have managed to place the alien, then it simple isn't going to happen and we
-		will just exit the same. The chances of this happening are very very low!
+		will just exit the game. The chances of this happening are very very low!
 		*/
 		while (true)
 		{
@@ -376,8 +372,6 @@ static void getPreDefinedAliens()
 			if (index == WC_BOSS)
 				enemy[index].chance[1] = 5;
 		}
-
-		fscanf(fp, "%d ", &index);
 	}
 
 	fclose(fp);

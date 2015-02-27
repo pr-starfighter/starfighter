@@ -1,5 +1,4 @@
 Sid Wilson
-6
 FACE_SID
 We're going to have to clear the mine field that's been building up here recently. I have a feeling that WEAPCO have deployed some miners in the area and are testing the effectiveness of the field. Removing the mines will help interplanetary traffic to start up again.
 FACE_CHRIS

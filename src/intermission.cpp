@@ -204,7 +204,7 @@ static void setSystemPlanets()
 	{
 		if (fscanf(fp, "%d %s %d", &distance, name, &image) < 3)
 		{
-			printf("Warning: Data file \"%s\" is not correctly formatted\n", string);
+			printf("Warning: Data for planet %i in \"%s\" is not correctly formatted\n", i, string);
 			break;
 		}
 
@@ -225,7 +225,7 @@ static void setSystemPlanets()
 			(fscanf(fp, "%[^\n]%*c", from) < 1) ||
 			(fscanf(fp, "%[^\n]%*c", subject) < 1))
 		{
-			printf("Warning: Data file \"%s\" is not correctly formatted\n", string);
+			printf("Warning: Mission data for planet %i in \"%s\" is not correctly formatted\n", i, string);
 			break;
 		}
 

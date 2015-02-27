@@ -1,5 +1,4 @@
 Sid Wilson
-8
 FACE_SID
 Whilst you were gone I picked up a distress call coming from around Jupiter.
 FACE_URSULA

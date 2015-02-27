@@ -1,5 +1,4 @@
 Sid Wilson
-4
 FACE_SID
 Chris, we've got a small problem. WEAPCO have mined the asteroid belt in the system. We'll need to clear a way through!
 FACE_CHRIS

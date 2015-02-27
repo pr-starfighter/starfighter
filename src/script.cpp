@@ -62,12 +62,10 @@ void loadScriptEvents()
 	if (fp == NULL)
 		return;
 
-	fscanf(fp, "%d ", &time);
-
-	while (time != 0)
+	while (fscanf(fp, "%d %s %d %d ", &time, face, &entity, &flags) == 4)
 	{
-		fscanf(fp, "%s %d %d ", face, &entity, &flags);
-		fscanf(fp, "%[^\n]%*c", message);
+		if (fscanf(fp, "%[^\n]%*c", message) < 1)
+			strcpy(message, "Error: Text missing");
 
 		gameEvent[i].time = time;
 		gameEvent[i].face = getFace(face);
@@ -76,8 +74,6 @@ void loadScriptEvents()
 		strcpy(gameEvent[i].message, message);
 
 		i++;
-
-		fscanf(fp, "%d ", &time);
 	}
 
 	fclose(fp);
@@ -136,19 +132,22 @@ static void setScene(int scene)
 	fp = fopen(string, "rb");
 
 	// Load in the specified background
-	fscanf(fp, "%s", string);
+	if (fscanf(fp, "%s", string) < 1)
+	{
+		printf("Warning: didn't find a background definition for \"%s\"\n", string);
+		strcpy(string, "gfx/spirit.jpg");
+	}
 	loadBackground(string);
 
 	// Set the star speed
-	fscanf(fp, "%f %f", &sx, &sy);
+	if (fscanf(fp, "%f %f", &sx, &sy) < 2)
+		printf("Warning: failed to read star speed data for cutscene");
 	engine.ssx = sx;
 	engine.ssy = sy;
 
 	// Read in the specs for each ship
-	for (int i = 0 ; i < 15 ; i++)
+	while (fscanf(fp, "%d %d %f %f %f", &index, &shape, &x, &y, &speed) == 5)
 	{
-		fscanf(fp, "%d %d %f %f %f", &index, &shape, &x, &y, &speed);
-
 		if (x < 0) x = (rand() % abs((int)x));
 		if (y < 0) y = (rand() % abs((int)y));
 		if (speed <= -1) speed = 1 + (rand() % abs((int)speed));
@@ -164,16 +163,16 @@ static void setScene(int scene)
 	}
 
 	// And finally read in the messages
-	for (int i = 0 ; i < 10 ; i++)
+	index = 0;
+	while (fscanf(fp, "%s%*c %[^\n]", face, string) == 2)
 	{
-		fscanf(fp, "%s%*c", face);
-		fscanf(fp, "%[^\n]", string);
-
 		if (strcmp(string, "@none@") == 0)
 			break;
 
-		cutMessage[i].face = getFace(face);
-		strcpy(cutMessage[i].message, string);
+		cutMessage[index].face = getFace(face);
+		strcpy(cutMessage[index].message, string);
+
+		index++;
 	}
 
 	fclose(fp);

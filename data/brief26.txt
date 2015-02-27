@@ -1,5 +1,4 @@
 Kline Kethlan
-4
 FACE_CHRIS
 I'm going to give you one last warning, Kethlan - Surrender now!
 FACE_KLINE

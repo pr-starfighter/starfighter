@@ -1,5 +1,4 @@
 Sid Wilson
-8
 FACE_CHRIS
 Hey, Sid, what's up?
 FACE_SID

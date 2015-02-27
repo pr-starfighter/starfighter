@@ -1,5 +1,4 @@
 Sid Wilson
-4
 FACE_SID
 A rebel group in this sector has organised a counter strike. If we can help them secure a victory it will be a real boost to morale.
 FACE_CHRIS

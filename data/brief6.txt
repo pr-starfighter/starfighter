@@ -1,5 +1,4 @@
 Sid Wilson
-6
 FACE_CHRIS
 WEAPCO has many slaves in this system. If we free a large number of them, it might help to spark a rebellion movement.
 FACE_SID

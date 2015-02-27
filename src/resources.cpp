@@ -61,11 +61,9 @@ void loadGameGraphics()
 	if (fp == NULL)
 		exit(1);
 
-	fscanf(fp, "%d %s", &index, string);
-	while (index != -1)
+	while (fscanf(fp, "%d %s", &index, string) == 2)
 	{
 		shipShape[index] = loadImage(string);
-		fscanf(fp, "%d %s", &index, string);
 	}
 
 	fclose(fp);
@@ -113,11 +111,9 @@ void loadGameGraphics()
 
 	fp = fopen(string, "rb");
 
-	fscanf(fp, "%d %s", &index, string);
-	while (index != -1)
+	while (fscanf(fp, "%d %s", &index, string) == 2)
 	{
 		shape[index] = loadImage(string);
-		fscanf(fp, "%d %s", &index, string);
 	}
 
 	fclose(fp);

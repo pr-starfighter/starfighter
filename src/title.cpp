@@ -373,7 +373,7 @@ int doTitle()
 		// if someone has invoked the credits cheat
 		if (engine.cheatCredits)
 		{
-			doCredits();
+			doCredits(false);
 			engine.cheatCredits = false;
 		}
 
@@ -534,18 +534,12 @@ void showStory()
 	int nextPos = -1;
 	char string[255];
 
-	fscanf(fp, "%d ", &nextPos);
-
-	while (nextPos != -1)
+	while (fscanf(fp, "%d %[^\n]%*c", &nextPos, string) == 2)
 	{
-		fscanf(fp, "%[^\n]%*c", string);
-
 		y += nextPos;
 		textSurface(i, string, -1, y, FONT_WHITE);
 
 		i++;
-
-		fscanf(fp, "%d ", &nextPos);
 	}
 
 	fclose(fp);
@@ -645,7 +639,7 @@ void gameover()
 	flushBuffer();
 }
 
-void doCredits()
+void doCredits(bool show_extro)
 {
 	loadBackground("gfx/credits.jpg");
 	flushBuffer();
@@ -655,12 +649,12 @@ void doCredits()
 		loadMusic("music/rise_of_spirit.ogg");
 
 	FILE *fp;
-	int numberOfCredits = 0;
-	int lastCredit = 0;
+	int lastCredit = -1;
 
 	int yPos = 0;
 	int yPos2 = screen->h;
 	char text[255];
+	int i;
 
 	textObject *credit;
 
@@ -670,42 +664,48 @@ void doCredits()
 
 	drawBackGround();
 
-	fp = fopen("data/credits.txt", "rb");
-
-	for (int i = 0 ; i < 4 ; i++)
-	{
-		fscanf(fp, "%[^\n]%*c", text);
-		drawString(text, -1, 240 + (i * 20), FONT_WHITE);
-	}
-
-	fscanf(fp, "%d%*c", &numberOfCredits);
-
-	credit = (textObject*) malloc(sizeof(textObject) * numberOfCredits);
-
-	for (int i = 0 ; i < numberOfCredits ; i++)
-	{
-		fscanf(fp, "%d %[^\n]%*c", &yPos, text);
-		credit[i].image = textSurface(text, FONT_WHITE);
-		credit[i].x = (screen->w - credit[i].image->w) / 2;
-		yPos2 += yPos;
-		credit[i].y = yPos2;
-	}
-
-	fclose(fp);
-
 	if ((engine.useMusic) && (engine.useAudio))
 	{
 		Mix_VolumeMusic(100);
 		Mix_PlayMusic(engine.music, 1);
 	}
 
-	updateScreen();
- 	SDL_Delay(20000);
-	drawBackGround();
+	if (show_extro)
+	{
+		fp = fopen("data/extro.txt", "rb");
+
+		i = 0;
+		while (fscanf(fp, "%[^\n]%*c", text) == 1)
+		{
+			drawString(text, -1, 240 + (i * 20), FONT_WHITE);
+			i++;
+		}
+
+		fclose(fp);
+
+		updateScreen();
+ 		SDL_Delay(20000);
+		drawBackGround();
+	}
+
+	fp = fopen("data/credits.txt", "rb");
+	// FIXME: It would be nice for the size of this array to be determined
+	// by the number of lines in the text file. I'm not sure how to do
+	// that at the moment, so just giving it a very large number for now.
+	credit = (textObject*) malloc(sizeof(textObject) * 300);
+
+	while (fscanf(fp, "%d %[^\n]%*c", &yPos, text) == 2)
+	{
+		lastCredit++;
+		credit[lastCredit].image = textSurface(text, FONT_WHITE);
+		credit[lastCredit].x = (screen->w - credit[lastCredit].image->w) / 2;
+		yPos2 += yPos;
+		credit[lastCredit].y = yPos2;
+	}
+
+	fclose(fp);
 
 	engine.done = 0;
-
-	lastCredit = numberOfCredits - 1;
 
 	engine.keyState[KEY_ESCAPE] = 0;
 	flushInput();
@@ -725,7 +725,7 @@ void doCredits()
 		else if(engine.keyState[KEY_UP])
 			speed = -2;
 
-		for (int i = 0 ; i < numberOfCredits ; i++)
+		for (i = 0 ; i <= lastCredit ; i++)
 		{
 			if ((credit[i].y > -10) && (credit[i].y < (screen->h + 10)))
 				blit(credit[i].image, (int)credit[i].x, (int)credit[i].y);
@@ -738,7 +738,7 @@ void doCredits()
 		delayFrame();
 	}
 
-	for (int i = 0 ; i < numberOfCredits ; i++)
+	for (i = 0 ; i <= lastCredit ; i++)
 	{
 		SDL_FreeSurface(credit[i].image);
 	}
