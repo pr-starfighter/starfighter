@@ -104,22 +104,19 @@ void playRandomTrack()
 	int tracks = 0;
 
 	char track[][64] = {
-	"music/railjet_short.ogg", "music/big_boss.ogg", "music/railjet_short.ogg",
-	"music/grey_sector.ogg", "music/big_boss.ogg",
+	"music/railjet_short.ogg", "music/grey_sector.ogg",
 	"music/space_dimensions.ogg", "music/frozen_jam.ogg"
 	};
 
 	switch(currentGame.system)
 	{
 		case 0:
-			tracks = 3;
-			break;
 		case 1:
-			tracks = 5;
+			tracks = 2;
 			break;
 		case 2:
 		case 3:
-			tracks = 7;
+			tracks = 4;
 			break;
 	}
 
