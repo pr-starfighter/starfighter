@@ -197,7 +197,11 @@ void doPlayer()
 			}
 
 			if (((currentGame.area == 18) && (enemy[WC_BOSS].shield > 0)) || (currentGame.area == 24))
+			{
 				player.face = 0;
+				xmoved = true;
+				ymoved = true;
+			}
 
 			if (engine.done == 0)
 			{
