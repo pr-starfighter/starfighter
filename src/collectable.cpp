@@ -243,7 +243,7 @@ void doCollectables()
 				blit(collectable->image, (int)collectable->x, (int)collectable->y);
 
 			collectable->x += engine.ssx + engine.smx;
-			collectable->y += engine.ssy + engine.smx;
+			collectable->y += engine.ssy + engine.smy;
 			collectable->x += collectable->dx;
 			collectable->y += collectable->dy;
 
