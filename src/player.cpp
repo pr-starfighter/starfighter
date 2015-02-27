@@ -80,6 +80,10 @@ void doPlayer()
 	engine.smy = 0;
 
 	int shapeToUse;
+	float cd;
+	float cc;
+	bool xmoved = false;
+	bool ymoved = false;
 
 	if (player.shield > -100)
 	{
@@ -150,12 +154,14 @@ void doPlayer()
 			{
 				player.y -= player.speed;
 				engine.ssy += 0.1;
+				ymoved = true;
 			}
 
 			if (engine.keyState[KEY_DOWN])
 			{
 				player.y += player.speed;
 				engine.ssy -= 0.1;
+				ymoved = true;
 			}
 
 			if (engine.keyState[KEY_LEFT])
@@ -163,6 +169,7 @@ void doPlayer()
 				player.x -= player.speed;
 				engine.ssx += 0.1;
 				player.face = 1;
+				xmoved = true;
 			}
 
 			if (engine.keyState[KEY_RIGHT])
@@ -170,6 +177,7 @@ void doPlayer()
 				player.x += player.speed;
 				engine.ssx -= 0.1;
 				player.face = 0;
+				xmoved = true;
 			}
 
 			if (engine.keyState[KEY_ESCAPE])
@@ -193,25 +201,95 @@ void doPlayer()
 
 			if (engine.done == 0)
 			{
-				if (player.x < xViewBorder)
+				if (xmoved)
 				{
-					engine.smx += xViewBorder - player.x;
-					player.x = xViewBorder;
+					if (player.x < xViewBorder)
+					{
+						engine.smx += xViewBorder - player.x;
+						player.x = xViewBorder;
+					}
+					else if (player.x > screen->w - xViewBorder)
+					{
+						engine.smx += (screen->w - xViewBorder) - player.x;
+						player.x = screen->w - xViewBorder;
+					}
 				}
-				else if (player.x > screen->w - xViewBorder)
+				else
 				{
-					engine.smx += (screen->w - xViewBorder) - player.x;
-					player.x = screen->w - xViewBorder;
+					cd = player.x - screen->w / 2;
+					if (cd < 0)
+					{
+						cc = engine.ssx - cameraMaxSpeed;
+						if (cd < cc)
+						{
+							player.x -= cc;
+							engine.smx -= cc;
+						}
+						else
+						{
+							player.x -= cd;
+							engine.smx -= cd;
+						}
+					}
+					else if (cd > 0)
+					{
+						cc = cameraMaxSpeed + engine.ssx;
+						if (cd > cc)
+						{
+							player.x -= cc;
+							engine.smx -= cc;
+						}
+						else
+						{
+							player.x -= cd;
+							engine.smx -= cd;
+						}
+					}
 				}
-				if (player.y < yViewBorder)
+				if (ymoved)
 				{
-					engine.smy += yViewBorder - player.y;
-					player.y = yViewBorder;
+					if (player.y < yViewBorder)
+					{
+						engine.smy += yViewBorder - player.y;
+						player.y = yViewBorder;
+					}
+					else if (player.y > screen->h - yViewBorder)
+					{
+						engine.smy += (screen->h - yViewBorder) - player.y;
+						player.y = screen->h - yViewBorder;
+					}
 				}
-				else if (player.y > screen->h - yViewBorder)
+				else
 				{
-					engine.smy += (screen->h - yViewBorder) - player.y;
-					player.y = screen->h - yViewBorder;
+					cd = player.y - screen->h / 2;
+					if (cd < 0)
+					{
+						cc = engine.ssy - cameraMaxSpeed;
+						if (cd < cc)
+						{
+							player.y -= cc;
+							engine.smy -= cc;
+						}
+						else
+						{
+							player.y -= cd;
+							engine.smy -= cd;
+						}
+					}
+					else if (cd > 0)
+					{
+						cc = cameraMaxSpeed + engine.ssy;
+						if (cd > cc)
+						{
+							player.y -= cc;
+							engine.smy -= cc;
+						}
+						else
+						{
+							player.y -= cd;
+							engine.smy -= cd;
+						}
+					}
 				}
 			}
 
@@ -257,8 +335,8 @@ void doPlayer()
 		}
 	}
 
-	limitFloat(&engine.ssx, -3, 3);
-	limitFloat(&engine.ssy, -3, 3);
+	limitFloat(&engine.ssx, -cameraMaxSpeed, cameraMaxSpeed);
+	limitFloat(&engine.ssy, -cameraMaxSpeed, cameraMaxSpeed);
 
 	// Specific for the mission were you have to chase the Executive Transport
 	if ((currentGame.area == 18) && (enemy[WC_BOSS].shield > 0) && (player.shield > 0))

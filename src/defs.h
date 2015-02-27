@@ -315,3 +315,4 @@ const int screenWidth = 800;
 const int screenHeight = 600;
 const int xViewBorder = 100;
 const int yViewBorder = 100;
+const float cameraMaxSpeed = 3.;
