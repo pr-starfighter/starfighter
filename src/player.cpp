@@ -325,7 +325,7 @@ void getPlayerInput()
 				break;
 
 			case SDL_KEYUP:
-				if (engine.event.key.keysym.sym != SDLK_p && engine.event.key.keysym.sym != SDLK_t)
+				if (engine.event.key.keysym.sym != SDLK_p)
 					engine.keyState[mapkey(engine.event.key.keysym.sym)] = 0;
 				break;
 

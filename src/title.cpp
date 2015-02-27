@@ -676,7 +676,7 @@ void doCredits()
 
 	fp = fopen("data/credits.txt", "rb");
 
-	for (int i = 0 ; i < 6 ; i++)
+	for (int i = 0 ; i < 4 ; i++)
 	{
 		fscanf(fp, "%[^\n]%*c", text);
 		drawString(text, -1, 240 + (i * 20), FONT_WHITE);
@@ -704,7 +704,7 @@ void doCredits()
 	}
 
 	updateScreen();
- 	SDL_Delay(10000);
+ 	SDL_Delay(20000);
 	drawBackGround();
 
 	engine.done = 0;

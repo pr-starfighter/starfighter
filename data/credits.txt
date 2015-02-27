@@ -1,9 +1,7 @@
 And so it was that in the year 2579 the galactic weapons corporation
-WEAPCO was defeated. The people rejoiced that the darkness had
-been lifted and once again the galaxy knew freedom.
-Their prayers had been answered thanks to the valiant efforts of a few determined
+WEAPCO was defeated thanks to the valiant efforts of a few determined
 individuals; A cause that would be remembered throughout the rest of
-human history as Project: Starfighter
+human history as Project: Starfighter.
 158
 000 +++ CAST +++
 030 Chris Bainfield
