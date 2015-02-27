@@ -193,25 +193,25 @@ void doPlayer()
 
 			if (engine.done == 0)
 			{
-				if (player.x < viewBorder)
+				if (player.x < xViewBorder)
 				{
-					engine.smx += viewBorder - player.x;
-					player.x = viewBorder;
+					engine.smx += xViewBorder - player.x;
+					player.x = xViewBorder;
 				}
-				else if (player.x > screen->w - viewBorder)
+				else if (player.x > screen->w - xViewBorder)
 				{
-					engine.smx += (screen->w - viewBorder) - player.x;
-					player.x = screen->w - viewBorder;
+					engine.smx += (screen->w - xViewBorder) - player.x;
+					player.x = screen->w - xViewBorder;
 				}
-				if (player.y < viewBorder)
+				if (player.y < yViewBorder)
 				{
-					engine.smy += viewBorder - player.y;
-					player.y = viewBorder;
+					engine.smy += yViewBorder - player.y;
+					player.y = yViewBorder;
 				}
-				else if (player.y > screen->h - viewBorder)
+				else if (player.y > screen->h - yViewBorder)
 				{
-					engine.smy += (screen->h - viewBorder) - player.y;
-					player.y = screen->h - viewBorder;
+					engine.smy += (screen->h - yViewBorder) - player.y;
+					player.y = screen->h - yViewBorder;
 				}
 			}
 

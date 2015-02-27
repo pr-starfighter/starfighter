@@ -313,5 +313,5 @@ static const signed char rate2reload[6] = {15, 15, 13, 11, 9, 7};
 
 const int screenWidth = 800;
 const int screenHeight = 600;
-
-const int viewBorder = 100;
+const int xViewBorder = 100;
+const int yViewBorder = 100;
