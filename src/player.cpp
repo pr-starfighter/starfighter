@@ -220,30 +220,16 @@ void doPlayer()
 					if (cd < 0)
 					{
 						cc = engine.ssx - cameraMaxSpeed;
-						if (cd < cc)
-						{
-							player.x -= cc;
-							engine.smx -= cc;
-						}
-						else
-						{
-							player.x -= cd;
-							engine.smx -= cd;
-						}
+						limitFloat(&cc, cd / 10, -cd / 10);
+						player.x -= cc;
+						engine.smx -= cc;
 					}
 					else if (cd > 0)
 					{
 						cc = cameraMaxSpeed + engine.ssx;
-						if (cd > cc)
-						{
-							player.x -= cc;
-							engine.smx -= cc;
-						}
-						else
-						{
-							player.x -= cd;
-							engine.smx -= cd;
-						}
+						limitFloat(&cc, -cd / 10, cd / 10);
+						player.x -= cc;
+						engine.smx -= cc;
 					}
 				}
 				if (ymoved)
@@ -265,30 +251,16 @@ void doPlayer()
 					if (cd < 0)
 					{
 						cc = engine.ssy - cameraMaxSpeed;
-						if (cd < cc)
-						{
-							player.y -= cc;
-							engine.smy -= cc;
-						}
-						else
-						{
-							player.y -= cd;
-							engine.smy -= cd;
-						}
+						limitFloat(&cc, cd / 10, -cd / 10);
+						player.y -= cc;
+						engine.smy -= cc;
 					}
 					else if (cd > 0)
 					{
 						cc = cameraMaxSpeed + engine.ssy;
-						if (cd > cc)
-						{
-							player.y -= cc;
-							engine.smy -= cc;
-						}
-						else
-						{
-							player.y -= cd;
-							engine.smy -= cd;
-						}
+						limitFloat(&cc, -cd / 10, cd / 10);
+						player.y -= cc;
+						engine.smy -= cc;
 					}
 				}
 			}
