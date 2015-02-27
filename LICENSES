@@ -1,3 +1,10 @@
+data/*
+docs/*
+
+License: GNU GPLv3 or later <https://gnu.org/licenses/gpl.html>
+
+------------------------------------------------------------------------
+
 gfx/prlogo.png
 gfx/sflogo.png
 gfx/alienDevice.png
