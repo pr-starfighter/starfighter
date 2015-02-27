@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
 	defineGlobals(); // Must do this first!
 
 	bool cheatAttempt = false;
+	int cheatCount = 0;
 
 	if (argc > 1)
 	{
@@ -55,6 +56,14 @@ int main(int argc, char *argv[])
 			{printf("No Audio\n"); engine.useAudio = false;}
 		if (strcmp(argv[i], "-mono") == 0)
 			{printf("Mono sound output\n"); engine.useAudio = true;}
+		if ((strcmp(argv[i], "humans") == 0) && (cheatCount == 0))
+			cheatCount = 1;
+		if ((strcmp(argv[i], "do") == 0) && (cheatCount == 1))
+			cheatCount = 2;
+		if ((strcmp(argv[i], "it") == 0) && (cheatCount == 2))
+			cheatCount = 3;
+		if ((strcmp(argv[i], "better") == 0) && (cheatCount == 3))
+			{printf("Humans do it better! Cheats enabled.\n"); engine.cheat = true;}
 	}
 
 	atexit(cleanUp);
