@@ -51,7 +51,7 @@ void initPlayer()
 
 	player.hit = 0;
 
-	engine.lowShield = (player.maxShield / 3);
+	engine.lowShield = (player.maxShield >= 3) ? (player.maxShield / 3) : 1;
 	engine.averageShield = engine.lowShield + engine.lowShield;
 
 	if (player.weaponType[1] == W_CHARGER)
