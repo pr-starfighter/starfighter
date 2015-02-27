@@ -424,13 +424,10 @@ Source: http://opengameart.org/content/asteroids
 gfx/ore1.png
 gfx/ore3.png
 
-Authors:
-  phaelax <http://opengameart.org/users/phaelax>
-  onpon4 <https://onpon4.github.io>
+Author: phaelax <http://opengameart.org/users/phaelax>
 License: CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>
 Source: http://opengameart.org/content/asteroids
-Details:
-  Made by colorizing phaelax's white asteroids in the GIMP.
+Details: Colorized with the GIMP.
 
 ------------------------------------------------------------------------
 
@@ -522,7 +519,8 @@ Source: http://opengameart.org/content/spell-sounds-starter-pack
 ------------------------------------------------------------------------
 
 sound/maledeath.ogg
-  
+
+Authors: Berklee
 License: CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>
 Source: https://archive.org/details/Berklee44v5 (scream_1.wav)
 Details: Tuned down 5 half-notes.

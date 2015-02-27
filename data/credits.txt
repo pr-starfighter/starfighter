@@ -17,25 +17,6 @@ human history as Project: Starfighter.
 020 Guus Sliepen
 030 +++ REPLACEMENT GRAPHICS AND SOUND +++
 020 Astrid S. de Wijn
-050 +++ PRODUCTION SOFTWARE +++
-050 LINUX MANDRAKE 9.0
-020 Copyright Mandrakesoft 2002
-020 All Rights Reserved
-020 http://www.linux-mandrake.com
-050 KDE 3.0
-020 Copyright 2002, The KDE Team
-020 All Rights Reserved
-020 http://www.kde.org
-050 GNU GCC
-020 http://www.gcc.org
-050 SIMPLE DIRECTMEDIA LAYER
-020 Created by Sam Lantinga
-020 http://www.libsdl.org
-050 KATE
-020 Copyright 2000 - 2003, The Kate Authors
-020 http://kate.sourceforge.net
-050 THE GIMP
-020 http://www.gimp.org
 050 +++ QUALITY ASSURANCE AND ADVICE +++
 030 Sam Lantinga  Ian Bissett
 020 Chris Taylor  Xan  Christoph Reichenbach
@@ -43,110 +24,41 @@ human history as Project: Starfighter.
 020 Michael Edwards  Halfabee  Doug
 020 Boris  Frank S  Martin Svensson
 020 Willy Gardiol  Liam  Keith Frost
-050 VALGRIND
-020 http://valgrind.org
-050 CPPCHECK
-020 http://cppcheck.sf.net
 050 +++ GRAPHICS +++
-050 alienDevice, prlogo, sflogo
-030 Copyright (c) Parallel Realities
-020 Licensed under GPL 2 or later, at your choice
-050 *Dir, arrow*, buyIcon, chainLink, cursor, elec*, explode1, explode1,
-020 explode10, explode11, explode12, explode13, explode14, explode15,,
-020 explode16, explode3, explode4, explode9, gameover, gameover, icon1,
-020 icon11, icon2, icon3, icon6, icon7, icon8, iconBase, plasmaGreen,
-020 plasmaRed, sellIcon, smallFont, stunBolt, targetText
-030 Copyright (c) Astrid S. de Wijn
-020 Licensed under CC-BY-SA 3.0
-050 face_chris face_crew face_krass face_phoebe face_sid face_usrula
-030 Taken from OpenGameArt.org
-020 Copyright (c) Antifarea
-020 Licensed under CC-BY 3.0
-050 face_kline
-030 Taken from OpenGameArt.org, remixed
-020 Copyright (c) Antifarea, Astrid S. de Wijn
-020 Licensed under CC-BY 3.0
-050 planet_blue, planet_green, planet_orange, planet_red
-030 Taken from OpenGameArt.org
-020 Copyright (c) athile
-020 Licensed under CC-BY 3.0
-050 asteroid*, credits, eyananth, mordor, ore*, planet_sun, sol, spirit,
-020 startUp
-030 Taken by NASA
-020 Public Domain
-050 drone*, merc*, mineBoss*, missileBoat*, tug*
-030 Taken from OpenGameArt.org
-020 Copyright (c) surt
-020 Licensed under GPL 2, GPL 3 or CC-BY-SA 3.0
-020 or any later version of any of the above, at your choice
-050 aimFighter*, barrier, dualFighter*, evilUrsula, kline1*, mine,
-020 mobileCannon*, mobileShield*, plutoBoss, rebelCarrier, sid*,
-020 splitBoss*, transport*,  wingmate*
-030 Taken from OpenGameArt.org
-020 Copyright (c) Daniel Cook
-020 Licensed under CC-BY 3.0
-050 cloakShip*
-030 Taken from OpenGameArt.org
-020 Copyright (c) Archanix
-020 Licensed under CC-BY 3.0
-050 goodTrans*
-030 Taken from OpenGameArt.org
-020 Copyright (c) Rusty, Archanix
-020 Licensed under CC-BY 3.0
-050 escort*
-030 Taken from OpenGameArt.org
-020 Copyright (c) Clint Bellanger
-020 Licensed under CC-BY 3.0
-050 explode0*
-030 Taken from OpenGameArt.org
-020 Created by Cuzco
-020 Public Domain
-050 eliteFighter*, execTrans*, frigate*, miner*, slaveTrans*
-030 Taken from OpenGameArt.org, remixed
-020 Copyright (c) Skorpio, Astrid S. de Wijn
-020 Licensed under GPL 3 or CC-BY-SA 3.0
-020 or any later version of any of the above, at your choice
-050 icon5, firefly*
-020 Created by Lamoot
-020 Public Domain
-050 cargo1, dollar, heart, icon9, icon10, icon12, icon14, icon15,
-020 icon16, icon17, icon23, pod, plasmaAmmo, plasmaDamage, plasmaRate,
-020 rocket, superCharge
-030 Taken from OpenGameArt.org, remixed
-020 Copyright (c) Ails, Astrid S. de Wijn
-020 Licensed under GPL 2, GPL 3 or CC-BY-SA 3.0
-020 or any later version of any of the above, at your choice
-050 icon13, icon18, icon19, icon20, icon22, icon24, icon25, rocket1,
-020 rocket2, rocketAmmo
-030 Taken from OpenGameArt.org, remixed
-020 Copyright (c) OceansDream, Astrid S. de Wijn
-020 Licensed under CC-BY 3.0 or CC-BY-SA 3.0
-050 icon21
-030 Taken from Wikipedia.org, remixed
-020 Created by Torsten Henning, adapted by Astrid S. de Wijn
-020 Public Domain
-050 icon4
-030 Taken from OpenGameArt.org, remixed
-020 Copyright (c) Gobusto, Astrid S. de Wijn
-020 Licensed under CC-BY-SA 3.0
+030 Parallel Realities
+020 Astrid S. de Wijn
+020 CharlesGabriel
+020 NASA
+020 athile
+020 surt
+020 Daniel Cook
+020 Archanix
+020 Rusty
+020 Clint Bellanger
+020 Skorpio
+020 Lamoot
+020 Ails
+020 OceansDream
+020 Torsten Henning
+020 Gobusto
+020 Cuzco
+020 dczanik
+020 phaelax
 050 +++ SOUND +++
-050 flyby
-030 Taken from OpenGameArt.org
-020 Public Domain
-050 clock, explode, explode2, hyperSpace, item, missile, missile2,
-020 plasma3, laser
-030 Taken from Word War VI
-020 Copyright (c) Stephen M. Cameron
-020 Licensed under CC-BY-SA 3.0
-050 beamLaser, cloak, explode3, explode4, plasma, plasma2, shield
-030 Taken from OpenGameArt.org
-020 Copyright (c) p0ss
-020 Licensed under GPL 2, GPL 3, LGPL 3 or CC-BY-SA 3.0
-020 or any later version of any of the above, at your choice
-050 maledeath
-030 Taken from the OLPC sound samples collection
-020 Copyright (c) Berklee
-020 Licensed under CC-BY 3.0
+030 Person
+020 Stephen M. Cameron
+020 p0ss
+020 Berklee
+050 +++ MUSIC +++
+030 Zander Noriega
+020 maxstack
+020 Deceased Superior Technician
+020 matthew.pablo
+020 tgfcoder
+020 neocrey
+020 WeskerHunter
+020 Jan125
+020 Alexandr Zhelanov
 050 +++ SPECIAL THANKS +++
 030 Wes Whitmore  Ceri Done
 020 Faye Price  Emma Hamilton
