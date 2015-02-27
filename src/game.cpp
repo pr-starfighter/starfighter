@@ -71,12 +71,22 @@ void newGame()
 	{
 		case DIFFICULTY_EASY:
 			player.maxShield = 100;
+			currentGame.minPlasmaRate = 2;
+			currentGame.minPlasmaOutput = 2;
+			currentGame.minPlasmaDamage = 2;
+			currentGame.maxPlasmaRate = 3;
+			currentGame.maxPlasmaOutput = 3;
+			currentGame.maxPlasmaDamage = 3;
 			break;
 		case DIFFICULTY_HARD:
 			player.maxShield = 25;
 			break;
 		case DIFFICULTY_NIGHTMARE:
 			player.maxShield = 1;
+			currentGame.maxPlasmaRate = 1;
+			currentGame.maxPlasmaOutput = 1;
+			currentGame.maxPlasmaDamage = 1;
+			currentGame.maxRocketAmmo = 5;
 			break;
 		default:
 			player.maxShield = 50;
