@@ -83,6 +83,15 @@ void addCollectable(float x, float y, int type, int value, int life)
 		}
 	}
 
+	// Deny the Super Charge in Nightmare difficulty.
+	if (type == P_SUPER)
+	{
+		if (currentGame.difficulty >= DIFFICULTY_NIGHTMARE)
+		{
+			type = P_PLASMA_DAMAGE;
+		}
+	}
+
 	collectables *collectable = new collectables;
 
 	collectable->next = NULL;

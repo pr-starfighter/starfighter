@@ -478,6 +478,15 @@ int galaxyMap()
 	// do not perform certain keyboard actions
 	engine.gameSection = SECTION_INTERMISSION;
 
+	// Remove the Supercharge, if it is there
+	if (currentGame.difficulty > DIFFICULTY_EASY)
+	{
+		weapon[0].reload[0] = max(weapon[0].reload[0],
+			rate2reload[currentGame.maxPlasmaRate]);
+		weapon[0].ammo[0] = min(weapon[0].ammo[0], currentGame.maxPlasmaOutput);
+		weapon[0].damage = min(weapon[0].damage, currentGame.maxPlasmaDamage);
+	}
+
 	clearScreen(black);
 	updateScreen();
 	clearScreen(black);
