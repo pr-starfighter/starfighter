@@ -1,6 +1,6 @@
 Sid Wilson
 FACE_SID
-I need some resources before we leave, it'll make life a lot easier in Mordor. Problem is that the parts are proprietry of WEAPCO.
+I need some resources before we leave, it'll make life a lot easier in Mordor. Problem is that the parts are property of WEAPCO.
 FACE_PHOEBE
 Can't we just salvage some from previous encounters?
 FACE_SID
