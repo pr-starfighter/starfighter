@@ -92,6 +92,15 @@ void addCollectable(float x, float y, int type, int value, int life)
 		}
 	}
 
+	// Shield bonus is useless in Nightmare difficulty; give cash instead.
+	if (type == P_SHIELD)
+	{
+		if (currentGame.difficulty >= DIFFICULTY_NIGHTMARE)
+		{
+			type = P_CASH;
+		}
+	}
+
 	collectables *collectable = new collectables;
 
 	collectable->next = NULL;
