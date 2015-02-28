@@ -1242,6 +1242,8 @@ void doAliens()
 
 			if ((currentGame.area != 18) || (theEnemy->shield < 0))
 				theEnemy->x += engine.ssx + engine.smx;
+			else
+				theEnemy->x += engine.smx;
 
 			theEnemy->y += engine.ssy + engine.smy;
 		}
