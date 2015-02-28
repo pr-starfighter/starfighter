@@ -61,17 +61,19 @@ void addCollectable(float x, float y, int type, int value, int life)
 	if (type == P_SUPER)
 		value = 1;
 
-	/*
-	Cash is rare on interceptions. Stops people from point leeching(!)
-	*/
-	if ((currentGame.area == MAX_MISSIONS - 1) && (type == P_CASH))
-	{
-		if (rand() % 10 > 0)
-			return;
-	}
-
 	if (value == 0)
 		return; // don't bother!
+
+	/*
+	No cash, powerups, or ammo on interceptions. Stops point leeching(!)
+	*/
+	if ((currentGame.area == MAX_MISSIONS - 1) &&
+		((type == P_CASH) || (type == P_PLASMA_AMMO) || (type == P_ROCKET) ||
+			(type == P_PLASMA_DAMAGE) || (type == P_PLASMA_SHOT) ||
+			(type == P_PLASMA_RATE) || (type == P_SUPER)))
+	{
+		return;
+	}
 
 	// If the player has a charge cannon or a laser cannon, don't give them
 	// rockets. Causes problems otherwise :)

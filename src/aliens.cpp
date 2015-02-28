@@ -233,8 +233,11 @@ bool addAlien()
 				randEnemy = CD_SLAVETRANSPORT;
 		}
 
-		if ((rand() % 6) == 0)
-			randEnemy = CD_TRANSPORTSHIP;
+		if (currentGame.area != MAX_MISSIONS - 1)
+		{
+			if ((rand() % 6) == 0)
+				randEnemy = CD_TRANSPORTSHIP;
+		}
 	}
 
 	delete[] alienArray;
