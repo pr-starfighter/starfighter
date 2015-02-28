@@ -75,6 +75,18 @@ void addCollectable(float x, float y, int type, int value, int life)
 		return;
 	}
 
+	// No point in giving the player plasma ammo if the weapons aren't
+	// upgraded! Give them money instead.
+	if (type == P_PLASMA_AMMO)
+	{
+		if ((weapon[W_PLAYER_WEAPON].reload[0] == rate2reload[currentGame.minPlasmaRate]) &&
+			(weapon[W_PLAYER_WEAPON].ammo[0] == currentGame.minPlasmaOutput) &&
+			(weapon[W_PLAYER_WEAPON].damage == currentGame.minPlasmaDamage))
+		{
+			type = P_CASH;
+		}
+	}
+
 	// If the player has a charge cannon or a laser cannon, don't give them
 	// rockets. Causes problems otherwise :)
 	if (type == P_ROCKET)

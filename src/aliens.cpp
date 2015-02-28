@@ -592,8 +592,8 @@ void initAliens()
 	{
 		enemy[WC_KLINE].flags |= FL_IMMORTAL | FL_NOFIRE | FL_NOMOVE;
 
-		enemy[WC_KLINE].x = (screen->w * 2) / 3;
-		enemy[WC_KLINE].y = screen->h / 2;
+		enemy[WC_KLINE].x = screen->w * 2 / 3;
+		enemy[WC_KLINE].y = screen->h * 2 / 3;
 
 		enemy[WC_KLINE].deathCounter = -250;
 		enemy[WC_KLINE].maxShield = 1500;
