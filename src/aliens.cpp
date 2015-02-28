@@ -243,7 +243,10 @@ bool addAlien()
 				randEnemy = CD_SLAVETRANSPORT;
 		}
 
-		if (currentGame.area != MAX_MISSIONS - 1)
+		if ((currentGame.area != MAX_MISSIONS - 1) &&
+			((currentGame.maxPlasmaRate > currentGame.minPlasmaRate) ||
+				(currentGame.maxPlasmaOutput > currentGame.minPlasmaOutput) ||
+				(currentGame.maxPlasmaDamage > currentGame.minPlasmaDamage)))
 		{
 			if ((rand() % 6) == 0)
 				randEnemy = CD_TRANSPORTSHIP;
@@ -1241,10 +1244,9 @@ void doAliens()
 				moveAndSeparate(theEnemy);
 
 			if ((currentGame.area != 18) || (theEnemy->shield < 0))
-				theEnemy->x += engine.ssx + engine.smx;
-			else
-				theEnemy->x += engine.smx;
+				theEnemy->x += engine.ssx;
 
+			theEnemy->x += engine.smx;
 			theEnemy->y += engine.ssy + engine.smy;
 		}
 
