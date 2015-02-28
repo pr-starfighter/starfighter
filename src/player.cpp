@@ -269,7 +269,7 @@ void doPlayer()
 				}
 			}
 
-			if (player.shield > engine.lowShield)
+			if ((player.maxShield <= 1) || (player.shield > engine.lowShield))
 				addEngine(&player);
 
 			shapeToUse = player.face;
@@ -280,7 +280,8 @@ void doPlayer()
 			limitCharAdd(&player.hit, -1, 0, 100);
 
 			blit(shipShape[shapeToUse], (int)player.x, (int)player.y);
-			if ((player.shield <= engine.lowShield) && (rand() % 5 < 1))
+			if ((player.maxShield > 1) && (player.shield <= engine.lowShield) &&
+					(rand() % 5 < 1))
 				addExplosion(player.x + rrand(-10, 10), player.y + rrand(-10, 20), E_SMOKE);
 		}
 		else
