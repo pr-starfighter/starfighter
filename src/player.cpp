@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "Starfighter.h"
 
 object player;
+bool charger_fired = false;
 
 /*
 Initialises the player for a new game.
@@ -118,13 +119,23 @@ void doPlayer()
 			{
 				if (engine.keyState[KEY_ALTFIRE] && !(engine.keyState[KEY_FIRE]))
 				{
-					limitCharAdd(&player.ammo[1], 1, 0, 200);
+					if (!charger_fired)
+					{
+						player.ammo[1] += 1;
+						if (player.ammo[1] >= 125)
+						{
+							fireBullet(&player, 1);
+							player.ammo[1] = 0;
+							charger_fired = true;
+						}
+					}
 				}
 				else
 				{
 					if (player.ammo[1] > 0)
 						fireBullet(&player, 1);
 					player.ammo[1] = 0;
+					charger_fired = false;
 				}
 			}
 
