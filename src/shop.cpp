@@ -478,14 +478,14 @@ static void buy(int i)
 			if (player.weaponType[1] == W_DOUBLE_ROCKETS)
 				{shopSelectedItem = -8; return;}
 			player.weaponType[1] = W_DOUBLE_ROCKETS;
-			limitChar(&currentGame.maxRocketAmmo, 10, 50);
+			limitChar(&currentGame.maxRocketAmmo, 5, 50);
 			shopSelectedItem = -1;
 			break;
 		case 11:
 			if (player.weaponType[1] == W_MICRO_ROCKETS)
 				{shopSelectedItem = -8; return;}
 			player.weaponType[1] = W_MICRO_ROCKETS;
-			limitChar(&currentGame.maxRocketAmmo, 10, 50);
+			limitChar(&currentGame.maxRocketAmmo, 5, 50);
 			shopSelectedItem = -1;
 			break;
 		case 12:

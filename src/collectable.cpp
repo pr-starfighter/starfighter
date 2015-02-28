@@ -279,7 +279,8 @@ void doCollectables()
 						break;
 
 					case P_ROCKET:
-						limitCharAdd(&player.ammo[1], collectable->value, 0, currentGame.maxRocketAmmo);
+						limitCharAdd(&player.ammo[1], collectable->value, 0,
+							currentGame.maxRocketAmmo);
 						if (player.ammo[1] == currentGame.maxRocketAmmo)
 							sprintf(temp, "Rocket Ammo at Maximum");
 						else
