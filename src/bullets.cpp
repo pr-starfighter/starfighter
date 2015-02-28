@@ -303,6 +303,7 @@ static void destroyAlien(object *bullet, object *theEnemy)
 			currentGame.cash += theEnemy->score;
 		currentGame.cashEarned += theEnemy->score;
 		currentGame.totalKills++;
+		updateMissionRequirements(M_COLLECT, P_CASH, theEnemy->score);
 	}
 	else if (bullet->owner->classDef == CD_PHOEBE)
 	{
