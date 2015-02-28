@@ -224,7 +224,8 @@ bool addAlien()
 
 	signed char randEnemy = alienArray[rand() % numberOfAliens];
 
-	if ((currentGame.area != 10) && (currentGame.area != 15) && (currentGame.area != 24))
+	if ((currentGame.area != 10) && (currentGame.area != 15) &&
+		(currentGame.area != 24))
 	{
 		if ((currentGame.system == 1) && (currentGame.area == MAX_MISSIONS - 1))
 		{
@@ -1088,12 +1089,14 @@ void doAliens()
 				limitCharAdd(&theEnemy->reload[0], -1, 0, 999);
 				limitCharAdd(&theEnemy->reload[1], -1, 0, 999);
 
-    			if ((!(theEnemy->flags & FL_DISABLED)) && (!(theEnemy->flags & FL_NOFIRE)))
+				if ((!(theEnemy->flags & FL_DISABLED)) &&
+					(!(theEnemy->flags & FL_NOFIRE)))
 				{
 					if ((theEnemy->target->shield > 0))
 						canFire = traceTarget(theEnemy);
 
-					if (((theEnemy->thinktime % 2) == 0) && (theEnemy->flags & FL_FRIEND))
+					if (((theEnemy->thinktime % 2) == 0) &&
+							(theEnemy->flags & FL_FRIEND))
 						canFire = traceView(theEnemy);
 				}
 				else
@@ -1103,13 +1106,18 @@ void doAliens()
 
 				if ((canFire) && (dev.fireAliens))
 				{
-					if ((theEnemy->reload[0] == 0) && ((rand() % 1000 < theEnemy->chance[0]) || (theEnemy->flags & FL_CONTINUOUS_FIRE)))
+					if ((theEnemy->reload[0] == 0) &&
+						((rand() % 1000 < theEnemy->chance[0]) ||
+							(theEnemy->flags & FL_CONTINUOUS_FIRE)))
 					{
 						fireBullet(theEnemy, 0);
 					}
-					if ((theEnemy->reload[1] == 0) && ((rand() % 1000 < theEnemy->chance[1]) || (theEnemy->flags & FL_CONTINUOUS_FIRE)))
+					if ((theEnemy->reload[1] == 0) &&
+						((rand() % 1000 < theEnemy->chance[1]) ||
+							(theEnemy->flags & FL_CONTINUOUS_FIRE)))
 					{
-						if ((theEnemy->weaponType[1] != W_ENERGYRAY) && (theEnemy->weaponType[1] != W_LASER))
+						if ((theEnemy->weaponType[1] != W_ENERGYRAY) &&
+							(theEnemy->weaponType[1] != W_LASER))
 						{
 							if (theEnemy->weaponType[1] == W_CHARGER)
 								theEnemy->ammo[1] = 50 + rand() % 150;
@@ -1119,7 +1127,8 @@ void doAliens()
 						{
 							theEnemy->flags += FL_FIRELASER;
 						}
-						else if ((theEnemy->weaponType[1] == W_ENERGYRAY) && (theEnemy->ammo[0] == 250))
+						else if ((theEnemy->weaponType[1] == W_ENERGYRAY) &&
+							(theEnemy->ammo[0] == 250))
 						{
 							theEnemy->flags += FL_FIRERAY;
 							playSound(SFX_ENERGYRAY, theEnemy->x);
@@ -1151,12 +1160,14 @@ void doAliens()
 
 				if (theEnemy->flags & FL_DROPMINES)
 					if ((rand() % 150) == 0)
-						addCollectable(theEnemy->x, theEnemy->y, P_MINE, 25, 600 + rand() % 2400);
+						addCollectable(theEnemy->x, theEnemy->y, P_MINE, 25,
+							600 + rand() % 2400);
 
 						// Kline drops mines a lot more often
 				if ((theEnemy->flags & FL_DROPMINES) && (theEnemy == &enemy[WC_KLINE]))
 					if ((rand() % 10) == 0)
-						addCollectable(theEnemy->x, theEnemy->y, P_MINE, 25, 600 + rand() % 2400);
+						addCollectable(theEnemy->x, theEnemy->y, P_MINE, 25,
+							600 + rand() % 2400);
 
 				// -------------------------------------------------------
 
@@ -1194,8 +1205,13 @@ void doAliens()
 				if (theEnemy->shield < theEnemy->deathCounter)
 				{
 					theEnemy->active = false;
-					if ((theEnemy->classDef == CD_BOSS) || (theEnemy->owner == &enemy[WC_BOSS]) || (theEnemy->flags & FL_FRIEND) || (theEnemy->classDef == CD_ASTEROID) || (theEnemy->classDef == CD_KLINE))
-						addDebris((int)theEnemy->x, (int)theEnemy->y, theEnemy->maxShield);
+					if ((theEnemy->classDef == CD_BOSS) ||
+							(theEnemy->owner == &enemy[WC_BOSS]) ||
+							(theEnemy->flags & FL_FRIEND) ||
+							(theEnemy->classDef == CD_ASTEROID) ||
+							(theEnemy->classDef == CD_KLINE))
+						addDebris((int)theEnemy->x, (int)theEnemy->y,
+							theEnemy->maxShield);
 
 					if (theEnemy->classDef == CD_ASTEROID)
 					{
@@ -1207,10 +1223,9 @@ void doAliens()
 			}
 
 			// Adjust the movement even whilst exploding
-			if ((dev.moveAliens) && (!(theEnemy->flags & FL_NOMOVE)) && (!(theEnemy->flags & FL_DISABLED)))
-			{
+			if ((dev.moveAliens) && (!(theEnemy->flags & FL_NOMOVE)) &&
+					(!(theEnemy->flags & FL_DISABLED)))
 				moveAndSeparate(theEnemy);
-			}
 
 			if ((currentGame.area != 18) || (theEnemy->shield < 0))
 				theEnemy->x += engine.ssx + engine.smx;

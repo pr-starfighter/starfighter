@@ -552,7 +552,7 @@ bool allMissionsCompleted()
 					setInfoLine("*** Interception Destroyed ***", FONT_GREEN);
 				currentMission.completed1[i] = OB_COMPLETED;
 
-    			// do some area specific things
+				// do some area specific things
 				if ((currentGame.area == 5) || (currentGame.area == 10) || (currentGame.area == 18) || (currentGame.area == 24))
 				{
 					if (currentMission.remainingObjectives2 == 0)

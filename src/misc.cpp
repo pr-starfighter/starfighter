@@ -331,7 +331,7 @@ void doInfo()
 
 	for (int i = 1 ; i <= 5 ; i++)
 	{
-		if (weapon[0].damage >= i) {
+		if (weapon[W_PLAYER_WEAPON].damage >= i) {
 			if(i <= currentGame.maxPlasmaDamage || (SDL_GetTicks() % 1000 > (unsigned)i * 100))
 			{
 				SDL_FillRect(screen, &bar, green);
@@ -351,7 +351,7 @@ void doInfo()
 
 	for (int i = 1 ; i <= 5 ; i++)
 	{
-		if (weapon[0].ammo[0] >= i) {
+		if (weapon[W_PLAYER_WEAPON].ammo[0] >= i) {
 			if(i <= currentGame.maxPlasmaOutput || (SDL_GetTicks() % 1000 > (unsigned)i * 100))
 			{
 				SDL_FillRect(screen, &bar, yellow);
@@ -371,7 +371,7 @@ void doInfo()
 
 	for (int i = 1 ; i <= 5 ; i++)
 	{
-		if (weapon[0].reload[0] <= rate2reload[i]) {
+		if (weapon[W_PLAYER_WEAPON].reload[0] <= rate2reload[i]) {
 			if(i <= currentGame.maxPlasmaRate || (SDL_GetTicks() % 1000 > (unsigned)i * 100))
 			{
 				SDL_FillRect(screen, &bar, blue);

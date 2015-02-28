@@ -101,7 +101,7 @@ bool loadGame(int slot)
 	if (currentGame.saveFormat < 2)
 		currentGame.difficulty = DIFFICULTY_NORMAL;
 
-	weapon[0] = currentGame.playerWeapon;
+	weapon[W_PLAYER_WEAPON] = currentGame.playerWeapon;
 	player = currentGame.thePlayer;
 
 	// Re-init all the planets in this system...
@@ -128,7 +128,7 @@ void saveGame(int slot)
 	fp = fopen(fileName, "wb");
 
 	currentGame.saveFormat = 2;
-	currentGame.playerWeapon = weapon[0];
+	currentGame.playerWeapon = weapon[W_PLAYER_WEAPON];
 	currentGame.thePlayer = player;
 	for (int i = 0 ; i < 10 ; i++)
 		currentGame.missionCompleted[i] = systemPlanet[i].missionCompleted;

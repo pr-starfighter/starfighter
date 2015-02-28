@@ -159,7 +159,8 @@ void initSystem()
 	#endif
 
 	/* Initialize the SDL library */
-	if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_JOYSTICK) < 0) {
+	if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_JOYSTICK) < 0)
+	{
 		printf("Couldn't initialize SDL: %s\n", SDL_GetError());
 		exit(1);
 	}
@@ -184,14 +185,16 @@ void initSystem()
 
 	screen = SDL_CreateRGBSurface(0, screenWidth, screenHeight, 32, 0xff0000, 0xff00, 0xff, 0xff000000);
 
-	if (!screen) {
+	if (!screen)
+	{
 		printf("Couldn't create %ix%ix32 surface: %s\n", screenWidth, screenHeight, SDL_GetError());
 		exit(1);
 	}
 
 	window = SDL_CreateWindow("Project: Starfighter", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screen->w, screen->h, 0);
 
-	if (window == NULL) {
+	if (window == NULL)
+	{
 		printf("Could not create window: %s\n", SDL_GetError());
 		exit(1);
 	}
@@ -201,7 +204,8 @@ void initSystem()
 
 	renderer = SDL_CreateRenderer(window, -1, 0);
 
-	if (!renderer) {
+	if (!renderer)
+	{
 		printf("Could not create renderer: %s\n", SDL_GetError());
 		exit(1);
 	}
@@ -210,7 +214,8 @@ void initSystem()
 
 	texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, screen->w, screen->h);
 
-	if (!texture) {
+	if (!texture)
+	{
 		printf("Couldn't create %ix%ix32 texture: %s\n", screen->w, screen->h, SDL_GetError());
 		exit(1);
 	}
@@ -228,8 +233,8 @@ void initSystem()
 	SDL_ShowCursor(SDL_DISABLE);
 	SDL_EventState(SDL_MOUSEMOTION, SDL_DISABLE);
 
-        SDL_JoystickEventState(SDL_ENABLE);
-        SDL_JoystickOpen(0);
+	SDL_JoystickEventState(SDL_ENABLE);
+	SDL_JoystickOpen(0);
 }
 
 /*

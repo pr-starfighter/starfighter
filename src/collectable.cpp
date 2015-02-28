@@ -301,11 +301,11 @@ void doCollectables()
 					case P_PLASMA_RATE:
 						if (player.ammo[0] < 50)
 							player.ammo[0] = 50;
-						if (weapon[0].reload[0] <= rate2reload[currentGame.maxPlasmaRate])
+						if (weapon[W_PLAYER_WEAPON].reload[0] <= rate2reload[currentGame.maxPlasmaRate])
 							sprintf(temp, "Firing Rate already at Maximum");
 						else
 						{
-							weapon[0].reload[0] -= 2;
+							weapon[W_PLAYER_WEAPON].reload[0] -= 2;
 							sprintf(temp, "Firing rate increased");
 						}
 						currentGame.powerups++;
@@ -314,11 +314,11 @@ void doCollectables()
 					case P_PLASMA_SHOT:
 						if (player.ammo[0] < 50)
 							player.ammo[0] = 50;
-						if (weapon[0].ammo[0] >= currentGame.maxPlasmaOutput)
+						if (weapon[W_PLAYER_WEAPON].ammo[0] >= currentGame.maxPlasmaOutput)
 							sprintf(temp, "Plasma output already at Maximum");
 						else
 						{
-							weapon[0].ammo[0]++;
+							weapon[W_PLAYER_WEAPON].ammo[0]++;
 							sprintf(temp, "Plasma output increased");
 						}
 						currentGame.powerups++;
@@ -327,20 +327,20 @@ void doCollectables()
 					case P_PLASMA_DAMAGE:
 						if (player.ammo[0] < 50)
 							player.ammo[0] = 50;
-						if (weapon[0].damage >= currentGame.maxPlasmaDamage)
+						if (weapon[W_PLAYER_WEAPON].damage >= currentGame.maxPlasmaDamage)
 							sprintf(temp, "Plasma damage already at Maximum");
 						else {
-							weapon[0].damage++;
+							weapon[W_PLAYER_WEAPON].damage++;
 							sprintf(temp, "Plasma damage increased");
 						}
 						currentGame.powerups++;
 						break;
 
 					case P_SUPER:
-						weapon[0].ammo[0] = 5;
-						weapon[0].damage = 5;
-						weapon[0].reload[0] = rate2reload[5];
-						weapon[0].flags |= WF_SPREAD;
+						weapon[W_PLAYER_WEAPON].ammo[0] = 5;
+						weapon[W_PLAYER_WEAPON].damage = 5;
+						weapon[W_PLAYER_WEAPON].reload[0] = rate2reload[5];
+						weapon[W_PLAYER_WEAPON].flags |= WF_SPREAD;
 
 						sprintf(temp, "Picked up a Super Charge!!");
 
@@ -404,9 +404,9 @@ void doCollectables()
 			// stop people from exploiting a weapon check condition
 			if (player.ammo[0] == 0)
 			{
-                                weapon[0].ammo[0] = currentGame.minPlasmaOutput;
-                                weapon[0].damage = currentGame.minPlasmaDamage;
-                                weapon[0].reload[0] = rate2reload[currentGame.minPlasmaRate];
+				weapon[W_PLAYER_WEAPON].ammo[0] = currentGame.minPlasmaOutput;
+				weapon[W_PLAYER_WEAPON].damage = currentGame.minPlasmaDamage;
+				weapon[W_PLAYER_WEAPON].reload[0] = rate2reload[currentGame.minPlasmaRate];
 			}
 		}
 

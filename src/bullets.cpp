@@ -215,9 +215,9 @@ void fireBullet(object *attacker, int weaponType)
 			player.ammo[0]--;
 			if (player.ammo[0] == 0)
 			{
-				weapon[0].ammo[0] = currentGame.minPlasmaOutput;
-				weapon[0].damage = currentGame.minPlasmaDamage;
-				weapon[0].reload[0] = rate2reload[currentGame.minPlasmaRate];
+				weapon[W_PLAYER_WEAPON].ammo[0] = currentGame.minPlasmaOutput;
+				weapon[W_PLAYER_WEAPON].damage = currentGame.minPlasmaDamage;
+				weapon[W_PLAYER_WEAPON].reload[0] = rate2reload[currentGame.minPlasmaRate];
 			}
 		}
 	}
