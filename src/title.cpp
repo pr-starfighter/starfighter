@@ -467,9 +467,11 @@ int doTitle()
 						if (selectedOption == 1)
 							engine.done = 1;
 						else if (selectedOption == 2)
+						{
 							currentGame.difficulty++;
 							if (currentGame.difficulty > DIFFICULTY_NIGHTMARE)
 								currentGame.difficulty = DIFFICULTY_EASY;
+						}
 						else if (selectedOption == listLength)
 							{menuType = 0; selectedOption = 1;}
 						createDifficultyMenu();

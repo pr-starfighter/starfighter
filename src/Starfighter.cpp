@@ -101,6 +101,7 @@ int main(int argc, char *argv[])
 	// Determine which part of the game we will go to...
 	int section = 0;
 
+	currentGame.difficulty = DIFFICULTY_NORMAL;
 	newGame();
 
 	while (true)

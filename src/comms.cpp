@@ -61,7 +61,6 @@ static void createMissionDetailSurface(SDL_Surface *comms, int missionSlot)
 {
 	char name[50];
 	char string[2000];
-	int lines = 0;
 	int y = 50;
 	int newY = y;
 	int col = FONT_WHITE;

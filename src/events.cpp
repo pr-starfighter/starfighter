@@ -17,8 +17,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-static char lastKeyEvents[] = "                         ";
-
 /*
 Checked during the main game loop. When the game is paused
 it goes into a constant loop checking this routine. If escape is

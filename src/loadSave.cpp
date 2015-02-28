@@ -98,9 +98,8 @@ bool loadGame(int slot)
 
 	fclose(fp);
 
-	if(currentGame.saveFormat < 2) {
+	if (currentGame.saveFormat < 2)
 		currentGame.difficulty = DIFFICULTY_NORMAL;
-	}
 
 	weapon[0] = currentGame.playerWeapon;
 	player = currentGame.thePlayer;
