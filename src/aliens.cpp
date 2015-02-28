@@ -159,7 +159,29 @@ bool addAlien()
 			alienArray[0] = CD_DUALFIGHTER;
 			alienArray[1] = CD_PROTOFIGHTER;
 			break;
+		case 7:
+		case 8:
+			numberOfAliens = 3;
+			alienArray[0] = CD_DUALFIGHTER;
+			alienArray[1] = CD_PROTOFIGHTER;
+			alienArray[2] = CD_AIMFIGHTER;
+			break;
 		case 9:
+			// This is the mission where you need to disable cargo ships.
+			// Missiles are extremely bad in this mission, not because
+			// of the damage they do to you, but because they tend to
+			// accidentally destroy the cargo ships. Therefore, ships
+			// with missiles (dual fighters and missile boats) are
+			// excluded from this mission.
+			numberOfAliens = 2;
+			alienArray[0] = CD_PROTOFIGHTER;
+			alienArray[1] = CD_AIMFIGHTER;
+			break;
+		case 10:
+		case 15:
+			numberOfAliens = 1;
+			alienArray[0] = CD_ASTEROID;
+			break;
 		case 13:
 		case 14:
 		case 16:
@@ -168,6 +190,11 @@ bool addAlien()
 			alienArray[1] = CD_PROTOFIGHTER;
 			alienArray[2] = CD_MISSILEBOAT;
 			alienArray[3] = CD_AIMFIGHTER;
+			break;
+		case 18:
+			numberOfAliens = 2;
+			alienArray[0] = CD_DUALFIGHTER;
+			alienArray[1] = CD_MINER;
 			break;
 		case 25:
 			numberOfAliens = 6;
@@ -182,23 +209,6 @@ bool addAlien()
 			numberOfAliens = 2;
 			alienArray[0] = CD_AIMFIGHTER;
 			alienArray[1] = CD_DUALFIGHTER;
-			break;
-		case 7:
-		case 8:
-			numberOfAliens = 3;
-			alienArray[0] = CD_DUALFIGHTER;
-			alienArray[1] = CD_PROTOFIGHTER;
-			alienArray[2] = CD_AIMFIGHTER;
-			break;
-		case 18:
-			numberOfAliens = 2;
-			alienArray[0] = CD_DUALFIGHTER;
-			alienArray[1] = CD_MINER;
-			break;
-		case 10:
-		case 15:
-			numberOfAliens = 1;
-			alienArray[0] = CD_ASTEROID;
 			break;
 		case 24:
 			numberOfAliens = 2;
