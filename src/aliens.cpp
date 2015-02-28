@@ -449,8 +449,8 @@ static void getPreDefinedAliens()
 	else if (currentGame.area == 21)
 	{
 		enemy[WC_BOSS].target = &player;
-		enemy[WC_BOSS].x = 400;
-		enemy[WC_BOSS].y = 300;
+		enemy[WC_BOSS].x = -screen->w / 2;
+		enemy[WC_BOSS].y = screen->h / 2;
 
 		enemy[13].owner = &enemy[WC_BOSS];
 		enemy[13].dy = 20;
