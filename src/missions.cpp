@@ -390,7 +390,7 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 void updateMissionRequirements(int type, int id, int value)
 {
 	// Can't complete missions if you're dead!
-	if (engine.missionCompleteTimer != 0)
+	if (player.shield <= 0)
 		return;
 
 	char message[25];
