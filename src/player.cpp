@@ -351,6 +351,7 @@ static enum keys mapkey(uint32_t code) {
 			return KEY_RIGHT;
 		case SDLK_LCTRL:
 		case SDLK_RCTRL:
+		case SDLK_RETURN:
 			return KEY_FIRE;
 		case SDLK_SPACE:
 			return KEY_ALTFIRE;
