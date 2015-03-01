@@ -21,15 +21,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // ALL
 #define NONE 0
 
-//AI Types
-enum {
+// Compile-time options
+#ifndef VERSION
+#define VERSION 1.3-dev
+#endif
 
-	AI_NORMAL = 1,
-	AI_DEFENSIVE,
-	AI_OFFENSIVE,
-	AI_EVASIVE,
-	AI_WANDER
-};
+#ifndef DATADIR
+#define DATADIR "."
+#endif 
+
+#ifndef PATH_MAX
+#define PATH_MAX	4096
+#endif
 
 // Object Flags
 #define FL_WEAPCO 1
@@ -55,6 +58,50 @@ enum {
 #define FL_ACTIVATE 1048576
 #define FL_HASMINIMUMSPEED 2097152
 #define FL_FIRELASER 4194304
+
+// Explosions
+#define E_SMALL_EXPLOSION 4
+#define E_BIG_EXPLOSION 8
+#define E_SMOKE 12
+#define E_TINY_EXPLOSION 16
+#define E_ELECTRICAL 20
+
+// Weapon flags
+#define WF_SPREAD 4
+#define WF_SCATTER 8
+#define WF_VARIABLE_SPEED 16
+#define WF_HOMING 32
+#define WF_SHOCKWAVE 64
+#define WF_WEAPCO 128
+#define WF_FRIEND 256
+#define WF_AIMED 512
+#define WF_DISABLE 1024
+#define WF_TIMEDEXPLOSION 2048
+
+#define MAX_WEAPONS 20
+#define MAX_SHAPES 100
+#define MAX_SHIPSHAPES 120
+#define MAX_SOUNDS 17
+#define MAX_ALIENS 25
+#define MAX_TEXTSHAPES 70
+#define MAX_FONTSHAPES 6
+#define MAX_SHOPSHAPES 6
+#define MAX_DEFALIENS 40
+#define MAX_MISSIONS 28
+#define MAX_CARGO 20
+#define MAX_SHOPITEMS 17
+
+#define SHIP_HIT_INDEX 60
+
+// AI Types
+enum {
+
+	AI_NORMAL = 1,
+	AI_DEFENSIVE,
+	AI_OFFENSIVE,
+	AI_EVASIVE,
+	AI_WANDER
+};
 
 // These are for Alien *indexes* NOT classdefs!!
 enum {
@@ -100,13 +147,6 @@ enum {
 	WT_SPREAD
 };
 
-// Explosions
-#define E_SMALL_EXPLOSION 4
-#define E_BIG_EXPLOSION 8
-#define E_SMOKE 12
-#define E_TINY_EXPLOSION 16
-#define E_ELECTRICAL 20
-
 // Weapons
 enum {
 
@@ -130,18 +170,6 @@ enum {
 	W_IONCANNON,
 	W_DIRSHOCKMISSILE
 };
-
-// Weapon flags
-#define WF_SPREAD 4
-#define WF_SCATTER 8
-#define WF_VARIABLE_SPEED 16
-#define WF_HOMING 32
-#define WF_SHOCKWAVE 64
-#define WF_WEAPCO 128
-#define WF_FRIEND 256
-#define WF_AIMED 512
-#define WF_DISABLE 1024
-#define WF_TIMEDEXPLOSION 2048
 
 // Missions
 enum {
@@ -273,25 +301,6 @@ enum {
 	DIFFICULTY_HARD,
 	DIFFICULTY_NIGHTMARE
 };
-
-#define MAX_WEAPONS 20
-#define MAX_SHAPES 100
-#define MAX_SHIPSHAPES 120
-#define MAX_SOUNDS 17
-#define MAX_ALIENS 25
-#define MAX_TEXTSHAPES 70
-#define MAX_FONTSHAPES 6
-#define MAX_SHOPSHAPES 6
-#define MAX_DEFALIENS 40
-#define MAX_MISSIONS 28
-#define MAX_CARGO 20
-#define MAX_SHOPITEMS 17
-
-#define SHIP_HIT_INDEX 60
-
-#ifndef PATH_MAX
-#define PATH_MAX	4096
-#endif
 
 enum {
 
