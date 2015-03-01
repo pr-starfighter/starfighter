@@ -75,7 +75,8 @@ void loadGameGraphics()
 	{
 		if (shipShape[i - SHIP_HIT_INDEX] == NULL)
 			continue;
-		shipShape[i] = createSurface(shipShape[i - SHIP_HIT_INDEX]->w, shipShape[i- SHIP_HIT_INDEX]->h);
+		shipShape[i] = createSurface(shipShape[i - SHIP_HIT_INDEX]->w,
+			shipShape[i- SHIP_HIT_INDEX]->h);
 		blit(shipShape[i - SHIP_HIT_INDEX], 0, 0, shipShape[i]);
 
 		switch(shipShape[i]->format->BytesPerPixel) {

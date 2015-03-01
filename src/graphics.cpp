@@ -365,9 +365,12 @@ void delayFrame()
 
 	// Add 16 2/3 to frameLimit
 	frameLimit += 16;
-	if(thirds >= 2) {
+	if (thirds >= 2)
+	{
 		thirds = 0;
-	} else {
+	}
+	else
+	{
 		thirds++;
 		frameLimit++;
 	}
@@ -384,43 +387,49 @@ void delayFrame()
  */
 void putpixel(SDL_Surface *surface, int x, int y, Uint32 pixel)
 {
-	 int bpp = surface->format->BytesPerPixel;
-	 /* Here p is the address to the pixel we want to set */
-	 Uint8 *p = (Uint8 *)surface->pixels + y * surface->pitch + x * bpp;
+	int bpp = surface->format->BytesPerPixel;
+	/* Here p is the address to the pixel we want to set */
+	Uint8 *p = (Uint8 *)surface->pixels + y * surface->pitch + x * bpp;
 
-	 switch(bpp) {
-	 case 1:
-		  *p = pixel;
-		  break;
+	switch(bpp)
+	{
+		case 1:
+			*p = pixel;
+			break;
 
-	 case 2:
-		  *(Uint16 *)p = pixel;
-		  break;
+		case 2:
+			*(Uint16 *)p = pixel;
+			break;
 
-	 case 3:
-		  if(SDL_BYTEORDER == SDL_BIG_ENDIAN) {
+		case 3:
+			if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
+			{
 				p[0] = (pixel >> 16) & 0xff;
 				p[1] = (pixel >> 8) & 0xff;
 				p[2] = pixel & 0xff;
-		  } else {
+			}
+			else
+			{
 				p[0] = pixel & 0xff;
 				p[1] = (pixel >> 8) & 0xff;
 				p[2] = (pixel >> 16) & 0xff;
-		  }
-		  break;
+			}
+			break;
 
-	 case 4:
-		  *(Uint32 *)p = pixel;
-		  break;
-	 }
+		 case 4:
+			*(Uint32 *)p = pixel;
+			break;
+	}
 }
 
 void drawLine(SDL_Surface *dest, int x1, int y1, int x2, int y2, int col)
 {
 	int counter = 0;
 
-	if ( SDL_MUSTLOCK(dest) ) {
-		if ( SDL_LockSurface(dest) < 0 ) {
+	if ( SDL_MUSTLOCK(dest) )
+	{
+		if ( SDL_LockSurface(dest) < 0 )
+		{
 			printf("Can't lock screen: %s\n", SDL_GetError());
 			showErrorAndExit(2, "");
 		}
@@ -442,7 +451,8 @@ void drawLine(SDL_Surface *dest, int x1, int y1, int x2, int y2, int col)
 		counter++;
 	}
 
-	if ( SDL_MUSTLOCK(dest) ) {
+	if (SDL_MUSTLOCK(dest))
+	{
 		SDL_UnlockSurface(dest);
 	}
 }
@@ -459,22 +469,22 @@ mailing list... I didn't write it myself.
 void circle(int xc, int yc, int R, SDL_Surface *PIX, int col)
 {
 	int x = 0, xx = 0;
-	int y = R, yy = R+R;
-	int p = 1-R;
+	int y = R, yy = 2 * R;
+	int p = 1 - R;
 
 	putpixel(PIX, xc, yc - y, col);
 	putpixel(PIX, xc, yc + y, col);
 	putpixel(PIX, xc - y, yc, col);
 	putpixel(PIX, xc + y, yc, col);
 
-	while(x < y)
+	while (x < y)
 	{
 		xx += 2;
-		++x;
+		x++;
 		if (p >= 0)
 		{
 			yy -= 2;
-			--y;
+			y--;
 			p -= yy;
 		}
 		p += xx + 1;
