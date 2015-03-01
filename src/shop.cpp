@@ -344,7 +344,7 @@ void initShop()
 
 	shopItems[15].price = 10000;
 	strcpy(shopItems[15].name, "Dual Homing Missile Launcher");
-	strcpy(shopItems[15].description, "Fires two homing missiles (max 10 missiles)");
+	strcpy(shopItems[15].description, "Fires two homing missiles (max 15 missiles)");
 	shopItems[15].image = 24;
 
 	shopItems[16].price = 15000;
@@ -466,7 +466,7 @@ static void buy(int i)
 				{shopSelectedItem = -7; return;}
 			if ((player.weaponType[1] == W_HOMING_MISSILE) && (currentGame.maxRocketAmmo >= 20))
 				{shopSelectedItem = -9; return;}
-			if ((player.weaponType[1] == W_DOUBLE_HOMING_MISSILES) && (currentGame.maxRocketAmmo >= 10))
+			if ((player.weaponType[1] == W_DOUBLE_HOMING_MISSILES) && (currentGame.maxRocketAmmo >= 15))
 				{shopSelectedItem = -9; return;}
 			if ((player.weaponType[1] == W_MICRO_HOMING_MISSILES) && (currentGame.maxRocketAmmo >= 10))
 				{shopSelectedItem = -9; return;}
@@ -516,8 +516,8 @@ static void buy(int i)
 			if (player.weaponType[1] == W_DOUBLE_HOMING_MISSILES)
 				{shopSelectedItem = -8; return;}
 			player.weaponType[1] = W_DOUBLE_HOMING_MISSILES;
-			limitChar(&currentGame.maxRocketAmmo, 5, 10);
-			limitChar(&player.ammo[1], 0, 10);
+			limitChar(&currentGame.maxRocketAmmo, 5, 15);
+			limitChar(&player.ammo[1], 0, 15);
 			shopSelectedItem = -1;
 			break;
 		case 16:
