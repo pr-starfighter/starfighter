@@ -342,12 +342,12 @@ void initShop()
 	strcpy(shopItems[14].description, "A charge up cannon");
 	shopItems[14].image = 23;
 
-	shopItems[15].price = 20000;
+	shopItems[15].price = 10000;
 	strcpy(shopItems[15].name, "Dual Homing Missile Launcher");
 	strcpy(shopItems[15].description, "Fires two homing missiles (max 10 missiles)");
 	shopItems[15].image = 24;
 
-	shopItems[16].price = 25000;
+	shopItems[16].price = 15000;
 	strcpy(shopItems[16].name, "Homing Micro Missile Launcher");
 	strcpy(shopItems[16].description, "Fires several small homing missiles (max 10)");
 	shopItems[16].image = 25;
