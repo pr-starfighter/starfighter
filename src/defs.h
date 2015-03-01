@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // Compile-time options
 #ifndef VERSION
-#define VERSION 1.3-dev
+#define VERSION "devbuild"
 #endif
 
 #ifndef DATADIR
