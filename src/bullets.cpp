@@ -80,8 +80,8 @@ void addBullet(object *theWeapon, object *attacker, int y, int dy)
 
 	if (bullet->id == WT_CHARGER)
 	{
-		bullet->damage = attacker->ammo[1];
-		if (bullet->damage < 50)
+		bullet->damage = attacker->ammo[1] / 2;
+		if (bullet->damage < 15)
 		{
 			bullet->damage = 1;
 			bullet->id = WT_PLASMA;
@@ -525,8 +525,8 @@ void doBullets()
 
 			if (bullet->id == WT_CHARGER)
 			{
-				for (int i = 0 ; i < bullet->damage ; i++)
-					blit(bullet->image[0], (int)(bullet->x - rrand(-(bullet->damage / 3), 0)), (int)(bullet->y + rrand(-3, 3)));
+				for (int i = 0 ; i < bullet->damage * 2 ; i++)
+					blit(bullet->image[0], (int)(bullet->x - rrand(-(bullet->damage * 2 / 3), 0)), (int)(bullet->y + rrand(-3, 3)));
 			}
 
 			blit(bullet->image[0], (int)bullet->x, (int)bullet->y);

@@ -34,7 +34,7 @@ struct object {
 	signed char speed;
 	unsigned char damage; // Contact damage for bullets
 	int score; // How much a kill of this is worth
-	unsigned char ammo[2]; // Ammo for 2nd weapon. Max of 100 (except laser)
+	unsigned char ammo[2]; // Ammo for 2nd weapon.
 
 	signed char face; // Either 0 or 1
 
