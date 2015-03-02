@@ -540,6 +540,7 @@ music/through_space.ogg
 Author: maxstack <http://opengameart.org/users/maxstack>
 License: CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>
 Source: http://opengameart.org/content/through-space
+Changes: Amplified +1 dB and rate changed from 48000 to 44100 in Audacity.
 
 ------------------------------------------------------------------------
 
@@ -564,6 +565,7 @@ music/frozen_jam.ogg
 Author: tgfcoder <https://twitter.com/tgfcoder>
 License: CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>
 Source: http://opengameart.org/content/frozen-jam-seamless-loop
+Changes: Amplified -1 dB with Audacity
 
 ------------------------------------------------------------------------
 
@@ -588,7 +590,7 @@ music/RE.ogg
 Author: WeskerHunter <http://redeclipse.net/forum/viewtopic.php?f=5&t=26>
 License: CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>
 Source: http://opengameart.org/content/fast-high-music
-Details: Slowed down 5% with Audacity
+Changes: Amplified -1 dB and slowed down 5% with Audacity
 
 ------------------------------------------------------------------------
 
@@ -605,3 +607,4 @@ music/rise_of_spirit.ogg
 Author: Alexandr Zhelanov <https://soundcloud.com/alexandr-zhelanov>
 License: CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>
 Source: http://opengameart.org/content/rise-of-spirit
+Changes: Amplified +6 dB with Audacity
