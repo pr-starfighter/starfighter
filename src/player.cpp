@@ -429,13 +429,25 @@ void getPlayerInput()
 				switch (engine.event.jbutton.button)
 				{
 					case 0:
-						engine.keyState[KEY_FIRE] = engine.event.jbutton.state;
-						break;
-					case 1:
+					case 3:
 						engine.keyState[KEY_ALTFIRE] = engine.event.jbutton.state;
 						break;
+					case 1:
 					case 2:
+						engine.keyState[KEY_FIRE] = engine.event.jbutton.state;
+						break;
+					case 4:
+					case 6:
+						engine.keyState[KEY_ESCAPE] = engine.event.jbutton.state;
+						break;
+					case 5:
+					case 7:
+					case 8:
 						engine.keyState[KEY_SWITCH] = engine.event.jbutton.state;
+						break;
+					case 9:
+						if (engine.event.jbutton.state)
+							engine.keyState[KEY_PAUSE] = 1;
 						break;
 				}
 				break;
