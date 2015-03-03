@@ -130,8 +130,6 @@ struct Game {
 	signed char saveFormat;
 	signed char difficulty;
 
-	signed char autoSaveSlot;
-
 	unsigned int cash;
 	unsigned int cashEarned;
 	unsigned int shots;

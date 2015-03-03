@@ -389,21 +389,6 @@ static void createOptions(SDL_Surface *optionsSurface)
 	drawString("ON", 207, 150, FONT_WHITE, optionsSurface);
 	drawString("OFF", 263, 150, FONT_WHITE, optionsSurface);
 	drawString("FULLSCREEN", 30, 150, FONT_WHITE, optionsSurface);
-
-	blevelRect(optionsSurface, 20, 195, 150, 22, 0x00, 0x00, 0x00);
-	blevelRect(optionsSurface, 190, 195, 110, 22, 0x00, 0x00, 0x00);
-	if (currentGame.autoSaveSlot == -1)
-	{
-		drawString("NONE", 225, 200, FONT_WHITE, optionsSurface);
-	}
-	else
-	{
-		char string[] = "Slot %d";
-		sprintf(string, "Slot %d", currentGame.autoSaveSlot + 1);
-		blevelRect(optionsSurface, 190, 195, 110, 22, 0xff, 0x00, 0x00);
-		drawString(string, 225, 200, FONT_WHITE, optionsSurface);
-	}
-	drawString("AUTOSAVE SLOT", 30, 200, FONT_WHITE, optionsSurface);
 }
 
 static void showOptions(SDL_Surface *optionsSurface)
@@ -452,12 +437,6 @@ static void showOptions(SDL_Surface *optionsSurface)
 				SDL_SetWindowFullscreen(window, 0);
 				engine.fullScreen = false;
 			}
-		}
-		
-		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 322, 100, 22))
-		{
-			wrapChar(&(++currentGame.autoSaveSlot), -1, 4);
-			engine.keyState[KEY_FIRE] = 0;
 		}
 
 		createOptions(optionsSurface);

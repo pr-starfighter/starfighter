@@ -34,8 +34,6 @@ void newGame()
 		engine.useMusic = false;
 	}
 
-	currentGame.autoSaveSlot = -1;
-
 	currentGame.cash = 0;
 	currentGame.cashEarned = 0;
 	currentGame.shots = 0;
@@ -338,8 +336,7 @@ int mainGameLoop()
 		{
 			updateSystemStatus();
 
-			if (currentGame.autoSaveSlot > -1)
-				saveGame(currentGame.autoSaveSlot + 1);
+			saveGame(0);
 		}
 
 		rtn = 1;

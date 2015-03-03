@@ -40,33 +40,45 @@ int initSaveSlots()
 	FILE *fp;
 
 	//READ SAVE GAME DATA
-	for (int i = 0 ; i < 5 ; i++)
+	for (int i = 0 ; i <= 5 ; i++)
 	{
-		sprintf(fileName, "%ssave%.2d.dat", engine.userHomeDirectory, (i + 1));
+		sprintf(fileName, "%ssave%.2d.dat", engine.userHomeDirectory, i);
+
 		fp = fopen(fileName, "rb");
 		if (fp == NULL)
 		{
-			sprintf(saveSlot[i], "%.2d - Empty", (i + 1));
+			sprintf(saveSlot[i], (i == 0 ? "AUTOSAVE (Empty)" : "Empty"));
 			if (engine.gameSection == SECTION_TITLE)
-				textSurface(13 + i, saveSlot[i], -1, imagePos, FONT_WHITE);
+				textSurface(TS_SAVESLOT_0 + i, saveSlot[i], -1, imagePos,
+					FONT_WHITE);
 		}
 		else
 		{
-			if (fread(&tempGame, sizeof(Game), 1, fp) != 1)
+			if (i == 0)
 			{
-				sprintf(saveSlot[i], "%.2d - Corrupt Game Data", (i + 1));
+				sprintf(saveSlot[i], "AUTOSAVE");
 			}
 			else
 			{
-				sprintf(saveSlot[i], "%.2d - %s, %s", (i + 1), systemNames[tempGame.system], tempGame.stationedName);
-				if (engine.gameSection == SECTION_TITLE)
-					textSurface(13 + i, saveSlot[i], -1, imagePos, FONT_WHITE);
+				if (fread(&tempGame, sizeof(Game), 1, fp) != 1)
+				{
+					sprintf(saveSlot[i], "Corrupt Game Data");
+				}
+				else
+				{
+					sprintf(saveSlot[i], "%s, %s", systemNames[tempGame.system],
+						tempGame.stationedName);
+				}
 			}
+
+			if (engine.gameSection == SECTION_TITLE)
+				textSurface(TS_SAVESLOT_0 + i, saveSlot[i], -1,
+					imagePos, FONT_WHITE);
 
 			if (stat(fileName, &fileInfo) != -1)
 			{
 				if (fileInfo.st_mtime > modTime)
-					{modTime = fileInfo.st_mtime; continueSaveIndex = (i + 1);}
+					{modTime = fileInfo.st_mtime; continueSaveIndex = i;}
 			}
 
 			fclose(fp);
@@ -118,9 +130,9 @@ bool loadGame(int slot)
 
 void saveGame(int slot)
 {
-	if ((slot < 1) || (slot > 5))
+	if ((slot < 0) || (slot > 5))
 	{
-		printf("Error - Saves may only be 1 to 5\n");
+		printf("Error - Saves may only be 0 to 5\n");
 		return;
 	}
 
@@ -159,7 +171,7 @@ void createSavesSurface(SDL_Surface *savesSurface, signed char clickedSlot)
 
  	int y = 10;
 
-	for (int i = 0 ; i < 5 ; i++)
+	for (int i = 1 ; i <= 5 ; i++)
 	{
 		if (clickedSlot == i)
 			blevelRect(savesSurface, 5, y, 338, 25, 0x99, 0x00, 0x00);
@@ -171,13 +183,13 @@ void createSavesSurface(SDL_Surface *savesSurface, signed char clickedSlot)
 
 	drawString("*** HELP ***", 120, 170, FONT_WHITE, savesSurface);
 
-	switch(clickedSlot)
+	switch (clickedSlot)
 	{
-		case 0:
 		case 1:
 		case 2:
 		case 3:
 		case 4:
+		case 5:
 			blevelRect(savesSurface, 5, 265, 100, 25, 0x00, 0x99, 0x00);
 			blevelRect(savesSurface, 125, 265, 100, 25, 0x99, 0x99, 0x00);
 			blevelRect(savesSurface, 243, 265, 100, 25, 0x99, 0x00, 0x00);
@@ -186,11 +198,14 @@ void createSavesSurface(SDL_Surface *savesSurface, signed char clickedSlot)
 			drawString("DELETE", 270, 270, FONT_WHITE, savesSurface);
 
 			drawString("SAVE will save the game", 17, 200, FONT_WHITE, savesSurface);
-			drawString("CANCEL will unselect that slot", 17, 220, FONT_WHITE, savesSurface);
-			drawString("DELETE will remove the save", 17, 240, FONT_WHITE, savesSurface);
+			drawString("CANCEL will unselect that slot", 17, 220, FONT_WHITE,
+				savesSurface);
+			drawString("DELETE will remove the save", 17, 240, FONT_WHITE,
+				savesSurface);
 			break;
 		case -1:
-			drawString("First click a Save game slot to use", 17, 200, FONT_WHITE, savesSurface);
+			drawString("First click a Save game slot to use", 17, 200,
+				FONT_WHITE, savesSurface);
 			break;
 		case -10:
 			drawString("Game Saved", 130, 200, FONT_WHITE, savesSurface);
@@ -220,9 +235,10 @@ int showSaveSlots(SDL_Surface *savesSurface, signed char saveSlot)
 
 	if ((engine.keyState[KEY_FIRE]))
 	{
-		for (int i = 0 ; i < 5 ; i++)
+		for (int i = 1 ; i <= 5 ; i++)
 		{
-			if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, r.x, r.y, r.w, r.h))
+			if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6,
+				r.x, r.y, r.w, r.h))
 			{
 				clickedSlot = i;
 				createSavesSurface(savesSurface, i);
@@ -230,19 +246,23 @@ int showSaveSlots(SDL_Surface *savesSurface, signed char saveSlot)
 			r.y += 30;
 		}
 
-		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 215, 365, 100, 25))
+		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 215,
+			365, 100, 25))
 		{
-			saveGame(saveSlot + 1);
+			saveGame(saveSlot);
 			createSavesSurface(savesSurface, -10);
 		}
 
-		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 335, 365, 100, 25))
+		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 335,
+				365, 100, 25))
 			createSavesSurface(savesSurface, -1);
 
-		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 453, 365, 100, 25))
+		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 453,
+			365, 100, 25))
 		{
 			char filename[PATH_MAX];
-			sprintf(filename, "%ssave%.2d.dat", engine.userHomeDirectory, (saveSlot + 1));
+			sprintf(filename, "%ssave%.2d.dat", engine.userHomeDirectory,
+				saveSlot);
 			remove(filename);
 			initSaveSlots();
 			createSavesSurface(savesSurface, -11);

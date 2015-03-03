@@ -21,23 +21,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 static signed char showGameMenu(signed char continueSaveSlot)
 {
-	blitText(2);
-	if (continueSaveSlot != 0)
+	blitText(TS_START_NEW_GAME);
+	if (continueSaveSlot != -1)
 	{
-		blitText(3);
-		blitText(4);
+		blitText(TS_LOAD_GAME);
+		blitText(TS_CONTINUE_CURRENT_GAME);
 	}
-	blitText(5);
+	blitText(TS_OPTIONS);
 	if (engine.cheat)
 	{
-		textShape[7].y = 450;
-		blitText(6);
+		textShape[TS_QUIT].y = 450;
+		blitText(TS_CHEAT_OPTIONS);
 	}
 	else
 	{
-		textShape[7].y = 430;
+		textShape[TS_QUIT].y = 430;
 	}
-	blitText(7);
+	blitText(TS_QUIT);
 
 	if (engine.cheat)
 		return 6;
@@ -49,41 +49,41 @@ static signed char showLoadMenu()
 {
 	signed char rtn = 1;
 
-	for (int i = 13 ; i < 18 ; i++)
+	for (int i = TS_SAVESLOT_0 ; i <= TS_SAVESLOT_5 ; i++)
 	{
+		rtn++;
 		if (textShape[i].image != NULL)
 		{
 			blitText(i);
-			rtn++;
-			textShape[12].y = textShape[i].y + 40;
+			textShape[TS_BACK_TO_MAIN_MENU].y = textShape[i].y + 40;
 		}
 	}
-	blitText(12);
+	blitText(TS_BACK_TO_MAIN_MENU);
 
 	return rtn;
 }
 
 static void createDifficultyMenu()
 {
-	textSurface(23, "START GAME", -1, 350, FONT_WHITE);
+	textSurface(TS_START_GAME, "START GAME", -1, 350, FONT_WHITE);
 
 	if (currentGame.difficulty == DIFFICULTY_EASY)
-		textSurface(24, "DIFFICULTY - EASY", -1, 370, FONT_WHITE);
+		textSurface(TS_DIFFICULTY, "DIFFICULTY - EASY", -1, 370, FONT_WHITE);
 	else if (currentGame.difficulty == DIFFICULTY_HARD)
-		textSurface(24, "DIFFICULTY - HARD", -1, 370, FONT_WHITE);
+		textSurface(TS_DIFFICULTY, "DIFFICULTY - HARD", -1, 370, FONT_WHITE);
 	else if (currentGame.difficulty == DIFFICULTY_NIGHTMARE)
-		textSurface(24, "DIFFICULTY - NIGHTMARE", -1, 370, FONT_WHITE);
+		textSurface(TS_DIFFICULTY, "DIFFICULTY - NIGHTMARE", -1, 370, FONT_WHITE);
 	else
-		textSurface(24, "DIFFICULTY - NORMAL", -1, 370, FONT_WHITE);
+		textSurface(TS_DIFFICULTY, "DIFFICULTY - NORMAL", -1, 370, FONT_WHITE);
 }
 
 static signed char showDifficultyMenu()
 {
-	textShape[12].y = 410;
+	textShape[TS_BACK_TO_MAIN_MENU].y = 410;
 
-	blitText(23);
-	blitText(24);
-	blitText(12);
+	blitText(TS_START_GAME);
+	blitText(TS_DIFFICULTY);
+	blitText(TS_BACK_TO_MAIN_MENU);
 
 	return 3;
 }
@@ -91,72 +91,73 @@ static signed char showDifficultyMenu()
 static void createOptionsMenu()
 {
 	if (engine.useSound)
-		textSurface(8, "SOUND - ON", -1, 350, FONT_WHITE);
+		textSurface(TS_SOUND, "SOUND - ON", -1, 350, FONT_WHITE);
 	else
-		textSurface(8, "SOUND - OFF", -1, 350, FONT_WHITE);
+		textSurface(TS_SOUND, "SOUND - OFF", -1, 350, FONT_WHITE);
 
 	if (engine.useMusic)
-		textSurface(9, "MUSIC - ON", -1, 370, FONT_WHITE);
+		textSurface(TS_MUSIC, "MUSIC - ON", -1, 370, FONT_WHITE);
 	else
-		textSurface(9, "MUSIC - OFF", -1, 370, FONT_WHITE);
+		textSurface(TS_MUSIC, "MUSIC - OFF", -1, 370, FONT_WHITE);
 
 	if (engine.fullScreen)
-		textSurface(10, "FULLSCREEN - ON", -1, 390, FONT_WHITE);
+		textSurface(TS_FULLSCREEN, "FULLSCREEN - ON", -1, 390, FONT_WHITE);
 	else
-		textSurface(10, "FULLSCREEN - OFF", -1, 390, FONT_WHITE);
-
-	char string[50];
-	strcpy(string, "AUTO SAVE SLOT - NONE");
-	if (currentGame.autoSaveSlot > -1)
-		sprintf(string, "AUTO SAVE SLOT - #%d", currentGame.autoSaveSlot + 1);
-	textSurface(11, string, -1, 410, FONT_WHITE);
+		textSurface(TS_FULLSCREEN, "FULLSCREEN - OFF", -1, 390, FONT_WHITE);
 }
 
 static signed char showOptionsMenu()
 {
-	textShape[12].y = 450;
+	textShape[TS_BACK_TO_MAIN_MENU].y = 430;
 
-	blitText(8);
-	blitText(9);
-	blitText(10);
-	blitText(11);
-	blitText(12);
+	blitText(TS_SOUND);
+	blitText(TS_MUSIC);
+	blitText(TS_FULLSCREEN);
+	blitText(TS_BACK_TO_MAIN_MENU);
 
-	return 5;
+	return 4;
 }
 
 static void createCheatMenu()
 {
 	if (engine.cheatShield)
-		textSurface(18, "UNLIMITED SHIELD - ON", -1, 350, FONT_WHITE);
+		textSurface(TS_UNLIMITED_SHIELD, "UNLIMITED SHIELD - ON", -1, 350,
+			FONT_WHITE);
 	else
-		textSurface(18, "UNLIMITED SHIELD - OFF", -1, 350, FONT_WHITE);
+		textSurface(TS_UNLIMITED_SHIELD, "UNLIMITED SHIELD - OFF", -1, 350,
+			FONT_WHITE);
 
 	if (engine.cheatAmmo)
-		textSurface(19, "UNLIMITED AMMO - ON", -1, 370, FONT_WHITE);
+		textSurface(TS_UNLIMITED_AMMO, "UNLIMITED AMMO - ON", -1, 370,
+			FONT_WHITE);
 	else
-		textSurface(19, "UNLIMITED AMMO - OFF", -1, 370, FONT_WHITE);
+		textSurface(TS_UNLIMITED_AMMO, "UNLIMITED AMMO - OFF", -1, 370,
+			FONT_WHITE);
 
 	if (engine.cheatCash)
-		textSurface(20, "UNLIMITED CASH - ON", -1, 390, FONT_WHITE);
+		textSurface(TS_UNLIMITED_CASH, "UNLIMITED CASH - ON", -1, 390,
+			FONT_WHITE);
 	else
-		textSurface(20, "UNLIMITED CASH - OFF", -1, 390, FONT_WHITE);
+		textSurface(TS_UNLIMITED_CASH, "UNLIMITED CASH - OFF", -1, 390,
+			FONT_WHITE);
 
 	if (engine.cheatTime)
-		textSurface(21, "UNLIMITED TIME - ON", -1, 410, FONT_WHITE);
+		textSurface(TS_UNLIMITED_TIME, "UNLIMITED TIME - ON", -1, 410,
+			FONT_WHITE);
 	else
-		textSurface(21, "UNLIMITED TIME - OFF", -1, 410, FONT_WHITE);
+		textSurface(TS_UNLIMITED_TIME, "UNLIMITED TIME - OFF", -1, 410,
+			FONT_WHITE);
 }
 
 static signed char showCheatMenu()
 {
-	textShape[12].y = 450;
+	textShape[TS_BACK_TO_MAIN_MENU].y = 450;
 
-	blitText(18);
-	blitText(19);
-	blitText(20);
-	blitText(21);
-	blitText(12);
+	blitText(TS_UNLIMITED_SHIELD);
+	blitText(TS_UNLIMITED_AMMO);
+	blitText(TS_UNLIMITED_CASH);
+	blitText(TS_UNLIMITED_TIME);
+	blitText(TS_BACK_TO_MAIN_MENU);
 
 	return 5;
 }
@@ -201,18 +202,19 @@ int doTitle()
 	int sfx = ((screen->w - sflogo->w) / 2);
 	int sfy = ((screen->h - sflogo->h) / 2);
 
-	textSurface(0, "PRESENTS", -1, 300, FONT_WHITE);
-	textSurface(1, "AN SDL GAME", -1, 300, FONT_WHITE);
-	textSurface(2, "START NEW GAME", -1, 350, FONT_WHITE);
-	textSurface(3, "LOAD GAME", -1, 370, FONT_WHITE);
-	textSurface(4, "CONTINUE CURRENT GAME", -1, 390, FONT_WHITE);
-	textSurface(5, "OPTIONS", -1, 410, FONT_WHITE);
-	textSurface(6, "CHEAT OPTIONS", -1, 430, FONT_WHITE);
-	textSurface(7, "QUIT", -1, 430, FONT_WHITE);
+	textSurface(TS_PRESENTS, "PRESENTS", -1, 300, FONT_WHITE);
+	textSurface(TS_AN_SDL_GAME, "AN SDL GAME", -1, 300, FONT_WHITE);
+	textSurface(TS_START_NEW_GAME, "START NEW GAME", -1, 350, FONT_WHITE);
+	textSurface(TS_LOAD_GAME, "LOAD GAME", -1, 370, FONT_WHITE);
+	textSurface(TS_CONTINUE_CURRENT_GAME, "CONTINUE CURRENT GAME", -1, 390,
+		FONT_WHITE);
+	textSurface(TS_OPTIONS, "OPTIONS", -1, 410, FONT_WHITE);
+	textSurface(TS_CHEAT_OPTIONS, "CHEAT OPTIONS", -1, 430, FONT_WHITE);
+	textSurface(TS_QUIT, "QUIT", -1, 430, FONT_WHITE);
 
 	createOptionsMenu();
 	createDifficultyMenu();
-	textSurface(12, "BACK TO MAIN MENU", -1, 0, FONT_WHITE);
+	textSurface(TS_BACK_TO_MAIN_MENU, "BACK TO MAIN MENU", -1, 0, FONT_WHITE);
 
 	createCheatMenu();
 
@@ -251,12 +253,12 @@ int doTitle()
 	optionRec.w = 215;
 
 	signed char selectedOption = 1;
-	if (continueSaveSlot > 0)
+	if (continueSaveSlot > -1)
 		{selectedOption = 3; optionRec.y += 40;}
 
 	bool skip = false;
 	signed char listLength = 5; // menu list length
-	signed char menuType = 0;
+	signed char menuType = MENU_MAIN;
 
 	drawBackGround();
 
@@ -296,11 +298,11 @@ int doTitle()
 		}
 		else if ((now - then > 9000) && (now - then < 15000) && (!skip))
 		{
-			blitText(0);
+			blitText(TS_PRESENTS);
 		}
 		else if ((now - then > 16000) && (now - then < 21000) && (!skip))
 		{
-			blitText(1);
+			blitText(TS_AN_SDL_GAME);
 		}
 		else if ((now - then > 25500) || (skip))
 		{
@@ -308,26 +310,26 @@ int doTitle()
 
 			if ((now - then >= 27500) || (skip))
 			{
-				addBuffer(280, 345, 235, 145);
+				addBuffer(0, 0, screen->w, screen->h);
 
 				blevelRect(optionRec.x, optionRec.y, optionRec.w, optionRec.h, redGlow, 0x00, 0x00);
 
 				switch(menuType)
 				{
-					case 0:
+					case MENU_MAIN:
 						listLength = showGameMenu(continueSaveSlot);
 						break;
-					case 1:
+					case MENU_DIFFICULTY:
+						listLength = showDifficultyMenu();
+						break;
+					case MENU_LOAD:
 						listLength = showLoadMenu();
 						break;
-					case 2:
+					case MENU_OPTIONS:
 						listLength = showOptionsMenu();
 						break;
-					case 3:
+					case MENU_CHEAT:
 						listLength = showCheatMenu();
-						break;
-					case 4:
-						listLength = showDifficultyMenu();
 						break;
 				}
 
@@ -339,23 +341,23 @@ int doTitle()
 				{
 					engine.keyState[KEY_UP] = 0;
 					wrapChar(&(--selectedOption), 1, listLength + 1);
-					if (menuType == 0)
+					if (menuType == MENU_MAIN)
 						if ((selectedOption == 2) || (selectedOption == 3))
-							if (continueSaveSlot == 0)
+							if (continueSaveSlot == -1)
 								selectedOption = 1;
 				}
 				if (engine.keyState[KEY_DOWN])
 				{
 					engine.keyState[KEY_DOWN] = 0;
 					wrapChar(&(++selectedOption), 0, listLength);
-					if (menuType == 0)
+					if (menuType == MENU_MAIN)
 						if ((selectedOption == 2) || (selectedOption == 3))
-							if (continueSaveSlot == 0)
+							if (continueSaveSlot == -1)
 								selectedOption = 4;
 				}
 
 				optionRec.y = 326 + (20 * selectedOption);
-				if (menuType > 0)
+				if (menuType > MENU_MAIN)
 					if (selectedOption == listLength)
 						optionRec.y += 20;
 
@@ -391,21 +393,33 @@ int doTitle()
 			}
 			else
 			{
-				switch(menuType)
+				switch (menuType)
 				{
-					case 0: // Main menu
+					case MENU_MAIN:
 						if (selectedOption == 1)
-							{menuType = 4; selectedOption = 1;}
+						{
+							menuType = MENU_DIFFICULTY;
+							selectedOption = 1;
+						}
 						else if (selectedOption == 2)
-							{menuType = 1; selectedOption = 1;}
+						{
+							menuType = MENU_LOAD;
+							selectedOption = 1;
+						}
 						else if (selectedOption == 3)
 							engine.done = 1;
 						else if (selectedOption == 4)
-							{menuType = 2; selectedOption = 1;}
+						{
+							menuType = MENU_OPTIONS;
+							selectedOption = 1;
+						}
 						else if (selectedOption == 5)
 						{
 							if (engine.cheat)
-								{menuType = 3; selectedOption = 1;}
+							{
+								menuType = MENU_CHEAT;
+								selectedOption = 1;
+							}
 							else
 								engine.done = 1;
 						}
@@ -413,14 +427,38 @@ int doTitle()
 							engine.done = 1;
 						break;
 
-					case 1: // Load game menu
-						if (selectedOption != listLength)
-							{engine.done = 1; continueSaveSlot = selectedOption; selectedOption = 3;}
-						else
-							{menuType = 0; selectedOption = 1;}
+					case MENU_DIFFICULTY:
+						if (selectedOption == 1)
+							engine.done = 1;
+						else if (selectedOption == 2)
+						{
+							currentGame.difficulty++;
+							if (currentGame.difficulty > DIFFICULTY_NIGHTMARE)
+								currentGame.difficulty = DIFFICULTY_EASY;
+						}
+						else if (selectedOption == listLength)
+						{
+							menuType = MENU_MAIN;
+							selectedOption = 1;
+						}
+						createDifficultyMenu();
 						break;
 
-					case 2: // Options menu
+					case MENU_LOAD:
+						if (selectedOption != listLength)
+						{
+							engine.done = 1;
+							continueSaveSlot = selectedOption - 1;
+							selectedOption = 3;
+						}
+						else
+						{
+							menuType = MENU_MAIN;
+							selectedOption = 1;
+						}
+						break;
+
+					case MENU_OPTIONS:
 						if ((selectedOption == 1) && (engine.useAudio))
 							engine.useSound = !engine.useSound;
 						else if ((selectedOption == 2) && (engine.useAudio))
@@ -442,16 +480,19 @@ int doTitle()
 						else if (selectedOption == 3)
 						{
 							engine.fullScreen = !engine.fullScreen;
-							SDL_SetWindowFullscreen(window, engine.fullScreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
+							SDL_SetWindowFullscreen(window,
+								(engine.fullScreen ?
+									SDL_WINDOW_FULLSCREEN_DESKTOP : 0));
 						}
-						else if (selectedOption == 4)
-							wrapChar(&(++currentGame.autoSaveSlot), -1, 4);
 						else if (selectedOption == listLength)
-							{menuType = 0; selectedOption = 1;}
+						{
+							menuType = MENU_MAIN;
+							selectedOption = 1;
+						}
 						createOptionsMenu();
 						break;
 
-					case 3: // Cheat menu
+					case MENU_CHEAT:
 						if (selectedOption == 1)
 							engine.cheatShield = !engine.cheatShield;
 						else if (selectedOption == 2)
@@ -461,26 +502,16 @@ int doTitle()
 						else if (selectedOption == 4)
 							engine.cheatTime = !engine.cheatTime;
 						else if (selectedOption == listLength)
-							{menuType = 0; selectedOption = 1;}
+						{
+							menuType = MENU_MAIN;
+							selectedOption = 1;
+						}
 						createCheatMenu();
 						break;
 
-					case 4: // Difficulty menu
-						if (selectedOption == 1)
-							engine.done = 1;
-						else if (selectedOption == 2)
-						{
-							currentGame.difficulty++;
-							if (currentGame.difficulty > DIFFICULTY_NIGHTMARE)
-								currentGame.difficulty = DIFFICULTY_EASY;
-						}
-						else if (selectedOption == listLength)
-							{menuType = 0; selectedOption = 1;}
-						createDifficultyMenu();
-						break;
-
 					default:
-						menuType = 0, selectedOption = 1;
+						menuType = MENU_MAIN;
+						selectedOption = 1;
 						break;
 				}
 			}
