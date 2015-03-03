@@ -356,10 +356,12 @@ extern const char *systemNames[];
 
 extern const char *systemBackground[];
 
-static const signed char rate2reload[6] = {15, 15, 13, 11, 9, 7};
-
+const char rate2reload[6] = {15, 15, 13, 11, 9, 7};
 const int screenWidth = 800;
 const int screenHeight = 600;
 const int xViewBorder = 100;
 const int yViewBorder = 100;
 const float cameraMaxSpeed = 3.;
+const int maxHoming = 20;
+const int maxDoubleHoming = 15;
+const int maxMicroHoming = 10;

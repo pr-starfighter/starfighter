@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "Starfighter.h"
 
 object player;
-bool charger_fired = false;
+static bool charger_fired = false;
 
 /*
 Initialises the player for a new game.
@@ -209,7 +209,8 @@ void doPlayer()
 
 			if (engine.keyState[KEY_ESCAPE])
 			{
-				if ((engine.done == 0) && (engine.gameSection == SECTION_GAME) && (currentMission.remainingObjectives1 == 0))
+				if ((engine.done == 0) && (engine.gameSection == SECTION_GAME) &&
+					(currentMission.remainingObjectives1 == 0))
 				{
 					playSound(SFX_FLY);
 					engine.done = 2;
