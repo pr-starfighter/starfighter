@@ -77,6 +77,33 @@ void addCollectable(float x, float y, int type, int value, int life)
 		return;
 	}
 
+	// If plasma rate is at max, convert plasma rate powerup to ammo.
+	if (type == P_PLASMA_RATE)
+	{
+		if (weapon[W_PLAYER_WEAPON].reload[0] == rate2reload[currentGame.maxPlasmaRate])
+		{
+			type = P_PLASMA_AMMO;
+		}
+	}
+
+	// If plasma output is at max, convert plasma output powerup to ammo.
+	if (type == P_PLASMA_SHOT)
+	{
+		if (weapon[W_PLAYER_WEAPON].ammo[0] == currentGame.maxPlasmaOutput)
+		{
+			type = P_PLASMA_AMMO;
+		}
+	}
+
+	// If plasma damage is at max, convert plasma damage powerup to ammo.
+	if (type == P_PLASMA_DAMAGE)
+	{
+		if (weapon[W_PLAYER_WEAPON].damage == currentGame.maxPlasmaDamage)
+		{
+			type = P_PLASMA_AMMO;
+		}
+	}
+
 	// No point in giving the player plasma ammo if the weapons aren't
 	// upgraded! Give them money instead.
 	if (type == P_PLASMA_AMMO)
