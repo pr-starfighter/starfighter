@@ -1,6 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011 Guus Sliepen
+Copyright (C) 2015 Julian Marchant
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -16,6 +17,11 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#ifndef COMMS_H
+#define COMMS_H
+
 extern void updateCommsSurface(SDL_Surface *comms);
 extern void createCommsSurface(SDL_Surface *comms);
 extern void doComms(SDL_Surface *comms);
+
+#endif

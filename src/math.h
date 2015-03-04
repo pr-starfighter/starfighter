@@ -1,6 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011 Guus Sliepen
+Copyright (C) 2015 Julian Marchant
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -15,6 +16,9 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+
+#ifndef MATH_H
+#define MATH_H
 
 static inline void limitChar(signed char *in, int low, int high)
 {
@@ -105,3 +109,5 @@ static inline int rrand(int min, int max)
 
 	return r;
 }
+
+#endif

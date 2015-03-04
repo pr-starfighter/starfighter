@@ -1,6 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011 Guus Sliepen
+Copyright (C) 2015 Julian Marchant
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -16,6 +17,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#ifndef ALIENS_H
+#define ALIENS_H
+
 extern object defEnemy[MAX_DEFALIENS];
 extern object enemy[MAX_ALIENS];
 
@@ -26,3 +30,5 @@ extern void killAllAliens();
 extern void doAliens();
 extern void setAlienShapes();
 extern void defineAliens();
+
+#endif

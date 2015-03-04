@@ -17,6 +17,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#ifndef DEFS_H
+#define DEFS_H
+
 #define min(a, b) ((a) < (b) ? (a) : (b))
 #define max(a, b) ((a) > (b) ? (a) : (b))
 
@@ -365,3 +368,5 @@ const float cameraMaxSpeed = 3.;
 const int maxHoming = 20;
 const int maxDoubleHoming = 15;
 const int maxMicroHoming = 10;
+
+#endif

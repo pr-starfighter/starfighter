@@ -17,7 +17,12 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#ifndef TITLE_H
+#define TITLE_H
+
 extern int doTitle();
 extern void showStory();
 extern void gameover();
 extern void doCredits();
+
+#endif
