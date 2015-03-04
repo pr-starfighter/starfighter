@@ -273,7 +273,10 @@ static bool showSystem(float x, float y, bool selectable)
 		r.y -= (systemPlanet[planet].image->h / 2);
 		blit(systemPlanet[planet].image, r.x, r.y);
 
-		if (selectable && collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, r.x, r.y, systemPlanet[planet].image->w, systemPlanet[planet].image->h))
+		if (selectable &&
+			collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6,
+				r.x, r.y, systemPlanet[planet].image->w,
+				systemPlanet[planet].image->h))
 		{
 			drawString(systemPlanet[planet].name, -1, 545, FONT_WHITE);
 			if ((engine.keyState[KEY_FIRE]))
@@ -284,6 +287,7 @@ static bool showSystem(float x, float y, bool selectable)
 					currentGame.destinationPlanet = planet;
 					currentGame.area = systemPlanet[currentGame.stationedPlanet].missionNumber;
 					strcpy(currentGame.stationedName, systemPlanet[currentGame.stationedPlanet].name);
+					saveGame(0);
 				}
 				else
 				{
@@ -740,13 +744,16 @@ int galaxyMap()
 					currentGame.stationedPlanet = currentGame.destinationPlanet;
 					currentGame.distanceCovered = 0;
 					player.shield = player.maxShield;
-					sprintf(string, "Stationed At: %s", systemPlanet[currentGame.stationedPlanet].name);
-					strcpy(currentGame.stationedName, systemPlanet[currentGame.stationedPlanet].name);
+					sprintf(string, "Stationed At: %s",
+						systemPlanet[currentGame.stationedPlanet].name);
+					strcpy(currentGame.stationedName,
+						systemPlanet[currentGame.stationedPlanet].name);
 					SDL_FreeSurface(iconInfo[9].image);
 					iconInfo[9].image = textSurface(string, FONT_WHITE);
 					updateCommsSurface(commsSurface);
 					section = 1;
 					redrawBackGround = true;
+					saveGame(0);
 				}
 				else if (interceptionChance > 0)
 				{
@@ -768,10 +775,12 @@ int galaxyMap()
 		{
 			for (int i = 0 ; i < 8 ; i++)
 			{
-				// if the mission has been completed, there is no "Start Next Mission" icon
+				// if the mission has been completed, there is no
+				// "Start Next Mission" icon
 				if (i == 0)
 				{
-					if ((currentGame.stationedPlanet == currentGame.destinationPlanet) && (systemPlanet[currentGame.stationedPlanet].missionCompleted != 0))
+					if ((currentGame.stationedPlanet == currentGame.destinationPlanet) &&
+							(systemPlanet[currentGame.stationedPlanet].missionCompleted != 0))
 						continue;
 					else if (currentGame.stationedPlanet == currentGame.destinationPlanet)
 						blit(shape[1], 80 + (i * 90), 500);

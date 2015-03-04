@@ -186,7 +186,8 @@ void doCutscene(int scene)
 	updateScreen();
 	clearScreen(black);
 
-	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
+	engine.keyState[KEY_FIRE] = 0; 
+	engine.keyState[KEY_ALTFIRE] = 0;
 
 	engine.ssx = -0.5;
 	engine.ssy = 0;
@@ -300,7 +301,8 @@ void doCutscene(int scene)
 
 		delayFrame();
 
-		if (engine.keyState[KEY_ESCAPE])
+		if ((engine.keyState[KEY_ESCAPE]) || (engine.keyState[KEY_FIRE]) ||
+				(engine.keyState[KEY_ALTFIRE]))
 			break;
 	}
 

@@ -335,7 +335,6 @@ int mainGameLoop()
 		if (currentGame.area < 26)
 		{
 			updateSystemStatus();
-
 			saveGame(0);
 		}
 

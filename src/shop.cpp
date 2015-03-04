@@ -615,6 +615,7 @@ static void buy(int i)
 
 	if (!engine.cheatCash)
 		currentGame.cash -= shopItems[i].price;
+	saveGame(0);
 }
 
 static void sell(int i)
@@ -724,6 +725,7 @@ static void sell(int i)
 
 	adjustShopPrices();
 	currentGame.cash += (shopItems[i].price / 2);
+	saveGame(0);
 }
 
 void showShop()

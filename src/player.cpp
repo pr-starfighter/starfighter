@@ -367,25 +367,51 @@ void flushInput()
 static enum keys mapkey(uint32_t code) {
 	switch (code) {
 		case SDLK_UP:
+		case SDLK_KP_8:
 			return KEY_UP;
 		case SDLK_DOWN:
+		case SDLK_KP_2:
+		case SDLK_KP_5:
 			return KEY_DOWN;
 		case SDLK_LEFT:
+		case SDLK_KP_4:
 			return KEY_LEFT;
 		case SDLK_RIGHT:
+		case SDLK_KP_6:
 			return KEY_RIGHT;
 		case SDLK_LCTRL:
 		case SDLK_RCTRL:
 		case SDLK_RETURN:
+		case SDLK_z:
+		case SDLK_c:
+		case SDLK_f:
+		case SDLK_a:
+		case SDLK_SLASH:
+		case SDLK_COMMA:
+		case SDLK_1:
+		case SDLK_3:
+		case SDLK_KP_0:
 			return KEY_FIRE;
 		case SDLK_SPACE:
+		case SDLK_x:
+		case SDLK_s:
+		case SDLK_d:
+		case SDLK_PERIOD:
+		case SDLK_2:
+		case SDLK_KP_1:
 			return KEY_ALTFIRE;
 		case SDLK_LSHIFT:
 		case SDLK_RSHIFT:
+		case SDLK_LALT:
+		case SDLK_RALT:
+		case SDLK_KP_7:
+		case SDLK_KP_9:
 			return KEY_SWITCH;
 		case SDLK_p:
 			return KEY_PAUSE;
 		case SDLK_ESCAPE:
+		case SDLK_q:
+		case SDLK_BACKSPACE:
 			return KEY_ESCAPE;
 		case SDLK_F11:
 			return KEY_FULLSCREEN;

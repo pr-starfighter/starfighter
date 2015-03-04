@@ -776,19 +776,22 @@ void missionBriefScreen()
 
 	if (currentGame.area != MAX_MISSIONS - 1)
 	{
-		drawString("PRESS CTRL TO CONTINUE...", -1, 550, FONT_WHITE);
+		drawString("PRESS ENTER TO CONTINUE...", -1, 550, FONT_WHITE);
 
 		updateScreen();
 
 		flushInput();
 		engine.done = 0;
 		engine.keyState[KEY_FIRE] = 0;
+		engine.keyState[KEY_ALTFIRE] = 0;
+		engine.keyState[KEY_ESCAPE] = 0;
 
 		while (true)
 		{
 			delayFrame();
 			getPlayerInput();
-			if ((engine.keyState[KEY_FIRE]))
+			if ((engine.keyState[KEY_FIRE]) || (engine.keyState[KEY_ALTFIRE]) ||
+					(engine.keyState[KEY_ESCAPE]))
 				break;
 		}
 
