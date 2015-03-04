@@ -377,7 +377,7 @@ int doTitle()
 		// if someone has invoked the credits cheat
 		if (engine.cheatCredits)
 		{
-			doCredits(false);
+			doCredits();
 			engine.cheatCredits = false;
 		}
 
@@ -674,7 +674,7 @@ void gameover()
 	flushBuffer();
 }
 
-void doCredits(bool show_extro)
+void doCredits()
 {
 	loadBackground("gfx/credits.jpg");
 	flushBuffer();
@@ -703,24 +703,6 @@ void doCredits(bool show_extro)
 	{
 		Mix_VolumeMusic(100);
 		Mix_PlayMusic(engine.music, 1);
-	}
-
-	if (show_extro)
-	{
-		fp = fopen("data/extro.txt", "rb");
-
-		i = 0;
-		while (fscanf(fp, "%[^\n]%*c", text) == 1)
-		{
-			drawString(text, -1, 240 + (i * 20), FONT_WHITE);
-			i++;
-		}
-
-		fclose(fp);
-
-		updateScreen();
- 		SDL_Delay(20000);
-		drawBackGround();
 	}
 
 	fp = fopen("data/credits.txt", "rb");

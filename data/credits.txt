@@ -1,4 +1,4 @@
-000 +++ CAST +++
+050 +++ CAST +++
 030 Chris Bainfield
 020 Krass Tylar
 020 Sid Wilson
@@ -62,6 +62,7 @@
 020 Torbjorn Andersson  Atrix Wolfe
 020 and all on the SDL mailing list
 350 Project: Starfighter
-020 Copyright Parallel Realities 2003
-020 Copyright Guus Sliepen, Astrid S. de Wijn and others 2012
+020 Copyright 2003 Parallel Realities
+020 Copyright 2012 Guus Sliepen, Astrid S. de Wijn and others
+020 Copyright 2015 Julian Marchant
 120 http://sourceforge.net/projects/pr-starfighter/
