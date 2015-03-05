@@ -24,9 +24,9 @@ extern object defEnemy[MAX_DEFALIENS];
 extern object enemy[MAX_ALIENS];
 
 bool alien_add();
-void setTarget(int index);
+void player_setTarget(int index);
 void initAliens();
-void killAllAliens();
+void mission_killAllEnemies();
 void doAliens();
 void setAlienShapes();
 void defineAliens();

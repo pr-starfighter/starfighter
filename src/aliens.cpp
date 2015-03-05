@@ -498,13 +498,16 @@ static void aliens_getPreDefined()
 	}
 }
 
-void setTarget(int index)
+void player_setTarget(int index)
 {
 	engine.targetIndex = index;
 	engine.targetShield = 85;
 	engine.targetShield /= enemy[index].shield;
 }
 
+// XXX: This function initializes the *spawning* of enemies, within an
+// area. It is only used in one place (before the mission loop), so it
+// probably should be moved over to there.
 void initAliens()
 {
 	for (int i = 0 ; i < MAX_ALIENS ; i++)
@@ -572,7 +575,7 @@ void initAliens()
 			enemy[WC_KLINE].active = true;
 			enemy[WC_KLINE].x = player.x + 1000;
 			enemy[WC_KLINE].y = player.y;
-			setTarget(WC_KLINE);
+			player_setTarget(WC_KLINE);
 		}
 
 		if ((currentGame.system == 2) && (currentGame.experimentalShield > 0))
@@ -586,7 +589,7 @@ void initAliens()
 				enemy[10].active = true;
 				enemy[10].x = player.x - 1000;
 				enemy[10].y = player.y;
-				setTarget(10);
+				player_setTarget(10);
 				enemy[10].shield = currentGame.experimentalShield;
 			}
 		}
@@ -623,23 +626,23 @@ void initAliens()
 		case 20:
 		case 21:
 		case 23:
-			setTarget(WC_BOSS);
+			player_setTarget(WC_BOSS);
 			break;
 		case 7:
-			setTarget(FR_PHOEBE);
+			player_setTarget(FR_PHOEBE);
 			break;
 		case 8:
-			setTarget(19);
+			player_setTarget(19);
 			break;
 		case 9:
-			setTarget(FR_SID);
+			player_setTarget(FR_SID);
 			break;
 		case 10:
-			setTarget(0);
+			player_setTarget(0);
 			break;
 		case 25:
 		case 26:
-			setTarget(WC_KLINE);
+			player_setTarget(WC_KLINE);
 			break;
 		default:
 			break;
@@ -650,7 +653,7 @@ void initAliens()
 "Looks" for an enemy by picking a randomly active enemy and using them
 as a target. If the target is too far away, it will be ignored.
 */
-static void searchForTarget(object *theEnemy)
+static void alien_searchForTarget(object *theEnemy)
 {
 	int i;
 
@@ -709,7 +712,7 @@ static void searchForTarget(object *theEnemy)
 	theEnemy->target = targetEnemy;
 }
 
-static int traceTarget(object *theEnemy)
+static int alien_checkTarget(object *theEnemy)
 {
 	// Do various checks to see if the alien can fire at
 	// the target. Start with the most obvious checks.
@@ -752,7 +755,7 @@ static int traceTarget(object *theEnemy)
 Currently only used for the allies. Whilst flying around, the allies will fire on
 any enemy craft that enter their line of sight.
 */
-static int traceView(object *theEnemy)
+static int alien_enemiesInFront(object *theEnemy)
 {
 	object *anEnemy = enemy;
 
@@ -926,7 +929,7 @@ static void moveAndSeparate(object *theEnemy)
 Call this whenever a mission requires all the remaining aliens to
 automatically die
 */
-void killAllAliens()
+void mission_killAllEnemies()
 {
 	for (int i = 0 ; i < MAX_ALIENS ; i++)
 	{
@@ -1001,7 +1004,7 @@ void doAliens()
 				{
 					if (engine.missionCompleteTimer == 0)
 					{
-						searchForTarget(theEnemy);
+						alien_searchForTarget(theEnemy);
 					}
 					else
 					{
@@ -1016,9 +1019,9 @@ void doAliens()
 				if ((!(theEnemy->flags & FL_DISABLED)) && (theEnemy->thinktime == 0) && (theEnemy->target != theEnemy) && (theEnemy->owner == theEnemy))
 				{
 					if (theEnemy->classDef == CD_KLINE)
-						ai_setKline(theEnemy);
+						alien_setKlineAI(theEnemy);
 					else
-						ai_set(theEnemy);
+						alien_setAI(theEnemy);
 
 					theEnemy->thinktime = (rand() % 25) * 10;
 
@@ -1114,11 +1117,11 @@ void doAliens()
 					(!(theEnemy->flags & FL_NOFIRE)))
 				{
 					if ((theEnemy->target->shield > 0))
-						canFire = traceTarget(theEnemy);
+						canFire = alien_checkTarget(theEnemy);
 
 					if (((theEnemy->thinktime % 2) == 0) &&
 							(theEnemy->flags & FL_FRIEND))
-						canFire = traceView(theEnemy);
+						canFire = alien_enemiesInFront(theEnemy);
 				}
 				else
 				{

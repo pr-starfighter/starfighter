@@ -25,7 +25,7 @@ Aliens are assigned various AI types and this routine makes use of them.
 Levels of aggression, defence and evasion are all here.
 */
 
-void ai_set(object *theEnemy)
+void alien_setAI(object *theEnemy)
 {
 	// Make friendly craft generally concentrate on smaller fighters
 	if ((theEnemy->flags & FL_FRIEND) && (theEnemy->target == &enemy[WC_BOSS]))
@@ -106,7 +106,7 @@ void ai_set(object *theEnemy)
 	}
 }
 
-void ai_setKlineAttackMethod(object *theEnemy)
+void alien_setKlineAttackMethod(object *theEnemy)
 {
 	theEnemy->maxShield -= 500;
 	if (theEnemy->maxShield == 0)
@@ -143,7 +143,7 @@ void ai_setKlineAttackMethod(object *theEnemy)
 /*
 This AI is exclusively for Kline.
 */
-void ai_setKline(object *theEnemy)
+void alien_setKlineAI(object *theEnemy)
 {
 	// Weapon type change
 	if ((rand() % 3) == 0)
@@ -186,7 +186,7 @@ void ai_setKline(object *theEnemy)
 			theEnemy->flags |= FL_CIRCLES;
 			break;
 		default:
-			ai_set(theEnemy);
+			alien_setAI(theEnemy);
 			break;
 	}
 }

@@ -294,7 +294,7 @@ void checkTimer()
 	if ((currentGame.area == 24) && (currentMission.completed1[0] < OB_INCOMPLETE))
 	{
 		currentMission.completed1[0] = OB_COMPLETED;
-		killAllAliens();
+		mission_killAllEnemies();
 		engine.addAliens = -1;
 		setInfoLine("*** All Primary Objectives Completed ***", FONT_GREEN);
 	}
@@ -492,13 +492,13 @@ static char revealHiddenObjectives()
 		// Activate Kline!! :)
 		if (currentGame.area == 11)
 		{
-			killAllAliens();
+			mission_killAllEnemies();
 			syncScriptEvents();
 			enemy[WC_KLINE].active = true;
 			enemy[WC_KLINE].x = player.x + 1000;
 			enemy[WC_KLINE].y = player.y;
 			enemy[WC_KLINE].flags |= FL_IMMORTAL | FL_NOFIRE;
-			setTarget(WC_KLINE);
+			player_setTarget(WC_KLINE);
 			loadMusic("music/last_cyber_dance.ogg");
 			if ((engine.useAudio) && (engine.useMusic))
 				Mix_PlayMusic(engine.music, -1);
@@ -559,7 +559,7 @@ bool allMissionsCompleted()
 				{
 					if (currentMission.remainingObjectives2 == 0)
 					{
-						killAllAliens();
+						mission_killAllEnemies();
 						engine.addAliens = -1;
 					}
 				}
@@ -584,7 +584,7 @@ bool allMissionsCompleted()
 				// do some area specific things
 				if ((currentGame.area == 10) && (currentMission.remainingObjectives1 == 0))
 				{
-					killAllAliens();
+					mission_killAllEnemies();
 					engine.addAliens = -1;
 				}
 			}
