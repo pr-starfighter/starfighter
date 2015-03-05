@@ -80,7 +80,7 @@ void initWeapons()
 	// Micro Rockets
 	weapon[W_MICRO_ROCKETS].id = WT_ROCKET;
 	weapon[W_MICRO_ROCKETS].ammo[0] = 5;
-	weapon[W_MICRO_ROCKETS].damage = 3;
+	weapon[W_MICRO_ROCKETS].damage = 7;
 	weapon[W_MICRO_ROCKETS].reload[0] = 30;
 	weapon[W_MICRO_ROCKETS].speed = 15;
 	weapon[W_MICRO_ROCKETS].flags = WF_VARIABLE_SPEED;
