@@ -23,12 +23,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 extern object defEnemy[MAX_DEFALIENS];
 extern object enemy[MAX_ALIENS];
 
-extern bool addAlien();
-extern void setTarget(int index);
-extern void initAliens();
-extern void killAllAliens();
-extern void doAliens();
-extern void setAlienShapes();
-extern void defineAliens();
+bool alien_add();
+void setTarget(int index);
+void initAliens();
+void killAllAliens();
+void doAliens();
+void setAlienShapes();
+void defineAliens();
 
 #endif

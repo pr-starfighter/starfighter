@@ -621,7 +621,7 @@ void doBullets()
 								}
 								else
 								{
-									setKlineAttackMethod(theEnemy);
+									ai_setKlineAttackMethod(theEnemy);
 								}
 							}
 						}

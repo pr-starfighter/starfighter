@@ -22,7 +22,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 object defEnemy[MAX_DEFALIENS];
 object enemy[MAX_ALIENS];
 
-static bool placeAlien(object *theEnemy)
+/*
+This simply pulls back an alien from the array that is
+"dead" (no shield) and returns the index number so we can have
+a new one.
+*/
+static int alien_getFreeIndex()
+{
+	for (int i = 0 ; i < engine.maxAliens ; i++)
+	{
+		if (!enemy[i].active)
+		{
+			return i;
+		}
+	}
+
+	return -1;
+}
+
+static bool alien_place(object *theEnemy)
 {
 	if (rand() % 2 == 0)
 		theEnemy->x = rrand(screen->w, screen->w * 2);
@@ -52,90 +70,9 @@ static bool placeAlien(object *theEnemy)
 	return true;
 }
 
-/*
-This simply pulls back an alien from the array that is
-"dead" (no shield) and returns the index number so we can have
-a new one.
-*/
-static int getAlien()
+bool alien_add()
 {
-	for (int i = 0 ; i < engine.maxAliens ; i++)
-	{
-		if (!enemy[i].active)
-		{
-			return i;
-		}
-	}
-
-	return -1;
-}
-
-static void addDrone(object *host)
-{
-	int index = getAlien();
-
-	if (index == -1)
-		return;
-
-	enemy[index] = defEnemy[CD_DRONE];
-	enemy[index].active = true;
-	enemy[index].face = rand() % 2;
-	enemy[index].owner = &enemy[index]; // Most enemies will own themselves
-	enemy[index].target = &enemy[index];
-	enemy[index].thinktime = (50 + rand() % 50);
-	enemy[index].systemPower = enemy[index].maxShield;
-	enemy[index].deathCounter = 0 - (enemy[index].maxShield * 3);
-	enemy[index].hit = 0;
-
-	enemy[index].x = host->x + rand() % 50;
-	enemy[index].y = host->y + rand() % 50;
-}
-
-static void addSmallAsteroid(object *host)
-{
-	if (engine.missionCompleteTimer != 0)
-		return;
-
-	int index = -1;
-	int debris = 1 + rand() % 10;
-
-	for (int i = 0 ; i < debris ; i++)
-		addBullet(&weapon[W_ROCKETS], host, 0, 0);
-
-	for (int i = 10 ; i < 20 ; i++)
-		if (!enemy[i].active)
-			index = i;
-
-	if (index == -1)
-		return;
-
-	if ((rand() % 10) > 3)
-	{
-		enemy[index] = defEnemy[CD_ASTEROID2];
-		enemy[index].imageIndex[0] = enemy[index].imageIndex[1] = 39 + rand() % 2;
-		enemy[index].image[0] = shipShape[enemy[index].imageIndex[0]];
-		enemy[index].image[1] = shipShape[enemy[index].imageIndex[1]];
-	}
-	else
-	{
-		enemy[index] = defEnemy[CD_DRONE];
-	}
-
-	enemy[index].owner = &enemy[index]; // Most enemies will own themselves
-	enemy[index].target = &enemy[index];
-	enemy[index].thinktime = 1;
-	enemy[index].systemPower = enemy[index].maxShield;
-	enemy[index].deathCounter = 0 - (enemy[index].maxShield * 3);
-	enemy[index].hit = 0;
-
-	enemy[index].x = host->x;
-	enemy[index].y = host->y;
-	enemy[index].active = true;
-}
-
-bool addAlien()
-{
-	int index = getAlien();
+	int index = alien_getFreeIndex();
 
 	if ((index == -1) || (currentGame.area == 23) || (currentGame.area == 26))
 		return 0;
@@ -143,7 +80,7 @@ bool addAlien()
 	signed char *alienArray;
 	signed char numberOfAliens = 1;
 
-	alienArray = new signed char[5];
+	alienArray = new signed char[8];
 
 	switch(currentGame.area)
 	{
@@ -272,7 +209,7 @@ bool addAlien()
 	// Attempts to place an alien. If it fails, the alien is deactivated.
 	for (int i = 0 ; i < 100 ; i++)
 	{
-		if (placeAlien(&enemy[index]))
+		if (alien_place(&enemy[index]))
 			break;
 		enemy[index].active = false;
 
@@ -299,7 +236,102 @@ bool addAlien()
 	return true;
 }
 
-static void getPreDefinedAliens()
+static void alien_addDrone(object *hostEnemy)
+{
+	int index = alien_getFreeIndex();
+
+	if (index == -1)
+		return;
+
+	enemy[index] = defEnemy[CD_DRONE];
+	enemy[index].active = true;
+	enemy[index].face = rand() % 2;
+	enemy[index].owner = &enemy[index]; // Most enemies will own themselves
+	enemy[index].target = &enemy[index];
+	enemy[index].thinktime = (50 + rand() % 50);
+	enemy[index].systemPower = enemy[index].maxShield;
+	enemy[index].deathCounter = 0 - (enemy[index].maxShield * 3);
+	enemy[index].hit = 0;
+
+	enemy[index].x = hostEnemy->x + rand() % 50;
+	enemy[index].y = hostEnemy->y + rand() % 50;
+}
+
+static void alien_addSmallAsteroid(object *hostEnemy)
+{
+	if (engine.missionCompleteTimer != 0)
+		return;
+
+	int index = -1;
+	int debris = 1 + rand() % 10;
+
+	for (int i = 0 ; i < debris ; i++)
+		addBullet(&weapon[W_ROCKETS], hostEnemy, 0, 0);
+
+	for (int i = 10 ; i < 20 ; i++)
+		if (!enemy[i].active)
+			index = i;
+
+	if (index == -1)
+		return;
+
+	if ((rand() % 10) > 3)
+	{
+		enemy[index] = defEnemy[CD_ASTEROID2];
+		enemy[index].imageIndex[0] = enemy[index].imageIndex[1] = 39 + rand() % 2;
+		enemy[index].image[0] = shipShape[enemy[index].imageIndex[0]];
+		enemy[index].image[1] = shipShape[enemy[index].imageIndex[1]];
+	}
+	else
+	{
+		enemy[index] = defEnemy[CD_DRONE];
+	}
+
+	enemy[index].owner = &enemy[index]; // Most enemies will own themselves
+	enemy[index].target = &enemy[index];
+	enemy[index].thinktime = 1;
+	enemy[index].systemPower = enemy[index].maxShield;
+	enemy[index].deathCounter = 0 - (enemy[index].maxShield * 3);
+	enemy[index].hit = 0;
+
+	enemy[index].x = hostEnemy->x;
+	enemy[index].y = hostEnemy->y;
+	enemy[index].active = true;
+}
+
+static void alien_addFriendly(int type)
+{
+	if (type != FR_SID)
+		enemy[type] = defEnemy[CD_FRIEND];
+	else
+		enemy[type] = defEnemy[CD_SID];
+
+	enemy[type].owner = &enemy[type];
+	enemy[type].target = &enemy[type];
+	enemy[type].active = true;
+
+	if (rand() % 2 == 0)
+		enemy[type].x = rrand((int)(screen->w / 2), (int)(screen->w / 2) + 150);
+	else
+		enemy[type].x = rrand((int)(screen->w / 2) - 150, (int)(screen->w / 2));
+
+	if (rand() % 2 == 0)
+		enemy[type].y = rrand((int)(screen->h / 2), (int)(screen->h / 2) + 150);
+	else
+		enemy[type].y = rrand((int)(screen->h / 2) - 150, (int)(screen->h / 2));
+
+	if (type == FR_PHOEBE)
+		enemy[type].classDef = CD_PHOEBE;
+
+	if (type == FR_URSULA)
+		enemy[type].classDef = CD_URSULA;
+
+	// For the sake of it being the final battle :)
+	if (currentGame.area == 25)
+		enemy[type].flags |= FL_IMMORTAL;
+}
+
+static void aliens_getPreDefined()
 {
 	FILE *fp;
 	char string[255];
@@ -324,15 +356,16 @@ static void getPreDefinedAliens()
 		enemy[index].active = true;
 
 		/*
-		we make 1000 attempts to place this enemy since it is required. If after 1000 attempts
-		we still have managed to place the alien, then it simple isn't going to happen and we
-		will just exit the game. The chances of this happening are very very low!
+		we make 1000 attempts to place this enemy since it is required. If after
+		1000 attempts we still haven't managed to place the alien, then it
+		simply isn't going to happen and we will just exit the game. The chances
+		of this happening are very very low!
 		*/
 		while (true)
 		{
 			placeAttempt++;
 
-			if (placeAlien(&enemy[index]))
+			if (alien_place(&enemy[index]))
 				break;
 
 			if (placeAttempt > 1000)
@@ -465,38 +498,6 @@ static void getPreDefinedAliens()
 	}
 }
 
-static void addFriendly(int type)
-{
-	if (type != FR_SID)
-		enemy[type] = defEnemy[CD_FRIEND];
-	else
-		enemy[type] = defEnemy[CD_SID];
-
-	enemy[type].owner = &enemy[type];
-	enemy[type].target = &enemy[type];
-	enemy[type].active = true;
-
-	if (rand() % 2 == 0)
-		enemy[type].x = rrand((int)(screen->w / 2), (int)(screen->w / 2) + 150);
-	else
-		enemy[type].x = rrand((int)(screen->w / 2) - 150, (int)(screen->w / 2));
-
-	if (rand() % 2 == 0)
-		enemy[type].y = rrand((int)(screen->h / 2), (int)(screen->h / 2) + 150);
-	else
-		enemy[type].y = rrand((int)(screen->h / 2) - 150, (int)(screen->h / 2));
-
-	if (type == FR_PHOEBE)
-		enemy[type].classDef = CD_PHOEBE;
-
-	if (type == FR_URSULA)
-		enemy[type].classDef = CD_URSULA;
-
-	// For the sake of it being the final battle :)
-	if (currentGame.area == 25)
-		enemy[type].flags |= FL_IMMORTAL;
-}
-
 void setTarget(int index)
 {
 	engine.targetIndex = index;
@@ -515,7 +516,7 @@ void initAliens()
 
 	engine.targetIndex = -1;
 
-	getPreDefinedAliens();
+	aliens_getPreDefined();
 
 	// specific for Phoebe being captured!
 	if (currentGame.area == 7)
@@ -525,16 +526,17 @@ void initAliens()
 		enemy[WC_KLINE].active = false;
 
 	for (int i = 0 ; i < engine.maxAliens ; i++)
-		addAlien();
+		alien_add();
 
 	if (currentGame.hasWingMate1)
-		addFriendly(FR_PHOEBE);
+		alien_addFriendly(FR_PHOEBE);
 
 	if (currentGame.hasWingMate2)
-		addFriendly(FR_URSULA);
+		alien_addFriendly(FR_URSULA);
 
-	if ((currentGame.area == 9) || (currentGame.area == 17) || (currentGame.area == 25))
-		addFriendly(FR_SID);
+	if ((currentGame.area == 9) || (currentGame.area == 17) ||
+			(currentGame.area == 25))
+		alien_addFriendly(FR_SID);
 
 	// Disable Wingmates for certain missions
 	switch (currentGame.area)
@@ -991,7 +993,8 @@ void doAliens()
 					theEnemy->target = theEnemy;
 
 				// Specific to Sid to stop him pissing about(!)
-				if ((theEnemy->classDef == CD_SID) && (theEnemy->target->flags & FL_DISABLED))
+				if ((theEnemy->classDef == CD_SID) &&
+						(theEnemy->target->flags & FL_DISABLED))
 					theEnemy->target = theEnemy;
 
  				if (theEnemy->target == theEnemy)
@@ -1012,10 +1015,10 @@ void doAliens()
 
 				if ((!(theEnemy->flags & FL_DISABLED)) && (theEnemy->thinktime == 0) && (theEnemy->target != theEnemy) && (theEnemy->owner == theEnemy))
 				{
-					if (theEnemy->classDef != CD_KLINE)
-						setEnemyAI(theEnemy);
+					if (theEnemy->classDef == CD_KLINE)
+						ai_setKline(theEnemy);
 					else
-						setKlineAI(theEnemy);
+						ai_set(theEnemy);
 
 					theEnemy->thinktime = (rand() % 25) * 10;
 
@@ -1042,7 +1045,7 @@ void doAliens()
 					theEnemy->face = 0;
 
 				if ((theEnemy->flags & FL_DEPLOYDRONES) && ((rand() % 300) == 0))
-					addDrone(theEnemy);
+					alien_addDrone(theEnemy);
 
 				if (theEnemy->flags & FL_LEAVESECTOR)
 				{
@@ -1235,7 +1238,7 @@ void doAliens()
 					{
 						int i = 1 + (rand() % 3);
 						for (int j = 0 ; j < i ; j++)
-							addSmallAsteroid(theEnemy);
+							alien_addSmallAsteroid(theEnemy);
 					}
 				}
 			}

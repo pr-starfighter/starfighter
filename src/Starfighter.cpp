@@ -20,15 +20,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
+	bool cheatAttempt;
+	int cheatCount;
+	int section;
+
 	if (chdir(DATADIR) == -1)
 		printf("Warning: failed to change directory to \"%s\"\n", DATADIR);
 
 	defineGlobals(); // Must do this first!
 
-	bool cheatAttempt = false;
-	int cheatCount = 0;
+	cheatAttempt = false;
+	cheatCount = 0;
 
 	if (argc > 1)
 	{
@@ -49,15 +53,27 @@ int main(int argc, char *argv[])
 	for (int i = 1 ; i < argc ; i++)
 	{
 		if (strcmp(argv[i], "-nomove") == 0)
-			{printf("Enemy movement disabled\n"); dev.moveAliens = 0;}
+		{
+			printf("Enemy movement disabled\n");
+			dev.moveAliens = 0;
+		}
 		if (strcmp(argv[i], "-nofire") == 0)
-			{printf("Enemy firing disabled\n"); dev.fireAliens = 0;}
+		{
+			printf("Enemy firing disabled\n");
+			dev.fireAliens = 0;
+		}
 		if (strcmp(argv[i], "-cheat") == 0)
 			cheatAttempt = true;
 		if (strcmp(argv[i], "-noaudio") == 0)
-			{printf("No Audio\n"); engine.useAudio = false;}
+		{
+			printf("No Audio\n");
+			engine.useAudio = false;
+		}
 		if (strcmp(argv[i], "-mono") == 0)
-			{printf("Mono sound output\n"); engine.useAudio = true;}
+		{
+			printf("Mono sound output\n");
+			engine.useAudio = true;
+		}
 		if ((strcmp(argv[i], "humans") == 0) && (cheatCount == 0))
 			cheatCount = 1;
 		if ((strcmp(argv[i], "do") == 0) && (cheatCount == 1))
@@ -65,8 +81,11 @@ int main(int argc, char *argv[])
 		if ((strcmp(argv[i], "it") == 0) && (cheatCount == 2))
 			cheatCount = 3;
 		if (((strcmp(argv[i], "better") == 0) && (cheatCount == 3)) ||
-				(strcmp(argv[i], "humansdoitbetter") == 0))
-			{printf("Humans do it better! Cheats enabled.\n"); engine.cheat = true;}
+			(strcmp(argv[i], "humansdoitbetter") == 0))
+		{
+			printf("Humans do it better! Cheats enabled.\n");
+			engine.cheat = true;
+		}
 	}
 
 	atexit(cleanUp);
@@ -100,14 +119,14 @@ int main(int argc, char *argv[])
 	showStory();
 
 	// Determine which part of the game we will go to...
-	int section = 0;
+	section = 0;
 
 	currentGame.difficulty = DIFFICULTY_NORMAL;
 	newGame();
 
 	while (true)
 	{
-		switch(section)
+		switch (section)
 		{
 			case 0:
 				section = doTitle();
@@ -118,7 +137,8 @@ int main(int argc, char *argv[])
 				break;
 
 			case 2:
-				if (currentGame.stationedPlanet == -1) {doCutscene(0);}
+				if (currentGame.stationedPlanet == -1)
+					doCutscene(0);
 				section = mainGameLoop();
 				break;
 		}
