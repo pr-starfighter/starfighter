@@ -811,7 +811,7 @@ static void sell(int i)
 	}
 
 	adjustShopPrices();
-	currentGame.cash += (shopItems[i].price / 2);
+	currentGame.cash += shopItems[i].price;
 	saveGame(0);
 }
 
