@@ -77,6 +77,13 @@ static void adjustShopPrices()
 	shopItems[6].price = (2000 * currentGame.minPlasmaDamage);
 	shopItems[7].price = (2000 * currentGame.minPlasmaRate);
 
+	if (currentGame.maxPlasmaOutput <= currentGame.minPlasmaOutput)
+		shopItems[5].price += shopItems[0].price;
+	if (currentGame.maxPlasmaDamage <= currentGame.minPlasmaDamage)
+		shopItems[6].price += shopItems[1].price;
+	if (currentGame.maxPlasmaRate <= currentGame.minPlasmaRate)
+		shopItems[7].price += shopItems[2].price;
+
 	shopItems[8].price = (5 * currentGame.maxPlasmaAmmo);
 	shopItems[9].price = (25 * currentGame.maxRocketAmmo);
 	
