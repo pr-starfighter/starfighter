@@ -170,6 +170,15 @@ struct Game {
 	unsigned char maxPlasmaAmmo;
 	unsigned char maxRocketAmmo;
 
+	// Limits on shop upgrades
+	unsigned char minPlasmaRateLimit;
+	unsigned char minPlasmaDamageLimit;
+	unsigned char minPlasmaOutputLimit;
+	unsigned char maxPlasmaRateLimit;
+	unsigned char maxPlasmaDamageLimit;
+	unsigned char maxPlasmaOutputLimit;
+	unsigned char maxPlasmaAmmoLimit;
+	unsigned char maxRocketAmmoLimit;
 
 };
 

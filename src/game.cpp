@@ -67,16 +67,33 @@ void newGame()
 	currentGame.maxPlasmaAmmo = 100;
 	currentGame.maxRocketAmmo = 10;
 
+	currentGame.minPlasmaRateLimit = 2;
+	currentGame.minPlasmaDamageLimit = 1;
+	currentGame.minPlasmaOutputLimit = 3;
+	currentGame.maxPlasmaRateLimit = 4;
+	currentGame.maxPlasmaDamageLimit = 2;
+	currentGame.maxPlasmaOutputLimit = 3;
+	currentGame.maxPlasmaAmmoLimit = 250;
+	currentGame.maxRocketAmmoLimit = 50;
+
 	switch (currentGame.difficulty)
 	{
 		case DIFFICULTY_EASY:
 			player.maxShield = 100;
+
 			currentGame.minPlasmaRate = 2;
 			currentGame.minPlasmaOutput = 2;
 			currentGame.minPlasmaDamage = 2;
 			currentGame.maxPlasmaRate = 3;
 			currentGame.maxPlasmaOutput = 3;
 			currentGame.maxPlasmaDamage = 3;
+
+			currentGame.minPlasmaRateLimit = 3;
+			currentGame.minPlasmaDamageLimit = 3;
+			currentGame.minPlasmaOutputLimit = 3;
+			currentGame.maxPlasmaRateLimit = 5;
+			currentGame.maxPlasmaDamageLimit = 5;
+			currentGame.maxPlasmaOutputLimit = 5;
 			break;
 		case DIFFICULTY_HARD:
 			player.maxShield = 25;
@@ -87,6 +104,13 @@ void newGame()
 			currentGame.maxPlasmaOutput = 1;
 			currentGame.maxPlasmaDamage = 1;
 			currentGame.maxRocketAmmo = 5;
+
+			currentGame.minPlasmaRateLimit = 2;
+			currentGame.minPlasmaDamageLimit = 1;
+			currentGame.minPlasmaOutputLimit = 2;
+			currentGame.maxPlasmaRateLimit = 3;
+			currentGame.maxPlasmaDamageLimit = 1;
+			currentGame.maxPlasmaOutputLimit = 3;
 			break;
 		default:
 			player.maxShield = 50;
