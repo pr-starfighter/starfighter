@@ -80,7 +80,7 @@ void addCollectable(float x, float y, int type, int value, int life)
 	// If plasma rate is at max, convert plasma rate powerup to ammo.
 	if (type == P_PLASMA_RATE)
 	{
-		if (weapon[W_PLAYER_WEAPON].reload[0] == rate2reload[currentGame.maxPlasmaRate])
+		if (weapon[W_PLAYER_WEAPON].reload[0] <= rate2reload[currentGame.maxPlasmaRate])
 		{
 			type = P_PLASMA_AMMO;
 		}
@@ -89,7 +89,7 @@ void addCollectable(float x, float y, int type, int value, int life)
 	// If plasma output is at max, convert plasma output powerup to ammo.
 	if (type == P_PLASMA_SHOT)
 	{
-		if (weapon[W_PLAYER_WEAPON].ammo[0] == currentGame.maxPlasmaOutput)
+		if (weapon[W_PLAYER_WEAPON].ammo[0] >= currentGame.maxPlasmaOutput)
 		{
 			type = P_PLASMA_AMMO;
 		}
@@ -98,7 +98,7 @@ void addCollectable(float x, float y, int type, int value, int life)
 	// If plasma damage is at max, convert plasma damage powerup to ammo.
 	if (type == P_PLASMA_DAMAGE)
 	{
-		if (weapon[W_PLAYER_WEAPON].damage == currentGame.maxPlasmaDamage)
+		if (weapon[W_PLAYER_WEAPON].damage >= currentGame.maxPlasmaDamage)
 		{
 			type = P_PLASMA_AMMO;
 		}
@@ -108,9 +108,9 @@ void addCollectable(float x, float y, int type, int value, int life)
 	// upgraded! Give them money instead.
 	if (type == P_PLASMA_AMMO)
 	{
-		if ((weapon[W_PLAYER_WEAPON].reload[0] == rate2reload[currentGame.minPlasmaRate]) &&
-			(weapon[W_PLAYER_WEAPON].ammo[0] == currentGame.minPlasmaOutput) &&
-			(weapon[W_PLAYER_WEAPON].damage == currentGame.minPlasmaDamage))
+		if ((weapon[W_PLAYER_WEAPON].reload[0] >= rate2reload[currentGame.minPlasmaRate]) &&
+			(weapon[W_PLAYER_WEAPON].ammo[0] <= currentGame.minPlasmaOutput) &&
+			(weapon[W_PLAYER_WEAPON].damage <= currentGame.minPlasmaDamage))
 		{
 			type = P_CASH;
 		}
