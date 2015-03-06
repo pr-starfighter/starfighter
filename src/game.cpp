@@ -68,10 +68,10 @@ void newGame()
 	currentGame.maxRocketAmmo = 10;
 
 	currentGame.minPlasmaRateLimit = 2;
-	currentGame.minPlasmaDamageLimit = 1;
-	currentGame.minPlasmaOutputLimit = 3;
-	currentGame.maxPlasmaRateLimit = 4;
-	currentGame.maxPlasmaDamageLimit = 2;
+	currentGame.minPlasmaDamageLimit = 2;
+	currentGame.minPlasmaOutputLimit = 2;
+	currentGame.maxPlasmaRateLimit = 3;
+	currentGame.maxPlasmaDamageLimit = 3;
 	currentGame.maxPlasmaOutputLimit = 3;
 	currentGame.maxPlasmaAmmoLimit = 250;
 	currentGame.maxRocketAmmoLimit = 50;
@@ -104,13 +104,6 @@ void newGame()
 			currentGame.maxPlasmaOutput = 1;
 			currentGame.maxPlasmaDamage = 1;
 			currentGame.maxRocketAmmo = 5;
-
-			currentGame.minPlasmaRateLimit = 2;
-			currentGame.minPlasmaDamageLimit = 1;
-			currentGame.minPlasmaOutputLimit = 2;
-			currentGame.maxPlasmaRateLimit = 3;
-			currentGame.maxPlasmaDamageLimit = 1;
-			currentGame.maxPlasmaOutputLimit = 3;
 			break;
 		default:
 			player.maxShield = 50;

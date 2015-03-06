@@ -80,7 +80,7 @@ void initWeapons()
 	// Micro Rockets
 	weapon[W_MICRO_ROCKETS].id = WT_ROCKET;
 	weapon[W_MICRO_ROCKETS].ammo[0] = 5;
-	weapon[W_MICRO_ROCKETS].damage = 7;
+	weapon[W_MICRO_ROCKETS].damage = 6;
 	weapon[W_MICRO_ROCKETS].reload[0] = 30;
 	weapon[W_MICRO_ROCKETS].speed = 15;
 	weapon[W_MICRO_ROCKETS].flags = WF_VARIABLE_SPEED;
@@ -142,7 +142,7 @@ void initWeapons()
 	weapon[W_MICRO_HOMING_MISSILES].imageIndex[0] = 4;
 	weapon[W_MICRO_HOMING_MISSILES].imageIndex[1] = 4;
 
-	// Aimed plasma bolt (2x damage)
+	// Aimed plasma bolt
 	weapon[W_AIMED_SHOT].id = WT_DIRECTIONAL;
 	weapon[W_AIMED_SHOT].ammo[0] = 1;
 	weapon[W_AIMED_SHOT].damage = 2;
@@ -155,7 +155,7 @@ void initWeapons()
 	// 3 way spread weapon
 	weapon[W_SPREADSHOT].id = WT_SPREAD;
 	weapon[W_SPREADSHOT].ammo[0] = 3;
-	weapon[W_SPREADSHOT].damage = 1;
+	weapon[W_SPREADSHOT].damage = 2;
 	weapon[W_SPREADSHOT].reload[0] = 10;
 	weapon[W_SPREADSHOT].speed = 10;
 	weapon[W_SPREADSHOT].flags = WF_SPREAD;

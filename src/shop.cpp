@@ -206,7 +206,10 @@ static void drawShop()
 		icons = SHOP_CHARGER + 1;
 
 	for (int i = 0 ; i < icons ; i++)
-		blit(shape[shopItems[i].image], shopItems[i].x - 90, shopItems[i].y - 178, shopSurface[3]);
+	{
+		blit(shape[shopItems[i].image], shopItems[i].x - 90,
+			shopItems[i].y - 178, shopSurface[3]);
+	}
 
 	sprintf(description, "Shield Units : %d", player.maxShield);
 	drawString(description, 10, 4, FONT_WHITE, shopSurface[4]);
@@ -364,11 +367,23 @@ void initShop()
 		"Fires several small homing missiles (max %i missiles)", maxMicroHoming);
 	shopItems[SHOP_MICRO_HOMING_MISSILES].image = 25;
 
-	for (int i = 0 ; i < 3 ; i++)
-	{
-		shopItems[i].x = 100 + (i * 50);
-		shopItems[i].y = 200;
-	}
+	shopItems[SHOP_PLASMA_MAX_OUTPUT].x = 100;
+	shopItems[SHOP_PLASMA_MAX_OUTPUT].y = 200;
+
+	shopItems[SHOP_PLASMA_MAX_DAMAGE].x = 150;
+	shopItems[SHOP_PLASMA_MAX_DAMAGE].y = 200;
+
+	shopItems[SHOP_PLASMA_MAX_RATE].x = 200;
+	shopItems[SHOP_PLASMA_MAX_RATE].y = 200;
+
+	shopItems[SHOP_PLASMA_MIN_OUTPUT].x = 100;
+	shopItems[SHOP_PLASMA_MIN_OUTPUT].y = 260;
+
+	shopItems[SHOP_PLASMA_MIN_DAMAGE].x = 150;
+	shopItems[SHOP_PLASMA_MIN_DAMAGE].y = 260;
+
+	shopItems[SHOP_PLASMA_MIN_RATE].x = 200;
+	shopItems[SHOP_PLASMA_MIN_RATE].y = 260;
 
 	shopItems[SHOP_PLASMA_AMMO].x = 350;
 	shopItems[SHOP_PLASMA_AMMO].y = 200;
@@ -376,23 +391,32 @@ void initShop()
 	shopItems[SHOP_ROCKET_AMMO].x = 400;
 	shopItems[SHOP_ROCKET_AMMO].y = 200;
 
-	for (int i = 0 ; i < 3 ; i++)
-	{
-		shopItems[i + 5].x = 100 + (i * 50);
-		shopItems[i + 5].y = 260;
-	}
+	shopItems[SHOP_PLASMA_MAX_AMMO].x = 450;
+	shopItems[SHOP_PLASMA_MAX_AMMO].y = 200;
 
-	for (int i = 0 ; i < 2 ; i++)
-	{
-		shopItems[i + 8].x = 450 + (i * 50);
-		shopItems[i + 8].y = 200;
-	}
+	shopItems[SHOP_ROCKET_MAX_AMMO].x = 500;
+	shopItems[SHOP_ROCKET_MAX_AMMO].y = 200;
 
-	for (int i = 0 ; i < 7 ; i++)
-	{
-		shopItems[i + 10].x = 350 + (i * 50);
-		shopItems[i + 10].y = 260;
-	}
+	shopItems[SHOP_DOUBLE_ROCKETS].x = 350;
+	shopItems[SHOP_DOUBLE_ROCKETS].y = 260;
+
+	shopItems[SHOP_MICRO_ROCKETS].x = 400;
+	shopItems[SHOP_MICRO_ROCKETS].y = 260;
+
+	shopItems[SHOP_LASER].x = 450;
+	shopItems[SHOP_LASER].y = 260;
+
+	shopItems[SHOP_HOMING_MISSILE].x = 500;
+	shopItems[SHOP_HOMING_MISSILE].y = 260;
+
+	shopItems[SHOP_CHARGER].x = 550;
+	shopItems[SHOP_CHARGER].y = 260;
+
+	shopItems[SHOP_DOUBLE_HOMING_MISSILES].x = 600;
+	shopItems[SHOP_DOUBLE_HOMING_MISSILES].y = 260;
+
+	shopItems[SHOP_MICRO_HOMING_MISSILES].x = 650;
+	shopItems[SHOP_MICRO_HOMING_MISSILES].y = 260;
 
  	shopSelectedItem = -1;
 
@@ -821,7 +845,8 @@ void showShop()
 	{
 		for (int i = 0 ; i < icons ; i++)
 		{
-			if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, shopItems[i].x, shopItems[i].y, 32, 25))
+			if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6,
+				shopItems[i].x, shopItems[i].y, 32, 25))
 			{
 				shopSelectedItem = i;
 				engine.keyState[KEY_FIRE] = 0;
