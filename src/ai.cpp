@@ -25,29 +25,29 @@ Aliens are assigned various AI types and this routine makes use of them.
 Levels of aggression, defence and evasion are all here.
 */
 
-void alien_setAI(object *theEnemy)
+void alien_setAI(object *alien)
 {
 	// Make friendly craft generally concentrate on smaller fighters
-	if ((theEnemy->flags & FL_FRIEND) && (theEnemy->target == &enemy[WC_BOSS]))
+	if ((alien->flags & FL_FRIEND) && (alien->target == &enemy[WC_BOSS]))
 	{
 		if ((rand() % 5) == 0)
 		{
-			theEnemy->target = theEnemy;
-			theEnemy->thinktime = 0;
+			alien->target = alien;
+			alien->thinktime = 0;
 			return;
 		}
 	}
 
 	int i = rand() % 10;
-	float tx = theEnemy->target->x;
-	float ty = theEnemy->target->y;
+	float tx = alien->target->x;
+	float ty = alien->target->y;
 
 	int chase = 0; // Chance in 10 of chasing player
 	int area = 0; // Chance in 10 of moving to an area around the player
 	int stop = 0; // Chance in 10 of hanging back
 	int point = 0; // Size of area alien will move into
 
-	switch (theEnemy->AIType)
+	switch (alien->AIType)
 	{
 		case AI_NORMAL:
 			chase = 3;
@@ -84,8 +84,8 @@ void alien_setAI(object *theEnemy)
 	if (i <= chase)
 	{
 		// Chase the target
-		theEnemy->dx = ((theEnemy->x - tx) / ((300 / theEnemy->speed)  + rand() % 100));
-		theEnemy->dy = ((theEnemy->y - ty) / ((300 / theEnemy->speed)  + rand() % 100));
+		alien->dx = ((alien->x - tx) / ((300 / alien->speed)  + rand() % 100));
+		alien->dy = ((alien->y - ty) / ((300 / alien->speed)  + rand() % 100));
 		return;
 	}
 	else if ((i >= point) && (i <= stop))
@@ -93,100 +93,100 @@ void alien_setAI(object *theEnemy)
 		// Fly to a random point around the target
 		tx += (rand() % area - (rand() % area * 2));
 		ty += (rand() % area - (rand() % area * 2));
-		theEnemy->dx = ((theEnemy->x - tx) / ((300 / theEnemy->speed)  + rand() % 100));
-		theEnemy->dy = ((theEnemy->y - ty) / ((300 / theEnemy->speed)  + rand() % 100));
+		alien->dx = ((alien->x - tx) / ((300 / alien->speed)  + rand() % 100));
+		alien->dy = ((alien->y - ty) / ((300 / alien->speed)  + rand() % 100));
 		return;
 	}
 	else
 	{
 		// Hang back
-		theEnemy->dx = 0;
-		theEnemy->dy = 0;
+		alien->dx = 0;
+		alien->dy = 0;
 		return;
 	}
 }
 
-void alien_setKlineAttackMethod(object *theEnemy)
+void alien_setKlineAttackMethod(object *alien)
 {
-	theEnemy->maxShield -= 500;
-	if (theEnemy->maxShield == 0)
-		theEnemy->flags &= ~FL_CANNOTDIE;
+	alien->maxShield -= 500;
+	if (alien->maxShield == 0)
+		alien->flags &= ~FL_CANNOTDIE;
 
-	if (theEnemy->maxShield == 1000)
+	if (alien->maxShield == 1000)
 	{
 		setRadioMessage(FACE_KLINE, "Very good, Bainfield. Now let's get a little more serious...", 1);
-		theEnemy->weaponType[0] = W_SPREADSHOT;
-		theEnemy->chance[1] = 40;
+		alien->weaponType[0] = W_SPREADSHOT;
+		alien->chance[1] = 40;
 	}
-	else if (theEnemy->maxShield == 500)
+	else if (alien->maxShield == 500)
 	{
 		setRadioMessage(FACE_KLINE, "Your ability to stay alive irritates me!! Try dodging some of these!!", 1);
-		theEnemy->weaponType[0] = W_DIRSHOCKMISSILE;
-		theEnemy->weaponType[1] = W_DIRSHOCKMISSILE;
-		theEnemy->chance[0] = 2;
-		theEnemy->chance[1] = 2;
-		theEnemy->flags |= FL_AIMS;
+		alien->weaponType[0] = W_DIRSHOCKMISSILE;
+		alien->weaponType[1] = W_DIRSHOCKMISSILE;
+		alien->chance[0] = 2;
+		alien->chance[1] = 2;
+		alien->flags |= FL_AIMS;
 	}
-	else if (theEnemy->maxShield == 0)
+	else if (alien->maxShield == 0)
 	{
 		setRadioMessage(FACE_KLINE, "ENOUGH!! THIS ENDS NOW!!!", 1);
-		theEnemy->weaponType[0] = W_AIMED_SHOT;
-		theEnemy->weaponType[1] = W_MICRO_HOMING_MISSILES;
-		theEnemy->flags |= FL_CANCLOAK;
-		theEnemy->chance[0] = 100;
-		theEnemy->chance[1] = 2;
+		alien->weaponType[0] = W_AIMED_SHOT;
+		alien->weaponType[1] = W_MICRO_HOMING_MISSILES;
+		alien->flags |= FL_CANCLOAK;
+		alien->chance[0] = 100;
+		alien->chance[1] = 2;
 	}
 
-	theEnemy->shield = 500;
+	alien->shield = 500;
 }
 
 /*
 This AI is exclusively for Kline.
 */
-void alien_setKlineAI(object *theEnemy)
+void alien_setKlineAI(object *alien)
 {
 	// Weapon type change
 	if ((rand() % 3) == 0)
 	{
 		if (currentGame.area != 26)
 		{
-			theEnemy->flags &= ~FL_AIMS;
+			alien->flags &= ~FL_AIMS;
 
 			switch(rand() % 2)
 			{
 				case 0:
-					theEnemy->weaponType[0] = W_TRIPLE_SHOT;
+					alien->weaponType[0] = W_TRIPLE_SHOT;
 					break;
 				case 1:
-					theEnemy->weaponType[0] = W_AIMED_SHOT;
-					theEnemy->flags |= FL_AIMS;
+					alien->weaponType[0] = W_AIMED_SHOT;
+					alien->flags |= FL_AIMS;
 					break;
 			}
 		}
 	}
 
-	theEnemy->flags &= ~(FL_CIRCLES | FL_CONTINUOUS_FIRE | FL_DROPMINES);
+	alien->flags &= ~(FL_CIRCLES | FL_CONTINUOUS_FIRE | FL_DROPMINES);
 
 	switch(rand() % 10)
 	{
 		case 0:
-			if ((theEnemy->weaponType[0] != W_DIRSHOCKMISSILE) && (theEnemy->weaponType[1] != W_MICRO_HOMING_MISSILES))
-				theEnemy->flags |= FL_CONTINUOUS_FIRE;
-			theEnemy->dx = ((theEnemy->x - theEnemy->target->x) / ((300 / theEnemy->speed)  + rand() % 100));
-			theEnemy->dy = ((theEnemy->y - theEnemy->target->y) / ((300 / theEnemy->speed)  + rand() % 100));
+			if ((alien->weaponType[0] != W_DIRSHOCKMISSILE) && (alien->weaponType[1] != W_MICRO_HOMING_MISSILES))
+				alien->flags |= FL_CONTINUOUS_FIRE;
+			alien->dx = ((alien->x - alien->target->x) / ((300 / alien->speed)  + rand() % 100));
+			alien->dy = ((alien->y - alien->target->y) / ((300 / alien->speed)  + rand() % 100));
 			break;
 		case 1:
 		case 2:
 			// Kline only attacks then he is ready!
-			if ((!(theEnemy->flags & FL_NOFIRE)) && (currentGame.area == 11))
-				theEnemy->flags |= FL_DROPMINES;
+			if ((!(alien->flags & FL_NOFIRE)) && (currentGame.area == 11))
+				alien->flags |= FL_DROPMINES;
 			break;
 		case 3:
 		case 4:
-			theEnemy->flags |= FL_CIRCLES;
+			alien->flags |= FL_CIRCLES;
 			break;
 		default:
-			alien_setAI(theEnemy);
+			alien_setAI(alien);
 			break;
 	}
 }

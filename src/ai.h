@@ -20,8 +20,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef AI_H
 #define AI_H
 
-void alien_setAI(object *theEnemy);
-void alien_setKlineAttackMethod(object *theEnemy);
-void alien_setKlineAI(object *theEnemy);
+void alien_setAI(object *alien);
+void alien_setKlineAttackMethod(object *alien);
+void alien_setKlineAI(object *alien);
 
 #endif

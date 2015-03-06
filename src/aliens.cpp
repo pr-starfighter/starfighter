@@ -40,29 +40,29 @@ static int alien_getFreeIndex()
 	return -1;
 }
 
-static bool alien_place(object *theEnemy)
+static bool alien_place(object *alien)
 {
 	if (rand() % 2 == 0)
-		theEnemy->x = rrand(screen->w, screen->w * 2);
+		alien->x = rrand(screen->w, screen->w * 2);
 	else
-		theEnemy->x = rrand(-screen->w, 0);
+		alien->x = rrand(-screen->w, 0);
 
 	if (rand() % 2 == 0)
-		theEnemy->y = rrand(screen->h, screen->h * 2);
+		alien->y = rrand(screen->h, screen->h * 2);
 	else
-		theEnemy->y = rrand(-screen->h, 0);
+		alien->y = rrand(-screen->h, 0);
 
 	if (currentGame.area == 24)
 	{
-		theEnemy->x = screen->w;
-		theEnemy->y = rrand(screen->h / 3, (2 * screen->h) / 3);
+		alien->x = screen->w;
+		alien->y = rrand(screen->h / 3, (2 * screen->h) / 3);
 	}
 
 	for (int i = 0 ; i < MAX_ALIENS ; i++)
 	{
-		if ((enemy[i].owner != theEnemy) && (enemy[i].shield > 0))
+		if ((enemy[i].owner != alien) && (enemy[i].shield > 0))
 		{
-			if (collision(theEnemy->x, theEnemy->y, theEnemy->image[0]->w, theEnemy->image[0]->h, enemy[i].x, enemy[i].y, enemy[i].image[0]->w, enemy[i].image[0]->h))
+			if (collision(alien->x, alien->y, alien->image[0]->w, alien->image[0]->h, enemy[i].x, enemy[i].y, enemy[i].image[0]->w, enemy[i].image[0]->h))
 				return false;
 		}
 	}
@@ -653,17 +653,17 @@ void initAliens()
 "Looks" for an enemy by picking a randomly active enemy and using them
 as a target. If the target is too far away, it will be ignored.
 */
-static void alien_searchForTarget(object *theEnemy)
+static void alien_searchForTarget(object *alien)
 {
 	int i;
 
-	if (theEnemy->flags & FL_WEAPCO)
+	if (alien->flags & FL_WEAPCO)
 	{
 		i = (rand() % 10);
 
 		if (i == 0)
 		{
-			theEnemy->target = &player;
+			alien->target = &player;
 			return;
 		}
 	}
@@ -674,7 +674,7 @@ static void alien_searchForTarget(object *theEnemy)
 
 	// Tell Sid not to attack craft that are already disabled or can
 	// return fire. This will save him from messing about (unless we're on the last mission)
-	if ((theEnemy->classDef == CD_SID) && (currentGame.area != 25))
+	if ((alien->classDef == CD_SID) && (currentGame.area != 25))
 	{
 		if ((targetEnemy->flags & FL_DISABLED) || (!(targetEnemy->flags & FL_NOFIRE)))
 			return;
@@ -683,7 +683,7 @@ static void alien_searchForTarget(object *theEnemy)
 	// Tell Phoebe and Ursula not to attack ships that cannot fire or are disabled (unless we're on the last mission)
 	if (currentGame.area != 25)
 	{
-		if ((theEnemy->classDef == CD_PHOEBE) || (theEnemy->classDef == CD_URSULA))
+		if ((alien->classDef == CD_PHOEBE) || (alien->classDef == CD_URSULA))
 		{
 			// Don't attack the boss or we could be here all day(!)
 			if (targetEnemy->classDef == CD_BOSS)
@@ -697,55 +697,55 @@ static void alien_searchForTarget(object *theEnemy)
 	if ((targetEnemy->shield < 1) || (!targetEnemy->active))
 		return;
 
-	if ((targetEnemy->flags & FL_WEAPCO) && (theEnemy->flags & FL_WEAPCO))
+	if ((targetEnemy->flags & FL_WEAPCO) && (alien->flags & FL_WEAPCO))
 		return;
 
-	if ((targetEnemy->flags & FL_FRIEND) && (theEnemy->flags & FL_FRIEND))
+	if ((targetEnemy->flags & FL_FRIEND) && (alien->flags & FL_FRIEND))
 		return;
 
-	if (abs((int)theEnemy->x - (int)theEnemy->target->x) > 550)
+	if (abs((int)alien->x - (int)alien->target->x) > 550)
 		return;
 
-	if (abs((int)theEnemy->y - (int)theEnemy->target->y) > 400)
+	if (abs((int)alien->y - (int)alien->target->y) > 400)
 		return;
 
-	theEnemy->target = targetEnemy;
+	alien->target = targetEnemy;
 }
 
-static int alien_checkTarget(object *theEnemy)
+static int alien_checkTarget(object *alien)
 {
 	// Do various checks to see if the alien can fire at
 	// the target. Start with the most obvious checks.
 
 	// No target
-	if (theEnemy->target == theEnemy)
+	if (alien->target == alien)
 		return 0;
 
 	// Whilst firing a Ray, no other weapons can be fired!
-	if (theEnemy->flags & FL_FIRERAY)
+	if (alien->flags & FL_FIRERAY)
 		return 0;
 
 	// The target is on the same side as you!
-	if ((theEnemy->flags & FL_WEAPCO) && (theEnemy->target->flags & FL_WEAPCO))
+	if ((alien->flags & FL_WEAPCO) && (alien->target->flags & FL_WEAPCO))
 		return 0;
-	if ((theEnemy->flags & FL_FRIEND) && (theEnemy->target->flags & FL_FRIEND))
+	if ((alien->flags & FL_FRIEND) && (alien->target->flags & FL_FRIEND))
 		return 0;
 
 	// You're facing the wrong way
-	if ((theEnemy->face == 0) && (theEnemy->target->x < theEnemy->x))
+	if ((alien->face == 0) && (alien->target->x < alien->x))
 		return 0;
-	if ((theEnemy->face == 1) && (theEnemy->target->x > theEnemy->x))
+	if ((alien->face == 1) && (alien->target->x > alien->x))
 		return 0;
 
 	// Slightly more than half a screen away from you
-	if (abs((int)theEnemy->x - (int)theEnemy->target->x) > 550)
+	if (abs((int)alien->x - (int)alien->target->x) > 550)
 		return 0;
 
-	if ((theEnemy->flags & FL_AIMS) || (theEnemy->flags & FL_CONTINUOUS_FIRE))
+	if ((alien->flags & FL_AIMS) || (alien->flags & FL_CONTINUOUS_FIRE))
 		return 1;
 
 	// Not at the correct vertical height
-	if ((theEnemy->y < theEnemy->target->y - 15) || (theEnemy->y > theEnemy->target->y + theEnemy->target->image[0]->h + 15))
+	if ((alien->y < alien->target->y - 15) || (alien->y > alien->target->y + alien->target->image[0]->h + 15))
 		return 0;
 
 	return 1;
@@ -755,19 +755,19 @@ static int alien_checkTarget(object *theEnemy)
 Currently only used for the allies. Whilst flying around, the allies will fire on
 any enemy craft that enter their line of sight.
 */
-static int alien_enemiesInFront(object *theEnemy)
+static int alien_enemiesInFront(object *alien)
 {
 	object *anEnemy = enemy;
 
 	for (int i = 0 ; i < MAX_ALIENS ; i++)
 	{
-		if ((theEnemy != anEnemy) && (anEnemy->flags & FL_WEAPCO) && (anEnemy->shield > 0))
+		if ((alien != anEnemy) && (anEnemy->flags & FL_WEAPCO) && (anEnemy->shield > 0))
 		{
-			if ((theEnemy->y > anEnemy->y - 15) && (theEnemy->y < anEnemy->y + anEnemy->image[0]->h + 15))
+			if ((alien->y > anEnemy->y - 15) && (alien->y < anEnemy->y + anEnemy->image[0]->h + 15))
 			{
-				if ((theEnemy->face == 1) && (anEnemy->x < theEnemy->x))
+				if ((alien->face == 1) && (anEnemy->x < alien->x))
 					return 1;
-				if ((theEnemy->face == 0) && (anEnemy->x > theEnemy->x))
+				if ((alien->face == 0) && (anEnemy->x > alien->x))
 					return 1;
 			}
 		}
@@ -778,40 +778,37 @@ static int alien_enemiesInFront(object *theEnemy)
 	return 0;
 }
 
-static void moveAndSeparate(object *theEnemy)
+static void alien_move(object *alien)
 {
-	bool checkCollisions = true;
-	bool hasCollided = false;
+	bool checkCollisions;
 
-	// don't worry about bumping into other craft
-	if ((theEnemy->flags & FL_LEAVESECTOR) || (theEnemy->classDef == CD_DRONE) || (currentGame.area == 18))
+	if ((alien->flags & FL_LEAVESECTOR) || (alien->shield < 1))
 		checkCollisions = false;
+	else
+		checkCollisions = true;
 
-	if (theEnemy->shield < 1)
-		checkCollisions = false;
-
-	if (theEnemy->owner == theEnemy)
+	if (alien->owner == alien)
 	{
-		if (theEnemy->flags & FL_CIRCLES)
+		if (alien->flags & FL_CIRCLES)
 		{
-			if (theEnemy->face == 0)
+			if (alien->face == 0)
 			{
-				theEnemy->dx += 0.02;
-				theEnemy->dy += 0.02;
+				alien->dx += 0.02;
+				alien->dy += 0.02;
 			}
 			else
 			{
-				theEnemy->dx -= 0.02;
-				theEnemy->dy -= 0.02;
+				alien->dx -= 0.02;
+				alien->dy -= 0.02;
 			}
 
-			theEnemy->x -= (sinf(theEnemy->dx) * 4);
-			theEnemy->y -= (cosf(theEnemy->dy) * 4);
+			alien->x -= (sinf(alien->dx) * 4);
+			alien->y -= (cosf(alien->dy) * 4);
 		}
 		else
 		{
-			theEnemy->x -= theEnemy->dx;
-			theEnemy->y -= theEnemy->dy;
+			alien->x -= alien->dx;
+			alien->y -= alien->dy;
 		}
 	}
 
@@ -821,25 +818,22 @@ static void moveAndSeparate(object *theEnemy)
 	{
 		for (int i = 0 ; i < MAX_ALIENS ; i++)
 		{
-			if ((theEnemy->flags & FL_LEAVESECTOR) || (theEnemy->classDef == CD_DRONE) || (theEnemy->classDef == CD_ASTEROID2) || (theEnemy->owner == anEnemy->owner) || (theEnemy->owner->owner == anEnemy->owner) || (anEnemy->shield < 1))
+			if ((alien->flags & FL_LEAVESECTOR) || (alien->classDef == CD_DRONE) || (alien->classDef == CD_ASTEROID2) || (alien->owner == anEnemy->owner) || (alien->owner->owner == anEnemy->owner) || (anEnemy->shield < 1))
 			{
 				anEnemy++;
 				continue;
 			}
 
-			if (collision(theEnemy, anEnemy))
+			if (collision(alien, anEnemy))
 			{
-				if ((anEnemy->classDef == CD_BARRIER) && (anEnemy->owner != theEnemy))
+				if ((anEnemy->classDef == CD_BARRIER) && (anEnemy->owner != alien))
 				{
-					theEnemy->shield--;
-					theEnemy->hit = 3;
-					theEnemy->dx *= -1;
-					theEnemy->dy *= -1;
-					playSound(SFX_HIT, theEnemy->x);
+					alien->shield--;
+					alien->hit = 3;
+					alien->dx *= -1;
+					alien->dy *= -1;
+					playSound(SFX_HIT, alien->x);
 				}
-
-				if (anEnemy->owner == anEnemy)
-					hasCollided = true;
 			}
 
 			anEnemy++;
@@ -847,79 +841,38 @@ static void moveAndSeparate(object *theEnemy)
 	}
 
 	// Handle a collision with the player
-	if ((player.shield > 0) && (theEnemy->shield > 0) && (checkCollisions))
+	if ((player.shield > 0) && (alien->shield > 0) && (checkCollisions))
 	{
-		if (collision(theEnemy, &player))
+		if (collision(alien, &player))
 		{
-			hasCollided = true;
-
-			if (theEnemy->classDef == CD_ASTEROID)
+			if (alien->classDef == CD_ASTEROID)
 			{
 				if (!engine.cheatShield)
-					player.shield -= theEnemy->shield;
-				theEnemy->shield = 0;
-				playSound(SFX_EXPLOSION, theEnemy->x);
+					player.shield -= alien->shield;
+				alien->shield = 0;
+				playSound(SFX_EXPLOSION, alien->x);
 				setInfoLine("Warning: Asteroid Collision Damage!!", FONT_RED);
 				player.hit = 5;
 				playSound(SFX_HIT, player.x);
 			}
 
-			if (theEnemy->classDef == CD_ASTEROID2)
+			if (alien->classDef == CD_ASTEROID2)
 			{
 				if (!engine.cheatShield)
-					player.shield -= theEnemy->shield;
-				theEnemy->shield = 0;
-				playSound(SFX_EXPLOSION, theEnemy->x);
+					player.shield -= alien->shield;
+				alien->shield = 0;
+				playSound(SFX_EXPLOSION, alien->x);
 				setInfoLine("Warning: Asteroid Collision Damage!!", FONT_RED);
 				player.hit = 5;
 				playSound(SFX_HIT, player.x);
 			}
 
-			if (theEnemy->classDef == CD_BARRIER)
+			if (alien->classDef == CD_BARRIER)
 			{
 				if (!engine.cheatShield)
 					player.shield--;
 				player.hit = 5;
 				playSound(SFX_HIT, player.x);
-			}
-		}
-	}
-
-	// Got back to where you originally were...
-	if (theEnemy->owner == theEnemy)
-	{
-		if (hasCollided)
-		{
-			if (theEnemy->flags & FL_CIRCLES)
-			{
-				if (theEnemy->face == 0)
-				{
-					theEnemy->dx -= 0.02;
-					theEnemy->dy -= 0.02;
-				}
-				else
-				{
-					theEnemy->dx += 0.02;
-					theEnemy->dy += 0.02;
-				}
-
-				theEnemy->x += (sinf(theEnemy->dx) * 4);
-				theEnemy->y += (cosf(theEnemy->dy) * 4);
-
-				theEnemy->thinktime = 0;
-			}
-			else
-			{
-				theEnemy->x += theEnemy->dx;
-				theEnemy->y += theEnemy->dy;
-
-				theEnemy->dx *= -1;
-				theEnemy->dy *= -1;
-
-				theEnemy->dx *= 0.2;
-				theEnemy->dy *= 0.2;
-
-				limitInt(&theEnemy->thinktime, 0, 15);
 			}
 		}
 	}
@@ -938,6 +891,8 @@ void mission_killAllEnemies()
 	}
 }
 
+// XXX: This function is used in only one place, the main game loop.
+// Should probably be moved to there.
 void doAliens()
 {
 	static float barrierLoop = 0;
@@ -950,130 +905,130 @@ void doAliens()
 	bool canFire;
 	int shapeToUse;
 
-	object *theEnemy = enemy;
+	object *alien = enemy;
 
 	for (int i = 0 ; i < MAX_ALIENS ; i++)
 	{
-		if (theEnemy->active)
+		if (alien->active)
 		{
-			if (theEnemy->shield > 0)
+			if (alien->shield > 0)
 			{
-				if ((theEnemy->flags & FL_WEAPCO) && (!(theEnemy->flags & FL_DISABLED)))
+				if ((alien->flags & FL_WEAPCO) && (!(alien->flags & FL_DISABLED)))
 					engine.allAliensDead = 0;
 
 				// Set part attributes
-				if (theEnemy->owner != theEnemy)
+				if (alien->owner != alien)
 				{
-					theEnemy->face = theEnemy->owner->face;
+					alien->face = alien->owner->face;
 
-					if (theEnemy->face == 0)
-						theEnemy->x = theEnemy->owner->x - theEnemy->dx;
+					if (alien->face == 0)
+						alien->x = alien->owner->x - alien->dx;
 					else
-						theEnemy->x = theEnemy->owner->x + theEnemy->owner->image[0]->w + theEnemy->dx - theEnemy->image[0]->w;
+						alien->x = alien->owner->x + alien->owner->image[0]->w + alien->dx - alien->image[0]->w;
 
-					theEnemy->y = (theEnemy->owner->y + theEnemy->dy);
+					alien->y = (alien->owner->y + alien->dy);
 
-					if (theEnemy->owner->shield < 1)
+					if (alien->owner->shield < 1)
 					{
-						if ((theEnemy->classDef != CD_URANUSBOSSWING1) && (theEnemy->classDef != CD_URANUSBOSSWING2))
+						if ((alien->classDef != CD_URANUSBOSSWING1) && (alien->classDef != CD_URANUSBOSSWING2))
 						{
-							theEnemy->shield = 0;
+							alien->shield = 0;
 						}
 						else
 						{
-							theEnemy->flags &= ~FL_IMMORTAL;
-							theEnemy->owner = theEnemy;
-							theEnemy->chance[0] = 25;
+							alien->flags &= ~FL_IMMORTAL;
+							alien->owner = alien;
+							alien->chance[0] = 25;
 						}
 					}
 				}
 
 				canFire = true; // The alien is allowed to fire
 
-				limitInt(&--theEnemy->thinktime, 0, 250);
+				limitInt(&--alien->thinktime, 0, 250);
 
-				if (theEnemy->target->shield < 1)
-					theEnemy->target = theEnemy;
+				if (alien->target->shield < 1)
+					alien->target = alien;
 
 				// Specific to Sid to stop him pissing about(!)
-				if ((theEnemy->classDef == CD_SID) &&
-						(theEnemy->target->flags & FL_DISABLED))
-					theEnemy->target = theEnemy;
+				if ((alien->classDef == CD_SID) &&
+						(alien->target->flags & FL_DISABLED))
+					alien->target = alien;
 
- 				if (theEnemy->target == theEnemy)
+ 				if (alien->target == alien)
 				{
 					if (engine.missionCompleteTimer == 0)
 					{
-						alien_searchForTarget(theEnemy);
+						alien_searchForTarget(alien);
 					}
 					else
 					{
-						if (theEnemy->flags & FL_FRIEND)
+						if (alien->flags & FL_FRIEND)
 						{
-							theEnemy->target = &player;
-							theEnemy->thinktime = 1;
+							alien->target = &player;
+							alien->thinktime = 1;
 						}
 					}
 				}
 
-				if ((!(theEnemy->flags & FL_DISABLED)) && (theEnemy->thinktime == 0) && (theEnemy->target != theEnemy) && (theEnemy->owner == theEnemy))
+				if ((!(alien->flags & FL_DISABLED)) && (alien->thinktime == 0) && (alien->target != alien) && (alien->owner == alien))
 				{
-					if (theEnemy->classDef == CD_KLINE)
-						alien_setKlineAI(theEnemy);
+					if (alien->classDef == CD_KLINE)
+						alien_setKlineAI(alien);
 					else
-						alien_setAI(theEnemy);
+						alien_setAI(alien);
 
-					theEnemy->thinktime = (rand() % 25) * 10;
+					alien->thinktime = (rand() % 25) * 10;
 
 					// Face direction of movement unless you always face your target(!)
 
-					if (!(theEnemy->flags & FL_ALWAYSFACE))
+					if (!(alien->flags & FL_ALWAYSFACE))
 					{
-						theEnemy->face = 0;
-						if (theEnemy->dx > 0) theEnemy->face = 1;
+						alien->face = 0;
+						if (alien->dx > 0) alien->face = 1;
 					}
 
-					limitFloat(&theEnemy->dx, 0 - theEnemy->speed, theEnemy->speed);
-					limitFloat(&theEnemy->dy, 0 - theEnemy->speed, theEnemy->speed);
+					limitFloat(&alien->dx, 0 - alien->speed, alien->speed);
+					limitFloat(&alien->dy, 0 - alien->speed, alien->speed);
 
 				}
 
-				if (theEnemy->flags & FL_ALWAYSFACE)
+				if (alien->flags & FL_ALWAYSFACE)
 				{
-					theEnemy->face = 0;
-					if (theEnemy->x > theEnemy->target->x) theEnemy->face = 1;
+					alien->face = 0;
+					if (alien->x > alien->target->x) alien->face = 1;
 				}
 
-				if ((currentGame.area == 18) && (theEnemy->classDef == CD_BOSS))
-					theEnemy->face = 0;
+				if ((currentGame.area == 18) && (alien->classDef == CD_BOSS))
+					alien->face = 0;
 
-				if ((theEnemy->flags & FL_DEPLOYDRONES) && ((rand() % 300) == 0))
-					alien_addDrone(theEnemy);
+				if ((alien->flags & FL_DEPLOYDRONES) && ((rand() % 300) == 0))
+					alien_addDrone(alien);
 
-				if (theEnemy->flags & FL_LEAVESECTOR)
+				if (alien->flags & FL_LEAVESECTOR)
 				{
-					limitFloat(&(theEnemy->dx -= 0.5), 0, -15);
-					theEnemy->dy = 0;
-					theEnemy->thinktime = 999;
-					theEnemy->face = 0;
+					limitFloat(&(alien->dx -= 0.5), 0, -15);
+					alien->dy = 0;
+					alien->thinktime = 999;
+					alien->face = 0;
 
-					if (theEnemy->x >= 5000)
+					if (alien->x >= 5000)
 					{
-						theEnemy->flags -= FL_LEAVESECTOR;
-						theEnemy->flags += FL_ESCAPED;
-						theEnemy->active = false;
+						alien->flags -= FL_LEAVESECTOR;
+						alien->flags += FL_ESCAPED;
+						alien->active = false;
 
-						if (theEnemy->classDef == CD_CLOAKFIGHTER)
+						if (alien->classDef == CD_CLOAKFIGHTER)
 						{
-							currentGame.experimentalShield = theEnemy->shield;
+							currentGame.experimentalShield = alien->shield;
 							setInfoLine("Experimental Fighter has fled", FONT_CYAN);
 						}
 
-						theEnemy->shield = 0;
-						updateMissionRequirements(M_ESCAPE_TARGET, theEnemy->classDef, 1);
+						alien->shield = 0;
+						updateMissionRequirements(M_ESCAPE_TARGET, alien->classDef, 1);
 						
-						if (theEnemy->classDef != CD_CLOAKFIGHTER)
-							updateMissionRequirements(M_DESTROY_TARGET_TYPE, theEnemy->classDef, 1);
+						if (alien->classDef != CD_CLOAKFIGHTER)
+							updateMissionRequirements(M_DESTROY_TARGET_TYPE, alien->classDef, 1);
 					}
 				}
 
@@ -1082,46 +1037,46 @@ void doAliens()
 					It can cloak and uncloak at random. When cloaked, it's sprite is
 					not displayed. However the engine trail is still visible!
 				*/
-				if ((theEnemy->flags & FL_CANCLOAK) && ((rand() % 500) == 0))
+				if ((alien->flags & FL_CANCLOAK) && ((rand() % 500) == 0))
 				{
-					if (theEnemy->flags & FL_ISCLOAKED)
-						theEnemy->flags -= FL_ISCLOAKED;
+					if (alien->flags & FL_ISCLOAKED)
+						alien->flags -= FL_ISCLOAKED;
 					else
-						theEnemy->flags += FL_ISCLOAKED;
-					playSound(SFX_CLOAK, theEnemy->x);
+						alien->flags += FL_ISCLOAKED;
+					playSound(SFX_CLOAK, alien->x);
 				}
 
 				// ------------ Barriers ------------------
 
-				if (theEnemy->classDef == CD_BARRIER)
+				if (alien->classDef == CD_BARRIER)
 				{
-					theEnemy->dx = -10 + (sinf(barrierLoop + theEnemy->speed) * 60);
-					theEnemy->dy = 20 + (cosf(barrierLoop + theEnemy->speed) * 40);
+					alien->dx = -10 + (sinf(barrierLoop + alien->speed) * 60);
+					alien->dy = 20 + (cosf(barrierLoop + alien->speed) * 40);
 				}
 
 				// ----------------------------------------
 
 				// ------------ Mobile Shields ------------
 
-				if (theEnemy->classDef == CD_MOBILESHIELD)
+				if (alien->classDef == CD_MOBILESHIELD)
 				{
 					limitInt(&(++enemy[WC_BOSS].shield), 0, enemy[WC_BOSS].maxShield);
 				}
 
 				// ----------------------------------------
 
-				limitCharAdd(&theEnemy->reload[0], -1, 0, 999);
-				limitCharAdd(&theEnemy->reload[1], -1, 0, 999);
+				limitCharAdd(&alien->reload[0], -1, 0, 999);
+				limitCharAdd(&alien->reload[1], -1, 0, 999);
 
-				if ((!(theEnemy->flags & FL_DISABLED)) &&
-					(!(theEnemy->flags & FL_NOFIRE)))
+				if ((!(alien->flags & FL_DISABLED)) &&
+					(!(alien->flags & FL_NOFIRE)))
 				{
-					if ((theEnemy->target->shield > 0))
-						canFire = alien_checkTarget(theEnemy);
+					if ((alien->target->shield > 0))
+						canFire = alien_checkTarget(alien);
 
-					if (((theEnemy->thinktime % 2) == 0) &&
-							(theEnemy->flags & FL_FRIEND))
-						canFire = alien_enemiesInFront(theEnemy);
+					if (((alien->thinktime % 2) == 0) &&
+							(alien->flags & FL_FRIEND))
+						canFire = alien_enemiesInFront(alien);
 				}
 				else
 				{
@@ -1130,138 +1085,140 @@ void doAliens()
 
 				if ((canFire) && (dev.fireAliens))
 				{
-					if ((theEnemy->reload[0] == 0) &&
-						((rand() % 1000 < theEnemy->chance[0]) ||
-							(theEnemy->flags & FL_CONTINUOUS_FIRE)))
+					if ((alien->reload[0] == 0) &&
+						((rand() % 1000 < alien->chance[0]) ||
+							(alien->flags & FL_CONTINUOUS_FIRE)))
 					{
-						fireBullet(theEnemy, 0);
+						fireBullet(alien, 0);
 					}
-					if ((theEnemy->reload[1] == 0) &&
-						((rand() % 1000 < theEnemy->chance[1]) ||
-							(theEnemy->flags & FL_CONTINUOUS_FIRE)))
+					if ((alien->reload[1] == 0) &&
+						((rand() % 1000 < alien->chance[1]) ||
+							(alien->flags & FL_CONTINUOUS_FIRE)))
 					{
-						if ((theEnemy->weaponType[1] != W_ENERGYRAY) &&
-							(theEnemy->weaponType[1] != W_LASER))
+						if ((alien->weaponType[1] != W_ENERGYRAY) &&
+							(alien->weaponType[1] != W_LASER))
 						{
-							if (theEnemy->weaponType[1] == W_CHARGER)
-								theEnemy->ammo[1] = 50 + rand() % 150;
-							fireBullet(theEnemy, 1);
+							if (alien->weaponType[1] == W_CHARGER)
+								alien->ammo[1] = 50 + rand() % 150;
+							fireBullet(alien, 1);
 						}
-						else if (theEnemy->weaponType[1] == W_LASER)
+						else if (alien->weaponType[1] == W_LASER)
 						{
-							theEnemy->flags += FL_FIRELASER;
+							alien->flags += FL_FIRELASER;
 						}
-						else if ((theEnemy->weaponType[1] == W_ENERGYRAY) &&
-							(theEnemy->ammo[0] == 250))
+						else if ((alien->weaponType[1] == W_ENERGYRAY) &&
+							(alien->ammo[0] == 250))
 						{
-							theEnemy->flags += FL_FIRERAY;
-							playSound(SFX_ENERGYRAY, theEnemy->x);
+							alien->flags += FL_FIRERAY;
+							playSound(SFX_ENERGYRAY, alien->x);
 						}
 					}
 				}
 
 				// --------------- Ray specific stuff ------------------
-				if (theEnemy->flags & FL_FIRERAY)
+				if (alien->flags & FL_FIRERAY)
 				{
-					fireRay(theEnemy);
+					fireRay(alien);
 				}
 				else
 				{
-					limitCharAdd(&theEnemy->ammo[0], 1, 0, 250);
+					limitCharAdd(&alien->ammo[0], 1, 0, 250);
 				}
 				// -------------------------------------------------------
 
 				// --------------- Laser specific stuff ------------------
-				if (theEnemy->flags & FL_FIRELASER)
+				if (alien->flags & FL_FIRELASER)
 				{
-					fireBullet(theEnemy, 1);
+					fireBullet(alien, 1);
 					if ((rand() % 25) == 0)
-						theEnemy->flags -= FL_FIRELASER;
+						alien->flags -= FL_FIRELASER;
 				}
 				// -------------------------------------------------------
 
 				// ---------------- Mine specific stuff ------------------
 
-				if (theEnemy->flags & FL_DROPMINES)
+				if (alien->flags & FL_DROPMINES)
 					if ((rand() % 150) == 0)
-						addCollectable(theEnemy->x, theEnemy->y, P_MINE, 25,
+						addCollectable(alien->x, alien->y, P_MINE, 25,
 							600 + rand() % 2400);
 
 						// Kline drops mines a lot more often
-				if ((theEnemy->flags & FL_DROPMINES) && (theEnemy == &enemy[WC_KLINE]))
+				if ((alien->flags & FL_DROPMINES) && (alien == &enemy[WC_KLINE]))
 					if ((rand() % 10) == 0)
-						addCollectable(theEnemy->x, theEnemy->y, P_MINE, 25,
+						addCollectable(alien->x, alien->y, P_MINE, 25,
 							600 + rand() % 2400);
 
 				// -------------------------------------------------------
 
-				shapeToUse = theEnemy->imageIndex[theEnemy->face];
+				shapeToUse = alien->imageIndex[alien->face];
 
-				if (theEnemy->hit)
+				if (alien->hit)
 					shapeToUse += SHIP_HIT_INDEX;
 
-				limitCharAdd(&theEnemy->hit, -1, 0, 100);
+				limitCharAdd(&alien->hit, -1, 0, 100);
 
-				if ((theEnemy->x + theEnemy->image[0]->w > 0) && (theEnemy->x < screen->w) && (theEnemy->y + theEnemy->image[0]->h > 0) && (theEnemy->y < screen->h))
+				if ((alien->x + alien->image[0]->w > 0) && (alien->x < screen->w) && (alien->y + alien->image[0]->h > 0) && (alien->y < screen->h))
 				{
-					if ((!(theEnemy->flags & FL_DISABLED)) && (theEnemy->classDef != CD_ASTEROID) && (theEnemy->classDef != CD_ASTEROID2))
-						addEngine(theEnemy);
-					if ((!(theEnemy->flags & FL_ISCLOAKED)) || (theEnemy->hit > 0))
-						blit(shipShape[shapeToUse], (int)theEnemy->x, (int)theEnemy->y);
-					if (theEnemy->flags & FL_DISABLED)
+					if ((!(alien->flags & FL_DISABLED)) && (alien->classDef != CD_ASTEROID) && (alien->classDef != CD_ASTEROID2))
+						addEngine(alien);
+					if ((!(alien->flags & FL_ISCLOAKED)) || (alien->hit > 0))
+						blit(shipShape[shapeToUse], (int)alien->x, (int)alien->y);
+					if (alien->flags & FL_DISABLED)
 					{
 						if ((rand() % 10) == 0)
-							addExplosion(theEnemy->x + (rand() % theEnemy->image[0]->w), theEnemy->y + (rand() % theEnemy->image[0]->h), E_ELECTRICAL);
+							addExplosion(alien->x + (rand() % alien->image[0]->w), alien->y + (rand() % alien->image[0]->h), E_ELECTRICAL);
 					}
 				}
 
-				if ((currentGame.area == 24) && (theEnemy->x < -300))
-					theEnemy->active = false;
+				if ((currentGame.area == 24) && (alien->x < -300))
+					alien->active = false;
 			}
 			else
 			{
-				theEnemy->shield--;
-				if ((theEnemy->x > 0) && (theEnemy->x < screen->w) && (theEnemy->y > 0) && (theEnemy->y < screen->h))
+				alien->shield--;
+				if ((alien->x > 0) && (alien->x < screen->w) && (alien->y > 0) && (alien->y < screen->h))
 				{
-					blit(theEnemy->image[theEnemy->face], (int)theEnemy->x, (int)theEnemy->y);
-					addExplosion(theEnemy->x + (rand() % theEnemy->image[0]->w), theEnemy->y + (rand() % theEnemy->image[0]->h), E_BIG_EXPLOSION);
+					blit(alien->image[alien->face], (int)alien->x, (int)alien->y);
+					addExplosion(alien->x + (rand() % alien->image[0]->w), alien->y + (rand() % alien->image[0]->h), E_BIG_EXPLOSION);
 				}
-				if (theEnemy->shield < theEnemy->deathCounter)
+				if (alien->shield < alien->deathCounter)
 				{
-					theEnemy->active = false;
-					if ((theEnemy->classDef == CD_BOSS) ||
-							(theEnemy->owner == &enemy[WC_BOSS]) ||
-							(theEnemy->flags & FL_FRIEND) ||
-							(theEnemy->classDef == CD_ASTEROID) ||
-							(theEnemy->classDef == CD_KLINE))
-						addDebris((int)theEnemy->x, (int)theEnemy->y,
-							theEnemy->maxShield);
+					alien->active = false;
+					if ((alien->classDef == CD_BOSS) ||
+							(alien->owner == &enemy[WC_BOSS]) ||
+							(alien->flags & FL_FRIEND) ||
+							(alien->classDef == CD_ASTEROID) ||
+							(alien->classDef == CD_KLINE))
+						addDebris((int)alien->x, (int)alien->y,
+							alien->maxShield);
 
-					if (theEnemy->classDef == CD_ASTEROID)
+					if (alien->classDef == CD_ASTEROID)
 					{
 						int i = 1 + (rand() % 3);
 						for (int j = 0 ; j < i ; j++)
-							alien_addSmallAsteroid(theEnemy);
+							alien_addSmallAsteroid(alien);
 					}
 				}
 			}
 
 			// Adjust the movement even whilst exploding
-			if ((dev.moveAliens) && (!(theEnemy->flags & FL_NOMOVE)) &&
-					(!(theEnemy->flags & FL_DISABLED)))
-				moveAndSeparate(theEnemy);
+			if ((dev.moveAliens) && (!(alien->flags & FL_NOMOVE)) &&
+					(!(alien->flags & FL_DISABLED)))
+				alien_move(alien);
 
-			if ((currentGame.area != 18) || (theEnemy->shield < 0))
-				theEnemy->x += engine.ssx;
+			if ((currentGame.area != 18) || (alien->shield < 0))
+				alien->x += engine.ssx;
 
-			theEnemy->x += engine.smx;
-			theEnemy->y += engine.ssy + engine.smy;
+			alien->x += engine.smx;
+			alien->y += engine.ssy + engine.smy;
 		}
 
-		theEnemy++;
+		alien++;
 	}
 }
 
+// XXX: This function is called only once, as part of the function that
+// loads game graphics. Should probably be merged into that function.
 void setAlienShapes()
 {
 	for (int i = 0 ; i < MAX_DEFALIENS ; i++)
@@ -1276,6 +1233,8 @@ void setAlienShapes()
 	}
 }
 
+// XXX: This function is called only once, before the game starts.
+// Should probably be merged into main.
 void defineAliens()
 {
 	// Dual Plasma Fighter.

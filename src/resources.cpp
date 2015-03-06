@@ -34,6 +34,10 @@ void loadGameGraphics()
 {
 	int index;
 	char string[75] = "";
+	FILE *fp;
+	uint32_t *p32;
+	uint16_t *p16;
+	uint8_t *p8;
 
 	freeGraphics();
 
@@ -55,8 +59,6 @@ void loadGameGraphics()
 			strcpy(string, "data/resources_sol.dat");
 			break;
 	}
-
-	FILE *fp;
 
 	fp = fopen(string, "rb");
 
@@ -81,33 +83,38 @@ void loadGameGraphics()
 			shipShape[i- SHIP_HIT_INDEX]->h);
 		blit(shipShape[i - SHIP_HIT_INDEX], 0, 0, shipShape[i]);
 
-		switch(shipShape[i]->format->BytesPerPixel) {
-			case 4: {
-				uint32_t *p = (uint32_t *)shipShape[i]->pixels;
+		switch (shipShape[i]->format->BytesPerPixel)
+		{
+			case 4:
+				p32 = (uint32_t *)shipShape[i]->pixels;
 				for (int j = 0; j < shipShape[i]->w * shipShape[i]->h; j++)
-					if (p[j])
-						p[j] |= shipShape[i]->format->Rmask;
+				{
+					if (p32[j])
+						p32[j] |= shipShape[i]->format->Rmask;
+				}
 				break;
-			}
 
-			case 2: {
-				uint16_t *p = (uint16_t *)shipShape[i]->pixels;
+			case 2:
+				p16 = (uint16_t *)shipShape[i]->pixels;
 				for (int j = 0; j < shipShape[i]->w * shipShape[i]->h; j++)
-					if (p[j])
-						p[j] |= shipShape[i]->format->Rmask;
+				{
+					if (p16[j])
+						p16[j] |= shipShape[i]->format->Rmask;
+				}
 				break;
-			}
 
-			case 1: {
-				uint8_t *p = (uint8_t *)shipShape[i]->pixels;
+			case 1:
+				p8 = (uint8_t *)shipShape[i]->pixels;
 				for (int j = 0; j < shipShape[i]->w * shipShape[i]->h; j++)
-					if (p[j])
-						p[j] = SDL_MapRGB(shipShape[i]->format, 255, 0, 0);
+				{
+					if (p8[j])
+						p8[j] = SDL_MapRGB(shipShape[i]->format, 255, 0, 0);
+				}
 				break;
-			}
 		}
 
-		SDL_SetColorKey(shipShape[i], SDL_TRUE, SDL_MapRGB(shipShape[i]->format, 0, 0, 0));
+		SDL_SetColorKey(shipShape[i], SDL_TRUE,
+			SDL_MapRGB(shipShape[i]->format, 0, 0, 0));
 	}
 
 	strcpy(string, "data/resources_all.dat");

@@ -269,100 +269,103 @@ static object *getRandomEnemy(object *bullet)
 /*
 Fill in later...
 */
-static void destroyAlien(object *bullet, object *theEnemy)
+static void alien_destroy(object *alien, object *attacker)
 {
-	playSound(SFX_EXPLOSION, theEnemy->x);
+	playSound(SFX_EXPLOSION, alien->x);
 
 	// Chain reaction destruction if needed
-	if (theEnemy->flags & FL_DAMAGEOWNER)
+	if (alien->flags & FL_DAMAGEOWNER)
 	{
-		theEnemy->owner->shield -= theEnemy->maxShield;
-		if (theEnemy->owner->shield < 1)
-			destroyAlien(bullet, theEnemy->owner);
+		alien->owner->shield -= alien->maxShield;
+		if (alien->owner->shield < 1)
+			alien_destroy(alien->owner, attacker);
 	}
 
-	if (theEnemy->flags & FL_FRIEND)
+	if (alien->flags & FL_FRIEND)
 	{
-		if (theEnemy->classDef == CD_PHOEBE)
+		if (alien->classDef == CD_PHOEBE)
 			currentGame.wingMate1Ejects++;
-		else if (theEnemy->classDef == CD_URSULA)
+		else if (alien->classDef == CD_URSULA)
 			currentGame.wingMate2Ejects++;
 
 		// Phoebe cannot eject on the rescue mission
 		if (currentGame.area != 7)
 		{
-			if ((theEnemy->classDef == CD_PHOEBE) || (theEnemy->classDef == CD_URSULA))
+			if ((alien->classDef == CD_PHOEBE) || (alien->classDef == CD_URSULA))
 				setInfoLine(">> Ally has ejected! <<\n", FONT_RED);
 			else
 				setInfoLine(">> Friendly craft has been destroyed!! <<\n", FONT_RED);
 		}
 	}
 
-	if (bullet->owner == &player)
+	if (attacker != NULL)
 	{
-		// Once again, stop point leeching
-		if (currentGame.area != MAX_MISSIONS - 1)
-			currentGame.cash += theEnemy->score;
-		currentGame.cashEarned += theEnemy->score;
-		currentGame.totalKills++;
-		updateMissionRequirements(M_COLLECT, P_CASH, theEnemy->score);
-	}
-	else if (bullet->owner->classDef == CD_PHOEBE)
-	{
-		currentGame.wingMate1Kills++;
-	}
-	else if (bullet->owner->classDef == CD_URSULA)
-	{
-		currentGame.wingMate2Kills++;
-	}
-	else
-	{
-		currentGame.totalOtherKills++;
-	}
-
-	if ((bullet->owner->classDef == CD_PHOEBE) || (bullet->owner->classDef == CD_URSULA))
-	{
-		if ((rand() % 8) == 0)
+		if (attacker == &player)
 		{
-			getKillMessage(bullet->owner);
+			// Once again, stop point leeching
+			if (currentGame.area != MAX_MISSIONS - 1)
+				currentGame.cash += alien->score;
+			currentGame.cashEarned += alien->score;
+			currentGame.totalKills++;
+			updateMissionRequirements(M_COLLECT, P_CASH, alien->score);
+		}
+		else if (attacker->classDef == CD_PHOEBE)
+		{
+			currentGame.wingMate1Kills++;
+		}
+		else if (attacker->classDef == CD_URSULA)
+		{
+			currentGame.wingMate2Kills++;
+		}
+		else
+		{
+			currentGame.totalOtherKills++;
+		}
+
+		if ((attacker->classDef == CD_PHOEBE) || (attacker->classDef == CD_URSULA))
+		{
+			if ((rand() % 8) == 0)
+			{
+				getKillMessage(attacker);
+			}
 		}
 	}
 
-	updateMissionRequirements(M_DESTROY_TARGET_TYPE, theEnemy->classDef, 1);
-	updateMissionRequirements(M_PROTECT_TARGET, theEnemy->classDef, 1);
+	updateMissionRequirements(M_DESTROY_TARGET_TYPE, alien->classDef, 1);
+	updateMissionRequirements(M_PROTECT_TARGET, alien->classDef, 1);
 
-	if (rand() % 100 <= theEnemy->collectChance)
+	if (rand() % 100 <= alien->collectChance)
 	{
 		unsigned char value;
 
 		if ((rand() % 10) == 0)
-			theEnemy->collectValue *= 2;
+			alien->collectValue *= 2;
 
-		while (theEnemy->collectValue > 0)
+		while (alien->collectValue > 0)
 		{
-			value = (10 + (rand() % theEnemy->collectValue));
-			if (value > theEnemy->collectValue)
-				value =theEnemy->collectValue;
-			addCollectable(theEnemy->x, theEnemy->y, theEnemy->collectType, value, 600);
-			theEnemy->collectValue -= value;
+			value = (10 + (rand() % alien->collectValue));
+			if (value > alien->collectValue)
+				value =alien->collectValue;
+			addCollectable(alien->x, alien->y, alien->collectType, value, 600);
+			alien->collectValue -= value;
 		}
 	}
 
 	// Make it explode immediately
-	if (theEnemy->classDef == CD_ASTEROID)
+	if (alien->classDef == CD_ASTEROID)
 	{
-		theEnemy->shield = -999;
+		alien->shield = -999;
 	}
 
-	if ((theEnemy->classDef == CD_KRASS) && (bullet->owner == &player))
+	if ((alien->classDef == CD_KRASS) && (attacker == &player))
 		setRadioMessage(FACE_CHRIS, "My NAME is CHRIS!!!!!!!!", 1);
 
-	if (theEnemy->classDef == CD_KLINE)
+	if (alien->classDef == CD_KLINE)
 	{
 		setRadioMessage(FACE_KLINE, "It was an honor... to have fought you...", 1);
-		theEnemy->dx = theEnemy->dy = 0;
-		theEnemy->maxShield = 1500;
-		theEnemy->shield = -200;
+		alien->dx = alien->dy = 0;
+		alien->maxShield = 1500;
+		alien->shield = -200;
 	}
 }
 
@@ -460,7 +463,7 @@ void fireRay(object *attacker)
 				playSound(SFX_HIT, anEnemy->x);
 				if (anEnemy->shield < 1)
 				{
-					destroyAlien(attacker, anEnemy);
+					alien_destroy(anEnemy, attacker->owner);
 				}
 			}
 		}
@@ -489,7 +492,7 @@ void doBullets()
 	object *prevBullet = engine.bulletHead;
 	engine.bulletTail = engine.bulletHead;
 
-	object *theEnemy, *theCargo;
+	object *alien, *theCargo;
 
 	bool okayToHit = false;
 	float homingMissileSpeed = 0;
@@ -564,55 +567,55 @@ void doBullets()
 
 			for (int i = 0 ; i < MAX_ALIENS ; i++)
 			{
-				theEnemy = &enemy[i];
+				alien = &enemy[i];
 
-				if ((theEnemy->shield < 1) || (!theEnemy->active))
+				if ((alien->shield < 1) || (!alien->active))
 					continue;
 
 				okayToHit = false;
 
-				if ((bullet->flags & WF_FRIEND) && (theEnemy->flags & FL_WEAPCO))
+				if ((bullet->flags & WF_FRIEND) && (alien->flags & FL_WEAPCO))
 					okayToHit = true;
-				if ((bullet->flags & WF_WEAPCO) && (theEnemy->flags & FL_FRIEND))
+				if ((bullet->flags & WF_WEAPCO) && (alien->flags & FL_FRIEND))
 					okayToHit = true;
 				if ((bullet->id == WT_ROCKET) || (bullet->id == WT_LASER) || (bullet->id == WT_CHARGER))
 					okayToHit = true;
 
-				if (bullet->owner == theEnemy->owner)
+				if (bullet->owner == alien->owner)
 					okayToHit = false;
 
 				if (okayToHit)
 				{
-					if ((bullet->active) && (collision(bullet, theEnemy)))
+					if ((bullet->active) && (collision(bullet, alien)))
 					{
 						if (bullet->owner == &player)
 						{
 							currentGame.hits++;
-							if ((theEnemy->classDef == CD_PHOEBE) || (theEnemy->classDef == CD_URSULA))
-								getMissFireMessage(theEnemy);
+							if ((alien->classDef == CD_PHOEBE) || (alien->classDef == CD_URSULA))
+								getMissFireMessage(alien);
 						}
 
-						if (!(theEnemy->flags & FL_IMMORTAL))
+						if (!(alien->flags & FL_IMMORTAL))
 						{
 							if (!(bullet->flags & WF_DISABLE))
-								theEnemy->shield -= bullet->damage;
+								alien->shield -= bullet->damage;
 							else
-								theEnemy->systemPower -= bullet->damage;
+								alien->systemPower -= bullet->damage;
 
-							theEnemy->hit = 5;
+							alien->hit = 5;
 						}
 
-						if (theEnemy->flags & FL_CANNOTDIE)
+						if (alien->flags & FL_CANNOTDIE)
 						{
-							limitInt(&theEnemy->shield, 1, theEnemy->maxShield);
-							if (theEnemy->shield == 1)
+							limitInt(&alien->shield, 1, alien->maxShield);
+							if (alien->shield == 1)
 							{
 								if (currentGame.area != 26)
 								{
-									if (!(theEnemy->flags & FL_LEAVESECTOR))
+									if (!(alien->flags & FL_LEAVESECTOR))
 									{
-										theEnemy->flags |= FL_LEAVESECTOR;
-										theEnemy->flags &= ~FL_CIRCLES;
+										alien->flags |= FL_LEAVESECTOR;
+										alien->flags &= ~FL_CIRCLES;
 										if (currentGame.area == 11)
 											setRadioMessage(FACE_KLINE, "Seems I underestimated you, Bainfield! We'll meet again!", 1);
 										else if (currentGame.area == 25)
@@ -621,14 +624,14 @@ void doBullets()
 								}
 								else
 								{
-									alien_setKlineAttackMethod(theEnemy);
+									alien_setKlineAttackMethod(alien);
 								}
 							}
 						}
 
-						if ((theEnemy->flags & FL_RUNSAWAY) && ((rand() % 50) == 0))
+						if ((alien->flags & FL_RUNSAWAY) && ((rand() % 50) == 0))
 						{
-							theEnemy->flags |= FL_LEAVESECTOR;
+							alien->flags |= FL_LEAVESECTOR;
 						}
 
 						if (bullet->id != WT_CHARGER)
@@ -638,29 +641,29 @@ void doBullets()
 						}
 						else if (bullet->id == WT_CHARGER)
 						{
-							bullet->shield -= theEnemy->shield;
+							bullet->shield -= alien->shield;
 							if (bullet->shield < 0)
 								bullet->active = false;
 						}
 
-						playSound(SFX_HIT, theEnemy->x);
-						if (theEnemy->AIType == AI_EVASIVE)
-							theEnemy->thinktime = 0;
+						playSound(SFX_HIT, alien->x);
+						if (alien->AIType == AI_EVASIVE)
+							alien->thinktime = 0;
 
-						if (theEnemy->shield < 1)
-							destroyAlien(bullet, theEnemy);
+						if (alien->shield < 1)
+							alien_destroy(alien, bullet->owner);
 
-						if (theEnemy->systemPower < 1)
+						if (alien->systemPower < 1)
 						{
-							if (!(theEnemy->flags & FL_DISABLED))
+							if (!(alien->flags & FL_DISABLED))
 							{
-								theEnemy->flags += FL_DISABLED;
-								updateMissionRequirements(M_DISABLE_TARGET, theEnemy->classDef, 1);
+								alien->flags += FL_DISABLED;
+								updateMissionRequirements(M_DISABLE_TARGET, alien->classDef, 1);
 							}
 
-							theEnemy->systemPower = 0;
-							if (theEnemy->classDef == CD_KLINE)
-								theEnemy->systemPower = theEnemy->maxShield;
+							alien->systemPower = 0;
+							if (alien->classDef == CD_KLINE)
+								alien->systemPower = alien->maxShield;
 						}
 
 						if (bullet->id == WT_ROCKET)
@@ -700,7 +703,7 @@ void doBullets()
 					}
 					else if (bullet->id == WT_CHARGER)
 					{
-						bullet->shield -= theEnemy->shield;
+						bullet->shield -= alien->shield;
 						if (bullet->shield < 0)
 							bullet->active = false;
 					}
