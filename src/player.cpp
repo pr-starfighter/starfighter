@@ -383,8 +383,9 @@ static enum keys mapkey(uint32_t code) {
 		case SDLK_RETURN:
 		case SDLK_z:
 		case SDLK_c:
-		case SDLK_f:
 		case SDLK_a:
+		case SDLK_d:
+		case SDLK_f:
 		case SDLK_SLASH:
 		case SDLK_COMMA:
 		case SDLK_1:
@@ -394,7 +395,6 @@ static enum keys mapkey(uint32_t code) {
 		case SDLK_SPACE:
 		case SDLK_x:
 		case SDLK_s:
-		case SDLK_d:
 		case SDLK_PERIOD:
 		case SDLK_2:
 		case SDLK_KP_1:
