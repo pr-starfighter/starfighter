@@ -48,7 +48,9 @@ void loadScriptEvents()
 		gameEvent[i].flag = 0;
 	}
 	
-	if ((currentGame.area == 27) && (aliens[WC_KLINE].classDef == CD_KLINE))
+	if ((currentGame.area == MAX_MISSIONS - 1) &&
+			(aliens[WC_KLINE].classDef == CD_KLINE) &&
+			(aliens[WC_KLINE].active))
 		setKlineGreeting();
 
 	char filename[255];

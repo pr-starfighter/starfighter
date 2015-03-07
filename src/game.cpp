@@ -395,8 +395,8 @@ int mainGameLoop()
 		aliens[WC_KLINE].y = screen->h * 2 / 3;
 
 		aliens[WC_KLINE].deathCounter = -250;
-		aliens[WC_KLINE].maxShield = 1500;
-		aliens[WC_KLINE].shield = 500;
+		aliens[WC_KLINE].maxShield = 2250;
+		aliens[WC_KLINE].shield = 750;
 	}
 
 	for (int i = 0 ; i < MAX_ALIENS ; i++)

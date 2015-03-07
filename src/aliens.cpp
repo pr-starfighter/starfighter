@@ -417,16 +417,14 @@ void alien_setAI(object *alien)
 void alien_setKlineAttackMethod(object *alien)
 {
 	alien->maxShield -= 750;
-	if (alien->maxShield == 0)
-		alien->flags &= ~FL_CANNOTDIE;
 
-	if (alien->maxShield == 1500)
+	if (alien->maxShield >= 1500)
 	{
 		setRadioMessage(FACE_KLINE, "Very good, Bainfield. Now let's get a little more serious...", 1);
 		alien->weaponType[0] = W_SPREADSHOT;
 		alien->chance[1] = 40;
 	}
-	else if (alien->maxShield == 750)
+	else if (alien->maxShield >= 750)
 	{
 		setRadioMessage(FACE_KLINE, "Your ability to stay alive irritates me!! Try dodging some of these!!", 1);
 		alien->weaponType[0] = W_DIRSHOCKMISSILE;
@@ -435,7 +433,7 @@ void alien_setKlineAttackMethod(object *alien)
 		alien->chance[1] = 2;
 		alien->flags |= FL_AIMS;
 	}
-	else if (alien->maxShield == 0)
+	else
 	{
 		setRadioMessage(FACE_KLINE, "ENOUGH!! THIS ENDS NOW!!!", 1);
 		alien->weaponType[0] = W_AIMED_SHOT;
@@ -443,6 +441,7 @@ void alien_setKlineAttackMethod(object *alien)
 		alien->flags |= FL_CANCLOAK;
 		alien->chance[0] = 100;
 		alien->chance[1] = 2;
+		alien->flags &= ~FL_CANNOTDIE;
 	}
 
 	alien->shield = 750;

@@ -113,6 +113,12 @@ static void adjustShopPrices()
 
 	if (currentGame.minPlasmaRate >= currentGame.minPlasmaRateLimit)
 		shopItems[SHOP_PLASMA_MIN_RATE].price = 0;
+
+	if (currentGame.maxPlasmaAmmo >= currentGame.maxPlasmaAmmoLimit)
+		shopItems[SHOP_PLASMA_MAX_AMMO].price = 0;
+
+	if (currentGame.maxRocketAmmo >= currentGame.maxRocketAmmoLimit)
+		shopItems[SHOP_ROCKET_MAX_AMMO].price = 0;
 }
 
 static void drawShop()

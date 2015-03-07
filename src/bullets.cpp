@@ -363,7 +363,7 @@ static void alien_destroy(object *alien, object *attacker)
 	{
 		setRadioMessage(FACE_KLINE, "It was an honor... to have fought you...", 1);
 		alien->dx = alien->dy = 0;
-		alien->maxShield = 1500;
+		alien->maxShield = 2250;
 		alien->shield = -200;
 	}
 }

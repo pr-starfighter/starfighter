@@ -135,8 +135,8 @@ void getKillMessage(object *ally)
 const char *getKlineInsult()
 {
 	static const char *insult[] = {
-		"Pathetic", "How very disappointing...", "Heroic. And stupid", "Fool",
-		"And now you're nothing but a DEAD hero"
+		"Pathetic.", "How very disappointing...", "Heroic. And stupid.", "Fool.",
+		"And now you're nothing but a DEAD hero."
 	};
 
 	if (currentGame.area != 26)
