@@ -87,6 +87,8 @@ void newGame()
 			currentGame.maxPlasmaRate = 3;
 			currentGame.maxPlasmaOutput = 3;
 			currentGame.maxPlasmaDamage = 3;
+			currentGame.maxPlasmaAmmo = 150;
+			currentGame.maxRocketAmmo = 20;
 
 			currentGame.minPlasmaRateLimit = 3;
 			currentGame.minPlasmaDamageLimit = 3;
@@ -111,7 +113,7 @@ void newGame()
 
 	player.shield = player.maxShield;
 	player.ammo[0] = 0;
-	player.ammo[1] = 5;
+	player.ammo[1] = currentGame.maxRocketAmmo / 2;
 	player.weaponType[0] = W_PLAYER_WEAPON;
 	player.weaponType[1] = W_ROCKETS;
 
@@ -194,7 +196,7 @@ int mainGameLoop()
 			{
 				aliens[WC_KLINE].target = &player;
 				if (currentGame.area == 25)
-					aliens[WC_KLINE].shield = 500;
+					aliens[WC_KLINE].shield = 750;
 			}
 
 			if (aliens[index].classDef == CD_CLOAKFIGHTER)

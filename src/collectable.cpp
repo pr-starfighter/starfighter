@@ -61,7 +61,7 @@ void addCollectable(float x, float y, int type, int value, int life)
 	}
 
 	if (type == P_SUPER)
-		value = 1;
+		value = max(value, 1);
 
 	if (value == 0)
 		return; // don't bother!
@@ -224,11 +224,13 @@ void addCollectable(float x, float y, int type, int value, int life)
 
 static void explodeMine(collectables *collectable)
 {
-	if ((collectable->x >= 0) && (collectable->x <= 800) && (collectable->y >= 0) && (collectable->y <= 600))
+	if ((collectable->x >= 0) && (collectable->x <= screen->w) &&
+			(collectable->y >= 0) && (collectable->y <= screen->h))
 		playSound(SFX_EXPLOSION, collectable->x);
 
 	for (int i = 0 ; i < 10 ; i++)
-		addExplosion(collectable->x + rand() % 25 - rand() % 25, collectable->y + rand() % 25 - rand() % 25, E_BIG_EXPLOSION);
+		addExplosion(collectable->x + rand() % 25 - rand() % 25,
+			collectable->y + rand() % 25 - rand() % 25, E_BIG_EXPLOSION);
 
 	if (checkPlayerShockDamage(collectable->x, collectable->y))
 		setInfoLine("Warning: Mine damage to shield!!", FONT_RED);
@@ -303,7 +305,10 @@ void doCollectables()
 
 		if (collectable->active)
 		{
-			if ((collectable->x + collectable->image->w > 0) && (collectable->x < 800) && (collectable->y + collectable->image->h > 0) && (collectable->y < 600))
+			if ((collectable->x + collectable->image->w > 0) &&
+					(collectable->x < screen->w) &&
+					(collectable->y + collectable->image->h > 0) &&
+					(collectable->y < screen->h))
 				blit(collectable->image, (int)collectable->x, (int)collectable->y);
 
 			collectable->x += engine.ssx + engine.smx;
@@ -435,7 +440,8 @@ void doCollectables()
 						break;
 				}
 
-				updateMissionRequirements(M_COLLECT, collectable->type, collectable->value);
+				updateMissionRequirements(M_COLLECT, collectable->type,
+					collectable->value);
 
 				collectable->active = false;
 				if (collectable->type != P_MINE)
@@ -460,7 +466,9 @@ void doCollectables()
 		if (collectable->life < 1)
 		{
 			collectable->active = false;
-			if ((collectable->type == P_CARGO) || (collectable->type == P_ESCAPEPOD) || (collectable->type == P_SLAVES))
+			if ((collectable->type == P_CARGO) ||
+					(collectable->type == P_ESCAPEPOD) ||
+					(collectable->type == P_SLAVES))
 				updateMissionRequirements(M_PROTECT_PICKUP, collectable->type, 1);
 		}
 

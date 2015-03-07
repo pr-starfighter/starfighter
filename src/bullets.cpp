@@ -202,7 +202,8 @@ void fireBullet(object *attacker, int weaponType)
 		}
 	}
 
-	// Reset the weapon reload time. Double it if it is not friendly or a boss or Kline
+	// Reset the weapon reload time. Double it if it is not friendly or
+	// a boss or Kline
 	attacker->reload[weaponType] = theWeapon->reload[0];
 	if ((attacker->flags & FL_WEAPCO) && (attacker != &aliens[WC_BOSS]) && (attacker != &aliens[WC_KLINE]) && (theWeapon->id != W_LASER))
 		attacker->reload[weaponType] *= 2;
@@ -215,7 +216,7 @@ void fireBullet(object *attacker, int weaponType)
 		if (player.ammo[0] > 0)
 		{
 			player.ammo[0]--;
-			if (player.ammo[0] == 0)
+			if (player.ammo[0] <= 0)
 			{
 				weapon[W_PLAYER_WEAPON].ammo[0] = currentGame.minPlasmaOutput;
 				weapon[W_PLAYER_WEAPON].damage = currentGame.minPlasmaDamage;
@@ -302,12 +303,7 @@ static void alien_destroy(object *alien, object *attacker)
 	{
 		if (attacker == &player)
 		{
-			// Once again, stop point leeching
-			if (currentGame.area != MAX_MISSIONS - 1)
-				currentGame.cash += alien->score;
-			currentGame.cashEarned += alien->score;
 			currentGame.totalKills++;
-			updateMissionRequirements(M_COLLECT, P_CASH, alien->score);
 		}
 		else if (attacker->classDef == CD_PHOEBE)
 		{
@@ -345,7 +341,7 @@ static void alien_destroy(object *alien, object *attacker)
 		{
 			value = (10 + (rand() % alien->collectValue));
 			if (value > alien->collectValue)
-				value =alien->collectValue;
+				value = alien->collectValue;
 			addCollectable(alien->x, alien->y, alien->collectType, value, 600);
 			alien->collectValue -= value;
 		}
@@ -578,7 +574,8 @@ void doBullets()
 					okayToHit = true;
 				if ((bullet->flags & WF_WEAPCO) && (alien->flags & FL_FRIEND))
 					okayToHit = true;
-				if ((bullet->id == WT_ROCKET) || (bullet->id == WT_LASER) || (bullet->id == WT_CHARGER))
+				if ((bullet->id == WT_ROCKET) || (bullet->id == WT_LASER) ||
+						(bullet->id == WT_CHARGER))
 					okayToHit = true;
 
 				if (bullet->owner == alien->owner)
@@ -591,7 +588,8 @@ void doBullets()
 						if (bullet->owner == &player)
 						{
 							currentGame.hits++;
-							if ((alien->classDef == CD_PHOEBE) || (alien->classDef == CD_URSULA))
+							if ((alien->classDef == CD_PHOEBE) ||
+									(alien->classDef == CD_URSULA))
 								getMissFireMessage(alien);
 						}
 
@@ -617,7 +615,7 @@ void doBullets()
 										alien->flags |= FL_LEAVESECTOR;
 										alien->flags &= ~FL_CIRCLES;
 										if (currentGame.area == 11)
-											setRadioMessage(FACE_KLINE, "Seems I underestimated you, Bainfield! We'll meet again!", 1);
+											setRadioMessage(FACE_KLINE, "Seems I underestimated you, Bainfield. We'll meet again!", 1);
 										else if (currentGame.area == 25)
 											setRadioMessage(FACE_SID, "Chris, Kethlan is getting away!", 1);
 									}

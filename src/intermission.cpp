@@ -535,6 +535,17 @@ int galaxyMap()
 	bool movePlanets = true;
 	signed char saveSlot = -1;
 
+	// Remove the Supercharge, if it is there
+	if (currentGame.difficulty > DIFFICULTY_EASY)
+	{
+		weapon[W_PLAYER_WEAPON].reload[0] = max(weapon[W_PLAYER_WEAPON].reload[0],
+			rate2reload[currentGame.maxPlasmaRate]);
+		weapon[W_PLAYER_WEAPON].ammo[0] = min(weapon[W_PLAYER_WEAPON].ammo[0],
+			currentGame.maxPlasmaOutput);
+		weapon[W_PLAYER_WEAPON].damage = min(weapon[W_PLAYER_WEAPON].damage,
+			currentGame.maxPlasmaDamage);
+	}
+
 	if (currentGame.system > 0)
 		interceptionChance = (300 / currentGame.system);
 

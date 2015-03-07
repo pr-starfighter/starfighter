@@ -125,7 +125,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_DUALFIGHTER].weaponType[1] = W_ROCKETS;
 	alien_defs[CD_DUALFIGHTER].chance[0] = 100;
 	alien_defs[CD_DUALFIGHTER].chance[1] = 1;
-	alien_defs[CD_DUALFIGHTER].score = 25;
 	alien_defs[CD_DUALFIGHTER].collectChance = 50;
 	alien_defs[CD_DUALFIGHTER].collectType = P_ANYTHING;
 	alien_defs[CD_DUALFIGHTER].collectValue = 50;
@@ -143,7 +142,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_MISSILEBOAT].weaponType[1] = W_DOUBLE_ROCKETS;
 	alien_defs[CD_MISSILEBOAT].chance[0] = 25;
 	alien_defs[CD_MISSILEBOAT].chance[1] = 4;
-	alien_defs[CD_MISSILEBOAT].score = 250;
 	alien_defs[CD_MISSILEBOAT].collectChance = 25;
 	alien_defs[CD_MISSILEBOAT].collectType = P_ANYTHING;
 	alien_defs[CD_MISSILEBOAT].collectValue = 75;
@@ -161,7 +159,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_PROTOFIGHTER].weaponType[1] = P_ANYTHING;
 	alien_defs[CD_PROTOFIGHTER].chance[0] = 100;
 	alien_defs[CD_PROTOFIGHTER].chance[1] = 1;
-	alien_defs[CD_PROTOFIGHTER].score = 50;
 	alien_defs[CD_PROTOFIGHTER].collectChance = 50;
 	alien_defs[CD_PROTOFIGHTER].collectType = P_ANYTHING;
 	alien_defs[CD_PROTOFIGHTER].collectValue = 50;
@@ -179,7 +176,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_FRIEND].weaponType[1] = W_HOMING_MISSILE;
 	alien_defs[CD_FRIEND].chance[0] = 100;
 	alien_defs[CD_FRIEND].chance[1] = 5;
-	alien_defs[CD_FRIEND].score = 0;
 	alien_defs[CD_FRIEND].collectChance = 0;
 	alien_defs[CD_FRIEND].collectType = P_CASH;
 	alien_defs[CD_FRIEND].collectValue = 0;
@@ -197,10 +193,9 @@ int main(int argc, char **argv)
 	alien_defs[CD_FRIGATE].weaponType[1] = W_ENERGYRAY;
 	alien_defs[CD_FRIGATE].chance[0] = 100;
 	alien_defs[CD_FRIGATE].chance[1] = 85;
-	alien_defs[CD_FRIGATE].score = 500;
 	alien_defs[CD_FRIGATE].collectChance = 100;
 	alien_defs[CD_FRIGATE].collectType = P_CASH;
-	alien_defs[CD_FRIGATE].collectValue = 250;
+	alien_defs[CD_FRIGATE].collectValue = 500;
 	alien_defs[CD_FRIGATE].flags = FL_WEAPCO;
 
 	alien_defs[CD_FRIGATE_WING1].classDef = CD_FRIGATE_WING1;
@@ -214,7 +209,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_FRIGATE_WING1].weaponType[1] = W_ROCKETS;
 	alien_defs[CD_FRIGATE_WING1].chance[0] = 100;
 	alien_defs[CD_FRIGATE_WING1].chance[1] = 10;
-	alien_defs[CD_FRIGATE_WING1].score = 500;
 	alien_defs[CD_FRIGATE_WING1].collectChance = 100;
 	alien_defs[CD_FRIGATE_WING1].collectType = P_ANYTHING;
 	alien_defs[CD_FRIGATE_WING1].collectValue = 250;
@@ -231,7 +225,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_FRIGATE_WING2].weaponType[1] = W_ROCKETS;
 	alien_defs[CD_FRIGATE_WING2].chance[0] = 100;
 	alien_defs[CD_FRIGATE_WING2].chance[1] = 10;
-	alien_defs[CD_FRIGATE_WING2].score = 500;
 	alien_defs[CD_FRIGATE_WING2].collectChance = 100;
 	alien_defs[CD_FRIGATE_WING2].collectType = P_ANYTHING;
 	alien_defs[CD_FRIGATE_WING2].collectValue = 250;
@@ -249,7 +242,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_TRANSPORTSHIP].weaponType[1] = W_DOUBLE_SHOT;
 	alien_defs[CD_TRANSPORTSHIP].chance[0] = 0;
 	alien_defs[CD_TRANSPORTSHIP].chance[1] = 0;
-	alien_defs[CD_TRANSPORTSHIP].score = 25;
 	alien_defs[CD_TRANSPORTSHIP].collectChance = 100;
 	alien_defs[CD_TRANSPORTSHIP].collectType = P_WEAPONS;
 	alien_defs[CD_TRANSPORTSHIP].collectValue = 30;
@@ -267,7 +259,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_CARGOSHIP].weaponType[1] = W_DOUBLE_SHOT;
 	alien_defs[CD_CARGOSHIP].chance[0] = 0;
 	alien_defs[CD_CARGOSHIP].chance[1] = 0;
-	alien_defs[CD_CARGOSHIP].score = 25;
 	alien_defs[CD_CARGOSHIP].collectChance = 50;
 	alien_defs[CD_CARGOSHIP].collectType = P_ANYTHING;
 	alien_defs[CD_CARGOSHIP].collectValue = 100;
@@ -285,7 +276,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_MINER].weaponType[1] = W_DOUBLE_SHOT;
 	alien_defs[CD_MINER].chance[0] = 0;
 	alien_defs[CD_MINER].chance[1] = 0;
-	alien_defs[CD_MINER].score = 100;
 	alien_defs[CD_MINER].collectChance = 100;
 	alien_defs[CD_MINER].collectType = P_ANYTHING;
 	alien_defs[CD_MINER].collectValue = 30;
@@ -295,15 +285,14 @@ int main(int argc, char **argv)
 	alien_defs[CD_KLINE].classDef = CD_KLINE;
 	alien_defs[CD_KLINE].AIType = AI_OFFENSIVE;
 	alien_defs[CD_KLINE].speed = 5;
-	alien_defs[CD_KLINE].maxShield = 750;
-	alien_defs[CD_KLINE].shield = 750;
+	alien_defs[CD_KLINE].maxShield = 500;
+	alien_defs[CD_KLINE].shield = 500;
 	alien_defs[CD_KLINE].imageIndex[0] = 18;
 	alien_defs[CD_KLINE].imageIndex[1] = 19;
 	alien_defs[CD_KLINE].weaponType[0] = W_TRIPLE_SHOT;
 	alien_defs[CD_KLINE].weaponType[1] = W_MICRO_ROCKETS;
 	alien_defs[CD_KLINE].chance[0] = 100;
 	alien_defs[CD_KLINE].chance[1] = 2;
-	alien_defs[CD_KLINE].score = 0;
 	alien_defs[CD_KLINE].collectChance = 0;
 	alien_defs[CD_KLINE].collectType = P_ANYTHING;
 	alien_defs[CD_KLINE].collectValue = 0;
@@ -321,7 +310,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_AIMFIGHTER].weaponType[1] = W_AIMED_SHOT;
 	alien_defs[CD_AIMFIGHTER].chance[0] = 7;
 	alien_defs[CD_AIMFIGHTER].chance[1] = 1;
-	alien_defs[CD_AIMFIGHTER].score = 50;
 	alien_defs[CD_AIMFIGHTER].collectChance = 75;
 	alien_defs[CD_AIMFIGHTER].collectType = P_ANYTHING;
 	alien_defs[CD_AIMFIGHTER].collectValue = 100;
@@ -339,7 +327,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_SLAVETRANSPORT].weaponType[1] = W_DOUBLE_SHOT;
 	alien_defs[CD_SLAVETRANSPORT].chance[0] = 0;
 	alien_defs[CD_SLAVETRANSPORT].chance[1] = 0;
-	alien_defs[CD_SLAVETRANSPORT].score = 25;
 	alien_defs[CD_SLAVETRANSPORT].collectChance = 100;
 	alien_defs[CD_SLAVETRANSPORT].collectType = P_SLAVES;
 	alien_defs[CD_SLAVETRANSPORT].collectValue = 25;
@@ -357,7 +344,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_GOODTRANSPORT].weaponType[1] = W_AIMED_SHOT;
 	alien_defs[CD_GOODTRANSPORT].chance[0] = 100;
 	alien_defs[CD_GOODTRANSPORT].chance[1] = 100;
-	alien_defs[CD_GOODTRANSPORT].score = 0;
 	alien_defs[CD_GOODTRANSPORT].collectChance = 0;
 	alien_defs[CD_GOODTRANSPORT].collectType = P_ANYTHING;
 	alien_defs[CD_GOODTRANSPORT].collectValue = 0;
@@ -375,7 +361,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_SID].weaponType[1] = W_IONCANNON;
 	alien_defs[CD_SID].chance[0] = 100;
 	alien_defs[CD_SID].chance[1] = 0;
-	alien_defs[CD_SID].score = 0;
 	alien_defs[CD_SID].collectChance = 0;
 	alien_defs[CD_SID].collectType = P_ANYTHING;
 	alien_defs[CD_SID].collectValue = 0;
@@ -393,10 +378,9 @@ int main(int argc, char **argv)
 	alien_defs[CD_MINEBOSS].weaponType[1] = W_SPREADSHOT;
 	alien_defs[CD_MINEBOSS].chance[0] = 0;
 	alien_defs[CD_MINEBOSS].chance[1] = 0;
-	alien_defs[CD_MINEBOSS].score = 1000;
 	alien_defs[CD_MINEBOSS].collectChance = 100;
 	alien_defs[CD_MINEBOSS].collectType = P_ANYTHING;
-	alien_defs[CD_MINEBOSS].collectValue = 255;
+	alien_defs[CD_MINEBOSS].collectValue = 1000;
 	alien_defs[CD_MINEBOSS].flags = FL_WEAPCO | FL_IMMORTAL;
 
 	alien_defs[CD_BOSS2_WING1].classDef = CD_BOSS2_WING1;
@@ -410,10 +394,9 @@ int main(int argc, char **argv)
 	alien_defs[CD_BOSS2_WING1].weaponType[1] = W_SPREADSHOT;
 	alien_defs[CD_BOSS2_WING1].chance[0] = 0;
 	alien_defs[CD_BOSS2_WING1].chance[1] = 0;
-	alien_defs[CD_BOSS2_WING1].score = 1000;
 	alien_defs[CD_BOSS2_WING1].collectChance = 100;
 	alien_defs[CD_BOSS2_WING1].collectType = P_ANYTHING;
-	alien_defs[CD_BOSS2_WING1].collectValue = 255;
+	alien_defs[CD_BOSS2_WING1].collectValue = 250;
 	alien_defs[CD_BOSS2_WING1].flags = FL_WEAPCO | FL_DAMAGEOWNER;
 
 	alien_defs[CD_BOSS2_WING2].classDef = CD_BOSS2_WING2;
@@ -427,10 +410,9 @@ int main(int argc, char **argv)
 	alien_defs[CD_BOSS2_WING2].weaponType[1] = W_SPREADSHOT;
 	alien_defs[CD_BOSS2_WING2].chance[0] = 0;
 	alien_defs[CD_BOSS2_WING2].chance[1] = 0;
-	alien_defs[CD_BOSS2_WING2].score = 1000;
 	alien_defs[CD_BOSS2_WING2].collectChance = 100;
 	alien_defs[CD_BOSS2_WING2].collectType = P_ANYTHING;
-	alien_defs[CD_BOSS2_WING2].collectValue = 255;
+	alien_defs[CD_BOSS2_WING2].collectValue = 250;
 	alien_defs[CD_BOSS2_WING2].flags = FL_WEAPCO | FL_DEPLOYDRONES | FL_DAMAGEOWNER;
 
 	alien_defs[CD_BOSS2_WING3].classDef = CD_BOSS2_WING3;
@@ -444,10 +426,9 @@ int main(int argc, char **argv)
 	alien_defs[CD_BOSS2_WING3].weaponType[1] = W_SPREADSHOT;
 	alien_defs[CD_BOSS2_WING3].chance[0] = 0;
 	alien_defs[CD_BOSS2_WING3].chance[1] = 0;
-	alien_defs[CD_BOSS2_WING3].score = 1000;
 	alien_defs[CD_BOSS2_WING3].collectChance = 100;
 	alien_defs[CD_BOSS2_WING3].collectType = P_ANYTHING;
-	alien_defs[CD_BOSS2_WING3].collectValue = 255;
+	alien_defs[CD_BOSS2_WING3].collectValue = 250;
 	alien_defs[CD_BOSS2_WING3].flags = FL_WEAPCO | FL_DEPLOYDRONES | FL_DAMAGEOWNER;
 
 	alien_defs[CD_BOSS2_WING4].classDef = CD_BOSS2_WING4;
@@ -461,10 +442,9 @@ int main(int argc, char **argv)
 	alien_defs[CD_BOSS2_WING4].weaponType[1] = W_SPREADSHOT;
 	alien_defs[CD_BOSS2_WING4].chance[0] = 0;
 	alien_defs[CD_BOSS2_WING4].chance[1] = 0;
-	alien_defs[CD_BOSS2_WING4].score = 1000;
 	alien_defs[CD_BOSS2_WING4].collectChance = 100;
 	alien_defs[CD_BOSS2_WING4].collectType = P_ANYTHING;
-	alien_defs[CD_BOSS2_WING4].collectValue = 255;
+	alien_defs[CD_BOSS2_WING4].collectValue = 250;
 	alien_defs[CD_BOSS2_WING4].flags = FL_WEAPCO | FL_DAMAGEOWNER;
 
 	// Drone
@@ -479,7 +459,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_DRONE].weaponType[1] = W_LASER;
 	alien_defs[CD_DRONE].chance[0] = 100;
 	alien_defs[CD_DRONE].chance[1] = 0;
-	alien_defs[CD_DRONE].score = 0;
 	alien_defs[CD_DRONE].collectChance = 10;
 	alien_defs[CD_DRONE].collectType = P_SHIELD;
 	alien_defs[CD_DRONE].collectValue = 1;
@@ -497,10 +476,9 @@ int main(int argc, char **argv)
 	alien_defs[CD_CLOAKFIGHTER].weaponType[1] = W_DOUBLE_ROCKETS;
 	alien_defs[CD_CLOAKFIGHTER].chance[0] = 100;
 	alien_defs[CD_CLOAKFIGHTER].chance[1] = 5;
-	alien_defs[CD_CLOAKFIGHTER].score = 550;
 	alien_defs[CD_CLOAKFIGHTER].collectChance = 100;
 	alien_defs[CD_CLOAKFIGHTER].collectType = P_CASH;
-	alien_defs[CD_CLOAKFIGHTER].collectValue = 255;
+	alien_defs[CD_CLOAKFIGHTER].collectValue = 1000;
 	alien_defs[CD_CLOAKFIGHTER].flags = FL_WEAPCO | FL_CANCLOAK | FL_RUNSAWAY;
 
 	// Evil Ursula
@@ -515,7 +493,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_EVILURSULA].weaponType[1] = W_HOMING_MISSILE;
 	alien_defs[CD_EVILURSULA].chance[0] = 100;
 	alien_defs[CD_EVILURSULA].chance[1] = 100;
-	alien_defs[CD_EVILURSULA].score = 500;
 	alien_defs[CD_EVILURSULA].collectChance = 100;
 	alien_defs[CD_EVILURSULA].collectType = P_ESCAPEPOD;
 	alien_defs[CD_EVILURSULA].collectValue = 1;
@@ -533,10 +510,9 @@ int main(int argc, char **argv)
 	alien_defs[CD_KRASS].weaponType[1] = W_CHARGER;
 	alien_defs[CD_KRASS].chance[0] = 100;
 	alien_defs[CD_KRASS].chance[1] = 0;
-	alien_defs[CD_KRASS].score = 2000;
 	alien_defs[CD_KRASS].collectChance = 100;
 	alien_defs[CD_KRASS].collectType = P_ANYTHING;
-	alien_defs[CD_KRASS].collectValue = 255;
+	alien_defs[CD_KRASS].collectValue = 2250;
 	alien_defs[CD_KRASS].flags = FL_FRIEND | FL_IMMORTAL;
 
 	// Executive Transport
@@ -551,10 +527,9 @@ int main(int argc, char **argv)
 	alien_defs[CD_EXEC].weaponType[1] = W_HOMING_MISSILE;
 	alien_defs[CD_EXEC].chance[0] = 0;
 	alien_defs[CD_EXEC].chance[1] = 0;
-	alien_defs[CD_EXEC].score = 2000;
 	alien_defs[CD_EXEC].collectChance = 0;
 	alien_defs[CD_EXEC].collectType = P_ANYTHING;
-	alien_defs[CD_EXEC].collectValue = 0;
+	alien_defs[CD_EXEC].collectValue = 2000;
 	alien_defs[CD_EXEC].flags = FL_WEAPCO | FL_NOFIRE;
 
 	// Asteroid
@@ -569,7 +544,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_ASTEROID].weaponType[1] = W_HOMING_MISSILE;
 	alien_defs[CD_ASTEROID].chance[0] = 0;
 	alien_defs[CD_ASTEROID].chance[1] = 0;
-	alien_defs[CD_ASTEROID].score = 0;
 	alien_defs[CD_ASTEROID].collectChance = 25;
 	alien_defs[CD_ASTEROID].collectType = P_ORE;
 	alien_defs[CD_ASTEROID].collectValue = 1;
@@ -586,7 +560,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_ASTEROID2].weaponType[1] = W_HOMING_MISSILE;
 	alien_defs[CD_ASTEROID2].chance[0] = 0;
 	alien_defs[CD_ASTEROID2].chance[1] = 0;
-	alien_defs[CD_ASTEROID2].score = 0;
 	alien_defs[CD_ASTEROID2].collectChance = 25;
 	alien_defs[CD_ASTEROID2].collectType = P_ORE;
 	alien_defs[CD_ASTEROID2].collectValue = 1;
@@ -604,7 +577,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_ESCORT].weaponType[1] = W_LASER;
 	alien_defs[CD_ESCORT].chance[0] = 25;
 	alien_defs[CD_ESCORT].chance[1] = 25;
-	alien_defs[CD_ESCORT].score = 450;
 	alien_defs[CD_ESCORT].collectChance = 100;
 	alien_defs[CD_ESCORT].collectType = P_ANYTHING;
 	alien_defs[CD_ESCORT].collectValue = 100;
@@ -622,10 +594,9 @@ int main(int argc, char **argv)
 	alien_defs[CD_MOBILE_RAY].weaponType[1] = W_ENERGYRAY;
 	alien_defs[CD_MOBILE_RAY].chance[0] = 50;
 	alien_defs[CD_MOBILE_RAY].chance[1] = 50;
-	alien_defs[CD_MOBILE_RAY].score = 1000;
 	alien_defs[CD_MOBILE_RAY].collectChance = 75;
 	alien_defs[CD_MOBILE_RAY].collectType = P_SHIELD;
-	alien_defs[CD_MOBILE_RAY].collectValue = 2;
+	alien_defs[CD_MOBILE_RAY].collectValue = 100;
 	alien_defs[CD_MOBILE_RAY].flags = FL_WEAPCO;
 
 	// Rebel Carrier
@@ -640,7 +611,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_REBELCARRIER].weaponType[1] = W_MICRO_ROCKETS;
 	alien_defs[CD_REBELCARRIER].chance[0] = 50;
 	alien_defs[CD_REBELCARRIER].chance[1] = 2;
-	alien_defs[CD_REBELCARRIER].score = 0;
 	alien_defs[CD_REBELCARRIER].collectChance = 0;
 	alien_defs[CD_REBELCARRIER].collectType = P_SHIELD;
 	alien_defs[CD_REBELCARRIER].collectValue = 0;
@@ -658,10 +628,9 @@ int main(int argc, char **argv)
 	alien_defs[CD_PLUTOBOSS].weaponType[1] = W_MICRO_ROCKETS;
 	alien_defs[CD_PLUTOBOSS].chance[0] = 50;
 	alien_defs[CD_PLUTOBOSS].chance[1] = 2;
-	alien_defs[CD_PLUTOBOSS].score = 1000;
 	alien_defs[CD_PLUTOBOSS].collectChance = 0;
 	alien_defs[CD_PLUTOBOSS].collectType = P_SHIELD;
-	alien_defs[CD_PLUTOBOSS].collectValue = 0;
+	alien_defs[CD_PLUTOBOSS].collectValue = 1000;
 	alien_defs[CD_PLUTOBOSS].flags = FL_WEAPCO;
 
 	// Pluto Boss Barrier
@@ -676,7 +645,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_BARRIER].weaponType[1] = W_MICRO_ROCKETS;
 	alien_defs[CD_BARRIER].chance[0] = 0;
 	alien_defs[CD_BARRIER].chance[1] = 0;
-	alien_defs[CD_BARRIER].score = 1000;
 	alien_defs[CD_BARRIER].collectChance = 100;
 	alien_defs[CD_BARRIER].collectType = P_ANYTHING;
 	alien_defs[CD_BARRIER].collectValue = 25;
@@ -694,10 +662,9 @@ int main(int argc, char **argv)
 	alien_defs[CD_NEPTUNEBOSS].weaponType[1] = W_MICRO_ROCKETS;
 	alien_defs[CD_NEPTUNEBOSS].chance[0] = 100;
 	alien_defs[CD_NEPTUNEBOSS].chance[1] = 0;
-	alien_defs[CD_NEPTUNEBOSS].score = 1000;
 	alien_defs[CD_NEPTUNEBOSS].collectChance = 100;
 	alien_defs[CD_NEPTUNEBOSS].collectType = P_ANYTHING;
-	alien_defs[CD_NEPTUNEBOSS].collectValue = 25;
+	alien_defs[CD_NEPTUNEBOSS].collectValue = 1000;
 	alien_defs[CD_NEPTUNEBOSS].flags = FL_WEAPCO;
 
 	// Mobile Shield
@@ -712,7 +679,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_MOBILESHIELD].weaponType[1] = W_MICRO_ROCKETS;
 	alien_defs[CD_MOBILESHIELD].chance[0] = 0;
 	alien_defs[CD_MOBILESHIELD].chance[1] = 0;
-	alien_defs[CD_MOBILESHIELD].score = 250;
 	alien_defs[CD_MOBILESHIELD].collectChance = 100;
 	alien_defs[CD_MOBILESHIELD].collectType = P_ANYTHING;
 	alien_defs[CD_MOBILESHIELD].collectValue = 25;
@@ -730,7 +696,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_FIREFLY].weaponType[1] = W_DOUBLE_ROCKETS;
 	alien_defs[CD_FIREFLY].chance[0] = 100;
 	alien_defs[CD_FIREFLY].chance[1] = 5;
-	alien_defs[CD_FIREFLY].score = 500;
 	alien_defs[CD_FIREFLY].collectChance = 100;
 	alien_defs[CD_FIREFLY].collectType = P_ANYTHING;
 	alien_defs[CD_FIREFLY].collectValue = 250;
@@ -748,10 +713,9 @@ int main(int argc, char **argv)
 	alien_defs[CD_URANUSBOSS].weaponType[1] = W_DOUBLE_ROCKETS;
 	alien_defs[CD_URANUSBOSS].chance[0] = 100;
 	alien_defs[CD_URANUSBOSS].chance[1] = 5;
-	alien_defs[CD_URANUSBOSS].score = 500;
 	alien_defs[CD_URANUSBOSS].collectChance = 100;
 	alien_defs[CD_URANUSBOSS].collectType = P_ANYTHING;
-	alien_defs[CD_URANUSBOSS].collectValue = 250;
+	alien_defs[CD_URANUSBOSS].collectValue = 500;
 	alien_defs[CD_URANUSBOSS].flags = FL_WEAPCO;
 
 	// Uranus Boss Wing 1
@@ -766,7 +730,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_URANUSBOSSWING1].weaponType[1] = W_DOUBLE_ROCKETS;
 	alien_defs[CD_URANUSBOSSWING1].chance[0] = 5;
 	alien_defs[CD_URANUSBOSSWING1].chance[1] = 0;
-	alien_defs[CD_URANUSBOSSWING1].score = 500;
 	alien_defs[CD_URANUSBOSSWING1].collectChance = 100;
 	alien_defs[CD_URANUSBOSSWING1].collectType = P_ANYTHING;
 	alien_defs[CD_URANUSBOSSWING1].collectValue = 250;
@@ -784,7 +747,6 @@ int main(int argc, char **argv)
 	alien_defs[CD_URANUSBOSSWING2].weaponType[1] = W_DOUBLE_ROCKETS;
 	alien_defs[CD_URANUSBOSSWING2].chance[0] = 5;
 	alien_defs[CD_URANUSBOSSWING2].chance[1] = 0;
-	alien_defs[CD_URANUSBOSSWING2].score = 500;
 	alien_defs[CD_URANUSBOSSWING2].collectChance = 100;
 	alien_defs[CD_URANUSBOSSWING2].collectType = P_ANYTHING;
 	alien_defs[CD_URANUSBOSSWING2].collectValue = 250;

@@ -38,7 +38,6 @@ struct object {
 
 	signed char speed;
 	unsigned char damage; // Contact damage for bullets
-	int score; // How much a kill of this is worth
 	unsigned char ammo[2]; // Ammo for 2nd weapon.
 
 	signed char face; // Either 0 or 1
@@ -59,7 +58,7 @@ struct object {
 
 	signed char collectChance; // Chance of dropping the object
 	signed char collectType; // What the object is carrying
-	unsigned char collectValue; // What it is worth
+	unsigned int collectValue; // What it is worth
 
 	int flags; // Various flags for an object
 
