@@ -35,7 +35,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "defs.h"
 #include "structs.h"
 
-#include "ai.h"
 #include "aliens.h"
 #include "audio.h"
 #include "bullets.h"

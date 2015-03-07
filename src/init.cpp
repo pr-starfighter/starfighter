@@ -40,8 +40,6 @@ void initVars()
 		star[i].speed = 1 + (rand() % 3);
 	}
 
-	// These are good values for sound and music
-
 	if (engine.useAudio)
 	{
 		Mix_Volume(-1, 100);

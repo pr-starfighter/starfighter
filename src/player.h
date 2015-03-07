@@ -23,6 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 extern object player;
 
 extern void initPlayer();
+void player_setTarget(int index);
 extern void exitPlayer();
 extern void doPlayer();
 extern void flushInput();

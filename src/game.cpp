@@ -122,6 +122,16 @@ void newGame()
 
 int mainGameLoop()
 {
+	static float barrierLoop = 0;
+
+	bool canFire;
+	int shapeToUse;
+	FILE *fp;
+	char string[255];
+	int index, alienType, placeAttempt;
+	int barrierSpeed;
+	int n;
+
 	resetLists();
 
 	setMission(currentGame.area);
@@ -129,7 +139,305 @@ int mainGameLoop()
 
 	initCargo();
 	initPlayer();
-	initAliens();
+
+	// Init aliens
+	for (int i = 0 ; i < MAX_ALIENS ; i++)
+	{
+		enemy[i].active = false;
+		enemy[i].shield = -1;
+		enemy[i].flags = 0;
+	}
+
+	engine.targetIndex = -1;
+
+	strcpy(string, "");
+	barrierSpeed = 1;
+
+	sprintf(string, "data/aliens%d.dat", currentGame.area);
+	fp = fopen(string, "rb");
+
+	if (fp != NULL)
+	{
+		while (fscanf(fp, "%d %d ", &index, &alienType) == 2)
+		{
+			placeAttempt = 0;
+
+			enemy[index] = defEnemy[alienType];
+			enemy[index].owner = &enemy[index];
+			enemy[index].target = &enemy[index];
+			enemy[index].face = rand() % 2;
+			enemy[index].active = true;
+
+			/*
+			we make 1000 attempts to place this enemy since it is required. If after
+			1000 attempts we still haven't managed to place the alien, then it
+			simply isn't going to happen and we will just exit the game. The chances
+			of this happening are very very low!
+			*/
+			while (true)
+			{
+				placeAttempt++;
+
+				if (alien_place(&enemy[index]))
+					break;
+
+				if (placeAttempt > 1000)
+					showErrorAndExit(2, "");
+			}
+
+			if (currentGame.area == 2)
+				addCargo(&enemy[index], P_CARGO);
+			else if (currentGame.area == 7)
+				addCargo(&enemy[index], P_PHOEBE);
+
+			if (index == WC_KLINE)
+			{
+				enemy[WC_KLINE].target = &player;
+				if (currentGame.area == 25)
+					enemy[WC_KLINE].shield = 500;
+			}
+
+			if (enemy[index].classDef == CD_CLOAKFIGHTER)
+			{
+				enemy[index].active = false;
+				enemy[index].maxShield = enemy[index].shield = 400;
+				enemy[index].flags &= ~FL_RUNSAWAY;
+				enemy[index].speed = 3;
+			}
+
+			if ((enemy[index].classDef == CD_MOBILE_RAY) && (index >= 11))
+			{
+				enemy[index].active = false;
+			}
+
+			if (enemy[index].classDef == CD_FIREFLY)
+			{
+				enemy[index].active = false;
+			}
+
+			if (enemy[index].classDef == CD_BARRIER)
+			{
+				enemy[index].owner = &enemy[WC_BOSS];
+				enemy[index].speed = barrierSpeed;
+				barrierSpeed++;
+			}
+
+			if ((currentGame.area == 17) && (enemy[index].classDef == CD_BOSS))
+			{
+				enemy[index].imageIndex[1] = 29;
+				enemy[index].flags |= FL_IMMORTAL;
+			}
+
+			if (currentGame.area == 18)
+				enemy[index].flags |= FL_HASMINIMUMSPEED;
+
+			if (currentGame.area == 23)
+			{
+				enemy[index].flags = FL_WEAPCO;
+				if (index == WC_BOSS)
+					enemy[index].chance[1] = 5;
+			}
+		}
+
+		fclose(fp);
+
+		if (currentGame.area == 5)
+		{
+			enemy[WC_BOSS].target = &player;
+			enemy[WC_BOSS].x = -screen->w / 2;
+			enemy[WC_BOSS].y = screen->h / 2;
+
+			enemy[13].owner = &enemy[WC_BOSS];
+			enemy[13].target = &player;
+			enemy[13].dx = -25;
+			enemy[13].dy = -21;
+
+			enemy[12].owner = &enemy[WC_BOSS];
+			enemy[12].target = &player;
+			enemy[12].dx = -20;
+			enemy[12].dy = 37;
+		}
+		else if ((currentGame.area == 11) || (currentGame.area == 14))
+		{
+			enemy[WC_BOSS].target = &player;
+			enemy[WC_BOSS].x = -screen->w / 2;
+			enemy[WC_BOSS].y = screen->h / 2;
+
+			enemy[13].owner = &enemy[WC_BOSS];
+			enemy[13].target = &player;
+			enemy[13].dx = 15;
+			enemy[13].dy = -22;
+
+			enemy[12].owner = &enemy[WC_BOSS];
+			enemy[12].target = &player;
+			enemy[12].dx = 15;
+			enemy[12].dy = 22;
+
+			enemy[11].owner = &enemy[13];
+			enemy[11].target = &player;
+			enemy[11].dx = -35;
+			enemy[11].dy = -12;
+
+			enemy[10].owner = &enemy[12];
+			enemy[10].target = &player;
+			enemy[10].dx = -35;
+			enemy[10].dy = 20;
+
+			if (currentGame.area == 14)
+			{
+				enemy[WC_BOSS].AIType = AI_EVASIVE;
+
+				for (int i = 10 ; i < 15 ; i++)
+				{
+					enemy[i].imageIndex[0] += 15;
+					enemy[i].imageIndex[1] += 15;
+
+					enemy[i].image[0] = shipShape[enemy[i].imageIndex[0]];
+					enemy[i].image[1] = shipShape[enemy[i].imageIndex[1]];
+				}
+			}
+		}
+		else if (currentGame.area == 21)
+		{
+			enemy[WC_BOSS].target = &player;
+			enemy[WC_BOSS].x = -screen->w / 2;
+			enemy[WC_BOSS].y = screen->h / 2;
+
+			enemy[13].owner = &enemy[WC_BOSS];
+			enemy[13].dy = 20;
+
+			enemy[12].owner = &enemy[WC_BOSS];
+			enemy[12].dy = -16;
+		}
+	}
+
+	// specific for Phoebe being captured!
+	if (currentGame.area == 7)
+		currentGame.hasWingMate1 = 1;
+
+	if (currentGame.area == 11)
+		enemy[WC_KLINE].active = false;
+
+	for (int i = 0 ; i < engine.maxAliens ; i++)
+		alien_add();
+
+	if (currentGame.hasWingMate1)
+		alien_addFriendly(FR_PHOEBE);
+
+	if (currentGame.hasWingMate2)
+		alien_addFriendly(FR_URSULA);
+
+	if ((currentGame.area == 9) || (currentGame.area == 17) ||
+			(currentGame.area == 25))
+		alien_addFriendly(FR_SID);
+
+	// Disable Wingmates for certain missions
+	switch (currentGame.area)
+	{
+		case 7:
+		case 9:
+		case 10:
+		case 15:
+		case 16:
+		case 18:
+		case 24:
+		case 26:
+			enemy[FR_PHOEBE].active = false;
+			enemy[FR_URSULA].active = false;
+			break;
+	}
+
+	if (currentGame.area == 10)
+	{
+		enemy[0].collectChance = 100;
+		enemy[0].collectType = P_ESCAPEPOD;
+	}
+
+	// Some specifics for interception missions
+	if (currentGame.area == MAX_MISSIONS - 1)
+	{
+		if ((currentGame.system > 1) && ((rand() % 5) == 0))
+		{
+			enemy[WC_KLINE] = defEnemy[CD_KLINE];
+			enemy[WC_KLINE].owner = &enemy[WC_KLINE];
+			enemy[WC_KLINE].target = &player;
+			enemy[WC_KLINE].shield = 100;
+			enemy[WC_KLINE].active = true;
+			enemy[WC_KLINE].x = player.x + 1000;
+			enemy[WC_KLINE].y = player.y;
+			player_setTarget(WC_KLINE);
+		}
+
+		if ((currentGame.system == 2) && (currentGame.experimentalShield > 0))
+		{
+			if ((rand() % 2) == 0)
+			{
+				enemy[10] = defEnemy[CD_CLOAKFIGHTER];
+				enemy[10].owner = &enemy[10];
+				enemy[10].target = &enemy[10];
+				enemy[10].shield = 1000;
+				enemy[10].active = true;
+				enemy[10].x = player.x - 1000;
+				enemy[10].y = player.y;
+				player_setTarget(10);
+				enemy[10].shield = currentGame.experimentalShield;
+			}
+		}
+	}
+
+	if (currentGame.area == 26)
+	{
+		enemy[WC_KLINE].flags |= FL_IMMORTAL | FL_NOFIRE | FL_NOMOVE;
+
+		enemy[WC_KLINE].x = screen->w * 2 / 3;
+		enemy[WC_KLINE].y = screen->h * 2 / 3;
+
+		enemy[WC_KLINE].deathCounter = -250;
+		enemy[WC_KLINE].maxShield = 1500;
+		enemy[WC_KLINE].shield = 500;
+	}
+
+	for (int i = 0 ; i < MAX_ALIENS ; i++)
+	{
+		enemy[i].systemPower = enemy[i].maxShield;
+		enemy[i].deathCounter = 0 - (enemy[i].maxShield * 3);
+		limitInt(&enemy[i].deathCounter, -350, 0);
+	}
+
+	// Set target energy meter
+	switch (currentGame.area)
+	{
+		case 5:
+		case 11:
+		case 13:
+		case 17:
+		case 18:
+		case 19:
+		case 20:
+		case 21:
+		case 23:
+			player_setTarget(WC_BOSS);
+			break;
+		case 7:
+			player_setTarget(FR_PHOEBE);
+			break;
+		case 8:
+			player_setTarget(19);
+			break;
+		case 9:
+			player_setTarget(FR_SID);
+			break;
+		case 10:
+			player_setTarget(0);
+			break;
+		case 25:
+		case 26:
+			player_setTarget(WC_KLINE);
+			break;
+		default:
+			break;
+	}
+
 	clearInfoLines();
 
 	loadScriptEvents();
@@ -174,7 +482,8 @@ int mainGameLoop()
 	// Default to no aliens dead...
 	engine.allAliensDead = 0;
 
-	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
+	engine.keyState[KEY_FIRE] = 0;
+	engine.keyState[KEY_ALTFIRE] = 0;
 	flushInput();
 
 	while (engine.done != 1)
@@ -260,7 +569,323 @@ int mainGameLoop()
 		doStarfield();
 		doCollectables();
 		doBullets();
-		doAliens();
+
+		barrierLoop += 0.2;
+
+		// A global variable for checking if all the aliens are dead
+		engine.allAliensDead = 1;
+
+		object *alien = enemy;
+
+		for (int i = 0 ; i < MAX_ALIENS ; i++)
+		{
+			if (alien->active)
+			{
+				if (alien->shield > 0)
+				{
+					if ((alien->flags & FL_WEAPCO) && (!(alien->flags & FL_DISABLED)))
+						engine.allAliensDead = 0;
+
+					// Set part attributes
+					if (alien->owner != alien)
+					{
+						alien->face = alien->owner->face;
+
+						if (alien->face == 0)
+							alien->x = alien->owner->x - alien->dx;
+						else
+							alien->x = alien->owner->x + alien->owner->image[0]->w + alien->dx - alien->image[0]->w;
+
+						alien->y = (alien->owner->y + alien->dy);
+
+						if (alien->owner->shield < 1)
+						{
+							if ((alien->classDef != CD_URANUSBOSSWING1) &&
+								(alien->classDef != CD_URANUSBOSSWING2))
+							{
+								alien->shield = 0;
+							}
+							else
+							{
+								alien->flags &= ~FL_IMMORTAL;
+								alien->owner = alien;
+								alien->chance[0] = 25;
+							}
+						}
+					}
+
+					canFire = true; // The alien is allowed to fire
+
+					limitInt(&--alien->thinktime, 0, 250);
+
+					if (alien->target->shield < 1)
+						alien->target = alien;
+
+					// Specific to Sid to stop him pissing about(!)
+					if ((alien->classDef == CD_SID) &&
+							(alien->target->flags & FL_DISABLED))
+						alien->target = alien;
+
+	 				if (alien->target == alien)
+					{
+						if (engine.missionCompleteTimer == 0)
+						{
+							alien_searchForTarget(alien);
+						}
+						else
+						{
+							if (alien->flags & FL_FRIEND)
+							{
+								alien->target = &player;
+								alien->thinktime = 1;
+							}
+						}
+					}
+
+					if ((!(alien->flags & FL_DISABLED)) &&
+						(alien->thinktime == 0) && (alien->target != alien) &&
+						(alien->owner == alien))
+					{
+						if (alien->classDef == CD_KLINE)
+							alien_setKlineAI(alien);
+						else
+							alien_setAI(alien);
+
+						alien->thinktime = (rand() % 25) * 10;
+
+						// Face direction of movement unless you always face
+						// your target(!)
+						if (!(alien->flags & FL_ALWAYSFACE))
+						{
+							alien->face = (alien->dx > 0);
+						}
+
+						limitFloat(&alien->dx, 0 - alien->speed, alien->speed);
+						limitFloat(&alien->dy, 0 - alien->speed, alien->speed);
+
+					}
+
+					if (alien->flags & FL_ALWAYSFACE)
+					{
+						alien->face = 0;
+						if (alien->x > alien->target->x) alien->face = 1;
+					}
+
+					if ((currentGame.area == 18) && (alien->classDef == CD_BOSS))
+						alien->face = 0;
+
+					if ((alien->flags & FL_DEPLOYDRONES) && ((rand() % 300) == 0))
+						alien_addDrone(alien);
+
+					if (alien->flags & FL_LEAVESECTOR)
+					{
+						limitFloat(&(alien->dx -= 0.5), 0, -15);
+						alien->dy = 0;
+						alien->thinktime = 999;
+						alien->face = 0;
+
+						if (alien->x >= 5000)
+						{
+							alien->flags -= FL_LEAVESECTOR;
+							alien->flags += FL_ESCAPED;
+							alien->active = false;
+
+							if (alien->classDef == CD_CLOAKFIGHTER)
+							{
+								currentGame.experimentalShield = alien->shield;
+								setInfoLine("Experimental Fighter has fled",
+									FONT_CYAN);
+							}
+
+							alien->shield = 0;
+							updateMissionRequirements(M_ESCAPE_TARGET,
+								alien->classDef, 1);
+						
+							if (alien->classDef != CD_CLOAKFIGHTER)
+								updateMissionRequirements(M_DESTROY_TARGET_TYPE,
+									alien->classDef, 1);
+						}
+					}
+
+					// This deals with the Experimental Fighter in Mordor
+					// (and Kline on the final mission)
+					// It can cloak and uncloak at random. When cloaked,
+					// its sprite is not displayed. However the engine
+					// trail is still visible!
+					if ((alien->flags & FL_CANCLOAK) && ((rand() % 500) == 0))
+					{
+						if (alien->flags & FL_ISCLOAKED)
+							alien->flags -= FL_ISCLOAKED;
+						else
+							alien->flags += FL_ISCLOAKED;
+						playSound(SFX_CLOAK, alien->x);
+					}
+
+					if (alien->classDef == CD_BARRIER)
+					{
+						alien->dx = -10 + (sinf(barrierLoop + alien->speed) * 60);
+						alien->dy = 20 + (cosf(barrierLoop + alien->speed) * 40);
+					}
+
+					if (alien->classDef == CD_MOBILESHIELD)
+					{
+						limitInt(&(++enemy[WC_BOSS].shield), 0, enemy[WC_BOSS].maxShield);
+					}
+
+					limitCharAdd(&alien->reload[0], -1, 0, 999);
+					limitCharAdd(&alien->reload[1], -1, 0, 999);
+
+					if ((!(alien->flags & FL_DISABLED)) &&
+						(!(alien->flags & FL_NOFIRE)))
+					{
+						if ((alien->target->shield > 0))
+							canFire = alien_checkTarget(alien);
+
+						if (((alien->thinktime % 2) == 0) &&
+								(alien->flags & FL_FRIEND))
+							canFire = alien_enemiesInFront(alien);
+					}
+					else
+					{
+						canFire = false;
+					}
+
+					if ((canFire) && (dev.fireAliens))
+					{
+						if ((alien->reload[0] == 0) &&
+							((rand() % 1000 < alien->chance[0]) ||
+								(alien->flags & FL_CONTINUOUS_FIRE)))
+						{
+							fireBullet(alien, 0);
+						}
+						if ((alien->reload[1] == 0) &&
+							((rand() % 1000 < alien->chance[1]) ||
+								(alien->flags & FL_CONTINUOUS_FIRE)))
+						{
+							if ((alien->weaponType[1] != W_ENERGYRAY) &&
+								(alien->weaponType[1] != W_LASER))
+							{
+								if (alien->weaponType[1] == W_CHARGER)
+									alien->ammo[1] = 50 + rand() % 150;
+								fireBullet(alien, 1);
+							}
+							else if (alien->weaponType[1] == W_LASER)
+							{
+								alien->flags += FL_FIRELASER;
+							}
+							else if ((alien->weaponType[1] == W_ENERGYRAY) &&
+								(alien->ammo[0] == 250))
+							{
+								alien->flags += FL_FIRERAY;
+								playSound(SFX_ENERGYRAY, alien->x);
+							}
+						}
+					}
+
+					if (alien->flags & FL_FIRERAY)
+					{
+						fireRay(alien);
+					}
+					else
+					{
+						limitCharAdd(&alien->ammo[0], 1, 0, 250);
+					}
+
+					if (alien->flags & FL_FIRELASER)
+					{
+						fireBullet(alien, 1);
+						if ((rand() % 25) == 0)
+							alien->flags -= FL_FIRELASER;
+					}
+
+					if (alien->flags & FL_DROPMINES)
+					{
+						if ((rand() % 150) == 0)
+							addCollectable(alien->x, alien->y, P_MINE, 25,
+								600 + rand() % 2400);
+
+						// Kline drops mines a lot more often
+						if ((alien == &enemy[WC_KLINE]))
+						{
+							if ((rand() % 10) == 0)
+								addCollectable(alien->x, alien->y, P_MINE, 25,
+									600 + rand() % 2400);
+						}
+					}
+
+					shapeToUse = alien->imageIndex[alien->face];
+
+					if (alien->hit)
+						shapeToUse += SHIP_HIT_INDEX;
+
+					limitCharAdd(&alien->hit, -1, 0, 100);
+
+					if ((alien->x + alien->image[0]->w > 0) &&
+						(alien->x < screen->w) &&
+						(alien->y + alien->image[0]->h > 0) &&
+						(alien->y < screen->h))
+					{
+						if ((!(alien->flags & FL_DISABLED)) &&
+								(alien->classDef != CD_ASTEROID) &&
+								(alien->classDef != CD_ASTEROID2))
+							addEngine(alien);
+						if ((!(alien->flags & FL_ISCLOAKED)) || (alien->hit > 0))
+							blit(shipShape[shapeToUse], (int)alien->x,
+								(int)alien->y);
+						if (alien->flags & FL_DISABLED)
+						{
+							if ((rand() % 10) == 0)
+								addExplosion(alien->x + (rand() % alien->image[0]->w), alien->y + (rand() % alien->image[0]->h), E_ELECTRICAL);
+						}
+					}
+
+					if ((currentGame.area == 24) && (alien->x < -300))
+						alien->active = false;
+				}
+				else
+				{
+					alien->shield--;
+					if ((alien->x > 0) && (alien->x < screen->w) &&
+						(alien->y > 0) && (alien->y < screen->h))
+					{
+						blit(alien->image[alien->face], (int)alien->x, (int)alien->y);
+						addExplosion(alien->x + (rand() % alien->image[0]->w), alien->y + (rand() % alien->image[0]->h), E_BIG_EXPLOSION);
+					}
+					if (alien->shield < alien->deathCounter)
+					{
+						alien->active = false;
+						if ((alien->classDef == CD_BOSS) ||
+								(alien->owner == &enemy[WC_BOSS]) ||
+								(alien->flags & FL_FRIEND) ||
+								(alien->classDef == CD_ASTEROID) ||
+								(alien->classDef == CD_KLINE))
+							addDebris((int)alien->x, (int)alien->y,
+								alien->maxShield);
+
+						if (alien->classDef == CD_ASTEROID)
+						{
+							n = 1 + (rand() % 3);
+							for (int i = 0 ; i < n ; i++)
+								alien_addSmallAsteroid(alien);
+						}
+					}
+				}
+
+				// Adjust the movement even whilst exploding
+				if ((dev.moveAliens) && (!(alien->flags & FL_NOMOVE)) &&
+						(!(alien->flags & FL_DISABLED)))
+					alien_move(alien);
+
+				if ((currentGame.area != 18) || (alien->shield < 0))
+					alien->x += engine.ssx;
+
+				alien->x += engine.smx;
+				alien->y += engine.ssy + engine.smy;
+			}
+
+			alien++;
+		}
+
 		doPlayer();
   		doCargo();
   		doDebris();
@@ -285,7 +910,8 @@ int mainGameLoop()
 		if ((currentGame.area == 24) && (engine.addAliens > -1))
 		{
 			if ((rand() % 10) == 0)
-				addCollectable(rrand(800, 100), player.y, P_MINE, 25, 180 + rand() % 60);
+				addCollectable(rrand(800, 100), player.y, P_MINE, 25,
+					180 + rand() % 60);
 		}
 
 		if (engine.addAliens > -1)

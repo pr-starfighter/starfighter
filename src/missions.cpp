@@ -262,6 +262,19 @@ void setMission(int mission)
 	engine.timeTaken = 0;
 }
 
+/*
+Call this whenever a mission requires all the remaining aliens to
+automatically die
+*/
+static void mission_killAllEnemies()
+{
+	for (int i = 0 ; i < MAX_ALIENS ; i++)
+	{
+		if ((enemy[i].flags & FL_WEAPCO) && (enemy[i].active) && (enemy[i].shield > 0))
+			enemy[i].shield = 0;
+	}
+}
+
 void checkTimer()
 {
 	for (int i = 0 ; i < 3 ; i++)

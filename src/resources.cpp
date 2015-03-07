@@ -130,7 +130,16 @@ void loadGameGraphics()
 
 	loadBackground(systemBackground[currentGame.system]);
 
-	setAlienShapes();
+	for (int i = 0 ; i < MAX_DEFALIENS ; i++)
+	{
+		if (shipShape[defEnemy[i].imageIndex[0]] != NULL)
+		{
+			defEnemy[i].image[0] = shipShape[defEnemy[i].imageIndex[0]];
+			defEnemy[i].image[1] = shipShape[defEnemy[i].imageIndex[1]];
+			defEnemy[i].engineX = defEnemy[i].image[0]->w;
+			defEnemy[i].engineY = (defEnemy[i].image[0]->h / 2);
+		}
+	}
 
 	setWeaponShapes();
 }

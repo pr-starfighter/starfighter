@@ -17,18 +17,23 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef ALIENS_H
-#define ALIENS_H
+#ifndef ALIEN_H
+#define ALIEN_H
 
 extern object defEnemy[MAX_DEFALIENS];
 extern object enemy[MAX_ALIENS];
 
 bool alien_add();
-void player_setTarget(int index);
-void initAliens();
-void mission_killAllEnemies();
-void doAliens();
-void setAlienShapes();
-void defineAliens();
+void alien_addDrone(object *hostAlien);
+void alien_addSmallAsteroid(object *hostAlien);
+void alien_addFriendly(int type);
+bool alien_place(object *alien);
+void alien_setAI(object *alien);
+void alien_setKlineAttackMethod(object *alien);
+void alien_setKlineAI(object *alien);
+void alien_searchForTarget(object *alien);
+int alien_checkTarget(object *alien);
+int alien_enemiesInFront(object *alien);
+void alien_move(object *alien);
 
 #endif

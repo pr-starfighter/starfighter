@@ -64,6 +64,13 @@ void initPlayer()
 		player.ammo[1] = 0;
 }
 
+void player_setTarget(int index)
+{
+	engine.targetIndex = index;
+	engine.targetShield = 85;
+	engine.targetShield /= enemy[index].shield;
+}
+
 void exitPlayer()
 {
 	charger_fired = false;
