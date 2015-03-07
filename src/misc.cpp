@@ -89,11 +89,11 @@ Draw an arrow at the edge of the screen for each enemy ship that is not visible.
 */
 static void doArrow(int i)
 {
-	if (i < 0 || !enemy[i].active || enemy[i].shield <= 0 || enemy[i].flags & FL_ISCLOAKED)
+	if (i < 0 || !aliens[i].active || aliens[i].shield <= 0 || aliens[i].flags & FL_ISCLOAKED)
 		return;
 
-	int x = enemy[i].x + enemy[i].image[0]->w / 2;
-	int y = enemy[i].y + enemy[i].image[0]->h / 2;
+	int x = aliens[i].x + aliens[i].image[0]->w / 2;
+	int y = aliens[i].y + aliens[i].image[0]->h / 2;
 
 	float sx = fabsf((x - (screen->w / 2)) / (screen->w / 2.0));
 	float sy = fabsf((y - (screen->h / 2)) / (screen->h / 2.0));
@@ -302,7 +302,7 @@ void doInfo()
 	// Do the target's remaining shield (if required)
 	if (currentGame.area != 10)
 	{
-		if ((engine.targetIndex > -1) && (enemy[engine.targetIndex].shield > 0) && (engine.targetIndex > 9))
+		if ((engine.targetIndex > -1) && (aliens[engine.targetIndex].shield > 0) && (engine.targetIndex > 9))
 		{
 			blitText(7);
 			bar.w = 1;
@@ -310,7 +310,7 @@ void doInfo()
 			bar.x = 620;
 			bar.y = 550;
 
-			for (float i = 0 ; i < (engine.targetShield * enemy[engine.targetIndex].shield) ; i++)
+			for (float i = 0 ; i < (engine.targetShield * aliens[engine.targetIndex].shield) ; i++)
 			{
 				if (i > 50)
 					shieldColor = green;

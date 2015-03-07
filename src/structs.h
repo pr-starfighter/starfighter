@@ -27,7 +27,7 @@ struct object {
 	signed char AIType; // Type of articifial intelligence
 
 	signed char id; // The "job" of the object
-	object *target; //  index target in enemy array
+	object *target; //  index target in aliens array
 
 	signed char reload[2];
 
@@ -73,14 +73,14 @@ struct mission {
 
 	char primaryObjective[3][50]; // Description
 	signed char primaryType[3]; // The type of mission this is
-	signed char target1[3]; // index of target in enemy array
+	signed char target1[3]; // index of target in aliens array
 	int targetValue1[3]; // Number of things to collect (slaves, cash, etc)
 	signed char timeLimit1[3]; // In minutes
 	int completed1[3];
 
 	char secondaryObjective[3][50]; // Description
 	signed char secondaryType[3]; // The type of mission this is
-	signed char target2[3]; // index of target in enemy array
+	signed char target2[3]; // index of target in aliens array
 	int targetValue2[3]; // Number of things to collect (slaves, cash, etc)
 	signed char timeLimit2[3]; // In minutes
 	int completed2[3];

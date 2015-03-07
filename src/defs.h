@@ -91,7 +91,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MAX_TEXTSHAPES 150
 #define MAX_FONTSHAPES 6
 #define MAX_SHOPSHAPES 6
-#define MAX_DEFALIENS 40
 #define MAX_MISSIONS 28
 #define MAX_CARGO 20
 
@@ -240,6 +239,7 @@ enum {
 	CD_URANUSBOSS,
 	CD_URANUSBOSSWING1,
 	CD_URANUSBOSSWING2,
+	CD_MAX,
 
 	// Some special ones
 	CD_ANY = 100,

@@ -48,7 +48,7 @@ void loadScriptEvents()
 		gameEvent[i].flag = 0;
 	}
 	
-	if ((currentGame.area == 27) && (enemy[WC_KLINE].classDef == CD_KLINE))
+	if ((currentGame.area == 27) && (aliens[WC_KLINE].classDef == CD_KLINE))
 		setKlineGreeting();
 
 	char filename[255];
@@ -96,13 +96,13 @@ void checkScriptEvents()
 			{
 				if (gameEvent[i].flag != -FL_ACTIVATE)
 				{
-					enemy[gameEvent[i].entity].flags += gameEvent[i].flag;
+					aliens[gameEvent[i].entity].flags += gameEvent[i].flag;
 				}
 				else
 				{
-					enemy[gameEvent[i].entity].active = true;
-					enemy[gameEvent[i].entity].x = rrand((int)player.x + 400, (int)player.x + 800);
-					enemy[gameEvent[i].entity].y = rrand((int)player.y - 400, (int)player.y + 800);
+					aliens[gameEvent[i].entity].active = true;
+					aliens[gameEvent[i].entity].x = rrand((int)player.x + 400, (int)player.x + 800);
+					aliens[gameEvent[i].entity].y = rrand((int)player.y - 400, (int)player.y + 800);
 				}
 			}
 
@@ -156,11 +156,11 @@ static void setScene(int scene)
 
 		if (shape > -1)
 		{
-			enemy[index].image[0] = shipShape[shape];
-			enemy[index].x = x;
-			enemy[index].y = y;
-			enemy[index].dx = speed;
-			enemy[index].active = true;
+			aliens[index].image[0] = shipShape[shape];
+			aliens[index].x = x;
+			aliens[index].y = y;
+			aliens[index].dx = speed;
+			aliens[index].active = true;
 		}
 	}
 
@@ -201,9 +201,9 @@ void doCutscene(int scene)
 
 	for (int i = 0 ; i < 15 ; i++)
 	{
-		enemy[i] = defEnemy[0];
-		enemy[i].face = 0;
-		enemy[i].active = false;
+		aliens[i] = alien_defs[0];
+		aliens[i].face = 0;
+		aliens[i].active = false;
 	}
 
 	for (int i = 0 ; i < 10 ; i++)
@@ -220,8 +220,8 @@ void doCutscene(int scene)
 	*/
 	for (int i = 0 ; i < 15 ; i++)
 	{
-		enemy[i].engineX = enemy[i].image[0]->w;
-		enemy[i].engineY = (enemy[i].image[0]->h / 2);
+		aliens[i].engineX = aliens[i].image[0]->w;
+		aliens[i].engineY = (aliens[i].image[0]->h / 2);
 	}
 
 	bool showMessage = false;
@@ -244,30 +244,30 @@ void doCutscene(int scene)
 
 		for (int i = 0 ; i < 15 ; i++)
 		{
-			if (enemy[i].active)
+			if (aliens[i].active)
 			{
-				addEngine(&enemy[i]);
+				addEngine(&aliens[i]);
 				if (scene == 0 && i > 0 && (timer % 15) == i) {
-					enemy[i].dx += (drand48() - 0.5) * 0.1;
-					enemy[i].dy += (drand48() - 0.5) * 0.1;
-					if (enemy[i].x > 500 - timer)
-						enemy[i].dx -= 0.2;
-					if (enemy[i].x < 0)
-						enemy[i].dx += 0.2;
+					aliens[i].dx += (drand48() - 0.5) * 0.1;
+					aliens[i].dy += (drand48() - 0.5) * 0.1;
+					if (aliens[i].x > 500 - timer)
+						aliens[i].dx -= 0.2;
+					if (aliens[i].x < 0)
+						aliens[i].dx += 0.2;
 				}
-				enemy[i].x += enemy[i].dx;
-				enemy[i].y += enemy[i].dy;
-				enemy[i].x += engine.ssx + engine.smx;
-				blit(enemy[i].image[0], (int)enemy[i].x, (int)enemy[i].y);
-				if (enemy[i].x > (screen->w + 50))
+				aliens[i].x += aliens[i].dx;
+				aliens[i].y += aliens[i].dy;
+				aliens[i].x += engine.ssx + engine.smx;
+				blit(aliens[i].image[0], (int)aliens[i].x, (int)aliens[i].y);
+				if (aliens[i].x > (screen->w + 50))
 				{
-					enemy[i].x = -50;
-					enemy[i].y = rand() % (screen->h - 40);
+					aliens[i].x = -50;
+					aliens[i].y = rand() % (screen->h - 40);
 				}
-				if (enemy[i].y < -50)
-					enemy[i].y = (screen->h + 50);
-				if (enemy[i].y > (screen->h + 50))
-					enemy[i].y = -50;
+				if (aliens[i].y < -50)
+					aliens[i].y = (screen->h + 50);
+				if (aliens[i].y > (screen->h + 50))
+					aliens[i].y = -50;
 			}
 		}
 

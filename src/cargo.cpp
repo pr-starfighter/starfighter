@@ -73,9 +73,9 @@ static void becomeCollectable(int i)
 	}
 	else
 	{
-		enemy[FR_PHOEBE].active = true;
-		enemy[FR_PHOEBE].x = cargo[i].x;
-		enemy[FR_PHOEBE].y = cargo[i].y;
+		aliens[FR_PHOEBE].active = true;
+		aliens[FR_PHOEBE].x = cargo[i].x;
+		aliens[FR_PHOEBE].y = cargo[i].y;
 		setRadioMessage(FACE_PHOEBE, "Thanks!! Watch out, WEAPCO! Phoebe's loose and she's ANGRY!!!", 1);
 	}
 

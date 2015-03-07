@@ -204,7 +204,7 @@ void fireBullet(object *attacker, int weaponType)
 
 	// Reset the weapon reload time. Double it if it is not friendly or a boss or Kline
 	attacker->reload[weaponType] = theWeapon->reload[0];
-	if ((attacker->flags & FL_WEAPCO) && (attacker != &enemy[WC_BOSS]) && (attacker != &enemy[WC_KLINE]) && (theWeapon->id != W_LASER))
+	if ((attacker->flags & FL_WEAPCO) && (attacker != &aliens[WC_BOSS]) && (attacker != &aliens[WC_KLINE]) && (theWeapon->id != W_LASER))
 		attacker->reload[weaponType] *= 2;
 
 	if ((engine.cheatAmmo) || (theWeapon->id == WT_LASER))
@@ -248,22 +248,22 @@ static object *getRandomEnemy(object *bullet)
 
 	i = rand() % MAX_ALIENS;
 
-	if ((enemy[i].shield < 1) || (!enemy[i].active))
+	if ((aliens[i].shield < 1) || (!aliens[i].active))
 		return NULL;
 
-	if ((bullet->owner->flags & FL_WEAPCO) && (enemy[i].flags & FL_WEAPCO))
+	if ((bullet->owner->flags & FL_WEAPCO) && (aliens[i].flags & FL_WEAPCO))
 		return NULL;
 
-	if ((bullet->owner->flags & FL_FRIEND) && (enemy[i].flags & FL_FRIEND))
+	if ((bullet->owner->flags & FL_FRIEND) && (aliens[i].flags & FL_FRIEND))
 		return NULL;
 
-	if (abs((int)bullet->x - (int)enemy[i].target->x) > 800)
+	if (abs((int)bullet->x - (int)aliens[i].target->x) > 800)
 		return NULL;
 
-	if (abs((int)bullet->y - (int)enemy[i].target->y) > 200)
+	if (abs((int)bullet->y - (int)aliens[i].target->y) > 200)
 		return NULL;
 
-	return &enemy[i];
+	return &aliens[i];
 }
 
 /*
@@ -447,7 +447,7 @@ void fireRay(object *attacker)
 		}
 	}
 
-	object *anEnemy = enemy;
+	object *anEnemy = aliens;
 
 	for (int i = 0 ; i < MAX_ALIENS ; i++)
 	{
@@ -567,7 +567,7 @@ void doBullets()
 
 			for (int i = 0 ; i < MAX_ALIENS ; i++)
 			{
-				alien = &enemy[i];
+				alien = &aliens[i];
 
 				if ((alien->shield < 1) || (!alien->active))
 					continue;

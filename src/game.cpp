@@ -143,9 +143,9 @@ int mainGameLoop()
 	// Init aliens
 	for (int i = 0 ; i < MAX_ALIENS ; i++)
 	{
-		enemy[i].active = false;
-		enemy[i].shield = -1;
-		enemy[i].flags = 0;
+		aliens[i].active = false;
+		aliens[i].shield = -1;
+		aliens[i].flags = 0;
 	}
 
 	engine.targetIndex = -1;
@@ -162,11 +162,11 @@ int mainGameLoop()
 		{
 			placeAttempt = 0;
 
-			enemy[index] = defEnemy[alienType];
-			enemy[index].owner = &enemy[index];
-			enemy[index].target = &enemy[index];
-			enemy[index].face = rand() % 2;
-			enemy[index].active = true;
+			aliens[index] = alien_defs[alienType];
+			aliens[index].owner = &aliens[index];
+			aliens[index].target = &aliens[index];
+			aliens[index].face = rand() % 2;
+			aliens[index].active = true;
 
 			/*
 			we make 1000 attempts to place this enemy since it is required. If after
@@ -178,7 +178,7 @@ int mainGameLoop()
 			{
 				placeAttempt++;
 
-				if (alien_place(&enemy[index]))
+				if (alien_place(&aliens[index]))
 					break;
 
 				if (placeAttempt > 1000)
@@ -186,56 +186,56 @@ int mainGameLoop()
 			}
 
 			if (currentGame.area == 2)
-				addCargo(&enemy[index], P_CARGO);
+				addCargo(&aliens[index], P_CARGO);
 			else if (currentGame.area == 7)
-				addCargo(&enemy[index], P_PHOEBE);
+				addCargo(&aliens[index], P_PHOEBE);
 
 			if (index == WC_KLINE)
 			{
-				enemy[WC_KLINE].target = &player;
+				aliens[WC_KLINE].target = &player;
 				if (currentGame.area == 25)
-					enemy[WC_KLINE].shield = 500;
+					aliens[WC_KLINE].shield = 500;
 			}
 
-			if (enemy[index].classDef == CD_CLOAKFIGHTER)
+			if (aliens[index].classDef == CD_CLOAKFIGHTER)
 			{
-				enemy[index].active = false;
-				enemy[index].maxShield = enemy[index].shield = 400;
-				enemy[index].flags &= ~FL_RUNSAWAY;
-				enemy[index].speed = 3;
+				aliens[index].active = false;
+				aliens[index].maxShield = aliens[index].shield = 400;
+				aliens[index].flags &= ~FL_RUNSAWAY;
+				aliens[index].speed = 3;
 			}
 
-			if ((enemy[index].classDef == CD_MOBILE_RAY) && (index >= 11))
+			if ((aliens[index].classDef == CD_MOBILE_RAY) && (index >= 11))
 			{
-				enemy[index].active = false;
+				aliens[index].active = false;
 			}
 
-			if (enemy[index].classDef == CD_FIREFLY)
+			if (aliens[index].classDef == CD_FIREFLY)
 			{
-				enemy[index].active = false;
+				aliens[index].active = false;
 			}
 
-			if (enemy[index].classDef == CD_BARRIER)
+			if (aliens[index].classDef == CD_BARRIER)
 			{
-				enemy[index].owner = &enemy[WC_BOSS];
-				enemy[index].speed = barrierSpeed;
+				aliens[index].owner = &aliens[WC_BOSS];
+				aliens[index].speed = barrierSpeed;
 				barrierSpeed++;
 			}
 
-			if ((currentGame.area == 17) && (enemy[index].classDef == CD_BOSS))
+			if ((currentGame.area == 17) && (aliens[index].classDef == CD_BOSS))
 			{
-				enemy[index].imageIndex[1] = 29;
-				enemy[index].flags |= FL_IMMORTAL;
+				aliens[index].imageIndex[1] = 29;
+				aliens[index].flags |= FL_IMMORTAL;
 			}
 
 			if (currentGame.area == 18)
-				enemy[index].flags |= FL_HASMINIMUMSPEED;
+				aliens[index].flags |= FL_HASMINIMUMSPEED;
 
 			if (currentGame.area == 23)
 			{
-				enemy[index].flags = FL_WEAPCO;
+				aliens[index].flags = FL_WEAPCO;
 				if (index == WC_BOSS)
-					enemy[index].chance[1] = 5;
+					aliens[index].chance[1] = 5;
 			}
 		}
 
@@ -243,71 +243,71 @@ int mainGameLoop()
 
 		if (currentGame.area == 5)
 		{
-			enemy[WC_BOSS].target = &player;
-			enemy[WC_BOSS].x = -screen->w / 2;
-			enemy[WC_BOSS].y = screen->h / 2;
+			aliens[WC_BOSS].target = &player;
+			aliens[WC_BOSS].x = -screen->w / 2;
+			aliens[WC_BOSS].y = screen->h / 2;
 
-			enemy[13].owner = &enemy[WC_BOSS];
-			enemy[13].target = &player;
-			enemy[13].dx = -25;
-			enemy[13].dy = -21;
+			aliens[13].owner = &aliens[WC_BOSS];
+			aliens[13].target = &player;
+			aliens[13].dx = -25;
+			aliens[13].dy = -21;
 
-			enemy[12].owner = &enemy[WC_BOSS];
-			enemy[12].target = &player;
-			enemy[12].dx = -20;
-			enemy[12].dy = 37;
+			aliens[12].owner = &aliens[WC_BOSS];
+			aliens[12].target = &player;
+			aliens[12].dx = -20;
+			aliens[12].dy = 37;
 		}
 		else if ((currentGame.area == 11) || (currentGame.area == 14))
 		{
-			enemy[WC_BOSS].target = &player;
-			enemy[WC_BOSS].x = -screen->w / 2;
-			enemy[WC_BOSS].y = screen->h / 2;
+			aliens[WC_BOSS].target = &player;
+			aliens[WC_BOSS].x = -screen->w / 2;
+			aliens[WC_BOSS].y = screen->h / 2;
 
-			enemy[13].owner = &enemy[WC_BOSS];
-			enemy[13].target = &player;
-			enemy[13].dx = 15;
-			enemy[13].dy = -22;
+			aliens[13].owner = &aliens[WC_BOSS];
+			aliens[13].target = &player;
+			aliens[13].dx = 15;
+			aliens[13].dy = -22;
 
-			enemy[12].owner = &enemy[WC_BOSS];
-			enemy[12].target = &player;
-			enemy[12].dx = 15;
-			enemy[12].dy = 22;
+			aliens[12].owner = &aliens[WC_BOSS];
+			aliens[12].target = &player;
+			aliens[12].dx = 15;
+			aliens[12].dy = 22;
 
-			enemy[11].owner = &enemy[13];
-			enemy[11].target = &player;
-			enemy[11].dx = -35;
-			enemy[11].dy = -12;
+			aliens[11].owner = &aliens[13];
+			aliens[11].target = &player;
+			aliens[11].dx = -35;
+			aliens[11].dy = -12;
 
-			enemy[10].owner = &enemy[12];
-			enemy[10].target = &player;
-			enemy[10].dx = -35;
-			enemy[10].dy = 20;
+			aliens[10].owner = &aliens[12];
+			aliens[10].target = &player;
+			aliens[10].dx = -35;
+			aliens[10].dy = 20;
 
 			if (currentGame.area == 14)
 			{
-				enemy[WC_BOSS].AIType = AI_EVASIVE;
+				aliens[WC_BOSS].AIType = AI_EVASIVE;
 
 				for (int i = 10 ; i < 15 ; i++)
 				{
-					enemy[i].imageIndex[0] += 15;
-					enemy[i].imageIndex[1] += 15;
+					aliens[i].imageIndex[0] += 15;
+					aliens[i].imageIndex[1] += 15;
 
-					enemy[i].image[0] = shipShape[enemy[i].imageIndex[0]];
-					enemy[i].image[1] = shipShape[enemy[i].imageIndex[1]];
+					aliens[i].image[0] = shipShape[aliens[i].imageIndex[0]];
+					aliens[i].image[1] = shipShape[aliens[i].imageIndex[1]];
 				}
 			}
 		}
 		else if (currentGame.area == 21)
 		{
-			enemy[WC_BOSS].target = &player;
-			enemy[WC_BOSS].x = -screen->w / 2;
-			enemy[WC_BOSS].y = screen->h / 2;
+			aliens[WC_BOSS].target = &player;
+			aliens[WC_BOSS].x = -screen->w / 2;
+			aliens[WC_BOSS].y = screen->h / 2;
 
-			enemy[13].owner = &enemy[WC_BOSS];
-			enemy[13].dy = 20;
+			aliens[13].owner = &aliens[WC_BOSS];
+			aliens[13].dy = 20;
 
-			enemy[12].owner = &enemy[WC_BOSS];
-			enemy[12].dy = -16;
+			aliens[12].owner = &aliens[WC_BOSS];
+			aliens[12].dy = -16;
 		}
 	}
 
@@ -316,7 +316,7 @@ int mainGameLoop()
 		currentGame.hasWingMate1 = 1;
 
 	if (currentGame.area == 11)
-		enemy[WC_KLINE].active = false;
+		aliens[WC_KLINE].active = false;
 
 	for (int i = 0 ; i < engine.maxAliens ; i++)
 		alien_add();
@@ -342,15 +342,15 @@ int mainGameLoop()
 		case 18:
 		case 24:
 		case 26:
-			enemy[FR_PHOEBE].active = false;
-			enemy[FR_URSULA].active = false;
+			aliens[FR_PHOEBE].active = false;
+			aliens[FR_URSULA].active = false;
 			break;
 	}
 
 	if (currentGame.area == 10)
 	{
-		enemy[0].collectChance = 100;
-		enemy[0].collectType = P_ESCAPEPOD;
+		aliens[0].collectChance = 100;
+		aliens[0].collectType = P_ESCAPEPOD;
 	}
 
 	// Some specifics for interception missions
@@ -358,13 +358,13 @@ int mainGameLoop()
 	{
 		if ((currentGame.system > 1) && ((rand() % 5) == 0))
 		{
-			enemy[WC_KLINE] = defEnemy[CD_KLINE];
-			enemy[WC_KLINE].owner = &enemy[WC_KLINE];
-			enemy[WC_KLINE].target = &player;
-			enemy[WC_KLINE].shield = 100;
-			enemy[WC_KLINE].active = true;
-			enemy[WC_KLINE].x = player.x + 1000;
-			enemy[WC_KLINE].y = player.y;
+			aliens[WC_KLINE] = alien_defs[CD_KLINE];
+			aliens[WC_KLINE].owner = &aliens[WC_KLINE];
+			aliens[WC_KLINE].target = &player;
+			aliens[WC_KLINE].shield = 100;
+			aliens[WC_KLINE].active = true;
+			aliens[WC_KLINE].x = player.x + 1000;
+			aliens[WC_KLINE].y = player.y;
 			player_setTarget(WC_KLINE);
 		}
 
@@ -372,36 +372,36 @@ int mainGameLoop()
 		{
 			if ((rand() % 2) == 0)
 			{
-				enemy[10] = defEnemy[CD_CLOAKFIGHTER];
-				enemy[10].owner = &enemy[10];
-				enemy[10].target = &enemy[10];
-				enemy[10].shield = 1000;
-				enemy[10].active = true;
-				enemy[10].x = player.x - 1000;
-				enemy[10].y = player.y;
+				aliens[10] = alien_defs[CD_CLOAKFIGHTER];
+				aliens[10].owner = &aliens[10];
+				aliens[10].target = &aliens[10];
+				aliens[10].shield = 1000;
+				aliens[10].active = true;
+				aliens[10].x = player.x - 1000;
+				aliens[10].y = player.y;
 				player_setTarget(10);
-				enemy[10].shield = currentGame.experimentalShield;
+				aliens[10].shield = currentGame.experimentalShield;
 			}
 		}
 	}
 
 	if (currentGame.area == 26)
 	{
-		enemy[WC_KLINE].flags |= FL_IMMORTAL | FL_NOFIRE | FL_NOMOVE;
+		aliens[WC_KLINE].flags |= FL_IMMORTAL | FL_NOFIRE | FL_NOMOVE;
 
-		enemy[WC_KLINE].x = screen->w * 2 / 3;
-		enemy[WC_KLINE].y = screen->h * 2 / 3;
+		aliens[WC_KLINE].x = screen->w * 2 / 3;
+		aliens[WC_KLINE].y = screen->h * 2 / 3;
 
-		enemy[WC_KLINE].deathCounter = -250;
-		enemy[WC_KLINE].maxShield = 1500;
-		enemy[WC_KLINE].shield = 500;
+		aliens[WC_KLINE].deathCounter = -250;
+		aliens[WC_KLINE].maxShield = 1500;
+		aliens[WC_KLINE].shield = 500;
 	}
 
 	for (int i = 0 ; i < MAX_ALIENS ; i++)
 	{
-		enemy[i].systemPower = enemy[i].maxShield;
-		enemy[i].deathCounter = 0 - (enemy[i].maxShield * 3);
-		limitInt(&enemy[i].deathCounter, -350, 0);
+		aliens[i].systemPower = aliens[i].maxShield;
+		aliens[i].deathCounter = 0 - (aliens[i].maxShield * 3);
+		limitInt(&aliens[i].deathCounter, -350, 0);
 	}
 
 	// Set target energy meter
@@ -461,7 +461,8 @@ int mainGameLoop()
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if ((currentMission.primaryType[i] == M_DESTROY_TARGET_TYPE) && (currentMission.target1[i] == CD_ANY))
+		if ((currentMission.primaryType[i] == M_DESTROY_TARGET_TYPE) &&
+				(currentMission.target1[i] == CD_ANY))
 			allowableAliens = currentMission.targetValue1[i];
 
 		if (currentMission.primaryType[i] == M_DESTROY_ALL_TARGETS)
@@ -470,7 +471,7 @@ int mainGameLoop()
 
 	for (int i = 0 ; i < MAX_ALIENS ; i++)
 	{
-		if ((enemy[i].active) && (enemy[i].flags & FL_WEAPCO))
+		if ((aliens[i].active) && (aliens[i].flags & FL_WEAPCO))
 		{
 			allowableAliens--;
 		}
@@ -513,25 +514,25 @@ int mainGameLoop()
 						leaveSector();
 						if ((engine.done == 2) && (currentGame.area != 10) && (currentGame.area != 15))
 						{
-							if ((enemy[FR_PHOEBE].shield > 0) && (currentGame.area != 25))
+							if ((aliens[FR_PHOEBE].shield > 0) && (currentGame.area != 25))
 							{
-								enemy[FR_PHOEBE].x = player.x - 40;
-								enemy[FR_PHOEBE].y = player.y - 35;
-								enemy[FR_PHOEBE].face = 0;
+								aliens[FR_PHOEBE].x = player.x - 40;
+								aliens[FR_PHOEBE].y = player.y - 35;
+								aliens[FR_PHOEBE].face = 0;
 							}
 
-							if ((enemy[FR_URSULA].shield > 0) && (currentGame.area != 25))
+							if ((aliens[FR_URSULA].shield > 0) && (currentGame.area != 25))
 							{
-								enemy[FR_URSULA].x = player.x - 40;
-								enemy[FR_URSULA].y = player.y + 45;
-								enemy[FR_URSULA].face = 0;
+								aliens[FR_URSULA].x = player.x - 40;
+								aliens[FR_URSULA].y = player.y + 45;
+								aliens[FR_URSULA].face = 0;
 							}
 
 							if ((currentGame.area == 9) || (currentGame.area == 17))
 							{
-								enemy[FR_SID].x = player.x - 100;
-								enemy[FR_SID].y = player.y;
-								enemy[FR_SID].face = 0;
+								aliens[FR_SID].x = player.x - 100;
+								aliens[FR_SID].y = player.y;
+								aliens[FR_SID].face = 0;
 							}
 						}
 					}
@@ -575,7 +576,7 @@ int mainGameLoop()
 		// A global variable for checking if all the aliens are dead
 		engine.allAliensDead = 1;
 
-		object *alien = enemy;
+		object *alien = aliens;
 
 		for (int i = 0 ; i < MAX_ALIENS ; i++)
 		{
@@ -729,7 +730,7 @@ int mainGameLoop()
 
 					if (alien->classDef == CD_MOBILESHIELD)
 					{
-						limitInt(&(++enemy[WC_BOSS].shield), 0, enemy[WC_BOSS].maxShield);
+						limitInt(&(++aliens[WC_BOSS].shield), 0, aliens[WC_BOSS].maxShield);
 					}
 
 					limitCharAdd(&alien->reload[0], -1, 0, 999);
@@ -805,7 +806,7 @@ int mainGameLoop()
 								600 + rand() % 2400);
 
 						// Kline drops mines a lot more often
-						if ((alien == &enemy[WC_KLINE]))
+						if ((alien == &aliens[WC_KLINE]))
 						{
 							if ((rand() % 10) == 0)
 								addCollectable(alien->x, alien->y, P_MINE, 25,
@@ -855,7 +856,7 @@ int mainGameLoop()
 					{
 						alien->active = false;
 						if ((alien->classDef == CD_BOSS) ||
-								(alien->owner == &enemy[WC_BOSS]) ||
+								(alien->owner == &aliens[WC_BOSS]) ||
 								(alien->flags & FL_FRIEND) ||
 								(alien->classDef == CD_ASTEROID) ||
 								(alien->classDef == CD_KLINE))
@@ -927,16 +928,16 @@ int mainGameLoop()
 			engine.missionCompleteTimer = SDL_GetTicks() + 7000;
 
 		// specific to Boss 1
-		if ((currentGame.area == 5) && (enemy[WC_BOSS].flags & FL_ESCAPED))
+		if ((currentGame.area == 5) && (aliens[WC_BOSS].flags & FL_ESCAPED))
 		{
-			playSound(SFX_DEATH, enemy[WC_BOSS].x);
+			playSound(SFX_DEATH, aliens[WC_BOSS].x);
 			clearScreen(white);
 			updateScreen();
 			for (int i = 0 ; i < 300 ; i++)
 			{
 				SDL_Delay(10);
 				if ((rand() % 25) == 0)
-					playSound(SFX_EXPLOSION, enemy[WC_BOSS].x);
+					playSound(SFX_EXPLOSION, aliens[WC_BOSS].x);
 			}
 			SDL_Delay(1000);
 			break;

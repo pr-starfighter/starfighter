@@ -19,8 +19,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-object defEnemy[MAX_DEFALIENS];
-object enemy[MAX_ALIENS];
+object alien_defs[CD_MAX];
+object aliens[MAX_ALIENS];
 
 /*
 This simply pulls back an alien from the array that is
@@ -31,7 +31,7 @@ static int alien_getFreeIndex()
 {
 	for (int i = 0 ; i < engine.maxAliens ; i++)
 	{
-		if (!enemy[i].active)
+		if (!aliens[i].active)
 		{
 			return i;
 		}
@@ -164,44 +164,44 @@ bool alien_add()
 
 	delete[] alienArray;
 
-	enemy[index] = defEnemy[randEnemy];
-	enemy[index].active = true;
-	enemy[index].face = rand() % 2;
-	enemy[index].owner = &enemy[index]; // Most enemies will own themselves
-	enemy[index].target = &enemy[index];
-	enemy[index].thinktime = (50 + rand() % 50);
-	enemy[index].systemPower = enemy[index].maxShield;
-	enemy[index].deathCounter = 0 - (enemy[index].maxShield * 3);
-	enemy[index].hit = 0;
+	aliens[index] = alien_defs[randEnemy];
+	aliens[index].active = true;
+	aliens[index].face = rand() % 2;
+	aliens[index].owner = &aliens[index]; // Most enemies will own themselves
+	aliens[index].target = &aliens[index];
+	aliens[index].thinktime = (50 + rand() % 50);
+	aliens[index].systemPower = aliens[index].maxShield;
+	aliens[index].deathCounter = 0 - (aliens[index].maxShield * 3);
+	aliens[index].hit = 0;
 
-	limitInt(&enemy[index].deathCounter, -250, 0);
+	limitInt(&aliens[index].deathCounter, -250, 0);
 
 	// Attempts to place an alien. If it fails, the alien is deactivated.
 	for (int i = 0 ; i < 100 ; i++)
 	{
-		if (alien_place(&enemy[index]))
+		if (alien_place(&aliens[index]))
 			break;
-		enemy[index].active = false;
+		aliens[index].active = false;
 
 		return false;
 	}
 
-	if (enemy[index].classDef == CD_CARGOSHIP)
-		addCargo(&enemy[index], P_CARGO);
+	if (aliens[index].classDef == CD_CARGOSHIP)
+		addCargo(&aliens[index], P_CARGO);
 
-	if (enemy[index].classDef == CD_MOBILE_RAY)
-		enemy[index].shield = 25;
+	if (aliens[index].classDef == CD_MOBILE_RAY)
+		aliens[index].shield = 25;
 
-	if (enemy[index].classDef == CD_ESCORT)
-		enemy[index].shield = 50;
+	if (aliens[index].classDef == CD_ESCORT)
+		aliens[index].shield = 50;
 
-	enemy[index].dx = rrand(-2, 2);
-	enemy[index].dy = rrand(-2, 2);
+	aliens[index].dx = rrand(-2, 2);
+	aliens[index].dy = rrand(-2, 2);
 
-	enemy[index].ammo[0] = 0;
+	aliens[index].ammo[0] = 0;
 
 	if (currentGame.area == 18)
-		enemy[index].flags |= FL_HASMINIMUMSPEED;
+		aliens[index].flags |= FL_HASMINIMUMSPEED;
 
 	return true;
 }
@@ -213,18 +213,18 @@ void alien_addDrone(object *hostAlien)
 	if (index == -1)
 		return;
 
-	enemy[index] = defEnemy[CD_DRONE];
-	enemy[index].active = true;
-	enemy[index].face = rand() % 2;
-	enemy[index].owner = &enemy[index]; // Most enemies will own themselves
-	enemy[index].target = &enemy[index];
-	enemy[index].thinktime = (50 + rand() % 50);
-	enemy[index].systemPower = enemy[index].maxShield;
-	enemy[index].deathCounter = 0 - (enemy[index].maxShield * 3);
-	enemy[index].hit = 0;
+	aliens[index] = alien_defs[CD_DRONE];
+	aliens[index].active = true;
+	aliens[index].face = rand() % 2;
+	aliens[index].owner = &aliens[index]; // Most enemies will own themselves
+	aliens[index].target = &aliens[index];
+	aliens[index].thinktime = (50 + rand() % 50);
+	aliens[index].systemPower = aliens[index].maxShield;
+	aliens[index].deathCounter = 0 - (aliens[index].maxShield * 3);
+	aliens[index].hit = 0;
 
-	enemy[index].x = hostAlien->x + rand() % 50;
-	enemy[index].y = hostAlien->y + rand() % 50;
+	aliens[index].x = hostAlien->x + rand() % 50;
+	aliens[index].y = hostAlien->y + rand() % 50;
 }
 
 void alien_addSmallAsteroid(object *hostAlien)
@@ -239,7 +239,7 @@ void alien_addSmallAsteroid(object *hostAlien)
 		addBullet(&weapon[W_ROCKETS], hostAlien, 0, 0);
 
 	for (int i = 10 ; i < 20 ; i++)
-		if (!enemy[i].active)
+		if (!aliens[i].active)
 			index = i;
 
 	if (index == -1)
@@ -247,58 +247,58 @@ void alien_addSmallAsteroid(object *hostAlien)
 
 	if ((rand() % 10) > 3)
 	{
-		enemy[index] = defEnemy[CD_ASTEROID2];
-		enemy[index].imageIndex[0] = enemy[index].imageIndex[1] = 39 + rand() % 2;
-		enemy[index].image[0] = shipShape[enemy[index].imageIndex[0]];
-		enemy[index].image[1] = shipShape[enemy[index].imageIndex[1]];
+		aliens[index] = alien_defs[CD_ASTEROID2];
+		aliens[index].imageIndex[0] = aliens[index].imageIndex[1] = 39 + rand() % 2;
+		aliens[index].image[0] = shipShape[aliens[index].imageIndex[0]];
+		aliens[index].image[1] = shipShape[aliens[index].imageIndex[1]];
 	}
 	else
 	{
-		enemy[index] = defEnemy[CD_DRONE];
+		aliens[index] = alien_defs[CD_DRONE];
 	}
 
-	enemy[index].owner = &enemy[index]; // Most enemies will own themselves
-	enemy[index].target = &enemy[index];
-	enemy[index].thinktime = 1;
-	enemy[index].systemPower = enemy[index].maxShield;
-	enemy[index].deathCounter = 0 - (enemy[index].maxShield * 3);
-	enemy[index].hit = 0;
+	aliens[index].owner = &aliens[index]; // Most enemies will own themselves
+	aliens[index].target = &aliens[index];
+	aliens[index].thinktime = 1;
+	aliens[index].systemPower = aliens[index].maxShield;
+	aliens[index].deathCounter = 0 - (aliens[index].maxShield * 3);
+	aliens[index].hit = 0;
 
-	enemy[index].x = hostAlien->x;
-	enemy[index].y = hostAlien->y;
-	enemy[index].active = true;
+	aliens[index].x = hostAlien->x;
+	aliens[index].y = hostAlien->y;
+	aliens[index].active = true;
 }
 
 void alien_addFriendly(int type)
 {
 	if (type != FR_SID)
-		enemy[type] = defEnemy[CD_FRIEND];
+		aliens[type] = alien_defs[CD_FRIEND];
 	else
-		enemy[type] = defEnemy[CD_SID];
+		aliens[type] = alien_defs[CD_SID];
 
-	enemy[type].owner = &enemy[type];
-	enemy[type].target = &enemy[type];
-	enemy[type].active = true;
-
-	if (rand() % 2 == 0)
-		enemy[type].x = rrand((int)(screen->w / 2), (int)(screen->w / 2) + 150);
-	else
-		enemy[type].x = rrand((int)(screen->w / 2) - 150, (int)(screen->w / 2));
+	aliens[type].owner = &aliens[type];
+	aliens[type].target = &aliens[type];
+	aliens[type].active = true;
 
 	if (rand() % 2 == 0)
-		enemy[type].y = rrand((int)(screen->h / 2), (int)(screen->h / 2) + 150);
+		aliens[type].x = rrand((int)(screen->w / 2), (int)(screen->w / 2) + 150);
 	else
-		enemy[type].y = rrand((int)(screen->h / 2) - 150, (int)(screen->h / 2));
+		aliens[type].x = rrand((int)(screen->w / 2) - 150, (int)(screen->w / 2));
+
+	if (rand() % 2 == 0)
+		aliens[type].y = rrand((int)(screen->h / 2), (int)(screen->h / 2) + 150);
+	else
+		aliens[type].y = rrand((int)(screen->h / 2) - 150, (int)(screen->h / 2));
 
 	if (type == FR_PHOEBE)
-		enemy[type].classDef = CD_PHOEBE;
+		aliens[type].classDef = CD_PHOEBE;
 
 	if (type == FR_URSULA)
-		enemy[type].classDef = CD_URSULA;
+		aliens[type].classDef = CD_URSULA;
 
 	// For the sake of it being the final battle :)
 	if (currentGame.area == 25)
-		enemy[type].flags |= FL_IMMORTAL;
+		aliens[type].flags |= FL_IMMORTAL;
 }
 
 bool alien_place(object *alien)
@@ -321,9 +321,11 @@ bool alien_place(object *alien)
 
 	for (int i = 0 ; i < MAX_ALIENS ; i++)
 	{
-		if ((enemy[i].owner != alien) && (enemy[i].shield > 0))
+		if ((aliens[i].owner != alien) && (aliens[i].shield > 0))
 		{
-			if (collision(alien->x, alien->y, alien->image[0]->w, alien->image[0]->h, enemy[i].x, enemy[i].y, enemy[i].image[0]->w, enemy[i].image[0]->h))
+			if (collision(alien->x, alien->y, alien->image[0]->w,
+					alien->image[0]->h, aliens[i].x, aliens[i].y,
+					aliens[i].image[0]->w, aliens[i].image[0]->h))
 				return false;
 		}
 	}
@@ -334,7 +336,7 @@ bool alien_place(object *alien)
 void alien_setAI(object *alien)
 {
 	// Make friendly craft generally concentrate on smaller fighters
-	if ((alien->flags & FL_FRIEND) && (alien->target == &enemy[WC_BOSS]))
+	if ((alien->flags & FL_FRIEND) && (alien->target == &aliens[WC_BOSS]))
 	{
 		if ((rand() % 5) == 0)
 		{
@@ -476,10 +478,13 @@ void alien_setKlineAI(object *alien)
 	switch(rand() % 10)
 	{
 		case 0:
-			if ((alien->weaponType[0] != W_DIRSHOCKMISSILE) && (alien->weaponType[1] != W_MICRO_HOMING_MISSILES))
+			if ((alien->weaponType[0] != W_DIRSHOCKMISSILE) &&
+					(alien->weaponType[1] != W_MICRO_HOMING_MISSILES))
 				alien->flags |= FL_CONTINUOUS_FIRE;
-			alien->dx = ((alien->x - alien->target->x) / ((300 / alien->speed)  + rand() % 100));
-			alien->dy = ((alien->y - alien->target->y) / ((300 / alien->speed)  + rand() % 100));
+			alien->dx = ((alien->x - alien->target->x) /
+				((300 / alien->speed)  + rand() % 100));
+			alien->dy = ((alien->y - alien->target->y) /
+				((300 / alien->speed)  + rand() % 100));
 			break;
 		case 1:
 		case 2:
@@ -518,7 +523,7 @@ void alien_searchForTarget(object *alien)
 
 	i = rand() % MAX_ALIENS;
 
-	object *targetEnemy = &enemy[i];
+	object *targetEnemy = &aliens[i];
 
 	// Tell Sid not to attack craft that are already disabled or can
 	// return fire. This will save him from messing about (unless we're on the last mission)
@@ -537,7 +542,8 @@ void alien_searchForTarget(object *alien)
 			if (targetEnemy->classDef == CD_BOSS)
 				return;
 
-			if ((targetEnemy->flags & FL_DISABLED) || (targetEnemy->flags & FL_NOFIRE))
+			if ((targetEnemy->flags & FL_DISABLED) ||
+					(targetEnemy->flags & FL_NOFIRE))
 				return;
 		}
 	}
@@ -593,7 +599,8 @@ int alien_checkTarget(object *alien)
 		return 1;
 
 	// Not at the correct vertical height
-	if ((alien->y < alien->target->y - 15) || (alien->y > alien->target->y + alien->target->image[0]->h + 15))
+	if ((alien->y < alien->target->y - 15) ||
+			(alien->y > alien->target->y + alien->target->image[0]->h + 15))
 		return 0;
 
 	return 1;
@@ -605,13 +612,15 @@ any enemy craft that enter their line of sight.
 */
 int alien_enemiesInFront(object *alien)
 {
-	object *anEnemy = enemy;
+	object *anEnemy = aliens;
 
 	for (int i = 0 ; i < MAX_ALIENS ; i++)
 	{
-		if ((alien != anEnemy) && (anEnemy->flags & FL_WEAPCO) && (anEnemy->shield > 0))
+		if ((alien != anEnemy) && (anEnemy->flags & FL_WEAPCO) &&
+			(anEnemy->shield > 0))
 		{
-			if ((alien->y > anEnemy->y - 15) && (alien->y < anEnemy->y + anEnemy->image[0]->h + 15))
+			if ((alien->y > anEnemy->y - 15) &&
+				(alien->y < anEnemy->y + anEnemy->image[0]->h + 15))
 			{
 				if ((alien->face == 1) && (anEnemy->x < alien->x))
 					return 1;
@@ -660,13 +669,18 @@ void alien_move(object *alien)
 		}
 	}
 
-	object *anEnemy = enemy;
+	object *anEnemy = aliens;
 
 	if (checkCollisions)
 	{
 		for (int i = 0 ; i < MAX_ALIENS ; i++)
 		{
-			if ((alien->flags & FL_LEAVESECTOR) || (alien->classDef == CD_DRONE) || (alien->classDef == CD_ASTEROID2) || (alien->owner == anEnemy->owner) || (alien->owner->owner == anEnemy->owner) || (anEnemy->shield < 1))
+			if ((alien->flags & FL_LEAVESECTOR) ||
+				(alien->classDef == CD_DRONE) ||
+				(alien->classDef == CD_ASTEROID2) ||
+				(alien->owner == anEnemy->owner) ||
+				(alien->owner->owner == anEnemy->owner) ||
+				(anEnemy->shield < 1))
 			{
 				anEnemy++;
 				continue;
@@ -674,7 +688,8 @@ void alien_move(object *alien)
 
 			if (collision(alien, anEnemy))
 			{
-				if ((anEnemy->classDef == CD_BARRIER) && (anEnemy->owner != alien))
+				if ((anEnemy->classDef == CD_BARRIER) &&
+					(anEnemy->owner != alien))
 				{
 					alien->shield--;
 					alien->hit = 3;

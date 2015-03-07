@@ -229,15 +229,15 @@ int doTitle()
 
 	for (int i = 0 ; i < 15 ; i++)
 	{
-		enemy[i] = defEnemy[rand() % 3];
+		aliens[i] = alien_defs[rand() % 3];
 		if ((rand() % 5) == 0)
-			enemy[i] = defEnemy[CD_TRANSPORTSHIP];
+			aliens[i] = alien_defs[CD_TRANSPORTSHIP];
 		if ((rand() % 5) == 0)
-			enemy[i] = defEnemy[CD_MINER];
-		enemy[i].x = rand() % screen->w;
-		enemy[i].y = rand() % (screen->h - 40);
-		enemy[i].dx = 1 + rand() % 3;
-		enemy[i].face = 0;
+			aliens[i] = alien_defs[CD_MINER];
+		aliens[i].x = rand() % screen->w;
+		aliens[i].y = rand() % (screen->h - 40);
+		aliens[i].dx = 1 + rand() % 3;
+		aliens[i].face = 0;
 	}
 
 	int redGlow = 255;
@@ -281,14 +281,14 @@ int doTitle()
 
 		for (int i = 0 ; i < 15 ; i++)
 		{
-			addEngine(&enemy[i]);
-			enemy[i].x += enemy[i].dx;
-			blit(enemy[i].image[0], (int)enemy[i].x, (int)enemy[i].y);
-			if (enemy[i].x > 830)
+			addEngine(&aliens[i]);
+			aliens[i].x += aliens[i].dx;
+			blit(aliens[i].image[0], (int)aliens[i].x, (int)aliens[i].y);
+			if (aliens[i].x > 830)
 			{
-				enemy[i].x = -40;
-				enemy[i].y = rand() % (screen->h - 20);
-				enemy[i].dx = 1 + rand() % 3;
+				aliens[i].x = -40;
+				aliens[i].y = rand() % (screen->h - 20);
+				aliens[i].dx = 1 + rand() % 3;
 			}
 		}
 

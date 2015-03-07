@@ -20,8 +20,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef ALIEN_H
 #define ALIEN_H
 
-extern object defEnemy[MAX_DEFALIENS];
-extern object enemy[MAX_ALIENS];
+extern object alien_defs[CD_MAX];
+extern object aliens[MAX_ALIENS];
 
 bool alien_add();
 void alien_addDrone(object *hostAlien);

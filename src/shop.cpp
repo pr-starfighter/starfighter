@@ -62,7 +62,8 @@ static void drawSecondaryWeaponSurface()
 	}
 	drawString(description, 10, 22, FONT_WHITE, shopSurface[2]);
 
-	if ((player.weaponType[1] != W_LASER) && (player.weaponType[1] != W_CHARGER) && (player.weaponType[1] != W_NONE))
+	if ((player.weaponType[1] != W_LASER) &&
+		(player.weaponType[1] != W_CHARGER) && (player.weaponType[1] != W_NONE))
 	{
 		sprintf(description, "Capacity : %d", currentGame.maxRocketAmmo);
 		drawString(description, 10, 37, FONT_WHITE, shopSurface[2]);
@@ -71,13 +72,13 @@ static void drawSecondaryWeaponSurface()
 
 static void adjustShopPrices()
 {
-	shopItems[SHOP_PLASMA_MAX_OUTPUT].price = (500 * currentGame.maxPlasmaOutput);
-	shopItems[SHOP_PLASMA_MAX_DAMAGE].price = (500 * currentGame.maxPlasmaDamage);
-	shopItems[SHOP_PLASMA_MAX_RATE].price = (500 * currentGame.maxPlasmaRate);
+	shopItems[SHOP_PLASMA_MAX_OUTPUT].price = (1500 * currentGame.maxPlasmaOutput);
+	shopItems[SHOP_PLASMA_MAX_DAMAGE].price = (1500 * currentGame.maxPlasmaDamage);
+	shopItems[SHOP_PLASMA_MAX_RATE].price = (1500 * currentGame.maxPlasmaRate);
 
-	shopItems[SHOP_PLASMA_MIN_OUTPUT].price = (2000 * currentGame.minPlasmaOutput);
-	shopItems[SHOP_PLASMA_MIN_DAMAGE].price = (2000 * currentGame.minPlasmaDamage);
-	shopItems[SHOP_PLASMA_MIN_RATE].price = (2000 * currentGame.minPlasmaRate);
+	shopItems[SHOP_PLASMA_MIN_OUTPUT].price = (4000 * currentGame.minPlasmaOutput);
+	shopItems[SHOP_PLASMA_MIN_DAMAGE].price = (4000 * currentGame.minPlasmaDamage);
+	shopItems[SHOP_PLASMA_MIN_RATE].price = (4000 * currentGame.minPlasmaRate);
 
 	if (currentGame.maxPlasmaOutput <= currentGame.minPlasmaOutput)
 		shopItems[SHOP_PLASMA_MIN_OUTPUT].price += shopItems[SHOP_PLASMA_MAX_OUTPUT].price;
@@ -170,17 +171,22 @@ static void drawShop()
 	drawString("Primary Weapon", 10, 3, FONT_WHITE, shopSurface[0]);
 	sprintf(description, "Plasma Cannons : %d", currentGame.minPlasmaOutput);
 	drawString(description, 10, 22, FONT_WHITE, shopSurface[0]);
-	sprintf(description, "Plasma Power   : Stage %d", currentGame.minPlasmaDamage);
+	sprintf(description, "Plasma Power   : Stage %d",
+		currentGame.minPlasmaDamage);
 	drawString(description, 10, 37, FONT_WHITE, shopSurface[0]);
-	sprintf(description, "Cooler         : Stage %d", currentGame.minPlasmaRate);
+	sprintf(description, "Cooler         : Stage %d",
+		currentGame.minPlasmaRate);
 	drawString(description, 10, 52, FONT_WHITE, shopSurface[0]);
 
 	drawString("Powerup Weapon", 10, 3, FONT_WHITE, shopSurface[1]);
-	sprintf(description, "Plasma Output    : Stage %d", currentGame.maxPlasmaOutput);
+	sprintf(description, "Plasma Output    : Stage %d",
+		currentGame.maxPlasmaOutput);
 	drawString(description, 10, 22, FONT_WHITE, shopSurface[1]);
-	sprintf(description, "Plasma Condensor : Stage %d", currentGame.maxPlasmaDamage);
+	sprintf(description, "Plasma Condensor : Stage %d",
+		currentGame.maxPlasmaDamage);
 	drawString(description, 10, 37, FONT_WHITE, shopSurface[1]);
-	sprintf(description, "Liquid Nitrogen  : Stage %d", currentGame.maxPlasmaRate);
+	sprintf(description, "Liquid Nitrogen  : Stage %d",
+		currentGame.maxPlasmaRate);
 	drawString(description, 10, 52, FONT_WHITE, shopSurface[1]);
 	sprintf(description, "Plasma Capacity  : %d", currentGame.maxPlasmaAmmo);
 	drawString(description, 10, 67, FONT_WHITE, shopSurface[1]);
@@ -232,40 +238,51 @@ static void drawShop()
 		case -1:
 			break;
 		case -2:
-			drawString("You don't have enough money", 20, 30, FONT_WHITE, shopSurface[5]);
+			drawString("You don't have enough money", 20, 30, FONT_WHITE,
+				shopSurface[5]);
 			break;
 		case -3:
 			drawString("Cannot upgrade ship", 5, 22, FONT_WHITE, shopSurface[5]);
-			drawString("Hardware capacity has been reached", 20, 38, FONT_CYAN, shopSurface[5]);
+			drawString("Hardware capacity has been reached", 20, 38, FONT_CYAN,
+				shopSurface[5]);
 			break;
 		case -4:
-			drawString("Ammunition limit reached", 20, 30, FONT_WHITE, shopSurface[5]);
+			drawString("Ammunition limit reached", 20, 30, FONT_WHITE,
+				shopSurface[5]);
 			break;
 		case -5:
-			drawString("You cannot sell that item", 20, 30, FONT_WHITE, shopSurface[5]);
+			drawString("You cannot sell that item", 20, 30, FONT_WHITE,
+				shopSurface[5]);
 			break;
 		case -6:
 			drawString("Nothing to sell", 20, 30, FONT_WHITE, shopSurface[5]);
 			break;
 		case -7:
-			drawString("Rockets cannot be bought for Laser or Charger Cannon", 5, 30, FONT_WHITE, shopSurface[5]);
+			drawString("Rockets cannot be bought for Laser or Charger Cannon",
+				5, 30, FONT_WHITE, shopSurface[5]);
 			break;
 		case -8:
-			drawString("You already have that weapon", 20, 30, FONT_WHITE, shopSurface[5]);
+			drawString("You already have that weapon", 20, 30, FONT_WHITE,
+				shopSurface[5]);
 			break;
 		case -9:
-			drawString("This weapon's ammo limit has been reached", 20, 30, FONT_WHITE, shopSurface[5]);
+			drawString("This weapon's ammo limit has been reached", 20, 30,
+				FONT_WHITE, shopSurface[5]);
 			break;
 		default:
 			if (shopItems[shopSelectedItem].price != 0)
 			{
-				sprintf(description, "%s ($%d)", shopItems[shopSelectedItem].description, shopItems[shopSelectedItem].price);
+				sprintf(description, "%s ($%d)",
+					shopItems[shopSelectedItem].description,
+					shopItems[shopSelectedItem].price);
 			}
 			else
 			{
-				sprintf(description, "%s (N/A)", shopItems[shopSelectedItem].description);
+				sprintf(description, "%s (N/A)",
+					shopItems[shopSelectedItem].description);
 			}
-			drawString(shopItems[shopSelectedItem].name, 5, 22, FONT_WHITE, shopSurface[5]);
+			drawString(shopItems[shopSelectedItem].name, 5, 22, FONT_WHITE,
+				shopSurface[5]);
 			drawString(description, 20, 38, FONT_CYAN, shopSurface[5]);
 			break;
 	}
@@ -275,19 +292,22 @@ void initShop()
 {
 	/* ----------- Temporary Items ----------- */
 
-	shopItems[SHOP_PLASMA_MAX_OUTPUT].price = 1000;
+	shopItems[SHOP_PLASMA_MAX_OUTPUT].price = 0; // Overwritten later
 	strcpy(shopItems[SHOP_PLASMA_MAX_OUTPUT].name, "Plasma channel splitter");
-	strcpy(shopItems[SHOP_PLASMA_MAX_OUTPUT].description, "Improves poweredup plasma output");
+	strcpy(shopItems[SHOP_PLASMA_MAX_OUTPUT].description,
+		"Improves poweredup plasma output");
 	shopItems[SHOP_PLASMA_MAX_OUTPUT].image = 9;
 
-	shopItems[SHOP_PLASMA_MAX_DAMAGE].price = 1000;
+	shopItems[SHOP_PLASMA_MAX_DAMAGE].price = 0; // Overwritten later
 	strcpy(shopItems[SHOP_PLASMA_MAX_DAMAGE].name, "Plasma capacity condensor");
-	strcpy(shopItems[SHOP_PLASMA_MAX_DAMAGE].description, "Increases poweredup plasma damage");
+	strcpy(shopItems[SHOP_PLASMA_MAX_DAMAGE].description,
+		"Increases poweredup plasma damage");
 	shopItems[SHOP_PLASMA_MAX_DAMAGE].image = 10;
 
-	shopItems[SHOP_PLASMA_MAX_RATE].price = 1000;
+	shopItems[SHOP_PLASMA_MAX_RATE].price = 0; // Overwritten later
 	strcpy(shopItems[SHOP_PLASMA_MAX_RATE].name, "Liquid nitrogen capsules");
-	strcpy(shopItems[SHOP_PLASMA_MAX_RATE].description, "Increases plasma firing rate");
+	strcpy(shopItems[SHOP_PLASMA_MAX_RATE].description,
+		"Increases plasma firing rate");
 	shopItems[SHOP_PLASMA_MAX_RATE].image = 11;
 
 	shopItems[SHOP_PLASMA_AMMO].price = 50;
@@ -297,48 +317,56 @@ void initShop()
 
 	shopItems[SHOP_ROCKET_AMMO].price = 50;
 	strcpy(shopItems[SHOP_ROCKET_AMMO].name, "Rocket Ammo");
-	strcpy(shopItems[SHOP_ROCKET_AMMO].description, "High velocity dumb fire rocket");
+	strcpy(shopItems[SHOP_ROCKET_AMMO].description,
+		"High velocity dumb fire rocket");
 	shopItems[SHOP_ROCKET_AMMO].image = 13;
 
 	/* ----------- Permanent Items ----------- */
 
-	shopItems[SHOP_PLASMA_MIN_OUTPUT].price = 2000;
+	shopItems[SHOP_PLASMA_MIN_OUTPUT].price = 0; // Overwritten later
 	strcpy(shopItems[SHOP_PLASMA_MIN_OUTPUT].name, "Additional Plasma Cannon");
-	strcpy(shopItems[SHOP_PLASMA_MIN_OUTPUT].description, "Adds an extra plasma cannon to the Firefly");
+	strcpy(shopItems[SHOP_PLASMA_MIN_OUTPUT].description,
+		"Adds an extra plasma cannon to the Firefly");
 	shopItems[SHOP_PLASMA_MIN_OUTPUT].image = 14;
 
-	shopItems[SHOP_PLASMA_MIN_DAMAGE].price = 2000;
+	shopItems[SHOP_PLASMA_MIN_DAMAGE].price = 0; // Overwritten later
 	strcpy(shopItems[SHOP_PLASMA_MIN_DAMAGE].name, "Plasma Power Booster");
-	strcpy(shopItems[SHOP_PLASMA_MIN_DAMAGE].description, "Increases power of plasma shots");
+	strcpy(shopItems[SHOP_PLASMA_MIN_DAMAGE].description,
+		"Increases power of plasma shots");
 	shopItems[SHOP_PLASMA_MIN_DAMAGE].image = 15;
 
-	shopItems[SHOP_PLASMA_MIN_RATE].price = 2000;
+	shopItems[SHOP_PLASMA_MIN_RATE].price = 0; // Overwritten later
 	strcpy(shopItems[SHOP_PLASMA_MIN_RATE].name, "Plasma Cooling Booster");
-	strcpy(shopItems[SHOP_PLASMA_MIN_RATE].description, "Permanently increases firing rate");
+	strcpy(shopItems[SHOP_PLASMA_MIN_RATE].description,
+		"Permanently increases firing rate");
 	shopItems[SHOP_PLASMA_MIN_RATE].image = 16;
 
 	/* ----------- Ammo Items -------------- */
 
-	shopItems[SHOP_PLASMA_MAX_AMMO].price = 250;
+	shopItems[SHOP_PLASMA_MAX_AMMO].price = 0; // Overwritten later
 	strcpy(shopItems[SHOP_PLASMA_MAX_AMMO].name, "Plasma compressor");
-	strcpy(shopItems[SHOP_PLASMA_MAX_AMMO].description, "Increases plasma ammo capacity");
+	strcpy(shopItems[SHOP_PLASMA_MAX_AMMO].description,
+		"Increases plasma ammo capacity");
 	shopItems[SHOP_PLASMA_MAX_AMMO].image = 17;
 
-	shopItems[SHOP_ROCKET_MAX_AMMO].price = 250;
+	shopItems[SHOP_ROCKET_MAX_AMMO].price = 0; // Overwritten later
 	strcpy(shopItems[SHOP_ROCKET_MAX_AMMO].name, "Rocket Pod");
-	strcpy(shopItems[SHOP_ROCKET_MAX_AMMO].description, "Allows for an additional 5 rockets to be carried");
+	strcpy(shopItems[SHOP_ROCKET_MAX_AMMO].description,
+		"Allows for an additional 5 rockets to be carried");
 	shopItems[SHOP_ROCKET_MAX_AMMO].image = 18;
 
 	/* ---------- Weaponary --------------- */
 
 	shopItems[SHOP_DOUBLE_ROCKETS].price = 2000;
 	strcpy(shopItems[SHOP_DOUBLE_ROCKETS].name, "Dual Rocket Launcher");
-	strcpy(shopItems[SHOP_DOUBLE_ROCKETS].description, "Allows for two rockets to be fired at once");
+	strcpy(shopItems[SHOP_DOUBLE_ROCKETS].description,
+		"Allows for two rockets to be fired at once");
 	shopItems[SHOP_DOUBLE_ROCKETS].image = 19;
 
 	shopItems[SHOP_MICRO_ROCKETS].price = 2500;
 	strcpy(shopItems[SHOP_MICRO_ROCKETS].name, "Micro Rocket Launcher");
-	strcpy(shopItems[SHOP_MICRO_ROCKETS].description, "Launches several less powerful rockets at once");
+	strcpy(shopItems[SHOP_MICRO_ROCKETS].description,
+		"Launches several less powerful rockets at once");
 	shopItems[SHOP_MICRO_ROCKETS].image = 20;
 
 	shopItems[SHOP_LASER].price = 5000;
@@ -348,8 +376,8 @@ void initShop()
 
 	shopItems[SHOP_HOMING_MISSILE].price = 7500;
 	strcpy(shopItems[SHOP_HOMING_MISSILE].name, "Homing Missile Launcher");
-	sprintf(shopItems[SHOP_HOMING_MISSILE].description, "Fires homing missile (max %i missiles)",
-		maxHoming);
+	sprintf(shopItems[SHOP_HOMING_MISSILE].description,
+		"Fires homing missile (max %i missiles)", maxHoming);
 	shopItems[SHOP_HOMING_MISSILE].image = 22;
 
 	shopItems[SHOP_CHARGER].price = 10000;
@@ -358,13 +386,15 @@ void initShop()
 	shopItems[SHOP_CHARGER].image = 23;
 
 	shopItems[SHOP_DOUBLE_HOMING_MISSILES].price = 10000;
-	strcpy(shopItems[SHOP_DOUBLE_HOMING_MISSILES].name, "Dual Homing Missile Launcher");
+	strcpy(shopItems[SHOP_DOUBLE_HOMING_MISSILES].name,
+		"Dual Homing Missile Launcher");
 	sprintf(shopItems[SHOP_DOUBLE_HOMING_MISSILES].description,
 		"Fires two homing missiles (max %i missiles)", maxDoubleHoming);
 	shopItems[SHOP_DOUBLE_HOMING_MISSILES].image = 24;
 
 	shopItems[SHOP_MICRO_HOMING_MISSILES].price = 15000;
-	strcpy(shopItems[SHOP_MICRO_HOMING_MISSILES].name, "Homing Micro Missile Launcher");
+	strcpy(shopItems[SHOP_MICRO_HOMING_MISSILES].name,
+		"Homing Micro Missile Launcher");
 	sprintf(shopItems[SHOP_MICRO_HOMING_MISSILES].description,
 		"Fires several small homing missiles (max %i missiles)", maxMicroHoming);
 	shopItems[SHOP_MICRO_HOMING_MISSILES].image = 25;

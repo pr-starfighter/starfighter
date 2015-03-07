@@ -130,14 +130,14 @@ void loadGameGraphics()
 
 	loadBackground(systemBackground[currentGame.system]);
 
-	for (int i = 0 ; i < MAX_DEFALIENS ; i++)
+	for (int i = 0 ; i < CD_MAX ; i++)
 	{
-		if (shipShape[defEnemy[i].imageIndex[0]] != NULL)
+		if (shipShape[alien_defs[i].imageIndex[0]] != NULL)
 		{
-			defEnemy[i].image[0] = shipShape[defEnemy[i].imageIndex[0]];
-			defEnemy[i].image[1] = shipShape[defEnemy[i].imageIndex[1]];
-			defEnemy[i].engineX = defEnemy[i].image[0]->w;
-			defEnemy[i].engineY = (defEnemy[i].image[0]->h / 2);
+			alien_defs[i].image[0] = shipShape[alien_defs[i].imageIndex[0]];
+			alien_defs[i].image[1] = shipShape[alien_defs[i].imageIndex[1]];
+			alien_defs[i].engineX = alien_defs[i].image[0]->w;
+			alien_defs[i].engineY = (alien_defs[i].image[0]->h / 2);
 		}
 	}
 

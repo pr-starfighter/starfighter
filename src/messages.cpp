@@ -64,12 +64,13 @@ void getKillMessage(object *ally)
 	bool firstPlace = false;
 	int faceToUse = FACE_PHOEBE;
 
-	if (ally == &enemy[FR_PHOEBE])
+	if (ally == &aliens[FR_PHOEBE])
 	{
 		strcpy(otherName, "Ursula");
 		kills = currentGame.wingMate1Kills;
 		difference = currentGame.wingMate1Kills - currentGame.wingMate2Kills;
-		if ((currentGame.wingMate1Kills > currentGame.wingMate2Kills) && (currentGame.wingMate1Kills > currentGame.totalKills))
+		if ((currentGame.wingMate1Kills > currentGame.wingMate2Kills) &&
+				(currentGame.wingMate1Kills > currentGame.totalKills))
 			firstPlace = true;
 		faceToUse = FACE_PHOEBE;
 	}
@@ -78,7 +79,8 @@ void getKillMessage(object *ally)
 		strcpy(otherName, "Phoebe");
 		kills = currentGame.wingMate2Kills;
 		difference = currentGame.wingMate2Kills - currentGame.wingMate1Kills;
-		if ((currentGame.wingMate2Kills > currentGame.wingMate1Kills) && (currentGame.wingMate2Kills > currentGame.totalKills))
+		if ((currentGame.wingMate2Kills > currentGame.wingMate1Kills) &&
+				(currentGame.wingMate2Kills > currentGame.totalKills))
 			firstPlace = true;
 		faceToUse = FACE_URSULA;
 	}
@@ -133,7 +135,8 @@ void getKillMessage(object *ally)
 const char *getKlineInsult()
 {
 	static const char *insult[] = {
-	"Pathetic", "How very disappointing...", "Heroic. And stupid", "Fool", "And now you're nothing but a DEAD hero"
+		"Pathetic", "How very disappointing...", "Heroic. And stupid", "Fool",
+		"And now you're nothing but a DEAD hero"
 	};
 
 	if (currentGame.area != 26)
@@ -144,13 +147,13 @@ const char *getKlineInsult()
 
 void getPlayerDeathMessage()
 {
-	if (enemy[WC_KLINE].active)
+	if (aliens[WC_KLINE].active)
 	{
 		setRadioMessage(FACE_KLINE, getKlineInsult(), 1);
 		return;
 	}
 	
-	if ((enemy[WC_BOSS].active) && (enemy[WC_BOSS].classDef == CD_KRASS))
+	if ((aliens[WC_BOSS].active) && (aliens[WC_BOSS].classDef == CD_KRASS))
 	{
 		setRadioMessage(FACE_KRASS, "That was the easiest $90,000,000 I've ever earned! Bwwah!! Ha!! Ha!! Ha!!", 1);
 		return;
@@ -159,7 +162,9 @@ void getPlayerDeathMessage()
 	int faceToUse = FACE_PHOEBE;
 	
 
-	if ((currentGame.area == 9) || (currentGame.area == 17) || (currentGame.area == 25)) {
+	if ((currentGame.area == 9) || (currentGame.area == 17) ||
+		(currentGame.area == 25))
+	{
 		faceToUse = FACE_SID;
 	}
 	else if (currentGame.hasWingMate2)
@@ -175,7 +180,7 @@ void getMissFireMessage(object *ally)
 {
 	int faceToUse = FACE_PHOEBE;
 
-	if (ally == &enemy[FR_PHOEBE])
+	if (ally == &aliens[FR_PHOEBE])
 		faceToUse = FACE_PHOEBE;
 	else
 		faceToUse = FACE_URSULA;
@@ -187,7 +192,7 @@ void getPlayerHitMessage(object *ally)
 {
 	int faceToUse = FACE_PHOEBE;
 
-	if (ally == &enemy[FR_PHOEBE])
+	if (ally == &aliens[FR_PHOEBE])
 		faceToUse = FACE_PHOEBE;
 	else
 		faceToUse = FACE_URSULA;

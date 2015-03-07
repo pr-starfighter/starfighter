@@ -68,7 +68,7 @@ void player_setTarget(int index)
 {
 	engine.targetIndex = index;
 	engine.targetShield = 85;
-	engine.targetShield /= enemy[index].shield;
+	engine.targetShield /= aliens[index].shield;
 }
 
 void exitPlayer()
@@ -117,7 +117,8 @@ void doPlayer()
 
 			if ((engine.keyState[KEY_ALTFIRE]) && (player.weaponType[1] != W_NONE))
 			{
-				if ((player.weaponType[1] != W_CHARGER) && (player.weaponType[1] != W_LASER) && (player.ammo[1] > 0))
+				if ((player.weaponType[1] != W_CHARGER) &&
+					(player.weaponType[1] != W_LASER) && (player.ammo[1] > 0))
 				{
 					fireBullet(&player, 1);
 				}
@@ -231,7 +232,8 @@ void doPlayer()
 				engine.keyState[KEY_PAUSE] = 0;
 			}
 
-			if (((currentGame.area == 18) && (enemy[WC_BOSS].shield > 0)) || (currentGame.area == 24))
+			if (((currentGame.area == 18) && (aliens[WC_BOSS].shield > 0)) ||
+				(currentGame.area == 24))
 			{
 				player.face = 0;
 				xmoved = true;
@@ -321,14 +323,14 @@ void doPlayer()
 			player.shield--;
 			if (player.shield == -1)
 			{
-				if ((currentGame.hasWingMate1) || (enemy[WC_KLINE].active))
+				if ((currentGame.hasWingMate1) || (aliens[WC_KLINE].active))
 					getPlayerDeathMessage();
 
 				// Make it look like the ships are all still moving...
 				if (currentGame.area == 18)
 				{
 					for (int i = 0 ; i < MAX_ALIENS ; i++)
-						enemy[i].flags |= FL_LEAVESECTOR;
+						aliens[i].flags |= FL_LEAVESECTOR;
 				}
 
 				playSound(SFX_DEATH, player.x);
@@ -347,7 +349,8 @@ void doPlayer()
 	limitFloat(&engine.ssy, -cameraMaxSpeed, cameraMaxSpeed);
 
 	// Specific for the mission were you have to chase the Executive Transport
-	if ((currentGame.area == 18) && (enemy[WC_BOSS].shield > 0) && (player.shield > 0))
+	if ((currentGame.area == 18) && (aliens[WC_BOSS].shield > 0) &&
+		(player.shield > 0))
 	{
 		engine.ssx = -6;
 		engine.ssy = 0;

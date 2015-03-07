@@ -270,8 +270,8 @@ static void mission_killAllEnemies()
 {
 	for (int i = 0 ; i < MAX_ALIENS ; i++)
 	{
-		if ((enemy[i].flags & FL_WEAPCO) && (enemy[i].active) && (enemy[i].shield > 0))
-			enemy[i].shield = 0;
+		if ((aliens[i].flags & FL_WEAPCO) && (aliens[i].active) && (aliens[i].shield > 0))
+			aliens[i].shield = 0;
 	}
 }
 
@@ -424,7 +424,9 @@ void updateMissionRequirements(int type, int id, int value)
 	{
 		if ((currentMission.completed1[i] == OB_INCOMPLETE) || (currentMission.completed1[i] == OB_CONDITION))
 		{
-			if ((currentMission.primaryType[i] == type) && ((currentMission.target1[i] == id) || (currentMission.target1[i] == CD_ANY)))
+			if ((currentMission.primaryType[i] == type) &&
+				((currentMission.target1[i] == id) ||
+					(currentMission.target1[i] == CD_ANY)))
 			{
 				matched = 1;
 				currentMission.targetValue1[i] -= value;
@@ -441,7 +443,9 @@ void updateMissionRequirements(int type, int id, int value)
 	{
 		if ((currentMission.completed2[i] == OB_INCOMPLETE) || (currentMission.completed2[i] == OB_CONDITION))
 		{
-			if ((currentMission.secondaryType[i] == type) && ((currentMission.target2[i] == id) || (currentMission.target2[i] == CD_ANY)))
+			if ((currentMission.secondaryType[i] == type) &&
+				((currentMission.target2[i] == id) ||
+					(currentMission.target2[i] == CD_ANY)))
 			{
 				currentMission.targetValue2[i] -= value;
 				evaluateRequirement(type, id, &currentMission.completed2[i], &currentMission.targetValue2[i], FONT_YELLOW);
@@ -507,10 +511,10 @@ static char revealHiddenObjectives()
 		{
 			mission_killAllEnemies();
 			syncScriptEvents();
-			enemy[WC_KLINE].active = true;
-			enemy[WC_KLINE].x = player.x + 1000;
-			enemy[WC_KLINE].y = player.y;
-			enemy[WC_KLINE].flags |= FL_IMMORTAL | FL_NOFIRE;
+			aliens[WC_KLINE].active = true;
+			aliens[WC_KLINE].x = player.x + 1000;
+			aliens[WC_KLINE].y = player.y;
+			aliens[WC_KLINE].flags |= FL_IMMORTAL | FL_NOFIRE;
 			player_setTarget(WC_KLINE);
 			loadMusic("music/last_cyber_dance.ogg");
 			if ((engine.useAudio) && (engine.useMusic))
