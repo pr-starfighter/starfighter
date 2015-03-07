@@ -252,6 +252,9 @@ static object *getRandomEnemy(object *bullet)
 	if ((aliens[i].shield < 1) || (!aliens[i].active))
 		return NULL;
 
+	if (aliens[i].flags & FL_IMMORTAL)
+		return NULL;
+
 	if ((bullet->owner->flags & FL_WEAPCO) && (aliens[i].flags & FL_WEAPCO))
 		return NULL;
 
