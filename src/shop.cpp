@@ -22,6 +22,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 static ShopItem shopItems[MAX_SHOPITEMS];
 static signed char shopSelectedItem;
 
+static void sell(int i);
+
 static void drawSecondaryWeaponSurface()
 {
 	char description[50] = "";
@@ -427,6 +429,40 @@ void initShop()
 	drawShop();
 }
 
+static void shop_sellSecondaryWeapon()
+{
+	switch (player.weaponType[1])
+	{
+		case W_DOUBLE_ROCKETS:
+			sell(SHOP_DOUBLE_HOMING_MISSILES);
+			break;
+
+		case W_MICRO_ROCKETS:
+			sell(SHOP_MICRO_ROCKETS);
+			break;
+
+		case W_LASER:
+			sell(SHOP_LASER);
+			break;
+
+		case W_HOMING_MISSILE:
+			sell(SHOP_HOMING_MISSILE);
+			break;
+
+		case W_CHARGER:
+			sell(SHOP_CHARGER);
+			break;
+
+		case W_DOUBLE_HOMING_MISSILES:
+			sell(SHOP_DOUBLE_HOMING_MISSILES);
+			break;
+
+		case W_MICRO_HOMING_MISSILES:
+			sell(SHOP_MICRO_HOMING_MISSILES);
+			break;
+	}
+}
+
 static void buy(int i)
 {
 	if ((currentGame.cash < shopItems[i].price) && (!engine.cheatCash))
@@ -446,6 +482,7 @@ static void buy(int i)
 			}
 			currentGame.maxPlasmaOutput++;
 			break;
+
 		case SHOP_PLASMA_MAX_DAMAGE:
 			if (currentGame.maxPlasmaDamage >= currentGame.maxPlasmaDamageLimit)
 			{
@@ -454,6 +491,7 @@ static void buy(int i)
 			}
 			currentGame.maxPlasmaDamage++;
 			break;
+
 		case SHOP_PLASMA_MAX_RATE:
 			if (currentGame.maxPlasmaRate >= currentGame.maxPlasmaRateLimit)
 			{
@@ -462,6 +500,7 @@ static void buy(int i)
 			}
 			currentGame.maxPlasmaRate++;
 			break;
+
 		case SHOP_PLASMA_AMMO:
 			if (player.ammo[0] >= currentGame.maxPlasmaAmmo)
 			{
@@ -470,6 +509,7 @@ static void buy(int i)
 			}
 			limitCharAdd(&player.ammo[0], 10, 0, currentGame.maxPlasmaAmmo);
 			break;
+
 		case SHOP_ROCKET_AMMO:
 			if ((player.weaponType[1] == W_CHARGER) ||
 				(player.weaponType[1] == W_LASER))
@@ -502,6 +542,7 @@ static void buy(int i)
 			}
 			player.ammo[1]++;
 			break;
+
 		case SHOP_PLASMA_MIN_OUTPUT:
 			if (currentGame.minPlasmaOutput >= currentGame.minPlasmaOutputLimit)
 			{
@@ -512,6 +553,7 @@ static void buy(int i)
 			if (currentGame.maxPlasmaOutput < currentGame.minPlasmaOutput)
 				currentGame.maxPlasmaOutput = currentGame.minPlasmaOutput;
 			break;
+
 		case SHOP_PLASMA_MIN_DAMAGE:
 			if (currentGame.minPlasmaDamage >= currentGame.minPlasmaDamageLimit)
 			{
@@ -522,6 +564,7 @@ static void buy(int i)
 			if (currentGame.maxPlasmaDamage < currentGame.minPlasmaDamage)
 				currentGame.maxPlasmaDamage = currentGame.minPlasmaDamage;
 			break;
+
 		case SHOP_PLASMA_MIN_RATE:
 			if (currentGame.minPlasmaRate >= currentGame.minPlasmaRateLimit)
 			{
@@ -532,6 +575,7 @@ static void buy(int i)
 			if (currentGame.maxPlasmaRate < currentGame.minPlasmaRate)
 				currentGame.maxPlasmaRate = currentGame.minPlasmaRate;
 			break;
+
 		case SHOP_PLASMA_MAX_AMMO:
 			if (currentGame.maxPlasmaAmmo >= currentGame.maxPlasmaAmmoLimit)
 			{
@@ -540,6 +584,7 @@ static void buy(int i)
 			}
 			limitCharAdd(&currentGame.maxPlasmaAmmo, 10, 0, 250);
 			break;
+
 		case SHOP_ROCKET_MAX_AMMO:
 			if ((player.weaponType[1] == W_CHARGER) ||
 				(player.weaponType[1] == W_LASER))
@@ -572,79 +617,110 @@ static void buy(int i)
 			}
 			currentGame.maxRocketAmmo += 5;
 			break;
+
 		case SHOP_DOUBLE_ROCKETS:
 			if (player.weaponType[1] == W_DOUBLE_ROCKETS)
 			{
 				shopSelectedItem = -8;
 				return;
 			}
+			shop_sellSecondaryWeapon();
 			player.weaponType[1] = W_DOUBLE_ROCKETS;
 			limitChar(&currentGame.maxRocketAmmo, 5, 50);
 			shopSelectedItem = -1;
 			break;
+
 		case SHOP_MICRO_ROCKETS:
 			if (player.weaponType[1] == W_MICRO_ROCKETS)
 			{
 				shopSelectedItem = -8;
 				return;
 			}
+			shop_sellSecondaryWeapon();
 			player.weaponType[1] = W_MICRO_ROCKETS;
 			limitChar(&currentGame.maxRocketAmmo, 5, 50);
 			shopSelectedItem = -1;
 			break;
+
 		case SHOP_LASER:
 			if (player.weaponType[1] == W_LASER)
 			{
 				shopSelectedItem = -8;
 				return;
 			}
+			shop_sellSecondaryWeapon();
 			player.weaponType[1] = W_LASER;
-			currentGame.maxRocketAmmo = 0;
-			player.ammo[1] = 0;
+
+			while (currentGame.maxRocketAmmo > 5)
+				sell(SHOP_ROCKET_MAX_AMMO);
+			while (player.ammo[1] > 0)
+				sell(SHOP_ROCKET_AMMO);
+
 			shopSelectedItem = -1;
 			break;
+
 		case SHOP_HOMING_MISSILE:
 			if (player.weaponType[1] == W_HOMING_MISSILE)
 			{
 				shopSelectedItem = -8;
 				return;
 			}
+			shop_sellSecondaryWeapon();
 			player.weaponType[1] = W_HOMING_MISSILE;
-			limitChar(&currentGame.maxRocketAmmo, 5, 20);
-			limitChar(&player.ammo[1], 0, maxHoming);
+
+			while (currentGame.maxRocketAmmo > maxHoming)
+				sell(SHOP_ROCKET_MAX_AMMO);
+
+			limitChar(&currentGame.maxRocketAmmo, 5, maxHoming);
 			shopSelectedItem = -1;
 			break;
+
 		case SHOP_CHARGER:
 			if (player.weaponType[1] == W_CHARGER)
 			{
 				shopSelectedItem = -8;
 				return;
 			}
+			shop_sellSecondaryWeapon();
 			player.weaponType[1] = W_CHARGER;
-			currentGame.maxRocketAmmo = 0;
-			player.ammo[1] = 0;
+
+			while (currentGame.maxRocketAmmo > 5)
+				sell(SHOP_ROCKET_MAX_AMMO);
+			while (player.ammo[1] > 0)
+				sell(SHOP_ROCKET_AMMO);
+
 			shopSelectedItem = -1;
 			break;
+
 		case SHOP_DOUBLE_HOMING_MISSILES:
 			if (player.weaponType[1] == W_DOUBLE_HOMING_MISSILES)
 			{
 				shopSelectedItem = -8;
 				return;
 			}
+			shop_sellSecondaryWeapon();
 			player.weaponType[1] = W_DOUBLE_HOMING_MISSILES;
+
+			while (currentGame.maxRocketAmmo > maxDoubleHoming)
+				sell(SHOP_ROCKET_MAX_AMMO);
+
 			limitChar(&currentGame.maxRocketAmmo, 5, maxDoubleHoming);
-			limitChar(&player.ammo[1], 0, maxDoubleHoming);
 			shopSelectedItem = -1;
 			break;
+
 		case SHOP_MICRO_HOMING_MISSILES:
 			if (player.weaponType[1] == W_MICRO_HOMING_MISSILES)
 			{
 				shopSelectedItem = -8;
 				return;
 			}
+			shop_sellSecondaryWeapon();
 			player.weaponType[1] = W_MICRO_HOMING_MISSILES;
+
+			while (currentGame.maxRocketAmmo > maxMicroHoming)
+				sell(SHOP_ROCKET_MAX_AMMO);
+
 			limitChar(&currentGame.maxRocketAmmo, 5, maxMicroHoming);
-			limitChar(&player.ammo[1], 0, maxMicroHoming);
 			shopSelectedItem = -1;
 			break;
 	}
@@ -664,43 +740,46 @@ static void sell(int i)
 				shopSelectedItem = -5;
 				return;
 			}
+
+			while (currentGame.minPlasmaOutput >= currentGame.maxPlasmaOutput)
+				sell(SHOP_PLASMA_MIN_OUTPUT);
+
 			currentGame.maxPlasmaOutput--;
+			weapon[W_PLAYER_WEAPON].ammo[0] = min(weapon[W_PLAYER_WEAPON].ammo[0],
+				currentGame.maxPlasmaOutput);
 			break;
+
 		case SHOP_PLASMA_MAX_DAMAGE:
 			if (currentGame.maxPlasmaDamage <= 1)
 			{
 				shopSelectedItem = -5;
 				return;
 			}
+
+			while (currentGame.minPlasmaDamage >= currentGame.maxPlasmaDamage)
+				sell(SHOP_PLASMA_MIN_DAMAGE);
+
 			currentGame.maxPlasmaDamage--;
+			weapon[W_PLAYER_WEAPON].damage = min(weapon[W_PLAYER_WEAPON].damage,
+				currentGame.maxPlasmaDamage);
 			break;
+
 		case SHOP_PLASMA_MAX_RATE:
 			if (currentGame.maxPlasmaRate <= 1)
 			{
 				shopSelectedItem = -5;
 				return;
 			}
+
+			while (currentGame.minPlasmaRate >= currentGame.maxPlasmaRate)
+				sell(SHOP_PLASMA_MIN_OUTPUT);
+
 			currentGame.maxPlasmaRate--;
+			weapon[W_PLAYER_WEAPON].reload[0] = max(
+				weapon[W_PLAYER_WEAPON].reload[0],
+				rate2reload[currentGame.maxPlasmaRate]);
 			break;
-		case SHOP_PLASMA_AMMO:
-			if (player.ammo[0] <= 0)
-			{
-				shopSelectedItem = -6;
-				return;
-			}
-			if (player.ammo[0] > 9)
-				limitCharAdd(&player.ammo[0], -10, 0, currentGame.maxPlasmaAmmo);
-			else
-				player.ammo[0] = 0;
-			break;
-		case SHOP_ROCKET_AMMO:
-			if (player.ammo[1] <= 0)
-			{
-				shopSelectedItem = -6;
-				return;
-			}
-			player.ammo[1]--;
-			break;
+
 		case SHOP_PLASMA_MIN_OUTPUT:
 			if (currentGame.minPlasmaOutput <= 1)
 			{
@@ -709,6 +788,7 @@ static void sell(int i)
 			}
 			currentGame.minPlasmaOutput--;
 			break;
+
 		case SHOP_PLASMA_MIN_DAMAGE:
 			if (currentGame.minPlasmaDamage <= 1)
 			{
@@ -717,6 +797,7 @@ static void sell(int i)
 			}
 			currentGame.minPlasmaDamage--;
 			break;
+
 		case SHOP_PLASMA_MIN_RATE:
 			if (currentGame.minPlasmaRate <= 1)
 			{
@@ -725,6 +806,28 @@ static void sell(int i)
 			}
 			currentGame.minPlasmaRate--;
 			break;
+
+		case SHOP_PLASMA_AMMO:
+			if (player.ammo[0] <= 0)
+			{
+				shopSelectedItem = -6;
+				return;
+			}
+			if (player.ammo[0] > 10)
+				player.ammo[0] -= 10;
+			else
+				player.ammo[0] = 0;
+			break;
+
+		case SHOP_ROCKET_AMMO:
+			if (player.ammo[1] <= 0)
+			{
+				shopSelectedItem = -6;
+				return;
+			}
+			player.ammo[1]--;
+			break;
+
 		case SHOP_PLASMA_MAX_AMMO:
 			if (currentGame.maxPlasmaAmmo <= 100)
 			{
@@ -732,80 +835,94 @@ static void sell(int i)
 				return;
 			}
 			currentGame.maxPlasmaAmmo -= 10;
-			limitChar(&player.ammo[0], 0, currentGame.maxPlasmaAmmo);
+
+			while (player.ammo[0] > currentGame.maxPlasmaAmmo)
+				sell(SHOP_PLASMA_AMMO);
+
 			break;
+
 		case SHOP_ROCKET_MAX_AMMO:
-			if (currentGame.maxRocketAmmo <= 0)
+			if (currentGame.maxRocketAmmo <= 5)
 			{
 				shopSelectedItem = -1;
 				return;
 			}
 			currentGame.maxRocketAmmo -= 5;
-			limitChar(&player.ammo[1], 0, currentGame.maxRocketAmmo);
+
+			while (player.ammo[1] > currentGame.maxRocketAmmo)
+				sell(SHOP_ROCKET_AMMO);
+
 			break;
+
 		case SHOP_DOUBLE_ROCKETS:
 			if (player.weaponType[1] != W_DOUBLE_ROCKETS)
 			{
 				shopSelectedItem = -1;
 				return;
 			}
-			player.weaponType[1] = W_NONE;
+			player.weaponType[1] = W_ROCKETS;
 			shopSelectedItem = -1;
 			break;
+
 		case SHOP_MICRO_ROCKETS:
 			if (player.weaponType[1] != W_MICRO_ROCKETS)
 			{
 				shopSelectedItem = -1;
 				return;
 			}
-			player.weaponType[1] = W_NONE;
+			player.weaponType[1] = W_ROCKETS;
 			shopSelectedItem = -1;
 			break;
+
 		case SHOP_LASER:
 			if (player.weaponType[1] != W_LASER)
 			{
 				shopSelectedItem = -1;
 				return;
 			}
-			player.weaponType[1] = W_NONE;
+			player.weaponType[1] = W_ROCKETS;
 			player.ammo[1] = 0;
 			shopSelectedItem = -1;
 			break;
+
 		case SHOP_HOMING_MISSILE:
 			if (player.weaponType[1] != W_HOMING_MISSILE)
 			{
 				shopSelectedItem = -1;
 				return;
 			}
-			player.weaponType[1] = W_NONE;
+			player.weaponType[1] = W_ROCKETS;
 			shopSelectedItem = -1;
 			break;
+
 		case SHOP_CHARGER:
 			if (player.weaponType[1] != W_CHARGER)
 			{
 				shopSelectedItem = -1;
 				return;
 			}
-			player.weaponType[1] = W_NONE;
+			player.weaponType[1] = W_ROCKETS;
 			player.ammo[1] = 0;
 			shopSelectedItem = -1;
 			break;
+
 		case SHOP_DOUBLE_HOMING_MISSILES:
 			if (player.weaponType[1] != W_DOUBLE_HOMING_MISSILES)
 			{
 				shopSelectedItem = -1;
 				return;
 			}
-			player.weaponType[1] = W_NONE;
+			player.weaponType[1] = W_ROCKETS;
 			shopSelectedItem = -1;
 			break;
+
 		case SHOP_MICRO_HOMING_MISSILES:
 			if (player.weaponType[1] != W_MICRO_HOMING_MISSILES)
 			{
 				shopSelectedItem = -1;
 				return;
 			}
-			player.weaponType[1] = W_NONE;
+			player.weaponType[1] = W_ROCKETS;
 			shopSelectedItem = -1;
 			break;
 	}
