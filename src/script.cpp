@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "Starfighter.h"
 
 static cutMsg cutMessage[10];
-static event gameEvent[10];
+static event gameEvent[20];
 
 static void setKlineGreeting()
 {
@@ -40,7 +40,7 @@ static void setKlineGreeting()
 
 void loadScriptEvents()
 {
-	for (int i = 0 ; i < 10 ; i++)
+	for (int i = 0 ; i < 20 ; i++)
 	{
 		gameEvent[i].time = 0;
 		strcpy(gameEvent[i].message, "");
@@ -85,7 +85,7 @@ void loadScriptEvents()
 
 void checkScriptEvents()
 {
-	for (int i = 0 ; i < 10 ; i++)
+	for (int i = 0 ; i < 20 ; i++)
 	{
 		if (engine.timeTaken == gameEvent[i].time)
 		{
@@ -115,7 +115,7 @@ void checkScriptEvents()
 
 void syncScriptEvents()
 {
-	for (int i = 0 ; i < 10 ; i++)
+	for (int i = 0 ; i < 20 ; i++)
 	{
 		if (gameEvent[i].time < 0)
 		{

@@ -5,10 +5,10 @@ FACE_PHOEBE
 Ummm... something about this doesn't look right! They should be offering more resistance than this!
 
 -6
-FACE_CHRIS
+FACE_PHOEBE
 -1
 0
-DAMMIT! It's a trap!! Phoebe, get out of here! NOW!!
+DAMMIT! It's a trap!! Come on, Chris, we have to leave NOW!!
 
 -7
 -1
@@ -22,31 +22,43 @@ FACE_SID
 0
 Chris, wh...
 
--13
+-14
 FACE_KLINE
 -1
 0
 So finally I meet the man who has been causing us so much trouble!
 
--18
+-19
+FACE_CHRIS
+-1
+0
+Why can't I...
+
+-21
+FACE_KLINE
+-1
+0
+Don't bother trying to run away like your friend there. I've nullified your warp drive.
+
+-26
 FACE_CHRIS
 -1
 0
 Who are you?
 
--23
+-29
 FACE_KLINE
 -1
 0
 I am Kline Kethlan. And I am here to put to a stop to your worthless little crusade!
 
--28
+-35
 FACE_KLINE
 -1
 0
 No where to run; No where to hide; And no-one to help you! This will certainly be interesting...
 
--32
+-41
 -1
 15
 -20
