@@ -478,7 +478,7 @@ int main(int argc, char **argv)
 	alien_defs[CD_CLOAKFIGHTER].chance[1] = 5;
 	alien_defs[CD_CLOAKFIGHTER].collectChance = 100;
 	alien_defs[CD_CLOAKFIGHTER].collectType = P_CASH;
-	alien_defs[CD_CLOAKFIGHTER].collectValue = 1000;
+	alien_defs[CD_CLOAKFIGHTER].collectValue = 250;
 	alien_defs[CD_CLOAKFIGHTER].flags = FL_WEAPCO | FL_CANCLOAK | FL_RUNSAWAY;
 
 	// Evil Ursula
