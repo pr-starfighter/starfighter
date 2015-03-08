@@ -235,7 +235,7 @@ void doInfo()
 		{
 			if ((engine.seconds > 1) && (engine.seconds <= 11) && (engine.minutes == 0))
 			{
-				playSound(SFX_CLOCK);
+				audio_playSound(SFX_CLOCK, screen->w / 2);
 			}
 
 			if (engine.seconds > 0)

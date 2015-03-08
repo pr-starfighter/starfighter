@@ -22,9 +22,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 void addDebris(int x, int y, int amount)
 {
 	if ((rand() % 2) == 0)
-		playSound(SFX_DEBRIS, x);
+		audio_playSound(SFX_DEBRIS, x);
 	else
-		playSound(SFX_DEBRIS2, x);
+		audio_playSound(SFX_DEBRIS2, x);
 
 	object *debris;
 	

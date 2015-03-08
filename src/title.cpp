@@ -188,8 +188,6 @@ int doTitle()
 
 	signed char continueSaveSlot = initSaveSlots();
 
-	loadMusic("music/walking_among_androids.ogg");
-
 	loadBackground("gfx/spirit.jpg");
 
 	SDL_Surface *prlogo, *sflogo;
@@ -266,8 +264,7 @@ int doTitle()
 	flushInput();
 	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 
-	if ((engine.useMusic) && (engine.useAudio))
-		Mix_PlayMusic(engine.music, 1);
+	audio_playMusic("music/walking_among_androids.ogg", 1);
 
 	while (!engine.done)
 	{
@@ -467,14 +464,12 @@ int doTitle()
 
 							if (engine.useMusic)
 							{
-								if (Mix_PausedMusic() == 1)
-									Mix_ResumeMusic();
-								else
-									Mix_PlayMusic(engine.music, 1);
+								audio_playMusic(
+									"music/walking_among_androids.ogg", 1);
 							}
 							else
 							{
-								Mix_PauseMusic();
+								audio_haltMusic();
 							}
 						}
 						else if (selectedOption == 3)
@@ -521,7 +516,7 @@ int doTitle()
 		delayFrame();
 	}
 
-	Mix_HaltMusic();
+	audio_haltMusic();
 
 	SDL_FreeSurface(prlogo);
 	SDL_FreeSurface(sflogo);
@@ -626,8 +621,6 @@ void gameover()
 	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 	engine.gameSection = SECTION_INTERMISSION;
 
-	loadMusic("music/death.ogg");
-
 	SDL_Surface *gameover = loadImage("gfx/gameover.png");
 
 	clearScreen(black);
@@ -635,11 +628,7 @@ void gameover()
 	clearScreen(black);
 	SDL_Delay(1000);
 
-	if ((engine.useMusic) && (engine.useAudio))
-	{
-		Mix_VolumeMusic(100);
-		Mix_PlayMusic(engine.music, 1);
-	}
+	audio_playMusic("music/death.ogg", 1);
 
 	int x = (screen->w - gameover->w) / 2;
 	int y = (screen->h - gameover->h) / 2;
@@ -667,10 +656,7 @@ void gameover()
 	}
 
 	SDL_FreeSurface(gameover);
-
-	if ((engine.useMusic) && (engine.useAudio))
-		Mix_HaltMusic();
-
+	audio_haltMusic();
 	flushBuffer();
 }
 
@@ -679,9 +665,6 @@ void doCredits()
 	loadBackground("gfx/credits.jpg");
 	flushBuffer();
 	freeGraphics();
-
-	if ((engine.useMusic) && (engine.useAudio))
-		loadMusic("music/rise_of_spirit.ogg");
 
 	FILE *fp;
 	int lastCredit = -1;
@@ -699,11 +682,7 @@ void doCredits()
 
 	drawBackGround();
 
-	if ((engine.useMusic) && (engine.useAudio))
-	{
-		Mix_VolumeMusic(100);
-		Mix_PlayMusic(engine.music, 1);
-	}
+	audio_playMusic("music/rise_of_spirit.ogg", 1);
 
 	fp = fopen("data/credits.txt", "rb");
 	// FIXME: It would be nice for the size of this array to be determined

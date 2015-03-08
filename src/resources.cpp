@@ -144,38 +144,6 @@ void loadGameGraphics()
 	setWeaponShapes();
 }
 
-void loadSound()
-{
-	sound[SFX_EXPLOSION] = loadSound("sound/explode.ogg");
-	sound[SFX_HIT] = loadSound("sound/explode2.ogg");
-	sound[SFX_DEATH] = loadSound("sound/maledeath.ogg");
-	sound[SFX_MISSILE] = loadSound("sound/missile.ogg");
-	sound[SFX_PLASMA] = loadSound("sound/plasma.ogg");
-	sound[SFX_CLOCK] = loadSound("sound/clock.ogg");
-	sound[SFX_FLY] = loadSound("sound/flyby.ogg");
-	sound[SFX_ENERGYRAY] = loadSound("sound/beamLaser.ogg");
-	sound[SFX_PICKUP] = loadSound("sound/item.ogg");
-	sound[SFX_SHIELDUP] = loadSound("sound/shield.ogg");
-	sound[SFX_CLOAK] = loadSound("sound/cloak.ogg");
-	sound[SFX_DEBRIS] = loadSound("sound/explode3.ogg");
-	sound[SFX_DEBRIS2] = loadSound("sound/explode4.ogg");
-	sound[SFX_LASER] = loadSound("sound/laser.ogg");
-	sound[SFX_PLASMA2] = loadSound("sound/plasma2.ogg");
-	sound[SFX_PLASMA3] = loadSound("sound/plasma3.ogg");
-}
-
-void freeSound()
-{
-	for (int i = 0 ; i < MAX_SOUNDS ; i++)
-	{
-		if (sound[i] != NULL)
-			Mix_FreeChunk(sound[i]);
-	}
-
-	if (engine.music != NULL)
-		Mix_FreeMusic(engine.music);
-}
-
 
 /*
 Custom loading to alter the font color before doing

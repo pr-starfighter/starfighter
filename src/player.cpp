@@ -209,7 +209,7 @@ void doPlayer()
 				if ((engine.done == 0) && (engine.gameSection == SECTION_GAME) &&
 					(currentMission.remainingObjectives1 == 0))
 				{
-					playSound(SFX_FLY);
+					audio_playSound(SFX_FLY, screen->w / 2);
 					engine.done = 2;
 					engine.missionCompleteTimer = (SDL_GetTicks() - 1);
 				}
@@ -322,8 +322,8 @@ void doPlayer()
 						aliens[i].flags |= FL_LEAVESECTOR;
 				}
 
-				playSound(SFX_DEATH, player.x);
-				playSound(SFX_EXPLOSION, player.x);
+				audio_playSound(SFX_DEATH, player.x);
+				audio_playSound(SFX_EXPLOSION, player.x);
 			}
 
 			engine.keyState[KEY_UP] = engine.keyState[KEY_DOWN] = engine.keyState[KEY_LEFT] = engine.keyState[KEY_RIGHT] = 0;
@@ -565,7 +565,7 @@ void leaveSector()
 		if (player.x <= -100)
 		{
 			engine.done = 2;
-			playSound(SFX_FLY);
+			audio_playSound(SFX_FLY, screen->w / 2);
 		}
 	}
 

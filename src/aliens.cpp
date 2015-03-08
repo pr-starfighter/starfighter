@@ -694,7 +694,7 @@ void alien_move(object *alien)
 					alien->hit = 3;
 					alien->dx *= -1;
 					alien->dy *= -1;
-					playSound(SFX_HIT, alien->x);
+					audio_playSound(SFX_HIT, alien->x);
 				}
 			}
 
@@ -712,10 +712,10 @@ void alien_move(object *alien)
 				if (!engine.cheatShield)
 					player.shield -= alien->shield;
 				alien->shield = 0;
-				playSound(SFX_EXPLOSION, alien->x);
+				audio_playSound(SFX_EXPLOSION, alien->x);
 				setInfoLine("Warning: Asteroid Collision Damage!!", FONT_RED);
 				player.hit = 5;
-				playSound(SFX_HIT, player.x);
+				audio_playSound(SFX_HIT, player.x);
 			}
 
 			if (alien->classDef == CD_ASTEROID2)
@@ -723,10 +723,10 @@ void alien_move(object *alien)
 				if (!engine.cheatShield)
 					player.shield -= alien->shield;
 				alien->shield = 0;
-				playSound(SFX_EXPLOSION, alien->x);
+				audio_playSound(SFX_EXPLOSION, alien->x);
 				setInfoLine("Warning: Asteroid Collision Damage!!", FONT_RED);
 				player.hit = 5;
-				playSound(SFX_HIT, player.x);
+				audio_playSound(SFX_HIT, player.x);
 			}
 
 			if (alien->classDef == CD_BARRIER)
@@ -734,7 +734,7 @@ void alien_move(object *alien)
 				if (!engine.cheatShield)
 					player.shield--;
 				player.hit = 5;
-				playSound(SFX_HIT, player.x);
+				audio_playSound(SFX_HIT, player.x);
 			}
 		}
 	}

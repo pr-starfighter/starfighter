@@ -409,20 +409,13 @@ static void showOptions(SDL_Surface *optionsSurface)
 		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 222, 45, 22))
 		{
 			engine.useMusic = true;
-			if (engine.useAudio)
-			{
-				if (Mix_PausedMusic() == 1)
-					Mix_ResumeMusic();
-				else
-					Mix_PlayMusic(engine.music, -1);
-			}
+			audio_playMusic("music/through_space.ogg", -1);
 		}
 
 		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 222, 45, 22))
 		{
 			engine.useMusic = false;
-			if (engine.useAudio)
-				Mix_PauseMusic();
+			audio_haltMusic();
 		}
 
 		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 272, 45, 22))
@@ -468,8 +461,6 @@ int galaxyMap()
 	clearScreen(black);
 
 	initSaveSlots();
-
-	loadMusic("music/through_space.ogg");
 
 	loadBackground(systemBackground[currentGame.system]);
 
@@ -556,7 +547,7 @@ int galaxyMap()
 	int rtn = 0;
 
 	if ((engine.useAudio) && (engine.useMusic))
-		Mix_PlayMusic(engine.music, -1);
+		audio_playMusic("music/through_space.ogg", -1);
 
 	textObject iconInfo[12];
 
@@ -833,7 +824,7 @@ int galaxyMap()
 		delayFrame();
 	}
 
-	Mix_HaltMusic();
+	audio_haltMusic();
 	SDL_FreeSurface(statsSurface);
 	SDL_FreeSurface(savesSurface);
 	SDL_FreeSurface(optionsSurface);

@@ -224,7 +224,7 @@ void initSystem()
 	{
 		if (Mix_OpenAudio(44100, AUDIO_S16, engine.useAudio * 2, 1024) < 0)
 		{
-			printf("Warning: Couldn't set 44100 Hz 16-bit stereo audio - Reason: %s\n", Mix_GetError());
+			printf("Warning: Couldn't set 44100 Hz 16-bit stereo audio - Reason:\n%s\n", Mix_GetError());
 			printf("Sound and Music will be disabled\n");
 			engine.useAudio = false;
 		}
@@ -246,7 +246,7 @@ void cleanUp()
 {
 	freeGraphics();
 	SDL_FreeSurface(background);
-	freeSound();
+	audio_free();
 	resetLists();
 	delete(engine.bulletHead);
 	delete(engine.explosionHead);

@@ -156,16 +156,16 @@ void fireBullet(object *attacker, int weaponType)
 		case WT_PLASMA:
 		case WT_SPREAD:
 		case WT_DIRECTIONAL:
-			playSound(SFX_PLASMA, attacker->x);
+			audio_playSound(SFX_PLASMA, attacker->x);
 			break;
 		case WT_ROCKET:
-			playSound(SFX_MISSILE, attacker->x);
+			audio_playSound(SFX_MISSILE, attacker->x);
 			break;
 		case WT_LASER:
-			playSound(SFX_LASER, attacker->x);
+			audio_playSound(SFX_LASER, attacker->x);
 			break;
 		case WT_CHARGER:
-			playSound(SFX_PLASMA3, attacker->x);
+			audio_playSound(SFX_PLASMA3, attacker->x);
 			break;
 	}
 
@@ -275,7 +275,7 @@ Fill in later...
 */
 static void alien_destroy(object *alien, object *attacker)
 {
-	playSound(SFX_EXPLOSION, alien->x);
+	audio_playSound(SFX_EXPLOSION, alien->x);
 
 	// Chain reaction destruction if needed
 	if (alien->flags & FL_DAMAGEOWNER)
@@ -436,11 +436,11 @@ void fireRay(object *attacker)
 				player.shield--;
 
 				addExplosion(player.x, player.y, E_SMALL_EXPLOSION);
-				playSound(SFX_HIT, player.x);
+				audio_playSound(SFX_HIT, player.x);
 				if (player.shield < 1)
 				{
-					playSound(SFX_DEATH, player.x);
-					playSound(SFX_EXPLOSION, player.x);
+					audio_playSound(SFX_DEATH, player.x);
+					audio_playSound(SFX_EXPLOSION, player.x);
 				}
 			}
 		}
@@ -459,7 +459,7 @@ void fireRay(object *attacker)
 			{
 				anEnemy->shield--;
 				addExplosion(anEnemy->x, anEnemy->y, E_SMALL_EXPLOSION);
-				playSound(SFX_HIT, anEnemy->x);
+				audio_playSound(SFX_HIT, anEnemy->x);
 				if (anEnemy->shield < 1)
 				{
 					alien_destroy(anEnemy, attacker->owner);
@@ -647,7 +647,7 @@ void doBullets()
 								bullet->active = false;
 						}
 
-						playSound(SFX_HIT, alien->x);
+						audio_playSound(SFX_HIT, alien->x);
 						if (alien->AIType == AI_EVASIVE)
 							alien->thinktime = 0;
 
@@ -709,7 +709,7 @@ void doBullets()
 							bullet->active = false;
 					}
 
-					playSound(SFX_HIT, player.x);
+					audio_playSound(SFX_HIT, player.x);
 
 					if (bullet->id == WT_ROCKET)
 						addExplosion(bullet->x, bullet->y, E_BIG_EXPLOSION);
@@ -731,11 +731,11 @@ void doBullets()
 					{
 						bullet->active = false;
 						addExplosion(bullet->x, bullet->y, E_SMALL_EXPLOSION);
-						playSound(SFX_HIT, theCargo->x);
+						audio_playSound(SFX_HIT, theCargo->x);
 						if (theCargo->collectType != P_PHOEBE)
 						{
 							theCargo->active = false;
-							playSound(SFX_EXPLOSION, theCargo->x);
+							audio_playSound(SFX_EXPLOSION, theCargo->x);
 							for (int i = 0 ; i < 10 ; i++)
 								addExplosion(theCargo->x + rrand(-15, 15), theCargo->y + rrand(-15, 15), E_BIG_EXPLOSION);
 							updateMissionRequirements(M_PROTECT_PICKUP, P_CARGO, 1);
@@ -754,7 +754,7 @@ void doBullets()
 		{
 			if ((bullet->flags & WF_TIMEDEXPLOSION) || (bullet->id == WT_CHARGER))
 			{
-				playSound(SFX_EXPLOSION, bullet->x);
+				audio_playSound(SFX_EXPLOSION, bullet->x);
 				for (int i = 0 ; i < 10 ; i++)
 					addExplosion(bullet->x + rrand(-35, 35), bullet->y + rrand(-35, 35), E_BIG_EXPLOSION);
 

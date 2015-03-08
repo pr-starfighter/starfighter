@@ -107,7 +107,7 @@ int main(int argc, char **argv)
 	}
 
 	freeGraphics();
-	loadSound();
+	audio_loadSounds();
 
 	initWeapons();
 

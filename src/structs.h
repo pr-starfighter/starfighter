@@ -244,8 +244,6 @@ struct globalEngineVariables {
 	float smx;
 	float smy;
 
-	Mix_Music *music;
-
 	object *bulletHead;
 	object *bulletTail;
 	object *explosionHead;

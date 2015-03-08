@@ -19,9 +19,30 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-Mix_Chunk *sound[MAX_SOUNDS];
+static Mix_Chunk *sound[SFX_MAX];
+static Mix_Music *music = NULL;
 
-void playSound(int sid, float x)
+void audio_loadSounds()
+{
+	sound[SFX_EXPLOSION] = Mix_LoadWAV("sound/explode.ogg");
+	sound[SFX_HIT] = Mix_LoadWAV("sound/explode2.ogg");
+	sound[SFX_DEATH] = Mix_LoadWAV("sound/maledeath.ogg");
+	sound[SFX_MISSILE] = Mix_LoadWAV("sound/missile.ogg");
+	sound[SFX_PLASMA] = Mix_LoadWAV("sound/plasma.ogg");
+	sound[SFX_CLOCK] = Mix_LoadWAV("sound/clock.ogg");
+	sound[SFX_FLY] = Mix_LoadWAV("sound/flyby.ogg");
+	sound[SFX_ENERGYRAY] = Mix_LoadWAV("sound/beamLaser.ogg");
+	sound[SFX_PICKUP] = Mix_LoadWAV("sound/item.ogg");
+	sound[SFX_SHIELDUP] = Mix_LoadWAV("sound/shield.ogg");
+	sound[SFX_CLOAK] = Mix_LoadWAV("sound/cloak.ogg");
+	sound[SFX_DEBRIS] = Mix_LoadWAV("sound/explode3.ogg");
+	sound[SFX_DEBRIS2] = Mix_LoadWAV("sound/explode4.ogg");
+	sound[SFX_LASER] = Mix_LoadWAV("sound/laser.ogg");
+	sound[SFX_PLASMA2] = Mix_LoadWAV("sound/plasma2.ogg");
+	sound[SFX_PLASMA3] = Mix_LoadWAV("sound/plasma3.ogg");
+}
+
+void audio_playSound(int sid, float x)
 {
 	if ((!engine.useSound) || (!engine.useAudio))
 		return;
@@ -65,40 +86,49 @@ void playSound(int sid, float x)
 			freechannel = 4;
 	}
 
-	int angle = atanf((x - 400) / 400) * 180 / M_PI;
-	int attenuation = fabsf(x - 400) / 40;
+	int angle = atanf((x - (screen->w / 2)) / (screen->w / 2)) * 180 / M_PI;
+	int attenuation = fabsf(x - (screen->w / 2)) / 40;
 
-	if(angle < 0)
+	if (angle < 0)
 		angle += 360;
 
-	if(attenuation > 255)
+	if (attenuation > 255)
 		attenuation = 255;
 
 	Mix_SetPosition(channel, angle, attenuation);
 	Mix_PlayChannel(channel, sound[sid], 0);
 }
 
-Mix_Chunk *loadSound(const char *filename)
-{
-	Mix_Chunk *chunk;
-
-	chunk = Mix_LoadWAV(filename);
-
-	return chunk;
-}
-
-void loadMusic(const char *filename)
+void audio_haltMusic()
 {
 	if (Mix_PlayingMusic())
 		Mix_HaltMusic();
 
-	if (engine.music != NULL)
-		Mix_FreeMusic(engine.music);
-
-	engine.music = Mix_LoadMUS(filename);
+	if (music != NULL)
+	{
+		Mix_FreeMusic(music);
+		music = NULL;
+	}
 }
 
-void playRandomTrack()
+void audio_setMusicVolume(int volume)
+{
+	if (engine.useMusic && engine.useAudio)
+		Mix_VolumeMusic(volume);
+}
+
+void audio_playMusic(const char *filename, int loops)
+{
+	if (engine.useMusic && engine.useAudio)
+	{
+		audio_haltMusic();
+		music = Mix_LoadMUS(filename);
+		audio_setMusicVolume(100);
+		Mix_PlayMusic(music, loops);
+	}
+}
+
+void audio_playRandomTrack()
 {
 	if ((!engine.useMusic) || (!engine.useAudio))
 		return;
@@ -112,20 +142,36 @@ void playRandomTrack()
 	switch(currentGame.area)
 	{
 		case 0:
-			loadMusic("music/railjet_short.ogg");
+			audio_playMusic("music/railjet_short.ogg", -1);
 			break;
 		case 5:
 		case 11:
 		case 18:
 		case 25:
-			loadMusic("music/orbital_colossus.ogg");
+			audio_playMusic("music/orbital_colossus.ogg", -1);
 			break;
 		case 26:
-			loadMusic("music/RE.ogg");
+			audio_playMusic("music/RE.ogg", -1);
 			break;
 		default:
-			loadMusic(track[rand() % tracks]);
+			audio_playMusic(track[rand() % tracks], -1);
+	}
+}
+
+void audio_free()
+{
+	for (int i = 0 ; i < SFX_MAX ; i++)
+	{
+		if (sound[i] != NULL)
+		{
+			Mix_FreeChunk(sound[i]);
+			sound[i] = NULL;
+		}
 	}
 
-	Mix_PlayMusic(engine.music, -1);
+	if (music != NULL)
+	{
+		Mix_FreeMusic(music);
+		music = NULL;
+	}
 }

@@ -20,11 +20,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef AUDIO_H
 #define AUDIO_H
 
-extern Mix_Chunk *sound[MAX_SOUNDS];
-
-extern void playSound(int sid, float x = 400);
-extern Mix_Chunk *loadSound(const char *filename);
-extern void loadMusic(const char *filename);
-extern void playRandomTrack();
+void audio_loadSounds();
+void audio_playSound(int sid, float x);
+void audio_haltMusic();
+void audio_setMusicVolume(int volume);
+void audio_playMusic(const char *filename, int loops);
+void audio_playRandomTrack();
+void audio_free();
 
 #endif

@@ -226,7 +226,7 @@ static void explodeMine(collectables *collectable)
 {
 	if ((collectable->x >= 0) && (collectable->x <= screen->w) &&
 			(collectable->y >= 0) && (collectable->y <= screen->h))
-		playSound(SFX_EXPLOSION, collectable->x);
+		audio_playSound(SFX_EXPLOSION, collectable->x);
 
 	for (int i = 0 ; i < 10 ; i++)
 		addExplosion(collectable->x + rand() % 25 - rand() % 25,
@@ -448,9 +448,9 @@ void doCollectables()
 				{
 					setInfoLine(temp, FONT_WHITE);
 					if (collectable->type == P_SHIELD)
-						playSound(SFX_SHIELDUP, player.x);
+						audio_playSound(SFX_SHIELDUP, player.x);
 					else
-						playSound(SFX_PICKUP, player.x);
+						audio_playSound(SFX_PICKUP, player.x);
 				}
 			}
 

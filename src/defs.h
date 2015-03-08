@@ -86,7 +86,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MAX_WEAPONS 20
 #define MAX_SHAPES 100
 #define MAX_SHIPSHAPES 120
-#define MAX_SOUNDS 17
 #define MAX_ALIENS 25
 #define MAX_TEXTSHAPES 150
 #define MAX_FONTSHAPES 6
@@ -339,7 +338,8 @@ enum {
 	SFX_DEBRIS2,
 	SFX_LASER,
 	SFX_PLASMA2,
-	SFX_PLASMA3
+	SFX_PLASMA3,
+	SFX_MAX
 };
 
 enum {

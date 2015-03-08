@@ -516,9 +516,7 @@ static char revealHiddenObjectives()
 			aliens[WC_KLINE].y = player.y;
 			aliens[WC_KLINE].flags |= FL_IMMORTAL | FL_NOFIRE;
 			player_setTarget(WC_KLINE);
-			loadMusic("music/last_cyber_dance.ogg");
-			if ((engine.useAudio) && (engine.useMusic))
-				Mix_PlayMusic(engine.music, -1);
+			audio_playMusic("music/last_cyber_dance.ogg", -1);
 		}
 	}
 
@@ -789,7 +787,7 @@ void missionBriefScreen()
 	textSurface(11, "Power", 25, 570, FONT_WHITE);
 	textSurface(12, "Output", 250, 570, FONT_WHITE);
 	textSurface(13, "Cooler", 485, 570, FONT_WHITE);
-	playRandomTrack();
+	audio_playRandomTrack();
 
 	if (currentGame.area != MAX_MISSIONS - 1)
 	{
@@ -915,7 +913,7 @@ void missionFinishedScreen()
 	if (player.weaponType[1] == W_LASER)
 		player.ammo[1] = 1;
 
-	Mix_HaltMusic();
+	audio_haltMusic();
 }
 
 /*

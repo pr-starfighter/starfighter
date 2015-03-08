@@ -22,8 +22,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 extern void loadBackground(const char *filename);
 extern void loadGameGraphics();
-extern void loadSound();
-extern void freeSound();
 extern void loadFont();
 
 #endif

@@ -541,7 +541,7 @@ int mainGameLoop()
 					else if ((currentGame.area == 26) && (engine.musicVolume > 0))
 					{
 						limitFloat(&(engine.musicVolume -= 0.2), 0, 100);
-						Mix_VolumeMusic((int)engine.musicVolume);
+						audio_setMusicVolume((int)engine.musicVolume);
 					}
 					else
 					{
@@ -556,7 +556,7 @@ int mainGameLoop()
 			else
 			{
 				limitFloat(&(engine.musicVolume -= 0.2), 0, 100);
-				Mix_VolumeMusic((int)engine.musicVolume);
+				audio_setMusicVolume((int)engine.musicVolume);
 				if (SDL_GetTicks() >= engine.missionCompleteTimer)
 				{
 					engine.done = 1;
@@ -721,7 +721,7 @@ int mainGameLoop()
 							alien->flags -= FL_ISCLOAKED;
 						else
 							alien->flags += FL_ISCLOAKED;
-						playSound(SFX_CLOAK, alien->x);
+						audio_playSound(SFX_CLOAK, alien->x);
 					}
 
 					if (alien->classDef == CD_BARRIER)
@@ -780,7 +780,7 @@ int mainGameLoop()
 								(alien->ammo[0] == 250))
 							{
 								alien->flags += FL_FIRERAY;
-								playSound(SFX_ENERGYRAY, alien->x);
+								audio_playSound(SFX_ENERGYRAY, alien->x);
 							}
 						}
 					}
@@ -932,14 +932,14 @@ int mainGameLoop()
 		// specific to Boss 1
 		if ((currentGame.area == 5) && (aliens[WC_BOSS].flags & FL_ESCAPED))
 		{
-			playSound(SFX_DEATH, aliens[WC_BOSS].x);
+			audio_playSound(SFX_DEATH, aliens[WC_BOSS].x);
 			clearScreen(white);
 			updateScreen();
 			for (int i = 0 ; i < 300 ; i++)
 			{
 				SDL_Delay(10);
 				if ((rand() % 25) == 0)
-					playSound(SFX_EXPLOSION, aliens[WC_BOSS].x);
+					audio_playSound(SFX_EXPLOSION, aliens[WC_BOSS].x);
 			}
 			SDL_Delay(1000);
 			break;
