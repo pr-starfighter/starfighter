@@ -389,10 +389,8 @@ int mainGameLoop()
 
 	if (currentGame.area == 26)
 	{
-		aliens[WC_KLINE].flags |= FL_IMMORTAL | FL_NOFIRE | FL_NOMOVE;
-
-		aliens[WC_KLINE].x = screen->w * 3 / 4;
-		aliens[WC_KLINE].y = screen->h * 3 / 4;
+		aliens[WC_KLINE].x = player.x + 1000;
+		aliens[WC_KLINE].y = player.y;
 
 		aliens[WC_KLINE].deathCounter = -250;
 		aliens[WC_KLINE].maxShield = 1500;
