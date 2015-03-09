@@ -178,7 +178,7 @@ enum {
 	W_DIRSHOCKMISSILE
 };
 
-// Missions
+// Mission types
 enum {
 
 	M_DESTROY_ALL_TARGETS = 1,

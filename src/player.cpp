@@ -133,8 +133,8 @@ void doPlayer()
 				{
 					if (!charger_fired)
 					{
-						limitCharAdd(&player.ammo[1], 1, 0, 200);
-						if (player.ammo[1] >= 200)
+						limitCharAdd(&player.ammo[1], 1, 0, 150);
+						if (player.ammo[1] >= 150)
 						{
 							fireBullet(&player, 1);
 							player.ammo[1] = 0;

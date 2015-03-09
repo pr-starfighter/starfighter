@@ -364,8 +364,7 @@ static void alien_destroy(object *alien, object *attacker)
 	{
 		setRadioMessage(FACE_KLINE, "It was an honor... to have fought you...", 1);
 		alien->dx = alien->dy = 0;
-		alien->maxShield = 2000;
-		alien->shield = -200;
+		alien->shield = -150;
 	}
 }
 
@@ -531,7 +530,9 @@ void doBullets()
 			if (bullet->id == WT_CHARGER)
 			{
 				for (int i = 0 ; i < bullet->damage * 2 ; i++)
-					blit(bullet->image[0], (int)(bullet->x - rrand(-(bullet->damage * 2 / 3), 0)), (int)(bullet->y + rrand(-3, 3)));
+					blit(bullet->image[0],
+						(int)(bullet->x - rrand(-(bullet->damage * 2 / 3), 0)),
+						(int)(bullet->y + rrand(-3, 3)));
 			}
 
 			blit(bullet->image[0], (int)bullet->x, (int)bullet->y);
@@ -699,25 +700,25 @@ void doBullets()
 			}
 
 			// Check for bullets hitting player
-			if ((bullet->flags & WF_WEAPCO) || (bullet->id == WT_ROCKET) || (bullet->id == WT_LASER) || (bullet->id == WT_CHARGER))
+			if ((bullet->flags & WF_WEAPCO) || (bullet->id == WT_ROCKET) ||
+				(bullet->id == WT_LASER) || (bullet->id == WT_CHARGER))
 			{
-				if ((bullet->active) && (player.shield > 0) && (collision(bullet, &player)) && (bullet->owner != &player))
+				if ((bullet->active) && (player.shield > 0) &&
+					(collision(bullet, &player)) && (bullet->owner != &player))
 				{
 					if ((!engine.cheatShield) || (engine.missionCompleteTimer != 0))
 					{
-						if (player.shield > engine.lowShield)
-						{
-							if (player.shield - bullet->damage <= engine.lowShield)
-							{
-								setInfoLine("!!! WARNING: SHIELD LOW !!!", FONT_RED);
-							}
-						}
+						if ((player.shield > engine.lowShield) &&
+								(player.shield - bullet->damage <= engine.lowShield))
+							setInfoLine("!!! WARNING: SHIELD LOW !!!", FONT_RED);
+
 						player.shield -= bullet->damage;
 						limitInt(&player.shield, 0, player.maxShield);
 						player.hit = 5;
 					}
 
-					if ((bullet->owner->classDef == CD_PHOEBE) || (bullet->owner->classDef == CD_URSULA))
+					if ((bullet->owner->classDef == CD_PHOEBE) ||
+							(bullet->owner->classDef == CD_URSULA))
 						getPlayerHitMessage(bullet->owner);
 
 					if (bullet->id != WT_CHARGER)
@@ -779,7 +780,8 @@ void doBullets()
 			{
 				audio_playSound(SFX_EXPLOSION, bullet->x);
 				for (int i = 0 ; i < 10 ; i++)
-					addExplosion(bullet->x + rrand(-35, 35), bullet->y + rrand(-35, 35), E_BIG_EXPLOSION);
+					addExplosion(bullet->x + rrand(-35, 35),
+						bullet->y + rrand(-35, 35), E_BIG_EXPLOSION);
 
 				if (bullet->flags & WF_TIMEDEXPLOSION)
 					if (checkPlayerShockDamage(bullet->x, bullet->y))
