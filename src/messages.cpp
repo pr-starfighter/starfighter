@@ -64,7 +64,7 @@ void getKillMessage(object *ally)
 	bool firstPlace = false;
 	int faceToUse = FACE_PHOEBE;
 
-	if (ally == &aliens[FR_PHOEBE])
+	if (ally == &aliens[ALIEN_PHOEBE])
 	{
 		strcpy(otherName, "Ursula");
 		kills = currentGame.wingMate1Kills;
@@ -147,13 +147,13 @@ const char *getKlineInsult()
 
 void getPlayerDeathMessage()
 {
-	if (aliens[WC_KLINE].active)
+	if (aliens[ALIEN_KLINE].active)
 	{
 		setRadioMessage(FACE_KLINE, getKlineInsult(), 1);
 		return;
 	}
 	
-	if ((aliens[WC_BOSS].active) && (aliens[WC_BOSS].classDef == CD_KRASS))
+	if ((aliens[ALIEN_BOSS].active) && (aliens[ALIEN_BOSS].classDef == CD_KRASS))
 	{
 		setRadioMessage(FACE_KRASS, "That was the easiest $90,000,000 I've ever earned! Bwwah!! Ha!! Ha!! Ha!!", 1);
 		return;
@@ -180,7 +180,7 @@ void getMissFireMessage(object *ally)
 {
 	int faceToUse = FACE_PHOEBE;
 
-	if (ally == &aliens[FR_PHOEBE])
+	if (ally == &aliens[ALIEN_PHOEBE])
 		faceToUse = FACE_PHOEBE;
 	else
 		faceToUse = FACE_URSULA;
@@ -192,7 +192,7 @@ void getPlayerHitMessage(object *ally)
 {
 	int faceToUse = FACE_PHOEBE;
 
-	if (ally == &aliens[FR_PHOEBE])
+	if (ally == &aliens[ALIEN_PHOEBE])
 		faceToUse = FACE_PHOEBE;
 	else
 		faceToUse = FACE_URSULA;

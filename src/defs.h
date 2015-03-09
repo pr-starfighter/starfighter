@@ -86,7 +86,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MAX_WEAPONS 20
 #define MAX_SHAPES 100
 #define MAX_SHIPSHAPES 120
-#define MAX_ALIENS 25
 #define MAX_TEXTSHAPES 150
 #define MAX_FONTSHAPES 6
 #define MAX_SHOPSHAPES 6
@@ -108,11 +107,17 @@ enum {
 // These are for Alien *indexes* NOT classdefs!!
 enum {
 
-	WC_BOSS = 14,
-	WC_KLINE,
-	FR_PHOEBE,
-	FR_URSULA,
-	FR_SID
+	ALIEN_BOSS_PART4 = 10,
+	ALIEN_BOSS_PART3 = 11,
+	ALIEN_BOSS_PART2 = 12,
+	ALIEN_BOSS_PART1 = 13,
+	ALIEN_BOSS = 14,
+	ALIEN_KLINE,
+	ALIEN_PHOEBE,
+	ALIEN_URSULA,
+	ALIEN_SID,
+	ALIEN_GOODTRANSPORT = 19,
+	ALIEN_MAX = 25
 };
 
 // Droppables

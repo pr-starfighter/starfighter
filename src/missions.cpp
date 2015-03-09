@@ -268,9 +268,10 @@ automatically die
 */
 static void mission_killAllEnemies()
 {
-	for (int i = 0 ; i < MAX_ALIENS ; i++)
+	for (int i = 0 ; i < ALIEN_MAX ; i++)
 	{
-		if ((aliens[i].flags & FL_WEAPCO) && (aliens[i].active) && (aliens[i].shield > 0))
+		if ((aliens[i].flags & FL_WEAPCO) && (aliens[i].active) &&
+				(aliens[i].shield > 0))
 			aliens[i].shield = 0;
 	}
 }
@@ -511,11 +512,11 @@ static char revealHiddenObjectives()
 		{
 			mission_killAllEnemies();
 			syncScriptEvents();
-			aliens[WC_KLINE].active = true;
-			aliens[WC_KLINE].x = player.x + 1000;
-			aliens[WC_KLINE].y = player.y;
-			aliens[WC_KLINE].flags |= FL_IMMORTAL | FL_NOFIRE;
-			player_setTarget(WC_KLINE);
+			aliens[ALIEN_KLINE].active = true;
+			aliens[ALIEN_KLINE].x = player.x + 1000;
+			aliens[ALIEN_KLINE].y = player.y;
+			aliens[ALIEN_KLINE].flags |= FL_IMMORTAL | FL_NOFIRE;
+			player_setTarget(ALIEN_KLINE);
 			audio_playMusic("music/last_cyber_dance.ogg", -1);
 		}
 	}

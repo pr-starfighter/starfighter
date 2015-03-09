@@ -24,11 +24,13 @@ Create a new collectable item based on supplied arguments.
 */
 void addCollectable(float x, float y, int type, int value, int life)
 {
+	int r;
+
 	if (type == P_ANYTHING)
 	{
 		type = P_CASH;
 
-		int r = rand() % 9;
+		r = rand() % 9;
 
 		switch (r)
 		{
@@ -48,7 +50,16 @@ void addCollectable(float x, float y, int type, int value, int life)
 	{
 		type = P_PLASMA_RATE;
 
-		int r = rand() % 61;
+		if ((currentGame.difficulty >= DIFFICULTY_NIGHTMARE) ||
+			((currentGame.difficulty > DIFFICULTY_EASY) &&
+				((currentGame.area == 5) || (currentGame.area == 11) ||
+					(currentGame.area == 18) || (currentGame.area == 25))))
+		{
+			// Deny the Super Charge in Nightmare difficulty, and on bosses.
+			r = rand() % 59;
+		}
+		else
+			r = rand() % 61;
 
 		if (r <= 19)
 			type = P_PLASMA_DAMAGE;
@@ -123,18 +134,6 @@ void addCollectable(float x, float y, int type, int value, int life)
 		if ((player.weaponType[1] == W_CHARGER) || (player.weaponType[1] == W_LASER))
 		{
 			type = P_CASH;
-		}
-	}
-
-	// Deny the Super Charge in Nightmare difficulty, and on bosses.
-	if (type == P_SUPER)
-	{
-		if ((currentGame.difficulty >= DIFFICULTY_NIGHTMARE) ||
-			((currentGame.difficulty > DIFFICULTY_EASY) &&
-				((currentGame.area == 5) || (currentGame.area == 11) ||
-					(currentGame.area == 18) || (currentGame.area == 25))))
-		{
-			type = P_PLASMA_DAMAGE;
 		}
 	}
 

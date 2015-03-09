@@ -176,7 +176,7 @@ void doInfo()
 	textSurface(38, text, 90, 21, FONT_WHITE);
 	blitText(38);
 
-	for (int i = 0; i < MAX_ALIENS; i++)
+	for (int i = 0; i < ALIEN_MAX; i++)
 		doArrow(i);
 
 	fontColor = FONT_WHITE;

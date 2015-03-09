@@ -221,7 +221,7 @@ void doPlayer()
 				engine.keyState[KEY_PAUSE] = 0;
 			}
 
-			if (((currentGame.area == 18) && (aliens[WC_BOSS].shield > 0)) ||
+			if (((currentGame.area == 18) && (aliens[ALIEN_BOSS].shield > 0)) ||
 				(currentGame.area == 24))
 			{
 				player.face = 0;
@@ -312,13 +312,13 @@ void doPlayer()
 			player.shield--;
 			if (player.shield == -1)
 			{
-				if ((currentGame.hasWingMate1) || (aliens[WC_KLINE].active))
+				if ((currentGame.hasWingMate1) || (aliens[ALIEN_KLINE].active))
 					getPlayerDeathMessage();
 
 				// Make it look like the ships are all still moving...
 				if (currentGame.area == 18)
 				{
-					for (int i = 0 ; i < MAX_ALIENS ; i++)
+					for (int i = 0 ; i < ALIEN_MAX ; i++)
 						aliens[i].flags |= FL_LEAVESECTOR;
 				}
 
@@ -338,7 +338,7 @@ void doPlayer()
 	limitFloat(&engine.ssy, -cameraMaxSpeed, cameraMaxSpeed);
 
 	// Specific for the mission were you have to chase the Executive Transport
-	if ((currentGame.area == 18) && (aliens[WC_BOSS].shield > 0) &&
+	if ((currentGame.area == 18) && (aliens[ALIEN_BOSS].shield > 0) &&
 		(player.shield > 0))
 	{
 		engine.ssx = -6;

@@ -205,7 +205,8 @@ void fireBullet(object *attacker, int weaponType)
 	// Reset the weapon reload time. Double it if it is not friendly or
 	// a boss or Kline
 	attacker->reload[weaponType] = theWeapon->reload[0];
-	if ((attacker->flags & FL_WEAPCO) && (attacker != &aliens[WC_BOSS]) && (attacker != &aliens[WC_KLINE]) && (theWeapon->id != W_LASER))
+	if ((attacker->flags & FL_WEAPCO) && (attacker != &aliens[ALIEN_BOSS]) &&
+			(attacker != &aliens[ALIEN_KLINE]) && (theWeapon->id != W_LASER))
 		attacker->reload[weaponType] *= 2;
 
 	if ((engine.cheatAmmo) || (theWeapon->id == WT_LASER))
@@ -247,7 +248,7 @@ static object *getRandomEnemy(object *bullet)
 			return &player;
 	}
 
-	i = rand() % MAX_ALIENS;
+	i = rand() % ALIEN_MAX;
 
 	if ((aliens[i].shield < 1) || (!aliens[i].active))
 		return NULL;
@@ -448,7 +449,7 @@ void fireRay(object *attacker)
 
 	object *anEnemy = aliens;
 
-	for (int i = 0 ; i < MAX_ALIENS ; i++)
+	for (int i = 0 ; i < ALIEN_MAX ; i++)
 	{
 		if (anEnemy->flags & FL_IMMORTAL)
 			continue;
@@ -564,7 +565,7 @@ void doBullets()
 			bullet->x += engine.ssx + engine.smx;
 			bullet->y += engine.ssy + engine.smy;
 
-			for (int i = 0 ; i < MAX_ALIENS ; i++)
+			for (int i = 0 ; i < ALIEN_MAX ; i++)
 			{
 				alien = &aliens[i];
 
@@ -606,26 +607,47 @@ void doBullets()
 							alien->hit = 5;
 						}
 
-						if (alien->flags & FL_CANNOTDIE)
+						if (alien->classDef == CD_KLINE)
 						{
-							limitInt(&alien->shield, 1, alien->maxShield);
-							if (alien->shield == 1)
+							if (currentGame.area == 11)
 							{
-								if (currentGame.area != 26)
+								if ((alien->shield <= alien->maxShield - 500) &&
+									!(alien->flags & FL_LEAVESECTOR))
 								{
-									if (!(alien->flags & FL_LEAVESECTOR))
-									{
-										alien->flags |= FL_LEAVESECTOR;
-										alien->flags &= ~FL_CIRCLES;
-										if (currentGame.area == 11)
-											setRadioMessage(FACE_KLINE, "Seems I underestimated you, Bainfield. We'll meet again!", 1);
-										else if (currentGame.area == 25)
-											setRadioMessage(FACE_SID, "Chris, Kethlan is getting away!", 1);
-									}
+									alien->flags |= FL_LEAVESECTOR;
+									alien->flags &= ~FL_CIRCLES;
+									setRadioMessage(FACE_KLINE, "Seems I underestimated you, Bainfield. We'll meet again!", 1);
 								}
-								else
+							}
+							else if (currentGame.area == 25)
+							{
+								if ((alien->shield <= alien->maxShield - 750) &&
+									!(alien->flags & FL_LEAVESECTOR))
 								{
+									alien->flags |= FL_LEAVESECTOR;
+									alien->flags &= ~FL_CIRCLES;
+									setRadioMessage(FACE_SID, "Chris, Kethlan is getting away!", 1);
+								}
+							}
+							else if (currentGame.area == 26)
+							{
+								if (alien->shield + bullet->damage > 1500 &&
+										alien->shield <= 1500)
 									alien_setKlineAttackMethod(alien);
+								else if (alien->shield + bullet->damage > 1000 &&
+										alien->shield <= 1000)
+									alien_setKlineAttackMethod(alien);
+								else if (alien->shield + bullet->damage > 500 &&
+										alien->shield <= 500)
+									alien_setKlineAttackMethod(alien);
+							}
+							else
+							{
+								if ((alien->shield <= alien->maxShield - 100) &&
+									!(alien->flags & FL_LEAVESECTOR))
+								{
+									alien->flags |= FL_LEAVESECTOR;
+									alien->flags &= ~FL_CIRCLES;
 								}
 							}
 						}
@@ -635,16 +657,16 @@ void doBullets()
 							alien->flags |= FL_LEAVESECTOR;
 						}
 
-						if (bullet->id != WT_CHARGER)
+						if (bullet->id == WT_CHARGER)
+						{
+							bullet->shield -= alien->shield;
+							if (bullet->shield <= 0)
+								bullet->active = false;
+						}
+						else
 						{
 							bullet->active = false;
 							bullet->shield = 0;
-						}
-						else if (bullet->id == WT_CHARGER)
-						{
-							bullet->shield -= alien->shield;
-							if (bullet->shield < 0)
-								bullet->active = false;
 						}
 
 						audio_playSound(SFX_HIT, alien->x);
@@ -659,7 +681,8 @@ void doBullets()
 							if (!(alien->flags & FL_DISABLED))
 							{
 								alien->flags += FL_DISABLED;
-								updateMissionRequirements(M_DISABLE_TARGET, alien->classDef, 1);
+								updateMissionRequirements(M_DISABLE_TARGET,
+									alien->classDef, 1);
 							}
 
 							alien->systemPower = 0;

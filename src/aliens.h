@@ -21,8 +21,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ALIEN_H
 
 extern object alien_defs[CD_MAX];
-extern object aliens[MAX_ALIENS];
+extern object aliens[ALIEN_MAX];
 
+void alien_defs_init();
 bool alien_add();
 void alien_addDrone(object *hostAlien);
 void alien_addSmallAsteroid(object *hostAlien);
