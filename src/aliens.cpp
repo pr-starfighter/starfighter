@@ -1377,3 +1377,100 @@ void alien_move(object *alien)
 		}
 	}
 }
+
+/*
+Fill in later...
+*/
+void alien_destroy(object *alien, object *attacker)
+{
+	audio_playSound(SFX_EXPLOSION, alien->x);
+
+	// Chain reaction destruction if needed
+	if (alien->flags & FL_DAMAGEOWNER)
+	{
+		alien->owner->shield -= alien->maxShield;
+		if (alien->owner->shield < 1)
+			alien_destroy(alien->owner, attacker);
+	}
+
+	if (alien->flags & FL_FRIEND)
+	{
+		if (alien->classDef == CD_PHOEBE)
+			currentGame.wingMate1Ejects++;
+		else if (alien->classDef == CD_URSULA)
+			currentGame.wingMate2Ejects++;
+
+		// Phoebe cannot eject on the rescue mission
+		if (currentGame.area != 7)
+		{
+			if ((alien->classDef == CD_PHOEBE) || (alien->classDef == CD_URSULA))
+				setInfoLine(">> Ally has ejected! <<\n", FONT_RED);
+			else
+				setInfoLine(">> Friendly craft has been destroyed!! <<\n", FONT_RED);
+		}
+	}
+
+	if (attacker != NULL)
+	{
+		if (attacker == &player)
+		{
+			currentGame.totalKills++;
+		}
+		else if (attacker->classDef == CD_PHOEBE)
+		{
+			currentGame.wingMate1Kills++;
+		}
+		else if (attacker->classDef == CD_URSULA)
+		{
+			currentGame.wingMate2Kills++;
+		}
+		else
+		{
+			currentGame.totalOtherKills++;
+		}
+
+		if ((attacker->classDef == CD_PHOEBE) || (attacker->classDef == CD_URSULA))
+		{
+			if ((rand() % 8) == 0)
+			{
+				getKillMessage(attacker);
+			}
+		}
+	}
+
+	updateMissionRequirements(M_DESTROY_TARGET_TYPE, alien->classDef, 1);
+	updateMissionRequirements(M_PROTECT_TARGET, alien->classDef, 1);
+
+	if (rand() % 100 <= alien->collectChance)
+	{
+		unsigned char value;
+
+		if ((rand() % 10) == 0)
+			alien->collectValue *= 2;
+
+		while (alien->collectValue > 0)
+		{
+			value = (10 + (rand() % alien->collectValue));
+			if (value > alien->collectValue)
+				value = alien->collectValue;
+			addCollectable(alien->x, alien->y, alien->collectType, value, 600);
+			alien->collectValue -= value;
+		}
+	}
+
+	// Make it explode immediately
+	if (alien->classDef == CD_ASTEROID)
+	{
+		alien->shield = -999;
+	}
+
+	if ((alien->classDef == CD_KRASS) && (attacker == &player))
+		setRadioMessage(FACE_CHRIS, "My NAME is CHRIS!!!!!!!!", 1);
+
+	if (alien->classDef == CD_KLINE)
+	{
+		setRadioMessage(FACE_KLINE, "It was an honor... to have fought you...", 1);
+		alien->dx = alien->dy = 0;
+		alien->shield = -150;
+	}
+}
