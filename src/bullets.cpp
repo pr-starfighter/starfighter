@@ -32,7 +32,8 @@ void addBullet(object *theWeapon, object *attacker, int y, int dy)
 
 	bullet->next = NULL;
 	bullet->active = true;
-	bullet->x = attacker->x - ((attacker->image[0]->w / 2) * attacker->face);
+	bullet->x = attacker->x + (attacker->image[0]->w / 2) -
+		(theWeapon->image[0]->w * attacker->face);
 	bullet->y = attacker->y + y;
 	bullet->flags = theWeapon->flags;
 	bullet->shield = 300; // bullets live for (approximately) 5 seconds
