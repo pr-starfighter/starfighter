@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef BULLETS_H
 #define BULLETS_H
 
-extern void addBullet(object *theWeapon, object *attacker, int y, int dy);
+void bullet_add(object *theWeapon, object *attacker, int y, int dy);
 extern void fireBullet(object *attacker, int weaponType);
 extern char checkPlayerShockDamage(float x, float y);
 extern void fireRay(object *attacker);

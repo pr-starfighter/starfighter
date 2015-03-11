@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-void addBullet(object *theWeapon, object *attacker, int y, int dy)
+void bullet_add(object *theWeapon, object *attacker, int y, int dy)
 {
 	object *bullet;
 	signed char imageIndex;
@@ -172,34 +172,34 @@ void fireBullet(object *attacker, int weaponType)
 
 	if (theWeapon->flags & WF_SPREAD && theWeapon->ammo[0] >= 3)
 	{
-		addBullet(theWeapon, attacker, y * 1, -2);
+		bullet_add(theWeapon, attacker, y * 1, -2);
 
 		if(theWeapon->ammo[0] != 4)
-			addBullet(theWeapon, attacker, y * 3, 0);
+			bullet_add(theWeapon, attacker, y * 3, 0);
 
 		if(theWeapon->ammo[0] != 3)
 		{
-			addBullet(theWeapon, attacker, y * 2, -1);
-			addBullet(theWeapon, attacker, y * 4, 1);
+			bullet_add(theWeapon, attacker, y * 2, -1);
+			bullet_add(theWeapon, attacker, y * 4, 1);
 		}
 
-		addBullet(theWeapon, attacker, y * 5, 2);
+		bullet_add(theWeapon, attacker, y * 5, 2);
 	}
 	else
 	{
 		if(theWeapon->ammo[0] & 1)
-			addBullet(theWeapon, attacker, y * 3, 0);
+			bullet_add(theWeapon, attacker, y * 3, 0);
 
 		if(theWeapon->ammo[0] >= 2)
 		{
-			addBullet(theWeapon, attacker, y * 2, 0);
-			addBullet(theWeapon, attacker, y * 4, 0);
+			bullet_add(theWeapon, attacker, y * 2, 0);
+			bullet_add(theWeapon, attacker, y * 4, 0);
 		}
 
 		if(theWeapon->ammo[0] >= 4)
 		{
-			addBullet(theWeapon, attacker, y * 1, 0);
-			addBullet(theWeapon, attacker, y * 5, 0);
+			bullet_add(theWeapon, attacker, y * 1, 0);
+			bullet_add(theWeapon, attacker, y * 5, 0);
 		}
 	}
 
