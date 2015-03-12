@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-#include <sys/stat.h>
+#include <sys/types.h>
 #include <pwd.h>
 #include <unistd.h>
 #include <errno.h>
@@ -103,30 +103,16 @@ void showErrorAndExit(int errorId, const char *name)
 }
 
 /*
-This bit is just for Linux users. It attempts to get the user's
-home directory, then creates the .parallelrealities and .parallelrealities/starfighter
-directories so that saves and temporary data files can be written there. Good, eh? :)
+This gets the user's home directory, then creates the .parallelrealities
+and .parallelrealities/starfighter directories so that saves and
+temporary data files can be written there.
 */
 static void setupUserHomeDirectory()
 {
-	char *userHome;
+	const char *userHome;
 
-	char *name = getlogin();
-	
-	passwd *pass;
-
-	if (name != NULL)
-		pass = getpwnam(name);
-	else
-		pass = getpwuid(geteuid());
-
-	if (pass == NULL)
-	{
-		printf("Couldn't determine the user home directory. Exitting.\n");
-		exit(1);
-	}
-
-	userHome = pass->pw_dir;
+	if ((userHome = getenv("HOME")) == NULL)
+		userHome = getpwuid(getuid())->pw_dir;
 
 	char dir[PATH_MAX];
 	strcpy(dir, "");
