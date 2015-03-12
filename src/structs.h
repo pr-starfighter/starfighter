@@ -290,7 +290,6 @@ struct globalEngineVariables {
 	bool useMusic;
 	bool fullScreen;
 
-	// This really only applies to Linux users.
 	char userHomeDirectory[1024];
 	
 	char keyState[KEY_LAST];

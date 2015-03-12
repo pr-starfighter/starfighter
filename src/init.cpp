@@ -19,12 +19,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-#if LINUX
 #include <sys/stat.h>
 #include <pwd.h>
 #include <unistd.h>
 #include <errno.h>
-#endif
 
 /*
 Initalises a whole load of variables
@@ -109,7 +107,6 @@ This bit is just for Linux users. It attempts to get the user's
 home directory, then creates the .parallelrealities and .parallelrealities/starfighter
 directories so that saves and temporary data files can be written there. Good, eh? :)
 */
-#if LINUX
 static void setupUserHomeDirectory()
 {
 	char *userHome;
@@ -144,7 +141,6 @@ static void setupUserHomeDirectory()
 
 	sprintf(engine.userHomeDirectory, "%s/.parallelrealities/starfighter/", userHome);
 }
-#endif
 
 /*
 Chugg chugg chugg.... brrr... chugg chugg chugg...brrrrrr... chugg ch..
@@ -154,9 +150,7 @@ void initSystem()
 {
 	strcpy(engine.userHomeDirectory, "");
 
-	#if LINUX
-		setupUserHomeDirectory();
-	#endif
+	setupUserHomeDirectory();
 
 	/* Initialize the SDL library */
 	if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_JOYSTICK) < 0)
