@@ -794,10 +794,7 @@ bool alien_add()
 				randEnemy = CD_SLAVETRANSPORT;
 		}
 
-		if ((currentGame.area != MAX_MISSIONS - 1) &&
-			((currentGame.maxPlasmaRate > currentGame.minPlasmaRate) ||
-				(currentGame.maxPlasmaOutput > currentGame.minPlasmaOutput) ||
-				(currentGame.maxPlasmaDamage > currentGame.minPlasmaDamage)))
+		if (currentGame.area != MAX_MISSIONS - 1)
 		{
 			if ((rand() % 6) == 0)
 				randEnemy = CD_TRANSPORTSHIP;
