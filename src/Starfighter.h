@@ -57,6 +57,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "player.h"
 #include "resources.h"
 #include "script.h"
+#include "ship.h"
 #include "shop.h"
 #include "title.h"
 #include "weapons.h"

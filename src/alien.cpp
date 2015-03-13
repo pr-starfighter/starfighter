@@ -22,6 +22,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 object alien_defs[CD_MAX];
 object aliens[ALIEN_MAX];
 
+/*
+This simply pulls back an alien from the array that is
+"dead" (no shield) and returns the index number so we can have
+a new one.
+*/
+static int alien_getFreeIndex()
+{
+	for (int i = 0 ; i < engine.maxAliens ; i++)
+	{
+		if (!aliens[i].active)
+		{
+			return i;
+		}
+	}
+
+	return -1;
+}
+
 void alien_defs_init()
 {
 	// Dual Plasma Fighter.
@@ -662,24 +680,6 @@ void alien_defs_init()
 	alien_defs[CD_URANUSBOSSWING2].collectType = P_ANYTHING;
 	alien_defs[CD_URANUSBOSSWING2].collectValue = 250;
 	alien_defs[CD_URANUSBOSSWING2].flags = FL_WEAPCO | FL_IMMORTAL;
-}
-
-/*
-This simply pulls back an alien from the array that is
-"dead" (no shield) and returns the index number so we can have
-a new one.
-*/
-static int alien_getFreeIndex()
-{
-	for (int i = 0 ; i < engine.maxAliens ; i++)
-	{
-		if (!aliens[i].active)
-		{
-			return i;
-		}
-	}
-
-	return -1;
 }
 
 bool alien_add()

@@ -1,6 +1,4 @@
 /*
-Copyright (C) 2003 Parallel Realities
-Copyright (C) 2011 Guus Sliepen
 Copyright (C) 2015 Julian Marchant
 
 This program is free software; you can redistribute it and/or
@@ -17,12 +15,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef BULLETS_H
-#define BULLETS_H
+#ifndef SHIP_H
+#define SHIP_H
 
-void bullet_add(object *theWeapon, object *attacker, int y, int dy);
-extern char checkPlayerShockDamage(float x, float y);
-extern void fireRay(object *attacker);
-extern void doBullets();
+void ship_fireBullet(object *ship, int weaponType);
 
 #endif

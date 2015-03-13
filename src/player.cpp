@@ -102,21 +102,21 @@ void doPlayer()
 		if (player.shield > 0)
 		{
 			if ((engine.keyState[KEY_FIRE]))
-				fireBullet(&player, 0);
+				ship_fireBullet(&player, 0);
 
 			if ((engine.keyState[KEY_ALTFIRE]) && (player.weaponType[1] != W_NONE))
 			{
 				if ((player.weaponType[1] != W_CHARGER) &&
 					(player.weaponType[1] != W_LASER) && (player.ammo[1] > 0))
 				{
-					fireBullet(&player, 1);
+					ship_fireBullet(&player, 1);
 				}
 
 				if (player.weaponType[1] == W_LASER)
 				{
 					if (player.ammo[1] < 100)
 					{
-						fireBullet(&player, 1);
+						ship_fireBullet(&player, 1);
 						player.ammo[1] += 2;
 						if (player.ammo[1] >= 100)
 						{
@@ -136,7 +136,7 @@ void doPlayer()
 						limitCharAdd(&player.ammo[1], 1, 0, 150);
 						if (player.ammo[1] >= 150)
 						{
-							fireBullet(&player, 1);
+							ship_fireBullet(&player, 1);
 							player.ammo[1] = 0;
 							charger_fired = true;
 						}
@@ -145,7 +145,7 @@ void doPlayer()
 				else
 				{
 					if (player.ammo[1] > 0)
-						fireBullet(&player, 1);
+						ship_fireBullet(&player, 1);
 					player.ammo[1] = 0;
 					charger_fired = false;
 				}

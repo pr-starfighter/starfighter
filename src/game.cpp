@@ -756,7 +756,7 @@ int mainGameLoop()
 							((rand() % 1000 < alien->chance[0]) ||
 								(alien->flags & FL_CONTINUOUS_FIRE)))
 						{
-							fireBullet(alien, 0);
+							ship_fireBullet(alien, 0);
 						}
 						if ((alien->reload[1] == 0) &&
 							((rand() % 1000 < alien->chance[1]) ||
@@ -767,7 +767,7 @@ int mainGameLoop()
 							{
 								if (alien->weaponType[1] == W_CHARGER)
 									alien->ammo[1] = 50 + rand() % 150;
-								fireBullet(alien, 1);
+								ship_fireBullet(alien, 1);
 							}
 							else if (alien->weaponType[1] == W_LASER)
 							{
@@ -793,7 +793,7 @@ int mainGameLoop()
 
 					if (alien->flags & FL_FIRELASER)
 					{
-						fireBullet(alien, 1);
+						ship_fireBullet(alien, 1);
 						if ((rand() % 25) == 0)
 							alien->flags -= FL_FIRELASER;
 					}
