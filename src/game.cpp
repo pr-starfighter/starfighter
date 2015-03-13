@@ -106,6 +106,7 @@ void newGame()
 			currentGame.maxPlasmaOutput = 1;
 			currentGame.maxPlasmaDamage = 1;
 			currentGame.maxRocketAmmo = 5;
+			currentGame.cash = 6000;
 			break;
 		default:
 			player.maxShield = 50;

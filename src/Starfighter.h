@@ -37,7 +37,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "alien.h"
 #include "audio.h"
-#include "bullets.h"
+#include "bullet.h"
 #include "cargo.h"
 #include "collectable.h"
 #include "comms.h"

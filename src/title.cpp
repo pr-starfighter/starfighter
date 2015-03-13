@@ -72,7 +72,7 @@ static void createDifficultyMenu()
 	else if (currentGame.difficulty == DIFFICULTY_HARD)
 		textSurface(TS_DIFFICULTY, "DIFFICULTY - HARD", -1, 370, FONT_WHITE);
 	else if (currentGame.difficulty == DIFFICULTY_NIGHTMARE)
-		textSurface(TS_DIFFICULTY, "DIFFICULTY - NIGHTMARE", -1, 370, FONT_WHITE);
+		textSurface(TS_DIFFICULTY, "DIFFICULTY - NIGHTMARE!", -1, 370, FONT_WHITE);
 	else
 		textSurface(TS_DIFFICULTY, "DIFFICULTY - NORMAL", -1, 370, FONT_WHITE);
 }
