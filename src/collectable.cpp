@@ -77,17 +77,6 @@ void addCollectable(float x, float y, int type, int value, int life)
 	if (value == 0)
 		return; // don't bother!
 
-	/*
-	No cash, powerups, or ammo on interceptions. Stops point leeching(!)
-	*/
-	if ((currentGame.area == MAX_MISSIONS - 1) &&
-		((type == P_CASH) || (type == P_PLASMA_AMMO) || (type == P_ROCKET) ||
-			(type == P_PLASMA_DAMAGE) || (type == P_PLASMA_SHOT) ||
-			(type == P_PLASMA_RATE) || (type == P_SUPER)))
-	{
-		return;
-	}
-
 	// If plasma rate is at max, convert plasma rate powerup to ammo.
 	if (type == P_PLASMA_RATE)
 	{
@@ -144,6 +133,17 @@ void addCollectable(float x, float y, int type, int value, int life)
 		{
 			type = P_CASH;
 		}
+	}
+
+	/*
+	No cash, powerups, or ammo on interceptions. Stops point leeching(!)
+	*/
+	if ((currentGame.area == MAX_MISSIONS - 1) &&
+		((type == P_CASH) || (type == P_PLASMA_AMMO) || (type == P_ROCKET) ||
+			(type == P_PLASMA_DAMAGE) || (type == P_PLASMA_SHOT) ||
+			(type == P_PLASMA_RATE) || (type == P_SUPER)))
+	{
+		return;
 	}
 
 	collectables *collectable = new collectables;
