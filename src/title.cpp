@@ -628,7 +628,7 @@ void gameover()
 	clearScreen(black);
 	SDL_Delay(1000);
 
-	audio_playMusic("music/death.ogg", 1);
+	audio_playMusic("music/death.ogg", -1);
 
 	int x = (screen->w - gameover->w) / 2;
 	int y = (screen->h - gameover->h) / 2;
