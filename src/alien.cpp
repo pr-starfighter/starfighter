@@ -1382,14 +1382,6 @@ void alien_destroy(object *alien, object *attacker)
 {
 	audio_playSound(SFX_EXPLOSION, alien->x);
 
-	// Chain reaction destruction if needed
-	if (alien->flags & FL_DAMAGEOWNER)
-	{
-		alien->owner->shield -= alien->maxShield;
-		if (alien->owner->shield < 1)
-			alien_destroy(alien->owner, attacker);
-	}
-
 	if (alien->flags & FL_FRIEND)
 	{
 		if (alien->classDef == CD_PHOEBE)
@@ -1469,5 +1461,90 @@ void alien_destroy(object *alien, object *attacker)
 		setRadioMessage(FACE_KLINE, "It was an honor... to have fought you...", 1);
 		alien->dx = alien->dy = 0;
 		alien->shield = -150;
+	}
+}
+
+void alien_hurt(object *alien, object *attacker, int damage, bool ion)
+{
+	if (ion)
+		alien->systemPower -= damage;
+	else
+		alien->shield -= damage;
+
+	// Chain reaction damage if needed
+	if (alien->flags & FL_DAMAGEOWNER)
+	{
+		alien_hurt(alien->owner, attacker, damage, ion);
+	}
+
+	if (alien->classDef == CD_KLINE)
+	{
+		if (currentGame.area == 11)
+		{
+			if ((alien->shield <= alien->maxShield - 500) &&
+				!(alien->flags & FL_LEAVESECTOR))
+			{
+				alien->flags |= FL_LEAVESECTOR;
+				alien->flags &= ~FL_CIRCLES;
+				setRadioMessage(FACE_KLINE, "Seems I underestimated you, Bainfield. We'll meet again!", 1);
+			}
+		}
+		else if (currentGame.area == 25)
+		{
+			if ((alien->shield <= alien->maxShield - 750) &&
+				!(alien->flags & FL_LEAVESECTOR))
+			{
+				alien->flags |= FL_LEAVESECTOR;
+				alien->flags &= ~FL_CIRCLES;
+				setRadioMessage(FACE_SID, "Chris, Kethlan is getting away!", 1);
+			}
+		}
+		else if (currentGame.area == 26)
+		{
+			if (alien->shield + damage > 1500 &&
+					alien->shield <= 1500)
+				alien_setKlineAttackMethod(alien);
+			else if (alien->shield + damage > 1000 &&
+					alien->shield <= 1000)
+				alien_setKlineAttackMethod(alien);
+			else if (alien->shield + damage > 500 &&
+					alien->shield <= 500)
+				alien_setKlineAttackMethod(alien);
+		}
+		else
+		{
+			if ((alien->shield <= alien->maxShield - 100) &&
+				!(alien->flags & FL_LEAVESECTOR))
+			{
+				alien->flags |= FL_LEAVESECTOR;
+				alien->flags &= ~FL_CIRCLES;
+			}
+		}
+	}
+
+	if ((alien->flags & FL_RUNSAWAY) && ((rand() % 50) == 0))
+	{
+		alien->flags |= FL_LEAVESECTOR;
+	}
+
+	audio_playSound(SFX_HIT, alien->x);
+	if (alien->AIType == AI_EVASIVE)
+		alien->thinktime = 0;
+	
+	if (alien->shield < 1)
+		alien_destroy(alien, attacker);
+
+	if (alien->systemPower < 1)
+	{
+		if (!(alien->flags & FL_DISABLED))
+		{
+			alien->flags += FL_DISABLED;
+			updateMissionRequirements(M_DISABLE_TARGET,
+				alien->classDef, 1);
+		}
+
+		alien->systemPower = 0;
+		if (alien->classDef == CD_KLINE)
+			alien->systemPower = alien->maxShield;
 	}
 }

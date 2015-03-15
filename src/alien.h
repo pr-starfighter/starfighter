@@ -37,5 +37,6 @@ int alien_checkTarget(object *alien);
 int alien_enemiesInFront(object *alien);
 void alien_move(object *alien);
 void alien_destroy(object *alien, object *attacker);
+void alien_hurt(object *alien, object *attacker, int damage, bool ion);
 
 #endif

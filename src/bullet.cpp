@@ -236,7 +236,9 @@ void fireRay(object *attacker)
 	{
 		if (player.shield > 0)
 		{
-			if (collision(player.x, player.y, player.image[0]->w, player.image[0]->h, ray.x, ray.y, ray.w, ray.h) && (!engine.cheatShield))
+			if (collision(player.x, player.y, player.image[0]->w,
+					player.image[0]->h, ray.x, ray.y, ray.w, ray.h) &&
+				(!engine.cheatShield))
 			{
 				if (player.shield > engine.lowShield)
 				{
@@ -265,17 +267,13 @@ void fireRay(object *attacker)
 		if (anEnemy->flags & FL_IMMORTAL)
 			continue;
 
-		if ((anEnemy->shield > 0) && (attacker != anEnemy) && (attacker->classDef != anEnemy->classDef))
+		if ((anEnemy->shield > 0) && (attacker != anEnemy) &&
+			(attacker->classDef != anEnemy->classDef))
 		{
-			if (collision(anEnemy->x, anEnemy->y, anEnemy->image[0]->w, anEnemy->image[0]->h, ray.x, ray.y, ray.w, ray.h))
+			if (collision(anEnemy->x, anEnemy->y, anEnemy->image[0]->w,
+					anEnemy->image[0]->h, ray.x, ray.y, ray.w, ray.h))
 			{
-				anEnemy->shield--;
-				addExplosion(anEnemy->x, anEnemy->y, E_SMALL_EXPLOSION);
-				audio_playSound(SFX_HIT, anEnemy->x);
-				if (anEnemy->shield < 1)
-				{
-					alien_destroy(anEnemy, attacker->owner);
-				}
+				alien_hurt(anEnemy, attacker->owner, 1, false);
 			}
 		}
 
@@ -336,7 +334,8 @@ void doBullets()
 
 			if ((bullet->flags & WF_AIMED))
 			{
-				blit(bullet->image[0], (int)(bullet->x - bullet->dx), (int)(bullet->y - bullet->dy));
+				blit(bullet->image[0], (int)(bullet->x - bullet->dx),
+					(int)(bullet->y - bullet->dy));
 			}
 
 			if (bullet->id == WT_CHARGER)
@@ -412,62 +411,10 @@ void doBullets()
 
 						if (!(alien->flags & FL_IMMORTAL))
 						{
-							if (!(bullet->flags & WF_DISABLE))
-								alien->shield -= bullet->damage;
-							else
-								alien->systemPower -= bullet->damage;
+							alien_hurt(alien, bullet->owner, bullet->damage,
+								(bullet->flags & WF_DISABLE));
 
 							alien->hit = 5;
-						}
-
-						if (alien->classDef == CD_KLINE)
-						{
-							if (currentGame.area == 11)
-							{
-								if ((alien->shield <= alien->maxShield - 500) &&
-									!(alien->flags & FL_LEAVESECTOR))
-								{
-									alien->flags |= FL_LEAVESECTOR;
-									alien->flags &= ~FL_CIRCLES;
-									setRadioMessage(FACE_KLINE, "Seems I underestimated you, Bainfield. We'll meet again!", 1);
-								}
-							}
-							else if (currentGame.area == 25)
-							{
-								if ((alien->shield <= alien->maxShield - 750) &&
-									!(alien->flags & FL_LEAVESECTOR))
-								{
-									alien->flags |= FL_LEAVESECTOR;
-									alien->flags &= ~FL_CIRCLES;
-									setRadioMessage(FACE_SID, "Chris, Kethlan is getting away!", 1);
-								}
-							}
-							else if (currentGame.area == 26)
-							{
-								if (alien->shield + bullet->damage > 1500 &&
-										alien->shield <= 1500)
-									alien_setKlineAttackMethod(alien);
-								else if (alien->shield + bullet->damage > 1000 &&
-										alien->shield <= 1000)
-									alien_setKlineAttackMethod(alien);
-								else if (alien->shield + bullet->damage > 500 &&
-										alien->shield <= 500)
-									alien_setKlineAttackMethod(alien);
-							}
-							else
-							{
-								if ((alien->shield <= alien->maxShield - 100) &&
-									!(alien->flags & FL_LEAVESECTOR))
-								{
-									alien->flags |= FL_LEAVESECTOR;
-									alien->flags &= ~FL_CIRCLES;
-								}
-							}
-						}
-
-						if ((alien->flags & FL_RUNSAWAY) && ((rand() % 50) == 0))
-						{
-							alien->flags |= FL_LEAVESECTOR;
 						}
 
 						if (bullet->id == WT_CHARGER)
@@ -480,27 +427,6 @@ void doBullets()
 						{
 							bullet->active = false;
 							bullet->shield = 0;
-						}
-
-						audio_playSound(SFX_HIT, alien->x);
-						if (alien->AIType == AI_EVASIVE)
-							alien->thinktime = 0;
-
-						if (alien->shield < 1)
-							alien_destroy(alien, bullet->owner);
-
-						if (alien->systemPower < 1)
-						{
-							if (!(alien->flags & FL_DISABLED))
-							{
-								alien->flags += FL_DISABLED;
-								updateMissionRequirements(M_DISABLE_TARGET,
-									alien->classDef, 1);
-							}
-
-							alien->systemPower = 0;
-							if (alien->classDef == CD_KLINE)
-								alien->systemPower = alien->maxShield;
 						}
 
 						if (bullet->id == WT_ROCKET)
@@ -573,8 +499,11 @@ void doBullets()
 							theCargo->active = false;
 							audio_playSound(SFX_EXPLOSION, theCargo->x);
 							for (int i = 0 ; i < 10 ; i++)
-								addExplosion(theCargo->x + rrand(-15, 15), theCargo->y + rrand(-15, 15), E_BIG_EXPLOSION);
-							updateMissionRequirements(M_PROTECT_PICKUP, P_CARGO, 1);
+								addExplosion(theCargo->x + rrand(-15, 15),
+									theCargo->y + rrand(-15, 15),
+									E_BIG_EXPLOSION);
+							updateMissionRequirements(M_PROTECT_PICKUP,
+								P_CARGO, 1);
 						}
 					}
 				}
@@ -588,7 +517,8 @@ void doBullets()
 
 		if (bullet->shield < 1)
 		{
-			if ((bullet->flags & WF_TIMEDEXPLOSION) || (bullet->id == WT_CHARGER))
+			if ((bullet->flags & WF_TIMEDEXPLOSION) ||
+				(bullet->id == WT_CHARGER))
 			{
 				audio_playSound(SFX_EXPLOSION, bullet->x);
 				for (int i = 0 ; i < 10 ; i++)
@@ -597,7 +527,8 @@ void doBullets()
 
 				if (bullet->flags & WF_TIMEDEXPLOSION)
 					if (checkPlayerShockDamage(bullet->x, bullet->y))
-						setInfoLine("Warning: Missile Shockwave Damage!!", FONT_RED);
+						setInfoLine("Warning: Missile Shockwave Damage!!",
+							FONT_RED);
 			}
 			bullet->active = false;
 		}
