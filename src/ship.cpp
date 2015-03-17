@@ -110,3 +110,75 @@ void ship_fireBullet(object *ship, int weaponType)
 		}
 	}
 }
+
+/*
+Fill in later...
+*/
+void ship_fireRay(object *ship)
+{
+	SDL_Rect ray;
+
+	if (ship->face == 0)
+	{
+		ray.x = (int)(ship->x + ship->image[0]->w);
+	}
+	else
+	{
+		ray.x = (int)(ship->x - 800);
+	}
+	ray.y = (int)(ship->y + ship->engineY - 1);
+	ray.h = 3;
+	ray.w = 800;
+
+	int red = SDL_MapRGB(screen->format, rand() % 256, 0x00, 0x00);
+	SDL_FillRect(screen, &ray, red);
+	addBuffer(ray.x, ray.y, ray.w, ray.h);
+
+	if (ship != &player)
+	{
+		if (player.shield > 0)
+		{
+			if (collision(player.x, player.y, player.image[0]->w,
+					player.image[0]->h, ray.x, ray.y, ray.w, ray.h) &&
+				(!engine.cheatShield))
+			{
+				if (player.shield > engine.lowShield)
+				{
+					if (player.shield - 1 <= engine.lowShield)
+					{
+						setInfoLine("!!! WARNING: SHIELD LOW !!!", FONT_RED);
+					}
+				}
+				player.shield--;
+
+				addExplosion(player.x, player.y, E_SMALL_EXPLOSION);
+				audio_playSound(SFX_HIT, player.x);
+				if (player.shield < 1)
+				{
+					audio_playSound(SFX_DEATH, player.x);
+					audio_playSound(SFX_EXPLOSION, player.x);
+				}
+			}
+		}
+	}
+
+	for (int i = 0 ; i < ALIEN_MAX ; i++)
+	{
+		if (aliens[i].flags & FL_IMMORTAL)
+			continue;
+
+		if ((aliens[i].shield > 0) && (ship != &aliens[i]) &&
+			(ship->classDef != aliens[i].classDef))
+		{
+			if (collision(aliens[i].x, aliens[i].y, aliens[i].image[0]->w,
+					aliens[i].image[0]->h, ray.x, ray.y, ray.w, ray.h))
+			{
+				alien_hurt(&aliens[i], ship->owner, 1, false);
+			}
+		}
+	}
+
+	ship->ammo[0]--;
+	if (ship->ammo[0] < 1)
+		ship->flags &= ~FL_FIRERAY;
+}

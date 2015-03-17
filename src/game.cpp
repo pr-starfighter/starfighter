@@ -784,7 +784,7 @@ int mainGameLoop()
 
 					if (alien->flags & FL_FIRERAY)
 					{
-						fireRay(alien);
+						ship_fireRay(alien);
 					}
 					else
 					{

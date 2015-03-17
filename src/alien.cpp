@@ -1246,24 +1246,20 @@ any enemy craft that enter their line of sight.
 */
 int alien_enemiesInFront(object *alien)
 {
-	object *anEnemy = aliens;
-
 	for (int i = 0 ; i < ALIEN_MAX ; i++)
 	{
-		if ((alien != anEnemy) && (anEnemy->flags & FL_WEAPCO) &&
-			(anEnemy->shield > 0))
+		if ((alien != &aliens[i]) && (aliens[i].flags & FL_WEAPCO) &&
+			(aliens[i].shield > 0))
 		{
-			if ((alien->y > anEnemy->y - 15) &&
-				(alien->y < anEnemy->y + anEnemy->image[0]->h + 15))
+			if ((alien->y > aliens[i].y - 15) &&
+				(alien->y < aliens[i].y + aliens[i].image[0]->h + 15))
 			{
-				if ((alien->face == 1) && (anEnemy->x < alien->x))
+				if ((alien->face == 1) && (aliens[i].x < alien->x))
 					return 1;
-				if ((alien->face == 0) && (anEnemy->x > alien->x))
+				if ((alien->face == 0) && (aliens[i].x > alien->x))
 					return 1;
 			}
 		}
-
-		anEnemy++;
 	}
 
 	return 0;
@@ -1303,8 +1299,6 @@ void alien_move(object *alien)
 		}
 	}
 
-	object *anEnemy = aliens;
-
 	if (checkCollisions)
 	{
 		for (int i = 0 ; i < ALIEN_MAX ; i++)
@@ -1312,18 +1306,17 @@ void alien_move(object *alien)
 			if ((alien->flags & FL_LEAVESECTOR) ||
 				(alien->classDef == CD_DRONE) ||
 				(alien->classDef == CD_ASTEROID2) ||
-				(alien->owner == anEnemy->owner) ||
-				(alien->owner->owner == anEnemy->owner) ||
-				(anEnemy->shield < 1))
+				(alien->owner == aliens[i].owner) ||
+				(alien->owner->owner == aliens[i].owner) ||
+				(aliens[i].shield < 1))
 			{
-				anEnemy++;
 				continue;
 			}
 
-			if (collision(alien, anEnemy))
+			if (collision(alien, &aliens[i]))
 			{
-				if ((anEnemy->classDef == CD_BARRIER) &&
-					(anEnemy->owner != alien))
+				if ((aliens[i].classDef == CD_BARRIER) &&
+					(aliens[i].owner != alien))
 				{
 					alien->shield--;
 					alien->hit = 3;
@@ -1332,8 +1325,6 @@ void alien_move(object *alien)
 					audio_playSound(SFX_HIT, alien->x);
 				}
 			}
-
-			anEnemy++;
 		}
 	}
 
