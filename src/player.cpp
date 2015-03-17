@@ -249,13 +249,13 @@ void doPlayer()
 					cd = player.x - screen->w / 2;
 					if (cd < 0)
 					{
-						cc = max(cd / 10, max(0, engine.ssx) - cameraMaxSpeed);
+						cc = MAX(cd / 10, MAX(0, engine.ssx) - cameraMaxSpeed);
 						player.x -= cc;
 						engine.smx -= cc;
 					}
 					else if (cd > 0)
 					{
-						cc = min(cd / 10, cameraMaxSpeed + min(0, engine.ssx));
+						cc = MIN(cd / 10, cameraMaxSpeed + MIN(0, engine.ssx));
 						player.x -= cc;
 						engine.smx -= cc;
 					}
@@ -278,13 +278,13 @@ void doPlayer()
 					cd = player.y - screen->h / 2;
 					if (cd < 0)
 					{
-						cc = max(cd / 10, max(0, engine.ssy) - cameraMaxSpeed);
+						cc = MAX(cd / 10, MAX(0, engine.ssy) - cameraMaxSpeed);
 						player.y -= cc;
 						engine.smy -= cc;
 					}
 					else if (cd > 0)
 					{
-						cc = min(cd / 10, cameraMaxSpeed + min(0, engine.ssy));
+						cc = MIN(cd / 10, cameraMaxSpeed + MIN(0, engine.ssy));
 						player.y -= cc;
 						engine.smy -= cc;
 					}

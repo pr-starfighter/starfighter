@@ -787,7 +787,8 @@ static void sell(int i)
 				sell(SHOP_PLASMA_MIN_OUTPUT);
 
 			currentGame.maxPlasmaOutput--;
-			weapon[W_PLAYER_WEAPON].ammo[0] = min(weapon[W_PLAYER_WEAPON].ammo[0],
+			weapon[W_PLAYER_WEAPON].ammo[0] = MIN(
+				weapon[W_PLAYER_WEAPON].ammo[0],
 				currentGame.maxPlasmaOutput);
 			break;
 
@@ -802,7 +803,8 @@ static void sell(int i)
 				sell(SHOP_PLASMA_MIN_DAMAGE);
 
 			currentGame.maxPlasmaDamage--;
-			weapon[W_PLAYER_WEAPON].damage = min(weapon[W_PLAYER_WEAPON].damage,
+			weapon[W_PLAYER_WEAPON].damage = MIN(
+				weapon[W_PLAYER_WEAPON].damage,
 				currentGame.maxPlasmaDamage);
 			break;
 
@@ -817,7 +819,7 @@ static void sell(int i)
 				sell(SHOP_PLASMA_MIN_OUTPUT);
 
 			currentGame.maxPlasmaRate--;
-			weapon[W_PLAYER_WEAPON].reload[0] = max(
+			weapon[W_PLAYER_WEAPON].reload[0] = MAX(
 				weapon[W_PLAYER_WEAPON].reload[0],
 				rate2reload[currentGame.maxPlasmaRate]);
 			break;

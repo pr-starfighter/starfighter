@@ -108,7 +108,7 @@ void bullet_add(object *theWeapon, object *attacker, int y, int dy)
 	{
 		tempX = (int)fabsf(attacker->target->x - attacker->x);
 		tempY = (int)fabsf(attacker->target->y - attacker->y);
-		steps = max(tempX, tempY);
+		steps = MAX(tempX, tempY);
 
 		if (steps < 12)
 			steps = 12;

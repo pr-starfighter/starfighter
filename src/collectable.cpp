@@ -72,7 +72,7 @@ void addCollectable(float x, float y, int type, int value, int life)
 	}
 
 	if (type == P_SUPER)
-		value = max(value, 1);
+		value = MAX(value, 1);
 
 	if (value == 0)
 		return; // don't bother!

@@ -97,7 +97,7 @@ static void doArrow(int i)
 
 	float sx = fabsf((x - (screen->w / 2)) / (screen->w / 2.0));
 	float sy = fabsf((y - (screen->h / 2)) / (screen->h / 2.0));
-	float sxy = max(sx, sy);
+	float sxy = MAX(sx, sy);
 
 	if (sxy < 1) 
 		return;

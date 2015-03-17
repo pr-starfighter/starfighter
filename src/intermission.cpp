@@ -529,11 +529,12 @@ int galaxyMap()
 	// Remove the Supercharge, if it is there
 	if (currentGame.difficulty > DIFFICULTY_EASY)
 	{
-		weapon[W_PLAYER_WEAPON].reload[0] = max(weapon[W_PLAYER_WEAPON].reload[0],
+		weapon[W_PLAYER_WEAPON].reload[0] = MAX(
+			weapon[W_PLAYER_WEAPON].reload[0],
 			rate2reload[currentGame.maxPlasmaRate]);
-		weapon[W_PLAYER_WEAPON].ammo[0] = min(weapon[W_PLAYER_WEAPON].ammo[0],
+		weapon[W_PLAYER_WEAPON].ammo[0] = MIN(weapon[W_PLAYER_WEAPON].ammo[0],
 			currentGame.maxPlasmaOutput);
-		weapon[W_PLAYER_WEAPON].damage = min(weapon[W_PLAYER_WEAPON].damage,
+		weapon[W_PLAYER_WEAPON].damage = MIN(weapon[W_PLAYER_WEAPON].damage,
 			currentGame.maxPlasmaDamage);
 	}
 
