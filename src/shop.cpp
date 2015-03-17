@@ -476,7 +476,7 @@ static void shop_sellSecondaryWeapon()
 	switch (player.weaponType[1])
 	{
 		case W_DOUBLE_ROCKETS:
-			sell(SHOP_DOUBLE_HOMING_MISSILES);
+			sell(SHOP_DOUBLE_ROCKETS);
 			break;
 
 		case W_MICRO_ROCKETS:
