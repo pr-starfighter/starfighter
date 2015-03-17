@@ -318,7 +318,8 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 {
 	char message[25];
 
-	if ((*targetValue <= 0) && (type != M_PROTECT_TARGET) && (type != M_PROTECT_PICKUP))
+	if ((*targetValue <= 0) && (type != M_PROTECT_TARGET) &&
+		(type != M_PROTECT_PICKUP))
 	{
 		*completed = 2;
 		checkTimer();

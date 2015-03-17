@@ -228,6 +228,7 @@ void doBullets()
 	object *alien, *theCargo;
 
 	bool okayToHit = false;
+	int old_shield;
 	float homingMissileSpeed = 0;
 
 	while (bullet->next != NULL)
@@ -325,6 +326,8 @@ void doBullets()
 				{
 					if ((bullet->active) && (collision(bullet, alien)))
 					{
+						old_shield = alien->shield;
+
 						if (bullet->owner == &player)
 						{
 							currentGame.hits++;
@@ -343,9 +346,17 @@ void doBullets()
 
 						if (bullet->id == WT_CHARGER)
 						{
-							bullet->shield -= alien->shield;
-							if (bullet->shield <= 0)
+							bullet->damage -= old_shield;
+							if (bullet->damage <= 0)
+							{
 								bullet->active = false;
+								bullet->shield = 0;
+								audio_playSound(SFX_EXPLOSION, bullet->x);
+								for (int i = 0 ; i < 10 ; i++)
+									addExplosion(bullet->x + rrand(-35, 35),
+										bullet->y + rrand(-35, 35),
+										E_BIG_EXPLOSION);
+							}
 						}
 						else
 						{
@@ -365,9 +376,11 @@ void doBullets()
 			if ((bullet->flags & WF_WEAPCO) || (bullet->id == WT_ROCKET) ||
 				(bullet->id == WT_LASER) || (bullet->id == WT_CHARGER))
 			{
-				if ((bullet->active) && (player.shield > 0) &&
-					(collision(bullet, &player)) && (bullet->owner != &player))
+				if (bullet->active && (player.shield > 0) &&
+					(bullet->owner != &player) && collision(bullet, &player))
 				{
+					old_shield = player.shield;
+
 					if ((!engine.cheatShield) || (engine.missionCompleteTimer != 0))
 					{
 						if ((player.shield > engine.lowShield) &&
@@ -383,16 +396,23 @@ void doBullets()
 							(bullet->owner->classDef == CD_URSULA))
 						getPlayerHitMessage(bullet->owner);
 
-					if (bullet->id != WT_CHARGER)
+					if (bullet->id == WT_CHARGER)
+					{
+						bullet->damage -= old_shield;
+						if (bullet->damage <= 0)
+						{
+							bullet->active = false;
+							bullet->shield = 0;
+							audio_playSound(SFX_EXPLOSION, bullet->x);
+							for (int i = 0 ; i < 10 ; i++)
+								addExplosion(bullet->x + rrand(-35, 35),
+									bullet->y + rrand(-35, 35), E_BIG_EXPLOSION);
+						}
+					}
+					else
 					{
 						bullet->active = false;
 						bullet->shield = 0;
-					}
-					else if (bullet->id == WT_CHARGER)
-					{
-						bullet->shield -= alien->shield;
-						if (bullet->shield < 0)
-							bullet->active = false;
 					}
 
 					audio_playSound(SFX_HIT, player.x);
@@ -441,18 +461,16 @@ void doBullets()
 
 		if (bullet->shield < 1)
 		{
-			if ((bullet->flags & WF_TIMEDEXPLOSION) ||
-				(bullet->id == WT_CHARGER))
+			if (bullet->flags & WF_TIMEDEXPLOSION)
 			{
 				audio_playSound(SFX_EXPLOSION, bullet->x);
 				for (int i = 0 ; i < 10 ; i++)
 					addExplosion(bullet->x + rrand(-35, 35),
 						bullet->y + rrand(-35, 35), E_BIG_EXPLOSION);
 
-				if (bullet->flags & WF_TIMEDEXPLOSION)
-					if (checkPlayerShockDamage(bullet->x, bullet->y))
-						setInfoLine("Warning: Missile Shockwave Damage!!",
-							FONT_RED);
+				if (checkPlayerShockDamage(bullet->x, bullet->y))
+					setInfoLine("Warning: Missile Shockwave Damage!!",
+						FONT_RED);
 			}
 			bullet->active = false;
 		}

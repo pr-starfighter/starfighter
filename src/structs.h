@@ -37,10 +37,10 @@ struct object {
 	int deathCounter; // how long to explode for
 
 	signed char speed;
-	unsigned char damage; // Contact damage for bullets
+	int damage; // Contact damage for bullets
 	unsigned char ammo[2]; // Ammo for 2nd weapon.
 
-	signed char face; // Either 0 or 1
+	int face; // Either 0 or 1
 
 	object *owner; // Who owns this object
 
