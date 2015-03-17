@@ -395,7 +395,7 @@ int mainGameLoop()
 	{
 		aliens[i].systemPower = aliens[i].maxShield;
 		aliens[i].deathCounter = 0 - (aliens[i].maxShield * 3);
-		limitInt(&aliens[i].deathCounter, -350, 0);
+		LIMIT(aliens[i].deathCounter, -350, 0);
 	}
 
 	// Set target energy meter
@@ -536,7 +536,7 @@ int mainGameLoop()
 					}
 					else if ((currentGame.area == 26) && (engine.musicVolume > 0))
 					{
-						limitFloat(&(engine.musicVolume -= 0.2), 0, 100);
+						LIMIT_ADD(engine.musicVolume, -0.2, 0, 100);
 						audio_setMusicVolume((int)engine.musicVolume);
 					}
 					else
@@ -551,7 +551,7 @@ int mainGameLoop()
 			}
 			else
 			{
-				limitFloat(&(engine.musicVolume -= 0.2), 0, 100);
+				LIMIT_ADD(engine.musicVolume, -0.2, 0, 100);
 				audio_setMusicVolume((int)engine.musicVolume);
 				if (SDL_GetTicks() >= engine.missionCompleteTimer)
 				{
@@ -615,7 +615,7 @@ int mainGameLoop()
 
 					canFire = true; // The alien is allowed to fire
 
-					limitInt(&--alien->thinktime, 0, 250);
+					LIMIT_ADD(alien->thinktime, -1, 0, 250);
 
 					if (alien->target->shield < 1)
 						alien->target = alien;
@@ -659,8 +659,8 @@ int mainGameLoop()
 							alien->face = (alien->dx > 0);
 						}
 
-						limitFloat(&alien->dx, 0 - alien->speed, alien->speed);
-						limitFloat(&alien->dy, 0 - alien->speed, alien->speed);
+						LIMIT(alien->dx, -alien->speed, alien->speed);
+						LIMIT(alien->dy, -alien->speed, alien->speed);
 
 					}
 
@@ -678,7 +678,11 @@ int mainGameLoop()
 
 					if (alien->flags & FL_LEAVESECTOR)
 					{
-						limitFloat(&(alien->dx -= 0.5), 0, -15);
+						// Note: The original version of this line incorrectly
+						// specified -15 as the *maximum* instead of the
+						// *minimum*, which at the time was equivalent to
+						// ``alien->dx = -15``.
+						LIMIT_ADD(alien->dx, -0.5, -15, 0);
 						alien->dy = 0;
 						alien->thinktime = 999;
 						alien->face = 0;
@@ -728,12 +732,12 @@ int mainGameLoop()
 
 					if (alien->classDef == CD_MOBILESHIELD)
 					{
-						limitInt(&(++aliens[ALIEN_BOSS].shield), 0,
+						LIMIT_ADD(aliens[ALIEN_BOSS].shield, 1, 0,
 							aliens[ALIEN_BOSS].maxShield);
 					}
 
-					limitCharAdd(&alien->reload[0], -1, 0, 999);
-					limitCharAdd(&alien->reload[1], -1, 0, 999);
+					LIMIT_ADD(alien->reload[0], -1, 0, 999);
+					LIMIT_ADD(alien->reload[1], -1, 0, 999);
 
 					if ((!(alien->flags & FL_DISABLED)) &&
 						(!(alien->flags & FL_NOFIRE)))
@@ -788,7 +792,7 @@ int mainGameLoop()
 					}
 					else
 					{
-						limitCharAdd(&alien->ammo[0], 1, 0, 250);
+						LIMIT_ADD(alien->ammo[0], 1, 0, 250);
 					}
 
 					if (alien->flags & FL_FIRELASER)
@@ -818,7 +822,7 @@ int mainGameLoop()
 					if (alien->hit)
 						shapeToUse += SHIP_HIT_INDEX;
 
-					limitCharAdd(&alien->hit, -1, 0, 100);
+					LIMIT_ADD(alien->hit, -1, 0, 100);
 
 					if ((alien->x + alien->image[0]->w > 0) &&
 						(alien->x < screen->w) &&

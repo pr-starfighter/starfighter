@@ -22,6 +22,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
+#define LIMIT(x, a, b) x = ((x) < (b) ? ((x) > (a) ? (x) : (a)) : (b))
+#define LIMIT_ADD(x, y, a, b) x = (((x) + (y)) < (b) ? \
+	(((x) + (y)) > (a) ? \
+		((x) + (y)) : (a)) : (b))
 
 // ALL
 #define NONE 0

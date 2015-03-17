@@ -389,7 +389,7 @@ void doInfo()
 		return;
 
 	if ((!engine.keyState[KEY_ALTFIRE]) && (player.weaponType[1] == W_LASER) && (engine.eventTimer % 8 == 1))
-		limitCharAdd(&player.ammo[1], -1, 1, 255);
+		LIMIT_ADD(player.ammo[1], -1, 1, 255);
 
 	if ((engine.eventTimer < 30) && (player.shield <= engine.lowShield))
 		return;

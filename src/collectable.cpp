@@ -329,7 +329,7 @@ void doCollectables()
 						break;
 
 					case P_ROCKET:
-						limitCharAdd(&player.ammo[1], collectable->value, 0,
+						LIMIT_ADD(player.ammo[1], collectable->value, 0,
 							currentGame.maxRocketAmmo);
 						if (player.ammo[1] == currentGame.maxRocketAmmo)
 							sprintf(temp, "Rocket Ammo at Maximum");
@@ -344,7 +344,7 @@ void doCollectables()
 						break;
 
 					case P_SHIELD:
-						limitInt(&(player.shield += 10), 0, player.maxShield);
+						LIMIT_ADD(player.shield, 10, 0, player.maxShield);
 						currentGame.shieldPickups ++;
 						sprintf(temp, "Restored 10 shield points");
 						break;
@@ -405,7 +405,8 @@ void doCollectables()
 							sprintf(temp, "Plasma cells already at Maximum");
 						else
 						{
-							limitCharAdd(&player.ammo[0], collectable->value, 0, currentGame.maxPlasmaAmmo);
+							LIMIT_ADD(player.ammo[0], collectable->value,
+								0, currentGame.maxPlasmaAmmo);
 							if (collectable->value > 1)
 							{
 								sprintf(temp, "Got %d plasma cells", collectable->value);

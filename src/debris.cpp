@@ -29,7 +29,7 @@ void addDebris(int x, int y, int amount)
 	object *debris;
 	
 	amount = rrand(3, rand() % amount);
-	limitInt(&amount, 3, 8);
+	LIMIT(amount, 3, 8);
 
 	for (int i = 0 ; i < amount ; i++)
 	{

@@ -133,7 +133,7 @@ void doPlayer()
 				{
 					if (!charger_fired)
 					{
-						limitCharAdd(&player.ammo[1], 1, 0, 150);
+						LIMIT_ADD(player.ammo[1], 1, 0, 150);
 						if (player.ammo[1] >= 150)
 						{
 							ship_fireBullet(&player, 1);
@@ -171,8 +171,8 @@ void doPlayer()
 				engine.keyState[KEY_SWITCH] = 0;
 			}
 
-			limitCharAdd(&player.reload[0], -1, 0, 999);
-			limitCharAdd(&player.reload[1], -1, 0, 999);
+			LIMIT_ADD(player.reload[0], -1, 0, 999);
+			LIMIT_ADD(player.reload[1], -1, 0, 999);
 
 			if (engine.keyState[KEY_UP])
 			{
@@ -299,7 +299,7 @@ void doPlayer()
 			if (player.hit)
 				shapeToUse += SHIP_HIT_INDEX;
 
-			limitCharAdd(&player.hit, -1, 0, 100);
+			LIMIT_ADD(player.hit, -1, 0, 100);
 
 			blit(shipShape[shapeToUse], (int)player.x, (int)player.y);
 			if ((player.maxShield > 1) && (player.shield <= engine.lowShield) &&
@@ -334,8 +334,8 @@ void doPlayer()
 		}
 	}
 
-	limitFloat(&engine.ssx, -cameraMaxSpeed, cameraMaxSpeed);
-	limitFloat(&engine.ssy, -cameraMaxSpeed, cameraMaxSpeed);
+	LIMIT(engine.ssx, -cameraMaxSpeed, cameraMaxSpeed);
+	LIMIT(engine.ssy, -cameraMaxSpeed, cameraMaxSpeed);
 
 	// Specific for the mission were you have to chase the Executive Transport
 	if ((currentGame.area == 18) && (aliens[ALIEN_BOSS].shield > 0) &&

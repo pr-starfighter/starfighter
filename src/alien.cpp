@@ -813,7 +813,7 @@ bool alien_add()
 	aliens[index].deathCounter = 0 - (aliens[index].maxShield * 3);
 	aliens[index].hit = 0;
 
-	limitInt(&aliens[index].deathCounter, -250, 0);
+	LIMIT(aliens[index].deathCounter, -250, 0);
 
 	// Attempts to place an alien. If it fails, the alien is deactivated.
 	for (int i = 0 ; i < 100 ; i++)

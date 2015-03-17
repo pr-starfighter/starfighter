@@ -549,7 +549,7 @@ static void buy(int i)
 				shopSelectedItem = -4;
 				return;
 			}
-			limitCharAdd(&player.ammo[0], 10, 0, currentGame.maxPlasmaAmmo);
+			LIMIT_ADD(player.ammo[0], 10, 0, currentGame.maxPlasmaAmmo);
 			break;
 
 		case SHOP_ROCKET_AMMO:
@@ -668,7 +668,7 @@ static void buy(int i)
 			}
 			shop_sellSecondaryWeapon();
 			player.weaponType[1] = W_DOUBLE_ROCKETS;
-			limitChar(&currentGame.maxRocketAmmo, 5, 50);
+			LIMIT(currentGame.maxRocketAmmo, 5, 50);
 			shopSelectedItem = -1;
 			break;
 
@@ -680,7 +680,7 @@ static void buy(int i)
 			}
 			shop_sellSecondaryWeapon();
 			player.weaponType[1] = W_MICRO_ROCKETS;
-			limitChar(&currentGame.maxRocketAmmo, 5, 50);
+			LIMIT(currentGame.maxRocketAmmo, 5, 50);
 			shopSelectedItem = -1;
 			break;
 
@@ -713,7 +713,7 @@ static void buy(int i)
 			while (currentGame.maxRocketAmmo > maxHoming)
 				sell(SHOP_ROCKET_MAX_AMMO);
 
-			limitChar(&currentGame.maxRocketAmmo, 5, maxHoming);
+			LIMIT(currentGame.maxRocketAmmo, 5, maxHoming);
 			shopSelectedItem = -1;
 			break;
 
@@ -746,7 +746,7 @@ static void buy(int i)
 			while (currentGame.maxRocketAmmo > maxDoubleHoming)
 				sell(SHOP_ROCKET_MAX_AMMO);
 
-			limitChar(&currentGame.maxRocketAmmo, 5, maxDoubleHoming);
+			LIMIT(currentGame.maxRocketAmmo, 5, maxDoubleHoming);
 			shopSelectedItem = -1;
 			break;
 
@@ -762,7 +762,7 @@ static void buy(int i)
 			while (currentGame.maxRocketAmmo > maxMicroHoming)
 				sell(SHOP_ROCKET_MAX_AMMO);
 
-			limitChar(&currentGame.maxRocketAmmo, 5, maxMicroHoming);
+			LIMIT(currentGame.maxRocketAmmo, 5, maxMicroHoming);
 			shopSelectedItem = -1;
 			break;
 	}

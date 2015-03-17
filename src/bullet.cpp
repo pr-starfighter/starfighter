@@ -200,7 +200,7 @@ char checkPlayerShockDamage(float x, float y)
 
 		player.shield -= (int)(10 - distX);
 		player.shield -= (int)(10 - distY);
-		limitInt(&player.shield, 0, player.maxShield);
+		LIMIT(player.shield, 0, player.maxShield);
 		player.hit = 10;
 
 		return 1;
@@ -278,18 +278,18 @@ void doBullets()
 			if (bullet->target != NULL)
 			{
 				if (bullet->x < bullet->target->x)
-					limitFloat(&(bullet->dx += homingMissileSpeed), -15, 15);
-				if (bullet->x > bullet->target->x)
-					limitFloat(&(bullet->dx -= homingMissileSpeed), -15, 15);
+					LIMIT_ADD(bullet->dx, homingMissileSpeed, -15, 15);
+				else if (bullet->x > bullet->target->x)
+					LIMIT_ADD(bullet->dx, -homingMissileSpeed, -15, 15);
 
 				//Rocket is (more or less) inline with target. Fly straight
 				if ((bullet->x > bullet->target->x - 1) && (bullet->x < bullet->target->x + 5))
 					bullet->dx = 0;
 
 				if (bullet->y < bullet->target->y)
-					limitFloat(&(bullet->dy += homingMissileSpeed), -15, 15);
-				if (bullet->y > bullet->target->y)
-					limitFloat(&(bullet->dy -= homingMissileSpeed), -15, 15);
+					LIMIT_ADD(bullet->dy, homingMissileSpeed, -15, 15);
+				else if (bullet->y > bullet->target->y)
+					LIMIT_ADD(bullet->dy, -homingMissileSpeed, -15, 15);
 
 				//Rocket is (more or less) inline with target. Fly straight
 				if ((bullet->y > bullet->target->y - 1) && (bullet->y < bullet->target->y + 5))
@@ -388,7 +388,7 @@ void doBullets()
 							setInfoLine("!!! WARNING: SHIELD LOW !!!", FONT_RED);
 
 						player.shield -= bullet->damage;
-						limitInt(&player.shield, 0, player.maxShield);
+						LIMIT(player.shield, 0, player.maxShield);
 						player.hit = 5;
 					}
 

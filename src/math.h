@@ -20,58 +20,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef MATH_H
 #define MATH_H
 
-static inline void limitChar(signed char *in, int low, int high)
-{
-	if (*in < low)
-		*in = low;
-	if (*in > high)
-		*in = high;
-}
-
-static inline void limitChar(unsigned char *in, int low, int high)
-{
-	if (*in < low)
-		*in = low;
-	if (*in > high)
-		*in = high;
-}
-
-static inline void limitCharAdd(signed char *in, int add, int low, int high)
-{
-	int tmp = (int)*in + add;
-	if (tmp < low)
-		tmp = low;
-	if (tmp > high)
-		tmp = high;
-	*in = tmp;
-}
-
-static inline void limitCharAdd(unsigned char *in, int add, int low, int high)
-{
-	int tmp = (int)*in + add;
-	if (tmp < low)
-		tmp = low;
-	if (tmp > high)
-		tmp = high;
-	*in = tmp;
-}
-
-static inline void limitInt(int *in, int low, int high)
-{
-	if (*in < low)
-		*in = low;
-	if (*in > high)
-		*in = high;
-}
-
-static inline void limitFloat(float *in, float low, float high)
-{
-	if (*in < low)
-		*in = low;
-	if (*in > high)
-		*in = high;
-}
-
 static inline void wrapChar(signed char *in, signed char low, signed char high)
 {
 	if (*in < low)
