@@ -370,7 +370,7 @@ int mainGameLoop()
 
 		if ((currentGame.system == 2) && (currentGame.experimentalShield > 0))
 		{
-			if ((rand() % 5) < 4)
+			if ((rand() % 5) > 0)
 			{
 				aliens[10] = alien_defs[CD_CLOAKFIGHTER];
 				aliens[10].owner = &aliens[10];
