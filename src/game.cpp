@@ -76,6 +76,8 @@ void newGame()
 	currentGame.maxPlasmaAmmoLimit = 250;
 	currentGame.maxRocketAmmoLimit = 50;
 
+	player.maxShield = 50;
+
 	switch (currentGame.difficulty)
 	{
 		case DIFFICULTY_EASY:
@@ -102,14 +104,8 @@ void newGame()
 			break;
 		case DIFFICULTY_NIGHTMARE:
 			player.maxShield = 1;
-			currentGame.maxPlasmaRate = 1;
-			currentGame.maxPlasmaOutput = 1;
-			currentGame.maxPlasmaDamage = 1;
 			currentGame.maxRocketAmmo = 5;
-			currentGame.cash = 6000;
 			break;
-		default:
-			player.maxShield = 50;
 	}
 
 	player.shield = player.maxShield;
