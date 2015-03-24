@@ -892,7 +892,7 @@ int mainGameLoop()
 		doExplosions();
 		doInfo();
 
-		wrapChar(&(--engine.eventTimer), 0, 60);
+		WRAP_ADD(engine.eventTimer, -1, 0, 60);
 
 		if (engine.paused)
 		{
@@ -916,7 +916,7 @@ int mainGameLoop()
 
 		if (engine.addAliens > -1)
 		{
-   		wrapInt(&(--engine.addAliens), 0, currentMission.addAliens);
+   		WRAP_ADD(engine.addAliens, -1, 0, currentMission.addAliens);
 			if ((engine.addAliens == 0) && (allowableAliens > 0))
 			{
 				allowableAliens -= alien_add();

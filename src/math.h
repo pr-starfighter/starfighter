@@ -20,30 +20,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef MATH_H
 #define MATH_H
 
-static inline void wrapChar(signed char *in, signed char low, signed char high)
-{
-	if (*in < low)
-		*in += high - low;
-	if (*in > high)
-		*in -= high - low;
-}
-
-static inline void wrapInt(int *in, int low, int high)
-{
-	if (*in < low)
-		*in += high - low;
-	if (*in > high)
-		*in -= high - low;
-}
-
-static inline void wrapFloat(float *in, float low, float high)
-{
-	if (*in < low)
-		*in += high - low;
-	if (*in > high)
-		*in -= high - low;
-}
-
 static inline int rrand(int min, int max)
 {
 	int r = min;

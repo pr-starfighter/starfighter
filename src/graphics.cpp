@@ -698,8 +698,7 @@ SDL_Surface *loadImage(const char *filename)
 
 /*
 Simply draws the stars in their positions on screen and moves
-them around. They are wrapped around using the wrapFloat()
-function, as defined above, and putpixel as defined in cpp
+them around.
 */
 void doStarfield()
 {
@@ -723,9 +722,9 @@ void doStarfield()
 		else if (star[i].speed == 1)
 			color = darkGrey;
 
-		wrapFloat(&(star[i].x += ((engine.ssx + engine.smx) * star[i].speed)), 0,
+		WRAP_ADD(star[i].x, (engine.ssx + engine.smx) * star[i].speed, 0,
 			screen->w - 1);
-		wrapFloat(&(star[i].y += ((engine.ssy + engine.smy) * star[i].speed)), 0,
+		WRAP_ADD(star[i].y, (engine.ssy + engine.smy) * star[i].speed, 0,
 			screen->h - 1);
 
 		putpixel(screen, (int)star[i].x, (int)star[i].y, color);

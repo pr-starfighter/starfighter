@@ -141,7 +141,7 @@ void saveGame(int slot)
 	sprintf(fileName, "%ssave%.2d.dat", engine.userHomeDirectory, slot);
 	fp = fopen(fileName, "wb");
 
-	currentGame.saveFormat = 2;
+	currentGame.saveFormat = 3;
 	currentGame.playerWeapon = weapon[W_PLAYER_WEAPON];
 	currentGame.thePlayer = player;
 	for (int i = 0 ; i < 10 ; i++)

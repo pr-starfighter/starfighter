@@ -26,6 +26,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LIMIT_ADD(x, y, a, b) x = (((x) + (y)) < (b) ? \
 	(((x) + (y)) > (a) ? \
 		((x) + (y)) : (a)) : (b))
+#define WRAP_ADD(x, y, a, b) x = (((x) + (y)) + \
+	((x) + (y) < (a) ? ((b) - (a)) : 0) + \
+	((x) + (y) > (b) ? ((a) - (b)) : 0))
 
 // ALL
 #define NONE 0

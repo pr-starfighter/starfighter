@@ -23,22 +23,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 struct object {
 
 	bool active;
-	signed char classDef; // Used by aliens to determine what they are
-	signed char AIType; // Type of articifial intelligence
+	int classDef; // Used by aliens to determine what they are
+	int AIType; // Type of articifial intelligence
 
-	signed char id; // The "job" of the object
+	int id; // The "job" of the object
 	object *target; //  index target in aliens array
 
-	signed char reload[2];
+	int reload[2];
 
 	int systemPower; // computer systems for craft
 	int shield;   // current shield
 	int maxShield; // max shield (for recharging)
 	int deathCounter; // how long to explode for
 
-	signed char speed;
+	int speed;
 	int damage; // Contact damage for bullets
-	unsigned char ammo[2]; // Ammo for 2nd weapon.
+	int ammo[2]; // Ammo for 2nd weapon.
 
 	int face; // Either 0 or 1
 
@@ -47,18 +47,18 @@ struct object {
 	int chance[2]; // Chance of using the weapons (out of 1000)
 
 	SDL_Surface *image[2]; // For facing left and right
-	unsigned char imageIndex[2]; // used for loading
-	signed char hit; // used to make a craft "flash" if it is struck by a shot
+	int imageIndex[2]; // used for loading
+	int hit; // used to make a craft "flash" if it is struck by a shot
 
 	int engineX; // The place for the engine on the other side of the craft
 	int engineY; // The middle of the engine on the craft
 
 	int thinktime; // When the object will next react
-	signed char weaponType[2]; // Weapon types
+	int weaponType[2]; // Weapon types
 
-	signed char collectChance; // Chance of dropping the object
-	signed char collectType; // What the object is carrying
-	unsigned int collectValue; // What it is worth
+	int collectChance; // Chance of dropping the object
+	int collectType; // What the object is carrying
+	int collectValue; // What it is worth
 
 	int flags; // Various flags for an object
 
@@ -71,21 +71,21 @@ struct object {
 struct mission {
 
 	char primaryObjective[3][50]; // Description
-	signed char primaryType[3]; // The type of mission this is
-	signed char target1[3]; // index of target in aliens array
+	int primaryType[3]; // The type of mission this is
+	int target1[3]; // index of target in aliens array
 	int targetValue1[3]; // Number of things to collect (slaves, cash, etc)
-	signed char timeLimit1[3]; // In minutes
+	int timeLimit1[3]; // In minutes
 	int completed1[3];
 
 	char secondaryObjective[3][50]; // Description
-	signed char secondaryType[3]; // The type of mission this is
-	signed char target2[3]; // index of target in aliens array
+	int secondaryType[3]; // The type of mission this is
+	int target2[3]; // index of target in aliens array
 	int targetValue2[3]; // Number of things to collect (slaves, cash, etc)
-	signed char timeLimit2[3]; // In minutes
+	int timeLimit2[3]; // In minutes
 	int completed2[3];
 
-	signed char remainingObjectives1;
-	signed char remainingObjectives2;
+	int remainingObjectives1;
+	int remainingObjectives2;
 	int addAliens; // How often to add new enemies
 
 };
@@ -93,7 +93,7 @@ struct mission {
 struct Star {
 
 	float x, y, dx, dy;
-	signed char speed; // How fast the star moves
+	int speed; // How fast the star moves
 
 };
 
@@ -102,8 +102,8 @@ struct collectables {
 	bool active;
 	float x, y, dx, dy;
 	SDL_Surface *image;
-	signed char type; // What kind of collectable is it?
-	unsigned char value; // How much is it worth?
+	int type; // What kind of collectable is it?
+	int value; // How much is it worth?
 	int life; // How long it will stay around for
 
 	collectables *next;
@@ -113,9 +113,9 @@ struct collectables {
 struct textObject {
 
 	SDL_Surface *image;
-	unsigned char life;
+	int life;
 	float x, y;
-	signed char fontColor;
+	int fontColor;
 	char text[255];
 
 };
@@ -124,70 +124,71 @@ struct Game {
 	object thePlayer;
 	object playerWeapon;
 
-	unsigned char system;
-	unsigned char area;
-	unsigned char musicVolume;
-	unsigned char sfxVolume;
+	int system;
+	int area;
+	int musicVolume;
+	int sfxVolume;
 
-	signed char saveFormat;
-	signed char difficulty;
+	int saveFormat;
+	int difficulty;
 
-	unsigned int cash;
-	unsigned int cashEarned;
-	unsigned int shots;
-	unsigned int hits;
-	unsigned char accuracy;
-	unsigned char hasWingMate1, hasWingMate2;
-	unsigned int totalKills, wingMate1Kills, wingMate2Kills;
-	unsigned char wingMate1Ejects, wingMate2Ejects;
-	unsigned int totalOtherKills;
-	unsigned char secondaryMissions, secondaryMissionsCompleted;
-	unsigned int shieldPickups, rocketPickups, cellPickups, powerups, minesKilled, cargoPickups;
+	int cash;
+	int cashEarned;
+	
+	int shots;
+	int hits;
+	int accuracy;
+	int hasWingMate1, hasWingMate2;
+	int totalKills, wingMate1Kills, wingMate2Kills;
+	int wingMate1Ejects, wingMate2Ejects;
+	int totalOtherKills;
+	int secondaryMissions, secondaryMissionsCompleted;
+	int shieldPickups, rocketPickups, cellPickups, powerups, minesKilled, cargoPickups;
 
 	// slaves for Eyananth
-	unsigned int slavesRescued;
+	int slavesRescued;
 
 	// remaining shield for experimental fighter
-	unsigned int experimentalShield;
+	int experimentalShield;
 
-	unsigned int timeTaken; // In seconds
-	unsigned char missionCompleted[10];
+	int timeTaken; // In seconds
+	int missionCompleted[10];
 
-	signed char stationedPlanet;
-	signed char destinationPlanet;
+	int stationedPlanet;
+	int destinationPlanet;
 
 	char stationedName[20];
 	char destinationName[20];
 	int distanceCovered;
 
-	unsigned char minPlasmaRate;
-	unsigned char minPlasmaDamage;
-	unsigned char minPlasmaOutput;
-	unsigned char maxPlasmaRate;
-	unsigned char maxPlasmaDamage;
-	unsigned char maxPlasmaOutput;
-	unsigned char maxPlasmaAmmo;
-	unsigned char maxRocketAmmo;
+	int minPlasmaRate;
+	int minPlasmaDamage;
+	int minPlasmaOutput;
+	int maxPlasmaRate;
+	int maxPlasmaDamage;
+	int maxPlasmaOutput;
+	int maxPlasmaAmmo;
+	int maxRocketAmmo;
 
 	// Limits on shop upgrades
-	unsigned char minPlasmaRateLimit;
-	unsigned char minPlasmaDamageLimit;
-	unsigned char minPlasmaOutputLimit;
-	unsigned char maxPlasmaRateLimit;
-	unsigned char maxPlasmaDamageLimit;
-	unsigned char maxPlasmaOutputLimit;
-	unsigned char maxPlasmaAmmoLimit;
-	unsigned char maxRocketAmmoLimit;
+	int minPlasmaRateLimit;
+	int minPlasmaDamageLimit;
+	int minPlasmaOutputLimit;
+	int maxPlasmaRateLimit;
+	int maxPlasmaDamageLimit;
+	int maxPlasmaOutputLimit;
+	int maxPlasmaAmmoLimit;
+	int maxRocketAmmoLimit;
 
 };
 
 struct ShopItem {
 
 	int x, y;
-	unsigned int price;
+	int price;
 	char name[50];
 	char description[255];
-	unsigned char image;
+	int image;
 };
 
 struct bRect {
@@ -203,12 +204,12 @@ struct Planet {
 	char name[50];
 	SDL_Surface *image;
 
-	signed char missionNumber; // associated mission number
-	signed char missionCompleted; // whether it has been completed
+	int missionNumber; // associated mission number
+	int missionCompleted; // whether it has been completed
 
-	signed char messageMission;
-	signed char messageSlot;
-	signed char faceImage;
+	int messageMission;
+	int messageSlot;
+	int faceImage;
 	char from[50];
 	char subject[100];
 };
@@ -231,13 +232,13 @@ enum keys {
 struct globalEngineVariables {
 
 	SDL_Event event;
-	signed char done;
+	int done;
 
 	SDL_RWops *sdlrw;
 
 	float musicVolume;
 
-	signed char maxAliens;
+	int maxAliens;
 
 	float ssx;
 	float ssy;
@@ -255,35 +256,35 @@ struct globalEngineVariables {
 
 	int cursor_x, cursor_y;
 
-	signed char commsSection;
+	int commsSection;
 
-	signed char eventTimer;
+	int eventTimer;
 
-	signed char lowShield;
-	signed char averageShield;
+	int lowShield;
+	int averageShield;
 
 	float targetShield;
-	signed char targetIndex;
+	int targetIndex;
 
 	// Mission completion timer (allows for 4 seconds before leaving sector)
-	unsigned long missionCompleteTimer;
+	long missionCompleteTimer;
 
 	// Times the mission normally
 	unsigned int counter2;
 	int timeTaken; // In seconds
 
 	// For missions with a time limit
-	signed char timeMission;
+	int timeMission;
 	unsigned int counter;
-	signed char seconds;
-	signed char minutes;
+	int seconds;
+	int minutes;
 
 	// Mission Related stuff
-	signed char allAliensDead;
+	int allAliensDead;
 	int addAliens;
 
 	bool paused;
-	signed char gameSection;
+	int gameSection;
 
 	bool useAudio;
 	bool useSound;
@@ -306,8 +307,8 @@ struct event {
 
 	int time;
 	char message[255];
-	signed char face;
-	signed char entity;
+	int face;
+	int entity;
 	int flag;
 };
 
@@ -320,8 +321,8 @@ struct cutMsg {
 
 struct devVariables {
 
-	signed char moveAliens;
-	signed char fireAliens;
+	int moveAliens;
+	int fireAliens;
 	
 };
 

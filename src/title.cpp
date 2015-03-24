@@ -337,7 +337,7 @@ int doTitle()
 				if (engine.keyState[KEY_UP])
 				{
 					engine.keyState[KEY_UP] = 0;
-					wrapChar(&(--selectedOption), 1, listLength + 1);
+					WRAP_ADD(selectedOption, -1, 1, listLength + 1);
 					if (menuType == MENU_MAIN)
 						if ((selectedOption == 2) || (selectedOption == 3))
 							if (continueSaveSlot == -1)
@@ -346,7 +346,7 @@ int doTitle()
 				if (engine.keyState[KEY_DOWN])
 				{
 					engine.keyState[KEY_DOWN] = 0;
-					wrapChar(&(++selectedOption), 0, listLength);
+					WRAP_ADD(selectedOption, 1, 0, listLength);
 					if (menuType == MENU_MAIN)
 						if ((selectedOption == 2) || (selectedOption == 3))
 							if (continueSaveSlot == -1)
