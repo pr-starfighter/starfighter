@@ -5,16 +5,15 @@ License: GNU GPLv3 or later <https://gnu.org/licenses/gpl.html>
 
 ------------------------------------------------------------------------
 
+gfx/alienDevice.png
 gfx/prlogo.png
 gfx/sflogo.png
-gfx/alienDevice.png
 
 Author: Parallel Realities <http://www.parallelrealities.co.uk/>
 License: GNU GPLv2 or later <https://gnu.org/licenses/old-licenses/gpl-2.0.html>
 
 ------------------------------------------------------------------------
 
-gfx/iconBase.png
 gfx/arrowEast.png
 gfx/arrowNorth.png
 gfx/arrowNorthEast.png
@@ -23,42 +22,42 @@ gfx/arrowSouth.png
 gfx/arrowSouthEast.png
 gfx/arrowSouthWest.png
 gfx/arrowWest.png
-gfx/stunBolt.png
-gfx/redDir.png
-gfx/greenDir.png
-gfx/sellIcon.png
 gfx/buyIcon.png
-gfx/gameover.png
+gfx/chainLink.png
+gfx/cursor.png
+gfx/elec1.png
+gfx/elec2.png
+gfx/elec3.png
+gfx/elec4.png
+gfx/explode1.png
+gfx/explode2.png
+gfx/explode3.png
+gfx/explode4.png
+gfx/explode9.png
+gfx/explode10.png
+gfx/explode11.png
+gfx/explode12.png
 gfx/explode13.png
 gfx/explode14.png
 gfx/explode15.png
 gfx/explode16.png
+gfx/gameover.png
+gfx/greenDir.png
 gfx/icon1.png
 gfx/icon2.png
 gfx/icon3.png
 gfx/icon6.png
 gfx/icon7.png
-gfx/icon11.png
-gfx/explode9.png
-gfx/explode10.png
-gfx/explode11.png
-gfx/explode12.png
-gfx/explode1.png
-gfx/explode1.png
-gfx/explode3.png
-gfx/explode4.png
-gfx/elec1.png
-gfx/elec2.png
-gfx/elec3.png
-gfx/elec4.png
-gfx/chainLink.png
-gfx/cursor.png
-gfx/smallFont.png
-gfx/targetText.png
-gfx/gameover.png
 gfx/icon8.png
+gfx/icon11.png
+gfx/iconBase.png
 gfx/plasmaGreen.png
 gfx/plasmaRed.png
+gfx/redDir.png
+gfx/sellIcon.png
+gfx/smallFont.png
+gfx/stunBolt.png
+gfx/targetText.png
 
 Author: Astrid S. de Wijn
 License: CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0/>
@@ -107,6 +106,7 @@ Source: http://opengameart.org/content/the-sun
 
 ------------------------------------------------------------------------
 
+gfx/icon26.png
 gfx/planet_blue.png
 gfx/planet_green.png
 gfx/planet_orange.png
@@ -120,8 +120,8 @@ Source: http://opengameart.org/content/planets-pack-8
 
 gfx/drone1.png
 gfx/drone2.png
-gfx/tug1.png
-gfx/tug2.png
+gfx/merc1.png
+gfx/merc2.png
 gfx/mineBoss1.png
 gfx/mineBoss2.png
 gfx/mineBossWing11.png
@@ -134,8 +134,8 @@ gfx/mineBossWing41.png
 gfx/mineBossWing42.png
 gfx/missileBoat1.png
 gfx/missileBoat2.png
-gfx/merc1.png
-gfx/merc2.png
+gfx/tug1.png
+gfx/tug2.png
 
 Authors:
   surt <http://opengameart.org/users/surt>
@@ -288,6 +288,8 @@ Source: http://opengameart.org/content/spaceship-360
 
 ------------------------------------------------------------------------
 
+gfx/execTrans1.png
+gfx/execTrans2.png
 gfx/frigateBody1.png
 gfx/frigateBody2.png
 gfx/frigateGun11.png
@@ -360,9 +362,9 @@ gfx/icon20.png
 gfx/icon22.png
 gfx/icon24.png
 gfx/icon25.png
-gfx/rocketAmmo.png
 gfx/rocket1.png
 gfx/rocket2.png
+gfx/rocketAmmo.png
 
 Authors:
   OceansDream <http://oceansdream.deviantart.com/art/Pixel-Icons-available-for-use-121152370>
@@ -479,7 +481,7 @@ Source: http://hubblesite.org/gallery/album/nebula/pr2005012b/
 
 ------------------------------------------------------------------------
 
-sound/flyby.wav
+sound/flyby.ogg
 
 Author: Person <http://opengameart.org/users/person>
 License: CC0 <http://creativecommons.org/publicdomain/zero/1.0/>
@@ -492,10 +494,10 @@ sound/explode.ogg
 sound/explode2.ogg
 sound/hyperSpace.ogg
 sound/item.ogg
+sound/laser.ogg
 sound/missile.ogg
 sound/missile2.ogg
 sound/plasma3.ogg
-sound/laser.ogg
 
 
 Author: Stephen M. Cameron <http://sourceforge.net/users/smcameron>
@@ -505,12 +507,12 @@ Source: http://opengameart.org/content/action-shooter-soundset-wwvi
 ------------------------------------------------------------------------
 
 sound/beamLaser.ogg
-sound/plasma2.ogg
-sound/shield.ogg
 sound/cloak.ogg
-sound/plasma.ogg
 sound/explode3.ogg
 sound/explode4.ogg
+sound/plasma.ogg
+sound/plasma2.ogg
+sound/shield.ogg
 
 Author: p0ss <http://opengameart.org/users/p0ss>
 License: CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>
