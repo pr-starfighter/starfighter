@@ -173,7 +173,7 @@ void alien_defs_init()
 	alien_defs[CD_TRANSPORTSHIP].chance[1] = 0;
 	alien_defs[CD_TRANSPORTSHIP].collectChance = 100;
 	alien_defs[CD_TRANSPORTSHIP].collectType = P_WEAPONS;
-	alien_defs[CD_TRANSPORTSHIP].collectValue = 30;
+	alien_defs[CD_TRANSPORTSHIP].collectValue = 40;
 	alien_defs[CD_TRANSPORTSHIP].flags = FL_WEAPCO | FL_NOFIRE;
 
 	// Cargo ship
@@ -794,11 +794,8 @@ bool alien_add()
 				randEnemy = CD_SLAVETRANSPORT;
 		}
 
-		if (currentGame.area != MAX_MISSIONS - 1)
-		{
-			if ((rand() % 6) == 0)
-				randEnemy = CD_TRANSPORTSHIP;
-		}
+		if ((rand() % 6) == 0)
+			randEnemy = CD_TRANSPORTSHIP;
 	}
 
 	delete[] alienArray;
