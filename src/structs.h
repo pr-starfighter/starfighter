@@ -270,12 +270,12 @@ struct globalEngineVariables {
 	long missionCompleteTimer;
 
 	// Times the mission normally
-	unsigned int counter2;
+	Uint32 counter2;
 	int timeTaken; // In seconds
 
 	// For missions with a time limit
 	int timeMission;
-	unsigned int counter;
+	Uint32 counter;
 	int seconds;
 	int minutes;
 
