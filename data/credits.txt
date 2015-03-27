@@ -65,4 +65,4 @@
 020 Copyright 2003 Parallel Realities
 020 Copyright 2012 Guus Sliepen, Astrid S. de Wijn and others
 020 Copyright 2015 Julian Marchant
-120 http://sourceforge.net/projects/pr-starfighter/
+120 starfighter.nongnu.org

@@ -44,7 +44,7 @@ int main(int argc, char **argv)
 			printf("Additional Commands\n");
 			printf("\t-noaudio     Disables sound and music\n");
 			printf("\t-mono        Mono sound output (best for headphones)\n\n");
-			printf("http://sourceforge.net/projects/pr-starfighter/\n");
+			printf("http://starfighter.nongnu.org\n");
 			printf("\n");
 			exit(0);
 		}
