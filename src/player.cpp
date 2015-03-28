@@ -57,10 +57,7 @@ void initPlayer()
 	engine.lowShield = (player.maxShield >= 3) ? (player.maxShield / 3) : 1;
 	engine.averageShield = engine.lowShield + engine.lowShield;
 
-	if (player.weaponType[1] == W_CHARGER)
-		player.ammo[1] = 0;
-
-	if (player.weaponType[1] == W_LASER)
+	if ((player.weaponType[1] == W_CHARGER) || (player.weaponType[1] == W_LASER))
 		player.ammo[1] = 0;
 }
 
@@ -75,10 +72,7 @@ void exitPlayer()
 {
 	charger_fired = false;
 
-	if (player.weaponType[1] == W_CHARGER)
-		player.ammo[1] = 0;
-
-	if (player.weaponType[1] == W_LASER)
+	if ((player.weaponType[1] == W_CHARGER) || (player.weaponType[1] == W_LASER))
 		player.ammo[1] = 0;
 }
 
@@ -129,16 +123,25 @@ void doPlayer()
 
 			if (player.weaponType[1] == W_CHARGER)
 			{
-				if (engine.keyState[KEY_ALTFIRE] && !(engine.keyState[KEY_FIRE]))
+				if (engine.keyState[KEY_ALTFIRE] &&
+					((currentGame.difficulty == DIFFICULTY_ORIGINAL) ||
+						!(engine.keyState[KEY_FIRE])))
 				{
 					if (!charger_fired)
 					{
-						LIMIT_ADD(player.ammo[1], 1, 0, 150);
-						if (player.ammo[1] >= 150)
+						if (currentGame.difficulty == DIFFICULTY_ORIGINAL)
 						{
-							ship_fireBullet(&player, 1);
-							player.ammo[1] = 0;
-							charger_fired = true;
+							LIMIT_ADD(player.ammo[1], 1, 0, 200);
+						}
+						else
+						{
+							LIMIT_ADD(player.ammo[1], 1, 0, 150);
+							if (player.ammo[1] >= 150)
+							{
+								ship_fireBullet(&player, 1);
+								player.ammo[1] = 0;
+								charger_fired = true;
+							}
 						}
 					}
 				}
