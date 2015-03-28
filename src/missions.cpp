@@ -837,6 +837,9 @@ of the screen.
 */
 void missionFinishedScreen()
 {
+	int shield_bonus;
+	char temp[100];
+
 	if (currentGame.area != MAX_MISSIONS - 1)
 	{
 		clearScreen(black);
@@ -847,8 +850,6 @@ void missionFinishedScreen()
 
 		clearScreen(black);
 		drawBriefScreen();
-
-		char temp[100];
 
 		for (int i = 0 ; i < 3 ; i++)
 		{
@@ -883,10 +884,11 @@ void missionFinishedScreen()
 
 		if (currentMission.remainingObjectives1 + currentMission.remainingObjectives2 == 0)
 		{
-			sprintf(temp, "Shield Bonus: $%.3d", (player.shield * 10));
+			shield_bonus = player.shield * 10;
+			sprintf(temp, "Shield Bonus: $%.3d", shield_bonus);
 			drawString(temp, -1, 430, FONT_WHITE);
-			currentGame.cash += (player.shield * 10);
-			currentGame.cashEarned += (player.shield * 10);
+			currentGame.cash += shield_bonus;
+			currentGame.cashEarned += shield_bonus;
 		}
 
 		currentGame.timeTaken += engine.timeTaken;

@@ -72,19 +72,38 @@ static void drawSecondaryWeaponSurface()
 
 static void adjustShopPrices()
 {
-	shopItems[SHOP_PLASMA_MAX_OUTPUT].price = (1000 *
-		(currentGame.maxPlasmaOutput + 1));
-	shopItems[SHOP_PLASMA_MAX_DAMAGE].price = (1000 *
-		(currentGame.maxPlasmaDamage + 1));
-	shopItems[SHOP_PLASMA_MAX_RATE].price = (1000 *
-		(currentGame.maxPlasmaRate + 1));
+	if (currentGame.difficulty == DIFFICULTY_ORIGINAL)
+	{
+		shopItems[SHOP_PLASMA_MAX_OUTPUT].price = (500 *
+			currentGame.maxPlasmaOutput);
+		shopItems[SHOP_PLASMA_MAX_DAMAGE].price = (500 *
+			currentGame.maxPlasmaDamage);
+		shopItems[SHOP_PLASMA_MAX_RATE].price = (500 *
+			(currentGame.maxPlasmaRate * 2 - 1));
 
-	shopItems[SHOP_PLASMA_MIN_OUTPUT].price = (2000 *
-		(currentGame.minPlasmaOutput + 1));
-	shopItems[SHOP_PLASMA_MIN_DAMAGE].price = (2000 *
-		(currentGame.minPlasmaDamage + 1));
-	shopItems[SHOP_PLASMA_MIN_RATE].price = (2000 *
-		(currentGame.minPlasmaRate + 1));
+		shopItems[SHOP_PLASMA_MIN_OUTPUT].price = (2000 *
+			currentGame.minPlasmaOutput);
+		shopItems[SHOP_PLASMA_MIN_DAMAGE].price = (2000 *
+			currentGame.minPlasmaDamage);
+		shopItems[SHOP_PLASMA_MIN_RATE].price = (2000 *
+			(currentGame.minPlasmaRate * 2 - 1));
+	}
+	else
+	{
+		shopItems[SHOP_PLASMA_MAX_OUTPUT].price = (1000 *
+			(currentGame.maxPlasmaOutput + 1));
+		shopItems[SHOP_PLASMA_MAX_DAMAGE].price = (1000 *
+			(currentGame.maxPlasmaDamage + 1));
+		shopItems[SHOP_PLASMA_MAX_RATE].price = (1000 *
+			(currentGame.maxPlasmaRate + 1));
+
+		shopItems[SHOP_PLASMA_MIN_OUTPUT].price = (1500 *
+			(currentGame.minPlasmaOutput + 1));
+		shopItems[SHOP_PLASMA_MIN_DAMAGE].price = (1500 *
+			(currentGame.minPlasmaDamage + 1));
+		shopItems[SHOP_PLASMA_MIN_RATE].price = (1500 *
+			(currentGame.minPlasmaRate + 1));
+	}
 
 	if (currentGame.maxPlasmaOutput <= currentGame.minPlasmaOutput)
 		shopItems[SHOP_PLASMA_MIN_OUTPUT].price += shopItems[SHOP_PLASMA_MAX_OUTPUT].price;
