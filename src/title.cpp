@@ -73,6 +73,8 @@ static void createDifficultyMenu()
 		textSurface(TS_DIFFICULTY, "DIFFICULTY - HARD", -1, 370, FONT_WHITE);
 	else if (currentGame.difficulty == DIFFICULTY_NIGHTMARE)
 		textSurface(TS_DIFFICULTY, "DIFFICULTY - NIGHTMARE!", -1, 370, FONT_WHITE);
+	else if (currentGame.difficulty == DIFFICULTY_ORIGINAL)
+		textSurface(TS_DIFFICULTY, "DIFFICULTY - ORIGINAL", -1, 370, FONT_WHITE);
 	else
 		textSurface(TS_DIFFICULTY, "DIFFICULTY - NORMAL", -1, 370, FONT_WHITE);
 }
@@ -430,8 +432,7 @@ int doTitle()
 						else if (selectedOption == 2)
 						{
 							currentGame.difficulty++;
-							if (currentGame.difficulty > DIFFICULTY_NIGHTMARE)
-								currentGame.difficulty = DIFFICULTY_EASY;
+							currentGame.difficulty %= DIFFICULTY_MAX;
 						}
 						else if (selectedOption == listLength)
 						{

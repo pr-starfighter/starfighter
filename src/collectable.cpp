@@ -50,8 +50,9 @@ void addCollectable(float x, float y, int type, int value, int life)
 	{
 		type = P_PLASMA_RATE;
 
-		if ((currentGame.difficulty >= DIFFICULTY_NIGHTMARE) ||
-			((currentGame.difficulty > DIFFICULTY_EASY) &&
+		if ((currentGame.difficulty == DIFFICULTY_NIGHTMARE) ||
+			((currentGame.difficulty != DIFFICULTY_EASY) &&
+				(currentGame.difficulty != DIFFICULTY_ORIGINAL) &&
 				((currentGame.area == 5) || (currentGame.area == 11) ||
 					(currentGame.area == 18) || (currentGame.area == 25))))
 		{

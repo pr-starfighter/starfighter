@@ -106,6 +106,16 @@ void newGame()
 			player.maxShield = 1;
 			currentGame.maxRocketAmmo = 5;
 			break;
+		case DIFFICULTY_ORIGINAL:
+			player.maxShield = 25;
+
+			currentGame.minPlasmaRateLimit = 3;
+			currentGame.minPlasmaDamageLimit = 3;
+			currentGame.minPlasmaOutputLimit = 3;
+			currentGame.maxPlasmaRateLimit = 5;
+			currentGame.maxPlasmaDamageLimit = 5;
+			currentGame.maxPlasmaOutputLimit = 5;
+			break;
 	}
 
 	player.shield = player.maxShield;

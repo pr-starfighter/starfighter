@@ -244,7 +244,7 @@ void doPlayer()
 						player.x = screen->w - xViewBorder;
 					}
 				}
-				else
+				else if (currentGame.difficulty != DIFFICULTY_ORIGINAL)
 				{
 					cd = player.x - screen->w / 2;
 					if (cd < 0)
@@ -273,7 +273,7 @@ void doPlayer()
 						player.y = screen->h - yViewBorder;
 					}
 				}
-				else
+				else if (currentGame.difficulty != DIFFICULTY_ORIGINAL)
 				{
 					cd = player.y - screen->h / 2;
 					if (cd < 0)

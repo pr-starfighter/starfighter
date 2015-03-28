@@ -527,7 +527,8 @@ int galaxyMap()
 	signed char saveSlot = -1;
 
 	// Remove the Supercharge, if it is there
-	if (currentGame.difficulty > DIFFICULTY_EASY)
+	if ((currentGame.difficulty != DIFFICULTY_EASY) &&
+		(currentGame.difficulty != DIFFICULTY_ORIGINAL))
 	{
 		weapon[W_PLAYER_WEAPON].reload[0] = MAX(
 			weapon[W_PLAYER_WEAPON].reload[0],

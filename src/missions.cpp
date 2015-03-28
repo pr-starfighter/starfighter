@@ -158,6 +158,9 @@ void updateSystemStatus()
 		currentGame.area = 6;
 		strcpy(currentGame.stationedName, "Nerod");
 		initPlanetMissions(currentGame.system);
+
+		if (currentGame.difficulty == DIFFICULTY_ORIGINAL)
+			player.maxShield = 50;
 	}
 	else if (currentGame.area == 11)
 	{
@@ -166,6 +169,9 @@ void updateSystemStatus()
 		currentGame.area = 12;
 		strcpy(currentGame.stationedName, "Odeon");
 		initPlanetMissions(currentGame.system);
+
+		if (currentGame.difficulty == DIFFICULTY_ORIGINAL)
+			player.maxShield = 75;
 	}
 	else if (currentGame.area == 18)
 	{
@@ -174,6 +180,9 @@ void updateSystemStatus()
 		currentGame.area = 19;
 		strcpy(currentGame.stationedName, "Pluto");
 		initPlanetMissions(currentGame.system);
+
+		if (currentGame.difficulty == DIFFICULTY_ORIGINAL)
+			player.maxShield = 100;
 	}
 	else // Update the mission for the planet
 	{
