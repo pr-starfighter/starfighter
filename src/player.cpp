@@ -260,6 +260,7 @@ void doPlayer()
 						engine.smx -= cc;
 					}
 				}
+
 				if (ymoved)
 				{
 					if (player.y < yViewBorder)

@@ -926,7 +926,7 @@ int mainGameLoop()
 
 		if (engine.addAliens > -1)
 		{
-   		WRAP_ADD(engine.addAliens, -1, 0, currentMission.addAliens);
+			WRAP_ADD(engine.addAliens, -1, 0, currentMission.addAliens);
 			if ((engine.addAliens == 0) && (allowableAliens > 0))
 			{
 				allowableAliens -= alien_add();
