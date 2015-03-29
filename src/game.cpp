@@ -546,6 +546,12 @@ int mainGameLoop()
 					else if ((currentGame.area == MISN_VENUS) &&
 						(engine.musicVolume > 0))
 					{
+						engine.keyState[KEY_UP] = 0;
+						engine.keyState[KEY_DOWN] = 0;
+						engine.keyState[KEY_LEFT] = 0;
+						engine.keyState[KEY_RIGHT] = 0;
+						engine.keyState[KEY_FIRE] = 0;
+						engine.keyState[KEY_ALTFIRE] = 0;
 						LIMIT_ADD(engine.musicVolume, -0.2, 0, 100);
 						audio_setMusicVolume((int)engine.musicVolume);
 					}

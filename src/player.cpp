@@ -550,8 +550,12 @@ void getPlayerInput()
 
 void leaveSector()
 {
-	engine.keyState[KEY_UP] = engine.keyState[KEY_DOWN] = engine.keyState[KEY_LEFT] = engine.keyState[KEY_RIGHT] = 0;
-	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
+	engine.keyState[KEY_UP] = 0;
+	engine.keyState[KEY_DOWN] = 0;
+	engine.keyState[KEY_LEFT] = 0;
+	engine.keyState[KEY_RIGHT] = 0;
+	engine.keyState[KEY_FIRE] = 0;
+	engine.keyState[KEY_ALTFIRE] = 0;
 
 	if (engine.done == 0)
 		engine.done = 3;
