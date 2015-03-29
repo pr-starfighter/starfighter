@@ -835,7 +835,7 @@ static void sell(int i)
 			}
 
 			while (currentGame.minPlasmaRate >= currentGame.maxPlasmaRate)
-				sell(SHOP_PLASMA_MIN_OUTPUT);
+				sell(SHOP_PLASMA_MIN_RATE);
 
 			currentGame.maxPlasmaRate--;
 			weapon[W_PLAYER_WEAPON].reload[0] = MAX(
