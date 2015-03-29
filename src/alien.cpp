@@ -945,7 +945,7 @@ bool alien_place(object *alien)
 
 	if (currentGame.area == MISN_MARS)
 	{
-		alien->x = screen->w;
+		alien->x = screen->w + RANDRANGE(0, 400);
 		alien->y = RANDRANGE(-screen->h / 3, (4 * screen->h) / 3);
 	}
 

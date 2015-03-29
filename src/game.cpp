@@ -924,14 +924,15 @@ int mainGameLoop()
 
 		if ((currentGame.area == MISN_MARS) && (engine.addAliens > -1))
 		{
-			if ((rand() % 10) == 0)
+			if ((rand() % 5) == 0)
 				// XXX: The originally specified range for x was [800, 100],
 				// which with the original rrand function caused the result
 				// returned to be `800 + rand() % -699`. Clearly a mistake,
 				// but I'm not entirely sure what the original intention was.
 				// For now, I've set the range to [800, 1500], which
 				// approximately replicates the original's results.
-				addCollectable(RANDRANGE(800, 1500), player.y, P_MINE, 25,
+				addCollectable(RANDRANGE(800, 1500),
+					RANDRANGE(-screen->h / 3, (4 * screen->h) / 3), P_MINE, 25,
 					180 + rand() % 60);
 		}
 
