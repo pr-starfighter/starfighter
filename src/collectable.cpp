@@ -280,6 +280,7 @@ void doCollectables()
 	collectables *collectable = engine.collectableHead;
 	collectables *prevCollectable = engine.collectableHead;
 	engine.collectableTail = engine.collectableHead;
+	char temp[40];
 
 	while (collectable->next != NULL)
 	{
@@ -302,7 +303,6 @@ void doCollectables()
 
 			if ((player.shield > 0) && (collision(collectable, &player)))
 			{
-				char temp[40];
 				switch(collectable->type)
 				{
 					case P_CASH:
@@ -353,7 +353,7 @@ void doCollectables()
 						}
 						else
 						{
-							sprintf(temp, "Plasma ammo unavailable");
+							sprintf(temp, "Upgrade failed (no plasma ammo)");
 						}
 						break;
 
@@ -378,7 +378,7 @@ void doCollectables()
 						}
 						else
 						{
-							sprintf(temp, "Plasma ammo unavailable");
+							sprintf(temp, "Upgrade failed (no plasma ammo)");
 						}
 						break;
 
@@ -402,7 +402,7 @@ void doCollectables()
 						}
 						else
 						{
-							sprintf(temp, "Plasma ammo unavailable");
+							sprintf(temp, "Upgrade failed (no plasma ammo)");
 						}
 						break;
 
@@ -426,7 +426,7 @@ void doCollectables()
 						}
 						else
 						{
-							sprintf(temp, "Plasma ammo unavailable (damn!)");
+							sprintf(temp, "Damn! Upgrade failed (no plasma ammo)");
 						}
 						break;
 

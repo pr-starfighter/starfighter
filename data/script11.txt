@@ -52,11 +52,11 @@ FACE_KLINE
 0
 I am Kline Kethlan. And I am here to put to a stop to your worthless little crusade!
 
--35
+-36
 FACE_KLINE
 -1
 0
-No where to run; No where to hide; And no-one to help you! This will certainly be interesting...
+Nowhere to run, nowhere to hide, and no one to help you! This will certainly be interesting...
 
 -41
 -1
