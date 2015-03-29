@@ -524,7 +524,7 @@ void alien_defs_init()
 	alien_defs[CD_MOBILE_RAY].chance[0] = 50;
 	alien_defs[CD_MOBILE_RAY].chance[1] = 50;
 	alien_defs[CD_MOBILE_RAY].collectChance = 75;
-	alien_defs[CD_MOBILE_RAY].collectType = P_SHIELD;
+	alien_defs[CD_MOBILE_RAY].collectType = P_ANYTHING;
 	alien_defs[CD_MOBILE_RAY].collectValue = 100;
 	alien_defs[CD_MOBILE_RAY].flags = FL_WEAPCO;
 
@@ -558,7 +558,7 @@ void alien_defs_init()
 	alien_defs[CD_PLUTOBOSS].chance[0] = 50;
 	alien_defs[CD_PLUTOBOSS].chance[1] = 2;
 	alien_defs[CD_PLUTOBOSS].collectChance = 0;
-	alien_defs[CD_PLUTOBOSS].collectType = P_SHIELD;
+	alien_defs[CD_PLUTOBOSS].collectType = P_ANYTHING;
 	alien_defs[CD_PLUTOBOSS].collectValue = 1000;
 	alien_defs[CD_PLUTOBOSS].flags = FL_WEAPCO;
 
