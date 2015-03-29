@@ -768,7 +768,7 @@ int galaxyMap()
 				{
 					if ((rand() % interceptionChance) == 0)
 					{
-						currentGame.area = MAX_MISSIONS - 1;
+						currentGame.area = MISN_INTERCEPTION;
 						rtn = 2;
 						engine.done = 1;
 						currentGame.distanceCovered = destRect.w;

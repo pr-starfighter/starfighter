@@ -53,8 +53,10 @@ void addCollectable(float x, float y, int type, int value, int life)
 		if ((currentGame.difficulty == DIFFICULTY_NIGHTMARE) ||
 			((currentGame.difficulty != DIFFICULTY_EASY) &&
 				(currentGame.difficulty != DIFFICULTY_ORIGINAL) &&
-				((currentGame.area == 5) || (currentGame.area == 11) ||
-					(currentGame.area == 18) || (currentGame.area == 25))))
+				((currentGame.area == MISN_MOEBO) ||
+					(currentGame.area == MISN_ELAMALE) ||
+					(currentGame.area == MISN_ELLESH) ||
+					(currentGame.area == MISN_EARTH))))
 		{
 			// Deny the Super Charge in Nightmare difficulty, and on bosses.
 			r = rand() % 59;
@@ -113,7 +115,7 @@ void addCollectable(float x, float y, int type, int value, int life)
 	{
 		// Cash is just rare in the original game. You can still grind,
 		// just not as much.
-		if ((currentGame.area == MAX_MISSIONS - 1) && (type == P_CASH))
+		if ((currentGame.area == MISN_INTERCEPTION) && (type == P_CASH))
 		{
 			if (rand() % 10 > 0)
 				return;
@@ -122,7 +124,7 @@ void addCollectable(float x, float y, int type, int value, int life)
 	else
 	{
 		// No cash or ammo on interceptions. Completely stops grinding.
-		if ((currentGame.area == MAX_MISSIONS - 1) &&
+		if ((currentGame.area == MISN_INTERCEPTION) &&
 			((type == P_CASH) || (type == P_PLASMA_AMMO) || (type == P_ROCKET)))
 		{
 			return;
@@ -334,11 +336,11 @@ void doCollectables()
 
 					case P_PLASMA_RATE:
 						currentGame.powerups++;
-						if ((currentGame.area != MAX_MISSIONS - 1) ||
+						if ((currentGame.area != MISN_INTERCEPTION) ||
 							(currentGame.difficulty == DIFFICULTY_ORIGINAL) ||
 							(player.ammo[0] > 0))
 						{
-							if ((currentGame.area != MAX_MISSIONS - 1) ||
+							if ((currentGame.area != MISN_INTERCEPTION) ||
 									(currentGame.difficulty == DIFFICULTY_ORIGINAL))
 								LIMIT_ADD(player.ammo[0], collectable->value,
 									0, currentGame.maxPlasmaAmmo);
@@ -359,11 +361,11 @@ void doCollectables()
 
 					case P_PLASMA_SHOT:
 						currentGame.powerups++;
-						if ((currentGame.area != MAX_MISSIONS - 1) ||
+						if ((currentGame.area != MISN_INTERCEPTION) ||
 							(currentGame.difficulty == DIFFICULTY_ORIGINAL) ||
 							(player.ammo[0] > 0))
 						{
-							if ((currentGame.area != MAX_MISSIONS - 1) ||
+							if ((currentGame.area != MISN_INTERCEPTION) ||
 									(currentGame.difficulty == DIFFICULTY_ORIGINAL))
 								LIMIT_ADD(player.ammo[0], collectable->value,
 									0, currentGame.maxPlasmaAmmo);
@@ -384,11 +386,11 @@ void doCollectables()
 
 					case P_PLASMA_DAMAGE:
 						currentGame.powerups++;
-						if ((currentGame.area != MAX_MISSIONS - 1) ||
+						if ((currentGame.area != MISN_INTERCEPTION) ||
 							(currentGame.difficulty == DIFFICULTY_ORIGINAL) ||
 							(player.ammo[0] > 0))
 						{
-							if ((currentGame.area != MAX_MISSIONS - 1) ||
+							if ((currentGame.area != MISN_INTERCEPTION) ||
 									(currentGame.difficulty == DIFFICULTY_ORIGINAL))
 								LIMIT_ADD(player.ammo[0], collectable->value,
 									0, currentGame.maxPlasmaAmmo);
@@ -408,11 +410,11 @@ void doCollectables()
 
 					case P_SUPER:
 						currentGame.powerups++;
-						if ((currentGame.area != MAX_MISSIONS - 1) ||
+						if ((currentGame.area != MISN_INTERCEPTION) ||
 							(currentGame.difficulty == DIFFICULTY_ORIGINAL) ||
 							(player.ammo[0] > 0))
 						{
-							if ((currentGame.area != MAX_MISSIONS - 1) ||
+							if ((currentGame.area != MISN_INTERCEPTION) ||
 									(currentGame.difficulty == DIFFICULTY_ORIGINAL))
 								LIMIT_ADD(player.ammo[0], collectable->value,
 									0, currentGame.maxPlasmaAmmo);

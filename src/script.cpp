@@ -48,7 +48,7 @@ void loadScriptEvents()
 		gameEvent[i].flag = 0;
 	}
 	
-	if ((currentGame.area == MAX_MISSIONS - 1) &&
+	if ((currentGame.area == MISN_INTERCEPTION) &&
 			(aliens[ALIEN_KLINE].classDef == CD_KLINE) &&
 			(aliens[ALIEN_KLINE].active))
 		setKlineGreeting();

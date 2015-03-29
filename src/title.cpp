@@ -180,7 +180,7 @@ int doTitle()
 	
 	// required to stop the title screen crashing
 	currentGame.system = 0;
-	currentGame.area = 0;
+	currentGame.area = MISN_START;
 
 	loadGameGraphics();
 

@@ -141,16 +141,16 @@ void audio_playRandomTrack()
 
 	switch(currentGame.area)
 	{
-		case 0:
+		case MISN_START:
 			audio_playMusic("music/railjet_short.ogg", -1);
 			break;
-		case 5:
-		case 11:
-		case 18:
-		case 25:
+		case MISN_MOEBO:
+		case MISN_ELAMALE:
+		case MISN_ELLESH:
+		case MISN_EARTH:
 			audio_playMusic("music/orbital_colossus.ogg", -1);
 			break;
-		case 26:
+		case MISN_VENUS:
 			audio_playMusic("music/RE.ogg", -1);
 			break;
 		default:

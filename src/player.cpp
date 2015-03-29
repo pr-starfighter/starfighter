@@ -224,8 +224,9 @@ void doPlayer()
 				engine.keyState[KEY_PAUSE] = 0;
 			}
 
-			if (((currentGame.area == 18) && (aliens[ALIEN_BOSS].shield > 0)) ||
-				(currentGame.area == 24))
+			if (((currentGame.area == MISN_ELLESH) &&
+					(aliens[ALIEN_BOSS].shield > 0)) ||
+				(currentGame.area == MISN_MARS))
 			{
 				player.face = 0;
 				xmoved = true;
@@ -321,7 +322,7 @@ void doPlayer()
 					getPlayerDeathMessage();
 
 				// Make it look like the ships are all still moving...
-				if (currentGame.area == 18)
+				if (currentGame.area == MISN_ELLESH)
 				{
 					for (int i = 0 ; i < ALIEN_MAX ; i++)
 						aliens[i].flags |= FL_LEAVESECTOR;
@@ -344,14 +345,14 @@ void doPlayer()
 	LIMIT(engine.ssy, -cameraMaxSpeed, cameraMaxSpeed);
 
 	// Specific for the mission were you have to chase the Executive Transport
-	if ((currentGame.area == 18) && (aliens[ALIEN_BOSS].shield > 0) &&
+	if ((currentGame.area == MISN_ELLESH) && (aliens[ALIEN_BOSS].shield > 0) &&
 		(player.shield > 0))
 	{
 		engine.ssx = -6;
 		engine.ssy = 0;
 	}
 	
-	if (currentGame.area == 24)
+	if (currentGame.area == MISN_MARS)
 	{
 		engine.ssx = -6;
 		engine.ssy = 0;

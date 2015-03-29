@@ -139,7 +139,7 @@ const char *getKlineInsult()
 		"And now you're nothing but a DEAD hero."
 	};
 
-	if (currentGame.area != 26)
+	if (currentGame.area != MISN_VENUS)
 		return (insult[rand() % 3]);
 	else
 		return (insult[3 + (rand() % 2)]);
@@ -162,8 +162,8 @@ void getPlayerDeathMessage()
 	int faceToUse = FACE_PHOEBE;
 	
 
-	if ((currentGame.area == 9) || (currentGame.area == 17) ||
-		(currentGame.area == 25))
+	if ((currentGame.area == MISN_URUSOR) || (currentGame.area == MISN_POSWIC) ||
+		(currentGame.area == MISN_EARTH))
 	{
 		faceToUse = FACE_SID;
 	}

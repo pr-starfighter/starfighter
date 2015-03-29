@@ -686,7 +686,8 @@ bool alien_add()
 {
 	int index = alien_getFreeIndex();
 
-	if ((index == -1) || (currentGame.area == 23) || (currentGame.area == 26))
+	if ((index == -1) || (currentGame.area == MISN_JUPITER) ||
+			(currentGame.area == MISN_VENUS))
 		return 0;
 
 	signed char *alienArray;
@@ -696,28 +697,28 @@ bool alien_add()
 
 	switch(currentGame.area)
 	{
-		case 0:
-		case 3:
-		case 11:
+		case MISN_START:
+		case MISN_HINSTAG:
+		case MISN_ELAMALE:
 			numberOfAliens = 1;
 			alienArray[0] = CD_DUALFIGHTER;
 			break;
-		case 1:
-		case 2:
-		case 4:
-		case 5:
+		case MISN_HAIL:
+		case MISN_CERADSE:
+		case MISN_JOLDAR:
+		case MISN_MOEBO:
 			numberOfAliens = 2;
 			alienArray[0] = CD_DUALFIGHTER;
 			alienArray[1] = CD_PROTOFIGHTER;
 			break;
-		case 7:
-		case 8:
+		case MISN_NEROD:
+		case MISN_ALLEZ:
 			numberOfAliens = 3;
 			alienArray[0] = CD_DUALFIGHTER;
 			alienArray[1] = CD_PROTOFIGHTER;
 			alienArray[2] = CD_AIMFIGHTER;
 			break;
-		case 9:
+		case MISN_URUSOR:
 			// This is the mission where you need to disable cargo ships.
 			// Missiles are extremely bad in this mission, not because
 			// of the damage they do to you, but because they tend to
@@ -728,26 +729,36 @@ bool alien_add()
 			alienArray[0] = CD_PROTOFIGHTER;
 			alienArray[1] = CD_AIMFIGHTER;
 			break;
-		case 10:
-		case 15:
+		case MISN_DORIM:
+		case MISN_SIVEDI:
 			numberOfAliens = 1;
 			alienArray[0] = CD_ASTEROID;
 			break;
-		case 13:
-		case 14:
-		case 16:
+		case MISN_ODEON:
+		case MISN_FELLON:
+		case MISN_ALMARTHA:
 			numberOfAliens = 4;
 			alienArray[0] = CD_DUALFIGHTER;
 			alienArray[1] = CD_PROTOFIGHTER;
 			alienArray[2] = CD_MISSILEBOAT;
 			alienArray[3] = CD_AIMFIGHTER;
 			break;
-		case 18:
+		case MISN_ELLESH:
 			numberOfAliens = 2;
 			alienArray[0] = CD_DUALFIGHTER;
 			alienArray[1] = CD_MINER;
 			break;
-		case 25:
+		case MISN_SATURN:
+			numberOfAliens = 2;
+			alienArray[0] = CD_AIMFIGHTER;
+			alienArray[1] = CD_DUALFIGHTER;
+			break;
+		case MISN_MARS:
+			numberOfAliens = 2;
+			alienArray[0] = CD_ASTEROID;
+			alienArray[1] = CD_ASTEROID2;
+			break;
+		case MISN_EARTH:
 			numberOfAliens = 6;
 			alienArray[0] = CD_DUALFIGHTER;
 			alienArray[1] = CD_PROTOFIGHTER;
@@ -756,17 +767,7 @@ bool alien_add()
 			alienArray[4] = CD_ESCORT;
 			alienArray[5] = CD_MOBILE_RAY;
 			break;
-		case 22:
-			numberOfAliens = 2;
-			alienArray[0] = CD_AIMFIGHTER;
-			alienArray[1] = CD_DUALFIGHTER;
-			break;
-		case 24:
-			numberOfAliens = 2;
-			alienArray[0] = CD_ASTEROID;
-			alienArray[1] = CD_ASTEROID2;
-			break;
-		case MAX_MISSIONS - 1:
+		case MISN_INTERCEPTION:
 			numberOfAliens = 3;
 			alienArray[0] = CD_DUALFIGHTER;
 			alienArray[1] = CD_MISSILEBOAT;
@@ -785,10 +786,11 @@ bool alien_add()
 
 	signed char randEnemy = alienArray[rand() % numberOfAliens];
 
-	if ((currentGame.area != 10) && (currentGame.area != 15) &&
-		(currentGame.area != 24))
+	if ((currentGame.area != MISN_DORIM) &&
+		(currentGame.area != MISN_SIVEDI) &&
+		(currentGame.area != MISN_MARS))
 	{
-		if ((currentGame.system == 1) && (currentGame.area == MAX_MISSIONS - 1))
+		if ((currentGame.system == 1) && (currentGame.area == MISN_INTERCEPTION))
 		{
 			if ((rand() % 5) == 0)
 				randEnemy = CD_SLAVETRANSPORT;
@@ -836,7 +838,7 @@ bool alien_add()
 
 	aliens[index].ammo[0] = 0;
 
-	if (currentGame.area == 18)
+	if (currentGame.area == MISN_ELLESH)
 		aliens[index].flags |= FL_HASMINIMUMSPEED;
 
 	return true;
@@ -925,7 +927,7 @@ void alien_addFriendly(int type)
 		aliens[type].classDef = CD_URSULA;
 
 	// For the sake of it being the final battle :)
-	if (currentGame.area == 25)
+	if (currentGame.area == MISN_EARTH)
 		aliens[type].flags |= FL_IMMORTAL;
 }
 
@@ -941,7 +943,7 @@ bool alien_place(object *alien)
 	else
 		alien->y = RANDRANGE(-screen->h, 0);
 
-	if (currentGame.area == 24)
+	if (currentGame.area == MISN_MARS)
 	{
 		alien->x = screen->w;
 		alien->y = RANDRANGE(screen->h / 3, (2 * screen->h) / 3);
@@ -1079,7 +1081,7 @@ void alien_setKlineAI(object *alien)
 	// Weapon type change
 	if ((rand() % 3) == 0)
 	{
-		if (currentGame.area != 26)
+		if (currentGame.area != MISN_VENUS)
 		{
 			alien->flags &= ~FL_AIMS;
 
@@ -1112,7 +1114,8 @@ void alien_setKlineAI(object *alien)
 		case 1:
 		case 2:
 			// Kline only attacks then he is ready!
-			if ((!(alien->flags & FL_NOFIRE)) && (currentGame.area == 11))
+			if ((!(alien->flags & FL_NOFIRE)) &&
+					(currentGame.area == MISN_MOEBO))
 				alien->flags |= FL_DROPMINES;
 			break;
 		case 3:
@@ -1150,14 +1153,14 @@ void alien_searchForTarget(object *alien)
 
 	// Tell Sid not to attack craft that are already disabled or can
 	// return fire. This will save him from messing about (unless we're on the last mission)
-	if ((alien->classDef == CD_SID) && (currentGame.area != 25))
+	if ((alien->classDef == CD_SID) && (currentGame.area != MISN_EARTH))
 	{
 		if ((targetEnemy->flags & FL_DISABLED) || (!(targetEnemy->flags & FL_NOFIRE)))
 			return;
 	}
 
 	// Tell Phoebe and Ursula not to attack ships that cannot fire or are disabled (unless we're on the last mission)
-	if (currentGame.area != 25)
+	if (currentGame.area != MISN_EARTH)
 	{
 		if ((alien->classDef == CD_PHOEBE) || (alien->classDef == CD_URSULA))
 		{
@@ -1370,7 +1373,7 @@ void alien_destroy(object *alien, object *attacker)
 			currentGame.wingMate2Ejects++;
 
 		// Phoebe cannot eject on the rescue mission
-		if (currentGame.area != 7)
+		if (currentGame.area != MISN_NEROD)
 		{
 			if ((alien->classDef == CD_PHOEBE) || (alien->classDef == CD_URSULA))
 				setInfoLine(">> Ally has ejected! <<\n", FONT_RED);
@@ -1459,7 +1462,7 @@ void alien_hurt(object *alien, object *attacker, int damage, bool ion)
 
 	if (alien->classDef == CD_KLINE)
 	{
-		if (currentGame.area == 11)
+		if (currentGame.area == MISN_ELAMALE)
 		{
 			if ((alien->shield <= alien->maxShield - 500) &&
 				!(alien->flags & FL_LEAVESECTOR))
@@ -1469,7 +1472,7 @@ void alien_hurt(object *alien, object *attacker, int damage, bool ion)
 				setRadioMessage(FACE_KLINE, "Seems I underestimated you, Bainfield. We'll meet again!", 1);
 			}
 		}
-		else if (currentGame.area == 25)
+		else if (currentGame.area == MISN_EARTH)
 		{
 			if ((alien->shield <= alien->maxShield - 750) &&
 				!(alien->flags & FL_LEAVESECTOR))
@@ -1479,7 +1482,7 @@ void alien_hurt(object *alien, object *attacker, int damage, bool ion)
 				setRadioMessage(FACE_SID, "Chris, Kethlan is getting away!", 1);
 			}
 		}
-		else if (currentGame.area == 26)
+		else if (currentGame.area == MISN_VENUS)
 		{
 			if (alien->shield + damage > 1500 &&
 					alien->shield <= 1500)

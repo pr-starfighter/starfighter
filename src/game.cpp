@@ -24,7 +24,7 @@ Game currentGame;
 void newGame()
 {
 	currentGame.system = 0;
-	currentGame.area = 0;
+	currentGame.area = MISN_START;
 	currentGame.sfxVolume = 0;
 	currentGame.musicVolume = 0;
 
@@ -194,9 +194,9 @@ int mainGameLoop()
 					showErrorAndExit(2, "");
 			}
 
-			if (currentGame.area == 2)
+			if (currentGame.area == MISN_CERADSE)
 				addCargo(&aliens[index], P_CARGO);
-			else if (currentGame.area == 7)
+			else if (currentGame.area == MISN_NEROD)
 				addCargo(&aliens[index], P_PHOEBE);
 
 			if (index == ALIEN_KLINE)
@@ -229,16 +229,17 @@ int mainGameLoop()
 				barrierSpeed++;
 			}
 
-			if ((currentGame.area == 17) && (aliens[index].classDef == CD_BOSS))
+			if ((currentGame.area == MISN_POSWIC) &&
+				(aliens[index].classDef == CD_BOSS))
 			{
 				aliens[index].imageIndex[1] = 29;
 				aliens[index].flags |= FL_IMMORTAL;
 			}
 
-			if (currentGame.area == 18)
+			if (currentGame.area == MISN_ELLESH)
 				aliens[index].flags |= FL_HASMINIMUMSPEED;
 
-			if (currentGame.area == 23)
+			if (currentGame.area == MISN_JUPITER)
 			{
 				aliens[index].flags = FL_WEAPCO;
 				if (index == ALIEN_BOSS)
@@ -248,7 +249,7 @@ int mainGameLoop()
 
 		fclose(fp);
 
-		if (currentGame.area == 5)
+		if (currentGame.area == MISN_MOEBO)
 		{
 			aliens[ALIEN_BOSS].target = &player;
 			aliens[ALIEN_BOSS].x = -screen->w / 2;
@@ -264,7 +265,8 @@ int mainGameLoop()
 			aliens[ALIEN_BOSS_PART2].dx = -20;
 			aliens[ALIEN_BOSS_PART2].dy = 37;
 		}
-		else if ((currentGame.area == 11) || (currentGame.area == 14))
+		else if ((currentGame.area == MISN_ELAMALE) ||
+			(currentGame.area == MISN_FELLON))
 		{
 			aliens[ALIEN_BOSS].target = &player;
 			aliens[ALIEN_BOSS].x = -screen->w / 2;
@@ -290,7 +292,7 @@ int mainGameLoop()
 			aliens[ALIEN_BOSS_PART4].dx = -35;
 			aliens[ALIEN_BOSS_PART4].dy = 20;
 
-			if (currentGame.area == 14)
+			if (currentGame.area == MISN_FELLON)
 			{
 				aliens[ALIEN_BOSS].AIType = AI_EVASIVE;
 
@@ -304,7 +306,7 @@ int mainGameLoop()
 				}
 			}
 		}
-		else if (currentGame.area == 21)
+		else if (currentGame.area == MISN_URANUS)
 		{
 			aliens[ALIEN_BOSS].target = &player;
 			aliens[ALIEN_BOSS].x = -screen->w / 2;
@@ -319,10 +321,10 @@ int mainGameLoop()
 	}
 
 	// specific for Phoebe being captured!
-	if (currentGame.area == 7)
+	if (currentGame.area == MISN_NEROD)
 		currentGame.hasWingMate1 = 1;
 
-	if (currentGame.area == 11)
+	if (currentGame.area == MISN_ELAMALE)
 		aliens[ALIEN_KLINE].active = false;
 
 	for (int i = 0 ; i < engine.maxAliens ; i++)
@@ -334,34 +336,35 @@ int mainGameLoop()
 	if (currentGame.hasWingMate2)
 		alien_addFriendly(ALIEN_URSULA);
 
-	if ((currentGame.area == 9) || (currentGame.area == 17) ||
-			(currentGame.area == 25))
+	if ((currentGame.area == MISN_URUSOR) ||
+			(currentGame.area == MISN_POSWIC) ||
+			(currentGame.area == MISN_EARTH))
 		alien_addFriendly(ALIEN_SID);
 
 	// Disable Wingmates for certain missions
 	switch (currentGame.area)
 	{
-		case 7:
-		case 9:
-		case 10:
-		case 15:
-		case 16:
-		case 18:
-		case 24:
-		case 26:
+		case MISN_NEROD:
+		case MISN_URUSOR:
+		case MISN_DORIM:
+		case MISN_SIVEDI:
+		case MISN_ALMARTHA:
+		case MISN_ELLESH:
+		case MISN_MARS:
+		case MISN_VENUS:
 			aliens[ALIEN_PHOEBE].active = false;
 			aliens[ALIEN_URSULA].active = false;
 			break;
 	}
 
-	if (currentGame.area == 10)
+	if (currentGame.area == MISN_DORIM)
 	{
 		aliens[0].collectChance = 100;
 		aliens[0].collectType = P_ESCAPEPOD;
 	}
 
 	// Some specifics for interception missions
-	if (currentGame.area == MAX_MISSIONS - 1)
+	if (currentGame.area == MISN_INTERCEPTION)
 	{
 		if ((currentGame.system > 1) && ((rand() % 5) == 0))
 		{
@@ -391,7 +394,7 @@ int mainGameLoop()
 		}
 	}
 
-	if (currentGame.area == 26)
+	if (currentGame.area == MISN_VENUS)
 	{
 		aliens[ALIEN_KLINE].x = player.x + 1000;
 		aliens[ALIEN_KLINE].y = player.y;
@@ -407,34 +410,33 @@ int mainGameLoop()
 	// Set target energy meter
 	switch (currentGame.area)
 	{
-		case 5:
-		case 11:
-		case 13:
-		case 17:
-		case 18:
-		case 19:
-		case 20:
-		case 21:
-		case 23:
+		case MISN_MOEBO:
+		case MISN_ELAMALE:
+		case MISN_ODEON:
+		case MISN_FELLON:
+		case MISN_POSWIC:
+		case MISN_ELLESH:
+		case MISN_PLUTO:
+		case MISN_NEPTUNE:
+		case MISN_URANUS:
+		case MISN_JUPITER:
 			player_setTarget(ALIEN_BOSS);
 			break;
-		case 7:
+		case MISN_NEROD:
 			player_setTarget(ALIEN_PHOEBE);
 			break;
-		case 8:
+		case MISN_ALLEZ:
 			player_setTarget(ALIEN_GOODTRANSPORT);
 			break;
-		case 9:
+		case MISN_URUSOR:
 			player_setTarget(ALIEN_SID);
 			break;
-		case 10:
+		case MISN_DORIM:
 			player_setTarget(0);
 			break;
-		case 25:
-		case 26:
+		case MISN_EARTH:
+		case MISN_VENUS:
 			player_setTarget(ALIEN_KLINE);
-			break;
-		default:
 			break;
 	}
 
@@ -498,7 +500,7 @@ int mainGameLoop()
 
 		if ((missionFailed()) && (engine.missionCompleteTimer == 0))
 		{
-			if (currentGame.area != 5)
+			if (currentGame.area != MISN_MOEBO)
 				engine.missionCompleteTimer = SDL_GetTicks() + 4000;
 		}
 
@@ -509,14 +511,15 @@ int mainGameLoop()
 			{
 				if (SDL_GetTicks() >= engine.missionCompleteTimer)
 				{
-					if ((!missionFailed()) && (currentGame.area != 26))
+					if ((!missionFailed()) && (currentGame.area != MISN_VENUS))
 					{
 						leaveSector();
-						if ((engine.done == 2) && (currentGame.area != 10) &&
-							(currentGame.area != 15))
+						if ((engine.done == 2) &&
+							(currentGame.area != MISN_DORIM) &&
+							(currentGame.area != MISN_SIVEDI))
 						{
 							if ((aliens[ALIEN_PHOEBE].shield > 0) &&
-								(currentGame.area != 25))
+								(currentGame.area != MISN_EARTH))
 							{
 								aliens[ALIEN_PHOEBE].x = player.x - 40;
 								aliens[ALIEN_PHOEBE].y = player.y - 35;
@@ -524,15 +527,15 @@ int mainGameLoop()
 							}
 
 							if ((aliens[ALIEN_URSULA].shield > 0) &&
-								(currentGame.area != 25))
+								(currentGame.area != MISN_EARTH))
 							{
 								aliens[ALIEN_URSULA].x = player.x - 40;
 								aliens[ALIEN_URSULA].y = player.y + 45;
 								aliens[ALIEN_URSULA].face = 0;
 							}
 
-							if ((currentGame.area == 9) ||
-								(currentGame.area == 17))
+							if ((currentGame.area == MISN_URUSOR) ||
+								(currentGame.area == MISN_POSWIC))
 							{
 								aliens[ALIEN_SID].x = player.x - 100;
 								aliens[ALIEN_SID].y = player.y;
@@ -540,7 +543,8 @@ int mainGameLoop()
 							}
 						}
 					}
-					else if ((currentGame.area == 26) && (engine.musicVolume > 0))
+					else if ((currentGame.area == MISN_VENUS) &&
+						(engine.musicVolume > 0))
 					{
 						LIMIT_ADD(engine.musicVolume, -0.2, 0, 100);
 						audio_setMusicVolume((int)engine.musicVolume);
@@ -676,7 +680,8 @@ int mainGameLoop()
 						if (alien->x > alien->target->x) alien->face = 1;
 					}
 
-					if ((currentGame.area == 18) && (alien->classDef == CD_BOSS))
+					if ((currentGame.area == MISN_ELLESH) &&
+							(alien->classDef == CD_BOSS))
 						alien->face = 0;
 
 					if ((alien->flags & FL_DEPLOYDRONES) && ((rand() % 300) == 0))
@@ -849,7 +854,7 @@ int mainGameLoop()
 						}
 					}
 
-					if ((currentGame.area == 24) && (alien->x < -300))
+					if ((currentGame.area == MISN_MARS) && (alien->x < -300))
 						alien->active = false;
 				}
 				else
@@ -886,7 +891,7 @@ int mainGameLoop()
 						(!(alien->flags & FL_DISABLED)))
 					alien_move(alien);
 
-				if ((currentGame.area != 18) || (alien->shield < 0))
+				if ((currentGame.area != MISN_ELLESH) || (alien->shield < 0))
 					alien->x += engine.ssx;
 
 				alien->x += engine.smx;
@@ -917,7 +922,7 @@ int mainGameLoop()
 			}
 		}
 
-		if ((currentGame.area == 24) && (engine.addAliens > -1))
+		if ((currentGame.area == MISN_MARS) && (engine.addAliens > -1))
 		{
 			if ((rand() % 10) == 0)
 				// XXX: The originally specified range for x was [800, 100],
@@ -943,7 +948,8 @@ int mainGameLoop()
 			engine.missionCompleteTimer = SDL_GetTicks() + 7000;
 
 		// specific to Boss 1
-		if ((currentGame.area == 5) && (aliens[ALIEN_BOSS].flags & FL_ESCAPED))
+		if ((currentGame.area == MISN_MOEBO) &&
+			(aliens[ALIEN_BOSS].flags & FL_ESCAPED))
 		{
 			audio_playSound(SFX_DEATH, aliens[ALIEN_BOSS].x);
 			clearScreen(white);
@@ -965,33 +971,33 @@ int mainGameLoop()
 
 	if ((player.shield > 0) && (!missionFailed()))
 	{
-		if (currentGame.area < 26)
+		if (currentGame.area < MISN_VENUS)
 			missionFinishedScreen();
 
 		switch (currentGame.area)
 		{
-			case 5:
+			case MISN_MOEBO:
 				doCutscene(1);
 				doCutscene(2);
 				break;
-			case 7:
+			case MISN_NEROD:
 				doCutscene(3);
 				break;
-			case 11:
+			case MISN_ELAMALE:
 				doCutscene(4);
 				break;
-			case 13:
+			case MISN_ODEON:
 				doCutscene(5);
 				break;
-			case 18:
+			case MISN_ELLESH:
 				doCutscene(6);
 				break;
-			case 26:
+			case MISN_VENUS:
 				doCredits();
 				break;
 		}
 		
-		if (currentGame.area < 26)
+		if (currentGame.area < MISN_VENUS)
 		{
 			updateSystemStatus();
 			saveGame(0);
@@ -999,7 +1005,7 @@ int mainGameLoop()
 
 		rtn = 1;
 		
-		if (currentGame.area == 26)
+		if (currentGame.area == MISN_VENUS)
 			rtn = 0;
 	}
 	else

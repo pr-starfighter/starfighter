@@ -163,7 +163,7 @@ void doInfo()
 		blitText(30);
 	}
 
-	if (currentGame.area != MAX_MISSIONS - 1)
+	if (currentGame.area != MISN_INTERCEPTION)
 	{
 		blitText(9); // mission objectives
 		sprintf(text, "%d", (currentMission.remainingObjectives1 + currentMission.remainingObjectives2));
@@ -300,7 +300,7 @@ void doInfo()
 	}
 
 	// Do the target's remaining shield (if required)
-	if (currentGame.area != 10)
+	if (currentGame.area != MISN_DORIM)
 	{
 		if ((engine.targetIndex > -1) && (aliens[engine.targetIndex].shield > 0) && (engine.targetIndex > 9))
 		{

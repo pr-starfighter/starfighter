@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 Planet systemPlanet[10];
 mission currentMission;
-static mission missions[MAX_MISSIONS];
+static mission missions[MISN_MAX];
 
 void initPlanetMissions(signed char system)
 {
@@ -37,90 +37,96 @@ void initPlanetMissions(signed char system)
 	{
 		// Spirit
 		case 0:
-			for (int i = 0 ; i < 4 ; i++)
-			{
-				systemPlanet[i].missionNumber = i + 1;
-				systemPlanet[i].missionCompleted = 0;
-			}
+			systemPlanet[0].missionNumber = MISN_HAIL;
+			systemPlanet[0].missionCompleted = 0;
 
-			systemPlanet[4].missionNumber = 5;
+			systemPlanet[1].missionNumber = MISN_CERADSE;
+			systemPlanet[1].missionCompleted = 0;
+
+			systemPlanet[2].missionNumber = MISN_HINSTAG;
+			systemPlanet[2].missionCompleted = 0;
+
+			systemPlanet[3].missionNumber = MISN_JOLDAR;
+			systemPlanet[3].missionCompleted = 0;
+
+			systemPlanet[4].missionNumber = MISN_MOEBO;
 			systemPlanet[4].missionCompleted = -1;
 
 			break;
 
 		// Eyananth
 		case 1:
-			systemPlanet[0].missionNumber = 7;
+			systemPlanet[0].missionNumber = MISN_NEROD;
 			systemPlanet[0].missionCompleted = 0;
 
-			systemPlanet[1].missionNumber = 8;
+			systemPlanet[1].missionNumber = MISN_ALLEZ;
 			systemPlanet[1].missionCompleted = 0;
 
-			systemPlanet[2].missionNumber = 9;
+			systemPlanet[2].missionNumber = MISN_URUSOR;
 			systemPlanet[2].missionCompleted = -1;
 
-			systemPlanet[3].missionNumber = 10;
+			systemPlanet[3].missionNumber = MISN_DORIM;
 			systemPlanet[3].missionCompleted = -1;
 
-			systemPlanet[4].missionNumber = 11;
+			systemPlanet[4].missionNumber = MISN_ELAMALE;
 			systemPlanet[4].missionCompleted = -2;
 
 			// This one is for the slaves
-			systemPlanet[9].missionNumber = 6;
+			systemPlanet[9].missionNumber = MISN_RESCUESLAVES;
 			systemPlanet[9].missionCompleted = 0;
 
 			break;
 
 		// Mordor
 		case 2:
-			systemPlanet[0].missionNumber = 13;
+			systemPlanet[0].missionNumber = MISN_ODEON;
 			systemPlanet[0].missionCompleted = 0;
 
-			systemPlanet[1].missionNumber = 14;
+			systemPlanet[1].missionNumber = MISN_FELLON;
 			systemPlanet[1].missionCompleted = 0;
 
-			systemPlanet[2].missionNumber = 15;
+			systemPlanet[2].missionNumber = MISN_SIVEDI;
 			systemPlanet[2].missionCompleted = -1;
 
-			systemPlanet[3].missionNumber = 16;
+			systemPlanet[3].missionNumber = MISN_ALMARTHA;
 			systemPlanet[3].missionCompleted = -1;
 
-			systemPlanet[4].missionNumber = 17;
+			systemPlanet[4].missionNumber = MISN_POSWIC;
 			systemPlanet[4].missionCompleted = -2;
 
-			systemPlanet[5].missionNumber = 18;
+			systemPlanet[5].missionNumber = MISN_ELLESH;
 			systemPlanet[5].missionCompleted = -3;
 
 			// This one is for the experimental fighter
-			systemPlanet[9].missionNumber = 12;
+			systemPlanet[9].missionNumber = MISN_CLOAKFIGHTER;
 			systemPlanet[9].missionCompleted = 0;
 
 			break;
 
 		// Sol
 		case 3:
-			systemPlanet[8].missionNumber = 19;
+			systemPlanet[8].missionNumber = MISN_PLUTO;
 			systemPlanet[8].missionCompleted = 0;
 
-			systemPlanet[7].missionNumber = 20;
+			systemPlanet[7].missionNumber = MISN_NEPTUNE;
 			systemPlanet[7].missionCompleted = 0;
 
-			systemPlanet[6].missionNumber = 21;
+			systemPlanet[6].missionNumber = MISN_URANUS;
 			systemPlanet[6].missionCompleted = 0;
 
-			systemPlanet[5].missionNumber = 22;
+			systemPlanet[5].missionNumber = MISN_SATURN;
 			systemPlanet[5].missionCompleted = -1;
 
-			systemPlanet[4].missionNumber = 23;
+			systemPlanet[4].missionNumber = MISN_JUPITER;
 			systemPlanet[4].missionCompleted = -2;
 
-			systemPlanet[3].missionNumber = 24;
+			systemPlanet[3].missionNumber = MISN_MARS;
 			systemPlanet[3].missionCompleted = -3;
 
-			systemPlanet[2].missionNumber = 25;
+			systemPlanet[2].missionNumber = MISN_EARTH;
 			systemPlanet[2].missionCompleted = -4;
 
-			systemPlanet[1].missionNumber = 26;
+			systemPlanet[1].missionNumber = MISN_VENUS;
 			systemPlanet[1].missionCompleted = -5;
 
 			break;
@@ -144,40 +150,40 @@ void checkForBossMission()
 
 void updateSystemStatus()
 {
-	if (currentGame.area == 0)
+	if (currentGame.area == MISN_START)
 	{
 		currentGame.stationedPlanet = 0;
 		currentGame.area = 1;
 		strcpy(currentGame.stationedName, "Hail");
 		initPlanetMissions(currentGame.system);
 	}
-	else if (currentGame.area == 5)
+	else if (currentGame.area == MISN_MOEBO)
 	{
 		currentGame.stationedPlanet = 0;
 		currentGame.system = 1;
-		currentGame.area = 6;
+		currentGame.area = MISN_RESCUESLAVES;
 		strcpy(currentGame.stationedName, "Nerod");
 		initPlanetMissions(currentGame.system);
 
 		if (currentGame.difficulty == DIFFICULTY_ORIGINAL)
 			player.maxShield = 50;
 	}
-	else if (currentGame.area == 11)
+	else if (currentGame.area == MISN_ELAMALE)
 	{
 		currentGame.stationedPlanet = 0;
 		currentGame.system = 2;
-		currentGame.area = 12;
+		currentGame.area = MISN_CLOAKFIGHTER;
 		strcpy(currentGame.stationedName, "Odeon");
 		initPlanetMissions(currentGame.system);
 
 		if (currentGame.difficulty == DIFFICULTY_ORIGINAL)
 			player.maxShield = 75;
 	}
-	else if (currentGame.area == 18)
+	else if (currentGame.area == MISN_ELLESH)
 	{
 		currentGame.stationedPlanet = 8;
 		currentGame.system = 3;
-		currentGame.area = 19;
+		currentGame.area = MISN_PLUTO;
 		strcpy(currentGame.stationedName, "Pluto");
 		initPlanetMissions(currentGame.system);
 
@@ -210,7 +216,7 @@ Timer Variable:
 */
 static void clearAllMissions()
 {
-	for (int m = 0 ; m < MAX_MISSIONS ; m++)
+	for (int m = 0 ; m < MISN_MAX ; m++)
 	{
 		for (int i = 0 ; i < 3 ; i++)
 		{
@@ -310,11 +316,13 @@ void checkTimer()
 	}
 
 	// specific to Spirit Boss
-	if ((currentGame.area == 5) && (currentMission.completed1[0] < OB_INCOMPLETE))
+	if ((currentGame.area == MISN_MOEBO) &&
+			(currentMission.completed1[0] < OB_INCOMPLETE))
 		engine.timeMission = 1;
 
 	// specific to the Asteroid belt
-	if ((currentGame.area == 24) && (currentMission.completed1[0] < OB_INCOMPLETE))
+	if ((currentGame.area == MISN_MARS) &&
+		(currentMission.completed1[0] < OB_INCOMPLETE))
 	{
 		currentMission.completed1[0] = OB_COMPLETED;
 		mission_killAllEnemies();
@@ -332,7 +340,7 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 	{
 		*completed = 2;
 		checkTimer();
-		if ((currentGame.area == 9) && (type == M_DISABLE_TARGET))
+		if ((currentGame.area == MISN_URUSOR) && (type == M_DISABLE_TARGET))
 			setRadioMessage(FACE_SID, "All vessels disabled!", 1);
 	}
 	else
@@ -366,12 +374,12 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 				{
 					case P_CARGO:
 						sprintf(message, "Cargo pod destroyed!");
-						if (currentGame.area == 2) // Get lectured by Sid
+						if (currentGame.area == MISN_CERADSE) // Get lectured by Sid
 							setRadioMessage(FACE_SID, "Chris, we needed that pod!! I warned you that we couldn't afford to lose a single one!!", 1);
 						break;
 					case P_ESCAPEPOD:
 						sprintf(message, "Escape Pod lost!");
-						if (currentGame.area == 13) // Get lectured by Phoebe
+						if (currentGame.area == MISN_ODEON) // Get lectured by Phoebe
 							setRadioMessage(FACE_PHOEBE, "No... Ursula...", 1);
 						break;
 				}
@@ -382,13 +390,13 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 					*completed = -2;
 					switch (currentGame.area)
 					{
-						case 7:
+						case MISN_NEROD:
 							setRadioMessage(FACE_SID, "Dammit, Chris! We just lost her!", 1);
 							break;
-						case 8:
+						case MISN_ALLEZ:
 							setRadioMessage(FACE_CREW, "Noooo!! Hull bre...", 1);
 							break;
-						case 9:
+						case MISN_URUSOR:
 							setRadioMessage(FACE_SID, "Chris, we've got to disable them, not destroy them!!", 1);
 							break;
 					}
@@ -466,7 +474,7 @@ void updateMissionRequirements(int type, int id, int value)
 	}
 
 	// Special Case - Interceptions
-	if (currentGame.area == MAX_MISSIONS - 1)
+	if (currentGame.area == MISN_INTERCEPTION)
 	{
 		if ((type == M_COLLECT) && (id == P_SLAVES))
 		{
@@ -518,7 +526,7 @@ static char revealHiddenObjectives()
 	if (!allDone)
 	{
 		// Activate Kline!! :)
-		if (currentGame.area == 11)
+		if (currentGame.area == MISN_ELAMALE)
 		{
 			mission_killAllEnemies();
 			syncScriptEvents();
@@ -566,7 +574,7 @@ bool allMissionsCompleted()
 		{
 			if (currentMission.remainingObjectives1 > 1)
 			{
-				if ((currentGame.area != 17) || ((currentGame.area == 17) && (i != 1)))
+				if ((currentGame.area != MISN_POSWIC) || (i != 1))
 					setInfoLine("*** Primary Objective Completed ***", FONT_GREEN);
 				else
 					setInfoLine(">>> Primary Objective Failed <<<", FONT_RED);
@@ -574,14 +582,17 @@ bool allMissionsCompleted()
 			}
 			else
 			{
-				if (currentGame.area != MAX_MISSIONS - 1)
+				if (currentGame.area != MISN_INTERCEPTION)
 					setInfoLine("*** All Primary Objectives Completed ***", FONT_GREEN);
 				else
 					setInfoLine("*** Interception Destroyed ***", FONT_GREEN);
 				currentMission.completed1[i] = OB_COMPLETED;
 
 				// do some area specific things
-				if ((currentGame.area == 5) || (currentGame.area == 10) || (currentGame.area == 18) || (currentGame.area == 24))
+				if ((currentGame.area == MISN_MOEBO) ||
+					(currentGame.area == MISN_DORIM) ||
+					(currentGame.area == MISN_ELLESH) ||
+					(currentGame.area == MISN_MARS))
 				{
 					if (currentMission.remainingObjectives2 == 0)
 					{
@@ -590,7 +601,7 @@ bool allMissionsCompleted()
 					}
 				}
 
-				if (currentGame.area == 25)
+				if (currentGame.area == MISN_EARTH)
 					setRadioMessage(FACE_CHRIS, "You guys stay here and keep things under control. I'm going after Kethlan!", 1);
 			}
 		}
@@ -608,7 +619,8 @@ bool allMissionsCompleted()
 				currentMission.completed2[i] = OB_COMPLETED;
 
 				// do some area specific things
-				if ((currentGame.area == 10) && (currentMission.remainingObjectives1 == 0))
+				if ((currentGame.area == MISN_DORIM) &&
+					(currentMission.remainingObjectives1 == 0))
 				{
 					mission_killAllEnemies();
 					engine.addAliens = -1;
@@ -744,7 +756,7 @@ void missionBriefScreen()
 	clearScreen(black);
 	updateScreen();
 
-	if (currentGame.area != MAX_MISSIONS - 1)
+	if (currentGame.area != MISN_INTERCEPTION)
 	{
 		clearScreen(black);
 		drawBriefScreen();
@@ -752,7 +764,7 @@ void missionBriefScreen()
 		if (currentMission.timeLimit1[0] > 0)
 		{
 			char temp[50];
-			if (currentGame.area != 24)
+			if (currentGame.area != MISN_MARS)
 				sprintf(temp, "TIME LIMIT: %d minutes", currentMission.timeLimit1[0]);
 			else
 				sprintf(temp, "SURVIVAL FOR %d minutes", currentMission.timeLimit1[0]);
@@ -761,20 +773,22 @@ void missionBriefScreen()
 
 		switch (currentGame.area)
 		{
-			case 9:
-			case 10:
-			case 15:
-			case 16:
-			case 18:
-			case 24:
-			case 26:
+			case MISN_URUSOR:
+			case MISN_DORIM:
+			case MISN_SIVEDI:
+			case MISN_ALMARTHA:
+			case MISN_ELLESH:
+			case MISN_MARS:
+			case MISN_VENUS:
 				drawString("Phoebe Lexx will not be present", 160, 420, FONT_WHITE);
 				if (currentGame.hasWingMate2)
 					drawString("Ursula Lexx will not be present", 160, 450, FONT_WHITE);
 				break;
 		}
 
-		if ((currentGame.area == 9) || (currentGame.area == 17) || (currentGame.area == 25))
+		if ((currentGame.area == MISN_URUSOR) ||
+				(currentGame.area == MISN_POSWIC) ||
+				(currentGame.area == MISN_EARTH))
 			drawString("Sid Wilson will join you on this mission", 160, 480, FONT_WHITE);
 
 		updateScreen();
@@ -800,7 +814,7 @@ void missionBriefScreen()
 	textSurface(13, "Cooler", 485, 570, FONT_WHITE);
 	audio_playRandomTrack();
 
-	if (currentGame.area != MAX_MISSIONS - 1)
+	if (currentGame.area != MISN_INTERCEPTION)
 	{
 		drawString("PRESS ENTER TO CONTINUE...", -1, 550, FONT_WHITE);
 
@@ -840,7 +854,7 @@ void missionFinishedScreen()
 	int shield_bonus;
 	char temp[100];
 
-	if (currentGame.area != MAX_MISSIONS - 1)
+	if (currentGame.area != MISN_INTERCEPTION)
 	{
 		clearScreen(black);
 		updateScreen();
@@ -855,7 +869,7 @@ void missionFinishedScreen()
 		{
 			if (currentMission.primaryType[i] != NONE)
 			{
-				if ((currentGame.area != 17) || ((currentGame.area == 17) && (i != 1)))
+				if ((currentGame.area != MISN_POSWIC) || (i != 1))
 					drawString("COMPLETED", 550, 114 + (i * 30), FONT_GREEN);
 				else
 					drawString("FAILED", 550, 114 + (i * 30), FONT_RED);
@@ -898,11 +912,11 @@ void missionFinishedScreen()
 		drawString(temp, -1, 500, FONT_WHITE);
 
 		// Do some mission specific stuff here...
-		if (currentGame.area == 1)
+		if (currentGame.area == MISN_HAIL)
 			currentGame.cash -= 500;
-		else if (currentGame.area == 13)
+		else if (currentGame.area == MISN_ODEON)
 			currentGame.hasWingMate2 = 1;
-		else if (currentGame.area == 16)
+		else if (currentGame.area == MISN_ALMARTHA)
 			currentGame.cash -= 2000;
 
 		checkForBossMission();
@@ -943,400 +957,437 @@ void initMissions()
 	int ALWAYS       = 1 * 60;
 	int NEVER        = -1;
 
-	// Mission 0
-	sprintf(missions[0].primaryObjective[0], "Escape from WEAPCO Persuit");
-	missions[0].primaryType[0] = M_DESTROY_ALL_TARGETS;
-	missions[0].completed1[0] = OB_INCOMPLETE;
 
-	// Mission 1
-	sprintf(missions[1].primaryObjective[0], "Collect $500 to pay Mercenary for FIREFLY");
-	missions[1].primaryType[0] = M_COLLECT;
-	missions[1].target1[0] = P_CASH;
-	missions[1].targetValue1[0] = 500;
-	missions[1].completed1[0] = OB_INCOMPLETE;
+	sprintf(missions[MISN_START].primaryObjective[0],
+		"Escape from WEAPCO Persuit");
+	missions[MISN_START].primaryType[0] = M_DESTROY_ALL_TARGETS;
+	missions[MISN_START].completed1[0] = OB_INCOMPLETE;
 
-	sprintf(missions[1].primaryObjective[1], "Destroy all remaining WEAPCO fighters");
-	missions[1].primaryType[1] = M_DESTROY_ALL_TARGETS;
-	missions[1].completed1[1] = OB_INCOMPLETE;
 
-	missions[1].addAliens = FREQUENT;
+	sprintf(missions[MISN_HAIL].primaryObjective[0],
+		"Collect $500 to pay Mercenary for FIREFLY");
+	missions[MISN_HAIL].primaryType[0] = M_COLLECT;
+	missions[MISN_HAIL].target1[0] = P_CASH;
+	missions[MISN_HAIL].targetValue1[0] = 500;
+	missions[MISN_HAIL].completed1[0] = OB_INCOMPLETE;
 
-	// Mission 2
-	sprintf(missions[2].primaryObjective[0], "Collect 6 Cargo Pods");
-	missions[2].primaryType[0] = M_COLLECT;
-	missions[2].target1[0] = P_CARGO;
-	missions[2].targetValue1[0] = 6;
-	missions[2].completed1[0] = OB_INCOMPLETE;
+	sprintf(missions[MISN_HAIL].primaryObjective[1],
+		"Destroy all remaining WEAPCO fighters");
+	missions[MISN_HAIL].primaryType[1] = M_DESTROY_ALL_TARGETS;
+	missions[MISN_HAIL].completed1[1] = OB_INCOMPLETE;
 
-	sprintf(missions[2].primaryObjective[1], "Do not destroy *ANY* Cargo Pods");
-	missions[2].primaryType[1] = M_PROTECT_PICKUP;
-	missions[2].target1[1] = P_CARGO;
-	missions[2].targetValue1[1] = 0;
-	missions[2].completed1[1] = OB_CONDITION;
+	missions[MISN_HAIL].addAliens = FREQUENT;
 
-	sprintf(missions[2].secondaryObjective[0], "Destroy all remaining WEAPCO fighters");
-	missions[2].secondaryType[0] = M_DESTROY_ALL_TARGETS;
-	missions[2].completed2[0] = OB_INCOMPLETE;
 
-	missions[2].addAliens = FREQUENT;
+	sprintf(missions[MISN_CERADSE].primaryObjective[0],
+		"Collect 6 Cargo Pods");
+	missions[MISN_CERADSE].primaryType[0] = M_COLLECT;
+	missions[MISN_CERADSE].target1[0] = P_CARGO;
+	missions[MISN_CERADSE].targetValue1[0] = 6;
+	missions[MISN_CERADSE].completed1[0] = OB_INCOMPLETE;
 
-	// Mission 3
-	sprintf(missions[3].primaryObjective[0], "Destroy 5 WEAPCO Missile Boats");
-	missions[3].primaryType[0] = M_DESTROY_TARGET_TYPE;
-	missions[3].target1[0] = CD_MISSILEBOAT;
-	missions[3].targetValue1[0] = 5;
-	missions[3].completed1[0] = OB_INCOMPLETE;
+	sprintf(missions[MISN_CERADSE].primaryObjective[1],
+		"Do not destroy *ANY* Cargo Pods");
+	missions[MISN_CERADSE].primaryType[1] = M_PROTECT_PICKUP;
+	missions[MISN_CERADSE].target1[1] = P_CARGO;
+	missions[MISN_CERADSE].targetValue1[1] = 0;
+	missions[MISN_CERADSE].completed1[1] = OB_CONDITION;
 
-	sprintf(missions[3].secondaryObjective[0], "Destroy all remaining WEAPCO fighters");
-	missions[3].secondaryType[0] = M_DESTROY_ALL_TARGETS;
-	missions[3].completed2[0] = OB_INCOMPLETE;
+	sprintf(missions[MISN_CERADSE].secondaryObjective[0],
+		"Destroy all remaining WEAPCO fighters");
+	missions[MISN_CERADSE].secondaryType[0] = M_DESTROY_ALL_TARGETS;
+	missions[MISN_CERADSE].completed2[0] = OB_INCOMPLETE;
 
-	missions[3].addAliens = NORMAL;
+	missions[MISN_CERADSE].addAliens = FREQUENT;
 
-	// Mission 4
-	sprintf(missions[4].primaryObjective[0], "Destroy 9 WEAPCO Miners");
-	missions[4].primaryType[0] = M_DESTROY_TARGET_TYPE;
-	missions[4].target1[0] = CD_MINER;
-	missions[4].targetValue1[0] = 9;
-	missions[4].completed1[0] = OB_INCOMPLETE;
 
-	sprintf(missions[4].secondaryObjective[0], "Destroy all remaining WEAPCO fighters");
-	missions[4].secondaryType[0] = M_DESTROY_ALL_TARGETS;
-	missions[4].completed2[0] = OB_INCOMPLETE;
+	sprintf(missions[MISN_HINSTAG].primaryObjective[0],
+		"Destroy 5 WEAPCO Missile Boats");
+	missions[MISN_HINSTAG].primaryType[0] = M_DESTROY_TARGET_TYPE;
+	missions[MISN_HINSTAG].target1[0] = CD_MISSILEBOAT;
+	missions[MISN_HINSTAG].targetValue1[0] = 5;
+	missions[MISN_HINSTAG].completed1[0] = OB_INCOMPLETE;
 
-	missions[4].addAliens = NORMAL;
+	sprintf(missions[MISN_HINSTAG].secondaryObjective[0],
+		"Destroy all remaining WEAPCO fighters");
+	missions[MISN_HINSTAG].secondaryType[0] = M_DESTROY_ALL_TARGETS;
+	missions[MISN_HINSTAG].completed2[0] = OB_INCOMPLETE;
 
-	// Mission 5
-	sprintf(missions[5].primaryObjective[0], "Destroy WEAPCO Frigate");
-	missions[5].primaryType[0] = M_DESTROY_TARGET_TYPE;
-	missions[5].target1[0] = CD_BOSS;
-	missions[5].targetValue1[0] = 1;
-	missions[5].completed1[0] = OB_INCOMPLETE;
+	missions[MISN_HINSTAG].addAliens = NORMAL;
+
+
+	sprintf(missions[MISN_JOLDAR].primaryObjective[0],
+		"Destroy 9 WEAPCO Miners");
+	missions[MISN_JOLDAR].primaryType[0] = M_DESTROY_TARGET_TYPE;
+	missions[MISN_JOLDAR].target1[0] = CD_MINER;
+	missions[MISN_JOLDAR].targetValue1[0] = 9;
+	missions[MISN_JOLDAR].completed1[0] = OB_INCOMPLETE;
+
+	sprintf(missions[MISN_JOLDAR].secondaryObjective[0],
+		"Destroy all remaining WEAPCO fighters");
+	missions[MISN_JOLDAR].secondaryType[0] = M_DESTROY_ALL_TARGETS;
+	missions[MISN_JOLDAR].completed2[0] = OB_INCOMPLETE;
+
+	missions[MISN_JOLDAR].addAliens = NORMAL;
+
+
+	sprintf(missions[MISN_MOEBO].primaryObjective[0],
+		"Destroy WEAPCO Frigate");
+	missions[MISN_MOEBO].primaryType[0] = M_DESTROY_TARGET_TYPE;
+	missions[MISN_MOEBO].target1[0] = CD_BOSS;
+	missions[MISN_MOEBO].targetValue1[0] = 1;
+	missions[MISN_MOEBO].completed1[0] = OB_INCOMPLETE;
 	
-	missions[5].timeLimit1[0] = 3;
+	missions[MISN_MOEBO].timeLimit1[0] = 3;
 
-	missions[5].addAliens = SOMETIMES;
+	missions[MISN_MOEBO].addAliens = SOMETIMES;
 
-	/*
-		Mission 6 is the rescue 250 slaves mission. It doesn't actually
-		count in this list. This is just here as a place holder
-	*/
 
-	// Mission 7
-	sprintf(missions[7].primaryObjective[0], "Rescue Phoebe Lexx");
-	missions[7].primaryType[0] = M_DESTROY_TARGET_TYPE;
-	missions[7].target1[0] = CD_CARGOSHIP;
-	missions[7].targetValue1[0] = 1;
-	missions[7].completed1[0] = OB_INCOMPLETE;
+	sprintf(missions[MISN_NEROD].primaryObjective[0], "Rescue Phoebe Lexx");
+	missions[MISN_NEROD].primaryType[0] = M_DESTROY_TARGET_TYPE;
+	missions[MISN_NEROD].target1[0] = CD_CARGOSHIP;
+	missions[MISN_NEROD].targetValue1[0] = 1;
+	missions[MISN_NEROD].completed1[0] = OB_INCOMPLETE;
 
-	sprintf(missions[7].primaryObjective[1], "Do not allow Phoebe to be killed");
-	missions[7].primaryType[1] = M_PROTECT_TARGET;
-	missions[7].target1[1] = CD_PHOEBE;
-	missions[7].targetValue1[1] = 0;
-	missions[7].completed1[1] = OB_CONDITION;
+	sprintf(missions[MISN_NEROD].primaryObjective[1],
+		"Do not allow Phoebe to be killed");
+	missions[MISN_NEROD].primaryType[1] = M_PROTECT_TARGET;
+	missions[MISN_NEROD].target1[1] = CD_PHOEBE;
+	missions[MISN_NEROD].targetValue1[1] = 0;
+	missions[MISN_NEROD].completed1[1] = OB_CONDITION;
 
-	sprintf(missions[7].primaryObjective[2], "Destroy all WEAPCO forces");
-	missions[7].primaryType[2] = M_DESTROY_TARGET_TYPE;
-	missions[7].target1[2] = CD_ANY;
-	missions[7].targetValue1[2] = 35;
-	missions[7].completed1[2] = OB_INCOMPLETE;
+	sprintf(missions[MISN_NEROD].primaryObjective[2],
+		"Destroy all WEAPCO forces");
+	missions[MISN_NEROD].primaryType[2] = M_DESTROY_TARGET_TYPE;
+	missions[MISN_NEROD].target1[2] = CD_ANY;
+	missions[MISN_NEROD].targetValue1[2] = 35;
+	missions[MISN_NEROD].completed1[2] = OB_INCOMPLETE;
 
-	missions[7].addAliens = ALWAYS;
+	missions[MISN_NEROD].addAliens = ALWAYS;
 
-	// Mission 8
-	sprintf(missions[8].primaryObjective[0], "Assist medical supply craft");
-	missions[8].primaryType[0] = M_ESCAPE_TARGET;
-	missions[8].target1[0] = CD_GOODTRANSPORT;
-	missions[8].targetValue1[0] = 0;
-	missions[8].completed1[0] = OB_INCOMPLETE;
 
-	sprintf(missions[8].primaryObjective[1], "Do not allow supply craft to be destroyed");
-	missions[8].primaryType[1] = M_PROTECT_TARGET;
-	missions[8].target1[1] = CD_GOODTRANSPORT;
-	missions[8].targetValue1[1] = 0;
-	missions[8].completed1[1] = OB_CONDITION;
+	sprintf(missions[MISN_ALLEZ].primaryObjective[0],
+		"Assist medical supply craft");
+	missions[MISN_ALLEZ].primaryType[0] = M_ESCAPE_TARGET;
+	missions[MISN_ALLEZ].target1[0] = CD_GOODTRANSPORT;
+	missions[MISN_ALLEZ].targetValue1[0] = 0;
+	missions[MISN_ALLEZ].completed1[0] = OB_INCOMPLETE;
+
+	sprintf(missions[MISN_ALLEZ].primaryObjective[1],
+		"Do not allow supply craft to be destroyed");
+	missions[MISN_ALLEZ].primaryType[1] = M_PROTECT_TARGET;
+	missions[MISN_ALLEZ].target1[1] = CD_GOODTRANSPORT;
+	missions[MISN_ALLEZ].targetValue1[1] = 0;
+	missions[MISN_ALLEZ].completed1[1] = OB_CONDITION;
 	
-	sprintf(missions[8].secondaryObjective[0], "Destroy all remaining WEAPCO fighters");
-	missions[8].secondaryType[0] = M_DESTROY_ALL_TARGETS;
-	missions[8].completed2[0] = OB_INCOMPLETE;
+	sprintf(missions[MISN_ALLEZ].secondaryObjective[0],
+		"Destroy all remaining WEAPCO fighters");
+	missions[MISN_ALLEZ].secondaryType[0] = M_DESTROY_ALL_TARGETS;
+	missions[MISN_ALLEZ].completed2[0] = OB_INCOMPLETE;
 
-	missions[8].addAliens = FREQUENT;
+	missions[MISN_ALLEZ].addAliens = FREQUENT;
 
-	// Mission 9
-	sprintf(missions[9].primaryObjective[0], "Disable five WEAPCO supply craft");
-	missions[9].primaryType[0] = M_DISABLE_TARGET;
-	missions[9].target1[0] = CD_CARGOSHIP;
-	missions[9].targetValue1[0] = 5;
-	missions[9].completed1[0] = OB_INCOMPLETE;
 
-	sprintf(missions[9].primaryObjective[1], "Destroy all remaining WEAPCO fighters");
-	missions[9].primaryType[1] = M_DESTROY_ALL_TARGETS;
-	missions[9].completed1[1] = OB_INCOMPLETE;
+	sprintf(missions[MISN_URUSOR].primaryObjective[0],
+		"Disable five WEAPCO supply craft");
+	missions[MISN_URUSOR].primaryType[0] = M_DISABLE_TARGET;
+	missions[MISN_URUSOR].target1[0] = CD_CARGOSHIP;
+	missions[MISN_URUSOR].targetValue1[0] = 5;
+	missions[MISN_URUSOR].completed1[0] = OB_INCOMPLETE;
 
-	sprintf(missions[9].primaryObjective[2], "Protect supply craft AND Sid Wilson");
-	missions[9].primaryType[2] = M_PROTECT_TARGET;
-	missions[9].target1[2] = CD_CARGOSHIP;
-	missions[9].targetValue1[2] = 0;
-	missions[9].completed1[2] = OB_CONDITION;
+	sprintf(missions[MISN_URUSOR].primaryObjective[1],
+		"Destroy all remaining WEAPCO fighters");
+	missions[MISN_URUSOR].primaryType[1] = M_DESTROY_ALL_TARGETS;
+	missions[MISN_URUSOR].completed1[1] = OB_INCOMPLETE;
 
-	missions[9].addAliens = FREQUENT;
+	sprintf(missions[MISN_URUSOR].primaryObjective[2],
+		"Protect supply craft AND Sid Wilson");
+	missions[MISN_URUSOR].primaryType[2] = M_PROTECT_TARGET;
+	missions[MISN_URUSOR].target1[2] = CD_CARGOSHIP;
+	missions[MISN_URUSOR].targetValue1[2] = 0;
+	missions[MISN_URUSOR].completed1[2] = OB_CONDITION;
 
-	// Mission 10
-	sprintf(missions[10].primaryObjective[0], "Locate doctor's escape pod");
-	missions[10].primaryType[0] = M_COLLECT;
-	missions[10].target1[0] = P_ESCAPEPOD;
-	missions[10].targetValue1[0] = 1;
-	missions[10].completed1[0] = OB_INCOMPLETE;
+	missions[MISN_URUSOR].addAliens = FREQUENT;
 
-	sprintf(missions[10].primaryObjective[1], "Do not destroy doctor's escape pod");
-	missions[10].primaryType[1] = M_PROTECT_PICKUP;
-	missions[10].target1[1] = P_ESCAPEPOD;
-	missions[10].targetValue1[1] = 1; // DONE ON PURPOSE!! DO NOT CHANGE THIS!!!!
-	missions[10].completed1[1] = OB_CONDITION;
 
-	sprintf(missions[10].secondaryObjective[0], "Collect 10 pieces of Ore");
-	missions[10].secondaryType[0] = M_COLLECT;
-	missions[10].target2[0] = P_ORE;
-	missions[10].targetValue2[0] = 10;
-	missions[10].completed2[0] = OB_INCOMPLETE;
+	sprintf(missions[MISN_DORIM].primaryObjective[0],
+		"Locate doctor's escape pod");
+	missions[MISN_DORIM].primaryType[0] = M_COLLECT;
+	missions[MISN_DORIM].target1[0] = P_ESCAPEPOD;
+	missions[MISN_DORIM].targetValue1[0] = 1;
+	missions[MISN_DORIM].completed1[0] = OB_INCOMPLETE;
 
-	missions[10].addAliens = ALWAYS;
+	sprintf(missions[MISN_DORIM].primaryObjective[1],
+		"Do not destroy doctor's escape pod");
+	missions[MISN_DORIM].primaryType[1] = M_PROTECT_PICKUP;
+	missions[MISN_DORIM].target1[1] = P_ESCAPEPOD;
+	missions[MISN_DORIM].targetValue1[1] = 1; // DONE ON PURPOSE!! DO NOT CHANGE THIS!!!!
+	missions[MISN_DORIM].completed1[1] = OB_CONDITION;
 
-	missions[10].timeLimit1[0] = 3;
-	missions[10].timeLimit2[0] = 3;
+	sprintf(missions[MISN_DORIM].secondaryObjective[0],
+		"Collect 10 pieces of Ore");
+	missions[MISN_DORIM].secondaryType[0] = M_COLLECT;
+	missions[MISN_DORIM].target2[0] = P_ORE;
+	missions[MISN_DORIM].targetValue2[0] = 10;
+	missions[MISN_DORIM].completed2[0] = OB_INCOMPLETE;
 
-	// Mission 11 (hmmm, that was too easy...)
-	sprintf(missions[11].primaryObjective[0], "Destroy WEAPCO ore mining craft");
-	missions[11].primaryType[0] = M_DESTROY_TARGET_TYPE;
-	missions[11].target1[0] = CD_BOSS;
-	missions[11].targetValue1[0] = 1;
-	missions[11].completed1[0] = OB_INCOMPLETE;
+	missions[MISN_DORIM].addAliens = ALWAYS;
 
-	sprintf(missions[11].secondaryObjective[0], "Save present slaves");
-	missions[11].secondaryType[0] = M_PROTECT_PICKUP;
-	missions[11].target2[0] = P_SLAVES;
-	missions[11].completed2[0] = OB_CONDITION;
+	missions[MISN_DORIM].timeLimit1[0] = 3;
+	missions[MISN_DORIM].timeLimit2[0] = 3;
 
-	sprintf(missions[11].primaryObjective[1], "Battle Kline");
-	missions[11].primaryType[1] = M_ESCAPE_TARGET;
-	missions[11].target1[1] = CD_KLINE;
-	missions[11].targetValue1[1] = 1;
-	missions[11].completed1[1] = OB_HIDDEN;
 
-	missions[11].addAliens = NEVER;
+	sprintf(missions[MISN_ELAMALE].primaryObjective[0],
+		"Destroy WEAPCO ore mining craft");
+	missions[MISN_ELAMALE].primaryType[0] = M_DESTROY_TARGET_TYPE;
+	missions[MISN_ELAMALE].target1[0] = CD_BOSS;
+	missions[MISN_ELAMALE].targetValue1[0] = 1;
+	missions[MISN_ELAMALE].completed1[0] = OB_INCOMPLETE;
 
-	/*
-		Mission 12 is the Destroy Experimental Fighter mission
-		this is just a place holder
-	*/
+	sprintf(missions[MISN_ELAMALE].secondaryObjective[0],
+		"Save present slaves");
+	missions[MISN_ELAMALE].secondaryType[0] = M_PROTECT_PICKUP;
+	missions[MISN_ELAMALE].target2[0] = P_SLAVES;
+	missions[MISN_ELAMALE].completed2[0] = OB_CONDITION;
 
-	// Mission 13
-	sprintf(missions[13].primaryObjective[0], "Destroy Ursula's ship");
-	missions[13].primaryType[0] = M_DESTROY_TARGET_TYPE;
-	missions[13].target1[0] = CD_EVILURSULA;
-	missions[13].targetValue1[0] = 0;
-	missions[13].completed1[0] = OB_INCOMPLETE;
+	sprintf(missions[MISN_ELAMALE].primaryObjective[1], "Battle Kline");
+	missions[MISN_ELAMALE].primaryType[1] = M_ESCAPE_TARGET;
+	missions[MISN_ELAMALE].target1[1] = CD_KLINE;
+	missions[MISN_ELAMALE].targetValue1[1] = 1;
+	missions[MISN_ELAMALE].completed1[1] = OB_HIDDEN;
 
-	sprintf(missions[13].primaryObjective[1], "Capture Ursula's escape pod");
-	missions[13].primaryType[1] = M_COLLECT;
-	missions[13].target1[1] = P_ESCAPEPOD;
-	missions[13].targetValue1[1] = 1;
-	missions[13].completed1[1] = OB_INCOMPLETE;
+	missions[MISN_ELAMALE].addAliens = NEVER;
 
-	sprintf(missions[13].primaryObjective[2], "Do not kill Ursula");
-	missions[13].primaryType[2] = M_PROTECT_PICKUP;
-	missions[13].target1[2] = P_ESCAPEPOD;
-	missions[13].targetValue1[2] = 0;
-	missions[13].completed1[2] = OB_CONDITION;
 
-	sprintf(missions[13].secondaryObjective[0], "Destroy all remaining WEAPCO fighters");
-	missions[13].secondaryType[0] = M_DESTROY_ALL_TARGETS;
-	missions[13].completed2[0] = OB_INCOMPLETE;
+	sprintf(missions[MISN_ODEON].primaryObjective[0], "Destroy Ursula's ship");
+	missions[MISN_ODEON].primaryType[0] = M_DESTROY_TARGET_TYPE;
+	missions[MISN_ODEON].target1[0] = CD_EVILURSULA;
+	missions[MISN_ODEON].targetValue1[0] = 0;
+	missions[MISN_ODEON].completed1[0] = OB_INCOMPLETE;
 
-	missions[13].addAliens = FREQUENT;
+	sprintf(missions[MISN_ODEON].primaryObjective[1],
+		"Capture Ursula's escape pod");
+	missions[MISN_ODEON].primaryType[1] = M_COLLECT;
+	missions[MISN_ODEON].target1[1] = P_ESCAPEPOD;
+	missions[MISN_ODEON].targetValue1[1] = 1;
+	missions[MISN_ODEON].completed1[1] = OB_INCOMPLETE;
 
-	// Mission 14
-	sprintf(missions[14].primaryObjective[0], "Assist attack on WEAPCO ore mining craft");
-	missions[14].primaryType[0] = M_DESTROY_TARGET_TYPE;
-	missions[14].target1[0] = CD_BOSS;
-	missions[14].targetValue1[0] = 1;
-	missions[14].completed1[0] = OB_INCOMPLETE;
+	sprintf(missions[MISN_ODEON].primaryObjective[2], "Do not kill Ursula");
+	missions[MISN_ODEON].primaryType[2] = M_PROTECT_PICKUP;
+	missions[MISN_ODEON].target1[2] = P_ESCAPEPOD;
+	missions[MISN_ODEON].targetValue1[2] = 0;
+	missions[MISN_ODEON].completed1[2] = OB_CONDITION;
 
-	sprintf(missions[14].primaryObjective[1], "At least 1 rebel craft must survive");
-	missions[14].primaryType[1] = M_PROTECT_TARGET;
-	missions[14].target1[1] = CD_REBELCARRIER;
-	missions[14].targetValue1[1] = 2;
-	missions[14].completed1[1] = OB_CONDITION;
+	sprintf(missions[MISN_ODEON].secondaryObjective[0],
+		"Destroy all remaining WEAPCO fighters");
+	missions[MISN_ODEON].secondaryType[0] = M_DESTROY_ALL_TARGETS;
+	missions[MISN_ODEON].completed2[0] = OB_INCOMPLETE;
 
-	sprintf(missions[14].primaryObjective[2], "Destroy all present WEAPCO forces");
-	missions[14].primaryType[2] = M_DESTROY_ALL_TARGETS;
-	missions[14].completed1[2] = OB_INCOMPLETE;
+	missions[MISN_ODEON].addAliens = FREQUENT;
 
-	missions[14].addAliens = ALWAYS;
 
-	// Mission 15
-	sprintf(missions[15].primaryObjective[0], "Collect 25 pieces of Ore");
-	missions[15].primaryType[0] = M_COLLECT;
-	missions[15].target1[0] = P_ORE;
-	missions[15].targetValue1[0] = 25;
-	missions[15].completed1[0] = OB_INCOMPLETE;
+	sprintf(missions[MISN_FELLON].primaryObjective[0],
+		"Assist attack on WEAPCO ore mining craft");
+	missions[MISN_FELLON].primaryType[0] = M_DESTROY_TARGET_TYPE;
+	missions[MISN_FELLON].target1[0] = CD_BOSS;
+	missions[MISN_FELLON].targetValue1[0] = 1;
+	missions[MISN_FELLON].completed1[0] = OB_INCOMPLETE;
 
-	sprintf(missions[15].secondaryObjective[0], "Collect 25 pieces of Ore");
-	missions[15].secondaryType[0] = M_COLLECT;
-	missions[15].target2[0] = P_ORE;
-	missions[15].targetValue2[0] = 25;
-	missions[15].completed2[0] = OB_INCOMPLETE;
+	sprintf(missions[MISN_FELLON].primaryObjective[1],
+		"At least 1 rebel craft must survive");
+	missions[MISN_FELLON].primaryType[1] = M_PROTECT_TARGET;
+	missions[MISN_FELLON].target1[1] = CD_REBELCARRIER;
+	missions[MISN_FELLON].targetValue1[1] = 2;
+	missions[MISN_FELLON].completed1[1] = OB_CONDITION;
 
-	missions[15].addAliens = ALWAYS;
+	sprintf(missions[MISN_FELLON].primaryObjective[2],
+		"Destroy all present WEAPCO forces");
+	missions[MISN_FELLON].primaryType[2] = M_DESTROY_ALL_TARGETS;
+	missions[MISN_FELLON].completed1[2] = OB_INCOMPLETE;
 
-	// Mission 16
-	sprintf(missions[16].primaryObjective[0], "Collect $2000 to pay mercenary");
-	missions[16].primaryType[0] = M_COLLECT;
-	missions[16].target1[0] = P_CASH;
-	missions[16].targetValue1[0] = 2000;
-	missions[16].completed1[0] = OB_INCOMPLETE;
+	missions[MISN_FELLON].addAliens = ALWAYS;
 
-	sprintf(missions[16].primaryObjective[1], "Destroy all remaining WEAPCO fighters");
-	missions[16].primaryType[1] = M_DESTROY_ALL_TARGETS;
-	missions[16].completed1[1] = OB_INCOMPLETE;
 
-	missions[16].addAliens = ALWAYS;
+	sprintf(missions[MISN_SIVEDI].primaryObjective[0],
+		"Collect 25 pieces of Ore");
+	missions[MISN_SIVEDI].primaryType[0] = M_COLLECT;
+	missions[MISN_SIVEDI].target1[0] = P_ORE;
+	missions[MISN_SIVEDI].targetValue1[0] = 25;
+	missions[MISN_SIVEDI].completed1[0] = OB_INCOMPLETE;
 
-	// Mission 17
-	sprintf(missions[17].primaryObjective[0], "Destroy escorts");
-	missions[17].primaryType[0] = M_DESTROY_TARGET_TYPE;
-	missions[17].target1[0] = CD_ESCORT;
-	missions[17].targetValue1[0] = 5;
-	missions[17].completed1[0] = OB_INCOMPLETE;
+	sprintf(missions[MISN_SIVEDI].secondaryObjective[0],
+		"Collect 25 pieces of Ore");
+	missions[MISN_SIVEDI].secondaryType[0] = M_COLLECT;
+	missions[MISN_SIVEDI].target2[0] = P_ORE;
+	missions[MISN_SIVEDI].targetValue2[0] = 25;
+	missions[MISN_SIVEDI].completed2[0] = OB_INCOMPLETE;
 
-	sprintf(missions[17].primaryObjective[1], "Disable executive transport");
-	missions[17].primaryType[1] = M_ESCAPE_TARGET;
-	missions[17].target1[1] = CD_BOSS;
-	missions[17].targetValue1[1] = 1;
-	missions[17].completed1[1] = OB_INCOMPLETE;
+	missions[MISN_SIVEDI].addAliens = ALWAYS;
 
-	sprintf(missions[17].primaryObjective[2], "Destroy all remaining WEAPCO fighters");
-	missions[17].primaryType[2] = M_DESTROY_ALL_TARGETS;
-	missions[17].completed1[2] = OB_INCOMPLETE;
 
-	missions[17].addAliens = NORMAL;
+	sprintf(missions[MISN_ALMARTHA].primaryObjective[0],
+		"Collect $2000 to pay mercenary");
+	missions[MISN_ALMARTHA].primaryType[0] = M_COLLECT;
+	missions[MISN_ALMARTHA].target1[0] = P_CASH;
+	missions[MISN_ALMARTHA].targetValue1[0] = 2000;
+	missions[MISN_ALMARTHA].completed1[0] = OB_INCOMPLETE;
 
-	// Mission 18
-	sprintf(missions[18].primaryObjective[0], "Destroy executive transport");
-	missions[18].primaryType[0] = M_DESTROY_TARGET_TYPE;
-	missions[18].target1[0] = CD_BOSS;
-	missions[18].targetValue1[0] = 1;
-	missions[18].completed1[0] = OB_INCOMPLETE;
+	sprintf(missions[MISN_ALMARTHA].primaryObjective[1],
+		"Destroy all remaining WEAPCO fighters");
+	missions[MISN_ALMARTHA].primaryType[1] = M_DESTROY_ALL_TARGETS;
+	missions[MISN_ALMARTHA].completed1[1] = OB_INCOMPLETE;
 
-	missions[18].addAliens = ALWAYS;
+	missions[MISN_ALMARTHA].addAliens = ALWAYS;
 
-	// Mission 19
-	sprintf(missions[19].primaryObjective[0], "Destroy planetary guardian");
-	missions[19].primaryType[0] = M_DESTROY_TARGET_TYPE;
-	missions[19].target1[0] = CD_PLUTOBOSS;
-	missions[19].targetValue1[0] = 1;
-	missions[19].completed1[0] = OB_INCOMPLETE;
 
-	sprintf(missions[19].primaryObjective[1], "Destroy all remaining WEAPCO fighters");
-	missions[19].primaryType[1] = M_DESTROY_ALL_TARGETS;
-	missions[19].completed1[1] = OB_INCOMPLETE;
+	sprintf(missions[MISN_POSWIC].primaryObjective[0], "Destroy escorts");
+	missions[MISN_POSWIC].primaryType[0] = M_DESTROY_TARGET_TYPE;
+	missions[MISN_POSWIC].target1[0] = CD_ESCORT;
+	missions[MISN_POSWIC].targetValue1[0] = 5;
+	missions[MISN_POSWIC].completed1[0] = OB_INCOMPLETE;
 
-	missions[19].timeLimit1[0] = 5;
-	missions[19].timeLimit1[1] = 5;
+	sprintf(missions[MISN_POSWIC].primaryObjective[1],
+		"Disable executive transport");
+	missions[MISN_POSWIC].primaryType[1] = M_ESCAPE_TARGET;
+	missions[MISN_POSWIC].target1[1] = CD_BOSS;
+	missions[MISN_POSWIC].targetValue1[1] = 1;
+	missions[MISN_POSWIC].completed1[1] = OB_INCOMPLETE;
 
-	missions[19].addAliens = ALWAYS;
+	sprintf(missions[MISN_POSWIC].primaryObjective[2],
+		"Destroy all remaining WEAPCO fighters");
+	missions[MISN_POSWIC].primaryType[2] = M_DESTROY_ALL_TARGETS;
+	missions[MISN_POSWIC].completed1[2] = OB_INCOMPLETE;
 
-	// Mission 20
-	sprintf(missions[20].primaryObjective[0], "Destroy planetary guardian");
-	missions[20].primaryType[0] = M_DESTROY_TARGET_TYPE;
-	missions[20].target1[0] = CD_NEPTUNEBOSS;
-	missions[20].targetValue1[0] = 1;
-	missions[20].completed1[0] = OB_INCOMPLETE;
+	missions[MISN_POSWIC].addAliens = NORMAL;
 
-	sprintf(missions[20].primaryObjective[1], "Destroy all remaining WEAPCO fighters");
-	missions[20].primaryType[1] = M_DESTROY_ALL_TARGETS;
-	missions[20].completed1[1] = OB_INCOMPLETE;
 
-	missions[20].timeLimit1[0] = 5;
-	missions[20].timeLimit1[1] = 5;
+	sprintf(missions[MISN_ELLESH].primaryObjective[0],
+		"Destroy executive transport");
+	missions[MISN_ELLESH].primaryType[0] = M_DESTROY_TARGET_TYPE;
+	missions[MISN_ELLESH].target1[0] = CD_BOSS;
+	missions[MISN_ELLESH].targetValue1[0] = 1;
+	missions[MISN_ELLESH].completed1[0] = OB_INCOMPLETE;
 
-	missions[20].addAliens = ALWAYS;
+	missions[MISN_ELLESH].addAliens = ALWAYS;
 
-	// Mission 21
-	sprintf(missions[21].primaryObjective[0], "Destroy all present WEAPCO forces");
-	missions[21].primaryType[0] = M_DESTROY_TARGET_TYPE;
-	missions[21].target1[0] = CD_URANUSBOSS;
-	missions[21].targetValue1[0] = 1;
-	missions[21].completed1[0] = OB_INCOMPLETE;
 
-	sprintf(missions[21].primaryObjective[1], "Destroy all remaining WEAPCO fighters");
-	missions[21].primaryType[1] = M_DESTROY_ALL_TARGETS;
-	missions[21].completed1[1] = OB_INCOMPLETE;
+	sprintf(missions[MISN_PLUTO].primaryObjective[0],
+		"Destroy planetary guardian");
+	missions[MISN_PLUTO].primaryType[0] = M_DESTROY_TARGET_TYPE;
+	missions[MISN_PLUTO].target1[0] = CD_PLUTOBOSS;
+	missions[MISN_PLUTO].targetValue1[0] = 1;
+	missions[MISN_PLUTO].completed1[0] = OB_INCOMPLETE;
 
-	missions[21].timeLimit1[0] = 5;
-	missions[21].timeLimit1[1] = 5;
+	sprintf(missions[MISN_PLUTO].primaryObjective[1],
+		"Destroy all remaining WEAPCO fighters");
+	missions[MISN_PLUTO].primaryType[1] = M_DESTROY_ALL_TARGETS;
+	missions[MISN_PLUTO].completed1[1] = OB_INCOMPLETE;
 
-	missions[21].addAliens = ALWAYS;
+	missions[MISN_PLUTO].timeLimit1[0] = 5;
+	missions[MISN_PLUTO].timeLimit1[1] = 5;
 
-	// Mission 22
-	sprintf(missions[22].primaryObjective[0], "Destroy outer defence systems");
-	missions[22].primaryType[0] = M_DESTROY_TARGET_TYPE;
-	missions[22].target1[0] = CD_MOBILE_RAY;
-	missions[22].targetValue1[0] = 6;
-	missions[22].completed1[0] = OB_INCOMPLETE;
+	missions[MISN_PLUTO].addAliens = ALWAYS;
 
-	sprintf(missions[22].primaryObjective[1], "Destroy all remaining WEAPCO craft");
-	missions[22].primaryType[1] = M_DESTROY_ALL_TARGETS;
-	missions[22].completed1[1] = OB_INCOMPLETE;
 
-	missions[22].addAliens = NORMAL;
+	sprintf(missions[MISN_NEPTUNE].primaryObjective[0],
+		"Destroy planetary guardian");
+	missions[MISN_NEPTUNE].primaryType[0] = M_DESTROY_TARGET_TYPE;
+	missions[MISN_NEPTUNE].target1[0] = CD_NEPTUNEBOSS;
+	missions[MISN_NEPTUNE].targetValue1[0] = 1;
+	missions[MISN_NEPTUNE].completed1[0] = OB_INCOMPLETE;
 
-	// Mission 23
-	sprintf(missions[23].primaryObjective[0], "Investigate distress call");
-	missions[23].primaryType[0] = M_DESTROY_ALL_TARGETS;
-	missions[23].completed1[0] = OB_CONDITION;
+	sprintf(missions[MISN_NEPTUNE].primaryObjective[1],
+		"Destroy all remaining WEAPCO fighters");
+	missions[MISN_NEPTUNE].primaryType[1] = M_DESTROY_ALL_TARGETS;
+	missions[MISN_NEPTUNE].completed1[1] = OB_INCOMPLETE;
 
-	sprintf(missions[23].primaryObjective[1], "Defeat Krass Tyler");
-	missions[23].primaryType[1] = M_DESTROY_TARGET_TYPE;
-	missions[23].target1[1] = CD_KRASS;
-	missions[23].targetValue1[1] = 1;
-	missions[23].completed1[1] = OB_HIDDEN;
+	missions[MISN_NEPTUNE].timeLimit1[0] = 5;
+	missions[MISN_NEPTUNE].timeLimit1[1] = 5;
 
-	sprintf(missions[23].primaryObjective[2], "Destroy Krass' support group");
-	missions[23].primaryType[2] = M_DESTROY_ALL_TARGETS;
-	missions[23].target1[1] = CD_FIREFLY;
-	missions[23].targetValue1[1] = 4;
-	missions[23].completed1[2] = OB_HIDDEN;
+	missions[MISN_NEPTUNE].addAliens = ALWAYS;
 
-	missions[23].addAliens = ALWAYS;
 
-	// Mission 24
-	sprintf(missions[24].primaryObjective[0], "Navigate asteroid belt");
-	missions[24].primaryType[0] = M_DESTROY_TARGET_TYPE;
-	missions[24].target1[0] = CD_BOSS;
-	missions[24].targetValue1[0] = 1;
-	missions[24].completed1[0] = OB_INCOMPLETE;
+	sprintf(missions[MISN_URANUS].primaryObjective[0],
+		"Destroy all present WEAPCO forces");
+	missions[MISN_URANUS].primaryType[0] = M_DESTROY_TARGET_TYPE;
+	missions[MISN_URANUS].target1[0] = CD_URANUSBOSS;
+	missions[MISN_URANUS].targetValue1[0] = 1;
+	missions[MISN_URANUS].completed1[0] = OB_INCOMPLETE;
 
-	missions[24].timeLimit1[0] = 2;
+	sprintf(missions[MISN_URANUS].primaryObjective[1],
+		"Destroy all remaining WEAPCO fighters");
+	missions[MISN_URANUS].primaryType[1] = M_DESTROY_ALL_TARGETS;
+	missions[MISN_URANUS].completed1[1] = OB_INCOMPLETE;
 
-	missions[24].addAliens = ALWAYS;
+	missions[MISN_URANUS].timeLimit1[0] = 5;
+	missions[MISN_URANUS].timeLimit1[1] = 5;
 
-	// Mission 25
-	sprintf(missions[25].primaryObjective[0], "Destroy WEAPCO frontline forces");
-	missions[25].primaryType[0] = M_DESTROY_TARGET_TYPE;
-	missions[25].target1[0] = CD_ANY;
-	missions[25].targetValue1[0] = 100;
-	missions[25].completed1[0] = OB_INCOMPLETE;
+	missions[MISN_URANUS].addAliens = ALWAYS;
 
-	missions[25].addAliens = ALWAYS;
 
-	// Mission 26
-	sprintf(missions[26].primaryObjective[0], "Defeat Kline");
-	missions[26].primaryType[0] = M_DESTROY_ALL_TARGETS;
-	missions[26].completed1[0] = OB_INCOMPLETE;
+	sprintf(missions[MISN_SATURN].primaryObjective[0],
+		"Destroy outer defence systems");
+	missions[MISN_SATURN].primaryType[0] = M_DESTROY_TARGET_TYPE;
+	missions[MISN_SATURN].target1[0] = CD_MOBILE_RAY;
+	missions[MISN_SATURN].targetValue1[0] = 6;
+	missions[MISN_SATURN].completed1[0] = OB_INCOMPLETE;
 
-	// Interception Mission
-	strcpy(missions[MAX_MISSIONS - 1].primaryObjective[0], "");
-	missions[MAX_MISSIONS - 1].primaryType[0] = M_DESTROY_ALL_TARGETS;
-	missions[MAX_MISSIONS - 1].completed1[0] = OB_INCOMPLETE;
+	sprintf(missions[MISN_SATURN].primaryObjective[1],
+		"Destroy all remaining WEAPCO craft");
+	missions[MISN_SATURN].primaryType[1] = M_DESTROY_ALL_TARGETS;
+	missions[MISN_SATURN].completed1[1] = OB_INCOMPLETE;
+
+	missions[MISN_SATURN].addAliens = NORMAL;
+
+
+	sprintf(missions[MISN_JUPITER].primaryObjective[0],
+		"Investigate distress call");
+	missions[MISN_JUPITER].primaryType[0] = M_DESTROY_ALL_TARGETS;
+	missions[MISN_JUPITER].completed1[0] = OB_CONDITION;
+
+	sprintf(missions[MISN_JUPITER].primaryObjective[1], "Defeat Krass Tyler");
+	missions[MISN_JUPITER].primaryType[1] = M_DESTROY_TARGET_TYPE;
+	missions[MISN_JUPITER].target1[1] = CD_KRASS;
+	missions[MISN_JUPITER].targetValue1[1] = 1;
+	missions[MISN_JUPITER].completed1[1] = OB_HIDDEN;
+
+	sprintf(missions[MISN_JUPITER].primaryObjective[2],
+		"Destroy Krass' support group");
+	missions[MISN_JUPITER].primaryType[2] = M_DESTROY_ALL_TARGETS;
+	missions[MISN_JUPITER].target1[1] = CD_FIREFLY;
+	missions[MISN_JUPITER].targetValue1[1] = 4;
+	missions[MISN_JUPITER].completed1[2] = OB_HIDDEN;
+
+	missions[MISN_JUPITER].addAliens = ALWAYS;
+
+
+	sprintf(missions[MISN_MARS].primaryObjective[0], "Navigate asteroid belt");
+	missions[MISN_MARS].primaryType[0] = M_DESTROY_TARGET_TYPE;
+	missions[MISN_MARS].target1[0] = CD_BOSS;
+	missions[MISN_MARS].targetValue1[0] = 1;
+	missions[MISN_MARS].completed1[0] = OB_INCOMPLETE;
+
+	missions[MISN_MARS].timeLimit1[0] = 2;
+
+	missions[MISN_MARS].addAliens = ALWAYS;
+
+
+	sprintf(missions[MISN_EARTH].primaryObjective[0],
+		"Destroy WEAPCO frontline forces");
+	missions[MISN_EARTH].primaryType[0] = M_DESTROY_TARGET_TYPE;
+	missions[MISN_EARTH].target1[0] = CD_ANY;
+	missions[MISN_EARTH].targetValue1[0] = 100;
+	missions[MISN_EARTH].completed1[0] = OB_INCOMPLETE;
+
+	missions[MISN_EARTH].addAliens = ALWAYS;
+
+
+	sprintf(missions[MISN_VENUS].primaryObjective[0], "Defeat Kline");
+	missions[MISN_VENUS].primaryType[0] = M_DESTROY_ALL_TARGETS;
+	missions[MISN_VENUS].completed1[0] = OB_INCOMPLETE;
+
+
+	strcpy(missions[MISN_INTERCEPTION].primaryObjective[0], "");
+	missions[MISN_INTERCEPTION].primaryType[0] = M_DESTROY_ALL_TARGETS;
+	missions[MISN_INTERCEPTION].completed1[0] = OB_INCOMPLETE;
 }

@@ -97,7 +97,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MAX_TEXTSHAPES 150
 #define MAX_FONTSHAPES 6
 #define MAX_SHOPSHAPES 6
-#define MAX_MISSIONS 28
 #define MAX_CARGO 20
 
 #define SHIP_HIT_INDEX 60
@@ -355,6 +354,7 @@ enum {
 	SFX_MAX
 };
 
+// Sections
 enum {
 
 	SECTION_TITLE,
@@ -362,6 +362,7 @@ enum {
 	SECTION_GAME
 };
 
+// Faces
 enum {
 
 	FACE_CHRIS = 90,
@@ -371,6 +372,40 @@ enum {
 	FACE_PHOEBE,
 	FACE_URSULA,
 	FACE_CREW
+};
+
+// Missions
+enum {
+
+	MISN_START,
+	MISN_HAIL,
+	MISN_CERADSE,
+	MISN_HINSTAG,
+	MISN_JOLDAR,
+	MISN_MOEBO,
+	MISN_RESCUESLAVES,
+	MISN_NEROD,
+	MISN_ALLEZ,
+	MISN_URUSOR,
+	MISN_DORIM,
+	MISN_ELAMALE,
+	MISN_CLOAKFIGHTER,
+	MISN_ODEON,
+	MISN_FELLON,
+	MISN_SIVEDI,
+	MISN_ALMARTHA,
+	MISN_POSWIC,
+	MISN_ELLESH,
+	MISN_PLUTO,
+	MISN_NEPTUNE,
+	MISN_URANUS,
+	MISN_SATURN,
+	MISN_JUPITER,
+	MISN_MARS,
+	MISN_EARTH,
+	MISN_VENUS,
+	MISN_INTERCEPTION,
+	MISN_MAX
 };
 
 // Difficulties
