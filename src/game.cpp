@@ -854,7 +854,7 @@ int mainGameLoop()
 						}
 					}
 
-					if ((currentGame.area == MISN_MARS) && (alien->x < -300))
+					if ((currentGame.area == MISN_MARS) && (alien->x < -60))
 						alien->active = false;
 				}
 				else
