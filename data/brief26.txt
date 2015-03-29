@@ -1,5 +1,5 @@
-Kline Kethlan
+Sid Wilson
 FACE_CHRIS
-I'm going to give you one last warning, Kethlan - Surrender now!
-FACE_KLINE
-Never. Come to Venus and face me. This time, it will be to the death!
+Kethlan has run off to Venus. I'm going after him.
+FACE_SID
+Be careful, Chris. We've won the war, but it would be a real shame if you died now!
