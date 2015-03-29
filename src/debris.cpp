@@ -28,7 +28,7 @@ void addDebris(int x, int y, int amount)
 
 	object *debris;
 	
-	amount = rrand(3, rand() % amount);
+	amount = RANDRANGE(3, rand() % amount);
 	LIMIT(amount, 3, 8);
 
 	for (int i = 0 ; i < amount ; i++)
@@ -39,10 +39,10 @@ void addDebris(int x, int y, int amount)
 		debris->x = x;
 		debris->y = y;
 
-		debris->thinktime = rrand(60, 180);
+		debris->thinktime = RANDRANGE(60, 180);
 
-		debris->dx = rrand(-500, 500);
-		debris->dy = rrand(-500, 500);
+		debris->dx = RANDRANGE(-500, 500);
+		debris->dy = RANDRANGE(-500, 500);
 
 		if (debris->dx != 0)
 			debris->dx /= 100;
@@ -74,7 +74,7 @@ void doDebris()
 			debris->x += debris->dx;
 			debris->y += debris->dy;
 
-			addExplosion(debris->x + rrand(-10, 10), debris->y + rrand(-10, 10), E_BIG_EXPLOSION);
+			addExplosion(debris->x + RANDRANGE(-10, 10), debris->y + RANDRANGE(-10, 10), E_BIG_EXPLOSION);
 		}
 
 		if (debris->thinktime < 1)

@@ -628,8 +628,13 @@ int galaxyMap()
 
 		if (rand() % 1000 < 2)
 		{
-			engine.ssx = rrand(100, 100);
-			engine.ssy = rrand(100, 100);
+			// XXX: This code originally had the range set to [100, 100],
+			// which effectively always caused the star speed to be set to
+			// 1. I don't think this was the intention, so I changed the
+			// minimum from 100 to -100, which is what I think was probably
+			// intended.
+			engine.ssx = RANDRANGE(-100, 100);
+			engine.ssy = RANDRANGE(-100, 100);
 			engine.ssx /= 100;
 			engine.ssy /= 100;
 		}

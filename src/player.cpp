@@ -308,7 +308,8 @@ void doPlayer()
 			blit(shipShape[shapeToUse], (int)player.x, (int)player.y);
 			if ((player.maxShield > 1) && (player.shield <= engine.lowShield) &&
 					(rand() % 5 < 1))
-				addExplosion(player.x + rrand(-10, 10), player.y + rrand(-10, 20), E_SMOKE);
+				addExplosion(player.x + RANDRANGE(-10, 10),
+					player.y + RANDRANGE(-10, 20), E_SMOKE);
 		}
 		else
 		{
@@ -332,7 +333,8 @@ void doPlayer()
 
 			engine.keyState[KEY_UP] = engine.keyState[KEY_DOWN] = engine.keyState[KEY_LEFT] = engine.keyState[KEY_RIGHT] = 0;
 			if ((rand() % 3) == 0)
-				addExplosion(player.x + rrand(-10, 10), player.y + rrand(-10, 10), E_BIG_EXPLOSION);
+				addExplosion(player.x + RANDRANGE(-10, 10),
+					player.y + RANDRANGE(-10, 10), E_BIG_EXPLOSION);
 			if (player.shield == -99)
 				addDebris((int)player.x, (int)player.y, player.maxShield);
 		}

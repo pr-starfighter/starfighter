@@ -831,8 +831,8 @@ bool alien_add()
 	if (aliens[index].classDef == CD_ESCORT)
 		aliens[index].shield = 50;
 
-	aliens[index].dx = rrand(-2, 2);
-	aliens[index].dy = rrand(-2, 2);
+	aliens[index].dx = RANDRANGE(-2, 2);
+	aliens[index].dy = RANDRANGE(-2, 2);
 
 	aliens[index].ammo[0] = 0;
 
@@ -915,16 +915,8 @@ void alien_addFriendly(int type)
 	aliens[type].owner = &aliens[type];
 	aliens[type].target = &aliens[type];
 	aliens[type].active = true;
-
-	if (rand() % 2 == 0)
-		aliens[type].x = rrand((int)(screen->w / 2), (int)(screen->w / 2) + 150);
-	else
-		aliens[type].x = rrand((int)(screen->w / 2) - 150, (int)(screen->w / 2));
-
-	if (rand() % 2 == 0)
-		aliens[type].y = rrand((int)(screen->h / 2), (int)(screen->h / 2) + 150);
-	else
-		aliens[type].y = rrand((int)(screen->h / 2) - 150, (int)(screen->h / 2));
+	aliens[type].x = RANDRANGE((screen->w / 2) - 150, (screen->w / 2) + 150);
+	aliens[type].y = RANDRANGE((screen->h / 2) - 150, (screen->h / 2) + 150);
 
 	if (type == ALIEN_PHOEBE)
 		aliens[type].classDef = CD_PHOEBE;
@@ -940,19 +932,19 @@ void alien_addFriendly(int type)
 bool alien_place(object *alien)
 {
 	if (rand() % 2 == 0)
-		alien->x = rrand(screen->w, screen->w * 2);
+		alien->x = RANDRANGE(screen->w, screen->w * 2);
 	else
-		alien->x = rrand(-screen->w, 0);
+		alien->x = RANDRANGE(-screen->w, 0);
 
 	if (rand() % 2 == 0)
-		alien->y = rrand(screen->h, screen->h * 2);
+		alien->y = RANDRANGE(screen->h, screen->h * 2);
 	else
-		alien->y = rrand(-screen->h, 0);
+		alien->y = RANDRANGE(-screen->h, 0);
 
 	if (currentGame.area == 24)
 	{
 		alien->x = screen->w;
-		alien->y = rrand(screen->h / 3, (2 * screen->h) / 3);
+		alien->y = RANDRANGE(screen->h / 3, (2 * screen->h) / 3);
 	}
 
 	for (int i = 0 ; i < ALIEN_MAX ; i++)

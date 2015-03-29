@@ -103,8 +103,10 @@ void checkScriptEvents()
 				else
 				{
 					aliens[gameEvent[i].entity].active = true;
-					aliens[gameEvent[i].entity].x = rrand((int)player.x + 400, (int)player.x + 800);
-					aliens[gameEvent[i].entity].y = rrand((int)player.y - 400, (int)player.y + 800);
+					aliens[gameEvent[i].entity].x = ((int)player.x +
+						RANDRANGE(400, 800));
+					aliens[gameEvent[i].entity].y = ((int)player.y +
+						RANDRANGE(-400, 800));
 				}
 			}
 

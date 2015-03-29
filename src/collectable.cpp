@@ -136,11 +136,11 @@ void addCollectable(float x, float y, int type, int value, int life)
 	collectable->x = x;
 	collectable->y = y;
 
-	collectable->dx = rrand(-100, 100);
+	collectable->dx = RANDRANGE(-100, 100);
 	if (collectable->dx != 0)
 		collectable->dx /= 100;
 
-	collectable->dy = rrand(-100, 100);
+	collectable->dy = RANDRANGE(-100, 100);
 	if (collectable->dy != 0)
 		collectable->dy /= 100;
 

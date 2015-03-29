@@ -649,8 +649,8 @@ void gameover()
 		updateScreen();
 
 		unBuffer();
-		x = ((screen->w - gameover->w) / 2) - rrand(-2, 2);
-		y = ((screen->h - gameover->h) / 2)  - rrand(-2, 2);
+		x = ((screen->w - gameover->w) / 2) - RANDRANGE(-2, 2);
+		y = ((screen->h - gameover->h) / 2)  - RANDRANGE(-2, 2);
 		blit(gameover, x,  y);
 
 		delayFrame();

@@ -55,7 +55,7 @@ void bullet_add(object *theWeapon, object *attacker, int y, int dy)
 
 	if (bullet->flags & WF_VARIABLE_SPEED)
 	{
-		bullet->dx = rrand(100, 200);
+		bullet->dx = RANDRANGE(100, 200);
 		bullet->dx /= 10;
 		if (attacker->face == 1)
 			bullet->dx = 0 - bullet->dx;
@@ -65,7 +65,7 @@ void bullet_add(object *theWeapon, object *attacker, int y, int dy)
 
 	if (bullet->flags & WF_SCATTER)
 	{
-		bullet->dy = rrand(-200, 200);
+		bullet->dy = RANDRANGE(-200, 200);
 		if (bullet->dy != 0)
 			bullet->dy /= 200;
 	}
@@ -127,8 +127,8 @@ void bullet_add(object *theWeapon, object *attacker, int y, int dy)
 
 	if (attacker->classDef == CD_ASTEROID)
 	{
-		bullet->dx = rrand(-20, 20);
-		bullet->dy = rrand(-20, 20);
+		bullet->dx = RANDRANGE(-20, 20);
+		bullet->dy = RANDRANGE(-20, 20);
 		bullet->image[0] = shape[4];
 	}
 
@@ -267,8 +267,8 @@ void doBullets()
 			{
 				for (int i = 0 ; i < bullet->damage * 2 ; i++)
 					blit(bullet->image[0],
-						(int)(bullet->x - rrand(-(bullet->damage * 2 / 3), 0)),
-						(int)(bullet->y + rrand(-3, 3)));
+						(int)(bullet->x - RANDRANGE(-(bullet->damage * 2 / 3), 0)),
+						(int)(bullet->y + RANDRANGE(-3, 3)));
 			}
 
 			blit(bullet->image[0], (int)bullet->x, (int)bullet->y);
@@ -353,8 +353,8 @@ void doBullets()
 								bullet->shield = 0;
 								audio_playSound(SFX_EXPLOSION, bullet->x);
 								for (int i = 0 ; i < 10 ; i++)
-									addExplosion(bullet->x + rrand(-35, 35),
-										bullet->y + rrand(-35, 35),
+									addExplosion(bullet->x + RANDRANGE(-35, 35),
+										bullet->y + RANDRANGE(-35, 35),
 										E_BIG_EXPLOSION);
 							}
 						}
@@ -405,8 +405,8 @@ void doBullets()
 							bullet->shield = 0;
 							audio_playSound(SFX_EXPLOSION, bullet->x);
 							for (int i = 0 ; i < 10 ; i++)
-								addExplosion(bullet->x + rrand(-35, 35),
-									bullet->y + rrand(-35, 35), E_BIG_EXPLOSION);
+								addExplosion(bullet->x + RANDRANGE(-35, 35),
+									bullet->y + RANDRANGE(-35, 35), E_BIG_EXPLOSION);
 						}
 					}
 					else
@@ -443,8 +443,8 @@ void doBullets()
 							theCargo->active = false;
 							audio_playSound(SFX_EXPLOSION, theCargo->x);
 							for (int i = 0 ; i < 10 ; i++)
-								addExplosion(theCargo->x + rrand(-15, 15),
-									theCargo->y + rrand(-15, 15),
+								addExplosion(theCargo->x + RANDRANGE(-15, 15),
+									theCargo->y + RANDRANGE(-15, 15),
 									E_BIG_EXPLOSION);
 							updateMissionRequirements(M_PROTECT_PICKUP,
 								P_CARGO, 1);
@@ -465,8 +465,8 @@ void doBullets()
 			{
 				audio_playSound(SFX_EXPLOSION, bullet->x);
 				for (int i = 0 ; i < 10 ; i++)
-					addExplosion(bullet->x + rrand(-35, 35),
-						bullet->y + rrand(-35, 35), E_BIG_EXPLOSION);
+					addExplosion(bullet->x + RANDRANGE(-35, 35),
+						bullet->y + RANDRANGE(-35, 35), E_BIG_EXPLOSION);
 
 				if (checkPlayerShockDamage(bullet->x, bullet->y))
 					setInfoLine("Warning: Missile Shockwave Damage!!",
