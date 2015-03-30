@@ -35,9 +35,9 @@ void loadGameGraphics()
 	int index;
 	char string[75] = "";
 	FILE *fp;
-	uint32_t *p32;
-	uint16_t *p16;
-	uint8_t *p8;
+	Uint32 *p32;
+	Uint16 *p16;
+	Uint8 *p8;
 
 	freeGraphics();
 
@@ -83,10 +83,10 @@ void loadGameGraphics()
 			shipShape[i- SHIP_HIT_INDEX]->h);
 		blit(shipShape[i - SHIP_HIT_INDEX], 0, 0, shipShape[i]);
 
-		switch (shipShape[i]->format->BytesPerPixel)
+		switch (shipShape[i]->format->BitsPerPixel)
 		{
-			case 4:
-				p32 = (uint32_t *)shipShape[i]->pixels;
+			case 32:
+				p32 = (Uint32 *)shipShape[i]->pixels;
 				for (int j = 0; j < shipShape[i]->w * shipShape[i]->h; j++)
 				{
 					if (p32[j])
@@ -94,8 +94,8 @@ void loadGameGraphics()
 				}
 				break;
 
-			case 2:
-				p16 = (uint16_t *)shipShape[i]->pixels;
+			case 16:
+				p16 = (Uint16 *)shipShape[i]->pixels;
 				for (int j = 0; j < shipShape[i]->w * shipShape[i]->h; j++)
 				{
 					if (p16[j])
@@ -103,8 +103,8 @@ void loadGameGraphics()
 				}
 				break;
 
-			case 1:
-				p8 = (uint8_t *)shipShape[i]->pixels;
+			case 8:
+				p8 = (Uint8 *)shipShape[i]->pixels;
 				for (int j = 0; j < shipShape[i]->w * shipShape[i]->h; j++)
 				{
 					if (p8[j])
