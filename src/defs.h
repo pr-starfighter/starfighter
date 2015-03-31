@@ -36,7 +36,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // Compile-time options
 #ifndef VERSION
-#define VERSION "devbuild"
+#define VERSION "???"
 #endif
 
 #ifndef DATADIR
@@ -64,13 +64,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define FL_RUNSAWAY 8192
 #define FL_ALWAYSFACE 16384 // Kline doesn't turn his back on you! ;)
 #define FL_CIRCLES 32768 // Kline can circle around
-#define FL_CONTINUOUS_FIRE 65536 // Go absolutely nutts(!)
-#define FL_DEPLOYDRONES 131072 // Deploys small drone - Used by Boss 2
-#define FL_CANCLOAK 262144
-#define FL_ISCLOAKED 524288
-#define FL_ACTIVATE 1048576
-#define FL_HASMINIMUMSPEED 2097152
-#define FL_FIRELASER 4194304
+#define FL_CONTINUOUS_FIRE 65536L // Go absolutely nutts(!)
+#define FL_DEPLOYDRONES 131072L // Deploys small drone - Used by Boss 2
+#define FL_CANCLOAK 262144L
+#define FL_ISCLOAKED 524288L
+#define FL_ACTIVATE 1048576L
+#define FL_HASMINIMUMSPEED 2097152L
+#define FL_FIRELASER 4194304L
 
 // Explosions
 #define E_SMALL_EXPLOSION 4

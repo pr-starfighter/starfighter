@@ -173,7 +173,7 @@ void blit(SDL_Surface *image, int x, int y, SDL_Surface *dest)
 		showErrorAndExit(2, "");
 	}
 
-	// Only ff it is to the screen, mark the region as damaged
+	// Only if it is to the screen, mark the region as damaged
 	if (dest == screen)
 		addBuffer(blitRect.x, blitRect.y, blitRect.w, blitRect.h);
 }

@@ -146,7 +146,7 @@ one attempt per call (one call per frame) to find a suitable target. If the targ
 it picks is dead or outside the screen range, then it returns NULL. A suitable
 target will be returned as the object address.
 */
-static object *getRandomEnemy(object *bullet)
+static object *bullet_getTarget(object *bullet)
 {
 	int i;
 
@@ -240,8 +240,8 @@ void doBullets()
 		{
 			if (bullet->flags & WF_HOMING)
 			{
-			  	if (bullet->target == NULL)
-					bullet->target = getRandomEnemy(bullet);
+				if (bullet->target == NULL)
+					bullet->target = bullet_getTarget(bullet);
 
 				if (bullet->owner->flags & FL_FRIEND)
 					homingMissileSpeed = 0.25;

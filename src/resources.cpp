@@ -86,7 +86,9 @@ void loadGameGraphics()
 		switch (shipShape[i]->format->BitsPerPixel)
 		{
 			case 32:
+				SDL_LockSurface(shipShape[i]);
 				p32 = (Uint32 *)shipShape[i]->pixels;
+				SDL_UnlockSurface(shipShape[i]);
 				for (int j = 0; j < shipShape[i]->w * shipShape[i]->h; j++)
 				{
 					if (p32[j])
@@ -95,7 +97,9 @@ void loadGameGraphics()
 				break;
 
 			case 16:
+				SDL_LockSurface(shipShape[i]);
 				p16 = (Uint16 *)shipShape[i]->pixels;
+				SDL_UnlockSurface(shipShape[i]);
 				for (int j = 0; j < shipShape[i]->w * shipShape[i]->h; j++)
 				{
 					if (p16[j])
@@ -104,7 +108,9 @@ void loadGameGraphics()
 				break;
 
 			case 8:
+				SDL_LockSurface(shipShape[i]);
 				p8 = (Uint8 *)shipShape[i]->pixels;
+				SDL_UnlockSurface(shipShape[i]);
 				for (int j = 0; j < shipShape[i]->w * shipShape[i]->h; j++)
 				{
 					if (p8[j])

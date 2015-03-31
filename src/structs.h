@@ -60,7 +60,7 @@ struct object {
 	int collectType; // What the object is carrying
 	int collectValue; // What it is worth
 
-	int flags; // Various flags for an object
+	unsigned long int flags; // Various flags for an object
 
 	float x, y, dx, dy;
 
