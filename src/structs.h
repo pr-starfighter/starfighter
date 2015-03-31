@@ -124,13 +124,14 @@ struct Game {
 	object thePlayer;
 	object playerWeapon;
 
+	int saveFormat;
+
+	int difficulty;
+
 	int system;
 	int area;
 	int musicVolume;
 	int sfxVolume;
-
-	int saveFormat;
-	int difficulty;
 
 	int cash;
 	int cashEarned;
@@ -138,12 +139,22 @@ struct Game {
 	int shots;
 	int hits;
 	int accuracy;
-	int hasWingMate1, hasWingMate2;
-	int totalKills, wingMate1Kills, wingMate2Kills;
-	int wingMate1Ejects, wingMate2Ejects;
+	int hasWingMate1;
+	int hasWingMate2;
+	int totalKills;
+	int wingMate1Kills;
+	int wingMate2Kills;
+	int wingMate1Ejects;
+	int wingMate2Ejects;
 	int totalOtherKills;
-	int secondaryMissions, secondaryMissionsCompleted;
-	int shieldPickups, rocketPickups, cellPickups, powerups, minesKilled, cargoPickups;
+	int secondaryMissions;
+	int secondaryMissionsCompleted;
+	int shieldPickups;
+	int rocketPickups;
+	int cellPickups;
+	int powerups;
+	int minesKilled;
+	int cargoPickups;
 
 	// slaves for Eyananth
 	int slavesRescued;
@@ -151,7 +162,7 @@ struct Game {
 	// remaining shield for experimental fighter
 	int experimentalShield;
 
-	int timeTaken; // In seconds
+	long int timeTaken; // In seconds
 	int missionCompleted[10];
 
 	int stationedPlanet;
@@ -271,7 +282,7 @@ struct globalEngineVariables {
 
 	// Times the mission normally
 	Uint32 counter2;
-	int timeTaken; // In seconds
+	long int timeTaken; // In seconds
 
 	// For missions with a time limit
 	int timeMission;

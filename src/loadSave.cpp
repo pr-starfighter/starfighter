@@ -130,14 +130,15 @@ bool loadGame(int slot)
 
 void saveGame(int slot)
 {
+	FILE *fp;
+	char fileName[PATH_MAX];
+
 	if ((slot < 0) || (slot > 5))
 	{
 		printf("Error - Saves may only be 0 to 5\n");
 		return;
 	}
 
-	FILE *fp;
-	char fileName[PATH_MAX];
 	sprintf(fileName, "%ssave%.2d.dat", engine.userHomeDirectory, slot);
 	fp = fopen(fileName, "wb");
 
@@ -167,9 +168,9 @@ void saveGame(int slot)
 
 void createSavesSurface(SDL_Surface *savesSurface, signed char clickedSlot)
 {
-	blevelRect(savesSurface, 0, 0, 348, 298, 0x00, 0x00, 0x00);
+	int y = 10;
 
- 	int y = 10;
+	blevelRect(savesSurface, 0, 0, 348, 298, 0x00, 0x00, 0x00);
 
 	for (int i = 1 ; i <= 5 ; i++)
 	{
@@ -225,13 +226,13 @@ so that the function invoking it can perform a load or save on that slot.
 */
 int showSaveSlots(SDL_Surface *savesSurface, signed char saveSlot)
 {
+	int clickedSlot = -1;
+
 	SDL_Rect r;
 	r.x = 201;
 	r.y = 115;
 	r.w = 348;
 	r.h = 25;
-
-	int clickedSlot = -1;
 
 	if ((engine.keyState[KEY_FIRE]))
 	{

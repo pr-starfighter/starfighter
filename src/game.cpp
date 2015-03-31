@@ -553,7 +553,7 @@ int mainGameLoop()
 						engine.keyState[KEY_FIRE] = 0;
 						engine.keyState[KEY_ALTFIRE] = 0;
 						LIMIT_ADD(engine.musicVolume, -0.2, 0, 100);
-						audio_setMusicVolume((int)engine.musicVolume);
+						audio_setMusicVolume(engine.musicVolume);
 					}
 					else
 					{
@@ -568,7 +568,7 @@ int mainGameLoop()
 			else
 			{
 				LIMIT_ADD(engine.musicVolume, -0.2, 0, 100);
-				audio_setMusicVolume((int)engine.musicVolume);
+				audio_setMusicVolume(engine.musicVolume);
 				if (SDL_GetTicks() >= engine.missionCompleteTimer)
 				{
 					engine.done = 1;
