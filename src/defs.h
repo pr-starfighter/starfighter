@@ -63,7 +63,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define FL_CANNOTDIE 4096 // This will only apply to Kline before the final mission
 #define FL_RUNSAWAY 8192
 #define FL_ALWAYSFACE 16384 // Kline doesn't turn his back on you! ;)
-#define FL_CIRCLES 32768 // Kline can circle around
+#define FL_CIRCLES 32768L // Kline can circle around
 #define FL_CONTINUOUS_FIRE 65536L // Go absolutely nutts(!)
 #define FL_DEPLOYDRONES 131072L // Deploys small drone - Used by Boss 2
 #define FL_CANCLOAK 262144L
