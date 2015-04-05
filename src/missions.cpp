@@ -907,9 +907,9 @@ void missionFinishedScreen()
 
 		currentGame.timeTaken += engine.timeTaken;
 
-		snprintf(temp, sizeof temp, "Mission Time: %2d:%02d:%02d",
-			(int)(engine.timeTaken / 3600),
-			(int)((engine.timeTaken / 60) % 60), (int)(engine.timeTaken % 60));
+		snprintf(temp, sizeof temp, "Mission Time: %2ld:%02ld:%02ld",
+			engine.timeTaken / 3600, (engine.timeTaken / 60) % 60,
+			engine.timeTaken % 60);
 
 		drawString(temp, -1, 500, FONT_WHITE);
 
