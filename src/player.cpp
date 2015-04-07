@@ -45,11 +45,11 @@ void initPlayer()
 
 	player.weaponType[0] = W_PLAYER_WEAPON;
 
-	if(weapon[W_PLAYER_WEAPON].ammo[0] < currentGame.minPlasmaOutput)
+	if (weapon[W_PLAYER_WEAPON].ammo[0] < currentGame.minPlasmaOutput)
 		weapon[W_PLAYER_WEAPON].ammo[0] = currentGame.minPlasmaOutput;
-	if(weapon[W_PLAYER_WEAPON].damage < currentGame.minPlasmaDamage)
+	if (weapon[W_PLAYER_WEAPON].damage < currentGame.minPlasmaDamage)
 		weapon[W_PLAYER_WEAPON].damage = currentGame.minPlasmaDamage;
-	if(weapon[W_PLAYER_WEAPON].reload[0] > rate2reload[currentGame.minPlasmaRate])
+	if (weapon[W_PLAYER_WEAPON].reload[0] > rate2reload[currentGame.minPlasmaRate])
 		weapon[W_PLAYER_WEAPON].reload[0] = rate2reload[currentGame.minPlasmaRate];
 
 	player.hit = 0;
@@ -389,6 +389,7 @@ static enum keys mapkey(uint32_t code) {
 		case SDLK_RCTRL:
 		case SDLK_RETURN:
 		case SDLK_z:
+		case SDLK_y:
 		case SDLK_c:
 		case SDLK_a:
 		case SDLK_d:
