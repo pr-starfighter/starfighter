@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define COLLECTABLE_H
 
 extern void addCollectable(float x, float y, int type, int value, int life);
+void explodeMine(collectables *collectable);
 extern void checkMineBulletCollisions(object *bullet);
-extern void doCollectables();
 
 #endif

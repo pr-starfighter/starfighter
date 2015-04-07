@@ -20,7 +20,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef DEBRIS_H
 #define DEBRIS_H
 
-extern void addDebris(int x, int y, int amount);
-extern void doDebris();
-
 #endif

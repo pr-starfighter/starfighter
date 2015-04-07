@@ -129,6 +129,292 @@ void newGame()
 	initPlanetMissions(currentGame.system);
 }
 
+static void game_addDebris(int x, int y, int amount)
+{
+	if ((rand() % 2) == 0)
+		audio_playSound(SFX_DEBRIS, x);
+	else
+		audio_playSound(SFX_DEBRIS2, x);
+
+	object *debris;
+	
+	amount = RANDRANGE(3, rand() % amount);
+	LIMIT(amount, 3, 8);
+
+	for (int i = 0 ; i < amount ; i++)
+	{
+		debris = new object;
+
+		debris->next = NULL;
+		debris->x = x;
+		debris->y = y;
+
+		debris->thinktime = RANDRANGE(60, 180);
+
+		debris->dx = RANDRANGE(-500, 500);
+		debris->dy = RANDRANGE(-500, 500);
+
+		if (debris->dx != 0)
+			debris->dx /= 100;
+
+		if (debris->dy != 0)
+			debris->dy /= 100;
+
+		engine.debrisTail->next = debris;
+		engine.debrisTail = debris;
+	}
+}
+
+/*
+Loops through the currently active collectables (in a linked list). The collectable
+will travel in the direction that was defined when it was made. Its life will decreased
+whilst it remains active. It will be removed if the player touches it or if its life
+reaches 0. When it is picked up, depending on the type of collectable it is, mission requirements
+will be updated. Information will be displayed and appropriate player variables altered.
+*/
+static void game_doCollectables()
+{
+	collectables *collectable = engine.collectableHead;
+	collectables *prevCollectable = engine.collectableHead;
+	engine.collectableTail = engine.collectableHead;
+	char temp[40];
+
+	while (collectable->next != NULL)
+	{
+		collectable = collectable->next;
+
+		if (collectable->active)
+		{
+			if ((collectable->x + collectable->image->w > 0) &&
+					(collectable->x < screen->w) &&
+					(collectable->y + collectable->image->h > 0) &&
+					(collectable->y < screen->h))
+				blit(collectable->image, (int)collectable->x, (int)collectable->y);
+
+			collectable->x += engine.ssx + engine.smx;
+			collectable->y += engine.ssy + engine.smy;
+			collectable->x += collectable->dx;
+			collectable->y += collectable->dy;
+
+			collectable->life--;
+
+			if ((player.shield > 0) && (collision(collectable, &player)))
+			{
+				switch(collectable->type)
+				{
+					case P_CASH:
+						currentGame.cash += collectable->value;
+						currentGame.cashEarned += collectable->value;
+						sprintf(temp, "Got $%d ", collectable->value);
+						break;
+
+					case P_ROCKET:
+						LIMIT_ADD(player.ammo[1], collectable->value, 0,
+							currentGame.maxRocketAmmo);
+						if (player.ammo[1] == currentGame.maxRocketAmmo)
+							sprintf(temp, "Rocket Ammo at Maximum");
+						else
+						{
+							if (collectable->value > 1)
+								sprintf(temp, "Got %d rockets", collectable->value);
+							else
+								sprintf(temp, "Got a rocket");
+						}
+						currentGame.rocketPickups += collectable->value;
+						break;
+
+					case P_SHIELD:
+						LIMIT_ADD(player.shield, 10, 0, player.maxShield);
+						currentGame.shieldPickups ++;
+						sprintf(temp, "Restored 10 shield points");
+						break;
+
+					case P_PLASMA_RATE:
+						currentGame.powerups++;
+						if ((currentGame.area != MISN_INTERCEPTION) ||
+							(currentGame.difficulty == DIFFICULTY_ORIGINAL) ||
+							(player.ammo[0] > 0))
+						{
+							if ((currentGame.area != MISN_INTERCEPTION) ||
+									(currentGame.difficulty == DIFFICULTY_ORIGINAL))
+								LIMIT_ADD(player.ammo[0], collectable->value,
+									0, currentGame.maxPlasmaAmmo);
+
+							if (weapon[W_PLAYER_WEAPON].reload[0] <= rate2reload[currentGame.maxPlasmaRate])
+								sprintf(temp, "Firing rate already at maximum");
+							else
+							{
+								weapon[W_PLAYER_WEAPON].reload[0] -= 2;
+								sprintf(temp, "Firing rate increased");
+							}
+						}
+						else
+						{
+							sprintf(temp, "Upgrade failed (no plasma ammo)");
+						}
+						break;
+
+					case P_PLASMA_SHOT:
+						currentGame.powerups++;
+						if ((currentGame.area != MISN_INTERCEPTION) ||
+							(currentGame.difficulty == DIFFICULTY_ORIGINAL) ||
+							(player.ammo[0] > 0))
+						{
+							if ((currentGame.area != MISN_INTERCEPTION) ||
+									(currentGame.difficulty == DIFFICULTY_ORIGINAL))
+								LIMIT_ADD(player.ammo[0], collectable->value,
+									0, currentGame.maxPlasmaAmmo);
+
+							if (weapon[W_PLAYER_WEAPON].ammo[0] >= currentGame.maxPlasmaOutput)
+								sprintf(temp, "Plasma output already at maximum");
+							else
+							{
+								weapon[W_PLAYER_WEAPON].ammo[0]++;
+								sprintf(temp, "Plasma output increased");
+							}
+						}
+						else
+						{
+							sprintf(temp, "Upgrade failed (no plasma ammo)");
+						}
+						break;
+
+					case P_PLASMA_DAMAGE:
+						currentGame.powerups++;
+						if ((currentGame.area != MISN_INTERCEPTION) ||
+							(currentGame.difficulty == DIFFICULTY_ORIGINAL) ||
+							(player.ammo[0] > 0))
+						{
+							if ((currentGame.area != MISN_INTERCEPTION) ||
+									(currentGame.difficulty == DIFFICULTY_ORIGINAL))
+								LIMIT_ADD(player.ammo[0], collectable->value,
+									0, currentGame.maxPlasmaAmmo);
+
+							if (weapon[W_PLAYER_WEAPON].damage >= currentGame.maxPlasmaDamage)
+								sprintf(temp, "Plasma damage already at maximum");
+							else {
+								weapon[W_PLAYER_WEAPON].damage++;
+								sprintf(temp, "Plasma damage increased");
+							}
+						}
+						else
+						{
+							sprintf(temp, "Upgrade failed (no plasma ammo)");
+						}
+						break;
+
+					case P_SUPER:
+						currentGame.powerups++;
+						if ((currentGame.area != MISN_INTERCEPTION) ||
+							(currentGame.difficulty == DIFFICULTY_ORIGINAL) ||
+							(player.ammo[0] > 0))
+						{
+							if ((currentGame.area != MISN_INTERCEPTION) ||
+									(currentGame.difficulty == DIFFICULTY_ORIGINAL))
+								LIMIT_ADD(player.ammo[0], collectable->value,
+									0, currentGame.maxPlasmaAmmo);
+
+							weapon[W_PLAYER_WEAPON].ammo[0] = 5;
+							weapon[W_PLAYER_WEAPON].damage = 5;
+							weapon[W_PLAYER_WEAPON].reload[0] = rate2reload[5];
+							weapon[W_PLAYER_WEAPON].flags |= WF_SPREAD;
+
+							sprintf(temp, "Picked up a Super Charge!!");
+						}
+						else
+						{
+							sprintf(temp, "Damn! Upgrade failed (no plasma ammo)");
+						}
+						break;
+
+					case P_PLASMA_AMMO:
+						if (player.ammo[0] >= currentGame.maxPlasmaAmmo)
+							sprintf(temp, "Plasma cells already at Maximum");
+						else
+						{
+							LIMIT_ADD(player.ammo[0], collectable->value,
+								0, currentGame.maxPlasmaAmmo);
+							if (collectable->value > 1)
+							{
+								sprintf(temp, "Got %d plasma cells", collectable->value);
+							}
+							else
+							{
+								sprintf(temp, "Got a plasma cell");
+								if ((rand() % 25) == 0)
+									sprintf(temp, "Got one whole plasma cell (wahoo!)");
+							}
+						}
+						currentGame.cellPickups += collectable->value;
+						break;
+
+					case P_CARGO:
+						strcpy(temp, "Picked up some Cargo");
+						currentGame.cargoPickups++;
+						break;
+
+					case P_SLAVES:
+						sprintf(temp, "Rescued %d slaves", collectable->value);
+						currentGame.slavesRescued += collectable->value;
+						break;
+
+					case P_ESCAPEPOD:
+						sprintf(temp, "Picked up an Escape Pod");
+						break;
+
+					case P_ORE:
+						sprintf(temp, "Picked up some Ore");
+						break;
+				}
+
+				updateMissionRequirements(M_COLLECT, collectable->type,
+					collectable->value);
+
+				collectable->active = false;
+				if (collectable->type != P_MINE)
+				{
+					setInfoLine(temp, FONT_WHITE);
+					if (collectable->type == P_SHIELD)
+						audio_playSound(SFX_SHIELDUP, player.x);
+					else
+						audio_playSound(SFX_PICKUP, player.x);
+				}
+			}
+
+			// stop people from exploiting a weapon check condition
+			if (player.ammo[0] == 0)
+			{
+				weapon[W_PLAYER_WEAPON].ammo[0] = currentGame.minPlasmaOutput;
+				weapon[W_PLAYER_WEAPON].damage = currentGame.minPlasmaDamage;
+				weapon[W_PLAYER_WEAPON].reload[0] = rate2reload[currentGame.minPlasmaRate];
+			}
+		}
+
+		if (collectable->life < 1)
+		{
+			collectable->active = false;
+			if ((collectable->type == P_CARGO) ||
+					(collectable->type == P_ESCAPEPOD) ||
+					(collectable->type == P_SLAVES))
+				updateMissionRequirements(M_PROTECT_PICKUP, collectable->type, 1);
+		}
+
+		if (collectable->active)
+		{
+			prevCollectable = collectable;
+			engine.collectableTail = collectable;
+		}
+		else
+		{
+			if (collectable->type == P_MINE)
+				explodeMine(collectable);
+			prevCollectable->next = collectable->next;
+			delete collectable;
+			collectable = prevCollectable;
+		}
+	}
+}
+
 /*
 This handles active bullets in a linked list. The current bullet and
 previous bullet pointers are first assigned to the main header bullet
@@ -715,7 +1001,7 @@ static void game_doAliens()
 							(aliens[i].flags & FL_FRIEND) ||
 							(aliens[i].classDef == CD_ASTEROID) ||
 							(aliens[i].classDef == CD_KLINE))
-						addDebris((int)aliens[i].x, (int)aliens[i].y,
+						game_addDebris((int)aliens[i].x, (int)aliens[i].y,
 							aliens[i].maxShield);
 
 					if (aliens[i].classDef == CD_ASTEROID)
@@ -741,13 +1027,369 @@ static void game_doAliens()
 	}
 }
 
+static void game_doPlayer()
+{
+	// This causes the motion to slow
+	engine.ssx *= 0.99;
+	engine.ssy *= 0.99;
+
+	engine.smx = 0;
+	engine.smy = 0;
+
+	int shapeToUse;
+	float cd;
+	float cc;
+	bool xmoved = false;
+	bool ymoved = false;
+
+	if (player.shield > -100)
+	{
+		if (player.shield > 0)
+		{
+			if ((engine.keyState[KEY_FIRE]))
+				ship_fireBullet(&player, 0);
+
+			if ((engine.keyState[KEY_ALTFIRE]) && (player.weaponType[1] != W_NONE))
+			{
+				if ((player.weaponType[1] != W_CHARGER) &&
+					(player.weaponType[1] != W_LASER) && (player.ammo[1] > 0))
+				{
+					ship_fireBullet(&player, 1);
+				}
+
+				if (player.weaponType[1] == W_LASER)
+				{
+					if (player.ammo[1] < 100)
+					{
+						ship_fireBullet(&player, 1);
+						player.ammo[1] += 2;
+						if (player.ammo[1] >= 100)
+						{
+							player.ammo[1] = 200;
+							setInfoLine("Laser Overheat!!", FONT_WHITE);
+						}
+					}
+				}
+			}
+
+			if (player.weaponType[1] == W_CHARGER)
+			{
+				if (engine.keyState[KEY_ALTFIRE] &&
+					((currentGame.difficulty == DIFFICULTY_ORIGINAL) ||
+						!(engine.keyState[KEY_FIRE])))
+				{
+					if (!player_chargerFired)
+					{
+						if (currentGame.difficulty == DIFFICULTY_ORIGINAL)
+						{
+							LIMIT_ADD(player.ammo[1], 1, 0, 200);
+						}
+						else
+						{
+							LIMIT_ADD(player.ammo[1], 1, 0, 150);
+							if (player.ammo[1] >= 150)
+							{
+								ship_fireBullet(&player, 1);
+								player.ammo[1] = 0;
+								player_chargerFired = true;
+							}
+						}
+					}
+				}
+				else
+				{
+					if (player.ammo[1] > 0)
+						ship_fireBullet(&player, 1);
+					player.ammo[1] = 0;
+					player_chargerFired = false;
+				}
+			}
+
+			if ((engine.keyState[KEY_SWITCH]))
+			{
+				if ((weapon[W_PLAYER_WEAPON].ammo[0] >= 3) &&
+					(weapon[W_PLAYER_WEAPON].ammo[0] <= currentGame.maxPlasmaOutput))
+				{
+					weapon[W_PLAYER_WEAPON].flags ^= WF_SPREAD;
+
+					if (weapon[W_PLAYER_WEAPON].flags & WF_SPREAD)
+					{
+						setInfoLine("Weapon set to Spread", FONT_WHITE);
+					}
+					else
+					{
+						setInfoLine("Weapon set to Concentrate", FONT_WHITE);
+					}
+				}
+
+				engine.keyState[KEY_SWITCH] = 0;
+			}
+
+			LIMIT_ADD(player.reload[0], -1, 0, 999);
+			LIMIT_ADD(player.reload[1], -1, 0, 999);
+
+			if (engine.keyState[KEY_UP])
+			{
+				player.y -= player.speed;
+				engine.ssy += 0.1;
+				ymoved = true;
+			}
+
+			if (engine.keyState[KEY_DOWN])
+			{
+				player.y += player.speed;
+				engine.ssy -= 0.1;
+				ymoved = true;
+			}
+
+			if (engine.keyState[KEY_LEFT])
+			{
+				player.x -= player.speed;
+				engine.ssx += 0.1;
+				player.face = 1;
+				xmoved = true;
+			}
+
+			if (engine.keyState[KEY_RIGHT])
+			{
+				player.x += player.speed;
+				engine.ssx -= 0.1;
+				player.face = 0;
+				xmoved = true;
+			}
+
+			if (engine.keyState[KEY_ESCAPE])
+			{
+				if ((engine.done == 0) && (engine.gameSection == SECTION_GAME) &&
+					(currentMission.remainingObjectives1 == 0))
+				{
+					audio_playSound(SFX_FLY, screen->w / 2);
+					engine.done = 2;
+					engine.missionCompleteTimer = (SDL_GetTicks() - 1);
+				}
+			}
+
+			if (engine.keyState[KEY_PAUSE])
+			{
+				engine.paused = true;
+				engine.keyState[KEY_PAUSE] = 0;
+			}
+
+			if (((currentGame.area == MISN_ELLESH) &&
+					(aliens[ALIEN_BOSS].shield > 0)) ||
+				(currentGame.area == MISN_MARS))
+			{
+				player.face = 0;
+				xmoved = true;
+				ymoved = true;
+			}
+
+			if (engine.done == 0)
+			{
+				if (xmoved)
+				{
+					if (player.x < xViewBorder)
+					{
+						engine.smx += xViewBorder - player.x;
+						player.x = xViewBorder;
+					}
+					else if (player.x > screen->w - xViewBorder)
+					{
+						engine.smx += (screen->w - xViewBorder) - player.x;
+						player.x = screen->w - xViewBorder;
+					}
+				}
+				else if (currentGame.difficulty != DIFFICULTY_ORIGINAL)
+				{
+					cd = player.x - screen->w / 2;
+					if (cd < 0)
+					{
+						cc = MAX(cd / 10, MAX(0, engine.ssx) - cameraMaxSpeed);
+						player.x -= cc;
+						engine.smx -= cc;
+					}
+					else if (cd > 0)
+					{
+						cc = MIN(cd / 10, cameraMaxSpeed + MIN(0, engine.ssx));
+						player.x -= cc;
+						engine.smx -= cc;
+					}
+				}
+
+				if (ymoved)
+				{
+					if (player.y < yViewBorder)
+					{
+						engine.smy += yViewBorder - player.y;
+						player.y = yViewBorder;
+					}
+					else if (player.y > screen->h - yViewBorder)
+					{
+						engine.smy += (screen->h - yViewBorder) - player.y;
+						player.y = screen->h - yViewBorder;
+					}
+				}
+				else if (currentGame.difficulty != DIFFICULTY_ORIGINAL)
+				{
+					cd = player.y - screen->h / 2;
+					if (cd < 0)
+					{
+						cc = MAX(cd / 10, MAX(0, engine.ssy) - cameraMaxSpeed);
+						player.y -= cc;
+						engine.smy -= cc;
+					}
+					else if (cd > 0)
+					{
+						cc = MIN(cd / 10, cameraMaxSpeed + MIN(0, engine.ssy));
+						player.y -= cc;
+						engine.smy -= cc;
+					}
+				}
+			}
+
+			if ((player.maxShield <= 1) || (player.shield > engine.lowShield))
+				addEngine(&player);
+
+			shapeToUse = player.face;
+
+			if (player.hit)
+				shapeToUse += SHIP_HIT_INDEX;
+
+			LIMIT_ADD(player.hit, -1, 0, 100);
+
+			blit(shipShape[shapeToUse], (int)player.x, (int)player.y);
+			if ((player.maxShield > 1) && (player.shield <= engine.lowShield) &&
+					(rand() % 5 < 1))
+				addExplosion(player.x + RANDRANGE(-10, 10),
+					player.y + RANDRANGE(-10, 20), E_SMOKE);
+		}
+		else
+		{
+			player.active = false;
+			player.shield--;
+			if (player.shield == -1)
+			{
+				if ((currentGame.hasWingMate1) || (aliens[ALIEN_KLINE].active))
+					getPlayerDeathMessage();
+
+				// Make it look like the ships are all still moving...
+				if (currentGame.area == MISN_ELLESH)
+				{
+					for (int i = 0 ; i < ALIEN_MAX ; i++)
+						aliens[i].flags |= FL_LEAVESECTOR;
+				}
+
+				audio_playSound(SFX_DEATH, player.x);
+				audio_playSound(SFX_EXPLOSION, player.x);
+			}
+
+			engine.keyState[KEY_UP] = engine.keyState[KEY_DOWN] = engine.keyState[KEY_LEFT] = engine.keyState[KEY_RIGHT] = 0;
+			if ((rand() % 3) == 0)
+				addExplosion(player.x + RANDRANGE(-10, 10),
+					player.y + RANDRANGE(-10, 10), E_BIG_EXPLOSION);
+			if (player.shield == -99)
+				game_addDebris((int)player.x, (int)player.y, player.maxShield);
+		}
+	}
+
+	LIMIT(engine.ssx, -cameraMaxSpeed, cameraMaxSpeed);
+	LIMIT(engine.ssy, -cameraMaxSpeed, cameraMaxSpeed);
+
+	// Specific for the mission were you have to chase the Executive Transport
+	if ((currentGame.area == MISN_ELLESH) && (aliens[ALIEN_BOSS].shield > 0) &&
+		(player.shield > 0))
+	{
+		engine.ssx = -6;
+		engine.ssy = 0;
+	}
+	
+	if (currentGame.area == MISN_MARS)
+	{
+		engine.ssx = -6;
+		engine.ssy = 0;
+	}
+
+	player.dx = engine.ssx;
+	player.dy = engine.ssy;
+}
+
+static void game_doCargo()
+{
+	float dx, dy, chainX, chainY;
+
+	for (int i = 0 ; i < MAX_CARGO ; i++)
+	{
+		if (cargo[i].active)
+		{
+			if (!cargo[i].owner->active)
+			{
+				cargo_becomeCollectable(i);
+				continue;
+			}
+
+			blit(cargo[i].image[0], (int)cargo[i].x, (int)cargo[i].y);
+
+			cargo[i].x += engine.ssx + engine.smx;
+			cargo[i].y += engine.ssy + engine.smy;
+
+			LIMIT(cargo[i].x, cargo[i].owner->x - 50, cargo[i].owner->x + 50);
+			LIMIT(cargo[i].y, cargo[i].owner->y - 50, cargo[i].owner->y + 50);
+
+			dx = (cargo[i].x - cargo[i].owner->x) / 10;
+			dy = (cargo[i].y - cargo[i].owner->y) / 10;
+			chainX = cargo[i].x - cargo[i].dx;
+			chainY = cargo[i].y - cargo[i].dy;
+
+			// draw the chain link line
+			for (int j = 0 ; j < 10 ; j++)
+			{
+				blit(shape[30], (int)chainX, (int)chainY);
+				chainX -= dx;
+				chainY -= dy;
+			}
+		}
+	}
+}
+
+static void game_doDebris()
+{
+	object *prevDebris = engine.debrisHead;
+	object *debris = engine.debrisHead;
+	engine.debrisTail = engine.debrisHead;
+
+	while (debris->next != NULL)
+	{
+		debris = debris->next;
+
+		if (debris->thinktime > 0)
+		{
+			debris->thinktime--;
+
+			debris->x += engine.ssx + engine.smx;
+			debris->y += engine.ssy + engine.smy;
+			debris->x += debris->dx;
+			debris->y += debris->dy;
+
+			addExplosion(debris->x + RANDRANGE(-10, 10), debris->y + RANDRANGE(-10, 10), E_BIG_EXPLOSION);
+		}
+
+		if (debris->thinktime < 1)
+		{
+			prevDebris->next = debris->next;
+			delete debris;
+			debris = prevDebris;
+		}
+		else
+		{
+			prevDebris = debris;
+			engine.debrisTail = debris;
+		}
+
+	}
+}
+
 int mainGameLoop()
 {
-	FILE *fp;
-	char string[255];
-	int index, alienType, placeAttempt;
-	int barrierSpeed;
-
 	resetLists();
 
 	setMission(currentGame.area);
@@ -755,177 +1397,7 @@ int mainGameLoop()
 
 	initCargo();
 	initPlayer();
-
-	// Init aliens
-	for (int i = 0 ; i < ALIEN_MAX ; i++)
-	{
-		aliens[i].active = false;
-		aliens[i].shield = -1;
-		aliens[i].flags = 0;
-	}
-
-	engine.targetIndex = -1;
-
-	strcpy(string, "");
-	barrierSpeed = 1;
-
-	sprintf(string, "data/aliens%d.dat", currentGame.area);
-	fp = fopen(string, "rb");
-
-	if (fp != NULL)
-	{
-		while (fscanf(fp, "%d %d ", &index, &alienType) == 2)
-		{
-			placeAttempt = 0;
-
-			aliens[index] = alien_defs[alienType];
-			aliens[index].owner = &aliens[index];
-			aliens[index].target = &aliens[index];
-			aliens[index].face = rand() % 2;
-			aliens[index].active = true;
-
-			/*
-			we make 1000 attempts to place this enemy since it is required. If after
-			1000 attempts we still haven't managed to place the alien, then it
-			simply isn't going to happen and we will just exit the game. The chances
-			of this happening are very very low!
-			*/
-			while (true)
-			{
-				placeAttempt++;
-
-				if (alien_place(&aliens[index]))
-					break;
-
-				if (placeAttempt > 1000)
-					showErrorAndExit(2, "");
-			}
-
-			if (currentGame.area == MISN_CERADSE)
-				addCargo(&aliens[index], P_CARGO);
-			else if (currentGame.area == MISN_NEROD)
-				addCargo(&aliens[index], P_PHOEBE);
-
-			if (index == ALIEN_KLINE)
-			{
-				aliens[ALIEN_KLINE].target = &player;
-			}
-
-			if (aliens[index].classDef == CD_CLOAKFIGHTER)
-			{
-				aliens[index].active = false;
-				aliens[index].maxShield = aliens[index].shield = 400;
-				aliens[index].flags &= ~FL_RUNSAWAY;
-				aliens[index].speed = 3;
-			}
-
-			if ((aliens[index].classDef == CD_MOBILE_RAY) && (index >= 11))
-			{
-				aliens[index].active = false;
-			}
-
-			if (aliens[index].classDef == CD_FIREFLY)
-			{
-				aliens[index].active = false;
-			}
-
-			if (aliens[index].classDef == CD_BARRIER)
-			{
-				aliens[index].owner = &aliens[ALIEN_BOSS];
-				aliens[index].speed = barrierSpeed;
-				barrierSpeed++;
-			}
-
-			if ((currentGame.area == MISN_POSWIC) &&
-				(aliens[index].classDef == CD_BOSS))
-			{
-				aliens[index].imageIndex[1] = 29;
-				aliens[index].flags |= FL_IMMORTAL;
-			}
-
-			if (currentGame.area == MISN_ELLESH)
-				aliens[index].flags |= FL_HASMINIMUMSPEED;
-
-			if (currentGame.area == MISN_JUPITER)
-			{
-				aliens[index].flags = FL_WEAPCO;
-				if (index == ALIEN_BOSS)
-					aliens[index].chance[1] = 5;
-			}
-		}
-
-		fclose(fp);
-
-		if (currentGame.area == MISN_MOEBO)
-		{
-			aliens[ALIEN_BOSS].target = &player;
-			aliens[ALIEN_BOSS].x = -screen->w / 2;
-			aliens[ALIEN_BOSS].y = screen->h / 2;
-
-			aliens[ALIEN_BOSS_PART1].owner = &aliens[ALIEN_BOSS];
-			aliens[ALIEN_BOSS_PART1].target = &player;
-			aliens[ALIEN_BOSS_PART1].dx = -25;
-			aliens[ALIEN_BOSS_PART1].dy = -21;
-
-			aliens[ALIEN_BOSS_PART2].owner = &aliens[ALIEN_BOSS];
-			aliens[ALIEN_BOSS_PART2].target = &player;
-			aliens[ALIEN_BOSS_PART2].dx = -20;
-			aliens[ALIEN_BOSS_PART2].dy = 37;
-		}
-		else if ((currentGame.area == MISN_ELAMALE) ||
-			(currentGame.area == MISN_FELLON))
-		{
-			aliens[ALIEN_BOSS].target = &player;
-			aliens[ALIEN_BOSS].x = -screen->w / 2;
-			aliens[ALIEN_BOSS].y = screen->h / 2;
-
-			aliens[ALIEN_BOSS_PART1].owner = &aliens[ALIEN_BOSS];
-			aliens[ALIEN_BOSS_PART1].target = &player;
-			aliens[ALIEN_BOSS_PART1].dx = 15;
-			aliens[ALIEN_BOSS_PART1].dy = -22;
-
-			aliens[ALIEN_BOSS_PART2].owner = &aliens[ALIEN_BOSS];
-			aliens[ALIEN_BOSS_PART2].target = &player;
-			aliens[ALIEN_BOSS_PART2].dx = 15;
-			aliens[ALIEN_BOSS_PART2].dy = 22;
-
-			aliens[ALIEN_BOSS_PART3].owner = &aliens[ALIEN_BOSS_PART1];
-			aliens[ALIEN_BOSS_PART3].target = &player;
-			aliens[ALIEN_BOSS_PART3].dx = -35;
-			aliens[ALIEN_BOSS_PART3].dy = -12;
-
-			aliens[ALIEN_BOSS_PART4].owner = &aliens[ALIEN_BOSS_PART2];
-			aliens[ALIEN_BOSS_PART4].target = &player;
-			aliens[ALIEN_BOSS_PART4].dx = -35;
-			aliens[ALIEN_BOSS_PART4].dy = 20;
-
-			if (currentGame.area == MISN_FELLON)
-			{
-				aliens[ALIEN_BOSS].AIType = AI_EVASIVE;
-
-				for (int i = 10 ; i < 15 ; i++)
-				{
-					aliens[i].imageIndex[0] += 15;
-					aliens[i].imageIndex[1] += 15;
-
-					aliens[i].image[0] = shipShape[aliens[i].imageIndex[0]];
-					aliens[i].image[1] = shipShape[aliens[i].imageIndex[1]];
-				}
-			}
-		}
-		else if (currentGame.area == MISN_URANUS)
-		{
-			aliens[ALIEN_BOSS].target = &player;
-			aliens[ALIEN_BOSS].x = -screen->w / 2;
-			aliens[ALIEN_BOSS].y = screen->h / 2;
-
-			aliens[ALIEN_BOSS_PART1].owner = &aliens[ALIEN_BOSS];
-			aliens[ALIEN_BOSS_PART1].dy = 20;
-
-			aliens[ALIEN_BOSS_PART2].owner = &aliens[ALIEN_BOSS];
-			aliens[ALIEN_BOSS_PART2].dy = -16;
-		}
-	}
+	aliens_init();
 
 	// specific for Phoebe being captured!
 	if (currentGame.area == MISN_NEROD)
@@ -1189,14 +1661,12 @@ int mainGameLoop()
 
 		unBuffer();
 		doStarfield();
-		doCollectables();
+		game_doCollectables();
 		game_doBullets();
-
 		game_doAliens();
-
-		doPlayer();
-  		doCargo();
-  		doDebris();
+		game_doPlayer();
+		game_doCargo();
+		game_doDebris();
 		doExplosions();
 		doInfo();
 

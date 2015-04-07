@@ -682,6 +682,186 @@ void alien_defs_init()
 	alien_defs[CD_URANUSBOSSWING2].flags = FL_WEAPCO | FL_IMMORTAL;
 }
 
+void aliens_init()
+{
+	FILE *fp;
+	char string[255];
+	int index;
+	int alienType;
+	int placeAttempt;
+	int barrierSpeed;
+
+	for (int i = 0 ; i < ALIEN_MAX ; i++)
+	{
+		aliens[i].active = false;
+		aliens[i].shield = -1;
+		aliens[i].flags = 0;
+	}
+
+	engine.targetIndex = -1;
+
+	strcpy(string, "");
+	barrierSpeed = 1;
+
+	sprintf(string, "data/aliens%d.dat", currentGame.area);
+	fp = fopen(string, "rb");
+
+	if (fp != NULL)
+	{
+		while (fscanf(fp, "%d %d ", &index, &alienType) == 2)
+		{
+			placeAttempt = 0;
+
+			aliens[index] = alien_defs[alienType];
+			aliens[index].owner = &aliens[index];
+			aliens[index].target = &aliens[index];
+			aliens[index].face = rand() % 2;
+			aliens[index].active = true;
+
+			/*
+			we make 1000 attempts to place this enemy since it is required. If after
+			1000 attempts we still haven't managed to place the alien, then it
+			simply isn't going to happen and we will just exit the game. The chances
+			of this happening are very very low!
+			*/
+			while (true)
+			{
+				placeAttempt++;
+
+				if (alien_place(&aliens[index]))
+					break;
+
+				if (placeAttempt > 1000)
+					showErrorAndExit(2, "");
+			}
+
+			if (currentGame.area == MISN_CERADSE)
+				addCargo(&aliens[index], P_CARGO);
+			else if (currentGame.area == MISN_NEROD)
+				addCargo(&aliens[index], P_PHOEBE);
+
+			if (index == ALIEN_KLINE)
+			{
+				aliens[ALIEN_KLINE].target = &player;
+			}
+
+			if (aliens[index].classDef == CD_CLOAKFIGHTER)
+			{
+				aliens[index].active = false;
+				aliens[index].maxShield = aliens[index].shield = 400;
+				aliens[index].flags &= ~FL_RUNSAWAY;
+				aliens[index].speed = 3;
+			}
+
+			if ((aliens[index].classDef == CD_MOBILE_RAY) && (index >= 11))
+			{
+				aliens[index].active = false;
+			}
+
+			if (aliens[index].classDef == CD_FIREFLY)
+			{
+				aliens[index].active = false;
+			}
+
+			if (aliens[index].classDef == CD_BARRIER)
+			{
+				aliens[index].owner = &aliens[ALIEN_BOSS];
+				aliens[index].speed = barrierSpeed;
+				barrierSpeed++;
+			}
+
+			if ((currentGame.area == MISN_POSWIC) &&
+				(aliens[index].classDef == CD_BOSS))
+			{
+				aliens[index].imageIndex[1] = 29;
+				aliens[index].flags |= FL_IMMORTAL;
+			}
+
+			if (currentGame.area == MISN_ELLESH)
+				aliens[index].flags |= FL_HASMINIMUMSPEED;
+
+			if (currentGame.area == MISN_JUPITER)
+			{
+				aliens[index].flags = FL_WEAPCO;
+				if (index == ALIEN_BOSS)
+					aliens[index].chance[1] = 5;
+			}
+		}
+
+		fclose(fp);
+
+		if (currentGame.area == MISN_MOEBO)
+		{
+			aliens[ALIEN_BOSS].target = &player;
+			aliens[ALIEN_BOSS].x = -screen->w / 2;
+			aliens[ALIEN_BOSS].y = screen->h / 2;
+
+			aliens[ALIEN_BOSS_PART1].owner = &aliens[ALIEN_BOSS];
+			aliens[ALIEN_BOSS_PART1].target = &player;
+			aliens[ALIEN_BOSS_PART1].dx = -25;
+			aliens[ALIEN_BOSS_PART1].dy = -21;
+
+			aliens[ALIEN_BOSS_PART2].owner = &aliens[ALIEN_BOSS];
+			aliens[ALIEN_BOSS_PART2].target = &player;
+			aliens[ALIEN_BOSS_PART2].dx = -20;
+			aliens[ALIEN_BOSS_PART2].dy = 37;
+		}
+		else if ((currentGame.area == MISN_ELAMALE) ||
+			(currentGame.area == MISN_FELLON))
+		{
+			aliens[ALIEN_BOSS].target = &player;
+			aliens[ALIEN_BOSS].x = -screen->w / 2;
+			aliens[ALIEN_BOSS].y = screen->h / 2;
+
+			aliens[ALIEN_BOSS_PART1].owner = &aliens[ALIEN_BOSS];
+			aliens[ALIEN_BOSS_PART1].target = &player;
+			aliens[ALIEN_BOSS_PART1].dx = 15;
+			aliens[ALIEN_BOSS_PART1].dy = -22;
+
+			aliens[ALIEN_BOSS_PART2].owner = &aliens[ALIEN_BOSS];
+			aliens[ALIEN_BOSS_PART2].target = &player;
+			aliens[ALIEN_BOSS_PART2].dx = 15;
+			aliens[ALIEN_BOSS_PART2].dy = 22;
+
+			aliens[ALIEN_BOSS_PART3].owner = &aliens[ALIEN_BOSS_PART1];
+			aliens[ALIEN_BOSS_PART3].target = &player;
+			aliens[ALIEN_BOSS_PART3].dx = -35;
+			aliens[ALIEN_BOSS_PART3].dy = -12;
+
+			aliens[ALIEN_BOSS_PART4].owner = &aliens[ALIEN_BOSS_PART2];
+			aliens[ALIEN_BOSS_PART4].target = &player;
+			aliens[ALIEN_BOSS_PART4].dx = -35;
+			aliens[ALIEN_BOSS_PART4].dy = 20;
+
+			if (currentGame.area == MISN_FELLON)
+			{
+				aliens[ALIEN_BOSS].AIType = AI_EVASIVE;
+
+				for (int i = 10 ; i < 15 ; i++)
+				{
+					aliens[i].imageIndex[0] += 15;
+					aliens[i].imageIndex[1] += 15;
+
+					aliens[i].image[0] = shipShape[aliens[i].imageIndex[0]];
+					aliens[i].image[1] = shipShape[aliens[i].imageIndex[1]];
+				}
+			}
+		}
+		else if (currentGame.area == MISN_URANUS)
+		{
+			aliens[ALIEN_BOSS].target = &player;
+			aliens[ALIEN_BOSS].x = -screen->w / 2;
+			aliens[ALIEN_BOSS].y = screen->h / 2;
+
+			aliens[ALIEN_BOSS_PART1].owner = &aliens[ALIEN_BOSS];
+			aliens[ALIEN_BOSS_PART1].dy = 20;
+
+			aliens[ALIEN_BOSS_PART2].owner = &aliens[ALIEN_BOSS];
+			aliens[ALIEN_BOSS_PART2].dy = -16;
+		}
+	}
+}
+
 bool alien_add()
 {
 	int index = alien_getFreeIndex();

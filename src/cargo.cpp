@@ -65,7 +65,7 @@ object *addCargo(object *owner, int cargoType)
 	return &cargo[index];
 }
 
-static void becomeCollectable(int i)
+void cargo_becomeCollectable(int i)
 {
 	if (cargo[i].collectType != P_PHOEBE)
 	{
@@ -80,42 +80,4 @@ static void becomeCollectable(int i)
 	}
 
 	cargo[i].active = false;
-}
-
-void doCargo()
-{
-	float dx, dy, chainX, chainY;
-
-	for (int i = 0 ; i < MAX_CARGO ; i++)
-	{
-		if (cargo[i].active)
-		{
-			if (!cargo[i].owner->active)
-			{
-				becomeCollectable(i);
-				continue;
-			}
-
-			blit(cargo[i].image[0], (int)cargo[i].x, (int)cargo[i].y);
-
-			cargo[i].x += engine.ssx + engine.smx;
-			cargo[i].y += engine.ssy + engine.smy;
-
-			LIMIT(cargo[i].x, cargo[i].owner->x - 50, cargo[i].owner->x + 50);
-			LIMIT(cargo[i].y, cargo[i].owner->y - 50, cargo[i].owner->y + 50);
-
-			dx = (cargo[i].x - cargo[i].owner->x) / 10;
-			dy = (cargo[i].y - cargo[i].owner->y) / 10;
-			chainX = cargo[i].x - cargo[i].dx;
-			chainY = cargo[i].y - cargo[i].dy;
-
-			// draw the chain link line
-			for (int j = 0 ; j < 10 ; j++)
-			{
-				blit(shape[30], (int)chainX, (int)chainY);
-				chainX -= dx;
-				chainY -= dy;
-			}
-		}
-	}
 }

@@ -24,6 +24,7 @@ extern object alien_defs[CD_MAX];
 extern object aliens[ALIEN_MAX];
 
 void alien_defs_init();
+void aliens_init();
 bool alien_add();
 void alien_addDrone(object *hostAlien);
 void alien_addSmallAsteroid(object *hostAlien);

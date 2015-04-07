@@ -24,6 +24,6 @@ extern object cargo[MAX_CARGO];
 
 extern void initCargo();
 extern object *addCargo(object *owner, int cargoType);
-extern void doCargo();
+void cargo_becomeCollectable(int i);
 
 #endif
