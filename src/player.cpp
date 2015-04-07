@@ -68,6 +68,35 @@ void player_setTarget(int index)
 	engine.targetShield /= aliens[index].shield;
 }
 
+char player_checkShockDamage(float x, float y)
+{
+	// Don't let the player be hurt by an explosion after they have completed
+	// all the mission objectives. That would be *really* annoying!
+	if ((engine.cheatShield) || (engine.missionCompleteTimer != 0))
+		return 0;
+
+	float distX = fabsf(x - player.x);
+	float distY = fabsf(y - player.y);
+
+	if ((distX <= 50) && (distY <= 50))
+	{
+		if (distX >= 1)
+			distX /= 5;
+
+		if (distY >= 1)
+			distY /= 5;
+
+		player.shield -= (int)(10 - distX);
+		player.shield -= (int)(10 - distY);
+		LIMIT(player.shield, 0, player.maxShield);
+		player.hit = 10;
+
+		return 1;
+	}
+
+	return 0;
+}
+
 void exitPlayer()
 {
 	charger_fired = false;

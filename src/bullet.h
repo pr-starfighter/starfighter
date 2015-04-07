@@ -21,7 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define BULLETS_H
 
 void bullet_add(object *theWeapon, object *attacker, int y, int dy);
-extern char checkPlayerShockDamage(float x, float y);
-extern void doBullets();
+object *bullet_getTarget(object *bullet);
 
 #endif
