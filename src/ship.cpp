@@ -55,18 +55,22 @@ void ship_fireBullet(object *ship, int weaponType)
 
 	if (theWeapon->flags & WF_SPREAD && theWeapon->ammo[0] >= 3)
 	{
-		bullet_add(theWeapon, ship, y * 1, -2);
+		bullet_add(theWeapon, ship, y * 2, -1);
+		bullet_add(theWeapon, ship, y * 4, 1);
 
-		if(theWeapon->ammo[0] != 4)
+		if (theWeapon->ammo[0] != 4)
 			bullet_add(theWeapon, ship, y * 3, 0);
-
-		if(theWeapon->ammo[0] != 3)
+		else
 		{
-			bullet_add(theWeapon, ship, y * 2, -1);
-			bullet_add(theWeapon, ship, y * 4, 1);
+			bullet_add(theWeapon, ship, y * 2, 0);
+			bullet_add(theWeapon, ship, y * 4, 0);
 		}
 
-		bullet_add(theWeapon, ship, y * 5, 2);
+		if (theWeapon->ammo[0] == 5)
+		{
+			bullet_add(theWeapon, ship, y * 1, -2);
+			bullet_add(theWeapon, ship, y * 5, 2);
+		}
 	}
 	else
 	{
