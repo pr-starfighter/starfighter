@@ -42,7 +42,7 @@ void initWeapons()
 	weapon[W_PLAYER_WEAPON].speed = 10;
 	weapon[W_PLAYER_WEAPON].imageIndex[0] = 0;
 	weapon[W_PLAYER_WEAPON].imageIndex[1] = 0;
-	weapon[W_PLAYER_WEAPON].flags = 0;
+	weapon[W_PLAYER_WEAPON].flags = WF_SPREAD;
 
 	// Single Shot
 	weapon[W_SINGLE_SHOT].id = WT_PLASMA;
