@@ -241,7 +241,11 @@ static void game_doCollectables()
 									0, currentGame.maxPlasmaAmmo);
 
 							if (weapon[W_PLAYER_WEAPON].reload[0] <= rate2reload[currentGame.maxPlasmaRate])
+							{
 								sprintf(temp, "Firing rate already at maximum");
+								if (currentGame.difficulty == DIFFICULTY_ORIGINAL)
+									weapon[W_PLAYER_WEAPON].reload[0] = rate2reload[currentGame.maxPlasmaRate];
+							}
 							else
 							{
 								weapon[W_PLAYER_WEAPON].reload[0] -= 2;
@@ -266,7 +270,11 @@ static void game_doCollectables()
 									0, currentGame.maxPlasmaAmmo);
 
 							if (weapon[W_PLAYER_WEAPON].ammo[0] >= currentGame.maxPlasmaOutput)
+							{
 								sprintf(temp, "Plasma output already at maximum");
+								if (currentGame.difficulty == DIFFICULTY_ORIGINAL)
+									weapon[W_PLAYER_WEAPON].ammo[0] = currentGame.maxPlasmaOutput;
+							}
 							else
 							{
 								weapon[W_PLAYER_WEAPON].ammo[0]++;
@@ -291,8 +299,13 @@ static void game_doCollectables()
 									0, currentGame.maxPlasmaAmmo);
 
 							if (weapon[W_PLAYER_WEAPON].damage >= currentGame.maxPlasmaDamage)
+							{
 								sprintf(temp, "Plasma damage already at maximum");
-							else {
+								if (currentGame.difficulty == DIFFICULTY_ORIGINAL)
+									weapon[W_PLAYER_WEAPON].damage = currentGame.maxPlasmaDamage;
+							}
+							else
+							{
 								weapon[W_PLAYER_WEAPON].damage++;
 								sprintf(temp, "Plasma damage increased");
 							}
