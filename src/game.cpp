@@ -1512,9 +1512,6 @@ int mainGameLoop()
 		case MISN_URUSOR:
 			player_setTarget(ALIEN_SID);
 			break;
-		case MISN_DORIM:
-			player_setTarget(0);
-			break;
 		case MISN_EARTH:
 		case MISN_VENUS:
 			player_setTarget(ALIEN_KLINE);
