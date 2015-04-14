@@ -138,7 +138,7 @@ static void game_addDebris(int x, int y, int amount)
 
 	object *debris;
 	
-	amount = RANDRANGE(3, rand() % amount);
+	amount = RANDRANGE(3, amount);
 	LIMIT(amount, 3, 8);
 
 	for (int i = 0 ; i < amount ; i++)
