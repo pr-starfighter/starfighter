@@ -51,24 +51,21 @@ void bullet_add(object *theWeapon, object *attacker, int y, int dy)
 	}
 	else
 	{
-		bullet->dx = (0 - theWeapon->speed);
+		bullet->dx = -theWeapon->speed;
 	}
 
 	if (bullet->flags & WF_VARIABLE_SPEED)
 	{
-		bullet->dx = RANDRANGE(100, 200);
-		bullet->dx /= 10;
+		bullet->dx = RANDRANGE(100, 200) / 10;
 		if (attacker->face == 1)
-			bullet->dx = 0 - bullet->dx;
+			bullet->dx = -bullet->dx;
 	}
 
 	bullet->dy = dy;
 
 	if (bullet->flags & WF_SCATTER)
 	{
-		bullet->dy = RANDRANGE(-200, 200);
-		if (bullet->dy != 0)
-			bullet->dy /= 200;
+		bullet->dy = RANDRANGE(-200, 200) / 200;
 	}
 
 	if (attacker->flags & FL_WEAPCO)

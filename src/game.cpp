@@ -1007,8 +1007,10 @@ static void game_doAliens()
 					if (aliens[i].classDef == CD_ASTEROID)
 					{
 						n = 1 + (rand() % 3);
-						for (int i = 0 ; i < n ; i++)
+						for (int j = 0 ; j < n ; j++)
+						{
 							alien_addSmallAsteroid(&aliens[i]);
+						}
 					}
 				}
 			}
