@@ -6,8 +6,8 @@ OBJS = alien.o audio.o bullet.o cargo.o collectable.o comms.o debris.o events.o 
 VERSION = 1.3.1
 PROG = starfighter
 DOCS = docs/*
-DATA = data gfx sound
-DATAFILES = data/* gfx/* sound/*
+DATA = data gfx sound music
+DATAFILES = data/* gfx/* sound/* music/*
 
 PREFIX ?= /usr
 BINDIR ?= $(PREFIX)/games/
