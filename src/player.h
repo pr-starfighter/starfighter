@@ -25,7 +25,7 @@ extern bool player_chargerFired;
 
 extern void initPlayer();
 void player_setTarget(int index);
-char player_checkShockDamage(float x, float y);
+void player_checkShockDamage(float x, float y);
 extern void exitPlayer();
 extern void flushInput();
 extern void getPlayerInput();

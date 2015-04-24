@@ -430,13 +430,15 @@ static void game_doBullets()
 	object *bullet = engine.bulletHead;
 	object *prevBullet = engine.bulletHead;
 
-	collectables *collectable = engine.collectableHead;
-	collectables *prevCollectable = engine.collectableHead;
+	collectables *collectable;
+	collectables *prevCollectable;
 
 	bool okayToHit = false;
 	int old_shield;
 	float homingMissileSpeed = 0;
 
+	bullet = engine.bulletHead;
+	prevBullet = engine.bulletHead;
 	engine.bulletTail = engine.bulletHead;
 
 	while (bullet->next != NULL)
@@ -660,6 +662,8 @@ static void game_doBullets()
 		}
 
 		// check to see if a bullet (on any side) hits a mine
+		collectable = engine.collectableHead;
+		prevCollectable = engine.collectableHead;
 		engine.collectableTail = engine.collectableHead;
 		while (collectable->next != NULL)
 		{
@@ -715,9 +719,7 @@ static void game_doBullets()
 					addExplosion(bullet->x + RANDRANGE(-35, 35),
 						bullet->y + RANDRANGE(-35, 35), E_BIG_EXPLOSION);
 
-				if (player_checkShockDamage (bullet->x, bullet->y))
-					setInfoLine("Warning: Missile Shockwave Damage!!",
-						FONT_RED);
+				player_checkShockDamage(bullet->x, bullet->y);
 			}
 			bullet->active = false;
 		}
