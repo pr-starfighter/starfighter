@@ -177,3 +177,10 @@ object *bullet_getTarget(object *bullet)
 
 	return &aliens[i];
 }
+
+void bullet_checkMineCollisions(object *bullet)
+{
+	
+
+	
+}

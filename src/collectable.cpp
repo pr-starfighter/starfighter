@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /*
 Create a new collectable item based on supplied arguments.
 */
-void addCollectable(float x, float y, int type, int value, int life)
+void collectable_add(float x, float y, int type, int value, int life)
 {
 	int r;
 
@@ -206,7 +206,7 @@ void addCollectable(float x, float y, int type, int value, int life)
 	engine.collectableTail = collectable;
 }
 
-void explodeMine(collectables *collectable)
+void collectable_explode(collectables *collectable)
 {
 	if ((collectable->x >= 0) && (collectable->x <= screen->w) &&
 			(collectable->y >= 0) && (collectable->y <= screen->h))
@@ -218,54 +218,4 @@ void explodeMine(collectables *collectable)
 
 	if (player_checkShockDamage(collectable->x, collectable->y))
 		setInfoLine("Warning: Mine damage to shield!!", FONT_RED);
-}
-
-void checkMineBulletCollisions(object *bullet)
-{
-	collectables *collectable = engine.collectableHead;
-	collectables *prevCollectable = engine.collectableHead;
-	engine.collectableTail = engine.collectableHead;
-
-	while (collectable->next != NULL)
-	{
-		collectable = collectable->next;
-
-		if (collectable->type == P_MINE)
-		{
-			if (collision(collectable, bullet))
-			{
-				collectable->active = false;
-				
-				if (bullet->id != WT_CHARGER)
-				{
-					bullet->active = false;
-				}
-				else
-				{
-					bullet->shield--;
-					if (bullet->shield < 0)
-						bullet->active = false;
-				}
-
-				if (bullet->owner == &player)
-				{
-					currentGame.minesKilled++;
-					currentGame.hits++;
-				}
-			}
-		}
-
-		if (collectable->active)
-		{
-			prevCollectable = collectable;
-			engine.collectableTail = collectable;
-		}
-		else
-		{
-			explodeMine(collectable);
-			prevCollectable->next = collectable->next;
-			delete collectable;
-			collectable = prevCollectable;
-		}
-	}
 }

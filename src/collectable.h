@@ -20,8 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef COLLECTABLE_H
 #define COLLECTABLE_H
 
-extern void addCollectable(float x, float y, int type, int value, int life);
-void explodeMine(collectables *collectable);
-extern void checkMineBulletCollisions(object *bullet);
+void collectable_add(float x, float y, int type, int value, int life);
+void collectable_explode(collectables *collectable);
 
 #endif

@@ -736,9 +736,9 @@ void aliens_init()
 			}
 
 			if (currentGame.area == MISN_CERADSE)
-				addCargo(&aliens[index], P_CARGO);
+				cargo_add(&aliens[index], P_CARGO);
 			else if (currentGame.area == MISN_NEROD)
-				addCargo(&aliens[index], P_PHOEBE);
+				cargo_add(&aliens[index], P_PHOEBE);
 
 			if (index == ALIEN_KLINE)
 			{
@@ -1005,7 +1005,7 @@ bool alien_add()
 	}
 
 	if (aliens[index].classDef == CD_CARGOSHIP)
-		addCargo(&aliens[index], P_CARGO);
+		cargo_add(&aliens[index], P_CARGO);
 
 	if (aliens[index].classDef == CD_MOBILE_RAY)
 		aliens[index].shield = 25;
@@ -1605,7 +1605,7 @@ void alien_destroy(object *alien, object *attacker)
 			value = (10 + (rand() % alien->collectValue));
 			if (value > alien->collectValue)
 				value = alien->collectValue;
-			addCollectable(alien->x, alien->y, alien->collectType, value, 600);
+			collectable_add(alien->x, alien->y, alien->collectType, value, 600);
 			alien->collectValue -= value;
 		}
 	}

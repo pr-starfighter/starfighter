@@ -22,8 +22,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 extern object cargo[MAX_CARGO];
 
-extern void initCargo();
-extern object *addCargo(object *owner, int cargoType);
+void cargo_init();
+object *cargo_add(object *owner, int cargoType);
 void cargo_becomeCollectable(int i);
 
 #endif

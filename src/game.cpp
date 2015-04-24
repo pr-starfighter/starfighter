@@ -407,7 +407,7 @@ static void game_doCollectables()
 		else
 		{
 			if (collectable->type == P_MINE)
-				explodeMine(collectable);
+				collectable_explode(collectable);
 			prevCollectable->next = collectable->next;
 			delete collectable;
 			collectable = prevCollectable;
@@ -429,13 +429,15 @@ static void game_doBullets()
 {
 	object *bullet = engine.bulletHead;
 	object *prevBullet = engine.bulletHead;
-	engine.bulletTail = engine.bulletHead;
 
-	object *alien, *theCargo;
+	collectables *collectable = engine.collectableHead;
+	collectables *prevCollectable = engine.collectableHead;
 
 	bool okayToHit = false;
 	int old_shield;
 	float homingMissileSpeed = 0;
+
+	engine.bulletTail = engine.bulletHead;
 
 	while (bullet->next != NULL)
 	{
@@ -510,44 +512,42 @@ static void game_doBullets()
 
 			for (int i = 0 ; i < ALIEN_MAX ; i++)
 			{
-				alien = &aliens[i];
-
-				if ((alien->shield < 1) || (!alien->active))
+				if ((aliens[i].shield < 1) || (!aliens[i].active))
 					continue;
 
 				okayToHit = false;
 
-				if ((bullet->flags & WF_FRIEND) && (alien->flags & FL_WEAPCO))
+				if ((bullet->flags & WF_FRIEND) && (aliens[i].flags & FL_WEAPCO))
 					okayToHit = true;
-				if ((bullet->flags & WF_WEAPCO) && (alien->flags & FL_FRIEND))
+				if ((bullet->flags & WF_WEAPCO) && (aliens[i].flags & FL_FRIEND))
 					okayToHit = true;
 				if ((bullet->id == WT_ROCKET) || (bullet->id == WT_LASER) ||
 						(bullet->id == WT_CHARGER))
 					okayToHit = true;
 
-				if (bullet->owner == alien->owner)
+				if (bullet->owner == aliens[i].owner)
 					okayToHit = false;
 
 				if (okayToHit)
 				{
-					if ((bullet->active) && (collision(bullet, alien)))
+					if ((bullet->active) && (collision(bullet, &aliens[i])))
 					{
-						old_shield = alien->shield;
+						old_shield = aliens[i].shield;
 
 						if (bullet->owner == &player)
 						{
 							currentGame.hits++;
-							if ((alien->classDef == CD_PHOEBE) ||
-									(alien->classDef == CD_URSULA))
-								getMissFireMessage(alien);
+							if ((aliens[i].classDef == CD_PHOEBE) ||
+									(aliens[i].classDef == CD_URSULA))
+								getMissFireMessage(&aliens[i]);
 						}
 
-						if (!(alien->flags & FL_IMMORTAL))
+						if (!(aliens[i].flags & FL_IMMORTAL))
 						{
-							alien_hurt(alien, bullet->owner, bullet->damage,
-								(bullet->flags & WF_DISABLE));
+							alien_hurt(&aliens[i], bullet->owner,
+								bullet->damage, (bullet->flags & WF_DISABLE));
 
-							alien->hit = 5;
+							aliens[i].hit = 5;
 						}
 
 						if (bullet->id == WT_CHARGER)
@@ -636,21 +636,20 @@ static void game_doBullets()
 		{
 			for (int j = 0 ; j < 20 ; j++)
 			{
-				theCargo = &cargo[j];
-				if (theCargo->active)
+				if (cargo[j].active)
 				{
-					if (collision(bullet, theCargo))
+					if (collision(bullet, &cargo[j]))
 					{
 						bullet->active = false;
 						addExplosion(bullet->x, bullet->y, E_SMALL_EXPLOSION);
-						audio_playSound(SFX_HIT, theCargo->x);
-						if (theCargo->collectType != P_PHOEBE)
+						audio_playSound(SFX_HIT, cargo[j].x);
+						if (cargo[j].collectType != P_PHOEBE)
 						{
-							theCargo->active = false;
-							audio_playSound(SFX_EXPLOSION, theCargo->x);
+							cargo[j].active = false;
+							audio_playSound(SFX_EXPLOSION, cargo[j].x);
 							for (int i = 0 ; i < 10 ; i++)
-								addExplosion(theCargo->x + RANDRANGE(-15, 15),
-									theCargo->y + RANDRANGE(-15, 15),
+								addExplosion(cargo[j].x + RANDRANGE(-15, 15),
+									cargo[j].y + RANDRANGE(-15, 15),
 									E_BIG_EXPLOSION);
 							updateMissionRequirements(M_PROTECT_PICKUP,
 								P_CARGO, 1);
@@ -661,7 +660,49 @@ static void game_doBullets()
 		}
 
 		// check to see if a bullet (on any side) hits a mine
-		checkMineBulletCollisions(bullet);
+		engine.collectableTail = engine.collectableHead;
+		while (collectable->next != NULL)
+		{
+			collectable = collectable->next;
+
+			if (collectable->type == P_MINE)
+			{
+				if (collision(collectable, bullet))
+				{
+					collectable->active = false;
+					
+					if (bullet->id != WT_CHARGER)
+					{
+						bullet->active = false;
+					}
+					else
+					{
+						bullet->shield--;
+						if (bullet->shield < 0)
+							bullet->active = false;
+					}
+
+					if (bullet->owner == &player)
+					{
+						currentGame.minesKilled++;
+						currentGame.hits++;
+					}
+				}
+			}
+
+			if (collectable->active)
+			{
+				prevCollectable = collectable;
+				engine.collectableTail = collectable;
+			}
+			else
+			{
+				collectable_explode(collectable);
+				prevCollectable->next = collectable->next;
+				delete collectable;
+				collectable = prevCollectable;
+			}
+		}
 
 		bullet->shield--;
 
@@ -938,14 +979,14 @@ static void game_doAliens()
 				if (aliens[i].flags & FL_DROPMINES)
 				{
 					if ((rand() % 150) == 0)
-						addCollectable(aliens[i].x, aliens[i].y, P_MINE, 25,
+						collectable_add(aliens[i].x, aliens[i].y, P_MINE, 25,
 							600 + rand() % 2400);
 
 					// Kline drops mines a lot more often
 					if ((&aliens[i] == &aliens[ALIEN_KLINE]))
 					{
 						if ((rand() % 10) == 0)
-							addCollectable(aliens[i].x, aliens[i].y, P_MINE, 25,
+							collectable_add(aliens[i].x, aliens[i].y, P_MINE, 25,
 								600 + rand() % 2400);
 					}
 				}
@@ -1397,7 +1438,7 @@ int mainGameLoop()
 	setMission(currentGame.area);
 	missionBriefScreen();
 
-	initCargo();
+	cargo_init();
 	initPlayer();
 	aliens_init();
 
@@ -1693,7 +1734,7 @@ int mainGameLoop()
 				// but I'm not entirely sure what the original intention was.
 				// For now, I've set the range to [800, 1500], which
 				// approximately replicates the original's results.
-				addCollectable(RANDRANGE(800, 1500),
+				collectable_add(RANDRANGE(800, 1500),
 					RANDRANGE(-screen->h / 3, (4 * screen->h) / 3), P_MINE, 25,
 					180 + rand() % 60);
 		}

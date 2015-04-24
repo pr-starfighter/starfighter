@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 object cargo[MAX_CARGO];
 
-void initCargo()
+void cargo_init()
 {
 	for (int i = 0 ; i < MAX_CARGO ; i++)
 	{
@@ -33,7 +33,7 @@ void initCargo()
 /*
 * I think you all know what this does by now! ;)
 */
-static int getCargo()
+static int cargo_get()
 {
 	for (int i = 0 ; i < MAX_CARGO ; i++)
 	{
@@ -44,9 +44,9 @@ static int getCargo()
 	return -1;
 }
 
-object *addCargo(object *owner, int cargoType)
+object *cargo_add(object *owner, int cargoType)
 {
-	int index = getCargo();
+	int index = cargo_get();
 
 	if (index == -1)
 		return NULL;
@@ -69,7 +69,7 @@ void cargo_becomeCollectable(int i)
 {
 	if (cargo[i].collectType != P_PHOEBE)
 	{
-		addCollectable(cargo[i].x, cargo[i].y, cargo[i].collectType, 1, 600);
+		collectable_add(cargo[i].x, cargo[i].y, cargo[i].collectType, 1, 600);
 	}
 	else
 	{
