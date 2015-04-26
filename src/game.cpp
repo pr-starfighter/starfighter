@@ -1433,6 +1433,32 @@ static void game_doDebris()
 	}
 }
 
+/*
+Checked during the main game loop. When the game is paused
+it goes into a constant loop checking this routine. If escape is
+pressed, the game automatically ends and goes back to the title screen
+*/
+static bool game_checkPauseRequest()
+{
+	getPlayerInput();
+		
+	if (engine.keyState[KEY_ESCAPE])
+	{
+		engine.paused = false;
+		engine.done = 1;
+		player.shield = 0;
+		return true;
+	}
+	
+	if (engine.keyState[KEY_PAUSE])
+	{
+		engine.paused = false;
+		engine.keyState[KEY_PAUSE] = 0;
+	}
+
+	return false;
+}
+
 int mainGameLoop()
 {
 	resetLists();
@@ -1722,7 +1748,7 @@ int mainGameLoop()
 
 			while (engine.paused)
 			{
-				engine.done = checkPauseRequest();
+				engine.done = game_checkPauseRequest();
 				delayFrame();
 			}
 		}

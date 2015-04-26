@@ -422,7 +422,7 @@ extern const char *systemNames[];
 
 extern const char *systemBackground[];
 
-const char rate2reload[6] = {15, 15, 13, 11, 9, 7};
+const int rate2reload[6] = {15, 15, 13, 11, 9, 7};
 const int screenWidth = 800;
 const int screenHeight = 600;
 const int xViewBorder = 100;

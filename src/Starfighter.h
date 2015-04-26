@@ -40,7 +40,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "bullet.h"
 #include "cargo.h"
 #include "collectable.h"
-#include "events.h"
 #include "explosions.h"
 #include "game.h"
 #include "globals.h"
