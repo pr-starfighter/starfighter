@@ -1745,12 +1745,15 @@ int mainGameLoop()
 			textSurface(22, "PAUSED", -1, screen->h / 2, FONT_WHITE);
 			blitText(22);
 			updateScreen();
+			audio_pauseMusic();
 
 			while (engine.paused)
 			{
 				engine.done = game_checkPauseRequest();
 				delayFrame();
 			}
+
+			audio_resumeMusic();
 		}
 
 		if ((currentGame.area == MISN_MARS) && (engine.addAliens > -1))

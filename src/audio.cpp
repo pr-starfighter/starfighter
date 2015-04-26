@@ -102,13 +102,27 @@ void audio_playSound(int sid, float x)
 void audio_haltMusic()
 {
 	if (Mix_PlayingMusic())
+	{
+		Mix_ResumeMusic();
 		Mix_HaltMusic();
+	}
 
 	if (music != NULL)
 	{
 		Mix_FreeMusic(music);
 		music = NULL;
 	}
+}
+
+void audio_pauseMusic()
+{
+	if (Mix_PlayingMusic() && !Mix_PausedMusic())
+		Mix_PauseMusic();
+}
+
+void audio_resumeMusic()
+{
+	Mix_ResumeMusic();
 }
 
 void audio_setMusicVolume(int volume)

@@ -23,6 +23,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 void audio_loadSounds();
 void audio_playSound(int sid, float x);
 void audio_haltMusic();
+void audio_pauseMusic();
+void audio_resumeMusic();
 void audio_setMusicVolume(int volume);
 void audio_playMusic(const char *filename, int loops);
 void audio_playRandomTrack();
