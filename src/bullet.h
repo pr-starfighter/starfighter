@@ -22,6 +22,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 void bullet_add(object *theWeapon, object *attacker, int y, int dy);
 object *bullet_getTarget(object *bullet);
-void bullet_checkMineCollisions(object *bullet);
 
 #endif
