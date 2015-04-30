@@ -81,7 +81,9 @@ void loadGameGraphics()
 			continue;
 		shipShape[i] = createSurface(shipShape[i - SHIP_HIT_INDEX]->w,
 			shipShape[i - SHIP_HIT_INDEX]->h);
+		SDL_SetSurfaceBlendMode(shipShape[i - SHIP_HIT_INDEX], SDL_BLENDMODE_NONE);
 		blit(shipShape[i - SHIP_HIT_INDEX], 0, 0, shipShape[i]);
+		SDL_SetSurfaceBlendMode(shipShape[i - SHIP_HIT_INDEX], SDL_BLENDMODE_BLEND);
 
 		switch (shipShape[i]->format->BitsPerPixel)
 		{
