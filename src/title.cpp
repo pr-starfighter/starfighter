@@ -276,11 +276,11 @@ int doTitle()
 		now = SDL_GetTicks();
 
 		doStarfield();
-		doExplosions();
+		game_doExplosions();
 
 		for (int i = 0 ; i < 15 ; i++)
 		{
-			addEngine(&aliens[i]);
+			explosion_addEngine(&aliens[i]);
 			aliens[i].x += aliens[i].dx;
 			blit(aliens[i].image[0], (int)aliens[i].x, (int)aliens[i].y);
 			if (aliens[i].x > 830)

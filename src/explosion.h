@@ -20,8 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef EXPLOSIONS_H
 #define EXPLOSIONS_H
 
-extern void addExplosion(float x, float y, int type);
-extern void addEngine(object *craft);
-extern void doExplosions();
+void explosion_add(float x, float y, int type);
+void explosion_addEngine(object *craft);
 
 #endif

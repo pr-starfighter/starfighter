@@ -460,11 +460,11 @@ static void game_doBullets()
 
 			if (bullet->id == WT_ROCKET)
 			{
-				addExplosion(bullet->x, bullet->y, E_SMALL_EXPLOSION);
+				explosion_add(bullet->x, bullet->y, E_SMALL_EXPLOSION);
 			}
 			else if (bullet->id == WT_MICROROCKET)
 			{
-				addExplosion(bullet->x, bullet->y, E_TINY_EXPLOSION);
+				explosion_add(bullet->x, bullet->y, E_TINY_EXPLOSION);
 			}
 
 			if ((bullet->flags & WF_AIMED))
@@ -561,7 +561,7 @@ static void game_doBullets()
 								bullet->shield = 0;
 								audio_playSound(SFX_EXPLOSION, bullet->x);
 								for (int i = 0 ; i < 10 ; i++)
-									addExplosion(bullet->x + RANDRANGE(-35, 35),
+									explosion_add(bullet->x + RANDRANGE(-35, 35),
 										bullet->y + RANDRANGE(-35, 35),
 										E_BIG_EXPLOSION);
 							}
@@ -573,9 +573,9 @@ static void game_doBullets()
 						}
 
 						if (bullet->id == WT_ROCKET)
-							addExplosion(bullet->x, bullet->y, E_BIG_EXPLOSION);
+							explosion_add(bullet->x, bullet->y, E_BIG_EXPLOSION);
 						else
-							addExplosion(bullet->x, bullet->y, E_SMALL_EXPLOSION);
+							explosion_add(bullet->x, bullet->y, E_SMALL_EXPLOSION);
 					}
 				}
 			}
@@ -613,7 +613,7 @@ static void game_doBullets()
 							bullet->shield = 0;
 							audio_playSound(SFX_EXPLOSION, bullet->x);
 							for (int i = 0 ; i < 10 ; i++)
-								addExplosion(bullet->x + RANDRANGE(-35, 35),
+								explosion_add(bullet->x + RANDRANGE(-35, 35),
 									bullet->y + RANDRANGE(-35, 35), E_BIG_EXPLOSION);
 						}
 					}
@@ -626,9 +626,9 @@ static void game_doBullets()
 					audio_playSound(SFX_HIT, player.x);
 
 					if (bullet->id == WT_ROCKET)
-						addExplosion(bullet->x, bullet->y, E_BIG_EXPLOSION);
+						explosion_add(bullet->x, bullet->y, E_BIG_EXPLOSION);
 					else
-						addExplosion(bullet->x, bullet->y, E_SMALL_EXPLOSION);
+						explosion_add(bullet->x, bullet->y, E_SMALL_EXPLOSION);
 				}
 			}
 		}
@@ -643,14 +643,14 @@ static void game_doBullets()
 					if (collision(bullet, &cargo[j]))
 					{
 						bullet->active = false;
-						addExplosion(bullet->x, bullet->y, E_SMALL_EXPLOSION);
+						explosion_add(bullet->x, bullet->y, E_SMALL_EXPLOSION);
 						audio_playSound(SFX_HIT, cargo[j].x);
 						if (cargo[j].collectType != P_PHOEBE)
 						{
 							cargo[j].active = false;
 							audio_playSound(SFX_EXPLOSION, cargo[j].x);
 							for (int i = 0 ; i < 10 ; i++)
-								addExplosion(cargo[j].x + RANDRANGE(-15, 15),
+								explosion_add(cargo[j].x + RANDRANGE(-15, 15),
 									cargo[j].y + RANDRANGE(-15, 15),
 									E_BIG_EXPLOSION);
 							updateMissionRequirements(M_PROTECT_PICKUP,
@@ -716,7 +716,7 @@ static void game_doBullets()
 			{
 				audio_playSound(SFX_EXPLOSION, bullet->x);
 				for (int i = 0 ; i < 10 ; i++)
-					addExplosion(bullet->x + RANDRANGE(-35, 35),
+					explosion_add(bullet->x + RANDRANGE(-35, 35),
 						bullet->y + RANDRANGE(-35, 35), E_BIG_EXPLOSION);
 
 				player_checkShockDamage(bullet->x, bullet->y);
@@ -1008,14 +1008,14 @@ static void game_doAliens()
 					if ((!(aliens[i].flags & FL_DISABLED)) &&
 							(aliens[i].classDef != CD_ASTEROID) &&
 							(aliens[i].classDef != CD_ASTEROID2))
-						addEngine(&aliens[i]);
+						explosion_addEngine(&aliens[i]);
 					if ((!(aliens[i].flags & FL_ISCLOAKED)) || (aliens[i].hit > 0))
 						blit(shipShape[shapeToUse], (int)aliens[i].x,
 							(int)aliens[i].y);
 					if (aliens[i].flags & FL_DISABLED)
 					{
 						if ((rand() % 10) == 0)
-							addExplosion(aliens[i].x + (rand() % aliens[i].image[0]->w),
+							explosion_add(aliens[i].x + (rand() % aliens[i].image[0]->w),
 								aliens[i].y + (rand() % aliens[i].image[0]->h),
 								E_ELECTRICAL);
 					}
@@ -1032,7 +1032,7 @@ static void game_doAliens()
 				{
 					blit(aliens[i].image[aliens[i].face], (int)aliens[i].x,
 						(int)aliens[i].y);
-					addExplosion(aliens[i].x + (rand() % aliens[i].image[0]->w),
+					explosion_add(aliens[i].x + (rand() % aliens[i].image[0]->w),
 						aliens[i].y + (rand() % aliens[i].image[0]->h),
 						E_BIG_EXPLOSION);
 				}
@@ -1293,7 +1293,7 @@ static void game_doPlayer()
 			}
 
 			if ((player.maxShield <= 1) || (player.shield > engine.lowShield))
-				addEngine(&player);
+				explosion_addEngine(&player);
 
 			shapeToUse = player.face;
 
@@ -1305,7 +1305,7 @@ static void game_doPlayer()
 			blit(shipShape[shapeToUse], (int)player.x, (int)player.y);
 			if ((player.maxShield > 1) && (player.shield <= engine.lowShield) &&
 					(rand() % 5 < 1))
-				addExplosion(player.x + RANDRANGE(-10, 10),
+				explosion_add(player.x + RANDRANGE(-10, 10),
 					player.y + RANDRANGE(-10, 20), E_SMOKE);
 		}
 		else
@@ -1330,7 +1330,7 @@ static void game_doPlayer()
 
 			engine.keyState[KEY_UP] = engine.keyState[KEY_DOWN] = engine.keyState[KEY_LEFT] = engine.keyState[KEY_RIGHT] = 0;
 			if ((rand() % 3) == 0)
-				addExplosion(player.x + RANDRANGE(-10, 10),
+				explosion_add(player.x + RANDRANGE(-10, 10),
 					player.y + RANDRANGE(-10, 10), E_BIG_EXPLOSION);
 			if (player.shield == -99)
 				game_addDebris((int)player.x, (int)player.y, player.maxShield);
@@ -1415,7 +1415,7 @@ static void game_doDebris()
 			debris->x += debris->dx;
 			debris->y += debris->dy;
 
-			addExplosion(debris->x + RANDRANGE(-10, 10), debris->y + RANDRANGE(-10, 10), E_BIG_EXPLOSION);
+			explosion_add(debris->x + RANDRANGE(-10, 10), debris->y + RANDRANGE(-10, 10), E_BIG_EXPLOSION);
 		}
 
 		if (debris->thinktime < 1)
@@ -1430,6 +1430,59 @@ static void game_doDebris()
 			engine.debrisTail = debris;
 		}
 
+	}
+}
+
+/*
+Loops through active explosions and decrements their think time.
+If their thinktime is divisable by 5, then the frame is changed to
+the next one up (for example 0->1->2-3). When their think time is 0,
+the explosion is killed off.
+*/
+void game_doExplosions()
+{
+	object *prevExplosion = engine.explosionHead;
+	object *explosion = engine.explosionHead;
+	engine.explosionTail = engine.explosionHead;
+	
+	while (explosion->next != NULL)
+	{
+		explosion = explosion->next;
+
+		if (explosion->active)
+		{
+			explosion->x += engine.ssx + engine.smx;
+			explosion->y += engine.ssy + engine.smy;
+
+			blit(explosion->image[0], (int)explosion->x, (int)explosion->y);
+
+			if(rand() % 7 == 0)
+			{
+				explosion->thinktime -= 7;
+
+				if(explosion->thinktime < 1)
+				{
+					explosion->active = false;
+				}
+				else
+				{
+					explosion->face++;
+					explosion->image[0] = shape[explosion->face];
+				}
+			}
+		}
+
+		if (explosion->active)
+		{
+			prevExplosion = explosion;
+			engine.explosionTail = explosion;
+		}
+		else
+		{
+			prevExplosion->next = explosion->next;
+			delete explosion;
+			explosion = prevExplosion;
+		}
 	}
 }
 
@@ -1735,7 +1788,7 @@ int mainGameLoop()
 		game_doPlayer();
 		game_doCargo();
 		game_doDebris();
-		doExplosions();
+		game_doExplosions();
 		doInfo();
 
 		WRAP_ADD(engine.eventTimer, -1, 0, 60);

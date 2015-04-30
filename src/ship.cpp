@@ -155,7 +155,7 @@ void ship_fireRay(object *ship)
 				}
 				player.shield--;
 
-				addExplosion(player.x, player.y, E_SMALL_EXPLOSION);
+				explosion_add(player.x, player.y, E_SMALL_EXPLOSION);
 				audio_playSound(SFX_HIT, player.x);
 				if (player.shield < 1)
 				{

@@ -23,6 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 extern Game currentGame;
 
 extern void newGame();
+void game_doExplosions();
 extern int mainGameLoop();
 
 #endif

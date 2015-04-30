@@ -213,7 +213,7 @@ void collectable_explode(collectables *collectable)
 		audio_playSound(SFX_EXPLOSION, collectable->x);
 
 	for (int i = 0 ; i < 10 ; i++)
-		addExplosion(collectable->x + rand() % 25 - rand() % 25,
+		explosion_add(collectable->x + rand() % 25 - rand() % 25,
 			collectable->y + rand() % 25 - rand() % 25, E_BIG_EXPLOSION);
 
 	player_checkShockDamage(collectable->x, collectable->y);

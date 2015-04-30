@@ -25,7 +25,7 @@ The "type" will actually be used as an explosion frame check.
 All explosion types have 4 images. The "thinktime" will be used
 to change frames on a 21, 14, 7 basis.
 */
-void addExplosion(float x, float y, int type)
+void explosion_add(float x, float y, int type)
 {
 	object *explosion = new object;
 
@@ -45,7 +45,7 @@ void addExplosion(float x, float y, int type)
 * This very simply just adds a tiny explosion at the coordinate specified.
 * It creates a small engine like effect.
 */
-void addEngine(object *craft)
+void explosion_addEngine(object *craft)
 {
 	if (rand() % 2 == 0)
 		return;
@@ -54,65 +54,5 @@ void addEngine(object *craft)
 	float y = craft->y + craft->engineY;
 
 	y += RANDRANGE(-3, 3);
-	addExplosion(x, y, E_TINY_EXPLOSION);
+	explosion_add(x, y, E_TINY_EXPLOSION);
 }
-
-static bool isOnScreen(int x, int y, int w, int h)
-{
-	return (x + w > 0) && (x < 800) && (y + h > 0) && (y < 600);
-}
-
-/*
-Loops through active explosions and decrements their think time.
-If their thinktime is divisable by 5, then the frame is changed to
-the next one up (for example 0->1->2-3). When their think time is 0,
-the explosion is killed off.
-*/
-void doExplosions()
-{
-	object *prevExplosion = engine.explosionHead;
-	object *explosion = engine.explosionHead;
-	engine.explosionTail = engine.explosionHead;
-	
-	while (explosion->next != NULL)
-	{
-		explosion = explosion->next;
-
-		if (explosion->active)
-		{
-			explosion->x += engine.ssx + engine.smx;
-			explosion->y += engine.ssy + engine.smy;
-	
-			if (isOnScreen((int)explosion->x, (int)explosion->y, explosion->image[0]->w, explosion->image[0]->h))
-				blit(explosion->image[0], (int)explosion->x, (int)explosion->y);
-
-			if(rand() % 7 == 0)
-			{
-				explosion->thinktime -= 7;
-
-				if(explosion->thinktime < 1)
-				{
-					explosion->active = false;
-				}
-				else
-				{
-					explosion->face++;
-					explosion->image[0] = shape[explosion->face];
-				}
-			}
-		}
-
-		if (explosion->active)
-		{
-			prevExplosion = explosion;
-			engine.explosionTail = explosion;
-		}
-		else
-		{
-			prevExplosion->next = explosion->next;
-			delete explosion;
-			explosion = prevExplosion;
-		}
-	}
-}
-

@@ -244,13 +244,13 @@ void doCutscene(int scene)
 		unBuffer();
 		getPlayerInput();
 		doStarfield();
-		doExplosions();
+		game_doExplosions();
 
 		for (int i = 0 ; i < 15 ; i++)
 		{
 			if (aliens[i].active)
 			{
-				addEngine(&aliens[i]);
+				explosion_addEngine(&aliens[i]);
 				if (scene == 0 && i > 0 && (timer % 15) == i) {
 					aliens[i].dx += (drand48() - 0.5) * 0.1;
 					aliens[i].dy += (drand48() - 0.5) * 0.1;
