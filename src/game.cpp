@@ -203,6 +203,9 @@ static void game_doCollectables()
 				switch(collectable->type)
 				{
 					case P_CASH:
+						if (currentGame.difficulty == DIFFICULTY_ORIGINAL)
+							collectable->value *= 2;
+
 						currentGame.cash += collectable->value;
 						currentGame.cashEarned += collectable->value;
 						sprintf(temp, "Got $%d ", collectable->value);
