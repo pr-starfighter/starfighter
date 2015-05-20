@@ -19,9 +19,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-globalEngineVariables engine;
+Engine engine;
 
-void defineGlobals()
+void engine_init()
 {
 	engine.musicVolume = 100;
 	engine.useAudio = true;

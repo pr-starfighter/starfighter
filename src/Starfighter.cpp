@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 	if (chdir(DATADIR) == -1)
 		printf("Warning: failed to change directory to \"%s\"\n", DATADIR);
 
-	defineGlobals(); // Must do this first!
+	engine_init(); // Must do this first!
 
 	cheatAttempt = false;
 	cheatCount = 0;

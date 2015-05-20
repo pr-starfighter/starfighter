@@ -240,7 +240,7 @@ enum keys {
 	KEY_LAST
 };
 
-struct globalEngineVariables {
+struct Engine {
 
 	SDL_Event event;
 	int done;
