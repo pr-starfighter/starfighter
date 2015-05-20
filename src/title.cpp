@@ -643,7 +643,7 @@ void gameover()
 	{
 		getPlayerInput();
 
-		if ((engine.keyState[KEY_FIRE] || engine.keyState[KEY_ALTFIRE]))
+		if (engine.keyState[KEY_FIRE] || engine.keyState[KEY_ALTFIRE])
 			break;
 
 		updateScreen();
@@ -705,6 +705,8 @@ void doCredits()
 	engine.done = 0;
 
 	engine.keyState[KEY_ESCAPE] = 0;
+	engine.keyState[KEY_FIRE] = 0;
+	engine.keyState[KEY_ALTFIRE] = 0;
 	flushInput();
 
 	while (true)
@@ -713,7 +715,8 @@ void doCredits()
 		unBuffer();
 
 		getPlayerInput();
-		if (engine.keyState[KEY_ESCAPE])
+		if (engine.keyState[KEY_ESCAPE] || engine.keyState[KEY_FIRE] ||
+				engine.keyState[KEY_ALTFIRE])
 			break;
 
 		float speed = 0.5;
