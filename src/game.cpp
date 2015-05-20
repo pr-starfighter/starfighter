@@ -1234,64 +1234,74 @@ static void game_doPlayer()
 
 			if (engine.done == 0)
 			{
-				if (xmoved)
+				if ((currentGame.difficulty != DIFFICULTY_ORIGINAL) ||
+					((currentGame.area != MISN_ELLESH) &&
+						(currentGame.area != MISN_MARS)))
 				{
-					if (player.x < xViewBorder)
+					if (xmoved)
 					{
-						engine.smx += xViewBorder - player.x;
-						player.x = xViewBorder;
+						if (player.x < xViewBorder)
+						{
+							engine.smx += xViewBorder - player.x;
+							player.x = xViewBorder;
+						}
+						else if (player.x > screen->w - xViewBorder)
+						{
+							engine.smx += (screen->w - xViewBorder) - player.x;
+							player.x = screen->w - xViewBorder;
+						}
 					}
-					else if (player.x > screen->w - xViewBorder)
+					else if (currentGame.difficulty != DIFFICULTY_ORIGINAL)
 					{
-						engine.smx += (screen->w - xViewBorder) - player.x;
-						player.x = screen->w - xViewBorder;
+						cd = player.x - screen->w / 2;
+						if (cd < 0)
+						{
+							cc = MAX(cd / 10, MAX(0, engine.ssx) - cameraMaxSpeed);
+							player.x -= cc;
+							engine.smx -= cc;
+						}
+						else if (cd > 0)
+						{
+							cc = MIN(cd / 10, cameraMaxSpeed + MIN(0, engine.ssx));
+							player.x -= cc;
+							engine.smx -= cc;
+						}
 					}
-				}
-				else if (currentGame.difficulty != DIFFICULTY_ORIGINAL)
-				{
-					cd = player.x - screen->w / 2;
-					if (cd < 0)
-					{
-						cc = MAX(cd / 10, MAX(0, engine.ssx) - cameraMaxSpeed);
-						player.x -= cc;
-						engine.smx -= cc;
-					}
-					else if (cd > 0)
-					{
-						cc = MIN(cd / 10, cameraMaxSpeed + MIN(0, engine.ssx));
-						player.x -= cc;
-						engine.smx -= cc;
-					}
-				}
 
-				if (ymoved)
-				{
-					if (player.y < yViewBorder)
+					if (ymoved)
 					{
-						engine.smy += yViewBorder - player.y;
-						player.y = yViewBorder;
+						if (player.y < yViewBorder)
+						{
+							engine.smy += yViewBorder - player.y;
+							player.y = yViewBorder;
+						}
+						else if (player.y > screen->h - yViewBorder)
+						{
+							engine.smy += (screen->h - yViewBorder) - player.y;
+							player.y = screen->h - yViewBorder;
+						}
 					}
-					else if (player.y > screen->h - yViewBorder)
+					else if (currentGame.difficulty != DIFFICULTY_ORIGINAL)
 					{
-						engine.smy += (screen->h - yViewBorder) - player.y;
-						player.y = screen->h - yViewBorder;
+						cd = player.y - screen->h / 2;
+						if (cd < 0)
+						{
+							cc = MAX(cd / 10, MAX(0, engine.ssy) - cameraMaxSpeed);
+							player.y -= cc;
+							engine.smy -= cc;
+						}
+						else if (cd > 0)
+						{
+							cc = MIN(cd / 10, cameraMaxSpeed + MIN(0, engine.ssy));
+							player.y -= cc;
+							engine.smy -= cc;
+						}
 					}
 				}
-				else if (currentGame.difficulty != DIFFICULTY_ORIGINAL)
+				else
 				{
-					cd = player.y - screen->h / 2;
-					if (cd < 0)
-					{
-						cc = MAX(cd / 10, MAX(0, engine.ssy) - cameraMaxSpeed);
-						player.y -= cc;
-						engine.smy -= cc;
-					}
-					else if (cd > 0)
-					{
-						cc = MIN(cd / 10, cameraMaxSpeed + MIN(0, engine.ssy));
-						player.y -= cc;
-						engine.smy -= cc;
-					}
+					LIMIT(player.x, xViewBorder, screen->w - xViewBorder);
+					LIMIT(player.y, yViewBorder, screen->h - yViewBorder);
 				}
 			}
 
