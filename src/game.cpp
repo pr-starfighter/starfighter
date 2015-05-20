@@ -1110,7 +1110,10 @@ static void game_doPlayer()
 					if (player.ammo[1] < 100)
 					{
 						ship_fireBullet(&player, 1);
-						player.ammo[1] += 2;
+
+						if (!engine.cheatAmmo)
+							player.ammo[1] += 2;
+
 						if (player.ammo[1] >= 100)
 						{
 							player.ammo[1] = 200;
@@ -1128,6 +1131,11 @@ static void game_doPlayer()
 				{
 					if (!player_chargerFired)
 					{
+						// With ammo cheat, cause the charge cannon to
+						// fire at full blast immediately.
+						if (engine.cheatAmmo)
+							player.ammo[1] = 200;
+
 						if (currentGame.difficulty == DIFFICULTY_ORIGINAL)
 						{
 							LIMIT_ADD(player.ammo[1], 1, 0, 200);
