@@ -250,11 +250,6 @@ void getPlayerInput()
 						engine.keyState[KEY_RIGHT] = prevjoyright = joyright;
 				}
 				break;
-
-			case SDL_WINDOWEVENT:
-				if(engine.event.window.event == SDL_WINDOWEVENT_FOCUS_LOST)
-					engine.paused = 1;
-				break;
 		}
 
 		if (engine.keyState[KEY_FULLSCREEN])
