@@ -153,7 +153,7 @@ void audio_playRandomTrack()
 		"music/frozen_jam.ogg", "music/sound_and_silence.ogg"
 	};
 
-	switch(currentGame.area)
+	switch(game.area)
 	{
 		case MISN_START:
 			audio_playMusic("music/railjet_short.ogg", -1);

@@ -44,7 +44,7 @@ void loadGameGraphics()
 	shipShape[0] = loadImage("gfx/firefly1.png");
 	shipShape[1] = loadImage("gfx/firefly2.png");
 
-	switch(currentGame.system)
+	switch(game.system)
 	{
 		case 0:
 			strcpy(string, "data/resources_spirit.dat");
@@ -136,7 +136,7 @@ void loadGameGraphics()
 
 	fclose(fp);
 
-	loadBackground(systemBackground[currentGame.system]);
+	loadBackground(systemBackground[game.system]);
 
 	for (int i = 0 ; i < CD_MAX ; i++)
 	{

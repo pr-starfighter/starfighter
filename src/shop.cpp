@@ -65,78 +65,78 @@ static void drawSecondaryWeaponSurface()
 	if ((player.weaponType[1] != W_LASER) &&
 		(player.weaponType[1] != W_CHARGER) && (player.weaponType[1] != W_NONE))
 	{
-		sprintf(description, "Capacity : %d", currentGame.maxRocketAmmo);
+		sprintf(description, "Capacity : %d", game.maxRocketAmmo);
 		drawString(description, 10, 37, FONT_WHITE, shopSurface[2]);
 	}
 }
 
 static void adjustShopPrices()
 {
-	if (currentGame.difficulty == DIFFICULTY_ORIGINAL)
+	if (game.difficulty == DIFFICULTY_ORIGINAL)
 	{
 		shopItems[SHOP_PLASMA_MAX_OUTPUT].price = (500 *
-			currentGame.maxPlasmaOutput);
+			game.maxPlasmaOutput);
 		shopItems[SHOP_PLASMA_MAX_DAMAGE].price = (500 *
-			currentGame.maxPlasmaDamage);
+			game.maxPlasmaDamage);
 		shopItems[SHOP_PLASMA_MAX_RATE].price = (500 *
-			(currentGame.maxPlasmaRate * 2 - 1));
+			(game.maxPlasmaRate * 2 - 1));
 
 		shopItems[SHOP_PLASMA_MIN_OUTPUT].price = (2000 *
-			currentGame.minPlasmaOutput);
+			game.minPlasmaOutput);
 		shopItems[SHOP_PLASMA_MIN_DAMAGE].price = (2000 *
-			currentGame.minPlasmaDamage);
+			game.minPlasmaDamage);
 		shopItems[SHOP_PLASMA_MIN_RATE].price = (2000 *
-			(currentGame.minPlasmaRate * 2 - 1));
+			(game.minPlasmaRate * 2 - 1));
 	}
 	else
 	{
 		shopItems[SHOP_PLASMA_MAX_OUTPUT].price = (1000 *
-			(currentGame.maxPlasmaOutput + 1));
+			(game.maxPlasmaOutput + 1));
 		shopItems[SHOP_PLASMA_MAX_DAMAGE].price = (1000 *
-			(currentGame.maxPlasmaDamage + 1));
+			(game.maxPlasmaDamage + 1));
 		shopItems[SHOP_PLASMA_MAX_RATE].price = (1000 *
-			(currentGame.maxPlasmaRate + 1));
+			(game.maxPlasmaRate + 1));
 
 		shopItems[SHOP_PLASMA_MIN_OUTPUT].price = (1500 *
-			(currentGame.minPlasmaOutput + 1));
+			(game.minPlasmaOutput + 1));
 		shopItems[SHOP_PLASMA_MIN_DAMAGE].price = (1500 *
-			(currentGame.minPlasmaDamage + 1));
+			(game.minPlasmaDamage + 1));
 		shopItems[SHOP_PLASMA_MIN_RATE].price = (1500 *
-			(currentGame.minPlasmaRate + 1));
+			(game.minPlasmaRate + 1));
 	}
 
-	if (currentGame.maxPlasmaOutput <= currentGame.minPlasmaOutput)
+	if (game.maxPlasmaOutput <= game.minPlasmaOutput)
 		shopItems[SHOP_PLASMA_MIN_OUTPUT].price += shopItems[SHOP_PLASMA_MAX_OUTPUT].price;
-	if (currentGame.maxPlasmaDamage <= currentGame.minPlasmaDamage)
+	if (game.maxPlasmaDamage <= game.minPlasmaDamage)
 		shopItems[SHOP_PLASMA_MIN_DAMAGE].price += shopItems[SHOP_PLASMA_MAX_DAMAGE].price;
-	if (currentGame.maxPlasmaRate <= currentGame.minPlasmaRate)
+	if (game.maxPlasmaRate <= game.minPlasmaRate)
 		shopItems[SHOP_PLASMA_MIN_RATE].price += shopItems[SHOP_PLASMA_MAX_RATE].price;
 
-	shopItems[SHOP_PLASMA_MAX_AMMO].price = (10 * (currentGame.maxPlasmaAmmo - 75));
-	shopItems[SHOP_ROCKET_MAX_AMMO].price = (25 * currentGame.maxRocketAmmo);
+	shopItems[SHOP_PLASMA_MAX_AMMO].price = (10 * (game.maxPlasmaAmmo - 75));
+	shopItems[SHOP_ROCKET_MAX_AMMO].price = (25 * game.maxRocketAmmo);
 	
-	if (currentGame.maxPlasmaOutput >= currentGame.maxPlasmaOutputLimit)
+	if (game.maxPlasmaOutput >= game.maxPlasmaOutputLimit)
 		shopItems[SHOP_PLASMA_MAX_OUTPUT].price = 0;
 
-	if (currentGame.maxPlasmaDamage >= currentGame.maxPlasmaDamageLimit)
+	if (game.maxPlasmaDamage >= game.maxPlasmaDamageLimit)
 		shopItems[SHOP_PLASMA_MAX_DAMAGE].price = 0;
 
-	if (currentGame.maxPlasmaRate >= currentGame.maxPlasmaRateLimit)
+	if (game.maxPlasmaRate >= game.maxPlasmaRateLimit)
 		shopItems[SHOP_PLASMA_MAX_RATE].price = 0;
 		
-	if (currentGame.minPlasmaOutput >= currentGame.minPlasmaOutputLimit)
+	if (game.minPlasmaOutput >= game.minPlasmaOutputLimit)
 		shopItems[SHOP_PLASMA_MIN_OUTPUT].price = 0;
 
-	if (currentGame.minPlasmaDamage >= currentGame.minPlasmaDamageLimit)
+	if (game.minPlasmaDamage >= game.minPlasmaDamageLimit)
 		shopItems[SHOP_PLASMA_MIN_DAMAGE].price = 0;
 
-	if (currentGame.minPlasmaRate >= currentGame.minPlasmaRateLimit)
+	if (game.minPlasmaRate >= game.minPlasmaRateLimit)
 		shopItems[SHOP_PLASMA_MIN_RATE].price = 0;
 
-	if (currentGame.maxPlasmaAmmo >= currentGame.maxPlasmaAmmoLimit)
+	if (game.maxPlasmaAmmo >= game.maxPlasmaAmmoLimit)
 		shopItems[SHOP_PLASMA_MAX_AMMO].price = 0;
 
-	if (currentGame.maxRocketAmmo >= currentGame.maxRocketAmmoLimit)
+	if (game.maxRocketAmmo >= game.maxRocketAmmoLimit)
 		shopItems[SHOP_ROCKET_MAX_AMMO].price = 0;
 }
 
@@ -200,26 +200,26 @@ static void drawShop()
 	strcpy(description, "");
 
 	drawString("Primary Weapon", 10, 3, FONT_WHITE, shopSurface[0]);
-	sprintf(description, "Plasma Cannons : %d", currentGame.minPlasmaOutput);
+	sprintf(description, "Plasma Cannons : %d", game.minPlasmaOutput);
 	drawString(description, 10, 22, FONT_WHITE, shopSurface[0]);
 	sprintf(description, "Plasma Power   : Stage %d",
-		currentGame.minPlasmaDamage);
+		game.minPlasmaDamage);
 	drawString(description, 10, 37, FONT_WHITE, shopSurface[0]);
 	sprintf(description, "Cooler         : Stage %d",
-		currentGame.minPlasmaRate);
+		game.minPlasmaRate);
 	drawString(description, 10, 52, FONT_WHITE, shopSurface[0]);
 
 	drawString("Powerup Weapon", 10, 3, FONT_WHITE, shopSurface[1]);
 	sprintf(description, "Plasma Output    : Stage %d",
-		currentGame.maxPlasmaOutput);
+		game.maxPlasmaOutput);
 	drawString(description, 10, 22, FONT_WHITE, shopSurface[1]);
 	sprintf(description, "Plasma Condensor : Stage %d",
-		currentGame.maxPlasmaDamage);
+		game.maxPlasmaDamage);
 	drawString(description, 10, 37, FONT_WHITE, shopSurface[1]);
 	sprintf(description, "Liquid Nitrogen  : Stage %d",
-		currentGame.maxPlasmaRate);
+		game.maxPlasmaRate);
 	drawString(description, 10, 52, FONT_WHITE, shopSurface[1]);
-	sprintf(description, "Plasma Capacity  : %d", currentGame.maxPlasmaAmmo);
+	sprintf(description, "Plasma Capacity  : %d", game.maxPlasmaAmmo);
 	drawString(description, 10, 67, FONT_WHITE, shopSurface[1]);
 
 	drawSecondaryWeaponSurface();
@@ -237,11 +237,11 @@ static void drawShop()
 
 	signed char icons = MAX_SHOPITEMS;
 
-	if (currentGame.system == 0)
+	if (game.system == 0)
 		icons = SHOP_DOUBLE_ROCKETS + 1;
-	else if (currentGame.system == 1)
+	else if (game.system == 1)
 		icons = SHOP_LASER + 1;
-	else if (currentGame.system == 2)
+	else if (game.system == 2)
 		icons = SHOP_CHARGER + 1;
 
 	for (int i = 0 ; i < icons ; i++)
@@ -252,7 +252,7 @@ static void drawShop()
 
 	sprintf(description, "Shield Units : %d", player.maxShield);
 	drawString(description, 10, 4, FONT_WHITE, shopSurface[4]);
-	sprintf(description, "Cash : $%d", currentGame.cash);
+	sprintf(description, "Cash : $%d", game.cash);
 	drawString(description, 10, 80, FONT_WHITE, shopSurface[4]);
 	sprintf(description, "Plasma Cells : %.3d", player.ammo[0]);
 	drawString(description, 430, 4, FONT_WHITE, shopSurface[4]);
@@ -526,7 +526,7 @@ static void shop_sellSecondaryWeapon()
 
 static void buy(int i)
 {
-	if ((currentGame.cash < shopItems[i].price) && (!engine.cheatCash))
+	if ((game.cash < shopItems[i].price) && (!engine.cheatCash))
 	{
 		shopSelectedItem = -2;
 		drawShop();
@@ -536,39 +536,39 @@ static void buy(int i)
 	switch (i)
 	{
 		case SHOP_PLASMA_MAX_OUTPUT:
-			if (currentGame.maxPlasmaOutput >= currentGame.maxPlasmaOutputLimit)
+			if (game.maxPlasmaOutput >= game.maxPlasmaOutputLimit)
 			{
 				shopSelectedItem = -3;
 				return;
 			}
-			currentGame.maxPlasmaOutput++;
+			game.maxPlasmaOutput++;
 			break;
 
 		case SHOP_PLASMA_MAX_DAMAGE:
-			if (currentGame.maxPlasmaDamage >= currentGame.maxPlasmaDamageLimit)
+			if (game.maxPlasmaDamage >= game.maxPlasmaDamageLimit)
 			{
 				shopSelectedItem = -3;
 				return;
 			}
-			currentGame.maxPlasmaDamage++;
+			game.maxPlasmaDamage++;
 			break;
 
 		case SHOP_PLASMA_MAX_RATE:
-			if (currentGame.maxPlasmaRate >= currentGame.maxPlasmaRateLimit)
+			if (game.maxPlasmaRate >= game.maxPlasmaRateLimit)
 			{
 				shopSelectedItem = -3;
 				return;
 			}
-			currentGame.maxPlasmaRate++;
+			game.maxPlasmaRate++;
 			break;
 
 		case SHOP_PLASMA_AMMO:
-			if (player.ammo[0] >= currentGame.maxPlasmaAmmo)
+			if (player.ammo[0] >= game.maxPlasmaAmmo)
 			{
 				shopSelectedItem = -4;
 				return;
 			}
-			LIMIT_ADD(player.ammo[0], 10, 0, currentGame.maxPlasmaAmmo);
+			LIMIT_ADD(player.ammo[0], 10, 0, game.maxPlasmaAmmo);
 			break;
 
 		case SHOP_ROCKET_AMMO:
@@ -578,7 +578,7 @@ static void buy(int i)
 				shopSelectedItem = -7;
 				return;
 			}
-			if (player.ammo[1] == currentGame.maxRocketAmmo)
+			if (player.ammo[1] == game.maxRocketAmmo)
 			{
 				shopSelectedItem = -4;
 				return;
@@ -605,45 +605,45 @@ static void buy(int i)
 			break;
 
 		case SHOP_PLASMA_MIN_OUTPUT:
-			if (currentGame.minPlasmaOutput >= currentGame.minPlasmaOutputLimit)
+			if (game.minPlasmaOutput >= game.minPlasmaOutputLimit)
 			{
 				shopSelectedItem = -3;
 				return;
 			}
-			currentGame.minPlasmaOutput++;
-			if (currentGame.maxPlasmaOutput < currentGame.minPlasmaOutput)
-				currentGame.maxPlasmaOutput = currentGame.minPlasmaOutput;
+			game.minPlasmaOutput++;
+			if (game.maxPlasmaOutput < game.minPlasmaOutput)
+				game.maxPlasmaOutput = game.minPlasmaOutput;
 			break;
 
 		case SHOP_PLASMA_MIN_DAMAGE:
-			if (currentGame.minPlasmaDamage >= currentGame.minPlasmaDamageLimit)
+			if (game.minPlasmaDamage >= game.minPlasmaDamageLimit)
 			{
 				shopSelectedItem = -3;
 				return;
 			}
-			currentGame.minPlasmaDamage++;
-			if (currentGame.maxPlasmaDamage < currentGame.minPlasmaDamage)
-				currentGame.maxPlasmaDamage = currentGame.minPlasmaDamage;
+			game.minPlasmaDamage++;
+			if (game.maxPlasmaDamage < game.minPlasmaDamage)
+				game.maxPlasmaDamage = game.minPlasmaDamage;
 			break;
 
 		case SHOP_PLASMA_MIN_RATE:
-			if (currentGame.minPlasmaRate >= currentGame.minPlasmaRateLimit)
+			if (game.minPlasmaRate >= game.minPlasmaRateLimit)
 			{
 				shopSelectedItem = -3;
 				return;
 			}
-			currentGame.minPlasmaRate++;
-			if (currentGame.maxPlasmaRate < currentGame.minPlasmaRate)
-				currentGame.maxPlasmaRate = currentGame.minPlasmaRate;
+			game.minPlasmaRate++;
+			if (game.maxPlasmaRate < game.minPlasmaRate)
+				game.maxPlasmaRate = game.minPlasmaRate;
 			break;
 
 		case SHOP_PLASMA_MAX_AMMO:
-			if (currentGame.maxPlasmaAmmo >= currentGame.maxPlasmaAmmoLimit)
+			if (game.maxPlasmaAmmo >= game.maxPlasmaAmmoLimit)
 			{
 				shopSelectedItem = -3;
 				return;
 			}
-			currentGame.maxPlasmaAmmo += 25;
+			game.maxPlasmaAmmo += 25;
 			break;
 
 		case SHOP_ROCKET_MAX_AMMO:
@@ -654,29 +654,29 @@ static void buy(int i)
 				return;
 			}
 			if ((player.weaponType[1] == W_HOMING_MISSILE) &&
-				(currentGame.maxRocketAmmo >= maxHoming))
+				(game.maxRocketAmmo >= maxHoming))
 			{
 				shopSelectedItem = -9;
 				return;
 			}
 			if ((player.weaponType[1] == W_DOUBLE_HOMING_MISSILES) &&
-				(currentGame.maxRocketAmmo >= maxDoubleHoming))
+				(game.maxRocketAmmo >= maxDoubleHoming))
 			{
 				shopSelectedItem = -9;
 				return;
 			}
 			if ((player.weaponType[1] == W_MICRO_HOMING_MISSILES) &&
-				(currentGame.maxRocketAmmo >= maxMicroHoming))
+				(game.maxRocketAmmo >= maxMicroHoming))
 			{
 				shopSelectedItem = -9;
 				return;
 			}
-			if (currentGame.maxRocketAmmo >= currentGame.maxRocketAmmoLimit)
+			if (game.maxRocketAmmo >= game.maxRocketAmmoLimit)
 			{
 				shopSelectedItem = -3;
 				return;
 			}
-			currentGame.maxRocketAmmo += 5;
+			game.maxRocketAmmo += 5;
 			break;
 
 		case SHOP_DOUBLE_ROCKETS:
@@ -687,7 +687,7 @@ static void buy(int i)
 			}
 			shop_sellSecondaryWeapon();
 			player.weaponType[1] = W_DOUBLE_ROCKETS;
-			LIMIT(currentGame.maxRocketAmmo, 5, 50);
+			LIMIT(game.maxRocketAmmo, 5, 50);
 			shopSelectedItem = -1;
 			break;
 
@@ -699,7 +699,7 @@ static void buy(int i)
 			}
 			shop_sellSecondaryWeapon();
 			player.weaponType[1] = W_MICRO_ROCKETS;
-			LIMIT(currentGame.maxRocketAmmo, 5, 50);
+			LIMIT(game.maxRocketAmmo, 5, 50);
 			shopSelectedItem = -1;
 			break;
 
@@ -712,7 +712,7 @@ static void buy(int i)
 			shop_sellSecondaryWeapon();
 			player.weaponType[1] = W_LASER;
 
-			while (currentGame.maxRocketAmmo > 5)
+			while (game.maxRocketAmmo > 5)
 				sell(SHOP_ROCKET_MAX_AMMO);
 			while (player.ammo[1] > 0)
 				sell(SHOP_ROCKET_AMMO);
@@ -729,10 +729,10 @@ static void buy(int i)
 			shop_sellSecondaryWeapon();
 			player.weaponType[1] = W_HOMING_MISSILE;
 
-			while (currentGame.maxRocketAmmo > maxHoming)
+			while (game.maxRocketAmmo > maxHoming)
 				sell(SHOP_ROCKET_MAX_AMMO);
 
-			LIMIT(currentGame.maxRocketAmmo, 5, maxHoming);
+			LIMIT(game.maxRocketAmmo, 5, maxHoming);
 			shopSelectedItem = -1;
 			break;
 
@@ -745,7 +745,7 @@ static void buy(int i)
 			shop_sellSecondaryWeapon();
 			player.weaponType[1] = W_CHARGER;
 
-			while (currentGame.maxRocketAmmo > 5)
+			while (game.maxRocketAmmo > 5)
 				sell(SHOP_ROCKET_MAX_AMMO);
 			while (player.ammo[1] > 0)
 				sell(SHOP_ROCKET_AMMO);
@@ -762,10 +762,10 @@ static void buy(int i)
 			shop_sellSecondaryWeapon();
 			player.weaponType[1] = W_DOUBLE_HOMING_MISSILES;
 
-			while (currentGame.maxRocketAmmo > maxDoubleHoming)
+			while (game.maxRocketAmmo > maxDoubleHoming)
 				sell(SHOP_ROCKET_MAX_AMMO);
 
-			LIMIT(currentGame.maxRocketAmmo, 5, maxDoubleHoming);
+			LIMIT(game.maxRocketAmmo, 5, maxDoubleHoming);
 			shopSelectedItem = -1;
 			break;
 
@@ -778,16 +778,16 @@ static void buy(int i)
 			shop_sellSecondaryWeapon();
 			player.weaponType[1] = W_MICRO_HOMING_MISSILES;
 
-			while (currentGame.maxRocketAmmo > maxMicroHoming)
+			while (game.maxRocketAmmo > maxMicroHoming)
 				sell(SHOP_ROCKET_MAX_AMMO);
 
-			LIMIT(currentGame.maxRocketAmmo, 5, maxMicroHoming);
+			LIMIT(game.maxRocketAmmo, 5, maxMicroHoming);
 			shopSelectedItem = -1;
 			break;
 	}
 
 	if (!engine.cheatCash)
-		currentGame.cash -= shopItems[i].price;
+		game.cash -= shopItems[i].price;
 	saveGame(0);
 }
 
@@ -796,87 +796,87 @@ static void sell(int i)
 	switch (i)
 	{
 		case SHOP_PLASMA_MAX_OUTPUT:
-			if (currentGame.maxPlasmaOutput <= 1)
+			if (game.maxPlasmaOutput <= 1)
 			{
 				shopSelectedItem = -5;
 				return;
 			}
 
-			while (currentGame.minPlasmaOutput >= currentGame.maxPlasmaOutput)
+			while (game.minPlasmaOutput >= game.maxPlasmaOutput)
 				sell(SHOP_PLASMA_MIN_OUTPUT);
 
-			currentGame.maxPlasmaOutput--;
-			if (weapon[W_PLAYER_WEAPON].ammo[0] <= currentGame.maxPlasmaOutput + 1)
+			game.maxPlasmaOutput--;
+			if (weapon[W_PLAYER_WEAPON].ammo[0] <= game.maxPlasmaOutput + 1)
 				weapon[W_PLAYER_WEAPON].ammo[0] = MIN(
 					weapon[W_PLAYER_WEAPON].ammo[0],
-					currentGame.maxPlasmaOutput);
+					game.maxPlasmaOutput);
 			break;
 
 		case SHOP_PLASMA_MAX_DAMAGE:
-			if (currentGame.maxPlasmaDamage <= 1)
+			if (game.maxPlasmaDamage <= 1)
 			{
 				shopSelectedItem = -5;
 				return;
 			}
 
-			while (currentGame.minPlasmaDamage >= currentGame.maxPlasmaDamage)
+			while (game.minPlasmaDamage >= game.maxPlasmaDamage)
 				sell(SHOP_PLASMA_MIN_DAMAGE);
 
-			currentGame.maxPlasmaDamage--;
-			if (weapon[W_PLAYER_WEAPON].damage <= currentGame.maxPlasmaDamage + 1)
+			game.maxPlasmaDamage--;
+			if (weapon[W_PLAYER_WEAPON].damage <= game.maxPlasmaDamage + 1)
 				weapon[W_PLAYER_WEAPON].damage = MIN(
 					weapon[W_PLAYER_WEAPON].damage,
-					currentGame.maxPlasmaDamage);
+					game.maxPlasmaDamage);
 			break;
 
 		case SHOP_PLASMA_MAX_RATE:
-			if (currentGame.maxPlasmaRate <= 1)
+			if (game.maxPlasmaRate <= 1)
 			{
 				shopSelectedItem = -5;
 				return;
 			}
 
-			while (currentGame.minPlasmaRate >= currentGame.maxPlasmaRate)
+			while (game.minPlasmaRate >= game.maxPlasmaRate)
 				sell(SHOP_PLASMA_MIN_RATE);
 
-			currentGame.maxPlasmaRate--;
-			if (weapon[W_PLAYER_WEAPON].reload[0] >= rate2reload[currentGame.maxPlasmaRate + 1])
+			game.maxPlasmaRate--;
+			if (weapon[W_PLAYER_WEAPON].reload[0] >= rate2reload[game.maxPlasmaRate + 1])
 				weapon[W_PLAYER_WEAPON].reload[0] = MAX(
 					weapon[W_PLAYER_WEAPON].reload[0],
-					rate2reload[currentGame.maxPlasmaRate]);
+					rate2reload[game.maxPlasmaRate]);
 			break;
 
 		case SHOP_PLASMA_MIN_OUTPUT:
-			if (currentGame.minPlasmaOutput <= 1)
+			if (game.minPlasmaOutput <= 1)
 			{
 				shopSelectedItem = -5;
 				return;
 			}
-			currentGame.minPlasmaOutput--;
+			game.minPlasmaOutput--;
 			if (player.ammo[0] <= 0)
-				weapon[W_PLAYER_WEAPON].ammo[0] = currentGame.minPlasmaOutput;
+				weapon[W_PLAYER_WEAPON].ammo[0] = game.minPlasmaOutput;
 			break;
 
 		case SHOP_PLASMA_MIN_DAMAGE:
-			if (currentGame.minPlasmaDamage <= 1)
+			if (game.minPlasmaDamage <= 1)
 			{
 				shopSelectedItem = -5;
 				return;
 			}
-			currentGame.minPlasmaDamage--;
+			game.minPlasmaDamage--;
 			if (player.ammo[0] <= 0)
-				weapon[W_PLAYER_WEAPON].damage = currentGame.minPlasmaDamage;
+				weapon[W_PLAYER_WEAPON].damage = game.minPlasmaDamage;
 			break;
 
 		case SHOP_PLASMA_MIN_RATE:
-			if (currentGame.minPlasmaRate <= 1)
+			if (game.minPlasmaRate <= 1)
 			{
 				shopSelectedItem = -5;
 				return;
 			}
-			currentGame.minPlasmaRate--;
+			game.minPlasmaRate--;
 			if (player.ammo[0] <= 0)
-				weapon[W_PLAYER_WEAPON].reload[0] = rate2reload[currentGame.minPlasmaRate];
+				weapon[W_PLAYER_WEAPON].reload[0] = rate2reload[game.minPlasmaRate];
 			break;
 
 		case SHOP_PLASMA_AMMO:
@@ -890,9 +890,9 @@ static void sell(int i)
 			else
 			{
 				player.ammo[0] = 0;
-				weapon[W_PLAYER_WEAPON].ammo[0] = currentGame.minPlasmaOutput;
-				weapon[W_PLAYER_WEAPON].damage = currentGame.minPlasmaDamage;
-				weapon[W_PLAYER_WEAPON].reload[0] = rate2reload[currentGame.minPlasmaRate];
+				weapon[W_PLAYER_WEAPON].ammo[0] = game.minPlasmaOutput;
+				weapon[W_PLAYER_WEAPON].damage = game.minPlasmaDamage;
+				weapon[W_PLAYER_WEAPON].reload[0] = rate2reload[game.minPlasmaRate];
 			}
 			break;
 
@@ -906,27 +906,27 @@ static void sell(int i)
 			break;
 
 		case SHOP_PLASMA_MAX_AMMO:
-			if (currentGame.maxPlasmaAmmo <= 100)
+			if (game.maxPlasmaAmmo <= 100)
 			{
 				shopSelectedItem = -1;
 				return;
 			}
-			currentGame.maxPlasmaAmmo -= 25;
+			game.maxPlasmaAmmo -= 25;
 
-			while (player.ammo[0] > currentGame.maxPlasmaAmmo)
+			while (player.ammo[0] > game.maxPlasmaAmmo)
 				sell(SHOP_PLASMA_AMMO);
 
 			break;
 
 		case SHOP_ROCKET_MAX_AMMO:
-			if (currentGame.maxRocketAmmo <= 5)
+			if (game.maxRocketAmmo <= 5)
 			{
 				shopSelectedItem = -1;
 				return;
 			}
-			currentGame.maxRocketAmmo -= 5;
+			game.maxRocketAmmo -= 5;
 
-			while (player.ammo[1] > currentGame.maxRocketAmmo)
+			while (player.ammo[1] > game.maxRocketAmmo)
 				sell(SHOP_ROCKET_AMMO);
 
 			break;
@@ -1005,7 +1005,7 @@ static void sell(int i)
 	}
 
 	adjustShopPrices();
-	currentGame.cash += shopItems[i].price;
+	game.cash += shopItems[i].price;
 	saveGame(0);
 }
 
@@ -1028,11 +1028,11 @@ void showShop()
 
 	signed char icons = MAX_SHOPITEMS;
 
-	if (currentGame.system == 0)
+	if (game.system == 0)
 		icons = SHOP_DOUBLE_ROCKETS + 1;
-	else if (currentGame.system == 1)
+	else if (game.system == 1)
 		icons = SHOP_LASER + 1;
-	else if (currentGame.system == 2)
+	else if (game.system == 2)
 		icons = SHOP_CHARGER + 1;
 
 	if ((engine.keyState[KEY_FIRE]))

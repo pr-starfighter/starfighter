@@ -67,27 +67,27 @@ void getKillMessage(object *ally)
 	if (ally == &aliens[ALIEN_PHOEBE])
 	{
 		strcpy(otherName, "Ursula");
-		kills = currentGame.wingMate1Kills;
-		difference = currentGame.wingMate1Kills - currentGame.wingMate2Kills;
-		if ((currentGame.wingMate1Kills > currentGame.wingMate2Kills) &&
-				(currentGame.wingMate1Kills > currentGame.totalKills))
+		kills = game.wingMate1Kills;
+		difference = game.wingMate1Kills - game.wingMate2Kills;
+		if ((game.wingMate1Kills > game.wingMate2Kills) &&
+				(game.wingMate1Kills > game.totalKills))
 			firstPlace = true;
 		faceToUse = FACE_PHOEBE;
 	}
 	else
 	{
 		strcpy(otherName, "Phoebe");
-		kills = currentGame.wingMate2Kills;
-		difference = currentGame.wingMate2Kills - currentGame.wingMate1Kills;
-		if ((currentGame.wingMate2Kills > currentGame.wingMate1Kills) &&
-				(currentGame.wingMate2Kills > currentGame.totalKills))
+		kills = game.wingMate2Kills;
+		difference = game.wingMate2Kills - game.wingMate1Kills;
+		if ((game.wingMate2Kills > game.wingMate1Kills) &&
+				(game.wingMate2Kills > game.totalKills))
 			firstPlace = true;
 		faceToUse = FACE_URSULA;
 	}
 
 	int r = rand() % 10;
 	
-	if (currentGame.hasWingMate2 == 0)
+	if (game.hasWingMate2 == 0)
 		r = rand() % 7;
 
 	switch(r)
@@ -139,7 +139,7 @@ const char *getKlineInsult()
 		"And now you're nothing but a DEAD hero."
 	};
 
-	if (currentGame.area != MISN_VENUS)
+	if (game.area != MISN_VENUS)
 		return (insult[rand() % 3]);
 	else
 		return (insult[3 + (rand() % 2)]);
@@ -162,12 +162,12 @@ void getPlayerDeathMessage()
 	int faceToUse = FACE_PHOEBE;
 	
 
-	if ((currentGame.area == MISN_URUSOR) || (currentGame.area == MISN_POSWIC) ||
-		(currentGame.area == MISN_EARTH))
+	if ((game.area == MISN_URUSOR) || (game.area == MISN_POSWIC) ||
+		(game.area == MISN_EARTH))
 	{
 		faceToUse = FACE_SID;
 	}
-	else if (currentGame.hasWingMate2)
+	else if (game.hasWingMate2)
 	{
 		if ((rand() % 2) == 0)
 			faceToUse = FACE_URSULA;

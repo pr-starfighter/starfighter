@@ -67,13 +67,13 @@ static void createDifficultyMenu()
 {
 	textSurface(TS_START_GAME, "START GAME", -1, 350, FONT_WHITE);
 
-	if (currentGame.difficulty == DIFFICULTY_EASY)
+	if (game.difficulty == DIFFICULTY_EASY)
 		textSurface(TS_DIFFICULTY, "DIFFICULTY - EASY", -1, 370, FONT_WHITE);
-	else if (currentGame.difficulty == DIFFICULTY_HARD)
+	else if (game.difficulty == DIFFICULTY_HARD)
 		textSurface(TS_DIFFICULTY, "DIFFICULTY - HARD", -1, 370, FONT_WHITE);
-	else if (currentGame.difficulty == DIFFICULTY_NIGHTMARE)
+	else if (game.difficulty == DIFFICULTY_NIGHTMARE)
 		textSurface(TS_DIFFICULTY, "DIFFICULTY - NIGHTMARE!", -1, 370, FONT_WHITE);
-	else if (currentGame.difficulty == DIFFICULTY_ORIGINAL)
+	else if (game.difficulty == DIFFICULTY_ORIGINAL)
 		textSurface(TS_DIFFICULTY, "DIFFICULTY - ORIGINAL", -1, 370, FONT_WHITE);
 	else
 		textSurface(TS_DIFFICULTY, "DIFFICULTY - NORMAL", -1, 370, FONT_WHITE);
@@ -170,7 +170,7 @@ This is the main title screen, with the stars whirling past and the
 */
 int doTitle()
 {
-	newGame();
+	game_init();
 
 	engine.gameSection = SECTION_TITLE;
 
@@ -179,8 +179,8 @@ int doTitle()
 	resetLists();
 	
 	// required to stop the title screen crashing
-	currentGame.system = 0;
-	currentGame.area = MISN_START;
+	game.system = 0;
+	game.area = MISN_START;
 
 	loadGameGraphics();
 
@@ -431,8 +431,8 @@ int doTitle()
 							engine.done = 1;
 						else if (selectedOption == 2)
 						{
-							currentGame.difficulty++;
-							currentGame.difficulty %= DIFFICULTY_MAX;
+							game.difficulty++;
+							game.difficulty %= DIFFICULTY_MAX;
 						}
 						else if (selectedOption == listLength)
 						{
@@ -528,13 +528,13 @@ int doTitle()
 
 	if (selectedOption == 1)
 	{
-		newGame();
+		game_init();
 		selectedOption = 2; // go straight to mission 0
 	}
 
 	if (selectedOption == 3)
 	{
-		newGame();
+		game_init();
 		selectedOption = loadGame(continueSaveSlot);
 	}
 

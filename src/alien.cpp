@@ -703,7 +703,7 @@ void aliens_init()
 	strcpy(string, "");
 	barrierSpeed = 1;
 
-	sprintf(string, "data/aliens%d.dat", currentGame.area);
+	sprintf(string, "data/aliens%d.dat", game.area);
 	fp = fopen(string, "rb");
 
 	if (fp != NULL)
@@ -735,9 +735,9 @@ void aliens_init()
 					showErrorAndExit(2, "");
 			}
 
-			if (currentGame.area == MISN_CERADSE)
+			if (game.area == MISN_CERADSE)
 				cargo_add(&aliens[index], P_CARGO);
-			else if (currentGame.area == MISN_NEROD)
+			else if (game.area == MISN_NEROD)
 				cargo_add(&aliens[index], P_PHOEBE);
 
 			if (index == ALIEN_KLINE)
@@ -770,17 +770,17 @@ void aliens_init()
 				barrierSpeed++;
 			}
 
-			if ((currentGame.area == MISN_POSWIC) &&
+			if ((game.area == MISN_POSWIC) &&
 				(aliens[index].classDef == CD_BOSS))
 			{
 				aliens[index].imageIndex[1] = 29;
 				aliens[index].flags |= FL_IMMORTAL;
 			}
 
-			if (currentGame.area == MISN_ELLESH)
+			if (game.area == MISN_ELLESH)
 				aliens[index].flags |= FL_HASMINIMUMSPEED;
 
-			if (currentGame.area == MISN_JUPITER)
+			if (game.area == MISN_JUPITER)
 			{
 				aliens[index].flags = FL_WEAPCO;
 				if (index == ALIEN_BOSS)
@@ -790,7 +790,7 @@ void aliens_init()
 
 		fclose(fp);
 
-		if (currentGame.area == MISN_MOEBO)
+		if (game.area == MISN_MOEBO)
 		{
 			aliens[ALIEN_BOSS].target = &player;
 			aliens[ALIEN_BOSS].x = -screen->w / 2;
@@ -806,8 +806,8 @@ void aliens_init()
 			aliens[ALIEN_BOSS_PART2].dx = -20;
 			aliens[ALIEN_BOSS_PART2].dy = 37;
 		}
-		else if ((currentGame.area == MISN_ELAMALE) ||
-			(currentGame.area == MISN_FELLON))
+		else if ((game.area == MISN_ELAMALE) ||
+			(game.area == MISN_FELLON))
 		{
 			aliens[ALIEN_BOSS].target = &player;
 			aliens[ALIEN_BOSS].x = -screen->w / 2;
@@ -833,7 +833,7 @@ void aliens_init()
 			aliens[ALIEN_BOSS_PART4].dx = -35;
 			aliens[ALIEN_BOSS_PART4].dy = 20;
 
-			if (currentGame.area == MISN_FELLON)
+			if (game.area == MISN_FELLON)
 			{
 				aliens[ALIEN_BOSS].AIType = AI_EVASIVE;
 
@@ -847,7 +847,7 @@ void aliens_init()
 				}
 			}
 		}
-		else if (currentGame.area == MISN_URANUS)
+		else if (game.area == MISN_URANUS)
 		{
 			aliens[ALIEN_BOSS].target = &player;
 			aliens[ALIEN_BOSS].x = -screen->w / 2;
@@ -866,8 +866,8 @@ bool alien_add()
 {
 	int index = alien_getFreeIndex();
 
-	if ((index == -1) || (currentGame.area == MISN_JUPITER) ||
-			(currentGame.area == MISN_VENUS))
+	if ((index == -1) || (game.area == MISN_JUPITER) ||
+			(game.area == MISN_VENUS))
 		return 0;
 
 	signed char *alienArray;
@@ -875,7 +875,7 @@ bool alien_add()
 
 	alienArray = new signed char[8];
 
-	switch(currentGame.area)
+	switch(game.area)
 	{
 		case MISN_START:
 		case MISN_HINSTAG:
@@ -952,7 +952,7 @@ bool alien_add()
 			alienArray[0] = CD_DUALFIGHTER;
 			alienArray[1] = CD_MISSILEBOAT;
 			alienArray[2] = CD_AIMFIGHTER;
-			if (currentGame.system == 2)
+			if (game.system == 2)
 			{
 				numberOfAliens = 4;
 				alienArray[3] = CD_PROTOFIGHTER;
@@ -966,11 +966,11 @@ bool alien_add()
 
 	signed char randEnemy = alienArray[rand() % numberOfAliens];
 
-	if ((currentGame.area != MISN_DORIM) &&
-		(currentGame.area != MISN_SIVEDI) &&
-		(currentGame.area != MISN_MARS))
+	if ((game.area != MISN_DORIM) &&
+		(game.area != MISN_SIVEDI) &&
+		(game.area != MISN_MARS))
 	{
-		if ((currentGame.system == 1) && (currentGame.area == MISN_INTERCEPTION))
+		if ((game.system == 1) && (game.area == MISN_INTERCEPTION))
 		{
 			if ((rand() % 5) == 0)
 				randEnemy = CD_SLAVETRANSPORT;
@@ -1018,7 +1018,7 @@ bool alien_add()
 
 	aliens[index].ammo[0] = 0;
 
-	if (currentGame.area == MISN_ELLESH)
+	if (game.area == MISN_ELLESH)
 		aliens[index].flags |= FL_HASMINIMUMSPEED;
 
 	return true;
@@ -1107,7 +1107,7 @@ void alien_addFriendly(int type)
 		aliens[type].classDef = CD_URSULA;
 
 	// For the sake of it being the final battle :)
-	if (currentGame.area == MISN_EARTH)
+	if (game.area == MISN_EARTH)
 		aliens[type].flags |= FL_IMMORTAL;
 }
 
@@ -1123,7 +1123,7 @@ bool alien_place(object *alien)
 	else
 		alien->y = RANDRANGE(-screen->h, 0);
 
-	if (currentGame.area == MISN_MARS)
+	if (game.area == MISN_MARS)
 	{
 		alien->x = screen->w + RANDRANGE(0, 400);
 		alien->y = RANDRANGE(-screen->h / 3, (4 * screen->h) / 3);
@@ -1261,7 +1261,7 @@ void alien_setKlineAI(object *alien)
 	// Weapon type change
 	if ((rand() % 3) == 0)
 	{
-		if (currentGame.area != MISN_VENUS)
+		if (game.area != MISN_VENUS)
 		{
 			alien->flags &= ~FL_AIMS;
 
@@ -1295,7 +1295,7 @@ void alien_setKlineAI(object *alien)
 		case 2:
 			// Kline only attacks then he is ready!
 			if ((!(alien->flags & FL_NOFIRE)) &&
-					(currentGame.area == MISN_MOEBO))
+					(game.area == MISN_MOEBO))
 				alien->flags |= FL_DROPMINES;
 			break;
 		case 3:
@@ -1333,14 +1333,14 @@ void alien_searchForTarget(object *alien)
 
 	// Tell Sid not to attack craft that are already disabled or can
 	// return fire. This will save him from messing about (unless we're on the last mission)
-	if ((alien->classDef == CD_SID) && (currentGame.area != MISN_EARTH))
+	if ((alien->classDef == CD_SID) && (game.area != MISN_EARTH))
 	{
 		if ((targetEnemy->flags & FL_DISABLED) || (!(targetEnemy->flags & FL_NOFIRE)))
 			return;
 	}
 
 	// Tell Phoebe and Ursula not to attack ships that cannot fire or are disabled (unless we're on the last mission)
-	if (currentGame.area != MISN_EARTH)
+	if (game.area != MISN_EARTH)
 	{
 		if ((alien->classDef == CD_PHOEBE) || (alien->classDef == CD_URSULA))
 		{
@@ -1548,12 +1548,12 @@ void alien_destroy(object *alien, object *attacker)
 	if (alien->flags & FL_FRIEND)
 	{
 		if (alien->classDef == CD_PHOEBE)
-			currentGame.wingMate1Ejects++;
+			game.wingMate1Ejects++;
 		else if (alien->classDef == CD_URSULA)
-			currentGame.wingMate2Ejects++;
+			game.wingMate2Ejects++;
 
 		// Phoebe cannot eject on the rescue mission
-		if (currentGame.area != MISN_NEROD)
+		if (game.area != MISN_NEROD)
 		{
 			if ((alien->classDef == CD_PHOEBE) || (alien->classDef == CD_URSULA))
 				setInfoLine(">> Ally has ejected! <<\n", FONT_RED);
@@ -1566,19 +1566,19 @@ void alien_destroy(object *alien, object *attacker)
 	{
 		if (attacker == &player)
 		{
-			currentGame.totalKills++;
+			game.totalKills++;
 		}
 		else if (attacker->classDef == CD_PHOEBE)
 		{
-			currentGame.wingMate1Kills++;
+			game.wingMate1Kills++;
 		}
 		else if (attacker->classDef == CD_URSULA)
 		{
-			currentGame.wingMate2Kills++;
+			game.wingMate2Kills++;
 		}
 		else
 		{
-			currentGame.totalOtherKills++;
+			game.totalOtherKills++;
 		}
 
 		if ((attacker->classDef == CD_PHOEBE) || (attacker->classDef == CD_URSULA))
@@ -1642,7 +1642,7 @@ void alien_hurt(object *alien, object *attacker, int damage, bool ion)
 
 	if (alien->classDef == CD_KLINE)
 	{
-		if (currentGame.area == MISN_ELAMALE)
+		if (game.area == MISN_ELAMALE)
 		{
 			if ((alien->shield <= alien->maxShield - 500) &&
 				!(alien->flags & FL_LEAVESECTOR))
@@ -1652,7 +1652,7 @@ void alien_hurt(object *alien, object *attacker, int damage, bool ion)
 				setRadioMessage(FACE_KLINE, "Seems I underestimated you, Bainfield. We'll meet again!", 1);
 			}
 		}
-		else if (currentGame.area == MISN_EARTH)
+		else if (game.area == MISN_EARTH)
 		{
 			if ((alien->shield <= alien->maxShield - 750) &&
 				!(alien->flags & FL_LEAVESECTOR))
@@ -1662,7 +1662,7 @@ void alien_hurt(object *alien, object *attacker, int damage, bool ion)
 				setRadioMessage(FACE_SID, "Chris, Kethlan is getting away!", 1);
 			}
 		}
-		else if (currentGame.area == MISN_VENUS)
+		else if (game.area == MISN_VENUS)
 		{
 			if (alien->shield + damage > 1500 &&
 					alien->shield <= 1500)

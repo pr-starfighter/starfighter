@@ -163,7 +163,7 @@ void doInfo()
 		blitText(30);
 	}
 
-	if (currentGame.area != MISN_INTERCEPTION)
+	if (game.area != MISN_INTERCEPTION)
 	{
 		blitText(9); // mission objectives
 		sprintf(text, "%d", (currentMission.remainingObjectives1 + currentMission.remainingObjectives2));
@@ -172,7 +172,7 @@ void doInfo()
 	}
 
 	blitText(8); // cash
-	sprintf(text, "%.6d", currentGame.cash);
+	sprintf(text, "%.6d", game.cash);
 	textSurface(38, text, 90, 21, FONT_WHITE);
 	blitText(38);
 
@@ -300,7 +300,7 @@ void doInfo()
 	}
 
 	// Do the target's remaining shield (if required)
-	if (currentGame.area != MISN_DORIM)
+	if (game.area != MISN_DORIM)
 	{
 		if ((engine.targetIndex > -1) && (aliens[engine.targetIndex].shield > 0) && (engine.targetIndex > 9))
 		{
@@ -334,11 +334,11 @@ void doInfo()
 	for (int i = 1 ; i <= 5 ; i++)
 	{
 		if (weapon[W_PLAYER_WEAPON].damage >= i) {
-			if(i <= currentGame.maxPlasmaDamage || (SDL_GetTicks() % 1000 > (unsigned)i * 100))
+			if(i <= game.maxPlasmaDamage || (SDL_GetTicks() % 1000 > (unsigned)i * 100))
 			{
 				SDL_FillRect(screen, &bar, green);
 			}
-		} else if (i <= currentGame.maxPlasmaDamage)
+		} else if (i <= game.maxPlasmaDamage)
 			SDL_FillRect(screen, &bar, darkGreen);
 		bar.x += 30;
 	}
@@ -354,12 +354,12 @@ void doInfo()
 	for (int i = 1 ; i <= 5 ; i++)
 	{
 		if (weapon[W_PLAYER_WEAPON].ammo[0] >= i) {
-			if(i <= currentGame.maxPlasmaOutput || (SDL_GetTicks() % 1000 > (unsigned)i * 100))
+			if(i <= game.maxPlasmaOutput || (SDL_GetTicks() % 1000 > (unsigned)i * 100))
 			{
 				SDL_FillRect(screen, &bar, yellow);
 			}
 		}
-		else if (i <= currentGame.maxPlasmaOutput)
+		else if (i <= game.maxPlasmaOutput)
 			SDL_FillRect(screen, &bar, darkYellow);
 		bar.x += 30;
 	}
@@ -374,12 +374,12 @@ void doInfo()
 	for (int i = 1 ; i <= 5 ; i++)
 	{
 		if (weapon[W_PLAYER_WEAPON].reload[0] <= rate2reload[i]) {
-			if(i <= currentGame.maxPlasmaRate || (SDL_GetTicks() % 1000 > (unsigned)i * 100))
+			if(i <= game.maxPlasmaRate || (SDL_GetTicks() % 1000 > (unsigned)i * 100))
 			{
 				SDL_FillRect(screen, &bar, blue);
 			}
 		}
-		else if (i <= currentGame.maxPlasmaRate)
+		else if (i <= game.maxPlasmaRate)
 			SDL_FillRect(screen, &bar, darkerBlue);
 		bar.x += 30;
 	}

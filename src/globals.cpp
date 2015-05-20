@@ -19,7 +19,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-devVariables dev;
 globalEngineVariables engine;
 
 void defineGlobals()
@@ -69,8 +68,4 @@ void defineGlobals()
 	engine.cheatShield = false;
 	engine.cheatAmmo = false;
 	engine.cheatCash = false;
-
-	// All Development Stuff...
-	dev.moveAliens = 1;
-	dev.fireAliens = 1;
 }

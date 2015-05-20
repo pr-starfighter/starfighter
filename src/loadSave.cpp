@@ -103,7 +103,7 @@ bool loadGame(int slot)
 	if (fp == NULL)
 		return false;
 
-	if (fread(&currentGame, sizeof(Game), 1, fp) != 1)
+	if (fread(&game, sizeof(Game), 1, fp) != 1)
 	{
 		printf("Save game error. The file was not of the expected format.\n");
 		fclose(fp);
@@ -112,18 +112,18 @@ bool loadGame(int slot)
 
 	fclose(fp);
 
-	if (currentGame.saveFormat < 2)
-		currentGame.difficulty = DIFFICULTY_NORMAL;
+	if (game.saveFormat < 2)
+		game.difficulty = DIFFICULTY_NORMAL;
 
-	weapon[W_PLAYER_WEAPON] = currentGame.playerWeapon;
-	player = currentGame.thePlayer;
+	weapon[W_PLAYER_WEAPON] = game.playerWeapon;
+	player = game.thePlayer;
 
 	// Re-init all the planets in this system...
-	initPlanetMissions(currentGame.system);
+	initPlanetMissions(game.system);
 
 	// ... and then override with completition status
 	for (int i = 0 ; i < 10 ; i++)
-		systemPlanet[i].missionCompleted = currentGame.missionCompleted[i];
+		systemPlanet[i].missionCompleted = game.missionCompleted[i];
 
 	return true;
 }
@@ -142,15 +142,15 @@ void saveGame(int slot)
 	sprintf(fileName, "%ssave%.2d.dat", engine.userHomeDirectory, slot);
 	fp = fopen(fileName, "wb");
 
-	currentGame.saveFormat = 3;
-	currentGame.playerWeapon = weapon[W_PLAYER_WEAPON];
-	currentGame.thePlayer = player;
+	game.saveFormat = 3;
+	game.playerWeapon = weapon[W_PLAYER_WEAPON];
+	game.thePlayer = player;
 	for (int i = 0 ; i < 10 ; i++)
-		currentGame.missionCompleted[i] = systemPlanet[i].missionCompleted;
+		game.missionCompleted[i] = systemPlanet[i].missionCompleted;
 
 	if (fp != NULL)
 	{
-		if (fwrite(&currentGame, sizeof(Game), 1, fp) != 1)
+		if (fwrite(&game, sizeof(Game), 1, fp) != 1)
 		{
 			printf("Error Saving Game to Slot %d\n", slot);
 		}

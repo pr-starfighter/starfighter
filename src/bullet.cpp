@@ -28,7 +28,7 @@ void bullet_add(object *theWeapon, object *attacker, int y, int dy)
 	bullet = new object;
 
 	if (attacker == &player)
-		currentGame.shots++;
+		game.shots++;
 
 	bullet->next = NULL;
 	bullet->active = true;
@@ -45,8 +45,8 @@ void bullet_add(object *theWeapon, object *attacker, int y, int dy)
 	if (attacker->face == 0)
 	{
 		bullet->dx = theWeapon->speed;
-		if ((currentGame.area == MISN_ELLESH) ||
-				(currentGame.area == MISN_MARS))
+		if ((game.area == MISN_ELLESH) ||
+				(game.area == MISN_MARS))
 			bullet->dx += fabsf(engine.ssx + engine.smx);
 	}
 	else

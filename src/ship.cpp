@@ -107,9 +107,9 @@ void ship_fireBullet(object *ship, int weaponType)
 			player.ammo[0]--;
 			if (player.ammo[0] <= 0)
 			{
-				weapon[W_PLAYER_WEAPON].ammo[0] = currentGame.minPlasmaOutput;
-				weapon[W_PLAYER_WEAPON].damage = currentGame.minPlasmaDamage;
-				weapon[W_PLAYER_WEAPON].reload[0] = rate2reload[currentGame.minPlasmaRate];
+				weapon[W_PLAYER_WEAPON].ammo[0] = game.minPlasmaOutput;
+				weapon[W_PLAYER_WEAPON].damage = game.minPlasmaDamage;
+				weapon[W_PLAYER_WEAPON].reload[0] = rate2reload[game.minPlasmaRate];
 			}
 		}
 	}

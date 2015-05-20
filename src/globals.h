@@ -20,9 +20,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
-extern devVariables dev;
 extern globalEngineVariables engine;
 
-extern void defineGlobals();
+void defineGlobals();
 
 #endif

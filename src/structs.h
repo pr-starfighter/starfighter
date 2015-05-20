@@ -330,11 +330,4 @@ struct cutMsg {
 
 };
 
-struct devVariables {
-
-	int moveAliens;
-	int fireAliens;
-	
-};
-
 #endif

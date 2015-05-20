@@ -48,13 +48,13 @@ void loadScriptEvents()
 		gameEvent[i].flag = 0;
 	}
 	
-	if ((currentGame.area == MISN_INTERCEPTION) &&
+	if ((game.area == MISN_INTERCEPTION) &&
 			(aliens[ALIEN_KLINE].classDef == CD_KLINE) &&
 			(aliens[ALIEN_KLINE].active))
 		setKlineGreeting();
 
 	char filename[255];
-	sprintf(filename, "data/script%d.txt", currentGame.area);
+	sprintf(filename, "data/script%d.txt", game.area);
 
 	FILE *fp;
 	int i = 0;

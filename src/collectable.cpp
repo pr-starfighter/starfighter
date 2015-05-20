@@ -50,13 +50,13 @@ void collectable_add(float x, float y, int type, int value, int life)
 	{
 		type = P_PLASMA_RATE;
 
-		if ((currentGame.difficulty == DIFFICULTY_NIGHTMARE) ||
-			((currentGame.difficulty != DIFFICULTY_EASY) &&
-				(currentGame.difficulty != DIFFICULTY_ORIGINAL) &&
-				((currentGame.area == MISN_MOEBO) ||
-					(currentGame.area == MISN_ELAMALE) ||
-					(currentGame.area == MISN_ELLESH) ||
-					(currentGame.area == MISN_EARTH))))
+		if ((game.difficulty == DIFFICULTY_NIGHTMARE) ||
+			((game.difficulty != DIFFICULTY_EASY) &&
+				(game.difficulty != DIFFICULTY_ORIGINAL) &&
+				((game.area == MISN_MOEBO) ||
+					(game.area == MISN_ELAMALE) ||
+					(game.area == MISN_ELLESH) ||
+					(game.area == MISN_EARTH))))
 		{
 			// Deny the Super Charge in Nightmare difficulty, and on bosses.
 			r = rand() % 59;
@@ -84,9 +84,9 @@ void collectable_add(float x, float y, int type, int value, int life)
 	// upgraded! Give them money instead.
 	if (type == P_PLASMA_AMMO)
 	{
-		if ((weapon[W_PLAYER_WEAPON].reload[0] >= rate2reload[currentGame.minPlasmaRate]) &&
-			(weapon[W_PLAYER_WEAPON].ammo[0] <= currentGame.minPlasmaOutput) &&
-			(weapon[W_PLAYER_WEAPON].damage <= currentGame.minPlasmaDamage))
+		if ((weapon[W_PLAYER_WEAPON].reload[0] >= rate2reload[game.minPlasmaRate]) &&
+			(weapon[W_PLAYER_WEAPON].ammo[0] <= game.minPlasmaOutput) &&
+			(weapon[W_PLAYER_WEAPON].damage <= game.minPlasmaDamage))
 		{
 			type = P_CASH;
 		}
@@ -105,17 +105,17 @@ void collectable_add(float x, float y, int type, int value, int life)
 	// Shield bonus is useless in Nightmare difficulty; give cash instead.
 	if (type == P_SHIELD)
 	{
-		if (currentGame.difficulty == DIFFICULTY_NIGHTMARE)
+		if (game.difficulty == DIFFICULTY_NIGHTMARE)
 		{
 			type = P_CASH;
 		}
 	}
 
-	if (currentGame.difficulty == DIFFICULTY_ORIGINAL)
+	if (game.difficulty == DIFFICULTY_ORIGINAL)
 	{
 		// Cash is just rare in the original game. You can still grind,
 		// just not as much.
-		if ((currentGame.area == MISN_INTERCEPTION) && (type == P_CASH))
+		if ((game.area == MISN_INTERCEPTION) && (type == P_CASH))
 		{
 			if (rand() % 10 > 0)
 				return;
@@ -124,7 +124,7 @@ void collectable_add(float x, float y, int type, int value, int life)
 	else
 	{
 		// No cash or ammo on interceptions. Completely stops grinding.
-		if ((currentGame.area == MISN_INTERCEPTION) &&
+		if ((game.area == MISN_INTERCEPTION) &&
 			((type == P_CASH) || (type == P_PLASMA_AMMO) || (type == P_ROCKET)))
 		{
 			return;

@@ -47,7 +47,7 @@ static void setStatusLines()
 {
 	char string[50];
 
-	sprintf(string, "System : %s", systemNames[currentGame.system]);
+	sprintf(string, "System : %s", systemNames[game.system]);
 
 	textSurface(0, string, 0, 0, FONT_WHITE);
 
@@ -77,76 +77,76 @@ static void setStatusLines()
 	sprintf(string, "Missions Completed : %d/%d", completed, total);
 	textSurface(1, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Shots Fired : %d", currentGame.shots);
+	sprintf(string, "Shots Fired : %d", game.shots);
 	textSurface(2, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Hits Scored : %d", currentGame.hits);
+	sprintf(string, "Hits Scored : %d", game.hits);
 	textSurface(3, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Accuracy : %d%%", currentGame.accuracy);
+	sprintf(string, "Accuracy : %d%%", game.accuracy);
 	textSurface(4, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Enemies Killed by Others : %d", currentGame.totalOtherKills);
+	sprintf(string, "Enemies Killed by Others : %d", game.totalOtherKills);
 	textSurface(5, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Total Cash Earned : %d", currentGame.cashEarned);
+	sprintf(string, "Total Cash Earned : %d", game.cashEarned);
 	textSurface(6, string, 0, 0, FONT_WHITE);
 
 	textSurface(7, "*** Chris ***", 0, 0, FONT_WHITE);
 
-	sprintf(string, "Enemies Killed : %d", currentGame.totalKills);
+	sprintf(string, "Enemies Killed : %d", game.totalKills);
 	textSurface(8, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Shield Restores Picked Up : %d", currentGame.shieldPickups);
+	sprintf(string, "Shield Restores Picked Up : %d", game.shieldPickups);
 	textSurface(9, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Plasma Cells Picked Up : %d", currentGame.cellPickups);
+	sprintf(string, "Plasma Cells Picked Up : %d", game.cellPickups);
 	textSurface(10, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Rockets Picked Up : %d", currentGame.rocketPickups);
+	sprintf(string, "Rockets Picked Up : %d", game.rocketPickups);
 	textSurface(11, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Powerups Picked Up : %d", currentGame.rocketPickups);
+	sprintf(string, "Powerups Picked Up : %d", game.rocketPickups);
 	textSurface(12, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Mines Destroyed : %d", currentGame.minesKilled);
+	sprintf(string, "Mines Destroyed : %d", game.minesKilled);
 	textSurface(13, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Slaves Rescued : %d", currentGame.slavesRescued);
+	sprintf(string, "Slaves Rescued : %d", game.slavesRescued);
 	textSurface(14, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Cargo Picked Up : %d", currentGame.cargoPickups);
+	sprintf(string, "Cargo Picked Up : %d", game.cargoPickups);
 	textSurface(15, string, 0, 0, FONT_WHITE);
 
-	if (currentGame.hasWingMate1)
+	if (game.hasWingMate1)
 	{
 		textSurface(16, "*** Phoebe ***", 0, 0, FONT_WHITE);
 
-		sprintf(string, "Enemies Killed : %d", currentGame.wingMate1Kills);
+		sprintf(string, "Enemies Killed : %d", game.wingMate1Kills);
 		textSurface(17, string, 0, 0, FONT_WHITE);
 
-		sprintf(string, "Ejections : %d", currentGame.wingMate1Ejects);
+		sprintf(string, "Ejections : %d", game.wingMate1Ejects);
 		textSurface(18, string, 0, 0, FONT_WHITE);
 	}
 
-	if (currentGame.hasWingMate2)
+	if (game.hasWingMate2)
 	{
 		textSurface(19, "*** Ursula ***", 0, 0, FONT_WHITE);
 
-		sprintf(string, "Enemies Killed : %d", currentGame.wingMate2Kills);
+		sprintf(string, "Enemies Killed : %d", game.wingMate2Kills);
 		textSurface(20, string, 0, 0, FONT_WHITE);
 
-		sprintf(string, "Ejections : %d", currentGame.wingMate2Ejects);
+		sprintf(string, "Ejections : %d", game.wingMate2Ejects);
 		textSurface(21, string, 0, 0, FONT_WHITE);
 	}
 
 	signed char percentage = 0;
-	if ((currentGame.secondaryMissions > 0) && (currentGame.secondaryMissionsCompleted > 0))
-		percentage = (currentGame.secondaryMissionsCompleted / currentGame.secondaryMissions) * 100;
-	sprintf(string, "Seconday Missions Completed : %d / %d (%d%%)", currentGame.secondaryMissionsCompleted, currentGame.secondaryMissions, percentage);
+	if ((game.secondaryMissions > 0) && (game.secondaryMissionsCompleted > 0))
+		percentage = (game.secondaryMissionsCompleted / game.secondaryMissions) * 100;
+	sprintf(string, "Seconday Missions Completed : %d / %d (%d%%)", game.secondaryMissionsCompleted, game.secondaryMissions, percentage);
 	textSurface(24, string, 0, 0, FONT_WHITE);
 
-	int timeTaken = currentGame.timeTaken;
+	int timeTaken = game.timeTaken;
 
 	snprintf(string, sizeof string, "Total Time : %2d:%02d:%02d", timeTaken / 3600, (timeTaken / 60) % 60, timeTaken % 60);
 
@@ -180,7 +180,7 @@ static void setSystemPlanets()
 	char string[100];
 	strcpy(string, "");
 
-	switch (currentGame.system)
+	switch (game.system)
 	{
 		case 0:
 			strcpy(string, "data/planets_spirit.dat");
@@ -281,18 +281,18 @@ static bool showSystem(float x, float y, bool selectable)
 			drawString(systemPlanet[planet].name, -1, 545, FONT_WHITE);
 			if ((engine.keyState[KEY_FIRE]))
 			{
-				if (currentGame.system == 0)
+				if (game.system == 0)
 				{
-					currentGame.stationedPlanet = planet;
-					currentGame.destinationPlanet = planet;
-					currentGame.area = systemPlanet[currentGame.stationedPlanet].missionNumber;
-					strcpy(currentGame.stationedName, systemPlanet[currentGame.stationedPlanet].name);
+					game.stationedPlanet = planet;
+					game.destinationPlanet = planet;
+					game.area = systemPlanet[game.stationedPlanet].missionNumber;
+					strcpy(game.stationedName, systemPlanet[game.stationedPlanet].name);
 					saveGame(0);
 				}
 				else
 				{
-					currentGame.destinationPlanet = planet;
-					strcpy(currentGame.destinationName, systemPlanet[currentGame.destinationPlanet].name);
+					game.destinationPlanet = planet;
+					strcpy(game.destinationName, systemPlanet[game.destinationPlanet].name);
 				}
 
 				rtn = true;
@@ -363,7 +363,7 @@ static void updateCommsSurface(SDL_Surface *comms)
 	blevelRect(comms, 0, 10, comms->w - 1, 55, 0x00, 0x22, 0x00);
 	blit(shape[FACE_CHRIS], 20, 15, comms);
 	drawString("Chris Bainfield", 80, 15, FONT_WHITE, comms);
-	sprintf(string, "Current Location: %s", systemPlanet[currentGame.stationedPlanet].name);
+	sprintf(string, "Current Location: %s", systemPlanet[game.stationedPlanet].name);
 	drawString(string, 80, 35, FONT_WHITE, comms);
 }
 
@@ -589,7 +589,7 @@ int galaxyMap()
 
 	initSaveSlots();
 
-	loadBackground(systemBackground[currentGame.system]);
+	loadBackground(systemBackground[game.system]);
 
 	char string[25];
 
@@ -654,23 +654,23 @@ int galaxyMap()
 	signed char saveSlot = -1;
 
 	// Remove the Supercharge, if it is there
-	if ((currentGame.difficulty != DIFFICULTY_EASY) &&
-		(currentGame.difficulty != DIFFICULTY_ORIGINAL))
+	if ((game.difficulty != DIFFICULTY_EASY) &&
+		(game.difficulty != DIFFICULTY_ORIGINAL))
 	{
 		weapon[W_PLAYER_WEAPON].reload[0] = MAX(
 			weapon[W_PLAYER_WEAPON].reload[0],
-			rate2reload[currentGame.maxPlasmaRate]);
+			rate2reload[game.maxPlasmaRate]);
 		weapon[W_PLAYER_WEAPON].ammo[0] = MIN(weapon[W_PLAYER_WEAPON].ammo[0],
-			currentGame.maxPlasmaOutput);
+			game.maxPlasmaOutput);
 		weapon[W_PLAYER_WEAPON].damage = MIN(weapon[W_PLAYER_WEAPON].damage,
-			currentGame.maxPlasmaDamage);
+			game.maxPlasmaDamage);
 	}
 
-	if (currentGame.system > 0)
-		interceptionChance = (300 / currentGame.system);
+	if (game.system > 0)
+		interceptionChance = (300 / game.system);
 
 	// There is no chance of being interceptted after the final attack on Earth
-	if ((currentGame.system == 3) && (systemPlanet[2].missionCompleted))
+	if ((game.system == 3) && (systemPlanet[2].missionCompleted))
 		interceptionChance = 0;
 
 	int rtn = 0;
@@ -689,14 +689,14 @@ int galaxyMap()
 	iconInfo[6].image = textSurface("Options", FONT_WHITE);
 	iconInfo[7].image = textSurface("Exit to Title Screen", FONT_WHITE);
 
-	sprintf(string, "System : %s", systemNames[currentGame.system]);
+	sprintf(string, "System : %s", systemNames[game.system]);
 	iconInfo[8].image = textSurface(string, FONT_WHITE);
 
-	sprintf(string, "Stationed At: %s", systemPlanet[currentGame.stationedPlanet].name);
+	sprintf(string, "Stationed At: %s", systemPlanet[game.stationedPlanet].name);
 	iconInfo[9].image = textSurface(string, FONT_WHITE);
 
-	if (currentGame.destinationPlanet > -1)
-		sprintf(string, "Destination: %s", systemPlanet[currentGame.destinationPlanet].name);
+	if (game.destinationPlanet > -1)
+		sprintf(string, "Destination: %s", systemPlanet[game.destinationPlanet].name);
 	else
 		strcpy(string, "Destination: None");
 	iconInfo[10].image = textSurface(string, FONT_WHITE);
@@ -707,7 +707,7 @@ int galaxyMap()
 
 	bool redrawBackGround = true;
 
-	if (currentGame.distanceCovered > 0)
+	if (game.distanceCovered > 0)
 		section = 0;
 	else
 		player.shield = player.maxShield;
@@ -771,32 +771,32 @@ int galaxyMap()
 		switch(section)
 		{
 			case 0:
-				if (currentGame.stationedPlanet == currentGame.destinationPlanet)
+				if (game.stationedPlanet == game.destinationPlanet)
 				{
-					currentGame.area = systemPlanet[currentGame.stationedPlanet].missionNumber;
+					game.area = systemPlanet[game.stationedPlanet].missionNumber;
 					rtn = 2;
 					engine.done = 1;
 				}
 				else
 				{
-					distance = abs(currentGame.stationedPlanet - currentGame.destinationPlanet);
+					distance = abs(game.stationedPlanet - game.destinationPlanet);
 					distance = (5 / distance);
 					if (distance < 1)
 						distance = 1;
 
 					SDL_FreeSurface(iconInfo[9].image);
-					iconInfo[9].image = textSurface(systemPlanet[currentGame.stationedPlanet].name, FONT_WHITE);
+					iconInfo[9].image = textSurface(systemPlanet[game.stationedPlanet].name, FONT_WHITE);
 
 					SDL_FreeSurface(iconInfo[10].image);
-					iconInfo[10].image = textSurface(systemPlanet[currentGame.destinationPlanet].name, FONT_WHITE);
+					iconInfo[10].image = textSurface(systemPlanet[game.destinationPlanet].name, FONT_WHITE);
 
 					section = 8;
 
 					destRect.x = 180;
 					destRect.y = 450;
 					destRect.w = 1;
-					if (currentGame.distanceCovered > 0)
-						destRect.w = currentGame.distanceCovered;
+					if (game.distanceCovered > 0)
+						destRect.w = game.distanceCovered;
 					destRect.h = 20;
 				}
 				break;
@@ -816,23 +816,23 @@ int galaxyMap()
 
 				if (showSystem(sinX, cosY, true))
 				{
-					if (currentGame.system == 0)
+					if (game.system == 0)
 					{
-						sprintf(string, "Stationed At: %s", systemPlanet[currentGame.stationedPlanet].name);
+						sprintf(string, "Stationed At: %s", systemPlanet[game.stationedPlanet].name);
 						SDL_FreeSurface(iconInfo[9].image);
 						iconInfo[9].image = textSurface(string, FONT_WHITE);
 						updateCommsSurface(commsSurface);
 					}
 					else
 					{
-						sprintf(string, "Destination: %s", systemPlanet[currentGame.destinationPlanet].name);
+						sprintf(string, "Destination: %s", systemPlanet[game.destinationPlanet].name);
 						SDL_FreeSurface(iconInfo[10].image);
 						iconInfo[10].image = textSurface(string, FONT_WHITE);
 					}
 				}
 
 				blit(iconInfo[9].image, 90, 450);
-				if ((currentGame.system > 0) && (currentGame.stationedPlanet != currentGame.destinationPlanet))
+				if ((game.system > 0) && (game.stationedPlanet != game.destinationPlanet))
 					blit(iconInfo[10].image, 550, 450);
 				break;
 
@@ -867,9 +867,9 @@ int galaxyMap()
 			case 8:
 				showSystem(sinX, cosY, false);
 
-				blit(systemPlanet[currentGame.stationedPlanet].image, 150, 450);
+				blit(systemPlanet[game.stationedPlanet].image, 150, 450);
 				blit(iconInfo[9].image, 135, 480);
-				blit(systemPlanet[currentGame.destinationPlanet].image, 650, 450);
+				blit(systemPlanet[game.destinationPlanet].image, 650, 450);
 				blit(iconInfo[10].image, 635, 480);
 
 				destRect.w += distance;
@@ -877,13 +877,13 @@ int galaxyMap()
 
 				if (destRect.w >= 450)
 				{
-					currentGame.stationedPlanet = currentGame.destinationPlanet;
-					currentGame.distanceCovered = 0;
+					game.stationedPlanet = game.destinationPlanet;
+					game.distanceCovered = 0;
 					player.shield = player.maxShield;
 					sprintf(string, "Stationed At: %s",
-						systemPlanet[currentGame.stationedPlanet].name);
-					strcpy(currentGame.stationedName,
-						systemPlanet[currentGame.stationedPlanet].name);
+						systemPlanet[game.stationedPlanet].name);
+					strcpy(game.stationedName,
+						systemPlanet[game.stationedPlanet].name);
 					SDL_FreeSurface(iconInfo[9].image);
 					iconInfo[9].image = textSurface(string, FONT_WHITE);
 					updateCommsSurface(commsSurface);
@@ -895,10 +895,10 @@ int galaxyMap()
 				{
 					if ((rand() % interceptionChance) == 0)
 					{
-						currentGame.area = MISN_INTERCEPTION;
+						game.area = MISN_INTERCEPTION;
 						rtn = 2;
 						engine.done = 1;
-						currentGame.distanceCovered = destRect.w;
+						game.distanceCovered = destRect.w;
 					}
 				}
 
@@ -915,12 +915,12 @@ int galaxyMap()
 				// "Start Next Mission" icon
 				if (i == 0)
 				{
-					if ((currentGame.stationedPlanet == currentGame.destinationPlanet) &&
-							(systemPlanet[currentGame.stationedPlanet].missionCompleted != 0))
+					if ((game.stationedPlanet == game.destinationPlanet) &&
+							(systemPlanet[game.stationedPlanet].missionCompleted != 0))
 						continue;
-					else if (currentGame.stationedPlanet == currentGame.destinationPlanet)
+					else if (game.stationedPlanet == game.destinationPlanet)
 						blit(shape[1], 80 + (i * 90), 500);
-					else if (currentGame.stationedPlanet != currentGame.destinationPlanet)
+					else if (game.stationedPlanet != game.destinationPlanet)
 						blit(shape[26], 80 + (i * 90), 500);
 				}
 				else
@@ -936,7 +936,7 @@ int galaxyMap()
 					}
 					else
 					{
-						if (currentGame.stationedPlanet == currentGame.destinationPlanet)
+						if (game.stationedPlanet == game.destinationPlanet)
 							blit(iconInfo[0].image, (int)iconInfo[i].x, 545);
 						else
 							blit(iconInfo[11].image, (int)iconInfo[i].x, 545);
@@ -966,7 +966,7 @@ int galaxyMap()
 	for (int i = 0 ; i < 12 ; i++)
 		SDL_FreeSurface(iconInfo[i].image);
 
-	if (currentGame.distanceCovered == 0)
+	if (game.distanceCovered == 0)
 		player.shield = player.maxShield;
 
 	return rtn;

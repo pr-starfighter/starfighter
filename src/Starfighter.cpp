@@ -52,16 +52,6 @@ int main(int argc, char **argv)
 
 	for (int i = 1 ; i < argc ; i++)
 	{
-		if (strcmp(argv[i], "-nomove") == 0)
-		{
-			printf("Enemy movement disabled\n");
-			dev.moveAliens = 0;
-		}
-		if (strcmp(argv[i], "-nofire") == 0)
-		{
-			printf("Enemy firing disabled\n");
-			dev.fireAliens = 0;
-		}
 		if (strcmp(argv[i], "-cheat") == 0)
 			cheatAttempt = true;
 		if (strcmp(argv[i], "-noaudio") == 0)
@@ -120,8 +110,8 @@ int main(int argc, char **argv)
 	// Determine which part of the game we will go to...
 	section = 0;
 
-	currentGame.difficulty = DIFFICULTY_NORMAL;
-	newGame();
+	game.difficulty = DIFFICULTY_NORMAL;
+	game_init();
 
 	while (true)
 	{
@@ -136,9 +126,9 @@ int main(int argc, char **argv)
 				break;
 
 			case 2:
-				if (currentGame.stationedPlanet == -1)
+				if (game.stationedPlanet == -1)
 					doCutscene(0);
-				section = mainGameLoop();
+				section = game_mainLoop();
 				break;
 		}
 	}

@@ -150,53 +150,53 @@ void checkForBossMission()
 
 void updateSystemStatus()
 {
-	if (currentGame.area == MISN_START)
+	if (game.area == MISN_START)
 	{
-		currentGame.stationedPlanet = 0;
-		currentGame.area = 1;
-		strcpy(currentGame.stationedName, "Hail");
-		initPlanetMissions(currentGame.system);
+		game.stationedPlanet = 0;
+		game.area = 1;
+		strcpy(game.stationedName, "Hail");
+		initPlanetMissions(game.system);
 	}
-	else if (currentGame.area == MISN_MOEBO)
+	else if (game.area == MISN_MOEBO)
 	{
-		currentGame.stationedPlanet = 0;
-		currentGame.system = 1;
-		currentGame.area = MISN_RESCUESLAVES;
-		strcpy(currentGame.stationedName, "Nerod");
-		initPlanetMissions(currentGame.system);
+		game.stationedPlanet = 0;
+		game.system = 1;
+		game.area = MISN_RESCUESLAVES;
+		strcpy(game.stationedName, "Nerod");
+		initPlanetMissions(game.system);
 
-		if (currentGame.difficulty == DIFFICULTY_ORIGINAL)
+		if (game.difficulty == DIFFICULTY_ORIGINAL)
 			player.maxShield = 50;
 	}
-	else if (currentGame.area == MISN_ELAMALE)
+	else if (game.area == MISN_ELAMALE)
 	{
-		currentGame.stationedPlanet = 0;
-		currentGame.system = 2;
-		currentGame.area = MISN_CLOAKFIGHTER;
-		strcpy(currentGame.stationedName, "Odeon");
-		initPlanetMissions(currentGame.system);
+		game.stationedPlanet = 0;
+		game.system = 2;
+		game.area = MISN_CLOAKFIGHTER;
+		strcpy(game.stationedName, "Odeon");
+		initPlanetMissions(game.system);
 
-		if (currentGame.difficulty == DIFFICULTY_ORIGINAL)
+		if (game.difficulty == DIFFICULTY_ORIGINAL)
 			player.maxShield = 75;
 	}
-	else if (currentGame.area == MISN_ELLESH)
+	else if (game.area == MISN_ELLESH)
 	{
-		currentGame.stationedPlanet = 8;
-		currentGame.system = 3;
-		currentGame.area = MISN_PLUTO;
-		strcpy(currentGame.stationedName, "Pluto");
-		initPlanetMissions(currentGame.system);
+		game.stationedPlanet = 8;
+		game.system = 3;
+		game.area = MISN_PLUTO;
+		strcpy(game.stationedName, "Pluto");
+		initPlanetMissions(game.system);
 
-		if (currentGame.difficulty == DIFFICULTY_ORIGINAL)
+		if (game.difficulty == DIFFICULTY_ORIGINAL)
 			player.maxShield = 100;
 	}
 	else // Update the mission for the planet
 	{
-		systemPlanet[currentGame.stationedPlanet].missionCompleted = 1;
+		systemPlanet[game.stationedPlanet].missionCompleted = 1;
 	}
 
-	strcpy(currentGame.destinationName, "None");
-	currentGame.destinationPlanet = currentGame.stationedPlanet;
+	strcpy(game.destinationName, "None");
+	game.destinationPlanet = game.stationedPlanet;
 }
 
 /*
@@ -316,12 +316,12 @@ void checkTimer()
 	}
 
 	// specific to Spirit Boss
-	if ((currentGame.area == MISN_MOEBO) &&
+	if ((game.area == MISN_MOEBO) &&
 			(currentMission.completed1[0] < OB_INCOMPLETE))
 		engine.timeMission = 1;
 
 	// specific to the Asteroid belt
-	if ((currentGame.area == MISN_MARS) &&
+	if ((game.area == MISN_MARS) &&
 		(currentMission.completed1[0] < OB_INCOMPLETE))
 	{
 		currentMission.completed1[0] = OB_COMPLETED;
@@ -340,7 +340,7 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 	{
 		*completed = 2;
 		checkTimer();
-		if ((currentGame.area == MISN_URUSOR) && (type == M_DISABLE_TARGET))
+		if ((game.area == MISN_URUSOR) && (type == M_DISABLE_TARGET))
 			setRadioMessage(FACE_SID, "All vessels disabled!", 1);
 	}
 	else
@@ -374,12 +374,12 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 				{
 					case P_CARGO:
 						sprintf(message, "Cargo pod destroyed!");
-						if (currentGame.area == MISN_CERADSE) // Get lectured by Sid
+						if (game.area == MISN_CERADSE) // Get lectured by Sid
 							setRadioMessage(FACE_SID, "Chris, we needed that pod!! I warned you that we couldn't afford to lose a single one!!", 1);
 						break;
 					case P_ESCAPEPOD:
 						sprintf(message, "Escape Pod lost!");
-						if (currentGame.area == MISN_ODEON) // Get lectured by Phoebe
+						if (game.area == MISN_ODEON) // Get lectured by Phoebe
 							setRadioMessage(FACE_PHOEBE, "No... Ursula...", 1);
 						break;
 				}
@@ -388,7 +388,7 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 				if (*targetValue <= 0)
 				{
 					*completed = -2;
-					switch (currentGame.area)
+					switch (game.area)
 					{
 						case MISN_NEROD:
 							setRadioMessage(FACE_SID, "Dammit, Chris! We just lost her!", 1);
@@ -474,20 +474,20 @@ void updateMissionRequirements(int type, int id, int value)
 	}
 
 	// Special Case - Interceptions
-	if (currentGame.area == MISN_INTERCEPTION)
+	if (game.area == MISN_INTERCEPTION)
 	{
 		if ((type == M_COLLECT) && (id == P_SLAVES))
 		{
 			if (systemPlanet[9].missionCompleted == 0)
 			{
-				if (currentGame.slavesRescued >= 250)
+				if (game.slavesRescued >= 250)
 				{
 					setInfoLine("*** Slaves Rescued - Mission Completed ***", FONT_GREEN);
 					systemPlanet[9].missionCompleted = 1;
 				}
 				else
 				{
-					sprintf(message, "Rescue %d more...", 250 - currentGame.slavesRescued);
+					sprintf(message, "Rescue %d more...", 250 - game.slavesRescued);
 					setInfoLine(message, FONT_CYAN);
 				}
 			}
@@ -498,7 +498,7 @@ void updateMissionRequirements(int type, int id, int value)
 			setInfoLine("*** Experimental Fighter Destroyed - Mission Completed ***", FONT_GREEN);
 			systemPlanet[9].missionCompleted = 1;
 			setRadioMessage(FACE_CHRIS, "That's one less suprise that WEAPCO can spring on us!", 1);
-			currentGame.experimentalShield = 0;
+			game.experimentalShield = 0;
 		}
 	}
 }
@@ -526,7 +526,7 @@ static char revealHiddenObjectives()
 	if (!allDone)
 	{
 		// Activate Kline!! :)
-		if (currentGame.area == MISN_ELAMALE)
+		if (game.area == MISN_ELAMALE)
 		{
 			mission_killAllEnemies();
 			syncScriptEvents();
@@ -574,7 +574,7 @@ bool allMissionsCompleted()
 		{
 			if (currentMission.remainingObjectives1 > 1)
 			{
-				if ((currentGame.area != MISN_POSWIC) || (i != 1))
+				if ((game.area != MISN_POSWIC) || (i != 1))
 					setInfoLine("*** Primary Objective Completed ***", FONT_GREEN);
 				else
 					setInfoLine(">>> Primary Objective Failed <<<", FONT_RED);
@@ -582,17 +582,17 @@ bool allMissionsCompleted()
 			}
 			else
 			{
-				if (currentGame.area != MISN_INTERCEPTION)
+				if (game.area != MISN_INTERCEPTION)
 					setInfoLine("*** All Primary Objectives Completed ***", FONT_GREEN);
 				else
 					setInfoLine("*** Interception Destroyed ***", FONT_GREEN);
 				currentMission.completed1[i] = OB_COMPLETED;
 
 				// do some area specific things
-				if ((currentGame.area == MISN_MOEBO) ||
-					(currentGame.area == MISN_DORIM) ||
-					(currentGame.area == MISN_ELLESH) ||
-					(currentGame.area == MISN_MARS))
+				if ((game.area == MISN_MOEBO) ||
+					(game.area == MISN_DORIM) ||
+					(game.area == MISN_ELLESH) ||
+					(game.area == MISN_MARS))
 				{
 					if (currentMission.remainingObjectives2 == 0)
 					{
@@ -601,7 +601,7 @@ bool allMissionsCompleted()
 					}
 				}
 
-				if (currentGame.area == MISN_EARTH)
+				if (game.area == MISN_EARTH)
 					setRadioMessage(FACE_CHRIS, "You guys stay here and keep things under control. I'm going after Kethlan!", 1);
 			}
 		}
@@ -619,7 +619,7 @@ bool allMissionsCompleted()
 				currentMission.completed2[i] = OB_COMPLETED;
 
 				// do some area specific things
-				if ((currentGame.area == MISN_DORIM) &&
+				if ((game.area == MISN_DORIM) &&
 					(currentMission.remainingObjectives1 == 0))
 				{
 					mission_killAllEnemies();
@@ -736,7 +736,7 @@ static void drawBriefScreen()
 			if (currentMission.secondaryType[i] != NONE)
 			{
 				drawString(currentMission.secondaryObjective[i], 160, 274 + (i * 30), FONT_WHITE);
-				currentGame.secondaryMissions++;
+				game.secondaryMissions++;
 			}
 		}
 	}
@@ -756,7 +756,7 @@ void missionBriefScreen()
 	clearScreen(black);
 	updateScreen();
 
-	if (currentGame.area != MISN_INTERCEPTION)
+	if (game.area != MISN_INTERCEPTION)
 	{
 		clearScreen(black);
 		drawBriefScreen();
@@ -764,14 +764,14 @@ void missionBriefScreen()
 		if (currentMission.timeLimit1[0] > 0)
 		{
 			char temp[50];
-			if (currentGame.area != MISN_MARS)
+			if (game.area != MISN_MARS)
 				sprintf(temp, "TIME LIMIT: %d minutes", currentMission.timeLimit1[0]);
 			else
 				sprintf(temp, "SURVIVAL FOR %d minutes", currentMission.timeLimit1[0]);
 			drawString(temp, -1, 500, FONT_RED);
 		}
 
-		switch (currentGame.area)
+		switch (game.area)
 		{
 			case MISN_URUSOR:
 			case MISN_DORIM:
@@ -781,14 +781,14 @@ void missionBriefScreen()
 			case MISN_MARS:
 			case MISN_VENUS:
 				drawString("Phoebe Lexx will not be present", 160, 420, FONT_WHITE);
-				if (currentGame.hasWingMate2)
+				if (game.hasWingMate2)
 					drawString("Ursula Lexx will not be present", 160, 450, FONT_WHITE);
 				break;
 		}
 
-		if ((currentGame.area == MISN_URUSOR) ||
-				(currentGame.area == MISN_POSWIC) ||
-				(currentGame.area == MISN_EARTH))
+		if ((game.area == MISN_URUSOR) ||
+				(game.area == MISN_POSWIC) ||
+				(game.area == MISN_EARTH))
 			drawString("Sid Wilson will join you on this mission", 160, 480, FONT_WHITE);
 
 		updateScreen();
@@ -814,7 +814,7 @@ void missionBriefScreen()
 	textSurface(13, "Cooler", 485, 570, FONT_WHITE);
 	audio_playRandomTrack();
 
-	if (currentGame.area != MISN_INTERCEPTION)
+	if (game.area != MISN_INTERCEPTION)
 	{
 		drawString("PRESS ENTER TO CONTINUE...", -1, 550, FONT_WHITE);
 
@@ -854,13 +854,13 @@ void missionFinishedScreen()
 	int shield_bonus;
 	char temp[100];
 
-	if (currentGame.area != MISN_INTERCEPTION)
+	if (game.area != MISN_INTERCEPTION)
 	{
 		clearScreen(black);
 		updateScreen();
 
-		if (currentGame.shots > 0)
-			currentGame.accuracy = (currentGame.hits * 100) / currentGame.shots;
+		if (game.shots > 0)
+			game.accuracy = (game.hits * 100) / game.shots;
 
 		clearScreen(black);
 		drawBriefScreen();
@@ -869,7 +869,7 @@ void missionFinishedScreen()
 		{
 			if (currentMission.primaryType[i] != NONE)
 			{
-				if ((currentGame.area != MISN_POSWIC) || (i != 1))
+				if ((game.area != MISN_POSWIC) || (i != 1))
 					drawString("COMPLETED", 550, 114 + (i * 30), FONT_GREEN);
 				else
 					drawString("FAILED", 550, 114 + (i * 30), FONT_RED);
@@ -886,7 +886,7 @@ void missionFinishedScreen()
 					if (currentMission.completed2[i] >= 1)
 					{
 						drawString("COMPLETED", 550, 274 + (i * 30), FONT_GREEN);
-						currentGame.secondaryMissionsCompleted++;
+						game.secondaryMissionsCompleted++;
 					}
 					else
 					{
@@ -901,11 +901,11 @@ void missionFinishedScreen()
 			shield_bonus = player.shield * 10;
 			sprintf(temp, "Shield Bonus: $%.3d", shield_bonus);
 			drawString(temp, -1, 430, FONT_WHITE);
-			currentGame.cash += shield_bonus;
-			currentGame.cashEarned += shield_bonus;
+			game.cash += shield_bonus;
+			game.cashEarned += shield_bonus;
 		}
 
-		currentGame.timeTaken += engine.timeTaken;
+		game.timeTaken += engine.timeTaken;
 
 		snprintf(temp, sizeof temp, "Mission Time: %2ld:%02ld:%02ld",
 			engine.timeTaken / 3600, (engine.timeTaken / 60) % 60,
@@ -914,12 +914,12 @@ void missionFinishedScreen()
 		drawString(temp, -1, 500, FONT_WHITE);
 
 		// Do some mission specific stuff here...
-		if (currentGame.area == MISN_HAIL)
-			currentGame.cash -= 500;
-		else if (currentGame.area == MISN_ODEON)
-			currentGame.hasWingMate2 = 1;
-		else if (currentGame.area == MISN_ALMARTHA)
-			currentGame.cash -= 2000;
+		if (game.area == MISN_HAIL)
+			game.cash -= 500;
+		else if (game.area == MISN_ODEON)
+			game.hasWingMate2 = 1;
+		else if (game.area == MISN_ALMARTHA)
+			game.cash -= 2000;
 
 		checkForBossMission();
 
