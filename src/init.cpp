@@ -146,7 +146,10 @@ void initSystem()
 	}
 
 	char filename[PATH_MAX];
-	int fullScreen = 0, useSound = 1, useMusic = 1;
+	int fullScreen = 0;
+	int useSound = 1;
+	int useMusic = 1;
+	int autoPause = 0;
 
 	FILE *fp;
 	sprintf(filename, "%sconf", engine.userHomeDirectory);
@@ -154,7 +157,7 @@ void initSystem()
 
 	if (fp != NULL)
 	{
-		if (fscanf(fp, "%d %d %d", &fullScreen, &useSound, &useMusic) < 3)
+		if (fscanf(fp, "%d %d %d %d", &fullScreen, &useSound, &useMusic, &autoPause) < 4)
 			printf("Warning: Config file \"%s\" is not correctly formatted\n", filename);
 		fclose(fp);
 	}
@@ -162,6 +165,7 @@ void initSystem()
 	engine.fullScreen = fullScreen;
 	engine.useSound = useSound;
 	engine.useMusic = useMusic;
+	engine.autoPause = autoPause;
 
 	screen = SDL_CreateRGBSurface(0, screenWidth, screenHeight, 32, 0xff0000, 0xff00, 0xff, 0xff000000);
 
@@ -259,7 +263,8 @@ void cleanUp()
 	fp = fopen(filename, "wb");
 	if (fp != NULL)
 	{
-		fprintf(fp, "%d %d %d\n", engine.fullScreen, engine.useSound, engine.useMusic);
+		fprintf(fp, "%d %d %d %d\n", engine.fullScreen, engine.useSound,
+			engine.useMusic, engine.autoPause);
 		fclose(fp);
 	}
 	else

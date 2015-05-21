@@ -106,18 +106,24 @@ static void createOptionsMenu()
 		textSurface(TS_FULLSCREEN, "FULLSCREEN - ON", -1, 390, FONT_WHITE);
 	else
 		textSurface(TS_FULLSCREEN, "FULLSCREEN - OFF", -1, 390, FONT_WHITE);
+
+	if (engine.autoPause)
+		textSurface(TS_AUTOPAUSE, "AUTOPAUSE - ON", -1, 410, FONT_WHITE);
+	else
+		textSurface(TS_AUTOPAUSE, "AUTOPAUSE - OFF", -1, 410, FONT_WHITE);
 }
 
 static signed char showOptionsMenu()
 {
-	textShape[TS_BACK_TO_MAIN_MENU].y = 430;
+	textShape[TS_BACK_TO_MAIN_MENU].y = 450;
 
 	blitText(TS_SOUND);
 	blitText(TS_MUSIC);
 	blitText(TS_FULLSCREEN);
+	blitText(TS_AUTOPAUSE);
 	blitText(TS_BACK_TO_MAIN_MENU);
 
-	return 4;
+	return 5;
 }
 
 static void createCheatMenu()
@@ -479,6 +485,10 @@ int doTitle()
 							SDL_SetWindowFullscreen(window,
 								(engine.fullScreen ?
 									SDL_WINDOW_FULLSCREEN_DESKTOP : 0));
+						}
+						else if (selectedOption == 4)
+						{
+							engine.autoPause = !engine.autoPause;
 						}
 						else if (selectedOption == listLength)
 						{

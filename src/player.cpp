@@ -252,8 +252,9 @@ void getPlayerInput()
 				break;
 
 			case SDL_WINDOWEVENT:
-				if(engine.event.window.event == SDL_WINDOWEVENT_FOCUS_LOST)
-					engine.paused = 1;
+				if (engine.autoPause &&
+						(engine.event.window.event == SDL_WINDOWEVENT_FOCUS_LOST))
+					engine.paused = true;
 				break;
 		}
 

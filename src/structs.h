@@ -301,6 +301,7 @@ struct Engine {
 	bool useSound;
 	bool useMusic;
 	bool fullScreen;
+	bool autoPause;
 
 	char userHomeDirectory[1024];
 	
