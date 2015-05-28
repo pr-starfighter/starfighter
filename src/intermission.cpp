@@ -19,17 +19,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-const char *systemNames[] = {"Spirit", "Eyananth", "Mordor", "Sol"};
-
-const char *systemBackground[] = {
-			"gfx/spirit.jpg", "gfx/eyananth.jpg",
-			"gfx/mordor.jpg", "gfx/sol.jpg"
-};
-
 /*
 Drives the cursor. Is used by some other screens too
 */
-static void doCursor()
+static void intermission_doCursor()
 {
 	getPlayerInput();
 
@@ -43,7 +36,7 @@ Sets the player's current status information lines. These are the lines
 that are scrolled up the screen when the player clicks on Current Status
 These are set only once.
 */
-static void setStatusLines()
+static void intermission_setStatusLines()
 {
 	char string[50];
 
@@ -171,9 +164,8 @@ static void setStatusLines()
 
 /*
 Sets the names and stats of the planets within the current system.
-This will later be placed into a data file.
 */
-static void setSystemPlanets()
+static void intermission_setSystemPlanets()
 {
 	FILE *fp;
 
@@ -244,10 +236,10 @@ static void setSystemPlanets()
 
 /*
 Spins the planets around the sun, spaced according to their Y value
-as defined in setSystemPlanets(). Moving the cursor over the planet
+as defined in intermission_setSystemPlanets(). Moving the cursor over the planet
 will show their name and their current status
 */
-static bool showSystem(float x, float y, bool selectable)
+static bool intermission_showSystem(float x, float y, bool selectable)
 {
 	SDL_Rect r;
 	signed char planet = 0;
@@ -315,7 +307,7 @@ the specified status line reaches a certain Y value, the entire
 list is reset and the information lines begin again from the bottom
 (in other words, they loop around).
 */
-static void showStatus(SDL_Surface *infoSurface)
+static void intermission_showStatus(SDL_Surface *infoSurface)
 {
 	float speed = 0.25;
 
@@ -353,7 +345,7 @@ static void showStatus(SDL_Surface *infoSurface)
 	blitText(27);
 }
 
-static void updateCommsSurface(SDL_Surface *comms)
+static void intermission_updateCommsSurface(SDL_Surface *comms)
 {
 	if (engine.commsSection == 1)
 		return;
@@ -367,7 +359,7 @@ static void updateCommsSurface(SDL_Surface *comms)
 	drawString(string, 80, 35, FONT_WHITE, comms);
 }
 
-static void createCommsSurface(SDL_Surface *comms)
+static void intermission_createCommsSurface(SDL_Surface *comms)
 {
 	engine.commsSection = 0;
 
@@ -390,10 +382,10 @@ static void createCommsSurface(SDL_Surface *comms)
 		}
 	}
 
-	updateCommsSurface(comms);
+	intermission_updateCommsSurface(comms);
 }
 
-static void createMissionDetailSurface(SDL_Surface *comms, int missionSlot)
+static void intermission_createMissionDetailSurface(SDL_Surface *comms, int missionSlot)
 {
 	char name[50];
 	char string[2000];
@@ -454,7 +446,7 @@ static void createMissionDetailSurface(SDL_Surface *comms, int missionSlot)
 	engine.commsSection = 1;
 }
 
-static void doComms(SDL_Surface *comms)
+static void intermission_doComms(SDL_Surface *comms)
 {
 	if ((engine.keyState[KEY_FIRE]))
 	{
@@ -464,7 +456,7 @@ static void doComms(SDL_Surface *comms)
 			{
 				if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 170, 180 + (i * 60), 430, 50))
 				{
-					createMissionDetailSurface(comms, i);
+					intermission_createMissionDetailSurface(comms, i);
 					engine.keyState[KEY_FIRE] = 0;
 				}
 			}
@@ -473,14 +465,14 @@ static void doComms(SDL_Surface *comms)
 		{
 			if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 170, 440, 160, 20))
 			{
-				createCommsSurface(comms);
+				intermission_createCommsSurface(comms);
 				engine.keyState[KEY_FIRE] = 0;
 			}
 		}
 	}
 }
 
-static void createOptions(SDL_Surface *optionsSurface)
+static void intermission_createOptions(SDL_Surface *optionsSurface)
 {
 	SDL_FillRect(optionsSurface, NULL, black);
 
@@ -522,7 +514,7 @@ static void createOptions(SDL_Surface *optionsSurface)
 	drawString("FULLSCREEN", 30, 150, FONT_WHITE, optionsSurface);
 }
 
-static void showOptions(SDL_Surface *optionsSurface)
+static void intermission_doOptions(SDL_Surface *optionsSurface)
 {
 	if ((engine.keyState[KEY_FIRE]))
 	{
@@ -563,17 +555,17 @@ static void showOptions(SDL_Surface *optionsSurface)
 			}
 		}
 
-		createOptions(optionsSurface);
+		intermission_createOptions(optionsSurface);
 	}
 }
 
 /*
-Oddly named function that controls the entire intermission
-screen. This simply draws a background, stars, gridlines and the icons
-at the bottom of the screen. Will call (and continue to call) the specified
-functions when the player has selected an icon.
+Controls the entire intermission screen. This simply draws a background,
+stars, gridlines and the icons at the bottom of the screen. Will call
+(and continue to call) the specified functions when the player has
+selected an icon.
 */
-int galaxyMap()
+int intermission()
 {
 	freeGraphics();
 
@@ -633,9 +625,9 @@ int galaxyMap()
 	int distance = 0;
 	int interceptionChance = 0;
 
-	setStatusLines();
+	intermission_setStatusLines();
 	initShop();
-	setSystemPlanets();
+	intermission_setSystemPlanets();
 
 	SDL_Surface *statsSurface = alphaRect(600, 330, 0x00, 0x00, 0x99);
 	SDL_Surface *savesSurface = createSurface(350, 300);
@@ -643,8 +635,8 @@ int galaxyMap()
 	SDL_Surface *commsSurface = createSurface(450, 400);
 
 	createSavesSurface(savesSurface, -1);
-	createOptions(optionsSurface);
-	createCommsSurface(commsSurface);
+	intermission_createOptions(optionsSurface);
+	intermission_createCommsSurface(commsSurface);
 
 	signed char section = 1;
 
@@ -814,14 +806,14 @@ int galaxyMap()
 					cosY += 0.01;
 				}
 
-				if (showSystem(sinX, cosY, true))
+				if (intermission_showSystem(sinX, cosY, true))
 				{
 					if (game.system == 0)
 					{
 						sprintf(string, "Stationed At: %s", systemPlanet[game.stationedPlanet].name);
 						SDL_FreeSurface(iconInfo[9].image);
 						iconInfo[9].image = textSurface(string, FONT_WHITE);
-						updateCommsSurface(commsSurface);
+						intermission_updateCommsSurface(commsSurface);
 					}
 					else
 					{
@@ -837,7 +829,7 @@ int galaxyMap()
 				break;
 
 			case 2:
-				showStatus(statsSurface);
+				intermission_showStatus(statsSurface);
 				break;
 
 			case 3:
@@ -851,12 +843,12 @@ int galaxyMap()
 
 			case 5:
 				blit(commsSurface, 170, 70);
-				doComms(commsSurface);
+				intermission_doComms(commsSurface);
 				break;
 
 			case 6:
 				blit(optionsSurface, 230, 130);
-				showOptions(optionsSurface);
+				intermission_doOptions(optionsSurface);
 				break;
 
 			case 7:
@@ -865,7 +857,7 @@ int galaxyMap()
 				break;
 
 			case 8:
-				showSystem(sinX, cosY, false);
+				intermission_showSystem(sinX, cosY, false);
 
 				blit(systemPlanet[game.stationedPlanet].image, 150, 450);
 				blit(iconInfo[9].image, 135, 480);
@@ -886,7 +878,7 @@ int galaxyMap()
 						systemPlanet[game.stationedPlanet].name);
 					SDL_FreeSurface(iconInfo[9].image);
 					iconInfo[9].image = textSurface(string, FONT_WHITE);
-					updateCommsSurface(commsSurface);
+					intermission_updateCommsSurface(commsSurface);
 					section = 1;
 					redrawBackGround = true;
 					saveGame(0);
@@ -953,7 +945,7 @@ int galaxyMap()
 		}
 
 		engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
-		doCursor();
+		intermission_doCursor();
 
 		delayFrame();
 	}

@@ -122,7 +122,7 @@ int main(int argc, char **argv)
 				break;
 
 			case 1:
-				section = galaxyMap();
+				section = intermission();
 				break;
 
 			case 2:

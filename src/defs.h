@@ -419,9 +419,11 @@ enum {
 	DIFFICULTY_MAX
 };
 
-extern const char *systemNames[];
+const char * const systemNames[] = {"Spirit", "Eyananth", "Mordor", "Sol"};
 
-extern const char *systemBackground[];
+const char * const systemBackground[] = {
+	"gfx/spirit.jpg", "gfx/eyananth.jpg", "gfx/mordor.jpg", "gfx/sol.jpg"
+};
 
 const int rate2reload[6] = {15, 15, 13, 11, 9, 7};
 const int screenWidth = 800;

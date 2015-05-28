@@ -21,9 +21,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MISC_H
 
 extern void clearInfoLines();
+void copyInfoLine(int a, int b);
 extern void setInfoLine(const char *in, int color);
 extern void setRadioMessage(signed char face, const char *in, int priority);
-extern void doInfo();
 extern int getFace(const char *face);
 extern void resetLists();
 

@@ -20,6 +20,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef INTERMISSION_H
 #define INTERMISSION_H
 
-extern int galaxyMap();
+int intermission();
 
 #endif
