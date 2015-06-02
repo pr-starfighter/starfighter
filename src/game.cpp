@@ -554,6 +554,13 @@ static void game_doBullets()
 
 							aliens[i].hit = 5;
 						}
+						else if (aliens[i].flags & FL_DAMAGEOWNER)
+						{
+							alien_hurt(aliens[i].owner, bullet->owner,
+								bullet->damage, (bullet->flags & WF_DISABLE));
+
+							aliens[i].owner->hit = 5;
+						}
 
 						if (bullet->id == WT_CHARGER)
 						{

@@ -662,7 +662,7 @@ void alien_defs_init()
 	alien_defs[CD_URANUSBOSSWING1].collectChance = 100;
 	alien_defs[CD_URANUSBOSSWING1].collectType = P_ANYTHING;
 	alien_defs[CD_URANUSBOSSWING1].collectValue = 250;
-	alien_defs[CD_URANUSBOSSWING1].flags = FL_WEAPCO | FL_IMMORTAL;
+	alien_defs[CD_URANUSBOSSWING1].flags = FL_WEAPCO | FL_IMMORTAL | FL_DAMAGEOWNER;
 
 	// Uranus Boss Wing 2
 	alien_defs[CD_URANUSBOSSWING2].classDef = CD_URANUSBOSSWING2;
@@ -679,7 +679,7 @@ void alien_defs_init()
 	alien_defs[CD_URANUSBOSSWING2].collectChance = 100;
 	alien_defs[CD_URANUSBOSSWING2].collectType = P_ANYTHING;
 	alien_defs[CD_URANUSBOSSWING2].collectValue = 250;
-	alien_defs[CD_URANUSBOSSWING2].flags = FL_WEAPCO | FL_IMMORTAL;
+	alien_defs[CD_URANUSBOSSWING2].flags = FL_WEAPCO | FL_IMMORTAL | FL_DAMAGEOWNER;
 }
 
 void aliens_init()
@@ -1202,8 +1202,8 @@ void alien_setAI(object *alien)
 	if (i <= chase)
 	{
 		// Chase the target
-		alien->dx = ((alien->x - tx) / ((300 / alien->speed)  + rand() % 100));
-		alien->dy = ((alien->y - ty) / ((300 / alien->speed)  + rand() % 100));
+		alien->dx = ((alien->x - tx) / ((300 / alien->speed) + rand() % 100));
+		alien->dy = ((alien->y - ty) / ((300 / alien->speed) + rand() % 100));
 		return;
 	}
 	else if ((i >= point) && (i <= stop))
@@ -1211,8 +1211,8 @@ void alien_setAI(object *alien)
 		// Fly to a random point around the target
 		tx += (rand() % area - (rand() % area * 2));
 		ty += (rand() % area - (rand() % area * 2));
-		alien->dx = ((alien->x - tx) / ((300 / alien->speed)  + rand() % 100));
-		alien->dy = ((alien->y - ty) / ((300 / alien->speed)  + rand() % 100));
+		alien->dx = ((alien->x - tx) / ((300 / alien->speed) + rand() % 100));
+		alien->dy = ((alien->y - ty) / ((300 / alien->speed) + rand() % 100));
 		return;
 	}
 	else
@@ -1635,7 +1635,7 @@ void alien_hurt(object *alien, object *attacker, int damage, bool ion)
 		alien->shield -= damage;
 
 	// Chain reaction damage if needed
-	if (alien->flags & FL_DAMAGEOWNER)
+	if ((alien->owner != alien) && (alien->flags & FL_DAMAGEOWNER))
 	{
 		alien_hurt(alien->owner, attacker, damage, ion);
 	}

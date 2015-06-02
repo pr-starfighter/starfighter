@@ -944,7 +944,8 @@ int intermission()
 			}
 		}
 
-		engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
+		engine.keyState[KEY_FIRE] = 0;
+		engine.keyState[KEY_ALTFIRE] = 0;
 		intermission_doCursor();
 
 		delayFrame();
