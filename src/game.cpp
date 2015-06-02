@@ -849,7 +849,8 @@ static void game_doAliens()
 				}
 
 				if ((game.area == MISN_ELLESH) &&
-						(aliens[i].classDef == CD_BOSS))
+						((aliens[i].classDef == CD_BOSS) ||
+						    game.difficulty != DIFFICULTY_ORIGINAL))
 					aliens[i].face = 0;
 
 				if ((aliens[i].flags & FL_DEPLOYDRONES) && ((rand() % 300) == 0))
