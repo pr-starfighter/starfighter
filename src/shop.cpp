@@ -1005,7 +1005,12 @@ static void sell(int i)
 	}
 
 	adjustShopPrices();
-	game.cash += shopItems[i].price;
+
+	if (game.difficulty == DIFFICULTY_ORIGINAL)
+		game.cash += shopItems[i].price / 2;
+	else
+		game.cash += shopItems[i].price;
+
 	saveGame(0);
 }
 

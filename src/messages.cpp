@@ -32,7 +32,7 @@ static const char *killMessage[10] = {
 	"That'll teach you!",
 	"One more for me!",
 	"Target destroyed!",
-	"You aint so tough!",
+	"You ain't so tough!",
 	"Kicked your ass!",
 
 	"That takes me up to %d",
