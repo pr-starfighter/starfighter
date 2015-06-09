@@ -439,6 +439,7 @@ static void game_doBullets()
 	bool okayToHit = false;
 	int old_shield;
 	float homingMissileSpeed = 0;
+	int charger_num;
 
 	bullet = engine.bulletHead;
 	prevBullet = engine.bulletHead;
@@ -478,9 +479,15 @@ static void game_doBullets()
 
 			if (bullet->id == WT_CHARGER)
 			{
-				for (int i = 0 ; i < bullet->damage * 2 ; i++)
+				if (game.difficulty == DIFFICULTY_ORIGINAL)
+					charger_num = bullet->damage;
+				else
+					charger_num = bullet->damage * 2;
+
+				for (int i = 0 ; i < charger_num ; i++)
 					blit(bullet->image[0],
-						(int)(bullet->x - RANDRANGE(-(bullet->damage * 2 / 3), 0)),
+						(int)(bullet->x - RANDRANGE(
+							-(charger_num / 6), charger_num / 6)),
 						(int)(bullet->y + RANDRANGE(-3, 3)));
 			}
 

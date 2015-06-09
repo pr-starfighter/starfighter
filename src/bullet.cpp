@@ -81,7 +81,11 @@ void bullet_add(object *theWeapon, object *attacker, int y, int dy)
 
 	if (bullet->id == WT_CHARGER)
 	{
-		bullet->damage = attacker->ammo[1] / 2;
+		if (game.difficulty == DIFFICULTY_ORIGINAL)
+			bullet->damage = attacker->ammo[1];
+		else
+			bullet->damage = attacker->ammo[1] / 2;
+
 		if (bullet->damage < 15)
 		{
 			bullet->damage = 1;
