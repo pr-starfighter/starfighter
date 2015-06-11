@@ -1617,7 +1617,7 @@ void alien_destroy(object *alien, object *attacker)
 	}
 
 	if ((alien->classDef == CD_KRASS) && (attacker == &player))
-		setRadioMessage(FACE_CHRIS, "My NAME is CHRIS!!!!!!!!", 1);
+		setRadioMessage(FACE_CHRIS, "The name's CHRIS, old-timer.", 1);
 
 	if (alien->classDef == CD_KLINE)
 	{

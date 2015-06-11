@@ -1,9 +1,7 @@
 Sid Wilson
 FACE_SID
-Whilst you were gone I picked up a distress call coming from around Jupiter.
+While you were gone I picked up a distress call coming from around Jupiter.
 FACE_URSULA
-Who would be sending out a distress call within Sol???
-FACE_PHOEBE
-The whole thing stinks if you ask me.
+Who would be sending out a distress call within Sol?
 FACE_CHRIS
-Still, we should investigate. Too many people have died as a result of that blasted corporation!
+Let's check it out. Even if it's a trap, I think we can handle it.

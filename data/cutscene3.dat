@@ -20,18 +20,16 @@ gfx/eyananth.jpg
 FACE_PHOEBE
 Nice head gear! You shop at the same place as me, huh?
 FACE_CHRIS
-What the hell were you doing?! You could have gotten yourself killed!
+More importantly, what were you doing out there? You're lucky I was around!
 FACE_PHOEBE
-I'm looking for my sister. She vanished about a week ago. I was scouting the area when I was attacked.
+I'm looking for my sister. She vanished about a week ago.
 FACE_PHOEBE
 Hey! Wait a moment! You're that rebel from Spirit! I think you're so cool! Can I come with you?
 FACE_CHRIS
-No way! You'd be too much of a liability!
+Extra firepower? I wouldn't mind one bit! What do you think, Sid?
 FACE_SID
-Chris, I think we could use the extra firepower to be honest. And I'm interested in studying her homing missile launcher.
+I agree. I'm also interested in studying her homing missile launcher; it could come in handy.
 FACE_CHRIS
-Alright. But just don't get in the way.
--1
+In that case, welcome aboard!
+FACE_NONE
 Phoebe Lexx will now join you as a Wingmate. However, she will not be available on certain missions.
--1
-@none@

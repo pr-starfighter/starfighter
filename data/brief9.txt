@@ -1,11 +1,9 @@
 Sid Wilson
 FACE_SID
-I need some resources before we leave, it'll make life a lot easier in Mordor. Problem is that the parts are property of WEAPCO.
-FACE_PHOEBE
-Can't we just salvage some from previous encounters?
-FACE_SID
-No, even if we manage to find them in all that space, they'll probably be too heavily damaged to be of any use.
+I need some resources before we leave, it'll make life a lot easier in Mordor. Problem is that the parts are hoarded by WEAPCO.
 FACE_CHRIS
-We'll need to capture some WEAPCO supply craft then.
+Where can we get the parts, then?
 FACE_SID
-Looks like I'm coming with you on this one!
+There's a big shipment of them nearby. I can disable the supply craft carrying them; I just need you to give me some cover while I do it.
+FACE_CHRIS
+You got it!

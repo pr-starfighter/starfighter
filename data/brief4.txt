@@ -4,5 +4,5 @@ We're going to have to clear the mine field that's been building up here recentl
 FACE_CHRIS
 Any fighters?
 FACE_SID
-Not at the moment, but that doesn't mean they won't turn up! Be very careful of those mines! They'll only explode when they encounter a ship that's not transmitting a WEAPCO signal! Shoot them down if they get in your way.
+Not at the moment, but that doesn't mean they won't turn up. Be very careful of those mines! They'll only explode when they encounter a ship that's not transmitting a WEAPCO signal. Shoot them down if they get in your way.
 

@@ -17,15 +17,13 @@ gfx/sol.jpg
 13 2 -800 -550 -3
 14 2 -800 -550 -3
 
--1
+FACE_NONE
 A few hours later, in the Sol system, news has already spread of Chris Bainfield's heroic actions. The commander of WEAPCO's navy considers his options.
 FACE_KLINE
 The Emperor will not be pleased! Spirit is now a free star system thanks to that interfering rebel pilot!
 FACE_KLINE
 It was reported that he was able to take down one of our most powerful frigates in under 3 minutes!
 FACE_KLINE
-Talent like that does not appear everyday. He would be a perfect candidate for our new AI training program!
+Talent like that does not appear every day. He would be a perfect candidate for our new AI training program!
 FACE_KLINE
 What a pity I must kill him...
--1
-@none@

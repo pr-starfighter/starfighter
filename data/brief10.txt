@@ -1,7 +1,7 @@
 Phoebe Lexx
 FACE_CHRIS
-A WEAPCO scientist just fled in an escape pod, I'm going after them.
+A WEAPCO scientist just ran off in an escape pod. I'm going after him.
 FACE_PHOEBE
 Do you need some backup?
 FACE_CHRIS
-No, they've headed into an asteroid belt so I'm going to have to try and trace their signal. Having two of us there would just complicate matters. Stay put and help Sid.
+Nah, that would just complicate the search.

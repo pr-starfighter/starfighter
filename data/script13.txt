@@ -8,19 +8,19 @@ Unidentified craft sighted. Will proceed to destroy all targets.
 FACE_CHRIS
 -1
 0
-Oh, fantastic! She's got one of those homing missile launchers too! Any advice, Phoebe??
+Looks like she's got one of those homing missile launchers too! Any advice, Phoebe?
 
 14
 FACE_PHOEBE
 -1
 0
-Just try and dodge them!!
+Just try and dodge them!
 
 180
 FACE_SID
 -1
 0
-Chris!! Ursula's running away!
+Chris! Ursula's running away!
 
 195
 -1

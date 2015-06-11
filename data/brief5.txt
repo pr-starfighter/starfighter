@@ -1,7 +1,7 @@
 Sid Wilson
 FACE_SID
-CHRIS!!!! We've got a major problem here!!! WEAPCO have decided to retaliate!! But they've decided it'll take too long to hunt you down so instead they're going to destroy Spirit! The explosion will destroy everything in the system!! You've only got about 3 minutes to destroy the frigate before it's in range!
+CHRIS! We've got a major problem here! WEAPCO has decided to stop our resistance by destroying Spirit! The explosion will incinerate everything in the system! You've only got about 3 minutes to destroy the frigate before it's in range!
 FACE_CHRIS
-DAMN!
+Damn! I'll get right on that, then!
 FACE_SID
 We're all counting on you, Chris! But just remember - They didn't call that thing "Star Killer" just because it sounded nice!

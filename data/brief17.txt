@@ -1,9 +1,7 @@
 Ursula Lexx
 FACE_URSULA
 I've remembered something. WEAPCO are transporting some high level personnel to Poswic.
-FACE_CHRIS
-This could be really important to our success in Sol. Sid, we'll need you to disable that ship.
 FACE_SID
-Agreed. Just provide me with enough cover and I'll get straight to it.
+This could be really important to our success in Sol. I'll need some cover so I can disable that ship.
 FACE_CHRIS
-We'll have to take out any communications as soon as we intercept that ship. We can't have them reporting back to WEAPCO.
+Got it.

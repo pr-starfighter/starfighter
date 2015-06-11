@@ -1,9 +1,9 @@
-Phoebe and Ursula
-FACE_CHRIS
-WEAPCO have set up a highly dangerous defense line between Saturn and Uranus. I'll need your help to take it out.
+Sid Wilson
+FACE_SID
+WEAPCO have set up a highly dangerous defense line between Saturn and Uranus. We'll need to take it out.
 FACE_PHOEBE
 What kind of defense system?
-FACE_CHRIS
+FACE_SID
 Several mobile Energy Ray cannons, not unlike the weapon used by the Star Killer back in Spirit.
 FACE_URSULA
 Best check my ejection system then!

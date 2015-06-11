@@ -17,25 +17,19 @@ gfx/eyananth.jpg
 13 -1 0 0 0
 14 -1 0 0 0
 
-FACE_PHOEBE
+FACE_SID
 Chris, what happened?! Are you okay?!
 FACE_CHRIS
 We took down the WEAPCO mining vessel and then I was jumped by a man claiming to be Kline Kethlan.
 FACE_SID
 I've heard of him. He's the Commander of WEAPCO's naval forces. One of the best pilots they ever had.
 FACE_CHRIS
-He did put up one hell of a fight. He didn't stick around for long, though. I guess he was just testing me.
+He did put up one hell of a fight! He didn't stick around for long, though. I guess he was just testing me.
 FACE_CHRIS
-We've still got a job to do. What did you find out about Mordor?
+Anyway, what's the scoop on Mordor, Sid?
 FACE_SID
-It's home to one of WEAPCO's main research facilities. They are testing some new fighter craft at the moment.
+Well, it seems WEAPCO is testing some new fighter craft there. We should destroy it to thwart its development.
 FACE_CHRIS
-We should try and either destroy or capture that craft.
-FACE_SID
-Destroying it would be best. Word has also spread of your work and a small uprising has begun.
-FACE_CHRIS
-Then we'll help them. And after that we head to Sol.
+Sounds like a plan.
 FACE_PHOEBE
 I wonder if my sister will be here...
--1
-@none@

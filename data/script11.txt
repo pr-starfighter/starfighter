@@ -8,7 +8,7 @@ Ummm... something about this doesn't look right! They should be offering more re
 FACE_PHOEBE
 -1
 0
-DAMMIT! It's a trap!! Come on, Chris, we have to leave NOW!!
+DAMMIT! It's a trap! Come on, Chris, we have to leave NOW!!
 
 -7
 -1

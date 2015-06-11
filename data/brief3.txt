@@ -1,10 +1,10 @@
 Sid Wilson
 FACE_CHRIS
-Missile boats?!!
+Missile boats?
 FACE_SID
 Yeah, looks like WEAPCO has decided that in order to gain better control of Spirit they'll have to bring out the big guns!
 FACE_CHRIS
-Any more information? Did you manage to get the analysis of that last wing we avoided?
+Wow! Any more information on them?
 FACE_SID
-A single missile boats carries enough rockets to level most major cities! Try not to face them head-on and keep your distance!
+A single missile boats carries enough rockets to level most major cities. Try not to face them head-on and keep your distance.
 

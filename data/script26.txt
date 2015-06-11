@@ -2,7 +2,7 @@
 FACE_CHRIS
 -1
 0
-WEAPCO is finished, Kethlan! You have nowhere to run, nowhere to hide, and no one to help you.
+WEAPCO is finished, Kline! You have nowhere to run, nowhere to hide, and no one to help you.
 
 8
 FACE_KLINE

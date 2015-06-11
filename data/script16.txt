@@ -2,7 +2,7 @@
 FACE_CHRIS
 -1
 0
-Nice ship...
+Nice ship!
 
 7
 FACE_KRASS

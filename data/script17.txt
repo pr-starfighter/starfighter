@@ -1,8 +1,8 @@
 90
-FACE_CHRIS
+FACE_SID
 14
 128
-DAMMIT!!! It's getting away!! We've got to stop it!!
+DAMMIT! It's getting away! We've got to stop it!
 
 
 0
