@@ -66,15 +66,8 @@ License: CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0/>
 
 gfx/face_chris.png
 gfx/face_phoebe.png
-gfx/face_ursula.png
-
-Author: CharlesGabriel <http://cgartsenal.blogspot.com/>
-License: CC BY 3.0 <https://creativecommons.org/licenses/by/3.0/>
-Source: http://opengameart.org/content/48x48-faces-2nd-sheet
-
-------------------------------------------------------------------------
-
 gfx/face_sid.png
+gfx/face_ursula.png
 
 Authors:
   CharlesGabriel <http://cgartsenal.blogspot.com/>
@@ -87,7 +80,9 @@ Source: http://opengameart.org/content/48x48-faces-2nd-sheet
 gfx/face_crew.png
 gfx/face_krass.png
 
-Author: CharlesGabriel <http://cgartsenal.blogspot.com/>
+Authors:
+  CharlesGabriel <http://cgartsenal.blogspot.com/>
+  Lachlan Cartland <http://lachlancartland.weebly.com/>
 License: CC BY 3.0 <https://creativecommons.org/licenses/by/3.0/>
 Source: http://opengameart.org/content/48x48-faces-3rd-sheet
 
@@ -98,12 +93,14 @@ gfx/face_kline.png
 Authors:
   CharlesGabriel <http://cgartsenal.blogspot.com/>
   Astrid
+  Lachlan Cartland <http://lachlancartland.weebly.com/>
 License: CC BY 3.0 <https://creativecommons.org/licenses/by/3.0/>
 Sources:
   http://opengameart.org/content/48x48-faces-2nd-sheet
   http://opengameart.org/content/48x48-faces-4th-sheet
 Details:
-  Astrid combined parts from the two sheets.
+  Astrid combined parts from the two sheets to make the initial version.
+  Lachlan Cartland added his own changes after that.
 
 ------------------------------------------------------------------------
 
