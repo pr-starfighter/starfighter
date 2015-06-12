@@ -549,7 +549,7 @@ Author: maxstack <http://opengameart.org/users/maxstack>
 License: CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>
 Source: http://opengameart.org/content/through-space
 Changes:
-  Amplified +1 dB, rate changed from 48000 to 44100, and end trimmed
+  Amplified +0.83 dB, rate changed from 48000 to 44100, and end trimmed
   off in Audacity.
 
 ------------------------------------------------------------------------
