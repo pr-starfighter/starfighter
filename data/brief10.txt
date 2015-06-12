@@ -1,7 +1,5 @@
-Phoebe Lexx
+Sid Wilson
+FACE_SID
+A WEAPCO scientist just ran off in an escape pod. If we capture him, we may be able to get some information about Mordor.
 FACE_CHRIS
-A WEAPCO scientist just ran off in an escape pod. I'm going after him.
-FACE_PHOEBE
-Do you need some backup?
-FACE_CHRIS
-Nah, that would just complicate the search.
+Alright. I'm going after him.
