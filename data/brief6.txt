@@ -1,6 +1,6 @@
 Sid Wilson
 FACE_SID
-WEAPCO has many slaves in this system. If we free a large number of them, it might help to spark a rebellion. I estimate that we will need to rescue around 250 to make a difference.
+As you know, WEAPCO has many slaves in this system. If we free a large number of them, it might help to spark a rebellion. I estimate that we will need to rescue around 250 to make a difference.
 FACE_CHRIS
 Most of the slaves are working in ore mines, aren't they?
 FACE_SID

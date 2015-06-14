@@ -1,10 +1,10 @@
 Sid Wilson
 FACE_CHRIS
-Missile boats?
+Wow! Missile boats?
 FACE_SID
-Yeah, looks like WEAPCO has decided that in order to gain better control of Spirit they'll have to bring out the big guns!
+Yup. Looks like WEAPCO is starting to take notice of your actions.
 FACE_CHRIS
-Wow! Any more information on them?
+Sounds like fun! This will really put the Firefly's fighting ability to the test!
 FACE_SID
-A single missile boats carries enough rockets to level most major cities. Try not to face them head-on and keep your distance.
+Please be careful, Chris. A single missile boat carries enough rockets to level most major cities. Try not to face them head-on, and keep your distance.
 

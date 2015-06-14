@@ -2,4 +2,4 @@ Sid Wilson
 FACE_SID
 I've just received another SOS. This one is coming from a supply craft carrying essential medical supplies.
 FACE_CHRIS
-I'm on it.
+Alright, Tell 'em I'm on my way.

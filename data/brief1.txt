@@ -4,7 +4,7 @@ Hey, boy! You still owe me money for the Firefly I stole for you! But instead, I
 FACE_CHRIS
 Oh? That's the job I contracted you to do, was it not?
 FACE_KRASS
-I know, but you will still owe me money for the Firefly. Do this job, and also collect $500, and we will call it quits. And if you die... Well, I guess the ship was not worth stealing! HA HA HA!!
+I know, but this way we can resolve your debt right now. Do this job, and also collect $500, and we will call it quits. And if you die... Well, I guess the ship was not worth stealing! HA HA HA!
 FACE_CHRIS
-As usual, you take me too lightly, Krass. Very well.
+As usual, you take me too lightly, Krass.
 

@@ -4,6 +4,6 @@ I've received word that the slaves we rescued have started a rebellion. Looks li
 FACE_PHOEBE
 WEAPCO has an automated mining ship in orbit around Elamale. How about we take it out and cause some confusion?
 FACE_CHRIS
-I like that idea.
+I like that idea!
 FACE_SID
 It'll work, but be careful.

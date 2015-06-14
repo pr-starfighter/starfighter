@@ -32,7 +32,7 @@ I'm a mercenary, what do you expect?! WEAPCO hired me to do a job, just like you
 FACE_CHRIS
 -1
 0
-Good point. I guess I was a fool to expect anything else.
+Good point. It would be foolish to expect anything else.
 
 25
 FACE_KRASS

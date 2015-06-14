@@ -4,4 +4,4 @@ I've remembered something. WEAPCO is transporting some high level personnel to P
 FACE_SID
 This could be really important to our success in Sol. I'll need some cover so I can disable that ship.
 FACE_CHRIS
-Got it.
+You got it!

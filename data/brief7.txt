@@ -1,7 +1,9 @@
 (unknown)
 FACE_PHOEBE
-Help! This is an SOS! Can anyone hear me?! I was intercepted by a large WEAPCO force near Nerod! I'm in need of assistance!
-FACE_SID
-You should probably go help her out, Chris.
+Help! This is an SOS! Can anyone hear me?!
 FACE_CHRIS
-Obviously.
+I'm hearing you loud and clear! What's up?
+FACE_PHOEBE
+Oh, thank God! I was intercepted by a large WEAPCO force near Nerod! I'm in need of assistance!
+FACE_CHRIS
+I'm on my way!
