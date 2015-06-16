@@ -1511,7 +1511,6 @@ void alien_move(object *alien)
 					player.shield -= alien->shield;
 				alien->shield = 0;
 				audio_playSound(SFX_EXPLOSION, alien->x);
-				setInfoLine("Warning: Asteroid Collision Damage!!", FONT_RED);
 				player.hit = 5;
 				audio_playSound(SFX_HIT, player.x);
 			}
@@ -1522,7 +1521,6 @@ void alien_move(object *alien)
 					player.shield -= alien->shield;
 				alien->shield = 0;
 				audio_playSound(SFX_EXPLOSION, alien->x);
-				setInfoLine("Warning: Asteroid Collision Damage!!", FONT_RED);
 				player.hit = 5;
 				audio_playSound(SFX_HIT, player.x);
 			}
@@ -1558,7 +1556,7 @@ void alien_destroy(object *alien, object *attacker)
 			if ((alien->classDef == CD_PHOEBE) || (alien->classDef == CD_URSULA))
 				setInfoLine(">> Ally has ejected! <<\n", FONT_RED);
 			else
-				setInfoLine(">> Friendly craft has been destroyed!! <<\n", FONT_RED);
+				setInfoLine(">> Friendly craft has been destroyed! <<\n", FONT_RED);
 		}
 	}
 
