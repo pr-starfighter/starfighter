@@ -17,6 +17,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <ctype.h>
+
 #include "Starfighter.h"
 
 Star star[200];
@@ -243,41 +245,68 @@ that constantly needs updating (eg - the main game screen)
 */
 static int renderString(const char *in, int x, int y, int fontColor, signed char wrap, SDL_Surface *dest)
 {
+	int i;
+	int splitword;
 	SDL_Rect area;
+	SDL_Rect letter;
+
 	area.x = x;
 	area.y = y;
 	area.w = 8;
 	area.h = 14;
 
-	SDL_Rect letter;
 	letter.y = 0;
 	letter.w = 8;
 	letter.h = 14;
 
 	while (*in != '\0')
 	{
-		if (*in != 32)
+		if (*in != ' ')
 		{
 			letter.x = (*in - 33);
 			letter.x *= 8;
-			letter.x--; // Temp fix
 
 			/* Blit onto the screen surface */
-			 if(SDL_BlitSurface(fontShape[fontColor], &letter, dest, &area) < 0)
-			 {
+			if (SDL_BlitSurface(fontShape[fontColor], &letter, dest, &area) < 0)
+			{
 				printf("BlitSurface error: %s\n", SDL_GetError());
 				showErrorAndExit(2, "");
-			 }
+			}
 		}
 
 		area.x += 9;
 
 		if (wrap)
 		{
-			if ((area.x > (dest->w - 70)) && (*in == 32))
+			if ((area.x > (dest->w - 70)) && (*in == ' '))
 			{
 				area.y += 16;
 				area.x = x;
+			}
+			else if (area.x > (dest->w - 31))
+			{
+				splitword = 1;
+				for (i = 0 ; i < 4 ; i++)
+				{
+					if (!isalpha(*(in + i)))
+					{
+						splitword = 0;
+						break;
+					}
+				}
+
+				if (splitword)
+				{
+					letter.x = (int)('-') - 33;
+					letter.x *= 8;
+					if (SDL_BlitSurface(fontShape[fontColor], &letter, dest, &area) < 0)
+					{
+						printf("BlitSurface error: %s\n", SDL_GetError());
+						showErrorAndExit(2, "");
+					}
+					area.y += 16;
+					area.x = x;
+				}
 			}
 		}
 
