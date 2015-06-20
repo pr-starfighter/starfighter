@@ -21,6 +21,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 Game game;
 
+static Star stars[STARS_NUM];
+
 void game_init()
 {
 	game.system = 0;
@@ -124,6 +126,13 @@ void game_init()
 	player.weaponType[0] = W_PLAYER_WEAPON;
 	player.weaponType[1] = W_ROCKETS;
 
+	for (int i = 0 ; i < STARS_NUM ; i++)
+	{
+		stars[i].x = rand() % screen->w;
+		stars[i].y = rand() % screen->h;
+		stars[i].speed = 1 + (rand() % 3);
+	}
+
 	initWeapons();
 	initMissions();
 	initPlanetMissions(game.system);
@@ -162,6 +171,52 @@ static void game_addDebris(int x, int y, int amount)
 
 		engine.debrisTail->next = debris;
 		engine.debrisTail = debris;
+	}
+}
+
+/*
+Simply draws the stars in their positions on screen and moves
+them around.
+*/
+void game_doStars()
+{
+	/* Lock the screen for direct access to the pixels */
+	if (SDL_MUSTLOCK(screen))
+	{
+		if (SDL_LockSurface(screen) < 0 )
+			showErrorAndExit(2, "");
+	}
+
+	int color = 0;
+
+	SDL_Rect r;
+
+	for (int i = 0 ; i < STARS_NUM ; i++)
+	{
+		if (stars[i].speed == 3)
+			color = white;
+		else if (stars[i].speed == 2)
+			color = lightGrey;
+		else if (stars[i].speed == 1)
+			color = darkGrey;
+
+		WRAP_ADD(stars[i].x, (engine.ssx + engine.smx) * stars[i].speed, 0,
+			screen->w - 1);
+		WRAP_ADD(stars[i].y, (engine.ssy + engine.smy) * stars[i].speed, 0,
+			screen->h - 1);
+
+		putpixel(screen, (int)stars[i].x, (int)stars[i].y, color);
+		r.x = (int)stars[i].x;
+		r.y = (int)stars[i].y;
+		r.w = 1;
+		r.h = 1;
+
+		addBuffer(r.x, r.y, r.w, r.h);
+	}
+
+	if (SDL_MUSTLOCK(screen))
+	{
+		SDL_UnlockSurface(screen);
 	}
 }
 
@@ -2146,7 +2201,7 @@ int game_mainLoop()
 		}
 
 		unBuffer();
-		doStarfield();
+		game_doStars();
 		game_doCollectables();
 		game_doBullets();
 		game_doAliens();

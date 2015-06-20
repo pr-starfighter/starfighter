@@ -21,8 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-Star star[200];
-
 static unsigned long frameLimit;
 static int thirds;
 
@@ -684,50 +682,4 @@ SDL_Surface *loadImage(const char *filename)
 	}
 
 	return setTransparent(newImage);
-}
-
-/*
-Simply draws the stars in their positions on screen and moves
-them around.
-*/
-void doStarfield()
-{
-	/* Lock the screen for direct access to the pixels */
-	if (SDL_MUSTLOCK(screen))
-	{
-		if (SDL_LockSurface(screen) < 0 )
-			showErrorAndExit(2, "");
-	}
-
-	int color = 0;
-
-	SDL_Rect r;
-
-	for (int i = 0 ; i < 200 ; i++)
-	{
-		if (star[i].speed == 3)
-			color = white;
-		else if (star[i].speed == 2)
-			color = lightGrey;
-		else if (star[i].speed == 1)
-			color = darkGrey;
-
-		WRAP_ADD(star[i].x, (engine.ssx + engine.smx) * star[i].speed, 0,
-			screen->w - 1);
-		WRAP_ADD(star[i].y, (engine.ssy + engine.smy) * star[i].speed, 0,
-			screen->h - 1);
-
-		putpixel(screen, (int)star[i].x, (int)star[i].y, color);
-		r.x = (int)star[i].x;
-		r.y = (int)star[i].y;
-		r.w = 1;
-		r.h = 1;
-
-		addBuffer(r.x, r.y, r.w, r.h);
-	}
-
-	if (SDL_MUSTLOCK(screen))
-	{
-		SDL_UnlockSurface(screen);
-	}
 }

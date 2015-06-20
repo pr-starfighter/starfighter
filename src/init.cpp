@@ -31,13 +31,6 @@ void initVars()
 {
 	srand(time(NULL));
 
-	for (int i = 0 ; i < (int)(screen->w * screen->h / 2400) ; i++)
-	{
-		star[i].x = rand() % screen->w;
-		star[i].y = rand() % screen->h;
-		star[i].speed = 1 + (rand() % 3);
-	}
-
 	if (engine.useAudio)
 	{
 		Mix_Volume(-1, 100);

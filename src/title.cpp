@@ -281,7 +281,7 @@ int doTitle()
 
 		now = SDL_GetTicks();
 
-		doStarfield();
+		game_doStars();
 		game_doExplosions();
 
 		for (int i = 0 ; i < 15 ; i++)

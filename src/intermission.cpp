@@ -722,7 +722,7 @@ int intermission()
 			unBuffer();
 		}
 
-  		doStarfield();
+  		game_doStars();
 
 		r.x = 0;
 		r.y = 0;

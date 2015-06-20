@@ -44,8 +44,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif 
 
 #ifndef PATH_MAX
-#define PATH_MAX	4096
+#define PATH_MAX 4096
 #endif
+
+#define STARS_NUM 200
 
 // Object Flags
 #define FL_WEAPCO 1

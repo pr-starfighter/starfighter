@@ -243,7 +243,7 @@ void doCutscene(int scene)
 		updateScreen();
 		unBuffer();
 		getPlayerInput();
-		doStarfield();
+		game_doStars();
 		game_doExplosions();
 
 		for (int i = 0 ; i < 15 ; i++)

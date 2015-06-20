@@ -20,8 +20,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
 
-extern Star star[200];
-
 extern SDL_Window *window;
 extern SDL_Renderer *renderer;
 extern SDL_Texture *texture;
@@ -69,6 +67,5 @@ extern void createMessageBox(SDL_Surface *face, const char *message, signed char
 extern void freeGraphics();
 
 extern SDL_Surface *loadImage(const char *filename);
-extern void doStarfield();
 
 #endif
