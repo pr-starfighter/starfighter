@@ -22,19 +22,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 extern Star star[200];
 
-extern Uint32 red;
-extern Uint32 darkRed;
-extern Uint32 yellow;
-extern Uint32 darkYellow;
-extern Uint32 green;
-extern Uint32 darkGreen;
-extern Uint32 blue;
-extern Uint32 darkBlue;
-extern Uint32 darkerBlue;
-extern Uint32 black;
-extern Uint32 white;
-extern Uint32 lightGrey;
-extern Uint32 darkGrey;
 extern SDL_Window *window;
 extern SDL_Renderer *renderer;
 extern SDL_Texture *texture;
@@ -64,7 +51,6 @@ extern void unBuffer();
 extern int drawString(const char *in, int x, int y, int fontColor, signed char wrap, SDL_Surface *dest);
 extern int drawString(const char *in, int x, int y, int fontColor, SDL_Surface *dest);
 extern int drawString(const char *in, int x, int y, int fontColor);
-extern void setColorIndexes();
 extern void drawBackGround();
 extern void clearScreen(Uint32 color);
 extern void updateScreen();

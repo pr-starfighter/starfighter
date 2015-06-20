@@ -103,7 +103,7 @@ int main(int argc, char **argv)
 	initVars();
 	alien_defs_init();
 
-	setColorIndexes();
+	colors_init();
 
 	showStory();
 
