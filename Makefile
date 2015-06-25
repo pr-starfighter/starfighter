@@ -38,8 +38,8 @@ install: $(ALL)
 	mkdir -p $(DESTDIR)$(DOCDIR)
 
 	install -m 755 $(PROG) $(DESTDIR)$(BINDIR)$(PROG)
-	cp -pr $(DATA) $(DESTDIR)$(DATADIR)
-	cp -p $(DOCS) $(DESTDIR)$(DOCDIR)
+	cp -r $(DATA) $(DESTDIR)$(DATADIR)
+	cp $(DOCS) $(DESTDIR)$(DOCDIR)
 
 optimise:
 	advpng -z gfx/*.png
