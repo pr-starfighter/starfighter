@@ -270,8 +270,11 @@ void getPlayerInput()
 	{
 		// Get the current mouse position
 		static int px = -1, py = -1;
-		int x, y;
+		int x, y, w, h;
 		SDL_GetMouseState(&x, &y);
+		SDL_GetWindowSize(window, &w, &h);
+		x = screenWidth * x / w;
+		y = screenHeight * y / h;
 		if (px == x && py == y) {
 			if(engine.keyState[KEY_UP] && engine.cursor_y > 0)
 				engine.cursor_y -= 4;
