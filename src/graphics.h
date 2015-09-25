@@ -34,10 +34,6 @@ extern textObject textShape[MAX_TEXTSHAPES];
 extern SDL_Surface *messageBox;
 
 
-extern bool collision(float x0, float y0, int w0, int h0, float x2, float y2, int w1, int h1);
-extern bool collision(object *object1, object *object2);
-extern bool collision(collectables *object1, object *object2);
-
 extern void initGraphics();
 extern SDL_Surface *setTransparent(SDL_Surface *sprite);
 extern void addBuffer(int x, int y, int w, int h);

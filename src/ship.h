@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef SHIP_H
 #define SHIP_H
 
+bool ship_collision(object *ship, object *otherShip);
 void ship_fireBullet(object *ship, int weaponType);
 void ship_fireRay(object *ship);
 

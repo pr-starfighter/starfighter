@@ -1133,9 +1133,7 @@ bool alien_place(object *alien)
 	{
 		if ((aliens[i].owner != alien) && (aliens[i].shield > 0))
 		{
-			if (collision(alien->x, alien->y, alien->image[0]->w,
-					alien->image[0]->h, aliens[i].x, aliens[i].y,
-					aliens[i].image[0]->w, aliens[i].image[0]->h))
+			if (ship_collision(alien, &aliens[i]))
 				return false;
 		}
 	}
@@ -1485,7 +1483,7 @@ void alien_move(object *alien)
 				continue;
 			}
 
-			if (collision(alien, &aliens[i]))
+			if (ship_collision(alien, &aliens[i]))
 			{
 				if ((aliens[i].classDef == CD_BARRIER) &&
 					(aliens[i].owner != alien))
@@ -1503,7 +1501,7 @@ void alien_move(object *alien)
 	// Handle a collision with the player
 	if ((player.shield > 0) && (alien->shield > 0) && (checkCollisions))
 	{
-		if (collision(alien, &player))
+		if (ship_collision(alien, &player))
 		{
 			if (alien->classDef == CD_ASTEROID)
 			{

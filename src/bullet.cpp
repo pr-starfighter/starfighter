@@ -181,3 +181,24 @@ object *bullet_getTarget(object *bullet)
 
 	return &aliens[i];
 }
+
+bool bullet_collision(object *bullet, object *ship)
+{
+	float x0 = bullet->x;
+	float y0 = bullet->y;
+	float w0 = bullet->image[0]->w;
+	float h0 = bullet->image[0]->h;
+
+	float x2 = ship->x;
+	float y2 = ship->y;
+	float w1 = ship->image[0]->w;
+	float h1 = ship->image[0]->h;
+
+	float x1 = x0 + w0;
+	float y1 = y0 + h0;
+
+	float x3 = x2 + w1;
+	float y3 = y2 + h1;
+
+	return !(x1<x2 || x3<x0 || y1<y2 || y3<y0);
+}

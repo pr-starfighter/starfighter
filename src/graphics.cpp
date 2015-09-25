@@ -37,59 +37,6 @@ bRect *bufferTail;
 textObject textShape[MAX_TEXTSHAPES];
 SDL_Surface *messageBox;
 
-bool collision(float x0, float y0, int w0, int h0, float x2, float y2, int w1, int h1)
-{
-	float x1 = x0 + w0;
-	float y1 = y0 + h0;
-
-	float x3 = x2 + w1;
-	float y3 = y2 + h1;
-
-	return !(x1<x2 || x3<x0 || y1<y2 || y3<y0);
-}
-
-bool collision(object *object1, object *object2)
-{
-	float x0 = object1->x;
-	float y0 = object1->y;
-	float w0 = object1->image[0]->w;
-	float h0 = object1->image[0]->h;
-
-	float x2 = object2->x;
-	float y2 = object2->y;
-	float w1 = object2->image[0]->w;
-	float h1 = object2->image[0]->h;
-
-	float x1 = x0 + w0;
-	float y1 = y0 + h0;
-
-	float x3 = x2 + w1;
-	float y3 = y2 + h1;
-
-	return !(x1<x2 || x3<x0 || y1<y2 || y3<y0);
-}
-
-bool collision(collectables *object1, object *object2)
-{
-	float x0 = object1->x;
-	float y0 = object1->y;
-	float w0 = object1->image->w;
-	float h0 = object1->image->h;
-
-	float x2 = object2->x;
-	float y2 = object2->y;
-	float w1 = object2->image[0]->w;
-	float h1 = object2->image[0]->h;
-
-	float x1 = x0 + w0;
-	float y1 = y0 + h0;
-
-	float x3 = x2 + w1;
-	float y3 = y2 + h1;
-
-	return !(x1<x2 || x3<x0 || y1<y2 || y3<y0);
-}
-
 void initGraphics()
 {
 	bufferHead = new bRect;

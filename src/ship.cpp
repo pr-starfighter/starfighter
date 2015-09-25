@@ -19,6 +19,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
+bool ship_collision(object *ship, object *otherShip)
+{
+	float x0 = ship->x;
+	float y0 = ship->y;
+	float w0 = ship->image[0]->w;
+	float h0 = ship->image[0]->h;
+
+	float x2 = otherShip->x;
+	float y2 = otherShip->y;
+	float w1 = otherShip->image[0]->w;
+	float h1 = otherShip->image[0]->h;
+
+	float x1 = x0 + w0;
+	float y1 = y0 + h0;
+
+	float x3 = x2 + w1;
+	float y3 = y2 + h1;
+
+	return !(x1<x2 || x3<x0 || y1<y2 || y3<y0);
+}
+
 /*
 Fill in later...
 */
@@ -142,7 +163,7 @@ void ship_fireRay(object *ship)
 	{
 		if (player.shield > 0)
 		{
-			if (collision(player.x, player.y, player.image[0]->w,
+			if (game_collision(player.x, player.y, player.image[0]->w,
 					player.image[0]->h, ray.x, ray.y, ray.w, ray.h) &&
 				(!engine.cheatShield))
 			{
@@ -174,7 +195,7 @@ void ship_fireRay(object *ship)
 		if ((aliens[i].shield > 0) && (ship != &aliens[i]) &&
 			(ship->classDef != aliens[i].classDef))
 		{
-			if (collision(aliens[i].x, aliens[i].y, aliens[i].image[0]->w,
+			if (game_collision(aliens[i].x, aliens[i].y, aliens[i].image[0]->w,
 					aliens[i].image[0]->h, ray.x, ray.y, ray.w, ray.h))
 			{
 				alien_hurt(&aliens[i], ship->owner, 1, false);

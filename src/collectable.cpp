@@ -206,6 +206,27 @@ void collectable_add(float x, float y, int type, int value, int life)
 	engine.collectableTail = collectable;
 }
 
+bool collectable_collision(collectables *collectable, object *ship)
+{
+	float x0 = collectable->x;
+	float y0 = collectable->y;
+	float w0 = collectable->image->w;
+	float h0 = collectable->image->h;
+
+	float x2 = ship->x;
+	float y2 = ship->y;
+	float w1 = ship->image[0]->w;
+	float h1 = ship->image[0]->h;
+
+	float x1 = x0 + w0;
+	float y1 = y0 + h0;
+
+	float x3 = x2 + w1;
+	float y3 = y2 + h1;
+
+	return !(x1<x2 || x3<x0 || y1<y2 || y3<y0);
+}
+
 void collectable_explode(collectables *collectable)
 {
 	if ((collectable->x >= 0) && (collectable->x <= screen->w) &&

@@ -253,7 +253,7 @@ static void game_doCollectables()
 
 			collectable->life--;
 
-			if ((player.shield > 0) && (collision(collectable, &player)))
+			if ((player.shield > 0) && (collectable_collision(collectable, &player)))
 			{
 				switch(collectable->type)
 				{
@@ -597,7 +597,7 @@ static void game_doBullets()
 
 				if (okayToHit)
 				{
-					if ((bullet->active) && (collision(bullet, &aliens[i])))
+					if ((bullet->active) && (bullet_collision(bullet, &aliens[i])))
 					{
 						old_shield = aliens[i].shield;
 
@@ -657,7 +657,7 @@ static void game_doBullets()
 				(bullet->id == WT_LASER) || (bullet->id == WT_CHARGER))
 			{
 				if (bullet->active && (player.shield > 0) &&
-					(bullet->owner != &player) && collision(bullet, &player))
+					(bullet->owner != &player) && bullet_collision(bullet, &player))
 				{
 					old_shield = player.shield;
 
@@ -712,7 +712,7 @@ static void game_doBullets()
 			{
 				if (cargo[j].active)
 				{
-					if (collision(bullet, &cargo[j]))
+					if (bullet_collision(bullet, &cargo[j]))
 					{
 						bullet->active = false;
 						explosion_add(bullet->x, bullet->y, E_SMALL_EXPLOSION);
@@ -743,7 +743,7 @@ static void game_doBullets()
 
 			if (collectable->type == P_MINE)
 			{
-				if (collision(collectable, bullet))
+				if (collectable_collision(collectable, bullet))
 				{
 					collectable->active = false;
 					
@@ -1930,6 +1930,17 @@ static bool game_checkPauseRequest()
 	}
 
 	return false;
+}
+
+bool game_collision(float x0, float y0, int w0, int h0, float x2, float y2, int w1, int h1)
+{
+	float x1 = x0 + w0;
+	float y1 = y0 + h0;
+
+	float x3 = x2 + w1;
+	float y3 = y2 + h1;
+
+	return !(x1<x2 || x3<x0 || y1<y2 || y3<y0);
 }
 
 int game_mainLoop()

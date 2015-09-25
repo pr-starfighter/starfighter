@@ -238,7 +238,7 @@ int showSaveSlots(SDL_Surface *savesSurface, signed char saveSlot)
 	{
 		for (int i = 1 ; i <= 5 ; i++)
 		{
-			if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6,
+			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6,
 				r.x, r.y, r.w, r.h))
 			{
 				clickedSlot = i;
@@ -247,18 +247,18 @@ int showSaveSlots(SDL_Surface *savesSurface, signed char saveSlot)
 			r.y += 30;
 		}
 
-		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 215,
+		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 215,
 			365, 100, 25))
 		{
 			saveGame(saveSlot);
 			createSavesSurface(savesSurface, -10);
 		}
 
-		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 335,
+		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 335,
 				365, 100, 25))
 			createSavesSurface(savesSurface, -1);
 
-		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 453,
+		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 453,
 			365, 100, 25))
 		{
 			char filename[PATH_MAX];

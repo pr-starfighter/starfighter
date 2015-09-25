@@ -1044,7 +1044,7 @@ void showShop()
 	{
 		for (int i = 0 ; i < icons ; i++)
 		{
-			if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6,
+			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6,
 				shopItems[i].x, shopItems[i].y, 32, 25))
 			{
 				shopSelectedItem = i;
@@ -1055,14 +1055,14 @@ void showShop()
 
 		if (shopSelectedItem > -1)
 		{
-			if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 60, 350, 24, 16))
+			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 60, 350, 24, 16))
 			{
 				buy(shopSelectedItem);
 				engine.keyState[KEY_FIRE] = 0;
 				drawShop();
 			}
 
-			if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 700, 350, 24, 16))
+			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 700, 350, 24, 16))
 			{
 				sell(shopSelectedItem);
 				engine.keyState[KEY_FIRE] = 0;

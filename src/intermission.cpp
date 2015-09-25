@@ -266,7 +266,7 @@ static bool intermission_showSystem(float x, float y, bool selectable)
 		blit(systemPlanet[planet].image, r.x, r.y);
 
 		if (selectable &&
-			collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6,
+			game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6,
 				r.x, r.y, systemPlanet[planet].image->w,
 				systemPlanet[planet].image->h))
 		{
@@ -454,7 +454,7 @@ static void intermission_doComms(SDL_Surface *comms)
 		{
 			for (int i = 0 ; i < 4 ; i++)
 			{
-				if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 170, 180 + (i * 60), 430, 50))
+				if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 170, 180 + (i * 60), 430, 50))
 				{
 					intermission_createMissionDetailSurface(comms, i);
 					engine.keyState[KEY_FIRE] = 0;
@@ -463,7 +463,7 @@ static void intermission_doComms(SDL_Surface *comms)
 		}
 		else
 		{
-			if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 170, 440, 160, 20))
+			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 170, 440, 160, 20))
 			{
 				intermission_createCommsSurface(comms);
 				engine.keyState[KEY_FIRE] = 0;
@@ -518,26 +518,26 @@ static void intermission_doOptions(SDL_Surface *optionsSurface)
 {
 	if ((engine.keyState[KEY_FIRE]))
 	{
-		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 172, 45, 22))
+		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 172, 45, 22))
 			engine.useSound = true;
 
-		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 172, 45, 22))
+		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 172, 45, 22))
 			engine.useSound = false;
 
 
-		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 222, 45, 22))
+		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 222, 45, 22))
 		{
 			engine.useMusic = true;
 			audio_playMusic("music/through_space.ogg", -1);
 		}
 
-		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 222, 45, 22))
+		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 222, 45, 22))
 		{
 			engine.useMusic = false;
 			audio_haltMusic();
 		}
 
-		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 272, 45, 22))
+		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 272, 45, 22))
 		{
 			if (!engine.fullScreen)
 			{
@@ -546,7 +546,7 @@ static void intermission_doOptions(SDL_Surface *optionsSurface)
 			}
 		}
 
-		if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 272, 45, 22))
+		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 272, 45, 22))
 		{
 			if (engine.fullScreen)
 			{
@@ -920,7 +920,7 @@ int intermission()
 					blit(shape[i + 1], 80 + (i * 90), 500);
 				}
 
-				if (collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 80 + (i * 90), 500, 32, 32))
+				if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 80 + (i * 90), 500, 32, 32))
 				{
 					if (i != 0)
 					{
