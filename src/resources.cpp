@@ -82,7 +82,7 @@ void loadGameGraphics()
 		shipShape[i] = createSurface(shipShape[i - SHIP_HIT_INDEX]->w,
 			shipShape[i - SHIP_HIT_INDEX]->h);
 		SDL_SetSurfaceBlendMode(shipShape[i - SHIP_HIT_INDEX], SDL_BLENDMODE_NONE);
-		blit(shipShape[i - SHIP_HIT_INDEX], 0, 0, shipShape[i]);
+		gfx_blit(shipShape[i - SHIP_HIT_INDEX], 0, 0, shipShape[i]);
 		SDL_SetSurfaceBlendMode(shipShape[i - SHIP_HIT_INDEX], SDL_BLENDMODE_BLEND);
 
 		switch (shipShape[i]->format->BitsPerPixel)
@@ -191,7 +191,7 @@ void loadFont()
 
 		newImage = SDL_ConvertSurface(image, screen->format, 0);
 
-		fontShape[i] = setTransparent(newImage);
+		fontShape[i] = gfx_setTransparent(newImage);
 
 		SDL_FreeSurface(image);
  	}

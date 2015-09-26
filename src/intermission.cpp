@@ -28,7 +28,7 @@ static void intermission_doCursor()
 
 	LIMIT(engine.cursor_x, 10, screen->w - 10 - shape[0]->w);
 	LIMIT(engine.cursor_y, 10, screen->h - 10 - shape[0]->h);
-	blit(shape[0], engine.cursor_x, engine.cursor_y);
+	screen_blit(shape[0], engine.cursor_x, engine.cursor_y);
 }
 
 /*
@@ -247,7 +247,7 @@ static bool intermission_showSystem(float x, float y, bool selectable)
 	bool rtn = false;
 
 	// Blit the sun
-	blit(shape[30], 370, 220);
+	screen_blit(shape[30], 370, 220);
 
 	for (int i = 50 ; i < 300 ; i+= planetSpace)
 	{
@@ -263,7 +263,7 @@ static bool intermission_showSystem(float x, float y, bool selectable)
 
 		r.x -= (systemPlanet[planet].image->w / 2);
 		r.y -= (systemPlanet[planet].image->h / 2);
-		blit(systemPlanet[planet].image, r.x, r.y);
+		screen_blit(systemPlanet[planet].image, r.x, r.y);
 
 		if (selectable &&
 			game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6,
@@ -316,7 +316,7 @@ static void intermission_showStatus(SDL_Surface *infoSurface)
 	else if(engine.keyState[KEY_UP])
 		speed = -1;
 
-	blit(infoSurface, 100, 80);
+	screen_blit(infoSurface, 100, 80);
 
 	for (int i = 0 ; i < 22 ; i++)
 	{
@@ -353,7 +353,7 @@ static void intermission_updateCommsSurface(SDL_Surface *comms)
 	char string[255];
 
 	blevelRect(comms, 0, 10, comms->w - 1, 55, 0x00, 0x22, 0x00);
-	blit(shape[FACE_CHRIS], 20, 15, comms);
+	gfx_blit(shape[FACE_CHRIS], 20, 15, comms);
 	drawString("Chris Bainfield", 80, 15, FONT_WHITE, comms);
 	sprintf(string, "Current Location: %s", systemPlanet[game.stationedPlanet].name);
 	drawString(string, 80, 35, FONT_WHITE, comms);
@@ -375,7 +375,7 @@ static void intermission_createCommsSurface(SDL_Surface *comms)
 		{
 			yOffset = systemPlanet[i].messageSlot * 60;
 			blevelRect(comms, 0, 105 + yOffset, comms->w - 1, 55, 0x00, 0x00, 0x77);
-			blit(shape[systemPlanet[i].faceImage], 20, 110 + yOffset, comms);
+			gfx_blit(shape[systemPlanet[i].faceImage], 20, 110 + yOffset, comms);
 			drawString(systemPlanet[i].from, 80, 110 + yOffset, FONT_WHITE, comms);
 			drawString(systemPlanet[i].subject, 80, 130 + yOffset, FONT_CYAN, comms);
 			drawString("INCOMPLETE", 350, 110 + yOffset, FONT_RED, comms);
@@ -426,7 +426,7 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 		faceNumber = getFace(string);
 		if (faceNumber > -1)
 		{
-			blit(shape[faceNumber], 10, y, comms);
+			gfx_blit(shape[faceNumber], 10, y, comms);
 			col = FONT_WHITE;
 		}
 		else
@@ -758,7 +758,7 @@ int intermission()
 			engine.ssy /= 100;
 		}
 
-		blit(iconInfo[8].image, (int)iconInfo[8].x, 15);
+		screen_blit(iconInfo[8].image, (int)iconInfo[8].x, 15);
 
 		switch(section)
 		{
@@ -823,9 +823,9 @@ int intermission()
 					}
 				}
 
-				blit(iconInfo[9].image, 90, 450);
+				screen_blit(iconInfo[9].image, 90, 450);
 				if ((game.system > 0) && (game.stationedPlanet != game.destinationPlanet))
-					blit(iconInfo[10].image, 550, 450);
+					screen_blit(iconInfo[10].image, 550, 450);
 				break;
 
 			case 2:
@@ -833,7 +833,7 @@ int intermission()
 				break;
 
 			case 3:
-				blit(savesSurface, 200, 100);
+				screen_blit(savesSurface, 200, 100);
 				saveSlot = showSaveSlots(savesSurface, saveSlot);
 				break;
 
@@ -842,12 +842,12 @@ int intermission()
 				break;
 
 			case 5:
-				blit(commsSurface, 170, 70);
+				screen_blit(commsSurface, 170, 70);
 				intermission_doComms(commsSurface);
 				break;
 
 			case 6:
-				blit(optionsSurface, 230, 130);
+				screen_blit(optionsSurface, 230, 130);
 				intermission_doOptions(optionsSurface);
 				break;
 
@@ -859,10 +859,10 @@ int intermission()
 			case 8:
 				intermission_showSystem(sinX, cosY, false);
 
-				blit(systemPlanet[game.stationedPlanet].image, 150, 450);
-				blit(iconInfo[9].image, 135, 480);
-				blit(systemPlanet[game.destinationPlanet].image, 650, 450);
-				blit(iconInfo[10].image, 635, 480);
+				screen_blit(systemPlanet[game.stationedPlanet].image, 150, 450);
+				screen_blit(iconInfo[9].image, 135, 480);
+				screen_blit(systemPlanet[game.destinationPlanet].image, 650, 450);
+				screen_blit(iconInfo[10].image, 635, 480);
 
 				destRect.w += distance;
 				SDL_FillRect(screen, &destRect, red);
@@ -897,7 +897,7 @@ int intermission()
 				break;
 		}
 
-		addBuffer(300, 545, 200, 15);
+		gfx_addBuffer(300, 545, 200, 15);
 
 		if (section != 8)
 		{
@@ -911,27 +911,27 @@ int intermission()
 							(systemPlanet[game.stationedPlanet].missionCompleted != 0))
 						continue;
 					else if (game.stationedPlanet == game.destinationPlanet)
-						blit(shape[1], 80 + (i * 90), 500);
+						screen_blit(shape[1], 80 + (i * 90), 500);
 					else if (game.stationedPlanet != game.destinationPlanet)
-						blit(shape[26], 80 + (i * 90), 500);
+						screen_blit(shape[26], 80 + (i * 90), 500);
 				}
 				else
 				{
-					blit(shape[i + 1], 80 + (i * 90), 500);
+					screen_blit(shape[i + 1], 80 + (i * 90), 500);
 				}
 
 				if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 80 + (i * 90), 500, 32, 32))
 				{
 					if (i != 0)
 					{
-						blit(iconInfo[i].image, (int)iconInfo[i].x, 545);
+						screen_blit(iconInfo[i].image, (int)iconInfo[i].x, 545);
 					}
 					else
 					{
 						if (game.stationedPlanet == game.destinationPlanet)
-							blit(iconInfo[0].image, (int)iconInfo[i].x, 545);
+							screen_blit(iconInfo[0].image, (int)iconInfo[i].x, 545);
 						else
-							blit(iconInfo[11].image, (int)iconInfo[i].x, 545);
+							screen_blit(iconInfo[11].image, (int)iconInfo[i].x, 545);
 					}
 
 					if ((engine.keyState[KEY_FIRE]))

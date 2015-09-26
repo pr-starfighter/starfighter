@@ -211,7 +211,7 @@ void game_doStars()
 		r.w = 1;
 		r.h = 1;
 
-		addBuffer(r.x, r.y, r.w, r.h);
+		gfx_addBuffer(r.x, r.y, r.w, r.h);
 	}
 
 	if (SDL_MUSTLOCK(screen))
@@ -244,7 +244,7 @@ static void game_doCollectables()
 					(collectable->x < screen->w) &&
 					(collectable->y + collectable->image->h > 0) &&
 					(collectable->y < screen->h))
-				blit(collectable->image, (int)collectable->x, (int)collectable->y);
+				screen_blit(collectable->image, (int)collectable->x, (int)collectable->y);
 
 			collectable->x += engine.ssx + engine.smx;
 			collectable->y += engine.ssy + engine.smy;
@@ -528,7 +528,7 @@ static void game_doBullets()
 
 			if ((bullet->flags & WF_AIMED))
 			{
-				blit(bullet->image[0], (int)(bullet->x - bullet->dx),
+				screen_blit(bullet->image[0], (int)(bullet->x - bullet->dx),
 					(int)(bullet->y - bullet->dy));
 			}
 
@@ -540,13 +540,13 @@ static void game_doBullets()
 					charger_num = bullet->damage * 2;
 
 				for (int i = 0 ; i < charger_num ; i++)
-					blit(bullet->image[0],
+					screen_blit(bullet->image[0],
 						(int)(bullet->x - RANDRANGE(
 							-(charger_num / 6), charger_num / 6)),
 						(int)(bullet->y + RANDRANGE(-3, 3)));
 			}
 
-			blit(bullet->image[0], (int)bullet->x, (int)bullet->y);
+			screen_blit(bullet->image[0], (int)bullet->x, (int)bullet->y);
 			bullet->x += bullet->dx;
 			bullet->y += bullet->dy;
 
@@ -1083,7 +1083,7 @@ static void game_doAliens()
 							(aliens[i].classDef != CD_ASTEROID2))
 						explosion_addEngine(&aliens[i]);
 					if ((!(aliens[i].flags & FL_ISCLOAKED)) || (aliens[i].hit > 0))
-						blit(shipShape[shapeToUse], (int)aliens[i].x,
+						screen_blit(shipShape[shapeToUse], (int)aliens[i].x,
 							(int)aliens[i].y);
 					if (aliens[i].flags & FL_DISABLED)
 					{
@@ -1103,7 +1103,7 @@ static void game_doAliens()
 				if ((aliens[i].x > 0) && (aliens[i].x < screen->w) &&
 					(aliens[i].y > 0) && (aliens[i].y < screen->h))
 				{
-					blit(aliens[i].image[aliens[i].face], (int)aliens[i].x,
+					screen_blit(aliens[i].image[aliens[i].face], (int)aliens[i].x,
 						(int)aliens[i].y);
 					explosion_add(aliens[i].x + (rand() % aliens[i].image[0]->w),
 						aliens[i].y + (rand() % aliens[i].image[0]->h),
@@ -1393,7 +1393,7 @@ static void game_doPlayer()
 
 			LIMIT_ADD(player.hit, -1, 0, 100);
 
-			blit(shipShape[shapeToUse], (int)player.x, (int)player.y);
+			screen_blit(shipShape[shapeToUse], (int)player.x, (int)player.y);
 			if ((player.maxShield > 1) && (player.shield <= engine.lowShield) &&
 					(rand() % 5 < 1))
 				explosion_add(player.x + RANDRANGE(-10, 10),
@@ -1463,7 +1463,7 @@ static void game_doCargo()
 				continue;
 			}
 
-			blit(cargo[i].image[0], (int)cargo[i].x, (int)cargo[i].y);
+			screen_blit(cargo[i].image[0], (int)cargo[i].x, (int)cargo[i].y);
 
 			cargo[i].x += engine.ssx + engine.smx;
 			cargo[i].y += engine.ssy + engine.smy;
@@ -1479,7 +1479,7 @@ static void game_doCargo()
 			// draw the chain link line
 			for (int j = 0 ; j < 10 ; j++)
 			{
-				blit(shape[30], (int)chainX, (int)chainY);
+				screen_blit(shape[30], (int)chainX, (int)chainY);
 				chainX -= dx;
 				chainY -= dy;
 			}
@@ -1545,7 +1545,7 @@ void game_doExplosions()
 			explosion->x += engine.ssx + engine.smx;
 			explosion->y += engine.ssy + engine.smy;
 
-			blit(explosion->image[0], (int)explosion->x, (int)explosion->y);
+			screen_blit(explosion->image[0], (int)explosion->x, (int)explosion->y);
 
 			if(rand() % 7 == 0)
 			{
@@ -1610,7 +1610,7 @@ static void game_doArrow(int i)
 		y -= y > screen->h / 2 ? shape[arrow]->h : 0;
 	}
 
-	blit(shape[arrow], x, y);
+	screen_blit(shape[arrow], x, y);
 
 	if (i != engine.targetIndex)
 		return;
@@ -1626,7 +1626,7 @@ static void game_doArrow(int i)
 		y -= y > screen->h / 2 ? 5 + shape[44]->h : -5 - shape[arrow]->h;
 	}
 
-	blit(shape[44], x, y);
+	screen_blit(shape[44], x, y);
 }
 
 static void game_doHud()
@@ -1636,8 +1636,8 @@ static void game_doHud()
 	signed char fontColor;
 	char text[25];
 
-	addBuffer(0, 20, 800, 25);
-	addBuffer(0, 550, 800, 34);
+	gfx_addBuffer(0, 20, 800, 25);
+	gfx_addBuffer(0, 550, 800, 34);
 
 	if (engine.minutes > -1)
 	{
@@ -1785,7 +1785,7 @@ static void game_doHud()
 	// Show the radio message if there is one
 	if (textShape[3].life > 0)
 	{
-		blit(messageBox, (800 - messageBox->w) / 2, 50);
+		screen_blit(messageBox, (800 - messageBox->w) / 2, 50);
 		textShape[3].life--;
 	}
 

@@ -80,7 +80,7 @@ int main(int argc, char **argv)
 
 	atexit(cleanUp);
 
-	initGraphics();
+	gfx_init();
 	initSystem(); // Opens video mode and sound
 	loadFont();
 

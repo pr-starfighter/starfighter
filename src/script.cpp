@@ -262,7 +262,7 @@ void doCutscene(int scene)
 				aliens[i].x += aliens[i].dx;
 				aliens[i].y += aliens[i].dy;
 				aliens[i].x += engine.ssx + engine.smx;
-				blit(aliens[i].image[0], (int)aliens[i].x, (int)aliens[i].y);
+				screen_blit(aliens[i].image[0], (int)aliens[i].x, (int)aliens[i].y);
 				if (aliens[i].x > (screen->w + 50))
 				{
 					aliens[i].x = -50;
@@ -299,7 +299,7 @@ void doCutscene(int scene)
 		}
 
 		if ((showMessage) && (messageBox != NULL))
-			blit(messageBox, (screen->w - messageBox->w) / 2, screen->h - 100);
+			screen_blit(messageBox, (screen->w - messageBox->w) / 2, screen->h - 100);
 
 		drawString("Press [Escape] to skip", -1, 580, FONT_WHITE);
 

@@ -288,7 +288,7 @@ int doTitle()
 		{
 			explosion_addEngine(&aliens[i]);
 			aliens[i].x += aliens[i].dx;
-			blit(aliens[i].image[0], (int)aliens[i].x, (int)aliens[i].y);
+			screen_blit(aliens[i].image[0], (int)aliens[i].x, (int)aliens[i].y);
 			if (aliens[i].x > 830)
 			{
 				aliens[i].x = -40;
@@ -299,7 +299,7 @@ int doTitle()
 
 		if ((now - then > 2000) && (now - then < 8000) && (!skip))
 		{
-			blit(prlogo, prx, pry);
+			screen_blit(prlogo, prx, pry);
 		}
 		else if ((now - then > 9000) && (now - then < 15000) && (!skip))
 		{
@@ -311,11 +311,11 @@ int doTitle()
 		}
 		else if ((now - then > 25500) || (skip))
 		{
-			blit(sflogo, sfx, sfy);
+			screen_blit(sflogo, sfx, sfy);
 
 			if ((now - then >= 27500) || (skip))
 			{
-				addBuffer(0, 0, screen->w, screen->h);
+				gfx_addBuffer(0, 0, screen->w, screen->h);
 
 				blevelRect(optionRec.x, optionRec.y, optionRec.w, optionRec.h, redGlow, 0x00, 0x00);
 
@@ -371,7 +371,7 @@ int doTitle()
 					drawString("Copyright Parallel Realities 2003", 5, 560, FONT_WHITE, background);
 					drawString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012", 5, 580, FONT_WHITE, background);
 					drawString(buildVersion, 794 - strlen(buildVersion) * 9, 580, FONT_WHITE, background);
-					addBuffer(0, 560, 800, 40);
+					gfx_addBuffer(0, 560, 800, 40);
 					skip = true;
 				}
 			}
@@ -393,7 +393,7 @@ int doTitle()
 				drawString("Copyright Parallel Realities 2003", 5, 560, FONT_WHITE, background);
 				drawString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012", 5, 580, FONT_WHITE, background);
 				drawString(buildVersion, 794 - strlen(buildVersion) * 9, 580, FONT_WHITE, background);
-				addBuffer(0, 560, 800, 40);
+				gfx_addBuffer(0, 560, 800, 40);
 				skip = true;
 			}
 			else
@@ -586,7 +586,7 @@ void showStory()
 	fclose(fp);
 
 	loadBackground("gfx/startUp.jpg");
-	blit(background, 0, 0);
+	drawBackGround();
 	flushBuffer();
 
 	flushInput();
@@ -661,7 +661,7 @@ void gameover()
 		unBuffer();
 		x = ((screen->w - gameover->w) / 2) - RANDRANGE(-2, 2);
 		y = ((screen->h - gameover->h) / 2)  - RANDRANGE(-2, 2);
-		blit(gameover, x,  y);
+		screen_blit(gameover, x,  y);
 
 		delayFrame();
 	}
@@ -738,7 +738,7 @@ void doCredits()
 		for (i = 0 ; i <= lastCredit ; i++)
 		{
 			if ((credit[i].y > -10) && (credit[i].y < (screen->h + 10)))
-				blit(credit[i].image, (int)credit[i].x, (int)credit[i].y);
+				screen_blit(credit[i].image, (int)credit[i].x, (int)credit[i].y);
 			if (speed > 0 && credit[lastCredit].y > ((screen->h / 2) + 100))
 				credit[i].y -= speed;
 			else if(speed < 0 && credit[0].y < screen->h)

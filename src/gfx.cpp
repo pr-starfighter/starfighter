@@ -27,7 +27,7 @@ static int thirds;
 SDL_Window *window;
 SDL_Renderer *renderer;
 SDL_Texture *texture;
-SDL_Surface *screen, *background;
+SDL_Surface *background;
 SDL_Surface *shape[MAX_SHAPES];
 SDL_Surface *shipShape[MAX_SHIPSHAPES];
 SDL_Surface *fontShape[MAX_FONTSHAPES];
@@ -37,7 +37,7 @@ bRect *bufferTail;
 textObject textShape[MAX_TEXTSHAPES];
 SDL_Surface *messageBox;
 
-void initGraphics()
+void gfx_init()
 {
 	bufferHead = new bRect;
 	bufferHead->next = NULL;
@@ -66,13 +66,13 @@ void initGraphics()
 	screen = NULL;
 }
 
-SDL_Surface *setTransparent(SDL_Surface *sprite)
+SDL_Surface *gfx_setTransparent(SDL_Surface *sprite)
 {
 	SDL_SetColorKey(sprite, SDL_TRUE, SDL_MapRGB(sprite->format, 0, 0, 0));
 	return sprite;
 }
 
-void addBuffer(int x, int y, int w, int h)
+void gfx_addBuffer(int x, int y, int w, int h)
 {
 	bRect *rect = new bRect;
 
@@ -86,7 +86,7 @@ void addBuffer(int x, int y, int w, int h)
 	bufferTail = rect;
 }
 
-void blit(SDL_Surface *image, int x, int y, SDL_Surface *dest)
+void gfx_blit(SDL_Surface *image, int x, int y, SDL_Surface *dest)
 {
 	// Exit early if image is not on dest at all
 	if (x + image->w < 0 || x >= dest->w || y + image->h < 0 || y >= dest->h)
@@ -109,17 +109,12 @@ void blit(SDL_Surface *image, int x, int y, SDL_Surface *dest)
 
 	// Only if it is to the screen, mark the region as damaged
 	if (dest == screen)
-		addBuffer(blitRect.x, blitRect.y, blitRect.w, blitRect.h);
-}
-
-void blit(SDL_Surface *image, int x, int y)
-{
-	blit(image, x, y, screen);
+		gfx_addBuffer(blitRect.x, blitRect.y, blitRect.w, blitRect.h);
 }
 
 void blitText(int i)
 {
-	blit(textShape[i].image, (int)textShape[i].x, (int)textShape[i].y, screen);
+	screen_blit(textShape[i].image, (int)textShape[i].x, (int)textShape[i].y);
 }
 
 void flushBuffer()
@@ -278,7 +273,7 @@ Draws the background surface that has been loaded
 */
 void drawBackGround()
 {
-	blit(background, 0, 0, screen);
+	screen_blit(background, 0, 0);
 }
 
 void clearScreen(Uint32 color)
@@ -496,7 +491,7 @@ SDL_Surface *textSurface(const char *inString, int color)
 
 	drawString(inString, 1, 1, color, surface);
 
-	return setTransparent(surface);
+	return gfx_setTransparent(surface);
 }
 
 void textSurface(int index, const char *inString, int x, int y, int fontColor)
@@ -552,7 +547,7 @@ void createMessageBox(SDL_Surface *face, const char *message, signed char transp
 	if (face != NULL)
 	{
 		blevelRect(messageBox, 0, 0, messageBox->w - 1, messageBox->h - 1, 0x00, 0x00, 0xaa);
-		blit(face, 5, 5, messageBox);
+		gfx_blit(face, 5, 5, messageBox);
 	}
 	else
 	{
@@ -628,5 +623,5 @@ SDL_Surface *loadImage(const char *filename)
 		newImage = image;
 	}
 
-	return setTransparent(newImage);
+	return gfx_setTransparent(newImage);
 }

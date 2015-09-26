@@ -246,7 +246,7 @@ static void drawShop()
 
 	for (int i = 0 ; i < icons ; i++)
 	{
-		blit(shape[shopItems[i].image], shopItems[i].x - 90,
+		gfx_blit(shape[shopItems[i].image], shopItems[i].x - 90,
 			shopItems[i].y - 178, shopSurface[3]);
 	}
 
@@ -1016,20 +1016,20 @@ static void sell(int i)
 
 void showShop()
 {
- 	blit(shopSurface[0], 20, 395);
-	blit(shopSurface[1], 275, 395);
-	blit(shopSurface[2], 530, 395);
-	blit(shopSurface[3], 100, 180);
-	blit(shopSurface[4], 100, 50);
-	blit(shopSurface[5], 100, 320);
+ 	screen_blit(shopSurface[0], 20, 395);
+	screen_blit(shopSurface[1], 275, 395);
+	screen_blit(shopSurface[2], 530, 395);
+	screen_blit(shopSurface[3], 100, 180);
+	screen_blit(shopSurface[4], 100, 50);
+	screen_blit(shopSurface[5], 100, 320);
 
 	if (shopSelectedItem > -1)
 	{
-		blit(shape[27], 60, 350);
-		blit(shape[28], 710, 350);
+		screen_blit(shape[27], 60, 350);
+		screen_blit(shape[28], 710, 350);
 	}
 
-	blit(shape[29], (int)player.x, (int)player.y);
+	screen_blit(shape[29], (int)player.x, (int)player.y);
 
 	signed char icons = MAX_SHOPITEMS;
 

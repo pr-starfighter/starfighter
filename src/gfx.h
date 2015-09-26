@@ -17,13 +17,15 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef GRAPHICS_H
-#define GRAPHICS_H
+#ifndef GFX_H
+#define GFX_H
+
+#include "Starfighter.h"
 
 extern SDL_Window *window;
 extern SDL_Renderer *renderer;
 extern SDL_Texture *texture;
-extern SDL_Surface *screen, *background;
+extern SDL_Surface *background;
 extern SDL_Surface *shape[MAX_SHAPES];
 extern SDL_Surface *shipShape[MAX_SHIPSHAPES];
 extern SDL_Surface *fontShape[MAX_FONTSHAPES];
@@ -34,11 +36,10 @@ extern textObject textShape[MAX_TEXTSHAPES];
 extern SDL_Surface *messageBox;
 
 
-extern void initGraphics();
-extern SDL_Surface *setTransparent(SDL_Surface *sprite);
-extern void addBuffer(int x, int y, int w, int h);
-extern void blit(SDL_Surface *image, int x, int y, SDL_Surface *dest);
-extern void blit(SDL_Surface *image, int x, int y);
+void gfx_init();
+SDL_Surface *gfx_setTransparent(SDL_Surface *sprite);
+void gfx_addBuffer(int x, int y, int w, int h);
+void gfx_blit(SDL_Surface *image, int x, int y, SDL_Surface *dest);
 extern void blitText(int i);
 extern void flushBuffer();
 extern void unBuffer();
