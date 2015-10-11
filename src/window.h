@@ -17,12 +17,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SCREEN_H
-#define SCREEN_H
+#ifndef WINDOW_H
+#define WINDOW_H
 
-extern SDL_Surface *screen;
-
-void screen_blit(SDL_Surface *image, int x, int y);
-void screen_blitText(int i);
+extern SDL_Window *window;
 
 #endif

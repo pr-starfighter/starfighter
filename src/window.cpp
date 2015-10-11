@@ -1,6 +1,6 @@
 /*
 Copyright (C) 2003 Parallel Realities
-Copyright (C) 2011 Guus Sliepen
+Copyright (C) 2011, 2012, 2013 Guus Sliepen
 Copyright (C) 2015 Julian Marchant
 
 This program is free software; you can redistribute it and/or
@@ -17,12 +17,6 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SCREEN_H
-#define SCREEN_H
+#include "SDL.h"
 
-extern SDL_Surface *screen;
-
-void screen_blit(SDL_Surface *image, int x, int y);
-void screen_blitText(int i);
-
-#endif
+SDL_Window *window;

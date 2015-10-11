@@ -24,7 +24,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 static unsigned long frameLimit;
 static int thirds;
 
-SDL_Window *window;
 SDL_Renderer *renderer;
 SDL_Texture *texture;
 SDL_Surface *background;
@@ -34,7 +33,7 @@ SDL_Surface *fontShape[MAX_FONTSHAPES];
 SDL_Surface *shopSurface[MAX_SHOPSHAPES];
 bRect *bufferHead;
 bRect *bufferTail;
-textObject textShape[MAX_TEXTSHAPES];
+textObject gfx_text[MAX_TEXTSHAPES];
 SDL_Surface *messageBox;
 
 void gfx_init()
@@ -50,7 +49,7 @@ void gfx_init()
 		shipShape[i] = NULL;
 
 	for (int i = 0 ; i < MAX_TEXTSHAPES ; i++)
-		textShape[i].image = NULL;
+		gfx_text[i].image = NULL;
 
 	for (int i = 0 ; i < MAX_SHOPSHAPES ; i++)
 		shopSurface[i] = NULL;
@@ -110,11 +109,6 @@ void gfx_blit(SDL_Surface *image, int x, int y, SDL_Surface *dest)
 	// Only if it is to the screen, mark the region as damaged
 	if (dest == screen)
 		gfx_addBuffer(blitRect.x, blitRect.y, blitRect.w, blitRect.h);
-}
-
-void blitText(int i)
-{
-	screen_blit(textShape[i].image, (int)textShape[i].x, (int)textShape[i].y);
 }
 
 void flushBuffer()
@@ -497,25 +491,25 @@ SDL_Surface *textSurface(const char *inString, int color)
 void textSurface(int index, const char *inString, int x, int y, int fontColor)
 {
 	/* Shortcut: if we already rendered the same string in the same color, don't render it again. */
-	if(textShape[index].text && textShape[index].image && textShape[index].fontColor == fontColor && !strcmp(textShape[index].text, inString)) {
-		textShape[index].x = x;
-		textShape[index].y = y;
+	if(gfx_text[index].text && gfx_text[index].image && gfx_text[index].fontColor == fontColor && !strcmp(gfx_text[index].text, inString)) {
+		gfx_text[index].x = x;
+		gfx_text[index].y = y;
 		if (x == -1)
-			textShape[index].x = (800 - textShape[index].image->w) / 2;
+			gfx_text[index].x = (800 - gfx_text[index].image->w) / 2;
 		return;
 	}
 
-	strcpy(textShape[index].text, inString);
-	textShape[index].x = x;
-	textShape[index].y = y;
-	textShape[index].fontColor = fontColor;
-	if (textShape[index].image != NULL)
+	strcpy(gfx_text[index].text, inString);
+	gfx_text[index].x = x;
+	gfx_text[index].y = y;
+	gfx_text[index].fontColor = fontColor;
+	if (gfx_text[index].image != NULL)
 	{
-		SDL_FreeSurface(textShape[index].image);
+		SDL_FreeSurface(gfx_text[index].image);
 	}
-	textShape[index].image = textSurface(inString, fontColor);
+	gfx_text[index].image = textSurface(inString, fontColor);
 	if (x == -1)
-		textShape[index].x = (800 - textShape[index].image->w) / 2;
+		gfx_text[index].x = (800 - gfx_text[index].image->w) / 2;
 }
 
 SDL_Surface *alphaRect(int width, int height, Uint8 red, Uint8 green, Uint8 blue)
@@ -580,10 +574,10 @@ void freeGraphics()
 
 	for (int i = 0 ; i < MAX_TEXTSHAPES ; i++)
 	{
-		if (textShape[i].image != NULL)
+		if (gfx_text[i].image != NULL)
 		{
-			SDL_FreeSurface(textShape[i].image);
-			textShape[i].image = NULL;
+			SDL_FreeSurface(gfx_text[i].image);
+			gfx_text[i].image = NULL;
 		}
 	}
 
@@ -618,7 +612,9 @@ SDL_Surface *loadImage(const char *filename)
 	newImage = SDL_ConvertSurface(image, screen->format, 0);
 	if ( newImage ) {
 		SDL_FreeSurface(image);
-	} else {
+	}
+	else
+	{
 		// This happens when we are loading the window icon image
 		newImage = image;
 	}

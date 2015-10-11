@@ -1615,7 +1615,7 @@ static void game_doArrow(int i)
 	if (i != engine.targetIndex)
 		return;
 
-	if (textShape[3].life > 0)
+	if (gfx_text[3].life > 0)
 		return;
 
 	if (sxy == sx) {
@@ -1647,24 +1647,24 @@ static void game_doHud()
 			fontColor = FONT_YELLOW;
 		else
 			fontColor = FONT_WHITE;
-		blitText(10); // time remaining
+		screen_blitText(10); // time remaining
 		sprintf(text, "%.2d:%.2d", engine.minutes, engine.seconds);
 		textSurface(30, text, 410, 21, fontColor);
-		blitText(30);
+		screen_blitText(30);
 	}
 
 	if (game.area != MISN_INTERCEPTION)
 	{
-		blitText(9); // mission objectives
+		screen_blitText(9); // mission objectives
 		sprintf(text, "%d", (currentMission.remainingObjectives1 + currentMission.remainingObjectives2));
 		textSurface(39, text, 745, 21, FONT_WHITE);
-		blitText(39);
+		screen_blitText(39);
 	}
 
-	blitText(8); // cash
+	screen_blitText(8); // cash
 	sprintf(text, "%.6d", game.cash);
 	textSurface(38, text, 90, 21, FONT_WHITE);
-	blitText(38);
+	screen_blitText(38);
 
 	for (int i = 0; i < ALIEN_MAX; i++)
 		game_doArrow(i);
@@ -1675,12 +1675,12 @@ static void game_doHud()
 		if (player.ammo[0] <= 25) fontColor = FONT_YELLOW;
 		if (player.ammo[0] <= 10) fontColor = FONT_RED;
 	}
-	blitText(5); // plasma ammo
+	screen_blitText(5); // plasma ammo
 	sprintf(text, "%.3d", player.ammo[0]);
 	textSurface(35, text, 320, 551, fontColor);
-	blitText(35);
+	screen_blitText(35);
 
-	blitText(6);
+	screen_blitText(6);
 
 	if ((player.weaponType[1] != W_CHARGER) && (player.weaponType[1] != W_LASER))
 	{
@@ -1690,7 +1690,7 @@ static void game_doHud()
 			fontColor = FONT_WHITE;
 		sprintf(text, "%.3d", player.ammo[1]); // rocket ammo
 		textSurface(36, text, 465, 551, fontColor);
-		blitText(36);
+		screen_blitText(36);
 	}
 
 	if (((player.weaponType[1] == W_CHARGER) || (player.weaponType[1] == W_LASER)) && (player.ammo[1] > 0))
@@ -1767,26 +1767,26 @@ static void game_doHud()
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if (textShape[i].life > 0)
+		if (gfx_text[i].life > 0)
 		{
-			textShape[i].y = (525 - (i * 20));
-			blitText(i);
-			textShape[i].life--;
+			gfx_text[i].y = (525 - (i * 20));
+			screen_blitText(i);
+			gfx_text[i].life--;
 
-			if (textShape[i].life == 0)
+			if (gfx_text[i].life == 0)
 			{
 				copyInfoLine(i + 1, i);
 				copyInfoLine(i + 2, i + 1);
-				textShape[2].life = 0;
+				gfx_text[2].life = 0;
 			}
 		}
 	}
 
 	// Show the radio message if there is one
-	if (textShape[3].life > 0)
+	if (gfx_text[3].life > 0)
 	{
 		screen_blit(messageBox, (800 - messageBox->w) / 2, 50);
-		textShape[3].life--;
+		gfx_text[3].life--;
 	}
 
 	// Do the target's remaining shield (if required)
@@ -1794,7 +1794,7 @@ static void game_doHud()
 	{
 		if ((engine.targetIndex > -1) && (aliens[engine.targetIndex].shield > 0) && (engine.targetIndex > 9))
 		{
-			blitText(7);
+			screen_blitText(7);
 			bar.w = 1;
 			bar.h = 12;
 			bar.x = 620;
@@ -1814,7 +1814,7 @@ static void game_doHud()
 		}
 	}
 
-	blitText(11);
+	screen_blitText(11);
 
 	bar.w = 25;
 	bar.h = 12;
@@ -1833,7 +1833,7 @@ static void game_doHud()
 		bar.x += 30;
 	}
 
-	blitText(12);
+	screen_blitText(12);
 
 	bar.w = 25;
 	bar.h = 12;
@@ -1854,7 +1854,7 @@ static void game_doHud()
 		bar.x += 30;
 	}
 
-	blitText(13);
+	screen_blitText(13);
 
 	bar.w = 25;
 	bar.h = 12;
@@ -1874,7 +1874,7 @@ static void game_doHud()
 		bar.x += 30;
 	}
 
-	blitText(4);
+	screen_blitText(4);
 	if (player.shield < 1)
 		return;
 
@@ -2227,7 +2227,7 @@ int game_mainLoop()
 		if (engine.paused)
 		{
 			textSurface(22, "PAUSED", -1, screen->h / 2, FONT_WHITE);
-			blitText(22);
+			screen_blitText(22);
 			updateScreen();
 			audio_pauseMusic();
 

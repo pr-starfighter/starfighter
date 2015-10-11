@@ -21,23 +21,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 static signed char showGameMenu(signed char continueSaveSlot)
 {
-	blitText(TS_START_NEW_GAME);
+	screen_blitText(TS_START_NEW_GAME);
 	if (continueSaveSlot != -1)
 	{
-		blitText(TS_LOAD_GAME);
-		blitText(TS_CONTINUE_CURRENT_GAME);
+		screen_blitText(TS_LOAD_GAME);
+		screen_blitText(TS_CONTINUE_CURRENT_GAME);
 	}
-	blitText(TS_OPTIONS);
+	screen_blitText(TS_OPTIONS);
 	if (engine.cheat)
 	{
-		textShape[TS_QUIT].y = 450;
-		blitText(TS_CHEAT_OPTIONS);
+		gfx_text[TS_QUIT].y = 450;
+		screen_blitText(TS_CHEAT_OPTIONS);
 	}
 	else
 	{
-		textShape[TS_QUIT].y = 430;
+		gfx_text[TS_QUIT].y = 430;
 	}
-	blitText(TS_QUIT);
+	screen_blitText(TS_QUIT);
 
 	if (engine.cheat)
 		return 6;
@@ -52,13 +52,13 @@ static signed char showLoadMenu()
 	for (int i = TS_SAVESLOT_0 ; i <= TS_SAVESLOT_5 ; i++)
 	{
 		rtn++;
-		if (textShape[i].image != NULL)
+		if (gfx_text[i].image != NULL)
 		{
-			blitText(i);
-			textShape[TS_BACK_TO_MAIN_MENU].y = textShape[i].y + 40;
+			screen_blitText(i);
+			gfx_text[TS_BACK_TO_MAIN_MENU].y = gfx_text[i].y + 40;
 		}
 	}
-	blitText(TS_BACK_TO_MAIN_MENU);
+	screen_blitText(TS_BACK_TO_MAIN_MENU);
 
 	return rtn;
 }
@@ -81,11 +81,11 @@ static void createDifficultyMenu()
 
 static signed char showDifficultyMenu()
 {
-	textShape[TS_BACK_TO_MAIN_MENU].y = 410;
+	gfx_text[TS_BACK_TO_MAIN_MENU].y = 410;
 
-	blitText(TS_START_GAME);
-	blitText(TS_DIFFICULTY);
-	blitText(TS_BACK_TO_MAIN_MENU);
+	screen_blitText(TS_START_GAME);
+	screen_blitText(TS_DIFFICULTY);
+	screen_blitText(TS_BACK_TO_MAIN_MENU);
 
 	return 3;
 }
@@ -115,13 +115,13 @@ static void createOptionsMenu()
 
 static signed char showOptionsMenu()
 {
-	textShape[TS_BACK_TO_MAIN_MENU].y = 450;
+	gfx_text[TS_BACK_TO_MAIN_MENU].y = 450;
 
-	blitText(TS_SOUND);
-	blitText(TS_MUSIC);
-	blitText(TS_FULLSCREEN);
-	blitText(TS_AUTOPAUSE);
-	blitText(TS_BACK_TO_MAIN_MENU);
+	screen_blitText(TS_SOUND);
+	screen_blitText(TS_MUSIC);
+	screen_blitText(TS_FULLSCREEN);
+	screen_blitText(TS_AUTOPAUSE);
+	screen_blitText(TS_BACK_TO_MAIN_MENU);
 
 	return 5;
 }
@@ -159,13 +159,13 @@ static void createCheatMenu()
 
 static signed char showCheatMenu()
 {
-	textShape[TS_BACK_TO_MAIN_MENU].y = 450;
+	gfx_text[TS_BACK_TO_MAIN_MENU].y = 450;
 
-	blitText(TS_UNLIMITED_SHIELD);
-	blitText(TS_UNLIMITED_AMMO);
-	blitText(TS_UNLIMITED_CASH);
-	blitText(TS_UNLIMITED_TIME);
-	blitText(TS_BACK_TO_MAIN_MENU);
+	screen_blitText(TS_UNLIMITED_SHIELD);
+	screen_blitText(TS_UNLIMITED_AMMO);
+	screen_blitText(TS_UNLIMITED_CASH);
+	screen_blitText(TS_UNLIMITED_TIME);
+	screen_blitText(TS_BACK_TO_MAIN_MENU);
 
 	return 5;
 }
@@ -303,11 +303,11 @@ int doTitle()
 		}
 		else if ((now - then > 9000) && (now - then < 15000) && (!skip))
 		{
-			blitText(TS_PRESENTS);
+			screen_blitText(TS_PRESENTS);
 		}
 		else if ((now - then > 16000) && (now - then < 21000) && (!skip))
 		{
-			blitText(TS_AN_SDL_GAME);
+			screen_blitText(TS_AN_SDL_GAME);
 		}
 		else if ((now - then > 25500) || (skip))
 		{
@@ -602,12 +602,12 @@ void showStory()
 		if ((engine.keyState[KEY_FIRE] || engine.keyState[KEY_ALTFIRE]))
 			break;
 
-		if (textShape[8].y > (screen->h / 2) + 150)
+		if (gfx_text[8].y > (screen->h / 2) + 150)
 		{
 			for (int i = 0 ; i < 9 ; i++)
 			{
-				textShape[i].y -= 0.33333;
-				blitText(i);
+				gfx_text[i].y -= 0.33333;
+				screen_blitText(i);
 			}
 		}
 		else

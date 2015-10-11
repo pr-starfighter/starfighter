@@ -59,5 +59,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "shop.h"
 #include "title.h"
 #include "weapons.h"
+#include "window.h"
 
 #endif

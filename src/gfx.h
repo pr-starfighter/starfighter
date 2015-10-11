@@ -22,7 +22,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-extern SDL_Window *window;
 extern SDL_Renderer *renderer;
 extern SDL_Texture *texture;
 extern SDL_Surface *background;
@@ -32,7 +31,7 @@ extern SDL_Surface *fontShape[MAX_FONTSHAPES];
 extern SDL_Surface *shopSurface[MAX_SHOPSHAPES];
 extern bRect *bufferHead;
 extern bRect *bufferTail;
-extern textObject textShape[MAX_TEXTSHAPES];
+extern textObject gfx_text[MAX_TEXTSHAPES];
 extern SDL_Surface *messageBox;
 
 
@@ -40,7 +39,6 @@ void gfx_init();
 SDL_Surface *gfx_setTransparent(SDL_Surface *sprite);
 void gfx_addBuffer(int x, int y, int w, int h);
 void gfx_blit(SDL_Surface *image, int x, int y, SDL_Surface *dest);
-extern void blitText(int i);
 extern void flushBuffer();
 extern void unBuffer();
 extern int drawString(const char *in, int x, int y, int fontColor, signed char wrap, SDL_Surface *dest);

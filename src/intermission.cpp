@@ -146,20 +146,20 @@ static void intermission_setStatusLines()
 	textSurface(26, string, -1, 0, FONT_WHITE);
 	textSurface(27, "Current Status", -1, 0, FONT_WHITE);
 
-	textShape[0].y = 400;
-	textShape[0].x = 150;
+	gfx_text[0].y = 400;
+	gfx_text[0].x = 150;
 
 	for (int i = 1 ; i < 25 ; i++)
 	{
-		textShape[i].y = textShape[i - 1].y + 20;
+		gfx_text[i].y = gfx_text[i - 1].y + 20;
 		if ((i == 7) || (i == 16) || (i == 19))
-			textShape[i].y += 25;
+			gfx_text[i].y += 25;
 
-		textShape[i].x = 150;
+		gfx_text[i].x = 150;
 	}
 
-	textShape[26].y = 404;
-	textShape[27].y = 83;
+	gfx_text[26].y = 404;
+	gfx_text[27].y = 83;
 }
 
 /*
@@ -320,20 +320,20 @@ static void intermission_showStatus(SDL_Surface *infoSurface)
 
 	for (int i = 0 ; i < 22 ; i++)
 	{
-		textShape[i].y -= speed;
-		if ((textShape[i].y > 80) && (textShape[i].y < 400))
-			blitText(i);
+		gfx_text[i].y -= speed;
+		if ((gfx_text[i].y > 80) && (gfx_text[i].y < 400))
+			screen_blitText(i);
 	}
 
-	if (textShape[21].y < 65)
+	if (gfx_text[21].y < 65)
 	{
-		textShape[0].y = 400;
+		gfx_text[0].y = 400;
 
 		for (int i = 1 ; i < 25 ; i++)
 		{
-			textShape[i].y = textShape[i - 1].y + 20;
+			gfx_text[i].y = gfx_text[i - 1].y + 20;
 			if ((i == 7) || (i == 16) || (i == 19))
-				textShape[i].y += 25;
+				gfx_text[i].y += 25;
 		}
 	}
 
@@ -341,8 +341,8 @@ static void intermission_showStatus(SDL_Surface *infoSurface)
 
 	blevelRect(100, 400, 600, 20, 0x00, 0x00, 0x99);
 
-	blitText(26);
-	blitText(27);
+	screen_blitText(26);
+	screen_blitText(27);
 }
 
 static void intermission_updateCommsSurface(SDL_Surface *comms)

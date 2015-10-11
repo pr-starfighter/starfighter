@@ -27,3 +27,8 @@ void screen_blit(SDL_Surface *image, int x, int y)
 {
 	gfx_blit(image, x, y, screen);
 }
+
+void screen_blitText(int i)
+{
+	screen_blit(gfx_text[i].image, (int)gfx_text[i].x, (int)gfx_text[i].y);
+}
