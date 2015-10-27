@@ -52,6 +52,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "misc.h"
 #include "missions.h"
 #include "player.h"
+#include "renderer.h"
 #include "resources.h"
 #include "screen.h"
 #include "script.h"

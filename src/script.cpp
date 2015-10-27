@@ -187,7 +187,7 @@ static void setScene(int scene)
 void doCutscene(int scene)
 {
 	clearScreen(black);
-	updateScreen();
+	renderer_update();
 	clearScreen(black);
 
 	engine.keyState[KEY_FIRE] = 0; 
@@ -240,7 +240,7 @@ void doCutscene(int scene)
 
 	while (true)
 	{
-		updateScreen();
+		renderer_update();
 		unBuffer();
 		getPlayerInput();
 		game_doStars();
@@ -313,5 +313,5 @@ void doCutscene(int scene)
 	flushBuffer();
 	freeGraphics();
 	clearScreen(black);
-	updateScreen();
+	renderer_update();
 }

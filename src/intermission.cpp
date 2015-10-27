@@ -576,7 +576,7 @@ int intermission()
 	engine.gameSection = SECTION_INTERMISSION;
 
 	clearScreen(black);
-	updateScreen();
+	renderer_update();
 	clearScreen(black);
 
 	initSaveSlots();
@@ -710,7 +710,7 @@ int intermission()
 
 	while (!engine.done)
 	{
-		updateScreen();
+		renderer_update();
 
 		if (redrawBackGround)
 		{

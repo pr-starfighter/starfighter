@@ -191,7 +191,7 @@ int doTitle()
 	loadGameGraphics();
 
 	clearScreen(black);
-	updateScreen();
+	renderer_update();
 	clearScreen(black);
 
 	signed char continueSaveSlot = initSaveSlots();
@@ -276,7 +276,7 @@ int doTitle()
 
 	while (!engine.done)
 	{
-		updateScreen();
+		renderer_update();
 		unBuffer();
 
 		now = SDL_GetTicks();
@@ -594,7 +594,7 @@ void showStory()
 
 	while (true)
 	{
-		updateScreen();
+		renderer_update();
 		unBuffer();
 
 		getPlayerInput();
@@ -635,7 +635,7 @@ void gameover()
 	SDL_Surface *gameover = loadImage("gfx/gameover.png");
 
 	clearScreen(black);
-	updateScreen();
+	renderer_update();
 	clearScreen(black);
 	SDL_Delay(1000);
 
@@ -644,7 +644,7 @@ void gameover()
 	int x = (screen->w - gameover->w) / 2;
 	int y = (screen->h - gameover->h) / 2;
 
-	updateScreen();
+	renderer_update();
 
 	flushInput();
 	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
@@ -656,7 +656,7 @@ void gameover()
 		if (engine.keyState[KEY_FIRE] || engine.keyState[KEY_ALTFIRE])
 			break;
 
-		updateScreen();
+		renderer_update();
 
 		unBuffer();
 		x = ((screen->w - gameover->w) / 2) - RANDRANGE(-2, 2);
@@ -688,7 +688,7 @@ void doCredits()
 	textObject *credit;
 
 	clearScreen(black);
-	updateScreen();
+	renderer_update();
 	clearScreen(black);
 
 	drawBackGround();
@@ -721,7 +721,7 @@ void doCredits()
 
 	while (true)
 	{
-		updateScreen();
+		renderer_update();
 		unBuffer();
 
 		getPlayerInput();

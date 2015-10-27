@@ -24,8 +24,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 static unsigned long frameLimit;
 static int thirds;
 
-SDL_Renderer *renderer;
-SDL_Texture *texture;
 SDL_Surface *background;
 SDL_Surface *shape[MAX_SHAPES];
 SDL_Surface *shipShape[MAX_SHIPSHAPES];
@@ -273,13 +271,6 @@ void drawBackGround()
 void clearScreen(Uint32 color)
 {
 	SDL_FillRect(screen, NULL, color);
-}
-
-void updateScreen()
-{
-	SDL_UpdateTexture(texture, NULL, screen->pixels, screen->w * 4);
-	SDL_RenderCopy(renderer, texture, NULL, NULL);
-	SDL_RenderPresent(renderer);
 }
 
 /*

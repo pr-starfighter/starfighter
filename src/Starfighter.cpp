@@ -89,10 +89,10 @@ int main(int argc, char **argv)
 		clearScreen(black);
 		drawString("That doesn't work anymore", -1, 285, FONT_WHITE);
 		drawString("Try harder...", -1, 315, FONT_WHITE);
-		updateScreen();
+		renderer_update();
 		SDL_Delay(2000);
 		clearScreen(black);
-		updateScreen();
+		renderer_update();
 		SDL_Delay(500);
 	}
 

@@ -82,7 +82,7 @@ void showErrorAndExit(int errorId, const char *name)
 	drawString("Project: Starfighter will now exit", -1, 450, FONT_WHITE);
 	drawString("Press Space to continue", -1, 475, FONT_WHITE);
 
-	updateScreen();
+	renderer_update();
 
 	engine.keyState[KEY_ALTFIRE] = 0;
 
@@ -189,9 +189,9 @@ void initSystem()
 
 	SDL_RenderSetLogicalSize(renderer, screen->w, screen->h);
 
-	texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, screen->w, screen->h);
+	renderer_texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, screen->w, screen->h);
 
-	if (!texture)
+	if (!renderer_texture)
 	{
 		printf("Couldn't create %ix%ix32 texture: %s\n", screen->w, screen->h, SDL_GetError());
 		exit(1);

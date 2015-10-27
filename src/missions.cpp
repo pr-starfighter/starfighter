@@ -754,7 +754,7 @@ mission begins playing here.
 void missionBriefScreen()
 {
 	clearScreen(black);
-	updateScreen();
+	renderer_update();
 
 	if (game.area != MISN_INTERCEPTION)
 	{
@@ -791,7 +791,7 @@ void missionBriefScreen()
 				(game.area == MISN_EARTH))
 			drawString("Sid Wilson will join you on this mission", 160, 480, FONT_WHITE);
 
-		updateScreen();
+		renderer_update();
 	}
 
 	loadGameGraphics();
@@ -818,7 +818,7 @@ void missionBriefScreen()
 	{
 		drawString("PRESS ENTER TO CONTINUE...", -1, 550, FONT_WHITE);
 
-		updateScreen();
+		renderer_update();
 
 		flushInput();
 		engine.done = 0;
@@ -836,7 +836,7 @@ void missionBriefScreen()
 		}
 
 		clearScreen(black);
-		updateScreen();
+		renderer_update();
 		clearScreen(black);
 	}
 
@@ -857,7 +857,7 @@ void missionFinishedScreen()
 	if (game.area != MISN_INTERCEPTION)
 	{
 		clearScreen(black);
-		updateScreen();
+		renderer_update();
 
 		if (game.shots > 0)
 			game.accuracy = (game.hits * 100) / game.shots;
@@ -923,7 +923,7 @@ void missionFinishedScreen()
 
 		checkForBossMission();
 
-		updateScreen();
+		renderer_update();
 
 		flushInput();
 		engine.done = 0;

@@ -2122,7 +2122,7 @@ int game_mainLoop()
 
 	while (engine.done != 1)
 	{
-		updateScreen();
+		renderer_update();
 
 		if ((allMissionsCompleted()) && (engine.missionCompleteTimer == 0))
 		{
@@ -2228,7 +2228,7 @@ int game_mainLoop()
 		{
 			textSurface(22, "PAUSED", -1, screen->h / 2, FONT_WHITE);
 			screen_blitText(22);
-			updateScreen();
+			renderer_update();
 			audio_pauseMusic();
 
 			while (engine.paused)
@@ -2272,7 +2272,7 @@ int game_mainLoop()
 		{
 			audio_playSound(SFX_DEATH, aliens[ALIEN_BOSS].x);
 			clearScreen(white);
-			updateScreen();
+			renderer_update();
 			for (int i = 0 ; i < 300 ; i++)
 			{
 				SDL_Delay(10);

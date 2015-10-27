@@ -22,8 +22,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-extern SDL_Renderer *renderer;
-extern SDL_Texture *texture;
 extern SDL_Surface *background;
 extern SDL_Surface *shape[MAX_SHAPES];
 extern SDL_Surface *shipShape[MAX_SHIPSHAPES];
@@ -46,7 +44,6 @@ extern int drawString(const char *in, int x, int y, int fontColor, SDL_Surface *
 extern int drawString(const char *in, int x, int y, int fontColor);
 extern void drawBackGround();
 extern void clearScreen(Uint32 color);
-extern void updateScreen();
 extern void delayFrame();
 extern void putpixel(SDL_Surface *surface, int x, int y, Uint32 pixel);
 extern void drawLine(SDL_Surface *dest, int x1, int y1, int x2, int y2, int col);
