@@ -29,16 +29,16 @@ SDL_Surface *shape[MAX_SHAPES];
 SDL_Surface *shipShape[MAX_SHIPSHAPES];
 SDL_Surface *fontShape[MAX_FONTSHAPES];
 SDL_Surface *shopSurface[MAX_SHOPSHAPES];
-bRect *bufferHead;
-bRect *bufferTail;
+bRect *screen_bufferHead;
+bRect *screen_bufferTail;
 textObject gfx_text[MAX_TEXTSHAPES];
 SDL_Surface *messageBox;
 
 void gfx_init()
 {
-	bufferHead = new bRect;
-	bufferHead->next = NULL;
-	bufferTail = bufferHead;
+	screen_bufferHead = new bRect;
+	screen_bufferHead->next = NULL;
+	screen_bufferTail = screen_bufferHead;
 
 	for (int i = 0 ; i < MAX_SHAPES ; i++)
 		shape[i] = NULL;
@@ -69,20 +69,6 @@ SDL_Surface *gfx_setTransparent(SDL_Surface *sprite)
 	return sprite;
 }
 
-void gfx_addBuffer(int x, int y, int w, int h)
-{
-	bRect *rect = new bRect;
-
-	rect->next = NULL;
-	rect->x = x;
-	rect->y = y;
-	rect->w = w;
-	rect->h = h;
-
-	bufferTail->next = rect;
-	bufferTail = rect;
-}
-
 void gfx_blit(SDL_Surface *image, int x, int y, SDL_Surface *dest)
 {
 	// Exit early if image is not on dest at all
@@ -106,56 +92,7 @@ void gfx_blit(SDL_Surface *image, int x, int y, SDL_Surface *dest)
 
 	// Only if it is to the screen, mark the region as damaged
 	if (dest == screen)
-		gfx_addBuffer(blitRect.x, blitRect.y, blitRect.w, blitRect.h);
-}
-
-void flushBuffer()
-{
-	bRect *prevRect = bufferHead;
-	bRect *rect = bufferHead;
-	bufferTail = bufferHead;
-
-	while (rect->next != NULL)
-	{
-		rect = rect->next;
-
-		prevRect->next = rect->next;
-		delete rect;
-		rect = prevRect;
-	}
-
-	bufferHead->next = NULL;
-}
-
-void unBuffer()
-{
-	bRect *prevRect = bufferHead;
-	bRect *rect = bufferHead;
-	bufferTail = bufferHead;
-
-	while (rect->next != NULL)
-	{
-		rect = rect->next;
-
-		SDL_Rect blitRect;
-
-		blitRect.x = rect->x;
-		blitRect.y = rect->y;
-		blitRect.w = rect->w;
-		blitRect.h = rect->h;
-
-		if (SDL_BlitSurface(background, &blitRect, screen, &blitRect) < 0)
-		{
-			printf("BlitSurface error: %s\n", SDL_GetError());
-			showErrorAndExit(2, "");
-		}
-
-		prevRect->next = rect->next;
-		delete rect;
-		rect = prevRect;
-	}
-
-	bufferHead->next = NULL;
+		screen_addBuffer(blitRect.x, blitRect.y, blitRect.w, blitRect.h);
 }
 
 /*

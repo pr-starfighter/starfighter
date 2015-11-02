@@ -198,7 +198,7 @@ void doCutscene(int scene)
 	engine.smx = 0;
 	engine.smy = 0;
 
-	flushBuffer();
+	screen_flushBuffer();
 	freeGraphics();
 	resetLists();
 	loadGameGraphics();
@@ -241,7 +241,7 @@ void doCutscene(int scene)
 	while (true)
 	{
 		renderer_update();
-		unBuffer();
+		screen_unBuffer();
 		getPlayerInput();
 		game_doStars();
 		game_doExplosions();
@@ -310,7 +310,7 @@ void doCutscene(int scene)
 			break;
 	}
 
-	flushBuffer();
+	screen_flushBuffer();
 	freeGraphics();
 	clearScreen(black);
 	renderer_update();

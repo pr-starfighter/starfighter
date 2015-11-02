@@ -20,9 +20,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef SCREEN_H
 #define SCREEN_H
 
+#include "structs.h"
+
 extern SDL_Surface *screen;
+extern bRect *screen_bufferHead;
+extern bRect *screen_bufferTail;
 
 void screen_blit(SDL_Surface *image, int x, int y);
 void screen_blitText(int i);
+void screen_addBuffer(int x, int y, int w, int h);
+void screen_flushBuffer();
+void screen_unBuffer();
 
 #endif

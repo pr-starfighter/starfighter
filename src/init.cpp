@@ -228,7 +228,7 @@ void cleanUp()
 	delete(engine.bulletHead);
 	delete(engine.explosionHead);
 	delete(engine.collectableHead);
-	delete(bufferHead);
+	delete(screen_bufferHead);
 
 	for (int i = 0 ; i < MAX_FONTSHAPES ; i++)
 	{

@@ -138,7 +138,7 @@ void resetLists()
 	engine.collectableHead->next = NULL;
 	engine.collectableTail = engine.collectableHead;
 	
-	r1 = bufferHead->next;
+	r1 = screen_bufferHead->next;
 	while (r1 != NULL)
 	{
 		r2 = r1;
@@ -146,8 +146,8 @@ void resetLists()
 		delete r2;
 	}
 	
-	bufferHead->next = NULL;
-	bufferTail = bufferHead;
+	screen_bufferHead->next = NULL;
+	screen_bufferTail = screen_bufferHead;
 
 	ob = engine.debrisHead->next;
 	while(ob != NULL)

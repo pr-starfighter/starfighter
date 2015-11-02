@@ -17,9 +17,13 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <stdlib.h>
+
 #include "SDL.h"
 
 #include "gfx.h"
+#include "init.h"
+#include "structs.h"
 
 SDL_Surface *screen;
 
@@ -31,4 +35,67 @@ void screen_blit(SDL_Surface *image, int x, int y)
 void screen_blitText(int i)
 {
 	screen_blit(gfx_text[i].image, (int)gfx_text[i].x, (int)gfx_text[i].y);
+}
+
+void screen_addBuffer(int x, int y, int w, int h)
+{
+	bRect *rect = new bRect;
+
+	rect->next = NULL;
+	rect->x = x;
+	rect->y = y;
+	rect->w = w;
+	rect->h = h;
+
+	screen_bufferTail->next = rect;
+	screen_bufferTail = rect;
+}
+
+void screen_flushBuffer()
+{
+	bRect *prevRect = screen_bufferHead;
+	bRect *rect = screen_bufferHead;
+	screen_bufferTail = screen_bufferHead;
+
+	while (rect->next != NULL)
+	{
+		rect = rect->next;
+
+		prevRect->next = rect->next;
+		delete rect;
+		rect = prevRect;
+	}
+
+	screen_bufferHead->next = NULL;
+}
+
+void screen_unBuffer()
+{
+	bRect *prevRect = screen_bufferHead;
+	bRect *rect = screen_bufferHead;
+	screen_bufferTail = screen_bufferHead;
+
+	while (rect->next != NULL)
+	{
+		rect = rect->next;
+
+		SDL_Rect blitRect;
+
+		blitRect.x = rect->x;
+		blitRect.y = rect->y;
+		blitRect.w = rect->w;
+		blitRect.h = rect->h;
+
+		if (SDL_BlitSurface(background, &blitRect, screen, &blitRect) < 0)
+		{
+			printf("BlitSurface error: %s\n", SDL_GetError());
+			showErrorAndExit(2, "");
+		}
+
+		prevRect->next = rect->next;
+		delete rect;
+		rect = prevRect;
+	}
+
+	screen_bufferHead->next = NULL;
 }

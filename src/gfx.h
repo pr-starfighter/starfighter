@@ -27,18 +27,13 @@ extern SDL_Surface *shape[MAX_SHAPES];
 extern SDL_Surface *shipShape[MAX_SHIPSHAPES];
 extern SDL_Surface *fontShape[MAX_FONTSHAPES];
 extern SDL_Surface *shopSurface[MAX_SHOPSHAPES];
-extern bRect *bufferHead;
-extern bRect *bufferTail;
 extern textObject gfx_text[MAX_TEXTSHAPES];
 extern SDL_Surface *messageBox;
 
 
 void gfx_init();
 SDL_Surface *gfx_setTransparent(SDL_Surface *sprite);
-void gfx_addBuffer(int x, int y, int w, int h);
 void gfx_blit(SDL_Surface *image, int x, int y, SDL_Surface *dest);
-extern void flushBuffer();
-extern void unBuffer();
 extern int drawString(const char *in, int x, int y, int fontColor, signed char wrap, SDL_Surface *dest);
 extern int drawString(const char *in, int x, int y, int fontColor, SDL_Surface *dest);
 extern int drawString(const char *in, int x, int y, int fontColor);

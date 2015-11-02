@@ -719,7 +719,7 @@ int intermission()
 		}
 		else
 		{
-			unBuffer();
+			screen_unBuffer();
 		}
 
   		game_doStars();
@@ -897,7 +897,7 @@ int intermission()
 				break;
 		}
 
-		gfx_addBuffer(300, 545, 200, 15);
+		screen_addBuffer(300, 545, 200, 15);
 
 		if (section != 8)
 		{

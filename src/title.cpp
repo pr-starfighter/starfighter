@@ -180,7 +180,7 @@ int doTitle()
 
 	engine.gameSection = SECTION_TITLE;
 
-	flushBuffer();
+	screen_flushBuffer();
 	freeGraphics();
 	resetLists();
 	
@@ -277,7 +277,7 @@ int doTitle()
 	while (!engine.done)
 	{
 		renderer_update();
-		unBuffer();
+		screen_unBuffer();
 
 		now = SDL_GetTicks();
 
@@ -315,7 +315,7 @@ int doTitle()
 
 			if ((now - then >= 27500) || (skip))
 			{
-				gfx_addBuffer(0, 0, screen->w, screen->h);
+				screen_addBuffer(0, 0, screen->w, screen->h);
 
 				blevelRect(optionRec.x, optionRec.y, optionRec.w, optionRec.h, redGlow, 0x00, 0x00);
 
@@ -371,7 +371,7 @@ int doTitle()
 					drawString("Copyright Parallel Realities 2003", 5, 560, FONT_WHITE, background);
 					drawString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012", 5, 580, FONT_WHITE, background);
 					drawString(buildVersion, 794 - strlen(buildVersion) * 9, 580, FONT_WHITE, background);
-					gfx_addBuffer(0, 560, 800, 40);
+					screen_addBuffer(0, 560, 800, 40);
 					skip = true;
 				}
 			}
@@ -393,7 +393,7 @@ int doTitle()
 				drawString("Copyright Parallel Realities 2003", 5, 560, FONT_WHITE, background);
 				drawString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012", 5, 580, FONT_WHITE, background);
 				drawString(buildVersion, 794 - strlen(buildVersion) * 9, 580, FONT_WHITE, background);
-				gfx_addBuffer(0, 560, 800, 40);
+				screen_addBuffer(0, 560, 800, 40);
 				skip = true;
 			}
 			else
@@ -587,7 +587,7 @@ void showStory()
 
 	loadBackground("gfx/startUp.jpg");
 	drawBackGround();
-	flushBuffer();
+	screen_flushBuffer();
 
 	flushInput();
 	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
@@ -595,7 +595,7 @@ void showStory()
 	while (true)
 	{
 		renderer_update();
-		unBuffer();
+		screen_unBuffer();
 
 		getPlayerInput();
 
@@ -625,7 +625,7 @@ The game over screen :(
 */
 void gameover()
 {
-	flushBuffer();
+	screen_flushBuffer();
 	freeGraphics();
 	SDL_FillRect(background, NULL, black);
 
@@ -658,7 +658,7 @@ void gameover()
 
 		renderer_update();
 
-		unBuffer();
+		screen_unBuffer();
 		x = ((screen->w - gameover->w) / 2) - RANDRANGE(-2, 2);
 		y = ((screen->h - gameover->h) / 2)  - RANDRANGE(-2, 2);
 		screen_blit(gameover, x,  y);
@@ -668,13 +668,13 @@ void gameover()
 
 	SDL_FreeSurface(gameover);
 	audio_haltMusic();
-	flushBuffer();
+	screen_flushBuffer();
 }
 
 void doCredits()
 {
 	loadBackground("gfx/credits.jpg");
-	flushBuffer();
+	screen_flushBuffer();
 	freeGraphics();
 
 	FILE *fp;
@@ -722,7 +722,7 @@ void doCredits()
 	while (true)
 	{
 		renderer_update();
-		unBuffer();
+		screen_unBuffer();
 
 		getPlayerInput();
 		if (engine.keyState[KEY_ESCAPE] || engine.keyState[KEY_FIRE] ||

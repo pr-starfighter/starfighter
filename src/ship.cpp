@@ -157,7 +157,7 @@ void ship_fireRay(object *ship)
 
 	int red = SDL_MapRGB(screen->format, rand() % 256, 0x00, 0x00);
 	SDL_FillRect(screen, &ray, red);
-	gfx_addBuffer(ray.x, ray.y, ray.w, ray.h);
+	screen_addBuffer(ray.x, ray.y, ray.w, ray.h);
 
 	if (ship != &player)
 	{

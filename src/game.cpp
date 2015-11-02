@@ -211,7 +211,7 @@ void game_doStars()
 		r.w = 1;
 		r.h = 1;
 
-		gfx_addBuffer(r.x, r.y, r.w, r.h);
+		screen_addBuffer(r.x, r.y, r.w, r.h);
 	}
 
 	if (SDL_MUSTLOCK(screen))
@@ -1636,8 +1636,8 @@ static void game_doHud()
 	signed char fontColor;
 	char text[25];
 
-	gfx_addBuffer(0, 20, 800, 25);
-	gfx_addBuffer(0, 550, 800, 34);
+	screen_addBuffer(0, 20, 800, 25);
+	screen_addBuffer(0, 550, 800, 34);
 
 	if (engine.minutes > -1)
 	{
@@ -2111,7 +2111,7 @@ int game_mainLoop()
 	}
 
 	drawBackGround();
-	flushBuffer();
+	screen_flushBuffer();
 
 	// Default to no aliens dead...
 	engine.allAliensDead = 0;
@@ -2211,7 +2211,7 @@ int game_mainLoop()
 			getPlayerInput();
 		}
 
-		unBuffer();
+		screen_unBuffer();
 		game_doStars();
 		game_doCollectables();
 		game_doBullets();
@@ -2286,7 +2286,7 @@ int game_mainLoop()
 		delayFrame();
 	}
 
-	flushBuffer();
+	screen_flushBuffer();
 
 	if ((player.shield > 0) && (!missionFailed()))
 	{
