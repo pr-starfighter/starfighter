@@ -431,7 +431,7 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 		}
 		else
 		{
-			newY = drawString(string, 80, y, col, 1, comms) + 25;
+			newY = gfx_renderString(string, 80, y, col, 1, comms) + 25;
 			if (newY < y + 60)
 				newY += (60 - (newY - y));
 			y = newY;
@@ -441,7 +441,7 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 	fclose(fp);
 
 	blevelRect(comms, 5, comms->h - 28, 180, 20, 0x25, 0x00, 0x00);
-	drawString("RETURN TO MESSAGES", 15, comms->h - 25, FONT_WHITE, 1, comms);
+	gfx_renderString("RETURN TO MESSAGES", 15, comms->h - 25, FONT_WHITE, 1, comms);
 
 	engine.commsSection = 1;
 }

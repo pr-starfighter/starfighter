@@ -99,7 +99,7 @@ void gfx_blit(SDL_Surface *image, int x, int y, SDL_Surface *dest)
 In 16 bit mode this is slow. VERY slow. Don't write directly to a surface
 that constantly needs updating (eg - the main game screen)
 */
-static int renderString(const char *in, int x, int y, int fontColor, signed char wrap, SDL_Surface *dest)
+static int gfx_renderStringBase(const char *in, int x, int y, int fontColor, signed char wrap, SDL_Surface *dest)
 {
 	int i;
 	int splitword;
@@ -172,29 +172,29 @@ static int renderString(const char *in, int x, int y, int fontColor, signed char
 	return area.y;
 }
 
-int drawString(const char *in, int x, int y, int fontColor, signed char wrap, SDL_Surface *dest)
+int gfx_renderString(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest)
 {
-	renderString(in, x, y - 1, FONT_OUTLINE, wrap, dest);
-	renderString(in, x, y + 1, FONT_OUTLINE, wrap, dest);
-	renderString(in, x, y + 2, FONT_OUTLINE, wrap, dest);
-	renderString(in, x - 1, y, FONT_OUTLINE, wrap, dest);
-	renderString(in, x - 2, y, FONT_OUTLINE, wrap, dest);
-	renderString(in, x + 1, y, FONT_OUTLINE, wrap, dest);
-	return renderString(in, x, y, fontColor, wrap, dest);
+	gfx_renderStringBase(in, x, y - 1, FONT_OUTLINE, wrap, dest);
+	gfx_renderStringBase(in, x, y + 1, FONT_OUTLINE, wrap, dest);
+	gfx_renderStringBase(in, x, y + 2, FONT_OUTLINE, wrap, dest);
+	gfx_renderStringBase(in, x - 1, y, FONT_OUTLINE, wrap, dest);
+	gfx_renderStringBase(in, x - 2, y, FONT_OUTLINE, wrap, dest);
+	gfx_renderStringBase(in, x + 1, y, FONT_OUTLINE, wrap, dest);
+	return gfx_renderStringBase(in, x, y, fontColor, wrap, dest);
 }
 
 int drawString(const char *in, int x, int y, int fontColor, SDL_Surface *dest)
 {
 	if (x == -1)
 		x = (dest->w - (strlen(in) * 9)) / 2;
-	return drawString(in, x, y, fontColor, 0, dest);
+	return gfx_renderString(in, x, y, fontColor, 0, dest);
 }
 
 int drawString(const char *in, int x, int y, int fontColor)
 {
 	if (x == -1)
-		x = (800 - (strlen(in) * 9)) / 2;
-	return drawString(in, x, y, fontColor, 0, screen);
+		x = (screen->w - (strlen(in) * 9)) / 2;
+	return gfx_renderString(in, x, y, fontColor, 0, screen);
 }
 
 /*
@@ -477,7 +477,7 @@ void createMessageBox(SDL_Surface *face, const char *message, signed char transp
 		x = 10;
 	}
 
-	drawString(message, x, 5, FONT_WHITE, 1, messageBox);
+	gfx_renderString(message, x, 5, FONT_WHITE, 1, messageBox);
 }
 
 void freeGraphics()
