@@ -178,11 +178,11 @@ void createSavesSurface(SDL_Surface *savesSurface, signed char clickedSlot)
 			blevelRect(savesSurface, 5, y, 338, 25, 0x99, 0x00, 0x00);
 		else
 			blevelRect(savesSurface, 5, y, 338, 25, 0x00, 0x00, 0x99);
-		drawString(saveSlot[i], 70, y + 5, FONT_WHITE, savesSurface);
+		gfx_renderString(saveSlot[i], 70, y + 5, FONT_WHITE, 0, savesSurface);
 		y += 30;
 	}
 
-	drawString("*** HELP ***", 120, 170, FONT_WHITE, savesSurface);
+	gfx_renderString("*** HELP ***", 120, 170, FONT_WHITE, 0, savesSurface);
 
 	switch (clickedSlot)
 	{
@@ -194,25 +194,28 @@ void createSavesSurface(SDL_Surface *savesSurface, signed char clickedSlot)
 			blevelRect(savesSurface, 5, 265, 100, 25, 0x00, 0x99, 0x00);
 			blevelRect(savesSurface, 125, 265, 100, 25, 0x99, 0x99, 0x00);
 			blevelRect(savesSurface, 243, 265, 100, 25, 0x99, 0x00, 0x00);
-			drawString("SAVE", 40, 270, FONT_WHITE, savesSurface);
-			drawString("CANCEL", 150, 270, FONT_WHITE, savesSurface);
-			drawString("DELETE", 270, 270, FONT_WHITE, savesSurface);
+			gfx_renderString("SAVE", 40, 270, FONT_WHITE, 0, savesSurface);
+			gfx_renderString("CANCEL", 150, 270, FONT_WHITE, 0, savesSurface);
+			gfx_renderString("DELETE", 270, 270, FONT_WHITE, 0, savesSurface);
 
-			drawString("SAVE will save the game", 17, 200, FONT_WHITE, savesSurface);
-			drawString("CANCEL will unselect that slot", 17, 220, FONT_WHITE,
+			gfx_renderString("SAVE will save the game", 17, 200, FONT_WHITE, 0,
 				savesSurface);
-			drawString("DELETE will remove the save", 17, 240, FONT_WHITE,
-				savesSurface);
+			gfx_renderString("CANCEL will unselect that slot", 17, 220,
+				FONT_WHITE, 0, savesSurface);
+			gfx_renderString("DELETE will remove the save", 17, 240,
+				FONT_WHITE, 0, savesSurface);
 			break;
 		case -1:
-			drawString("First click a Save game slot to use", 17, 200,
-				FONT_WHITE, savesSurface);
+			gfx_renderString("First click a Save game slot to use", 17, 200,
+				FONT_WHITE, 0, savesSurface);
 			break;
 		case -10:
-			drawString("Game Saved", 130, 200, FONT_WHITE, savesSurface);
+			gfx_renderString("Game Saved", 130, 200, FONT_WHITE, 0,
+				savesSurface);
 			break;
 		case -11:
-			drawString("Save Deleted", 130, 200, FONT_WHITE, savesSurface);
+			gfx_renderString("Save Deleted", 130, 200, FONT_WHITE, 0,
+				savesSurface);
 			break;
 	}
 

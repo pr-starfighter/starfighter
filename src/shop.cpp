@@ -28,7 +28,7 @@ static void drawSecondaryWeaponSurface()
 {
 	char description[50] = "";
 
-	drawString("Secondary Weapon", 10, 3, FONT_WHITE, shopSurface[2]);
+	gfx_renderString("Secondary Weapon", 10, 3, FONT_WHITE, 0, shopSurface[2]);
 
 	switch (player.weaponType[1])
 	{
@@ -60,13 +60,13 @@ static void drawSecondaryWeaponSurface()
 			strcpy(description, "Type : Mcr Homing Missiles");
 			break;
 	}
-	drawString(description, 10, 22, FONT_WHITE, shopSurface[2]);
+	gfx_renderString(description, 10, 22, FONT_WHITE, 0, shopSurface[2]);
 
 	if ((player.weaponType[1] != W_LASER) &&
 		(player.weaponType[1] != W_CHARGER) && (player.weaponType[1] != W_NONE))
 	{
 		sprintf(description, "Capacity : %d", game.maxRocketAmmo);
-		drawString(description, 10, 37, FONT_WHITE, shopSurface[2]);
+		gfx_renderString(description, 10, 37, FONT_WHITE, 0, shopSurface[2]);
 	}
 }
 
@@ -199,28 +199,28 @@ static void drawShop()
 	char description[100];
 	strcpy(description, "");
 
-	drawString("Primary Weapon", 10, 3, FONT_WHITE, shopSurface[0]);
+	gfx_renderString("Primary Weapon", 10, 3, FONT_WHITE, 0, shopSurface[0]);
 	sprintf(description, "Plasma Cannons : %d", game.minPlasmaOutput);
-	drawString(description, 10, 22, FONT_WHITE, shopSurface[0]);
+	gfx_renderString(description, 10, 22, FONT_WHITE, 0, shopSurface[0]);
 	sprintf(description, "Plasma Power   : Stage %d",
 		game.minPlasmaDamage);
-	drawString(description, 10, 37, FONT_WHITE, shopSurface[0]);
+	gfx_renderString(description, 10, 37, FONT_WHITE, 0, shopSurface[0]);
 	sprintf(description, "Cooler         : Stage %d",
 		game.minPlasmaRate);
-	drawString(description, 10, 52, FONT_WHITE, shopSurface[0]);
+	gfx_renderString(description, 10, 52, FONT_WHITE, 0, shopSurface[0]);
 
-	drawString("Powerup Weapon", 10, 3, FONT_WHITE, shopSurface[1]);
+	gfx_renderString("Powerup Weapon", 10, 3, FONT_WHITE, 0, shopSurface[1]);
 	sprintf(description, "Plasma Output    : Stage %d",
 		game.maxPlasmaOutput);
-	drawString(description, 10, 22, FONT_WHITE, shopSurface[1]);
+	gfx_renderString(description, 10, 22, FONT_WHITE, 0, shopSurface[1]);
 	sprintf(description, "Plasma Condensor : Stage %d",
 		game.maxPlasmaDamage);
-	drawString(description, 10, 37, FONT_WHITE, shopSurface[1]);
+	gfx_renderString(description, 10, 37, FONT_WHITE, 0, shopSurface[1]);
 	sprintf(description, "Liquid Nitrogen  : Stage %d",
 		game.maxPlasmaRate);
-	drawString(description, 10, 52, FONT_WHITE, shopSurface[1]);
+	gfx_renderString(description, 10, 52, FONT_WHITE, 0, shopSurface[1]);
 	sprintf(description, "Plasma Capacity  : %d", game.maxPlasmaAmmo);
-	drawString(description, 10, 67, FONT_WHITE, shopSurface[1]);
+	gfx_renderString(description, 10, 67, FONT_WHITE, 0, shopSurface[1]);
 
 	drawSecondaryWeaponSurface();
 
@@ -228,12 +228,12 @@ static void drawShop()
 
 	blevelRect(shopSurface[3], 0, 0, 600, 120, 0x00, 0x00, 0x22);
 
-	drawString("Temporary Weapons", 10, 2, FONT_WHITE, shopSurface[3]);
-	drawString("Ammo and Storage", 260, 2, FONT_WHITE, shopSurface[3]);
+	gfx_renderString("Temporary Weapons", 10, 2, FONT_WHITE, 0, shopSurface[3]);
+	gfx_renderString("Ammo and Storage", 260, 2, FONT_WHITE, 0, shopSurface[3]);
 
-	drawString("Primary Weapons", 10, 62, FONT_WHITE, shopSurface[3]);
+	gfx_renderString("Primary Weapons", 10, 62, FONT_WHITE, 0, shopSurface[3]);
 
-	drawString("Secondary Weapons", 260, 62, FONT_WHITE, shopSurface[3]);
+	gfx_renderString("Secondary Weapons", 260, 62, FONT_WHITE, 0, shopSurface[3]);
 
 	signed char icons = MAX_SHOPITEMS;
 
@@ -251,54 +251,56 @@ static void drawShop()
 	}
 
 	sprintf(description, "Shield Units : %d", player.maxShield);
-	drawString(description, 10, 4, FONT_WHITE, shopSurface[4]);
+	gfx_renderString(description, 10, 4, FONT_WHITE, 0, shopSurface[4]);
 	sprintf(description, "Cash : $%d", game.cash);
-	drawString(description, 10, 80, FONT_WHITE, shopSurface[4]);
+	gfx_renderString(description, 10, 80, FONT_WHITE, 0, shopSurface[4]);
 	sprintf(description, "Plasma Cells : %.3d", player.ammo[0]);
-	drawString(description, 430, 4, FONT_WHITE, shopSurface[4]);
+	gfx_renderString(description, 430, 4, FONT_WHITE, 0, shopSurface[4]);
 	sprintf(description, "Rockets : %.3d", player.ammo[1]);
-	drawString(description, 475, 80, FONT_WHITE, shopSurface[4]);
+	gfx_renderString(description, 475, 80, FONT_WHITE, 0, shopSurface[4]);
 
 	shopSurface[5] = createSurface(601, 56);
 	blevelRect(shopSurface[5], 0, 0, 600, 35, 0x00, 0x99, 0x00);
 	blevelRect(shopSurface[5], 0, 20, 600, 35, 0x00, 0x33, 0x00);
-	drawString("Information", 5, 4, FONT_WHITE, shopSurface[5]);
+	gfx_renderString("Information", 5, 4, FONT_WHITE, 0, shopSurface[5]);
 
 	switch (shopSelectedItem)
 	{
 		case -1:
 			break;
 		case -2:
-			drawString("You don't have enough money", 20, 30, FONT_WHITE,
-				shopSurface[5]);
+			gfx_renderString("You don't have enough money", 20, 30, FONT_WHITE,
+				0, shopSurface[5]);
 			break;
 		case -3:
-			drawString("Cannot upgrade ship", 5, 22, FONT_WHITE, shopSurface[5]);
-			drawString("Hardware capacity has been reached", 20, 38, FONT_CYAN,
+			gfx_renderString("Cannot upgrade ship", 5, 22, FONT_WHITE, 0,
 				shopSurface[5]);
+			gfx_renderString("Hardware capacity has been reached", 20, 38,
+				FONT_CYAN, 0, shopSurface[5]);
 			break;
 		case -4:
-			drawString("Ammunition limit reached", 20, 30, FONT_WHITE,
+			gfx_renderString("Ammunition limit reached", 20, 30, FONT_WHITE, 0,
 				shopSurface[5]);
 			break;
 		case -5:
-			drawString("You cannot sell that item", 20, 30, FONT_WHITE,
-				shopSurface[5]);
+			gfx_renderString("You cannot sell that item", 20, 30, FONT_WHITE,
+				0, shopSurface[5]);
 			break;
 		case -6:
-			drawString("Nothing to sell", 20, 30, FONT_WHITE, shopSurface[5]);
-			break;
-		case -7:
-			drawString("Rockets cannot be bought for Laser or Charger Cannon",
-				5, 30, FONT_WHITE, shopSurface[5]);
-			break;
-		case -8:
-			drawString("You already have that weapon", 20, 30, FONT_WHITE,
+			gfx_renderString("Nothing to sell", 20, 30, FONT_WHITE, 0,
 				shopSurface[5]);
 			break;
+		case -7:
+			gfx_renderString("Rockets cannot be bought for Laser or Charger Cannon",
+				5, 30, FONT_WHITE, 0, shopSurface[5]);
+			break;
+		case -8:
+			gfx_renderString("You already have that weapon", 20, 30,
+				FONT_WHITE, 0, shopSurface[5]);
+			break;
 		case -9:
-			drawString("This weapon's ammo limit has been reached", 20, 30,
-				FONT_WHITE, shopSurface[5]);
+			gfx_renderString("This weapon's ammo limit has been reached", 20,
+				30, FONT_WHITE, 0, shopSurface[5]);
 			break;
 		default:
 			if (shopItems[shopSelectedItem].price != 0)
@@ -312,9 +314,9 @@ static void drawShop()
 				sprintf(description, "%s (N/A)",
 					shopItems[shopSelectedItem].description);
 			}
-			drawString(shopItems[shopSelectedItem].name, 5, 22, FONT_WHITE,
-				shopSurface[5]);
-			drawString(description, 20, 38, FONT_CYAN, shopSurface[5]);
+			gfx_renderString(shopItems[shopSelectedItem].name, 5, 22,
+				FONT_WHITE, 0, shopSurface[5]);
+			gfx_renderString(description, 20, 38, FONT_CYAN, 0, shopSurface[5]);
 			break;
 	}
 }

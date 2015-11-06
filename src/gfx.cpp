@@ -174,6 +174,9 @@ static int gfx_renderStringBase(const char *in, int x, int y, int fontColor, sig
 
 int gfx_renderString(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest)
 {
+	if (x == -1)
+		x = (dest->w - (strlen(in) * 9)) / 2;
+
 	gfx_renderStringBase(in, x, y - 1, FONT_OUTLINE, wrap, dest);
 	gfx_renderStringBase(in, x, y + 1, FONT_OUTLINE, wrap, dest);
 	gfx_renderStringBase(in, x, y + 2, FONT_OUTLINE, wrap, dest);
@@ -183,17 +186,8 @@ int gfx_renderString(const char *in, int x, int y, int fontColor, int wrap, SDL_
 	return gfx_renderStringBase(in, x, y, fontColor, wrap, dest);
 }
 
-int drawString(const char *in, int x, int y, int fontColor, SDL_Surface *dest)
-{
-	if (x == -1)
-		x = (dest->w - (strlen(in) * 9)) / 2;
-	return gfx_renderString(in, x, y, fontColor, 0, dest);
-}
-
 int drawString(const char *in, int x, int y, int fontColor)
 {
-	if (x == -1)
-		x = (screen->w - (strlen(in) * 9)) / 2;
 	return gfx_renderString(in, x, y, fontColor, 0, screen);
 }
 
@@ -411,7 +405,7 @@ SDL_Surface *textSurface(const char *inString, int color)
 {
 	SDL_Surface *surface = createSurface(strlen(inString) * 9, 16);
 
-	drawString(inString, 1, 1, color, surface);
+	gfx_renderString(inString, 1, 1, color, 0, surface);
 
 	return gfx_setTransparent(surface);
 }

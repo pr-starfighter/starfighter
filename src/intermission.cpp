@@ -354,9 +354,9 @@ static void intermission_updateCommsSurface(SDL_Surface *comms)
 
 	blevelRect(comms, 0, 10, comms->w - 1, 55, 0x00, 0x22, 0x00);
 	gfx_blit(shape[FACE_CHRIS], 20, 15, comms);
-	drawString("Chris Bainfield", 80, 15, FONT_WHITE, comms);
+	gfx_renderString("Chris Bainfield", 80, 15, FONT_WHITE, 0, comms);
 	sprintf(string, "Current Location: %s", systemPlanet[game.stationedPlanet].name);
-	drawString(string, 80, 35, FONT_WHITE, comms);
+	gfx_renderString(string, 80, 35, FONT_WHITE, 0, comms);
 }
 
 static void intermission_createCommsSurface(SDL_Surface *comms)
@@ -365,7 +365,7 @@ static void intermission_createCommsSurface(SDL_Surface *comms)
 
 	blevelRect(comms, 0, 0, comms->w - 1, comms->h - 1, 0x00, 0x00, 0x25);
 
-	drawString("+++ RECEIVED MESSAGES +++", 115, 80, FONT_GREEN, comms);
+	gfx_renderString("+++ RECEIVED MESSAGES +++", 115, 80, FONT_GREEN, 0, comms);
 
 	int yOffset;
 
@@ -376,9 +376,9 @@ static void intermission_createCommsSurface(SDL_Surface *comms)
 			yOffset = systemPlanet[i].messageSlot * 60;
 			blevelRect(comms, 0, 105 + yOffset, comms->w - 1, 55, 0x00, 0x00, 0x77);
 			gfx_blit(shape[systemPlanet[i].faceImage], 20, 110 + yOffset, comms);
-			drawString(systemPlanet[i].from, 80, 110 + yOffset, FONT_WHITE, comms);
-			drawString(systemPlanet[i].subject, 80, 130 + yOffset, FONT_CYAN, comms);
-			drawString("INCOMPLETE", 350, 110 + yOffset, FONT_RED, comms);
+			gfx_renderString(systemPlanet[i].from, 80, 110 + yOffset, FONT_WHITE, 0, comms);
+			gfx_renderString(systemPlanet[i].subject, 80, 130 + yOffset, FONT_CYAN, 0, comms);
+			gfx_renderString("INCOMPLETE", 350, 110 + yOffset, FONT_RED, 0, comms);
 		}
 	}
 
@@ -419,7 +419,7 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 		strcpy(name, "Error");
 	}
 	sprintf(string, "+++ Communication with %s +++", name);
-	drawString(string, -1, 20, FONT_GREEN, comms);
+	gfx_renderString(string, -1, 20, FONT_GREEN, 0, comms);
 
 	while (fscanf(fp, "%[^\n]%*c", string) == 1)
 	{
@@ -478,7 +478,7 @@ static void intermission_createOptions(SDL_Surface *optionsSurface)
 
 	blevelRect(optionsSurface, 0, 0, optionsSurface->w - 2, optionsSurface->h - 2, 0x00, 0x00, 0x44);
 
-	drawString("++ OPTIONS ++", 105, 8, FONT_WHITE, optionsSurface);
+	gfx_renderString("++ OPTIONS ++", 105, 8, FONT_WHITE, 0, optionsSurface);
 
 	blevelRect(optionsSurface, 190, 45, 50, 22, 0x00, 0x00, 0x00);
 	blevelRect(optionsSurface, 250, 45, 50, 22, 0x00, 0x00, 0x00);
@@ -487,9 +487,9 @@ static void intermission_createOptions(SDL_Surface *optionsSurface)
 		blevelRect(optionsSurface, 190, 45, 50, 22, 0xff, 0x00, 0x00);
 	else
 		blevelRect(optionsSurface, 250, 45, 50, 22, 0xff, 0x00, 0x00);
-	drawString("ON", 207, 50, FONT_WHITE, optionsSurface);
-	drawString("OFF", 263, 50, FONT_WHITE, optionsSurface);
-	drawString("SOUND", 30, 50, FONT_WHITE, optionsSurface);
+	gfx_renderString("ON", 207, 50, FONT_WHITE, 0, optionsSurface);
+	gfx_renderString("OFF", 263, 50, FONT_WHITE, 0, optionsSurface);
+	gfx_renderString("SOUND", 30, 50, FONT_WHITE, 0, optionsSurface);
 
 	blevelRect(optionsSurface, 190, 95, 50, 22, 0x00, 0x00, 0x00);
 	blevelRect(optionsSurface, 250, 95, 50, 22, 0x00, 0x00, 0x00);
@@ -498,9 +498,9 @@ static void intermission_createOptions(SDL_Surface *optionsSurface)
 		blevelRect(optionsSurface, 190, 95, 50, 22, 0xff, 0x00, 0x00);
 	else
 		blevelRect(optionsSurface, 250, 95, 50, 22, 0xff, 0x00, 0x00);
-	drawString("ON", 207, 100, FONT_WHITE, optionsSurface);
-	drawString("OFF", 263, 100, FONT_WHITE, optionsSurface);
-	drawString("MUSIC", 30, 100, FONT_WHITE, optionsSurface);
+	gfx_renderString("ON", 207, 100, FONT_WHITE, 0, optionsSurface);
+	gfx_renderString("OFF", 263, 100, FONT_WHITE, 0, optionsSurface);
+	gfx_renderString("MUSIC", 30, 100, FONT_WHITE, 0, optionsSurface);
 
  	blevelRect(optionsSurface, 190, 145, 50, 22, 0x00, 0x00, 0x00);
 	blevelRect(optionsSurface, 250, 145, 50, 22, 0x00, 0x00, 0x00);
@@ -509,9 +509,9 @@ static void intermission_createOptions(SDL_Surface *optionsSurface)
 		blevelRect(optionsSurface, 190, 145, 50, 22, 0xff, 0x00, 0x00);
 	else
 		blevelRect(optionsSurface, 250, 145, 50, 22, 0xff, 0x00, 0x00);
-	drawString("ON", 207, 150, FONT_WHITE, optionsSurface);
-	drawString("OFF", 263, 150, FONT_WHITE, optionsSurface);
-	drawString("FULLSCREEN", 30, 150, FONT_WHITE, optionsSurface);
+	gfx_renderString("ON", 207, 150, FONT_WHITE, 0, optionsSurface);
+	gfx_renderString("OFF", 263, 150, FONT_WHITE, 0, optionsSurface);
+	gfx_renderString("FULLSCREEN", 30, 150, FONT_WHITE, 0, optionsSurface);
 }
 
 static void intermission_doOptions(SDL_Surface *optionsSurface)
