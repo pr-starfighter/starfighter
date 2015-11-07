@@ -266,7 +266,7 @@ int doTitle()
 	signed char listLength = 5; // menu list length
 	signed char menuType = MENU_MAIN;
 
-	drawBackGround();
+	screen_drawBackground();
 
 	engine.done = 0;
 	flushInput();
@@ -369,11 +369,11 @@ int doTitle()
 				if (!skip)
 				{
 					gfx_renderString("Copyright Parallel Realities 2003", 5,
-						560, FONT_WHITE, 0, background);
+						560, FONT_WHITE, 0, gfx_background);
 					gfx_renderString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012",
-						5, 580, FONT_WHITE, 0, background);
+						5, 580, FONT_WHITE, 0, gfx_background);
 					gfx_renderString(buildVersion, 794 - strlen(buildVersion) * 9,
-						580, FONT_WHITE, 0, background);
+						580, FONT_WHITE, 0, gfx_background);
 					screen_addBuffer(0, 560, 800, 40);
 					skip = true;
 				}
@@ -394,11 +394,11 @@ int doTitle()
 			if ((now - then <= 27500) && (!skip))
 			{
 				gfx_renderString("Copyright Parallel Realities 2003", 5, 560,
-					FONT_WHITE, 0, background);
+					FONT_WHITE, 0, gfx_background);
 				gfx_renderString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012",
-					5, 580, FONT_WHITE, 0, background);
+					5, 580, FONT_WHITE, 0, gfx_background);
 				gfx_renderString(buildVersion, 794 - strlen(buildVersion) * 9,
-					580, FONT_WHITE, 0, background);
+					580, FONT_WHITE, 0, gfx_background);
 				screen_addBuffer(0, 560, 800, 40);
 				skip = true;
 			}
@@ -592,7 +592,7 @@ void showStory()
 	fclose(fp);
 
 	loadBackground("gfx/startUp.jpg");
-	drawBackGround();
+	screen_drawBackground();
 	screen_flushBuffer();
 
 	flushInput();
@@ -633,7 +633,7 @@ void gameover()
 {
 	screen_flushBuffer();
 	freeGraphics();
-	SDL_FillRect(background, NULL, black);
+	SDL_FillRect(gfx_background, NULL, black);
 
 	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 	engine.gameSection = SECTION_INTERMISSION;
@@ -697,7 +697,7 @@ void doCredits()
 	renderer_update();
 	clearScreen(black);
 
-	drawBackGround();
+	screen_drawBackground();
 
 	audio_playMusic("music/rise_of_spirit.ogg", 1);
 

@@ -232,7 +232,7 @@ void doCutscene(int scene)
 	signed char currentMessage = -1;
 	int timer = 60 * 4;
 
-	drawBackGround();
+	screen_drawBackground();
 
 	SDL_Surface *face;
 	

@@ -24,7 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 static unsigned long frameLimit;
 static int thirds;
 
-SDL_Surface *background;
+SDL_Surface *gfx_background;
 SDL_Surface *shape[MAX_SHAPES];
 SDL_Surface *shipShape[MAX_SHIPSHAPES];
 SDL_Surface *fontShape[MAX_FONTSHAPES];
@@ -55,7 +55,7 @@ void gfx_init()
 	for (int i = 0 ; i < MAX_FONTSHAPES ; i++)
 		fontShape[i] = NULL;
 
-	background = NULL;
+	gfx_background = NULL;
 	messageBox = NULL;
 
 	frameLimit = 0;
@@ -184,14 +184,6 @@ int gfx_renderString(const char *in, int x, int y, int fontColor, int wrap, SDL_
 	gfx_renderStringBase(in, x - 2, y, FONT_OUTLINE, wrap, dest);
 	gfx_renderStringBase(in, x + 1, y, FONT_OUTLINE, wrap, dest);
 	return gfx_renderStringBase(in, x, y, fontColor, wrap, dest);
-}
-
-/*
-Draws the background surface that has been loaded
-*/
-void drawBackGround()
-{
-	screen_blit(background, 0, 0);
 }
 
 void clearScreen(Uint32 color)

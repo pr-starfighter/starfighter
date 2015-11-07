@@ -697,7 +697,7 @@ int intermission()
 
 	iconInfo[11].image = textSurface("Go to Destination Planet", FONT_WHITE);
 
-	bool redrawBackGround = true;
+	bool rescreen_drawBackground = true;
 
 	if (game.distanceCovered > 0)
 		section = 0;
@@ -712,10 +712,10 @@ int intermission()
 	{
 		renderer_update();
 
-		if (redrawBackGround)
+		if (rescreen_drawBackground)
 		{
-			drawBackGround();
-			redrawBackGround = false;
+			screen_drawBackground();
+			rescreen_drawBackground = false;
 		}
 		else
 		{
@@ -880,7 +880,7 @@ int intermission()
 					iconInfo[9].image = textSurface(string, FONT_WHITE);
 					intermission_updateCommsSurface(commsSurface);
 					section = 1;
-					redrawBackGround = true;
+					rescreen_drawBackground = true;
 					saveGame(0);
 				}
 				else if (interceptionChance > 0)
@@ -936,7 +936,7 @@ int intermission()
 
 					if ((engine.keyState[KEY_FIRE]))
 					{
-						redrawBackGround = true;
+						rescreen_drawBackground = true;
 						section = i;
 						engine.keyState[KEY_FIRE] = 0;
 					}

@@ -42,6 +42,14 @@ int screen_renderString(const char *in, int x, int y, int fontColor)
 	return gfx_renderString(in, x, y, fontColor, 0, screen);
 }
 
+/*
+Draws the background surface that has been loaded
+*/
+void screen_drawBackground()
+{
+	screen_blit(gfx_background, 0, 0);
+}
+
 void screen_addBuffer(int x, int y, int w, int h)
 {
 	bRect *rect = new bRect;
@@ -91,7 +99,7 @@ void screen_unBuffer()
 		blitRect.w = rect->w;
 		blitRect.h = rect->h;
 
-		if (SDL_BlitSurface(background, &blitRect, screen, &blitRect) < 0)
+		if (SDL_BlitSurface(gfx_background, &blitRect, screen, &blitRect) < 0)
 		{
 			printf("BlitSurface error: %s\n", SDL_GetError());
 			showErrorAndExit(2, "");

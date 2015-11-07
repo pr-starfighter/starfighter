@@ -2110,7 +2110,7 @@ int game_mainLoop()
 		}
 	}
 
-	drawBackGround();
+	screen_drawBackground();
 	screen_flushBuffer();
 
 	// Default to no aliens dead...

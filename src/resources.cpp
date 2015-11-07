@@ -21,13 +21,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 void loadBackground(const char *filename)
 {
-	if (background != NULL)
+	if (gfx_background != NULL)
 	{
-		SDL_FreeSurface(background);
-		background = NULL;
+		SDL_FreeSurface(gfx_background);
+		gfx_background = NULL;
 	}
-	background = loadImage(filename);
-	SDL_SetColorKey(background, 0, 0);
+	gfx_background = loadImage(filename);
+	SDL_SetColorKey(gfx_background, 0, 0);
 }
 
 void loadGameGraphics()

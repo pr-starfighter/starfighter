@@ -222,7 +222,7 @@ atexit();
 void cleanUp()
 {
 	freeGraphics();
-	SDL_FreeSurface(background);
+	SDL_FreeSurface(gfx_background);
 	audio_free();
 	resetLists();
 	delete(engine.bulletHead);
