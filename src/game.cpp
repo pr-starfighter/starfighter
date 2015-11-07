@@ -22,6 +22,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 Game game;
 
 static Star stars[STARS_NUM];
+static Uint32 frameLimit = 0;
+static int thirds = 0;
 
 void game_init()
 {
@@ -205,7 +207,7 @@ void game_doStars()
 		WRAP_ADD(stars[i].y, (engine.ssy + engine.smy) * stars[i].speed, 0,
 			screen->h - 1);
 
-		putpixel(screen, (int)stars[i].x, (int)stars[i].y, color);
+		gfx_putPixel(screen, (int)stars[i].x, (int)stars[i].y, color);
 		r.x = (int)stars[i].x;
 		r.y = (int)stars[i].y;
 		r.w = 1;
@@ -1907,6 +1909,28 @@ static void game_doHud()
 }
 
 /*
+ * Delay until the next 60 Hz frame
+ */
+void game_delayFrame()
+{
+	Uint32 now = SDL_GetTicks();
+
+	// Add 16 2/3 (= 1000 / 60) to frameLimit
+	frameLimit += 16;
+	thirds += 2;
+	while (thirds >= 3)
+	{
+		thirds -= 3;
+		frameLimit++;
+	}
+
+	if(now < frameLimit)
+		SDL_Delay(frameLimit - now);
+	else
+		frameLimit = now;
+}
+
+/*
 Checked during the main game loop. When the game is paused
 it goes into a constant loop checking this routine. If escape is
 pressed, the game automatically ends and goes back to the title screen
@@ -2234,7 +2258,7 @@ int game_mainLoop()
 			while (engine.paused)
 			{
 				engine.done = game_checkPauseRequest();
-				delayFrame();
+				game_delayFrame();
 			}
 
 			audio_resumeMusic();
@@ -2271,7 +2295,7 @@ int game_mainLoop()
 			(aliens[ALIEN_BOSS].flags & FL_ESCAPED))
 		{
 			audio_playSound(SFX_DEATH, aliens[ALIEN_BOSS].x);
-			clearScreen(white);
+			screen_clear(white);
 			renderer_update();
 			for (int i = 0 ; i < 300 ; i++)
 			{
@@ -2283,7 +2307,7 @@ int game_mainLoop()
 			break;
 		}
 
-		delayFrame();
+		game_delayFrame();
 	}
 
 	screen_flushBuffer();

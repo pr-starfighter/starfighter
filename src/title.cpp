@@ -190,9 +190,9 @@ int doTitle()
 
 	loadGameGraphics();
 
-	clearScreen(black);
+	screen_clear(black);
 	renderer_update();
-	clearScreen(black);
+	screen_clear(black);
 
 	signed char continueSaveSlot = initSaveSlots();
 
@@ -530,7 +530,7 @@ int doTitle()
 			engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 		}
 
-		delayFrame();
+		game_delayFrame();
 	}
 
 	audio_haltMusic();
@@ -622,7 +622,7 @@ void showStory()
 			break;
 		}
 
-		delayFrame();
+		game_delayFrame();
 	}
 }
 
@@ -640,9 +640,9 @@ void gameover()
 
 	SDL_Surface *gameover = loadImage("gfx/gameover.png");
 
-	clearScreen(black);
+	screen_clear(black);
 	renderer_update();
-	clearScreen(black);
+	screen_clear(black);
 	SDL_Delay(1000);
 
 	audio_playMusic("music/death.ogg", -1);
@@ -669,7 +669,7 @@ void gameover()
 		y = ((screen->h - gameover->h) / 2)  - RANDRANGE(-2, 2);
 		screen_blit(gameover, x,  y);
 
-		delayFrame();
+		game_delayFrame();
 	}
 
 	SDL_FreeSurface(gameover);
@@ -693,9 +693,9 @@ void doCredits()
 
 	textObject *credit;
 
-	clearScreen(black);
+	screen_clear(black);
 	renderer_update();
-	clearScreen(black);
+	screen_clear(black);
 
 	screen_drawBackground();
 
@@ -751,7 +751,7 @@ void doCredits()
 				credit[i].y -= speed;
 		}
 
-		delayFrame();
+		game_delayFrame();
 	}
 
 	for (i = 0 ; i <= lastCredit ; i++)

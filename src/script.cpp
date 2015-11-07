@@ -186,9 +186,9 @@ static void setScene(int scene)
 
 void doCutscene(int scene)
 {
-	clearScreen(black);
+	screen_clear(black);
 	renderer_update();
-	clearScreen(black);
+	screen_clear(black);
 
 	engine.keyState[KEY_FIRE] = 0; 
 	engine.keyState[KEY_ALTFIRE] = 0;
@@ -303,7 +303,7 @@ void doCutscene(int scene)
 
 		screen_renderString("Press [Escape] to skip", -1, 580, FONT_WHITE);
 
-		delayFrame();
+		game_delayFrame();
 
 		if ((engine.keyState[KEY_ESCAPE]) || (engine.keyState[KEY_FIRE]) ||
 				(engine.keyState[KEY_ALTFIRE]))
@@ -312,6 +312,6 @@ void doCutscene(int scene)
 
 	screen_flushBuffer();
 	freeGraphics();
-	clearScreen(black);
+	screen_clear(black);
 	renderer_update();
 }

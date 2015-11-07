@@ -753,12 +753,12 @@ mission begins playing here.
 */
 void missionBriefScreen()
 {
-	clearScreen(black);
+	screen_clear(black);
 	renderer_update();
 
 	if (game.area != MISN_INTERCEPTION)
 	{
-		clearScreen(black);
+		screen_clear(black);
 		drawBriefScreen();
 
 		if (currentMission.timeLimit1[0] > 0)
@@ -828,16 +828,16 @@ void missionBriefScreen()
 
 		while (true)
 		{
-			delayFrame();
+			game_delayFrame();
 			getPlayerInput();
 			if ((engine.keyState[KEY_FIRE]) || (engine.keyState[KEY_ALTFIRE]) ||
 					(engine.keyState[KEY_ESCAPE]))
 				break;
 		}
 
-		clearScreen(black);
+		screen_clear(black);
 		renderer_update();
-		clearScreen(black);
+		screen_clear(black);
 	}
 
 	engine.gameSection = SECTION_GAME;
@@ -856,13 +856,13 @@ void missionFinishedScreen()
 
 	if (game.area != MISN_INTERCEPTION)
 	{
-		clearScreen(black);
+		screen_clear(black);
 		renderer_update();
 
 		if (game.shots > 0)
 			game.accuracy = (game.hits * 100) / game.shots;
 
-		clearScreen(black);
+		screen_clear(black);
 		drawBriefScreen();
 
 		for (int i = 0 ; i < 3 ; i++)
@@ -931,7 +931,7 @@ void missionFinishedScreen()
 
 		while (true)
 		{
-			delayFrame();
+			game_delayFrame();
 			getPlayerInput();
 			if ((engine.keyState[KEY_FIRE]))
 				break;

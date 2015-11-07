@@ -112,3 +112,8 @@ void screen_unBuffer()
 
 	screen_bufferHead->next = NULL;
 }
+
+void screen_clear(Uint32 color)
+{
+	SDL_FillRect(screen, NULL, color);
+}

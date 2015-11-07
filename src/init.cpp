@@ -45,7 +45,7 @@ be seen by people unless something really stoopid happens!
 */
 void showErrorAndExit(int errorId, const char *name)
 {
-	clearScreen(black);
+	screen_clear(black);
 
 	if (errorId != 2)
 	{
@@ -89,7 +89,7 @@ void showErrorAndExit(int errorId, const char *name)
 	while (!engine.keyState[KEY_ALTFIRE])
 	{
 		getPlayerInput();
-		delayFrame();
+		game_delayFrame();
 	}
 
 	exit(1);

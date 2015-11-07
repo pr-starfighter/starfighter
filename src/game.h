@@ -25,6 +25,7 @@ extern Game game;
 void game_init();
 void game_doStars();
 void game_doExplosions();
+void game_delayFrame();
 bool game_collision(float x0, float y0, int w0, int h0, float x2, float y2, int w1, int h1);
 int game_mainLoop();
 

@@ -575,9 +575,9 @@ int intermission()
 	// do not perform certain keyboard actions
 	engine.gameSection = SECTION_INTERMISSION;
 
-	clearScreen(black);
+	screen_clear(black);
 	renderer_update();
-	clearScreen(black);
+	screen_clear(black);
 
 	initSaveSlots();
 
@@ -948,7 +948,7 @@ int intermission()
 		engine.keyState[KEY_ALTFIRE] = 0;
 		intermission_doCursor();
 
-		delayFrame();
+		game_delayFrame();
 	}
 
 	audio_haltMusic();

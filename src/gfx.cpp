@@ -21,9 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-static unsigned long frameLimit;
-static int thirds;
-
 SDL_Surface *gfx_background;
 SDL_Surface *shape[MAX_SHAPES];
 SDL_Surface *shipShape[MAX_SHIPSHAPES];
@@ -58,8 +55,6 @@ void gfx_init()
 	gfx_background = NULL;
 	messageBox = NULL;
 
-	frameLimit = 0;
-	thirds = 0;
 	screen = NULL;
 }
 
@@ -186,41 +181,11 @@ int gfx_renderString(const char *in, int x, int y, int fontColor, int wrap, SDL_
 	return gfx_renderStringBase(in, x, y, fontColor, wrap, dest);
 }
 
-void clearScreen(Uint32 color)
-{
-	SDL_FillRect(screen, NULL, color);
-}
-
-/*
- * Delay until the next 60 Hz frame
- */
-void delayFrame()
-{
-	unsigned long now = SDL_GetTicks();
-
-	// Add 16 2/3 to frameLimit
-	frameLimit += 16;
-	if (thirds >= 2)
-	{
-		thirds = 0;
-	}
-	else
-	{
-		thirds++;
-		frameLimit++;
-	}
-
-	if(now < frameLimit)
-		SDL_Delay(frameLimit - now);
-	else
-		frameLimit = now;
-}
-
 /*
  * Set the pixel at (x, y) to the given value
  * NOTE: The surface must be locked before calling this!
  */
-void putpixel(SDL_Surface *surface, int x, int y, Uint32 pixel)
+void gfx_putPixel(SDL_Surface *surface, int x, int y, Uint32 pixel)
 {
 	int bpp = surface->format->BytesPerPixel;
 	/* Here p is the address to the pixel we want to set */
@@ -272,7 +237,7 @@ void drawLine(SDL_Surface *dest, int x1, int y1, int x2, int y2, int col)
 
 	while(1)
 	{
-		putpixel(dest, x1, y1, col);
+		gfx_putPixel(dest, x1, y1, col);
 
 		if (x1 > x2) x1--;
 		if (x1 < x2) x1++;
@@ -307,10 +272,10 @@ void circle(int xc, int yc, int R, SDL_Surface *PIX, int col)
 	int y = R, yy = 2 * R;
 	int p = 1 - R;
 
-	putpixel(PIX, xc, yc - y, col);
-	putpixel(PIX, xc, yc + y, col);
-	putpixel(PIX, xc - y, yc, col);
-	putpixel(PIX, xc + y, yc, col);
+	gfx_putPixel(PIX, xc, yc - y, col);
+	gfx_putPixel(PIX, xc, yc + y, col);
+	gfx_putPixel(PIX, xc - y, yc, col);
+	gfx_putPixel(PIX, xc + y, yc, col);
 
 	while (x < y)
 	{
@@ -324,22 +289,22 @@ void circle(int xc, int yc, int R, SDL_Surface *PIX, int col)
 		}
 		p += xx + 1;
 
-		putpixel(PIX, xc - x, yc - y, col);
-		putpixel(PIX, xc + x, yc - y, col);
-		putpixel(PIX, xc - x, yc + y, col);
-		putpixel(PIX, xc + x, yc + y, col);
-		putpixel(PIX, xc - y, yc - x, col);
-		putpixel(PIX, xc + y, yc - x, col);
-		putpixel(PIX, xc - y, yc + x, col);
-		putpixel(PIX, xc + y, yc + x, col);
+		gfx_putPixel(PIX, xc - x, yc - y, col);
+		gfx_putPixel(PIX, xc + x, yc - y, col);
+		gfx_putPixel(PIX, xc - x, yc + y, col);
+		gfx_putPixel(PIX, xc + x, yc + y, col);
+		gfx_putPixel(PIX, xc - y, yc - x, col);
+		gfx_putPixel(PIX, xc + y, yc - x, col);
+		gfx_putPixel(PIX, xc - y, yc + x, col);
+		gfx_putPixel(PIX, xc + y, yc + x, col);
 	}
 
 	if ((x = y))
 	{
-		putpixel(PIX, xc - x, yc - y, col);
-		putpixel(PIX, xc + x, yc - y, col);
-		putpixel(PIX, xc - x, yc + y, col);
-		putpixel(PIX, xc + x, yc + y, col);
+		gfx_putPixel(PIX, xc - x, yc - y, col);
+		gfx_putPixel(PIX, xc + x, yc - y, col);
+		gfx_putPixel(PIX, xc - x, yc + y, col);
+		gfx_putPixel(PIX, xc + x, yc + y, col);
 	}
 }
 

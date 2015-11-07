@@ -33,5 +33,6 @@ void screen_drawBackground();
 void screen_addBuffer(int x, int y, int w, int h);
 void screen_flushBuffer();
 void screen_unBuffer();
+void screen_clear(Uint32 color);
 
 #endif
