@@ -49,7 +49,7 @@ void showErrorAndExit(int errorId, const char *name)
 
 	if (errorId != 2)
 	{
-		drawString("A file error has occurred", -1, 200, FONT_RED);
+		screen_renderString("A file error has occurred", -1, 200, FONT_RED);
 	}
 	else
 	{
@@ -63,24 +63,24 @@ void showErrorAndExit(int errorId, const char *name)
 	{
 		case 0:
 			sprintf(string, "%s was not found in the Starfighter data package", name);
-			drawString(string, -1, 250, FONT_WHITE);
-			drawString("Please try again. If this error persists, contact the authors", -1, 275, FONT_WHITE);
-			drawString("or reinstall the game", -1, 300, FONT_WHITE);
+			screen_renderString(string, -1, 250, FONT_WHITE);
+			screen_renderString("Please try again. If this error persists, contact the authors", -1, 275, FONT_WHITE);
+			screen_renderString("or reinstall the game", -1, 300, FONT_WHITE);
 			break;
 		case 1:
-			drawString("Project: Starfighter encountered an error whilst", -1, 250, FONT_WHITE);
-			drawString("attempting to load game data. Please try running", -1, 275, FONT_WHITE);
-			drawString("the game again. If the errors persist, reinstall the game", -1, 300, FONT_WHITE);
+			screen_renderString("Project: Starfighter encountered an error whilst", -1, 250, FONT_WHITE);
+			screen_renderString("attempting to load game data. Please try running", -1, 275, FONT_WHITE);
+			screen_renderString("the game again. If the errors persist, reinstall the game", -1, 300, FONT_WHITE);
 			break;
 		case 2:
-			drawString("Project: Starfighter encountered a critical error", -1, 250, FONT_WHITE);
-			drawString("while attempting to perform a required program function.", -1, 275, FONT_WHITE);
-			drawString("Please contact the authors with details.", -1, 300, FONT_WHITE);
+			screen_renderString("Project: Starfighter encountered a critical error", -1, 250, FONT_WHITE);
+			screen_renderString("while attempting to perform a required program function.", -1, 275, FONT_WHITE);
+			screen_renderString("Please contact the authors with details.", -1, 300, FONT_WHITE);
 			break;
 	}
 
-	drawString("Project: Starfighter will now exit", -1, 450, FONT_WHITE);
-	drawString("Press Space to continue", -1, 475, FONT_WHITE);
+	screen_renderString("Project: Starfighter will now exit", -1, 450, FONT_WHITE);
+	screen_renderString("Press Space to continue", -1, 475, FONT_WHITE);
 
 	renderer_update();
 

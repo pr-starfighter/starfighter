@@ -37,6 +37,11 @@ void screen_blitText(int i)
 	screen_blit(gfx_text[i].image, (int)gfx_text[i].x, (int)gfx_text[i].y);
 }
 
+int screen_renderString(const char *in, int x, int y, int fontColor)
+{
+	return gfx_renderString(in, x, y, fontColor, 0, screen);
+}
+
 void screen_addBuffer(int x, int y, int w, int h)
 {
 	bRect *rect = new bRect;

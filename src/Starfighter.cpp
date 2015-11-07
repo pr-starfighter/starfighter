@@ -87,8 +87,8 @@ int main(int argc, char **argv)
 	if (cheatAttempt && !engine.cheat)
 	{
 		clearScreen(black);
-		drawString("That doesn't work anymore", -1, 285, FONT_WHITE);
-		drawString("Try harder...", -1, 315, FONT_WHITE);
+		screen_renderString("That doesn't work anymore", -1, 285, FONT_WHITE);
+		screen_renderString("Try harder...", -1, 315, FONT_WHITE);
 		renderer_update();
 		SDL_Delay(2000);
 		clearScreen(black);

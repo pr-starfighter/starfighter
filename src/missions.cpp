@@ -715,13 +715,13 @@ static void drawBriefScreen()
 
 	blevelRect(140, 70, 500, 20, 0x00, 0x77, 0x00);
 	blevelRect(140, 90, 500, 130, 0x00, 0x33, 0x00);
-	drawString("Primary Objectives", 150, 74, FONT_WHITE);
+	screen_renderString("Primary Objectives", 150, 74, FONT_WHITE);
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
 		if ((currentMission.primaryType[i] != NONE) && (currentMission.completed1[i] != OB_HIDDEN))
 		{
-			drawString(currentMission.primaryObjective[i], 160, 114 + (i * 30), FONT_WHITE);
+			screen_renderString(currentMission.primaryObjective[i], 160, 114 + (i * 30), FONT_WHITE);
 		}
 	}
 
@@ -729,13 +729,13 @@ static void drawBriefScreen()
 	{
 		blevelRect(140, 230, 500, 20, 0x00, 0x77, 0x77);
 		blevelRect(140, 250, 500, 130, 0x00, 0x33, 0x33);
-		drawString("Secondary Objectives", 150, 234, FONT_WHITE);
+		screen_renderString("Secondary Objectives", 150, 234, FONT_WHITE);
 
 		for (int i = 0 ; i < 3 ; i++)
 		{
 			if (currentMission.secondaryType[i] != NONE)
 			{
-				drawString(currentMission.secondaryObjective[i], 160, 274 + (i * 30), FONT_WHITE);
+				screen_renderString(currentMission.secondaryObjective[i], 160, 274 + (i * 30), FONT_WHITE);
 				game.secondaryMissions++;
 			}
 		}
@@ -743,7 +743,7 @@ static void drawBriefScreen()
 
 	blevelRect(140, 390, 500, 20, 0x77, 0x77, 0x00);
 	blevelRect(140, 410, 500, 130, 0x33, 0x33, 0x00);
-	drawString("Additional Information", 150, 394, FONT_WHITE);
+	screen_renderString("Additional Information", 150, 394, FONT_WHITE);
 }
 
 /*
@@ -768,7 +768,7 @@ void missionBriefScreen()
 				sprintf(temp, "TIME LIMIT: %d minutes", currentMission.timeLimit1[0]);
 			else
 				sprintf(temp, "SURVIVAL FOR %d minutes", currentMission.timeLimit1[0]);
-			drawString(temp, -1, 500, FONT_RED);
+			screen_renderString(temp, -1, 500, FONT_RED);
 		}
 
 		switch (game.area)
@@ -780,16 +780,16 @@ void missionBriefScreen()
 			case MISN_ELLESH:
 			case MISN_MARS:
 			case MISN_VENUS:
-				drawString("Phoebe Lexx will not be present", 160, 420, FONT_WHITE);
+				screen_renderString("Phoebe Lexx will not be present", 160, 420, FONT_WHITE);
 				if (game.hasWingMate2)
-					drawString("Ursula Lexx will not be present", 160, 450, FONT_WHITE);
+					screen_renderString("Ursula Lexx will not be present", 160, 450, FONT_WHITE);
 				break;
 		}
 
 		if ((game.area == MISN_URUSOR) ||
 				(game.area == MISN_POSWIC) ||
 				(game.area == MISN_EARTH))
-			drawString("Sid Wilson will join you on this mission", 160, 480, FONT_WHITE);
+			screen_renderString("Sid Wilson will join you on this mission", 160, 480, FONT_WHITE);
 
 		renderer_update();
 	}
@@ -816,7 +816,7 @@ void missionBriefScreen()
 
 	if (game.area != MISN_INTERCEPTION)
 	{
-		drawString("PRESS ENTER TO CONTINUE...", -1, 550, FONT_WHITE);
+		screen_renderString("PRESS ENTER TO CONTINUE...", -1, 550, FONT_WHITE);
 
 		renderer_update();
 
@@ -870,9 +870,9 @@ void missionFinishedScreen()
 			if (currentMission.primaryType[i] != NONE)
 			{
 				if ((game.area != MISN_POSWIC) || (i != 1))
-					drawString("COMPLETED", 550, 114 + (i * 30), FONT_GREEN);
+					screen_renderString("COMPLETED", 550, 114 + (i * 30), FONT_GREEN);
 				else
-					drawString("FAILED", 550, 114 + (i * 30), FONT_RED);
+					screen_renderString("FAILED", 550, 114 + (i * 30), FONT_RED);
 			}
 		}
 
@@ -885,12 +885,12 @@ void missionFinishedScreen()
 					strcpy(temp, currentMission.secondaryObjective[i]);
 					if (currentMission.completed2[i] >= 1)
 					{
-						drawString("COMPLETED", 550, 274 + (i * 30), FONT_GREEN);
+						screen_renderString("COMPLETED", 550, 274 + (i * 30), FONT_GREEN);
 						game.secondaryMissionsCompleted++;
 					}
 					else
 					{
-						drawString("FAILED", 550, 274 + (i * 30), FONT_RED);
+						screen_renderString("FAILED", 550, 274 + (i * 30), FONT_RED);
 					}
 				}
 			}
@@ -900,7 +900,7 @@ void missionFinishedScreen()
 		{
 			shield_bonus = player.shield * 10;
 			sprintf(temp, "Shield Bonus: $%.3d", shield_bonus);
-			drawString(temp, -1, 430, FONT_WHITE);
+			screen_renderString(temp, -1, 430, FONT_WHITE);
 			game.cash += shield_bonus;
 			game.cashEarned += shield_bonus;
 		}
@@ -911,7 +911,7 @@ void missionFinishedScreen()
 			engine.timeTaken / 3600, (engine.timeTaken / 60) % 60,
 			engine.timeTaken % 60);
 
-		drawString(temp, -1, 500, FONT_WHITE);
+		screen_renderString(temp, -1, 500, FONT_WHITE);
 
 		// Do some mission specific stuff here...
 		if (game.area == MISN_HAIL)

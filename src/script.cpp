@@ -301,7 +301,7 @@ void doCutscene(int scene)
 		if ((showMessage) && (messageBox != NULL))
 			screen_blit(messageBox, (screen->w - messageBox->w) / 2, screen->h - 100);
 
-		drawString("Press [Escape] to skip", -1, 580, FONT_WHITE);
+		screen_renderString("Press [Escape] to skip", -1, 580, FONT_WHITE);
 
 		delayFrame();
 

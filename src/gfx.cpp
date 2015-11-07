@@ -186,11 +186,6 @@ int gfx_renderString(const char *in, int x, int y, int fontColor, int wrap, SDL_
 	return gfx_renderStringBase(in, x, y, fontColor, wrap, dest);
 }
 
-int drawString(const char *in, int x, int y, int fontColor)
-{
-	return gfx_renderString(in, x, y, fontColor, 0, screen);
-}
-
 /*
 Draws the background surface that has been loaded
 */

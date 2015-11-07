@@ -270,7 +270,7 @@ static bool intermission_showSystem(float x, float y, bool selectable)
 				r.x, r.y, systemPlanet[planet].image->w,
 				systemPlanet[planet].image->h))
 		{
-			drawString(systemPlanet[planet].name, -1, 545, FONT_WHITE);
+			screen_renderString(systemPlanet[planet].name, -1, 545, FONT_WHITE);
 			if ((engine.keyState[KEY_FIRE]))
 			{
 				if (game.system == 0)
