@@ -222,7 +222,7 @@ void gfx_putPixel(SDL_Surface *surface, int x, int y, Uint32 pixel)
 	}
 }
 
-void drawLine(SDL_Surface *dest, int x1, int y1, int x2, int y2, int col)
+void gfx_drawLine(SDL_Surface *dest, int x1, int y1, int x2, int y2, int col)
 {
 	int counter = 0;
 
@@ -257,16 +257,11 @@ void drawLine(SDL_Surface *dest, int x1, int y1, int x2, int y2, int col)
 	}
 }
 
-void drawLine(int x1, int y1, int x2, int y2, int col)
-{
-	drawLine(screen, x1, y1, x2, y2, col);
-}
-
 /*
 A quick(?) circle draw function. This code was posted to the SDL
 mailing list... I didn't write it myself.
 */
-void circle(int xc, int yc, int R, SDL_Surface *PIX, int col)
+void gfx_drawCircle(int xc, int yc, int R, SDL_Surface *PIX, int col)
 {
 	int x = 0, xx = 0;
 	int y = R, yy = 2 * R;
@@ -313,10 +308,10 @@ void blevelRect(SDL_Surface *dest, int x, int y, int w, int h, Uint8 red, Uint8 
 	SDL_Rect r = {(int16_t)x, (int16_t)y, (uint16_t)w, (uint16_t)h};
 	SDL_FillRect(dest, &r, SDL_MapRGB(screen->format, red, green, blue));
 
-	drawLine(dest, x, y, x + w, y, SDL_MapRGB(screen->format, 255, 255, 255));
-	drawLine(dest, x, y, x, y + h, SDL_MapRGB(screen->format, 255, 255, 255));
-	drawLine(dest, x, y + h, x + w, y + h, SDL_MapRGB(screen->format, 128, 128, 128));
-	drawLine(dest, x + w, y + 1, x + w, y + h, SDL_MapRGB(screen->format, 128, 128, 128));
+	gfx_drawLine(dest, x, y, x + w, y, SDL_MapRGB(screen->format, 255, 255, 255));
+	gfx_drawLine(dest, x, y, x, y + h, SDL_MapRGB(screen->format, 255, 255, 255));
+	gfx_drawLine(dest, x, y + h, x + w, y + h, SDL_MapRGB(screen->format, 128, 128, 128));
+	gfx_drawLine(dest, x + w, y + 1, x + w, y + h, SDL_MapRGB(screen->format, 128, 128, 128));
 }
 
 void blevelRect(int x, int y, int w, int h, Uint8 red, Uint8 green, Uint8 blue)

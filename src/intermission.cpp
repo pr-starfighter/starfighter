@@ -254,7 +254,7 @@ static bool intermission_showSystem(float x, float y, bool selectable)
 		x *= 0.75;
 		y *= 0.75;
 
-		circle(400, 250, i, screen, darkGrey);
+		gfx_drawCircle(400, 250, i, screen, darkGrey);
 
 		r.x = int(400 + (sinf(x) * i));
 		r.y = int(250 + (cosf(y) * i));
