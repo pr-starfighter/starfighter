@@ -49,7 +49,7 @@ int initSaveSlots()
 		{
 			sprintf(saveSlot[i], (i == 0 ? "AUTOSAVE (Empty)" : "Empty"));
 			if (engine.gameSection == SECTION_TITLE)
-				textSurface(TS_SAVESLOT_0 + i, saveSlot[i], -1, imagePos,
+				gfx_createTextObject(TS_SAVESLOT_0 + i, saveSlot[i], -1, imagePos,
 					FONT_WHITE);
 		}
 		else
@@ -72,7 +72,7 @@ int initSaveSlots()
 			}
 
 			if (engine.gameSection == SECTION_TITLE)
-				textSurface(TS_SAVESLOT_0 + i, saveSlot[i], -1,
+				gfx_createTextObject(TS_SAVESLOT_0 + i, saveSlot[i], -1,
 					imagePos, FONT_WHITE);
 
 			if (stat(fileName, &fileInfo) != -1)
@@ -170,14 +170,14 @@ void createSavesSurface(SDL_Surface *savesSurface, signed char clickedSlot)
 {
 	int y = 10;
 
-	blevelRect(savesSurface, 0, 0, 348, 298, 0x00, 0x00, 0x00);
+	gfx_drawRect(savesSurface, 0, 0, 348, 298, 0x00, 0x00, 0x00);
 
 	for (int i = 1 ; i <= 5 ; i++)
 	{
 		if (clickedSlot == i)
-			blevelRect(savesSurface, 5, y, 338, 25, 0x99, 0x00, 0x00);
+			gfx_drawRect(savesSurface, 5, y, 338, 25, 0x99, 0x00, 0x00);
 		else
-			blevelRect(savesSurface, 5, y, 338, 25, 0x00, 0x00, 0x99);
+			gfx_drawRect(savesSurface, 5, y, 338, 25, 0x00, 0x00, 0x99);
 		gfx_renderString(saveSlot[i], 70, y + 5, FONT_WHITE, 0, savesSurface);
 		y += 30;
 	}
@@ -191,9 +191,9 @@ void createSavesSurface(SDL_Surface *savesSurface, signed char clickedSlot)
 		case 3:
 		case 4:
 		case 5:
-			blevelRect(savesSurface, 5, 265, 100, 25, 0x00, 0x99, 0x00);
-			blevelRect(savesSurface, 125, 265, 100, 25, 0x99, 0x99, 0x00);
-			blevelRect(savesSurface, 243, 265, 100, 25, 0x99, 0x00, 0x00);
+			gfx_drawRect(savesSurface, 5, 265, 100, 25, 0x00, 0x99, 0x00);
+			gfx_drawRect(savesSurface, 125, 265, 100, 25, 0x99, 0x99, 0x00);
+			gfx_drawRect(savesSurface, 243, 265, 100, 25, 0x99, 0x00, 0x00);
 			gfx_renderString("SAVE", 40, 270, FONT_WHITE, 0, savesSurface);
 			gfx_renderString("CANCEL", 150, 270, FONT_WHITE, 0, savesSurface);
 			gfx_renderString("DELETE", 270, 270, FONT_WHITE, 0, savesSurface);

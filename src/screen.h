@@ -34,5 +34,6 @@ void screen_addBuffer(int x, int y, int w, int h);
 void screen_flushBuffer();
 void screen_unBuffer();
 void screen_clear(Uint32 color);
+void screen_drawRect(int x, int y, int w, int h, Uint8 red, Uint8 green, Uint8 blue);
 
 #endif

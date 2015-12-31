@@ -153,16 +153,16 @@ static void drawShop()
 	}
 
 	for (int i = 0 ; i < 3 ; i++)
-		shopSurface[i] = createSurface(246, 91);
+		shopSurface[i] = gfx_createSurface(246, 91);
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		blevelRect(shopSurface[i], 0, 0, 245, 90, 0x00, 0x00, 0x55);
-		blevelRect(shopSurface[i], 0, 0, 245, 20, 0x00, 0x00, 0x99);
+		gfx_drawRect(shopSurface[i], 0, 0, 245, 90, 0x00, 0x00, 0x55);
+		gfx_drawRect(shopSurface[i], 0, 0, 245, 20, 0x00, 0x00, 0x99);
 	}
 
 	shopSurface[4] = alphaRect(601, 101, 0x00, 0x00, 0x00);
-	blevelRect(shopSurface[4], 0, 0, 600, 100, 0x00, 0x00, 0x33);
+	gfx_drawRect(shopSurface[4], 0, 0, 600, 100, 0x00, 0x00, 0x33);
 
 	switch (shopSelectedItem)
 	{
@@ -177,22 +177,22 @@ static void drawShop()
 		case 1:
 		case 2:
 		case 8:
-			blevelRect(shopSurface[1], 0, 0, 245, 90, 0x55, 0x00, 0x00);
-			blevelRect(shopSurface[1], 0, 0, 245, 20, 0x99, 0x00, 0x00);
+			gfx_drawRect(shopSurface[1], 0, 0, 245, 90, 0x55, 0x00, 0x00);
+			gfx_drawRect(shopSurface[1], 0, 0, 245, 20, 0x99, 0x00, 0x00);
 			break;
 		case 3:
 		case 4:
-			blevelRect(shopSurface[4], 0, 0, 600, 100, 0x33, 0x00, 0x00);
+			gfx_drawRect(shopSurface[4], 0, 0, 600, 100, 0x33, 0x00, 0x00);
 			break;
 		case 5:
 		case 6:
 		case 7:
-			blevelRect(shopSurface[0], 0, 0, 245, 90, 0x55, 0x00, 0x00);
-			blevelRect(shopSurface[0], 0, 0, 245, 20, 0x99, 0x00, 0x00);
+			gfx_drawRect(shopSurface[0], 0, 0, 245, 90, 0x55, 0x00, 0x00);
+			gfx_drawRect(shopSurface[0], 0, 0, 245, 20, 0x99, 0x00, 0x00);
 			break;
 		default:
-			blevelRect(shopSurface[2], 0, 0, 245, 90, 0x55, 0x00, 0x00);
-			blevelRect(shopSurface[2], 0, 0, 245, 20, 0x99, 0x00, 0x00);
+			gfx_drawRect(shopSurface[2], 0, 0, 245, 90, 0x55, 0x00, 0x00);
+			gfx_drawRect(shopSurface[2], 0, 0, 245, 20, 0x99, 0x00, 0x00);
 			break;
 	}
 
@@ -224,9 +224,9 @@ static void drawShop()
 
 	drawSecondaryWeaponSurface();
 
-	shopSurface[3] = createSurface(601, 121);
+	shopSurface[3] = gfx_createSurface(601, 121);
 
-	blevelRect(shopSurface[3], 0, 0, 600, 120, 0x00, 0x00, 0x22);
+	gfx_drawRect(shopSurface[3], 0, 0, 600, 120, 0x00, 0x00, 0x22);
 
 	gfx_renderString("Temporary Weapons", 10, 2, FONT_WHITE, 0, shopSurface[3]);
 	gfx_renderString("Ammo and Storage", 260, 2, FONT_WHITE, 0, shopSurface[3]);
@@ -259,9 +259,9 @@ static void drawShop()
 	sprintf(description, "Rockets : %.3d", player.ammo[1]);
 	gfx_renderString(description, 475, 80, FONT_WHITE, 0, shopSurface[4]);
 
-	shopSurface[5] = createSurface(601, 56);
-	blevelRect(shopSurface[5], 0, 0, 600, 35, 0x00, 0x99, 0x00);
-	blevelRect(shopSurface[5], 0, 20, 600, 35, 0x00, 0x33, 0x00);
+	shopSurface[5] = gfx_createSurface(601, 56);
+	gfx_drawRect(shopSurface[5], 0, 0, 600, 35, 0x00, 0x99, 0x00);
+	gfx_drawRect(shopSurface[5], 0, 20, 600, 35, 0x00, 0x33, 0x00);
 	gfx_renderString("Information", 5, 4, FONT_WHITE, 0, shopSurface[5]);
 
 	switch (shopSelectedItem)

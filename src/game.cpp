@@ -1617,7 +1617,7 @@ static void game_doArrow(int i)
 	if (i != engine.targetIndex)
 		return;
 
-	if (gfx_text[3].life > 0)
+	if (gfx_text[TS_RADIO].life > 0)
 		return;
 
 	if (sxy == sx) {
@@ -1649,24 +1649,24 @@ static void game_doHud()
 			fontColor = FONT_YELLOW;
 		else
 			fontColor = FONT_WHITE;
-		screen_blitText(10); // time remaining
+		screen_blitText(TS_TIME_T);
 		sprintf(text, "%.2d:%.2d", engine.minutes, engine.seconds);
-		textSurface(30, text, 410, 21, fontColor);
-		screen_blitText(30);
+		gfx_createTextObject(TS_TIME, text, 410, 21, fontColor);
+		screen_blitText(TS_TIME);
 	}
 
 	if (game.area != MISN_INTERCEPTION)
 	{
-		screen_blitText(9); // mission objectives
+		screen_blitText(TS_OBJECTIVES_T);
 		sprintf(text, "%d", (currentMission.remainingObjectives1 + currentMission.remainingObjectives2));
-		textSurface(39, text, 745, 21, FONT_WHITE);
-		screen_blitText(39);
+		gfx_createTextObject(TS_OBJECTIVES, text, 745, 21, FONT_WHITE);
+		screen_blitText(TS_OBJECTIVES);
 	}
 
-	screen_blitText(8); // cash
+	screen_blitText(TS_CASH_T); // cash
 	sprintf(text, "%.6d", game.cash);
-	textSurface(38, text, 90, 21, FONT_WHITE);
-	screen_blitText(38);
+	gfx_createTextObject(TS_CASH, text, 90, 21, FONT_WHITE);
+	screen_blitText(TS_CASH);
 
 	for (int i = 0; i < ALIEN_MAX; i++)
 		game_doArrow(i);
@@ -1677,12 +1677,12 @@ static void game_doHud()
 		if (player.ammo[0] <= 25) fontColor = FONT_YELLOW;
 		if (player.ammo[0] <= 10) fontColor = FONT_RED;
 	}
-	screen_blitText(5); // plasma ammo
+	screen_blitText(TS_PLASMA_T);
 	sprintf(text, "%.3d", player.ammo[0]);
-	textSurface(35, text, 320, 551, fontColor);
-	screen_blitText(35);
+	gfx_createTextObject(TS_PLASMA, text, 320, 551, fontColor);
+	screen_blitText(TS_PLASMA);
 
-	screen_blitText(6);
+	screen_blitText(TS_AMMO_T);
 
 	if ((player.weaponType[1] != W_CHARGER) && (player.weaponType[1] != W_LASER))
 	{
@@ -1691,8 +1691,8 @@ static void game_doHud()
 		else
 			fontColor = FONT_WHITE;
 		sprintf(text, "%.3d", player.ammo[1]); // rocket ammo
-		textSurface(36, text, 465, 551, fontColor);
-		screen_blitText(36);
+		gfx_createTextObject(TS_AMMO, text, 465, 551, fontColor);
+		screen_blitText(TS_AMMO);
 	}
 
 	if (((player.weaponType[1] == W_CHARGER) || (player.weaponType[1] == W_LASER)) && (player.ammo[1] > 0))
@@ -1767,7 +1767,7 @@ static void game_doHud()
 		}
 	}
 
-	for (int i = 0 ; i < 3 ; i++)
+	for (int i = 0 ; i < MAX_INFOLINES ; i++)
 	{
 		if (gfx_text[i].life > 0)
 		{
@@ -1777,18 +1777,20 @@ static void game_doHud()
 
 			if (gfx_text[i].life == 0)
 			{
-				copyInfoLine(i + 1, i);
-				copyInfoLine(i + 2, i + 1);
-				gfx_text[2].life = 0;
+				for (int j = i ; j < MAX_INFOLINES - 1 ; j++)
+				{
+					copyInfoLine(j + 1, j);
+				}
+				gfx_text[MAX_INFOLINES - 1].life = 0;
 			}
 		}
 	}
 
 	// Show the radio message if there is one
-	if (gfx_text[3].life > 0)
+	if (gfx_text[TS_RADIO].life > 0)
 	{
-		screen_blit(messageBox, (800 - messageBox->w) / 2, 50);
-		gfx_text[3].life--;
+		screen_blit(messageBox, (screen->w - messageBox->w) / 2, 50);
+		gfx_text[TS_RADIO].life--;
 	}
 
 	// Do the target's remaining shield (if required)
@@ -1796,7 +1798,7 @@ static void game_doHud()
 	{
 		if ((engine.targetIndex > -1) && (aliens[engine.targetIndex].shield > 0) && (engine.targetIndex > 9))
 		{
-			screen_blitText(7);
+			screen_blitText(TS_TARGET);
 			bar.w = 1;
 			bar.h = 12;
 			bar.x = 620;
@@ -1816,7 +1818,7 @@ static void game_doHud()
 		}
 	}
 
-	screen_blitText(11);
+	screen_blitText(TS_POWER);
 
 	bar.w = 25;
 	bar.h = 12;
@@ -1835,7 +1837,7 @@ static void game_doHud()
 		bar.x += 30;
 	}
 
-	screen_blitText(12);
+	screen_blitText(TS_OUTPUT);
 
 	bar.w = 25;
 	bar.h = 12;
@@ -1856,7 +1858,7 @@ static void game_doHud()
 		bar.x += 30;
 	}
 
-	screen_blitText(13);
+	screen_blitText(TS_COOLER);
 
 	bar.w = 25;
 	bar.h = 12;
@@ -1876,7 +1878,7 @@ static void game_doHud()
 		bar.x += 30;
 	}
 
-	screen_blitText(4);
+	screen_blitText(TS_SHIELD);
 	if (player.shield < 1)
 		return;
 
@@ -2250,8 +2252,8 @@ int game_mainLoop()
 
 		if (engine.paused)
 		{
-			textSurface(22, "PAUSED", -1, screen->h / 2, FONT_WHITE);
-			screen_blitText(22);
+			gfx_createTextObject(TS_PAUSED, "PAUSED", -1, screen->h / 2, FONT_WHITE);
+			screen_blitText(TS_PAUSED);
 			renderer_update();
 			audio_pauseMusic();
 

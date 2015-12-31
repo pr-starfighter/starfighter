@@ -79,7 +79,7 @@ void loadGameGraphics()
 	{
 		if (shipShape[i - SHIP_HIT_INDEX] == NULL)
 			continue;
-		shipShape[i] = createSurface(shipShape[i - SHIP_HIT_INDEX]->w,
+		shipShape[i] = gfx_createSurface(shipShape[i - SHIP_HIT_INDEX]->w,
 			shipShape[i - SHIP_HIT_INDEX]->h);
 		SDL_SetSurfaceBlendMode(shipShape[i - SHIP_HIT_INDEX], SDL_BLENDMODE_NONE);
 		gfx_blit(shipShape[i - SHIP_HIT_INDEX], 0, 0, shipShape[i]);

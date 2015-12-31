@@ -117,3 +117,8 @@ void screen_clear(Uint32 color)
 {
 	SDL_FillRect(screen, NULL, color);
 }
+
+void screen_drawRect(int x, int y, int w, int h, Uint8 red, Uint8 green, Uint8 blue)
+{
+	gfx_drawRect(screen, x, y, w, h, red, green, blue);
+}

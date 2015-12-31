@@ -30,7 +30,7 @@ void clearInfoLines()
 // from a to b
 void copyInfoLine(int a, int b)
 {
-	textSurface(b, gfx_text[a].text, -1, 0, gfx_text[a].fontColor);
+	gfx_createTextObject(b, gfx_text[a].text, -1, 0, gfx_text[a].fontColor);
 	gfx_text[b].life = gfx_text[a].life;
 }
 
@@ -44,7 +44,7 @@ void setInfoLine(const char *in, int color)
 {
 	int index = -1;
 
-	for (int i = 0 ; i < 3 ; i++)
+	for (int i = 0 ; i < MAX_INFOLINES ; i++)
 	{
 		if ((gfx_text[i].life == 0) && (index == -1))
 		{
@@ -55,12 +55,14 @@ void setInfoLine(const char *in, int color)
 	// Bump down
 	if (index == -1)
 	{
-		index = 2;
-		copyInfoLine(1, 0);
-		copyInfoLine(2, 1);
+		index = MAX_INFOLINES - 1;
+		for (int i = 1 ; i < MAX_INFOLINES ; i++)
+		{
+			copyInfoLine(i, i - 1);
+		}
 	}
 
-	textSurface(index, in, -1, 0, color);
+	gfx_createTextObject(index, in, -1, 0, color);
 	gfx_text[index].life = 240;
 }
 
@@ -71,11 +73,11 @@ Phoebe or Ursula's banter to interrupt an important message
 */
 void setRadioMessage(signed char face, const char *in, int priority)
 {
-	if ((gfx_text[3].life > 0) && (priority == 0))
+	if ((gfx_text[TS_RADIO].life > 0) && (priority == 0))
 		return;
 
-	textSurface(3, in, -1, 50, FONT_WHITE);
-	gfx_text[3].life = 240;
+	gfx_createTextObject(TS_RADIO, in, -1, 50, FONT_WHITE);
+	gfx_text[TS_RADIO].life = 240;
 
 	SDL_Surface *faceShape = NULL;
 	if (face > -1)

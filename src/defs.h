@@ -100,6 +100,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MAX_FONTSHAPES 6
 #define MAX_SHOPSHAPES 6
 #define MAX_CARGO 20
+#define MAX_INFOLINES 3
+#define MAX_STATUSLINES 30
 
 #define SHIP_HIT_INDEX 60
 
@@ -261,7 +263,7 @@ enum {
 	CD_URSULA
 };
 
-// Text shapes
+// Text shapes (main menu)
 enum {
 
 	TS_PRESENTS,
@@ -289,6 +291,32 @@ enum {
 	TS_UNLIMITED_TIME,
 	TS_START_GAME,
 	TS_DIFFICULTY
+};
+
+// Text shapes (intermission)
+enum {
+};
+
+// Text shapes (mission)
+enum {
+
+	TS_RADIO = MAX_INFOLINES,
+	TS_SHIELD,
+	TS_PLASMA_T,
+	TS_AMMO_T,
+	TS_TARGET,
+	TS_CASH_T,
+	TS_OBJECTIVES_T,
+	TS_TIME_T,
+	TS_POWER,
+	TS_OUTPUT,
+	TS_COOLER,
+	TS_PAUSED,
+	TS_TIME,
+	TS_PLASMA,
+	TS_AMMO,
+	TS_CASH,
+	TS_OBJECTIVES
 };
 
 // Menu types

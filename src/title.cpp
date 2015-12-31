@@ -65,18 +65,18 @@ static signed char showLoadMenu()
 
 static void createDifficultyMenu()
 {
-	textSurface(TS_START_GAME, "START GAME", -1, 350, FONT_WHITE);
+	gfx_createTextObject(TS_START_GAME, "START GAME", -1, 350, FONT_WHITE);
 
 	if (game.difficulty == DIFFICULTY_EASY)
-		textSurface(TS_DIFFICULTY, "DIFFICULTY - EASY", -1, 370, FONT_WHITE);
+		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - EASY", -1, 370, FONT_WHITE);
 	else if (game.difficulty == DIFFICULTY_HARD)
-		textSurface(TS_DIFFICULTY, "DIFFICULTY - HARD", -1, 370, FONT_WHITE);
+		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - HARD", -1, 370, FONT_WHITE);
 	else if (game.difficulty == DIFFICULTY_NIGHTMARE)
-		textSurface(TS_DIFFICULTY, "DIFFICULTY - NIGHTMARE!", -1, 370, FONT_WHITE);
+		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - NIGHTMARE!", -1, 370, FONT_WHITE);
 	else if (game.difficulty == DIFFICULTY_ORIGINAL)
-		textSurface(TS_DIFFICULTY, "DIFFICULTY - ORIGINAL", -1, 370, FONT_WHITE);
+		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - ORIGINAL", -1, 370, FONT_WHITE);
 	else
-		textSurface(TS_DIFFICULTY, "DIFFICULTY - NORMAL", -1, 370, FONT_WHITE);
+		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - NORMAL", -1, 370, FONT_WHITE);
 }
 
 static signed char showDifficultyMenu()
@@ -93,24 +93,24 @@ static signed char showDifficultyMenu()
 static void createOptionsMenu()
 {
 	if (engine.useSound)
-		textSurface(TS_SOUND, "SOUND - ON", -1, 350, FONT_WHITE);
+		gfx_createTextObject(TS_SOUND, "SOUND - ON", -1, 350, FONT_WHITE);
 	else
-		textSurface(TS_SOUND, "SOUND - OFF", -1, 350, FONT_WHITE);
+		gfx_createTextObject(TS_SOUND, "SOUND - OFF", -1, 350, FONT_WHITE);
 
 	if (engine.useMusic)
-		textSurface(TS_MUSIC, "MUSIC - ON", -1, 370, FONT_WHITE);
+		gfx_createTextObject(TS_MUSIC, "MUSIC - ON", -1, 370, FONT_WHITE);
 	else
-		textSurface(TS_MUSIC, "MUSIC - OFF", -1, 370, FONT_WHITE);
+		gfx_createTextObject(TS_MUSIC, "MUSIC - OFF", -1, 370, FONT_WHITE);
 
 	if (engine.fullScreen)
-		textSurface(TS_FULLSCREEN, "FULLSCREEN - ON", -1, 390, FONT_WHITE);
+		gfx_createTextObject(TS_FULLSCREEN, "FULLSCREEN - ON", -1, 390, FONT_WHITE);
 	else
-		textSurface(TS_FULLSCREEN, "FULLSCREEN - OFF", -1, 390, FONT_WHITE);
+		gfx_createTextObject(TS_FULLSCREEN, "FULLSCREEN - OFF", -1, 390, FONT_WHITE);
 
 	if (engine.autoPause)
-		textSurface(TS_AUTOPAUSE, "AUTOPAUSE - ON", -1, 410, FONT_WHITE);
+		gfx_createTextObject(TS_AUTOPAUSE, "AUTOPAUSE - ON", -1, 410, FONT_WHITE);
 	else
-		textSurface(TS_AUTOPAUSE, "AUTOPAUSE - OFF", -1, 410, FONT_WHITE);
+		gfx_createTextObject(TS_AUTOPAUSE, "AUTOPAUSE - OFF", -1, 410, FONT_WHITE);
 }
 
 static signed char showOptionsMenu()
@@ -129,31 +129,31 @@ static signed char showOptionsMenu()
 static void createCheatMenu()
 {
 	if (engine.cheatShield)
-		textSurface(TS_UNLIMITED_SHIELD, "UNLIMITED SHIELD - ON", -1, 350,
+		gfx_createTextObject(TS_UNLIMITED_SHIELD, "UNLIMITED SHIELD - ON", -1, 350,
 			FONT_WHITE);
 	else
-		textSurface(TS_UNLIMITED_SHIELD, "UNLIMITED SHIELD - OFF", -1, 350,
+		gfx_createTextObject(TS_UNLIMITED_SHIELD, "UNLIMITED SHIELD - OFF", -1, 350,
 			FONT_WHITE);
 
 	if (engine.cheatAmmo)
-		textSurface(TS_UNLIMITED_AMMO, "UNLIMITED AMMO - ON", -1, 370,
+		gfx_createTextObject(TS_UNLIMITED_AMMO, "UNLIMITED AMMO - ON", -1, 370,
 			FONT_WHITE);
 	else
-		textSurface(TS_UNLIMITED_AMMO, "UNLIMITED AMMO - OFF", -1, 370,
+		gfx_createTextObject(TS_UNLIMITED_AMMO, "UNLIMITED AMMO - OFF", -1, 370,
 			FONT_WHITE);
 
 	if (engine.cheatCash)
-		textSurface(TS_UNLIMITED_CASH, "UNLIMITED CASH - ON", -1, 390,
+		gfx_createTextObject(TS_UNLIMITED_CASH, "UNLIMITED CASH - ON", -1, 390,
 			FONT_WHITE);
 	else
-		textSurface(TS_UNLIMITED_CASH, "UNLIMITED CASH - OFF", -1, 390,
+		gfx_createTextObject(TS_UNLIMITED_CASH, "UNLIMITED CASH - OFF", -1, 390,
 			FONT_WHITE);
 
 	if (engine.cheatTime)
-		textSurface(TS_UNLIMITED_TIME, "UNLIMITED TIME - ON", -1, 410,
+		gfx_createTextObject(TS_UNLIMITED_TIME, "UNLIMITED TIME - ON", -1, 410,
 			FONT_WHITE);
 	else
-		textSurface(TS_UNLIMITED_TIME, "UNLIMITED TIME - OFF", -1, 410,
+		gfx_createTextObject(TS_UNLIMITED_TIME, "UNLIMITED TIME - OFF", -1, 410,
 			FONT_WHITE);
 }
 
@@ -208,19 +208,19 @@ int doTitle()
 	int sfx = ((screen->w - sflogo->w) / 2);
 	int sfy = ((screen->h - sflogo->h) / 2);
 
-	textSurface(TS_PRESENTS, "PRESENTS", -1, 300, FONT_WHITE);
-	textSurface(TS_AN_SDL_GAME, "AN SDL GAME", -1, 300, FONT_WHITE);
-	textSurface(TS_START_NEW_GAME, "START NEW GAME", -1, 350, FONT_WHITE);
-	textSurface(TS_LOAD_GAME, "LOAD GAME", -1, 370, FONT_WHITE);
-	textSurface(TS_CONTINUE_CURRENT_GAME, "CONTINUE CURRENT GAME", -1, 390,
+	gfx_createTextObject(TS_PRESENTS, "PRESENTS", -1, 300, FONT_WHITE);
+	gfx_createTextObject(TS_AN_SDL_GAME, "AN SDL GAME", -1, 300, FONT_WHITE);
+	gfx_createTextObject(TS_START_NEW_GAME, "START NEW GAME", -1, 350, FONT_WHITE);
+	gfx_createTextObject(TS_LOAD_GAME, "LOAD GAME", -1, 370, FONT_WHITE);
+	gfx_createTextObject(TS_CONTINUE_CURRENT_GAME, "CONTINUE CURRENT GAME", -1, 390,
 		FONT_WHITE);
-	textSurface(TS_OPTIONS, "OPTIONS", -1, 410, FONT_WHITE);
-	textSurface(TS_CHEAT_OPTIONS, "CHEAT OPTIONS", -1, 430, FONT_WHITE);
-	textSurface(TS_QUIT, "QUIT", -1, 430, FONT_WHITE);
+	gfx_createTextObject(TS_OPTIONS, "OPTIONS", -1, 410, FONT_WHITE);
+	gfx_createTextObject(TS_CHEAT_OPTIONS, "CHEAT OPTIONS", -1, 430, FONT_WHITE);
+	gfx_createTextObject(TS_QUIT, "QUIT", -1, 430, FONT_WHITE);
 
 	createOptionsMenu();
 	createDifficultyMenu();
-	textSurface(TS_BACK_TO_MAIN_MENU, "BACK TO MAIN MENU", -1, 0, FONT_WHITE);
+	gfx_createTextObject(TS_BACK_TO_MAIN_MENU, "BACK TO MAIN MENU", -1, 0, FONT_WHITE);
 
 	createCheatMenu();
 
@@ -317,7 +317,7 @@ int doTitle()
 			{
 				screen_addBuffer(0, 0, screen->w, screen->h);
 
-				blevelRect(optionRec.x, optionRec.y, optionRec.w, optionRec.h, redGlow, 0x00, 0x00);
+				screen_drawRect(optionRec.x, optionRec.y, optionRec.w, optionRec.h, redGlow, 0x00, 0x00);
 
 				switch(menuType)
 				{
@@ -577,16 +577,16 @@ void showStory()
 
 	fp = fopen("data/intro.txt", "rb");
 
-	int i = 0;
+	int index = 0;
 	int nextPos = -1;
 	char string[255];
 
 	while (fscanf(fp, "%d %[^\n]%*c", &nextPos, string) == 2)
 	{
 		y += nextPos;
-		textSurface(i, string, -1, y, FONT_WHITE);
+		gfx_createTextObject(index, string, -1, y, FONT_WHITE);
 
-		i++;
+		index++;
 	}
 
 	fclose(fp);
@@ -608,6 +608,8 @@ void showStory()
 		if ((engine.keyState[KEY_FIRE] || engine.keyState[KEY_ALTFIRE]))
 			break;
 
+		// XXX: The fact that it's line 8 that's watched is completely
+		// arbitrary. It might be prudent to replace this with something else.
 		if (gfx_text[8].y > (screen->h / 2) + 150)
 		{
 			for (int i = 0 ; i < 9 ; i++)
@@ -710,7 +712,7 @@ void doCredits()
 	while (fscanf(fp, "%d %[^\n]%*c", &yPos, text) == 2)
 	{
 		lastCredit++;
-		credit[lastCredit].image = textSurface(text, FONT_WHITE);
+		credit[lastCredit].image = gfx_createTextSurface(text, FONT_WHITE);
 		credit[lastCredit].x = (screen->w - credit[lastCredit].image->w) / 2;
 		yPos2 += yPos;
 		credit[lastCredit].y = yPos2;

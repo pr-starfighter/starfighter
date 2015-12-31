@@ -713,8 +713,8 @@ static void drawBriefScreen()
 		SDL_FillRect(screen, &r, SDL_MapRGB(screen->format, 0, i, 0));
 	}
 
-	blevelRect(140, 70, 500, 20, 0x00, 0x77, 0x00);
-	blevelRect(140, 90, 500, 130, 0x00, 0x33, 0x00);
+	screen_drawRect(140, 70, 500, 20, 0x00, 0x77, 0x00);
+	screen_drawRect(140, 90, 500, 130, 0x00, 0x33, 0x00);
 	screen_renderString("Primary Objectives", 150, 74, FONT_WHITE);
 
 	for (int i = 0 ; i < 3 ; i++)
@@ -727,8 +727,8 @@ static void drawBriefScreen()
 
 	if (currentMission.secondaryType[0] != NONE)
 	{
-		blevelRect(140, 230, 500, 20, 0x00, 0x77, 0x77);
-		blevelRect(140, 250, 500, 130, 0x00, 0x33, 0x33);
+		screen_drawRect(140, 230, 500, 20, 0x00, 0x77, 0x77);
+		screen_drawRect(140, 250, 500, 130, 0x00, 0x33, 0x33);
 		screen_renderString("Secondary Objectives", 150, 234, FONT_WHITE);
 
 		for (int i = 0 ; i < 3 ; i++)
@@ -741,8 +741,8 @@ static void drawBriefScreen()
 		}
 	}
 
-	blevelRect(140, 390, 500, 20, 0x77, 0x77, 0x00);
-	blevelRect(140, 410, 500, 130, 0x33, 0x33, 0x00);
+	screen_drawRect(140, 390, 500, 20, 0x77, 0x77, 0x00);
+	screen_drawRect(140, 410, 500, 130, 0x33, 0x33, 0x00);
 	screen_renderString("Additional Information", 150, 394, FONT_WHITE);
 }
 
@@ -795,23 +795,23 @@ void missionBriefScreen()
 	}
 
 	loadGameGraphics();
-	textSurface(4, "Shield", 25, 550, FONT_WHITE);
-	textSurface(5, "Plasma:", 250, 550, FONT_WHITE);
+	gfx_createTextObject(TS_SHIELD, "Shield", 25, 550, FONT_WHITE);
+	gfx_createTextObject(TS_PLASMA_T, "Plasma:", 250, 550, FONT_WHITE);
 
 	if (player.weaponType[1] == W_CHARGER)
-		textSurface(6, "Charge", 385, 550, FONT_WHITE);
+		gfx_createTextObject(TS_AMMO_T, "Charge", 385, 550, FONT_WHITE);
 	else if (player.weaponType[1] == W_LASER)
-		textSurface(6, "Heat", 405, 550, FONT_WHITE);
+		gfx_createTextObject(TS_AMMO_T, "Heat", 405, 550, FONT_WHITE);
 	else
-		textSurface(6, "Rockets:", 385, 550, FONT_WHITE);
+		gfx_createTextObject(TS_AMMO_T, "Rockets:", 385, 550, FONT_WHITE);
 
-	textSurface(7, "Target", 550, 550, FONT_WHITE);
-	textSurface(8, "Cash: $", 25, 20, FONT_WHITE);
-	textSurface(9, "Objectives Remaining:", 550, 20, FONT_WHITE);
-	textSurface(10, "Time Remaining - ", 260, 20, FONT_WHITE);
-	textSurface(11, "Power", 25, 570, FONT_WHITE);
-	textSurface(12, "Output", 250, 570, FONT_WHITE);
-	textSurface(13, "Cooler", 485, 570, FONT_WHITE);
+	gfx_createTextObject(TS_TARGET, "Target", 550, 550, FONT_WHITE);
+	gfx_createTextObject(TS_CASH_T, "Cash: $", 25, 20, FONT_WHITE);
+	gfx_createTextObject(TS_OBJECTIVES_T, "Objectives Remaining:", 550, 20, FONT_WHITE);
+	gfx_createTextObject(TS_TIME_T, "Time Remaining - ", 260, 20, FONT_WHITE);
+	gfx_createTextObject(TS_POWER, "Power", 25, 570, FONT_WHITE);
+	gfx_createTextObject(TS_OUTPUT, "Output", 250, 570, FONT_WHITE);
+	gfx_createTextObject(TS_COOLER, "Cooler", 485, 570, FONT_WHITE);
 	audio_playRandomTrack();
 
 	if (game.area != MISN_INTERCEPTION)

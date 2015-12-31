@@ -38,11 +38,10 @@ int gfx_renderString(const char *in, int x, int y, int fontColor, int wrap, SDL_
 void gfx_putPixel(SDL_Surface *surface, int x, int y, Uint32 pixel);
 void gfx_drawLine(SDL_Surface *dest, int x1, int y1, int x2, int y2, int col);
 void gfx_drawCircle(int xc, int yc, int R, SDL_Surface *PIX, int col);
-extern void blevelRect(SDL_Surface *dest, int x, int y, int w, int h, Uint8 red, Uint8 green, Uint8 blue);
-extern void blevelRect(int x, int y, int w, int h, Uint8 red, Uint8 green, Uint8 blue);
-extern SDL_Surface *createSurface(int width, int height);
-extern SDL_Surface *textSurface(const char *inString, int color);
-extern void textSurface(int index, const char *inString, int x, int y, int fontColor);
+void gfx_drawRect(SDL_Surface *dest, int x, int y, int w, int h, Uint8 red, Uint8 green, Uint8 blue);
+SDL_Surface *gfx_createSurface(int width, int height);
+SDL_Surface *gfx_createTextSurface(const char *inString, int color);
+void gfx_createTextObject(int index, const char *inString, int x, int y, int fontColor);
 extern SDL_Surface *alphaRect(int width, int height, Uint8 red, Uint8 green, Uint8 blue);
 extern void createMessageBox(SDL_Surface *face, const char *message, signed char transparent);
 extern void freeGraphics();

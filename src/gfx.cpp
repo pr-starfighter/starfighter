@@ -303,7 +303,7 @@ void gfx_drawCircle(int xc, int yc, int R, SDL_Surface *PIX, int col)
 	}
 }
 
-void blevelRect(SDL_Surface *dest, int x, int y, int w, int h, Uint8 red, Uint8 green, Uint8 blue)
+void gfx_drawRect(SDL_Surface *dest, int x, int y, int w, int h, Uint8 red, Uint8 green, Uint8 blue)
 {
 	SDL_Rect r = {(int16_t)x, (int16_t)y, (uint16_t)w, (uint16_t)h};
 	SDL_FillRect(dest, &r, SDL_MapRGB(screen->format, red, green, blue));
@@ -314,12 +314,7 @@ void blevelRect(SDL_Surface *dest, int x, int y, int w, int h, Uint8 red, Uint8 
 	gfx_drawLine(dest, x + w, y + 1, x + w, y + h, SDL_MapRGB(screen->format, 128, 128, 128));
 }
 
-void blevelRect(int x, int y, int w, int h, Uint8 red, Uint8 green, Uint8 blue)
-{
-	blevelRect(screen, x, y, w, h, red, green, blue);
-}
-
-SDL_Surface *createSurface(int width, int height)
+SDL_Surface *gfx_createSurface(int width, int height)
 {
 	SDL_Surface *surface;
 	Uint32 rmask, gmask, bmask, amask;
@@ -348,23 +343,24 @@ SDL_Surface *createSurface(int width, int height)
 	return surface;
 }
 
-SDL_Surface *textSurface(const char *inString, int color)
+SDL_Surface *gfx_createTextSurface(const char *inString, int color)
 {
-	SDL_Surface *surface = createSurface(strlen(inString) * 9, 16);
+	// XXX: Magic numbers
+	SDL_Surface *surface = gfx_createSurface(strlen(inString) * 9, 16);
 
 	gfx_renderString(inString, 1, 1, color, 0, surface);
 
 	return gfx_setTransparent(surface);
 }
 
-void textSurface(int index, const char *inString, int x, int y, int fontColor)
+void gfx_createTextObject(int index, const char *inString, int x, int y, int fontColor)
 {
 	/* Shortcut: if we already rendered the same string in the same color, don't render it again. */
 	if(gfx_text[index].text && gfx_text[index].image && gfx_text[index].fontColor == fontColor && !strcmp(gfx_text[index].text, inString)) {
 		gfx_text[index].x = x;
 		gfx_text[index].y = y;
 		if (x == -1)
-			gfx_text[index].x = (800 - gfx_text[index].image->w) / 2;
+			gfx_text[index].x = (screen->w - gfx_text[index].image->w) / 2;
 		return;
 	}
 
@@ -376,14 +372,14 @@ void textSurface(int index, const char *inString, int x, int y, int fontColor)
 	{
 		SDL_FreeSurface(gfx_text[index].image);
 	}
-	gfx_text[index].image = textSurface(inString, fontColor);
+	gfx_text[index].image = gfx_createTextSurface(inString, fontColor);
 	if (x == -1)
-		gfx_text[index].x = (800 - gfx_text[index].image->w) / 2;
+		gfx_text[index].x = (screen->w - gfx_text[index].image->w) / 2;
 }
 
 SDL_Surface *alphaRect(int width, int height, Uint8 red, Uint8 green, Uint8 blue)
 {
-	SDL_Surface *surface = createSurface(width, height);
+	SDL_Surface *surface = gfx_createSurface(width, height);
 
 	SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, red, green, blue));
 
@@ -403,18 +399,18 @@ void createMessageBox(SDL_Surface *face, const char *message, signed char transp
 	if (transparent)
 		messageBox = alphaRect(550, 60, 0x00, 0x00, 0x00);
 	else
-		messageBox = createSurface(550, 60);
+		messageBox = gfx_createSurface(550, 60);
 
 	signed char x = 60;
 
 	if (face != NULL)
 	{
-		blevelRect(messageBox, 0, 0, messageBox->w - 1, messageBox->h - 1, 0x00, 0x00, 0xaa);
+		gfx_drawRect(messageBox, 0, 0, messageBox->w - 1, messageBox->h - 1, 0x00, 0x00, 0xaa);
 		gfx_blit(face, 5, 5, messageBox);
 	}
 	else
 	{
-		blevelRect(messageBox, 0, 0, messageBox->w - 1, messageBox->h - 1, 0x00, 0x00, 0x00);
+		gfx_drawRect(messageBox, 0, 0, messageBox->w - 1, messageBox->h - 1, 0x00, 0x00, 0x00);
 		x = 10;
 	}
 
