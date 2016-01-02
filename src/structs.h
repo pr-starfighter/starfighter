@@ -200,6 +200,7 @@ typedef struct ShopItem_ {
 	char name[50];
 	char description[255];
 	int image;
+
 } ShopItem;
 
 typedef struct bRect_ {
@@ -223,97 +224,8 @@ typedef struct Planet_ {
 	int faceImage;
 	char from[50];
 	char subject[100];
+
 } Planet;
-
-enum keys {
-	KEY_UP,
-	KEY_DOWN,
-	KEY_LEFT,
-	KEY_RIGHT,
-	KEY_FIRE,
-	KEY_ALTFIRE,
-	KEY_SWITCH,
-	KEY_PAUSE,
-	KEY_ESCAPE,
-	KEY_FULLSCREEN,
-	KEY_DUMMY,
-	KEY_LAST
-};
-
-typedef struct Engine_ {
-
-	SDL_Event event;
-	int done;
-
-	SDL_RWops *sdlrw;
-
-	float musicVolume;
-
-	int maxAliens;
-
-	float ssx;
-	float ssy;
-	float smx;
-	float smy;
-
-	object *bulletHead;
-	object *bulletTail;
-	object *explosionHead;
-	object *explosionTail;
-	collectables *collectableHead;
-	collectables *collectableTail;
-	object *debrisHead;
-	object *debrisTail;
-
-	int cursor_x, cursor_y;
-
-	int commsSection;
-
-	int eventTimer;
-
-	int lowShield;
-	int averageShield;
-
-	float targetShield;
-	int targetIndex;
-
-	// Mission completion timer (allows for 4 seconds before leaving sector)
-	long missionCompleteTimer;
-
-	// Times the mission normally
-	Uint32 counter2;
-	long int timeTaken; // In seconds
-
-	// For missions with a time limit
-	int timeMission;
-	Uint32 counter;
-	int seconds;
-	int minutes;
-
-	// Mission Related stuff
-	int allAliensDead;
-	int addAliens;
-
-	bool paused;
-	int gameSection;
-
-	bool useAudio;
-	bool useSound;
-	bool useMusic;
-	bool fullScreen;
-	bool autoPause;
-
-	char configDirectory[1024];
-	
-	char keyState[KEY_LAST];
-
-	bool cheat; // overall cheat
-	bool cheatShield;
-	bool cheatCash;
-	bool cheatAmmo;
-	bool cheatTime;
-	bool cheatCredits;
-} Engine;
 
 typedef struct event_ {
 
@@ -322,6 +234,7 @@ typedef struct event_ {
 	int face;
 	int entity;
 	int flag;
+
 } event;
 
 typedef struct cutMsg_ {

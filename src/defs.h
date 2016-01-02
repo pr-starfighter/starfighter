@@ -105,9 +105,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define SHIP_HIT_INDEX 60
 
+
+enum keys {
+	KEY_UP,
+	KEY_DOWN,
+	KEY_LEFT,
+	KEY_RIGHT,
+	KEY_FIRE,
+	KEY_ALTFIRE,
+	KEY_SWITCH,
+	KEY_PAUSE,
+	KEY_ESCAPE,
+	KEY_FULLSCREEN,
+	KEY_DUMMY,
+	KEY_LAST
+};
+
 // AI Types
 enum {
-
 	AI_NORMAL = 1,
 	AI_DEFENSIVE,
 	AI_OFFENSIVE,
@@ -117,7 +132,6 @@ enum {
 
 // These are for Alien *indexes* NOT classdefs!!
 enum {
-
 	ALIEN_BOSS_PART4 = 10,
 	ALIEN_BOSS_PART3 = 11,
 	ALIEN_BOSS_PART2 = 12,
@@ -133,7 +147,6 @@ enum {
 
 // Droppables
 enum {
-
 	P_ANYTHING = 1,
 	P_WEAPONS,
 	P_CASH,
@@ -154,7 +167,6 @@ enum {
 
 // Jobs
 enum {
-
 	WT_PLASMA = 1,
 	WT_ROCKET,
 	WT_ENERGYRAY,
@@ -167,7 +179,6 @@ enum {
 
 // Weapons
 enum {
-
 	W_NONE = -1,
 	W_PLAYER_WEAPON,
 	W_PLAYER_WEAPON2,
@@ -191,7 +202,6 @@ enum {
 
 // Mission types
 enum {
-
 	M_DESTROY_ALL_TARGETS = 1,
 	M_DESTROY_TARGET_TYPE,
 	M_COLLECT,
@@ -202,7 +212,6 @@ enum {
 };
 
 enum {
-
 	OB_JUST_FAILED = -2,
 	OB_FAILED,
 	OB_INCOMPLETE,
@@ -214,7 +223,6 @@ enum {
 
 // Class Defs - Some of these are just place holders
 enum {
-
 	CD_DUALFIGHTER, 	// 0
 	CD_MISSILEBOAT,
 	CD_PROTOFIGHTER,
@@ -265,7 +273,6 @@ enum {
 
 // Text shapes (main menu)
 enum {
-
 	TS_PRESENTS,
 	TS_AN_SDL_GAME,
 	TS_START_NEW_GAME,
@@ -299,7 +306,6 @@ enum {
 
 // Text shapes (mission)
 enum {
-
 	TS_RADIO = MAX_INFOLINES,
 	TS_SHIELD,
 	TS_PLASMA_T,
@@ -321,7 +327,6 @@ enum {
 
 // Menu types
 enum {
-
 	MENU_MAIN,
 	MENU_DIFFICULTY,
 	MENU_LOAD,
@@ -331,7 +336,6 @@ enum {
 
 // Shop items
 enum {
-
 	SHOP_PLASMA_MAX_OUTPUT,
 	SHOP_PLASMA_MAX_DAMAGE,
 	SHOP_PLASMA_MAX_RATE,
@@ -354,7 +358,6 @@ enum {
 
 // Font Colors
 enum {
-
 	FONT_WHITE,
 	FONT_RED,
 	FONT_YELLOW,
@@ -365,7 +368,6 @@ enum {
 
 // Sounds
 enum {
-
 	SFX_EXPLOSION,
 	SFX_HIT,
 	SFX_DEATH,
@@ -387,7 +389,6 @@ enum {
 
 // Sections
 enum {
-
 	SECTION_TITLE,
 	SECTION_INTERMISSION,
 	SECTION_GAME
@@ -395,7 +396,6 @@ enum {
 
 // Faces
 enum {
-
 	FACE_CHRIS = 90,
 	FACE_SID,
 	FACE_KRASS,
@@ -407,7 +407,6 @@ enum {
 
 // Missions
 enum {
-
 	MISN_START,
 	MISN_HAIL,
 	MISN_CERADSE,

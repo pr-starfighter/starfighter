@@ -20,7 +20,88 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
+#include "SDL.h"
+
+#include "defs.h"
 #include "structs.h"
+
+
+typedef struct Engine_ {
+
+	SDL_Event event;
+	int done;
+
+	SDL_RWops *sdlrw;
+
+	float musicVolume;
+
+	int maxAliens;
+
+	float ssx;
+	float ssy;
+	float smx;
+	float smy;
+
+	object *bulletHead;
+	object *bulletTail;
+	object *explosionHead;
+	object *explosionTail;
+	collectables *collectableHead;
+	collectables *collectableTail;
+	object *debrisHead;
+	object *debrisTail;
+
+	int cursor_x, cursor_y;
+
+	int commsSection;
+
+	int eventTimer;
+
+	int lowShield;
+	int averageShield;
+
+	float targetShield;
+	int targetIndex;
+
+	// Mission completion timer (allows for 4 seconds before leaving sector)
+	long missionCompleteTimer;
+
+	// Times the mission normally
+	Uint32 counter2;
+	long int timeTaken; // In seconds
+
+	// For missions with a time limit
+	int timeMission;
+	Uint32 counter;
+	int seconds;
+	int minutes;
+
+	// Mission Related stuff
+	int allAliensDead;
+	int addAliens;
+
+	bool paused;
+	int gameSection;
+
+	bool useAudio;
+	bool useSound;
+	bool useMusic;
+	bool fullScreen;
+	bool autoPause;
+
+	char configDirectory[1024];
+	
+	char keyState[KEY_LAST];
+
+	bool cheat; // overall cheat
+	bool cheatShield;
+	bool cheatCash;
+	bool cheatAmmo;
+	bool cheatTime;
+	bool cheatCredits;
+
+} Engine;
+
 
 extern Engine engine;
 
