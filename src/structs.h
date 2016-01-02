@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012, 2013 Guus Sliepen
-Copyright (C) 2015 onpon4 <onpon4@riseup.net>
+Copyright (C) 2015, 2016 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -20,14 +20,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef STRUCTS_H
 #define STRUCTS_H
 
-struct object {
+typedef struct object_ {
 
 	bool active;
 	int classDef; // Used by aliens to determine what they are
 	int AIType; // Type of articifial intelligence
 
 	int id; // The "job" of the object
-	object *target; //  index target in aliens array
+	struct object_ *target; //  index target in aliens array
 
 	int reload[2];
 
@@ -42,7 +42,7 @@ struct object {
 
 	int face; // Either 0 or 1
 
-	object *owner; // Who owns this object
+	struct object_ *owner; // Who owns this object
 
 	int chance[2]; // Chance of using the weapons (out of 1000)
 
@@ -64,11 +64,11 @@ struct object {
 
 	float x, y, dx, dy;
 
-	object *next;
+	struct object_ *next;
 
-};
+} object;
 
-struct mission {
+typedef struct mission_ {
 
 	char primaryObjective[3][50]; // Description
 	int primaryType[3]; // The type of mission this is
@@ -88,16 +88,16 @@ struct mission {
 	int remainingObjectives2;
 	int addAliens; // How often to add new enemies
 
-};
+} mission;
 
-struct Star {
+typedef struct Star_ {
 
 	float x, y, dx, dy;
 	int speed; // How fast the star moves
 
-};
+} Star;
 
-struct collectables {
+typedef struct collectables_ {
 
 	bool active;
 	float x, y, dx, dy;
@@ -106,11 +106,11 @@ struct collectables {
 	int value; // How much is it worth?
 	int life; // How long it will stay around for
 
-	collectables *next;
+	struct collectables_ *next;
 
-};
+} collectables;
 
-struct textObject {
+typedef struct textObject_ {
 
 	SDL_Surface *image;
 	int life;
@@ -118,9 +118,9 @@ struct textObject {
 	int fontColor;
 	char text[255];
 
-};
+} textObject;
 
-struct Game {
+typedef struct Game_ {
 	object thePlayer;
 	object playerWeapon;
 
@@ -191,25 +191,25 @@ struct Game {
 	int maxPlasmaAmmoLimit;
 	int maxRocketAmmoLimit;
 
-};
+} Game;
 
-struct ShopItem {
+typedef struct ShopItem_ {
 
 	int x, y;
 	int price;
 	char name[50];
 	char description[255];
 	int image;
-};
+} ShopItem;
 
-struct bRect {
+typedef struct bRect_ {
 
 	int x, y, w, h;
-	bRect *next;
+	struct bRect_ *next;
 
-};
+} bRect;
 
-struct Planet {
+typedef struct Planet_ {
 
 	int y;
 	char name[50];
@@ -223,7 +223,7 @@ struct Planet {
 	int faceImage;
 	char from[50];
 	char subject[100];
-};
+} Planet;
 
 enum keys {
 	KEY_UP,
@@ -240,7 +240,7 @@ enum keys {
 	KEY_LAST
 };
 
-struct Engine {
+typedef struct Engine_ {
 
 	SDL_Event event;
 	int done;
@@ -313,22 +313,22 @@ struct Engine {
 	bool cheatAmmo;
 	bool cheatTime;
 	bool cheatCredits;
-};
+} Engine;
 
-struct event {
+typedef struct event_ {
 
 	int time;
 	char message[255];
 	int face;
 	int entity;
 	int flag;
-};
+} event;
 
-struct cutMsg {
+typedef struct cutMsg_ {
 
 	int face;
 	char message[255];
 
-};
+} cutMsg;
 
 #endif
