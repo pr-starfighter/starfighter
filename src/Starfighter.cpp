@@ -2,7 +2,7 @@
 Project: Starfighter
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012 Guus Sliepen
-Copyright (C) 2015 Julian Marchant
+Copyright (C) 2015, 2016 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -78,10 +78,10 @@ int main(int argc, char **argv)
 		}
 	}
 
-	atexit(cleanUp);
+	atexit(engine_cleanup);
 
 	gfx_init();
-	initSystem(); // Opens video mode and sound
+	engine_setMode();
 	loadFont();
 
 	if (cheatAttempt && !engine.cheat)
@@ -96,11 +96,19 @@ int main(int argc, char **argv)
 		SDL_Delay(500);
 	}
 
-	freeGraphics();
+	gfx_free();
 	audio_loadSounds();
 
 	initWeapons();
-	initVars();
+
+	srand(time(NULL));
+
+	if (engine.useAudio)
+	{
+		Mix_Volume(-1, 100);
+		Mix_VolumeMusic(engine.musicVolume);
+	}
+
 	alien_defs_init();
 
 	colors_init();

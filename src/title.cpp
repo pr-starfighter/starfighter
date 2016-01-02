@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012, 2013 Guus Sliepen
-Copyright (C) 2012, 2015 Julian Marchant
+Copyright (C) 2012, 2015, 2016 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -181,7 +181,7 @@ int doTitle()
 	engine.gameSection = SECTION_TITLE;
 
 	screen_flushBuffer();
-	freeGraphics();
+	gfx_free();
 	resetLists();
 	
 	// required to stop the title screen crashing
@@ -199,8 +199,8 @@ int doTitle()
 	loadBackground("gfx/spirit.jpg");
 
 	SDL_Surface *prlogo, *sflogo;
-	prlogo = loadImage("gfx/prlogo.png");
-	sflogo = loadImage("gfx/sflogo.png");
+	prlogo = gfx_loadImage("gfx/prlogo.png");
+	sflogo = gfx_loadImage("gfx/sflogo.png");
 
 	int prx = ((screen->w - prlogo->w) / 2);
 	int pry = ((screen->h - prlogo->h) / 2);
@@ -569,7 +569,7 @@ Scrolls the intro text up the screen and nothing else.
 */
 void showStory()
 {
-	freeGraphics();
+	gfx_free();
 
 	int y = screen->h + 20;
 
@@ -634,13 +634,13 @@ The game over screen :(
 void gameover()
 {
 	screen_flushBuffer();
-	freeGraphics();
+	gfx_free();
 	SDL_FillRect(gfx_background, NULL, black);
 
 	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 	engine.gameSection = SECTION_INTERMISSION;
 
-	SDL_Surface *gameover = loadImage("gfx/gameover.png");
+	SDL_Surface *gameover = gfx_loadImage("gfx/gameover.png");
 
 	screen_clear(black);
 	renderer_update();
@@ -683,7 +683,7 @@ void doCredits()
 {
 	loadBackground("gfx/credits.jpg");
 	screen_flushBuffer();
-	freeGraphics();
+	gfx_free();
 
 	FILE *fp;
 	int lastCredit = -1;

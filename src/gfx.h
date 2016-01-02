@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011 Guus Sliepen
-Copyright (C) 2015 Julian Marchant
+Copyright (C) 2015, 2016 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -42,10 +42,9 @@ void gfx_drawRect(SDL_Surface *dest, int x, int y, int w, int h, Uint8 red, Uint
 SDL_Surface *gfx_createSurface(int width, int height);
 SDL_Surface *gfx_createTextSurface(const char *inString, int color);
 void gfx_createTextObject(int index, const char *inString, int x, int y, int fontColor);
-extern SDL_Surface *alphaRect(int width, int height, Uint8 red, Uint8 green, Uint8 blue);
-extern void createMessageBox(SDL_Surface *face, const char *message, signed char transparent);
-extern void freeGraphics();
-
-extern SDL_Surface *loadImage(const char *filename);
+SDL_Surface *gfx_createAlphaRect(int width, int height, Uint8 red, Uint8 green, Uint8 blue);
+void gfx_createMessageBox(SDL_Surface *face, const char *message, signed char transparent);
+SDL_Surface *gfx_loadImage(const char *filename);
+void gfx_free();
 
 #endif

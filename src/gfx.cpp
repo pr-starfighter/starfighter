@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012, 2013 Guus Sliepen
-Copyright (C) 2015 Julian Marchant
+Copyright (C) 2015, 2016 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -66,13 +66,13 @@ SDL_Surface *gfx_setTransparent(SDL_Surface *sprite)
 
 void gfx_blit(SDL_Surface *image, int x, int y, SDL_Surface *dest)
 {
+	SDL_Rect blitRect;
+
 	// Exit early if image is not on dest at all
 	if (x + image->w < 0 || x >= dest->w || y + image->h < 0 || y >= dest->h)
 		return;
 
 	// Set up a rectangle to draw to
-	SDL_Rect blitRect;
-
 	blitRect.x = x;
 	blitRect.y = y;
 	blitRect.w = image->w;
@@ -82,7 +82,7 @@ void gfx_blit(SDL_Surface *image, int x, int y, SDL_Surface *dest)
 	if (SDL_BlitSurface(image, NULL, dest, &blitRect) < 0)
 	{
 		printf("BlitSurface error: %s\n", SDL_GetError());
-		showErrorAndExit(2, "");
+		engine_showError(2, "");
 	}
 
 	// Only if it is to the screen, mark the region as damaged
@@ -121,7 +121,7 @@ static int gfx_renderStringBase(const char *in, int x, int y, int fontColor, sig
 			if (SDL_BlitSurface(fontShape[fontColor], &letter, dest, &area) < 0)
 			{
 				printf("BlitSurface error: %s\n", SDL_GetError());
-				showErrorAndExit(2, "");
+				engine_showError(2, "");
 			}
 		}
 
@@ -153,7 +153,7 @@ static int gfx_renderStringBase(const char *in, int x, int y, int fontColor, sig
 					if (SDL_BlitSurface(fontShape[fontColor], &letter, dest, &area) < 0)
 					{
 						printf("BlitSurface error: %s\n", SDL_GetError());
-						showErrorAndExit(2, "");
+						engine_showError(2, "");
 					}
 					area.y += 16;
 					area.x = x;
@@ -231,7 +231,7 @@ void gfx_drawLine(SDL_Surface *dest, int x1, int y1, int x2, int y2, int col)
 		if ( SDL_LockSurface(dest) < 0 )
 		{
 			printf("Can't lock screen: %s\n", SDL_GetError());
-			showErrorAndExit(2, "");
+			engine_showError(2, "");
 		}
 	}
 
@@ -263,8 +263,10 @@ mailing list... I didn't write it myself.
 */
 void gfx_drawCircle(int xc, int yc, int R, SDL_Surface *PIX, int col)
 {
-	int x = 0, xx = 0;
-	int y = R, yy = 2 * R;
+	int x = 0;
+	int xx = 0;
+	int y = R;
+	int yy = 2 * R;
 	int p = 1 - R;
 
 	gfx_putPixel(PIX, xc, yc - y, col);
@@ -337,7 +339,7 @@ SDL_Surface *gfx_createSurface(int width, int height)
 
 	if (surface == NULL) {
 		printf("CreateRGBSurface failed: %s\n", SDL_GetError());
-		showErrorAndExit(2, "");
+		engine_showError(2, "");
 	}
 
 	return surface;
@@ -377,7 +379,7 @@ void gfx_createTextObject(int index, const char *inString, int x, int y, int fon
 		gfx_text[index].x = (screen->w - gfx_text[index].image->w) / 2;
 }
 
-SDL_Surface *alphaRect(int width, int height, Uint8 red, Uint8 green, Uint8 blue)
+SDL_Surface *gfx_createAlphaRect(int width, int height, Uint8 red, Uint8 green, Uint8 blue)
 {
 	SDL_Surface *surface = gfx_createSurface(width, height);
 
@@ -388,8 +390,10 @@ SDL_Surface *alphaRect(int width, int height, Uint8 red, Uint8 green, Uint8 blue
 	return surface;
 }
 
-void createMessageBox(SDL_Surface *face, const char *message, signed char transparent)
+void gfx_createMessageBox(SDL_Surface *face, const char *message, signed char transparent)
 {
+	int x = 60;
+
 	if (messageBox != NULL)
 	{
 		SDL_FreeSurface(messageBox);
@@ -397,11 +401,9 @@ void createMessageBox(SDL_Surface *face, const char *message, signed char transp
 	}
 
 	if (transparent)
-		messageBox = alphaRect(550, 60, 0x00, 0x00, 0x00);
+		messageBox = gfx_createAlphaRect(550, 60, 0x00, 0x00, 0x00);
 	else
 		messageBox = gfx_createSurface(550, 60);
-
-	signed char x = 60;
 
 	if (face != NULL)
 	{
@@ -417,7 +419,31 @@ void createMessageBox(SDL_Surface *face, const char *message, signed char transp
 	gfx_renderString(message, x, 5, FONT_WHITE, 1, messageBox);
 }
 
-void freeGraphics()
+SDL_Surface *gfx_loadImage(const char *filename)
+{
+	SDL_Surface *image, *newImage;
+
+	image = IMG_Load(filename);
+
+	if (image == NULL) {
+		printf("Couldn't load %s: %s\n", filename, SDL_GetError());
+		engine_showError(0, filename);
+	}
+
+	newImage = SDL_ConvertSurface(image, screen->format, 0);
+	if ( newImage ) {
+		SDL_FreeSurface(image);
+	}
+	else
+	{
+		// This happens when we are loading the window icon image
+		newImage = image;
+	}
+
+	return gfx_setTransparent(newImage);
+}
+
+void gfx_free()
 {
 	for (int i = 0 ; i < MAX_SHAPES ; i++)
 	{
@@ -460,29 +486,4 @@ void freeGraphics()
 		SDL_FreeSurface(messageBox);
 		messageBox = NULL;
 	}
-}
-
-
-SDL_Surface *loadImage(const char *filename)
-{
-	SDL_Surface *image, *newImage;
-
-	image = IMG_Load(filename);
-
-	if (image == NULL) {
-		printf("Couldn't load %s: %s\n", filename, SDL_GetError());
-		showErrorAndExit(0, filename);
-	}
-
-	newImage = SDL_ConvertSurface(image, screen->format, 0);
-	if ( newImage ) {
-		SDL_FreeSurface(image);
-	}
-	else
-	{
-		// This happens when we are loading the window icon image
-		newImage = image;
-	}
-
-	return gfx_setTransparent(newImage);
 }

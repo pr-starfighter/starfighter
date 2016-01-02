@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012, 2013 Guus Sliepen
-Copyright (C) 2012, 2015 Julian Marchant
+Copyright (C) 2012, 2015, 2016 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -567,7 +567,7 @@ selected an icon.
 */
 int intermission()
 {
-	freeGraphics();
+	gfx_free();
 
 	checkForBossMission(); // double check just to make sure!
 
@@ -587,33 +587,33 @@ int intermission()
 
 	engine.cursor_x = screen->w / 2;
 	engine.cursor_y = screen->h / 2;
-	shape[0] = loadImage("gfx/cursor.png");
+	shape[0] = gfx_loadImage("gfx/cursor.png");
 
 	// Icons 1 - 29
 	for (int i = 0 ; i < 26 ; i++)
 	{
 		sprintf(string, "gfx/icon%d.png", (i + 1));
-		shape[i + 1] = loadImage(string);
+		shape[i + 1] = gfx_loadImage(string);
 	}
 
-	shape[27] = loadImage("gfx/buyIcon.png");
-	shape[28] = loadImage("gfx/sellIcon.png");
-	shape[29] = loadImage("gfx/firefly1.png");
+	shape[27] = gfx_loadImage("gfx/buyIcon.png");
+	shape[28] = gfx_loadImage("gfx/sellIcon.png");
+	shape[29] = gfx_loadImage("gfx/firefly1.png");
 
 	// Planets 30 - 39
-	shape[30] = loadImage("gfx/planet_sun.png");
-	shape[31] = loadImage("gfx/planet_green.png");
-	shape[32] = loadImage("gfx/planet_blue.png");
-	shape[33] = loadImage("gfx/planet_red.png");
-	shape[34] = loadImage("gfx/planet_orange.png");
+	shape[30] = gfx_loadImage("gfx/planet_sun.png");
+	shape[31] = gfx_loadImage("gfx/planet_green.png");
+	shape[32] = gfx_loadImage("gfx/planet_blue.png");
+	shape[33] = gfx_loadImage("gfx/planet_red.png");
+	shape[34] = gfx_loadImage("gfx/planet_orange.png");
 
 	// Faces (as defines)
-	shape[FACE_CHRIS] = loadImage("gfx/face_chris.png");
-	shape[FACE_SID] = loadImage("gfx/face_sid.png");
-	shape[FACE_KRASS] = loadImage("gfx/face_krass.png");
-	shape[FACE_PHOEBE] = loadImage("gfx/face_phoebe.png");
-	shape[FACE_URSULA] = loadImage("gfx/face_ursula.png");
-	shape[FACE_KLINE] = loadImage("gfx/face_kline.png");
+	shape[FACE_CHRIS] = gfx_loadImage("gfx/face_chris.png");
+	shape[FACE_SID] = gfx_loadImage("gfx/face_sid.png");
+	shape[FACE_KRASS] = gfx_loadImage("gfx/face_krass.png");
+	shape[FACE_PHOEBE] = gfx_loadImage("gfx/face_phoebe.png");
+	shape[FACE_URSULA] = gfx_loadImage("gfx/face_ursula.png");
+	shape[FACE_KLINE] = gfx_loadImage("gfx/face_kline.png");
 
 	engine.done = 0;
 	engine.keyState[KEY_FIRE] = 0;
@@ -629,7 +629,7 @@ int intermission()
 	initShop();
 	intermission_setSystemPlanets();
 
-	SDL_Surface *statsSurface = alphaRect(600, 330, 0x00, 0x00, 0x99);
+	SDL_Surface *statsSurface = gfx_createAlphaRect(600, 330, 0x00, 0x00, 0x99);
 	SDL_Surface *savesSurface = gfx_createSurface(350, 300);
 	SDL_Surface *optionsSurface = gfx_createSurface(320, 240);
 	SDL_Surface *commsSurface = gfx_createSurface(450, 400);

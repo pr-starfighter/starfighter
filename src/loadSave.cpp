@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012, 2013 Guus Sliepen
-Copyright (C) 2015 Julian Marchant
+Copyright (C) 2015 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -42,7 +42,7 @@ int initSaveSlots()
 	//READ SAVE GAME DATA
 	for (int i = 0 ; i <= 5 ; i++)
 	{
-		sprintf(fileName, "%ssave%.2d.dat", engine.userHomeDirectory, i);
+		sprintf(fileName, "%ssave%.2d.dat", engine.configDirectory, i);
 
 		fp = fopen(fileName, "rb");
 		if (fp == NULL)
@@ -96,7 +96,7 @@ bool loadGame(int slot)
 {
 	char filename[PATH_MAX];
 	FILE *fp;
-	sprintf(filename, "%ssave%.2d.dat", engine.userHomeDirectory, slot);
+	sprintf(filename, "%ssave%.2d.dat", engine.configDirectory, slot);
 
 	fp = fopen(filename, "rb");
 
@@ -139,7 +139,7 @@ void saveGame(int slot)
 		return;
 	}
 
-	sprintf(fileName, "%ssave%.2d.dat", engine.userHomeDirectory, slot);
+	sprintf(fileName, "%ssave%.2d.dat", engine.configDirectory, slot);
 	fp = fopen(fileName, "wb");
 
 	game.saveFormat = 3;
@@ -265,7 +265,7 @@ int showSaveSlots(SDL_Surface *savesSurface, signed char saveSlot)
 			365, 100, 25))
 		{
 			char filename[PATH_MAX];
-			sprintf(filename, "%ssave%.2d.dat", engine.userHomeDirectory,
+			sprintf(filename, "%ssave%.2d.dat", engine.configDirectory,
 				saveSlot);
 			remove(filename);
 			initSaveSlots();

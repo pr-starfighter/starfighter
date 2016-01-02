@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012, 2013 Guus Sliepen
-Copyright (C) 2012, 2015 Julian Marchant
+Copyright (C) 2012, 2015, 2016 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -199,7 +199,7 @@ void doCutscene(int scene)
 	engine.smy = 0;
 
 	screen_flushBuffer();
-	freeGraphics();
+	gfx_free();
 	resetLists();
 	loadGameGraphics();
 
@@ -294,7 +294,7 @@ void doCutscene(int scene)
 				face = NULL;
 				if (cutMessage[currentMessage].face != -1)
 					face = shape[cutMessage[currentMessage].face];
-				createMessageBox(face, cutMessage[currentMessage].message, 0);
+				gfx_createMessageBox(face, cutMessage[currentMessage].message, 0);
 			}
 		}
 
@@ -311,7 +311,7 @@ void doCutscene(int scene)
 	}
 
 	screen_flushBuffer();
-	freeGraphics();
+	gfx_free();
 	screen_clear(black);
 	renderer_update();
 }

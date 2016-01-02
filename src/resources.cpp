@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012, 2013 Guus Sliepen
-Copyright (C) 2015 Julian Marchant
+Copyright (C) 2015, 2016 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -26,7 +26,7 @@ void loadBackground(const char *filename)
 		SDL_FreeSurface(gfx_background);
 		gfx_background = NULL;
 	}
-	gfx_background = loadImage(filename);
+	gfx_background = gfx_loadImage(filename);
 	SDL_SetColorKey(gfx_background, 0, 0);
 }
 
@@ -39,10 +39,10 @@ void loadGameGraphics()
 	Uint16 *p16;
 	Uint8 *p8;
 
-	freeGraphics();
+	gfx_free();
 
-	shipShape[0] = loadImage("gfx/firefly1.png");
-	shipShape[1] = loadImage("gfx/firefly2.png");
+	shipShape[0] = gfx_loadImage("gfx/firefly1.png");
+	shipShape[1] = gfx_loadImage("gfx/firefly2.png");
 
 	switch(game.system)
 	{
@@ -67,7 +67,7 @@ void loadGameGraphics()
 
 	while (fscanf(fp, "%d %s", &index, string) == 2)
 	{
-		shipShape[index] = loadImage(string);
+		shipShape[index] = gfx_loadImage(string);
 	}
 
 	fclose(fp);
@@ -131,7 +131,7 @@ void loadGameGraphics()
 
 	while (fscanf(fp, "%d %s", &index, string) == 2)
 	{
-		shape[index] = loadImage(string);
+		shape[index] = gfx_loadImage(string);
 	}
 
 	fclose(fp);

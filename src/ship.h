@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2015 Julian Marchant
+Copyright (C) 2015 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License

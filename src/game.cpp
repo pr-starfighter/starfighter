@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012, 2013 Guus Sliepen
-Copyright (C) 2012, 2014, 2015 Julian Marchant
+Copyright (C) 2012, 2014, 2015, 2016 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -185,8 +185,8 @@ void game_doStars()
 	/* Lock the screen for direct access to the pixels */
 	if (SDL_MUSTLOCK(screen))
 	{
-		if (SDL_LockSurface(screen) < 0 )
-			showErrorAndExit(2, "");
+		if (SDL_LockSurface(screen) < 0)
+			engine_showError(2, "");
 	}
 
 	int color = 0;

@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012, 2013 Guus Sliepen
-Copyright (C) 2015 Julian Marchant
+Copyright (C) 2015, 2016 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -161,7 +161,7 @@ static void drawShop()
 		gfx_drawRect(shopSurface[i], 0, 0, 245, 20, 0x00, 0x00, 0x99);
 	}
 
-	shopSurface[4] = alphaRect(601, 101, 0x00, 0x00, 0x00);
+	shopSurface[4] = gfx_createAlphaRect(601, 101, 0x00, 0x00, 0x00);
 	gfx_drawRect(shopSurface[4], 0, 0, 600, 100, 0x00, 0x00, 0x33);
 
 	switch (shopSelectedItem)

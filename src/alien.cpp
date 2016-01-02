@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012 Guus Sliepen
-Copyright (C) 2012, 2015 Julian Marchant
+Copyright (C) 2012, 2015 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -732,7 +732,7 @@ void aliens_init()
 					break;
 
 				if (placeAttempt > 1000)
-					showErrorAndExit(2, "");
+					engine_showError(2, "");
 			}
 
 			if (game.area == MISN_CERADSE)

@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012, 2013 Guus Sliepen
-Copyright (C) 2015 Julian Marchant
+Copyright (C) 2015 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -21,8 +21,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "SDL.h"
 
+#include "engine.h"
 #include "gfx.h"
-#include "init.h"
 #include "structs.h"
 
 SDL_Surface *screen;
@@ -102,7 +102,7 @@ void screen_unBuffer()
 		if (SDL_BlitSurface(gfx_background, &blitRect, screen, &blitRect) < 0)
 		{
 			printf("BlitSurface error: %s\n", SDL_GetError());
-			showErrorAndExit(2, "");
+			engine_showError(2, "");
 		}
 
 		prevRect->next = rect->next;
