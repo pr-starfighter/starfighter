@@ -296,13 +296,13 @@ void events_init()
 			events[6].face = FACE_CHRIS;
 			strcpy(events[6].message, "I have a name, you know. Do you remember it?");
 
-			events[4].time = 45;
-			events[4].entity = ALIEN_BOSS_PART3;
-			events[4].flag = -FL_ACTIVATE;
+			events[7].time = 45;
+			events[7].entity = ALIEN_BOSS_PART3;
+			events[7].flag = -FL_ACTIVATE;
 
-			events[4].time = 45;
-			events[4].entity = ALIEN_BOSS_PART4;
-			events[4].flag = -FL_ACTIVATE;
+			events[8].time = 45;
+			events[8].entity = ALIEN_BOSS_PART4;
+			events[8].flag = -FL_ACTIVATE;
 
 			break;
 
