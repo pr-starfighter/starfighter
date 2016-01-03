@@ -227,16 +227,6 @@ typedef struct Planet_ {
 
 } Planet;
 
-typedef struct event_ {
-
-	int time;
-	char message[255];
-	int face;
-	int entity;
-	int flag;
-
-} event;
-
 typedef struct cutMsg_ {
 
 	int face;

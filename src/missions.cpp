@@ -19,8 +19,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-// God, I hate this file! :((
-
 Planet systemPlanet[10];
 mission currentMission;
 static mission missions[MISN_MAX];
@@ -529,7 +527,7 @@ static char revealHiddenObjectives()
 		if (game.area == MISN_ELAMALE)
 		{
 			mission_killAllEnemies();
-			syncScriptEvents();
+			event_sync();
 			aliens[ALIEN_KLINE].active = true;
 			aliens[ALIEN_KLINE].x = player.x + 1000;
 			aliens[ALIEN_KLINE].y = player.y;
