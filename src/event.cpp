@@ -97,19 +97,19 @@ void events_init()
 			events[3].time = 60;
 			events[3].face = FACE_CREW;
 			strcpy(events[3].message, "Alright! We've got the weapons working again! Now to look at the engines...");
-			events[3].entity = ALIEN_GOODTRANSPORT;
+			events[3].entity = ALIEN_FRIEND1;
 			events[3].flag = -FL_NOFIRE;
 
 			events[4].time = 80;
 			events[4].face = FACE_CREW;
 			strcpy(events[4].message, "DAMN! The guns are offline again! What you guys doing back there?!");
-			events[4].entity = ALIEN_GOODTRANSPORT;
+			events[4].entity = ALIEN_FRIEND1;
 			events[4].flag = FL_NOFIRE;
 
 			events[5].time = 100;
 			events[5].face = FACE_CREW;
 			strcpy(events[5].message, "Chris, HELP!! We've lost all system power! We're a sitting duck out here!");
-			events[5].entity = ALIEN_GOODTRANSPORT;
+			events[5].entity = ALIEN_FRIEND1;
 			events[5].flag = FL_DISABLED;
 
 			events[6].time = 120;
@@ -119,7 +119,7 @@ void events_init()
 			events[7].time = 140;
 			events[7].face = FACE_CREW;
 			strcpy(events[7].message, "Okay! We've fixed that one. We think we've found the problem with the engines too...");
-			events[7].entity = ALIEN_GOODTRANSPORT;
+			events[7].entity = ALIEN_FRIEND1;
 			events[7].flag = -FL_DISABLED;
 
 			events[8].time = 177;
@@ -127,7 +127,7 @@ void events_init()
 			strcpy(events[8].message, "Engines fixed! Let's move!");
 
 			events[9].time = 180;
-			events[9].entity = ALIEN_GOODTRANSPORT;
+			events[9].entity = ALIEN_FRIEND1;
 			events[9].flag = FL_LEAVESECTOR | FL_IMMORTAL;
 
 			break;
@@ -230,7 +230,7 @@ void events_init()
 			events[8].time = 150;
 			events[8].face = FACE_KRASS;
 			strcpy(events[8].message, "I've earned my fee. I'll see you around, boy!");
-			events[8].entity = ALIEN_GOODTRANSPORT;
+			events[8].entity = ALIEN_FRIEND1;
 			events[8].flag = FL_LEAVESECTOR;
 
 			break;
@@ -248,28 +248,28 @@ void events_init()
 			events[0].time = 45;
 			events[0].face = FACE_SID;
 			strcpy(events[0].message, "Chris! Another two of those ray cannons just arrived in your sector!");
-			events[0].entity = 11;
+			events[0].entity = ALIEN_BOSS_PART3;
 			events[0].flag = -FL_ACTIVATE;
 
 			events[1].time = 45;
-			events[1].entity = 12;
+			events[1].entity = ALIEN_BOSS_PART4;
 			events[1].flag = -FL_ACTIVATE;
 
 			events[2].time = 90;
 			events[2].face = FACE_SID;
 			strcpy(events[2].message, "Two more!");
-			events[2].entity = 13;
+			events[2].entity = ALIEN_BOSS_PART5;
 			events[2].flag = -FL_ACTIVATE;
 
 			events[3].time = 90;
-			events[3].entity = 14;
+			events[3].entity = ALIEN_BOSS_PART6;
 			events[3].flag = -FL_ACTIVATE;
 
 			break;
 
 		case MISN_JUPITER:
 			events[0].time = 1;
-			events[0].entity = 10;
+			events[0].entity = ALIEN_BOSS_PART1;
 			events[0].flag = -FL_ACTIVATE;
 
 			events[1].time = 2;
@@ -285,7 +285,7 @@ void events_init()
 			strcpy(events[3].message, "Good point. It would be foolish to expect anything else.");
 
 			events[4].time = 15;
-			events[4].entity = 11;
+			events[4].entity = ALIEN_BOSS_PART2;
 			events[4].flag = -FL_ACTIVATE;
 
 			events[5].time = 20;
@@ -297,11 +297,11 @@ void events_init()
 			strcpy(events[6].message, "I have a name, you know. Do you remember it?");
 
 			events[4].time = 45;
-			events[4].entity = 12;
+			events[4].entity = ALIEN_BOSS_PART3;
 			events[4].flag = -FL_ACTIVATE;
 
 			events[4].time = 45;
-			events[4].entity = 13;
+			events[4].entity = ALIEN_BOSS_PART4;
 			events[4].flag = -FL_ACTIVATE;
 
 			break;

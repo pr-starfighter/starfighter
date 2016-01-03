@@ -743,15 +743,15 @@ void aliens_init()
 			break;
 
 		case MISN_ALLEZ:
-			aliens[ALIEN_GOODTRANSPORT] = alien_defs[CD_GOODTRANSPORT];
+			aliens[ALIEN_FRIEND1] = alien_defs[CD_GOODTRANSPORT];
 			break;
 
 		case MISN_URUSOR:
-			aliens[20] = alien_defs[CD_CARGOSHIP];
-			aliens[21] = alien_defs[CD_CARGOSHIP];
-			aliens[22] = alien_defs[CD_CARGOSHIP];
-			aliens[23] = alien_defs[CD_CARGOSHIP];
-			aliens[24] = alien_defs[CD_CARGOSHIP];
+			aliens[ALIEN_BOSS_PART1] = alien_defs[CD_CARGOSHIP];
+			aliens[ALIEN_BOSS_PART2] = alien_defs[CD_CARGOSHIP];
+			aliens[ALIEN_BOSS_PART3] = alien_defs[CD_CARGOSHIP];
+			aliens[ALIEN_BOSS_PART4] = alien_defs[CD_CARGOSHIP];
+			aliens[ALIEN_BOSS_PART5] = alien_defs[CD_CARGOSHIP];
 			break;
 
 		case MISN_ELAMALE:
@@ -761,8 +761,8 @@ void aliens_init()
 			aliens[ALIEN_BOSS_PART3] = alien_defs[CD_BOSS2_WING3];
 			aliens[ALIEN_BOSS_PART4] = alien_defs[CD_BOSS2_WING4];
 			aliens[ALIEN_KLINE] = alien_defs[CD_KLINE];
-			aliens[20] = alien_defs[CD_SLAVETRANSPORT];
-			aliens[21] = alien_defs[CD_SLAVETRANSPORT];
+			aliens[ALIEN_BOSS_PART5] = alien_defs[CD_SLAVETRANSPORT];
+			aliens[ALIEN_BOSS_PART6] = alien_defs[CD_SLAVETRANSPORT];
 			break;
 
 		case MISN_ODEON:
@@ -775,15 +775,15 @@ void aliens_init()
 			aliens[ALIEN_BOSS_PART2] = alien_defs[CD_BOSS2_WING2];
 			aliens[ALIEN_BOSS_PART3] = alien_defs[CD_BOSS2_WING3];
 			aliens[ALIEN_BOSS_PART4] = alien_defs[CD_BOSS2_WING4];
-			aliens[ALIEN_GOODTRANSPORT] = alien_defs[CD_REBELCARRIER];
-			aliens[20] = alien_defs[CD_REBELCARRIER];
+			aliens[ALIEN_FRIEND1] = alien_defs[CD_REBELCARRIER];
+			aliens[ALIEN_FRIEND2] = alien_defs[CD_REBELCARRIER];
 			break;
 
 		case MISN_ALMARTHA:
 			aliens[ALIEN_BOSS_PART1] = alien_defs[CD_CLOAKFIGHTER];
 			aliens[ALIEN_BOSS_PART2] = alien_defs[CD_CLOAKFIGHTER];
 			aliens[ALIEN_BOSS_PART3] = alien_defs[CD_CLOAKFIGHTER];
-			aliens[ALIEN_GOODTRANSPORT] = alien_defs[CD_KRASS];
+			aliens[ALIEN_FRIEND1] = alien_defs[CD_KRASS];
 			break;
 
 		case MISN_POSWIC:
@@ -805,8 +805,8 @@ void aliens_init()
 			aliens[ALIEN_BOSS_PART2] = alien_defs[CD_BARRIER];
 			aliens[ALIEN_BOSS_PART3] = alien_defs[CD_BARRIER];
 			aliens[ALIEN_BOSS_PART4] = alien_defs[CD_BARRIER];
-			aliens[20] = alien_defs[CD_BARRIER];
-			aliens[21] = alien_defs[CD_BARRIER];
+			aliens[ALIEN_BOSS_PART5] = alien_defs[CD_BARRIER];
+			aliens[ALIEN_BOSS_PART6] = alien_defs[CD_BARRIER];
 			break;
 
 		case MISN_NEPTUNE:
@@ -815,7 +815,7 @@ void aliens_init()
 			aliens[ALIEN_BOSS_PART2] = alien_defs[CD_MOBILESHIELD];
 			aliens[ALIEN_BOSS_PART3] = alien_defs[CD_MOBILESHIELD];
 			aliens[ALIEN_BOSS_PART4] = alien_defs[CD_MOBILESHIELD];
-			aliens[20] = alien_defs[CD_MOBILESHIELD];
+			aliens[ALIEN_BOSS_PART5] = alien_defs[CD_MOBILESHIELD];
 			break;
 
 		case MISN_URANUS:
@@ -825,12 +825,12 @@ void aliens_init()
 			break;
 
 		case MISN_SATURN:
-			aliens[9] = alien_defs[CD_MOBILE_RAY];
-			aliens[10] = alien_defs[CD_MOBILE_RAY];
-			aliens[11] = alien_defs[CD_MOBILE_RAY];
-			aliens[12] = alien_defs[CD_MOBILE_RAY];
-			aliens[13] = alien_defs[CD_MOBILE_RAY];
-			aliens[14] = alien_defs[CD_MOBILE_RAY];
+			aliens[ALIEN_BOSS_PART1] = alien_defs[CD_MOBILE_RAY];
+			aliens[ALIEN_BOSS_PART2] = alien_defs[CD_MOBILE_RAY];
+			aliens[ALIEN_BOSS_PART3] = alien_defs[CD_MOBILE_RAY];
+			aliens[ALIEN_BOSS_PART4] = alien_defs[CD_MOBILE_RAY];
+			aliens[ALIEN_BOSS_PART5] = alien_defs[CD_MOBILE_RAY];
+			aliens[ALIEN_BOSS_PART6] = alien_defs[CD_MOBILE_RAY];
 			break;
 
 		case MISN_JUPITER:
@@ -893,7 +893,7 @@ void aliens_init()
 				aliens[i].speed = 3;
 			}
 
-			if ((aliens[i].classDef == CD_MOBILE_RAY) && (i >= 11))
+			if ((aliens[i].classDef == CD_MOBILE_RAY) && (i >= ALIEN_BOSS_PART3))
 			{
 				aliens[i].active = false;
 			}

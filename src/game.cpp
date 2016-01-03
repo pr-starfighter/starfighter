@@ -2041,15 +2041,15 @@ int game_mainLoop()
 		{
 			if ((rand() % 5) > 0)
 			{
-				aliens[10] = alien_defs[CD_CLOAKFIGHTER];
-				aliens[10].owner = &aliens[10];
-				aliens[10].target = &aliens[10];
-				aliens[10].shield = 1000;
-				aliens[10].active = true;
-				aliens[10].x = player.x - 1000;
-				aliens[10].y = player.y;
-				player_setTarget(10);
-				aliens[10].shield = game.experimentalShield;
+				aliens[ALIEN_BOSS] = alien_defs[CD_CLOAKFIGHTER];
+				aliens[ALIEN_BOSS].owner = &aliens[ALIEN_BOSS];
+				aliens[ALIEN_BOSS].target = &aliens[ALIEN_BOSS];
+				aliens[ALIEN_BOSS].shield = 1000;
+				aliens[ALIEN_BOSS].active = true;
+				aliens[ALIEN_BOSS].x = player.x - 1000;
+				aliens[ALIEN_BOSS].y = player.y;
+				player_setTarget(ALIEN_BOSS);
+				aliens[ALIEN_BOSS].shield = game.experimentalShield;
 			}
 		}
 	}
@@ -2086,7 +2086,7 @@ int game_mainLoop()
 			player_setTarget(ALIEN_PHOEBE);
 			break;
 		case MISN_ALLEZ:
-			player_setTarget(ALIEN_GOODTRANSPORT);
+			player_setTarget(ALIEN_FRIEND1);
 			break;
 		case MISN_URUSOR:
 			player_setTarget(ALIEN_SID);
