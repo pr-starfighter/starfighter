@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012 Guus Sliepen
-Copyright (C) 2012, 2015 onpon4 <onpon4@riseup.net>
+Copyright (C) 2012, 2015, 2016 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -684,12 +684,11 @@ void alien_defs_init()
 
 void aliens_init()
 {
-	FILE *fp;
-	char string[255];
-	int index;
-	int alienType;
 	int placeAttempt;
 	int barrierSpeed;
+
+	engine.targetIndex = -1;
+	barrierSpeed = 1;
 
 	for (int i = 0 ; i < ALIEN_MAX ; i++)
 	{
@@ -698,25 +697,166 @@ void aliens_init()
 		aliens[i].flags = 0;
 	}
 
-	engine.targetIndex = -1;
-
-	strcpy(string, "");
-	barrierSpeed = 1;
-
-	sprintf(string, "data/aliens%d.dat", game.area);
-	fp = fopen(string, "rb");
-
-	if (fp != NULL)
+	switch (game.area)
 	{
-		while (fscanf(fp, "%d %d ", &index, &alienType) == 2)
+		case MISN_START:
+			aliens[0] = alien_defs[CD_TRANSPORTSHIP];
+			break;
+
+		case MISN_CERADSE:
+			aliens[0] = alien_defs[CD_CARGOSHIP];
+			aliens[1] = alien_defs[CD_CARGOSHIP];
+			aliens[2] = alien_defs[CD_CARGOSHIP];
+			aliens[3] = alien_defs[CD_CARGOSHIP];
+			aliens[4] = alien_defs[CD_CARGOSHIP];
+			aliens[5] = alien_defs[CD_CARGOSHIP];
+			break;
+
+		case MISN_HINSTAG:
+			aliens[0] = alien_defs[CD_MISSILEBOAT];
+			aliens[1] = alien_defs[CD_MISSILEBOAT];
+			aliens[2] = alien_defs[CD_MISSILEBOAT];
+			aliens[3] = alien_defs[CD_MISSILEBOAT];
+			aliens[4] = alien_defs[CD_MISSILEBOAT];
+			break;
+
+		case MISN_JOLDAR:
+			aliens[0] = alien_defs[CD_MINER];
+			aliens[1] = alien_defs[CD_MINER];
+			aliens[2] = alien_defs[CD_MINER];
+			aliens[3] = alien_defs[CD_MINER];
+			aliens[4] = alien_defs[CD_MINER];
+			aliens[5] = alien_defs[CD_MINER];
+			aliens[6] = alien_defs[CD_MINER];
+			aliens[7] = alien_defs[CD_MINER];
+			aliens[8] = alien_defs[CD_MINER];
+			break;
+
+		case MISN_MOEBO:
+			aliens[ALIEN_BOSS] = alien_defs[CD_FRIGATE];
+			aliens[ALIEN_BOSS_PART1] = alien_defs[CD_FRIGATE_WING1];
+			aliens[ALIEN_BOSS_PART2] = alien_defs[CD_FRIGATE_WING2];
+			break;
+
+		case MISN_NEROD:
+			aliens[0] = alien_defs[CD_CARGOSHIP];
+			break;
+
+		case MISN_ALLEZ:
+			aliens[ALIEN_GOODTRANSPORT] = alien_defs[CD_GOODTRANSPORT];
+			break;
+
+		case MISN_URUSOR:
+			aliens[20] = alien_defs[CD_CARGOSHIP];
+			aliens[21] = alien_defs[CD_CARGOSHIP];
+			aliens[22] = alien_defs[CD_CARGOSHIP];
+			aliens[23] = alien_defs[CD_CARGOSHIP];
+			aliens[24] = alien_defs[CD_CARGOSHIP];
+			break;
+
+		case MISN_ELAMALE:
+			aliens[ALIEN_BOSS] = alien_defs[CD_MINEBOSS];
+			aliens[ALIEN_BOSS_PART1] = alien_defs[CD_BOSS2_WING1];
+			aliens[ALIEN_BOSS_PART2] = alien_defs[CD_BOSS2_WING2];
+			aliens[ALIEN_BOSS_PART3] = alien_defs[CD_BOSS2_WING3];
+			aliens[ALIEN_BOSS_PART4] = alien_defs[CD_BOSS2_WING4];
+			aliens[ALIEN_KLINE] = alien_defs[CD_KLINE];
+			aliens[20] = alien_defs[CD_SLAVETRANSPORT];
+			aliens[21] = alien_defs[CD_SLAVETRANSPORT];
+			break;
+
+		case MISN_ODEON:
+			aliens[ALIEN_BOSS] = alien_defs[CD_EVILURSULA];
+			break;
+
+		case MISN_FELLON:
+			aliens[ALIEN_BOSS] = alien_defs[CD_MINEBOSS];
+			aliens[ALIEN_BOSS_PART1] = alien_defs[CD_BOSS2_WING1];
+			aliens[ALIEN_BOSS_PART2] = alien_defs[CD_BOSS2_WING2];
+			aliens[ALIEN_BOSS_PART3] = alien_defs[CD_BOSS2_WING3];
+			aliens[ALIEN_BOSS_PART4] = alien_defs[CD_BOSS2_WING4];
+			aliens[ALIEN_GOODTRANSPORT] = alien_defs[CD_REBELCARRIER];
+			aliens[20] = alien_defs[CD_REBELCARRIER];
+			break;
+
+		case MISN_ALMARTHA:
+			aliens[ALIEN_BOSS_PART1] = alien_defs[CD_CLOAKFIGHTER];
+			aliens[ALIEN_BOSS_PART2] = alien_defs[CD_CLOAKFIGHTER];
+			aliens[ALIEN_BOSS_PART3] = alien_defs[CD_CLOAKFIGHTER];
+			aliens[ALIEN_GOODTRANSPORT] = alien_defs[CD_KRASS];
+			break;
+
+		case MISN_POSWIC:
+			aliens[0] = alien_defs[CD_ESCORT];
+			aliens[1] = alien_defs[CD_ESCORT];
+			aliens[2] = alien_defs[CD_ESCORT];
+			aliens[3] = alien_defs[CD_ESCORT];
+			aliens[4] = alien_defs[CD_ESCORT];
+			aliens[ALIEN_BOSS] = alien_defs[CD_EXEC];
+			break;
+
+		case MISN_ELLESH:
+			aliens[ALIEN_BOSS] = alien_defs[CD_EXEC];
+			break;
+
+		case MISN_PLUTO:
+			aliens[ALIEN_BOSS] = alien_defs[CD_PLUTOBOSS];
+			aliens[ALIEN_BOSS_PART1] = alien_defs[CD_BARRIER];
+			aliens[ALIEN_BOSS_PART2] = alien_defs[CD_BARRIER];
+			aliens[ALIEN_BOSS_PART3] = alien_defs[CD_BARRIER];
+			aliens[ALIEN_BOSS_PART4] = alien_defs[CD_BARRIER];
+			aliens[20] = alien_defs[CD_BARRIER];
+			aliens[21] = alien_defs[CD_BARRIER];
+			break;
+
+		case MISN_NEPTUNE:
+			aliens[ALIEN_BOSS] = alien_defs[CD_NEPTUNEBOSS];
+			aliens[ALIEN_BOSS_PART1] = alien_defs[CD_MOBILESHIELD];
+			aliens[ALIEN_BOSS_PART2] = alien_defs[CD_MOBILESHIELD];
+			aliens[ALIEN_BOSS_PART3] = alien_defs[CD_MOBILESHIELD];
+			aliens[ALIEN_BOSS_PART4] = alien_defs[CD_MOBILESHIELD];
+			aliens[20] = alien_defs[CD_MOBILESHIELD];
+			break;
+
+		case MISN_URANUS:
+			aliens[ALIEN_BOSS] = alien_defs[CD_URANUSBOSS];
+			aliens[ALIEN_BOSS_PART1] = alien_defs[CD_URANUSBOSSWING1];
+			aliens[ALIEN_BOSS_PART2] = alien_defs[CD_URANUSBOSSWING2];
+			break;
+
+		case MISN_SATURN:
+			aliens[9] = alien_defs[CD_MOBILE_RAY];
+			aliens[10] = alien_defs[CD_MOBILE_RAY];
+			aliens[11] = alien_defs[CD_MOBILE_RAY];
+			aliens[12] = alien_defs[CD_MOBILE_RAY];
+			aliens[13] = alien_defs[CD_MOBILE_RAY];
+			aliens[14] = alien_defs[CD_MOBILE_RAY];
+			break;
+
+		case MISN_JUPITER:
+			aliens[ALIEN_BOSS] = alien_defs[CD_KRASS];
+			aliens[ALIEN_BOSS_PART1] = alien_defs[CD_FIREFLY];
+			aliens[ALIEN_BOSS_PART2] = alien_defs[CD_FIREFLY];
+			aliens[ALIEN_BOSS_PART3] = alien_defs[CD_FIREFLY];
+			aliens[ALIEN_BOSS_PART4] = alien_defs[CD_FIREFLY];
+			break;
+
+		case MISN_EARTH:
+		case MISN_VENUS:
+			aliens[ALIEN_KLINE] = alien_defs[CD_KLINE];
+			break;
+	}
+
+	for (int i = 0 ; i < ALIEN_MAX ; i++)
+	{
+		if (aliens[i].shield != -1)
 		{
 			placeAttempt = 0;
 
-			aliens[index] = alien_defs[alienType];
-			aliens[index].owner = &aliens[index];
-			aliens[index].target = &aliens[index];
-			aliens[index].face = rand() % 2;
-			aliens[index].active = true;
+			aliens[i].owner = &aliens[i];
+			aliens[i].target = &aliens[i];
+			aliens[i].face = rand() % 2;
+			aliens[i].active = true;
 
 			/*
 			we make 1000 attempts to place this enemy since it is required. If after
@@ -728,7 +868,7 @@ void aliens_init()
 			{
 				placeAttempt++;
 
-				if (alien_place(&aliens[index]))
+				if (alien_place(&aliens[i]))
 					break;
 
 				if (placeAttempt > 1000)
@@ -736,129 +876,127 @@ void aliens_init()
 			}
 
 			if (game.area == MISN_CERADSE)
-				cargo_add(&aliens[index], P_CARGO);
+				cargo_add(&aliens[i], P_CARGO);
 			else if (game.area == MISN_NEROD)
-				cargo_add(&aliens[index], P_PHOEBE);
+				cargo_add(&aliens[i], P_PHOEBE);
 
-			if (index == ALIEN_KLINE)
+			if (i == ALIEN_KLINE)
 			{
 				aliens[ALIEN_KLINE].target = &player;
 			}
 
-			if (aliens[index].classDef == CD_CLOAKFIGHTER)
+			if (aliens[i].classDef == CD_CLOAKFIGHTER)
 			{
-				aliens[index].active = false;
-				aliens[index].maxShield = aliens[index].shield = 400;
-				aliens[index].flags &= ~FL_RUNSAWAY;
-				aliens[index].speed = 3;
+				aliens[i].active = false;
+				aliens[i].maxShield = aliens[i].shield = 400;
+				aliens[i].flags &= ~FL_RUNSAWAY;
+				aliens[i].speed = 3;
 			}
 
-			if ((aliens[index].classDef == CD_MOBILE_RAY) && (index >= 11))
+			if ((aliens[i].classDef == CD_MOBILE_RAY) && (i >= 11))
 			{
-				aliens[index].active = false;
+				aliens[i].active = false;
 			}
 
-			if (aliens[index].classDef == CD_FIREFLY)
+			if (aliens[i].classDef == CD_FIREFLY)
 			{
-				aliens[index].active = false;
+				aliens[i].active = false;
 			}
 
-			if (aliens[index].classDef == CD_BARRIER)
+			if (aliens[i].classDef == CD_BARRIER)
 			{
-				aliens[index].owner = &aliens[ALIEN_BOSS];
-				aliens[index].speed = barrierSpeed;
+				aliens[i].owner = &aliens[ALIEN_BOSS];
+				aliens[i].speed = barrierSpeed;
 				barrierSpeed++;
 			}
 
 			if ((game.area == MISN_POSWIC) &&
-				(aliens[index].classDef == CD_BOSS))
+				(aliens[i].classDef == CD_BOSS))
 			{
-				aliens[index].imageIndex[1] = 29;
-				aliens[index].flags |= FL_IMMORTAL;
+				aliens[i].imageIndex[1] = 29;
+				aliens[i].flags |= FL_IMMORTAL;
 			}
 
 			if (game.area == MISN_ELLESH)
-				aliens[index].flags |= FL_HASMINIMUMSPEED;
+				aliens[i].flags |= FL_HASMINIMUMSPEED;
 
 			if (game.area == MISN_JUPITER)
 			{
-				aliens[index].flags = FL_WEAPCO;
-				if (index == ALIEN_BOSS)
-					aliens[index].chance[1] = 5;
+				aliens[i].flags = FL_WEAPCO;
+				if (i == ALIEN_BOSS)
+					aliens[i].chance[1] = 5;
 			}
 		}
+	}
 
-		fclose(fp);
+	if (game.area == MISN_MOEBO)
+	{
+		aliens[ALIEN_BOSS].target = &player;
+		aliens[ALIEN_BOSS].x = -screen->w / 2;
+		aliens[ALIEN_BOSS].y = screen->h / 2;
 
-		if (game.area == MISN_MOEBO)
+		aliens[ALIEN_BOSS_PART1].owner = &aliens[ALIEN_BOSS];
+		aliens[ALIEN_BOSS_PART1].target = &player;
+		aliens[ALIEN_BOSS_PART1].dx = -25;
+		aliens[ALIEN_BOSS_PART1].dy = -21;
+
+		aliens[ALIEN_BOSS_PART2].owner = &aliens[ALIEN_BOSS];
+		aliens[ALIEN_BOSS_PART2].target = &player;
+		aliens[ALIEN_BOSS_PART2].dx = -20;
+		aliens[ALIEN_BOSS_PART2].dy = 37;
+	}
+	else if ((game.area == MISN_ELAMALE) ||
+		(game.area == MISN_FELLON))
+	{
+		aliens[ALIEN_BOSS].target = &player;
+		aliens[ALIEN_BOSS].x = -screen->w / 2;
+		aliens[ALIEN_BOSS].y = screen->h / 2;
+
+		aliens[ALIEN_BOSS_PART1].owner = &aliens[ALIEN_BOSS_PART2];
+		aliens[ALIEN_BOSS_PART1].target = &player;
+		aliens[ALIEN_BOSS_PART1].dx = -35;
+		aliens[ALIEN_BOSS_PART1].dy = -12;
+
+		aliens[ALIEN_BOSS_PART2].owner = &aliens[ALIEN_BOSS];
+		aliens[ALIEN_BOSS_PART2].target = &player;
+		aliens[ALIEN_BOSS_PART2].dx = 15;
+		aliens[ALIEN_BOSS_PART2].dy = -22;
+
+		aliens[ALIEN_BOSS_PART3].owner = &aliens[ALIEN_BOSS];
+		aliens[ALIEN_BOSS_PART3].target = &player;
+		aliens[ALIEN_BOSS_PART3].dx = 15;
+		aliens[ALIEN_BOSS_PART3].dy = 22;
+
+		aliens[ALIEN_BOSS_PART4].owner = &aliens[ALIEN_BOSS_PART3];
+		aliens[ALIEN_BOSS_PART4].target = &player;
+		aliens[ALIEN_BOSS_PART4].dx = -35;
+		aliens[ALIEN_BOSS_PART4].dy = 20;
+
+		if (game.area == MISN_FELLON)
 		{
-			aliens[ALIEN_BOSS].target = &player;
-			aliens[ALIEN_BOSS].x = -screen->w / 2;
-			aliens[ALIEN_BOSS].y = screen->h / 2;
+			aliens[ALIEN_BOSS].AIType = AI_EVASIVE;
 
-			aliens[ALIEN_BOSS_PART1].owner = &aliens[ALIEN_BOSS];
-			aliens[ALIEN_BOSS_PART1].target = &player;
-			aliens[ALIEN_BOSS_PART1].dx = -25;
-			aliens[ALIEN_BOSS_PART1].dy = -21;
-
-			aliens[ALIEN_BOSS_PART2].owner = &aliens[ALIEN_BOSS];
-			aliens[ALIEN_BOSS_PART2].target = &player;
-			aliens[ALIEN_BOSS_PART2].dx = -20;
-			aliens[ALIEN_BOSS_PART2].dy = 37;
-		}
-		else if ((game.area == MISN_ELAMALE) ||
-			(game.area == MISN_FELLON))
-		{
-			aliens[ALIEN_BOSS].target = &player;
-			aliens[ALIEN_BOSS].x = -screen->w / 2;
-			aliens[ALIEN_BOSS].y = screen->h / 2;
-
-			aliens[ALIEN_BOSS_PART1].owner = &aliens[ALIEN_BOSS];
-			aliens[ALIEN_BOSS_PART1].target = &player;
-			aliens[ALIEN_BOSS_PART1].dx = 15;
-			aliens[ALIEN_BOSS_PART1].dy = -22;
-
-			aliens[ALIEN_BOSS_PART2].owner = &aliens[ALIEN_BOSS];
-			aliens[ALIEN_BOSS_PART2].target = &player;
-			aliens[ALIEN_BOSS_PART2].dx = 15;
-			aliens[ALIEN_BOSS_PART2].dy = 22;
-
-			aliens[ALIEN_BOSS_PART3].owner = &aliens[ALIEN_BOSS_PART1];
-			aliens[ALIEN_BOSS_PART3].target = &player;
-			aliens[ALIEN_BOSS_PART3].dx = -35;
-			aliens[ALIEN_BOSS_PART3].dy = -12;
-
-			aliens[ALIEN_BOSS_PART4].owner = &aliens[ALIEN_BOSS_PART2];
-			aliens[ALIEN_BOSS_PART4].target = &player;
-			aliens[ALIEN_BOSS_PART4].dx = -35;
-			aliens[ALIEN_BOSS_PART4].dy = 20;
-
-			if (game.area == MISN_FELLON)
+			for (int i = 10 ; i < 15 ; i++)
 			{
-				aliens[ALIEN_BOSS].AIType = AI_EVASIVE;
+				aliens[i].imageIndex[0] += 15;
+				aliens[i].imageIndex[1] += 15;
 
-				for (int i = 10 ; i < 15 ; i++)
-				{
-					aliens[i].imageIndex[0] += 15;
-					aliens[i].imageIndex[1] += 15;
-
-					aliens[i].image[0] = shipShape[aliens[i].imageIndex[0]];
-					aliens[i].image[1] = shipShape[aliens[i].imageIndex[1]];
-				}
+				aliens[i].image[0] = shipShape[aliens[i].imageIndex[0]];
+				aliens[i].image[1] = shipShape[aliens[i].imageIndex[1]];
 			}
 		}
-		else if (game.area == MISN_URANUS)
-		{
-			aliens[ALIEN_BOSS].target = &player;
-			aliens[ALIEN_BOSS].x = -screen->w / 2;
-			aliens[ALIEN_BOSS].y = screen->h / 2;
+	}
+	else if (game.area == MISN_URANUS)
+	{
+		aliens[ALIEN_BOSS].target = &player;
+		aliens[ALIEN_BOSS].x = -screen->w / 2;
+		aliens[ALIEN_BOSS].y = screen->h / 2;
 
-			aliens[ALIEN_BOSS_PART1].owner = &aliens[ALIEN_BOSS];
-			aliens[ALIEN_BOSS_PART1].dy = 20;
+		aliens[ALIEN_BOSS_PART1].owner = &aliens[ALIEN_BOSS];
+		aliens[ALIEN_BOSS_PART1].dy = -16;
 
-			aliens[ALIEN_BOSS_PART2].owner = &aliens[ALIEN_BOSS];
-			aliens[ALIEN_BOSS_PART2].dy = -16;
-		}
+		aliens[ALIEN_BOSS_PART2].owner = &aliens[ALIEN_BOSS];
+		aliens[ALIEN_BOSS_PART2].dy = 20;
 	}
 }
 

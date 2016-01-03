@@ -27,7 +27,7 @@ static const char *klineGreeting[] = {
 	"Do you really think you can defeat us?!"
 };
 
-void event_set()
+void events_init()
 {
 	for (int i = 0 ; i < 20 ; i++)
 	{
@@ -202,11 +202,11 @@ void event_set()
 			gameEvent[2].time = 60;
 			gameEvent[2].face = FACE_KRASS;
 			strcpy(gameEvent[2].message, "Hey, boy, we've got company! Looks like your friends didn't do a very good job after all!");
-			gameEvent[2].entity = 10;
+			gameEvent[2].entity = ALIEN_BOSS_PART1;
 			gameEvent[2].flag = -FL_ACTIVATE;
 
 			gameEvent[3].time = 90;
-			gameEvent[3].entity = 11;
+			gameEvent[3].entity = ALIEN_BOSS_PART2;
 			gameEvent[3].flag = -FL_ACTIVATE;
 
 			gameEvent[4].time = 93;
@@ -214,7 +214,7 @@ void event_set()
 			strcpy(gameEvent[4].message, "Keep those things off my back or it'll cost you extra!!!");
 
 			gameEvent[5].time = 120;
-			gameEvent[5].entity = 12;
+			gameEvent[5].entity = ALIEN_BOSS_PART3;
 			gameEvent[5].flag = -FL_ACTIVATE;
 
 			gameEvent[6].time = 140;

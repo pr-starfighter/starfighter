@@ -2099,7 +2099,7 @@ int game_mainLoop()
 
 	clearInfoLines();
 
-	event_set();
+	events_init();
 
 	engine.ssx = 0;
 	engine.ssy = 0;

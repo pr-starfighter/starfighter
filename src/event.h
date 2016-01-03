@@ -30,7 +30,7 @@ typedef struct Event_ {
 
 } Event;
 
-void event_set();
+void events_init();
 void event_check();
 void event_sync();
 
