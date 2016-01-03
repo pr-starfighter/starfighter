@@ -74,7 +74,7 @@ static void createDifficultyMenu()
 	else if (game.difficulty == DIFFICULTY_NIGHTMARE)
 		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - NIGHTMARE!", -1, 370, FONT_WHITE);
 	else if (game.difficulty == DIFFICULTY_ORIGINAL)
-		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - ORIGINAL", -1, 370, FONT_WHITE);
+		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - CLASSIC", -1, 370, FONT_WHITE);
 	else
 		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - NORMAL", -1, 370, FONT_WHITE);
 }
