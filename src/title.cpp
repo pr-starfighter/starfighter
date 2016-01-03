@@ -30,12 +30,12 @@ static signed char showGameMenu(signed char continueSaveSlot)
 	screen_blitText(TS_OPTIONS);
 	if (engine.cheat)
 	{
-		gfx_text[TS_QUIT].y = 450;
+		gfx_text[TS_QUIT].y = screen->h / 3 + 150;
 		screen_blitText(TS_CHEAT_OPTIONS);
 	}
 	else
 	{
-		gfx_text[TS_QUIT].y = 430;
+		gfx_text[TS_QUIT].y = screen->h / 3 + 130;
 	}
 	screen_blitText(TS_QUIT);
 
@@ -65,23 +65,29 @@ static signed char showLoadMenu()
 
 static void createDifficultyMenu()
 {
-	gfx_createTextObject(TS_START_GAME, "START GAME", -1, 350, FONT_WHITE);
+	gfx_createTextObject(TS_START_GAME, "START GAME",
+		-1, screen->h / 3 + 50, FONT_WHITE);
 
 	if (game.difficulty == DIFFICULTY_EASY)
-		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - EASY", -1, 370, FONT_WHITE);
+		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - EASY",
+			-1, screen->h / 3 + 70, FONT_WHITE);
 	else if (game.difficulty == DIFFICULTY_HARD)
-		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - HARD", -1, 370, FONT_WHITE);
+		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - HARD",
+			-1, screen->h / 3 + 70, FONT_WHITE);
 	else if (game.difficulty == DIFFICULTY_NIGHTMARE)
-		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - NIGHTMARE!", -1, 370, FONT_WHITE);
+		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - NIGHTMARE!",
+			-1, screen->h / 3 + 70, FONT_WHITE);
 	else if (game.difficulty == DIFFICULTY_ORIGINAL)
-		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - CLASSIC", -1, 370, FONT_WHITE);
+		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - CLASSIC",
+			-1, screen->h / 3 + 70, FONT_WHITE);
 	else
-		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - NORMAL", -1, 370, FONT_WHITE);
+		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - NORMAL",
+			-1, screen->h / 3 + 70, FONT_WHITE);
 }
 
 static signed char showDifficultyMenu()
 {
-	gfx_text[TS_BACK_TO_MAIN_MENU].y = 410;
+	gfx_text[TS_BACK_TO_MAIN_MENU].y = screen->h / 3 + 110;
 
 	screen_blitText(TS_START_GAME);
 	screen_blitText(TS_DIFFICULTY);
@@ -93,29 +99,37 @@ static signed char showDifficultyMenu()
 static void createOptionsMenu()
 {
 	if (engine.useSound)
-		gfx_createTextObject(TS_SOUND, "SOUND - ON", -1, 350, FONT_WHITE);
+		gfx_createTextObject(TS_SOUND, "SOUND - ON",
+			-1, screen->h / 3 + 50, FONT_WHITE);
 	else
-		gfx_createTextObject(TS_SOUND, "SOUND - OFF", -1, 350, FONT_WHITE);
+		gfx_createTextObject(TS_SOUND, "SOUND - OFF",
+			-1, screen->h / 3 + 50, FONT_WHITE);
 
 	if (engine.useMusic)
-		gfx_createTextObject(TS_MUSIC, "MUSIC - ON", -1, 370, FONT_WHITE);
+		gfx_createTextObject(TS_MUSIC, "MUSIC - ON",
+			-1, screen->h / 3 + 70, FONT_WHITE);
 	else
-		gfx_createTextObject(TS_MUSIC, "MUSIC - OFF", -1, 370, FONT_WHITE);
+		gfx_createTextObject(TS_MUSIC, "MUSIC - OFF",
+			-1, screen->h / 3 + 70, FONT_WHITE);
 
 	if (engine.fullScreen)
-		gfx_createTextObject(TS_FULLSCREEN, "FULLSCREEN - ON", -1, 390, FONT_WHITE);
+		gfx_createTextObject(TS_FULLSCREEN, "FULLSCREEN - ON",
+			-1, screen->h / 3 + 90, FONT_WHITE);
 	else
-		gfx_createTextObject(TS_FULLSCREEN, "FULLSCREEN - OFF", -1, 390, FONT_WHITE);
+		gfx_createTextObject(TS_FULLSCREEN, "FULLSCREEN - OFF",
+			-1, screen->h / 3 + 90, FONT_WHITE);
 
 	if (engine.autoPause)
-		gfx_createTextObject(TS_AUTOPAUSE, "AUTOPAUSE - ON", -1, 410, FONT_WHITE);
+		gfx_createTextObject(TS_AUTOPAUSE, "AUTOPAUSE - ON",
+			-1, screen->h / 3 + 110, FONT_WHITE);
 	else
-		gfx_createTextObject(TS_AUTOPAUSE, "AUTOPAUSE - OFF", -1, 410, FONT_WHITE);
+		gfx_createTextObject(TS_AUTOPAUSE, "AUTOPAUSE - OFF",
+			-1, screen->h / 3 + 110, FONT_WHITE);
 }
 
 static signed char showOptionsMenu()
 {
-	gfx_text[TS_BACK_TO_MAIN_MENU].y = 450;
+	gfx_text[TS_BACK_TO_MAIN_MENU].y = screen->h / 3 + 150;
 
 	screen_blitText(TS_SOUND);
 	screen_blitText(TS_MUSIC);
@@ -129,37 +143,37 @@ static signed char showOptionsMenu()
 static void createCheatMenu()
 {
 	if (engine.cheatShield)
-		gfx_createTextObject(TS_UNLIMITED_SHIELD, "UNLIMITED SHIELD - ON", -1, 350,
-			FONT_WHITE);
+		gfx_createTextObject(TS_UNLIMITED_SHIELD, "UNLIMITED SHIELD - ON",
+			-1, screen->h / 3 + 50, FONT_WHITE);
 	else
-		gfx_createTextObject(TS_UNLIMITED_SHIELD, "UNLIMITED SHIELD - OFF", -1, 350,
-			FONT_WHITE);
+		gfx_createTextObject(TS_UNLIMITED_SHIELD, "UNLIMITED SHIELD - OFF",
+			-1, screen->h / 3 + 50, FONT_WHITE);
 
 	if (engine.cheatAmmo)
-		gfx_createTextObject(TS_UNLIMITED_AMMO, "UNLIMITED AMMO - ON", -1, 370,
-			FONT_WHITE);
+		gfx_createTextObject(TS_UNLIMITED_AMMO, "UNLIMITED AMMO - ON",
+			-1, screen->h / 3 + 70, FONT_WHITE);
 	else
-		gfx_createTextObject(TS_UNLIMITED_AMMO, "UNLIMITED AMMO - OFF", -1, 370,
-			FONT_WHITE);
+		gfx_createTextObject(TS_UNLIMITED_AMMO, "UNLIMITED AMMO - OFF",
+			-1, screen->h / 3 + 70, FONT_WHITE);
 
 	if (engine.cheatCash)
-		gfx_createTextObject(TS_UNLIMITED_CASH, "UNLIMITED CASH - ON", -1, 390,
-			FONT_WHITE);
+		gfx_createTextObject(TS_UNLIMITED_CASH, "UNLIMITED CASH - ON",
+			-1, screen->h / 3 + 90, FONT_WHITE);
 	else
-		gfx_createTextObject(TS_UNLIMITED_CASH, "UNLIMITED CASH - OFF", -1, 390,
-			FONT_WHITE);
+		gfx_createTextObject(TS_UNLIMITED_CASH, "UNLIMITED CASH - OFF",
+			-1, screen->h / 3 + 90, FONT_WHITE);
 
 	if (engine.cheatTime)
-		gfx_createTextObject(TS_UNLIMITED_TIME, "UNLIMITED TIME - ON", -1, 410,
-			FONT_WHITE);
+		gfx_createTextObject(TS_UNLIMITED_TIME, "UNLIMITED TIME - ON",
+			-1, screen->h / 3 + 110, FONT_WHITE);
 	else
-		gfx_createTextObject(TS_UNLIMITED_TIME, "UNLIMITED TIME - OFF", -1, 410,
-			FONT_WHITE);
+		gfx_createTextObject(TS_UNLIMITED_TIME, "UNLIMITED TIME - OFF",
+			-1, screen->h / 3 + 110, FONT_WHITE);
 }
 
 static signed char showCheatMenu()
 {
-	gfx_text[TS_BACK_TO_MAIN_MENU].y = 450;
+	gfx_text[TS_BACK_TO_MAIN_MENU].y = screen->h / 3 + 150;
 
 	screen_blitText(TS_UNLIMITED_SHIELD);
 	screen_blitText(TS_UNLIMITED_AMMO);
@@ -206,17 +220,24 @@ int doTitle()
 	int pry = ((screen->h - prlogo->h) / 2);
 
 	int sfx = ((screen->w - sflogo->w) / 2);
-	int sfy = ((screen->h - sflogo->h) / 2);
+	int sfy = ((screen->h - sflogo->h) / 3);
 
-	gfx_createTextObject(TS_PRESENTS, "PRESENTS", -1, screen->h / 2, FONT_WHITE);
-	gfx_createTextObject(TS_AN_SDL_GAME, "AN SDL GAME", -1, screen->h / 2, FONT_WHITE);
-	gfx_createTextObject(TS_START_NEW_GAME, "START NEW GAME", -1, 350, FONT_WHITE);
-	gfx_createTextObject(TS_LOAD_GAME, "LOAD GAME", -1, 370, FONT_WHITE);
-	gfx_createTextObject(TS_CONTINUE_CURRENT_GAME, "CONTINUE CURRENT GAME", -1, 390,
-		FONT_WHITE);
-	gfx_createTextObject(TS_OPTIONS, "OPTIONS", -1, 410, FONT_WHITE);
-	gfx_createTextObject(TS_CHEAT_OPTIONS, "CHEAT OPTIONS", -1, 430, FONT_WHITE);
-	gfx_createTextObject(TS_QUIT, "QUIT", -1, 430, FONT_WHITE);
+	gfx_createTextObject(TS_PRESENTS, "PRESENTS",
+		-1, screen->h / 2, FONT_WHITE);
+	gfx_createTextObject(TS_AN_SDL_GAME, "AN SDL GAME",
+		-1, screen->h / 2, FONT_WHITE);
+	gfx_createTextObject(TS_START_NEW_GAME, "START NEW GAME",
+		-1, screen->h / 3 + 50, FONT_WHITE);
+	gfx_createTextObject(TS_LOAD_GAME, "LOAD GAME",
+		-1, screen->h / 3 + 70, FONT_WHITE);
+	gfx_createTextObject(TS_CONTINUE_CURRENT_GAME, "CONTINUE CURRENT GAME",
+		-1, screen->h / 3 + 90, FONT_WHITE);
+	gfx_createTextObject(TS_OPTIONS, "OPTIONS",
+		-1, screen->h / 3 + 110, FONT_WHITE);
+	gfx_createTextObject(TS_CHEAT_OPTIONS, "CHEAT OPTIONS",
+		-1, screen->h / 3 + 130, FONT_WHITE);
+	gfx_createTextObject(TS_QUIT, "QUIT",
+		-1, screen->h / 3 + 130, FONT_WHITE);
 
 	createOptionsMenu();
 	createDifficultyMenu();
@@ -253,8 +274,8 @@ int doTitle()
 
 	SDL_Rect optionRec;
 
-	optionRec.x = 290;
-	optionRec.y = 345;
+	optionRec.x = screen->w / 2 - 110;
+	optionRec.y = screen->h / 3 + 45;
 	optionRec.h = 22;
 	optionRec.w = 215;
 
@@ -289,7 +310,7 @@ int doTitle()
 			explosion_addEngine(&aliens[i]);
 			aliens[i].x += aliens[i].dx;
 			screen_blit(aliens[i].image[0], (int)aliens[i].x, (int)aliens[i].y);
-			if (aliens[i].x > 830)
+			if (aliens[i].x > screen->w + 30)
 			{
 				aliens[i].x = -40;
 				aliens[i].y = rand() % (screen->h - 20);
@@ -361,7 +382,7 @@ int doTitle()
 								selectedOption = 4;
 				}
 
-				optionRec.y = 326 + (20 * selectedOption);
+				optionRec.y = screen->h / 3 + 26 + (20 * selectedOption);
 				if (menuType > MENU_MAIN)
 					if (selectedOption == listLength)
 						optionRec.y += 20;

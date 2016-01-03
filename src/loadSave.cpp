@@ -31,7 +31,7 @@ a player can "Continue Current Game" and "Load Saved Game".
 int initSaveSlots()
 {
 	char fileName[PATH_MAX];
-	int imagePos = 350;
+	int imagePos = screen->h / 3 + 50;
 	Game tempGame;
 	struct stat fileInfo;
 	int modTime = 0;
@@ -49,8 +49,8 @@ int initSaveSlots()
 		{
 			sprintf(saveSlot[i], (i == 0 ? "AUTOSAVE (Empty)" : "Empty"));
 			if (engine.gameSection == SECTION_TITLE)
-				gfx_createTextObject(TS_SAVESLOT_0 + i, saveSlot[i], -1, imagePos,
-					FONT_WHITE);
+				gfx_createTextObject(TS_SAVESLOT_0 + i, saveSlot[i],
+					-1, imagePos, FONT_WHITE);
 		}
 		else
 		{
