@@ -1046,6 +1046,14 @@ bool alien_add()
 			numberOfAliens = 2;
 			alienArray[0] = CD_PROTOFIGHTER;
 			alienArray[1] = CD_AIMFIGHTER;
+			// ...That is, unless we're in Classic difficulty, because
+			// the original game actually had these enemies.
+			if (game.difficulty == DIFFICULTY_ORIGINAL)
+			{
+				numberOfAliens = 4;
+				alienArray[2] = CD_DUALFIGHTER;
+				alienArray[3] = CD_MISSILEBOAT;
+			}
 			break;
 		case MISN_DORIM:
 		case MISN_SIVEDI:
