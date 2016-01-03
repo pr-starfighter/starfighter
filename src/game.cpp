@@ -261,7 +261,7 @@ static void game_doCollectables()
 				{
 					case P_CASH:
 						if (game.difficulty == DIFFICULTY_ORIGINAL)
-							collectable->value *= 2;
+							collectable->value = collectable->value * 3 / 2;
 
 						game.cash += collectable->value;
 						game.cashEarned += collectable->value;
