@@ -1718,7 +1718,7 @@ static void game_doHud()
 		engine.timeTaken++;
 		engine.counter2 = SDL_GetTicks() + 1000;
 		if (engine.missionCompleteTimer == 0)
-			event_check();
+			events_check();
 	}
 
 	if ((engine.timeMission) && (!engine.cheatTime) && (player.shield > 0))
@@ -1748,7 +1748,7 @@ static void game_doHud()
 						currentMission.timeLimit2[i]--;
 				}
 				checkTimer();
-				event_check();
+				events_check();
 			}
 
 			if ((engine.seconds == 0) && (engine.minutes == 0))
@@ -1761,7 +1761,7 @@ static void game_doHud()
 						currentMission.timeLimit2[i]--;
 				}
 				checkTimer();
-				event_check();
+				events_check();
 				engine.counter = (SDL_GetTicks() + 1000);
 			}
 		}

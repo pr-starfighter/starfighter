@@ -101,6 +101,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MAX_SHOPSHAPES 6
 #define MAX_CARGO 20
 #define MAX_INFOLINES 3
+#define MAX_EVENTS 20
 #define MAX_STATUSLINES 30
 
 #define SHIP_HIT_INDEX 60

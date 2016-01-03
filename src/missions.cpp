@@ -527,7 +527,7 @@ static char revealHiddenObjectives()
 		if (game.area == MISN_ELAMALE)
 		{
 			mission_killAllEnemies();
-			event_sync();
+			events_sync();
 			aliens[ALIEN_KLINE].active = true;
 			aliens[ALIEN_KLINE].x = player.x + 1000;
 			aliens[ALIEN_KLINE].y = player.y;
