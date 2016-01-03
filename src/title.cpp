@@ -208,8 +208,8 @@ int doTitle()
 	int sfx = ((screen->w - sflogo->w) / 2);
 	int sfy = ((screen->h - sflogo->h) / 2);
 
-	gfx_createTextObject(TS_PRESENTS, "PRESENTS", -1, 300, FONT_WHITE);
-	gfx_createTextObject(TS_AN_SDL_GAME, "AN SDL GAME", -1, 300, FONT_WHITE);
+	gfx_createTextObject(TS_PRESENTS, "PRESENTS", -1, screen->h / 2, FONT_WHITE);
+	gfx_createTextObject(TS_AN_SDL_GAME, "AN SDL GAME", -1, screen->h / 2, FONT_WHITE);
 	gfx_createTextObject(TS_START_NEW_GAME, "START NEW GAME", -1, 350, FONT_WHITE);
 	gfx_createTextObject(TS_LOAD_GAME, "LOAD GAME", -1, 370, FONT_WHITE);
 	gfx_createTextObject(TS_CONTINUE_CURRENT_GAME, "CONTINUE CURRENT GAME", -1, 390,
@@ -368,13 +368,15 @@ int doTitle()
 
 				if (!skip)
 				{
-					gfx_renderString("Copyright Parallel Realities 2003", 5,
-						560, FONT_WHITE, 0, gfx_background);
+					gfx_renderString("Copyright Parallel Realities 2003",
+						5, screen->h - 60, FONT_WHITE, 0, gfx_background);
 					gfx_renderString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012",
-						5, 580, FONT_WHITE, 0, gfx_background);
-					gfx_renderString(buildVersion, 794 - strlen(buildVersion) * 9,
-						580, FONT_WHITE, 0, gfx_background);
-					screen_addBuffer(0, 560, 800, 40);
+						5, screen->h - 40, FONT_WHITE, 0, gfx_background);
+					gfx_renderString("Copyright 2015, 2016 onpon4",
+						5, screen->h - 20, FONT_WHITE, 0, gfx_background);
+					gfx_renderString(buildVersion, screen->w - 6 - strlen(buildVersion) * 9,
+						screen->h - 20, FONT_WHITE, 0, gfx_background);
+					screen_addBuffer(0, 0, screen->w, screen->h);
 					skip = true;
 				}
 			}
@@ -393,12 +395,14 @@ int doTitle()
 		{
 			if ((now - then <= 27500) && (!skip))
 			{
-				gfx_renderString("Copyright Parallel Realities 2003", 5, 560,
-					FONT_WHITE, 0, gfx_background);
+				gfx_renderString("Copyright Parallel Realities 2003",
+					5, screen->h - 60, FONT_WHITE, 0, gfx_background);
 				gfx_renderString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012",
-					5, 580, FONT_WHITE, 0, gfx_background);
-				gfx_renderString(buildVersion, 794 - strlen(buildVersion) * 9,
-					580, FONT_WHITE, 0, gfx_background);
+					5, screen->h - 40, FONT_WHITE, 0, gfx_background);
+				gfx_renderString("Copyright 2015, 2016 onpon4",
+					5, screen->h - 20, FONT_WHITE, 0, gfx_background);
+				gfx_renderString(buildVersion, screen->w - 6 - strlen(buildVersion) * 9,
+					screen->h - 20, FONT_WHITE, 0, gfx_background);
 				screen_addBuffer(0, 560, 800, 40);
 				skip = true;
 			}
