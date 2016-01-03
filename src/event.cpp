@@ -336,7 +336,7 @@ void events_check()
 	{
 		if (engine.timeTaken == events[i].time)
 		{
-			if (strcmp(events[i].message, "@none@") != 0)
+			if (strcmp(events[i].message, "") != 0)
 			{
 				setRadioMessage(events[i].face, events[i].message, 1);
 			}
