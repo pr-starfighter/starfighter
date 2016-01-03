@@ -15,17 +15,3 @@ FACE_PHOEBE
 -1
 0
 Just try and dodge them!
-
-180
-FACE_SID
--1
-0
-Chris! Ursula's running away!
-
-195
--1
-0
-14
-128
-
-0
