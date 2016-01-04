@@ -193,7 +193,7 @@ void doCutscene(int scene)
 
 				face = NULL;
 				if (cutMessage[currentMessage].face != -1)
-					face = gfx_sprites[cutMessage[currentMessage].face];
+					face = gfx_faceSprites[cutMessage[currentMessage].face];
 				gfx_createMessageBox(face, cutMessage[currentMessage].message, 0);
 			}
 		}

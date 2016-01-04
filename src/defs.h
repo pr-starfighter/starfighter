@@ -414,7 +414,8 @@ enum {
 	FACE_KLINE,
 	FACE_PHOEBE,
 	FACE_URSULA,
-	FACE_CREW
+	FACE_CREW,
+	FACE_MAX
 };
 
 // Missions

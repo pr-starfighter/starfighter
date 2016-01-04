@@ -71,17 +71,18 @@ Sets a radio message that appears at the top of the screen. Used for
 script events, etc. We send a message priority too, since we don't want
 Phoebe or Ursula's banter to interrupt an important message
 */
-void setRadioMessage(signed char face, const char *in, int priority)
+void setRadioMessage(int face, const char *in, int priority)
 {
+	SDL_Surface *faceShape = NULL;
+
 	if ((gfx_textSprites[TS_RADIO].life > 0) && (priority == 0))
 		return;
 
 	gfx_createTextObject(TS_RADIO, in, -1, 50, FONT_WHITE);
 	gfx_textSprites[TS_RADIO].life = 240;
 
-	SDL_Surface *faceShape = NULL;
 	if (face > -1)
-		faceShape = gfx_sprites[face];
+		faceShape = gfx_faceSprites[face];
 
 	gfx_createMessageBox(faceShape, in, 1);
 }
@@ -97,7 +98,7 @@ int getFace(const char *face)
 	for (int i = 0 ; i < 7 ; i++)
 	{
 		if (strcmp(faces[i], face) == 0)
-			return 90 + i;
+			return FACE_CHRIS + i;
 	}
 
 	return -1;

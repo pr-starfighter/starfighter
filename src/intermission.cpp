@@ -353,7 +353,7 @@ static void intermission_updateCommsSurface(SDL_Surface *comms)
 	char string[255];
 
 	gfx_drawRect(comms, 0, 10, comms->w - 1, 55, 0x00, 0x22, 0x00);
-	gfx_blit(gfx_sprites[FACE_CHRIS], 20, 15, comms);
+	gfx_blit(gfx_faceSprites[FACE_CHRIS], 20, 15, comms);
 	gfx_renderString("Chris Bainfield", 80, 15, FONT_WHITE, 0, comms);
 	sprintf(string, "Current Location: %s", systemPlanet[game.stationedPlanet].name);
 	gfx_renderString(string, 80, 35, FONT_WHITE, 0, comms);
@@ -375,7 +375,7 @@ static void intermission_createCommsSurface(SDL_Surface *comms)
 		{
 			yOffset = systemPlanet[i].messageSlot * 60;
 			gfx_drawRect(comms, 0, 105 + yOffset, comms->w - 1, 55, 0x00, 0x00, 0x77);
-			gfx_blit(gfx_sprites[systemPlanet[i].faceImage], 20, 110 + yOffset, comms);
+			gfx_blit(gfx_faceSprites[systemPlanet[i].faceImage], 20, 110 + yOffset, comms);
 			gfx_renderString(systemPlanet[i].from, 80, 110 + yOffset, FONT_WHITE, 0, comms);
 			gfx_renderString(systemPlanet[i].subject, 80, 130 + yOffset, FONT_CYAN, 0, comms);
 			gfx_renderString("INCOMPLETE", 350, 110 + yOffset, FONT_RED, 0, comms);
@@ -426,7 +426,7 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 		faceNumber = getFace(string);
 		if (faceNumber > -1)
 		{
-			gfx_blit(gfx_sprites[faceNumber], 10, y, comms);
+			gfx_blit(gfx_faceSprites[faceNumber], 10, y, comms);
 			col = FONT_WHITE;
 		}
 		else
@@ -608,12 +608,12 @@ int intermission()
 	gfx_sprites[34] = gfx_loadImage("gfx/planet_orange.png");
 
 	// Faces (as defines)
-	gfx_sprites[FACE_CHRIS] = gfx_loadImage("gfx/face_chris.png");
-	gfx_sprites[FACE_SID] = gfx_loadImage("gfx/face_sid.png");
-	gfx_sprites[FACE_KRASS] = gfx_loadImage("gfx/face_krass.png");
-	gfx_sprites[FACE_PHOEBE] = gfx_loadImage("gfx/face_phoebe.png");
-	gfx_sprites[FACE_URSULA] = gfx_loadImage("gfx/face_ursula.png");
-	gfx_sprites[FACE_KLINE] = gfx_loadImage("gfx/face_kline.png");
+	gfx_faceSprites[FACE_CHRIS] = gfx_loadImage("gfx/face_chris.png");
+	gfx_faceSprites[FACE_SID] = gfx_loadImage("gfx/face_sid.png");
+	gfx_faceSprites[FACE_KRASS] = gfx_loadImage("gfx/face_krass.png");
+	gfx_faceSprites[FACE_PHOEBE] = gfx_loadImage("gfx/face_phoebe.png");
+	gfx_faceSprites[FACE_URSULA] = gfx_loadImage("gfx/face_ursula.png");
+	gfx_faceSprites[FACE_KLINE] = gfx_loadImage("gfx/face_kline.png");
 
 	engine.done = 0;
 	engine.keyState[KEY_FIRE] = 0;
