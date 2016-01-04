@@ -981,8 +981,8 @@ void aliens_init()
 				aliens[i].imageIndex[0] += 15;
 				aliens[i].imageIndex[1] += 15;
 
-				aliens[i].image[0] = shipShape[aliens[i].imageIndex[0]];
-				aliens[i].image[1] = shipShape[aliens[i].imageIndex[1]];
+				aliens[i].image[0] = gfx_shipSprites[aliens[i].imageIndex[0]];
+				aliens[i].image[1] = gfx_shipSprites[aliens[i].imageIndex[1]];
 			}
 		}
 	}
@@ -1213,8 +1213,8 @@ void alien_addSmallAsteroid(object *hostAlien)
 	{
 		aliens[index] = alien_defs[CD_ASTEROID2];
 		aliens[index].imageIndex[0] = aliens[index].imageIndex[1] = 39 + rand() % 2;
-		aliens[index].image[0] = shipShape[aliens[index].imageIndex[0]];
-		aliens[index].image[1] = shipShape[aliens[index].imageIndex[1]];
+		aliens[index].image[0] = gfx_shipSprites[aliens[index].imageIndex[0]];
+		aliens[index].image[1] = gfx_shipSprites[aliens[index].imageIndex[1]];
 	}
 	else
 	{

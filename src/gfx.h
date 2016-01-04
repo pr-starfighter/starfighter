@@ -23,13 +23,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "Starfighter.h"
 
 extern SDL_Surface *gfx_background;
-extern SDL_Surface *shape[MAX_SHAPES];
-extern SDL_Surface *shipShape[MAX_SHIPSHAPES];
-extern SDL_Surface *fontShape[MAX_FONTSHAPES];
-extern SDL_Surface *shopSurface[MAX_SHOPSHAPES];
-extern textObject gfx_text[MAX_TEXTSHAPES];
-extern SDL_Surface *messageBox;
-
+extern SDL_Surface *gfx_sprites[MAX_SPRITES];
+extern SDL_Surface *gfx_shipSprites[MAX_SHIPSPRITES];
+extern SDL_Surface *gfx_fontSprites[MAX_FONTSPRITES];
+extern SDL_Surface *gfx_shopSprites[MAX_SHOPSPRITES];
+extern textObject gfx_textSprites[MAX_TEXTSPRITES];
+extern SDL_Surface *gfx_messageBox;
 
 void gfx_init();
 SDL_Surface *gfx_setTransparent(SDL_Surface *sprite);

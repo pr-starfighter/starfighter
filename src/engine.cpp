@@ -266,10 +266,10 @@ void engine_cleanup()
 	delete(engine.collectableHead);
 	delete(screen_bufferHead);
 
-	for (int i = 0 ; i < MAX_FONTSHAPES ; i++)
+	for (int i = 0 ; i < MAX_FONTSPRITES ; i++)
 	{
-		if (fontShape[i] != NULL)
-			SDL_FreeSurface(fontShape[i]);
+		if (gfx_fontSprites[i] != NULL)
+			SDL_FreeSurface(gfx_fontSprites[i]);
 	}
 
 	char filename[PATH_MAX];

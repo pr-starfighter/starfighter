@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011 Guus Sliepen
-Copyright (C) 2015 onpon4 <onpon4@riseup.net>
+Copyright (C) 2015, 2016 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -58,9 +58,9 @@ object *cargo_add(object *owner, int cargoType)
 	cargo[index].dx = 0;
 	cargo[index].dy = 0;
 	cargo[index].collectType = cargoType;
-	cargo[index].image[0] = shape[32];
+	cargo[index].image[0] = gfx_sprites[32];
 	if (cargoType == P_PHOEBE)
-		cargo[index].image[0] = shipShape[20];
+		cargo[index].image[0] = gfx_shipSprites[20];
 
 	return &cargo[index];
 }

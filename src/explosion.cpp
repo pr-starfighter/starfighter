@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011 Guus Sliepen
-Copyright (C) 2015 onpon4 <onpon4@riseup.net>
+Copyright (C) 2015, 2016 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -35,7 +35,7 @@ void explosion_add(float x, float y, int type)
 	explosion->y = y;
 	explosion->thinktime = 28;
 	explosion->face = type;
-	explosion->image[0] = shape[type];
+	explosion->image[0] = gfx_sprites[type];
 
 	engine.explosionTail->next = explosion;
 	engine.explosionTail = explosion;

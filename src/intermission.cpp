@@ -26,9 +26,9 @@ static void intermission_doCursor()
 {
 	getPlayerInput();
 
-	LIMIT(engine.cursor_x, 10, screen->w - 10 - shape[0]->w);
-	LIMIT(engine.cursor_y, 10, screen->h - 10 - shape[0]->h);
-	screen_blit(shape[0], engine.cursor_x, engine.cursor_y);
+	LIMIT(engine.cursor_x, 10, screen->w - 10 - gfx_sprites[0]->w);
+	LIMIT(engine.cursor_y, 10, screen->h - 10 - gfx_sprites[0]->h);
+	screen_blit(gfx_sprites[0], engine.cursor_x, engine.cursor_y);
 }
 
 /*
@@ -146,20 +146,20 @@ static void intermission_setStatusLines()
 	gfx_createTextObject(26, string, -1, 0, FONT_WHITE);
 	gfx_createTextObject(27, "Current Status", -1, 0, FONT_WHITE);
 
-	gfx_text[0].y = 400;
-	gfx_text[0].x = 150;
+	gfx_textSprites[0].y = 400;
+	gfx_textSprites[0].x = 150;
 
 	for (int i = 1 ; i < 25 ; i++)
 	{
-		gfx_text[i].y = gfx_text[i - 1].y + 20;
+		gfx_textSprites[i].y = gfx_textSprites[i - 1].y + 20;
 		if ((i == 7) || (i == 16) || (i == 19))
-			gfx_text[i].y += 25;
+			gfx_textSprites[i].y += 25;
 
-		gfx_text[i].x = 150;
+		gfx_textSprites[i].x = 150;
 	}
 
-	gfx_text[26].y = 404;
-	gfx_text[27].y = 83;
+	gfx_textSprites[26].y = 404;
+	gfx_textSprites[27].y = 83;
 }
 
 /*
@@ -204,7 +204,7 @@ static void intermission_setSystemPlanets()
 
 		systemPlanet[i].y = distance;
 		strcpy(systemPlanet[i].name, name);
-		systemPlanet[i].image = shape[image];
+		systemPlanet[i].image = gfx_sprites[image];
 	}
 
  	int messageMission;
@@ -247,7 +247,7 @@ static bool intermission_showSystem(float x, float y, bool selectable)
 	bool rtn = false;
 
 	// Blit the sun
-	screen_blit(shape[30], 370, 220);
+	screen_blit(gfx_sprites[30], 370, 220);
 
 	for (int i = 50 ; i < 300 ; i+= planetSpace)
 	{
@@ -320,20 +320,20 @@ static void intermission_showStatus(SDL_Surface *infoSurface)
 
 	for (int i = 0 ; i < 22 ; i++)
 	{
-		gfx_text[i].y -= speed;
-		if ((gfx_text[i].y > 80) && (gfx_text[i].y < 400))
+		gfx_textSprites[i].y -= speed;
+		if ((gfx_textSprites[i].y > 80) && (gfx_textSprites[i].y < 400))
 			screen_blitText(i);
 	}
 
-	if (gfx_text[21].y < 65)
+	if (gfx_textSprites[21].y < 65)
 	{
-		gfx_text[0].y = 400;
+		gfx_textSprites[0].y = 400;
 
 		for (int i = 1 ; i < 25 ; i++)
 		{
-			gfx_text[i].y = gfx_text[i - 1].y + 20;
+			gfx_textSprites[i].y = gfx_textSprites[i - 1].y + 20;
 			if ((i == 7) || (i == 16) || (i == 19))
-				gfx_text[i].y += 25;
+				gfx_textSprites[i].y += 25;
 		}
 	}
 
@@ -353,7 +353,7 @@ static void intermission_updateCommsSurface(SDL_Surface *comms)
 	char string[255];
 
 	gfx_drawRect(comms, 0, 10, comms->w - 1, 55, 0x00, 0x22, 0x00);
-	gfx_blit(shape[FACE_CHRIS], 20, 15, comms);
+	gfx_blit(gfx_sprites[FACE_CHRIS], 20, 15, comms);
 	gfx_renderString("Chris Bainfield", 80, 15, FONT_WHITE, 0, comms);
 	sprintf(string, "Current Location: %s", systemPlanet[game.stationedPlanet].name);
 	gfx_renderString(string, 80, 35, FONT_WHITE, 0, comms);
@@ -375,7 +375,7 @@ static void intermission_createCommsSurface(SDL_Surface *comms)
 		{
 			yOffset = systemPlanet[i].messageSlot * 60;
 			gfx_drawRect(comms, 0, 105 + yOffset, comms->w - 1, 55, 0x00, 0x00, 0x77);
-			gfx_blit(shape[systemPlanet[i].faceImage], 20, 110 + yOffset, comms);
+			gfx_blit(gfx_sprites[systemPlanet[i].faceImage], 20, 110 + yOffset, comms);
 			gfx_renderString(systemPlanet[i].from, 80, 110 + yOffset, FONT_WHITE, 0, comms);
 			gfx_renderString(systemPlanet[i].subject, 80, 130 + yOffset, FONT_CYAN, 0, comms);
 			gfx_renderString("INCOMPLETE", 350, 110 + yOffset, FONT_RED, 0, comms);
@@ -426,7 +426,7 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 		faceNumber = getFace(string);
 		if (faceNumber > -1)
 		{
-			gfx_blit(shape[faceNumber], 10, y, comms);
+			gfx_blit(gfx_sprites[faceNumber], 10, y, comms);
 			col = FONT_WHITE;
 		}
 		else
@@ -587,33 +587,33 @@ int intermission()
 
 	engine.cursor_x = screen->w / 2;
 	engine.cursor_y = screen->h / 2;
-	shape[0] = gfx_loadImage("gfx/cursor.png");
+	gfx_sprites[0] = gfx_loadImage("gfx/cursor.png");
 
 	// Icons 1 - 29
 	for (int i = 0 ; i < 26 ; i++)
 	{
 		sprintf(string, "gfx/icon%d.png", (i + 1));
-		shape[i + 1] = gfx_loadImage(string);
+		gfx_sprites[i + 1] = gfx_loadImage(string);
 	}
 
-	shape[27] = gfx_loadImage("gfx/buyIcon.png");
-	shape[28] = gfx_loadImage("gfx/sellIcon.png");
-	shape[29] = gfx_loadImage("gfx/firefly1.png");
+	gfx_sprites[27] = gfx_loadImage("gfx/buyIcon.png");
+	gfx_sprites[28] = gfx_loadImage("gfx/sellIcon.png");
+	gfx_sprites[29] = gfx_loadImage("gfx/firefly1.png");
 
 	// Planets 30 - 39
-	shape[30] = gfx_loadImage("gfx/planet_sun.png");
-	shape[31] = gfx_loadImage("gfx/planet_green.png");
-	shape[32] = gfx_loadImage("gfx/planet_blue.png");
-	shape[33] = gfx_loadImage("gfx/planet_red.png");
-	shape[34] = gfx_loadImage("gfx/planet_orange.png");
+	gfx_sprites[30] = gfx_loadImage("gfx/planet_sun.png");
+	gfx_sprites[31] = gfx_loadImage("gfx/planet_green.png");
+	gfx_sprites[32] = gfx_loadImage("gfx/planet_blue.png");
+	gfx_sprites[33] = gfx_loadImage("gfx/planet_red.png");
+	gfx_sprites[34] = gfx_loadImage("gfx/planet_orange.png");
 
 	// Faces (as defines)
-	shape[FACE_CHRIS] = gfx_loadImage("gfx/face_chris.png");
-	shape[FACE_SID] = gfx_loadImage("gfx/face_sid.png");
-	shape[FACE_KRASS] = gfx_loadImage("gfx/face_krass.png");
-	shape[FACE_PHOEBE] = gfx_loadImage("gfx/face_phoebe.png");
-	shape[FACE_URSULA] = gfx_loadImage("gfx/face_ursula.png");
-	shape[FACE_KLINE] = gfx_loadImage("gfx/face_kline.png");
+	gfx_sprites[FACE_CHRIS] = gfx_loadImage("gfx/face_chris.png");
+	gfx_sprites[FACE_SID] = gfx_loadImage("gfx/face_sid.png");
+	gfx_sprites[FACE_KRASS] = gfx_loadImage("gfx/face_krass.png");
+	gfx_sprites[FACE_PHOEBE] = gfx_loadImage("gfx/face_phoebe.png");
+	gfx_sprites[FACE_URSULA] = gfx_loadImage("gfx/face_ursula.png");
+	gfx_sprites[FACE_KLINE] = gfx_loadImage("gfx/face_kline.png");
 
 	engine.done = 0;
 	engine.keyState[KEY_FIRE] = 0;
@@ -911,13 +911,13 @@ int intermission()
 							(systemPlanet[game.stationedPlanet].missionCompleted != 0))
 						continue;
 					else if (game.stationedPlanet == game.destinationPlanet)
-						screen_blit(shape[1], 80 + (i * 90), 500);
+						screen_blit(gfx_sprites[1], 80 + (i * 90), 500);
 					else if (game.stationedPlanet != game.destinationPlanet)
-						screen_blit(shape[26], 80 + (i * 90), 500);
+						screen_blit(gfx_sprites[26], 80 + (i * 90), 500);
 				}
 				else
 				{
-					screen_blit(shape[i + 1], 80 + (i * 90), 500);
+					screen_blit(gfx_sprites[i + 1], 80 + (i * 90), 500);
 				}
 
 				if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 80 + (i * 90), 500, 32, 32))

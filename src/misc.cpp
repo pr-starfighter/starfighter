@@ -23,15 +23,15 @@ void clearInfoLines()
 {
 	for (int i = 0 ; i < 4 ; i++)
 	{
-		gfx_text[i].life = 0;
+		gfx_textSprites[i].life = 0;
 	}
 }
 
 // from a to b
 void copyInfoLine(int a, int b)
 {
-	gfx_createTextObject(b, gfx_text[a].text, -1, 0, gfx_text[a].fontColor);
-	gfx_text[b].life = gfx_text[a].life;
+	gfx_createTextObject(b, gfx_textSprites[a].text, -1, 0, gfx_textSprites[a].fontColor);
+	gfx_textSprites[b].life = gfx_textSprites[a].life;
 }
 
 /*
@@ -46,7 +46,7 @@ void setInfoLine(const char *in, int color)
 
 	for (int i = 0 ; i < MAX_INFOLINES ; i++)
 	{
-		if ((gfx_text[i].life == 0) && (index == -1))
+		if ((gfx_textSprites[i].life == 0) && (index == -1))
 		{
 			index = i;
 		}
@@ -63,7 +63,7 @@ void setInfoLine(const char *in, int color)
 	}
 
 	gfx_createTextObject(index, in, -1, 0, color);
-	gfx_text[index].life = 240;
+	gfx_textSprites[index].life = 240;
 }
 
 /*
@@ -73,15 +73,15 @@ Phoebe or Ursula's banter to interrupt an important message
 */
 void setRadioMessage(signed char face, const char *in, int priority)
 {
-	if ((gfx_text[TS_RADIO].life > 0) && (priority == 0))
+	if ((gfx_textSprites[TS_RADIO].life > 0) && (priority == 0))
 		return;
 
 	gfx_createTextObject(TS_RADIO, in, -1, 50, FONT_WHITE);
-	gfx_text[TS_RADIO].life = 240;
+	gfx_textSprites[TS_RADIO].life = 240;
 
 	SDL_Surface *faceShape = NULL;
 	if (face > -1)
-		faceShape = shape[face];
+		faceShape = gfx_sprites[face];
 
 	gfx_createMessageBox(faceShape, in, 1);
 }

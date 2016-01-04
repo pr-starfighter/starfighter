@@ -22,14 +22,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "Starfighter.h"
 
 SDL_Surface *gfx_background;
-SDL_Surface *shape[MAX_SHAPES];
-SDL_Surface *shipShape[MAX_SHIPSHAPES];
-SDL_Surface *fontShape[MAX_FONTSHAPES];
-SDL_Surface *shopSurface[MAX_SHOPSHAPES];
-bRect *screen_bufferHead;
-bRect *screen_bufferTail;
-textObject gfx_text[MAX_TEXTSHAPES];
-SDL_Surface *messageBox;
+SDL_Surface *gfx_sprites[MAX_SPRITES];
+SDL_Surface *gfx_shipSprites[MAX_SHIPSPRITES];
+SDL_Surface *gfx_fontSprites[MAX_FONTSPRITES];
+SDL_Surface *gfx_shopSprites[MAX_SHOPSPRITES];
+textObject gfx_textSprites[MAX_TEXTSPRITES];
+SDL_Surface *gfx_messageBox;
 
 void gfx_init()
 {
@@ -37,23 +35,23 @@ void gfx_init()
 	screen_bufferHead->next = NULL;
 	screen_bufferTail = screen_bufferHead;
 
-	for (int i = 0 ; i < MAX_SHAPES ; i++)
-		shape[i] = NULL;
+	for (int i = 0 ; i < MAX_SPRITES ; i++)
+		gfx_sprites[i] = NULL;
 
-	for (int i = 0 ; i < MAX_SHIPSHAPES ; i++)
-		shipShape[i] = NULL;
+	for (int i = 0 ; i < MAX_SHIPSPRITES ; i++)
+		gfx_shipSprites[i] = NULL;
 
-	for (int i = 0 ; i < MAX_TEXTSHAPES ; i++)
-		gfx_text[i].image = NULL;
+	for (int i = 0 ; i < MAX_TEXTSPRITES ; i++)
+		gfx_textSprites[i].image = NULL;
 
-	for (int i = 0 ; i < MAX_SHOPSHAPES ; i++)
-		shopSurface[i] = NULL;
+	for (int i = 0 ; i < MAX_SHOPSPRITES ; i++)
+		gfx_shopSprites[i] = NULL;
 
-	for (int i = 0 ; i < MAX_FONTSHAPES ; i++)
-		fontShape[i] = NULL;
+	for (int i = 0 ; i < MAX_FONTSPRITES ; i++)
+		gfx_fontSprites[i] = NULL;
 
 	gfx_background = NULL;
-	messageBox = NULL;
+	gfx_messageBox = NULL;
 
 	screen = NULL;
 }
@@ -118,7 +116,7 @@ static int gfx_renderStringBase(const char *in, int x, int y, int fontColor, sig
 			letter.x *= 8;
 
 			/* Blit onto the screen surface */
-			if (SDL_BlitSurface(fontShape[fontColor], &letter, dest, &area) < 0)
+			if (SDL_BlitSurface(gfx_fontSprites[fontColor], &letter, dest, &area) < 0)
 			{
 				printf("BlitSurface error: %s\n", SDL_GetError());
 				engine_showError(2, "");
@@ -150,7 +148,7 @@ static int gfx_renderStringBase(const char *in, int x, int y, int fontColor, sig
 				{
 					letter.x = (int)('-') - 33;
 					letter.x *= 8;
-					if (SDL_BlitSurface(fontShape[fontColor], &letter, dest, &area) < 0)
+					if (SDL_BlitSurface(gfx_fontSprites[fontColor], &letter, dest, &area) < 0)
 					{
 						printf("BlitSurface error: %s\n", SDL_GetError());
 						engine_showError(2, "");
@@ -358,25 +356,25 @@ SDL_Surface *gfx_createTextSurface(const char *inString, int color)
 void gfx_createTextObject(int index, const char *inString, int x, int y, int fontColor)
 {
 	/* Shortcut: if we already rendered the same string in the same color, don't render it again. */
-	if(gfx_text[index].text && gfx_text[index].image && gfx_text[index].fontColor == fontColor && !strcmp(gfx_text[index].text, inString)) {
-		gfx_text[index].x = x;
-		gfx_text[index].y = y;
+	if(gfx_textSprites[index].text && gfx_textSprites[index].image && gfx_textSprites[index].fontColor == fontColor && !strcmp(gfx_textSprites[index].text, inString)) {
+		gfx_textSprites[index].x = x;
+		gfx_textSprites[index].y = y;
 		if (x == -1)
-			gfx_text[index].x = (screen->w - gfx_text[index].image->w) / 2;
+			gfx_textSprites[index].x = (screen->w - gfx_textSprites[index].image->w) / 2;
 		return;
 	}
 
-	strcpy(gfx_text[index].text, inString);
-	gfx_text[index].x = x;
-	gfx_text[index].y = y;
-	gfx_text[index].fontColor = fontColor;
-	if (gfx_text[index].image != NULL)
+	strcpy(gfx_textSprites[index].text, inString);
+	gfx_textSprites[index].x = x;
+	gfx_textSprites[index].y = y;
+	gfx_textSprites[index].fontColor = fontColor;
+	if (gfx_textSprites[index].image != NULL)
 	{
-		SDL_FreeSurface(gfx_text[index].image);
+		SDL_FreeSurface(gfx_textSprites[index].image);
 	}
-	gfx_text[index].image = gfx_createTextSurface(inString, fontColor);
+	gfx_textSprites[index].image = gfx_createTextSurface(inString, fontColor);
 	if (x == -1)
-		gfx_text[index].x = (screen->w - gfx_text[index].image->w) / 2;
+		gfx_textSprites[index].x = (screen->w - gfx_textSprites[index].image->w) / 2;
 }
 
 SDL_Surface *gfx_createAlphaRect(int width, int height, Uint8 red, Uint8 green, Uint8 blue)
@@ -394,29 +392,29 @@ void gfx_createMessageBox(SDL_Surface *face, const char *message, signed char tr
 {
 	int x = 60;
 
-	if (messageBox != NULL)
+	if (gfx_messageBox != NULL)
 	{
-		SDL_FreeSurface(messageBox);
-		messageBox = NULL;
+		SDL_FreeSurface(gfx_messageBox);
+		gfx_messageBox = NULL;
 	}
 
 	if (transparent)
-		messageBox = gfx_createAlphaRect(550, 60, 0x00, 0x00, 0x00);
+		gfx_messageBox = gfx_createAlphaRect(550, 60, 0x00, 0x00, 0x00);
 	else
-		messageBox = gfx_createSurface(550, 60);
+		gfx_messageBox = gfx_createSurface(550, 60);
 
 	if (face != NULL)
 	{
-		gfx_drawRect(messageBox, 0, 0, messageBox->w - 1, messageBox->h - 1, 0x00, 0x00, 0xaa);
-		gfx_blit(face, 5, 5, messageBox);
+		gfx_drawRect(gfx_messageBox, 0, 0, gfx_messageBox->w - 1, gfx_messageBox->h - 1, 0x00, 0x00, 0xaa);
+		gfx_blit(face, 5, 5, gfx_messageBox);
 	}
 	else
 	{
-		gfx_drawRect(messageBox, 0, 0, messageBox->w - 1, messageBox->h - 1, 0x00, 0x00, 0x00);
+		gfx_drawRect(gfx_messageBox, 0, 0, gfx_messageBox->w - 1, gfx_messageBox->h - 1, 0x00, 0x00, 0x00);
 		x = 10;
 	}
 
-	gfx_renderString(message, x, 5, FONT_WHITE, 1, messageBox);
+	gfx_renderString(message, x, 5, FONT_WHITE, 1, gfx_messageBox);
 }
 
 SDL_Surface *gfx_loadImage(const char *filename)
@@ -445,45 +443,45 @@ SDL_Surface *gfx_loadImage(const char *filename)
 
 void gfx_free()
 {
-	for (int i = 0 ; i < MAX_SHAPES ; i++)
+	for (int i = 0 ; i < MAX_SPRITES ; i++)
 	{
-		if (shape[i] != NULL)
+		if (gfx_sprites[i] != NULL)
 		{
-			SDL_FreeSurface(shape[i]);
-			shape[i] = NULL;
+			SDL_FreeSurface(gfx_sprites[i]);
+			gfx_sprites[i] = NULL;
 		}
 	}
 
-	for (int i = 0 ; i < MAX_SHIPSHAPES ; i++)
+	for (int i = 0 ; i < MAX_SHIPSPRITES ; i++)
 	{
-		if (shipShape[i] != NULL)
+		if (gfx_shipSprites[i] != NULL)
 		{
-			SDL_FreeSurface(shipShape[i]);
-			shipShape[i] = NULL;
+			SDL_FreeSurface(gfx_shipSprites[i]);
+			gfx_shipSprites[i] = NULL;
 		}
 	}
 
-	for (int i = 0 ; i < MAX_TEXTSHAPES ; i++)
+	for (int i = 0 ; i < MAX_TEXTSPRITES ; i++)
 	{
-		if (gfx_text[i].image != NULL)
+		if (gfx_textSprites[i].image != NULL)
 		{
-			SDL_FreeSurface(gfx_text[i].image);
-			gfx_text[i].image = NULL;
+			SDL_FreeSurface(gfx_textSprites[i].image);
+			gfx_textSprites[i].image = NULL;
 		}
 	}
 
-	for (int i = 0 ; i < MAX_SHOPSHAPES ; i++)
+	for (int i = 0 ; i < MAX_SHOPSPRITES ; i++)
 	{
-		if (shopSurface[i] != NULL)
+		if (gfx_shopSprites[i] != NULL)
 		{
-			SDL_FreeSurface(shopSurface[i]);
-				shopSurface[i] = NULL;
+			SDL_FreeSurface(gfx_shopSprites[i]);
+				gfx_shopSprites[i] = NULL;
 		}
 	}
 
-	if (messageBox != NULL)
+	if (gfx_messageBox != NULL)
 	{
-		SDL_FreeSurface(messageBox);
-		messageBox = NULL;
+		SDL_FreeSurface(gfx_messageBox);
+		gfx_messageBox = NULL;
 	}
 }

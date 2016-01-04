@@ -30,12 +30,12 @@ static signed char showGameMenu(signed char continueSaveSlot)
 	screen_blitText(TS_OPTIONS);
 	if (engine.cheat)
 	{
-		gfx_text[TS_QUIT].y = screen->h / 3 + 150;
+		gfx_textSprites[TS_QUIT].y = screen->h / 3 + 150;
 		screen_blitText(TS_CHEAT_OPTIONS);
 	}
 	else
 	{
-		gfx_text[TS_QUIT].y = screen->h / 3 + 130;
+		gfx_textSprites[TS_QUIT].y = screen->h / 3 + 130;
 	}
 	screen_blitText(TS_QUIT);
 
@@ -52,10 +52,10 @@ static signed char showLoadMenu()
 	for (int i = TS_SAVESLOT_0 ; i <= TS_SAVESLOT_5 ; i++)
 	{
 		rtn++;
-		if (gfx_text[i].image != NULL)
+		if (gfx_textSprites[i].image != NULL)
 		{
 			screen_blitText(i);
-			gfx_text[TS_BACK_TO_MAIN_MENU].y = gfx_text[i].y + 40;
+			gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = gfx_textSprites[i].y + 40;
 		}
 	}
 	screen_blitText(TS_BACK_TO_MAIN_MENU);
@@ -87,7 +87,7 @@ static void createDifficultyMenu()
 
 static signed char showDifficultyMenu()
 {
-	gfx_text[TS_BACK_TO_MAIN_MENU].y = screen->h / 3 + 110;
+	gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = screen->h / 3 + 110;
 
 	screen_blitText(TS_START_GAME);
 	screen_blitText(TS_DIFFICULTY);
@@ -129,7 +129,7 @@ static void createOptionsMenu()
 
 static signed char showOptionsMenu()
 {
-	gfx_text[TS_BACK_TO_MAIN_MENU].y = screen->h / 3 + 150;
+	gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = screen->h / 3 + 150;
 
 	screen_blitText(TS_SOUND);
 	screen_blitText(TS_MUSIC);
@@ -173,7 +173,7 @@ static void createCheatMenu()
 
 static signed char showCheatMenu()
 {
-	gfx_text[TS_BACK_TO_MAIN_MENU].y = screen->h / 3 + 150;
+	gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = screen->h / 3 + 150;
 
 	screen_blitText(TS_UNLIMITED_SHIELD);
 	screen_blitText(TS_UNLIMITED_AMMO);
@@ -635,11 +635,11 @@ void showStory()
 
 		// XXX: The fact that it's line 8 that's watched is completely
 		// arbitrary. It might be prudent to replace this with something else.
-		if (gfx_text[8].y > (screen->h / 2) + 150)
+		if (gfx_textSprites[8].y > (screen->h / 2) + 150)
 		{
 			for (int i = 0 ; i < 9 ; i++)
 			{
-				gfx_text[i].y -= 0.33333;
+				gfx_textSprites[i].y -= 0.33333;
 				screen_blitText(i);
 			}
 		}

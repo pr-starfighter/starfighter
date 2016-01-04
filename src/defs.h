@@ -102,11 +102,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define WF_TIMEDEXPLOSION 2048
 
 #define MAX_WEAPONS 20
-#define MAX_SHAPES 100
-#define MAX_SHIPSHAPES 120
-#define MAX_TEXTSHAPES 150
-#define MAX_FONTSHAPES 6
-#define MAX_SHOPSHAPES 6
+#define MAX_SPRITES 100
+#define MAX_SHIPSPRITES 120
+#define MAX_TEXTSPRITES 150
+#define MAX_FONTSPRITES 6
+#define MAX_SHOPSPRITES 6
 #define MAX_CARGO 20
 #define MAX_INFOLINES 3
 #define MAX_EVENTS 20
@@ -283,7 +283,7 @@ enum {
 	CD_URSULA
 };
 
-// Text shapes (main menu)
+// Text sprites (main menu)
 enum {
 	TS_PRESENTS,
 	TS_AN_SDL_GAME,
@@ -312,11 +312,11 @@ enum {
 	TS_DIFFICULTY
 };
 
-// Text shapes (intermission)
+// Text sprites (intermission)
 enum {
 };
 
-// Text shapes (mission)
+// Text sprites (mission)
 enum {
 	TS_RADIO = MAX_INFOLINES,
 	TS_SHIELD,

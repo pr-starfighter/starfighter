@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012, 2013 Guus Sliepen
-Copyright (C) 2015 onpon4 <onpon4@riseup.net>
+Copyright (C) 2015, 2016 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -26,6 +26,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "structs.h"
 
 SDL_Surface *screen;
+bRect *screen_bufferHead;
+bRect *screen_bufferTail;
 
 void screen_blit(SDL_Surface *image, int x, int y)
 {
@@ -34,7 +36,7 @@ void screen_blit(SDL_Surface *image, int x, int y)
 
 void screen_blitText(int i)
 {
-	screen_blit(gfx_text[i].image, (int)gfx_text[i].x, (int)gfx_text[i].y);
+	screen_blit(gfx_textSprites[i].image, (int)gfx_textSprites[i].x, (int)gfx_textSprites[i].y);
 }
 
 int screen_renderString(const char *in, int x, int y, int fontColor)

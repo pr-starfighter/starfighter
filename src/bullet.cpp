@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012 Guus Sliepen
-Copyright (C) 2015 onpon4 <onpon4@riseup.net>
+Copyright (C) 2015, 2016 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -131,7 +131,7 @@ void bullet_add(object *theWeapon, object *attacker, int y, int dy)
 	{
 		bullet->dx = RANDRANGE(-20, 20);
 		bullet->dy = RANDRANGE(-20, 20);
-		bullet->image[0] = shape[4];
+		bullet->image[0] = gfx_sprites[4];
 	}
 
 	engine.bulletTail->next = bullet;

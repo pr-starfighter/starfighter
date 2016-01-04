@@ -25,8 +25,13 @@ static void setScene(int scene)
 {
 	FILE *fp;
 	char string[255], face[255];
-	float sx, sy, x, y, speed;
-	int index, shape;
+	float sx;
+	float sy;
+	float x;
+	float y;
+	float speed;
+	int index;
+	int img;
 
 	sprintf(string, "data/cutscene%d.dat", scene);
 
@@ -47,15 +52,15 @@ static void setScene(int scene)
 	engine.ssy = sy;
 
 	// Read in the specs for each ship
-	while (fscanf(fp, "%d %d %f %f %f", &index, &shape, &x, &y, &speed) == 5)
+	while (fscanf(fp, "%d %d %f %f %f", &index, &img, &x, &y, &speed) == 5)
 	{
 		if (x < 0) x = (rand() % abs((int)x));
 		if (y < 0) y = (rand() % abs((int)y));
 		if (speed <= -1) speed = 1 + (rand() % abs((int)speed));
 
-		if (shape > -1)
+		if (img > -1)
 		{
-			aliens[index].image[0] = shipShape[shape];
+			aliens[index].image[0] = gfx_shipSprites[img];
 			aliens[index].x = x;
 			aliens[index].y = y;
 			aliens[index].dx = speed;
@@ -188,13 +193,13 @@ void doCutscene(int scene)
 
 				face = NULL;
 				if (cutMessage[currentMessage].face != -1)
-					face = shape[cutMessage[currentMessage].face];
+					face = gfx_sprites[cutMessage[currentMessage].face];
 				gfx_createMessageBox(face, cutMessage[currentMessage].message, 0);
 			}
 		}
 
-		if ((showMessage) && (messageBox != NULL))
-			screen_blit(messageBox, (screen->w - messageBox->w) / 2, screen->h - 100);
+		if ((showMessage) && (gfx_messageBox != NULL))
+			screen_blit(gfx_messageBox, (screen->w - gfx_messageBox->w) / 2, screen->h - 100);
 
 		screen_renderString("Press [Escape] to skip", -1, 580, FONT_WHITE);
 

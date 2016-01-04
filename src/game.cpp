@@ -1085,7 +1085,7 @@ static void game_doAliens()
 							(aliens[i].classDef != CD_ASTEROID2))
 						explosion_addEngine(&aliens[i]);
 					if ((!(aliens[i].flags & FL_ISCLOAKED)) || (aliens[i].hit > 0))
-						screen_blit(shipShape[shapeToUse], (int)aliens[i].x,
+						screen_blit(gfx_shipSprites[shapeToUse], (int)aliens[i].x,
 							(int)aliens[i].y);
 					if (aliens[i].flags & FL_DISABLED)
 					{
@@ -1395,7 +1395,7 @@ static void game_doPlayer()
 
 			LIMIT_ADD(player.hit, -1, 0, 100);
 
-			screen_blit(shipShape[shapeToUse], (int)player.x, (int)player.y);
+			screen_blit(gfx_shipSprites[shapeToUse], (int)player.x, (int)player.y);
 			if ((player.maxShield > 1) && (player.shield <= engine.lowShield) &&
 					(rand() % 5 < 1))
 				explosion_add(player.x + RANDRANGE(-10, 10),
@@ -1481,7 +1481,7 @@ static void game_doCargo()
 			// draw the chain link line
 			for (int j = 0 ; j < 10 ; j++)
 			{
-				screen_blit(shape[30], (int)chainX, (int)chainY);
+				screen_blit(gfx_sprites[30], (int)chainX, (int)chainY);
 				chainX -= dx;
 				chainY -= dy;
 			}
@@ -1560,7 +1560,7 @@ void game_doExplosions()
 				else
 				{
 					explosion->face++;
-					explosion->image[0] = shape[explosion->face];
+					explosion->image[0] = gfx_sprites[explosion->face];
 				}
 			}
 		}
@@ -1604,31 +1604,31 @@ static void game_doArrow(int i)
 
 	if (sxy == sx) {
 		arrow = x < screen->w / 2 ? 42 : 38;
-		x -= x > screen->w / 2 ? shape[arrow]->w : 0;
-		y -= shape[arrow]->h / 2;
+		x -= x > screen->w / 2 ? gfx_sprites[arrow]->w : 0;
+		y -= gfx_sprites[arrow]->h / 2;
 	} else {
 		arrow = y < screen->h / 2 ? 36 : 40;
-		x -= shape[arrow]->w / 2;
-		y -= y > screen->h / 2 ? shape[arrow]->h : 0;
+		x -= gfx_sprites[arrow]->w / 2;
+		y -= y > screen->h / 2 ? gfx_sprites[arrow]->h : 0;
 	}
 
-	screen_blit(shape[arrow], x, y);
+	screen_blit(gfx_sprites[arrow], x, y);
 
 	if (i != engine.targetIndex)
 		return;
 
-	if (gfx_text[TS_RADIO].life > 0)
+	if (gfx_textSprites[TS_RADIO].life > 0)
 		return;
 
 	if (sxy == sx) {
-		x -= x > screen->w / 2 ? 5 + shape[44]->w : -5 - shape[arrow]->w;
-		y -= (shape[44]->h - shape[arrow]->h) / 2;
+		x -= x > screen->w / 2 ? 5 + gfx_sprites[44]->w : -5 - gfx_sprites[arrow]->w;
+		y -= (gfx_sprites[44]->h - gfx_sprites[arrow]->h) / 2;
 	} else {
-		x -= (shape[44]->w - shape[arrow]->w) / 2;
-		y -= y > screen->h / 2 ? 5 + shape[44]->h : -5 - shape[arrow]->h;
+		x -= (gfx_sprites[44]->w - gfx_sprites[arrow]->w) / 2;
+		y -= y > screen->h / 2 ? 5 + gfx_sprites[44]->h : -5 - gfx_sprites[arrow]->h;
 	}
 
-	screen_blit(shape[44], x, y);
+	screen_blit(gfx_sprites[44], x, y);
 }
 
 static void game_doHud()
@@ -1769,28 +1769,28 @@ static void game_doHud()
 
 	for (int i = 0 ; i < MAX_INFOLINES ; i++)
 	{
-		if (gfx_text[i].life > 0)
+		if (gfx_textSprites[i].life > 0)
 		{
-			gfx_text[i].y = screen->h - 75 - (i * 20);
+			gfx_textSprites[i].y = screen->h - 75 - (i * 20);
 			screen_blitText(i);
-			gfx_text[i].life--;
+			gfx_textSprites[i].life--;
 
-			if (gfx_text[i].life == 0)
+			if (gfx_textSprites[i].life == 0)
 			{
 				for (int j = i ; j < MAX_INFOLINES - 1 ; j++)
 				{
 					copyInfoLine(j + 1, j);
 				}
-				gfx_text[MAX_INFOLINES - 1].life = 0;
+				gfx_textSprites[MAX_INFOLINES - 1].life = 0;
 			}
 		}
 	}
 
 	// Show the radio message if there is one
-	if (gfx_text[TS_RADIO].life > 0)
+	if (gfx_textSprites[TS_RADIO].life > 0)
 	{
-		screen_blit(messageBox, (screen->w - messageBox->w) / 2, 50);
-		gfx_text[TS_RADIO].life--;
+		screen_blit(gfx_messageBox, (screen->w - gfx_messageBox->w) / 2, 50);
+		gfx_textSprites[TS_RADIO].life--;
 	}
 
 	// Do the target's remaining shield (if required)

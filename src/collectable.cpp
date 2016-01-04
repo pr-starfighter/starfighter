@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012 Guus Sliepen
-Copyright (C) 2015 onpon4 <onpon4@riseup.net>
+Copyright (C) 2015, 2016 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -153,52 +153,52 @@ void collectable_add(float x, float y, int type, int value, int life)
 	switch(type)
 	{
 		case P_CASH:
-			collectable->image = shape[24];
+			collectable->image = gfx_sprites[24];
 			break;
 
 		case P_ROCKET:
-			collectable->image = shape[49];
+			collectable->image = gfx_sprites[49];
 			break;
 
 		case P_PLASMA_AMMO:
-			collectable->image = shape[25];
+			collectable->image = gfx_sprites[25];
 			break;
 
 		case P_SHIELD:
-			collectable->image = shape[26];
+			collectable->image = gfx_sprites[26];
 			break;
 
 		case P_PLASMA_SHOT:
-			collectable->image = shape[27];
+			collectable->image = gfx_sprites[27];
 			break;
 
 		case P_PLASMA_RATE:
-			collectable->image = shape[28];
+			collectable->image = gfx_sprites[28];
 			break;
 
 		case P_PLASMA_DAMAGE:
-			collectable->image = shape[29];
+			collectable->image = gfx_sprites[29];
 			break;
 
 		case P_CARGO:
-			collectable->image = shape[32];
+			collectable->image = gfx_sprites[32];
 			break;
 
 		case P_SUPER:
-			collectable->image = shape[50];
+			collectable->image = gfx_sprites[50];
 			break;
 
 		case P_MINE:
-			collectable->image = shape[31];
+			collectable->image = gfx_sprites[31];
 			break;
 
 		case P_SLAVES:
 		case P_ESCAPEPOD:
-			collectable->image = shape[45];
+			collectable->image = gfx_sprites[45];
 			break;
 
 		case P_ORE:
-			collectable->image = shape[46 + rand() % 3];
+			collectable->image = gfx_sprites[46 + rand() % 3];
 			break;
 	}
 

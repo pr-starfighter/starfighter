@@ -41,8 +41,8 @@ void loadGameGraphics()
 
 	gfx_free();
 
-	shipShape[0] = gfx_loadImage("gfx/firefly1.png");
-	shipShape[1] = gfx_loadImage("gfx/firefly2.png");
+	gfx_shipSprites[0] = gfx_loadImage("gfx/firefly1.png");
+	gfx_shipSprites[1] = gfx_loadImage("gfx/firefly2.png");
 
 	switch(game.system)
 	{
@@ -67,7 +67,7 @@ void loadGameGraphics()
 
 	while (fscanf(fp, "%d %s", &index, string) == 2)
 	{
-		shipShape[index] = gfx_loadImage(string);
+		gfx_shipSprites[index] = gfx_loadImage(string);
 	}
 
 	fclose(fp);
@@ -75,54 +75,54 @@ void loadGameGraphics()
 	/*
 	Create images of ships being hit that show a lot of red
 	*/
-	for (int i = SHIP_HIT_INDEX ; i < MAX_SHIPSHAPES ; i++)
+	for (int i = SHIP_HIT_INDEX ; i < MAX_SHIPSPRITES ; i++)
 	{
-		if (shipShape[i - SHIP_HIT_INDEX] == NULL)
+		if (gfx_shipSprites[i - SHIP_HIT_INDEX] == NULL)
 			continue;
-		shipShape[i] = gfx_createSurface(shipShape[i - SHIP_HIT_INDEX]->w,
-			shipShape[i - SHIP_HIT_INDEX]->h);
-		SDL_SetSurfaceBlendMode(shipShape[i - SHIP_HIT_INDEX], SDL_BLENDMODE_NONE);
-		gfx_blit(shipShape[i - SHIP_HIT_INDEX], 0, 0, shipShape[i]);
-		SDL_SetSurfaceBlendMode(shipShape[i - SHIP_HIT_INDEX], SDL_BLENDMODE_BLEND);
+		gfx_shipSprites[i] = gfx_createSurface(gfx_shipSprites[i - SHIP_HIT_INDEX]->w,
+			gfx_shipSprites[i - SHIP_HIT_INDEX]->h);
+		SDL_SetSurfaceBlendMode(gfx_shipSprites[i - SHIP_HIT_INDEX], SDL_BLENDMODE_NONE);
+		gfx_blit(gfx_shipSprites[i - SHIP_HIT_INDEX], 0, 0, gfx_shipSprites[i]);
+		SDL_SetSurfaceBlendMode(gfx_shipSprites[i - SHIP_HIT_INDEX], SDL_BLENDMODE_BLEND);
 
-		switch (shipShape[i]->format->BitsPerPixel)
+		switch (gfx_shipSprites[i]->format->BitsPerPixel)
 		{
 			case 32:
-				SDL_LockSurface(shipShape[i]);
-				p32 = (Uint32 *)shipShape[i]->pixels;
-				for (int j = 0; j < shipShape[i]->w * shipShape[i]->h; j++)
+				SDL_LockSurface(gfx_shipSprites[i]);
+				p32 = (Uint32 *)gfx_shipSprites[i]->pixels;
+				for (int j = 0; j < gfx_shipSprites[i]->w * gfx_shipSprites[i]->h; j++)
 				{
 					if (p32[j])
-						p32[j] |= shipShape[i]->format->Rmask;
+						p32[j] |= gfx_shipSprites[i]->format->Rmask;
 				}
-				SDL_UnlockSurface(shipShape[i]);
+				SDL_UnlockSurface(gfx_shipSprites[i]);
 				break;
 
 			case 16:
-				SDL_LockSurface(shipShape[i]);
-				p16 = (Uint16 *)shipShape[i]->pixels;
-				for (int j = 0; j < shipShape[i]->w * shipShape[i]->h; j++)
+				SDL_LockSurface(gfx_shipSprites[i]);
+				p16 = (Uint16 *)gfx_shipSprites[i]->pixels;
+				for (int j = 0; j < gfx_shipSprites[i]->w * gfx_shipSprites[i]->h; j++)
 				{
 					if (p16[j])
-						p16[j] |= shipShape[i]->format->Rmask;
+						p16[j] |= gfx_shipSprites[i]->format->Rmask;
 				}
-				SDL_UnlockSurface(shipShape[i]);
+				SDL_UnlockSurface(gfx_shipSprites[i]);
 				break;
 
 			case 8:
-				SDL_LockSurface(shipShape[i]);
-				p8 = (Uint8 *)shipShape[i]->pixels;
-				for (int j = 0; j < shipShape[i]->w * shipShape[i]->h; j++)
+				SDL_LockSurface(gfx_shipSprites[i]);
+				p8 = (Uint8 *)gfx_shipSprites[i]->pixels;
+				for (int j = 0; j < gfx_shipSprites[i]->w * gfx_shipSprites[i]->h; j++)
 				{
 					if (p8[j])
-						p8[j] = SDL_MapRGB(shipShape[i]->format, 255, 0, 0);
+						p8[j] = SDL_MapRGB(gfx_shipSprites[i]->format, 255, 0, 0);
 				}
-				SDL_UnlockSurface(shipShape[i]);
+				SDL_UnlockSurface(gfx_shipSprites[i]);
 				break;
 		}
 
-		SDL_SetColorKey(shipShape[i], SDL_TRUE,
-			SDL_MapRGB(shipShape[i]->format, 0, 0, 0));
+		SDL_SetColorKey(gfx_shipSprites[i], SDL_TRUE,
+			SDL_MapRGB(gfx_shipSprites[i]->format, 0, 0, 0));
 	}
 
 	strcpy(string, "data/resources_all.dat");
@@ -131,7 +131,7 @@ void loadGameGraphics()
 
 	while (fscanf(fp, "%d %s", &index, string) == 2)
 	{
-		shape[index] = gfx_loadImage(string);
+		gfx_sprites[index] = gfx_loadImage(string);
 	}
 
 	fclose(fp);
@@ -140,10 +140,10 @@ void loadGameGraphics()
 
 	for (int i = 0 ; i < CD_MAX ; i++)
 	{
-		if (shipShape[alien_defs[i].imageIndex[0]] != NULL)
+		if (gfx_shipSprites[alien_defs[i].imageIndex[0]] != NULL)
 		{
-			alien_defs[i].image[0] = shipShape[alien_defs[i].imageIndex[0]];
-			alien_defs[i].image[1] = shipShape[alien_defs[i].imageIndex[1]];
+			alien_defs[i].image[0] = gfx_shipSprites[alien_defs[i].imageIndex[0]];
+			alien_defs[i].image[1] = gfx_shipSprites[alien_defs[i].imageIndex[1]];
 			alien_defs[i].engineX = alien_defs[i].image[0]->w;
 			alien_defs[i].engineY = (alien_defs[i].image[0]->h / 2);
 		}
@@ -161,7 +161,7 @@ void loadFont()
 {
 	SDL_Surface *image, *newImage;
 
-	for (int i = 0 ; i < MAX_FONTSHAPES ; i++)
+	for (int i = 0 ; i < MAX_FONTSPRITES ; i++)
 	{
 		image = IMG_Load("gfx/smallFont.png");
 
@@ -191,7 +191,7 @@ void loadFont()
 
 		newImage = SDL_ConvertSurface(image, screen->format, 0);
 
-		fontShape[i] = gfx_setTransparent(newImage);
+		gfx_fontSprites[i] = gfx_setTransparent(newImage);
 
 		SDL_FreeSurface(image);
  	}
