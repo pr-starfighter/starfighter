@@ -44,6 +44,14 @@ void loadGameGraphics()
 	gfx_shipSprites[0] = gfx_loadImage("gfx/firefly1.png");
 	gfx_shipSprites[1] = gfx_loadImage("gfx/firefly2.png");
 
+	// Faces
+	gfx_faceSprites[FS_CHRIS] = gfx_loadImage("gfx/face_chris.png");
+	gfx_faceSprites[FS_SID] = gfx_loadImage("gfx/face_sid.png");
+	gfx_faceSprites[FS_KRASS] = gfx_loadImage("gfx/face_krass.png");
+	gfx_faceSprites[FS_PHOEBE] = gfx_loadImage("gfx/face_phoebe.png");
+	gfx_faceSprites[FS_URSULA] = gfx_loadImage("gfx/face_ursula.png");
+	gfx_faceSprites[FS_KLINE] = gfx_loadImage("gfx/face_kline.png");
+
 	switch(game.system)
 	{
 		case 0:

@@ -27,7 +27,7 @@ SDL_Surface *gfx_faceSprites[FS_MAX];
 SDL_Surface *gfx_shipSprites[MAX_SHIPSPRITES];
 SDL_Surface *gfx_fontSprites[MAX_FONTSPRITES];
 SDL_Surface *gfx_shopSprites[MAX_SHOPSPRITES];
-textObject gfx_textSprites[MAX_TEXTSPRITES];
+textObject gfx_textSprites[TS_MAX];
 SDL_Surface *gfx_messageBox;
 
 void gfx_init()
@@ -42,7 +42,7 @@ void gfx_init()
 	for (int i = 0 ; i < MAX_SHIPSPRITES ; i++)
 		gfx_shipSprites[i] = NULL;
 
-	for (int i = 0 ; i < MAX_TEXTSPRITES ; i++)
+	for (int i = 0 ; i < TS_MAX ; i++)
 		gfx_textSprites[i].image = NULL;
 
 	for (int i = 0 ; i < MAX_SHOPSPRITES ; i++)
@@ -453,6 +453,15 @@ void gfx_free()
 		}
 	}
 
+	for (int i = 0 ; i < FS_MAX ; i++)
+	{
+		if (gfx_faceSprites[i] != NULL)
+		{
+			SDL_FreeSurface(gfx_faceSprites[i]);
+			gfx_faceSprites[i] = NULL;
+		}
+	}
+
 	for (int i = 0 ; i < MAX_SHIPSPRITES ; i++)
 	{
 		if (gfx_shipSprites[i] != NULL)
@@ -462,7 +471,7 @@ void gfx_free()
 		}
 	}
 
-	for (int i = 0 ; i < MAX_TEXTSPRITES ; i++)
+	for (int i = 0 ; i < TS_MAX ; i++)
 	{
 		if (gfx_textSprites[i].image != NULL)
 		{

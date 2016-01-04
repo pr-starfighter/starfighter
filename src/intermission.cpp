@@ -39,14 +39,11 @@ These are set only once.
 static void intermission_setStatusLines()
 {
 	char string[50];
+	int total = 0;
+	int completed = 0;
+	int timeTaken = game.timeTaken;
+	int y;
 
-	sprintf(string, "System : %s", systemNames[game.system]);
-
-	gfx_createTextObject(0, string, 0, 0, FONT_WHITE);
-
-	signed char total = 0;
-	signed char completed = 0;
-	
 	for (int i = 0 ; i < 10 ; i++)
 	{
 		if (systemPlanet[i].missionNumber > -1)
@@ -64,102 +61,88 @@ static void intermission_setStatusLines()
 		}
 	}
 
-	for (int i = 0 ; i < 30 ; i++)
-		gfx_createTextObject(i, "", 0, 0, FONT_WHITE);
-
 	sprintf(string, "Missions Completed : %d/%d", completed, total);
-	gfx_createTextObject(1, string, 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_MISSIONS_COMPLETED, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Shots Fired : %d", game.shots);
-	gfx_createTextObject(2, string, 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_SHOTS_FIRED, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Hits Scored : %d", game.hits);
-	gfx_createTextObject(3, string, 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_HITS_SCORED, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Accuracy : %d%%", game.accuracy);
-	gfx_createTextObject(4, string, 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_ACCURACY, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Enemies Killed by Others : %d", game.totalOtherKills);
-	gfx_createTextObject(5, string, 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_OTHER_KILLS, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Total Cash Earned : %d", game.cashEarned);
-	gfx_createTextObject(6, string, 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_CASH_EARNED, string, 0, 0, FONT_WHITE);
 
-	gfx_createTextObject(7, "*** Chris ***", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_CHRIS_HEADER, "*** Chris ***", 0, 0, FONT_WHITE);
 
 	sprintf(string, "Enemies Killed : %d", game.totalKills);
-	gfx_createTextObject(8, string, 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_CHRIS_KILLS, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Shield Restores Picked Up : %d", game.shieldPickups);
-	gfx_createTextObject(9, string, 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_CHRIS_SHIELD_PICKUPS, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Plasma Cells Picked Up : %d", game.cellPickups);
-	gfx_createTextObject(10, string, 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_CHRIS_PLASMA_PICKUPS, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Rockets Picked Up : %d", game.rocketPickups);
-	gfx_createTextObject(11, string, 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_CHRIS_ROCKET_PICKUPS, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Powerups Picked Up : %d", game.rocketPickups);
-	gfx_createTextObject(12, string, 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_CHRIS_POWERUP_PICKUPS, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Mines Destroyed : %d", game.minesKilled);
-	gfx_createTextObject(13, string, 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_CHRIS_MINES_KILLED, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Slaves Rescued : %d", game.slavesRescued);
-	gfx_createTextObject(14, string, 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_CHRIS_SLAVES_RESCUED, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Cargo Picked Up : %d", game.cargoPickups);
-	gfx_createTextObject(15, string, 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_CHRIS_CARGO_PICKUPS, string, 0, 0, FONT_WHITE);
 
 	if (game.hasWingMate1)
 	{
-		gfx_createTextObject(16, "*** Phoebe ***", 0, 0, FONT_WHITE);
+		gfx_createTextObject(TS_PHOEBE_HEADER, "*** Phoebe ***", 0, 0, FONT_WHITE);
 
 		sprintf(string, "Enemies Killed : %d", game.wingMate1Kills);
-		gfx_createTextObject(17, string, 0, 0, FONT_WHITE);
+		gfx_createTextObject(TS_PHOEBE_KILLS, string, 0, 0, FONT_WHITE);
 
 		sprintf(string, "Ejections : %d", game.wingMate1Ejects);
-		gfx_createTextObject(18, string, 0, 0, FONT_WHITE);
+		gfx_createTextObject(TS_PHOEBE_DEATHS, string, 0, 0, FONT_WHITE);
 	}
 
 	if (game.hasWingMate2)
 	{
-		gfx_createTextObject(19, "*** Ursula ***", 0, 0, FONT_WHITE);
+		gfx_createTextObject(TS_URSULA_HEADER, "*** Ursula ***", 0, 0, FONT_WHITE);
 
 		sprintf(string, "Enemies Killed : %d", game.wingMate2Kills);
-		gfx_createTextObject(20, string, 0, 0, FONT_WHITE);
+		gfx_createTextObject(TS_URSULA_KILLS, string, 0, 0, FONT_WHITE);
 
 		sprintf(string, "Ejections : %d", game.wingMate2Ejects);
-		gfx_createTextObject(21, string, 0, 0, FONT_WHITE);
+		gfx_createTextObject(TS_URSULA_DEATHS, string, 0, 0, FONT_WHITE);
 	}
 
-	signed char percentage = 0;
-	if ((game.secondaryMissions > 0) && (game.secondaryMissionsCompleted > 0))
-		percentage = (game.secondaryMissionsCompleted / game.secondaryMissions) * 100;
-	sprintf(string, "Seconday Missions Completed : %d / %d (%d%%)", game.secondaryMissionsCompleted, game.secondaryMissions, percentage);
-	gfx_createTextObject(24, string, 0, 0, FONT_WHITE);
-
-	int timeTaken = game.timeTaken;
+	gfx_createTextObject(TS_STATUS_HEADER, "Current Status", -1, 83, FONT_WHITE);
 
 	snprintf(string, sizeof string, "Total Time : %2d:%02d:%02d", timeTaken / 3600, (timeTaken / 60) % 60, timeTaken % 60);
+	gfx_createTextObject(TS_STATUS_FOOTER, string, -1, 404, FONT_WHITE);
 
-	gfx_createTextObject(26, string, -1, 0, FONT_WHITE);
-	gfx_createTextObject(27, "Current Status", -1, 0, FONT_WHITE);
-
-	gfx_textSprites[0].y = 400;
-	gfx_textSprites[0].x = 150;
-
-	for (int i = 1 ; i < 25 ; i++)
+	y = 400;
+	for (int i = TS_STATUS_HEADER + 1 ; i < TS_STATUS_FOOTER ; i++)
 	{
-		gfx_textSprites[i].y = gfx_textSprites[i - 1].y + 20;
-		if ((i == 7) || (i == 16) || (i == 19))
-			gfx_textSprites[i].y += 25;
+		y += 20;
+		if ((i == TS_CHRIS_HEADER) || (i == TS_PHOEBE_HEADER) ||
+				(i == TS_URSULA_HEADER))
+			y += 25;
 
 		gfx_textSprites[i].x = 150;
+		gfx_textSprites[i].y = y;
 	}
-
-	gfx_textSprites[26].y = 404;
-	gfx_textSprites[27].y = 83;
 }
 
 /*
@@ -309,6 +292,7 @@ list is reset and the information lines begin again from the bottom
 */
 static void intermission_showStatus(SDL_Surface *infoSurface)
 {
+	int y;
 	float speed = 0.25;
 
 	if(engine.keyState[KEY_DOWN])
@@ -318,22 +302,24 @@ static void intermission_showStatus(SDL_Surface *infoSurface)
 
 	screen_blit(infoSurface, 100, 80);
 
-	for (int i = 0 ; i < 22 ; i++)
+	for (int i = TS_STATUS_HEADER + 1 ; i < TS_STATUS_FOOTER ; i++)
 	{
 		gfx_textSprites[i].y -= speed;
 		if ((gfx_textSprites[i].y > 80) && (gfx_textSprites[i].y < 400))
 			screen_blitText(i);
 	}
 
-	if (gfx_textSprites[21].y < 65)
+	if (gfx_textSprites[TS_STATUS_FOOTER - 1].y < 65)
 	{
-		gfx_textSprites[0].y = 400;
-
-		for (int i = 1 ; i < 25 ; i++)
+		y = 400;
+		for (int i = TS_STATUS_HEADER + 1 ; i < TS_STATUS_FOOTER ; i++)
 		{
-			gfx_textSprites[i].y = gfx_textSprites[i - 1].y + 20;
-			if ((i == 7) || (i == 16) || (i == 19))
-				gfx_textSprites[i].y += 25;
+			y += 20;
+			if ((i == TS_CHRIS_HEADER) || (i == TS_PHOEBE_HEADER) ||
+					(i == TS_URSULA_HEADER))
+				y += 25;
+
+			gfx_textSprites[i].y = y;
 		}
 	}
 
@@ -341,8 +327,8 @@ static void intermission_showStatus(SDL_Surface *infoSurface)
 
 	screen_drawRect(100, 400, 600, 20, 0x00, 0x00, 0x99);
 
-	screen_blitText(26);
-	screen_blitText(27);
+	screen_blitText(TS_STATUS_HEADER);
+	screen_blitText(TS_STATUS_FOOTER);
 }
 
 static void intermission_updateCommsSurface(SDL_Surface *comms)
@@ -567,6 +553,8 @@ selected an icon.
 */
 int intermission()
 {
+	int iconInfoY;
+
 	gfx_free();
 
 	checkForBossMission(); // double check just to make sure!
@@ -607,7 +595,7 @@ int intermission()
 	gfx_sprites[33] = gfx_loadImage("gfx/planet_red.png");
 	gfx_sprites[34] = gfx_loadImage("gfx/planet_orange.png");
 
-	// Faces (as defines)
+	// Faces
 	gfx_faceSprites[FS_CHRIS] = gfx_loadImage("gfx/face_chris.png");
 	gfx_faceSprites[FS_SID] = gfx_loadImage("gfx/face_sid.png");
 	gfx_faceSprites[FS_KRASS] = gfx_loadImage("gfx/face_krass.png");
@@ -670,32 +658,29 @@ int intermission()
 	if ((engine.useAudio) && (engine.useMusic))
 		audio_playMusic("music/through_space.ogg", -1);
 
-	textObject iconInfo[12];
-
-	iconInfo[0].image = gfx_createTextSurface("Start Next Mission", FONT_WHITE);
-	iconInfo[1].image = gfx_createTextSurface("View System Map", FONT_WHITE);
-	iconInfo[2].image = gfx_createTextSurface("Current Status", FONT_WHITE);
-	iconInfo[3].image = gfx_createTextSurface("Save Game", FONT_WHITE);
-	iconInfo[4].image = gfx_createTextSurface("Upgrade FIREFLY", FONT_WHITE);
-	iconInfo[5].image = gfx_createTextSurface("Comms", FONT_WHITE);
-	iconInfo[6].image = gfx_createTextSurface("Options", FONT_WHITE);
-	iconInfo[7].image = gfx_createTextSurface("Exit to Title Screen", FONT_WHITE);
-
 	sprintf(string, "System : %s", systemNames[game.system]);
-	iconInfo[8].image = gfx_createTextSurface(string, FONT_WHITE);
+	gfx_createTextObject(TS_CURRENT_SYSTEM, string, -1, 15, FONT_WHITE);
+
+	iconInfoY = 545;
+
+	gfx_createTextObject(TS_INFO_START_MISSION, "Start Next Mission", -1, iconInfoY, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_GOTO, "Go to Destination Planet", -1, iconInfoY, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_MAP, "View System Map", -1, iconInfoY, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_STATUS, "Current Status", -1, iconInfoY, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_SAVE_GAME, "Save Game", -1, iconInfoY, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_SHOP, "Upgrade FIREFLY", -1, iconInfoY, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_COMMS, "Comms", -1, iconInfoY, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_OPTIONS, "Options", -1, iconInfoY, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_EXIT, "Exit to Title Screen", -1, iconInfoY, FONT_WHITE);
 
 	sprintf(string, "Stationed At: %s", systemPlanet[game.stationedPlanet].name);
-	iconInfo[9].image = gfx_createTextSurface(string, FONT_WHITE);
+	gfx_createTextObject(TS_CURRENT_PLANET, string, 90, 450, FONT_WHITE);
 
 	if (game.destinationPlanet > -1)
 		sprintf(string, "Destination: %s", systemPlanet[game.destinationPlanet].name);
 	else
 		strcpy(string, "Destination: None");
-	iconInfo[10].image = gfx_createTextSurface(string, FONT_WHITE);
-	for (int i = 0 ; i < 9 ; i++)
-		iconInfo[i].x = (screen->w - iconInfo[i].image->w) / 2;
-
-	iconInfo[11].image = gfx_createTextSurface("Go to Destination Planet", FONT_WHITE);
+	gfx_createTextObject(TS_DEST_PLANET, string, 550, 450, FONT_WHITE);
 
 	bool rescreen_drawBackground = true;
 
@@ -747,18 +732,13 @@ int intermission()
 
 		if (rand() % 1000 < 2)
 		{
-			// XXX: This code originally had the range set to [100, 100],
-			// which effectively always caused the star speed to be set to
-			// 1. I don't think this was the intention, so I changed the
-			// minimum from 100 to -100, which is what I think was probably
-			// intended.
 			engine.ssx = RANDRANGE(-100, 100);
 			engine.ssy = RANDRANGE(-100, 100);
 			engine.ssx /= 100;
 			engine.ssy /= 100;
 		}
 
-		screen_blit(iconInfo[8].image, (int)iconInfo[8].x, 15);
+		screen_blitText(TS_CURRENT_SYSTEM);
 
 		switch(section)
 		{
@@ -776,11 +756,10 @@ int intermission()
 					if (distance < 1)
 						distance = 1;
 
-					SDL_FreeSurface(iconInfo[9].image);
-					iconInfo[9].image = gfx_createTextSurface(systemPlanet[game.stationedPlanet].name, FONT_WHITE);
-
-					SDL_FreeSurface(iconInfo[10].image);
-					iconInfo[10].image = gfx_createTextSurface(systemPlanet[game.destinationPlanet].name, FONT_WHITE);
+					gfx_createTextObject(TS_CURRENT_PLANET, systemPlanet[game.stationedPlanet].name,
+						135, 480, FONT_WHITE);
+					gfx_createTextObject(TS_DEST_PLANET, systemPlanet[game.destinationPlanet].name,
+						635, 480, FONT_WHITE);
 
 					section = 8;
 
@@ -811,21 +790,19 @@ int intermission()
 					if (game.system == 0)
 					{
 						sprintf(string, "Stationed At: %s", systemPlanet[game.stationedPlanet].name);
-						SDL_FreeSurface(iconInfo[9].image);
-						iconInfo[9].image = gfx_createTextSurface(string, FONT_WHITE);
+						gfx_createTextObject(TS_CURRENT_PLANET, string, 90, 450, FONT_WHITE);
 						intermission_updateCommsSurface(commsSurface);
 					}
 					else
 					{
 						sprintf(string, "Destination: %s", systemPlanet[game.destinationPlanet].name);
-						SDL_FreeSurface(iconInfo[10].image);
-						iconInfo[10].image = gfx_createTextSurface(string, FONT_WHITE);
+						gfx_createTextObject(TS_DEST_PLANET, string, 550, 450, FONT_WHITE);
 					}
 				}
 
-				screen_blit(iconInfo[9].image, 90, 450);
+				screen_blitText(TS_CURRENT_PLANET);
 				if ((game.system > 0) && (game.stationedPlanet != game.destinationPlanet))
-					screen_blit(iconInfo[10].image, 550, 450);
+					screen_blitText(TS_DEST_PLANET);
 				break;
 
 			case 2:
@@ -860,9 +837,9 @@ int intermission()
 				intermission_showSystem(sinX, cosY, false);
 
 				screen_blit(systemPlanet[game.stationedPlanet].image, 150, 450);
-				screen_blit(iconInfo[9].image, 135, 480);
+				screen_blitText(TS_CURRENT_PLANET);
 				screen_blit(systemPlanet[game.destinationPlanet].image, 650, 450);
-				screen_blit(iconInfo[10].image, 635, 480);
+				screen_blitText(TS_DEST_PLANET);
 
 				destRect.w += distance;
 				SDL_FillRect(screen, &destRect, red);
@@ -876,8 +853,7 @@ int intermission()
 						systemPlanet[game.stationedPlanet].name);
 					strcpy(game.stationedName,
 						systemPlanet[game.stationedPlanet].name);
-					SDL_FreeSurface(iconInfo[9].image);
-					iconInfo[9].image = gfx_createTextSurface(string, FONT_WHITE);
+					gfx_createTextObject(TS_CURRENT_PLANET, string, 90, 450, FONT_WHITE);
 					intermission_updateCommsSurface(commsSurface);
 					section = 1;
 					rescreen_drawBackground = true;
@@ -922,16 +898,35 @@ int intermission()
 
 				if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 80 + (i * 90), 500, 32, 32))
 				{
-					if (i != 0)
+					switch (i)
 					{
-						screen_blit(iconInfo[i].image, (int)iconInfo[i].x, 545);
-					}
-					else
-					{
-						if (game.stationedPlanet == game.destinationPlanet)
-							screen_blit(iconInfo[0].image, (int)iconInfo[i].x, 545);
-						else
-							screen_blit(iconInfo[11].image, (int)iconInfo[i].x, 545);
+						case 0:
+							if (game.stationedPlanet == game.destinationPlanet)
+								screen_blitText(TS_INFO_START_MISSION);
+							else
+								screen_blitText(TS_INFO_GOTO);
+							break;
+						case 1:
+							screen_blitText(TS_INFO_MAP);
+							break;
+						case 2:
+							screen_blitText(TS_INFO_STATUS);
+							break;
+						case 3:
+							screen_blitText(TS_INFO_SAVE_GAME);
+							break;
+						case 4:
+							screen_blitText(TS_INFO_SHOP);
+							break;
+						case 5:
+							screen_blitText(TS_INFO_COMMS);
+							break;
+						case 6:
+							screen_blitText(TS_INFO_OPTIONS);
+							break;
+						case 7:
+							screen_blitText(TS_INFO_EXIT);
+							break;
 					}
 
 					if ((engine.keyState[KEY_FIRE]))
@@ -956,8 +951,6 @@ int intermission()
 	SDL_FreeSurface(savesSurface);
 	SDL_FreeSurface(optionsSurface);
 	SDL_FreeSurface(commsSurface);
-	for (int i = 0 ; i < 12 ; i++)
-		SDL_FreeSurface(iconInfo[i].image);
 
 	if (game.distanceCovered == 0)
 		player.shield = player.maxShield;
