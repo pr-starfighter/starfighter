@@ -34,8 +34,8 @@ void initPlayer()
 	player.systemPower = player.maxShield;
 	player.face = 0;
 
-	player.image[0] = gfx_shipSprites[0];
-	player.image[1] = gfx_shipSprites[1];
+	player.image[0] = gfx_shipSprites[SS_FIREFLY];
+	player.image[1] = gfx_shipSprites[SS_FIREFLY_L];
 
 	player.engineX = player.image[0]->w;
 	player.engineY = (player.image[0]->h / 2);

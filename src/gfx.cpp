@@ -24,7 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 SDL_Surface *gfx_background;
 SDL_Surface *gfx_sprites[MAX_SPRITES];
 SDL_Surface *gfx_faceSprites[FS_MAX];
-SDL_Surface *gfx_shipSprites[MAX_SHIPSPRITES];
+SDL_Surface *gfx_shipSprites[SS_MAX];
 SDL_Surface *gfx_fontSprites[MAX_FONTSPRITES];
 SDL_Surface *gfx_shopSprites[MAX_SHOPSPRITES];
 textObject gfx_textSprites[TS_MAX];
@@ -39,7 +39,7 @@ void gfx_init()
 	for (int i = 0 ; i < MAX_SPRITES ; i++)
 		gfx_sprites[i] = NULL;
 
-	for (int i = 0 ; i < MAX_SHIPSPRITES ; i++)
+	for (int i = 0 ; i < SS_MAX ; i++)
 		gfx_shipSprites[i] = NULL;
 
 	for (int i = 0 ; i < TS_MAX ; i++)
@@ -462,7 +462,7 @@ void gfx_free()
 		}
 	}
 
-	for (int i = 0 ; i < MAX_SHIPSPRITES ; i++)
+	for (int i = 0 ; i < SS_MAX ; i++)
 	{
 		if (gfx_shipSprites[i] != NULL)
 		{

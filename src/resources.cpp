@@ -52,46 +52,92 @@ void loadGameGraphics()
 	gfx_faceSprites[FS_URSULA] = gfx_loadImage("gfx/face_ursula.png");
 	gfx_faceSprites[FS_KLINE] = gfx_loadImage("gfx/face_kline.png");
 
-	switch(game.system)
-	{
-		case 0:
-			strcpy(string, "data/resources_spirit.dat");
-			break;
-		case 1:
-			strcpy(string, "data/resources_eyananth.dat");
-			break;
-		case 2:
-			strcpy(string, "data/resources_mordor.dat");
-			break;
-		case 3:
-			strcpy(string, "data/resources_sol.dat");
-			break;
-	}
-
-	fp = fopen(string, "rb");
-
-	if (fp == NULL)
-		exit(1);
-
-	while (fscanf(fp, "%d %s", &index, string) == 2)
-	{
-		gfx_shipSprites[index] = gfx_loadImage(string);
-	}
-
-	fclose(fp);
+	// Ships
+	gfx_shipSprites[SS_FIREFLY] = gfx_loadImage("gfx/firefly1.png");
+	gfx_shipSprites[SS_FIREFLY_L] = gfx_loadImage("gfx/firefly2.png");
+	gfx_shipSprites[SS_SID] = gfx_loadImage("gfx/sid1.png");
+	gfx_shipSprites[SS_SID_L] = gfx_loadImage("gfx/sid2.png");
+	gfx_shipSprites[SS_FRIEND] = gfx_loadImage("gfx/wingmate1.png");
+	gfx_shipSprites[SS_FRIEND_L] = gfx_loadImage("gfx/wingmate2.png");
+	gfx_shipSprites[SS_GOODTRANSPORT] = gfx_loadImage("gfx/goodTrans1.png");
+	gfx_shipSprites[SS_GOODTRANSPORT_L] = gfx_loadImage("gfx/goodTrans2.png");
+	gfx_shipSprites[SS_REBELCARRIER] = gfx_loadImage("gfx/rebelCarrier1.png");
+	gfx_shipSprites[SS_REBELCARRIER_L] = gfx_loadImage("gfx/rebelCarrier2.png");
+	gfx_shipSprites[SS_DUALFIGHTER] = gfx_loadImage("gfx/dualFighter1.png");
+	gfx_shipSprites[SS_DUALFIGHTER_L] = gfx_loadImage("gfx/dualFighter2.png");
+	gfx_shipSprites[SS_MISSILEBOAT] = gfx_loadImage("gfx/missileBoat1.png");
+	gfx_shipSprites[SS_MISSILEBOAT_L] = gfx_loadImage("gfx/missileBoat2.png");
+	gfx_shipSprites[SS_PROTOFIGHTER] = gfx_loadImage("gfx/eliteFighter1.png");
+	gfx_shipSprites[SS_PROTOFIGHTER_L] = gfx_loadImage("gfx/eliteFighter2.png");
+	gfx_shipSprites[SS_AIMFIGHTER] = gfx_loadImage("gfx/aimFighter1.png");
+	gfx_shipSprites[SS_AIMFIGHTER_L] = gfx_loadImage("gfx/aimFighter2.png");
+	gfx_shipSprites[SS_DRONE] = gfx_loadImage("gfx/drone1.png");
+	gfx_shipSprites[SS_DRONE_L] = gfx_loadImage("gfx/drone2.png");
+	gfx_shipSprites[SS_MINER] = gfx_loadImage("gfx/miner1.png");
+	gfx_shipSprites[SS_MINER_L] = gfx_loadImage("gfx/miner2.png");
+	gfx_shipSprites[SS_ESCORT] = gfx_loadImage("gfx/escort1.png");
+	gfx_shipSprites[SS_ESCORT_L] = gfx_loadImage("gfx/escort2.png");
+	gfx_shipSprites[SS_MOBILE_RAY] = gfx_loadImage("gfx/mobileCannon1.png");
+	gfx_shipSprites[SS_MOBILE_RAY_L] = gfx_loadImage("gfx/mobileCannon2.png");
+	gfx_shipSprites[SS_TRANSPORTSHIP] = gfx_loadImage("gfx/transport1.png");
+	gfx_shipSprites[SS_TRANSPORTSHIP_L] = gfx_loadImage("gfx/transport2.png");
+	gfx_shipSprites[SS_CARGOSHIP] = gfx_loadImage("gfx/tug1.png");
+	gfx_shipSprites[SS_CARGOSHIP_L] = gfx_loadImage("gfx/tug2.png");
+	gfx_shipSprites[SS_SLAVETRANSPORT] = gfx_loadImage("gfx/slaveTrans1.png");
+	gfx_shipSprites[SS_SLAVETRANSPORT_L] = gfx_loadImage("gfx/slaveTrans2.png");
+	gfx_shipSprites[SS_BARRIER] = gfx_loadImage("gfx/barrier.png");
+	gfx_shipSprites[SS_MOBILESHIELD] = gfx_loadImage("gfx/mobileShield1.png");
+	gfx_shipSprites[SS_MOBILESHIELD_L] = gfx_loadImage("gfx/mobileShield2.png");
+	gfx_shipSprites[SS_ASTEROID] = gfx_loadImage("gfx/asteroid1.png");
+	gfx_shipSprites[SS_ASTEROID_SMALL] = gfx_loadImage("gfx/asteroid2.png");
+	gfx_shipSprites[SS_ASTEROID_SMALL_L] = gfx_loadImage("gfx/asteroid3.png");
+	gfx_shipSprites[SS_CLOAKFIGHTER] = gfx_loadImage("gfx/cloakShip1.png");
+	gfx_shipSprites[SS_CLOAKFIGHTER_L] = gfx_loadImage("gfx/cloakShip2.png");
+	gfx_shipSprites[SS_EVILURSULA] = gfx_loadImage("gfx/evilUrsula1.png");
+	gfx_shipSprites[SS_EVILURSULA_L] = gfx_loadImage("gfx/evilUrsula2.png");
+	gfx_shipSprites[SS_KRASS] = gfx_loadImage("gfx/merc1.png");
+	gfx_shipSprites[SS_KRASS_L] = gfx_loadImage("gfx/merc2.png");
+	gfx_shipSprites[SS_FRIGATE] = gfx_loadImage("gfx/frigateBody1.png");
+	gfx_shipSprites[SS_FRIGATE_L] = gfx_loadImage("gfx/frigateBody2.png");
+	gfx_shipSprites[SS_FRIGATE_WING1] = gfx_loadImage("gfx/frigateGun11.png");
+	gfx_shipSprites[SS_FRIGATE_WING1_L] = gfx_loadImage("gfx/frigateGun12.png");
+	gfx_shipSprites[SS_FRIGATE_WING2] = gfx_loadImage("gfx/frigateGun21.png");
+	gfx_shipSprites[SS_FRIGATE_WING2_L] = gfx_loadImage("gfx/frigateGun22.png");
+	gfx_shipSprites[SS_MINERBOSS] = gfx_loadImage("gfx/mineBoss1.png");
+	gfx_shipSprites[SS_MINERBOSS_L] = gfx_loadImage("gfx/mineBoss2.png");
+	gfx_shipSprites[SS_MINERBOSS_WING1] = gfx_loadImage("gfx/mineBossWing11.png");
+	gfx_shipSprites[SS_MINERBOSS_WING1_L] = gfx_loadImage("gfx/mineBossWing12.png");
+	gfx_shipSprites[SS_MINERBOSS_WING2] = gfx_loadImage("gfx/mineBossWing21.png");
+	gfx_shipSprites[SS_MINERBOSS_WING2_L] = gfx_loadImage("gfx/mineBossWing22.png");
+	gfx_shipSprites[SS_MINERBOSS_WING3] = gfx_loadImage("gfx/mineBossWing31.png");
+	gfx_shipSprites[SS_MINERBOSS_WING3_L] = gfx_loadImage("gfx/mineBossWing32.png");
+	gfx_shipSprites[SS_MINERBOSS_WING4] = gfx_loadImage("gfx/mineBossWing41.png");
+	gfx_shipSprites[SS_MINERBOSS_WING4_L] = gfx_loadImage("gfx/mineBossWing42.png");
+	gfx_shipSprites[SS_EXEC] = gfx_loadImage("gfx/execTrans1.png");
+	gfx_shipSprites[SS_EXEC_L] = gfx_loadImage("gfx/execTrans2.png");
+	gfx_shipSprites[SS_PLUTOBOSS] = gfx_loadImage("gfx/plutoBoss1.png");
+	gfx_shipSprites[SS_PLUTOBOSS_L] = gfx_loadImage("gfx/plutoBoss2.png");
+	gfx_shipSprites[SS_URANUSBOSS] = gfx_loadImage("gfx/splitBoss11.png");
+	gfx_shipSprites[SS_URANUSBOSS_L] = gfx_loadImage("gfx/splitBoss12.png");
+	gfx_shipSprites[SS_URANUSBOSS_WING1] = gfx_loadImage("gfx/splitBoss21.png");
+	gfx_shipSprites[SS_URANUSBOSS_WING1_L] = gfx_loadImage("gfx/splitBoss22.png");
+	gfx_shipSprites[SS_URANUSBOSS_WING2] = gfx_loadImage("gfx/splitBoss31.png");
+	gfx_shipSprites[SS_URANUSBOSS_WING2_L] = gfx_loadImage("gfx/splitBoss32.png");
+	gfx_shipSprites[SS_KLINE] = gfx_loadImage("gfx/kline11.png");
+	gfx_shipSprites[SS_KLINE_L] = gfx_loadImage("gfx/kline12.png");
 
 	/*
 	Create images of ships being hit that show a lot of red
 	*/
-	for (int i = SHIP_HIT_INDEX ; i < MAX_SHIPSPRITES ; i++)
+	for (int i = SS_HIT_INDEX ; i < SS_MAX ; i++)
 	{
-		if (gfx_shipSprites[i - SHIP_HIT_INDEX] == NULL)
+		if (gfx_shipSprites[i - SS_HIT_INDEX] == NULL)
 			continue;
-		gfx_shipSprites[i] = gfx_createSurface(gfx_shipSprites[i - SHIP_HIT_INDEX]->w,
-			gfx_shipSprites[i - SHIP_HIT_INDEX]->h);
-		SDL_SetSurfaceBlendMode(gfx_shipSprites[i - SHIP_HIT_INDEX], SDL_BLENDMODE_NONE);
-		gfx_blit(gfx_shipSprites[i - SHIP_HIT_INDEX], 0, 0, gfx_shipSprites[i]);
-		SDL_SetSurfaceBlendMode(gfx_shipSprites[i - SHIP_HIT_INDEX], SDL_BLENDMODE_BLEND);
+		gfx_shipSprites[i] = gfx_createSurface(gfx_shipSprites[i - SS_HIT_INDEX]->w,
+			gfx_shipSprites[i - SS_HIT_INDEX]->h);
+		SDL_SetSurfaceBlendMode(gfx_shipSprites[i - SS_HIT_INDEX], SDL_BLENDMODE_NONE);
+		gfx_blit(gfx_shipSprites[i - SS_HIT_INDEX], 0, 0, gfx_shipSprites[i]);
+		SDL_SetSurfaceBlendMode(gfx_shipSprites[i - SS_HIT_INDEX], SDL_BLENDMODE_BLEND);
 
 		switch (gfx_shipSprites[i]->format->BitsPerPixel)
 		{

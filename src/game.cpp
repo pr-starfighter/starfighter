@@ -1071,7 +1071,7 @@ static void game_doAliens()
 				shapeToUse = aliens[i].imageIndex[aliens[i].face];
 
 				if (aliens[i].hit)
-					shapeToUse += SHIP_HIT_INDEX;
+					shapeToUse += SS_HIT_INDEX;
 
 				LIMIT_ADD(aliens[i].hit, -1, 0, 100);
 
@@ -1391,7 +1391,7 @@ static void game_doPlayer()
 			shapeToUse = player.face;
 
 			if (player.hit)
-				shapeToUse += SHIP_HIT_INDEX;
+				shapeToUse += SS_HIT_INDEX;
 
 			LIMIT_ADD(player.hit, -1, 0, 100);
 

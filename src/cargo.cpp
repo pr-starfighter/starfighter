@@ -60,7 +60,7 @@ object *cargo_add(object *owner, int cargoType)
 	cargo[index].collectType = cargoType;
 	cargo[index].image[0] = gfx_sprites[32];
 	if (cargoType == P_PHOEBE)
-		cargo[index].image[0] = gfx_shipSprites[20];
+		cargo[index].image[0] = gfx_shipSprites[SS_FRIEND];
 
 	return &cargo[index];
 }
