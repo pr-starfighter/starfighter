@@ -273,8 +273,8 @@ void getPlayerInput()
 		int x, y, w, h;
 		SDL_GetMouseState(&x, &y);
 		SDL_GetWindowSize(window, &w, &h);
-		x = screenWidth * x / w;
-		y = screenHeight * y / h;
+		x = screen->w * x / w;
+		y = screen->h * y / h;
 		if (px == x && py == y) {
 			if(engine.keyState[KEY_UP] && engine.cursor_y > 0)
 				engine.cursor_y -= 4;
