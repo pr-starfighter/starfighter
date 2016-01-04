@@ -98,7 +98,7 @@ int getFace(const char *face)
 	for (int i = 0 ; i < 7 ; i++)
 	{
 		if (strcmp(faces[i], face) == 0)
-			return FACE_CHRIS + i;
+			return FS_CHRIS + i;
 	}
 
 	return -1;

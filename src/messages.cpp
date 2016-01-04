@@ -63,7 +63,7 @@ void getKillMessage(object *ally)
 	char in[50], otherName[30];
 	int kills, difference;
 	bool firstPlace = false;
-	int faceToUse = FACE_PHOEBE;
+	int faceToUse = FS_PHOEBE;
 
 	if (ally == &aliens[ALIEN_PHOEBE])
 	{
@@ -73,7 +73,7 @@ void getKillMessage(object *ally)
 		if ((game.wingMate1Kills > game.wingMate2Kills) &&
 				(game.wingMate1Kills > game.totalKills))
 			firstPlace = true;
-		faceToUse = FACE_PHOEBE;
+		faceToUse = FS_PHOEBE;
 	}
 	else
 	{
@@ -83,7 +83,7 @@ void getKillMessage(object *ally)
 		if ((game.wingMate2Kills > game.wingMate1Kills) &&
 				(game.wingMate2Kills > game.totalKills))
 			firstPlace = true;
-		faceToUse = FACE_URSULA;
+		faceToUse = FS_URSULA;
 	}
 
 	int r = rand() % 10;
@@ -150,28 +150,28 @@ void getPlayerDeathMessage()
 {
 	if (aliens[ALIEN_KLINE].active)
 	{
-		setRadioMessage(FACE_KLINE, getKlineInsult(), 1);
+		setRadioMessage(FS_KLINE, getKlineInsult(), 1);
 		return;
 	}
 	
 	if ((aliens[ALIEN_BOSS].active) && (aliens[ALIEN_BOSS].classDef == CD_KRASS))
 	{
-		setRadioMessage(FACE_KRASS, "That was the easiest $90,000,000 I've ever earned! Bwwah!! Ha!! Ha!! Ha!!", 1);
+		setRadioMessage(FS_KRASS, "That was the easiest $90,000,000 I've ever earned! Bwwah!! Ha!! Ha!! Ha!!", 1);
 		return;
 	}
 
-	int faceToUse = FACE_PHOEBE;
+	int faceToUse = FS_PHOEBE;
 	
 
 	if ((game.area == MISN_URUSOR) || (game.area == MISN_POSWIC) ||
 		(game.area == MISN_EARTH))
 	{
-		faceToUse = FACE_SID;
+		faceToUse = FS_SID;
 	}
 	else if (game.hasWingMate2)
 	{
 		if ((rand() % 2) == 0)
-			faceToUse = FACE_URSULA;
+			faceToUse = FS_URSULA;
 	}
 
 	setRadioMessage(faceToUse, deathMessage[rand() % 6], 1);
@@ -179,24 +179,24 @@ void getPlayerDeathMessage()
 
 void getMissFireMessage(object *ally)
 {
-	int faceToUse = FACE_PHOEBE;
+	int faceToUse = FS_PHOEBE;
 
 	if (ally == &aliens[ALIEN_PHOEBE])
-		faceToUse = FACE_PHOEBE;
+		faceToUse = FS_PHOEBE;
 	else
-		faceToUse = FACE_URSULA;
+		faceToUse = FS_URSULA;
 
 	setRadioMessage(faceToUse, missFireMessage[rand() % 5], 0);
 }
 
 void getPlayerHitMessage(object *ally)
 {
-	int faceToUse = FACE_PHOEBE;
+	int faceToUse = FS_PHOEBE;
 
 	if (ally == &aliens[ALIEN_PHOEBE])
-		faceToUse = FACE_PHOEBE;
+		faceToUse = FS_PHOEBE;
 	else
-		faceToUse = FACE_URSULA;
+		faceToUse = FS_URSULA;
 
 	setRadioMessage(faceToUse, playerHitMessage[rand() % 3], 0);
 }

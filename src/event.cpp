@@ -44,30 +44,30 @@ void events_init()
 			if ((aliens[ALIEN_KLINE].classDef == CD_KLINE) &&
 					(aliens[ALIEN_KLINE].active))
 				events[0].time = 2;
-				events[0].face = FACE_KLINE;
+				events[0].face = FS_KLINE;
 				strcpy(events[0].message, klineGreeting[rand() % 4]);
 
 			break;
 
 		case MISN_MOEBO:
 			events[0].time = 2;
-			events[0].face = FACE_SID;
+			events[0].face = FS_SID;
 			strcpy(events[0].message, "You should try and destroy some of the frigate's weaponary, it'll help!");
 
 			events[1].time = 120;
-			events[1].face = FACE_SID;
+			events[1].face = FS_SID;
 			strcpy(events[1].message, "Chris, get a move on! The frigate is almost in range!");
 
 			events[2].time = 150;
-			events[2].face = FACE_SID;
+			events[2].face = FS_SID;
 			strcpy(events[2].message, "The frigate is charging its cannon!");
 
 			events[3].time = 170;
-			events[3].face = FACE_SID;
+			events[3].face = FS_SID;
 			strcpy(events[3].message, "Chris, HURRY!!!");
 
 			events[4].time = 180;
-			events[4].face = FACE_SID;
+			events[4].face = FS_SID;
 			strcpy(events[4].message, "Oh my god...");
 			events[4].entity = ALIEN_BOSS;
 			events[4].flag = FL_LEAVESECTOR | FL_IMMORTAL;
@@ -76,54 +76,54 @@ void events_init()
 
 		case MISN_NEROD:
 			events[0].time = 2;
-			events[0].face = FACE_PHOEBE;
+			events[0].face = FS_PHOEBE;
 			strcpy(events[0].message, "Hey, over here! Destroy this tug so I can break free!");
 
 			break;
 
 		case MISN_ALLEZ:
 			events[0].time = 2;
-			events[0].face = FACE_CREW;
+			events[0].face = FS_CREW;
 			strcpy(events[0].message, "Thank God! Please, help us! If they destroy this ship...");
 
 			events[1].time = 6;
-			events[1].face = FACE_CHRIS;
+			events[1].face = FS_CHRIS;
 			strcpy(events[1].message, "How long do you need?");
 
 			events[2].time = 10;
-			events[2].face = FACE_CREW;
+			events[2].face = FS_CREW;
 			strcpy(events[2].message, "Just a few minutes!");
 
 			events[3].time = 60;
-			events[3].face = FACE_CREW;
+			events[3].face = FS_CREW;
 			strcpy(events[3].message, "Alright! We've got the weapons working again! Now to look at the engines...");
 			events[3].entity = ALIEN_FRIEND1;
 			events[3].flag = -FL_NOFIRE;
 
 			events[4].time = 80;
-			events[4].face = FACE_CREW;
+			events[4].face = FS_CREW;
 			strcpy(events[4].message, "DAMN! The guns are offline again! What you guys doing back there?!");
 			events[4].entity = ALIEN_FRIEND1;
 			events[4].flag = FL_NOFIRE;
 
 			events[5].time = 100;
-			events[5].face = FACE_CREW;
+			events[5].face = FS_CREW;
 			strcpy(events[5].message, "Chris, HELP!! We've lost all system power! We're a sitting duck out here!");
 			events[5].entity = ALIEN_FRIEND1;
 			events[5].flag = FL_DISABLED;
 
 			events[6].time = 120;
-			events[6].face = FACE_CREW;
+			events[6].face = FS_CREW;
 			strcpy(events[6].message, "Just a little longer...");
 
 			events[7].time = 140;
-			events[7].face = FACE_CREW;
+			events[7].face = FS_CREW;
 			strcpy(events[7].message, "Okay! We've fixed that one. We think we've found the problem with the engines too...");
 			events[7].entity = ALIEN_FRIEND1;
 			events[7].flag = -FL_DISABLED;
 
 			events[8].time = 177;
-			events[8].face = FACE_CREW;
+			events[8].face = FS_CREW;
 			strcpy(events[8].message, "Engines fixed! Let's move!");
 
 			events[9].time = 180;
@@ -134,11 +134,11 @@ void events_init()
 
 		case MISN_ELAMALE:
 			events[0].time = 5;
-			events[0].face = FACE_PHOEBE;
+			events[0].face = FS_PHOEBE;
 			strcpy(events[0].message, "Ummm... something about this doesn't look right! They should be offering more resistance than this!");
 
 			events[1].time = -8;
-			events[1].face = FACE_PHOEBE;
+			events[1].face = FS_PHOEBE;
 			strcpy(events[1].message, "DAMMIT! It's a trap! Come on, Chris, we have to leave NOW!!");
 
 			events[2].time = -9;
@@ -146,27 +146,27 @@ void events_init()
 			events[2].flag = FL_LEAVESECTOR;
 
 			events[3].time = -13;
-			events[3].face = FACE_SID;
+			events[3].face = FS_SID;
 			strcpy(events[3].message, "Chris, wh...");
 
 			events[4].time = -15;
-			events[4].face = FACE_KLINE;
+			events[4].face = FS_KLINE;
 			strcpy(events[4].message, "So finally I meet the man who has been causing us so much trouble!");
 
 			events[5].time = -20;
-			events[5].face = FACE_CHRIS;
+			events[5].face = FS_CHRIS;
 			strcpy(events[5].message, "I see you've jammed up my warp drive. Who are you?");
 
 			events[6].time = -25;
-			events[6].face = FACE_KLINE;
+			events[6].face = FS_KLINE;
 			strcpy(events[6].message, "I am Kline Kethlan. And I am here to put to a stop to your worthless little crusade!");
 
 			events[7].time = -31;
-			events[7].face = FACE_CHRIS;
+			events[7].face = FS_CHRIS;
 			strcpy(events[7].message, "Kline Kethlan, huh? You sure sound confident.");
 
 			events[8].time = -36;
-			events[8].face = FACE_KLINE;
+			events[8].face = FS_KLINE;
 			strcpy(events[8].message, "Nowhere to run, nowhere to hide, and no one to help you! This will certainly be interesting...");
 
 			events[9].time = -42;
@@ -177,30 +177,30 @@ void events_init()
 
 		case MISN_ODEON:
 			events[0].time = 2;
-			events[0].face = FACE_URSULA;
+			events[0].face = FS_URSULA;
 			strcpy(events[0].message, "Unidentified craft sighted. Will proceed to destroy all targets.");
 
 			events[1].time = 8;
-			events[1].face = FACE_CHRIS;
+			events[1].face = FS_CHRIS;
 			strcpy(events[1].message, "Looks like she's got one of those homing missile launchers too! Any advice, Phoebe?");
 
 			events[2].time = 14;
-			events[2].face = FACE_PHOEBE;
+			events[2].face = FS_PHOEBE;
 			strcpy(events[2].message, "Just try and dodge them!");
 
 			break;
 
 		case MISN_ALMARTHA:
 			events[0].time = 1;
-			events[0].face = FACE_CHRIS;
+			events[0].face = FS_CHRIS;
 			strcpy(events[0].message, "Nice ship!");
 
 			events[1].time = 7;
-			events[1].face = FACE_KRASS;
+			events[1].face = FS_KRASS;
 			strcpy(events[1].message, "Thanks, boy. Made it myself!");
 
 			events[2].time = 60;
-			events[2].face = FACE_KRASS;
+			events[2].face = FS_KRASS;
 			strcpy(events[2].message, "Hey, boy, we've got company! Looks like your friends didn't do a very good job after all!");
 			events[2].entity = ALIEN_BOSS_PART1;
 			events[2].flag = -FL_ACTIVATE;
@@ -210,7 +210,7 @@ void events_init()
 			events[3].flag = -FL_ACTIVATE;
 
 			events[4].time = 93;
-			events[4].face = FACE_KRASS;
+			events[4].face = FS_KRASS;
 			strcpy(events[4].message, "Keep those things off my back or it'll cost you extra!!!");
 
 			events[5].time = 120;
@@ -218,7 +218,7 @@ void events_init()
 			events[5].flag = -FL_ACTIVATE;
 
 			events[6].time = 140;
-			events[6].face = FACE_PHOEBE;
+			events[6].face = FS_PHOEBE;
 			strcpy(events[6].message, "Hey! Did we miss anything exciting?");
 			events[6].entity = ALIEN_PHOEBE;
 			events[6].flag = -FL_ACTIVATE;
@@ -228,7 +228,7 @@ void events_init()
 			events[7].flag = -FL_ACTIVATE;
 
 			events[8].time = 150;
-			events[8].face = FACE_KRASS;
+			events[8].face = FS_KRASS;
 			strcpy(events[8].message, "I've earned my fee. I'll see you around, boy!");
 			events[8].entity = ALIEN_FRIEND1;
 			events[8].flag = FL_LEAVESECTOR;
@@ -237,7 +237,7 @@ void events_init()
 
 		case MISN_POSWIC:
 			events[0].time = 90;
-			events[0].face = FACE_SID;
+			events[0].face = FS_SID;
 			strcpy(events[0].message, "DAMMIT! It's getting away! We've got to stop it!");
 			events[0].entity = ALIEN_BOSS;
 			events[0].flag = FL_LEAVESECTOR;
@@ -246,7 +246,7 @@ void events_init()
 
 		case MISN_SATURN:
 			events[0].time = 45;
-			events[0].face = FACE_SID;
+			events[0].face = FS_SID;
 			strcpy(events[0].message, "Chris! Another two of those ray cannons just arrived in your sector!");
 			events[0].entity = ALIEN_BOSS_PART3;
 			events[0].flag = -FL_ACTIVATE;
@@ -256,7 +256,7 @@ void events_init()
 			events[1].flag = -FL_ACTIVATE;
 
 			events[2].time = 90;
-			events[2].face = FACE_SID;
+			events[2].face = FS_SID;
 			strcpy(events[2].message, "Two more!");
 			events[2].entity = ALIEN_BOSS_PART5;
 			events[2].flag = -FL_ACTIVATE;
@@ -273,15 +273,15 @@ void events_init()
 			events[0].flag = -FL_ACTIVATE;
 
 			events[1].time = 2;
-			events[1].face = FACE_URSULA;
+			events[1].face = FS_URSULA;
 			strcpy(events[1].message, "It's a trap! My God! It's Tyler!");
 
 			events[2].time = 8;
-			events[2].face = FACE_KRASS;
+			events[2].face = FS_KRASS;
 			strcpy(events[2].message, "I'm a mercenary, what do you expect?! WEAPCO hired me to do a job, just like you have been doing.");
 
 			events[3].time = 14;
-			events[3].face = FACE_CHRIS;
+			events[3].face = FS_CHRIS;
 			strcpy(events[3].message, "Good point. It would be foolish to expect anything else.");
 
 			events[4].time = 15;
@@ -289,11 +289,11 @@ void events_init()
 			events[4].flag = -FL_ACTIVATE;
 
 			events[5].time = 20;
-			events[5].face = FACE_KRASS;
+			events[5].face = FS_KRASS;
 			strcpy(events[5].message, "Now if you'll assist me in dying quickly, I have a cheque to earn, boy...");
 
 			events[6].time = 25;
-			events[6].face = FACE_CHRIS;
+			events[6].face = FS_CHRIS;
 			strcpy(events[6].message, "I have a name, you know. Do you remember it?");
 
 			events[7].time = 45;
@@ -308,22 +308,22 @@ void events_init()
 
 		case MISN_EARTH:
 			events[0].time = 2;
-			events[0].face = FACE_KLINE;
+			events[0].face = FS_KLINE;
 			strcpy(events[0].message, "That's far enough, Bainfield. You've been lucky so far, but your luck is about to run out!");
 
 			events[1].time = 8;
-			events[1].face = FACE_CHRIS;
+			events[1].face = FS_CHRIS;
 			strcpy(events[1].message, "Yeah, right! Like I'd lose to you after coming this far!");
 
 			break;
 
 		case MISN_VENUS:
 			events[0].time = 2;
-			events[0].face = FACE_CHRIS;
+			events[0].face = FS_CHRIS;
 			strcpy(events[0].message, "WEAPCO is finished, Kethlan! You have nowhere to run, nowhere to hide, and no one to help you.");
 
 			events[1].time = 8;
-			events[1].face = FACE_KLINE;
+			events[1].face = FS_KLINE;
 			strcpy(events[1].message, "You underestimate me, Bainfield.");
 
 			break;

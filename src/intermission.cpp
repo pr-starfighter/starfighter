@@ -353,7 +353,7 @@ static void intermission_updateCommsSurface(SDL_Surface *comms)
 	char string[255];
 
 	gfx_drawRect(comms, 0, 10, comms->w - 1, 55, 0x00, 0x22, 0x00);
-	gfx_blit(gfx_faceSprites[FACE_CHRIS], 20, 15, comms);
+	gfx_blit(gfx_faceSprites[FS_CHRIS], 20, 15, comms);
 	gfx_renderString("Chris Bainfield", 80, 15, FONT_WHITE, 0, comms);
 	sprintf(string, "Current Location: %s", systemPlanet[game.stationedPlanet].name);
 	gfx_renderString(string, 80, 35, FONT_WHITE, 0, comms);
@@ -608,12 +608,12 @@ int intermission()
 	gfx_sprites[34] = gfx_loadImage("gfx/planet_orange.png");
 
 	// Faces (as defines)
-	gfx_faceSprites[FACE_CHRIS] = gfx_loadImage("gfx/face_chris.png");
-	gfx_faceSprites[FACE_SID] = gfx_loadImage("gfx/face_sid.png");
-	gfx_faceSprites[FACE_KRASS] = gfx_loadImage("gfx/face_krass.png");
-	gfx_faceSprites[FACE_PHOEBE] = gfx_loadImage("gfx/face_phoebe.png");
-	gfx_faceSprites[FACE_URSULA] = gfx_loadImage("gfx/face_ursula.png");
-	gfx_faceSprites[FACE_KLINE] = gfx_loadImage("gfx/face_kline.png");
+	gfx_faceSprites[FS_CHRIS] = gfx_loadImage("gfx/face_chris.png");
+	gfx_faceSprites[FS_SID] = gfx_loadImage("gfx/face_sid.png");
+	gfx_faceSprites[FS_KRASS] = gfx_loadImage("gfx/face_krass.png");
+	gfx_faceSprites[FS_PHOEBE] = gfx_loadImage("gfx/face_phoebe.png");
+	gfx_faceSprites[FS_URSULA] = gfx_loadImage("gfx/face_ursula.png");
+	gfx_faceSprites[FS_KLINE] = gfx_loadImage("gfx/face_kline.png");
 
 	engine.done = 0;
 	engine.keyState[KEY_FIRE] = 0;

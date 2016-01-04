@@ -283,6 +283,18 @@ enum {
 	CD_URSULA
 };
 
+// Face sprites
+enum {
+	FS_CHRIS = 90,
+	FS_SID,
+	FS_KRASS,
+	FS_KLINE,
+	FS_PHOEBE,
+	FS_URSULA,
+	FS_CREW,
+	FS_MAX
+};
+
 // Text sprites (main menu)
 enum {
 	TS_PRESENTS,
@@ -404,18 +416,6 @@ enum {
 	SECTION_TITLE,
 	SECTION_INTERMISSION,
 	SECTION_GAME
-};
-
-// Faces
-enum {
-	FACE_CHRIS = 90,
-	FACE_SID,
-	FACE_KRASS,
-	FACE_KLINE,
-	FACE_PHOEBE,
-	FACE_URSULA,
-	FACE_CREW,
-	FACE_MAX
 };
 
 // Missions

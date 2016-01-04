@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 SDL_Surface *gfx_background;
 SDL_Surface *gfx_sprites[MAX_SPRITES];
-SDL_Surface *gfx_faceSprites[FACE_MAX];
+SDL_Surface *gfx_faceSprites[FS_MAX];
 SDL_Surface *gfx_shipSprites[MAX_SHIPSPRITES];
 SDL_Surface *gfx_fontSprites[MAX_FONTSPRITES];
 SDL_Surface *gfx_shopSprites[MAX_SHOPSPRITES];

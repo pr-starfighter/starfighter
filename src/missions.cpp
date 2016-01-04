@@ -339,7 +339,7 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 		*completed = 2;
 		checkTimer();
 		if ((game.area == MISN_URUSOR) && (type == M_DISABLE_TARGET))
-			setRadioMessage(FACE_SID, "All vessels disabled!", 1);
+			setRadioMessage(FS_SID, "All vessels disabled!", 1);
 	}
 	else
 	{
@@ -373,12 +373,12 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 					case P_CARGO:
 						sprintf(message, "Cargo pod destroyed!");
 						if (game.area == MISN_CERADSE) // Get lectured by Sid
-							setRadioMessage(FACE_SID, "Chris, we needed that pod!! I warned you that we couldn't afford to lose a single one!!", 1);
+							setRadioMessage(FS_SID, "Chris, we needed that pod!! I warned you that we couldn't afford to lose a single one!!", 1);
 						break;
 					case P_ESCAPEPOD:
 						sprintf(message, "Escape Pod lost!");
 						if (game.area == MISN_ODEON) // Get lectured by Phoebe
-							setRadioMessage(FACE_PHOEBE, "No... Ursula...", 1);
+							setRadioMessage(FS_PHOEBE, "No... Ursula...", 1);
 						break;
 				}
 				break;
@@ -389,13 +389,13 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 					switch (game.area)
 					{
 						case MISN_NEROD:
-							setRadioMessage(FACE_SID, "Dammit, Chris! We just lost her!", 1);
+							setRadioMessage(FS_SID, "Dammit, Chris! We just lost her!", 1);
 							break;
 						case MISN_ALLEZ:
-							setRadioMessage(FACE_CREW, "Noooo!! Hull bre...", 1);
+							setRadioMessage(FS_CREW, "Noooo!! Hull bre...", 1);
 							break;
 						case MISN_URUSOR:
-							setRadioMessage(FACE_SID, "Chris, we've got to disable them, not destroy them!!", 1);
+							setRadioMessage(FS_SID, "Chris, we've got to disable them, not destroy them!!", 1);
 							break;
 					}
 				}
@@ -433,7 +433,7 @@ void updateMissionRequirements(int type, int id, int value)
 	if ((type == M_DESTROY_TARGET_TYPE) && (id == CD_SID))
 	{
 		setInfoLine("Sid has been killed!!", FONT_RED);
-		setRadioMessage(FACE_CHRIS, "Sid... I... I'm sorry...", 1);
+		setRadioMessage(FS_CHRIS, "Sid... I... I'm sorry...", 1);
 		currentMission.completed1[0] = -2;
 	}
 
@@ -495,7 +495,7 @@ void updateMissionRequirements(int type, int id, int value)
 		{
 			setInfoLine("*** Experimental Fighter Destroyed - Mission Completed ***", FONT_GREEN);
 			systemPlanet[9].missionCompleted = 1;
-			setRadioMessage(FACE_CHRIS, "That's one less suprise that WEAPCO can spring on us!", 1);
+			setRadioMessage(FS_CHRIS, "That's one less suprise that WEAPCO can spring on us!", 1);
 			game.experimentalShield = 0;
 		}
 	}
@@ -600,7 +600,7 @@ bool allMissionsCompleted()
 				}
 
 				if (game.area == MISN_EARTH)
-					setRadioMessage(FACE_CHRIS, "You guys stay here and keep things under control. I'm going after Kethlan!", 1);
+					setRadioMessage(FS_CHRIS, "You guys stay here and keep things under control. I'm going after Kethlan!", 1);
 			}
 		}
 

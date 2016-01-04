@@ -1372,7 +1372,7 @@ void alien_setKlineAttackMethod(object *alien)
 {
 	if (alien->shield <= 500)
 	{
-		setRadioMessage(FACE_KLINE, "ENOUGH!! THIS ENDS NOW!!!", 1);
+		setRadioMessage(FS_KLINE, "ENOUGH!! THIS ENDS NOW!!!", 1);
 		alien->weaponType[0] = W_AIMED_SHOT;
 		alien->weaponType[1] = W_MICRO_HOMING_MISSILES;
 		alien->flags |= FL_CANCLOAK;
@@ -1382,7 +1382,7 @@ void alien_setKlineAttackMethod(object *alien)
 	}
 	else if (alien->shield <= 1000)
 	{
-		setRadioMessage(FACE_KLINE, "Your ability to stay alive irritates me!! Try dodging some of these!!", 1);
+		setRadioMessage(FS_KLINE, "Your ability to stay alive irritates me!! Try dodging some of these!!", 1);
 		alien->weaponType[0] = W_DIRSHOCKMISSILE;
 		alien->weaponType[1] = W_DIRSHOCKMISSILE;
 		alien->chance[0] = 2;
@@ -1391,7 +1391,7 @@ void alien_setKlineAttackMethod(object *alien)
 	}
 	else
 	{
-		setRadioMessage(FACE_KLINE, "Very good, Bainfield. Now let's get a little more serious...", 1);
+		setRadioMessage(FS_KLINE, "Very good, Bainfield. Now let's get a little more serious...", 1);
 		alien->weaponType[0] = W_SPREADSHOT;
 		alien->chance[1] = 40;
 	}
@@ -1759,11 +1759,11 @@ void alien_destroy(object *alien, object *attacker)
 	}
 
 	if ((alien->classDef == CD_KRASS) && (attacker == &player))
-		setRadioMessage(FACE_CHRIS, "The name's CHRIS, old-timer.", 1);
+		setRadioMessage(FS_CHRIS, "The name's CHRIS, old-timer.", 1);
 
 	if (alien->classDef == CD_KLINE)
 	{
-		setRadioMessage(FACE_KLINE, "It was an honor... to have fought you...", 1);
+		setRadioMessage(FS_KLINE, "It was an honor... to have fought you...", 1);
 		alien->dx = alien->dy = 0;
 		alien->shield = -150;
 	}
@@ -1791,7 +1791,7 @@ void alien_hurt(object *alien, object *attacker, int damage, bool ion)
 			{
 				alien->flags |= FL_LEAVESECTOR;
 				alien->flags &= ~FL_CIRCLES;
-				setRadioMessage(FACE_KLINE, "Seems I underestimated you, Bainfield. We'll meet again!", 1);
+				setRadioMessage(FS_KLINE, "Seems I underestimated you, Bainfield. We'll meet again!", 1);
 			}
 		}
 		else if (game.area == MISN_EARTH)
@@ -1801,7 +1801,7 @@ void alien_hurt(object *alien, object *attacker, int damage, bool ion)
 			{
 				alien->flags |= FL_LEAVESECTOR;
 				alien->flags &= ~FL_CIRCLES;
-				setRadioMessage(FACE_SID, "Chris, Kethlan is getting away!", 1);
+				setRadioMessage(FS_SID, "Chris, Kethlan is getting away!", 1);
 			}
 		}
 		else if (game.area == MISN_VENUS)

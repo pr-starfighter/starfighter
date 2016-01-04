@@ -24,7 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 extern SDL_Surface *gfx_background;
 extern SDL_Surface *gfx_sprites[MAX_SPRITES];
-extern SDL_Surface *gfx_faceSprites[FACE_MAX];
+extern SDL_Surface *gfx_faceSprites[FS_MAX];
 extern SDL_Surface *gfx_shipSprites[MAX_SHIPSPRITES];
 extern SDL_Surface *gfx_fontSprites[MAX_FONTSPRITES];
 extern SDL_Surface *gfx_shopSprites[MAX_SHOPSPRITES];
