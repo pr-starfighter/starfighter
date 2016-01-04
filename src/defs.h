@@ -43,12 +43,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DATADIR "."
 #endif 
 
-#ifndef SCREEN_W
-#define SCREEN_W 800
+#ifndef SCREEN_WIDTH
+#define SCREEN_WIDTH 800
 #endif
 
-#ifndef SCREEN_H
-#define SCREEN_H 600
+#ifndef SCREEN_HEIGHT
+#define SCREEN_HEIGHT 600
 #endif
 
 #ifndef PATH_MAX
@@ -467,8 +467,8 @@ const char * const systemBackground[] = {
 };
 
 const int rate2reload[6] = {15, 15, 13, 11, 9, 7};
-const int screenWidth = SCREEN_W;
-const int screenHeight = SCREEN_H;
+const int screenWidth = SCREEN_WIDTH;
+const int screenHeight = SCREEN_HEIGHT;
 const int xViewBorder = 100;
 const int yViewBorder = 100;
 const float cameraMaxSpeed = 3.;
