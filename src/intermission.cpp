@@ -693,7 +693,7 @@ int intermission()
 		strcpy(string, "Destination: None");
 	iconInfo[10].image = gfx_createTextSurface(string, FONT_WHITE);
 	for (int i = 0 ; i < 9 ; i++)
-		iconInfo[i].x = (800 - iconInfo[i].image->w) / 2;
+		iconInfo[i].x = (screen->w - iconInfo[i].image->w) / 2;
 
 	iconInfo[11].image = gfx_createTextSurface("Go to Destination Planet", FONT_WHITE);
 

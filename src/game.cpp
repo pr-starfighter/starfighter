@@ -1638,8 +1638,8 @@ static void game_doHud()
 	signed char fontColor;
 	char text[25];
 
-	screen_addBuffer(0, 20, 800, 25);
-	screen_addBuffer(0, 550, 800, 34);
+	screen_addBuffer(0, 20, screen->w, 25);
+	screen_addBuffer(0, screen->h - 50, screen->w, 34);
 
 	if (engine.minutes > -1)
 	{
@@ -1651,7 +1651,7 @@ static void game_doHud()
 			fontColor = FONT_WHITE;
 		screen_blitText(TS_TIME_T);
 		sprintf(text, "%.2d:%.2d", engine.minutes, engine.seconds);
-		gfx_createTextObject(TS_TIME, text, 410, 21, fontColor);
+		gfx_createTextObject(TS_TIME, text, screen->w / 2 + 10, 21, fontColor);
 		screen_blitText(TS_TIME);
 	}
 
@@ -1659,7 +1659,7 @@ static void game_doHud()
 	{
 		screen_blitText(TS_OBJECTIVES_T);
 		sprintf(text, "%d", (currentMission.remainingObjectives1 + currentMission.remainingObjectives2));
-		gfx_createTextObject(TS_OBJECTIVES, text, 745, 21, FONT_WHITE);
+		gfx_createTextObject(TS_OBJECTIVES, text, screen->w - 55, 21, FONT_WHITE);
 		screen_blitText(TS_OBJECTIVES);
 	}
 
@@ -1679,7 +1679,7 @@ static void game_doHud()
 	}
 	screen_blitText(TS_PLASMA_T);
 	sprintf(text, "%.3d", player.ammo[0]);
-	gfx_createTextObject(TS_PLASMA, text, 320, 551, fontColor);
+	gfx_createTextObject(TS_PLASMA, text, screen->w * 5 / 16 + 70, screen->h - 49, fontColor);
 	screen_blitText(TS_PLASMA);
 
 	screen_blitText(TS_AMMO_T);
@@ -1691,7 +1691,7 @@ static void game_doHud()
 		else
 			fontColor = FONT_WHITE;
 		sprintf(text, "%.3d", player.ammo[1]); // rocket ammo
-		gfx_createTextObject(TS_AMMO, text, 465, 551, fontColor);
+		gfx_createTextObject(TS_AMMO, text, screen->w / 2 + 80, screen->h - 49, fontColor);
 		screen_blitText(TS_AMMO);
 	}
 
@@ -1701,15 +1701,15 @@ static void game_doHud()
 		if (player.ammo[1] > 100)
 			c = red;
 
-		bar.x = 450;
-		bar.y = 550;
+		bar.x = screen->w / 2 + 65;
+		bar.y = screen->h - 50;
 		bar.h = 12;
 
 		for (int i = 0 ; i < (player.ammo[1] / 5) ; i++)
 		{
-			bar.w = 1;
+			bar.w = MAX(screen->w / 800, 1);
 			SDL_FillRect(screen, &bar, c);
-			bar.x += 2;
+			bar.x += bar.w + (screen->w / 800);
 		}
 	}
 
@@ -1771,7 +1771,7 @@ static void game_doHud()
 	{
 		if (gfx_text[i].life > 0)
 		{
-			gfx_text[i].y = (525 - (i * 20));
+			gfx_text[i].y = screen->h - 75 - (i * 20);
 			screen_blitText(i);
 			gfx_text[i].life--;
 
@@ -1799,31 +1799,32 @@ static void game_doHud()
 		if ((engine.targetIndex > -1) && (aliens[engine.targetIndex].shield > 0) && (engine.targetIndex > 9))
 		{
 			screen_blitText(TS_TARGET);
-			bar.w = 1;
+			bar.w = MAX(screen->w / 800, 1);
 			bar.h = 12;
-			bar.x = 620;
-			bar.y = 550;
+			bar.x = screen->w * 11 / 16 + 65;
+			bar.y = screen->h - 50;
 
 			for (float i = 0 ; i < (engine.targetShield * aliens[engine.targetIndex].shield) ; i++)
 			{
-				if (i > 50)
+				if (i > engine.targetShield * aliens[engine.targetIndex].maxShield * 2 / 3)
 					shieldColor = green;
-				else if ((i >= 25) && (i <= 50))
+				else if ((i >= engine.targetShield * aliens[engine.targetIndex].maxShield / 3) &&
+						(i <= engine.targetShield * aliens[engine.targetIndex].maxShield * 2 / 3))
 					shieldColor = yellow;
 				else
 					shieldColor = red;
 				SDL_FillRect(screen, &bar, shieldColor);
-				bar.x += 2;
+				bar.x += bar.w + (screen->w / 800);
 			}
 		}
 	}
 
 	screen_blitText(TS_POWER);
 
-	bar.w = 25;
+	bar.w = screen->w / 32;
 	bar.h = 12;
-	bar.x = 80;
-	bar.y = 571;
+	bar.x = screen->w / 32 + 55;
+	bar.y = screen->h - 29;
 
 	for (int i = 1 ; i <= 5 ; i++)
 	{
@@ -1834,15 +1835,15 @@ static void game_doHud()
 			}
 		} else if (i <= game.maxPlasmaDamage)
 			SDL_FillRect(screen, &bar, darkGreen);
-		bar.x += 30;
+		bar.x += screen->w * 3 / 80;
 	}
 
 	screen_blitText(TS_OUTPUT);
 
-	bar.w = 25;
+	bar.w = screen->w / 32;
 	bar.h = 12;
-	bar.x = 315;
-	bar.y = 571;
+	bar.x = screen->w * 5 / 16 + 65;
+	bar.y = screen->h - 29;
 	SDL_FillRect(screen, &bar, yellow);
 
 	for (int i = 1 ; i <= 5 ; i++)
@@ -1855,15 +1856,15 @@ static void game_doHud()
 		}
 		else if (i <= game.maxPlasmaOutput)
 			SDL_FillRect(screen, &bar, darkYellow);
-		bar.x += 30;
+		bar.x += screen->w * 3 / 80;
 	}
 
 	screen_blitText(TS_COOLER);
 
-	bar.w = 25;
+	bar.w = screen->w / 32;
 	bar.h = 12;
-	bar.x = 550;
-	bar.y = 571;
+	bar.x = screen->w * 97 / 160 + 65;
+	bar.y = screen->h - 29;
 
 	for (int i = 1 ; i <= 5 ; i++)
 	{
@@ -1875,7 +1876,7 @@ static void game_doHud()
 		}
 		else if (i <= game.maxPlasmaRate)
 			SDL_FillRect(screen, &bar, darkerBlue);
-		bar.x += 30;
+		bar.x += screen->w * 3 / 80;
 	}
 
 	screen_blitText(TS_SHIELD);
@@ -1888,12 +1889,12 @@ static void game_doHud()
 	if ((engine.eventTimer < 30) && (player.shield <= engine.lowShield))
 		return;
 
-	signed char blockSize = 1;
+	int blockSize = MAX(screen->w / 800, 1);
 
 	bar.w = blockSize;
 	bar.h = 12;
-	bar.x = 95;
-	bar.y = 550;
+	bar.x = screen->w / 32 + 65;
+	bar.y = screen->h - 50;
 
 	for (int i = 0 ; i < player.shield ; i += blockSize)
 	{
@@ -1905,8 +1906,8 @@ static void game_doHud()
 			shieldColor = red;
 		SDL_FillRect(screen, &bar, shieldColor);
 		bar.x += blockSize;
-		if (player.maxShield < 75)
-			bar.x++;
+		if (player.maxShield <= 75 || screen->w >= 1200)
+			bar.x += screen->w / 800;
 	}
 }
 
