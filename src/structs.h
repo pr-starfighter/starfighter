@@ -227,11 +227,4 @@ typedef struct Planet_ {
 
 } Planet;
 
-typedef struct cutMsg_ {
-
-	int face;
-	char message[255];
-
-} cutMsg;
-
 #endif

@@ -2323,20 +2323,20 @@ int game_mainLoop()
 		switch (game.area)
 		{
 			case MISN_MOEBO:
-				doCutscene(1);
-				doCutscene(2);
+				cutscene_init(1);
+				cutscene_init(2);
 				break;
 			case MISN_NEROD:
-				doCutscene(3);
+				cutscene_init(3);
 				break;
 			case MISN_ELAMALE:
-				doCutscene(4);
+				cutscene_init(4);
 				break;
 			case MISN_ODEON:
-				doCutscene(5);
+				cutscene_init(5);
 				break;
 			case MISN_ELLESH:
-				doCutscene(6);
+				cutscene_init(6);
 				break;
 			case MISN_VENUS:
 				doCredits();

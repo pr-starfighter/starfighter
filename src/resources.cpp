@@ -51,6 +51,7 @@ void loadGameGraphics()
 	gfx_faceSprites[FS_PHOEBE] = gfx_loadImage("gfx/face_phoebe.png");
 	gfx_faceSprites[FS_URSULA] = gfx_loadImage("gfx/face_ursula.png");
 	gfx_faceSprites[FS_KLINE] = gfx_loadImage("gfx/face_kline.png");
+	gfx_faceSprites[FS_CREW] = gfx_loadImage("gfx/face_crew.png");
 
 	// Ships
 	gfx_shipSprites[SS_FIREFLY] = gfx_loadImage("gfx/firefly1.png");

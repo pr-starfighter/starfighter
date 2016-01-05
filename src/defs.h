@@ -149,7 +149,7 @@ enum {
 	ALIEN_SID,
 	ALIEN_FRIEND1,
 	ALIEN_FRIEND2,
-	ALIEN_MAX = 25
+	ALIEN_MAX
 };
 
 // Droppables

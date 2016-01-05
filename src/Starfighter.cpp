@@ -135,7 +135,7 @@ int main(int argc, char **argv)
 
 			case 2:
 				if (game.stationedPlanet == -1)
-					doCutscene(0);
+					cutscene_init(0);
 				section = game_mainLoop();
 				break;
 		}

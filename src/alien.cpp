@@ -913,7 +913,6 @@ void aliens_init()
 			if ((game.area == MISN_POSWIC) &&
 				(aliens[i].classDef == CD_BOSS))
 			{
-				aliens[i].imageIndex[1] = 29;
 				aliens[i].flags |= FL_IMMORTAL;
 			}
 
@@ -975,15 +974,6 @@ void aliens_init()
 		if (game.area == MISN_FELLON)
 		{
 			aliens[ALIEN_BOSS].AIType = AI_EVASIVE;
-
-			for (int i = 10 ; i < 15 ; i++)
-			{
-				aliens[i].imageIndex[0] += 15;
-				aliens[i].imageIndex[1] += 15;
-
-				aliens[i].image[0] = gfx_shipSprites[aliens[i].imageIndex[0]];
-				aliens[i].image[1] = gfx_shipSprites[aliens[i].imageIndex[1]];
-			}
 		}
 	}
 	else if (game.area == MISN_URANUS)
@@ -1212,7 +1202,8 @@ void alien_addSmallAsteroid(object *hostAlien)
 	if ((rand() % 10) > 3)
 	{
 		aliens[index] = alien_defs[CD_ASTEROID2];
-		aliens[index].imageIndex[0] = aliens[index].imageIndex[1] = 39 + rand() % 2;
+		aliens[index].imageIndex[0] = RANDRANGE(SS_ASTEROID_SMALL, SS_ASTEROID_SMALL_L);
+		aliens[index].imageIndex[1] = aliens[index].imageIndex[0];
 		aliens[index].image[0] = gfx_shipSprites[aliens[index].imageIndex[0]];
 		aliens[index].image[1] = gfx_shipSprites[aliens[index].imageIndex[1]];
 	}
