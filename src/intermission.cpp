@@ -26,9 +26,9 @@ static void intermission_doCursor()
 {
 	getPlayerInput();
 
-	LIMIT(engine.cursor_x, 10, screen->w - 10 - gfx_sprites[0]->w);
-	LIMIT(engine.cursor_y, 10, screen->h - 10 - gfx_sprites[0]->h);
-	screen_blit(gfx_sprites[0], engine.cursor_x, engine.cursor_y);
+	LIMIT(engine.cursor_x, 10, screen->w - 10 - gfx_sprites[SP_CURSOR]->w);
+	LIMIT(engine.cursor_y, 10, screen->h - 10 - gfx_sprites[SP_CURSOR]->h);
+	screen_blit(gfx_sprites[SP_CURSOR], engine.cursor_x, engine.cursor_y);
 }
 
 /*
@@ -230,7 +230,7 @@ static bool intermission_showSystem(float x, float y, bool selectable)
 	bool rtn = false;
 
 	// Blit the sun
-	screen_blit(gfx_sprites[30], 370, 220);
+	screen_blit(gfx_sprites[SP_SUN], 370, 220);
 
 	for (int i = 50 ; i < 300 ; i+= planetSpace)
 	{
@@ -575,7 +575,7 @@ int intermission()
 
 	engine.cursor_x = screen->w / 2;
 	engine.cursor_y = screen->h / 2;
-	gfx_sprites[0] = gfx_loadImage("gfx/cursor.png");
+	gfx_sprites[SP_CURSOR] = gfx_loadImage("gfx/cursor.png");
 
 	// Icons 1 - 29
 	for (int i = 0 ; i < 26 ; i++)
@@ -584,16 +584,16 @@ int intermission()
 		gfx_sprites[i + 1] = gfx_loadImage(string);
 	}
 
-	gfx_sprites[27] = gfx_loadImage("gfx/buyIcon.png");
-	gfx_sprites[28] = gfx_loadImage("gfx/sellIcon.png");
-	gfx_sprites[29] = gfx_loadImage("gfx/firefly1.png");
+	gfx_sprites[SP_BUY] = gfx_loadImage("gfx/buyIcon.png");
+	gfx_sprites[SP_SELL] = gfx_loadImage("gfx/sellIcon.png");
+	gfx_sprites[SP_FIREFLY] = gfx_loadImage("gfx/firefly1.png");
 
 	// Planets 30 - 39
-	gfx_sprites[30] = gfx_loadImage("gfx/planet_sun.png");
-	gfx_sprites[31] = gfx_loadImage("gfx/planet_green.png");
-	gfx_sprites[32] = gfx_loadImage("gfx/planet_blue.png");
-	gfx_sprites[33] = gfx_loadImage("gfx/planet_red.png");
-	gfx_sprites[34] = gfx_loadImage("gfx/planet_orange.png");
+	gfx_sprites[SP_SUN] = gfx_loadImage("gfx/planet_sun.png");
+	gfx_sprites[SP_PLANET_GREEN] = gfx_loadImage("gfx/planet_green.png");
+	gfx_sprites[SP_PLANET_BLUE] = gfx_loadImage("gfx/planet_blue.png");
+	gfx_sprites[SP_PLANET_RED] = gfx_loadImage("gfx/planet_red.png");
+	gfx_sprites[SP_PLANET_ORANGE] = gfx_loadImage("gfx/planet_orange.png");
 
 	// Faces
 	gfx_faceSprites[FS_CHRIS] = gfx_loadImage("gfx/face_chris.png");
@@ -888,9 +888,9 @@ int intermission()
 							(systemPlanet[game.stationedPlanet].missionCompleted != 0))
 						continue;
 					else if (game.stationedPlanet == game.destinationPlanet)
-						screen_blit(gfx_sprites[1], 80 + (i * 90), 500);
+						screen_blit(gfx_sprites[SP_START_MISSION], 80 + (i * 90), 500);
 					else if (game.stationedPlanet != game.destinationPlanet)
-						screen_blit(gfx_sprites[26], 80 + (i * 90), 500);
+						screen_blit(gfx_sprites[SP_GOTO], 80 + (i * 90), 500);
 				}
 				else
 				{

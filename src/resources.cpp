@@ -41,9 +41,6 @@ void loadGameGraphics()
 
 	gfx_free();
 
-	gfx_shipSprites[0] = gfx_loadImage("gfx/firefly1.png");
-	gfx_shipSprites[1] = gfx_loadImage("gfx/firefly2.png");
-
 	// Faces
 	gfx_faceSprites[FS_CHRIS] = gfx_loadImage("gfx/face_chris.png");
 	gfx_faceSprites[FS_SID] = gfx_loadImage("gfx/face_sid.png");

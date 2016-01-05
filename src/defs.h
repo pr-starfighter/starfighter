@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012 Guus Sliepen
-Copyright (C) 2012, 2015 onpon4 <onpon4@riseup.net>
+Copyright (C) 2012, 2015, 2016 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -104,7 +104,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MAX_WEAPONS 20
 #define MAX_SPRITES 100
 #define MAX_FONTSPRITES 6
-#define MAX_SHOPSPRITES 6
 #define MAX_CARGO 20
 #define MAX_INFOLINES 3
 #define MAX_EVENTS 20
@@ -280,6 +279,42 @@ enum {
 
 // Sprites
 enum {
+	SP_CURSOR,
+	SP_START_MISSION,
+	SP_MAP,
+	SP_STATUS,
+	SP_SAVE,
+	SP_SHOP,
+	SP_COMM,
+	SP_OPTIONS,
+	SP_EXIT,
+	SP_PLASMA_MAX_OUTPUT,
+	SP_PLASMA_MAX_POWER,
+	SP_PLASMA_MAX_RATE,
+	SP_PLASMA_AMMO,
+	SP_ROCKET_AMMO,
+	SP_PLASMA_MIN_OUTPUT,
+	SP_PLASMA_MIN_POWER,
+	SP_PLASMA_MIN_RATE,
+	SP_PLASMA_MAX_AMMO,
+	SP_ROCKET_MAX_AMMO,
+	SP_DOUBLE_ROCKETS,
+	SP_MICRO_ROCKETS,
+	SP_LASER,
+	SP_HOMING_MISSILE,
+	SP_CHARGER,
+	SP_DOUBLE_HOMING_MISSILES,
+	SP_MICRO_HOMING_MISSILES,
+	SP_GOTO,
+	SP_BUY,
+	SP_SELL,
+	SP_FIREFLY,
+	SP_SUN,
+	SP_PLANET_GREEN,
+	SP_PLANET_BLUE,
+	SP_PLANET_RED,
+	SP_PLANET_ORANGE,
+	SP_MAX
 };
 
 // Face sprites
@@ -374,6 +409,13 @@ enum {
 
 // Shop sprites
 enum {
+	SHOP_S_PRIMARY,
+	SHOP_S_POWERUP,
+	SHOP_S_SECONDARY,
+	SHOP_S_CATALOG,
+	SHOP_S_SHIP_INFO,
+	SHOP_S_ITEM_INFO,
+	SHOP_S_MAX
 };
 
 // Text sprites (main menu)
@@ -494,7 +536,7 @@ enum {
 	SHOP_CHARGER,
 	SHOP_DOUBLE_HOMING_MISSILES,
 	SHOP_MICRO_HOMING_MISSILES,
-	MAX_SHOPITEMS
+	SHOP_MAX
 };
 
 // Font Colors

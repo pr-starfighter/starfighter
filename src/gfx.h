@@ -27,7 +27,7 @@ extern SDL_Surface *gfx_sprites[MAX_SPRITES];
 extern SDL_Surface *gfx_faceSprites[FS_MAX];
 extern SDL_Surface *gfx_shipSprites[SS_MAX];
 extern SDL_Surface *gfx_fontSprites[MAX_FONTSPRITES];
-extern SDL_Surface *gfx_shopSprites[MAX_SHOPSPRITES];
+extern SDL_Surface *gfx_shopSprites[SHOP_S_MAX];
 extern textObject gfx_textSprites[TS_MAX];
 extern SDL_Surface *gfx_messageBox;
 

@@ -26,7 +26,7 @@ SDL_Surface *gfx_sprites[MAX_SPRITES];
 SDL_Surface *gfx_faceSprites[FS_MAX];
 SDL_Surface *gfx_shipSprites[SS_MAX];
 SDL_Surface *gfx_fontSprites[MAX_FONTSPRITES];
-SDL_Surface *gfx_shopSprites[MAX_SHOPSPRITES];
+SDL_Surface *gfx_shopSprites[SHOP_S_MAX];
 textObject gfx_textSprites[TS_MAX];
 SDL_Surface *gfx_messageBox;
 
@@ -45,7 +45,7 @@ void gfx_init()
 	for (int i = 0 ; i < TS_MAX ; i++)
 		gfx_textSprites[i].image = NULL;
 
-	for (int i = 0 ; i < MAX_SHOPSPRITES ; i++)
+	for (int i = 0 ; i < SHOP_S_MAX ; i++)
 		gfx_shopSprites[i] = NULL;
 
 	for (int i = 0 ; i < MAX_FONTSPRITES ; i++)
@@ -480,7 +480,7 @@ void gfx_free()
 		}
 	}
 
-	for (int i = 0 ; i < MAX_SHOPSPRITES ; i++)
+	for (int i = 0 ; i < SHOP_S_MAX ; i++)
 	{
 		if (gfx_shopSprites[i] != NULL)
 		{
