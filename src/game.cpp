@@ -27,7 +27,7 @@ static int thirds = 0;
 
 void game_init()
 {
-	game.system = 0;
+	game.system = SYSTEM_SPIRIT;
 	game.area = MISN_START;
 	game.sfxVolume = 0;
 	game.musicVolume = 0;
@@ -2027,7 +2027,7 @@ int game_mainLoop()
 	// Some specifics for interception missions
 	if (game.area == MISN_INTERCEPTION)
 	{
-		if ((game.system > 1) && ((rand() % 5) == 0))
+		if ((game.system > SYSTEM_EYANANTH) && ((rand() % 5) == 0))
 		{
 			aliens[ALIEN_KLINE] = alien_defs[CD_KLINE];
 			aliens[ALIEN_KLINE].owner = &aliens[ALIEN_KLINE];
@@ -2038,7 +2038,7 @@ int game_mainLoop()
 			player_setTarget(ALIEN_KLINE);
 		}
 
-		if ((game.system == 2) && (game.experimentalShield > 0))
+		if ((game.system == SYSTEM_MORDOR) && (game.experimentalShield > 0))
 		{
 			if ((rand() % 5) > 0)
 			{

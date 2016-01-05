@@ -487,10 +487,6 @@ void initShop()
 
  	shopSelectedItem = -1;
 
-	player.image[0] = gfx_shipSprites[SS_FIREFLY];
-	player.x = 380;
-	player.y = 95;
-
 	drawShop();
 }
 
@@ -1029,11 +1025,11 @@ void showShop()
 
 	if (shopSelectedItem > -1)
 	{
-		screen_blit(gfx_sprites[27], 60, 350);
-		screen_blit(gfx_sprites[28], 710, 350);
+		screen_blit(gfx_sprites[SP_BUY], 60, 350);
+		screen_blit(gfx_sprites[SP_SELL], 710, 350);
 	}
 
-	screen_blit(gfx_sprites[29], (int)player.x, (int)player.y);
+	screen_blit(gfx_sprites[SP_FIREFLY], 380, 95);
 
 	signed char icons = SHOP_MAX;
 

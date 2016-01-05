@@ -577,6 +577,14 @@ enum {
 	SECTION_GAME
 };
 
+// Systems
+enum {
+	SYSTEM_SPIRIT,
+	SYSTEM_EYANANTH,
+	SYSTEM_MORDOR,
+	SYSTEM_SOL
+};
+
 // Missions
 enum {
 	MISN_START,

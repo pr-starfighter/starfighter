@@ -157,16 +157,16 @@ static void intermission_setSystemPlanets()
 
 	switch (game.system)
 	{
-		case 0:
+		case SYSTEM_SPIRIT:
 			strcpy(string, "data/planets_spirit.dat");
 			break;
-		case 1:
+		case SYSTEM_EYANANTH:
 			strcpy(string, "data/planets_eyananth.dat");
 			break;
-		case 2:
+		case SYSTEM_MORDOR:
 			strcpy(string, "data/planets_mordor.dat");
 			break;
-		case 3:
+		case SYSTEM_SOL:
 			strcpy(string, "data/planets_sol.dat");
 			break;
 	}
@@ -256,7 +256,7 @@ static bool intermission_showSystem(float x, float y, bool selectable)
 			screen_renderString(systemPlanet[planet].name, -1, 545, FONT_WHITE);
 			if ((engine.keyState[KEY_FIRE]))
 			{
-				if (game.system == 0)
+				if (game.system == SYSTEM_SPIRIT)
 				{
 					game.stationedPlanet = planet;
 					game.destinationPlanet = planet;
@@ -577,13 +577,33 @@ int intermission()
 	engine.cursor_y = screen->h / 2;
 	gfx_sprites[SP_CURSOR] = gfx_loadImage("gfx/cursor.png");
 
-	// Icons 1 - 29
-	for (int i = 0 ; i < 26 ; i++)
-	{
-		sprintf(string, "gfx/icon%d.png", (i + 1));
-		gfx_sprites[i + 1] = gfx_loadImage(string);
-	}
-
+	// Icons
+	gfx_sprites[SP_START_MISSION] = gfx_loadImage("gfx/icon1.png");
+	gfx_sprites[SP_MAP] = gfx_loadImage("gfx/icon2.png");
+	gfx_sprites[SP_STATUS] = gfx_loadImage("gfx/icon3.png");
+	gfx_sprites[SP_SAVE] = gfx_loadImage("gfx/icon4.png");
+	gfx_sprites[SP_SHOP] = gfx_loadImage("gfx/icon5.png");
+	gfx_sprites[SP_COMM] = gfx_loadImage("gfx/icon6.png");
+	gfx_sprites[SP_OPTIONS] = gfx_loadImage("gfx/icon7.png");
+	gfx_sprites[SP_EXIT] = gfx_loadImage("gfx/icon8.png");
+	gfx_sprites[SP_PLASMA_MAX_OUTPUT] = gfx_loadImage("gfx/icon9.png");
+	gfx_sprites[SP_PLASMA_MAX_POWER] = gfx_loadImage("gfx/icon10.png");
+	gfx_sprites[SP_PLASMA_MAX_RATE] = gfx_loadImage("gfx/icon11.png");
+	gfx_sprites[SP_PLASMA_AMMO] = gfx_loadImage("gfx/icon12.png");
+	gfx_sprites[SP_ROCKET_AMMO] = gfx_loadImage("gfx/icon13.png");
+	gfx_sprites[SP_PLASMA_MIN_OUTPUT] = gfx_loadImage("gfx/icon14.png");
+	gfx_sprites[SP_PLASMA_MIN_POWER] = gfx_loadImage("gfx/icon15.png");
+	gfx_sprites[SP_PLASMA_MIN_RATE] = gfx_loadImage("gfx/icon16.png");
+	gfx_sprites[SP_PLASMA_MAX_AMMO] = gfx_loadImage("gfx/icon17.png");
+	gfx_sprites[SP_ROCKET_MAX_AMMO] = gfx_loadImage("gfx/icon18.png");
+	gfx_sprites[SP_DOUBLE_ROCKETS] = gfx_loadImage("gfx/icon19.png");
+	gfx_sprites[SP_MICRO_ROCKETS] = gfx_loadImage("gfx/icon20.png");
+	gfx_sprites[SP_LASER] = gfx_loadImage("gfx/icon21.png");
+	gfx_sprites[SP_HOMING_MISSILE] = gfx_loadImage("gfx/icon22.png");
+	gfx_sprites[SP_CHARGER] = gfx_loadImage("gfx/icon23.png");
+	gfx_sprites[SP_DOUBLE_HOMING_MISSILES] = gfx_loadImage("gfx/icon24.png");
+	gfx_sprites[SP_MICRO_HOMING_MISSILES] = gfx_loadImage("gfx/icon25.png");
+	gfx_sprites[SP_GOTO] = gfx_loadImage("gfx/icon26.png");
 	gfx_sprites[SP_BUY] = gfx_loadImage("gfx/buyIcon.png");
 	gfx_sprites[SP_SELL] = gfx_loadImage("gfx/sellIcon.png");
 	gfx_sprites[SP_FIREFLY] = gfx_loadImage("gfx/firefly1.png");
@@ -612,7 +632,7 @@ int intermission()
 	SDL_Rect r;
 	SDL_Rect destRect;
 	int distance = 0;
-	int interceptionChance = 0;
+	int interceptionChance;
 
 	intermission_setStatusLines();
 	initShop();
@@ -647,12 +667,24 @@ int intermission()
 			game.maxPlasmaDamage);
 	}
 
-	if (game.system > 0)
-		interceptionChance = (300 / game.system);
-
-	// There is no chance of being interceptted after the final attack on Earth
-	if ((game.system == 3) && (systemPlanet[2].missionCompleted))
-		interceptionChance = 0;
+	switch (game.system)
+	{
+		case SYSTEM_EYANANTH:
+			interceptionChance = 300;
+			break;
+		case SYSTEM_MORDOR:
+			interceptionChance = 150;
+			break;
+		case SYSTEM_SOL:
+			// There is no chance of being interceptted after the final attack on Earth
+			if ((game.system == SYSTEM_SOL) && (systemPlanet[2].missionCompleted))
+				interceptionChance = 0;
+			else
+				interceptionChance = 100;
+			break;
+		default:
+			interceptionChance = 0;
+	}
 
 	int rtn = 0;
 
@@ -788,7 +820,7 @@ int intermission()
 
 				if (intermission_showSystem(sinX, cosY, true))
 				{
-					if (game.system == 0)
+					if (game.system == SYSTEM_SPIRIT)
 					{
 						sprintf(string, "Stationed At: %s", systemPlanet[game.stationedPlanet].name);
 						gfx_createTextObject(TS_CURRENT_PLANET, string, 90, 450, FONT_WHITE);
@@ -802,7 +834,7 @@ int intermission()
 				}
 
 				screen_blitText(TS_CURRENT_PLANET);
-				if ((game.system > 0) && (game.stationedPlanet != game.destinationPlanet))
+				if ((game.system > SYSTEM_SPIRIT) && (game.stationedPlanet != game.destinationPlanet))
 					screen_blitText(TS_DEST_PLANET);
 				break;
 

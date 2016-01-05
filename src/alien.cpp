@@ -1088,7 +1088,7 @@ bool alien_add()
 			alienArray[0] = CD_DUALFIGHTER;
 			alienArray[1] = CD_MISSILEBOAT;
 			alienArray[2] = CD_AIMFIGHTER;
-			if (game.system == 2)
+			if (game.system == SYSTEM_MORDOR)
 			{
 				numberOfAliens = 4;
 				alienArray[3] = CD_PROTOFIGHTER;
@@ -1106,7 +1106,7 @@ bool alien_add()
 		(game.area != MISN_SIVEDI) &&
 		(game.area != MISN_MARS))
 	{
-		if ((game.system == 1) && (game.area == MISN_INTERCEPTION))
+		if ((game.system == SYSTEM_EYANANTH) && (game.area == MISN_INTERCEPTION))
 		{
 			if ((rand() % 5) == 0)
 				randEnemy = CD_SLAVETRANSPORT;
