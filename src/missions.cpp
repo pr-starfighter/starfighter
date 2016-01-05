@@ -219,7 +219,7 @@ static void clearAllMissions()
 		for (int i = 0 ; i < 3 ; i++)
 		{
 			strcpy(missions[m].primaryObjective[i], "");
-			missions[m].primaryType[i] = NONE;
+			missions[m].primaryType[i] = M_NONE;
 			missions[m].target1[i] = -1;
 			missions[m].targetValue1[i] = -1;
 			missions[m].timeLimit1[i] = -2;
@@ -229,7 +229,7 @@ static void clearAllMissions()
 		for (int i = 0 ; i < 3 ; i++)
 		{
 			strcpy(missions[m].secondaryObjective[i], "");
-			missions[m].secondaryType[i] = NONE;
+			missions[m].secondaryType[i] = M_NONE;
 			missions[m].target2[i] = -1;
 			missions[m].targetValue2[i] = -1;
 			missions[m].timeLimit2[i] = -2;
@@ -648,7 +648,7 @@ bool allMissionsCompleted()
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if (currentMission.primaryType[i] != NONE)
+		if (currentMission.primaryType[i] != M_NONE)
 		{
 			if (currentMission.completed1[i] == 0)
 			{
@@ -661,7 +661,7 @@ bool allMissionsCompleted()
 			if (currentMission.completed1[i] < 0)
 				return false;
 		}
-		if (currentMission.secondaryType[i] != NONE)
+		if (currentMission.secondaryType[i] != M_NONE)
 		{
 			if (currentMission.completed2[i] == 0)
 			{
@@ -717,13 +717,13 @@ static void drawBriefScreen()
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if ((currentMission.primaryType[i] != NONE) && (currentMission.completed1[i] != OB_HIDDEN))
+		if ((currentMission.primaryType[i] != M_NONE) && (currentMission.completed1[i] != OB_HIDDEN))
 		{
 			screen_renderString(currentMission.primaryObjective[i], 160, 114 + (i * 30), FONT_WHITE);
 		}
 	}
 
-	if (currentMission.secondaryType[0] != NONE)
+	if (currentMission.secondaryType[0] != M_NONE)
 	{
 		screen_drawRect(140, 230, 500, 20, 0x00, 0x77, 0x77);
 		screen_drawRect(140, 250, 500, 130, 0x00, 0x33, 0x33);
@@ -731,7 +731,7 @@ static void drawBriefScreen()
 
 		for (int i = 0 ; i < 3 ; i++)
 		{
-			if (currentMission.secondaryType[i] != NONE)
+			if (currentMission.secondaryType[i] != M_NONE)
 			{
 				screen_renderString(currentMission.secondaryObjective[i], 160, 274 + (i * 30), FONT_WHITE);
 				game.secondaryMissions++;
@@ -865,7 +865,7 @@ void missionFinishedScreen()
 
 		for (int i = 0 ; i < 3 ; i++)
 		{
-			if (currentMission.primaryType[i] != NONE)
+			if (currentMission.primaryType[i] != M_NONE)
 			{
 				if ((game.area != MISN_POSWIC) || (i != 1))
 					screen_renderString("COMPLETED", 550, 114 + (i * 30), FONT_GREEN);
@@ -874,11 +874,11 @@ void missionFinishedScreen()
 			}
 		}
 
-		if (currentMission.secondaryType[0] != NONE)
+		if (currentMission.secondaryType[0] != M_NONE)
 		{
 			for (int i = 0 ; i < 3 ; i++)
 			{
-				if (currentMission.secondaryType[i] != NONE)
+				if (currentMission.secondaryType[i] != M_NONE)
 				{
 					strcpy(temp, currentMission.secondaryObjective[i]);
 					if (currentMission.completed2[i] >= 1)

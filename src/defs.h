@@ -36,8 +36,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define CHANCE(x) ((rand() % RAND_MAX) < ((x) * RAND_MAX))
 #define RANDRANGE(x, y) (((x) < (y)) ? ((x) + (rand() % (1 + (y) - (x)))) : (x))
 
-// ALL
-#define NONE 0
 
 // Compile-time options
 #ifndef VERSION
@@ -213,7 +211,8 @@ enum {
 
 // Mission types
 enum {
-	M_DESTROY_ALL_TARGETS = 1,
+	M_NONE,
+	M_DESTROY_ALL_TARGETS,
 	M_DESTROY_TARGET_TYPE,
 	M_COLLECT,
 	M_PROTECT_PICKUP,
