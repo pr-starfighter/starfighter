@@ -632,7 +632,7 @@ int intermission()
 	SDL_Rect r;
 	SDL_Rect destRect;
 	int distance = 0;
-	int interceptionChance;
+	double interceptionChance;
 
 	intermission_setStatusLines();
 	initShop();
@@ -670,17 +670,17 @@ int intermission()
 	switch (game.system)
 	{
 		case SYSTEM_EYANANTH:
-			interceptionChance = 300;
+			interceptionChance = 1. / 300.;
 			break;
 		case SYSTEM_MORDOR:
-			interceptionChance = 150;
+			interceptionChance = 1. / 150.;
 			break;
 		case SYSTEM_SOL:
 			// There is no chance of being interceptted after the final attack on Earth
 			if ((game.system == SYSTEM_SOL) && (systemPlanet[2].missionCompleted))
 				interceptionChance = 0;
 			else
-				interceptionChance = 100;
+				interceptionChance = 1. / 100.;
 			break;
 		default:
 			interceptionChance = 0;
@@ -894,7 +894,7 @@ int intermission()
 				}
 				else if (interceptionChance > 0)
 				{
-					if ((rand() % interceptionChance) == 0)
+					if (CHANCE(interceptionChance))
 					{
 						game.area = MISN_INTERCEPTION;
 						rtn = 2;

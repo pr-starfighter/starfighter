@@ -20,6 +20,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef DEFS_H
 #define DEFS_H
 
+#include <stdlib.h>
+
+
+// Macros
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 #define LIMIT(x, a, b) x = ((x) < (b) ? ((x) > (a) ? (x) : (a)) : (b))
@@ -29,6 +33,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define WRAP_ADD(x, y, a, b) x = (((x) + (y)) + \
 	((x) + (y) < (a) ? ((b) - (a)) : 0) + \
 	((x) + (y) > (b) ? ((a) - (b)) : 0))
+#define CHANCE(x) ((rand() % RAND_MAX) < ((x) * RAND_MAX))
 #define RANDRANGE(x, y) (((x) < (y)) ? ((x) + (rand() % (1 + (y) - (x)))) : (x))
 
 // ALL
