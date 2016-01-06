@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 void bullet_add(object *theWeapon, object *attacker, int y, int dy)
 {
 	object *bullet;
-	signed char imageIndex;
+	int imageIndex;
 	int tempX, tempY, steps;
 
 	bullet = new object;
@@ -131,7 +131,7 @@ void bullet_add(object *theWeapon, object *attacker, int y, int dy)
 	{
 		bullet->dx = RANDRANGE(-20, 20);
 		bullet->dy = RANDRANGE(-20, 20);
-		bullet->image[0] = gfx_sprites[4];
+		bullet->image[0] = gfx_sprites[SP_SMALL_EXPLOSION];
 	}
 
 	engine.bulletTail->next = bullet;

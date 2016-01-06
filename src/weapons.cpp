@@ -21,15 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 object weapon[MAX_WEAPONS];
 
-void setWeaponShapes()
-{
-	for (int i = 0 ; i < MAX_WEAPONS ; i++)
-	{
-		weapon[i].image[0] = gfx_sprites[weapon[i].imageIndex[0]];
-		weapon[i].image[1] = gfx_sprites[weapon[i].imageIndex[1]];
-	}
-}
-
 /*
 A list of predefined weaponary.
 */
@@ -41,8 +32,8 @@ void initWeapons()
 	weapon[W_PLAYER_WEAPON].damage = 1;
 	weapon[W_PLAYER_WEAPON].reload[0] = 15;
 	weapon[W_PLAYER_WEAPON].speed = 10;
-	weapon[W_PLAYER_WEAPON].imageIndex[0] = 0;
-	weapon[W_PLAYER_WEAPON].imageIndex[1] = 0;
+	weapon[W_PLAYER_WEAPON].imageIndex[0] = SP_PLASMA_GREEN;
+	weapon[W_PLAYER_WEAPON].imageIndex[1] = SP_PLASMA_GREEN;
 	weapon[W_PLAYER_WEAPON].flags = WF_SPREAD;
 
 	// Single Shot
@@ -51,8 +42,8 @@ void initWeapons()
 	weapon[W_SINGLE_SHOT].damage = 1;
 	weapon[W_SINGLE_SHOT].reload[0] = 15;
 	weapon[W_SINGLE_SHOT].speed = 10;
-	weapon[W_SINGLE_SHOT].imageIndex[0] = 0;
-	weapon[W_SINGLE_SHOT].imageIndex[1] = 1;
+	weapon[W_SINGLE_SHOT].imageIndex[0] = SP_PLASMA_GREEN;
+	weapon[W_SINGLE_SHOT].imageIndex[1] = SP_PLASMA_RED;
 	weapon[W_SINGLE_SHOT].flags = 0;
 
 	// Double Shot
@@ -70,8 +61,8 @@ void initWeapons()
 	weapon[W_ROCKETS].reload[0] = 45;
 	weapon[W_ROCKETS].speed = 20;
 	weapon[W_ROCKETS].flags = 0;
-	weapon[W_ROCKETS].imageIndex[0] = 2;
-	weapon[W_ROCKETS].imageIndex[1] = 3;
+	weapon[W_ROCKETS].imageIndex[0] = SP_ROCKET;
+	weapon[W_ROCKETS].imageIndex[1] = SP_ROCKET_L;
 
 	// Double Rockets (uses ROCKETS as base)
 	weapon[W_DOUBLE_ROCKETS] = weapon[W_ROCKETS];
@@ -85,8 +76,8 @@ void initWeapons()
 	weapon[W_MICRO_ROCKETS].reload[0] = 30;
 	weapon[W_MICRO_ROCKETS].speed = 15;
 	weapon[W_MICRO_ROCKETS].flags = WF_VARIABLE_SPEED;
-	weapon[W_MICRO_ROCKETS].imageIndex[0] = 2;
-	weapon[W_MICRO_ROCKETS].imageIndex[1] = 3;
+	weapon[W_MICRO_ROCKETS].imageIndex[0] = SP_ROCKET;
+	weapon[W_MICRO_ROCKETS].imageIndex[1] = SP_ROCKET_L;
 
 	// Energy Ray
 	weapon[W_ENERGYRAY].id = WT_ENERGYRAY;
@@ -94,6 +85,8 @@ void initWeapons()
 	weapon[W_ENERGYRAY].damage = 1;
 	weapon[W_ENERGYRAY].reload[0] = 25; // reload for energy ray is never used
 	weapon[W_ENERGYRAY].speed = 15;
+	weapon[W_ENERGYRAY].imageIndex[0] = SP_PLASMA_RED;
+	weapon[W_ENERGYRAY].imageIndex[1] = SP_PLASMA_RED;
 	weapon[W_ENERGYRAY].flags = 0;
 
 	// Laser
@@ -102,8 +95,8 @@ void initWeapons()
 	weapon[W_LASER].damage = 3;
 	weapon[W_LASER].reload[0] = 1;
 	weapon[W_LASER].speed = 10;
-	weapon[W_LASER].imageIndex[0] = 1;
-	weapon[W_LASER].imageIndex[1] = 1;
+	weapon[W_LASER].imageIndex[0] = SP_PLASMA_RED;
+	weapon[W_LASER].imageIndex[1] = SP_PLASMA_RED;
 	weapon[W_LASER].flags = 0;
 
 	// Beam up weapon
@@ -113,8 +106,8 @@ void initWeapons()
 	weapon[W_CHARGER].reload[0] = 0;
 	weapon[W_CHARGER].speed = 12;
 	weapon[W_CHARGER].flags = 0;
-	weapon[W_CHARGER].imageIndex[0] = 33;
-	weapon[W_CHARGER].imageIndex[1] = 34;
+	weapon[W_CHARGER].imageIndex[0] = SP_DIR_PLASMA_GREEN;
+	weapon[W_CHARGER].imageIndex[1] = SP_DIR_PLASMA_RED;
 
 	// Homing missile
 	weapon[W_HOMING_MISSILE].id = WT_ROCKET;
@@ -123,15 +116,15 @@ void initWeapons()
 	weapon[W_HOMING_MISSILE].reload[0] = 35;
 	weapon[W_HOMING_MISSILE].speed = 10;
 	weapon[W_HOMING_MISSILE].flags = WF_HOMING;
-	weapon[W_HOMING_MISSILE].imageIndex[0] = 4;
-	weapon[W_HOMING_MISSILE].imageIndex[1] = 4;
+	weapon[W_HOMING_MISSILE].imageIndex[0] = SP_SMALL_EXPLOSION;
+	weapon[W_HOMING_MISSILE].imageIndex[1] = SP_SMALL_EXPLOSION;
 
 	// Double homing missile
 	weapon[W_DOUBLE_HOMING_MISSILES] = weapon[W_HOMING_MISSILE];
 	weapon[W_DOUBLE_HOMING_MISSILES].ammo[0] = 2;
 	weapon[W_DOUBLE_HOMING_MISSILES].reload[0] = 65;
-	weapon[W_DOUBLE_HOMING_MISSILES].imageIndex[0] = 4;
-	weapon[W_DOUBLE_HOMING_MISSILES].imageIndex[1] = 4;
+	weapon[W_DOUBLE_HOMING_MISSILES].imageIndex[0] = SP_SMALL_EXPLOSION;
+	weapon[W_DOUBLE_HOMING_MISSILES].imageIndex[1] = SP_SMALL_EXPLOSION;
 
 	// Micro homing missiles
 	weapon[W_MICRO_HOMING_MISSILES].id = WT_ROCKET;
@@ -140,8 +133,8 @@ void initWeapons()
 	weapon[W_MICRO_HOMING_MISSILES].reload[0] = 65;
 	weapon[W_MICRO_HOMING_MISSILES].speed = 3;
 	weapon[W_MICRO_HOMING_MISSILES].flags = WF_HOMING;
-	weapon[W_MICRO_HOMING_MISSILES].imageIndex[0] = 4;
-	weapon[W_MICRO_HOMING_MISSILES].imageIndex[1] = 4;
+	weapon[W_MICRO_HOMING_MISSILES].imageIndex[0] = SP_SMALL_EXPLOSION;
+	weapon[W_MICRO_HOMING_MISSILES].imageIndex[1] = SP_SMALL_EXPLOSION;
 
 	// Aimed plasma bolt
 	weapon[W_AIMED_SHOT].id = WT_DIRECTIONAL;
@@ -150,8 +143,8 @@ void initWeapons()
 	weapon[W_AIMED_SHOT].reload[0] = 15;
 	weapon[W_AIMED_SHOT].speed = 0;
 	weapon[W_AIMED_SHOT].flags = WF_AIMED;
-	weapon[W_AIMED_SHOT].imageIndex[0] = 33;
-	weapon[W_AIMED_SHOT].imageIndex[1] = 34;
+	weapon[W_AIMED_SHOT].imageIndex[0] = SP_DIR_PLASMA_GREEN;
+	weapon[W_AIMED_SHOT].imageIndex[1] = SP_DIR_PLASMA_RED;
 
 	// 3 way spread weapon
 	weapon[W_SPREADSHOT].id = WT_SPREAD;
@@ -160,8 +153,8 @@ void initWeapons()
 	weapon[W_SPREADSHOT].reload[0] = 10;
 	weapon[W_SPREADSHOT].speed = 10;
 	weapon[W_SPREADSHOT].flags = WF_SPREAD;
-	weapon[W_SPREADSHOT].imageIndex[0] = 0;
-	weapon[W_SPREADSHOT].imageIndex[1] = 1;
+	weapon[W_SPREADSHOT].imageIndex[0] = SP_PLASMA_GREEN;
+	weapon[W_SPREADSHOT].imageIndex[1] = SP_PLASMA_RED;
 
 	// Sid's ion cannon like weapon
 	weapon[W_IONCANNON].id = WT_PLASMA;
@@ -170,8 +163,8 @@ void initWeapons()
 	weapon[W_IONCANNON].reload[0] = 2;
 	weapon[W_IONCANNON].speed = 10;
 	weapon[W_IONCANNON].flags = WF_DISABLE | WF_AIMED;
-	weapon[W_IONCANNON].imageIndex[0] = 35;
-	weapon[W_IONCANNON].imageIndex[1] = 35;
+	weapon[W_IONCANNON].imageIndex[0] = SP_ION;
+	weapon[W_IONCANNON].imageIndex[1] = SP_ION;
 
 	// Directional Shock Missile - Used by Kline in final battle
 	weapon[W_DIRSHOCKMISSILE].id = WT_ROCKET;
@@ -180,6 +173,6 @@ void initWeapons()
 	weapon[W_DIRSHOCKMISSILE].reload[0] = 60;
 	weapon[W_DIRSHOCKMISSILE].speed = 0;
 	weapon[W_DIRSHOCKMISSILE].flags = WF_AIMED | WF_TIMEDEXPLOSION;
-	weapon[W_DIRSHOCKMISSILE].imageIndex[0] = 4;
-	weapon[W_DIRSHOCKMISSILE].imageIndex[1] = 4;
+	weapon[W_DIRSHOCKMISSILE].imageIndex[0] = SP_SMALL_EXPLOSION;
+	weapon[W_DIRSHOCKMISSILE].imageIndex[1] = SP_SMALL_EXPLOSION;
 }

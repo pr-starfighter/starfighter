@@ -153,52 +153,52 @@ void collectable_add(float x, float y, int type, int value, int life)
 	switch(type)
 	{
 		case P_CASH:
-			collectable->image = gfx_sprites[24];
+			collectable->image = gfx_sprites[SP_PICKUP_MONEY];
 			break;
 
 		case P_ROCKET:
-			collectable->image = gfx_sprites[49];
+			collectable->image = gfx_sprites[SP_PICKUP_ROCKETS];
 			break;
 
 		case P_PLASMA_AMMO:
-			collectable->image = gfx_sprites[25];
+			collectable->image = gfx_sprites[SP_PICKUP_PLASMA];
 			break;
 
 		case P_SHIELD:
-			collectable->image = gfx_sprites[26];
+			collectable->image = gfx_sprites[SP_PICKUP_SHIELD];
 			break;
 
 		case P_PLASMA_SHOT:
-			collectable->image = gfx_sprites[27];
+			collectable->image = gfx_sprites[SP_PICKUP_PLASMA_OUTPUT];
 			break;
 
 		case P_PLASMA_RATE:
-			collectable->image = gfx_sprites[28];
+			collectable->image = gfx_sprites[SP_PICKUP_PLASMA_RATE];
 			break;
 
 		case P_PLASMA_DAMAGE:
-			collectable->image = gfx_sprites[29];
+			collectable->image = gfx_sprites[SP_PICKUP_PLASMA_POWER];
 			break;
 
 		case P_CARGO:
-			collectable->image = gfx_sprites[32];
+			collectable->image = gfx_sprites[SP_CARGO];
 			break;
 
 		case P_SUPER:
-			collectable->image = gfx_sprites[50];
+			collectable->image = gfx_sprites[SP_SUPERCHARGE];
 			break;
 
 		case P_MINE:
-			collectable->image = gfx_sprites[31];
+			collectable->image = gfx_sprites[SP_MINE];
 			break;
 
 		case P_SLAVES:
 		case P_ESCAPEPOD:
-			collectable->image = gfx_sprites[45];
+			collectable->image = gfx_sprites[SP_ESCAPE_POD];
 			break;
 
 		case P_ORE:
-			collectable->image = gfx_sprites[46 + rand() % 3];
+			collectable->image = gfx_sprites[RANDRANGE(SP_ORE, SP_ORE_L)];
 			break;
 	}
 
@@ -234,8 +234,8 @@ void collectable_explode(collectables *collectable)
 		audio_playSound(SFX_EXPLOSION, collectable->x);
 
 	for (int i = 0 ; i < 10 ; i++)
-		explosion_add(collectable->x + rand() % 25 - rand() % 25,
-			collectable->y + rand() % 25 - rand() % 25, E_BIG_EXPLOSION);
+		explosion_add(RANDRANGE(collectable->x - 25, collectable->x + 25),
+			RANDRANGE(collectable->y - 25, collectable->x + 25), SP_BIG_EXPLOSION);
 
 	player_checkShockDamage(collectable->x, collectable->y);
 }

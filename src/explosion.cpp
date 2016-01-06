@@ -47,12 +47,12 @@ void explosion_add(float x, float y, int type)
 */
 void explosion_addEngine(object *craft)
 {
-	if (rand() % 2 == 0)
+	if (CHANCE(0.5))
 		return;
 
 	float x = craft->x + (craft->engineX * craft->face);
 	float y = craft->y + craft->engineY;
 
 	y += RANDRANGE(-3, 3);
-	explosion_add(x, y, E_TINY_EXPLOSION);
+	explosion_add(x, y, SP_TINY_EXPLOSION);
 }

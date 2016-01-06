@@ -116,6 +116,8 @@ bool loadGame(int slot)
 		game.difficulty = DIFFICULTY_NORMAL;
 
 	weapon[W_PLAYER_WEAPON] = game.playerWeapon;
+	weapon[W_PLAYER_WEAPON].imageIndex[0] = SP_PLASMA_GREEN;
+	weapon[W_PLAYER_WEAPON].imageIndex[1] = SP_PLASMA_GREEN;
 	player = game.thePlayer;
 
 	// Re-init all the planets in this system...

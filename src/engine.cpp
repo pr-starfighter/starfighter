@@ -266,7 +266,7 @@ void engine_cleanup()
 	delete(engine.collectableHead);
 	delete(screen_bufferHead);
 
-	for (int i = 0 ; i < MAX_FONTSPRITES ; i++)
+	for (int i = 0 ; i < FONT_MAX ; i++)
 	{
 		if (gfx_fontSprites[i] != NULL)
 			SDL_FreeSurface(gfx_fontSprites[i]);

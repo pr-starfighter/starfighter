@@ -23,10 +23,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "Starfighter.h"
 
 extern SDL_Surface *gfx_background;
-extern SDL_Surface *gfx_sprites[MAX_SPRITES];
+extern SDL_Surface *gfx_sprites[SP_MAX];
 extern SDL_Surface *gfx_faceSprites[FS_MAX];
 extern SDL_Surface *gfx_shipSprites[SS_MAX];
-extern SDL_Surface *gfx_fontSprites[MAX_FONTSPRITES];
+extern SDL_Surface *gfx_fontSprites[FONT_MAX];
 extern SDL_Surface *gfx_shopSprites[SHOP_S_MAX];
 extern textObject gfx_textSprites[TS_MAX];
 extern SDL_Surface *gfx_messageBox;

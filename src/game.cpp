@@ -521,11 +521,11 @@ static void game_doBullets()
 
 			if (bullet->id == WT_ROCKET)
 			{
-				explosion_add(bullet->x, bullet->y, E_SMALL_EXPLOSION);
+				explosion_add(bullet->x, bullet->y, SP_SMALL_EXPLOSION);
 			}
 			else if (bullet->id == WT_MICROROCKET)
 			{
-				explosion_add(bullet->x, bullet->y, E_TINY_EXPLOSION);
+				explosion_add(bullet->x, bullet->y, SP_TINY_EXPLOSION);
 			}
 
 			if ((bullet->flags & WF_AIMED))
@@ -637,7 +637,7 @@ static void game_doBullets()
 								for (int i = 0 ; i < 10 ; i++)
 									explosion_add(bullet->x + RANDRANGE(-35, 35),
 										bullet->y + RANDRANGE(-35, 35),
-										E_BIG_EXPLOSION);
+										SP_BIG_EXPLOSION);
 							}
 						}
 						else
@@ -647,9 +647,9 @@ static void game_doBullets()
 						}
 
 						if (bullet->id == WT_ROCKET)
-							explosion_add(bullet->x, bullet->y, E_BIG_EXPLOSION);
+							explosion_add(bullet->x, bullet->y, SP_BIG_EXPLOSION);
 						else
-							explosion_add(bullet->x, bullet->y, E_SMALL_EXPLOSION);
+							explosion_add(bullet->x, bullet->y, SP_SMALL_EXPLOSION);
 					}
 				}
 			}
@@ -688,7 +688,7 @@ static void game_doBullets()
 							audio_playSound(SFX_EXPLOSION, bullet->x);
 							for (int i = 0 ; i < 10 ; i++)
 								explosion_add(bullet->x + RANDRANGE(-35, 35),
-									bullet->y + RANDRANGE(-35, 35), E_BIG_EXPLOSION);
+									bullet->y + RANDRANGE(-35, 35), SP_BIG_EXPLOSION);
 						}
 					}
 					else
@@ -700,9 +700,9 @@ static void game_doBullets()
 					audio_playSound(SFX_HIT, player.x);
 
 					if (bullet->id == WT_ROCKET)
-						explosion_add(bullet->x, bullet->y, E_BIG_EXPLOSION);
+						explosion_add(bullet->x, bullet->y, SP_BIG_EXPLOSION);
 					else
-						explosion_add(bullet->x, bullet->y, E_SMALL_EXPLOSION);
+						explosion_add(bullet->x, bullet->y, SP_SMALL_EXPLOSION);
 				}
 			}
 		}
@@ -717,7 +717,7 @@ static void game_doBullets()
 					if (bullet_collision(bullet, &cargo[j]))
 					{
 						bullet->active = false;
-						explosion_add(bullet->x, bullet->y, E_SMALL_EXPLOSION);
+						explosion_add(bullet->x, bullet->y, SP_SMALL_EXPLOSION);
 						audio_playSound(SFX_HIT, cargo[j].x);
 						if (cargo[j].collectType != P_PHOEBE)
 						{
@@ -726,7 +726,7 @@ static void game_doBullets()
 							for (int i = 0 ; i < 10 ; i++)
 								explosion_add(cargo[j].x + RANDRANGE(-15, 15),
 									cargo[j].y + RANDRANGE(-15, 15),
-									E_BIG_EXPLOSION);
+									SP_BIG_EXPLOSION);
 							updateMissionRequirements(M_PROTECT_PICKUP,
 								P_CARGO, 1);
 						}
@@ -791,7 +791,7 @@ static void game_doBullets()
 				audio_playSound(SFX_EXPLOSION, bullet->x);
 				for (int i = 0 ; i < 10 ; i++)
 					explosion_add(bullet->x + RANDRANGE(-35, 35),
-						bullet->y + RANDRANGE(-35, 35), E_BIG_EXPLOSION);
+						bullet->y + RANDRANGE(-35, 35), SP_BIG_EXPLOSION);
 
 				player_checkShockDamage(bullet->x, bullet->y);
 			}
@@ -1092,7 +1092,7 @@ static void game_doAliens()
 						if ((rand() % 10) == 0)
 							explosion_add(aliens[i].x + (rand() % aliens[i].image[0]->w),
 								aliens[i].y + (rand() % aliens[i].image[0]->h),
-								E_ELECTRICAL);
+								SP_ELECTRICAL);
 					}
 				}
 
@@ -1109,7 +1109,7 @@ static void game_doAliens()
 						(int)aliens[i].y);
 					explosion_add(aliens[i].x + (rand() % aliens[i].image[0]->w),
 						aliens[i].y + (rand() % aliens[i].image[0]->h),
-						E_BIG_EXPLOSION);
+						SP_BIG_EXPLOSION);
 				}
 				if (aliens[i].shield < aliens[i].deathCounter)
 				{
@@ -1399,7 +1399,7 @@ static void game_doPlayer()
 			if ((player.maxShield > 1) && (player.shield <= engine.lowShield) &&
 					(rand() % 5 < 1))
 				explosion_add(player.x + RANDRANGE(-10, 10),
-					player.y + RANDRANGE(-10, 20), E_SMOKE);
+					player.y + RANDRANGE(-10, 20), SP_SMOKE);
 		}
 		else
 		{
@@ -1424,7 +1424,7 @@ static void game_doPlayer()
 			engine.keyState[KEY_UP] = engine.keyState[KEY_DOWN] = engine.keyState[KEY_LEFT] = engine.keyState[KEY_RIGHT] = 0;
 			if ((rand() % 3) == 0)
 				explosion_add(player.x + RANDRANGE(-10, 10),
-					player.y + RANDRANGE(-10, 10), E_BIG_EXPLOSION);
+					player.y + RANDRANGE(-10, 10), SP_BIG_EXPLOSION);
 			if (player.shield == -99)
 				game_addDebris((int)player.x, (int)player.y, player.maxShield);
 		}
@@ -1481,7 +1481,7 @@ static void game_doCargo()
 			// draw the chain link line
 			for (int j = 0 ; j < 10 ; j++)
 			{
-				screen_blit(gfx_sprites[30], (int)chainX, (int)chainY);
+				screen_blit(gfx_sprites[SP_CHAIN_LINK], (int)chainX, (int)chainY);
 				chainX -= dx;
 				chainY -= dy;
 			}
@@ -1508,7 +1508,7 @@ static void game_doDebris()
 			debris->x += debris->dx;
 			debris->y += debris->dy;
 
-			explosion_add(debris->x + RANDRANGE(-10, 10), debris->y + RANDRANGE(-10, 10), E_BIG_EXPLOSION);
+			explosion_add(debris->x + RANDRANGE(-10, 10), debris->y + RANDRANGE(-10, 10), SP_BIG_EXPLOSION);
 		}
 
 		if (debris->thinktime < 1)
@@ -1549,7 +1549,7 @@ void game_doExplosions()
 
 			screen_blit(explosion->image[0], (int)explosion->x, (int)explosion->y);
 
-			if(rand() % 7 == 0)
+			if(CHANCE(1. / 7.))
 			{
 				explosion->thinktime -= 7;
 
@@ -1602,12 +1602,15 @@ static void game_doArrow(int i)
 
 	int arrow;
 
-	if (sxy == sx) {
-		arrow = x < screen->w / 2 ? 42 : 38;
+	if (sxy == sx)
+	{
+		arrow = x < screen->w / 2 ? SP_ARROW_WEST : SP_ARROW_EAST;
 		x -= x > screen->w / 2 ? gfx_sprites[arrow]->w : 0;
 		y -= gfx_sprites[arrow]->h / 2;
-	} else {
-		arrow = y < screen->h / 2 ? 36 : 40;
+	}
+	else
+	{
+		arrow = y < screen->h / 2 ? SP_ARROW_NORTH : SP_ARROW_SOUTH;
 		x -= gfx_sprites[arrow]->w / 2;
 		y -= y > screen->h / 2 ? gfx_sprites[arrow]->h : 0;
 	}
@@ -1620,15 +1623,18 @@ static void game_doArrow(int i)
 	if (gfx_textSprites[TS_RADIO].life > 0)
 		return;
 
-	if (sxy == sx) {
-		x -= x > screen->w / 2 ? 5 + gfx_sprites[44]->w : -5 - gfx_sprites[arrow]->w;
-		y -= (gfx_sprites[44]->h - gfx_sprites[arrow]->h) / 2;
-	} else {
-		x -= (gfx_sprites[44]->w - gfx_sprites[arrow]->w) / 2;
-		y -= y > screen->h / 2 ? 5 + gfx_sprites[44]->h : -5 - gfx_sprites[arrow]->h;
+	if (sxy == sx)
+	{
+		x -= x > screen->w / 2 ? 5 + gfx_sprites[SP_TARGET]->w : -5 - gfx_sprites[arrow]->w;
+		y -= (gfx_sprites[SP_TARGET]->h - gfx_sprites[arrow]->h) / 2;
+	}
+	else
+	{
+		x -= (gfx_sprites[SP_TARGET]->w - gfx_sprites[arrow]->w) / 2;
+		y -= y > screen->h / 2 ? 5 + gfx_sprites[SP_TARGET]->h : -5 - gfx_sprites[arrow]->h;
 	}
 
-	screen_blit(gfx_sprites[44], x, y);
+	screen_blit(gfx_sprites[SP_TARGET], x, y);
 }
 
 static void game_doHud()

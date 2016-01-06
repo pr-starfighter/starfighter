@@ -22,7 +22,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 extern object weapon[MAX_WEAPONS];
 
-extern void setWeaponShapes();
 extern void initWeapons();
 
 #endif

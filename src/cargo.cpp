@@ -58,7 +58,7 @@ object *cargo_add(object *owner, int cargoType)
 	cargo[index].dx = 0;
 	cargo[index].dy = 0;
 	cargo[index].collectType = cargoType;
-	cargo[index].image[0] = gfx_sprites[32];
+	cargo[index].image[0] = gfx_sprites[SP_CARGO];
 	if (cargoType == P_PHOEBE)
 		cargo[index].image[0] = gfx_shipSprites[SS_FRIEND];
 

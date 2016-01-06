@@ -32,9 +32,6 @@ void loadBackground(const char *filename)
 
 void loadGameGraphics()
 {
-	int index;
-	char string[75] = "";
-	FILE *fp;
 	Uint32 *p32;
 	Uint16 *p16;
 	Uint8 *p8;
@@ -177,16 +174,58 @@ void loadGameGraphics()
 			SDL_MapRGB(gfx_shipSprites[i]->format, 0, 0, 0));
 	}
 
-	strcpy(string, "data/resources_all.dat");
-
-	fp = fopen(string, "rb");
-
-	while (fscanf(fp, "%d %s", &index, string) == 2)
-	{
-		gfx_sprites[index] = gfx_loadImage(string);
-	}
-
-	fclose(fp);
+	// Other sprites
+	gfx_sprites[SP_PLASMA_GREEN] = gfx_loadImage("gfx/plasmaGreen.png");
+	gfx_sprites[SP_PLASMA_RED] = gfx_loadImage("gfx/plasmaRed.png");
+	gfx_sprites[SP_DIR_PLASMA_GREEN] = gfx_loadImage("gfx/greenDir.png");
+	gfx_sprites[SP_DIR_PLASMA_RED] = gfx_loadImage("gfx/redDir.png");
+	gfx_sprites[SP_ROCKET] = gfx_loadImage("gfx/rocket1.png");
+	gfx_sprites[SP_ROCKET_L] = gfx_loadImage("gfx/rocket2.png");
+	gfx_sprites[SP_SMALL_EXPLOSION] = gfx_loadImage("gfx/explode1.png");
+	gfx_sprites[SP_SMALL_EXPLOSION_2] = gfx_loadImage("gfx/explode2.png");
+	gfx_sprites[SP_SMALL_EXPLOSION_3] = gfx_loadImage("gfx/explode3.png");
+	gfx_sprites[SP_SMALL_EXPLOSION_L] = gfx_loadImage("gfx/explode4.png");
+	gfx_sprites[SP_BIG_EXPLOSION] = gfx_loadImage("gfx/explode05.png");
+	gfx_sprites[SP_BIG_EXPLOSION_2] = gfx_loadImage("gfx/explode06.png");
+	gfx_sprites[SP_BIG_EXPLOSION_3] = gfx_loadImage("gfx/explode07.png");
+	gfx_sprites[SP_BIG_EXPLOSION_L] = gfx_loadImage("gfx/explode08.png");
+	gfx_sprites[SP_SMOKE] = gfx_loadImage("gfx/explode9.png");
+	gfx_sprites[SP_SMOKE_2] = gfx_loadImage("gfx/explode10.png");
+	gfx_sprites[SP_SMOKE_3] = gfx_loadImage("gfx/explode11.png");
+	gfx_sprites[SP_SMOKE_L] = gfx_loadImage("gfx/explode12.png");
+	gfx_sprites[SP_TINY_EXPLOSION] = gfx_loadImage("gfx/explode13.png");
+	gfx_sprites[SP_TINY_EXPLOSION_2] = gfx_loadImage("gfx/explode14.png");
+	gfx_sprites[SP_TINY_EXPLOSION_3] = gfx_loadImage("gfx/explode15.png");
+	gfx_sprites[SP_TINY_EXPLOSION_L] = gfx_loadImage("gfx/explode16.png");
+	gfx_sprites[SP_ELECTRICAL] = gfx_loadImage("gfx/elec1.png");
+	gfx_sprites[SP_ELECTRICAL_2] = gfx_loadImage("gfx/elec2.png");
+	gfx_sprites[SP_ELECTRICAL_3] = gfx_loadImage("gfx/elec3.png");
+	gfx_sprites[SP_ELECTRICAL_L] = gfx_loadImage("gfx/elec4.png");
+	gfx_sprites[SP_PICKUP_MONEY] = gfx_loadImage("gfx/dollar.png");
+	gfx_sprites[SP_PICKUP_PLASMA] = gfx_loadImage("gfx/rocket.png");
+	gfx_sprites[SP_PICKUP_SHIELD] = gfx_loadImage("gfx/heart.png");
+	gfx_sprites[SP_PICKUP_PLASMA_OUTPUT] = gfx_loadImage("gfx/plasmaAmmo.png");
+	gfx_sprites[SP_PICKUP_PLASMA_RATE] = gfx_loadImage("gfx/plasmaRate.png");
+	gfx_sprites[SP_PICKUP_PLASMA_POWER] = gfx_loadImage("gfx/plasmaDamage.png");
+	gfx_sprites[SP_CHAIN_LINK] = gfx_loadImage("gfx/chainLink.png");
+	gfx_sprites[SP_MINE] = gfx_loadImage("gfx/mine.png");
+	gfx_sprites[SP_CARGO] = gfx_loadImage("gfx/cargo1.png");
+	gfx_sprites[SP_ION] = gfx_loadImage("gfx/stunBolt.png");
+	gfx_sprites[SP_ARROW_NORTH] = gfx_loadImage("gfx/arrowNorth.png");
+	gfx_sprites[SP_ARROW_NORTHEAST] = gfx_loadImage("gfx/arrowNorthEast.png");
+	gfx_sprites[SP_ARROW_EAST] = gfx_loadImage("gfx/arrowEast.png");
+	gfx_sprites[SP_ARROW_SOUTHEAST] = gfx_loadImage("gfx/arrowSouthEast.png");
+	gfx_sprites[SP_ARROW_SOUTH] = gfx_loadImage("gfx/arrowSouth.png");
+	gfx_sprites[SP_ARROW_SOUTHWEST] = gfx_loadImage("gfx/arrowSouthWest.png");
+	gfx_sprites[SP_ARROW_WEST] = gfx_loadImage("gfx/arrowWest.png");
+	gfx_sprites[SP_ARROW_NORTHWEST] = gfx_loadImage("gfx/arrowNorthWest.png");
+	gfx_sprites[SP_TARGET] = gfx_loadImage("gfx/targetText.png");
+	gfx_sprites[SP_ESCAPE_POD] = gfx_loadImage("gfx/pod.png");
+	gfx_sprites[SP_ORE] = gfx_loadImage("gfx/ore1.png");
+	gfx_sprites[SP_ORE_2] = gfx_loadImage("gfx/ore2.png");
+	gfx_sprites[SP_ORE_L] = gfx_loadImage("gfx/ore3.png");
+	gfx_sprites[SP_PICKUP_ROCKETS] = gfx_loadImage("gfx/rocketAmmo.png");
+	gfx_sprites[SP_SUPERCHARGE] = gfx_loadImage("gfx/superCharge.png");
 
 	loadBackground(systemBackground[game.system]);
 
@@ -201,7 +240,11 @@ void loadGameGraphics()
 		}
 	}
 
-	setWeaponShapes();
+	for (int i = 0 ; i < MAX_WEAPONS ; i++)
+	{
+		weapon[i].image[0] = gfx_sprites[weapon[i].imageIndex[0]];
+		weapon[i].image[1] = gfx_sprites[weapon[i].imageIndex[1]];
+	}
 }
 
 
@@ -213,7 +256,7 @@ void loadFont()
 {
 	SDL_Surface *image, *newImage;
 
-	for (int i = 0 ; i < MAX_FONTSPRITES ; i++)
+	for (int i = 0 ; i < FONT_MAX ; i++)
 	{
 		image = IMG_Load("gfx/smallFont.png");
 
@@ -224,19 +267,19 @@ void loadFont()
 
 		switch(i)
 		{
-			case 1:
+			case FONT_RED:
 				SDL_SetSurfaceColorMod(image, 255, 0, 0);
 				break;
-			case 2:
+			case FONT_YELLOW:
 				SDL_SetSurfaceColorMod(image, 255, 255, 0);
 				break;
-			case 3:
+			case FONT_GREEN:
 				SDL_SetSurfaceColorMod(image, 0, 255, 0);
 				break;
-			case 4:
+			case FONT_CYAN:
 				SDL_SetSurfaceColorMod(image, 0, 255, 255);
 				break;
-			case 5:
+			case FONT_OUTLINE:
 				SDL_SetSurfaceColorMod(image, 0, 0, 10);
 				break;
 		}

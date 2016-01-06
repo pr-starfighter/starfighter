@@ -22,10 +22,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "Starfighter.h"
 
 SDL_Surface *gfx_background;
-SDL_Surface *gfx_sprites[MAX_SPRITES];
+SDL_Surface *gfx_sprites[SP_MAX];
 SDL_Surface *gfx_faceSprites[FS_MAX];
 SDL_Surface *gfx_shipSprites[SS_MAX];
-SDL_Surface *gfx_fontSprites[MAX_FONTSPRITES];
+SDL_Surface *gfx_fontSprites[FONT_MAX];
 SDL_Surface *gfx_shopSprites[SHOP_S_MAX];
 textObject gfx_textSprites[TS_MAX];
 SDL_Surface *gfx_messageBox;
@@ -36,7 +36,7 @@ void gfx_init()
 	screen_bufferHead->next = NULL;
 	screen_bufferTail = screen_bufferHead;
 
-	for (int i = 0 ; i < MAX_SPRITES ; i++)
+	for (int i = 0 ; i < SP_MAX ; i++)
 		gfx_sprites[i] = NULL;
 
 	for (int i = 0 ; i < SS_MAX ; i++)
@@ -48,7 +48,7 @@ void gfx_init()
 	for (int i = 0 ; i < SHOP_S_MAX ; i++)
 		gfx_shopSprites[i] = NULL;
 
-	for (int i = 0 ; i < MAX_FONTSPRITES ; i++)
+	for (int i = 0 ; i < FONT_MAX ; i++)
 		gfx_fontSprites[i] = NULL;
 
 	gfx_background = NULL;
@@ -444,7 +444,7 @@ SDL_Surface *gfx_loadImage(const char *filename)
 
 void gfx_free()
 {
-	for (int i = 0 ; i < MAX_SPRITES ; i++)
+	for (int i = 0 ; i < SP_MAX ; i++)
 	{
 		if (gfx_sprites[i] != NULL)
 		{

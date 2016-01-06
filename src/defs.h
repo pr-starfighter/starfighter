@@ -34,7 +34,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	((x) + (y) < (a) ? ((b) - (a)) : 0) + \
 	((x) + (y) > (b) ? ((a) - (b)) : 0))
 #define CHANCE(x) ((rand() % RAND_MAX) < ((x) * RAND_MAX))
-#define RANDRANGE(x, y) (((x) < (y)) ? ((x) + (rand() % (1 + (y) - (x)))) : (x))
+#define RANDRANGE(x, y) (((x) < (y)) ? ((x) + (rand() % (long long)(1 + (y) - (x)))) : (x))
 
 
 // Compile-time options
@@ -85,13 +85,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define FL_HASMINIMUMSPEED 2097152L
 #define FL_FIRELASER 4194304L
 
-// Explosions
-#define E_SMALL_EXPLOSION 4
-#define E_BIG_EXPLOSION 8
-#define E_SMOKE 12
-#define E_TINY_EXPLOSION 16
-#define E_ELECTRICAL 20
-
 // Weapon flags
 #define WF_SPREAD 4
 #define WF_SCATTER 8
@@ -105,8 +98,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define WF_TIMEDEXPLOSION 2048
 
 #define MAX_WEAPONS 20
-#define MAX_SPRITES 100
-#define MAX_FONTSPRITES 6
 #define MAX_CARGO 20
 #define MAX_INFOLINES 3
 #define MAX_EVENTS 20
@@ -318,6 +309,66 @@ enum {
 	SP_PLANET_BLUE,
 	SP_PLANET_RED,
 	SP_PLANET_ORANGE,
+
+	// Bullets
+	SP_PLASMA_GREEN,
+	SP_PLASMA_RED,
+	SP_DIR_PLASMA_GREEN,
+	SP_DIR_PLASMA_RED,
+	SP_ION,
+	SP_ROCKET,
+	SP_ROCKET_L,
+
+	// Explosions
+	SP_SMALL_EXPLOSION,
+	SP_SMALL_EXPLOSION_2,
+	SP_SMALL_EXPLOSION_3,
+	SP_SMALL_EXPLOSION_L,
+	SP_BIG_EXPLOSION,
+	SP_BIG_EXPLOSION_2,
+	SP_BIG_EXPLOSION_3,
+	SP_BIG_EXPLOSION_L,
+	SP_SMOKE,
+	SP_SMOKE_2,
+	SP_SMOKE_3,
+	SP_SMOKE_L,
+	SP_TINY_EXPLOSION,
+	SP_TINY_EXPLOSION_2,
+	SP_TINY_EXPLOSION_3,
+	SP_TINY_EXPLOSION_L,
+	SP_ELECTRICAL,
+	SP_ELECTRICAL_2,
+	SP_ELECTRICAL_3,
+	SP_ELECTRICAL_L,
+
+	// Pickups
+	SP_PICKUP_MONEY,
+	SP_PICKUP_PLASMA,
+	SP_PICKUP_ROCKETS,
+	SP_PICKUP_SHIELD,
+	SP_PICKUP_PLASMA_OUTPUT,
+	SP_PICKUP_PLASMA_POWER,
+	SP_PICKUP_PLASMA_RATE,
+	SP_SUPERCHARGE,
+	SP_CARGO,
+	SP_ESCAPE_POD,
+	SP_ORE,
+	SP_ORE_2,
+	SP_ORE_L,
+	SP_CHAIN_LINK,
+	SP_MINE,
+
+	// Targeting system
+	SP_ARROW_NORTH,
+	SP_ARROW_NORTHEAST,
+	SP_ARROW_EAST,
+	SP_ARROW_SOUTHEAST,
+	SP_ARROW_SOUTH,
+	SP_ARROW_SOUTHWEST,
+	SP_ARROW_WEST,
+	SP_ARROW_NORTHWEST,
+	SP_TARGET,
+
 	SP_MAX
 };
 
@@ -550,7 +601,8 @@ enum {
 	FONT_YELLOW,
 	FONT_GREEN,
 	FONT_CYAN,
-	FONT_OUTLINE // a dark blue color
+	FONT_OUTLINE, // a dark blue color
+	FONT_MAX
 };
 
 // Sounds
