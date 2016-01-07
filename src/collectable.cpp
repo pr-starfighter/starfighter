@@ -235,7 +235,7 @@ void collectable_explode(collectables *collectable)
 
 	for (int i = 0 ; i < 10 ; i++)
 		explosion_add(RANDRANGE(collectable->x - 25, collectable->x + 25),
-			RANDRANGE(collectable->y - 25, collectable->x + 25), SP_BIG_EXPLOSION);
+			RANDRANGE(collectable->y - 25, collectable->y + 25), SP_BIG_EXPLOSION);
 
 	player_checkShockDamage(collectable->x, collectable->y);
 }
