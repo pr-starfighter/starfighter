@@ -1209,7 +1209,10 @@ static void game_doPlayer()
 						// With ammo cheat, cause the charge cannon to
 						// fire at full blast immediately.
 						if (engine.cheatAmmo)
+						{
+							player_chargerAlloc = 200;
 							player.ammo[1] = 200;
+						}
 
 						if (game.difficulty == DIFFICULTY_ORIGINAL)
 						{
@@ -1217,12 +1220,23 @@ static void game_doPlayer()
 						}
 						else
 						{
-							LIMIT_ADD(player.ammo[1], 1, 0, 150);
-							if (player.ammo[1] >= 150)
+							player.ammo[1] += 1;
+							if (player.ammo[1] > player_chargerAlloc)
 							{
-								ship_fireBullet(&player, 1);
-								player.ammo[1] = 0;
-								player_chargerFired = true;
+								if ((player_chargerAlloc < 150) &&
+										(player.ammo[0] > 0))
+								{
+									player.ammo[0] -= 1;
+									player_chargerAlloc += 30;
+								}
+								else
+								{
+									player.ammo[1] = player_chargerAlloc;
+									ship_fireBullet(&player, 1);
+									player_chargerAlloc = 0;
+									player.ammo[1] = 0;
+									player_chargerFired = true;
+								}
 							}
 						}
 					}
@@ -1231,6 +1245,7 @@ static void game_doPlayer()
 				{
 					if (player.ammo[1] > 0)
 						ship_fireBullet(&player, 1);
+					player_chargerAlloc = 0;
 					player.ammo[1] = 0;
 					player_chargerFired = false;
 				}
