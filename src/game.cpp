@@ -291,12 +291,17 @@ static void game_doCollectables()
 
 					case P_PLASMA_RATE:
 						game.powerups++;
-						if ((game.area != MISN_INTERCEPTION) ||
-							(game.difficulty == DIFFICULTY_ORIGINAL) ||
-							(player.ammo[0] > 0))
+						if (game.difficulty == DIFFICULTY_ORIGINAL)
 						{
-							if ((game.area != MISN_INTERCEPTION) ||
-									(game.difficulty == DIFFICULTY_ORIGINAL))
+							player.ammo[0] = MAX(player.ammo[0], 50);
+							weapon[W_PLAYER_WEAPON].reload[0] = MAX(
+								rate2reload[game.maxPlasmaRate],
+								weapon[W_PLAYER_WEAPON].reload[0] - 2);
+						}
+						else if ((game.area != MISN_INTERCEPTION) ||
+								(player.ammo[0] > 0))
+						{
+							if (game.area != MISN_INTERCEPTION)
 								LIMIT_ADD(player.ammo[0], collectable->value,
 									0, game.maxPlasmaAmmo);
 
@@ -316,12 +321,16 @@ static void game_doCollectables()
 
 					case P_PLASMA_SHOT:
 						game.powerups++;
-						if ((game.area != MISN_INTERCEPTION) ||
-							(game.difficulty == DIFFICULTY_ORIGINAL) ||
-							(player.ammo[0] > 0))
+						if (game.difficulty == DIFFICULTY_ORIGINAL)
 						{
-							if ((game.area != MISN_INTERCEPTION) ||
-									(game.difficulty == DIFFICULTY_ORIGINAL))
+							player.ammo[0] = MAX(player.ammo[0], 50);
+							weapon[W_PLAYER_WEAPON].ammo[0] = MIN(
+								game.maxPlasmaOutput, weapon[W_PLAYER_WEAPON].ammo[0] + 1);
+						}
+						else if ((game.area != MISN_INTERCEPTION) ||
+								(player.ammo[0] > 0))
+						{
+							if (game.area != MISN_INTERCEPTION)
 								LIMIT_ADD(player.ammo[0], collectable->value,
 									0, game.maxPlasmaAmmo);
 
@@ -341,18 +350,23 @@ static void game_doCollectables()
 
 					case P_PLASMA_DAMAGE:
 						game.powerups++;
-						if ((game.area != MISN_INTERCEPTION) ||
-							(game.difficulty == DIFFICULTY_ORIGINAL) ||
-							(player.ammo[0] > 0))
+						if (game.difficulty == DIFFICULTY_ORIGINAL)
 						{
-							if ((game.area != MISN_INTERCEPTION) ||
-									(game.difficulty == DIFFICULTY_ORIGINAL))
+							player.ammo[0] = MAX(player.ammo[0], 50);
+							weapon[W_PLAYER_WEAPON].damage = MIN(
+								game.maxPlasmaDamage, weapon[W_PLAYER_WEAPON].damage + 1);
+						}
+						else if ((game.area != MISN_INTERCEPTION) ||
+								(player.ammo[0] > 0))
+						{
+							if (game.area != MISN_INTERCEPTION)
 								LIMIT_ADD(player.ammo[0], collectable->value,
 									0, game.maxPlasmaAmmo);
 
 							if (weapon[W_PLAYER_WEAPON].damage >= game.maxPlasmaDamage)
 								sprintf(temp, "Plasma damage already at maximum");
-							else {
+							else
+							{
 								weapon[W_PLAYER_WEAPON].damage++;
 								sprintf(temp, "Plasma damage increased");
 							}
@@ -369,8 +383,9 @@ static void game_doCollectables()
 							(game.difficulty == DIFFICULTY_ORIGINAL) ||
 							(player.ammo[0] > 0))
 						{
-							if ((game.area != MISN_INTERCEPTION) ||
-									(game.difficulty == DIFFICULTY_ORIGINAL))
+							if (game.difficulty == DIFFICULTY_ORIGINAL)
+								player.ammo[0] = MAX(player.ammo[0], 50);
+							else if (game.area != MISN_INTERCEPTION)
 								LIMIT_ADD(player.ammo[0], collectable->value,
 									0, game.maxPlasmaAmmo);
 
