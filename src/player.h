@@ -21,7 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PLAYER_H
 
 extern object player;
-extern int player_chargerAlloc;
 extern bool player_chargerFired;
 
 extern void initPlayer();

@@ -20,7 +20,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "Starfighter.h"
 
 object player;
-int player_chargerAlloc = 0;
 bool player_chargerFired = false;
 
 /*
@@ -96,7 +95,6 @@ void player_checkShockDamage(float x, float y)
 
 void exitPlayer()
 {
-	player_chargerAlloc = 0;
 	player_chargerFired = false;
 
 	if ((player.weaponType[1] == W_CHARGER) || (player.weaponType[1] == W_LASER))
