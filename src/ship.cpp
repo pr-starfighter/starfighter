@@ -95,16 +95,16 @@ void ship_fireBullet(object *ship, int weaponType)
 	}
 	else
 	{
-		if(theWeapon->ammo[0] & 1)
+		if (theWeapon->ammo[0] & 1)
 			bullet_add(theWeapon, ship, y * 3, 0);
 
-		if(theWeapon->ammo[0] >= 2)
+		if (theWeapon->ammo[0] >= 2)
 		{
 			bullet_add(theWeapon, ship, y * 2, 0);
 			bullet_add(theWeapon, ship, y * 4, 0);
 		}
 
-		if(theWeapon->ammo[0] >= 4)
+		if (theWeapon->ammo[0] >= 4)
 		{
 			bullet_add(theWeapon, ship, y * 1, 0);
 			bullet_add(theWeapon, ship, y * 5, 0);

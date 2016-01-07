@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-object weapon[MAX_WEAPONS];
+object weapon[W_MAX];
 
 /*
 A list of predefined weaponary.

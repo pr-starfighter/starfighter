@@ -225,7 +225,7 @@ will show their name and their current status
 static bool intermission_showSystem(float x, float y, bool selectable)
 {
 	SDL_Rect r;
-	signed char planet = 0;
+	int planet = 0;
 	int planetSpace = systemPlanet[planet].y;
 	bool rtn = false;
 
@@ -555,6 +555,24 @@ int intermission()
 {
 	int iconInfoY;
 
+	char string[25];
+
+	SDL_Rect r;
+	SDL_Rect destRect;
+	int distance = 0;
+	double interceptionChance;
+
+	int section = 1;
+
+	float sinX = 300;
+	float cosY = 300;
+	bool movePlanets = true;
+	int saveSlot = -1;
+
+	int rtn = 0;
+
+	bool redrawBackground = true;
+
 	gfx_free();
 
 	checkForBossMission(); // double check just to make sure!
@@ -570,8 +588,6 @@ int intermission()
 	initSaveSlots();
 
 	loadBackground(systemBackground[game.system]);
-
-	char string[25];
 
 	engine.cursor_x = screen->w / 2;
 	engine.cursor_y = screen->h / 2;
@@ -629,11 +645,6 @@ int intermission()
 	engine.ssx = 0;
 	engine.ssy = 0;
 
-	SDL_Rect r;
-	SDL_Rect destRect;
-	int distance = 0;
-	double interceptionChance;
-
 	intermission_setStatusLines();
 	initShop();
 	intermission_setSystemPlanets();
@@ -646,13 +657,6 @@ int intermission()
 	createSavesSurface(savesSurface, -1);
 	intermission_createOptions(optionsSurface);
 	intermission_createCommsSurface(commsSurface);
-
-	signed char section = 1;
-
-	float sinX = 300;
-	float cosY = 300;
-	bool movePlanets = true;
-	signed char saveSlot = -1;
 
 	// Remove the Supercharge, if it is there
 	if ((game.difficulty != DIFFICULTY_EASY) &&
@@ -686,8 +690,6 @@ int intermission()
 			interceptionChance = 0;
 	}
 
-	int rtn = 0;
-
 	if ((engine.useAudio) && (engine.useMusic))
 		audio_playMusic("music/through_space.ogg", -1);
 
@@ -715,8 +717,6 @@ int intermission()
 		strcpy(string, "Destination: None");
 	gfx_createTextObject(TS_DEST_PLANET, string, 550, 450, FONT_WHITE);
 
-	bool rescreen_drawBackground = true;
-
 	if (game.distanceCovered > 0)
 		section = 0;
 	else
@@ -730,10 +730,10 @@ int intermission()
 	{
 		renderer_update();
 
-		if (rescreen_drawBackground)
+		if (redrawBackground)
 		{
 			screen_drawBackground();
-			rescreen_drawBackground = false;
+			redrawBackground = false;
 		}
 		else
 		{
@@ -889,7 +889,7 @@ int intermission()
 					gfx_createTextObject(TS_CURRENT_PLANET, string, 90, 450, FONT_WHITE);
 					intermission_updateCommsSurface(commsSurface);
 					section = 1;
-					rescreen_drawBackground = true;
+					redrawBackground = true;
 					saveGame(0);
 				}
 				else if (interceptionChance > 0)
@@ -910,64 +910,111 @@ int intermission()
 
 		if (section != 8)
 		{
-			for (int i = 0 ; i < 8 ; i++)
+			if ((game.stationedPlanet == game.destinationPlanet) &&
+					(!systemPlanet[game.stationedPlanet].missionCompleted))
+				screen_blit(gfx_sprites[SP_START_MISSION], 80, 500);
+			else if (game.stationedPlanet != game.destinationPlanet)
+				screen_blit(gfx_sprites[SP_GOTO], 80, 500);
+
+			screen_blit(gfx_sprites[SP_MAP], 170, 500);
+			screen_blit(gfx_sprites[SP_STATUS], 260, 500);
+			screen_blit(gfx_sprites[SP_SAVE], 350, 500);
+			screen_blit(gfx_sprites[SP_SHOP], 440, 500);
+			screen_blit(gfx_sprites[SP_COMM], 530, 500);
+			screen_blit(gfx_sprites[SP_OPTIONS], 620, 500);
+			screen_blit(gfx_sprites[SP_EXIT], 710, 500);
+
+			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 80, 500, 32, 32) &&
+					((game.stationedPlanet != game.destinationPlanet) ||
+						(!systemPlanet[game.stationedPlanet].missionCompleted)))
 			{
-				// if the mission has been completed, there is no
-				// "Start Next Mission" icon
-				if (i == 0)
-				{
-					if ((game.stationedPlanet == game.destinationPlanet) &&
-							(systemPlanet[game.stationedPlanet].missionCompleted != 0))
-						continue;
-					else if (game.stationedPlanet == game.destinationPlanet)
-						screen_blit(gfx_sprites[SP_START_MISSION], 80 + (i * 90), 500);
-					else if (game.stationedPlanet != game.destinationPlanet)
-						screen_blit(gfx_sprites[SP_GOTO], 80 + (i * 90), 500);
-				}
+				if (game.stationedPlanet == game.destinationPlanet)
+					screen_blitText(TS_INFO_START_MISSION);
 				else
+					screen_blitText(TS_INFO_GOTO);
+
+				if ((engine.keyState[KEY_FIRE]))
 				{
-					screen_blit(gfx_sprites[i + 1], 80 + (i * 90), 500);
+					redrawBackground = true;
+					section = 0;
+					engine.keyState[KEY_FIRE] = 0;
 				}
+			}
+			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 170, 500, 32, 32))
+			{
+				screen_blitText(TS_INFO_MAP);
 
-				if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 80 + (i * 90), 500, 32, 32))
+				if ((engine.keyState[KEY_FIRE]))
 				{
-					switch (i)
-					{
-						case 0:
-							if (game.stationedPlanet == game.destinationPlanet)
-								screen_blitText(TS_INFO_START_MISSION);
-							else
-								screen_blitText(TS_INFO_GOTO);
-							break;
-						case 1:
-							screen_blitText(TS_INFO_MAP);
-							break;
-						case 2:
-							screen_blitText(TS_INFO_STATUS);
-							break;
-						case 3:
-							screen_blitText(TS_INFO_SAVE_GAME);
-							break;
-						case 4:
-							screen_blitText(TS_INFO_SHOP);
-							break;
-						case 5:
-							screen_blitText(TS_INFO_COMMS);
-							break;
-						case 6:
-							screen_blitText(TS_INFO_OPTIONS);
-							break;
-						case 7:
-							screen_blitText(TS_INFO_EXIT);
-							break;
-					}
+					redrawBackground = true;
+					section = 1;
+					engine.keyState[KEY_FIRE] = 0;
+				}
+			}
+			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 260, 500, 32, 32))
+			{
+				screen_blitText(TS_INFO_STATUS);
 
-					if ((engine.keyState[KEY_FIRE]))
-					{
-						rescreen_drawBackground = true;
-						section = i;
-						engine.keyState[KEY_FIRE] = 0;
-					}
+				if ((engine.keyState[KEY_FIRE]))
+				{
+					redrawBackground = true;
+					section = 2;
+					engine.keyState[KEY_FIRE] = 0;
+				}
+			}
+			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 350, 500, 32, 32))
+			{
+				screen_blitText(TS_INFO_SAVE_GAME);
+
+				if ((engine.keyState[KEY_FIRE]))
+				{
+					redrawBackground = true;
+					section = 3;
+					engine.keyState[KEY_FIRE] = 0;
+				}
+			}
+			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 440, 500, 32, 32))
+			{
+				screen_blitText(TS_INFO_SHOP);
+
+				if ((engine.keyState[KEY_FIRE]))
+				{
+					redrawBackground = true;
+					section = 4;
+					engine.keyState[KEY_FIRE] = 0;
+				}
+			}
+			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 530, 500, 32, 32))
+			{
+				screen_blitText(TS_INFO_COMMS);
+
+				if ((engine.keyState[KEY_FIRE]))
+				{
+					redrawBackground = true;
+					section = 5;
+					engine.keyState[KEY_FIRE] = 0;
+				}
+			}
+			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 620, 500, 32, 32))
+			{
+				screen_blitText(TS_INFO_OPTIONS);
+
+				if ((engine.keyState[KEY_FIRE]))
+				{
+					redrawBackground = true;
+					section = 6;
+					engine.keyState[KEY_FIRE] = 0;
+				}
+			}
+			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 710, 500, 32, 32))
+			{
+				screen_blitText(TS_INFO_EXIT);
+
+				if ((engine.keyState[KEY_FIRE]))
+				{
+					redrawBackground = true;
+					section = 7;
+					engine.keyState[KEY_FIRE] = 0;
 				}
 			}
 		}

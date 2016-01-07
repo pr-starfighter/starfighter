@@ -43,7 +43,7 @@ SDL_Surface *gfx_createSurface(int width, int height);
 SDL_Surface *gfx_createTextSurface(const char *inString, int color);
 void gfx_createTextObject(int index, const char *inString, int x, int y, int fontColor);
 SDL_Surface *gfx_createAlphaRect(int width, int height, Uint8 red, Uint8 green, Uint8 blue);
-void gfx_createMessageBox(SDL_Surface *face, const char *message, signed char transparent);
+void gfx_createMessageBox(SDL_Surface *face, const char *message, int transparent);
 SDL_Surface *gfx_loadImage(const char *filename);
 void gfx_free();
 

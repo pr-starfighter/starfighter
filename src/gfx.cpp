@@ -93,7 +93,7 @@ void gfx_blit(SDL_Surface *image, int x, int y, SDL_Surface *dest)
 In 16 bit mode this is slow. VERY slow. Don't write directly to a surface
 that constantly needs updating (eg - the main game screen)
 */
-static int gfx_renderStringBase(const char *in, int x, int y, int fontColor, signed char wrap, SDL_Surface *dest)
+static int gfx_renderStringBase(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest)
 {
 	int i;
 	int splitword;
@@ -389,7 +389,7 @@ SDL_Surface *gfx_createAlphaRect(int width, int height, Uint8 red, Uint8 green, 
 	return surface;
 }
 
-void gfx_createMessageBox(SDL_Surface *face, const char *message, signed char transparent)
+void gfx_createMessageBox(SDL_Surface *face, const char *message, int transparent)
 {
 	int x = 60;
 

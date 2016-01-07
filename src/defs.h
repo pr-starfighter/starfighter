@@ -34,7 +34,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	((x) + (y) < (a) ? ((b) - (a)) : 0) + \
 	((x) + (y) > (b) ? ((a) - (b)) : 0))
 #define CHANCE(x) ((rand() % RAND_MAX) < ((x) * RAND_MAX))
-#define RANDRANGE(x, y) (((x) < (y)) ? ((x) + (rand() % (long long)(1 + (y) - (x)))) : (x))
+#define RANDRANGE(x, y) (((x) < (y)) ? ((x) + (rand() % (long)(1 + (y) - (x)))) : (x))
 
 
 // Compile-time options
@@ -97,7 +97,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define WF_DISABLE 1024
 #define WF_TIMEDEXPLOSION 2048
 
-#define MAX_WEAPONS 20
 #define MAX_CARGO 20
 #define MAX_INFOLINES 3
 #define MAX_EVENTS 20
@@ -197,7 +196,8 @@ enum {
 	W_AIMED_SHOT,
 	W_SPREADSHOT,
 	W_IONCANNON,
-	W_DIRSHOCKMISSILE
+	W_DIRSHOCKMISSILE,
+	W_MAX
 };
 
 // Mission types

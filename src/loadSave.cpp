@@ -168,7 +168,7 @@ void saveGame(int slot)
 	engine.keyState[KEY_FIRE] = 0;
 }
 
-void createSavesSurface(SDL_Surface *savesSurface, signed char clickedSlot)
+void createSavesSurface(SDL_Surface *savesSurface, int clickedSlot)
 {
 	int y = 10;
 
@@ -229,7 +229,7 @@ Displays the save slot available. For use with an interface that
 has the cursor enabled. It returns the index number of the slot clicked
 so that the function invoking it can perform a load or save on that slot.
 */
-int showSaveSlots(SDL_Surface *savesSurface, signed char saveSlot)
+int showSaveSlots(SDL_Surface *savesSurface, int saveSlot)
 {
 	int clickedSlot = -1;
 

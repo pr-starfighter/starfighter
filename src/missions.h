@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 extern Planet systemPlanet[10];
 extern mission currentMission;
 
-extern void initPlanetMissions(signed char system);
+extern void initPlanetMissions(int system);
 extern void checkForBossMission();
 extern void updateSystemStatus();
 extern void setMission(int mission);

@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 extern int initSaveSlots();
 extern bool loadGame(int slot);
 extern void saveGame(int slot);
-extern void createSavesSurface(SDL_Surface *savesSurface, signed char clickedSlot);
-extern int showSaveSlots(SDL_Surface *savesSurface, signed char saveSlot);
+extern void createSavesSurface(SDL_Surface *savesSurface, int clickedSlot);
+extern int showSaveSlots(SDL_Surface *savesSurface, int saveSlot);
 
 #endif

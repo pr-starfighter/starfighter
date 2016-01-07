@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "Starfighter.h"
 
 static ShopItem shopItems[SHOP_MAX];
-static signed char shopSelectedItem;
+static int shopSelectedItem;
 
 static void sell(int i);
 
@@ -142,6 +142,9 @@ static void adjustShopPrices()
 
 static void drawShop()
 {
+	char description[100];
+	int icons = SHOP_MAX;
+
 	adjustShopPrices();
 
 	for (int i = 0 ; i < SHOP_S_MAX ; i++)
@@ -198,7 +201,6 @@ static void drawShop()
 			break;
 	}
 
-	char description[100];
 	strcpy(description, "");
 
 	gfx_renderString("Primary Weapon", 10, 3, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_PRIMARY]);
@@ -236,8 +238,6 @@ static void drawShop()
 	gfx_renderString("Primary Weapons", 10, 62, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_CATALOG]);
 
 	gfx_renderString("Secondary Weapons", 260, 62, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_CATALOG]);
-
-	signed char icons = SHOP_MAX;
 
 	if (game.system == 0)
 		icons = SHOP_DOUBLE_ROCKETS + 1;
@@ -1016,7 +1016,9 @@ static void sell(int i)
 
 void showShop()
 {
- 	screen_blit(gfx_shopSprites[SHOP_S_PRIMARY], 20, 395);
+ 	int icons = SHOP_MAX;
+
+	screen_blit(gfx_shopSprites[SHOP_S_PRIMARY], 20, 395);
 	screen_blit(gfx_shopSprites[SHOP_S_POWERUP], 275, 395);
 	screen_blit(gfx_shopSprites[SHOP_S_SECONDARY], 530, 395);
 	screen_blit(gfx_shopSprites[SHOP_S_CATALOG], 100, 180);
@@ -1030,8 +1032,6 @@ void showShop()
 	}
 
 	screen_blit(gfx_sprites[SP_FIREFLY], 380, 95);
-
-	signed char icons = SHOP_MAX;
 
 	if (game.system == 0)
 		icons = SHOP_DOUBLE_ROCKETS + 1;

@@ -998,10 +998,10 @@ bool alien_add()
 			(game.area == MISN_VENUS))
 		return 0;
 
-	signed char *alienArray;
-	signed char numberOfAliens = 1;
+	int *alienArray;
+	int numberOfAliens = 1;
 
-	alienArray = new signed char[8];
+	alienArray = new int[8];
 
 	switch(game.area)
 	{
@@ -1100,7 +1100,7 @@ bool alien_add()
 			break;
 	}
 
-	signed char randEnemy = alienArray[rand() % numberOfAliens];
+	int randEnemy = alienArray[rand() % numberOfAliens];
 
 	if ((game.area != MISN_DORIM) &&
 		(game.area != MISN_SIVEDI) &&
@@ -1728,7 +1728,7 @@ void alien_destroy(object *alien, object *attacker)
 
 	if (rand() % 100 <= alien->collectChance)
 	{
-		unsigned char value;
+		int value;
 
 		if ((rand() % 10) == 0)
 			alien->collectValue *= 2;

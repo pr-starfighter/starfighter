@@ -1011,6 +1011,9 @@ static void game_doAliens()
 						((rand() % 1000 < aliens[i].chance[0]) ||
 							(aliens[i].flags & FL_CONTINUOUS_FIRE)))
 					{
+						// FIXME: I'm pretty sure this is the line that's causing mobile energy ray cannons
+						// to fire off 5 plasma bullets. Need to find out exactly what
+						// this line is for and make the appropriate adjustments.
 						ship_fireBullet(&aliens[i], 0);
 					}
 					if ((aliens[i].reload[1] == 0) &&
@@ -1641,7 +1644,7 @@ static void game_doHud()
 {
 	int shieldColor = 0;
 	SDL_Rect bar;
-	signed char fontColor;
+	int fontColor;
 	char text[25];
 
 	screen_addBuffer(0, 20, screen->w, 25);

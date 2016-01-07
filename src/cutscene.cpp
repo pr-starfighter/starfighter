@@ -378,7 +378,7 @@ void cutscene_init(int scene)
 	}
 
 	bool showMessage = false;
-	signed char currentMessage = -1;
+	int currentMessage = -1;
 	int timer = 60 * 4;
 
 	screen_drawBackground();

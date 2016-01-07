@@ -23,7 +23,7 @@ Planet systemPlanet[10];
 mission currentMission;
 static mission missions[MISN_MAX];
 
-void initPlanetMissions(signed char system)
+void initPlanetMissions(int system)
 {
 	for (int i = 0 ; i < 10 ; i++)
 	{
@@ -639,7 +639,7 @@ bool allMissionsCompleted()
 		}
 	}
 
-	signed char remaining;
+	int remaining;
 	bool add = false;
 	bool allDone = true;
 

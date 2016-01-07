@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-static signed char showGameMenu(signed char continueSaveSlot)
+static int showGameMenu(int continueSaveSlot)
 {
 	screen_blitText(TS_START_NEW_GAME);
 	if (continueSaveSlot != -1)
@@ -45,9 +45,9 @@ static signed char showGameMenu(signed char continueSaveSlot)
 	return 5;
 }
 
-static signed char showLoadMenu()
+static int showLoadMenu()
 {
-	signed char rtn = 1;
+	int rtn = 1;
 
 	for (int i = TS_SAVESLOT_0 ; i <= TS_SAVESLOT_5 ; i++)
 	{
@@ -85,7 +85,7 @@ static void createDifficultyMenu()
 			-1, screen->h / 3 + 70, FONT_WHITE);
 }
 
-static signed char showDifficultyMenu()
+static int showDifficultyMenu()
 {
 	gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = screen->h / 3 + 110;
 
@@ -127,7 +127,7 @@ static void createOptionsMenu()
 			-1, screen->h / 3 + 110, FONT_WHITE);
 }
 
-static signed char showOptionsMenu()
+static int showOptionsMenu()
 {
 	gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = screen->h / 3 + 150;
 
@@ -171,7 +171,7 @@ static void createCheatMenu()
 			-1, screen->h / 3 + 110, FONT_WHITE);
 }
 
-static signed char showCheatMenu()
+static int showCheatMenu()
 {
 	gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = screen->h / 3 + 150;
 
@@ -190,6 +190,25 @@ This is the main title screen, with the stars whirling past and the
 */
 int doTitle()
 {
+	int continueSaveSlot;
+
+	int prx;
+	int pry;
+	int sfx;
+	int sfy;
+
+	int then;
+	int now;
+
+	int redGlow = 255;
+	int redDir = -2;
+	char buildVersion[25];
+
+	int selectedOption = 1;
+	bool skip = false;
+	int listLength = 5; // menu list length
+	int menuType = MENU_MAIN;
+
 	game_init();
 
 	engine.gameSection = SECTION_TITLE;
@@ -208,7 +227,7 @@ int doTitle()
 	renderer_update();
 	screen_clear(black);
 
-	signed char continueSaveSlot = initSaveSlots();
+	continueSaveSlot = initSaveSlots();
 
 	loadBackground("gfx/spirit.jpg");
 
@@ -216,11 +235,11 @@ int doTitle()
 	prlogo = gfx_loadImage("gfx/prlogo.png");
 	sflogo = gfx_loadImage("gfx/sflogo.png");
 
-	int prx = ((screen->w - prlogo->w) / 2);
-	int pry = ((screen->h - prlogo->h) / 2);
+	prx = ((screen->w - prlogo->w) / 2);
+	pry = ((screen->h - prlogo->h) / 2);
 
-	int sfx = ((screen->w - sflogo->w) / 2);
-	int sfy = ((screen->h - sflogo->h) / 3);
+	sfx = ((screen->w - sflogo->w) / 2);
+	sfy = ((screen->h - sflogo->h) / 3);
 
 	gfx_createTextObject(TS_PRESENTS, "PRESENTS",
 		-1, screen->h / 2, FONT_WHITE);
@@ -251,8 +270,7 @@ int doTitle()
 	engine.smx = 0;
 	engine.smy = 0;
 
-	int then = SDL_GetTicks();
-	int now;
+	then = SDL_GetTicks();
 
 	for (int i = 0 ; i < 15 ; i++)
 	{
@@ -267,9 +285,6 @@ int doTitle()
 		aliens[i].face = 0;
 	}
 
-	int redGlow = 255;
-	signed char redDir = -2;
-	char buildVersion[25];
 	sprintf(buildVersion, "Version "VERSION);
 
 	SDL_Rect optionRec;
@@ -279,13 +294,8 @@ int doTitle()
 	optionRec.h = 22;
 	optionRec.w = 215;
 
-	signed char selectedOption = 1;
 	if (continueSaveSlot > -1)
 		{selectedOption = 3; optionRec.y += 40;}
-
-	bool skip = false;
-	signed char listLength = 5; // menu list length
-	signed char menuType = MENU_MAIN;
 
 	screen_drawBackground();
 
