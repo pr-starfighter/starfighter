@@ -586,7 +586,7 @@ void alien_defs_init()
 	alien_defs[CD_NEPTUNEBOSS].maxShield = 800;
 	alien_defs[CD_NEPTUNEBOSS].shield = 800;
 	alien_defs[CD_NEPTUNEBOSS].imageIndex[0] = SS_PLUTOBOSS;
-	alien_defs[CD_NEPTUNEBOSS].imageIndex[1] = SS_PLUTOBOSS;
+	alien_defs[CD_NEPTUNEBOSS].imageIndex[1] = SS_PLUTOBOSS_L;
 	alien_defs[CD_NEPTUNEBOSS].weaponType[0] = W_DOUBLE_SHOT;
 	alien_defs[CD_NEPTUNEBOSS].weaponType[1] = W_MICRO_ROCKETS;
 	alien_defs[CD_NEPTUNEBOSS].chance[0] = 100;
@@ -603,7 +603,7 @@ void alien_defs_init()
 	alien_defs[CD_MOBILESHIELD].maxShield = 150;
 	alien_defs[CD_MOBILESHIELD].shield = 150;
 	alien_defs[CD_MOBILESHIELD].imageIndex[0] = SS_MOBILESHIELD;
-	alien_defs[CD_MOBILESHIELD].imageIndex[1] = SS_MOBILESHIELD;
+	alien_defs[CD_MOBILESHIELD].imageIndex[1] = SS_MOBILESHIELD_L;
 	alien_defs[CD_MOBILESHIELD].weaponType[0] = W_DOUBLE_SHOT;
 	alien_defs[CD_MOBILESHIELD].weaponType[1] = W_MICRO_ROCKETS;
 	alien_defs[CD_MOBILESHIELD].chance[0] = 0;
@@ -620,7 +620,7 @@ void alien_defs_init()
 	alien_defs[CD_FIREFLY].maxShield = 250;
 	alien_defs[CD_FIREFLY].shield = 250;
 	alien_defs[CD_FIREFLY].imageIndex[0] = SS_FIREFLY;
-	alien_defs[CD_FIREFLY].imageIndex[1] = SS_FIREFLY;
+	alien_defs[CD_FIREFLY].imageIndex[1] = SS_FIREFLY_L;
 	alien_defs[CD_FIREFLY].weaponType[0] = W_TRIPLE_SHOT;
 	alien_defs[CD_FIREFLY].weaponType[1] = W_DOUBLE_ROCKETS;
 	alien_defs[CD_FIREFLY].chance[0] = 100;
@@ -637,7 +637,7 @@ void alien_defs_init()
 	alien_defs[CD_URANUSBOSS].maxShield = 750;
 	alien_defs[CD_URANUSBOSS].shield = 750;
 	alien_defs[CD_URANUSBOSS].imageIndex[0] = SS_URANUSBOSS;
-	alien_defs[CD_URANUSBOSS].imageIndex[1] = SS_URANUSBOSS;
+	alien_defs[CD_URANUSBOSS].imageIndex[1] = SS_URANUSBOSS_L;
 	alien_defs[CD_URANUSBOSS].weaponType[0] = W_SPREADSHOT;
 	alien_defs[CD_URANUSBOSS].weaponType[1] = W_DOUBLE_ROCKETS;
 	alien_defs[CD_URANUSBOSS].chance[0] = 100;
