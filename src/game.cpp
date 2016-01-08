@@ -1599,54 +1599,62 @@ Draw an arrow at the edge of the screen for each enemy ship that is not visible.
 */
 static void game_doArrow(int i)
 {
+	int arrow = -1;
+	int arrowX;
+	int arrowY;
+
+	int indicator = -1;
+	int indicatorX;
+	int indicatorY;
+
 	if (i < 0 || !aliens[i].active || aliens[i].shield <= 0 || aliens[i].flags & FL_ISCLOAKED)
 		return;
 
-	int x = aliens[i].x + aliens[i].image[0]->w / 2;
-	int y = aliens[i].y + aliens[i].image[0]->h / 2;
-
-	float sx = fabsf((x - (screen->w / 2)) / (screen->w / 2.0));
-	float sy = fabsf((y - (screen->h / 2)) / (screen->h / 2.0));
-	float sxy = MAX(sx, sy);
-
-	if (sxy < 1) 
-		return;
-
-	x = screen->w / 2 + (x - screen->w / 2) / sxy;
-	y = screen->h / 2 + (y - screen->h / 2) / sxy;
-
-	int arrow;
-
-	if (sxy == sx)
+	if (aliens[i].x + aliens[i].image[0]->w < 0)
 	{
-		arrow = x < screen->w / 2 ? SP_ARROW_WEST : SP_ARROW_EAST;
-		x -= x > screen->w / 2 ? gfx_sprites[arrow]->w : 0;
-		y -= gfx_sprites[arrow]->h / 2;
+		if (aliens[i].y + aliens[i].image[0]->h < 0)
+			arrow = SP_ARROW_NORTHWEST;
+		else if (aliens[i].y > screen->h)
+			arrow = SP_ARROW_SOUTHWEST;
+		else
+			arrow = SP_ARROW_WEST;
 	}
-	else
+	else if (aliens[i].x > screen->w)
 	{
-		arrow = y < screen->h / 2 ? SP_ARROW_NORTH : SP_ARROW_SOUTH;
-		x -= gfx_sprites[arrow]->w / 2;
-		y -= y > screen->h / 2 ? gfx_sprites[arrow]->h : 0;
+		if (aliens[i].y + aliens[i].image[0]->h < 0)
+			arrow = SP_ARROW_NORTHEAST;
+		else if (aliens[i].y > screen->h)
+			arrow = SP_ARROW_SOUTHEAST;
+		else
+			arrow = SP_ARROW_EAST;
 	}
+	else if (aliens[i].y + aliens[i].image[0]->h < 0)
+		arrow = SP_ARROW_NORTH;
+	else if (aliens[i].y > screen->h)
+		arrow = SP_ARROW_SOUTH;
 
-	screen_blit(gfx_sprites[arrow], x, y);
-
-	if (i != engine.targetIndex)
-		return;
-
-	if (sxy == sx)
+	if (arrow != -1)
 	{
-		x -= x > screen->w / 2 ? 5 + gfx_sprites[SP_TARGET]->w : -5 - gfx_sprites[arrow]->w;
-		y -= (gfx_sprites[SP_TARGET]->h - gfx_sprites[arrow]->h) / 2;
-	}
-	else
-	{
-		x -= (gfx_sprites[SP_TARGET]->w - gfx_sprites[arrow]->w) / 2;
-		y -= y > screen->h / 2 ? 5 + gfx_sprites[SP_TARGET]->h : -5 - gfx_sprites[arrow]->h;
-	}
+		arrowX = aliens[i].x + aliens[i].image[0]->w / 2 - gfx_sprites[arrow]->w;
+		arrowX = MAX(0, MIN(arrowX, screen->w - gfx_sprites[arrow]->w));
+		arrowY = aliens[i].y + aliens[i].image[0]->h / 2 - gfx_sprites[arrow]->h;
+		arrowY = MAX(0, MIN(arrowY, screen->h - gfx_sprites[arrow]->h));
+		screen_blit(gfx_sprites[arrow], arrowX, arrowY);
 
-	screen_blit(gfx_sprites[SP_TARGET], x, y);
+		if (i == engine.targetIndex)
+			indicator = SP_TARGET;
+
+		if (indicator != -1)
+		{
+			indicatorX = arrowX + gfx_sprites[arrow]->w / 2 - gfx_sprites[indicator]->w / 2;
+			indicatorX = MAX(indicatorX, gfx_sprites[arrow]->w + 5);
+			indicatorX = MIN(indicatorX, screen->w - gfx_sprites[arrow]->w - gfx_sprites[indicator]->w - 5);
+			indicatorY = arrowY + gfx_sprites[arrow]->h / 2 - gfx_sprites[indicator]->h / 2;
+			indicatorY = MAX(indicatorY, gfx_sprites[arrow]->h + 5);
+			indicatorY = MIN(indicatorY, screen->h - gfx_sprites[arrow]->h - gfx_sprites[indicator]->h - 5);
+			screen_blit(gfx_sprites[indicator], indicatorX, indicatorY);
+		}
+	}
 }
 
 static void game_doHud()
