@@ -502,7 +502,7 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_NEROD:
-			strcpy(name, "(unknown)");
+			strcpy(name, "Phoebe Lexx");
 
 			strcpy(string, "Help! This is an SOS! Can anyone hear me?!");
 			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
