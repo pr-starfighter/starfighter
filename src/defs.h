@@ -128,7 +128,8 @@ enum {
 
 // These are for Alien *indexes* NOT classdefs!!
 enum {
-	ALIEN_BOSS = 10,
+	ALIEN_NORMAL_LAST = 20,
+	ALIEN_BOSS,
 	ALIEN_BOSS_PART1,
 	ALIEN_BOSS_PART2,
 	ALIEN_BOSS_PART3,

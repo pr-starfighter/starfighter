@@ -1192,7 +1192,7 @@ void alien_addSmallAsteroid(object *hostAlien)
 	for (int i = 0 ; i < debris ; i++)
 		bullet_add(&weapon[W_ROCKETS], hostAlien, 0, 0);
 
-	for (int i = 10 ; i < 20 ; i++)
+	for (int i = 0 ; i <= ALIEN_NORMAL_LAST ; i++)
 		if (!aliens[i].active)
 			index = i;
 
