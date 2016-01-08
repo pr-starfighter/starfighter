@@ -1,5 +1,0 @@
-Sid Wilson
-FACE_SID
-Chris, we've got a small problem. WEAPCO has a minefield in the asteroid belt. We'll need you to clear a way through.
-FACE_CHRIS
-Alright. I'll radio in once I've cleared a safe path.

@@ -1,7 +1,0 @@
-Sid Wilson
-FACE_SID
-We've got a major problem here! WEAPCO has decided to stop our resistance by destroying Spirit! The explosion will incinerate everything in the system! You've got to destroy that frigate before it gets in range!
-FACE_CHRIS
-Damn! I'll get right on it, then!
-FACE_SID
-We're all counting on you, Chris! But just remember - They didn't call that thing "Star Killer" just because it sounded nice!

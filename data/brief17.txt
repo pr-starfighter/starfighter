@@ -1,7 +1,0 @@
-Ursula Lexx
-FACE_URSULA
-I've remembered something. WEAPCO is transporting some high level personnel to Poswic.
-FACE_SID
-This could be really important to our success in Sol. I'll need some cover so I can disable that ship.
-FACE_CHRIS
-You got it!

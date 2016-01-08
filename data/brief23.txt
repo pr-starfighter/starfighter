@@ -1,7 +1,0 @@
-Sid Wilson
-FACE_SID
-While you were gone I picked up a distress call coming from around Jupiter.
-FACE_URSULA
-Who would be sending out a distress call within Sol?
-FACE_CHRIS
-Let's check it out. Even if it's a trap, I think we can handle it.

@@ -371,17 +371,24 @@ static void intermission_createCommsSurface(SDL_Surface *comms)
 	intermission_updateCommsSurface(comms);
 }
 
+static int intermission_renderDialog(SDL_Surface *comms, int y, int face, const char *string)
+{
+	int newY;
+	gfx_blit(gfx_faceSprites[face], 10, y, comms);
+	newY = gfx_renderString(string, 80, y, FONT_WHITE, 1, comms) + 25;
+	if (newY < y + 60)
+		newY += (60 - (newY - y));
+	return newY;
+}
+
 static void intermission_createMissionDetailSurface(SDL_Surface *comms, int missionSlot)
 {
 	char name[50];
 	char string[2000];
 	int y = 50;
-	int newY = y;
-	int col = FONT_WHITE;
 	int mission = -1;
-	int faceNumber = -1;
-	FILE *fp;
 
+	// XXX: Magic number
 	for (int i = 0 ; i < 10 ; i++)
 	{
 		if ((systemPlanet[i].messageSlot == missionSlot) && (systemPlanet[i].missionCompleted == 0))
@@ -395,36 +402,414 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 
 	gfx_drawRect(comms, 0, 0, comms->w - 1, comms->h - 1, 0x00, 0x00, 0x25);
 
-	sprintf(string, "data/brief%d.txt", mission);
-
-	fp = fopen(string, "rb");
-
-	if (fscanf(fp, "%[^\n]%*c", name) < 1)
+	// XXX: The "name" should correspond with whatever name was presented in
+	// the screen listing all of the comms. For some reason, this has always
+	// been defined twice, which is redundant and has led to inconsistencies in
+	// the past.
+	switch (mission)
 	{
-		printf("Warning: Failed to retrieve name from \"%s\"\n", string);
-		strcpy(name, "Error");
+		case MISN_HAIL:
+			strcpy(name, "Krass Tyler");
+
+			strcpy(string, "Hey, boy! You still owe me money for the Firefly I stole for you! But instead, I want you to go to the WEAPCO training ground and destroy all the craft there.");
+			y = intermission_renderDialog(comms, y, FS_KRASS, string);
+
+			strcpy(string, "Oh? That's the job I contracted you to do, was it not?");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			strcpy(string, "I know, but this way we can resolve your debt right now. Do this job, and also collect $500, and we will call it quits. And if you die... well, I guess the ship was not worth stealing! HA HA HA!");
+			y = intermission_renderDialog(comms, y, FS_KRASS, string);
+
+			strcpy(string, "As usual, you take me too lightly, Krass.");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			break;
+
+		case MISN_CERADSE:
+			strcpy(name, "Sid Wilson");
+
+			strcpy(string, "Hey, Sid, what's up?");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			strcpy(string, "Chris, I've intercepted a communication from WEAPCO. Seems they're transporting some medical supplies around Ceradse. We need to get hold of those pods to save some lives!");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "How many do we need?");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			strcpy(string, "All six, Chris! If you lose even a single one, thousands of people could perish in Spirit within the next few months.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			break;
+
+		case MISN_HINSTAG:
+			strcpy(name, "Sid Wilson");
+
+			strcpy(string, "Wow! Missile boats?");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			strcpy(string, "Yup. Looks like WEAPCO is starting to take notice of your actions.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "Sounds like fun! This will really put the Firefly's fighting ability to the test!");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			strcpy(string, "Please be careful, Chris. A single missile boat carries enough rockets to level most major cities. Try not to face them head-on, and keep your distance.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			break;
+
+		case MISN_JOLDAR:
+			strcpy(name, "Sid Wilson");
+
+			strcpy(string, "We're going to have to get rid of the mine deployment unit around Joldar. The minefield is stopping interplanetary traffic.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "Are any fighters around to keep me entertained?");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			strcpy(string, "Not at the moment, but that doesn't mean they won't turn up. Be very careful of those mines! They'll only explode when they encounter a ship that's not transmitting a WEAPCO signal. Shoot them down if they get in your way.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			break;
+
+		case MISN_MOEBO:
+			strcpy(name, "Sid Wilson");
+
+			strcpy(string, "We've got a major problem here! WEAPCO has decided to stop our resistance by destroying Spirit! The explosion will incinerate everything in the system! You've got to destroy that frigate before it gets in range!");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "Damn! I'll get right on it, then!");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			strcpy(string, "We're all counting on you, Chris! But just remember - They didn't call that thing \"Star Killer\" just because it sounded nice!");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			break;
+
+		case MISN_RESCUESLAVES:
+			strcpy(name, "Sid Wilson");
+
+			strcpy(string, "As you know, WEAPCO has many slaves in this system. If we free a large number of them, it might help to spark a rebellion. I estimate that we will need to rescue around 250 to make a difference.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "Most of the slaves are working in ore mines, aren't they?");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			strcpy(string, "Yes, but attacking the ore mines directly would be dangerous. You'd be better off intercepting slave transports. What you'll have to do is fly around and see if you can intercept a WEAPCO patrol. Of course, they might not be escorting any slave units, so be careful!");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			break;
+
+		case MISN_NEROD:
+			strcpy(name, "(unknown)");
+
+			strcpy(string, "Help! This is an SOS! Can anyone hear me?!");
+			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
+
+			strcpy(string, "I'm hearing you loud and clear! What's up?");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			strcpy(string, "Oh, thank God! I was intercepted by a large WEAPCO force near Nerod! I'm in need of assistance!");
+			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
+
+			strcpy(string, "I'm on my way!");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			break;
+
+		case MISN_ALLEZ:
+			strcpy(name, "Sid Wilson");
+
+			strcpy(string, "I've just received another SOS. This one is coming from a supply craft carrying essential medical supplies.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "Alright, Tell 'em I'm on my way.");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			break;
+
+		case MISN_URUSOR:
+			strcpy(name, "Sid Wilson");
+
+			strcpy(string, "I need some resources before we leave, it'll make life a lot easier in Mordor. Problem is that WEAPCO hoards these parts.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "Where can we get them, then?");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			strcpy(string, "There's a big shipment of them nearby. I can disable the supply craft carrying them; I just need you to give me some cover while I do it.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "You got it!");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			break;
+
+		case MISN_DORIM:
+			strcpy(name, "Sid Wilson");
+
+			strcpy(string, "A WEAPCO scientist just ran off in an escape pod and hid in the asteroid belt. If we capture him, we may be able to get some information about Mordor.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "I'm on it.");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			break;
+
+		case MISN_ELAMALE:
+			strcpy(name, "Phoebe Lexx");
+
+			strcpy(string, "I've received word that the slaves we rescued have started a rebellion. Looks like the plan worked.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "WEAPCO has an automated mining ship in orbit around Elamale. How about we take it out and cause some confusion?");
+			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
+
+			strcpy(string, "I like that idea!");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			strcpy(string, "It'll work, but be careful.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			break;
+
+		case MISN_CLOAKFIGHTER:
+			strcpy(name, "Sid Wilson");
+
+			strcpy(string, "What have you found out about that experimental fighter?");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			strcpy(string, "It's got some kind of cloaking device that makes it invisible to radar. Could prove hard to track down.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "I'll just have to run around the system until I run into it.");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			strcpy(string, "It's likely to run away if you engage it in battle, so try and do as much damage to it as possible.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			break;
+
+		case MISN_ODEON:
+			strcpy(name, "Phoebe Lexx");
+
+			strcpy(string, "I've located my sister's ship currently in orbit around Odeon. She's ignoring my hails though.");
+			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
+
+			strcpy(string, "Something's off here. She seems to be travelling freely with a WEAPCO group.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "Do you think she's turned traitor?");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			strcpy(string, "No way. She hates WEAPCO with a passion.");
+			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
+
+			strcpy(string, "She must be under some kind of mind control. I've heard of WEAPCO developing a new \"AI training program\" recently. We'd better rescue her!");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			break;
+
+		case MISN_FELLON:
+			strcpy(name, "Sid Wilson");
+
+			strcpy(string, "A rebel group has organized a counter strike. If we can help them secure a victory it will be a real boost to morale.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "Awesome! I'm on it!");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			break;
+
+		case MISN_SIVEDI:
+			strcpy(name, "Sid Wilson");
+
+			strcpy(string, "Seems like taking out that WEAPCO mining ship wasn't such a good idea. The Ore it collected from those asteroids is needed in weapon production.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "Damn! I guess that means I'll have to mine some myself, then, huh?");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			strcpy(string, "Yes. Be careful, Chris. Your weapons weren't designed for that sort of work, after all.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			break;
+
+		case MISN_ALMARTHA:
+			strcpy(name, "Krass Tyler");
+
+			strcpy(string, "Hey, Krass! I need you to help us out with something. Phoebe and Ursula are taking out key WEAPCO plants. Can you help me create a diversion by wreaking havoc a little bit away from that?");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			strcpy(string, "Sure, I can help you out, boy. But I'll be needing my fee...");
+			y = intermission_renderDialog(comms, y, FS_KRASS, string);
+
+			break;
+
+		case MISN_POSWIC:
+			strcpy(name, "Ursula Lexx");
+
+			strcpy(string, "I've remembered something. WEAPCO is transporting some high level personnel to Poswic.");
+			y = intermission_renderDialog(comms, y, FS_URSULA, string);
+
+			strcpy(string, "This could be really important to our success in Sol. I'll need some cover so I can disable that ship.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "You got it!");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			break;
+
+		case MISN_ELLESH:
+			strcpy(name, "Phoebe Lexx");
+
+			strcpy(string, "Phoebe, I need you to keep an eye on things here. I'm going after that ship!");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			strcpy(string, "Are you sure you can catch up to it?");
+			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
+
+			strcpy(string, "Is that a challenge? Heh heh, don't worry about it. One thing that's really nice about the Firefly is its speed. I'll see you in a bit.");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			break;
+
+		case MISN_PLUTO:
+			strcpy(name, "Sid Wilson");
+
+			strcpy(string, "We've got to start from the outside and work our way in. That will give us less chance of being flanked during the final operation.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "Gotcha.");
+			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
+
+			strcpy(string, "Okay.");
+			y = intermission_renderDialog(comms, y, FS_URSULA, string);
+
+			strcpy(string, "Alright.");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			break;
+
+		case MISN_NEPTUNE:
+			strcpy(name, "Sid Wilson");
+
+			strcpy(string, "We've got to start from the outside and work our way in. That will give us less chance of being flanked during the final operation.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "Gotcha.");
+			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
+
+			strcpy(string, "Okay.");
+			y = intermission_renderDialog(comms, y, FS_URSULA, string);
+
+			strcpy(string, "Alright.");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			break;
+
+		case MISN_URANUS:
+			strcpy(name, "Sid Wilson");
+
+			strcpy(string, "We've got to start from the outside and work our way in. That will give us less chance of being flanked during the final operation.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "Gotcha.");
+			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
+
+			strcpy(string, "Okay.");
+			y = intermission_renderDialog(comms, y, FS_URSULA, string);
+
+			strcpy(string, "Alright.");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			break;
+
+		case MISN_SATURN:
+			strcpy(name, "Sid Wilson");
+
+			strcpy(string, "WEAPCO has set up a highly dangerous defense line between Saturn and Uranus. We'll need to take it out.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "What kind of defense system?");
+			y = intermission_renderDialog(comms, y, FS_URSULA, string);
+
+			strcpy(string, "Several mobile Energy Ray cannons, not unlike the weapon used by the Star Killer back in Spirit.");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			strcpy(string, "Best check my ejection system, then!");
+			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
+
+			break;
+
+		case MISN_JUPITER:
+			strcpy(name, "Sid Wilson");
+
+			strcpy(string, "While you were gone I picked up a distress call coming from around Jupiter.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "Who would be sending out a distress call within Sol?");
+			y = intermission_renderDialog(comms, y, FS_URSULA, string);
+
+			strcpy(string, "Let's check it out. Even if it's a trap, I think we can handle it.");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			break;
+
+		case MISN_MARS:
+			strcpy(name, "Sid Wilson");
+
+			strcpy(string, "Chris, we've got a small problem. WEAPCO has a minefield in the asteroid belt. We'll need you to clear a way through.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "Alright. I'll radio in once I've cleared a safe path.");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			break;
+
+		case MISN_EARTH:
+			strcpy(name, "Everyone");
+
+			strcpy(string, "Okay people, this is the big one. We go in fast and we go in hard. Don't hold back and hit them with everything we've got!");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			strcpy(string, "We've come too far to turn back now. None of us better die out there!");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			strcpy(string, "Right with you, Chris!");
+			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
+
+			strcpy(string, "WEAPCO'll regret sticking probes into my head!");
+			y = intermission_renderDialog(comms, y, FS_URSULA, string);
+
+			break;
+
+		case MISN_VENUS:
+			strcpy(name, "Sid Wilson");
+
+			strcpy(string, "Kethlan has run off to Venus. I'm going after him.");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			strcpy(string, "Be careful, Chris. We've won the war, but it would be a real shame if you died now!");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
+			break;
+
+		default:
+			strcpy(name, "Nobody");
+			strcpy(string, "Hey, why am I talking to myself? This shouldn't happen! Clearly, this must be a bug.");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			sprintf(string, "I should go to starfighter.nongnu.org and report this bug there. In that report, I should mention that the mission number is %d.", mission);
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+			strcpy(string, "Wait, what am I still talking into empty space for? It's not like anyone can hear me...");
+			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 	}
+
 	sprintf(string, "+++ Communication with %s +++", name);
 	gfx_renderString(string, -1, 20, FONT_GREEN, 0, comms);
-
-	while (fscanf(fp, "%[^\n]%*c", string) == 1)
-	{
-		faceNumber = getFace(string);
-		if (faceNumber > -1)
-		{
-			gfx_blit(gfx_faceSprites[faceNumber], 10, y, comms);
-			col = FONT_WHITE;
-		}
-		else
-		{
-			newY = gfx_renderString(string, 80, y, col, 1, comms) + 25;
-			if (newY < y + 60)
-				newY += (60 - (newY - y));
-			y = newY;
-		}
-	}
-
-	fclose(fp);
 
 	gfx_drawRect(comms, 5, comms->h - 28, 180, 20, 0x25, 0x00, 0x00);
 	gfx_renderString("RETURN TO MESSAGES", 15, comms->h - 25, FONT_WHITE, 1, comms);

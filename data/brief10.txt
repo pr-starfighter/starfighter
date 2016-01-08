@@ -1,5 +1,0 @@
-Sid Wilson
-FACE_SID
-A WEAPCO scientist just ran off in an escape pod and hid in the asteroid belt. If we capture him, we may be able to get some information about Mordor.
-FACE_CHRIS
-I'm on it.

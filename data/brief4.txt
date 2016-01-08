@@ -1,8 +1,0 @@
-Sid Wilson
-FACE_SID
-We're going to have to get rid of the mine deployment unit around Joldar. The minefield is stopping interplanetary traffic.
-FACE_CHRIS
-Sounds kind of boring. Any fighters?
-FACE_SID
-Not at the moment, but that doesn't mean they won't turn up. Be very careful of those mines! They'll only explode when they encounter a ship that's not transmitting a WEAPCO signal. Shoot them down if they get in your way.
-

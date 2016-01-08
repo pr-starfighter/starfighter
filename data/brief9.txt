@@ -1,9 +1,0 @@
-Sid Wilson
-FACE_SID
-I need some resources before we leave, it'll make life a lot easier in Mordor. Problem is that WEAPCO hoards these parts.
-FACE_CHRIS
-Where can we get them, then?
-FACE_SID
-There's a big shipment of them nearby. I can disable the supply craft carrying them; I just need you to give me some cover while I do it.
-FACE_CHRIS
-You got it!
