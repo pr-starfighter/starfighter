@@ -2118,7 +2118,6 @@ int game_mainLoop()
 		case MISN_ELAMALE:
 		case MISN_ODEON:
 		case MISN_FELLON:
-		case MISN_POSWIC:
 		case MISN_ELLESH:
 		case MISN_PLUTO:
 		case MISN_NEPTUNE:
@@ -2133,6 +2132,7 @@ int game_mainLoop()
 			player_setTarget(ALIEN_FRIEND1);
 			break;
 		case MISN_URUSOR:
+		case MISN_POSWIC:
 			player_setTarget(ALIEN_SID);
 			break;
 		case MISN_EARTH:
