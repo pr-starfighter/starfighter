@@ -219,6 +219,14 @@ void loadGameGraphics()
 	gfx_sprites[SP_ARROW_SOUTHWEST] = gfx_loadImage("gfx/arrowSouthWest.png");
 	gfx_sprites[SP_ARROW_WEST] = gfx_loadImage("gfx/arrowWest.png");
 	gfx_sprites[SP_ARROW_NORTHWEST] = gfx_loadImage("gfx/arrowNorthWest.png");
+	gfx_sprites[SP_ARROW_FRIEND_NORTH] = gfx_loadImage("gfx/friendArrowNorth.png");
+	gfx_sprites[SP_ARROW_FRIEND_NORTHEAST] = gfx_loadImage("gfx/friendArrowNorthEast.png");
+	gfx_sprites[SP_ARROW_FRIEND_EAST] = gfx_loadImage("gfx/friendArrowEast.png");
+	gfx_sprites[SP_ARROW_FRIEND_SOUTHEAST] = gfx_loadImage("gfx/friendArrowSouthEast.png");
+	gfx_sprites[SP_ARROW_FRIEND_SOUTH] = gfx_loadImage("gfx/friendArrowSouth.png");
+	gfx_sprites[SP_ARROW_FRIEND_SOUTHWEST] = gfx_loadImage("gfx/friendArrowSouthWest.png");
+	gfx_sprites[SP_ARROW_FRIEND_WEST] = gfx_loadImage("gfx/friendArrowWest.png");
+	gfx_sprites[SP_ARROW_FRIEND_NORTHWEST] = gfx_loadImage("gfx/friendArrowNorthWest.png");
 	gfx_sprites[SP_TARGET] = gfx_loadImage("gfx/targetText.png");
 	gfx_sprites[SP_ESCAPE_POD] = gfx_loadImage("gfx/pod.png");
 	gfx_sprites[SP_ORE] = gfx_loadImage("gfx/ore1.png");
