@@ -1635,9 +1635,6 @@ static void game_doArrow(int i)
 	if (i != engine.targetIndex)
 		return;
 
-	if (gfx_textSprites[TS_RADIO].life > 0)
-		return;
-
 	if (sxy == sx)
 	{
 		x -= x > screen->w / 2 ? 5 + gfx_sprites[SP_TARGET]->w : -5 - gfx_sprites[arrow]->w;
