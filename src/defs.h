@@ -73,7 +73,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define FL_DROPMINES 512
 #define FL_AIMS 1024
 #define FL_DISABLED 2048
-#define FL_CANNOTDIE 4096 // This will only apply to Kline before the final mission
+#define FL_CANNOTDIE 4096 // No longer used
 #define FL_RUNSAWAY 8192
 #define FL_ALWAYSFACE 16384 // Kline doesn't turn his back on you! ;)
 #define FL_CIRCLES 32768L // Kline can circle around

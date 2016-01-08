@@ -1369,14 +1369,16 @@ void alien_setKlineAttackMethod(object *alien)
 		alien->flags |= FL_CANCLOAK;
 		alien->chance[0] = 100;
 		alien->chance[1] = 2;
-		alien->flags &= ~FL_CANNOTDIE;
 	}
 	else if (alien->shield <= 1000)
 	{
 		setRadioMessage(FS_KLINE, "Your ability to stay alive irritates me!! Try dodging some of these!!", 1);
-		alien->weaponType[0] = W_DIRSHOCKMISSILE;
+		if (game.difficulty == DIFFICULTY_ORIGINAL)
+		{
+			alien->weaponType[0] = W_DIRSHOCKMISSILE;
+			alien->chance[0] = 2;
+		}
 		alien->weaponType[1] = W_DIRSHOCKMISSILE;
-		alien->chance[0] = 2;
 		alien->chance[1] = 2;
 		alien->flags |= FL_AIMS;
 	}
@@ -1396,14 +1398,17 @@ void alien_setKlineAI(object *alien)
 	// Weapon type change
 	if (CHANCE(1. / 3.))
 	{
-		if (game.area != MISN_VENUS)
+		if ((game.area != MISN_VENUS) || (game.difficulty != DIFFICULTY_ORIGINAL))
 		{
 			alien->flags &= ~FL_AIMS;
 
 			switch(rand() % 2)
 			{
 				case 0:
-					alien->weaponType[0] = W_TRIPLE_SHOT;
+					if ((game.area != MISN_VENUS) || (alien->shield > 1500))
+						alien->weaponType[0] = W_TRIPLE_SHOT;
+					else
+						alien->weaponType[0] = W_SPREADSHOT;
 					break;
 				case 1:
 					alien->weaponType[0] = W_AIMED_SHOT;
@@ -1428,7 +1433,7 @@ void alien_setKlineAI(object *alien)
 			break;
 		case 1:
 		case 2:
-			// Kline only attacks then he is ready!
+			// Kline only attacks when he is ready!
 			if ((!(alien->flags & FL_NOFIRE)) &&
 					((game.area == MISN_MOEBO) ||
 						game.difficulty != DIFFICULTY_ORIGINAL))
