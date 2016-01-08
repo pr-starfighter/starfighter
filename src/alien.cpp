@@ -522,7 +522,7 @@ void alien_defs_init()
 	alien_defs[CD_MOBILE_RAY].weaponType[0] = W_ENERGYRAY;
 	alien_defs[CD_MOBILE_RAY].weaponType[1] = W_ENERGYRAY;
 	alien_defs[CD_MOBILE_RAY].chance[0] = 50;
-	alien_defs[CD_MOBILE_RAY].chance[1] = 50;
+	alien_defs[CD_MOBILE_RAY].chance[1] = 0;
 	alien_defs[CD_MOBILE_RAY].collectChance = 75;
 	alien_defs[CD_MOBILE_RAY].collectType = P_ANYTHING;
 	alien_defs[CD_MOBILE_RAY].collectValue = 100;

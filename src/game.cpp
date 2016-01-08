@@ -1022,35 +1022,32 @@ static void game_doAliens()
 
 				if (canFire)
 				{
-					if ((aliens[i].reload[0] == 0) &&
-						((rand() % 1000 < aliens[i].chance[0]) ||
-							(aliens[i].flags & FL_CONTINUOUS_FIRE)))
+					for (int j = 0 ; j < 2 ; j++)
 					{
-						// FIXME: I'm pretty sure this is the line that's causing mobile energy ray cannons
-						// to fire off 5 plasma bullets. Need to find out exactly what
-						// this line is for and make the appropriate adjustments.
-						ship_fireBullet(&aliens[i], 0);
-					}
-					if ((aliens[i].reload[1] == 0) &&
-						((rand() % 1000 < aliens[i].chance[1]) ||
-							(aliens[i].flags & FL_CONTINUOUS_FIRE)))
-					{
-						if ((aliens[i].weaponType[1] != W_ENERGYRAY) &&
-							(aliens[i].weaponType[1] != W_LASER))
+						if ((aliens[i].reload[j] == 0) &&
+							((rand() % 1000 < aliens[i].chance[j]) ||
+								(aliens[i].flags & FL_CONTINUOUS_FIRE)))
 						{
-							if (aliens[i].weaponType[1] == W_CHARGER)
-								aliens[i].ammo[1] = 50 + rand() % 150;
-							ship_fireBullet(&aliens[i], 1);
-						}
-						else if (aliens[i].weaponType[1] == W_LASER)
-						{
-							aliens[i].flags += FL_FIRELASER;
-						}
-						else if ((aliens[i].weaponType[1] == W_ENERGYRAY) &&
-							(aliens[i].ammo[0] == 250))
-						{
-							aliens[i].flags += FL_FIRERAY;
-							audio_playSound(SFX_ENERGYRAY, aliens[i].x);
+							if ((aliens[i].weaponType[j] != W_ENERGYRAY) &&
+								(aliens[i].weaponType[j] != W_LASER))
+							{
+								if (aliens[i].weaponType[j] == W_CHARGER)
+									aliens[i].ammo[j] = 50 + rand() % 150;
+								ship_fireBullet(&aliens[i], j);
+							}
+							else if (aliens[i].weaponType[j] == W_LASER)
+							{
+								aliens[i].flags += FL_FIRELASER;
+							}
+							// XXX: This ammo check only seems to work for ammo[0],
+							// not ammo[1], thus necessitating using ammo[0] instead of
+							// ammo[j]. Should be investigated in the future.
+							else if ((aliens[i].weaponType[j] == W_ENERGYRAY) &&
+								(aliens[i].ammo[0] >= 250))
+							{
+								aliens[i].flags += FL_FIRERAY;
+								audio_playSound(SFX_ENERGYRAY, aliens[i].x);
+							}
 						}
 					}
 				}
