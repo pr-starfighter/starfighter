@@ -804,6 +804,8 @@ void missionBriefScreen()
 		gfx_createTextObject(TS_AMMO_T, "Rockets:", screen->w / 2, screen->h - 50, FONT_WHITE);
 
 	gfx_createTextObject(TS_TARGET, "Target", screen->w * 11 / 16, screen->h - 50, FONT_WHITE);
+	gfx_createTextObject(TS_TARGET_SID, "Sid", screen->w * 11 / 16 + 27, screen->h - 50, FONT_WHITE);
+	gfx_createTextObject(TS_TARGET_PHOEBE, "Phoebe", screen->w * 11 / 16, screen->h - 50, FONT_WHITE);
 	gfx_createTextObject(TS_CASH_T, "Cash: $", 25, 20, FONT_WHITE);
 	gfx_createTextObject(TS_OBJECTIVES_T, "Objectives Remaining:", screen->w - 250, 20, FONT_WHITE);
 	gfx_createTextObject(TS_TIME_T, "Time Remaining - ", screen->w / 2 - 140, 20, FONT_WHITE);

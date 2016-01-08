@@ -1828,9 +1828,16 @@ static void game_doHud()
 	// Do the target's remaining shield (if required)
 	if (game.area != MISN_DORIM)
 	{
-		if ((engine.targetIndex > -1) && (aliens[engine.targetIndex].shield > 0) && (engine.targetIndex > 9))
+		if ((engine.targetIndex > -1) && (aliens[engine.targetIndex].shield > 0) &&
+				(engine.targetIndex > engine.maxAliens))
 		{
-			screen_blitText(TS_TARGET);
+			if (engine.targetIndex == ALIEN_SID)
+				screen_blitText(TS_TARGET_SID);
+			else if (engine.targetIndex == ALIEN_PHOEBE)
+				screen_blitText(TS_TARGET_PHOEBE);
+			else
+				screen_blitText(TS_TARGET);
+
 			bar.w = MAX(screen->w / 800, 1);
 			bar.h = 12;
 			bar.x = screen->w * 11 / 16 + 65;
