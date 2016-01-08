@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012 Guus Sliepen
-Copyright (C) 2015 onpon4 <onpon4@riseup.net>
+Copyright (C) 2015, 2016 onpon4 <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -23,7 +23,7 @@ static const char *deathMessage[6] = {
 	"Oh my God... No!",
 	"NOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!!",
 	"Please tell me that didn't just happen...",
-	"Chris, Answer Me!!",
+	"Chris, answer me!!",
 	"What the hell happened?!",
 	"Chriiiiiiiiiiiiiiiiiiiiiiiiiiis!!!!",
 };
@@ -41,7 +41,7 @@ static const char *killMessage[10] = {
 	"Hey %s, you asleep over there?!",
 	"I'm catching up with you, %s!",
 
-	"Number One, Baby!",
+	"Number one, baby!",
 };
 
 static const char *missFireMessage[5] = {
