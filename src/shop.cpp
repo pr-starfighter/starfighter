@@ -74,35 +74,23 @@ static void adjustShopPrices()
 {
 	if (game.difficulty == DIFFICULTY_ORIGINAL)
 	{
-		shopItems[SHOP_PLASMA_MAX_OUTPUT].price = (500 *
-			game.maxPlasmaOutput);
-		shopItems[SHOP_PLASMA_MAX_DAMAGE].price = (500 *
-			game.maxPlasmaDamage);
-		shopItems[SHOP_PLASMA_MAX_RATE].price = (500 *
-			(game.maxPlasmaRate * 2 - 1));
+		shopItems[SHOP_PLASMA_MAX_OUTPUT].price = 500 * game.maxPlasmaOutput;
+		shopItems[SHOP_PLASMA_MAX_DAMAGE].price = 500 * game.maxPlasmaDamage;
+		shopItems[SHOP_PLASMA_MAX_RATE].price = 500 * (game.maxPlasmaRate * 2 - 1);
 
-		shopItems[SHOP_PLASMA_MIN_OUTPUT].price = (2000 *
-			game.minPlasmaOutput);
-		shopItems[SHOP_PLASMA_MIN_DAMAGE].price = (2000 *
-			game.minPlasmaDamage);
-		shopItems[SHOP_PLASMA_MIN_RATE].price = (2000 *
-			(game.minPlasmaRate * 2 - 1));
+		shopItems[SHOP_PLASMA_MIN_OUTPUT].price = 2000 * game.minPlasmaOutput;
+		shopItems[SHOP_PLASMA_MIN_DAMAGE].price = 2000 * game.minPlasmaDamage;
+		shopItems[SHOP_PLASMA_MIN_RATE].price = 2000 * (game.minPlasmaRate * 2 - 1);
 	}
 	else
 	{
-		shopItems[SHOP_PLASMA_MAX_OUTPUT].price = (1000 *
-			(game.maxPlasmaOutput + 1));
-		shopItems[SHOP_PLASMA_MAX_DAMAGE].price = (1000 *
-			(game.maxPlasmaDamage + 1));
-		shopItems[SHOP_PLASMA_MAX_RATE].price = (1000 *
-			(game.maxPlasmaRate + 1));
+		shopItems[SHOP_PLASMA_MAX_OUTPUT].price = 1000 * (game.maxPlasmaOutput + 1);
+		shopItems[SHOP_PLASMA_MAX_DAMAGE].price = 1000 * (game.maxPlasmaDamage + 1);
+		shopItems[SHOP_PLASMA_MAX_RATE].price = 1000 * (game.maxPlasmaRate + 1);
 
-		shopItems[SHOP_PLASMA_MIN_OUTPUT].price = (1500 *
-			(game.minPlasmaOutput + 1));
-		shopItems[SHOP_PLASMA_MIN_DAMAGE].price = (1500 *
-			(game.minPlasmaDamage + 1));
-		shopItems[SHOP_PLASMA_MIN_RATE].price = (1500 *
-			(game.minPlasmaRate + 1));
+		shopItems[SHOP_PLASMA_MIN_OUTPUT].price = 1500 * (game.minPlasmaOutput + 1);
+		shopItems[SHOP_PLASMA_MIN_DAMAGE].price = 1500 * (game.minPlasmaDamage + 1);
+		shopItems[SHOP_PLASMA_MIN_RATE].price = 1500 * (game.minPlasmaRate + 1);
 	}
 
 	if (game.maxPlasmaOutput <= game.minPlasmaOutput)
