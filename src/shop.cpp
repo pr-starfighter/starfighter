@@ -345,12 +345,20 @@ void initShop()
 		"Increases plasma firing rate");
 	shopItems[SHOP_PLASMA_MAX_RATE].image = 11;
 
-	shopItems[SHOP_PLASMA_AMMO].price = 10;
+	if (game.difficulty == DIFFICULTY_ORIGINAL)
+		shopItems[SHOP_PLASMA_AMMO].price = 50;
+	else
+		shopItems[SHOP_PLASMA_AMMO].price = 1;
+
 	strcpy(shopItems[SHOP_PLASMA_AMMO].name, "10 Plasma cells");
 	strcpy(shopItems[SHOP_PLASMA_AMMO].description, "Plasma ammunition");
 	shopItems[SHOP_PLASMA_AMMO].image = 12;
 
-	shopItems[SHOP_ROCKET_AMMO].price = 10;
+	if (game.difficulty == DIFFICULTY_ORIGINAL)
+		shopItems[SHOP_ROCKET_AMMO].price = 50;
+	else
+		shopItems[SHOP_ROCKET_AMMO].price = 1;
+
 	strcpy(shopItems[SHOP_ROCKET_AMMO].name, "Rocket Ammo");
 	strcpy(shopItems[SHOP_ROCKET_AMMO].description,
 		"High velocity dumb fire rocket");
