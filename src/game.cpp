@@ -1641,8 +1641,14 @@ static void game_doArrow(int i)
 		arrowY = MAX(0, MIN(arrowY, screen->h - gfx_sprites[arrow]->h));
 		screen_blit(gfx_sprites[arrow], arrowX, arrowY);
 
-		if (i == engine.targetIndex)
-			indicator = SP_TARGET;
+		if (i == ALIEN_SID)
+			indicator = SP_INDICATOR_SID;
+		else if (i == ALIEN_PHOEBE)
+			indicator = SP_INDICATOR_PHOEBE;
+		else if (i == ALIEN_URSULA)
+			indicator = SP_INDICATOR_URSULA;
+		else if (i == engine.targetIndex)
+			indicator = SP_INDICATOR_TARGET;
 
 		if (indicator != -1)
 		{

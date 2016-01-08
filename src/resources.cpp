@@ -227,7 +227,10 @@ void loadGameGraphics()
 	gfx_sprites[SP_ARROW_FRIEND_SOUTHWEST] = gfx_loadImage("gfx/friendArrowSouthWest.png");
 	gfx_sprites[SP_ARROW_FRIEND_WEST] = gfx_loadImage("gfx/friendArrowWest.png");
 	gfx_sprites[SP_ARROW_FRIEND_NORTHWEST] = gfx_loadImage("gfx/friendArrowNorthWest.png");
-	gfx_sprites[SP_TARGET] = gfx_loadImage("gfx/targetText.png");
+	gfx_sprites[SP_INDICATOR_TARGET] = gfx_loadImage("gfx/targetText.png");
+	gfx_sprites[SP_INDICATOR_SID] = gfx_loadImage("gfx/sidText.png");
+	gfx_sprites[SP_INDICATOR_PHOEBE] = gfx_loadImage("gfx/phoebeText.png");
+	gfx_sprites[SP_INDICATOR_URSULA] = gfx_loadImage("gfx/ursulaText.png");
 	gfx_sprites[SP_ESCAPE_POD] = gfx_loadImage("gfx/pod.png");
 	gfx_sprites[SP_ORE] = gfx_loadImage("gfx/ore1.png");
 	gfx_sprites[SP_ORE_2] = gfx_loadImage("gfx/ore2.png");

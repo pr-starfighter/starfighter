@@ -61,6 +61,11 @@ gfx/targetText.png
 
 Author: Astrid S. de Wijn
 License: CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0/>
+Notes:
+  The text in these images was made by rendering the
+  DejaVu Sans Mono Bold font in the GIMP.  smallFont.png uses size 13pt
+  with anti-aliasing off, while the other images use size 10pt with
+  anti-aliasing on.
 
 ------------------------------------------------------------------------
 
@@ -77,6 +82,18 @@ Authors:
   Astrid S. de Wijn
   onpon4
 License: CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0/>
+
+------------------------------------------------------------------------
+
+gfx/phoebeText.png
+gfx/sidText.png
+gfx/ursulaText.png
+
+Author: onpon4
+License: CC0 <http://creativecommons.org/publicdomain/zero/1.0/>
+Notes:
+  Made by rendering the DejaVu Sans Mono Bold font in the GIMP at size
+  10pt wih anti-aliasing on.
 
 ------------------------------------------------------------------------
 
