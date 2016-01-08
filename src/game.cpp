@@ -678,7 +678,7 @@ static void game_doBullets()
 				{
 					old_shield = player.shield;
 
-					if ((!engine.cheatShield) || (engine.missionCompleteTimer != 0))
+					if ((!engine.cheatShield) && (engine.missionCompleteTimer == 0))
 					{
 						if ((player.shield > engine.lowShield) &&
 								(player.shield - bullet->damage <= engine.lowShield))

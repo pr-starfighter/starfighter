@@ -164,8 +164,8 @@ void ship_fireRay(object *ship)
 		if (player.shield > 0)
 		{
 			if (game_collision(player.x, player.y, player.image[0]->w,
-					player.image[0]->h, ray.x, ray.y, ray.w, ray.h) &&
-				(!engine.cheatShield))
+						player.image[0]->h, ray.x, ray.y, ray.w, ray.h) &&
+					(!engine.cheatShield) && (engine.missionCompleteTimer == 0))
 			{
 				if (player.shield > engine.lowShield)
 				{
