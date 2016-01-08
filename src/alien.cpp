@@ -1394,7 +1394,7 @@ This AI is exclusively for Kline.
 void alien_setKlineAI(object *alien)
 {
 	// Weapon type change
-	if ((rand() % 3) == 0)
+	if (CHANCE(1. / 3.))
 	{
 		if (game.area != MISN_VENUS)
 		{
@@ -1430,7 +1430,8 @@ void alien_setKlineAI(object *alien)
 		case 2:
 			// Kline only attacks then he is ready!
 			if ((!(alien->flags & FL_NOFIRE)) &&
-					(game.area == MISN_MOEBO))
+					((game.area == MISN_MOEBO) ||
+						game.difficulty != DIFFICULTY_ORIGINAL))
 				alien->flags |= FL_DROPMINES;
 			break;
 		case 3:
