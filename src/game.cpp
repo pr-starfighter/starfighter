@@ -1318,8 +1318,7 @@ static void game_doPlayer()
 				engine.keyState[KEY_PAUSE] = 0;
 			}
 
-			if (((game.area == MISN_ELLESH) &&
-					(aliens[ALIEN_BOSS].shield > 0)) ||
+			if ((game.area == MISN_ELLESH) ||
 				(game.area == MISN_MARS))
 			{
 				player.face = 0;
@@ -1449,14 +1448,8 @@ static void game_doPlayer()
 	LIMIT(engine.ssy, -cameraMaxSpeed, cameraMaxSpeed);
 
 	// Specific for the mission were you have to chase the Executive Transport
-	if ((game.area == MISN_ELLESH) && (aliens[ALIEN_BOSS].shield > 0) &&
-		(player.shield > 0))
-	{
-		engine.ssx = -6;
-		engine.ssy = 0;
-	}
-	
-	if (game.area == MISN_MARS)
+	if (((game.area == MISN_ELLESH) && (player.shield > 0)) ||
+			(game.area == MISN_MARS))
 	{
 		engine.ssx = -6;
 		engine.ssy = 0;
