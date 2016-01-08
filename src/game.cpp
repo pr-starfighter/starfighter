@@ -1647,6 +1647,8 @@ static void game_doArrow(int i)
 			indicator = SP_INDICATOR_PHOEBE;
 		else if (i == ALIEN_URSULA)
 			indicator = SP_INDICATOR_URSULA;
+		else if (i == ALIEN_KLINE)
+			indicator = SP_INDICATOR_KLINE;
 		else if (i == engine.targetIndex)
 			indicator = SP_INDICATOR_TARGET;
 
@@ -1835,6 +1837,8 @@ static void game_doHud()
 				screen_blitText(TS_TARGET_SID);
 			else if (engine.targetIndex == ALIEN_PHOEBE)
 				screen_blitText(TS_TARGET_PHOEBE);
+			else if (engine.targetIndex == ALIEN_KLINE)
+				screen_blitText(TS_TARGET_KLINE);
 			else
 				screen_blitText(TS_TARGET);
 

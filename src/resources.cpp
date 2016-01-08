@@ -231,6 +231,7 @@ void loadGameGraphics()
 	gfx_sprites[SP_INDICATOR_SID] = gfx_loadImage("gfx/sidText.png");
 	gfx_sprites[SP_INDICATOR_PHOEBE] = gfx_loadImage("gfx/phoebeText.png");
 	gfx_sprites[SP_INDICATOR_URSULA] = gfx_loadImage("gfx/ursulaText.png");
+	gfx_sprites[SP_INDICATOR_KLINE] = gfx_loadImage("gfx/klineText.png");
 	gfx_sprites[SP_ESCAPE_POD] = gfx_loadImage("gfx/pod.png");
 	gfx_sprites[SP_ORE] = gfx_loadImage("gfx/ore1.png");
 	gfx_sprites[SP_ORE_2] = gfx_loadImage("gfx/ore2.png");
