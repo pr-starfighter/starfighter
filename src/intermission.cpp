@@ -451,20 +451,8 @@ static bool intermission_showSystem(float x, float y, bool selectable)
 			screen_renderString(systemPlanet[planet].name, -1, 545, FONT_WHITE);
 			if ((engine.keyState[KEY_FIRE]))
 			{
-				if (game.system == SYSTEM_SPIRIT)
-				{
-					game.stationedPlanet = planet;
-					game.destinationPlanet = planet;
-					game.area = systemPlanet[game.stationedPlanet].missionNumber;
-					strcpy(game.stationedName, systemPlanet[game.stationedPlanet].name);
-					saveGame(0);
-				}
-				else
-				{
-					game.destinationPlanet = planet;
-					strcpy(game.destinationName, systemPlanet[game.destinationPlanet].name);
-				}
-
+				game.destinationPlanet = planet;
+				strcpy(game.destinationName, systemPlanet[game.destinationPlanet].name);
 				rtn = true;
 				engine.keyState[KEY_FIRE] = 0;
 			}
@@ -1224,6 +1212,9 @@ int intermission()
 
 	switch (game.system)
 	{
+		case SYSTEM_SPIRIT:
+			interceptionChance = 0;
+			break;
 		case SYSTEM_EYANANTH:
 			interceptionChance = 1. / 300.;
 			break;
@@ -1371,21 +1362,12 @@ int intermission()
 
 				if (intermission_showSystem(sinX, cosY, true))
 				{
-					if (game.system == SYSTEM_SPIRIT)
-					{
-						sprintf(string, "Stationed At: %s", systemPlanet[game.stationedPlanet].name);
-						gfx_createTextObject(TS_CURRENT_PLANET, string, 90, 450, FONT_WHITE);
-						intermission_updateCommsSurface(commsSurface);
-					}
-					else
-					{
-						sprintf(string, "Destination: %s", systemPlanet[game.destinationPlanet].name);
-						gfx_createTextObject(TS_DEST_PLANET, string, 550, 450, FONT_WHITE);
-					}
+					sprintf(string, "Destination: %s", systemPlanet[game.destinationPlanet].name);
+					gfx_createTextObject(TS_DEST_PLANET, string, 550, 450, FONT_WHITE);
 				}
 
 				screen_blitText(TS_CURRENT_PLANET);
-				if ((game.system > SYSTEM_SPIRIT) && (game.stationedPlanet != game.destinationPlanet))
+				if (game.stationedPlanet != game.destinationPlanet)
 					screen_blitText(TS_DEST_PLANET);
 				break;
 
