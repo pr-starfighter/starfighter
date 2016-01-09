@@ -1084,14 +1084,18 @@ bool alien_add()
 			alienArray[5] = CD_MOBILE_RAY;
 			break;
 		case MISN_INTERCEPTION:
-			numberOfAliens = 3;
+			numberOfAliens = 1;
 			alienArray[0] = CD_DUALFIGHTER;
-			alienArray[1] = CD_MISSILEBOAT;
-			alienArray[2] = CD_AIMFIGHTER;
-			if (game.system == SYSTEM_MORDOR)
+			if (game.system > SYSTEM_SPIRIT)
 			{
-				numberOfAliens = 4;
-				alienArray[3] = CD_PROTOFIGHTER;
+				numberOfAliens = 3;
+				alienArray[1] = CD_MISSILEBOAT;
+				alienArray[2] = CD_AIMFIGHTER;
+				if (game.system == SYSTEM_MORDOR)
+				{
+					numberOfAliens = 4;
+					alienArray[3] = CD_PROTOFIGHTER;
+				}
 			}
 			break;
 		default:

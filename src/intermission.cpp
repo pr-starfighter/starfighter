@@ -1213,7 +1213,10 @@ int intermission()
 	switch (game.system)
 	{
 		case SYSTEM_SPIRIT:
-			interceptionChance = 0;
+			if (game.difficulty == DIFFICULTY_ORIGINAL)
+				interceptionChance = 0;
+			else
+				interceptionChance = 1. / 600.;
 			break;
 		case SYSTEM_EYANANTH:
 			interceptionChance = 1. / 300.;
