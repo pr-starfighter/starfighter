@@ -19,12 +19,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
+// XXX: Magic number
 Planet systemPlanet[10];
 mission currentMission;
 static mission missions[MISN_MAX];
 
 void initPlanetMissions(int system)
 {
+	// XXX: Magic number
 	for (int i = 0 ; i < 10 ; i++)
 	{
 		systemPlanet[i].missionNumber = -1; // no mission for this planet
@@ -35,97 +37,97 @@ void initPlanetMissions(int system)
 	{
 		// Spirit
 		case 0:
-			systemPlanet[0].missionNumber = MISN_HAIL;
-			systemPlanet[0].missionCompleted = 0;
+			systemPlanet[PLANET_HAIL].missionNumber = MISN_HAIL;
+			systemPlanet[PLANET_HAIL].missionCompleted = 0;
 
-			systemPlanet[1].missionNumber = MISN_CERADSE;
-			systemPlanet[1].missionCompleted = 0;
+			systemPlanet[PLANET_CERADSE].missionNumber = MISN_CERADSE;
+			systemPlanet[PLANET_CERADSE].missionCompleted = 0;
 
-			systemPlanet[2].missionNumber = MISN_HINSTAG;
-			systemPlanet[2].missionCompleted = 0;
+			systemPlanet[PLANET_HINSTAG].missionNumber = MISN_HINSTAG;
+			systemPlanet[PLANET_HINSTAG].missionCompleted = 0;
 
-			systemPlanet[3].missionNumber = MISN_JOLDAR;
-			systemPlanet[3].missionCompleted = 0;
+			systemPlanet[PLANET_JOLDAR].missionNumber = MISN_JOLDAR;
+			systemPlanet[PLANET_JOLDAR].missionCompleted = 0;
 
-			systemPlanet[4].missionNumber = MISN_MOEBO;
-			systemPlanet[4].missionCompleted = -1;
+			systemPlanet[PLANET_MOEBO].missionNumber = MISN_MOEBO;
+			systemPlanet[PLANET_MOEBO].missionCompleted = -1;
 
 			break;
 
 		// Eyananth
 		case 1:
-			systemPlanet[0].missionNumber = MISN_NEROD;
-			systemPlanet[0].missionCompleted = 0;
+			systemPlanet[PLANET_NEROD].missionNumber = MISN_NEROD;
+			systemPlanet[PLANET_NEROD].missionCompleted = 0;
 
-			systemPlanet[1].missionNumber = MISN_ALLEZ;
-			systemPlanet[1].missionCompleted = 0;
+			systemPlanet[PLANET_ALLEZ].missionNumber = MISN_ALLEZ;
+			systemPlanet[PLANET_ALLEZ].missionCompleted = 0;
 
-			systemPlanet[2].missionNumber = MISN_URUSOR;
-			systemPlanet[2].missionCompleted = -1;
+			systemPlanet[PLANET_URUSOR].missionNumber = MISN_URUSOR;
+			systemPlanet[PLANET_URUSOR].missionCompleted = -1;
 
-			systemPlanet[3].missionNumber = MISN_DORIM;
-			systemPlanet[3].missionCompleted = -1;
+			systemPlanet[PLANET_DORIM].missionNumber = MISN_DORIM;
+			systemPlanet[PLANET_DORIM].missionCompleted = -1;
 
-			systemPlanet[4].missionNumber = MISN_ELAMALE;
-			systemPlanet[4].missionCompleted = -2;
+			systemPlanet[PLANET_ELAMALE].missionNumber = MISN_ELAMALE;
+			systemPlanet[PLANET_ELAMALE].missionCompleted = -2;
 
 			// This one is for the slaves
-			systemPlanet[9].missionNumber = MISN_RESCUESLAVES;
-			systemPlanet[9].missionCompleted = 0;
+			systemPlanet[PLANET_RESCUESLAVES].missionNumber = MISN_RESCUESLAVES;
+			systemPlanet[PLANET_RESCUESLAVES].missionCompleted = 0;
 
 			break;
 
 		// Mordor
 		case 2:
-			systemPlanet[0].missionNumber = MISN_ODEON;
-			systemPlanet[0].missionCompleted = 0;
+			systemPlanet[PLANET_ODEON].missionNumber = MISN_ODEON;
+			systemPlanet[PLANET_ODEON].missionCompleted = 0;
 
-			systemPlanet[1].missionNumber = MISN_FELLON;
-			systemPlanet[1].missionCompleted = 0;
+			systemPlanet[PLANET_FELLON].missionNumber = MISN_FELLON;
+			systemPlanet[PLANET_FELLON].missionCompleted = 0;
 
-			systemPlanet[2].missionNumber = MISN_SIVEDI;
-			systemPlanet[2].missionCompleted = -1;
+			systemPlanet[PLANET_SIVEDI].missionNumber = MISN_SIVEDI;
+			systemPlanet[PLANET_SIVEDI].missionCompleted = -1;
 
-			systemPlanet[3].missionNumber = MISN_ALMARTHA;
-			systemPlanet[3].missionCompleted = -1;
+			systemPlanet[PLANET_ALMARTHA].missionNumber = MISN_ALMARTHA;
+			systemPlanet[PLANET_ALMARTHA].missionCompleted = -1;
 
-			systemPlanet[4].missionNumber = MISN_POSWIC;
-			systemPlanet[4].missionCompleted = -2;
+			systemPlanet[PLANET_POSWIC].missionNumber = MISN_POSWIC;
+			systemPlanet[PLANET_POSWIC].missionCompleted = -2;
 
-			systemPlanet[5].missionNumber = MISN_ELLESH;
-			systemPlanet[5].missionCompleted = -3;
+			systemPlanet[PLANET_ELLESH].missionNumber = MISN_ELLESH;
+			systemPlanet[PLANET_ELLESH].missionCompleted = -3;
 
 			// This one is for the experimental fighter
-			systemPlanet[9].missionNumber = MISN_CLOAKFIGHTER;
-			systemPlanet[9].missionCompleted = 0;
+			systemPlanet[PLANET_CLOAKFIGHTER].missionNumber = MISN_CLOAKFIGHTER;
+			systemPlanet[PLANET_CLOAKFIGHTER].missionCompleted = 0;
 
 			break;
 
 		// Sol
 		case 3:
-			systemPlanet[8].missionNumber = MISN_PLUTO;
-			systemPlanet[8].missionCompleted = 0;
+			systemPlanet[PLANET_PLUTO].missionNumber = MISN_PLUTO;
+			systemPlanet[PLANET_PLUTO].missionCompleted = 0;
 
-			systemPlanet[7].missionNumber = MISN_NEPTUNE;
-			systemPlanet[7].missionCompleted = 0;
+			systemPlanet[PLANET_NEPTUNE].missionNumber = MISN_NEPTUNE;
+			systemPlanet[PLANET_NEPTUNE].missionCompleted = 0;
 
-			systemPlanet[6].missionNumber = MISN_URANUS;
-			systemPlanet[6].missionCompleted = 0;
+			systemPlanet[PLANET_URANUS].missionNumber = MISN_URANUS;
+			systemPlanet[PLANET_URANUS].missionCompleted = 0;
 
-			systemPlanet[5].missionNumber = MISN_SATURN;
-			systemPlanet[5].missionCompleted = -1;
+			systemPlanet[PLANET_SATURN].missionNumber = MISN_SATURN;
+			systemPlanet[PLANET_SATURN].missionCompleted = -1;
 
-			systemPlanet[4].missionNumber = MISN_JUPITER;
-			systemPlanet[4].missionCompleted = -2;
+			systemPlanet[PLANET_JUPITER].missionNumber = MISN_JUPITER;
+			systemPlanet[PLANET_JUPITER].missionCompleted = -2;
 
-			systemPlanet[3].missionNumber = MISN_MARS;
-			systemPlanet[3].missionCompleted = -3;
+			systemPlanet[PLANET_MARS].missionNumber = MISN_MARS;
+			systemPlanet[PLANET_MARS].missionCompleted = -3;
 
-			systemPlanet[2].missionNumber = MISN_EARTH;
-			systemPlanet[2].missionCompleted = -4;
+			systemPlanet[PLANET_EARTH].missionNumber = MISN_EARTH;
+			systemPlanet[PLANET_EARTH].missionCompleted = -4;
 
-			systemPlanet[1].missionNumber = MISN_VENUS;
-			systemPlanet[1].missionCompleted = -5;
+			systemPlanet[PLANET_VENUS].missionNumber = MISN_VENUS;
+			systemPlanet[PLANET_VENUS].missionCompleted = -5;
 
 			break;
 	}
@@ -257,9 +259,9 @@ void setMission(int mission)
 		if (currentMission.timeLimit2[i] > engine.minutes)
 			engine.minutes = currentMission.timeLimit2[i];
 
-		if (currentMission.completed1[i] == 0)
+		if (currentMission.completed1[i] == OB_INCOMPLETE)
 			currentMission.remainingObjectives1++;
-		if (currentMission.completed2[i] == 0)
+		if (currentMission.completed2[i] == OB_INCOMPLETE)
 			currentMission.remainingObjectives1++;
 	}
 
@@ -294,13 +296,13 @@ void checkTimer()
 	for (int i = 0 ; i < 3 ; i++)
 	{
 		if ((currentMission.timeLimit1[i] == -1) && (currentMission.completed1[i] == OB_INCOMPLETE))
-			currentMission.completed1[i] = -2;
+			currentMission.completed1[i] = OB_JUST_FAILED;
 	}
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
 		if ((currentMission.timeLimit2[i] == -1) && (currentMission.completed2[i] == OB_INCOMPLETE))
-			currentMission.completed2[i] = -2;
+			currentMission.completed2[i] = OB_JUST_FAILED;
 	}
 
 	// Find out if there are any uncompleted missions that require the timer
@@ -334,9 +336,9 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 	char message[25];
 
 	if ((*targetValue <= 0) && (type != M_PROTECT_TARGET) &&
-		(type != M_PROTECT_PICKUP))
+			(type != M_PROTECT_PICKUP))
 	{
-		*completed = 2;
+		*completed = OB_JUST_COMPLETED;
 		checkTimer();
 		if ((game.area == MISN_URUSOR) && (type == M_DISABLE_TARGET))
 			setRadioMessage(FS_SID, "All vessels disabled!", 1);
@@ -367,13 +369,13 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 				}
 				break;
 			case M_PROTECT_PICKUP:
-				*completed = -2;
+				*completed = OB_JUST_FAILED;
 				switch(id)
 				{
 					case P_CARGO:
 						sprintf(message, "Cargo pod destroyed!");
 						if (game.area == MISN_CERADSE) // Get lectured by Sid
-							setRadioMessage(FS_SID, "Chris, we needed that pod!! I warned you that we couldn't afford to lose a single one!!", 1);
+							setRadioMessage(FS_SID, "Chris, we needed that pod! I told you that we couldn't afford to lose a single one!", 1);
 						break;
 					case P_ESCAPEPOD:
 						sprintf(message, "Escape Pod lost!");
@@ -385,7 +387,7 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 			case M_PROTECT_TARGET:
 				if (*targetValue <= 0)
 				{
-					*completed = -2;
+					*completed = OB_JUST_FAILED;
 					switch (game.area)
 					{
 						case MISN_NEROD:
@@ -403,7 +405,7 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 			case M_DESTROY_TARGET_TYPE:
 				if ((*targetValue <= 10) || (*targetValue % 10 == 0))
 				{
-					if ((rand() % 2) == 0)
+					if (CHANCE(0.5))
 						sprintf(message, "%d more to go...", *targetValue);
 					else
 						sprintf(message, "Destroy %d more...", *targetValue);
@@ -434,7 +436,7 @@ void updateMissionRequirements(int type, int id, int value)
 	{
 		setInfoLine("Sid has been killed!!", FONT_RED);
 		setRadioMessage(FS_CHRIS, "Sid... I... I'm sorry...", 1);
-		currentMission.completed1[0] = -2;
+		currentMission.completed1[0] = OB_JUST_FAILED;
 	}
 
 	for (int i = 0 ; i < 3 ; i++)
@@ -442,8 +444,8 @@ void updateMissionRequirements(int type, int id, int value)
 		if ((currentMission.completed1[i] == OB_INCOMPLETE) || (currentMission.completed1[i] == OB_CONDITION))
 		{
 			if ((currentMission.primaryType[i] == type) &&
-				((currentMission.target1[i] == id) ||
-					(currentMission.target1[i] == CD_ANY)))
+					((currentMission.target1[i] == id) ||
+						(currentMission.target1[i] == CD_ANY)))
 			{
 				matched = 1;
 				currentMission.targetValue1[i] -= value;
@@ -461,8 +463,8 @@ void updateMissionRequirements(int type, int id, int value)
 		if ((currentMission.completed2[i] == OB_INCOMPLETE) || (currentMission.completed2[i] == OB_CONDITION))
 		{
 			if ((currentMission.secondaryType[i] == type) &&
-				((currentMission.target2[i] == id) ||
-					(currentMission.target2[i] == CD_ANY)))
+					((currentMission.target2[i] == id) ||
+						(currentMission.target2[i] == CD_ANY)))
 			{
 				currentMission.targetValue2[i] -= value;
 				evaluateRequirement(type, id, &currentMission.completed2[i], &currentMission.targetValue2[i], FONT_YELLOW);
@@ -505,9 +507,9 @@ void updateMissionRequirements(int type, int id, int value)
 This is only used as few times in the game.
 Missions 11 and 23 to be exact!
 */
-static char revealHiddenObjectives()
+static int revealHiddenObjectives()
 {
-	char allDone = 1;
+	int allDone = 1;
 	char string[255] = "";
 
 	for (int i = 0 ; i < 3 ; i++)
@@ -548,7 +550,7 @@ bool allMissionsCompleted()
 		{
 			if ((currentMission.primaryType[i] == M_DESTROY_ALL_TARGETS) && (engine.allAliensDead) && (currentMission.remainingObjectives1 + currentMission.remainingObjectives2 == 1))
 			{
-				currentMission.completed1[i] = 2;
+				currentMission.completed1[i] = OB_JUST_COMPLETED;
 				checkTimer();
 			}
 		}
@@ -560,7 +562,7 @@ bool allMissionsCompleted()
 		{
 			if ((currentMission.secondaryType[i] == M_DESTROY_ALL_TARGETS) && (engine.allAliensDead) && (currentMission.remainingObjectives1 + currentMission.remainingObjectives2 == 1))
 			{
-				currentMission.completed2[i] = 2;
+				currentMission.completed2[i] = OB_JUST_COMPLETED;
 				checkTimer();
 			}
 		}
@@ -568,7 +570,7 @@ bool allMissionsCompleted()
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if (currentMission.completed1[i] == 2)
+		if (currentMission.completed1[i] == OB_JUST_COMPLETED)
 		{
 			if (currentMission.remainingObjectives1 > 1)
 			{
@@ -604,7 +606,7 @@ bool allMissionsCompleted()
 			}
 		}
 
-		if (currentMission.completed2[i] == 2)
+		if (currentMission.completed2[i] == OB_JUST_COMPLETED)
 		{
 			if (currentMission.remainingObjectives2 > 1)
 			{
@@ -626,13 +628,13 @@ bool allMissionsCompleted()
 			}
 		}
 
-		if (currentMission.completed1[i] == -2)
+		if (currentMission.completed1[i] == OB_JUST_FAILED)
 		{
 			setInfoLine(">>> MISSION FAILED <<<", FONT_RED);
 			currentMission.completed1[i] = OB_FAILED;
 		}
 
-		if (currentMission.completed2[i] == -2)
+		if (currentMission.completed2[i] == OB_JUST_FAILED)
 		{
 			setInfoLine(">>> Secondary Objective Failed <<<", FONT_RED);
 			currentMission.completed2[i] = OB_FAILED;
@@ -650,7 +652,7 @@ bool allMissionsCompleted()
 	{
 		if (currentMission.primaryType[i] != M_NONE)
 		{
-			if (currentMission.completed1[i] == 0)
+			if (currentMission.completed1[i] == OB_INCOMPLETE)
 			{
 				currentMission.remainingObjectives1++;
 				if (currentMission.primaryType[i] == M_DESTROY_ALL_TARGETS)
@@ -658,12 +660,12 @@ bool allMissionsCompleted()
 				allDone = false;
 			}
 
-			if (currentMission.completed1[i] < 0)
+			if (currentMission.completed1[i] < OB_INCOMPLETE)
 				return false;
 		}
 		if (currentMission.secondaryType[i] != M_NONE)
 		{
-			if (currentMission.completed2[i] == 0)
+			if (currentMission.completed2[i] == OB_INCOMPLETE)
 			{
 				currentMission.remainingObjectives2++;
 				if (currentMission.secondaryType[i] == M_DESTROY_ALL_TARGETS)
@@ -690,7 +692,7 @@ bool missionFailed()
 {
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if (currentMission.completed1[i] < 0)
+		if (currentMission.completed1[i] < OB_INCOMPLETE)
 		{
 			return true;
 		}
@@ -884,7 +886,7 @@ void missionFinishedScreen()
 				if (currentMission.secondaryType[i] != M_NONE)
 				{
 					strcpy(temp, currentMission.secondaryObjective[i]);
-					if (currentMission.completed2[i] >= 1)
+					if (currentMission.completed2[i] >= OB_COMPLETED)
 					{
 						screen_renderString("COMPLETED", 550, 274 + (i * 30), FONT_GREEN);
 						game.secondaryMissionsCompleted++;

@@ -44,6 +44,7 @@ static void intermission_setStatusLines()
 	int timeTaken = game.timeTaken;
 	int y;
 
+	// XXX: Magic number
 	for (int i = 0 ; i < 10 ; i++)
 	{
 		if (systemPlanet[i].missionNumber > -1)
