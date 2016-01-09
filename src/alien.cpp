@@ -446,7 +446,7 @@ void alien_defs_init()
 
 	// Executive Transport
 	alien_defs[CD_EXEC].classDef = CD_BOSS;
-	alien_defs[CD_EXEC].AIType = AI_NORMAL;
+	alien_defs[CD_EXEC].AIType = AI_EVASIVE;
 	alien_defs[CD_EXEC].speed = 5;
 	alien_defs[CD_EXEC].maxShield = 1000;
 	alien_defs[CD_EXEC].shield = 1000;

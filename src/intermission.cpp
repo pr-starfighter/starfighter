@@ -528,10 +528,10 @@ static void intermission_showStatus(SDL_Surface *infoSurface)
 
 static void intermission_updateCommsSurface(SDL_Surface *comms)
 {
+	char string[255];
+
 	if (engine.commsSection == 1)
 		return;
-
-	char string[255];
 
 	gfx_drawRect(comms, 0, 10, comms->w - 1, 55, 0x00, 0x22, 0x00);
 	gfx_blit(gfx_faceSprites[FS_CHRIS], 20, 15, comms);
@@ -546,7 +546,7 @@ static void intermission_createCommsSurface(SDL_Surface *comms)
 
 	gfx_drawRect(comms, 0, 0, comms->w - 1, comms->h - 1, 0x00, 0x00, 0x25);
 
-	gfx_renderString("+++ RECEIVED MESSAGES +++", 115, 80, FONT_GREEN, 0, comms);
+	gfx_renderString("+++ CURRENT MISSIONS (click for info) +++", -1, 80, FONT_GREEN, 0, comms);
 
 	int yOffset;
 
@@ -978,7 +978,7 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 	gfx_renderString(string, -1, 20, FONT_GREEN, 0, comms);
 
 	gfx_drawRect(comms, 5, comms->h - 28, 180, 20, 0x25, 0x00, 0x00);
-	gfx_renderString("RETURN TO MESSAGES", 15, comms->h - 25, FONT_WHITE, 1, comms);
+	gfx_renderString("RETURN TO MISSIONS", 15, comms->h - 25, FONT_WHITE, 1, comms);
 
 	engine.commsSection = 1;
 }
