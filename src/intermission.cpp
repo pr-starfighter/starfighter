@@ -1330,6 +1330,9 @@ int intermission()
 				else
 				{
 					distance = abs(game.stationedPlanet - game.destinationPlanet);
+					if (interceptionChance <= 0)
+						distance = 1;
+
 					distance = (5 / distance);
 					if (distance < 1)
 						distance = 1;
