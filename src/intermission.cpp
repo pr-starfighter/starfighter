@@ -1255,7 +1255,7 @@ int intermission()
 	gfx_createTextObject(TS_INFO_STATUS, "Current Status", -1, iconInfoY, FONT_WHITE);
 	gfx_createTextObject(TS_INFO_SAVE_GAME, "Save Game", -1, iconInfoY, FONT_WHITE);
 	gfx_createTextObject(TS_INFO_SHOP, "Upgrade FIREFLY", -1, iconInfoY, FONT_WHITE);
-	gfx_createTextObject(TS_INFO_COMMS, "Comms", -1, iconInfoY, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_COMMS, "Missions", -1, iconInfoY, FONT_WHITE);
 	gfx_createTextObject(TS_INFO_OPTIONS, "Options", -1, iconInfoY, FONT_WHITE);
 	gfx_createTextObject(TS_INFO_EXIT, "Exit to Title Screen", -1, iconInfoY, FONT_WHITE);
 
