@@ -150,71 +150,265 @@ Sets the names and stats of the planets within the current system.
 */
 static void intermission_setSystemPlanets()
 {
-	FILE *fp;
-
-	char string[100];
-	strcpy(string, "");
+	for (int i = 0 ; i < 10 ; i++)
+	{
+		systemPlanet[i].y = -1;
+		strcpy(systemPlanet[i].name, "");
+		systemPlanet[i].image = NULL;
+		systemPlanet[i].messageMission = -1;
+		systemPlanet[i].messageSlot = -1;
+		systemPlanet[i].faceImage = -1;
+		strcpy(systemPlanet[i].subject, "ERROR");
+	}
 
 	switch (game.system)
 	{
 		case SYSTEM_SPIRIT:
-			strcpy(string, "data/planets_spirit.dat");
+			systemPlanet[PLANET_HAIL].y = 15;
+			strcpy(systemPlanet[PLANET_HAIL].name, "Hail");
+			systemPlanet[PLANET_HAIL].image = gfx_sprites[SP_PLANET_GREEN];
+
+			systemPlanet[PLANET_CERADSE].y = 30;
+			strcpy(systemPlanet[PLANET_CERADSE].name, "Ceradse");
+			systemPlanet[PLANET_CERADSE].image = gfx_sprites[SP_PLANET_BLUE];
+
+			systemPlanet[PLANET_HINSTAG].y = 30;
+			strcpy(systemPlanet[PLANET_HINSTAG].name, "Hinstag");
+			systemPlanet[PLANET_HINSTAG].image = gfx_sprites[SP_PLANET_RED];
+
+			systemPlanet[PLANET_JOLDAR].y = 20;
+			strcpy(systemPlanet[PLANET_JOLDAR].name, "Joldar");
+			systemPlanet[PLANET_JOLDAR].image = gfx_sprites[SP_PLANET_GREEN];
+
+			systemPlanet[PLANET_MOEBO].y = 40;
+			strcpy(systemPlanet[PLANET_MOEBO].name, "Moebo");
+			systemPlanet[PLANET_MOEBO].image = gfx_sprites[SP_PLANET_ORANGE];
+
+			systemPlanet[PLANET_HAIL].messageMission = MISN_HAIL;
+			systemPlanet[PLANET_HAIL].messageSlot = 0;
+			systemPlanet[PLANET_HAIL].faceImage = FS_KRASS;
+			strcpy(systemPlanet[PLANET_HAIL].subject, "Destroy WEAPCO training ground");
+
+			systemPlanet[PLANET_CERADSE].messageMission = MISN_CERADSE;
+			systemPlanet[PLANET_CERADSE].messageSlot = 1;
+			systemPlanet[PLANET_CERADSE].faceImage = FS_SID;
+			strcpy(systemPlanet[PLANET_CERADSE].subject, "Collect 6 cargo pods");
+
+			systemPlanet[PLANET_HINSTAG].messageMission = MISN_HINSTAG;
+			systemPlanet[PLANET_HINSTAG].messageSlot = 2;
+			systemPlanet[PLANET_HINSTAG].faceImage = FS_SID;
+			strcpy(systemPlanet[PLANET_HINSTAG].subject, "Destroy 5 WEAPCO missile boats");
+
+			systemPlanet[PLANET_JOLDAR].messageMission = MISN_JOLDAR;
+			systemPlanet[PLANET_JOLDAR].messageSlot = 3;
+			systemPlanet[PLANET_JOLDAR].faceImage = FS_SID;
+			strcpy(systemPlanet[PLANET_JOLDAR].subject, "Clear the mine field around Joldar");
+
+			systemPlanet[PLANET_MOEBO].messageMission = MISN_MOEBO;
+			systemPlanet[PLANET_MOEBO].messageSlot = 0;
+			systemPlanet[PLANET_MOEBO].faceImage = FS_SID;
+			strcpy(systemPlanet[PLANET_MOEBO].subject, "Destroy WEAPCO frigate");
+
 			break;
+
 		case SYSTEM_EYANANTH:
-			strcpy(string, "data/planets_eyananth.dat");
+			strcpy(systemPlanet[PLANET_RESCUESLAVES].name, "WEAPCO interceptions");
+
+			systemPlanet[PLANET_NEROD].y = 15;
+			strcpy(systemPlanet[PLANET_NEROD].name, "Nerod");
+			systemPlanet[PLANET_NEROD].image = gfx_sprites[SP_PLANET_GREEN];
+
+			systemPlanet[PLANET_ALLEZ].y = 30;
+			strcpy(systemPlanet[PLANET_ALLEZ].name, "Allez");
+			systemPlanet[PLANET_ALLEZ].image = gfx_sprites[SP_PLANET_BLUE];
+
+			systemPlanet[PLANET_URUSOR].y = 30;
+			strcpy(systemPlanet[PLANET_URUSOR].name, "Urusor");
+			systemPlanet[PLANET_URUSOR].image = gfx_sprites[SP_PLANET_RED];
+
+			systemPlanet[PLANET_DORIM].y = 20;
+			strcpy(systemPlanet[PLANET_DORIM].name, "Dorim");
+			systemPlanet[PLANET_DORIM].image = gfx_sprites[SP_PLANET_GREEN];
+
+			systemPlanet[PLANET_ELAMALE].y = 40;
+			strcpy(systemPlanet[PLANET_ELAMALE].name, "Elamale");
+			systemPlanet[PLANET_ELAMALE].image = gfx_sprites[SP_PLANET_ORANGE];
+
+			systemPlanet[PLANET_RESCUESLAVES].messageMission = MISN_RESCUESLAVES;
+			systemPlanet[PLANET_RESCUESLAVES].messageSlot = 0;
+			systemPlanet[PLANET_RESCUESLAVES].faceImage = FS_SID;
+			strcpy(systemPlanet[PLANET_RESCUESLAVES].subject, "Rescue slaves");
+
+			systemPlanet[PLANET_NEROD].messageMission = MISN_NEROD;
+			systemPlanet[PLANET_NEROD].messageSlot = 1;
+			systemPlanet[PLANET_NEROD].faceImage = FS_PHOEBE;
+			strcpy(systemPlanet[PLANET_NEROD].subject, "SOS");
+
+			systemPlanet[PLANET_ALLEZ].messageMission = MISN_ALLEZ;
+			systemPlanet[PLANET_ALLEZ].messageSlot = 2;
+			systemPlanet[PLANET_ALLEZ].faceImage = FS_SID;
+			strcpy(systemPlanet[PLANET_ALLEZ].subject, "Assist medical supply craft");
+
+			systemPlanet[PLANET_URUSOR].messageMission = MISN_URUSOR;
+			systemPlanet[PLANET_URUSOR].messageSlot = 0;
+			systemPlanet[PLANET_URUSOR].faceImage = FS_SID;
+			strcpy(systemPlanet[PLANET_URUSOR].subject, "Capture five WEAPCO supply craft");
+
+			systemPlanet[PLANET_DORIM].messageMission = MISN_DORIM;
+			systemPlanet[PLANET_DORIM].messageSlot = 1;
+			systemPlanet[PLANET_DORIM].faceImage = FS_SID;
+			strcpy(systemPlanet[PLANET_DORIM].subject, "Find WEAPCO scientist");
+
+			systemPlanet[PLANET_ELAMALE].messageMission = MISN_ELAMALE;
+			systemPlanet[PLANET_ELAMALE].messageSlot = 0;
+			systemPlanet[PLANET_ELAMALE].faceImage = FS_PHOEBE;
+			strcpy(systemPlanet[PLANET_ELAMALE].subject, "Destroy WEAPCO Ore Mining craft");
+
 			break;
+
 		case SYSTEM_MORDOR:
-			strcpy(string, "data/planets_mordor.dat");
+			strcpy(systemPlanet[PLANET_CLOAKFIGHTER].name, "WEAPCO interceptions");
+
+			systemPlanet[PLANET_ODEON].y = 15;
+			strcpy(systemPlanet[PLANET_ODEON].name, "Odeon");
+			systemPlanet[PLANET_ODEON].image = gfx_sprites[SP_PLANET_GREEN];
+
+			systemPlanet[PLANET_FELLON].y = 30;
+			strcpy(systemPlanet[PLANET_FELLON].name, "Fellon");
+			systemPlanet[PLANET_FELLON].image = gfx_sprites[SP_PLANET_BLUE];
+
+			systemPlanet[PLANET_SIVEDI].y = 30;
+			strcpy(systemPlanet[PLANET_SIVEDI].name, "Sivedi");
+			systemPlanet[PLANET_SIVEDI].image = gfx_sprites[SP_PLANET_RED];
+
+			systemPlanet[PLANET_ALMARTHA].y = 20;
+			strcpy(systemPlanet[PLANET_ALMARTHA].name, "Almartha");
+			systemPlanet[PLANET_ALMARTHA].image = gfx_sprites[SP_PLANET_GREEN];
+
+			systemPlanet[PLANET_POSWIC].y = 20;
+			strcpy(systemPlanet[PLANET_POSWIC].name, "Poswic");
+			systemPlanet[PLANET_POSWIC].image = gfx_sprites[SP_PLANET_ORANGE];
+
+			systemPlanet[PLANET_ELLESH].y = 40;
+			strcpy(systemPlanet[PLANET_ELLESH].name, "Ellesh");
+			systemPlanet[PLANET_ELLESH].image = gfx_sprites[SP_PLANET_GREEN];
+
+			systemPlanet[PLANET_CLOAKFIGHTER].messageMission = MISN_CLOAKFIGHTER;
+			systemPlanet[PLANET_CLOAKFIGHTER].messageSlot = 0;
+			systemPlanet[PLANET_CLOAKFIGHTER].faceImage = FS_SID;
+			strcpy(systemPlanet[PLANET_CLOAKFIGHTER].subject, "Destroy experimental fighter");
+
+			systemPlanet[PLANET_ODEON].messageMission = MISN_ODEON;
+			systemPlanet[PLANET_ODEON].messageSlot = 1;
+			systemPlanet[PLANET_ODEON].faceImage = FS_PHOEBE;
+			strcpy(systemPlanet[PLANET_ODEON].subject, "Rescue Ursula");
+
+			systemPlanet[PLANET_FELLON].messageMission = MISN_FELLON;
+			systemPlanet[PLANET_FELLON].messageSlot = 2;
+			systemPlanet[PLANET_FELLON].faceImage = FS_SID;
+			strcpy(systemPlanet[PLANET_FELLON].subject, "Assist rebel forces");
+
+			systemPlanet[PLANET_SIVEDI].messageMission = MISN_SIVEDI;
+			systemPlanet[PLANET_SIVEDI].messageSlot = 0;
+			systemPlanet[PLANET_SIVEDI].faceImage = FS_SID;
+			strcpy(systemPlanet[PLANET_SIVEDI].subject, "Mine ore from asteroid belt");
+
+			systemPlanet[PLANET_ALMARTHA].messageMission = MISN_ALMARTHA;
+			systemPlanet[PLANET_ALMARTHA].messageSlot = 1;
+			systemPlanet[PLANET_ALMARTHA].faceImage = FS_KRASS;
+			strcpy(systemPlanet[PLANET_ALMARTHA].subject, "Create a diversion");
+
+			systemPlanet[PLANET_POSWIC].messageMission = MISN_POSWIC;
+			systemPlanet[PLANET_POSWIC].messageSlot = 0;
+			systemPlanet[PLANET_POSWIC].faceImage = FS_URSULA;
+			strcpy(systemPlanet[PLANET_POSWIC].subject, "Capture WEAPCO executive transport");
+
+			systemPlanet[PLANET_ELLESH].messageMission = MISN_ELLESH;
+			systemPlanet[PLANET_ELLESH].messageSlot = 0;
+			systemPlanet[PLANET_ELLESH].faceImage = FS_PHOEBE;
+			strcpy(systemPlanet[PLANET_ELLESH].subject, "Destroy WEAPCO executive transport");
+
 			break;
+
 		case SYSTEM_SOL:
-			strcpy(string, "data/planets_sol.dat");
+			systemPlanet[PLANET_MERCURY].y = 15;
+			strcpy(systemPlanet[PLANET_MERCURY].name, "Mercury");
+			systemPlanet[PLANET_MERCURY].image = gfx_sprites[SP_PLANET_RED];
+
+			systemPlanet[PLANET_VENUS].y = 20;
+			strcpy(systemPlanet[PLANET_VENUS].name, "Venus");
+			systemPlanet[PLANET_VENUS].image = gfx_sprites[SP_PLANET_ORANGE];
+
+			systemPlanet[PLANET_EARTH].y = 20;
+			strcpy(systemPlanet[PLANET_EARTH].name, "Earth");
+			systemPlanet[PLANET_EARTH].image = gfx_sprites[SP_PLANET_BLUE];
+
+			systemPlanet[PLANET_MARS].y = 20;
+			strcpy(systemPlanet[PLANET_MARS].name, "Mars");
+			systemPlanet[PLANET_MARS].image = gfx_sprites[SP_PLANET_RED];
+
+			systemPlanet[PLANET_JUPITER].y = 30;
+			strcpy(systemPlanet[PLANET_JUPITER].name, "Jupiter");
+			systemPlanet[PLANET_JUPITER].image = gfx_sprites[SP_PLANET_ORANGE];
+
+			systemPlanet[PLANET_SATURN].y = 20;
+			strcpy(systemPlanet[PLANET_SATURN].name, "Saturn");
+			systemPlanet[PLANET_SATURN].image = gfx_sprites[SP_PLANET_GREEN];
+
+			systemPlanet[PLANET_URANUS].y = 20;
+			strcpy(systemPlanet[PLANET_URANUS].name, "Uranus");
+			systemPlanet[PLANET_URANUS].image = gfx_sprites[SP_PLANET_BLUE];
+
+			systemPlanet[PLANET_NEPTUNE].y = 20;
+			strcpy(systemPlanet[PLANET_NEPTUNE].name, "Neptune");
+			systemPlanet[PLANET_NEPTUNE].image = gfx_sprites[SP_PLANET_BLUE];
+
+			systemPlanet[PLANET_PLUTO].y = 20;
+			strcpy(systemPlanet[PLANET_PLUTO].name, "Pluto");
+			systemPlanet[PLANET_PLUTO].image = gfx_sprites[SP_PLANET_BLUE];
+
+			systemPlanet[PLANET_PLUTO].messageMission = MISN_PLUTO;
+			systemPlanet[PLANET_PLUTO].messageSlot = 0;
+			systemPlanet[PLANET_PLUTO].faceImage = FS_SID;
+			strcpy(systemPlanet[PLANET_PLUTO].subject, "Secure Pluto");
+
+			systemPlanet[PLANET_NEPTUNE].messageMission = MISN_NEPTUNE;
+			systemPlanet[PLANET_NEPTUNE].messageSlot = 1;
+			systemPlanet[PLANET_NEPTUNE].faceImage = FS_SID;
+			strcpy(systemPlanet[PLANET_NEPTUNE].subject, "Secure Neptune");
+
+			systemPlanet[PLANET_URANUS].messageMission = MISN_URANUS;
+			systemPlanet[PLANET_URANUS].messageSlot = 2;
+			systemPlanet[PLANET_URANUS].faceImage = FS_SID;
+			strcpy(systemPlanet[PLANET_URANUS].subject, "Secure Uranus");
+
+			systemPlanet[PLANET_SATURN].messageMission = MISN_SATURN;
+			systemPlanet[PLANET_SATURN].messageSlot = 0;
+			systemPlanet[PLANET_SATURN].faceImage = FS_SID;
+			strcpy(systemPlanet[PLANET_SATURN].subject, "Destroy outer defense system");
+
+			systemPlanet[PLANET_JUPITER].messageMission = MISN_JUPITER;
+			systemPlanet[PLANET_JUPITER].messageSlot = 0;
+			systemPlanet[PLANET_JUPITER].faceImage = FS_SID;
+			strcpy(systemPlanet[PLANET_JUPITER].subject, "Investigate distress call");
+
+			systemPlanet[PLANET_MARS].messageMission = MISN_MARS;
+			systemPlanet[PLANET_MARS].messageSlot = 0;
+			systemPlanet[PLANET_MARS].faceImage = FS_SID;
+			strcpy(systemPlanet[PLANET_MARS].subject, "Navigate asteroid belt");
+
+			systemPlanet[PLANET_EARTH].messageMission = MISN_EARTH;
+			systemPlanet[PLANET_EARTH].messageSlot = 0;
+			systemPlanet[PLANET_EARTH].faceImage = FS_CHRIS;
+			strcpy(systemPlanet[PLANET_EARTH].subject, "Take back Earth");
+
+			systemPlanet[PLANET_VENUS].messageMission = MISN_VENUS;
+			systemPlanet[PLANET_VENUS].messageSlot = 0;
+			systemPlanet[PLANET_VENUS].faceImage = FS_SID;
+			strcpy(systemPlanet[PLANET_VENUS].subject, "Defeat Kline");
+
 			break;
 	}
-
-	fp = fopen(string, "rb");
-
-	int distance;
-	char name[50];
-	int image;
-
-	for (int i = 0 ; i < 10 ; i++)
-	{
-		if (fscanf(fp, "%d %s %d", &distance, name, &image) < 3)
-		{
-			printf("Warning: Data for planet %i in \"%s\" is not correctly formatted\n", i, string);
-			break;
-		}
-
-		systemPlanet[i].y = distance;
-		strcpy(systemPlanet[i].name, name);
-		systemPlanet[i].image = gfx_sprites[image];
-	}
-
- 	int messageMission;
-	int messageSlot;
-	char face[50];
-	char from[100];
-	char subject[100];
-
-	for (int i = 0 ; i < 10 ; i++)
-	{
-		if ((fscanf(fp, "%d %d %s%*c", &messageMission, &messageSlot, face) < 3) ||
-			(fscanf(fp, "%[^\n]%*c", from) < 1) ||
-			(fscanf(fp, "%[^\n]%*c", subject) < 1))
-		{
-			printf("Warning: Mission data for planet %i in \"%s\" is not correctly formatted\n", i, string);
-			break;
-		}
-
-		systemPlanet[i].messageMission = messageMission;
-		systemPlanet[i].messageSlot = messageSlot;
-		systemPlanet[i].faceImage = getFace(face);
-
-		strcpy(systemPlanet[i].from, from);
-		strcpy(systemPlanet[i].subject, subject);
-	}
-
-	fclose(fp);
 }
 
 /*
@@ -362,7 +556,7 @@ static void intermission_createCommsSurface(SDL_Surface *comms)
 			yOffset = systemPlanet[i].messageSlot * 60;
 			gfx_drawRect(comms, 0, 105 + yOffset, comms->w - 1, 55, 0x00, 0x00, 0x77);
 			gfx_blit(gfx_faceSprites[systemPlanet[i].faceImage], 20, 110 + yOffset, comms);
-			gfx_renderString(systemPlanet[i].from, 80, 110 + yOffset, FONT_WHITE, 0, comms);
+			gfx_renderString(systemPlanet[i].name, 80, 110 + yOffset, FONT_WHITE, 0, comms);
 			gfx_renderString(systemPlanet[i].subject, 80, 130 + yOffset, FONT_CYAN, 0, comms);
 			gfx_renderString("INCOMPLETE", 350, 110 + yOffset, FONT_RED, 0, comms);
 		}
@@ -496,7 +690,7 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			strcpy(string, "Most of the slaves are working in ore mines, aren't they?");
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "Yes, but attacking the ore mines directly would be dangerous. You'd be better off intercepting slave transports. What you'll have to do is fly around and see if you can intercept a WEAPCO patrol. Of course, they might not be escorting any slave units, so be careful!");
+			strcpy(string, "Yes, but attacking the mines directly would be dangerous. You'd be better off intercepting slave transports. What you'll have to do is fly around and see if you can intercept a WEAPCO patrol. Of course, they might not be escorting any slave units, so be careful!");
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
 			break;
@@ -583,7 +777,7 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			strcpy(string, "It's got some kind of cloaking device that makes it invisible to radar. Could prove hard to track down.");
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			strcpy(string, "I'll just have to run around the system until I run into it.");
+			strcpy(string, "I'll just have to run around the system until I find it.");
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
 			strcpy(string, "It's likely to run away if you engage it in battle, so try and do as much damage to it as possible.");
@@ -620,12 +814,15 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			strcpy(string, "Awesome! I'm on it!");
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
+			strcpy(string, "Just make sure the rebel ships don't all get destroyed.");
+			y = intermission_renderDialog(comms, y, FS_SID, string);
+
 			break;
 
 		case MISN_SIVEDI:
 			strcpy(name, "Sid Wilson");
 
-			strcpy(string, "Seems like taking out that WEAPCO mining ship wasn't such a good idea. The Ore it collected from those asteroids is needed in weapon production.");
+			strcpy(string, "Seems like taking out that WEAPCO mining ship wasn't such a good idea. The ore it collected is needed in weapons production.");
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
 			strcpy(string, "Damn! I guess that means I'll have to mine some myself, then, huh?");
@@ -650,10 +847,10 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 		case MISN_POSWIC:
 			strcpy(name, "Ursula Lexx");
 
-			strcpy(string, "I've remembered something. WEAPCO is transporting some high level personnel to Poswic.");
+			strcpy(string, "My memory is finally back. Here's something interesting: just before I was captured, I found out that WEAPCO is transporting several important executives to Poswic.");
 			y = intermission_renderDialog(comms, y, FS_URSULA, string);
 
-			strcpy(string, "This could be really important to our success in Sol. I'll need some cover so I can disable that ship.");
+			strcpy(string, "We can't let a rare opportunity like this slip through our fingers! I'll need some cover so I can disable that ship.");
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
 			strcpy(string, "You got it!");
@@ -670,45 +867,13 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			strcpy(string, "Are you sure you can catch up to it?");
 			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
 
-			strcpy(string, "Is that a challenge? Heh heh, don't worry about it. One thing that's really nice about the Firefly is its speed. I'll see you in a bit.");
+			strcpy(string, "Absolutely. One thing that's really nice about the Firefly is its speed. I'll see you in a bit!");
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
 			break;
 
 		case MISN_PLUTO:
-			strcpy(name, "Sid Wilson");
-
-			strcpy(string, "We've got to start from the outside and work our way in. That will give us less chance of being flanked during the final operation.");
-			y = intermission_renderDialog(comms, y, FS_SID, string);
-
-			strcpy(string, "Gotcha.");
-			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
-
-			strcpy(string, "Okay.");
-			y = intermission_renderDialog(comms, y, FS_URSULA, string);
-
-			strcpy(string, "Alright.");
-			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
-
-			break;
-
 		case MISN_NEPTUNE:
-			strcpy(name, "Sid Wilson");
-
-			strcpy(string, "We've got to start from the outside and work our way in. That will give us less chance of being flanked during the final operation.");
-			y = intermission_renderDialog(comms, y, FS_SID, string);
-
-			strcpy(string, "Gotcha.");
-			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
-
-			strcpy(string, "Okay.");
-			y = intermission_renderDialog(comms, y, FS_URSULA, string);
-
-			strcpy(string, "Alright.");
-			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
-
-			break;
-
 		case MISN_URANUS:
 			strcpy(name, "Sid Wilson");
 

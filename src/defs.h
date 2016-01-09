@@ -275,6 +275,7 @@ enum {
 
 // Sprites
 enum {
+	// Intermission
 	SP_CURSOR,
 	SP_START_MISSION,
 	SP_MAP,
@@ -655,6 +656,49 @@ enum {
 	SYSTEM_EYANANTH,
 	SYSTEM_MORDOR,
 	SYSTEM_SOL
+};
+
+// Planets (Spirit)
+enum {
+	PLANET_HAIL,
+	PLANET_CERADSE,
+	PLANET_HINSTAG,
+	PLANET_JOLDAR,
+	PLANET_MOEBO
+};
+
+// Planets (Eyananth)
+enum {
+	PLANET_NEROD,
+	PLANET_ALLEZ,
+	PLANET_URUSOR,
+	PLANET_DORIM,
+	PLANET_ELAMALE,
+	PLANET_RESCUESLAVES = 9 // For save compatibility
+};
+
+// Planets (Mordor)
+enum {
+	PLANET_ODEON,
+	PLANET_FELLON,
+	PLANET_SIVEDI,
+	PLANET_ALMARTHA,
+	PLANET_POSWIC,
+	PLANET_ELLESH,
+	PLANET_CLOAKFIGHTER = 9 // For save compatibility
+};
+
+// Planets (Sol)
+enum {
+	PLANET_MERCURY,
+	PLANET_VENUS,
+	PLANET_EARTH,
+	PLANET_MARS,
+	PLANET_JUPITER,
+	PLANET_SATURN,
+	PLANET_URANUS,
+	PLANET_NEPTUNE,
+	PLANET_PLUTO
 };
 
 // Missions

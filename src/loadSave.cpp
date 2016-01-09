@@ -94,6 +94,37 @@ Fill in later...
 */
 bool loadGame(int slot)
 {
+	/*
+	 * TODO: want to do something like this (copied from the old code that
+	 * loaded planet data):
+	fp = fopen(string, "rb");
+
+ 	int messageMission;
+	int messageSlot;
+	char face[50];
+	char from[100];
+	char subject[100];
+
+	for (int i = 0 ; i < 10 ; i++)
+	{
+		if ((fscanf(fp, "%d %d %s%*c", &messageMission, &messageSlot, face) < 3) ||
+			(fscanf(fp, "%[^\n]%*c", from) < 1) ||
+			(fscanf(fp, "%[^\n]%*c", subject) < 1))
+		{
+			printf("Warning: Mission data for planet %i in \"%s\" is not correctly formatted\n", i, string);
+			break;
+		}
+
+		systemPlanet[i].messageMission = messageMission;
+		systemPlanet[i].messageSlot = messageSlot;
+		systemPlanet[i].faceImage = getFace(face);
+
+		strcpy(systemPlanet[i].from, from);
+		strcpy(systemPlanet[i].subject, subject);
+	}
+
+	fclose(fp);
+	*/
 	char filename[PATH_MAX];
 	FILE *fp;
 	sprintf(filename, "%ssave%.2d.dat", engine.configDirectory, slot);

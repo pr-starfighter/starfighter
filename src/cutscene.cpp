@@ -220,9 +220,6 @@ void cutscene_init(int scene)
 			messages[6].face = FS_CHRIS;
 			strcpy(messages[6].message, "In that case, welcome aboard!");
 
-			messages[7].face = -1;
-			strcpy(messages[7].message, "Phoebe Lexx will now join you as a Wingmate. However, she will be unavailable on certain missions.");
-
 			break;
 
 		case 4:
@@ -258,7 +255,7 @@ void cutscene_init(int scene)
 			strcpy(messages[2].message, "I've heard of him. He's the Commander of WEAPCO's naval forces. One of the best pilots they ever had.");
 
 			messages[3].face = FS_CHRIS;
-			strcpy(messages[3].message, "He did put up one hell of a fight! He didn't stick around for long, though. I guess he was just testing me.");
+			strcpy(messages[3].message, "He did put up one hell of a fight! He didn't stick around for long, though.");
 
 			messages[4].face = FS_CHRIS;
 			strcpy(messages[4].message, "Anyway, what's the scoop on Mordor, Sid?");
@@ -315,9 +312,6 @@ void cutscene_init(int scene)
 			messages[4].face = FS_SID;
 			strcpy(messages[4].message, "She'll still be able to pilot a ship though.");
 
-			messages[5].face = -1;
-			strcpy(messages[5].message, "Ursula Lexx will now join you as a Wingmate. However, like Phoebe, she will be unavailable on certain missions.");
-
 			break;
 
 		case 6:
@@ -353,13 +347,13 @@ void cutscene_init(int scene)
 			strcpy(messages[0].message, "Sorry folks, we just lost our bargaining chip.");
 
 			messages[1].face = FS_SID;
-			strcpy(messages[1].message, "Knowing how cut throat WEAPCO is I doubt it would have made a difference anyway.");
+			strcpy(messages[1].message, "Don't worry about it. It's not what I hoped for, but it should still make it easier to defeat WEAPCO.");
 
-			messages[2].face = FS_SID;
+			messages[2].face = FS_URSULA;
 			strcpy(messages[2].message, "Sol is going to be difficult. I've heard they have a lot of heavy defenses on the outer planets.");
 
-			messages[3].face = FS_PHOEBE;
-			strcpy(messages[3].message, "We'll have to start there then.");
+			messages[3].face = FS_SID;
+			strcpy(messages[3].message, "We'll have to start there, then.");
 
 			messages[4].face = FS_SID;
 			strcpy(messages[4].message, "The forces here will be unlike anything we've met so far. Just be careful, everyone.");
