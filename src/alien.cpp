@@ -1280,10 +1280,19 @@ bool alien_place(object *alien)
 
 void alien_setAI(object *alien)
 {
+	int i;
+	float tx;
+	float ty;
+
+	int chase = 0; // Chance in 10 of chasing player
+	int area = 0; // Chance in 10 of moving to an area around the player
+	int stop = 0; // Chance in 10 of hanging back
+	int point = 0; // Size of area alien will move into
+
 	// Make friendly craft generally concentrate on smaller fighters
 	if ((alien->flags & FL_FRIEND) && (alien->target == &aliens[ALIEN_BOSS]))
 	{
-		if ((rand() % 5) == 0)
+		if (CHANCE(0.2))
 		{
 			alien->target = alien;
 			alien->thinktime = 0;
@@ -1291,14 +1300,9 @@ void alien_setAI(object *alien)
 		}
 	}
 
-	int i = rand() % 10;
-	float tx = alien->target->x;
-	float ty = alien->target->y;
-
-	int chase = 0; // Chance in 10 of chasing player
-	int area = 0; // Chance in 10 of moving to an area around the player
-	int stop = 0; // Chance in 10 of hanging back
-	int point = 0; // Size of area alien will move into
+	i = rand() % 10;
+	tx = alien->target->x;
+	ty = alien->target->y;
 
 	switch (alien->AIType)
 	{
@@ -1344,8 +1348,8 @@ void alien_setAI(object *alien)
 	else if ((i >= point) && (i <= stop))
 	{
 		// Fly to a random point around the target
-		tx += (rand() % area - (rand() % area * 2));
-		ty += (rand() % area - (rand() % area * 2));
+		tx += RANDRANGE(-area, area);
+		ty += RANDRANGE(-area, area);
 		alien->dx = ((alien->x - tx) / ((300 / alien->speed) + rand() % 100));
 		alien->dy = ((alien->y - ty) / ((300 / alien->speed) + rand() % 100));
 		return;
