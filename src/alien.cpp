@@ -1772,6 +1772,8 @@ void alien_destroy(object *alien, object *attacker)
 
 void alien_hurt(object *alien, object *attacker, int damage, bool ion)
 {
+	double run_chance;
+
 	if (ion)
 		alien->systemPower -= damage;
 	else
@@ -1828,7 +1830,9 @@ void alien_hurt(object *alien, object *attacker, int damage, bool ion)
 		}
 	}
 
-	if ((alien->flags & FL_RUNSAWAY) && ((rand() % 50) == 0))
+	run_chance = (game.difficulty == DIFFICULTY_ORIGINAL) ? 0.2 : damage / 150.;
+
+	if ((alien->flags & FL_RUNSAWAY) && CHANCE(run_chance))
 	{
 		alien->flags |= FL_LEAVESECTOR;
 	}
