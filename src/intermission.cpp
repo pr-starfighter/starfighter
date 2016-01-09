@@ -550,6 +550,7 @@ static void intermission_createCommsSurface(SDL_Surface *comms)
 
 	int yOffset;
 
+	// XXX: Magic number
 	for (int i = 0 ; i < 10 ; i++)
 	{
 		if ((systemPlanet[i].messageSlot != -1) && (systemPlanet[i].missionCompleted == 0))
@@ -559,7 +560,6 @@ static void intermission_createCommsSurface(SDL_Surface *comms)
 			gfx_blit(gfx_faceSprites[systemPlanet[i].faceImage], 20, 110 + yOffset, comms);
 			gfx_renderString(systemPlanet[i].name, 80, 110 + yOffset, FONT_WHITE, 0, comms);
 			gfx_renderString(systemPlanet[i].subject, 80, 130 + yOffset, FONT_CYAN, 0, comms);
-			gfx_renderString("INCOMPLETE", 350, 110 + yOffset, FONT_RED, 0, comms);
 		}
 	}
 
