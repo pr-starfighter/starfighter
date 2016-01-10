@@ -31,6 +31,8 @@ a player can "Continue Current Game" and "Load Saved Game".
 int initSaveSlots()
 {
 	char fileName[PATH_MAX];
+	int system;
+	char stationedName[255];
 	int imagePos = screen->h / 3 + 50;
 	Game tempGame;
 	struct stat fileInfo;
@@ -42,46 +44,90 @@ int initSaveSlots()
 	//READ SAVE GAME DATA
 	for (int i = 0 ; i <= 5 ; i++)
 	{
-		sprintf(fileName, "%ssave%.2d.dat", engine.configDirectory, i);
-
+		sprintf(fileName, "%ssave%.2d.sav", engine.configDirectory, i);
 		fp = fopen(fileName, "rb");
-		if (fp == NULL)
+		if (fp != NULL)
 		{
-			sprintf(saveSlot[i], (i == 0 ? "AUTOSAVE (Empty)" : "Empty"));
-			if (engine.gameSection == SECTION_TITLE)
-				gfx_createTextObject(TS_SAVESLOT_0 + i, saveSlot[i],
-					-1, imagePos, FONT_WHITE);
-		}
-		else
-		{
-			if (i == 0)
+			if (fscanf(fp, "%d%*c", &game.saveFormat) < 1)
 			{
-				sprintf(saveSlot[i], "AUTOSAVE");
+				printf("Error: Could not determine the version of the save file.\n");
+				sprintf(saveSlot[i], "Corrupt Game Data");
 			}
 			else
 			{
-				if (fread(&tempGame, sizeof(Game), 1, fp) != 1)
+				if (i == 0)
 				{
-					sprintf(saveSlot[i], "Corrupt Game Data");
+					sprintf(saveSlot[i], "AUTOSAVE");
 				}
 				else
 				{
-					sprintf(saveSlot[i], "%s, %s", systemNames[tempGame.system],
-						tempGame.stationedName);
+					if (fscanf(fp, "%*[^\n]%*c%*[^\n]%*c%d %*d %*d%*c%[^\n]%*c", &system,
+							stationedName) < 2)
+					{
+						sprintf(saveSlot[i], "Corrupt Game Data");
+					}
+					else
+					{
+						sprintf(saveSlot[i], "%s, %s", systemNames[system],
+							stationedName);
+					}
+				}
+
+				if (engine.gameSection == SECTION_TITLE)
+					gfx_createTextObject(TS_SAVESLOT_0 + i, saveSlot[i], -1,
+						imagePos, FONT_WHITE);
+
+				if (stat(fileName, &fileInfo) != -1)
+				{
+					if (fileInfo.st_mtime > modTime)
+						{modTime = fileInfo.st_mtime; continueSaveIndex = i;}
 				}
 			}
-
-			if (engine.gameSection == SECTION_TITLE)
-				gfx_createTextObject(TS_SAVESLOT_0 + i, saveSlot[i], -1,
-					imagePos, FONT_WHITE);
-
-			if (stat(fileName, &fileInfo) != -1)
-			{
-				if (fileInfo.st_mtime > modTime)
-					{modTime = fileInfo.st_mtime; continueSaveIndex = i;}
-			}
-
 			fclose(fp);
+		}
+		else
+		{
+			sprintf(fileName, "%ssave%.2d.dat", engine.configDirectory, i);
+
+			fp = fopen(fileName, "rb");
+			if (fp == NULL)
+			{
+				sprintf(saveSlot[i], (i == 0 ? "AUTOSAVE (Empty)" : "Empty"));
+				if (engine.gameSection == SECTION_TITLE)
+					gfx_createTextObject(TS_SAVESLOT_0 + i, saveSlot[i],
+						-1, imagePos, FONT_WHITE);
+			}
+			else
+			{
+				if (i == 0)
+				{
+					sprintf(saveSlot[i], "AUTOSAVE");
+				}
+				else
+				{
+					if (fread(&tempGame, sizeof(Game), 1, fp) != 1)
+					{
+						sprintf(saveSlot[i], "Corrupt Game Data");
+					}
+					else
+					{
+						sprintf(saveSlot[i], "%s, %s", systemNames[tempGame.system],
+							tempGame.stationedName);
+					}
+				}
+
+				if (engine.gameSection == SECTION_TITLE)
+					gfx_createTextObject(TS_SAVESLOT_0 + i, saveSlot[i], -1,
+						imagePos, FONT_WHITE);
+
+				if (stat(fileName, &fileInfo) != -1)
+				{
+					if (fileInfo.st_mtime > modTime)
+						{modTime = fileInfo.st_mtime; continueSaveIndex = i;}
+				}
+
+				fclose(fp);
+			}
 		}
 		imagePos += 20;
 	}
@@ -103,7 +149,6 @@ bool loadGame(int slot)
 	if (fp != NULL)
 	{
 		if (fscanf(fp, "%d%*c", &game.saveFormat) < 1)
-				
 		{
 			printf("Error: Could not determine the version of the save file.\n");
 			fclose(fp);
@@ -119,7 +164,7 @@ bool loadGame(int slot)
 							&game.minPlasmaOutputLimit, &game.maxPlasmaRateLimit,
 							&game.maxPlasmaDamageLimit, &game.maxPlasmaOutputLimit,
 							&game.maxPlasmaAmmoLimit, &game.maxRocketAmmoLimit) < 8) ||
-						(fscanf(fp, "%d %d %d%*c", &game.system, &game.area,
+						(fscanf(fp, "%d %d %d%*c%*[^\n]%*c", &game.system, &game.area,
 							&game.stationedPlanet) < 3) ||
 						(fscanf(fp, "%d %d%*c", &game.hasWingMate1, &game.hasWingMate2) < 2) ||
 						(fscanf(fp, "%d %d %d %d%*c", &player.maxShield,
@@ -226,6 +271,7 @@ void saveGame(int slot)
 				"%d\n"
 				"%d %d %d %d %d %d %d %d\n"
 				"%d %d %d\n"
+				"%s\n"
 				"%d %d\n"
 				"%d %d %d %d\n"
 				"%d %d %d\n"
@@ -246,6 +292,8 @@ void saveGame(int slot)
 				game.maxPlasmaAmmoLimit, game.maxRocketAmmoLimit,
 
 				game.system, game.area, game.stationedPlanet,
+
+				game.stationedName,
 
 				game.hasWingMate1, game.hasWingMate2,
 

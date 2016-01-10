@@ -133,9 +133,7 @@ void engine_showError(int errorId, const char *name)
 }
 
 /*
-This gets the user's home directory, then creates the .parallelrealities
-and .parallelrealities/starfighter directories so that saves and
-temporary data files can be written there.
+This gets the user's home directory, then creates the config directory.
 */
 void engine_setupConfigDirectory()
 {
@@ -147,15 +145,15 @@ void engine_setupConfigDirectory()
 	char dir[PATH_MAX];
 	strcpy(dir, "");
 
-	sprintf(dir, "%s/.parallelrealities", userHome);
+	sprintf(dir, "%s/.config", userHome);
 	if ((mkdir(dir, S_IRWXU|S_IRWXG|S_IROTH|S_IXOTH) != 0) && (errno != EEXIST))
 		engine_showError(2, dir);
 
-	sprintf(dir, "%s/.parallelrealities/starfighter", userHome);
+	sprintf(dir, "%s/.config/starfighter", userHome);
 	if ((mkdir(dir, S_IRWXU|S_IRWXG|S_IROTH|S_IXOTH) != 0) && (errno != EEXIST))
 		engine_showError(2, dir);
 
-	sprintf(engine.configDirectory, "%s/.parallelrealities/starfighter/", userHome);
+	sprintf(engine.configDirectory, "%s/.config/starfighter/", userHome);
 }
 
 /*

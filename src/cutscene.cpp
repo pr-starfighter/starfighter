@@ -168,12 +168,6 @@ void cutscene_init(int scene)
 			messages[4].face = FS_SID;
 			strcpy(messages[4].message, "I think so. I'll come up with a plan of action.");
 
-			messages[5].face = FS_SID;
-			strcpy(messages[5].message, "Just remember that we won't be in Spirit anymore and you may run into WEAPCO patrols while travelling.");
-
-			messages[6].face = FS_CHRIS;
-			strcpy(messages[6].message, "Sounds like fun!");
-
 			break;
 
 		case 3:
