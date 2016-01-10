@@ -94,67 +94,105 @@ Fill in later...
 */
 bool loadGame(int slot)
 {
-	/*
-	 * TODO: want to do something like this (copied from the old code that
-	 * loaded planet data):
-	fp = fopen(string, "rb");
-
- 	int messageMission;
-	int messageSlot;
-	char face[50];
-	char from[100];
-	char subject[100];
-
-	for (int i = 0 ; i < 10 ; i++)
-	{
-		if ((fscanf(fp, "%d %d %s%*c", &messageMission, &messageSlot, face) < 3) ||
-			(fscanf(fp, "%[^\n]%*c", from) < 1) ||
-			(fscanf(fp, "%[^\n]%*c", subject) < 1))
-		{
-			printf("Warning: Mission data for planet %i in \"%s\" is not correctly formatted\n", i, string);
-			break;
-		}
-
-		systemPlanet[i].messageMission = messageMission;
-		systemPlanet[i].messageSlot = messageSlot;
-		systemPlanet[i].faceImage = getFace(face);
-
-		strcpy(systemPlanet[i].from, from);
-		strcpy(systemPlanet[i].subject, subject);
-	}
-
-	fclose(fp);
-	*/
 	char filename[PATH_MAX];
 	FILE *fp;
-	sprintf(filename, "%ssave%.2d.dat", engine.configDirectory, slot);
 
+	sprintf(filename, "%ssave%.2d.sav", engine.configDirectory, slot);
 	fp = fopen(filename, "rb");
 
-	if (fp == NULL)
-		return false;
-
-	if (fread(&game, sizeof(Game), 1, fp) != 1)
+	if (fp != NULL)
 	{
-		printf("Save game error. The file was not of the expected format.\n");
+		if (fscanf(fp, "%d%*c", &game.saveFormat) < 1)
+				
+		{
+			printf("Error: Could not determine the version of the save file.\n");
+			fclose(fp);
+			return false;
+		}
+
+		switch (game.saveFormat)
+		{
+			case 4:
+				if ((fscanf(fp, "%d%*c", &game.difficulty) < 1) ||
+						(fscanf(fp, "%d %d %d %d %d %d %d %d%*c",
+							&game.minPlasmaRateLimit, &game.minPlasmaDamageLimit,
+							&game.minPlasmaOutputLimit, &game.maxPlasmaRateLimit,
+							&game.maxPlasmaDamageLimit, &game.maxPlasmaOutputLimit,
+							&game.maxPlasmaAmmoLimit, &game.maxRocketAmmoLimit) < 8) ||
+						(fscanf(fp, "%d %d %d%*c", &game.system, &game.area,
+							&game.stationedPlanet) < 3) ||
+						(fscanf(fp, "%d %d%*c", &game.hasWingMate1, &game.hasWingMate2) < 2) ||
+						(fscanf(fp, "%d %d %d %d%*c", &player.maxShield,
+							&player.ammo[0], &player.ammo[1], &player.weaponType[1]) < 4) ||
+						(fscanf(fp, "%d %d %d%*c",
+							&weapon[W_PLAYER_WEAPON].ammo[0],
+							&weapon[W_PLAYER_WEAPON].damage,
+							&weapon[W_PLAYER_WEAPON].reload[0]) < 3) ||
+						(fscanf(fp, "%d %d %d %d %d %d %d %d%*c",
+							&game.minPlasmaRate, &game.minPlasmaDamage,
+							&game.minPlasmaOutput, &game.maxPlasmaRate,
+							&game.maxPlasmaDamage, &game.maxPlasmaOutput,
+							&game.maxPlasmaAmmo, &game.maxRocketAmmo) < 8) ||
+						(fscanf(fp, "%d %d %d %d %d %d %d %d %d %d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d%*c",
+							&game.missionCompleted[0], &game.missionCompleted[1],
+							&game.missionCompleted[2], &game.missionCompleted[3],
+							&game.missionCompleted[4], &game.missionCompleted[5],
+							&game.missionCompleted[6], &game.missionCompleted[7],
+							&game.missionCompleted[8], &game.missionCompleted[9]) < 10) ||
+						(fscanf(fp, "%d%*c", &game.experimentalShield) < 1) ||
+						(fscanf(fp, "%d %d%*c", &game.cash, &game.cashEarned) < 2) ||
+						(fscanf(fp, "%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d%*c",
+							&game.shots, &game.hits, &game.accuracy, &game.totalKills,
+							&game.wingMate1Kills, &game.wingMate2Kills,
+							&game.wingMate1Ejects, &game.wingMate2Ejects,
+							&game.totalOtherKills, &game.shieldPickups,
+							&game.rocketPickups, &game.cellPickups, &game.powerups,
+							&game.minesKilled, &game.slavesRescued) < 15) ||
+						(fscanf(fp, "%ld%*c", &game.timeTaken) < 1))
+				{
+					printf("Warning: Save data is not correctly formatted. Some data may be lost.\n");
+				}
+				game.destinationPlanet = game.stationedPlanet;
+				break;
+			default:
+				printf("Error: Save format version not recognized.\n");
+				fclose(fp);
+				return false;
+		}
+
 		fclose(fp);
-		return false;
 	}
+	else
+	{
+		sprintf(filename, "%ssave%.2d.dat", engine.configDirectory, slot);
+		fp = fopen(filename, "rb");
 
-	fclose(fp);
+		if (fp == NULL)
+			return false;
 
-	if (game.saveFormat < 2)
-		game.difficulty = DIFFICULTY_NORMAL;
+		if (fread(&game, sizeof(Game), 1, fp) != 1)
+		{
+			printf("Save game error. The file was not of the expected format.\n");
+			fclose(fp);
+			return false;
+		}
 
-	weapon[W_PLAYER_WEAPON] = game.playerWeapon;
-	weapon[W_PLAYER_WEAPON].imageIndex[0] = SP_PLASMA_GREEN;
-	weapon[W_PLAYER_WEAPON].imageIndex[1] = SP_PLASMA_GREEN;
-	player = game.thePlayer;
+		fclose(fp);
+
+		if (game.saveFormat < 2)
+			game.difficulty = DIFFICULTY_NORMAL;
+
+		weapon[W_PLAYER_WEAPON] = game.playerWeapon;
+		weapon[W_PLAYER_WEAPON].imageIndex[0] = SP_PLASMA_GREEN;
+		weapon[W_PLAYER_WEAPON].imageIndex[1] = SP_PLASMA_GREEN;
+		player = game.thePlayer;
+	}
 
 	// Re-init all the planets in this system...
 	initPlanetMissions(game.system);
 
 	// ... and then override with completition status
+	// XXX: Magic number
 	for (int i = 0 ; i < 10 ; i++)
 		systemPlanet[i].missionCompleted = game.missionCompleted[i];
 
@@ -172,18 +210,72 @@ void saveGame(int slot)
 		return;
 	}
 
-	sprintf(fileName, "%ssave%.2d.dat", engine.configDirectory, slot);
+	sprintf(fileName, "%ssave%.2d.sav", engine.configDirectory, slot);
 	fp = fopen(fileName, "wb");
 
-	game.saveFormat = 3;
-	game.playerWeapon = weapon[W_PLAYER_WEAPON];
-	game.thePlayer = player;
+
+	game.saveFormat = 4;
+	// XXX: Magic number
 	for (int i = 0 ; i < 10 ; i++)
 		game.missionCompleted[i] = systemPlanet[i].missionCompleted;
 
 	if (fp != NULL)
 	{
-		if (fwrite(&game, sizeof(Game), 1, fp) != 1)
+		if (fprintf(fp,
+				"%d\n"
+				"%d\n"
+				"%d %d %d %d %d %d %d %d\n"
+				"%d %d %d\n"
+				"%d %d\n"
+				"%d %d %d %d\n"
+				"%d %d %d\n"
+				"%d %d %d %d %d %d %d %d\n"
+				"%d %d %d %d %d %d %d %d %d %d 0 0 0 0 0 0 0 0 0 0\n"
+				"%d\n"
+				"%d %d\n"
+				"%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d\n"
+				"%ld\n",
+
+				game.saveFormat,
+
+				game.difficulty,
+
+				game.minPlasmaRateLimit, game.minPlasmaDamageLimit,
+				game.minPlasmaOutputLimit, game.maxPlasmaRateLimit,
+				game.maxPlasmaDamageLimit, game.maxPlasmaOutputLimit,
+				game.maxPlasmaAmmoLimit, game.maxRocketAmmoLimit,
+
+				game.system, game.area, game.stationedPlanet,
+
+				game.hasWingMate1, game.hasWingMate2,
+
+				player.maxShield, player.ammo[0], player.ammo[1],
+				player.weaponType[1],
+
+				weapon[W_PLAYER_WEAPON].ammo[0], weapon[W_PLAYER_WEAPON].damage,
+				weapon[W_PLAYER_WEAPON].reload[0],
+
+				game.minPlasmaRate, game.minPlasmaDamage, game.minPlasmaOutput,
+				game.maxPlasmaRate, game.maxPlasmaDamage, game.maxPlasmaOutput,
+				game.maxPlasmaAmmo, game.maxRocketAmmo,
+
+				game.missionCompleted[0], game.missionCompleted[1],
+				game.missionCompleted[2], game.missionCompleted[3],
+				game.missionCompleted[4], game.missionCompleted[5],
+				game.missionCompleted[6], game.missionCompleted[7],
+				game.missionCompleted[8], game.missionCompleted[9],
+
+				game.experimentalShield,
+
+				game.cash, game.cashEarned,
+
+				game.shots, game.hits, game.accuracy, game.totalKills,
+				game.wingMate1Kills, game.wingMate2Kills, game.wingMate1Ejects,
+				game.wingMate2Ejects, game.totalOtherKills, game.shieldPickups,
+				game.rocketPickups, game.cellPickups, game.powerups,
+				game.minesKilled, game.slavesRescued,
+
+				game.timeTaken) <= 0)
 		{
 			printf("Error Saving Game to Slot %d\n", slot);
 		}
