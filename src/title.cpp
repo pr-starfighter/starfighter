@@ -22,9 +22,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 static int showGameMenu(int continueSaveSlot)
 {
 	screen_blitText(TS_START_NEW_GAME);
+	screen_blitText(TS_LOAD_GAME);
 	if (continueSaveSlot != -1)
 	{
-		screen_blitText(TS_LOAD_GAME);
 		screen_blitText(TS_CONTINUE_CURRENT_GAME);
 	}
 	screen_blitText(TS_OPTIONS);
@@ -294,8 +294,11 @@ int doTitle()
 	optionRec.h = 22;
 	optionRec.w = 215;
 
-	if (continueSaveSlot > -1)
-		{selectedOption = 3; optionRec.y += 40;}
+	if (continueSaveSlot != -1)
+	{
+		selectedOption = 3;
+		optionRec.y += 40;
+	}
 
 	screen_drawBackground();
 
@@ -378,16 +381,16 @@ int doTitle()
 					engine.keyState[KEY_UP] = 0;
 					WRAP_ADD(selectedOption, -1, 1, listLength + 1);
 					if (menuType == MENU_MAIN)
-						if ((selectedOption == 2) || (selectedOption == 3))
+						if (selectedOption == 3)
 							if (continueSaveSlot == -1)
-								selectedOption = 1;
+								selectedOption = 2;
 				}
 				if (engine.keyState[KEY_DOWN])
 				{
 					engine.keyState[KEY_DOWN] = 0;
 					WRAP_ADD(selectedOption, 1, 0, listLength);
 					if (menuType == MENU_MAIN)
-						if ((selectedOption == 2) || (selectedOption == 3))
+						if (selectedOption == 3)
 							if (continueSaveSlot == -1)
 								selectedOption = 4;
 				}
