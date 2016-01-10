@@ -37,7 +37,7 @@ int initSaveSlots()
 	Game tempGame;
 	struct stat fileInfo;
 	int modTime = 0;
-	int continueSaveIndex = 0;
+	int continueSaveIndex = -1;
 
 	FILE *fp;
 
@@ -58,6 +58,7 @@ int initSaveSlots()
 				if (i == 0)
 				{
 					sprintf(saveSlot[i], "AUTOSAVE");
+					continueSaveIndex = 0;
 				}
 				else
 				{
@@ -102,6 +103,7 @@ int initSaveSlots()
 				if (i == 0)
 				{
 					sprintf(saveSlot[i], "AUTOSAVE");
+					continueSaveIndex = 0;
 				}
 				else
 				{
