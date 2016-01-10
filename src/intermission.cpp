@@ -39,31 +39,8 @@ These are set only once.
 static void intermission_setStatusLines()
 {
 	char string[50];
-	int total = 0;
-	int completed = 0;
 	int timeTaken = game.timeTaken;
 	int y;
-
-	// XXX: Magic number
-	for (int i = 0 ; i < 10 ; i++)
-	{
-		if (systemPlanet[i].missionNumber > -1)
-		{
-			switch(systemPlanet[i].missionCompleted)
-   		{
-				case 0:
-					total++;
-					break;
-				case 1:
-					total++;
-					completed++;
-					break;
-			}
-		}
-	}
-
-	sprintf(string, "Missions Completed : %d/%d", completed, total);
-	gfx_createTextObject(TS_MISSIONS_COMPLETED, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Shots Fired : %d", game.shots);
 	gfx_createTextObject(TS_SHOTS_FIRED, string, 0, 0, FONT_WHITE);
@@ -94,7 +71,7 @@ static void intermission_setStatusLines()
 	sprintf(string, "Rockets Picked Up : %d", game.rocketPickups);
 	gfx_createTextObject(TS_CHRIS_ROCKET_PICKUPS, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Powerups Picked Up : %d", game.rocketPickups);
+	sprintf(string, "Powerups Picked Up : %d", game.powerups);
 	gfx_createTextObject(TS_CHRIS_POWERUP_PICKUPS, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Mines Destroyed : %d", game.minesKilled);
@@ -102,9 +79,6 @@ static void intermission_setStatusLines()
 
 	sprintf(string, "Slaves Rescued : %d", game.slavesRescued);
 	gfx_createTextObject(TS_CHRIS_SLAVES_RESCUED, string, 0, 0, FONT_WHITE);
-
-	sprintf(string, "Cargo Picked Up : %d", game.cargoPickups);
-	gfx_createTextObject(TS_CHRIS_CARGO_PICKUPS, string, 0, 0, FONT_WHITE);
 
 	if (game.hasWingMate1)
 	{
@@ -116,6 +90,12 @@ static void intermission_setStatusLines()
 		sprintf(string, "Ejections : %d", game.wingMate1Ejects);
 		gfx_createTextObject(TS_PHOEBE_DEATHS, string, 0, 0, FONT_WHITE);
 	}
+	else
+	{
+		gfx_createTextObject(TS_PHOEBE_HEADER, "", 0, 0, FONT_WHITE);
+		gfx_createTextObject(TS_PHOEBE_KILLS, "", 0, 0, FONT_WHITE);
+		gfx_createTextObject(TS_PHOEBE_DEATHS, "", 0, 0, FONT_WHITE);
+	}
 
 	if (game.hasWingMate2)
 	{
@@ -126,6 +106,12 @@ static void intermission_setStatusLines()
 
 		sprintf(string, "Ejections : %d", game.wingMate2Ejects);
 		gfx_createTextObject(TS_URSULA_DEATHS, string, 0, 0, FONT_WHITE);
+	}
+	else
+	{
+		gfx_createTextObject(TS_URSULA_HEADER, "", 0, 0, FONT_WHITE);
+		gfx_createTextObject(TS_URSULA_KILLS, "", 0, 0, FONT_WHITE);
+		gfx_createTextObject(TS_URSULA_DEATHS, "", 0, 0, FONT_WHITE);
 	}
 
 	gfx_createTextObject(TS_STATUS_HEADER, "Current Status", -1, 83, FONT_WHITE);
