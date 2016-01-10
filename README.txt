@@ -1,4 +1,4 @@
-Copyright (C) 2015 onpon4 <onpon4@riseup.net>
+Copyright (C) 2015, 2016 onpon4 <onpon4@riseup.net>
 
 Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright
@@ -23,15 +23,14 @@ compared to the original:
 
 * The graphics, sounds, and music are all completely different. This is
   because most of the original media was not properly licensed, and
-  therefore needed to be replaced to make the game 100% libre and legal.
-  Most of this work was done by the previous project at SourceForge;
-  this project completed that work by adding music and replacing one
+  therefore needed to be replaced to make the game 100% libre.  Most of
+  this work was done by the previous project at SourceForge; the current
+  project completed that work by adding music and replacing one
   non-libre graphic that got into version 1.2 by mistake.
 
 * There are several gameplay changes. These changes were mostly done to
   balance the game better. However, if you want the original experience,
-  "original" difficulty approximates it as closely as possible (short of
-  implementing bugs on purpose).
+  "Classic" difficulty approximates it as closely as possible.
 
 * Typing "humansdoitbetter" in the title screen no longer enables
   cheats. This is actually because the switch to SDL2 broke the original
