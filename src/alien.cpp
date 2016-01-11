@@ -1834,7 +1834,7 @@ void alien_hurt(object *alien, object *attacker, int damage, bool ion)
 		}
 	}
 
-	run_chance = (game.difficulty == DIFFICULTY_ORIGINAL) ? 0.2 : damage / 150.;
+	run_chance = (game.difficulty == DIFFICULTY_ORIGINAL) ? 0.02 : damage / 50.;
 
 	if ((alien->flags & FL_RUNSAWAY) && CHANCE(run_chance))
 	{
