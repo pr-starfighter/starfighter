@@ -46,6 +46,7 @@ void audio_playSound(int sid, float x, float y)
 {
 	int channel = -1;
 	static int freechannel = 4;
+	static int channelVolume[4] = {0, 0, 0, 0};
 	int angle = atanf((x - (screen->w / 2)) / (screen->w / 2)) * 180 / M_PI;
 	int attenuation = fabsf(x - (screen->w / 2)) / (screen->w / 20);
 	float distance = sqrtf(powf(fabsf(x - (screen->w / 2)), 2) + powf(fabsf(y - (screen->h / 2)), 2));
@@ -84,10 +85,19 @@ void audio_playSound(int sid, float x, float y)
 			break;
 	}
 
-	if(channel == -1) {
+	if (channel == -1)
+	{
 		channel = freechannel++;
-		if(freechannel >= 8)
+		if (freechannel >= 8)
 			freechannel = 4;
+	}
+	else
+	{
+		if (Mix_Playing(channel) && (volume <= MIX_MAX_VOLUME / 4) &&
+				(channelVolume[channel] >= MIX_MAX_VOLUME * 3 / 4))
+			return;
+		else
+			channelVolume[channel] = volume;
 	}
 
 	angle %= 360;
