@@ -42,13 +42,17 @@ void audio_loadSounds()
 	sound[SFX_PLASMA3] = Mix_LoadWAV("sound/plasma3.ogg");
 }
 
-void audio_playSound(int sid, float x)
+void audio_playSound(int sid, float x, float y)
 {
-	if ((!engine.useSound) || (!engine.useAudio))
-		return;
-
 	int channel = -1;
 	static int freechannel = 4;
+	int angle = atanf((x - (screen->w / 2)) / (screen->w / 2)) * 180 / M_PI;
+	int attenuation = fabsf(x - (screen->w / 2)) / (screen->w / 20);
+	float distance = sqrtf(powf(fabsf(x - (screen->w / 2)), 2) + powf(fabsf(y - (screen->h / 2)), 2));
+	int volume = MIX_MAX_VOLUME - (MIX_MAX_VOLUME * distance / (3 * screen->w));
+
+	if ((!engine.useSound) || (!engine.useAudio) || (volume <= 0))
+		return;
 
 	switch(sid)
 	{
@@ -86,9 +90,7 @@ void audio_playSound(int sid, float x)
 			freechannel = 4;
 	}
 
-	int angle = atanf((x - (screen->w / 2)) / (screen->w / 2)) * 180 / M_PI;
-	int attenuation = fabsf(x - (screen->w / 2)) / 40;
-
+	angle %= 360;
 	if (angle < 0)
 		angle += 360;
 
@@ -96,6 +98,7 @@ void audio_playSound(int sid, float x)
 		attenuation = 255;
 
 	Mix_SetPosition(channel, angle, attenuation);
+	Mix_Volume(channel, volume);
 	Mix_PlayChannel(channel, sound[sid], 0);
 }
 

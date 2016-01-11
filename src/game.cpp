@@ -143,9 +143,9 @@ void game_init()
 static void game_addDebris(int x, int y, int amount)
 {
 	if ((rand() % 2) == 0)
-		audio_playSound(SFX_DEBRIS, x);
+		audio_playSound(SFX_DEBRIS, x, y);
 	else
-		audio_playSound(SFX_DEBRIS2, x);
+		audio_playSound(SFX_DEBRIS2, x, y);
 
 	object *debris;
 	
@@ -450,9 +450,9 @@ static void game_doCollectables()
 				{
 					setInfoLine(temp, FONT_WHITE);
 					if (collectable->type == P_SHIELD)
-						audio_playSound(SFX_SHIELDUP, player.x);
+						audio_playSound(SFX_SHIELDUP, player.x, player.y);
 					else
-						audio_playSound(SFX_PICKUP, player.x);
+						audio_playSound(SFX_PICKUP, player.x, player.y);
 				}
 			}
 
@@ -648,7 +648,7 @@ static void game_doBullets()
 							{
 								bullet->active = false;
 								bullet->shield = 0;
-								audio_playSound(SFX_EXPLOSION, bullet->x);
+								audio_playSound(SFX_EXPLOSION, bullet->x, bullet->y);
 								for (int i = 0 ; i < 10 ; i++)
 									explosion_add(bullet->x + RANDRANGE(-35, 35),
 										bullet->y + RANDRANGE(-35, 35),
@@ -700,7 +700,7 @@ static void game_doBullets()
 						{
 							bullet->active = false;
 							bullet->shield = 0;
-							audio_playSound(SFX_EXPLOSION, bullet->x);
+							audio_playSound(SFX_EXPLOSION, bullet->x, bullet->y);
 							for (int i = 0 ; i < 10 ; i++)
 								explosion_add(bullet->x + RANDRANGE(-35, 35),
 									bullet->y + RANDRANGE(-35, 35), SP_BIG_EXPLOSION);
@@ -712,7 +712,7 @@ static void game_doBullets()
 						bullet->shield = 0;
 					}
 
-					audio_playSound(SFX_HIT, player.x);
+					audio_playSound(SFX_HIT, player.x, player.y);
 
 					if (bullet->id == WT_ROCKET)
 						explosion_add(bullet->x, bullet->y, SP_BIG_EXPLOSION);
@@ -733,11 +733,11 @@ static void game_doBullets()
 					{
 						bullet->active = false;
 						explosion_add(bullet->x, bullet->y, SP_SMALL_EXPLOSION);
-						audio_playSound(SFX_HIT, cargo[j].x);
+						audio_playSound(SFX_HIT, cargo[j].x, cargo[j].y);
 						if (cargo[j].collectType != P_PHOEBE)
 						{
 							cargo[j].active = false;
-							audio_playSound(SFX_EXPLOSION, cargo[j].x);
+							audio_playSound(SFX_EXPLOSION, cargo[j].x, cargo[j].y);
 							for (int i = 0 ; i < 10 ; i++)
 								explosion_add(cargo[j].x + RANDRANGE(-15, 15),
 									cargo[j].y + RANDRANGE(-15, 15),
@@ -803,7 +803,7 @@ static void game_doBullets()
 		{
 			if (bullet->flags & WF_TIMEDEXPLOSION)
 			{
-				audio_playSound(SFX_EXPLOSION, bullet->x);
+				audio_playSound(SFX_EXPLOSION, bullet->x, bullet->y);
 				for (int i = 0 ; i < 10 ; i++)
 					explosion_add(bullet->x + RANDRANGE(-35, 35),
 						bullet->y + RANDRANGE(-35, 35), SP_BIG_EXPLOSION);
@@ -987,7 +987,7 @@ static void game_doAliens()
 						aliens[i].flags -= FL_ISCLOAKED;
 					else
 						aliens[i].flags += FL_ISCLOAKED;
-					audio_playSound(SFX_CLOAK, aliens[i].x);
+					audio_playSound(SFX_CLOAK, aliens[i].x, aliens[i].y);
 				}
 
 				if (aliens[i].classDef == CD_BARRIER)
@@ -1046,7 +1046,7 @@ static void game_doAliens()
 								(aliens[i].ammo[0] >= 250))
 							{
 								aliens[i].flags += FL_FIRERAY;
-								audio_playSound(SFX_ENERGYRAY, aliens[i].x);
+								audio_playSound(SFX_ENERGYRAY, aliens[i].x, aliens[i].y);
 							}
 						}
 					}
@@ -1306,7 +1306,7 @@ static void game_doPlayer()
 				if ((engine.done == 0) && (engine.gameSection == SECTION_GAME) &&
 					(currentMission.remainingObjectives1 == 0))
 				{
-					audio_playSound(SFX_FLY, screen->w / 2);
+					audio_playSound(SFX_FLY, screen->w / 2, screen->h / 2);
 					engine.done = 2;
 					engine.missionCompleteTimer = (SDL_GetTicks() - 1);
 				}
@@ -1431,8 +1431,8 @@ static void game_doPlayer()
 						aliens[i].flags |= FL_LEAVESECTOR;
 				}
 
-				audio_playSound(SFX_DEATH, player.x);
-				audio_playSound(SFX_EXPLOSION, player.x);
+				audio_playSound(SFX_DEATH, player.x, player.y);
+				audio_playSound(SFX_EXPLOSION, player.x, player.y);
 			}
 
 			engine.keyState[KEY_UP] = engine.keyState[KEY_DOWN] = engine.keyState[KEY_LEFT] = engine.keyState[KEY_RIGHT] = 0;
@@ -1754,7 +1754,7 @@ static void game_doHud()
 		{
 			if ((engine.seconds > 1) && (engine.seconds <= 11) && (engine.minutes == 0))
 			{
-				audio_playSound(SFX_CLOCK, screen->w / 2);
+				audio_playSound(SFX_CLOCK, screen->w / 2, screen->h / 2);
 			}
 
 			if (engine.seconds > 0)
@@ -2333,14 +2333,14 @@ int game_mainLoop()
 		if ((game.area == MISN_MOEBO) &&
 			(aliens[ALIEN_BOSS].flags & FL_ESCAPED))
 		{
-			audio_playSound(SFX_DEATH, aliens[ALIEN_BOSS].x);
+			audio_playSound(SFX_DEATH, aliens[ALIEN_BOSS].x, aliens[ALIEN_BOSS].y);
 			screen_clear(white);
 			renderer_update();
 			for (int i = 0 ; i < 300 ; i++)
 			{
 				SDL_Delay(10);
 				if ((rand() % 25) == 0)
-					audio_playSound(SFX_EXPLOSION, aliens[ALIEN_BOSS].x);
+					audio_playSound(SFX_EXPLOSION, aliens[ALIEN_BOSS].x, aliens[ALIEN_BOSS].y);
 			}
 			SDL_Delay(1000);
 			break;

@@ -320,7 +320,7 @@ void leaveSector()
 		if (player.x <= -100)
 		{
 			engine.done = 2;
-			audio_playSound(SFX_FLY, screen->w / 2);
+			audio_playSound(SFX_FLY, screen->w / 2, screen->h / 2);
 		}
 	}
 

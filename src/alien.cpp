@@ -1643,7 +1643,7 @@ void alien_move(object *alien)
 					alien->hit = 3;
 					alien->dx *= -1;
 					alien->dy *= -1;
-					audio_playSound(SFX_HIT, alien->x);
+					audio_playSound(SFX_HIT, alien->x, alien->y);
 				}
 			}
 		}
@@ -1659,9 +1659,9 @@ void alien_move(object *alien)
 				if ((!engine.cheatShield) && (engine.missionCompleteTimer == 0))
 					player.shield -= alien->shield;
 				alien->shield = 0;
-				audio_playSound(SFX_EXPLOSION, alien->x);
+				audio_playSound(SFX_EXPLOSION, alien->x, alien->y);
 				player.hit = 5;
-				audio_playSound(SFX_HIT, player.x);
+				audio_playSound(SFX_HIT, player.x, player.y);
 			}
 
 			if (alien->classDef == CD_ASTEROID2)
@@ -1669,9 +1669,9 @@ void alien_move(object *alien)
 				if ((!engine.cheatShield) && (engine.missionCompleteTimer == 0))
 					player.shield -= alien->shield;
 				alien->shield = 0;
-				audio_playSound(SFX_EXPLOSION, alien->x);
+				audio_playSound(SFX_EXPLOSION, alien->x, alien->y);
 				player.hit = 5;
-				audio_playSound(SFX_HIT, player.x);
+				audio_playSound(SFX_HIT, player.x, player.y);
 			}
 
 			if (alien->classDef == CD_BARRIER)
@@ -1679,7 +1679,7 @@ void alien_move(object *alien)
 				if ((!engine.cheatShield) && (engine.missionCompleteTimer == 0))
 					player.shield--;
 				player.hit = 5;
-				audio_playSound(SFX_HIT, player.x);
+				audio_playSound(SFX_HIT, player.x, player.y);
 			}
 		}
 	}
@@ -1690,7 +1690,7 @@ Fill in later...
 */
 void alien_destroy(object *alien, object *attacker)
 {
-	audio_playSound(SFX_EXPLOSION, alien->x);
+	audio_playSound(SFX_EXPLOSION, alien->x, alien->y);
 
 	if (alien->flags & FL_FRIEND)
 	{
@@ -1841,7 +1841,7 @@ void alien_hurt(object *alien, object *attacker, int damage, bool ion)
 		alien->flags |= FL_LEAVESECTOR;
 	}
 
-	audio_playSound(SFX_HIT, alien->x);
+	audio_playSound(SFX_HIT, alien->x, alien->y);
 	if (alien->AIType == AI_EVASIVE)
 		alien->thinktime = 0;
 	

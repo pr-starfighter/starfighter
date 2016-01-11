@@ -61,16 +61,16 @@ void ship_fireBullet(object *ship, int weaponType)
 		case WT_PLASMA:
 		case WT_SPREAD:
 		case WT_DIRECTIONAL:
-			audio_playSound(SFX_PLASMA, ship->x);
+			audio_playSound(SFX_PLASMA, ship->x, ship->y);
 			break;
 		case WT_ROCKET:
-			audio_playSound(SFX_MISSILE, ship->x);
+			audio_playSound(SFX_MISSILE, ship->x, ship->y);
 			break;
 		case WT_LASER:
-			audio_playSound(SFX_LASER, ship->x);
+			audio_playSound(SFX_LASER, ship->x, ship->y);
 			break;
 		case WT_CHARGER:
-			audio_playSound(SFX_PLASMA3, ship->x);
+			audio_playSound(SFX_PLASMA3, ship->x, ship->y);
 			break;
 	}
 
@@ -177,11 +177,11 @@ void ship_fireRay(object *ship)
 				player.shield--;
 
 				explosion_add(player.x, player.y, SP_SMALL_EXPLOSION);
-				audio_playSound(SFX_HIT, player.x);
+				audio_playSound(SFX_HIT, player.x, player.y);
 				if (player.shield < 1)
 				{
-					audio_playSound(SFX_DEATH, player.x);
-					audio_playSound(SFX_EXPLOSION, player.x);
+					audio_playSound(SFX_DEATH, player.x, player.y);
+					audio_playSound(SFX_EXPLOSION, player.x, player.y);
 				}
 			}
 		}

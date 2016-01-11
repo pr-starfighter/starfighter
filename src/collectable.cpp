@@ -229,9 +229,7 @@ bool collectable_collision(collectables *collectable, object *ship)
 
 void collectable_explode(collectables *collectable)
 {
-	if ((collectable->x >= 0) && (collectable->x <= screen->w) &&
-			(collectable->y >= 0) && (collectable->y <= screen->h))
-		audio_playSound(SFX_EXPLOSION, collectable->x);
+	audio_playSound(SFX_EXPLOSION, collectable->x, collectable->y);
 
 	for (int i = 0 ; i < 10 ; i++)
 		explosion_add(RANDRANGE(collectable->x - 25, collectable->x + 25),
