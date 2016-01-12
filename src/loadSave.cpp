@@ -144,6 +144,7 @@ bool loadGame(int slot)
 {
 	char filename[PATH_MAX];
 	FILE *fp;
+	unsigned long timeTaken;
 
 	sprintf(filename, "%ssave%.2d.sav", engine.configDirectory, slot);
 	fp = fopen(filename, "rb");
@@ -195,9 +196,13 @@ bool loadGame(int slot)
 							&game.totalOtherKills, &game.shieldPickups,
 							&game.rocketPickups, &game.cellPickups, &game.powerups,
 							&game.minesKilled, &game.slavesRescued) < 15) ||
-						(fscanf(fp, "%ld%*c", &game.timeTaken) < 1))
+						(fscanf(fp, "%lu%*c", &timeTaken) < 1))
 				{
 					printf("Warning: Save data is not correctly formatted. Some data may be lost.\n");
+				}
+				else
+				{
+					engine.timeTaken = (Uint32)(timeTaken);
 				}
 				game.destinationPlanet = game.stationedPlanet;
 				break;
@@ -282,7 +287,7 @@ void saveGame(int slot)
 				"%d\n"
 				"%d %d\n"
 				"%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d\n"
-				"%ld\n",
+				"%lu\n",
 
 				game.saveFormat,
 
@@ -325,7 +330,7 @@ void saveGame(int slot)
 				game.rocketPickups, game.cellPickups, game.powerups,
 				game.minesKilled, game.slavesRescued,
 
-				game.timeTaken) <= 0)
+				(unsigned long)(game.timeTaken)) <= 0)
 		{
 			printf("Error Saving Game to Slot %d\n", slot);
 		}

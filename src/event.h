@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 typedef struct Event_ {
 
-	int time;
+	Uint32 time;
 	int face;
 	char message[255];
 	int entity;

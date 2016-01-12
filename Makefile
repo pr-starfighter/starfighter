@@ -8,11 +8,15 @@ PROG = starfighter
 DOCS = docs/*
 DATA = data gfx sound music
 DATAFILES = data/* gfx/* sound/* music/*
+LAUNCHER = misc/starfighter.desktop
+ICON = misc/starfighter.png
 
 PREFIX ?= /usr
 BINDIR ?= $(PREFIX)/games/
 DATADIR ?= $(PREFIX)/share/games/parallelrealities/
 DOCDIR ?= $(PREFIX)/share/doc/$(PROG)/
+MENUDIR ?= $(PREFIX)/share/applications/
+ICONDIR ?= $(PREFIX)/share/icons/
 
 # top-level rule to create the program.
 ALL = $(PROG)
@@ -36,10 +40,14 @@ install: $(ALL)
 	mkdir -p $(DESTDIR)$(BINDIR)
 	mkdir -p $(DESTDIR)$(DATADIR)
 	mkdir -p $(DESTDIR)$(DOCDIR)
+	mkdir -p $(MENUDIR)
+	mkdir -p $(ICONDIR)
 
 	install -m 755 $(PROG) $(DESTDIR)$(BINDIR)$(PROG)
 	cp -r $(DATA) $(DESTDIR)$(DATADIR)
 	cp $(DOCS) $(DESTDIR)$(DOCDIR)
+	cp $(LAUNCHER) $(MENUDIR)
+	cp $(ICON) $(ICONDIR)
 
 optimise:
 	advpng -z gfx/*.png
