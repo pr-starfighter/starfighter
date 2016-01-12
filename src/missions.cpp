@@ -36,7 +36,7 @@ void initPlanetMissions(int system)
 	switch(system)
 	{
 		// Spirit
-		case 0:
+		case SYSTEM_SPIRIT:
 			systemPlanet[PLANET_HAIL].missionNumber = MISN_HAIL;
 			systemPlanet[PLANET_HAIL].missionCompleted = 0;
 
@@ -55,7 +55,7 @@ void initPlanetMissions(int system)
 			break;
 
 		// Eyananth
-		case 1:
+		case SYSTEM_EYANANTH:
 			systemPlanet[PLANET_NEROD].missionNumber = MISN_NEROD;
 			systemPlanet[PLANET_NEROD].missionCompleted = 0;
 
@@ -78,7 +78,7 @@ void initPlanetMissions(int system)
 			break;
 
 		// Mordor
-		case 2:
+		case SYSTEM_MORDOR:
 			systemPlanet[PLANET_ODEON].missionNumber = MISN_ODEON;
 			systemPlanet[PLANET_ODEON].missionCompleted = 0;
 
@@ -104,7 +104,7 @@ void initPlanetMissions(int system)
 			break;
 
 		// Sol
-		case 3:
+		case SYSTEM_SOL:
 			systemPlanet[PLANET_PLUTO].missionNumber = MISN_PLUTO;
 			systemPlanet[PLANET_PLUTO].missionCompleted = 0;
 
@@ -135,6 +135,7 @@ void initPlanetMissions(int system)
 
 void checkForBossMission()
 {
+	// XXX: Magic number
 	for (int i = 0 ; i < 10 ; i++)
 	{
 		if ((systemPlanet[i].missionCompleted == 0) && (systemPlanet[i].missionNumber != -1))
