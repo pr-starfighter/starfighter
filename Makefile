@@ -16,7 +16,7 @@ BINDIR ?= $(PREFIX)/games/
 DATADIR ?= $(PREFIX)/share/games/parallelrealities/
 DOCDIR ?= $(PREFIX)/share/doc/$(PROG)/
 MENUDIR ?= $(PREFIX)/share/applications/
-ICONDIR ?= $(PREFIX)/share/icons/
+ICONDIR ?= $(PREFIX)/share/pixmaps/
 
 # top-level rule to create the program.
 ALL = $(PROG)
