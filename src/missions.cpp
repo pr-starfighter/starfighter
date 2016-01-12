@@ -911,10 +911,9 @@ void missionFinishedScreen()
 
 		game.timeTaken += engine.timeTaken;
 
-		snprintf(temp, sizeof temp, "Mission Time: %2lu:%02lu:%02lu",
-			(unsigned long)(engine.timeTaken / 3600),
-			(unsigned long)((engine.timeTaken / 60) % 60),
-			(unsigned long)(engine.timeTaken % 60));
+		snprintf(temp, sizeof temp, "Mission Time: %2d:%02d:%02d",
+			engine.timeTaken / 3600, (engine.timeTaken / 60) % 60,
+			engine.timeTaken % 60);
 
 		screen_renderString(temp, -1, 500, FONT_WHITE);
 
