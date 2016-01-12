@@ -162,7 +162,7 @@ typedef struct Game_ {
 	// remaining shield for experimental fighter
 	int experimentalShield;
 
-	long int timeTaken; // In seconds
+	Uint32 timeTaken; // In seconds
 	int missionCompleted[10];
 
 	int stationedPlanet;

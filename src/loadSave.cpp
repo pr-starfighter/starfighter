@@ -202,7 +202,7 @@ bool loadGame(int slot)
 				}
 				else
 				{
-					engine.timeTaken = (Uint32)(timeTaken);
+					game.timeTaken = (Uint32)(timeTaken);
 				}
 				game.destinationPlanet = game.stationedPlanet;
 				break;

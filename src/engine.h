@@ -68,7 +68,7 @@ typedef struct Engine_ {
 
 	// Times the mission normally
 	Uint32 counter2;
-	int timeTaken; // In seconds
+	long timeTaken; // In seconds
 
 	// For missions with a time limit
 	int timeMission;
