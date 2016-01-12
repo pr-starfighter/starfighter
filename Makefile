@@ -3,7 +3,7 @@ CXXFLAGS += `pkg-config --cflags sdl2 SDL2_image SDL2_mixer`
 LIBS = `pkg-config --libs sdl2 SDL2_image SDL2_mixer`
 OBJS = alien.o audio.o bullet.o cargo.o collectable.o colors.o cutscene.o engine.o event.o explosion.o game.o gfx.o intermission.o loadSave.o messages.o misc.o missions.o player.o renderer.o resources.o screen.o ship.o shop.o Starfighter.o title.o weapons.o window.o
 
-VERSION = 1.5
+VERSION = 1.5.1-dev
 PROG = starfighter
 DOCS = docs/*
 DATA = data gfx sound music
