@@ -64,11 +64,11 @@ typedef struct Engine_ {
 	int targetIndex;
 
 	// Mission completion timer (allows for 4 seconds before leaving sector)
-	long missionCompleteTimer;
+	Uint32 missionCompleteTimer;
 
 	// Times the mission normally
 	Uint32 counter2;
-	long int timeTaken; // In seconds
+	Uint32 timeTaken; // In seconds
 
 	// For missions with a time limit
 	int timeMission;
