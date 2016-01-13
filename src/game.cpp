@@ -481,7 +481,9 @@ static void game_doCollectables()
 		}
 		else
 		{
-			if (collectable->type == P_MINE)
+			if ((collectable->type == P_MINE) && (collectable->x >= 0) &&
+					(collectable->x <= screen->w) && (collectable->y >= 0) &&
+					(collectable->y <= screen->h))
 				collectable_explode(collectable);
 			prevCollectable->next = collectable->next;
 			delete collectable;
