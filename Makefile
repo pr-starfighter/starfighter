@@ -40,14 +40,14 @@ install: $(ALL)
 	mkdir -p $(DESTDIR)$(BINDIR)
 	mkdir -p $(DESTDIR)$(DATADIR)
 	mkdir -p $(DESTDIR)$(DOCDIR)
-	mkdir -p $(MENUDIR)
-	mkdir -p $(ICONDIR)
+	mkdir -p $(DESTDIR)$(MENUDIR)
+	mkdir -p $(DESTDIR)$(ICONDIR)
 
 	install -m 755 $(PROG) $(DESTDIR)$(BINDIR)$(PROG)
 	cp -r $(DATA) $(DESTDIR)$(DATADIR)
 	cp $(DOCS) $(DESTDIR)$(DOCDIR)
-	cp $(LAUNCHER) $(MENUDIR)
-	cp $(ICON) $(ICONDIR)
+	install -m 644 $(LAUNCHER) $(DESTDIR)$(MENUDIR)
+	install -m 644 $(ICON) $(DESTDIR)$(ICONDIR)
 
 optimise:
 	advpng -z gfx/*.png
