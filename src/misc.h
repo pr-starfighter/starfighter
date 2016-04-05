@@ -24,7 +24,6 @@ extern void clearInfoLines();
 void copyInfoLine(int a, int b);
 extern void setInfoLine(const char *in, int color);
 extern void setRadioMessage(int face, const char *in, int priority);
-extern int getFace(const char *face);
 extern void resetLists();
 
 #endif

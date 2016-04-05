@@ -87,23 +87,6 @@ void setRadioMessage(int face, const char *in, int priority)
 	gfx_createMessageBox(faceShape, in, 1);
 }
 
-static const char *faces[] = {
-			"FACE_CHRIS", "FACE_SID", "FACE_KRASS",
-			"FACE_KLINE", "FACE_PHOEBE", "FACE_URSULA",
-			"FACE_CREW"
-};
-
-int getFace(const char *face)
-{
-	for (int i = 0 ; i < 7 ; i++)
-	{
-		if (strcmp(faces[i], face) == 0)
-			return FS_CHRIS + i;
-	}
-
-	return -1;
-}
-
 void resetLists()
 {
 	object *ob, *ob2;
