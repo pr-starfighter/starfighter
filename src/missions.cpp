@@ -902,7 +902,10 @@ void missionFinishedScreen()
 
 		if (currentMission.remainingObjectives1 + currentMission.remainingObjectives2 == 0)
 		{
-			shield_bonus = player.shield * 10;
+			if (game.difficulty == DIFFICULTY_NIGHTMARE)
+				shield_bonus = 100;
+			else
+				shield_bonus = player.shield * 10;
 			sprintf(temp, "Shield Bonus: $%.3d", shield_bonus);
 			screen_renderString(temp, -1, 430, FONT_WHITE);
 			game.cash += shield_bonus;
