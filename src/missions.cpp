@@ -583,6 +583,11 @@ bool allMissionsCompleted()
 			}
 			else
 			{
+				if (currentMission.remainingObjectives2 > 0)
+				{
+					setInfoLine("Emergency warp drive activated. Press button to engage.", FONT_CYAN);
+				}
+
 				if (game.area != MISN_INTERCEPTION)
 					setInfoLine("*** All Primary Objectives Completed ***", FONT_GREEN);
 				else
