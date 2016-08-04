@@ -436,6 +436,11 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "VERSION=\\\"1.5.1\\\"";
+				HEADER_SEARCH_PATHS = (
+					SDL2.framework/Headers,
+					SDL2_mixer.framework/Headers,
+					SDL2_image.framework/Headers,
+				);
 				INFOPLIST_FILE = starfighter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.me.fantastic.starfighter;
@@ -453,6 +458,11 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "VERSION=\\\"1.5.1\\\"";
+				HEADER_SEARCH_PATHS = (
+					SDL2.framework/Headers,
+					SDL2_mixer.framework/Headers,
+					SDL2_image.framework/Headers,
+				);
 				INFOPLIST_FILE = starfighter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.me.fantastic.starfighter;

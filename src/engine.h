@@ -20,12 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
-#ifdef __APPLE__
-#include <SDL2/SDL.h>
-#else
 #include "SDL.h"
-#endif
-
 
 #include "defs.h"
 #include "structs.h"
