@@ -1,0 +1,487 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		797059001D52CB1000FC009C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 797058FF1D52CB1000FC009C /* Assets.xcassets */; };
+		7970590F1D52CC2E00FC009C /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7970590C1D52CC2E00FC009C /* SDL2_image.framework */; };
+		797059101D52CC2E00FC009C /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7970590D1D52CC2E00FC009C /* SDL2_mixer.framework */; };
+		797059111D52CC2E00FC009C /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7970590E1D52CC2E00FC009C /* SDL2.framework */; };
+		797059131D52CD0100FC009C /* SDL2_image.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7970590C1D52CC2E00FC009C /* SDL2_image.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		797059141D52CD0400FC009C /* SDL2_mixer.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7970590D1D52CC2E00FC009C /* SDL2_mixer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		797059151D52CD0700FC009C /* SDL2.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7970590E1D52CC2E00FC009C /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		797059AF1D52D83F00FC009C /* alien.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 797059771D52D83E00FC009C /* alien.cpp */; };
+		797059B01D52D83F00FC009C /* audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 797059791D52D83E00FC009C /* audio.cpp */; };
+		797059B11D52D83F00FC009C /* bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7970597B1D52D83E00FC009C /* bullet.cpp */; };
+		797059B21D52D83F00FC009C /* cargo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7970597D1D52D83E00FC009C /* cargo.cpp */; };
+		797059B31D52D83F00FC009C /* collectable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7970597F1D52D83E00FC009C /* collectable.cpp */; };
+		797059B41D52D83F00FC009C /* colors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 797059811D52D83E00FC009C /* colors.cpp */; };
+		797059B51D52D83F00FC009C /* cutscene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 797059831D52D83E00FC009C /* cutscene.cpp */; };
+		797059B61D52D83F00FC009C /* engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 797059861D52D83E00FC009C /* engine.cpp */; };
+		797059B71D52D83F00FC009C /* event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 797059881D52D83E00FC009C /* event.cpp */; };
+		797059B81D52D83F00FC009C /* explosion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7970598A1D52D83E00FC009C /* explosion.cpp */; };
+		797059B91D52D83F00FC009C /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7970598C1D52D83E00FC009C /* game.cpp */; };
+		797059BA1D52D83F00FC009C /* gfx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7970598E1D52D83F00FC009C /* gfx.cpp */; };
+		797059BB1D52D83F00FC009C /* intermission.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 797059901D52D83F00FC009C /* intermission.cpp */; };
+		797059BC1D52D83F00FC009C /* loadSave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 797059921D52D83F00FC009C /* loadSave.cpp */; };
+		797059BD1D52D83F00FC009C /* messages.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 797059941D52D83F00FC009C /* messages.cpp */; };
+		797059BE1D52D83F00FC009C /* misc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 797059961D52D83F00FC009C /* misc.cpp */; };
+		797059BF1D52D83F00FC009C /* missions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 797059981D52D83F00FC009C /* missions.cpp */; };
+		797059C01D52D83F00FC009C /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7970599A1D52D83F00FC009C /* player.cpp */; };
+		797059C11D52D83F00FC009C /* renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7970599C1D52D83F00FC009C /* renderer.cpp */; };
+		797059C21D52D83F00FC009C /* resources.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7970599E1D52D83F00FC009C /* resources.cpp */; };
+		797059C31D52D83F00FC009C /* screen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 797059A01D52D83F00FC009C /* screen.cpp */; };
+		797059C41D52D83F00FC009C /* ship.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 797059A21D52D83F00FC009C /* ship.cpp */; };
+		797059C51D52D83F00FC009C /* shop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 797059A41D52D83F00FC009C /* shop.cpp */; };
+		797059C61D52D83F00FC009C /* Starfighter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 797059A61D52D83F00FC009C /* Starfighter.cpp */; };
+		797059C71D52D83F00FC009C /* title.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 797059A91D52D83F00FC009C /* title.cpp */; };
+		797059C81D52D83F00FC009C /* weapons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 797059AB1D52D83F00FC009C /* weapons.cpp */; };
+		797059C91D52D83F00FC009C /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 797059AD1D52D83F00FC009C /* window.cpp */; };
+		797059CB1D52D87100FC009C /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 797059CA1D52D87100FC009C /* CoreFoundation.framework */; };
+		797059D11D52D8ED00FC009C /* data in Resources */ = {isa = PBXBuildFile; fileRef = 797059CC1D52D8ED00FC009C /* data */; };
+		797059D21D52D8ED00FC009C /* gfx in Resources */ = {isa = PBXBuildFile; fileRef = 797059CD1D52D8ED00FC009C /* gfx */; };
+		797059D31D52D8ED00FC009C /* misc in Resources */ = {isa = PBXBuildFile; fileRef = 797059CE1D52D8ED00FC009C /* misc */; };
+		797059D41D52D8ED00FC009C /* music in Resources */ = {isa = PBXBuildFile; fileRef = 797059CF1D52D8ED00FC009C /* music */; };
+		797059D51D52D8ED00FC009C /* sound in Resources */ = {isa = PBXBuildFile; fileRef = 797059D01D52D8ED00FC009C /* sound */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		797059121D52CCF100FC009C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				797059131D52CD0100FC009C /* SDL2_image.framework in CopyFiles */,
+				797059141D52CD0400FC009C /* SDL2_mixer.framework in CopyFiles */,
+				797059151D52CD0700FC009C /* SDL2.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		797058F61D52CB1000FC009C /* Starfighter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Starfighter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		797058FF1D52CB1000FC009C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		797059041D52CB1000FC009C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7970590C1D52CC2E00FC009C /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2_image.framework; sourceTree = SOURCE_ROOT; };
+		7970590D1D52CC2E00FC009C /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2_mixer.framework; sourceTree = SOURCE_ROOT; };
+		7970590E1D52CC2E00FC009C /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2.framework; sourceTree = SOURCE_ROOT; };
+		797059771D52D83E00FC009C /* alien.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = alien.cpp; path = ../../src/alien.cpp; sourceTree = "<group>"; };
+		797059781D52D83E00FC009C /* alien.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = alien.h; path = ../../src/alien.h; sourceTree = "<group>"; };
+		797059791D52D83E00FC009C /* audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = audio.cpp; path = ../../src/audio.cpp; sourceTree = "<group>"; };
+		7970597A1D52D83E00FC009C /* audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = audio.h; path = ../../src/audio.h; sourceTree = "<group>"; };
+		7970597B1D52D83E00FC009C /* bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bullet.cpp; path = ../../src/bullet.cpp; sourceTree = "<group>"; };
+		7970597C1D52D83E00FC009C /* bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bullet.h; path = ../../src/bullet.h; sourceTree = "<group>"; };
+		7970597D1D52D83E00FC009C /* cargo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cargo.cpp; path = ../../src/cargo.cpp; sourceTree = "<group>"; };
+		7970597E1D52D83E00FC009C /* cargo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cargo.h; path = ../../src/cargo.h; sourceTree = "<group>"; };
+		7970597F1D52D83E00FC009C /* collectable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = collectable.cpp; path = ../../src/collectable.cpp; sourceTree = "<group>"; };
+		797059801D52D83E00FC009C /* collectable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = collectable.h; path = ../../src/collectable.h; sourceTree = "<group>"; };
+		797059811D52D83E00FC009C /* colors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = colors.cpp; path = ../../src/colors.cpp; sourceTree = "<group>"; };
+		797059821D52D83E00FC009C /* colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = colors.h; path = ../../src/colors.h; sourceTree = "<group>"; };
+		797059831D52D83E00FC009C /* cutscene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cutscene.cpp; path = ../../src/cutscene.cpp; sourceTree = "<group>"; };
+		797059841D52D83E00FC009C /* cutscene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cutscene.h; path = ../../src/cutscene.h; sourceTree = "<group>"; };
+		797059851D52D83E00FC009C /* defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = defs.h; path = ../../src/defs.h; sourceTree = "<group>"; };
+		797059861D52D83E00FC009C /* engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = engine.cpp; path = ../../src/engine.cpp; sourceTree = "<group>"; };
+		797059871D52D83E00FC009C /* engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = engine.h; path = ../../src/engine.h; sourceTree = "<group>"; };
+		797059881D52D83E00FC009C /* event.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = event.cpp; path = ../../src/event.cpp; sourceTree = "<group>"; };
+		797059891D52D83E00FC009C /* event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = event.h; path = ../../src/event.h; sourceTree = "<group>"; };
+		7970598A1D52D83E00FC009C /* explosion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = explosion.cpp; path = ../../src/explosion.cpp; sourceTree = "<group>"; };
+		7970598B1D52D83E00FC009C /* explosion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = explosion.h; path = ../../src/explosion.h; sourceTree = "<group>"; };
+		7970598C1D52D83E00FC009C /* game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = game.cpp; path = ../../src/game.cpp; sourceTree = "<group>"; };
+		7970598D1D52D83F00FC009C /* game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = game.h; path = ../../src/game.h; sourceTree = "<group>"; };
+		7970598E1D52D83F00FC009C /* gfx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gfx.cpp; path = ../../src/gfx.cpp; sourceTree = "<group>"; };
+		7970598F1D52D83F00FC009C /* gfx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gfx.h; path = ../../src/gfx.h; sourceTree = "<group>"; };
+		797059901D52D83F00FC009C /* intermission.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = intermission.cpp; path = ../../src/intermission.cpp; sourceTree = "<group>"; };
+		797059911D52D83F00FC009C /* intermission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = intermission.h; path = ../../src/intermission.h; sourceTree = "<group>"; };
+		797059921D52D83F00FC009C /* loadSave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = loadSave.cpp; path = ../../src/loadSave.cpp; sourceTree = "<group>"; };
+		797059931D52D83F00FC009C /* loadSave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = loadSave.h; path = ../../src/loadSave.h; sourceTree = "<group>"; };
+		797059941D52D83F00FC009C /* messages.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = messages.cpp; path = ../../src/messages.cpp; sourceTree = "<group>"; };
+		797059951D52D83F00FC009C /* messages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = messages.h; path = ../../src/messages.h; sourceTree = "<group>"; };
+		797059961D52D83F00FC009C /* misc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = misc.cpp; path = ../../src/misc.cpp; sourceTree = "<group>"; };
+		797059971D52D83F00FC009C /* misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = misc.h; path = ../../src/misc.h; sourceTree = "<group>"; };
+		797059981D52D83F00FC009C /* missions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = missions.cpp; path = ../../src/missions.cpp; sourceTree = "<group>"; };
+		797059991D52D83F00FC009C /* missions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = missions.h; path = ../../src/missions.h; sourceTree = "<group>"; };
+		7970599A1D52D83F00FC009C /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = player.cpp; path = ../../src/player.cpp; sourceTree = "<group>"; };
+		7970599B1D52D83F00FC009C /* player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = player.h; path = ../../src/player.h; sourceTree = "<group>"; };
+		7970599C1D52D83F00FC009C /* renderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = renderer.cpp; path = ../../src/renderer.cpp; sourceTree = "<group>"; };
+		7970599D1D52D83F00FC009C /* renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = renderer.h; path = ../../src/renderer.h; sourceTree = "<group>"; };
+		7970599E1D52D83F00FC009C /* resources.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = resources.cpp; path = ../../src/resources.cpp; sourceTree = "<group>"; };
+		7970599F1D52D83F00FC009C /* resources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = resources.h; path = ../../src/resources.h; sourceTree = "<group>"; };
+		797059A01D52D83F00FC009C /* screen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = screen.cpp; path = ../../src/screen.cpp; sourceTree = "<group>"; };
+		797059A11D52D83F00FC009C /* screen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = screen.h; path = ../../src/screen.h; sourceTree = "<group>"; };
+		797059A21D52D83F00FC009C /* ship.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ship.cpp; path = ../../src/ship.cpp; sourceTree = "<group>"; };
+		797059A31D52D83F00FC009C /* ship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ship.h; path = ../../src/ship.h; sourceTree = "<group>"; };
+		797059A41D52D83F00FC009C /* shop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = shop.cpp; path = ../../src/shop.cpp; sourceTree = "<group>"; };
+		797059A51D52D83F00FC009C /* shop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shop.h; path = ../../src/shop.h; sourceTree = "<group>"; };
+		797059A61D52D83F00FC009C /* Starfighter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Starfighter.cpp; path = ../../src/Starfighter.cpp; sourceTree = "<group>"; };
+		797059A71D52D83F00FC009C /* Starfighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Starfighter.h; path = ../../src/Starfighter.h; sourceTree = "<group>"; };
+		797059A81D52D83F00FC009C /* structs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = structs.h; path = ../../src/structs.h; sourceTree = "<group>"; };
+		797059A91D52D83F00FC009C /* title.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = title.cpp; path = ../../src/title.cpp; sourceTree = "<group>"; };
+		797059AA1D52D83F00FC009C /* title.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = title.h; path = ../../src/title.h; sourceTree = "<group>"; };
+		797059AB1D52D83F00FC009C /* weapons.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = weapons.cpp; path = ../../src/weapons.cpp; sourceTree = "<group>"; };
+		797059AC1D52D83F00FC009C /* weapons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = weapons.h; path = ../../src/weapons.h; sourceTree = "<group>"; };
+		797059AD1D52D83F00FC009C /* window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = window.cpp; path = ../../src/window.cpp; sourceTree = "<group>"; };
+		797059AE1D52D83F00FC009C /* window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = window.h; path = ../../src/window.h; sourceTree = "<group>"; };
+		797059CA1D52D87100FC009C /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		797059CC1D52D8ED00FC009C /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = ../data; sourceTree = "<group>"; };
+		797059CD1D52D8ED00FC009C /* gfx */ = {isa = PBXFileReference; lastKnownFileType = folder; name = gfx; path = ../gfx; sourceTree = "<group>"; };
+		797059CE1D52D8ED00FC009C /* misc */ = {isa = PBXFileReference; lastKnownFileType = folder; name = misc; path = ../misc; sourceTree = "<group>"; };
+		797059CF1D52D8ED00FC009C /* music */ = {isa = PBXFileReference; lastKnownFileType = folder; name = music; path = ../music; sourceTree = "<group>"; };
+		797059D01D52D8ED00FC009C /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sound; path = ../sound; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		797058F31D52CB1000FC009C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				797059CB1D52D87100FC009C /* CoreFoundation.framework in Frameworks */,
+				797059111D52CC2E00FC009C /* SDL2.framework in Frameworks */,
+				7970590F1D52CC2E00FC009C /* SDL2_image.framework in Frameworks */,
+				797059101D52CC2E00FC009C /* SDL2_mixer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		797058ED1D52CB1000FC009C = {
+			isa = PBXGroup;
+			children = (
+				797059CC1D52D8ED00FC009C /* data */,
+				797059CD1D52D8ED00FC009C /* gfx */,
+				797059CE1D52D8ED00FC009C /* misc */,
+				797059CF1D52D8ED00FC009C /* music */,
+				797059D01D52D8ED00FC009C /* sound */,
+				797059CA1D52D87100FC009C /* CoreFoundation.framework */,
+				797058F81D52CB1000FC009C /* starfighter */,
+				797058F71D52CB1000FC009C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		797058F71D52CB1000FC009C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				797058F61D52CB1000FC009C /* Starfighter.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		797058F81D52CB1000FC009C /* starfighter */ = {
+			isa = PBXGroup;
+			children = (
+				797059771D52D83E00FC009C /* alien.cpp */,
+				797059781D52D83E00FC009C /* alien.h */,
+				797059791D52D83E00FC009C /* audio.cpp */,
+				7970597A1D52D83E00FC009C /* audio.h */,
+				7970597B1D52D83E00FC009C /* bullet.cpp */,
+				7970597C1D52D83E00FC009C /* bullet.h */,
+				7970597D1D52D83E00FC009C /* cargo.cpp */,
+				7970597E1D52D83E00FC009C /* cargo.h */,
+				7970597F1D52D83E00FC009C /* collectable.cpp */,
+				797059801D52D83E00FC009C /* collectable.h */,
+				797059811D52D83E00FC009C /* colors.cpp */,
+				797059821D52D83E00FC009C /* colors.h */,
+				797059831D52D83E00FC009C /* cutscene.cpp */,
+				797059841D52D83E00FC009C /* cutscene.h */,
+				797059851D52D83E00FC009C /* defs.h */,
+				797059861D52D83E00FC009C /* engine.cpp */,
+				797059871D52D83E00FC009C /* engine.h */,
+				797059881D52D83E00FC009C /* event.cpp */,
+				797059891D52D83E00FC009C /* event.h */,
+				7970598A1D52D83E00FC009C /* explosion.cpp */,
+				7970598B1D52D83E00FC009C /* explosion.h */,
+				7970598C1D52D83E00FC009C /* game.cpp */,
+				7970598D1D52D83F00FC009C /* game.h */,
+				7970598E1D52D83F00FC009C /* gfx.cpp */,
+				7970598F1D52D83F00FC009C /* gfx.h */,
+				797059901D52D83F00FC009C /* intermission.cpp */,
+				797059911D52D83F00FC009C /* intermission.h */,
+				797059921D52D83F00FC009C /* loadSave.cpp */,
+				797059931D52D83F00FC009C /* loadSave.h */,
+				797059941D52D83F00FC009C /* messages.cpp */,
+				797059951D52D83F00FC009C /* messages.h */,
+				797059961D52D83F00FC009C /* misc.cpp */,
+				797059971D52D83F00FC009C /* misc.h */,
+				797059981D52D83F00FC009C /* missions.cpp */,
+				797059991D52D83F00FC009C /* missions.h */,
+				7970599A1D52D83F00FC009C /* player.cpp */,
+				7970599B1D52D83F00FC009C /* player.h */,
+				7970599C1D52D83F00FC009C /* renderer.cpp */,
+				7970599D1D52D83F00FC009C /* renderer.h */,
+				7970599E1D52D83F00FC009C /* resources.cpp */,
+				7970599F1D52D83F00FC009C /* resources.h */,
+				797059A01D52D83F00FC009C /* screen.cpp */,
+				797059A11D52D83F00FC009C /* screen.h */,
+				797059A21D52D83F00FC009C /* ship.cpp */,
+				797059A31D52D83F00FC009C /* ship.h */,
+				797059A41D52D83F00FC009C /* shop.cpp */,
+				797059A51D52D83F00FC009C /* shop.h */,
+				797059A61D52D83F00FC009C /* Starfighter.cpp */,
+				797059A71D52D83F00FC009C /* Starfighter.h */,
+				797059A81D52D83F00FC009C /* structs.h */,
+				797059A91D52D83F00FC009C /* title.cpp */,
+				797059AA1D52D83F00FC009C /* title.h */,
+				797059AB1D52D83F00FC009C /* weapons.cpp */,
+				797059AC1D52D83F00FC009C /* weapons.h */,
+				797059AD1D52D83F00FC009C /* window.cpp */,
+				797059AE1D52D83F00FC009C /* window.h */,
+				7970590C1D52CC2E00FC009C /* SDL2_image.framework */,
+				7970590D1D52CC2E00FC009C /* SDL2_mixer.framework */,
+				7970590E1D52CC2E00FC009C /* SDL2.framework */,
+				797058FF1D52CB1000FC009C /* Assets.xcassets */,
+				797059041D52CB1000FC009C /* Info.plist */,
+			);
+			path = starfighter;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		797058F51D52CB1000FC009C /* Starfighter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 797059071D52CB1000FC009C /* Build configuration list for PBXNativeTarget "Starfighter" */;
+			buildPhases = (
+				797058F21D52CB1000FC009C /* Sources */,
+				797058F31D52CB1000FC009C /* Frameworks */,
+				797058F41D52CB1000FC009C /* Resources */,
+				797059121D52CCF100FC009C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Starfighter;
+			productName = starfighter;
+			productReference = 797058F61D52CB1000FC009C /* Starfighter.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		797058EE1D52CB1000FC009C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Parallel Realities";
+				TargetAttributes = {
+					797058F51D52CB1000FC009C = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 797058F11D52CB1000FC009C /* Build configuration list for PBXProject "starfighter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 797058ED1D52CB1000FC009C;
+			productRefGroup = 797058F71D52CB1000FC009C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				797058F51D52CB1000FC009C /* Starfighter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		797058F41D52CB1000FC009C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				797059D51D52D8ED00FC009C /* sound in Resources */,
+				797059D31D52D8ED00FC009C /* misc in Resources */,
+				797059D21D52D8ED00FC009C /* gfx in Resources */,
+				797059D41D52D8ED00FC009C /* music in Resources */,
+				797059D11D52D8ED00FC009C /* data in Resources */,
+				797059001D52CB1000FC009C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		797058F21D52CB1000FC009C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				797059BC1D52D83F00FC009C /* loadSave.cpp in Sources */,
+				797059B01D52D83F00FC009C /* audio.cpp in Sources */,
+				797059C01D52D83F00FC009C /* player.cpp in Sources */,
+				797059C41D52D83F00FC009C /* ship.cpp in Sources */,
+				797059B61D52D83F00FC009C /* engine.cpp in Sources */,
+				797059B11D52D83F00FC009C /* bullet.cpp in Sources */,
+				797059C51D52D83F00FC009C /* shop.cpp in Sources */,
+				797059BD1D52D83F00FC009C /* messages.cpp in Sources */,
+				797059BE1D52D83F00FC009C /* misc.cpp in Sources */,
+				797059BB1D52D83F00FC009C /* intermission.cpp in Sources */,
+				797059B51D52D83F00FC009C /* cutscene.cpp in Sources */,
+				797059C61D52D83F00FC009C /* Starfighter.cpp in Sources */,
+				797059C21D52D83F00FC009C /* resources.cpp in Sources */,
+				797059C31D52D83F00FC009C /* screen.cpp in Sources */,
+				797059B31D52D83F00FC009C /* collectable.cpp in Sources */,
+				797059BF1D52D83F00FC009C /* missions.cpp in Sources */,
+				797059C11D52D83F00FC009C /* renderer.cpp in Sources */,
+				797059C71D52D83F00FC009C /* title.cpp in Sources */,
+				797059B91D52D83F00FC009C /* game.cpp in Sources */,
+				797059C81D52D83F00FC009C /* weapons.cpp in Sources */,
+				797059B41D52D83F00FC009C /* colors.cpp in Sources */,
+				797059B21D52D83F00FC009C /* cargo.cpp in Sources */,
+				797059B81D52D83F00FC009C /* explosion.cpp in Sources */,
+				797059BA1D52D83F00FC009C /* gfx.cpp in Sources */,
+				797059C91D52D83F00FC009C /* window.cpp in Sources */,
+				797059B71D52D83F00FC009C /* event.cpp in Sources */,
+				797059AF1D52D83F00FC009C /* alien.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		797059051D52CB1000FC009C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		797059061D52CB1000FC009C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		797059081D52CB1000FC009C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = "VERSION=\\\"1.5.1\\\"";
+				INFOPLIST_FILE = starfighter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = uk.me.fantastic.starfighter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		797059091D52CB1000FC009C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = "VERSION=\\\"1.5.1\\\"";
+				INFOPLIST_FILE = starfighter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = uk.me.fantastic.starfighter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		797058F11D52CB1000FC009C /* Build configuration list for PBXProject "starfighter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				797059051D52CB1000FC009C /* Debug */,
+				797059061D52CB1000FC009C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		797059071D52CB1000FC009C /* Build configuration list for PBXNativeTarget "Starfighter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				797059081D52CB1000FC009C /* Debug */,
+				797059091D52CB1000FC009C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 797058EE1D52CB1000FC009C /* Project object */;
+}
