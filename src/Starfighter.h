@@ -28,9 +28,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <sys/stat.h>
 #include <unistd.h>
 
+#ifdef __APPLE__
+#include <SDL2/SDL.h>
+#include <SDL2_image/SDL_image.h>
+#include <SDL2_mixer/SDL_mixer.h>
+#include "CoreFoundation/CoreFoundation.h"
+#else
 #include "SDL.h"
 #include "SDL_image.h"
 #include "SDL_mixer.h"
+#endif
 
 #include "defs.h"
 #include "structs.h"

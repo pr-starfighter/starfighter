@@ -28,6 +28,23 @@ int main(int argc, char **argv)
 
 	if (chdir(DATADIR) == -1)
 		printf("Warning: failed to change directory to \"%s\"\n", DATADIR);
+ 
+    // This makes relative paths work in C++ in Xcode by changing directory to the Resources folder inside the .app bundle
+#ifdef __APPLE__
+    CFBundleRef mainBundle = CFBundleGetMainBundle();
+    CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
+    char path[PATH_MAX];
+    if (!CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (UInt8 *)path, PATH_MAX))
+    {
+        // error!
+    }
+    CFRelease(resourcesURL);
+    
+    chdir(path);
+    printf("Current directory \"%s\"\n", path);
+#endif
+    // ----------------------------------------------------------------------------
+
 
 	engine_init(); // Must do this first!
 

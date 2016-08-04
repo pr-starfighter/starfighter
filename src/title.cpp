@@ -285,7 +285,7 @@ int doTitle()
 		aliens[i].face = 0;
 	}
 
-	sprintf(buildVersion, "Version "VERSION);
+    sprintf(buildVersion, "Version %s", VERSION );
 
 	SDL_Rect optionRec;
 

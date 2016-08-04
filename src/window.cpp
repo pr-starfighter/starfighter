@@ -17,6 +17,11 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#ifdef __APPLE__
+#include <SDL2/SDL.h>
+#else
 #include "SDL.h"
+#endif
+
 
 SDL_Window *window;
