@@ -2,6 +2,7 @@ build
 dist
 *.o
 *.pak
+starfighter
 
 # Mac OS X
 *.DS_Store
