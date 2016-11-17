@@ -22,6 +22,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 object alien_defs[CD_MAX];
 object aliens[ALIEN_MAX];
 
+static const char *chrisKillMessage[] = {
+	"Take that, robot oppressors!",
+	"Come on, WEAPCO, give me a challenge already!",
+	"Is that all you've got?",
+	"I could kill these robots with my hands tied behind my back!",
+	"And now you're nothing but a pile of scrap metal!",
+	"Who else wants some?!",
+	"Humans do it better!",
+	"A century of AI research is no match for me!",
+	"What's the matter, WEAPCO? Can't keep up?",
+	"I eat robots like you for breakfast!",
+	"Target destroyed!",
+	"Bring it on, WEAPCO!"
+};
+
 /*
 This simply pulls back an alien from the array that is
 "dead" (no shield) and returns the index number so we can have
@@ -1690,6 +1705,8 @@ Fill in later...
 */
 void alien_destroy(object *alien, object *attacker)
 {
+	int r;
+
 	audio_playSound(SFX_EXPLOSION, alien->x, alien->y);
 
 	if (alien->flags & FL_FRIEND)
@@ -1714,6 +1731,11 @@ void alien_destroy(object *alien, object *attacker)
 		if (attacker == &player)
 		{
 			game.totalKills++;
+			if (((rand() % 8) == 0) && (alien-> flags & FL_WEAPCO))
+			{
+				r = rand() % 12;
+				setRadioMessage(FS_CHRIS, chrisKillMessage[r], 0);
+			}
 		}
 		else if (attacker->classDef == CD_PHOEBE)
 		{
