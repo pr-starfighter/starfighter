@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012, 2013 Guus Sliepen
-Copyright (C) 2012, 2015, 2016 onpon4 <onpon4@riseup.net>
+Copyright (C) 2012, 2015, 2016 Julie Marchant <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -227,7 +227,7 @@ int doTitle()
 	renderer_update();
 	screen_clear(black);
 
-	continueSaveSlot = initSaveSlots();
+	continueSaveSlot = save_initSlots();
 
 	loadBackground("gfx/spirit.jpg");
 
@@ -406,7 +406,7 @@ int doTitle()
 						5, screen->h - 60, FONT_WHITE, 0, gfx_background);
 					gfx_renderString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012",
 						5, screen->h - 40, FONT_WHITE, 0, gfx_background);
-					gfx_renderString("Copyright 2015, 2016 onpon4",
+					gfx_renderString("Copyright 2015, 2016 Julie Marchant",
 						5, screen->h - 20, FONT_WHITE, 0, gfx_background);
 					gfx_renderString(buildVersion, screen->w - 6 - strlen(buildVersion) * 9,
 						screen->h - 20, FONT_WHITE, 0, gfx_background);
@@ -433,7 +433,7 @@ int doTitle()
 					5, screen->h - 60, FONT_WHITE, 0, gfx_background);
 				gfx_renderString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012",
 					5, screen->h - 40, FONT_WHITE, 0, gfx_background);
-				gfx_renderString("Copyright 2015, 2016 onpon4",
+				gfx_renderString("Copyright 2015, 2016 Julie Marchant",
 					5, screen->h - 20, FONT_WHITE, 0, gfx_background);
 				gfx_renderString(buildVersion, screen->w - 6 - strlen(buildVersion) * 9,
 					screen->h - 20, FONT_WHITE, 0, gfx_background);
@@ -589,7 +589,7 @@ int doTitle()
 	if (selectedOption == 3)
 	{
 		game_init();
-		selectedOption = loadGame(continueSaveSlot);
+		selectedOption = save_load(continueSaveSlot);
 	}
 
 	// Send back a negative number...

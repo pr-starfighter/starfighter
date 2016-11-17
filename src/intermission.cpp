@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012, 2013 Guus Sliepen
-Copyright (C) 2012, 2015, 2016 onpon4 <onpon4@riseup.net>
+Copyright (C) 2012, 2015, 2016 Julie Marchant <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -1110,7 +1110,7 @@ int intermission()
 	renderer_update();
 	screen_clear(black);
 
-	initSaveSlots();
+	save_initSlots();
 
 	loadBackground(systemBackground[game.system]);
 
@@ -1179,7 +1179,7 @@ int intermission()
 	SDL_Surface *optionsSurface = gfx_createSurface(320, 240);
 	SDL_Surface *commsSurface = gfx_createSurface(450, 400);
 
-	createSavesSurface(savesSurface, -1);
+	save_createSurface(savesSurface, -1);
 	intermission_createOptions(optionsSurface);
 	intermission_createCommsSurface(commsSurface);
 
@@ -1369,7 +1369,7 @@ int intermission()
 
 			case 3:
 				screen_blit(savesSurface, 200, 100);
-				saveSlot = showSaveSlots(savesSurface, saveSlot);
+				saveSlot = save_showSlots(savesSurface, saveSlot);
 				break;
 
 			case 4:
@@ -1415,7 +1415,7 @@ int intermission()
 					intermission_updateCommsSurface(commsSurface);
 					section = 1;
 					redrawBackground = true;
-					saveGame(0);
+					save(0);
 				}
 				else if (interceptionChance > 0)
 				{

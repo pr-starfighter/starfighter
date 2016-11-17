@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012, 2013 Guus Sliepen
-Copyright (C) 2015, 2016 onpon4 <onpon4@riseup.net>
+Copyright (C) 2015, 2016 Julie Marchant <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -28,7 +28,7 @@ data. It returns the slot number (1 - 10) of the most recently
 used file. On the title screen, this is used to determine whether
 a player can "Continue Current Game" and "Load Saved Game".
 */
-int initSaveSlots()
+int save_initSlots()
 {
 	char fileName[PATH_MAX];
 	int system;
@@ -140,7 +140,7 @@ int initSaveSlots()
 /*
 Fill in later...
 */
-bool loadGame(int slot)
+int save_load(int slot)
 {
 	char filename[PATH_MAX];
 	FILE *fp;
@@ -155,7 +155,7 @@ bool loadGame(int slot)
 		{
 			printf("Error: Could not determine the version of the save file.\n");
 			fclose(fp);
-			return false;
+			return 0;
 		}
 
 		switch (game.saveFormat)
@@ -209,7 +209,7 @@ bool loadGame(int slot)
 			default:
 				printf("Error: Save format version not recognized.\n");
 				fclose(fp);
-				return false;
+				return 0;
 		}
 
 		fclose(fp);
@@ -220,13 +220,13 @@ bool loadGame(int slot)
 		fp = fopen(filename, "rb");
 
 		if (fp == NULL)
-			return false;
+			return 0;
 
 		if (fread(&game, sizeof(Game), 1, fp) != 1)
 		{
 			printf("Save game error. The file was not of the expected format.\n");
 			fclose(fp);
-			return false;
+			return 0;
 		}
 
 		fclose(fp);
@@ -248,10 +248,10 @@ bool loadGame(int slot)
 	for (int i = 0 ; i < 10 ; i++)
 		systemPlanet[i].missionCompleted = game.missionCompleted[i];
 
-	return true;
+	return 1;
 }
 
-void saveGame(int slot)
+void save(int slot)
 {
 	FILE *fp;
 	char fileName[PATH_MAX];
@@ -342,11 +342,11 @@ void saveGame(int slot)
 	}
 
 	// Recall to update the save slots... (lazy, yes)
-	initSaveSlots();
+	save_initSlots();
 	engine.keyState[KEY_FIRE] = 0;
 }
 
-void createSavesSurface(SDL_Surface *savesSurface, int clickedSlot)
+void save_createSurface(SDL_Surface *savesSurface, int clickedSlot)
 {
 	int y = 10;
 
@@ -407,7 +407,7 @@ Displays the save slot available. For use with an interface that
 has the cursor enabled. It returns the index number of the slot clicked
 so that the function invoking it can perform a load or save on that slot.
 */
-int showSaveSlots(SDL_Surface *savesSurface, int saveSlot)
+int save_showSlots(SDL_Surface *savesSurface, int saveSlot)
 {
 	int clickedSlot = -1;
 
@@ -425,7 +425,7 @@ int showSaveSlots(SDL_Surface *savesSurface, int saveSlot)
 				r.x, r.y, r.w, r.h))
 			{
 				clickedSlot = i;
-				createSavesSurface(savesSurface, i);
+				save_createSurface(savesSurface, i);
 			}
 			r.y += 30;
 		}
@@ -433,13 +433,13 @@ int showSaveSlots(SDL_Surface *savesSurface, int saveSlot)
 		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 215,
 			365, 100, 25))
 		{
-			saveGame(saveSlot);
-			createSavesSurface(savesSurface, -10);
+			save(saveSlot);
+			save_createSurface(savesSurface, -10);
 		}
 
 		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 335,
 				365, 100, 25))
-			createSavesSurface(savesSurface, -1);
+			save_createSurface(savesSurface, -1);
 
 		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 453,
 			365, 100, 25))
@@ -448,8 +448,8 @@ int showSaveSlots(SDL_Surface *savesSurface, int saveSlot)
 			sprintf(filename, "%ssave%.2d.dat", engine.configDirectory,
 				saveSlot);
 			remove(filename);
-			initSaveSlots();
-			createSavesSurface(savesSurface, -11);
+			save_initSlots();
+			save_createSurface(savesSurface, -11);
 		}
 	}
 
