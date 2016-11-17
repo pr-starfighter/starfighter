@@ -21,7 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TITLE_H
 
 extern int doTitle();
-extern void showStory();
 extern void gameover();
 extern void doCredits();
 

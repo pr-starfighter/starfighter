@@ -65,5 +65,5 @@
 350 Project: Starfighter
 020 Copyright 2003 Parallel Realities
 020 Copyright 2012 Guus Sliepen, Astrid S. de Wijn and others
-020 Copyright 2015, 2016 onpon4
+020 Copyright 2015, 2016 Julie Marchant
 120 starfighter.nongnu.org

@@ -134,8 +134,6 @@ int main(int argc, char **argv)
 
 	colors_init();
 
-	showStory();
-
 	// Determine which part of the game we will go to...
 	section = 0;
 
