@@ -28,22 +28,6 @@ static const char *deathMessage[6] = {
 	"Chriiiiiiiiiiiiiiiiiiiiiiiiiiis!!!!",
 };
 
-static const char *killMessage[10] = {
-	"Chalk another one up for me!",
-	"That'll teach you!",
-	"One more for me!",
-	"Target destroyed!",
-	"You ain't so tough!",
-	"Kicked your ass!",
-
-	"That takes me up to %d",
-
-	"Hey %s, you asleep over there?!",
-	"I'm catching up with you, %s!",
-
-	"Number one, baby!",
-};
-
 static const char *missFireMessage[5] = {
 	"I am NOT your enemy!",
 	"Hey! Watch it!",
@@ -57,81 +41,6 @@ static const char *playerHitMessage[3] = {
 	"Get out of the way!",
 	"Don't fly into my missiles!",
 };
-
-void getKillMessage(object *ally)
-{
-	char in[50], otherName[30];
-	int kills, difference;
-	bool firstPlace = false;
-	int faceToUse = FS_PHOEBE;
-
-	if (ally == &aliens[ALIEN_PHOEBE])
-	{
-		strcpy(otherName, "Ursula");
-		kills = game.wingMate1Kills;
-		difference = game.wingMate1Kills - game.wingMate2Kills;
-		if ((game.wingMate1Kills > game.wingMate2Kills) &&
-				(game.wingMate1Kills > game.totalKills))
-			firstPlace = true;
-		faceToUse = FS_PHOEBE;
-	}
-	else
-	{
-		strcpy(otherName, "Phoebe");
-		kills = game.wingMate2Kills;
-		difference = game.wingMate2Kills - game.wingMate1Kills;
-		if ((game.wingMate2Kills > game.wingMate1Kills) &&
-				(game.wingMate2Kills > game.totalKills))
-			firstPlace = true;
-		faceToUse = FS_URSULA;
-	}
-
-	int r = rand() % 10;
-	
-	if (game.hasWingMate2 == 0)
-		r = rand() % 7;
-
-	switch(r)
-	{
-		case 0:
-		case 1:
-		case 2:
-		case 3:
-		case 4:
-		case 5:
-			strcpy(in, killMessage[rand() % 6]);
-			break;
-
-		case 6:
-		case 7:
-			sprintf(in, killMessage[6], kills);
-			break;
-
-		case 8:
-			if (difference > 0)
-			{
-				sprintf(in, killMessage[7], otherName);
-			}
-			else
-			{
-				sprintf(in, killMessage[8], otherName);
-			}
-			break;
-
-		case 9:
-			if (firstPlace)
-			{
-				strcpy(in, killMessage[9]);
-			}
-			else
-			{
-				strcpy(in, killMessage[rand() % 6]);
-			}
-			break;
-	}
-
-	setRadioMessage(faceToUse, in, 0);
-}
 
 const char *getKlineInsult()
 {

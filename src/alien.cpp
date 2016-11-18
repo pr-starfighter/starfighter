@@ -34,7 +34,39 @@ static const char *chrisKillMessage[] = {
 	"What's the matter, WEAPCO? Can't keep up?",
 	"I eat robots like you for breakfast!",
 	"Target destroyed!",
-	"Bring it on, WEAPCO!"
+	"Bring it on, WEAPCO!",
+	"I wish the guys back at home could see this!",
+	"How do you like that, WEAPCO?",
+	"Maybe you should change your name to WEEPCO!"
+};
+static const char *phoebeKillMessage[] = {
+	"I got another one!",
+	"Target destroyed!",
+	"One more for me!",
+	"Yes! Did you see that, Chris?",
+	"Hey Chris, remind me to check my kill count later!",
+	"Bring it on, WEAPCO!",
+	"Take that, WEAPCO!",
+	"My kill count is going up!",
+	"Another one bites the dust!",
+	"We're such a great team!",
+	"I got it!"
+};
+static const char *ursulaKillMessage[] = {
+	"Kicked your ass!",
+	"You ain't so tough!",
+	"I was always a better WEAPCO pilot than you!",
+	"Target destroyed!",
+	"That'll teach you!",
+	"Take that, you cruddy robots!",
+	"Is that all you've got?",
+	"Who else wants some?!",
+	"Dammit, I'm not letting you beat me, Phoebe!",
+	"Bring it on, you mindless drones!",
+	"Oh, I'm sorry, are you getting your metal asses handed to you?",
+	"No one messes with the Lexx family!",
+	"Die, damned WEAPCO drones!",
+	"Don't think you can get away from me!"
 };
 
 /*
@@ -1731,31 +1763,33 @@ void alien_destroy(object *alien, object *attacker)
 		if (attacker == &player)
 		{
 			game.totalKills++;
-			if (((rand() % 8) == 0) && (alien-> flags & FL_WEAPCO))
+			if (((rand() % 16) == 0) && (alien-> flags & FL_WEAPCO))
 			{
-				r = rand() % 12;
+				r = rand() % 15;
 				setRadioMessage(FS_CHRIS, chrisKillMessage[r], 0);
 			}
 		}
 		else if (attacker->classDef == CD_PHOEBE)
 		{
 			game.wingMate1Kills++;
+			if (((rand() % 8) == 0) && (alien-> flags & FL_WEAPCO))
+			{
+				r = rand() % 11;
+				setRadioMessage(FS_PHOEBE, phoebeKillMessage[r], 0);
+			}
 		}
 		else if (attacker->classDef == CD_URSULA)
 		{
 			game.wingMate2Kills++;
+			if (((rand() % 8) == 0) && (alien-> flags & FL_WEAPCO))
+			{
+				r = rand() % 14;
+				setRadioMessage(FS_URSULA, ursulaKillMessage[r], 0);
+			}
 		}
 		else
 		{
 			game.totalOtherKills++;
-		}
-
-		if ((attacker->classDef == CD_PHOEBE) || (attacker->classDef == CD_URSULA))
-		{
-			if ((rand() % 8) == 0)
-			{
-				getKillMessage(attacker);
-			}
 		}
 	}
 
