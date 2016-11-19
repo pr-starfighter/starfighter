@@ -49,7 +49,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "gfx.h"
 #include "intermission.h"
 #include "save.h"
-#include "messages.h"
 #include "misc.h"
 #include "missions.h"
 #include "player.h"

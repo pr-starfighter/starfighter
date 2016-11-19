@@ -49,6 +49,22 @@ static const char *ursulaPlayerHitMessage[nUrsulaPlayerHitMessage] = {
 	"Dammit, Chris, you made me miss!"
 };
 
+static const int nPlayerPhoebeHitMessage = 3;
+static const char *playerPhoebeHitMessage[nPlayerPhoebeHitMessage] = {
+	"OW! I hope that was an accident!",
+	"Chris, please be more careful!",
+	"Ouch! What are you shooting at me for?"
+};
+
+static const int nPlayerUrsulaHitMessage = 5;
+static const char *playerUrsulaHitMessage[nPlayerUrsulaHitMessage] = {
+	"I am NOT your enemy!",
+	"Hey! Watch it!",
+	"What are you doing?! Shoot THEM!",
+	"Open your eyes!",
+	"Are you blind?!"
+};
+
 
 void game_init()
 {
@@ -648,9 +664,10 @@ static void game_doBullets()
 						if (bullet->owner == &player)
 						{
 							game.hits++;
-							if ((aliens[i].classDef == CD_PHOEBE) ||
-									(aliens[i].classDef == CD_URSULA))
-								getMissFireMessage(&aliens[i]);
+							if (aliens[i].classDef == CD_PHOEBE)
+								setRadioMessage(FS_PHOEBE, playerPhoebeHitMessage[rand() % nPlayerPhoebeHitMessage], 0);
+							else if (aliens[i].classDef == CD_URSULA)
+								setRadioMessage(FS_URSULA, playerUrsulaHitMessage[rand() % nPlayerUrsulaHitMessage], 0);
 						}
 
 						if (!(aliens[i].flags & FL_IMMORTAL))
