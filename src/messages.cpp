@@ -19,21 +19,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-static const char *deathMessage[6] = {
-	"Oh my God... No!",
-	"NOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!!",
-	"Please tell me that didn't just happen...",
-	"Chris, answer me!!",
-	"What the hell happened?!",
-	"Chriiiiiiiiiiiiiiiiiiiiiiiiiiis!!!!",
-};
-
 static const char *missFireMessage[5] = {
 	"I am NOT your enemy!",
 	"Hey! Watch it!",
 	"What are you doing?! Shoot THEM!",
-	"OW!!! I hope that was an accident!",
-	"Open your eyes!!",
+	"OW! I hope that was an accident!",
+	"Open your eyes!",
 };
 
 static const char *playerHitMessage[3] = {
@@ -41,50 +32,6 @@ static const char *playerHitMessage[3] = {
 	"Get out of the way!",
 	"Don't fly into my missiles!",
 };
-
-const char *getKlineInsult()
-{
-	static const char *insult[] = {
-		"Pathetic.", "How very disappointing...", "Heroic. And stupid.", "Fool.",
-		"And now you're nothing but a DEAD hero."
-	};
-
-	if (game.area != MISN_VENUS)
-		return (insult[rand() % 3]);
-	else
-		return (insult[3 + (rand() % 2)]);
-}
-
-void getPlayerDeathMessage()
-{
-	if (aliens[ALIEN_KLINE].active)
-	{
-		setRadioMessage(FS_KLINE, getKlineInsult(), 1);
-		return;
-	}
-	
-	if ((aliens[ALIEN_BOSS].active) && (aliens[ALIEN_BOSS].classDef == CD_KRASS))
-	{
-		setRadioMessage(FS_KRASS, "That was the easiest $90,000,000 I've ever earned! Bwwah!! Ha!! Ha!! Ha!!", 1);
-		return;
-	}
-
-	int faceToUse = FS_PHOEBE;
-	
-
-	if ((game.area == MISN_URUSOR) || (game.area == MISN_POSWIC) ||
-		(game.area == MISN_EARTH))
-	{
-		faceToUse = FS_SID;
-	}
-	else if (game.hasWingMate2)
-	{
-		if ((rand() % 2) == 0)
-			faceToUse = FS_URSULA;
-	}
-
-	setRadioMessage(faceToUse, deathMessage[rand() % 6], 1);
-}
 
 void getMissFireMessage(object *ally)
 {

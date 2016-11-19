@@ -64,7 +64,7 @@ void events_init()
 
 			events[3].time = 170;
 			events[3].face = FS_SID;
-			strcpy(events[3].message, "Chris, HURRY!!!");
+			strcpy(events[3].message, "Chris, HURRY!");
 
 			events[4].time = 180;
 			events[4].face = FS_SID;
@@ -108,7 +108,7 @@ void events_init()
 
 			events[5].time = 100;
 			events[5].face = FS_CREW;
-			strcpy(events[5].message, "Chris, HELP!! We've lost all system power! We're a sitting duck out here!");
+			strcpy(events[5].message, "Chris, HELP! We've lost all system power! We're a sitting duck out here!");
 			events[5].entity = ALIEN_FRIEND1;
 			events[5].flag = FL_DISABLED;
 
@@ -139,7 +139,7 @@ void events_init()
 
 			events[1].time = -8;
 			events[1].face = FS_PHOEBE;
-			strcpy(events[1].message, "DAMMIT! It's a trap! Come on, Chris, we have to leave NOW!!");
+			strcpy(events[1].message, "DAMMIT! It's a trap! Come on, Chris, we have to leave NOW!");
 
 			events[2].time = -9;
 			events[2].entity = ALIEN_PHOEBE;
@@ -211,7 +211,7 @@ void events_init()
 
 			events[4].time = 93;
 			events[4].face = FS_KRASS;
-			strcpy(events[4].message, "Keep those things off my back or it'll cost you extra!!!");
+			strcpy(events[4].message, "Keep those things off my back or it'll cost you extra!");
 
 			events[5].time = 120;
 			events[5].entity = ALIEN_BOSS_PART3;

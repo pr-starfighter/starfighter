@@ -1418,7 +1418,7 @@ void alien_setKlineAttackMethod(object *alien)
 {
 	if (alien->shield <= 500)
 	{
-		setRadioMessage(FS_KLINE, "ENOUGH!! THIS ENDS NOW!!!", 1);
+		setRadioMessage(FS_KLINE, "ENOUGH! THIS ENDS NOW!", 1);
 		alien->weaponType[0] = W_AIMED_SHOT;
 		alien->weaponType[1] = W_MICRO_HOMING_MISSILES;
 		alien->flags |= FL_CANCLOAK;
@@ -1427,7 +1427,7 @@ void alien_setKlineAttackMethod(object *alien)
 	}
 	else if (alien->shield <= 1000)
 	{
-		setRadioMessage(FS_KLINE, "Your ability to stay alive irritates me!! Try dodging some of these!!", 1);
+		setRadioMessage(FS_KLINE, "Your ability to stay alive irritates me! Try dodging some of these!", 1);
 		if (game.difficulty == DIFFICULTY_ORIGINAL)
 		{
 			alien->weaponType[0] = W_DIRSHOCKMISSILE;

@@ -395,7 +395,7 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 							setRadioMessage(FS_SID, "Dammit, Chris! We just lost her!", 1);
 							break;
 						case MISN_ALLEZ:
-							setRadioMessage(FS_CREW, "Noooo!! Hull bre...", 1);
+							setRadioMessage(FS_CREW, "Noooo! Hull bre...", 1);
 							break;
 						case MISN_URUSOR:
 							setRadioMessage(FS_SID, "Chris, we've got to disable them, not destroy them!!", 1);
@@ -435,8 +435,7 @@ void updateMissionRequirements(int type, int id, int value)
 	// you will automatically fail the mission(!)
 	if ((type == M_DESTROY_TARGET_TYPE) && (id == CD_SID))
 	{
-		setInfoLine("Sid has been killed!!", FONT_RED);
-		setRadioMessage(FS_CHRIS, "Sid... I... I'm sorry...", 1);
+		setInfoLine("Sid has been killed!", FONT_RED);
 		currentMission.completed1[0] = OB_JUST_FAILED;
 	}
 

@@ -25,6 +25,14 @@ static Star stars[STARS_NUM];
 static Uint32 frameLimit = 0;
 static int thirds = 0;
 
+static const char *klineInsult[] = {
+	"Pathetic.", "How very disappointing...", "Heroic. And stupid."
+};
+static const char *klineVenusInsult[] = {
+	"Fool.", "And now you're nothing but a DEAD hero."
+};
+
+
 void game_init()
 {
 	game.system = SYSTEM_SPIRIT;
@@ -394,7 +402,7 @@ static void game_doCollectables()
 							weapon[W_PLAYER_WEAPON].reload[0] = rate2reload[5];
 							weapon[W_PLAYER_WEAPON].flags |= WF_SPREAD;
 
-							sprintf(temp, "Picked up a Super Charge!!");
+							sprintf(temp, "Picked up a Super Charge!");
 						}
 						else
 						{
@@ -1176,8 +1184,8 @@ static void game_doPlayer()
 	int shapeToUse;
 	float cd;
 	float cc;
-	bool xmoved = false;
-	bool ymoved = false;
+	int xmoved = 0;
+	int ymoved = 0;
 
 	if (player.shield > -100)
 	{
@@ -1206,7 +1214,7 @@ static void game_doPlayer()
 						if (player.ammo[1] >= 100)
 						{
 							player.ammo[1] = 200;
-							setInfoLine("Laser Overheat!!", FONT_WHITE);
+							setInfoLine("Laser Overheat!", FONT_WHITE);
 						}
 					}
 				}
@@ -1277,14 +1285,14 @@ static void game_doPlayer()
 			{
 				player.y -= player.speed;
 				engine.ssy += 0.1;
-				ymoved = true;
+				ymoved = 1;
 			}
 
 			if (engine.keyState[KEY_DOWN])
 			{
 				player.y += player.speed;
 				engine.ssy -= 0.1;
-				ymoved = true;
+				ymoved = 1;
 			}
 
 			if (engine.keyState[KEY_LEFT])
@@ -1292,7 +1300,7 @@ static void game_doPlayer()
 				player.x -= player.speed;
 				engine.ssx += 0.1;
 				player.face = 1;
-				xmoved = true;
+				xmoved = 1;
 			}
 
 			if (engine.keyState[KEY_RIGHT])
@@ -1300,7 +1308,7 @@ static void game_doPlayer()
 				player.x += player.speed;
 				engine.ssx -= 0.1;
 				player.face = 0;
-				xmoved = true;
+				xmoved = 1;
 			}
 
 			if (engine.keyState[KEY_ESCAPE])
@@ -1324,8 +1332,8 @@ static void game_doPlayer()
 				(game.area == MISN_MARS))
 			{
 				player.face = 0;
-				xmoved = true;
-				ymoved = true;
+				xmoved = 1;
+				ymoved = 1;
 			}
 
 			if (engine.done == 0)
@@ -1423,8 +1431,17 @@ static void game_doPlayer()
 			player.shield--;
 			if (player.shield == -1)
 			{
-				if ((game.hasWingMate1) || (aliens[ALIEN_KLINE].active))
-					getPlayerDeathMessage();
+				if (aliens[ALIEN_KLINE].active)
+				{
+					if (game.area == MISN_VENUS)
+						setRadioMessage(FS_KLINE, klineVenusInsult[rand() % 2], 1);
+					else
+						setRadioMessage(FS_KLINE, klineInsult[rand() % 3], 1);
+				}
+				else if ((aliens[ALIEN_BOSS].active) && (aliens[ALIEN_BOSS].classDef == CD_KRASS))
+				{
+					setRadioMessage(FS_KRASS, "That was the easiest $90,000,000 I've ever earned! Bwah! Ha! Ha! Ha!", 1);
+				}
 
 				// Make it look like the ships are all still moving...
 				if (game.area == MISN_ELLESH)

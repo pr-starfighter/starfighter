@@ -21,8 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MESSAGES_H
 
 extern void getKillMessage(object *ally);
-extern const char *getKlineInsult();
-extern void getPlayerDeathMessage();
 extern void getMissFireMessage(object *ally);
 extern void getPlayerHitMessage(object *ally);
 
