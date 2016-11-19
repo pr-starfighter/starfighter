@@ -25,18 +25,25 @@ static Star stars[STARS_NUM];
 static Uint32 frameLimit = 0;
 static int thirds = 0;
 
-static const char *klineInsult[] = {
+static const int nKlineInsult = 3;
+static const char *klineInsult[nKlineInsult] = {
 	"Pathetic.", "How very disappointing...", "Heroic. And stupid."
 };
-static const char *klineVenusInsult[] = {
+
+static const int nKlineVenusInsult = 2;
+static const char *klineVenusInsult[nKlineVenusInsult] = {
 	"Fool.", "And now you're nothing but a DEAD hero."
 };
-static const char *phoebePlayerHitMessage[3] = {
+
+static const int nPhoebePlayerHitMessage = 3;
+static const char *phoebePlayerHitMessage[nPhoebePlayerHitMessage] = {
 	"Oops! Sorry!",
 	"Whoops! Are you OK, Chris?",
 	"Oh, sorry! I didn't see you there!"
 };
-static const char *ursulaPlayerHitMessage[3] = {
+
+static const int nUrsulaPlayerHitMessage = 3;
+static const char *ursulaPlayerHitMessage[nUrsulaPlayerHitMessage] = {
 	"Get out of the way!",
 	"Don't fly into my missiles!",
 	"Dammit, Chris, you made me miss!"
@@ -713,11 +720,11 @@ static void game_doBullets()
 					{
 						if (bullet->owner->classDef == CD_PHOEBE)
 						{
-							setRadioMessage(FS_PHOEBE, phoebePlayerHitMessage[rand() % 3], 0);
+							setRadioMessage(FS_PHOEBE, phoebePlayerHitMessage[rand() % nPhoebePlayerHitMessage], 0);
 						}
 						else if (bullet->owner->classDef == CD_URSULA)
 						{
-							setRadioMessage(FS_URSULA, ursulaPlayerHitMessage[rand() % 3], 0);
+							setRadioMessage(FS_URSULA, ursulaPlayerHitMessage[rand() % nUrsulaPlayerHitMessage], 0);
 						}
 					}
 
@@ -1452,9 +1459,9 @@ static void game_doPlayer()
 				if (aliens[ALIEN_KLINE].active)
 				{
 					if (game.area == MISN_VENUS)
-						setRadioMessage(FS_KLINE, klineVenusInsult[rand() % 2], 1);
+						setRadioMessage(FS_KLINE, klineVenusInsult[rand() % nKlineVenusInsult], 1);
 					else
-						setRadioMessage(FS_KLINE, klineInsult[rand() % 3], 1);
+						setRadioMessage(FS_KLINE, klineInsult[rand() % nKlineInsult], 1);
 				}
 				else if ((aliens[ALIEN_BOSS].active) && (aliens[ALIEN_BOSS].classDef == CD_KRASS))
 				{

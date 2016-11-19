@@ -22,7 +22,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 object alien_defs[CD_MAX];
 object aliens[ALIEN_MAX];
 
-static const char *chrisKillMessage[] = {
+static const int nChrisKillMessage = 15;
+static const char *chrisKillMessage[nChrisKillMessage] = {
 	"Take that, robot oppressors!",
 	"Come on, WEAPCO, give me a challenge already!",
 	"Is that all you've got?",
@@ -39,7 +40,9 @@ static const char *chrisKillMessage[] = {
 	"How do you like that, WEAPCO?",
 	"Maybe you should change your name to WEEPCO!"
 };
-static const char *phoebeKillMessage[] = {
+
+static const int nPhoebeKillMessage = 11;
+static const char *phoebeKillMessage[nPhoebeKillMessage] = {
 	"I got another one!",
 	"Target destroyed!",
 	"One more for me!",
@@ -52,7 +55,9 @@ static const char *phoebeKillMessage[] = {
 	"We're such a great team!",
 	"I got it!"
 };
-static const char *ursulaKillMessage[] = {
+
+static const int nUrsulaKillMessage = 14;
+static const char *ursulaKillMessage[nUrsulaKillMessage] = {
 	"Kicked your ass!",
 	"You ain't so tough!",
 	"I was always a better WEAPCO pilot than you!",
@@ -1765,7 +1770,7 @@ void alien_destroy(object *alien, object *attacker)
 			game.totalKills++;
 			if (((rand() % 16) == 0) && (alien-> flags & FL_WEAPCO))
 			{
-				r = rand() % 15;
+				r = rand() % nChrisKillMessage;
 				setRadioMessage(FS_CHRIS, chrisKillMessage[r], 0);
 			}
 		}
@@ -1774,7 +1779,7 @@ void alien_destroy(object *alien, object *attacker)
 			game.wingMate1Kills++;
 			if (((rand() % 8) == 0) && (alien-> flags & FL_WEAPCO))
 			{
-				r = rand() % 11;
+				r = rand() % nPhoebeKillMessage;
 				setRadioMessage(FS_PHOEBE, phoebeKillMessage[r], 0);
 			}
 		}
@@ -1783,7 +1788,7 @@ void alien_destroy(object *alien, object *attacker)
 			game.wingMate2Kills++;
 			if (((rand() % 8) == 0) && (alien-> flags & FL_WEAPCO))
 			{
-				r = rand() % 14;
+				r = rand() % nUrsulaKillMessage;
 				setRadioMessage(FS_URSULA, ursulaKillMessage[r], 0);
 			}
 		}
