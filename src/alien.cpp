@@ -52,7 +52,7 @@ static const char *phoebeKillMessage[nPhoebeKillMessage] = {
 	"Take that, WEAPCO!",
 	"My kill count is going up!",
 	"Another one bites the dust!",
-	"We're such a great team!",
+	"Yeah! Nothing can stand in our way!",
 	"I got it!"
 };
 
@@ -66,7 +66,7 @@ static const char *ursulaKillMessage[nUrsulaKillMessage] = {
 	"Take that, you cruddy robots!",
 	"Is that all you've got?",
 	"Who else wants some?!",
-	"Dammit, I'm not letting you beat me, Phoebe!",
+	"I'm not letting you beat me, Phoebe!",
 	"Bring it on, you mindless drones!",
 	"Oh, I'm sorry, are you getting your metal asses handed to you?",
 	"No one messes with the Lexx family!",
