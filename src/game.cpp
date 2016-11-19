@@ -31,6 +31,16 @@ static const char *klineInsult[] = {
 static const char *klineVenusInsult[] = {
 	"Fool.", "And now you're nothing but a DEAD hero."
 };
+static const char *phoebePlayerHitMessage[3] = {
+	"Oops! Sorry!",
+	"Whoops! Are you OK, Chris?",
+	"Oh, sorry! I didn't see you there!"
+};
+static const char *ursulaPlayerHitMessage[3] = {
+	"Get out of the way!",
+	"Don't fly into my missiles!",
+	"Dammit, Chris, you made me miss!"
+};
 
 
 void game_init()
@@ -699,9 +709,17 @@ static void game_doBullets()
 						player.hit = 5;
 					}
 
-					if ((bullet->owner->classDef == CD_PHOEBE) ||
-							(bullet->owner->classDef == CD_URSULA))
-						getPlayerHitMessage(bullet->owner);
+					if (player.shield > 0)
+					{
+						if (bullet->owner->classDef == CD_PHOEBE)
+						{
+							setRadioMessage(FS_PHOEBE, phoebePlayerHitMessage[rand() % 3], 0);
+						}
+						else if (bullet->owner->classDef == CD_URSULA)
+						{
+							setRadioMessage(FS_URSULA, ursulaPlayerHitMessage[rand() % 3], 0);
+						}
+					}
 
 					if (bullet->id == WT_CHARGER)
 					{

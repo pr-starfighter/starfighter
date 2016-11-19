@@ -20,8 +20,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef MESSAGES_H
 #define MESSAGES_H
 
-extern void getKillMessage(object *ally);
 extern void getMissFireMessage(object *ally);
-extern void getPlayerHitMessage(object *ally);
 
 #endif

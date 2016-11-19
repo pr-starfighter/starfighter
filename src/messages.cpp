@@ -27,12 +27,6 @@ static const char *missFireMessage[5] = {
 	"Open your eyes!",
 };
 
-static const char *playerHitMessage[3] = {
-	"Oops! Sorry!",
-	"Get out of the way!",
-	"Don't fly into my missiles!",
-};
-
 void getMissFireMessage(object *ally)
 {
 	int faceToUse = FS_PHOEBE;
@@ -43,16 +37,4 @@ void getMissFireMessage(object *ally)
 		faceToUse = FS_URSULA;
 
 	setRadioMessage(faceToUse, missFireMessage[rand() % 5], 0);
-}
-
-void getPlayerHitMessage(object *ally)
-{
-	int faceToUse = FS_PHOEBE;
-
-	if (ally == &aliens[ALIEN_PHOEBE])
-		faceToUse = FS_PHOEBE;
-	else
-		faceToUse = FS_URSULA;
-
-	setRadioMessage(faceToUse, playerHitMessage[rand() % 3], 0);
 }
