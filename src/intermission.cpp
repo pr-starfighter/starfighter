@@ -403,12 +403,12 @@ Spins the planets around the sun, spaced according to their Y value
 as defined in intermission_setSystemPlanets(). Moving the cursor over the planet
 will show their name and their current status
 */
-static bool intermission_showSystem(float x, float y, bool selectable)
+static int intermission_showSystem(float x, float y, int selectable)
 {
 	SDL_Rect r;
 	int planet = 0;
 	int planetSpace = systemPlanet[planet].y;
-	bool rtn = false;
+	int rtn = 0;
 
 	// Blit the sun
 	screen_blit(gfx_sprites[SP_SUN], 370, 220);
@@ -439,7 +439,7 @@ static bool intermission_showSystem(float x, float y, bool selectable)
 			{
 				game.destinationPlanet = planet;
 				strcpy(game.destinationName, systemPlanet[game.destinationPlanet].name);
-				rtn = true;
+				rtn = 1;
 				engine.keyState[KEY_FIRE] = 0;
 			}
 		}
@@ -1030,21 +1030,21 @@ static void intermission_doOptions(SDL_Surface *optionsSurface)
 	if ((engine.keyState[KEY_FIRE]))
 	{
 		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 172, 45, 22))
-			engine.useSound = true;
+			engine.useSound = 1;
 
 		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 172, 45, 22))
-			engine.useSound = false;
+			engine.useSound = 0;
 
 
 		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 222, 45, 22))
 		{
-			engine.useMusic = true;
+			engine.useMusic = 1;
 			audio_playMusic("music/through_space.ogg", -1);
 		}
 
 		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 222, 45, 22))
 		{
-			engine.useMusic = false;
+			engine.useMusic = 0;
 			audio_haltMusic();
 		}
 
@@ -1053,7 +1053,7 @@ static void intermission_doOptions(SDL_Surface *optionsSurface)
 			if (!engine.fullScreen)
 			{
 				SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
-				engine.fullScreen = true;
+				engine.fullScreen = 1;
 			}
 		}
 
@@ -1062,7 +1062,7 @@ static void intermission_doOptions(SDL_Surface *optionsSurface)
 			if (engine.fullScreen)
 			{
 				SDL_SetWindowFullscreen(window, 0);
-				engine.fullScreen = false;
+				engine.fullScreen = 0;
 			}
 		}
 
@@ -1091,12 +1091,12 @@ int intermission()
 
 	float sinX = 300;
 	float cosY = 300;
-	bool movePlanets = true;
+	int movePlanets = 1;
 	int saveSlot = -1;
 
 	int rtn = 0;
 
-	bool redrawBackground = true;
+	int redrawBackground = 1;
 
 	gfx_free();
 
@@ -1264,7 +1264,7 @@ int intermission()
 		if (redrawBackground)
 		{
 			screen_drawBackground();
-			redrawBackground = false;
+			redrawBackground = 0;
 		}
 		else
 		{
@@ -1352,7 +1352,7 @@ int intermission()
 					cosY += 0.01;
 				}
 
-				if (intermission_showSystem(sinX, cosY, true))
+				if (intermission_showSystem(sinX, cosY, 1))
 				{
 					sprintf(string, "Destination: %s", systemPlanet[game.destinationPlanet].name);
 					gfx_createTextObject(TS_DEST_PLANET, string, 550, 450, FONT_WHITE);
@@ -1392,7 +1392,7 @@ int intermission()
 				break;
 
 			case 8:
-				intermission_showSystem(sinX, cosY, false);
+				intermission_showSystem(sinX, cosY, 0);
 
 				screen_blit(systemPlanet[game.stationedPlanet].image, 150, 450);
 				screen_blitText(TS_CURRENT_PLANET);
@@ -1414,7 +1414,7 @@ int intermission()
 					gfx_createTextObject(TS_CURRENT_PLANET, string, 90, 450, FONT_WHITE);
 					intermission_updateCommsSurface(commsSurface);
 					section = 1;
-					redrawBackground = true;
+					redrawBackground = 1;
 					save(0);
 				}
 				else if (interceptionChance > 0)
@@ -1460,7 +1460,7 @@ int intermission()
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
-					redrawBackground = true;
+					redrawBackground = 1;
 					section = 0;
 					engine.keyState[KEY_FIRE] = 0;
 				}
@@ -1471,7 +1471,7 @@ int intermission()
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
-					redrawBackground = true;
+					redrawBackground = 1;
 					section = 1;
 					engine.keyState[KEY_FIRE] = 0;
 				}
@@ -1482,7 +1482,7 @@ int intermission()
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
-					redrawBackground = true;
+					redrawBackground = 1;
 					section = 2;
 					engine.keyState[KEY_FIRE] = 0;
 				}
@@ -1493,7 +1493,7 @@ int intermission()
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
-					redrawBackground = true;
+					redrawBackground = 1;
 					section = 3;
 					engine.keyState[KEY_FIRE] = 0;
 				}
@@ -1504,7 +1504,7 @@ int intermission()
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
-					redrawBackground = true;
+					redrawBackground = 1;
 					section = 4;
 					engine.keyState[KEY_FIRE] = 0;
 				}
@@ -1515,7 +1515,7 @@ int intermission()
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
-					redrawBackground = true;
+					redrawBackground = 1;
 					section = 5;
 					engine.keyState[KEY_FIRE] = 0;
 				}
@@ -1526,7 +1526,7 @@ int intermission()
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
-					redrawBackground = true;
+					redrawBackground = 1;
 					section = 6;
 					engine.keyState[KEY_FIRE] = 0;
 				}
@@ -1537,7 +1537,7 @@ int intermission()
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
-					redrawBackground = true;
+					redrawBackground = 1;
 					section = 7;
 					engine.keyState[KEY_FIRE] = 0;
 				}

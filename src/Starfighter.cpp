@@ -26,7 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 int main(int argc, char **argv)
 {
-	bool cheatAttempt;
+	int cheatAttempt;
 	int cheatCount;
 	int section;
 
@@ -52,7 +52,7 @@ int main(int argc, char **argv)
 
 	engine_init(); // Must do this first!
 
-	cheatAttempt = false;
+	cheatAttempt = 0;
 	cheatCount = 0;
 
 	if (argc > 1)
@@ -74,16 +74,16 @@ int main(int argc, char **argv)
 	for (int i = 1 ; i < argc ; i++)
 	{
 		if (strcmp(argv[i], "-cheat") == 0)
-			cheatAttempt = true;
+			cheatAttempt = 1;
 		if (strcmp(argv[i], "-noaudio") == 0)
 		{
 			printf("No Audio\n");
-			engine.useAudio = false;
+			engine.useAudio = 0;
 		}
 		if (strcmp(argv[i], "-mono") == 0)
 		{
 			printf("Mono sound output\n");
-			engine.useAudio = true;
+			engine.useAudio = 1;
 		}
 		if ((strcmp(argv[i], "humans") == 0) && (cheatCount == 0))
 			cheatCount = 1;
@@ -95,7 +95,7 @@ int main(int argc, char **argv)
 			(strcmp(argv[i], "humansdoitbetter") == 0))
 		{
 			printf("Humans do it better! Cheats enabled.\n");
-			engine.cheat = true;
+			engine.cheat = 1;
 		}
 	}
 
@@ -140,7 +140,7 @@ int main(int argc, char **argv)
 	game.difficulty = DIFFICULTY_NORMAL;
 	game_init();
 
-	while (true)
+	while (1)
 	{
 		switch (section)
 		{

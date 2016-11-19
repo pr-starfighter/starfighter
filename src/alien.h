@@ -25,11 +25,11 @@ extern object aliens[ALIEN_MAX];
 
 void alien_defs_init();
 void aliens_init();
-bool alien_add();
+int alien_add();
 void alien_addDrone(object *hostAlien);
 void alien_addSmallAsteroid(object *hostAlien);
 void alien_addFriendly(int type);
-bool alien_place(object *alien);
+int alien_place(object *alien);
 void alien_setAI(object *alien);
 void alien_setKlineAttackMethod(object *alien);
 void alien_setKlineAI(object *alien);
@@ -38,6 +38,6 @@ int alien_checkTarget(object *alien);
 int alien_enemiesInFront(object *alien);
 void alien_move(object *alien);
 void alien_destroy(object *alien, object *attacker);
-void alien_hurt(object *alien, object *attacker, int damage, bool ion);
+void alien_hurt(object *alien, object *attacker, int damage, int ion);
 
 #endif

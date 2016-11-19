@@ -25,7 +25,7 @@ void cargo_init()
 {
 	for (int i = 0 ; i < MAX_CARGO ; i++)
 	{
-		cargo[i].active = false;
+		cargo[i].active = 0;
 		cargo[i].owner = NULL;
 	}
 }
@@ -51,7 +51,7 @@ object *cargo_add(object *owner, int cargoType)
 	if (index == -1)
 		return NULL;
 
-	cargo[index].active = true;
+	cargo[index].active = 1;
 	cargo[index].owner = owner;
 	cargo[index].x = owner->x;
 	cargo[index].y = owner->y;
@@ -73,11 +73,11 @@ void cargo_becomeCollectable(int i)
 	}
 	else
 	{
-		aliens[ALIEN_PHOEBE].active = true;
+		aliens[ALIEN_PHOEBE].active = 1;
 		aliens[ALIEN_PHOEBE].x = cargo[i].x;
 		aliens[ALIEN_PHOEBE].y = cargo[i].y;
 		setRadioMessage(FS_PHOEBE, "Thanks! Watch out, WEAPCO! Phoebe's loose and she's ANGRY!", 1);
 	}
 
-	cargo[i].active = false;
+	cargo[i].active = 0;
 }

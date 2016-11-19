@@ -29,7 +29,7 @@ Engine engine;
 void engine_init()
 {
 	engine.musicVolume = 100;
-	engine.useAudio = true;
+	engine.useAudio = 1;
 
 	engine.maxAliens = 9;
 
@@ -66,13 +66,13 @@ void engine_init()
 	engine.counter = 0;
 	engine.seconds = 0;
 	engine.minutes = 0;
-	engine.paused = false;
+	engine.paused = 0;
 	engine.gameSection = SECTION_TITLE;
 
-	engine.cheat = false;
-	engine.cheatShield = false;
-	engine.cheatAmmo = false;
-	engine.cheatCash = false;
+	engine.cheat = 0;
+	engine.cheatShield = 0;
+	engine.cheatAmmo = 0;
+	engine.cheatCash = 0;
 }
 
 /*
@@ -237,7 +237,7 @@ void engine_setMode()
 		{
 			printf("Warning: Couldn't set 44100 Hz 16-bit stereo audio - Reason:\n%s\n", Mix_GetError());
 			printf("Sound and Music will be disabled\n");
-			engine.useAudio = false;
+			engine.useAudio = 0;
 		}
 	}
 

@@ -205,7 +205,7 @@ int doTitle()
 	char buildVersion[25];
 
 	int selectedOption = 1;
-	bool skip = false;
+	int skip = 0;
 	int listLength = 5; // menu list length
 	int menuType = MENU_MAIN;
 
@@ -411,7 +411,7 @@ int doTitle()
 					gfx_renderString(buildVersion, screen->w - 6 - strlen(buildVersion) * 9,
 						screen->h - 20, FONT_WHITE, 0, gfx_background);
 					screen_addBuffer(0, 0, screen->w, screen->h);
-					skip = true;
+					skip = 1;
 				}
 			}
 		}
@@ -422,7 +422,7 @@ int doTitle()
 		if (engine.cheatCredits)
 		{
 			doCredits();
-			engine.cheatCredits = false;
+			engine.cheatCredits = 0;
 		}
 
 		if ((engine.keyState[KEY_FIRE] || engine.keyState[KEY_ALTFIRE]))
@@ -438,7 +438,7 @@ int doTitle()
 				gfx_renderString(buildVersion, screen->w - 6 - strlen(buildVersion) * 9,
 					screen->h - 20, FONT_WHITE, 0, gfx_background);
 				screen_addBuffer(0, 560, 800, 40);
-				skip = true;
+				skip = 1;
 			}
 			else
 			{
@@ -631,7 +631,7 @@ void gameover()
 	flushInput();
 	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 
-	while (true)
+	while (1)
 	{
 		getPlayerInput();
 
@@ -701,7 +701,7 @@ void doCredits()
 	engine.keyState[KEY_ALTFIRE] = 0;
 	flushInput();
 
-	while (true)
+	while (1)
 	{
 		renderer_update();
 		screen_unBuffer();

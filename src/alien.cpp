@@ -744,7 +744,7 @@ void aliens_init()
 
 	for (int i = 0 ; i < ALIEN_MAX ; i++)
 	{
-		aliens[i].active = false;
+		aliens[i].active = 0;
 		aliens[i].shield = -1;
 		aliens[i].flags = 0;
 	}
@@ -908,7 +908,7 @@ void aliens_init()
 			aliens[i].owner = &aliens[i];
 			aliens[i].target = &aliens[i];
 			aliens[i].face = rand() % 2;
-			aliens[i].active = true;
+			aliens[i].active = 1;
 
 			/*
 			we make 1000 attempts to place this enemy since it is required. If after
@@ -916,7 +916,7 @@ void aliens_init()
 			simply isn't going to happen and we will just exit the game. The chances
 			of this happening are very very low!
 			*/
-			while (true)
+			while (1)
 			{
 				placeAttempt++;
 
@@ -939,7 +939,7 @@ void aliens_init()
 
 			if (aliens[i].classDef == CD_CLOAKFIGHTER)
 			{
-				aliens[i].active = false;
+				aliens[i].active = 0;
 				aliens[i].maxShield = aliens[i].shield = 400;
 				aliens[i].flags &= ~FL_RUNSAWAY;
 				aliens[i].speed = 3;
@@ -947,12 +947,12 @@ void aliens_init()
 
 			if ((aliens[i].classDef == CD_MOBILE_RAY) && (i >= ALIEN_BOSS_PART3))
 			{
-				aliens[i].active = false;
+				aliens[i].active = 0;
 			}
 
 			if (aliens[i].classDef == CD_FIREFLY)
 			{
-				aliens[i].active = false;
+				aliens[i].active = 0;
 			}
 
 			if (aliens[i].classDef == CD_BARRIER)
@@ -1042,7 +1042,7 @@ void aliens_init()
 	}
 }
 
-bool alien_add()
+int alien_add()
 {
 	int index = alien_getFreeIndex();
 
@@ -1175,7 +1175,7 @@ bool alien_add()
 	delete[] alienArray;
 
 	aliens[index] = alien_defs[randEnemy];
-	aliens[index].active = true;
+	aliens[index].active = 1;
 	aliens[index].face = rand() % 2;
 	aliens[index].owner = &aliens[index]; // Most enemies will own themselves
 	aliens[index].target = &aliens[index];
@@ -1191,9 +1191,9 @@ bool alien_add()
 	{
 		if (alien_place(&aliens[index]))
 			break;
-		aliens[index].active = false;
+		aliens[index].active = 0;
 
-		return false;
+		return 0;
 	}
 
 	if (aliens[index].classDef == CD_CARGOSHIP)
@@ -1213,7 +1213,7 @@ bool alien_add()
 	if (game.area == MISN_ELLESH)
 		aliens[index].flags |= FL_HASMINIMUMSPEED;
 
-	return true;
+	return 1;
 }
 
 void alien_addDrone(object *hostAlien)
@@ -1224,7 +1224,7 @@ void alien_addDrone(object *hostAlien)
 		return;
 
 	aliens[index] = alien_defs[CD_DRONE];
-	aliens[index].active = true;
+	aliens[index].active = 1;
 	aliens[index].face = rand() % 2;
 	aliens[index].owner = &aliens[index]; // Most enemies will own themselves
 	aliens[index].target = &aliens[index];
@@ -1277,7 +1277,7 @@ void alien_addSmallAsteroid(object *hostAlien)
 
 	aliens[index].x = hostAlien->x;
 	aliens[index].y = hostAlien->y;
-	aliens[index].active = true;
+	aliens[index].active = 1;
 }
 
 void alien_addFriendly(int type)
@@ -1289,7 +1289,7 @@ void alien_addFriendly(int type)
 
 	aliens[type].owner = &aliens[type];
 	aliens[type].target = &aliens[type];
-	aliens[type].active = true;
+	aliens[type].active = 1;
 	aliens[type].x = RANDRANGE((screen->w / 2) - 150, (screen->w / 2) + 150);
 	aliens[type].y = RANDRANGE((screen->h / 2) - 150, (screen->h / 2) + 150);
 
@@ -1304,7 +1304,7 @@ void alien_addFriendly(int type)
 		aliens[type].flags |= FL_IMMORTAL;
 }
 
-bool alien_place(object *alien)
+int alien_place(object *alien)
 {
 	if (rand() % 2 == 0)
 		alien->x = RANDRANGE(screen->w, screen->w * 2);
@@ -1327,11 +1327,11 @@ bool alien_place(object *alien)
 		if ((aliens[i].owner != alien) && (aliens[i].shield > 0))
 		{
 			if (ship_collision(alien, &aliens[i]))
-				return false;
+				return 0;
 		}
 	}
 
-	return true;
+	return 1;
 }
 
 void alien_setAI(object *alien)
@@ -1640,12 +1640,12 @@ int alien_enemiesInFront(object *alien)
 
 void alien_move(object *alien)
 {
-	bool checkCollisions;
+	int checkCollisions;
 
 	if ((alien->flags & FL_LEAVESECTOR) || (alien->shield < 1))
-		checkCollisions = false;
+		checkCollisions = 0;
 	else
-		checkCollisions = true;
+		checkCollisions = 1;
 
 	if (alien->owner == alien)
 	{
@@ -1835,7 +1835,7 @@ void alien_destroy(object *alien, object *attacker)
 	}
 }
 
-void alien_hurt(object *alien, object *attacker, int damage, bool ion)
+void alien_hurt(object *alien, object *attacker, int damage, int ion)
 {
 	double run_chance;
 

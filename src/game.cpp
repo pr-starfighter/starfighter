@@ -75,8 +75,8 @@ void game_init()
 
 	if (!engine.useAudio)
 	{
-		engine.useSound = false;
-		engine.useMusic = false;
+		engine.useSound = 0;
+		engine.useMusic = 0;
 	}
 
 	game.cash = 0;
@@ -486,7 +486,7 @@ static void game_doCollectables()
 				updateMissionRequirements(M_COLLECT, collectable->type,
 					collectable->value);
 
-				collectable->active = false;
+				collectable->active = 0;
 				if (collectable->type != P_MINE)
 				{
 					setInfoLine(temp, FONT_WHITE);
@@ -508,7 +508,7 @@ static void game_doCollectables()
 
 		if (collectable->life < 1)
 		{
-			collectable->active = false;
+			collectable->active = 0;
 			if ((collectable->type == P_CARGO) ||
 					(collectable->type == P_ESCAPEPOD) ||
 					(collectable->type == P_SLAVES))
@@ -551,7 +551,7 @@ static void game_doBullets()
 	collectables *collectable;
 	collectables *prevCollectable;
 
-	bool okayToHit = false;
+	int okayToHit = 0;
 	int old_shield;
 	float homingMissileSpeed = 0;
 	int charger_num;
@@ -642,18 +642,18 @@ static void game_doBullets()
 				if ((aliens[i].shield < 1) || (!aliens[i].active))
 					continue;
 
-				okayToHit = false;
+				okayToHit = 0;
 
 				if ((bullet->flags & WF_FRIEND) && (aliens[i].flags & FL_WEAPCO))
-					okayToHit = true;
+					okayToHit = 1;
 				if ((bullet->flags & WF_WEAPCO) && (aliens[i].flags & FL_FRIEND))
-					okayToHit = true;
+					okayToHit = 1;
 				if ((bullet->id == WT_ROCKET) || (bullet->id == WT_LASER) ||
 						(bullet->id == WT_CHARGER))
-					okayToHit = true;
+					okayToHit = 1;
 
 				if (bullet->owner == aliens[i].owner)
-					okayToHit = false;
+					okayToHit = 0;
 
 				if (okayToHit)
 				{
@@ -690,7 +690,7 @@ static void game_doBullets()
 							bullet->damage -= old_shield;
 							if (bullet->damage <= 0)
 							{
-								bullet->active = false;
+								bullet->active = 0;
 								bullet->shield = 0;
 								audio_playSound(SFX_EXPLOSION, bullet->x, bullet->y);
 								for (int i = 0 ; i < 10 ; i++)
@@ -701,7 +701,7 @@ static void game_doBullets()
 						}
 						else
 						{
-							bullet->active = false;
+							bullet->active = 0;
 							bullet->shield = 0;
 						}
 
@@ -750,7 +750,7 @@ static void game_doBullets()
 						bullet->damage -= old_shield;
 						if (bullet->damage <= 0)
 						{
-							bullet->active = false;
+							bullet->active = 0;
 							bullet->shield = 0;
 							audio_playSound(SFX_EXPLOSION, bullet->x, bullet->y);
 							for (int i = 0 ; i < 10 ; i++)
@@ -760,7 +760,7 @@ static void game_doBullets()
 					}
 					else
 					{
-						bullet->active = false;
+						bullet->active = 0;
 						bullet->shield = 0;
 					}
 
@@ -783,12 +783,12 @@ static void game_doBullets()
 				{
 					if (bullet_collision(bullet, &cargo[j]))
 					{
-						bullet->active = false;
+						bullet->active = 0;
 						explosion_add(bullet->x, bullet->y, SP_SMALL_EXPLOSION);
 						audio_playSound(SFX_HIT, cargo[j].x, cargo[j].y);
 						if (cargo[j].collectType != P_PHOEBE)
 						{
-							cargo[j].active = false;
+							cargo[j].active = 0;
 							audio_playSound(SFX_EXPLOSION, cargo[j].x, cargo[j].y);
 							for (int i = 0 ; i < 10 ; i++)
 								explosion_add(cargo[j].x + RANDRANGE(-15, 15),
@@ -814,17 +814,17 @@ static void game_doBullets()
 			{
 				if (collectable_collision(collectable, bullet))
 				{
-					collectable->active = false;
+					collectable->active = 0;
 					
 					if (bullet->id != WT_CHARGER)
 					{
-						bullet->active = false;
+						bullet->active = 0;
 					}
 					else
 					{
 						bullet->shield--;
 						if (bullet->shield < 0)
-							bullet->active = false;
+							bullet->active = 0;
 					}
 
 					if (bullet->owner == &player)
@@ -862,7 +862,7 @@ static void game_doBullets()
 
 				player_checkShockDamage(bullet->x, bullet->y);
 			}
-			bullet->active = false;
+			bullet->active = 0;
 		}
 
 		if (bullet->active)
@@ -884,7 +884,7 @@ static void game_doAliens()
 	static float barrierLoop = 0;
 
 	int shapeToUse;
-	bool canFire;
+	int canFire;
 	int n;
 
 	barrierLoop += 0.2;
@@ -929,7 +929,7 @@ static void game_doAliens()
 					}
 				}
 
-				canFire = true; // The alien is allowed to fire
+				canFire = 1; // The alien is allowed to fire
 
 				LIMIT_ADD(aliens[i].thinktime, -1, 0, 250);
 
@@ -1009,7 +1009,7 @@ static void game_doAliens()
 					{
 						aliens[i].flags -= FL_LEAVESECTOR;
 						aliens[i].flags += FL_ESCAPED;
-						aliens[i].active = false;
+						aliens[i].active = 0;
 
 						if (aliens[i].classDef == CD_CLOAKFIGHTER)
 						{
@@ -1069,7 +1069,7 @@ static void game_doAliens()
 				}
 				else
 				{
-					canFire = false;
+					canFire = 0;
 				}
 
 				if (canFire)
@@ -1164,7 +1164,7 @@ static void game_doAliens()
 				}
 
 				if ((game.area == MISN_MARS) && (aliens[i].x < -60))
-					aliens[i].active = false;
+					aliens[i].active = 0;
 			}
 			else
 			{
@@ -1180,7 +1180,7 @@ static void game_doAliens()
 				}
 				if (aliens[i].shield < aliens[i].deathCounter)
 				{
-					aliens[i].active = false;
+					aliens[i].active = 0;
 					if ((aliens[i].classDef == CD_BOSS) ||
 							(aliens[i].owner == &aliens[ALIEN_BOSS]) ||
 							(aliens[i].flags & FL_FRIEND) ||
@@ -1286,7 +1286,7 @@ static void game_doPlayer()
 							{
 								ship_fireBullet(&player, 1);
 								player.ammo[1] = 0;
-								player_chargerFired = true;
+								player_chargerFired = 1;
 							}
 						}
 					}
@@ -1296,7 +1296,7 @@ static void game_doPlayer()
 					if (player.ammo[1] > 0)
 						ship_fireBullet(&player, 1);
 					player.ammo[1] = 0;
-					player_chargerFired = false;
+					player_chargerFired = 0;
 				}
 			}
 
@@ -1366,7 +1366,7 @@ static void game_doPlayer()
 
 			if (engine.keyState[KEY_PAUSE])
 			{
-				engine.paused = true;
+				engine.paused = 1;
 				engine.keyState[KEY_PAUSE] = 0;
 			}
 
@@ -1469,7 +1469,7 @@ static void game_doPlayer()
 		}
 		else
 		{
-			player.active = false;
+			player.active = 0;
 			player.shield--;
 			if (player.shield == -1)
 			{
@@ -1624,7 +1624,7 @@ void game_doExplosions()
 
 				if(explosion->thinktime < 1)
 				{
-					explosion->active = false;
+					explosion->active = 0;
 				}
 				else
 				{
@@ -2035,28 +2035,28 @@ Checked during the main game loop. When the game is paused
 it goes into a constant loop checking this routine. If escape is
 pressed, the game automatically ends and goes back to the title screen
 */
-static bool game_checkPauseRequest()
+static int game_checkPauseRequest()
 {
 	getPlayerInput();
 		
 	if (engine.keyState[KEY_ESCAPE])
 	{
-		engine.paused = false;
+		engine.paused = 0;
 		engine.done = 1;
 		player.shield = 0;
-		return true;
+		return 1;
 	}
 	
 	if (engine.keyState[KEY_PAUSE])
 	{
-		engine.paused = false;
+		engine.paused = 0;
 		engine.keyState[KEY_PAUSE] = 0;
 	}
 
-	return false;
+	return 0;
 }
 
-bool game_collision(float x0, float y0, int w0, int h0, float x2, float y2, int w1, int h1)
+int game_collision(float x0, float y0, int w0, int h0, float x2, float y2, int w1, int h1)
 {
 	float x1 = x0 + w0;
 	float y1 = y0 + h0;
@@ -2083,7 +2083,7 @@ int game_mainLoop()
 		game.hasWingMate1 = 1;
 
 	if (game.area == MISN_ELAMALE)
-		aliens[ALIEN_KLINE].active = false;
+		aliens[ALIEN_KLINE].active = 0;
 
 	for (int i = 0 ; i < engine.maxAliens ; i++)
 		alien_add();
@@ -2110,8 +2110,8 @@ int game_mainLoop()
 		case MISN_ELLESH:
 		case MISN_MARS:
 		case MISN_VENUS:
-			aliens[ALIEN_PHOEBE].active = false;
-			aliens[ALIEN_URSULA].active = false;
+			aliens[ALIEN_PHOEBE].active = 0;
+			aliens[ALIEN_URSULA].active = 0;
 			break;
 	}
 
@@ -2129,7 +2129,7 @@ int game_mainLoop()
 			aliens[ALIEN_KLINE] = alien_defs[CD_KLINE];
 			aliens[ALIEN_KLINE].owner = &aliens[ALIEN_KLINE];
 			aliens[ALIEN_KLINE].target = &player;
-			aliens[ALIEN_KLINE].active = true;
+			aliens[ALIEN_KLINE].active = 1;
 			aliens[ALIEN_KLINE].x = player.x + 1000;
 			aliens[ALIEN_KLINE].y = player.y;
 			player_setTarget(ALIEN_KLINE);
@@ -2143,7 +2143,7 @@ int game_mainLoop()
 				aliens[ALIEN_BOSS].owner = &aliens[ALIEN_BOSS];
 				aliens[ALIEN_BOSS].target = &aliens[ALIEN_BOSS];
 				aliens[ALIEN_BOSS].shield = 1000;
-				aliens[ALIEN_BOSS].active = true;
+				aliens[ALIEN_BOSS].active = 1;
 				aliens[ALIEN_BOSS].x = player.x - 1000;
 				aliens[ALIEN_BOSS].y = player.y;
 				player_setTarget(ALIEN_BOSS);

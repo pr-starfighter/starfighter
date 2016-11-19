@@ -80,25 +80,25 @@ typedef struct Engine_ {
 	int allAliensDead;
 	int addAliens;
 
-	bool paused;
+	int paused;
 	int gameSection;
 
-	bool useAudio;
-	bool useSound;
-	bool useMusic;
-	bool fullScreen;
-	bool autoPause;
+	int useAudio;
+	int useSound;
+	int useMusic;
+	int fullScreen;
+	int autoPause;
 
 	char configDirectory[1024];
 	
 	char keyState[KEY_LAST];
 
-	bool cheat; // overall cheat
-	bool cheatShield;
-	bool cheatCash;
-	bool cheatAmmo;
-	bool cheatTime;
-	bool cheatCredits;
+	int cheat; // overall cheat
+	int cheatShield;
+	int cheatCash;
+	int cheatAmmo;
+	int cheatTime;
+	int cheatCredits;
 
 } Engine;
 

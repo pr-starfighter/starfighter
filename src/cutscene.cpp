@@ -54,7 +54,7 @@ void cutscene_init(int scene)
 		// particular reason for choosing this alien def.
 		aliens[i] = alien_defs[0];
 		aliens[i].face = 0;
-		aliens[i].active = false;
+		aliens[i].active = 0;
 	}
 
 	for (int i = 0 ; i < MAX_EVENTS ; i++)
@@ -74,7 +74,7 @@ void cutscene_init(int scene)
 			aliens[0].x = screen->w * 3 / 5;
 			aliens[0].y = screen->h / 2;
 			aliens[0].dx = 3.1;
-			aliens[0].active = true;
+			aliens[0].active = 1;
 
 			for (int i = 1 ; i < 7 ; i++)
 			{
@@ -82,7 +82,7 @@ void cutscene_init(int scene)
 				aliens[i].x = RANDRANGE(0, screen->w / 8);
 				aliens[i].y = RANDRANGE(50, screen->h - 50);
 				aliens[i].dx = 3;
-				aliens[i].active = true;
+				aliens[i].active = 1;
 			}
 
 			messages[0].face = -1;
@@ -108,7 +108,7 @@ void cutscene_init(int scene)
 			aliens[0].x = screen->w / 2;
 			aliens[0].y = screen->h / 2;
 			aliens[0].dx = 0.5;
-			aliens[0].active = true;
+			aliens[0].active = 1;
 
 			for (int i = 1 ; i < 15 ; i++)
 			{
@@ -116,7 +116,7 @@ void cutscene_init(int scene)
 				aliens[i].x = RANDRANGE(0, screen->w);
 				aliens[i].y = RANDRANGE(50, screen->h - 50);
 				aliens[i].dx = RANDRANGE(1, 3);
-				aliens[i].active = true;
+				aliens[i].active = 1;
 			}
 
 			messages[0].face = -1;
@@ -145,13 +145,13 @@ void cutscene_init(int scene)
 			aliens[0].x = screen->w / 4;
 			aliens[0].y = screen->h / 2;
 			aliens[0].dx = 1.5;
-			aliens[0].active = true;
+			aliens[0].active = 1;
 
 			aliens[1].image[0] = gfx_shipSprites[SS_SID];
 			aliens[1].x = screen->w / 4 - 50;
 			aliens[1].y = screen->h / 2 - 40;
 			aliens[1].dx = 1.5;
-			aliens[1].active = true;
+			aliens[1].active = 1;
 
 			messages[0].face = FS_SID;
 			strcpy(messages[0].message, "We're nearly ready to make the jump to Eyananth.");
@@ -179,19 +179,19 @@ void cutscene_init(int scene)
 			aliens[0].x = screen->w * 3 / 8;
 			aliens[0].y = screen->h / 2;
 			aliens[0].dx = 0.5;
-			aliens[0].active = true;
+			aliens[0].active = 1;
 
 			aliens[1].image[0] = gfx_shipSprites[SS_SID];
 			aliens[1].x = screen->w * 3 / 8 - 50;
 			aliens[1].y = screen->h / 2 - 40;
 			aliens[1].dx = 0.5;
-			aliens[1].active = true;
+			aliens[1].active = 1;
 
 			aliens[2].image[0] = gfx_shipSprites[SS_FRIEND];
 			aliens[2].x = screen->w * 3 / 8 - 50;
 			aliens[2].y = screen->h / 2 + 40;
 			aliens[2].dx = 0.5;
-			aliens[2].active = true;
+			aliens[2].active = 1;
 
 			messages[0].face = FS_PHOEBE;
 			strcpy(messages[0].message, "Nice head gear! You shop at the same place as me, huh?");
@@ -225,19 +225,19 @@ void cutscene_init(int scene)
 			aliens[0].x = screen->w / 4;
 			aliens[0].y = screen->h / 2;
 			aliens[0].dx = 1.5;
-			aliens[0].active = true;
+			aliens[0].active = 1;
 
 			aliens[1].image[0] = gfx_shipSprites[SS_SID];
 			aliens[1].x = screen->w / 4 - 50;
 			aliens[1].y = screen->h / 2 - 40;
 			aliens[1].dx = 1.5;
-			aliens[1].active = true;
+			aliens[1].active = 1;
 
 			aliens[2].image[0] = gfx_shipSprites[SS_FRIEND];
 			aliens[2].x = screen->w / 4 - 50;
 			aliens[2].y = screen->h / 2 + 40;
 			aliens[2].dx = 1.5;
-			aliens[2].active = true;
+			aliens[2].active = 1;
 
 			messages[0].face = FS_SID;
 			strcpy(messages[0].message, "What happened back there, Chris? The video feed was jammed.");
@@ -277,19 +277,19 @@ void cutscene_init(int scene)
 			aliens[0].x = screen->w * 3 / 8;
 			aliens[0].y = screen->h / 2;
 			aliens[0].dx = 0.5;
-			aliens[0].active = true;
+			aliens[0].active = 1;
 
 			aliens[1].image[0] = gfx_shipSprites[SS_SID];
 			aliens[1].x = screen->w * 3 / 8 - 50;
 			aliens[1].y = screen->h / 2 - 40;
 			aliens[1].dx = 0.5;
-			aliens[1].active = true;
+			aliens[1].active = 1;
 
 			aliens[2].image[0] = gfx_shipSprites[SS_FRIEND];
 			aliens[2].x = screen->w * 3 / 8 - 50;
 			aliens[2].y = screen->h / 2 + 40;
 			aliens[2].dx = 0.5;
-			aliens[2].active = true;
+			aliens[2].active = 1;
 
 			messages[0].face = FS_PHOEBE;
 			strcpy(messages[0].message, "Will she be okay?");
@@ -317,25 +317,25 @@ void cutscene_init(int scene)
 			aliens[0].x = screen->w / 4;
 			aliens[0].y = screen->h / 2;
 			aliens[0].dx = 1.5;
-			aliens[0].active = true;
+			aliens[0].active = 1;
 
 			aliens[1].image[0] = gfx_shipSprites[SS_SID];
 			aliens[1].x = screen->w / 4 - 50;
 			aliens[1].y = screen->h / 2 - 40;
 			aliens[1].dx = 1.5;
-			aliens[1].active = true;
+			aliens[1].active = 1;
 
 			aliens[2].image[0] = gfx_shipSprites[SS_FRIEND];
 			aliens[2].x = screen->w / 4 - 50;
 			aliens[2].y = screen->h / 2 + 40;
 			aliens[2].dx = 1.5;
-			aliens[2].active = true;
+			aliens[2].active = 1;
 
 			aliens[3].image[0] = gfx_shipSprites[SS_FRIEND];
 			aliens[3].x = screen->w / 4 - 90;
 			aliens[3].y = screen->h / 2;
 			aliens[3].dx = 1.5;
-			aliens[3].active = true;
+			aliens[3].active = 1;
 
 			messages[0].face = FS_CHRIS;
 			strcpy(messages[0].message, "Sorry folks, we just lost our bargaining chip.");
@@ -365,7 +365,7 @@ void cutscene_init(int scene)
 		aliens[i].engineY = (aliens[i].image[0]->h / 2);
 	}
 
-	bool showMessage = false;
+	int showMessage = 0;
 	int currentMessage = -1;
 	int timer = 60 * 4;
 
@@ -375,7 +375,7 @@ void cutscene_init(int scene)
 	
 	flushInput();
 
-	while (true)
+	while (1)
 	{
 		renderer_update();
 		screen_unBuffer();

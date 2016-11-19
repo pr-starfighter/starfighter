@@ -31,7 +31,7 @@ void bullet_add(object *theWeapon, object *attacker, int y, int dy)
 		game.shots++;
 
 	bullet->next = NULL;
-	bullet->active = true;
+	bullet->active = 1;
 	bullet->x = attacker->x + (attacker->image[0]->w / 2) -
 		(theWeapon->image[0]->w * attacker->face);
 	bullet->y = attacker->y + y;
@@ -182,7 +182,7 @@ object *bullet_getTarget(object *bullet)
 	return &aliens[i];
 }
 
-bool bullet_collision(object *bullet, object *ship)
+int bullet_collision(object *bullet, object *ship)
 {
 	float x0 = bullet->x;
 	float y0 = bullet->y;

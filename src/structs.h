@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 typedef struct object_ {
 
-	bool active;
+	int active;
 	int classDef; // Used by aliens to determine what they are
 	int AIType; // Type of articifial intelligence
 
@@ -99,7 +99,7 @@ typedef struct Star_ {
 
 typedef struct collectables_ {
 
-	bool active;
+	int active;
 	float x, y, dx, dy;
 	SDL_Surface *image;
 	int type; // What kind of collectable is it?

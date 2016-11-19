@@ -349,7 +349,7 @@ void events_check()
 				}
 				else
 				{
-					aliens[events[i].entity].active = true;
+					aliens[events[i].entity].active = 1;
 					aliens[events[i].entity].x = ((int)player.x +
 						RANDRANGE(400, 800));
 					aliens[events[i].entity].y = ((int)player.y +

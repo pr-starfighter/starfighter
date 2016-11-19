@@ -530,7 +530,7 @@ static int revealHiddenObjectives()
 		{
 			mission_killAllEnemies();
 			events_sync();
-			aliens[ALIEN_KLINE].active = true;
+			aliens[ALIEN_KLINE].active = 1;
 			aliens[ALIEN_KLINE].x = player.x + 1000;
 			aliens[ALIEN_KLINE].y = player.y;
 			aliens[ALIEN_KLINE].flags |= FL_IMMORTAL | FL_NOFIRE;
@@ -542,7 +542,7 @@ static int revealHiddenObjectives()
 	return allDone;
 }
 
-bool allMissionsCompleted()
+int allMissionsCompleted()
 {
 	for (int i = 0 ; i < 3 ; i++)
 	{
@@ -647,8 +647,8 @@ bool allMissionsCompleted()
 	}
 
 	int remaining;
-	bool add = false;
-	bool allDone = true;
+	int add = 0;
+	int allDone = 1;
 
 	// Zero objective list for a recount
 	currentMission.remainingObjectives1 = currentMission.remainingObjectives2 = 0;
@@ -661,12 +661,12 @@ bool allMissionsCompleted()
 			{
 				currentMission.remainingObjectives1++;
 				if (currentMission.primaryType[i] == M_DESTROY_ALL_TARGETS)
-					add = true;
-				allDone = false;
+					add = 1;
+				allDone = 0;
 			}
 
 			if (currentMission.completed1[i] < OB_INCOMPLETE)
-				return false;
+				return 0;
 		}
 		if (currentMission.secondaryType[i] != M_NONE)
 		{
@@ -674,8 +674,8 @@ bool allMissionsCompleted()
 			{
 				currentMission.remainingObjectives2++;
 				if (currentMission.secondaryType[i] == M_DESTROY_ALL_TARGETS)
-					add = true;
-				allDone = false;
+					add = 1;
+				allDone = 0;
 			}
 		}
 	}
@@ -693,17 +693,17 @@ bool allMissionsCompleted()
 	return allDone;
 }
 
-bool missionFailed()
+int missionFailed()
 {
 	for (int i = 0 ; i < 3 ; i++)
 	{
 		if (currentMission.completed1[i] < OB_INCOMPLETE)
 		{
-			return true;
+			return 1;
 		}
 	}
 
-	return false;
+	return 0;
 }
 
 static void drawBriefScreen()
@@ -834,7 +834,7 @@ void missionBriefScreen()
 		engine.keyState[KEY_ALTFIRE] = 0;
 		engine.keyState[KEY_ESCAPE] = 0;
 
-		while (true)
+		while (1)
 		{
 			game_delayFrame();
 			getPlayerInput();
@@ -940,7 +940,7 @@ void missionFinishedScreen()
 		engine.done = 0;
 		engine.keyState[KEY_FIRE] = 0;
 
-		while (true)
+		while (1)
 		{
 			game_delayFrame();
 			getPlayerInput();

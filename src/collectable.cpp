@@ -134,7 +134,7 @@ void collectable_add(float x, float y, int type, int value, int life)
 	collectables *collectable = new collectables;
 
 	collectable->next = NULL;
-	collectable->active = true;
+	collectable->active = 1;
 	collectable->x = x;
 	collectable->y = y;
 
@@ -206,7 +206,7 @@ void collectable_add(float x, float y, int type, int value, int life)
 	engine.collectableTail = collectable;
 }
 
-bool collectable_collision(collectables *collectable, object *ship)
+int collectable_collision(collectables *collectable, object *ship)
 {
 	float x0 = collectable->x;
 	float y0 = collectable->y;

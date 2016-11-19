@@ -20,14 +20,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "Starfighter.h"
 
 object player;
-bool player_chargerFired = false;
+int player_chargerFired = 0;
 
 /*
 Initialises the player for a new game.
 */
 void initPlayer()
 {
-	player.active = true;
+	player.active = 1;
 	player.x = screen->w / 2;
 	player.y = screen->h / 2;
 	player.speed = 2;
@@ -95,7 +95,7 @@ void player_checkShockDamage(float x, float y)
 
 void exitPlayer()
 {
-	player_chargerFired = false;
+	player_chargerFired = 0;
 
 	if ((player.weaponType[1] == W_CHARGER) || (player.weaponType[1] == W_LASER))
 		player.ammo[1] = 0;
@@ -188,7 +188,7 @@ void getPlayerInput()
 				engine.keyState[mapkey(engine.event.key.keysym.sym)] = 1;
 
 				if (engine.gameSection != SECTION_GAME)
-					engine.paused = false;
+					engine.paused = 0;
 
 				break;
 
@@ -233,17 +233,17 @@ void getPlayerInput()
 				break;
 
 			case SDL_JOYAXISMOTION:
-				static bool prevjoyup, prevjoydown, prevjoyleft, prevjoyright;
+				static int prevjoyup, prevjoydown, prevjoyleft, prevjoyright;
 				if (engine.event.jaxis.axis & 1) {
-					bool joyup = engine.event.jaxis.value < -16384;
-					bool joydown = engine.event.jaxis.value >= 16384;
+					int joyup = engine.event.jaxis.value < -16384;
+					int joydown = engine.event.jaxis.value >= 16384;
 					if(joyup != prevjoyup)
 						engine.keyState[KEY_UP] = prevjoyup = joyup;
 					if(joydown != prevjoydown)
 						engine.keyState[KEY_DOWN] = prevjoydown = joydown;
 				} else {
-					bool joyleft = engine.event.jaxis.value < -16384;
-					bool joyright = engine.event.jaxis.value >= 16384;
+					int joyleft = engine.event.jaxis.value < -16384;
+					int joyright = engine.event.jaxis.value >= 16384;
 					if(joyleft != prevjoyleft)
 						engine.keyState[KEY_LEFT] = prevjoyleft = joyleft;
 					if(joyright != prevjoyright)
@@ -254,7 +254,7 @@ void getPlayerInput()
 			case SDL_WINDOWEVENT:
 				if (engine.autoPause &&
 						(engine.event.window.event == SDL_WINDOWEVENT_FOCUS_LOST))
-					engine.paused = true;
+					engine.paused = 1;
 				break;
 		}
 

@@ -30,7 +30,7 @@ void explosion_add(float x, float y, int type)
 	object *explosion = new object;
 
 	explosion->next = NULL;
-	explosion->active = true;
+	explosion->active = 1;
 	explosion->x = x;
 	explosion->y = y;
 	explosion->thinktime = 28;

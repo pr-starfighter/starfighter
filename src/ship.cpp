@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-bool ship_collision(object *ship, object *otherShip)
+int ship_collision(object *ship, object *otherShip)
 {
 	float x0 = ship->x;
 	float y0 = ship->y;
@@ -198,7 +198,7 @@ void ship_fireRay(object *ship)
 			if (game_collision(aliens[i].x, aliens[i].y, aliens[i].image[0]->w,
 					aliens[i].image[0]->h, ray.x, ray.y, ray.w, ray.h))
 			{
-				alien_hurt(&aliens[i], ship->owner, 1, false);
+				alien_hurt(&aliens[i], ship->owner, 1, 0);
 			}
 		}
 	}
