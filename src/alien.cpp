@@ -177,7 +177,7 @@ void alien_defs_init()
 	alien_defs[CD_FRIGATE].collectChance = 100;
 	alien_defs[CD_FRIGATE].collectType = P_CASH;
 	alien_defs[CD_FRIGATE].collectValue = 500;
-	alien_defs[CD_FRIGATE].flags = FL_WEAPCO;
+	alien_defs[CD_FRIGATE].flags = FL_WEAPCO | FL_NOBANTER;
 
 	alien_defs[CD_FRIGATE_WING1].classDef = CD_FRIGATE_WING1;
 	alien_defs[CD_FRIGATE_WING1].AIType = AI_NORMAL;
@@ -277,7 +277,7 @@ void alien_defs_init()
 	alien_defs[CD_KLINE].collectChance = 0;
 	alien_defs[CD_KLINE].collectType = P_ANYTHING;
 	alien_defs[CD_KLINE].collectValue = 0;
-	alien_defs[CD_KLINE].flags = FL_WEAPCO | FL_ALWAYSFACE | FL_CIRCLES;
+	alien_defs[CD_KLINE].flags = FL_WEAPCO | FL_ALWAYSFACE | FL_CIRCLES | FL_NOBANTER;
 
 	// Aim Fighter
 	alien_defs[CD_AIMFIGHTER].classDef = CD_AIMFIGHTER;
@@ -311,7 +311,7 @@ void alien_defs_init()
 	alien_defs[CD_SLAVETRANSPORT].collectChance = 100;
 	alien_defs[CD_SLAVETRANSPORT].collectType = P_SLAVES;
 	alien_defs[CD_SLAVETRANSPORT].collectValue = 25;
-	alien_defs[CD_SLAVETRANSPORT].flags = FL_WEAPCO | FL_NOFIRE;
+	alien_defs[CD_SLAVETRANSPORT].flags = FL_WEAPCO | FL_NOFIRE | FL_NOBANTER;
 
 	// Good Transport
 	alien_defs[CD_GOODTRANSPORT].classDef = CD_GOODTRANSPORT;
@@ -362,7 +362,7 @@ void alien_defs_init()
 	alien_defs[CD_MINEBOSS].collectChance = 100;
 	alien_defs[CD_MINEBOSS].collectType = P_ANYTHING;
 	alien_defs[CD_MINEBOSS].collectValue = 1000;
-	alien_defs[CD_MINEBOSS].flags = FL_WEAPCO | FL_IMMORTAL;
+	alien_defs[CD_MINEBOSS].flags = FL_WEAPCO | FL_IMMORTAL | FL_NOBANTER;
 
 	alien_defs[CD_BOSS2_WING1].classDef = CD_BOSS2_WING1;
 	alien_defs[CD_BOSS2_WING1].AIType = AI_NORMAL;
@@ -378,7 +378,7 @@ void alien_defs_init()
 	alien_defs[CD_BOSS2_WING1].collectChance = 100;
 	alien_defs[CD_BOSS2_WING1].collectType = P_ANYTHING;
 	alien_defs[CD_BOSS2_WING1].collectValue = 250;
-	alien_defs[CD_BOSS2_WING1].flags = FL_WEAPCO | FL_DAMAGEOWNER;
+	alien_defs[CD_BOSS2_WING1].flags = FL_WEAPCO | FL_DAMAGEOWNER | FL_NOBANTER;
 
 	alien_defs[CD_BOSS2_WING2].classDef = CD_BOSS2_WING2;
 	alien_defs[CD_BOSS2_WING2].AIType = AI_NORMAL;
@@ -394,7 +394,7 @@ void alien_defs_init()
 	alien_defs[CD_BOSS2_WING2].collectChance = 100;
 	alien_defs[CD_BOSS2_WING2].collectType = P_ANYTHING;
 	alien_defs[CD_BOSS2_WING2].collectValue = 250;
-	alien_defs[CD_BOSS2_WING2].flags = FL_WEAPCO | FL_DEPLOYDRONES | FL_DAMAGEOWNER;
+	alien_defs[CD_BOSS2_WING2].flags = FL_WEAPCO | FL_DEPLOYDRONES | FL_DAMAGEOWNER | FL_NOBANTER;
 
 	alien_defs[CD_BOSS2_WING3].classDef = CD_BOSS2_WING3;
 	alien_defs[CD_BOSS2_WING3].AIType = AI_NORMAL;
@@ -410,7 +410,7 @@ void alien_defs_init()
 	alien_defs[CD_BOSS2_WING3].collectChance = 100;
 	alien_defs[CD_BOSS2_WING3].collectType = P_ANYTHING;
 	alien_defs[CD_BOSS2_WING3].collectValue = 250;
-	alien_defs[CD_BOSS2_WING3].flags = FL_WEAPCO | FL_DEPLOYDRONES | FL_DAMAGEOWNER;
+	alien_defs[CD_BOSS2_WING3].flags = FL_WEAPCO | FL_DEPLOYDRONES | FL_DAMAGEOWNER | FL_NOBANTER;
 
 	alien_defs[CD_BOSS2_WING4].classDef = CD_BOSS2_WING4;
 	alien_defs[CD_BOSS2_WING4].AIType = AI_NORMAL;
@@ -426,7 +426,7 @@ void alien_defs_init()
 	alien_defs[CD_BOSS2_WING4].collectChance = 100;
 	alien_defs[CD_BOSS2_WING4].collectType = P_ANYTHING;
 	alien_defs[CD_BOSS2_WING4].collectValue = 250;
-	alien_defs[CD_BOSS2_WING4].flags = FL_WEAPCO | FL_DAMAGEOWNER;
+	alien_defs[CD_BOSS2_WING4].flags = FL_WEAPCO | FL_DAMAGEOWNER | FL_NOBANTER;
 
 	// Drone
 	alien_defs[CD_DRONE].classDef = CD_DRONE;
@@ -477,7 +477,7 @@ void alien_defs_init()
 	alien_defs[CD_EVILURSULA].collectChance = 100;
 	alien_defs[CD_EVILURSULA].collectType = P_ESCAPEPOD;
 	alien_defs[CD_EVILURSULA].collectValue = 1;
-	alien_defs[CD_EVILURSULA].flags = FL_WEAPCO;
+	alien_defs[CD_EVILURSULA].flags = FL_WEAPCO | FL_NOBANTER;
 
 	// Mercenary
 	alien_defs[CD_KRASS].classDef = CD_KRASS;
@@ -494,7 +494,7 @@ void alien_defs_init()
 	alien_defs[CD_KRASS].collectChance = 100;
 	alien_defs[CD_KRASS].collectType = P_ANYTHING;
 	alien_defs[CD_KRASS].collectValue = 2250;
-	alien_defs[CD_KRASS].flags = FL_FRIEND | FL_IMMORTAL;
+	alien_defs[CD_KRASS].flags = FL_FRIEND | FL_IMMORTAL | FL_NOBANTER;
 
 	// Executive Transport
 	alien_defs[CD_EXEC].classDef = CD_BOSS;
@@ -511,7 +511,7 @@ void alien_defs_init()
 	alien_defs[CD_EXEC].collectChance = 0;
 	alien_defs[CD_EXEC].collectType = P_ANYTHING;
 	alien_defs[CD_EXEC].collectValue = 2000;
-	alien_defs[CD_EXEC].flags = FL_WEAPCO | FL_NOFIRE;
+	alien_defs[CD_EXEC].flags = FL_WEAPCO | FL_NOFIRE | FL_NOBANTER;
 
 	// Asteroid
 	alien_defs[CD_ASTEROID].classDef = CD_ASTEROID;
@@ -528,7 +528,7 @@ void alien_defs_init()
 	alien_defs[CD_ASTEROID].collectChance = 25;
 	alien_defs[CD_ASTEROID].collectType = P_ORE;
 	alien_defs[CD_ASTEROID].collectValue = 1;
-	alien_defs[CD_ASTEROID].flags = FL_WEAPCO;
+	alien_defs[CD_ASTEROID].flags = FL_WEAPCO | FL_NOBANTER;
 
 	alien_defs[CD_ASTEROID2].classDef = CD_ASTEROID2;
 	alien_defs[CD_ASTEROID2].AIType = AI_WANDER;
@@ -544,7 +544,7 @@ void alien_defs_init()
 	alien_defs[CD_ASTEROID2].collectChance = 25;
 	alien_defs[CD_ASTEROID2].collectType = P_ORE;
 	alien_defs[CD_ASTEROID2].collectValue = 1;
-	alien_defs[CD_ASTEROID2].flags = FL_WEAPCO;
+	alien_defs[CD_ASTEROID2].flags = FL_WEAPCO | FL_NOBANTER;
 
 	// Escort
 	alien_defs[CD_ESCORT].classDef = CD_ESCORT;
@@ -612,7 +612,7 @@ void alien_defs_init()
 	alien_defs[CD_PLUTOBOSS].collectChance = 0;
 	alien_defs[CD_PLUTOBOSS].collectType = P_ANYTHING;
 	alien_defs[CD_PLUTOBOSS].collectValue = 1000;
-	alien_defs[CD_PLUTOBOSS].flags = FL_WEAPCO;
+	alien_defs[CD_PLUTOBOSS].flags = FL_WEAPCO | FL_NOBANTER;
 
 	// Pluto Boss Barrier
 	alien_defs[CD_BARRIER].classDef = CD_BARRIER;
@@ -629,7 +629,7 @@ void alien_defs_init()
 	alien_defs[CD_BARRIER].collectChance = 100;
 	alien_defs[CD_BARRIER].collectType = P_ANYTHING;
 	alien_defs[CD_BARRIER].collectValue = 25;
-	alien_defs[CD_BARRIER].flags = FL_WEAPCO | FL_NOFIRE;
+	alien_defs[CD_BARRIER].flags = FL_WEAPCO | FL_NOFIRE | FL_NOBANTER;
 
 	// Neptune Boss
 	alien_defs[CD_NEPTUNEBOSS].classDef = CD_NEPTUNEBOSS;
@@ -646,7 +646,7 @@ void alien_defs_init()
 	alien_defs[CD_NEPTUNEBOSS].collectChance = 100;
 	alien_defs[CD_NEPTUNEBOSS].collectType = P_ANYTHING;
 	alien_defs[CD_NEPTUNEBOSS].collectValue = 1000;
-	alien_defs[CD_NEPTUNEBOSS].flags = FL_WEAPCO;
+	alien_defs[CD_NEPTUNEBOSS].flags = FL_WEAPCO | FL_NOBANTER;
 
 	// Mobile Shield
 	alien_defs[CD_MOBILESHIELD].classDef = CD_MOBILESHIELD;
@@ -663,7 +663,7 @@ void alien_defs_init()
 	alien_defs[CD_MOBILESHIELD].collectChance = 100;
 	alien_defs[CD_MOBILESHIELD].collectType = P_ANYTHING;
 	alien_defs[CD_MOBILESHIELD].collectValue = 25;
-	alien_defs[CD_MOBILESHIELD].flags = FL_WEAPCO | FL_NOFIRE;
+	alien_defs[CD_MOBILESHIELD].flags = FL_WEAPCO | FL_NOFIRE | FL_NOBANTER;
 
 	// Firefly
 	alien_defs[CD_FIREFLY].classDef = CD_FIREFLY;
@@ -680,7 +680,7 @@ void alien_defs_init()
 	alien_defs[CD_FIREFLY].collectChance = 100;
 	alien_defs[CD_FIREFLY].collectType = P_ANYTHING;
 	alien_defs[CD_FIREFLY].collectValue = 250;
-	alien_defs[CD_FIREFLY].flags = FL_WEAPCO;
+	alien_defs[CD_FIREFLY].flags = FL_WEAPCO | FL_NOBANTER;
 
 	// Uranus Boss
 	alien_defs[CD_URANUSBOSS].classDef = CD_URANUSBOSS;
@@ -697,7 +697,7 @@ void alien_defs_init()
 	alien_defs[CD_URANUSBOSS].collectChance = 100;
 	alien_defs[CD_URANUSBOSS].collectType = P_ANYTHING;
 	alien_defs[CD_URANUSBOSS].collectValue = 500;
-	alien_defs[CD_URANUSBOSS].flags = FL_WEAPCO;
+	alien_defs[CD_URANUSBOSS].flags = FL_WEAPCO | FL_NOBANTER;
 
 	// Uranus Boss Wing 1
 	alien_defs[CD_URANUSBOSSWING1].classDef = CD_URANUSBOSSWING1;
@@ -1768,7 +1768,8 @@ void alien_destroy(object *alien, object *attacker)
 		if (attacker == &player)
 		{
 			game.totalKills++;
-			if (((rand() % 16) == 0) && (alien-> flags & FL_WEAPCO))
+			if (((rand() % 16) == 0) && (alien->flags & FL_WEAPCO) &&
+				(!(alien->flags & FL_NOBANTER)))
 			{
 				r = rand() % nChrisKillMessage;
 				setRadioMessage(FS_CHRIS, chrisKillMessage[r], 0);
@@ -1777,7 +1778,8 @@ void alien_destroy(object *alien, object *attacker)
 		else if (attacker->classDef == CD_PHOEBE)
 		{
 			game.wingMate1Kills++;
-			if (((rand() % 8) == 0) && (alien-> flags & FL_WEAPCO))
+			if (((rand() % 8) == 0) && (alien-> flags & FL_WEAPCO) &&
+				(!(alien->flags & FL_NOBANTER)))
 			{
 				r = rand() % nPhoebeKillMessage;
 				setRadioMessage(FS_PHOEBE, phoebeKillMessage[r], 0);
@@ -1786,7 +1788,8 @@ void alien_destroy(object *alien, object *attacker)
 		else if (attacker->classDef == CD_URSULA)
 		{
 			game.wingMate2Kills++;
-			if (((rand() % 8) == 0) && (alien-> flags & FL_WEAPCO))
+			if (((rand() % 8) == 0) && (alien-> flags & FL_WEAPCO) &&
+				(!(alien->flags & FL_NOBANTER)))
 			{
 				r = rand() % nUrsulaKillMessage;
 				setRadioMessage(FS_URSULA, ursulaKillMessage[r], 0);

@@ -84,6 +84,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define FL_ACTIVATE 1048576L
 #define FL_HASMINIMUMSPEED 2097152L
 #define FL_FIRELASER 4194304L
+#define FL_NOBANTER 8388608L
 
 // Weapon flags
 #define WF_SPREAD 4
