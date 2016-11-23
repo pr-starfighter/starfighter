@@ -17,13 +17,11 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef MISC_H
-#define MISC_H
+#ifndef INFO_H
+#define INFO_H
 
-extern void clearInfoLines();
-void copyInfoLine(int a, int b);
-extern void setInfoLine(const char *in, int color);
-extern void setRadioMessage(int face, const char *in, int priority);
-extern void resetLists();
+void info_clearLines();
+void info_copyLine(int a, int b);
+void info_setLine(const char *in, int color);
 
 #endif

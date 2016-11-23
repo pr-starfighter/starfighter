@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include "Starfighter.h"
+#include "radio.h"
 
 // XXX: Magic number
 Planet systemPlanet[10];
@@ -328,7 +329,7 @@ void checkTimer()
 		currentMission.completed1[0] = OB_COMPLETED;
 		mission_killAllEnemies();
 		engine.addAliens = -1;
-		setInfoLine("*** All Primary Objectives Completed ***", FONT_GREEN);
+		info_setLine("*** All Primary Objectives Completed ***", FONT_GREEN);
 	}
 }
 
@@ -342,7 +343,7 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 		*completed = OB_JUST_COMPLETED;
 		checkTimer();
 		if ((game.area == MISN_URUSOR) && (type == M_DISABLE_TARGET))
-			setRadioMessage(FS_SID, "All vessels disabled!", 1);
+			radio_setMessage(FS_SID, "All vessels disabled!", 1);
 	}
 	else
 	{
@@ -376,12 +377,12 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 					case P_CARGO:
 						sprintf(message, "Cargo pod destroyed!");
 						if (game.area == MISN_CERADSE) // Get lectured by Sid
-							setRadioMessage(FS_SID, "Chris, we needed that pod! I told you that we couldn't afford to lose a single one!", 1);
+							radio_setMessage(FS_SID, "Chris, we needed that pod! I told you that we couldn't afford to lose a single one!", 1);
 						break;
 					case P_ESCAPEPOD:
 						sprintf(message, "Escape Pod lost!");
 						if (game.area == MISN_ODEON) // Get lectured by Phoebe
-							setRadioMessage(FS_PHOEBE, "No... Ursula...", 1);
+							radio_setMessage(FS_PHOEBE, "No... Ursula...", 1);
 						break;
 				}
 				break;
@@ -392,13 +393,13 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 					switch (game.area)
 					{
 						case MISN_NEROD:
-							setRadioMessage(FS_SID, "Dammit, Chris! We just lost her!", 1);
+							radio_setMessage(FS_SID, "Dammit, Chris! We just lost her!", 1);
 							break;
 						case MISN_ALLEZ:
-							setRadioMessage(FS_CREW, "Noooo! Hull bre...", 1);
+							radio_setMessage(FS_CREW, "Noooo! Hull bre...", 1);
 							break;
 						case MISN_URUSOR:
-							setRadioMessage(FS_SID, "Chris, we've got to disable them, not destroy them!!", 1);
+							radio_setMessage(FS_SID, "Chris, we've got to disable them, not destroy them!!", 1);
 							break;
 					}
 				}
@@ -418,7 +419,7 @@ static void evaluateRequirement(int type, int id, int *completed, int *targetVal
 		}
 
 		if (strcmp(message, "") != 0)
-			setInfoLine(message, fontColor);
+			info_setLine(message, fontColor);
 	}
 }
 
@@ -435,7 +436,7 @@ void updateMissionRequirements(int type, int id, int value)
 	// you will automatically fail the mission(!)
 	if ((type == M_DESTROY_TARGET_TYPE) && (id == CD_SID))
 	{
-		setInfoLine("Sid has been killed!", FONT_RED);
+		info_setLine("Sid has been killed!", FONT_RED);
 		currentMission.completed1[0] = OB_JUST_FAILED;
 	}
 
@@ -482,22 +483,22 @@ void updateMissionRequirements(int type, int id, int value)
 			{
 				if (game.slavesRescued >= 250)
 				{
-					setInfoLine("*** Slaves Rescued - Mission Completed ***", FONT_GREEN);
+					info_setLine("*** Slaves Rescued - Mission Completed ***", FONT_GREEN);
 					systemPlanet[9].missionCompleted = 1;
 				}
 				else
 				{
 					sprintf(message, "Rescue %d more...", 250 - game.slavesRescued);
-					setInfoLine(message, FONT_CYAN);
+					info_setLine(message, FONT_CYAN);
 				}
 			}
 		}
 
 		if ((type == M_DESTROY_TARGET_TYPE) && (id == CD_CLOAKFIGHTER))
 		{
-			setInfoLine("*** Experimental Fighter Destroyed - Mission Completed ***", FONT_GREEN);
+			info_setLine("*** Experimental Fighter Destroyed - Mission Completed ***", FONT_GREEN);
 			systemPlanet[9].missionCompleted = 1;
-			setRadioMessage(FS_CHRIS, "That's one less suprise that WEAPCO can spring on us!", 1);
+			radio_setMessage(FS_CHRIS, "That's one less suprise that WEAPCO can spring on us!", 1);
 			game.experimentalShield = 0;
 		}
 	}
@@ -518,7 +519,7 @@ static int revealHiddenObjectives()
 		{
 			currentMission.completed1[i] = OB_INCOMPLETE;
 			sprintf(string, "New Objective - %s", currentMission.primaryObjective[i]);
-			setInfoLine(string, FONT_CYAN);
+			info_setLine(string, FONT_CYAN);
 			allDone = 0;
 		}
 	}
@@ -575,22 +576,22 @@ int allMissionsCompleted()
 			if (currentMission.remainingObjectives1 > 1)
 			{
 				if ((game.area != MISN_POSWIC) || (i != 1))
-					setInfoLine("*** Primary Objective Completed ***", FONT_GREEN);
+					info_setLine("*** Primary Objective Completed ***", FONT_GREEN);
 				else
-					setInfoLine(">>> Primary Objective Failed <<<", FONT_RED);
+					info_setLine(">>> Primary Objective Failed <<<", FONT_RED);
 				currentMission.completed1[i] = OB_COMPLETED;
 			}
 			else
 			{
 				if (currentMission.remainingObjectives2 > 0)
 				{
-					setInfoLine("Emergency warp drive activated. Press button to engage.", FONT_CYAN);
+					info_setLine("Emergency warp drive activated. Press button to engage.", FONT_CYAN);
 				}
 
 				if (game.area != MISN_INTERCEPTION)
-					setInfoLine("*** All Primary Objectives Completed ***", FONT_GREEN);
+					info_setLine("*** All Primary Objectives Completed ***", FONT_GREEN);
 				else
-					setInfoLine("*** Interception Destroyed ***", FONT_GREEN);
+					info_setLine("*** Interception Destroyed ***", FONT_GREEN);
 				currentMission.completed1[i] = OB_COMPLETED;
 
 				// do some area specific things
@@ -607,7 +608,7 @@ int allMissionsCompleted()
 				}
 
 				if (game.area == MISN_EARTH)
-					setRadioMessage(FS_CHRIS, "You guys stay here and keep things under control. I'm going after Kethlan!", 1);
+					radio_setMessage(FS_CHRIS, "You guys stay here and keep things under control. I'm going after Kethlan!", 1);
 			}
 		}
 
@@ -615,12 +616,12 @@ int allMissionsCompleted()
 		{
 			if (currentMission.remainingObjectives2 > 1)
 			{
-				setInfoLine("*** Secondary Objective Completed ***", FONT_GREEN);
+				info_setLine("*** Secondary Objective Completed ***", FONT_GREEN);
 				currentMission.completed2[i] = OB_COMPLETED;
 			}
 			else
 			{
-				setInfoLine("*** All Secondary Objectives Completed ***", FONT_GREEN);
+				info_setLine("*** All Secondary Objectives Completed ***", FONT_GREEN);
 				currentMission.completed2[i] = OB_COMPLETED;
 
 				// do some area specific things
@@ -635,13 +636,13 @@ int allMissionsCompleted()
 
 		if (currentMission.completed1[i] == OB_JUST_FAILED)
 		{
-			setInfoLine(">>> MISSION FAILED <<<", FONT_RED);
+			info_setLine(">>> MISSION FAILED <<<", FONT_RED);
 			currentMission.completed1[i] = OB_FAILED;
 		}
 
 		if (currentMission.completed2[i] == OB_JUST_FAILED)
 		{
-			setInfoLine(">>> Secondary Objective Failed <<<", FONT_RED);
+			info_setLine(">>> Secondary Objective Failed <<<", FONT_RED);
 			currentMission.completed2[i] = OB_FAILED;
 		}
 	}

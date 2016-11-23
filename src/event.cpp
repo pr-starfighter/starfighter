@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include "Starfighter.h"
+#include "radio.h"
 
 static Event events[MAX_EVENTS];
 static const char *klineGreeting[] = {
@@ -338,7 +339,7 @@ void events_check()
 		{
 			if (strcmp(events[i].message, "") != 0)
 			{
-				setRadioMessage(events[i].face, events[i].message, 1);
+				radio_setMessage(events[i].face, events[i].message, 1);
 			}
 
 			if (events[i].entity > -1)

@@ -215,7 +215,7 @@ int doTitle()
 
 	screen_flushBuffer();
 	gfx_free();
-	resetLists();
+	engine_resetLists();
 	
 	// required to stop the title screen crashing
 	game.system = 0;
@@ -578,7 +578,7 @@ int doTitle()
 
 	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 
-	resetLists();
+	engine_resetLists();
 
 	if (selectedOption == 1)
 	{

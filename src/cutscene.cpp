@@ -45,7 +45,7 @@ void cutscene_init(int scene)
 
 	screen_flushBuffer();
 	gfx_free();
-	resetLists();
+	engine_resetLists();
 	loadGameGraphics();
 
 	for (int i = 0 ; i < ALIEN_MAX ; i++)

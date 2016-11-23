@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include "Starfighter.h"
+#include "radio.h"
 
 Game game;
 
@@ -489,7 +490,7 @@ static void game_doCollectables()
 				collectable->active = 0;
 				if (collectable->type != P_MINE)
 				{
-					setInfoLine(temp, FONT_WHITE);
+					info_setLine(temp, FONT_WHITE);
 					if (collectable->type == P_SHIELD)
 						audio_playSound(SFX_SHIELDUP, player.x, player.y);
 					else
@@ -665,9 +666,9 @@ static void game_doBullets()
 						{
 							game.hits++;
 							if (aliens[i].classDef == CD_PHOEBE)
-								setRadioMessage(FS_PHOEBE, playerPhoebeHitMessage[rand() % nPlayerPhoebeHitMessage], 0);
+								radio_setMessage(FS_PHOEBE, playerPhoebeHitMessage[rand() % nPlayerPhoebeHitMessage], 0);
 							else if (aliens[i].classDef == CD_URSULA)
-								setRadioMessage(FS_URSULA, playerUrsulaHitMessage[rand() % nPlayerUrsulaHitMessage], 0);
+								radio_setMessage(FS_URSULA, playerUrsulaHitMessage[rand() % nPlayerUrsulaHitMessage], 0);
 						}
 
 						if (!(aliens[i].flags & FL_IMMORTAL))
@@ -726,7 +727,7 @@ static void game_doBullets()
 					{
 						if ((player.shield > engine.lowShield) &&
 								(player.shield - bullet->damage <= engine.lowShield))
-							setInfoLine("!!! WARNING: SHIELD LOW !!!", FONT_RED);
+							info_setLine("!!! WARNING: SHIELD LOW !!!", FONT_RED);
 
 						player.shield -= bullet->damage;
 						LIMIT(player.shield, 0, player.maxShield);
@@ -737,11 +738,11 @@ static void game_doBullets()
 					{
 						if (bullet->owner->classDef == CD_PHOEBE)
 						{
-							setRadioMessage(FS_PHOEBE, phoebePlayerHitMessage[rand() % nPhoebePlayerHitMessage], 0);
+							radio_setMessage(FS_PHOEBE, phoebePlayerHitMessage[rand() % nPhoebePlayerHitMessage], 0);
 						}
 						else if (bullet->owner->classDef == CD_URSULA)
 						{
-							setRadioMessage(FS_URSULA, ursulaPlayerHitMessage[rand() % nUrsulaPlayerHitMessage], 0);
+							radio_setMessage(FS_URSULA, ursulaPlayerHitMessage[rand() % nUrsulaPlayerHitMessage], 0);
 						}
 					}
 
@@ -1014,7 +1015,7 @@ static void game_doAliens()
 						if (aliens[i].classDef == CD_CLOAKFIGHTER)
 						{
 							game.experimentalShield = aliens[i].shield;
-							setInfoLine("Experimental Fighter has fled",
+							info_setLine("Experimental Fighter has fled",
 								FONT_CYAN);
 						}
 
@@ -1256,7 +1257,7 @@ static void game_doPlayer()
 						if (player.ammo[1] >= 100)
 						{
 							player.ammo[1] = 200;
-							setInfoLine("Laser Overheat!", FONT_WHITE);
+							info_setLine("Laser Overheat!", FONT_WHITE);
 						}
 					}
 				}
@@ -1309,11 +1310,11 @@ static void game_doPlayer()
 
 					if (weapon[W_PLAYER_WEAPON].flags & WF_SPREAD)
 					{
-						setInfoLine("Weapon set to Spread", FONT_WHITE);
+						info_setLine("Weapon set to Spread", FONT_WHITE);
 					}
 					else
 					{
-						setInfoLine("Weapon set to Concentrate", FONT_WHITE);
+						info_setLine("Weapon set to Concentrate", FONT_WHITE);
 					}
 				}
 
@@ -1476,13 +1477,13 @@ static void game_doPlayer()
 				if (aliens[ALIEN_KLINE].active)
 				{
 					if (game.area == MISN_VENUS)
-						setRadioMessage(FS_KLINE, klineVenusInsult[rand() % nKlineVenusInsult], 1);
+						radio_setMessage(FS_KLINE, klineVenusInsult[rand() % nKlineVenusInsult], 1);
 					else
-						setRadioMessage(FS_KLINE, klineInsult[rand() % nKlineInsult], 1);
+						radio_setMessage(FS_KLINE, klineInsult[rand() % nKlineInsult], 1);
 				}
 				else if ((aliens[ALIEN_BOSS].active) && (aliens[ALIEN_BOSS].classDef == CD_KRASS))
 				{
-					setRadioMessage(FS_KRASS, "That was the easiest $90,000,000 I've ever earned! Bwah! Ha! Ha! Ha!", 1);
+					radio_setMessage(FS_KRASS, "That was the easiest $90,000,000 I've ever earned! Bwah! Ha! Ha! Ha!", 1);
 				}
 
 				// Make it look like the ships are all still moving...
@@ -1867,7 +1868,7 @@ static void game_doHud()
 			{
 				for (int j = i ; j < MAX_INFOLINES - 1 ; j++)
 				{
-					copyInfoLine(j + 1, j);
+					info_copyLine(j + 1, j);
 				}
 				gfx_textSprites[MAX_INFOLINES - 1].life = 0;
 			}
@@ -2069,7 +2070,7 @@ int game_collision(float x0, float y0, int w0, int h0, float x2, float y2, int w
 
 int game_mainLoop()
 {
-	resetLists();
+	engine_resetLists();
 
 	setMission(game.area);
 	missionBriefScreen();
@@ -2195,7 +2196,7 @@ int game_mainLoop()
 			break;
 	}
 
-	clearInfoLines();
+	info_clearLines();
 
 	events_init();
 

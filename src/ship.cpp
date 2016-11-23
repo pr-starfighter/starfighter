@@ -171,7 +171,7 @@ void ship_fireRay(object *ship)
 				{
 					if (player.shield - 1 <= engine.lowShield)
 					{
-						setInfoLine("!!! WARNING: SHIELD LOW !!!", FONT_RED);
+						info_setLine("!!! WARNING: SHIELD LOW !!!", FONT_RED);
 					}
 				}
 				player.shield--;

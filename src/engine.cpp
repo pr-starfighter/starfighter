@@ -248,6 +248,65 @@ void engine_setMode()
 	SDL_JoystickOpen(0);
 }
 
+void engine_resetLists()
+{
+	object *ob, *ob2;
+	collectables *c1, *c2;
+	bRect *r1, *r2;
+
+	ob = engine.bulletHead->next;
+	while(ob != NULL)
+	{
+		ob2 = ob;
+		ob = ob->next;
+		delete ob2;
+	}
+	engine.bulletHead->next = NULL;
+	engine.bulletTail = engine.bulletHead;
+
+	ob = engine.explosionHead->next;
+	while(ob != NULL)
+	{
+		ob2 = ob;
+		ob = ob->next;
+		delete ob2;
+	}
+	engine.explosionHead->next = NULL;
+	engine.explosionTail = engine.explosionHead;
+
+	c1 = engine.collectableHead->next;
+	while (c1 != NULL)
+	{
+		c2 = c1;
+		c1 = c1->next;
+		delete c2;
+	}
+
+	engine.collectableHead->next = NULL;
+	engine.collectableTail = engine.collectableHead;
+	
+	r1 = screen_bufferHead->next;
+	while (r1 != NULL)
+	{
+		r2 = r1;
+		r1 = r1->next;
+		delete r2;
+	}
+	
+	screen_bufferHead->next = NULL;
+	screen_bufferTail = screen_bufferHead;
+
+	ob = engine.debrisHead->next;
+	while(ob != NULL)
+	{
+		ob2 = ob;
+		ob = ob->next;
+		delete ob2;
+	}
+	engine.debrisHead->next = NULL;
+	engine.debrisTail = engine.debrisHead;
+}
+
 /*
 Removes [hopefully] all the resources that has been
 loaded and created during the game. This is called by
@@ -258,7 +317,7 @@ void engine_cleanup()
 	gfx_free();
 	SDL_FreeSurface(gfx_background);
 	audio_free();
-	resetLists();
+	engine_resetLists();
 	delete(engine.bulletHead);
 	delete(engine.explosionHead);
 	delete(engine.collectableHead);

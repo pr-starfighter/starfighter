@@ -109,6 +109,7 @@ void engine_init();
 void engine_showError(int errorId, const char *name);
 void engine_setupConfigDirectory();
 void engine_setMode();
+void engine_resetLists();
 void engine_cleanup();
 
 #endif

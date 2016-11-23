@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include "Starfighter.h"
+#include "radio.h"
 
 object cargo[MAX_CARGO];
 
@@ -76,7 +77,7 @@ void cargo_becomeCollectable(int i)
 		aliens[ALIEN_PHOEBE].active = 1;
 		aliens[ALIEN_PHOEBE].x = cargo[i].x;
 		aliens[ALIEN_PHOEBE].y = cargo[i].y;
-		setRadioMessage(FS_PHOEBE, "Thanks! Watch out, WEAPCO! Phoebe's loose and she's ANGRY!", 1);
+		radio_setMessage(FS_PHOEBE, "Thanks! Watch out, WEAPCO! Phoebe's loose and she's ANGRY!", 1);
 	}
 
 	cargo[i].active = 0;

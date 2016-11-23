@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include "Starfighter.h"
+#include "radio.h"
 
 object alien_defs[CD_MAX];
 object aliens[ALIEN_MAX];
@@ -1423,7 +1424,7 @@ void alien_setKlineAttackMethod(object *alien)
 {
 	if (alien->shield <= 500)
 	{
-		setRadioMessage(FS_KLINE, "ENOUGH! THIS ENDS NOW!", 1);
+		radio_setMessage(FS_KLINE, "ENOUGH! THIS ENDS NOW!", 1);
 		alien->weaponType[0] = W_AIMED_SHOT;
 		alien->weaponType[1] = W_MICRO_HOMING_MISSILES;
 		alien->flags |= FL_CANCLOAK;
@@ -1432,7 +1433,7 @@ void alien_setKlineAttackMethod(object *alien)
 	}
 	else if (alien->shield <= 1000)
 	{
-		setRadioMessage(FS_KLINE, "Your ability to stay alive irritates me! Try dodging some of these!", 1);
+		radio_setMessage(FS_KLINE, "Your ability to stay alive irritates me! Try dodging some of these!", 1);
 		if (game.difficulty == DIFFICULTY_ORIGINAL)
 		{
 			alien->weaponType[0] = W_DIRSHOCKMISSILE;
@@ -1444,7 +1445,7 @@ void alien_setKlineAttackMethod(object *alien)
 	}
 	else
 	{
-		setRadioMessage(FS_KLINE, "Very good, Bainfield. Now let's get a little more serious...", 1);
+		radio_setMessage(FS_KLINE, "Very good, Bainfield. Now let's get a little more serious...", 1);
 		alien->weaponType[0] = W_SPREADSHOT;
 		alien->chance[1] = 40;
 	}
@@ -1757,9 +1758,9 @@ void alien_destroy(object *alien, object *attacker)
 		if (game.area != MISN_NEROD)
 		{
 			if ((alien->classDef == CD_PHOEBE) || (alien->classDef == CD_URSULA))
-				setInfoLine(">> Ally has ejected! <<\n", FONT_RED);
+				info_setLine(">> Ally has ejected! <<\n", FONT_RED);
 			else
-				setInfoLine(">> Friendly craft has been destroyed! <<\n", FONT_RED);
+				info_setLine(">> Friendly craft has been destroyed! <<\n", FONT_RED);
 		}
 	}
 
@@ -1772,7 +1773,7 @@ void alien_destroy(object *alien, object *attacker)
 				(!(alien->flags & FL_NOBANTER)))
 			{
 				r = rand() % nChrisKillMessage;
-				setRadioMessage(FS_CHRIS, chrisKillMessage[r], 0);
+				radio_setMessage(FS_CHRIS, chrisKillMessage[r], 0);
 			}
 		}
 		else if (attacker->classDef == CD_PHOEBE)
@@ -1782,7 +1783,7 @@ void alien_destroy(object *alien, object *attacker)
 				(!(alien->flags & FL_NOBANTER)))
 			{
 				r = rand() % nPhoebeKillMessage;
-				setRadioMessage(FS_PHOEBE, phoebeKillMessage[r], 0);
+				radio_setMessage(FS_PHOEBE, phoebeKillMessage[r], 0);
 			}
 		}
 		else if (attacker->classDef == CD_URSULA)
@@ -1792,7 +1793,7 @@ void alien_destroy(object *alien, object *attacker)
 				(!(alien->flags & FL_NOBANTER)))
 			{
 				r = rand() % nUrsulaKillMessage;
-				setRadioMessage(FS_URSULA, ursulaKillMessage[r], 0);
+				radio_setMessage(FS_URSULA, ursulaKillMessage[r], 0);
 			}
 		}
 		else
@@ -1828,11 +1829,11 @@ void alien_destroy(object *alien, object *attacker)
 	}
 
 	if ((alien->classDef == CD_KRASS) && (attacker == &player))
-		setRadioMessage(FS_CHRIS, "The name's CHRIS, old-timer.", 1);
+		radio_setMessage(FS_CHRIS, "The name's CHRIS, old-timer.", 1);
 
 	if (alien->classDef == CD_KLINE)
 	{
-		setRadioMessage(FS_KLINE, "It was an honor... to have fought you...", 1);
+		radio_setMessage(FS_KLINE, "It was an honor... to have fought you...", 1);
 		alien->dx = alien->dy = 0;
 		alien->shield = -150;
 	}
@@ -1862,7 +1863,7 @@ void alien_hurt(object *alien, object *attacker, int damage, int ion)
 			{
 				alien->flags |= FL_LEAVESECTOR;
 				alien->flags &= ~FL_CIRCLES;
-				setRadioMessage(FS_KLINE, "Seems I underestimated you, Bainfield. We'll meet again!", 1);
+				radio_setMessage(FS_KLINE, "Seems I underestimated you, Bainfield. We'll meet again!", 1);
 			}
 		}
 		else if (game.area == MISN_EARTH)
@@ -1872,7 +1873,7 @@ void alien_hurt(object *alien, object *attacker, int damage, int ion)
 			{
 				alien->flags |= FL_LEAVESECTOR;
 				alien->flags &= ~FL_CIRCLES;
-				setRadioMessage(FS_SID, "Chris, Kethlan is getting away!", 1);
+				radio_setMessage(FS_SID, "Chris, Kethlan is getting away!", 1);
 			}
 		}
 		else if (game.area == MISN_VENUS)
