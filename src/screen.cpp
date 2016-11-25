@@ -28,8 +28,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "gfx.h"
 
 SDL_Surface *screen;
-bRect *screen_bufferHead;
-bRect *screen_bufferTail;
+LinkedRect *screen_bufferHead;
+LinkedRect *screen_bufferTail;
 
 void screen_blit(SDL_Surface *image, int x, int y)
 {
@@ -56,7 +56,7 @@ void screen_drawBackground()
 
 void screen_addBuffer(int x, int y, int w, int h)
 {
-	bRect *rect = new bRect;
+	LinkedRect *rect = new LinkedRect;
 
 	rect->next = NULL;
 	rect->x = x;
@@ -70,8 +70,8 @@ void screen_addBuffer(int x, int y, int w, int h)
 
 void screen_flushBuffer()
 {
-	bRect *prevRect = screen_bufferHead;
-	bRect *rect = screen_bufferHead;
+	LinkedRect *prevRect = screen_bufferHead;
+	LinkedRect *rect = screen_bufferHead;
 	screen_bufferTail = screen_bufferHead;
 
 	while (rect->next != NULL)
@@ -88,8 +88,8 @@ void screen_flushBuffer()
 
 void screen_unBuffer()
 {
-	bRect *prevRect = screen_bufferHead;
-	bRect *rect = screen_bufferHead;
+	LinkedRect *prevRect = screen_bufferHead;
+	LinkedRect *rect = screen_bufferHead;
 	screen_bufferTail = screen_bufferHead;
 
 	while (rect->next != NULL)

@@ -254,7 +254,7 @@ void engine_resetLists()
 {
 	Object *ob, *ob2;
 	Collectable *c1, *c2;
-	bRect *r1, *r2;
+	LinkedRect *r1, *r2;
 
 	ob = engine.bulletHead->next;
 	while(ob != NULL)

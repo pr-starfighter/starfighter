@@ -35,7 +35,7 @@ SDL_Surface *gfx_messageBox;
 
 void gfx_init()
 {
-	screen_bufferHead = new bRect;
+	screen_bufferHead = new LinkedRect;
 	screen_bufferHead->next = NULL;
 	screen_bufferTail = screen_bufferHead;
 

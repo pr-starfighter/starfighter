@@ -78,12 +78,12 @@ typedef struct TextObject_ {
 
 } TextObject;
 
-typedef struct bRect_ {
+typedef struct LinkedRect_ {
 
 	int x, y, w, h;
-	struct bRect_ *next;
+	struct LinkedRect_ *next;
 
-} bRect;
+} LinkedRect;
 
 typedef struct Planet_ {
 

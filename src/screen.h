@@ -26,8 +26,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "structs.h"
 
 extern SDL_Surface *screen;
-extern bRect *screen_bufferHead;
-extern bRect *screen_bufferTail;
+extern LinkedRect *screen_bufferHead;
+extern LinkedRect *screen_bufferTail;
 
 void screen_blit(SDL_Surface *image, int x, int y);
 void screen_blitText(int i);
