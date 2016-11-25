@@ -45,16 +45,16 @@ Fill in later...
 */
 void ship_fireBullet(Object *ship, int weaponIndex)
 {
+	int y = (ship->image[0]->h) / 5;
+	Object *theWeapon = &weapons[ship->weaponType[weaponIndex]];
+
 	if (ship->reload[weaponIndex] > 0)
 		return;
 
-	int y = (ship->image[0]->h) / 5;
-
 	// Remove some ammo from the player
-	if ((ship == &player) && (player.ammo[weaponIndex] > 0) && (!engine.cheatAmmo))
+	if ((ship == &player) && (player.weaponType[weaponIndex] != W_LASER) &&
+			(player.ammo[weaponIndex] > 0) && (!engine.cheatAmmo))
 		player.ammo[weaponIndex]--;
-
-	Object *theWeapon = &weapons[ship->weaponType[weaponIndex]];
 
 	switch(theWeapon->id)
 	{

@@ -1213,9 +1213,5 @@ void mission_showFinishedScreen()
 		}
 	}
 
-	// Stop people from "selling" Laser ammo as rockets.
-	if (player.weaponType[1] == W_LASER)
-		player.ammo[1] = 1;
-
 	audio_haltMusic();
 }

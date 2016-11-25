@@ -1252,7 +1252,7 @@ static void game_doPlayer()
 						ship_fireBullet(&player, 1);
 
 						if (!engine.cheatAmmo)
-							player.ammo[1] += 2;
+							player.ammo[1] += 1;
 
 						if (player.ammo[1] >= 100)
 						{
@@ -1981,8 +1981,8 @@ static void game_doHud()
 	if (player.shield < 1)
 		return;
 
-	if ((!engine.keyState[KEY_ALTFIRE]) && (player.weaponType[1] == W_LASER) && (engine.eventTimer % 8 == 1))
-		LIMIT_ADD(player.ammo[1], -1, 1, 255);
+	if ((player.weaponType[1] == W_LASER) && (engine.eventTimer % 8 == 1))
+		LIMIT_ADD(player.ammo[1], -1, 0, 200);
 
 	if ((engine.eventTimer < 30) && (player.shield <= engine.lowShield))
 		return;
