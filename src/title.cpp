@@ -221,7 +221,7 @@ int doTitle()
 	game.system = 0;
 	game.area = MISN_START;
 
-	loadGameGraphics();
+	gfx_loadSprites();
 
 	screen_clear(black);
 	renderer_update();
@@ -229,7 +229,7 @@ int doTitle()
 
 	continueSaveSlot = save_initSlots();
 
-	loadBackground("gfx/spirit.jpg");
+	gfx_loadBackground("gfx/spirit.jpg");
 
 	SDL_Surface *prlogo, *sflogo;
 	prlogo = gfx_loadImage("gfx/prlogo.png");
@@ -655,7 +655,7 @@ void gameover()
 
 void doCredits()
 {
-	loadBackground("gfx/credits.jpg");
+	gfx_loadBackground("gfx/credits.jpg");
 	screen_flushBuffer();
 	gfx_free();
 

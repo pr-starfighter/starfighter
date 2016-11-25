@@ -46,7 +46,7 @@ void cutscene_init(int scene)
 	screen_flushBuffer();
 	gfx_free();
 	engine_resetLists();
-	loadGameGraphics();
+	gfx_loadSprites();
 
 	for (int i = 0 ; i < ALIEN_MAX ; i++)
 	{
@@ -66,7 +66,7 @@ void cutscene_init(int scene)
 	switch (scene)
 	{
 		case 0:
-			loadBackground("gfx/spirit.jpg");
+			gfx_loadBackground("gfx/spirit.jpg");
 			engine.ssx = -3;
 			engine.ssy = 0;
 
@@ -100,7 +100,7 @@ void cutscene_init(int scene)
 			break;
 
 		case 1:
-			loadBackground("gfx/sol.jpg");
+			gfx_loadBackground("gfx/sol.jpg");
 			engine.ssx = -0.5;
 			engine.ssy = 0;
 
@@ -137,7 +137,7 @@ void cutscene_init(int scene)
 			break;
 
 		case 2:
-			loadBackground("gfx/spirit.jpg");
+			gfx_loadBackground("gfx/spirit.jpg");
 			engine.ssx = -1.4;
 			engine.ssy = 0;
 
@@ -171,7 +171,7 @@ void cutscene_init(int scene)
 			break;
 
 		case 3:
-			loadBackground("gfx/eyananth.jpg");
+			gfx_loadBackground("gfx/eyananth.jpg");
 			engine.ssx = -0.5;
 			engine.ssy = 0;
 
@@ -217,7 +217,7 @@ void cutscene_init(int scene)
 			break;
 
 		case 4:
-			loadBackground("gfx/eyananth.jpg");
+			gfx_loadBackground("gfx/eyananth.jpg");
 			engine.ssx = -1.4;
 			engine.ssy = 0;
 
@@ -269,7 +269,7 @@ void cutscene_init(int scene)
 			break;
 
 		case 5:
-			loadBackground("gfx/mordor.jpg");
+			gfx_loadBackground("gfx/mordor.jpg");
 			engine.ssx = -0.5;
 			engine.ssy = 0;
 
@@ -309,7 +309,7 @@ void cutscene_init(int scene)
 			break;
 
 		case 6:
-			loadBackground("gfx/mordor.jpg");
+			gfx_loadBackground("gfx/mordor.jpg");
 			engine.ssx = -1.4;
 			engine.ssy = 0;
 

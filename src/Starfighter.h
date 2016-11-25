@@ -53,7 +53,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "mission.h"
 #include "player.h"
 #include "renderer.h"
-#include "resources.h"
 #include "screen.h"
 #include "ship.h"
 #include "shop.h"

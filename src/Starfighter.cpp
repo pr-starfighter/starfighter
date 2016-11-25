@@ -103,7 +103,7 @@ int main(int argc, char **argv)
 
 	gfx_init();
 	engine_setMode();
-	loadFont();
+	gfx_loadFont();
 
 	if (cheatAttempt && !engine.cheat)
 	{

@@ -1291,7 +1291,7 @@ int intermission()
 
 	save_initSlots();
 
-	loadBackground(systemBackground[game.system]);
+	gfx_loadBackground(systemBackground[game.system]);
 
 	engine.cursor_x = screen->w / 2;
 	engine.cursor_y = screen->h / 2;

@@ -46,5 +46,8 @@ SDL_Surface *gfx_createAlphaRect(int width, int height, Uint8 red, Uint8 green, 
 void gfx_createMessageBox(SDL_Surface *face, const char *message, int transparent);
 SDL_Surface *gfx_loadImage(const char *filename);
 void gfx_free();
+void gfx_loadBackground(const char *filename);
+void gfx_loadSprites();
+void gfx_loadFont();
 
 #endif

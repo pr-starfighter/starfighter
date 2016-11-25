@@ -1063,7 +1063,7 @@ void mission_showStartScreen()
 		renderer_update();
 	}
 
-	loadGameGraphics();
+	gfx_loadSprites();
 	gfx_createTextObject(TS_SHIELD, "Shield", screen->w / 32, screen->h - 50, FONT_WHITE);
 	gfx_createTextObject(TS_PLASMA_T, "Plasma:", screen->w * 5 / 16, screen->h - 50, FONT_WHITE);
 
