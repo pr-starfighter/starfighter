@@ -28,21 +28,22 @@ static int showGameMenu(int continueSaveSlot)
 		screen_blitText(TS_CONTINUE_CURRENT_GAME);
 	}
 	screen_blitText(TS_OPTIONS);
+	screen_blitText(TS_CREDITS);
 	if (engine.cheat)
 	{
-		gfx_textSprites[TS_QUIT].y = screen->h / 3 + 150;
+		gfx_textSprites[TS_QUIT].y = screen->h / 3 + 170;
 		screen_blitText(TS_CHEAT_OPTIONS);
 	}
 	else
 	{
-		gfx_textSprites[TS_QUIT].y = screen->h / 3 + 130;
+		gfx_textSprites[TS_QUIT].y = screen->h / 3 + 150;
 	}
 	screen_blitText(TS_QUIT);
 
 	if (engine.cheat)
-		return 6;
+		return 7;
 
-	return 5;
+	return 6;
 }
 
 static int showLoadMenu()
@@ -206,7 +207,7 @@ int title_show()
 
 	int selectedOption = 1;
 	int skip = 0;
-	int listLength = 5; // menu list length
+	int listLength = 6; // menu list length
 	int menuType = MENU_MAIN;
 
 	game_init();
@@ -253,10 +254,12 @@ int title_show()
 		-1, screen->h / 3 + 90, FONT_WHITE);
 	gfx_createTextObject(TS_OPTIONS, "OPTIONS",
 		-1, screen->h / 3 + 110, FONT_WHITE);
+	gfx_createTextObject(TS_CREDITS, "CREDITS",
+		-1, screen->h / 3 + 130, FONT_WHITE);
 	gfx_createTextObject(TS_CHEAT_OPTIONS, "CHEAT OPTIONS",
-		-1, screen->h / 3 + 130, FONT_WHITE);
+		-1, screen->h / 3 + 150, FONT_WHITE);
 	gfx_createTextObject(TS_QUIT, "QUIT",
-		-1, screen->h / 3 + 130, FONT_WHITE);
+		-1, screen->h / 3 + 150, FONT_WHITE);
 
 	createOptionsMenu();
 	createDifficultyMenu();
@@ -464,6 +467,10 @@ int title_show()
 						}
 						else if (selectedOption == 5)
 						{
+							engine.done = 1;
+						}
+						else if (selectedOption == 6)
+						{
 							if (engine.cheat)
 							{
 								menuType = MENU_CHEAT;
@@ -472,7 +479,7 @@ int title_show()
 							else
 								engine.done = 1;
 						}
-						else if (selectedOption == 6)
+						else if (selectedOption == 7)
 							engine.done = 1;
 						break;
 
@@ -592,8 +599,14 @@ int title_show()
 		selectedOption = save_load(continueSaveSlot);
 	}
 
+	if (selectedOption == 5)
+	{
+		title_showCredits();
+		selectedOption = 0;
+	}
+
 	// Send back a negative number...
-	if (selectedOption > 4)
+	if (selectedOption > 5)
 	{
 		selectedOption = -1;
 		exit(0);
