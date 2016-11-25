@@ -311,7 +311,7 @@ static void drawShop()
 	}
 }
 
-void initShop()
+void shop_init()
 {
 	/* ----------- Temporary Items ----------- */
 
@@ -1010,7 +1010,7 @@ static void sell(int i)
 	save(0);
 }
 
-void showShop()
+void shop_show()
 {
  	int icons = SHOP_MAX;
 

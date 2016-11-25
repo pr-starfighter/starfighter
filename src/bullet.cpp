@@ -17,7 +17,18 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "Starfighter.h"
+#include <math.h>
+
+#include "SDL.h"
+
+#include "defs.h"
+#include "structs.h"
+
+#include "alien.h"
+#include "engine.h"
+#include "game.h"
+#include "gfx.h"
+#include "player.h"
 
 void bullet_add(Object *theWeapon, Object *attacker, int y, int dy)
 {

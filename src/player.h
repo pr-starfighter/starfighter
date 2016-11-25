@@ -23,12 +23,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 extern Object player;
 extern int player_chargerFired;
 
-extern void initPlayer();
+void player_init();
 void player_setTarget(int index);
 void player_checkShockDamage(float x, float y);
-extern void exitPlayer();
-extern void flushInput();
-extern void getPlayerInput();
-extern void leaveSector();
+void player_exit();
+void player_flushInput();
+void player_getInput();
+void player_leaveSector();
 
 #endif

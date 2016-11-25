@@ -25,7 +25,7 @@ int player_chargerFired = 0;
 /*
 Initialises the player for a new game.
 */
-void initPlayer()
+void player_init()
 {
 	player.active = 1;
 	player.x = screen->w / 2;
@@ -93,7 +93,7 @@ void player_checkShockDamage(float x, float y)
 	}
 }
 
-void exitPlayer()
+void player_exit()
 {
 	player_chargerFired = 0;
 
@@ -101,7 +101,7 @@ void exitPlayer()
 		player.ammo[1] = 0;
 }
 
-void flushInput()
+void player_flushInput()
 {
 	for (int i = 0; i < KEY_LAST; i++)
 		engine.keyState[i] = 0;
@@ -166,7 +166,7 @@ static enum keys mapkey(uint32_t code) {
 	}
 }
 
-void getPlayerInput()
+void player_getInput()
 {
 	while (SDL_PollEvent(&engine.event))
 	{
@@ -292,7 +292,7 @@ void getPlayerInput()
 
 }
 
-void leaveSector()
+void player_leaveSector()
 {
 	engine.keyState[KEY_UP] = 0;
 	engine.keyState[KEY_DOWN] = 0;

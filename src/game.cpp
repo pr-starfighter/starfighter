@@ -2038,7 +2038,7 @@ pressed, the game automatically ends and goes back to the title screen
 */
 static int game_checkPauseRequest()
 {
-	getPlayerInput();
+	player_getInput();
 		
 	if (engine.keyState[KEY_ESCAPE])
 	{
@@ -2094,12 +2094,12 @@ static void game_showGameOver()
 
 	renderer_update();
 
-	flushInput();
+	player_flushInput();
 	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 
 	while (1)
 	{
-		getPlayerInput();
+		player_getInput();
 
 		if (engine.keyState[KEY_FIRE] || engine.keyState[KEY_ALTFIRE])
 			break;
@@ -2127,7 +2127,7 @@ int game_mainLoop()
 	mission_showStartScreen();
 
 	cargo_init();
-	initPlayer();
+	player_init();
 	aliens_init();
 
 	// specific for Phoebe being captured!
@@ -2294,7 +2294,7 @@ int game_mainLoop()
 
 	engine.keyState[KEY_FIRE] = 0;
 	engine.keyState[KEY_ALTFIRE] = 0;
-	flushInput();
+	player_flushInput();
 
 	while (engine.done != 1)
 	{
@@ -2320,7 +2320,7 @@ int game_mainLoop()
 				{
 					if ((!mission_checkFailed()) && (game.area != MISN_VENUS))
 					{
-						leaveSector();
+						player_leaveSector();
 						if ((engine.done == 2) &&
 							(game.area != MISN_DORIM) &&
 							(game.area != MISN_SIVEDI))
@@ -2369,7 +2369,7 @@ int game_mainLoop()
 				}
 				else
 				{
-					getPlayerInput();
+					player_getInput();
 				}
 			}
 			else
@@ -2384,7 +2384,7 @@ int game_mainLoop()
 		}
 		else
 		{
-			getPlayerInput();
+			player_getInput();
 		}
 
 		screen_unBuffer();
@@ -2509,7 +2509,7 @@ int game_mainLoop()
 		rtn = 0;
 	}
 
-	exitPlayer();
+	player_exit();
 
 	return rtn;
 }

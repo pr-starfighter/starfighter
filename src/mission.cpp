@@ -1092,7 +1092,7 @@ void mission_showStartScreen()
 
 		renderer_update();
 
-		flushInput();
+		player_flushInput();
 		engine.done = 0;
 		engine.keyState[KEY_FIRE] = 0;
 		engine.keyState[KEY_ALTFIRE] = 0;
@@ -1101,7 +1101,7 @@ void mission_showStartScreen()
 		while (1)
 		{
 			game_delayFrame();
-			getPlayerInput();
+			player_getInput();
 			if ((engine.keyState[KEY_FIRE]) || (engine.keyState[KEY_ALTFIRE]) ||
 					(engine.keyState[KEY_ESCAPE]))
 				break;
@@ -1200,14 +1200,14 @@ void mission_showFinishedScreen()
 
 		renderer_update();
 
-		flushInput();
+		player_flushInput();
 		engine.done = 0;
 		engine.keyState[KEY_FIRE] = 0;
 
 		while (1)
 		{
 			game_delayFrame();
-			getPlayerInput();
+			player_getInput();
 			if ((engine.keyState[KEY_FIRE]))
 				break;
 		}

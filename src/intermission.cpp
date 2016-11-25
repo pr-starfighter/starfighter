@@ -199,7 +199,7 @@ Drives the cursor. Is used by some other screens too
 */
 static void intermission_doCursor()
 {
-	getPlayerInput();
+	player_getInput();
 
 	LIMIT(engine.cursor_x, 10, screen->w - 10 - gfx_sprites[SP_CURSOR]->w);
 	LIMIT(engine.cursor_y, 10, screen->h - 10 - gfx_sprites[SP_CURSOR]->h);
@@ -1346,7 +1346,7 @@ int intermission()
 	engine.ssy = 0;
 
 	intermission_setStatusLines();
-	initShop();
+	shop_init();
 	intermission_setPlanets();
 
 	SDL_Surface *statsSurface = gfx_createAlphaRect(600, 330, 0x00, 0x00, 0x99);
@@ -1428,7 +1428,7 @@ int intermission()
 	else
 		player.shield = player.maxShield;
 
-	flushInput();
+	player_flushInput();
 	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 	engine.done = 0;
 
@@ -1548,7 +1548,7 @@ int intermission()
 				break;
 
 			case 4:
-				showShop();
+				shop_show();
 				break;
 
 			case 5:

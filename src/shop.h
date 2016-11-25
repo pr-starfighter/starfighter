@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef SHOP_H
 #define SHOP_H
 
-extern void initShop();
-extern void showShop();
+void shop_init();
+void shop_show();
 
 #endif

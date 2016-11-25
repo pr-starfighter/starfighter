@@ -125,7 +125,7 @@ void engine_showError(int errorId, const char *name)
 
 	while (!engine.keyState[KEY_ALTFIRE])
 	{
-		getPlayerInput();
+		player_getInput();
 		game_delayFrame();
 	}
 

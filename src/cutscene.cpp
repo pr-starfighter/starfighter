@@ -373,13 +373,13 @@ void cutscene_init(int scene)
 
 	SDL_Surface *face;
 	
-	flushInput();
+	player_flushInput();
 
 	while (1)
 	{
 		renderer_update();
 		screen_unBuffer();
-		getPlayerInput();
+		player_getInput();
 		game_doStars();
 		game_doExplosions();
 

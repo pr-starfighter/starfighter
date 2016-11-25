@@ -306,7 +306,7 @@ int title_show()
 	screen_drawBackground();
 
 	engine.done = 0;
-	flushInput();
+	player_flushInput();
 	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 
 	audio_playMusic("music/walking_among_androids.ogg", 1);
@@ -419,7 +419,7 @@ int title_show()
 			}
 		}
 
-		getPlayerInput();
+		player_getInput();
 
 		if ((engine.keyState[KEY_FIRE] || engine.keyState[KEY_ALTFIRE]))
 		{
@@ -654,14 +654,14 @@ void title_showCredits()
 	engine.keyState[KEY_ESCAPE] = 0;
 	engine.keyState[KEY_FIRE] = 0;
 	engine.keyState[KEY_ALTFIRE] = 0;
-	flushInput();
+	player_flushInput();
 
 	while (1)
 	{
 		renderer_update();
 		screen_unBuffer();
 
-		getPlayerInput();
+		player_getInput();
 		if (engine.keyState[KEY_ESCAPE] || engine.keyState[KEY_FIRE] ||
 				engine.keyState[KEY_ALTFIRE])
 			break;

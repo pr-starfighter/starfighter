@@ -17,7 +17,17 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "Starfighter.h"
+#include <math.h>
+
+#include "SDL.h"
+#include "SDL_mixer.h"
+
+#include "defs.h"
+#include "structs.h"
+
+#include "game.h"
+#include "engine.h"
+#include "screen.h"
 
 static Mix_Chunk *sound[SFX_MAX];
 static Mix_Music *music = NULL;
