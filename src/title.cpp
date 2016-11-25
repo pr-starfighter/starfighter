@@ -421,13 +421,6 @@ int title_show()
 
 		getPlayerInput();
 
-		// if someone has invoked the credits cheat
-		if (engine.cheatCredits)
-		{
-			title_showCredits();
-			engine.cheatCredits = 0;
-		}
-
 		if ((engine.keyState[KEY_FIRE] || engine.keyState[KEY_ALTFIRE]))
 		{
 			if ((now - then <= 27500) && (!skip))

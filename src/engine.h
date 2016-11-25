@@ -98,7 +98,6 @@ typedef struct Engine_ {
 	int cheatCash;
 	int cheatAmmo;
 	int cheatTime;
-	int cheatCredits;
 
 } Engine;
 
