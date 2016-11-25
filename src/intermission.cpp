@@ -153,7 +153,6 @@ void intermission_updateSystemStatus()
 	{
 		game.stationedPlanet = 0;
 		game.area = 1;
-		strcpy(game.stationedName, "Hail");
 		intermission_initPlanets(game.system);
 	}
 	else if (game.area == MISN_MOEBO)
@@ -161,7 +160,6 @@ void intermission_updateSystemStatus()
 		game.stationedPlanet = 0;
 		game.system = 1;
 		game.area = MISN_RESCUESLAVES;
-		strcpy(game.stationedName, "Nerod");
 		intermission_initPlanets(game.system);
 
 		if (game.difficulty == DIFFICULTY_ORIGINAL)
@@ -172,7 +170,6 @@ void intermission_updateSystemStatus()
 		game.stationedPlanet = 0;
 		game.system = 2;
 		game.area = MISN_CLOAKFIGHTER;
-		strcpy(game.stationedName, "Odeon");
 		intermission_initPlanets(game.system);
 
 		if (game.difficulty == DIFFICULTY_ORIGINAL)
@@ -183,7 +180,6 @@ void intermission_updateSystemStatus()
 		game.stationedPlanet = 8;
 		game.system = 3;
 		game.area = MISN_PLUTO;
-		strcpy(game.stationedName, "Pluto");
 		intermission_initPlanets(game.system);
 
 		if (game.difficulty == DIFFICULTY_ORIGINAL)
@@ -1366,12 +1362,12 @@ int intermission()
 	if ((game.difficulty != DIFFICULTY_EASY) &&
 		(game.difficulty != DIFFICULTY_ORIGINAL))
 	{
-		weapon[W_PLAYER_WEAPON].reload[0] = MAX(
-			weapon[W_PLAYER_WEAPON].reload[0],
+		weapons[W_PLAYER_WEAPON].reload[0] = MAX(
+			weapons[W_PLAYER_WEAPON].reload[0],
 			rate2reload[game.maxPlasmaRate]);
-		weapon[W_PLAYER_WEAPON].ammo[0] = MIN(weapon[W_PLAYER_WEAPON].ammo[0],
+		weapons[W_PLAYER_WEAPON].ammo[0] = MIN(weapons[W_PLAYER_WEAPON].ammo[0],
 			game.maxPlasmaOutput);
-		weapon[W_PLAYER_WEAPON].damage = MIN(weapon[W_PLAYER_WEAPON].damage,
+		weapons[W_PLAYER_WEAPON].damage = MIN(weapons[W_PLAYER_WEAPON].damage,
 			game.maxPlasmaDamage);
 	}
 
@@ -1587,8 +1583,6 @@ int intermission()
 					game.distanceCovered = 0;
 					player.shield = player.maxShield;
 					sprintf(string, "Stationed At: %s",
-						intermission_planets[game.stationedPlanet].name);
-					strcpy(game.stationedName,
 						intermission_planets[game.stationedPlanet].name);
 					gfx_createTextObject(TS_CURRENT_PLANET, string, 90, 450, FONT_WHITE);
 					intermission_updateCommsSurface(commsSurface);

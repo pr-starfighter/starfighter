@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-Object weapon[W_MAX];
+Object weapons[W_MAX];
 
 /*
 A list of predefined weaponary.
@@ -27,152 +27,152 @@ A list of predefined weaponary.
 void initWeapons()
 {
 	// Player's weapon (this NEVER allocated to anything else)
-	weapon[W_PLAYER_WEAPON].id = WT_PLASMA;
-	weapon[W_PLAYER_WEAPON].ammo[0] = 1;
-	weapon[W_PLAYER_WEAPON].damage = 1;
-	weapon[W_PLAYER_WEAPON].reload[0] = 15;
-	weapon[W_PLAYER_WEAPON].speed = 10;
-	weapon[W_PLAYER_WEAPON].imageIndex[0] = SP_PLASMA_GREEN;
-	weapon[W_PLAYER_WEAPON].imageIndex[1] = SP_PLASMA_GREEN;
-	weapon[W_PLAYER_WEAPON].flags = WF_SPREAD;
+	weapons[W_PLAYER_WEAPON].id = WT_PLASMA;
+	weapons[W_PLAYER_WEAPON].ammo[0] = 1;
+	weapons[W_PLAYER_WEAPON].damage = 1;
+	weapons[W_PLAYER_WEAPON].reload[0] = 15;
+	weapons[W_PLAYER_WEAPON].speed = 10;
+	weapons[W_PLAYER_WEAPON].imageIndex[0] = SP_PLASMA_GREEN;
+	weapons[W_PLAYER_WEAPON].imageIndex[1] = SP_PLASMA_GREEN;
+	weapons[W_PLAYER_WEAPON].flags = WF_SPREAD;
 
 	// Single Shot
-	weapon[W_SINGLE_SHOT].id = WT_PLASMA;
-	weapon[W_SINGLE_SHOT].ammo[0] = 1;
-	weapon[W_SINGLE_SHOT].damage = 1;
-	weapon[W_SINGLE_SHOT].reload[0] = 15;
-	weapon[W_SINGLE_SHOT].speed = 10;
-	weapon[W_SINGLE_SHOT].imageIndex[0] = SP_PLASMA_GREEN;
-	weapon[W_SINGLE_SHOT].imageIndex[1] = SP_PLASMA_RED;
-	weapon[W_SINGLE_SHOT].flags = 0;
+	weapons[W_SINGLE_SHOT].id = WT_PLASMA;
+	weapons[W_SINGLE_SHOT].ammo[0] = 1;
+	weapons[W_SINGLE_SHOT].damage = 1;
+	weapons[W_SINGLE_SHOT].reload[0] = 15;
+	weapons[W_SINGLE_SHOT].speed = 10;
+	weapons[W_SINGLE_SHOT].imageIndex[0] = SP_PLASMA_GREEN;
+	weapons[W_SINGLE_SHOT].imageIndex[1] = SP_PLASMA_RED;
+	weapons[W_SINGLE_SHOT].flags = 0;
 
 	// Double Shot
-	weapon[W_DOUBLE_SHOT] = weapon[W_SINGLE_SHOT];
-	weapon[W_DOUBLE_SHOT].ammo[0] = 2;
+	weapons[W_DOUBLE_SHOT] = weapons[W_SINGLE_SHOT];
+	weapons[W_DOUBLE_SHOT].ammo[0] = 2;
 
 	// Triple Shot
-	weapon[W_TRIPLE_SHOT] = weapon[W_SINGLE_SHOT];
-	weapon[W_TRIPLE_SHOT].ammo[0] = 3;
+	weapons[W_TRIPLE_SHOT] = weapons[W_SINGLE_SHOT];
+	weapons[W_TRIPLE_SHOT].ammo[0] = 3;
 
 	// Rockets
-	weapon[W_ROCKETS].id = WT_ROCKET;
-	weapon[W_ROCKETS].ammo[0] = 1;
-	weapon[W_ROCKETS].damage = 15;
-	weapon[W_ROCKETS].reload[0] = 45;
-	weapon[W_ROCKETS].speed = 20;
-	weapon[W_ROCKETS].flags = 0;
-	weapon[W_ROCKETS].imageIndex[0] = SP_ROCKET;
-	weapon[W_ROCKETS].imageIndex[1] = SP_ROCKET_L;
+	weapons[W_ROCKETS].id = WT_ROCKET;
+	weapons[W_ROCKETS].ammo[0] = 1;
+	weapons[W_ROCKETS].damage = 15;
+	weapons[W_ROCKETS].reload[0] = 45;
+	weapons[W_ROCKETS].speed = 20;
+	weapons[W_ROCKETS].flags = 0;
+	weapons[W_ROCKETS].imageIndex[0] = SP_ROCKET;
+	weapons[W_ROCKETS].imageIndex[1] = SP_ROCKET_L;
 
 	// Double Rockets (uses ROCKETS as base)
-	weapon[W_DOUBLE_ROCKETS] = weapon[W_ROCKETS];
-	weapon[W_DOUBLE_ROCKETS].ammo[0] = 2;
-	weapon[W_DOUBLE_ROCKETS].reload[0] = 80;
+	weapons[W_DOUBLE_ROCKETS] = weapons[W_ROCKETS];
+	weapons[W_DOUBLE_ROCKETS].ammo[0] = 2;
+	weapons[W_DOUBLE_ROCKETS].reload[0] = 80;
 
 	// Micro Rockets
-	weapon[W_MICRO_ROCKETS].id = WT_ROCKET;
-	weapon[W_MICRO_ROCKETS].ammo[0] = 5;
-	weapon[W_MICRO_ROCKETS].damage = 6;
-	weapon[W_MICRO_ROCKETS].reload[0] = 30;
-	weapon[W_MICRO_ROCKETS].speed = 15;
-	weapon[W_MICRO_ROCKETS].flags = WF_VARIABLE_SPEED;
-	weapon[W_MICRO_ROCKETS].imageIndex[0] = SP_ROCKET;
-	weapon[W_MICRO_ROCKETS].imageIndex[1] = SP_ROCKET_L;
+	weapons[W_MICRO_ROCKETS].id = WT_ROCKET;
+	weapons[W_MICRO_ROCKETS].ammo[0] = 5;
+	weapons[W_MICRO_ROCKETS].damage = 6;
+	weapons[W_MICRO_ROCKETS].reload[0] = 30;
+	weapons[W_MICRO_ROCKETS].speed = 15;
+	weapons[W_MICRO_ROCKETS].flags = WF_VARIABLE_SPEED;
+	weapons[W_MICRO_ROCKETS].imageIndex[0] = SP_ROCKET;
+	weapons[W_MICRO_ROCKETS].imageIndex[1] = SP_ROCKET_L;
 
 	// Energy Ray
-	weapon[W_ENERGYRAY].id = WT_ENERGYRAY;
-	weapon[W_ENERGYRAY].ammo[0] = 255;
-	weapon[W_ENERGYRAY].damage = 1;
-	weapon[W_ENERGYRAY].reload[0] = 25; // reload for energy ray is never used
-	weapon[W_ENERGYRAY].speed = 15;
-	weapon[W_ENERGYRAY].imageIndex[0] = SP_PLASMA_RED;
-	weapon[W_ENERGYRAY].imageIndex[1] = SP_PLASMA_RED;
-	weapon[W_ENERGYRAY].flags = 0;
+	weapons[W_ENERGYRAY].id = WT_ENERGYRAY;
+	weapons[W_ENERGYRAY].ammo[0] = 255;
+	weapons[W_ENERGYRAY].damage = 1;
+	weapons[W_ENERGYRAY].reload[0] = 25; // reload for energy ray is never used
+	weapons[W_ENERGYRAY].speed = 15;
+	weapons[W_ENERGYRAY].imageIndex[0] = SP_PLASMA_RED;
+	weapons[W_ENERGYRAY].imageIndex[1] = SP_PLASMA_RED;
+	weapons[W_ENERGYRAY].flags = 0;
 
 	// Laser
-	weapon[W_LASER].id = WT_LASER;
-	weapon[W_LASER].ammo[0] = 1;
-	weapon[W_LASER].damage = 3;
-	weapon[W_LASER].reload[0] = 1;
-	weapon[W_LASER].speed = 10;
-	weapon[W_LASER].imageIndex[0] = SP_PLASMA_RED;
-	weapon[W_LASER].imageIndex[1] = SP_PLASMA_RED;
-	weapon[W_LASER].flags = 0;
+	weapons[W_LASER].id = WT_LASER;
+	weapons[W_LASER].ammo[0] = 1;
+	weapons[W_LASER].damage = 3;
+	weapons[W_LASER].reload[0] = 1;
+	weapons[W_LASER].speed = 10;
+	weapons[W_LASER].imageIndex[0] = SP_PLASMA_RED;
+	weapons[W_LASER].imageIndex[1] = SP_PLASMA_RED;
+	weapons[W_LASER].flags = 0;
 
 	// Beam up weapon
-	weapon[W_CHARGER].id = WT_CHARGER;
-	weapon[W_CHARGER].ammo[0] = 1;
-	weapon[W_CHARGER].damage = 1;
-	weapon[W_CHARGER].reload[0] = 0;
-	weapon[W_CHARGER].speed = 12;
-	weapon[W_CHARGER].flags = 0;
-	weapon[W_CHARGER].imageIndex[0] = SP_DIR_PLASMA_GREEN;
-	weapon[W_CHARGER].imageIndex[1] = SP_DIR_PLASMA_RED;
+	weapons[W_CHARGER].id = WT_CHARGER;
+	weapons[W_CHARGER].ammo[0] = 1;
+	weapons[W_CHARGER].damage = 1;
+	weapons[W_CHARGER].reload[0] = 0;
+	weapons[W_CHARGER].speed = 12;
+	weapons[W_CHARGER].flags = 0;
+	weapons[W_CHARGER].imageIndex[0] = SP_DIR_PLASMA_GREEN;
+	weapons[W_CHARGER].imageIndex[1] = SP_DIR_PLASMA_RED;
 
 	// Homing missile
-	weapon[W_HOMING_MISSILE].id = WT_ROCKET;
-	weapon[W_HOMING_MISSILE].ammo[0] = 1;
-	weapon[W_HOMING_MISSILE].damage = 15;
-	weapon[W_HOMING_MISSILE].reload[0] = 35;
-	weapon[W_HOMING_MISSILE].speed = 10;
-	weapon[W_HOMING_MISSILE].flags = WF_HOMING;
-	weapon[W_HOMING_MISSILE].imageIndex[0] = SP_SMALL_EXPLOSION;
-	weapon[W_HOMING_MISSILE].imageIndex[1] = SP_SMALL_EXPLOSION;
+	weapons[W_HOMING_MISSILE].id = WT_ROCKET;
+	weapons[W_HOMING_MISSILE].ammo[0] = 1;
+	weapons[W_HOMING_MISSILE].damage = 15;
+	weapons[W_HOMING_MISSILE].reload[0] = 35;
+	weapons[W_HOMING_MISSILE].speed = 10;
+	weapons[W_HOMING_MISSILE].flags = WF_HOMING;
+	weapons[W_HOMING_MISSILE].imageIndex[0] = SP_SMALL_EXPLOSION;
+	weapons[W_HOMING_MISSILE].imageIndex[1] = SP_SMALL_EXPLOSION;
 
 	// Double homing missile
-	weapon[W_DOUBLE_HOMING_MISSILES] = weapon[W_HOMING_MISSILE];
-	weapon[W_DOUBLE_HOMING_MISSILES].ammo[0] = 2;
-	weapon[W_DOUBLE_HOMING_MISSILES].reload[0] = 65;
-	weapon[W_DOUBLE_HOMING_MISSILES].imageIndex[0] = SP_SMALL_EXPLOSION;
-	weapon[W_DOUBLE_HOMING_MISSILES].imageIndex[1] = SP_SMALL_EXPLOSION;
+	weapons[W_DOUBLE_HOMING_MISSILES] = weapons[W_HOMING_MISSILE];
+	weapons[W_DOUBLE_HOMING_MISSILES].ammo[0] = 2;
+	weapons[W_DOUBLE_HOMING_MISSILES].reload[0] = 65;
+	weapons[W_DOUBLE_HOMING_MISSILES].imageIndex[0] = SP_SMALL_EXPLOSION;
+	weapons[W_DOUBLE_HOMING_MISSILES].imageIndex[1] = SP_SMALL_EXPLOSION;
 
 	// Micro homing missiles
-	weapon[W_MICRO_HOMING_MISSILES].id = WT_ROCKET;
-	weapon[W_MICRO_HOMING_MISSILES].ammo[0] = 5;
-	weapon[W_MICRO_HOMING_MISSILES].damage = 12;
-	weapon[W_MICRO_HOMING_MISSILES].reload[0] = 65;
-	weapon[W_MICRO_HOMING_MISSILES].speed = 3;
-	weapon[W_MICRO_HOMING_MISSILES].flags = WF_HOMING;
-	weapon[W_MICRO_HOMING_MISSILES].imageIndex[0] = SP_SMALL_EXPLOSION;
-	weapon[W_MICRO_HOMING_MISSILES].imageIndex[1] = SP_SMALL_EXPLOSION;
+	weapons[W_MICRO_HOMING_MISSILES].id = WT_ROCKET;
+	weapons[W_MICRO_HOMING_MISSILES].ammo[0] = 5;
+	weapons[W_MICRO_HOMING_MISSILES].damage = 12;
+	weapons[W_MICRO_HOMING_MISSILES].reload[0] = 65;
+	weapons[W_MICRO_HOMING_MISSILES].speed = 3;
+	weapons[W_MICRO_HOMING_MISSILES].flags = WF_HOMING;
+	weapons[W_MICRO_HOMING_MISSILES].imageIndex[0] = SP_SMALL_EXPLOSION;
+	weapons[W_MICRO_HOMING_MISSILES].imageIndex[1] = SP_SMALL_EXPLOSION;
 
 	// Aimed plasma bolt
-	weapon[W_AIMED_SHOT].id = WT_DIRECTIONAL;
-	weapon[W_AIMED_SHOT].ammo[0] = 1;
-	weapon[W_AIMED_SHOT].damage = 2;
-	weapon[W_AIMED_SHOT].reload[0] = 15;
-	weapon[W_AIMED_SHOT].speed = 0;
-	weapon[W_AIMED_SHOT].flags = WF_AIMED;
-	weapon[W_AIMED_SHOT].imageIndex[0] = SP_DIR_PLASMA_GREEN;
-	weapon[W_AIMED_SHOT].imageIndex[1] = SP_DIR_PLASMA_RED;
+	weapons[W_AIMED_SHOT].id = WT_DIRECTIONAL;
+	weapons[W_AIMED_SHOT].ammo[0] = 1;
+	weapons[W_AIMED_SHOT].damage = 2;
+	weapons[W_AIMED_SHOT].reload[0] = 15;
+	weapons[W_AIMED_SHOT].speed = 0;
+	weapons[W_AIMED_SHOT].flags = WF_AIMED;
+	weapons[W_AIMED_SHOT].imageIndex[0] = SP_DIR_PLASMA_GREEN;
+	weapons[W_AIMED_SHOT].imageIndex[1] = SP_DIR_PLASMA_RED;
 
 	// 3 way spread weapon
-	weapon[W_SPREADSHOT].id = WT_SPREAD;
-	weapon[W_SPREADSHOT].ammo[0] = 3;
-	weapon[W_SPREADSHOT].damage = 2;
-	weapon[W_SPREADSHOT].reload[0] = 10;
-	weapon[W_SPREADSHOT].speed = 10;
-	weapon[W_SPREADSHOT].flags = WF_SPREAD;
-	weapon[W_SPREADSHOT].imageIndex[0] = SP_PLASMA_GREEN;
-	weapon[W_SPREADSHOT].imageIndex[1] = SP_PLASMA_RED;
+	weapons[W_SPREADSHOT].id = WT_SPREAD;
+	weapons[W_SPREADSHOT].ammo[0] = 3;
+	weapons[W_SPREADSHOT].damage = 2;
+	weapons[W_SPREADSHOT].reload[0] = 10;
+	weapons[W_SPREADSHOT].speed = 10;
+	weapons[W_SPREADSHOT].flags = WF_SPREAD;
+	weapons[W_SPREADSHOT].imageIndex[0] = SP_PLASMA_GREEN;
+	weapons[W_SPREADSHOT].imageIndex[1] = SP_PLASMA_RED;
 
 	// Sid's ion cannon like weapon
-	weapon[W_IONCANNON].id = WT_PLASMA;
-	weapon[W_IONCANNON].ammo[0] = 1;
-	weapon[W_IONCANNON].damage = 1;
-	weapon[W_IONCANNON].reload[0] = 2;
-	weapon[W_IONCANNON].speed = 10;
-	weapon[W_IONCANNON].flags = WF_DISABLE | WF_AIMED;
-	weapon[W_IONCANNON].imageIndex[0] = SP_ION;
-	weapon[W_IONCANNON].imageIndex[1] = SP_ION;
+	weapons[W_IONCANNON].id = WT_PLASMA;
+	weapons[W_IONCANNON].ammo[0] = 1;
+	weapons[W_IONCANNON].damage = 1;
+	weapons[W_IONCANNON].reload[0] = 2;
+	weapons[W_IONCANNON].speed = 10;
+	weapons[W_IONCANNON].flags = WF_DISABLE | WF_AIMED;
+	weapons[W_IONCANNON].imageIndex[0] = SP_ION;
+	weapons[W_IONCANNON].imageIndex[1] = SP_ION;
 
 	// Directional Shock Missile - Used by Kline in final battle
-	weapon[W_DIRSHOCKMISSILE].id = WT_ROCKET;
-	weapon[W_DIRSHOCKMISSILE].ammo[0] = 5;
-	weapon[W_DIRSHOCKMISSILE].damage = 20;
-	weapon[W_DIRSHOCKMISSILE].reload[0] = 60;
-	weapon[W_DIRSHOCKMISSILE].speed = 0;
-	weapon[W_DIRSHOCKMISSILE].flags = WF_AIMED | WF_TIMEDEXPLOSION;
-	weapon[W_DIRSHOCKMISSILE].imageIndex[0] = SP_SMALL_EXPLOSION;
-	weapon[W_DIRSHOCKMISSILE].imageIndex[1] = SP_SMALL_EXPLOSION;
+	weapons[W_DIRSHOCKMISSILE].id = WT_ROCKET;
+	weapons[W_DIRSHOCKMISSILE].ammo[0] = 5;
+	weapons[W_DIRSHOCKMISSILE].damage = 20;
+	weapons[W_DIRSHOCKMISSILE].reload[0] = 60;
+	weapons[W_DIRSHOCKMISSILE].speed = 0;
+	weapons[W_DIRSHOCKMISSILE].flags = WF_AIMED | WF_TIMEDEXPLOSION;
+	weapons[W_DIRSHOCKMISSILE].imageIndex[0] = SP_SMALL_EXPLOSION;
+	weapons[W_DIRSHOCKMISSILE].imageIndex[1] = SP_SMALL_EXPLOSION;
 }

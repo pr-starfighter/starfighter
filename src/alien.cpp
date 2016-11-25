@@ -1247,7 +1247,7 @@ void alien_addSmallAsteroid(Object *hostAlien)
 	int debris = RANDRANGE(1, 10);
 
 	for (int i = 0 ; i < debris ; i++)
-		bullet_add(&weapon[W_ROCKETS], hostAlien, 0, 0);
+		bullet_add(&weapons[W_ROCKETS], hostAlien, 0, 0);
 
 	for (int i = 0 ; i <= ALIEN_NORMAL_LAST ; i++)
 		if (!aliens[i].active)

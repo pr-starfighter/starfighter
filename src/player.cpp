@@ -45,12 +45,12 @@ void initPlayer()
 
 	player.weaponType[0] = W_PLAYER_WEAPON;
 
-	if (weapon[W_PLAYER_WEAPON].ammo[0] < game.minPlasmaOutput)
-		weapon[W_PLAYER_WEAPON].ammo[0] = game.minPlasmaOutput;
-	if (weapon[W_PLAYER_WEAPON].damage < game.minPlasmaDamage)
-		weapon[W_PLAYER_WEAPON].damage = game.minPlasmaDamage;
-	if (weapon[W_PLAYER_WEAPON].reload[0] > rate2reload[game.minPlasmaRate])
-		weapon[W_PLAYER_WEAPON].reload[0] = rate2reload[game.minPlasmaRate];
+	if (weapons[W_PLAYER_WEAPON].ammo[0] < game.minPlasmaOutput)
+		weapons[W_PLAYER_WEAPON].ammo[0] = game.minPlasmaOutput;
+	if (weapons[W_PLAYER_WEAPON].damage < game.minPlasmaDamage)
+		weapons[W_PLAYER_WEAPON].damage = game.minPlasmaDamage;
+	if (weapons[W_PLAYER_WEAPON].reload[0] > rate2reload[game.minPlasmaRate])
+		weapons[W_PLAYER_WEAPON].reload[0] = rate2reload[game.minPlasmaRate];
 
 	player.hit = 0;
 

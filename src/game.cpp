@@ -336,9 +336,9 @@ static void game_doCollectables()
 						if (game.difficulty == DIFFICULTY_ORIGINAL)
 						{
 							player.ammo[0] = MAX(player.ammo[0], 50);
-							weapon[W_PLAYER_WEAPON].reload[0] = MAX(
+							weapons[W_PLAYER_WEAPON].reload[0] = MAX(
 								rate2reload[game.maxPlasmaRate],
-								weapon[W_PLAYER_WEAPON].reload[0] - 2);
+								weapons[W_PLAYER_WEAPON].reload[0] - 2);
 						}
 						else if ((game.area != MISN_INTERCEPTION) ||
 								(player.ammo[0] > 0))
@@ -347,11 +347,11 @@ static void game_doCollectables()
 								LIMIT_ADD(player.ammo[0], collectable->value,
 									0, game.maxPlasmaAmmo);
 
-							if (weapon[W_PLAYER_WEAPON].reload[0] <= rate2reload[game.maxPlasmaRate])
+							if (weapons[W_PLAYER_WEAPON].reload[0] <= rate2reload[game.maxPlasmaRate])
 								sprintf(temp, "Firing rate already at maximum");
 							else
 							{
-								weapon[W_PLAYER_WEAPON].reload[0] -= 2;
+								weapons[W_PLAYER_WEAPON].reload[0] -= 2;
 								sprintf(temp, "Firing rate increased");
 							}
 						}
@@ -366,8 +366,8 @@ static void game_doCollectables()
 						if (game.difficulty == DIFFICULTY_ORIGINAL)
 						{
 							player.ammo[0] = MAX(player.ammo[0], 50);
-							weapon[W_PLAYER_WEAPON].ammo[0] = MIN(
-								game.maxPlasmaOutput, weapon[W_PLAYER_WEAPON].ammo[0] + 1);
+							weapons[W_PLAYER_WEAPON].ammo[0] = MIN(
+								game.maxPlasmaOutput, weapons[W_PLAYER_WEAPON].ammo[0] + 1);
 						}
 						else if ((game.area != MISN_INTERCEPTION) ||
 								(player.ammo[0] > 0))
@@ -376,11 +376,11 @@ static void game_doCollectables()
 								LIMIT_ADD(player.ammo[0], collectable->value,
 									0, game.maxPlasmaAmmo);
 
-							if (weapon[W_PLAYER_WEAPON].ammo[0] >= game.maxPlasmaOutput)
+							if (weapons[W_PLAYER_WEAPON].ammo[0] >= game.maxPlasmaOutput)
 								sprintf(temp, "Plasma output already at maximum");
 							else
 							{
-								weapon[W_PLAYER_WEAPON].ammo[0]++;
+								weapons[W_PLAYER_WEAPON].ammo[0]++;
 								sprintf(temp, "Plasma output increased");
 							}
 						}
@@ -395,8 +395,8 @@ static void game_doCollectables()
 						if (game.difficulty == DIFFICULTY_ORIGINAL)
 						{
 							player.ammo[0] = MAX(player.ammo[0], 50);
-							weapon[W_PLAYER_WEAPON].damage = MIN(
-								game.maxPlasmaDamage, weapon[W_PLAYER_WEAPON].damage + 1);
+							weapons[W_PLAYER_WEAPON].damage = MIN(
+								game.maxPlasmaDamage, weapons[W_PLAYER_WEAPON].damage + 1);
 						}
 						else if ((game.area != MISN_INTERCEPTION) ||
 								(player.ammo[0] > 0))
@@ -405,11 +405,11 @@ static void game_doCollectables()
 								LIMIT_ADD(player.ammo[0], collectable->value,
 									0, game.maxPlasmaAmmo);
 
-							if (weapon[W_PLAYER_WEAPON].damage >= game.maxPlasmaDamage)
+							if (weapons[W_PLAYER_WEAPON].damage >= game.maxPlasmaDamage)
 								sprintf(temp, "Plasma damage already at maximum");
 							else
 							{
-								weapon[W_PLAYER_WEAPON].damage++;
+								weapons[W_PLAYER_WEAPON].damage++;
 								sprintf(temp, "Plasma damage increased");
 							}
 						}
@@ -431,10 +431,10 @@ static void game_doCollectables()
 								LIMIT_ADD(player.ammo[0], collectable->value,
 									0, game.maxPlasmaAmmo);
 
-							weapon[W_PLAYER_WEAPON].ammo[0] = 5;
-							weapon[W_PLAYER_WEAPON].damage = 5;
-							weapon[W_PLAYER_WEAPON].reload[0] = rate2reload[5];
-							weapon[W_PLAYER_WEAPON].flags |= WF_SPREAD;
+							weapons[W_PLAYER_WEAPON].ammo[0] = 5;
+							weapons[W_PLAYER_WEAPON].damage = 5;
+							weapons[W_PLAYER_WEAPON].reload[0] = rate2reload[5];
+							weapons[W_PLAYER_WEAPON].flags |= WF_SPREAD;
 
 							sprintf(temp, "Picked up a Super Charge!");
 						}
@@ -501,9 +501,9 @@ static void game_doCollectables()
 			// stop people from exploiting a weapon check condition
 			if (player.ammo[0] == 0)
 			{
-				weapon[W_PLAYER_WEAPON].ammo[0] = game.minPlasmaOutput;
-				weapon[W_PLAYER_WEAPON].damage = game.minPlasmaDamage;
-				weapon[W_PLAYER_WEAPON].reload[0] = rate2reload[game.minPlasmaRate];
+				weapons[W_PLAYER_WEAPON].ammo[0] = game.minPlasmaOutput;
+				weapons[W_PLAYER_WEAPON].damage = game.minPlasmaDamage;
+				weapons[W_PLAYER_WEAPON].reload[0] = rate2reload[game.minPlasmaRate];
 			}
 		}
 
@@ -1303,12 +1303,12 @@ static void game_doPlayer()
 
 			if ((engine.keyState[KEY_SWITCH]))
 			{
-				if ((weapon[W_PLAYER_WEAPON].ammo[0] >= 3) &&
-					(weapon[W_PLAYER_WEAPON].ammo[0] <= game.maxPlasmaOutput))
+				if ((weapons[W_PLAYER_WEAPON].ammo[0] >= 3) &&
+					(weapons[W_PLAYER_WEAPON].ammo[0] <= game.maxPlasmaOutput))
 				{
-					weapon[W_PLAYER_WEAPON].flags ^= WF_SPREAD;
+					weapons[W_PLAYER_WEAPON].flags ^= WF_SPREAD;
 
-					if (weapon[W_PLAYER_WEAPON].flags & WF_SPREAD)
+					if (weapons[W_PLAYER_WEAPON].flags & WF_SPREAD)
 					{
 						info_setLine("Weapon set to Spread", FONT_WHITE);
 					}
@@ -1926,7 +1926,7 @@ static void game_doHud()
 
 	for (int i = 1 ; i <= 5 ; i++)
 	{
-		if (weapon[W_PLAYER_WEAPON].damage >= i) {
+		if (weapons[W_PLAYER_WEAPON].damage >= i) {
 			if(i <= game.maxPlasmaDamage || (SDL_GetTicks() % 1000 > (unsigned)i * 100))
 			{
 				SDL_FillRect(screen, &bar, green);
@@ -1946,7 +1946,7 @@ static void game_doHud()
 
 	for (int i = 1 ; i <= 5 ; i++)
 	{
-		if (weapon[W_PLAYER_WEAPON].ammo[0] >= i) {
+		if (weapons[W_PLAYER_WEAPON].ammo[0] >= i) {
 			if(i <= game.maxPlasmaOutput || (SDL_GetTicks() % 1000 > (unsigned)i * 100))
 			{
 				SDL_FillRect(screen, &bar, yellow);
@@ -1966,7 +1966,7 @@ static void game_doHud()
 
 	for (int i = 1 ; i <= 5 ; i++)
 	{
-		if (weapon[W_PLAYER_WEAPON].reload[0] <= rate2reload[i]) {
+		if (weapons[W_PLAYER_WEAPON].reload[0] <= rate2reload[i]) {
 			if(i <= game.maxPlasmaRate || (SDL_GetTicks() % 1000 > (unsigned)i * 100))
 			{
 				SDL_FillRect(screen, &bar, blue);

@@ -731,8 +731,8 @@ void gfx_loadSprites()
 
 	for (int i = 0 ; i < W_MAX ; i++)
 	{
-		weapon[i].image[0] = gfx_sprites[weapon[i].imageIndex[0]];
-		weapon[i].image[1] = gfx_sprites[weapon[i].imageIndex[1]];
+		weapons[i].image[0] = gfx_sprites[weapons[i].imageIndex[0]];
+		weapons[i].image[1] = gfx_sprites[weapons[i].imageIndex[1]];
 	}
 }
 

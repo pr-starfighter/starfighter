@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef WEAPONS_H
 #define WEAPONS_H
 
-extern Object weapon[W_MAX];
+extern Object weapons[W_MAX];
 
 extern void initWeapons();
 

@@ -173,9 +173,9 @@ int save_load(int slot)
 						(fscanf(fp, "%d %d %d %d%*c", &player.maxShield,
 							&player.ammo[0], &player.ammo[1], &player.weaponType[1]) < 4) ||
 						(fscanf(fp, "%d %d %d%*c",
-							&weapon[W_PLAYER_WEAPON].ammo[0],
-							&weapon[W_PLAYER_WEAPON].damage,
-							&weapon[W_PLAYER_WEAPON].reload[0]) < 3) ||
+							&weapons[W_PLAYER_WEAPON].ammo[0],
+							&weapons[W_PLAYER_WEAPON].damage,
+							&weapons[W_PLAYER_WEAPON].reload[0]) < 3) ||
 						(fscanf(fp, "%d %d %d %d %d %d %d %d%*c",
 							&game.minPlasmaRate, &game.minPlasmaDamage,
 							&game.minPlasmaOutput, &game.maxPlasmaRate,
@@ -234,9 +234,9 @@ int save_load(int slot)
 		if (game.saveFormat < 2)
 			game.difficulty = DIFFICULTY_NORMAL;
 
-		weapon[W_PLAYER_WEAPON] = game.playerWeapon;
-		weapon[W_PLAYER_WEAPON].imageIndex[0] = SP_PLASMA_GREEN;
-		weapon[W_PLAYER_WEAPON].imageIndex[1] = SP_PLASMA_GREEN;
+		weapons[W_PLAYER_WEAPON] = game.playerWeapon;
+		weapons[W_PLAYER_WEAPON].imageIndex[0] = SP_PLASMA_GREEN;
+		weapons[W_PLAYER_WEAPON].imageIndex[1] = SP_PLASMA_GREEN;
 		player = game.thePlayer;
 	}
 
@@ -300,15 +300,15 @@ void save(int slot)
 
 				game.system, game.area, game.stationedPlanet,
 
-				game.stationedName,
+				intermission_planets[game.stationedPlanet].name,
 
 				game.hasWingMate1, game.hasWingMate2,
 
 				player.maxShield, player.ammo[0], player.ammo[1],
 				player.weaponType[1],
 
-				weapon[W_PLAYER_WEAPON].ammo[0], weapon[W_PLAYER_WEAPON].damage,
-				weapon[W_PLAYER_WEAPON].reload[0],
+				weapons[W_PLAYER_WEAPON].ammo[0], weapons[W_PLAYER_WEAPON].damage,
+				weapons[W_PLAYER_WEAPON].reload[0],
 
 				game.minPlasmaRate, game.minPlasmaDamage, game.minPlasmaOutput,
 				game.maxPlasmaRate, game.maxPlasmaDamage, game.maxPlasmaOutput,

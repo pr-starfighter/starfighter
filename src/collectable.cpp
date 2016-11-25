@@ -84,9 +84,9 @@ void collectable_add(float x, float y, int type, int value, int life)
 	// upgraded! Give them money instead.
 	if (type == P_PLASMA_AMMO)
 	{
-		if ((weapon[W_PLAYER_WEAPON].reload[0] >= rate2reload[game.minPlasmaRate]) &&
-			(weapon[W_PLAYER_WEAPON].ammo[0] <= game.minPlasmaOutput) &&
-			(weapon[W_PLAYER_WEAPON].damage <= game.minPlasmaDamage))
+		if ((weapons[W_PLAYER_WEAPON].reload[0] >= rate2reload[game.minPlasmaRate]) &&
+			(weapons[W_PLAYER_WEAPON].ammo[0] <= game.minPlasmaOutput) &&
+			(weapons[W_PLAYER_WEAPON].damage <= game.minPlasmaDamage))
 		{
 			type = P_CASH;
 		}

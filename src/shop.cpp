@@ -802,9 +802,9 @@ static void sell(int i)
 				sell(SHOP_PLASMA_MIN_OUTPUT);
 
 			game.maxPlasmaOutput--;
-			if (weapon[W_PLAYER_WEAPON].ammo[0] <= game.maxPlasmaOutput + 1)
-				weapon[W_PLAYER_WEAPON].ammo[0] = MIN(
-					weapon[W_PLAYER_WEAPON].ammo[0],
+			if (weapons[W_PLAYER_WEAPON].ammo[0] <= game.maxPlasmaOutput + 1)
+				weapons[W_PLAYER_WEAPON].ammo[0] = MIN(
+					weapons[W_PLAYER_WEAPON].ammo[0],
 					game.maxPlasmaOutput);
 			break;
 
@@ -819,9 +819,9 @@ static void sell(int i)
 				sell(SHOP_PLASMA_MIN_DAMAGE);
 
 			game.maxPlasmaDamage--;
-			if (weapon[W_PLAYER_WEAPON].damage <= game.maxPlasmaDamage + 1)
-				weapon[W_PLAYER_WEAPON].damage = MIN(
-					weapon[W_PLAYER_WEAPON].damage,
+			if (weapons[W_PLAYER_WEAPON].damage <= game.maxPlasmaDamage + 1)
+				weapons[W_PLAYER_WEAPON].damage = MIN(
+					weapons[W_PLAYER_WEAPON].damage,
 					game.maxPlasmaDamage);
 			break;
 
@@ -836,9 +836,9 @@ static void sell(int i)
 				sell(SHOP_PLASMA_MIN_RATE);
 
 			game.maxPlasmaRate--;
-			if (weapon[W_PLAYER_WEAPON].reload[0] >= rate2reload[game.maxPlasmaRate + 1])
-				weapon[W_PLAYER_WEAPON].reload[0] = MAX(
-					weapon[W_PLAYER_WEAPON].reload[0],
+			if (weapons[W_PLAYER_WEAPON].reload[0] >= rate2reload[game.maxPlasmaRate + 1])
+				weapons[W_PLAYER_WEAPON].reload[0] = MAX(
+					weapons[W_PLAYER_WEAPON].reload[0],
 					rate2reload[game.maxPlasmaRate]);
 			break;
 
@@ -850,7 +850,7 @@ static void sell(int i)
 			}
 			game.minPlasmaOutput--;
 			if (player.ammo[0] <= 0)
-				weapon[W_PLAYER_WEAPON].ammo[0] = game.minPlasmaOutput;
+				weapons[W_PLAYER_WEAPON].ammo[0] = game.minPlasmaOutput;
 			break;
 
 		case SHOP_PLASMA_MIN_DAMAGE:
@@ -861,7 +861,7 @@ static void sell(int i)
 			}
 			game.minPlasmaDamage--;
 			if (player.ammo[0] <= 0)
-				weapon[W_PLAYER_WEAPON].damage = game.minPlasmaDamage;
+				weapons[W_PLAYER_WEAPON].damage = game.minPlasmaDamage;
 			break;
 
 		case SHOP_PLASMA_MIN_RATE:
@@ -872,7 +872,7 @@ static void sell(int i)
 			}
 			game.minPlasmaRate--;
 			if (player.ammo[0] <= 0)
-				weapon[W_PLAYER_WEAPON].reload[0] = rate2reload[game.minPlasmaRate];
+				weapons[W_PLAYER_WEAPON].reload[0] = rate2reload[game.minPlasmaRate];
 			break;
 
 		case SHOP_PLASMA_AMMO:
@@ -886,9 +886,9 @@ static void sell(int i)
 			else
 			{
 				player.ammo[0] = 0;
-				weapon[W_PLAYER_WEAPON].ammo[0] = game.minPlasmaOutput;
-				weapon[W_PLAYER_WEAPON].damage = game.minPlasmaDamage;
-				weapon[W_PLAYER_WEAPON].reload[0] = rate2reload[game.minPlasmaRate];
+				weapons[W_PLAYER_WEAPON].ammo[0] = game.minPlasmaOutput;
+				weapons[W_PLAYER_WEAPON].damage = game.minPlasmaDamage;
+				weapons[W_PLAYER_WEAPON].reload[0] = rate2reload[game.minPlasmaRate];
 			}
 			break;
 

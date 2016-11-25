@@ -43,18 +43,18 @@ int ship_collision(Object *ship, Object *otherShip)
 /*
 Fill in later...
 */
-void ship_fireBullet(Object *ship, int weaponType)
+void ship_fireBullet(Object *ship, int weaponIndex)
 {
-	if (ship->reload[weaponType] > 0)
+	if (ship->reload[weaponIndex] > 0)
 		return;
 
 	int y = (ship->image[0]->h) / 5;
 
 	// Remove some ammo from the player
-	if ((ship == &player) && (weaponType == 1) && (!engine.cheatAmmo))
-		player.ammo[1]--;
+	if ((ship == &player) && (player.ammo[weaponIndex] > 0) && (!engine.cheatAmmo))
+		player.ammo[weaponIndex]--;
 
-	Object *theWeapon = &weapon[ship->weaponType[weaponType]];
+	Object *theWeapon = &weapons[ship->weaponType[weaponIndex]];
 
 	switch(theWeapon->id)
 	{
@@ -113,25 +113,18 @@ void ship_fireBullet(Object *ship, int weaponType)
 
 	// Reset the weapon reload time. Double it if it is not friendly or
 	// a boss or Kline
-	ship->reload[weaponType] = theWeapon->reload[0];
+	ship->reload[weaponIndex] = theWeapon->reload[0];
 	if ((ship->flags & FL_WEAPCO) && (ship != &aliens[ALIEN_BOSS]) &&
 			(ship != &aliens[ALIEN_KLINE]) && (theWeapon->id != W_LASER))
-		ship->reload[weaponType] *= 2;
+		ship->reload[weaponIndex] *= 2;
 
-	if ((engine.cheatAmmo) || (theWeapon->id == WT_LASER))
-		return;
-
-	if ((ship == &player) && (weaponType == 0))
+	if ((ship == &player) && (weaponIndex == 0))
 	{
-		if (player.ammo[0] > 0)
+		if (player.ammo[weaponIndex] <= 0)
 		{
-			player.ammo[0]--;
-			if (player.ammo[0] <= 0)
-			{
-				weapon[W_PLAYER_WEAPON].ammo[0] = game.minPlasmaOutput;
-				weapon[W_PLAYER_WEAPON].damage = game.minPlasmaDamage;
-				weapon[W_PLAYER_WEAPON].reload[0] = rate2reload[game.minPlasmaRate];
-			}
+			weapons[W_PLAYER_WEAPON].ammo[0] = game.minPlasmaOutput;
+			weapons[W_PLAYER_WEAPON].damage = game.minPlasmaDamage;
+			weapons[W_PLAYER_WEAPON].reload[0] = rate2reload[game.minPlasmaRate];
 		}
 	}
 }
