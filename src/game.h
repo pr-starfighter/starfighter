@@ -20,6 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef GAME_H
 #define GAME_H
 
+#include "defs.h"
+#include "structs.h"
+
 extern Game game;
 
 void game_init();

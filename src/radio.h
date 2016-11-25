@@ -20,6 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef RADIO_H
 #define RADIO_H
 
+#include "defs.h"
+#include "structs.h"
+
 void radio_setMessage(int face, const char *in, int priority);
 
 #endif

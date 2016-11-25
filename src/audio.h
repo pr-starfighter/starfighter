@@ -20,6 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef AUDIO_H
 #define AUDIO_H
 
+#include "defs.h"
+#include "structs.h"
+
 void audio_loadSounds();
 void audio_playSound(int sid, float x, float y);
 void audio_haltMusic();

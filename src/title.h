@@ -20,6 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef TITLE_H
 #define TITLE_H
 
+#include "defs.h"
+#include "structs.h"
+
 int title_show();
 void title_showCredits();
 

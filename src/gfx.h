@@ -20,7 +20,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef GFX_H
 #define GFX_H
 
-#include "Starfighter.h"
+#include "SDL.h"
+
+#include "defs.h"
+#include "structs.h"
 
 extern SDL_Surface *gfx_background;
 extern SDL_Surface *gfx_sprites[SP_MAX];

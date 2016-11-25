@@ -19,6 +19,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
+#include "defs.h"
+#include "structs.h"
+
 void info_clearLines()
 {
 	for (int i = 0 ; i < MAX_INFOLINES ; i++)

@@ -20,6 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef BULLETS_H
 #define BULLETS_H
 
+#include "defs.h"
+#include "structs.h"
+
 void bullet_add(Object *theWeapon, Object *attacker, int y, int dy);
 Object *bullet_getTarget(Object *bullet);
 int bullet_collision(Object *bullet, Object *ship);

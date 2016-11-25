@@ -20,6 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef _CARGO_H_
 #define _CARGO_H_
 
+#include "defs.h"
+#include "structs.h"
+
 extern Object cargo[MAX_CARGO];
 
 void cargo_init();

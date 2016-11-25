@@ -20,6 +20,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef SAVE_H
 #define SAVE_H
 
+#include "SDL.h"
+
+#include "defs.h"
+#include "structs.h"
+
 int save_initSlots();
 int save_load(int slot);
 void save(int slot);

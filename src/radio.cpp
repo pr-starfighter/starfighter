@@ -19,6 +19,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
+#include "defs.h"
+#include "structs.h"
+
 /*
 Sets a radio message that appears at the top of the screen. Used for
 script events, etc. We send a message priority too, since we don't want

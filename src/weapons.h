@@ -20,6 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef WEAPONS_H
 #define WEAPONS_H
 
+#include "defs.h"
+#include "structs.h"
+
 extern Object weapons[W_MAX];
 
 void weapons_init();

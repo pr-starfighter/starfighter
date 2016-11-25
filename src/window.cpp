@@ -20,4 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "SDL.h"
 
+#include "defs.h"
+#include "structs.h"
+
 SDL_Window *window;

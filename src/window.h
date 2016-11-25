@@ -20,6 +20,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef WINDOW_H
 #define WINDOW_H
 
+#include "SDL.h"
+
+#include "defs.h"
+#include "structs.h"
+
 extern SDL_Window *window;
 
 #endif

@@ -20,6 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef ALIEN_H
 #define ALIEN_H
 
+#include "defs.h"
+#include "structs.h"
+
 extern Object alien_defs[CD_MAX];
 extern Object aliens[ALIEN_MAX];
 

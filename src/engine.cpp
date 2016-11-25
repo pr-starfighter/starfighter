@@ -19,10 +19,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-#include <sys/types.h>
 #include <pwd.h>
 #include <unistd.h>
 #include <errno.h>
+
+#include "defs.h"
+#include "structs.h"
 
 Engine engine;
 

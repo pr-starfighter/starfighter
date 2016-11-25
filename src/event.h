@@ -20,6 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef EVENT_H
 #define EVENT_H
 
+#include "defs.h"
+#include "structs.h"
+
 typedef struct Event_ {
 
 	int time;

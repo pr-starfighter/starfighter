@@ -20,6 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef INFO_H
 #define INFO_H
 
+#include "defs.h"
+#include "structs.h"
+
 void info_clearLines();
 void info_copyLine(int a, int b);
 void info_setLine(const char *in, int color);

@@ -20,6 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef SCREEN_H
 #define SCREEN_H
 
+#include "SDL.h"
+
+#include "defs.h"
 #include "structs.h"
 
 extern SDL_Surface *screen;

@@ -17,8 +17,11 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef EXPLOSIONS_H
-#define EXPLOSIONS_H
+#ifndef EXPLOSION_H
+#define EXPLOSION_H
+
+#include "defs.h"
+#include "structs.h"
 
 void explosion_add(float x, float y, int type);
 void explosion_addEngine(Object *craft);

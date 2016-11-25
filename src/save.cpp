@@ -19,6 +19,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
+#include "defs.h"
+#include "structs.h"
+
 static char saveSlot[10][25];
 
 /*

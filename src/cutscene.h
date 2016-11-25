@@ -20,6 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef CUTSCENE_H
 #define CUTSCENE_H
 
+#include "defs.h"
+#include "structs.h"
+
 void cutscene_init(int scene);
 
 #endif

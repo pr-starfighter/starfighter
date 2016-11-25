@@ -24,16 +24,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <string.h>
 #include <time.h>
 #include <math.h>
-#include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
 
 #include "SDL.h"
 #include "SDL_image.h"
 #include "SDL_mixer.h"
-
-#include "defs.h"
-#include "structs.h"
 
 #include "alien.h"
 #include "audio.h"

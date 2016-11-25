@@ -20,8 +20,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef DEFS_H
 #define DEFS_H
 
-#include <stdlib.h>
-
 
 // Macros
 #define MIN(a, b) ((a) < (b) ? (a) : (b))

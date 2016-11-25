@@ -20,6 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef SHOP_H
 #define SHOP_H
 
+#include "defs.h"
+#include "structs.h"
+
 void shop_init();
 void shop_show();
 

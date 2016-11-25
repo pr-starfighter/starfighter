@@ -20,6 +20,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef COLORS_H
 #define COLORS_H
 
+#include "SDL.h"
+
+#include "defs.h"
+#include "structs.h"
+
 extern Uint32 red;
 extern Uint32 darkRed;
 extern Uint32 yellow;

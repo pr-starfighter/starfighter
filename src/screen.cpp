@@ -21,9 +21,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "SDL.h"
 
+#include "defs.h"
+#include "structs.h"
+
 #include "engine.h"
 #include "gfx.h"
-#include "structs.h"
 
 SDL_Surface *screen;
 bRect *screen_bufferHead;

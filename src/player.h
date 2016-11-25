@@ -20,6 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include "defs.h"
+#include "structs.h"
+
 extern Object player;
 extern int player_chargerFired;
 

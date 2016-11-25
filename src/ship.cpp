@@ -19,6 +19,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
+#include "defs.h"
+#include "structs.h"
+
 int ship_collision(Object *ship, Object *otherShip)
 {
 	float x0 = ship->x;

@@ -20,6 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef COLLECTABLE_H
 #define COLLECTABLE_H
 
+#include "defs.h"
+#include "structs.h"
+
 void collectable_add(float x, float y, int type, int value, int life);
 int collectable_collision(Collectable *collectable, Object *ship);
 void collectable_explode(Collectable *collectable);
