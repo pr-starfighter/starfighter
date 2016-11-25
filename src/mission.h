@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef MISSION_H
 #define MISSION_H
 
-extern Mission currentMission;
+extern Mission mission;
 
 void mission_set(int mission);
 void mission_checkTimer();

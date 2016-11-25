@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "Starfighter.h"
 #include "radio.h"
 
-Mission currentMission;
+Mission mission;
 
 static Mission missions[MISN_MAX];
 
@@ -508,29 +508,29 @@ void mission_init()
 }
 
 /*
-Sets the currentMission Object to the mission number the player
+Sets the mission Object to the mission number the player
 is currently on. Timing is assigned if it is required. The rate
 at which to add enemies in this mission is also set.
 */
 void mission_set(int misn)
 {
-	currentMission = missions[misn];
-	engine.minutes = currentMission.timeLimit1[0];
+	mission = missions[misn];
+	engine.minutes = mission.timeLimit1[0];
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if (currentMission.timeLimit1[i] > engine.minutes)
-			engine.minutes = currentMission.timeLimit1[i];
-		if (currentMission.timeLimit2[i] > engine.minutes)
-			engine.minutes = currentMission.timeLimit2[i];
+		if (mission.timeLimit1[i] > engine.minutes)
+			engine.minutes = mission.timeLimit1[i];
+		if (mission.timeLimit2[i] > engine.minutes)
+			engine.minutes = mission.timeLimit2[i];
 
-		if (currentMission.completed1[i] == OB_INCOMPLETE)
-			currentMission.remainingObjectives1++;
-		if (currentMission.completed2[i] == OB_INCOMPLETE)
-			currentMission.remainingObjectives1++;
+		if (mission.completed1[i] == OB_INCOMPLETE)
+			mission.remainingObjectives1++;
+		if (mission.completed2[i] == OB_INCOMPLETE)
+			mission.remainingObjectives1++;
 	}
 
-	engine.addAliens = currentMission.addAliens;
+	engine.addAliens = mission.addAliens;
 
 	if (engine.minutes > -1)
 	{
@@ -560,36 +560,36 @@ void mission_checkTimer()
 {
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if ((currentMission.timeLimit1[i] == -1) && (currentMission.completed1[i] == OB_INCOMPLETE))
-			currentMission.completed1[i] = OB_JUST_FAILED;
+		if ((mission.timeLimit1[i] == -1) && (mission.completed1[i] == OB_INCOMPLETE))
+			mission.completed1[i] = OB_JUST_FAILED;
 	}
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if ((currentMission.timeLimit2[i] == -1) && (currentMission.completed2[i] == OB_INCOMPLETE))
-			currentMission.completed2[i] = OB_JUST_FAILED;
+		if ((mission.timeLimit2[i] == -1) && (mission.completed2[i] == OB_INCOMPLETE))
+			mission.completed2[i] = OB_JUST_FAILED;
 	}
 
 	// Find out if there are any uncompleted missions that require the timer
 	engine.timeMission = 0;
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if ((currentMission.timeLimit1[i] > -1) && (currentMission.completed1[i] == OB_INCOMPLETE))
+		if ((mission.timeLimit1[i] > -1) && (mission.completed1[i] == OB_INCOMPLETE))
 			engine.timeMission = 1;
-		if ((currentMission.timeLimit2[i] > -1) && (currentMission.completed2[i] == OB_INCOMPLETE))
+		if ((mission.timeLimit2[i] > -1) && (mission.completed2[i] == OB_INCOMPLETE))
 			engine.timeMission = 1;
 	}
 
 	// specific to Spirit Boss
 	if ((game.area == MISN_MOEBO) &&
-			(currentMission.completed1[0] < OB_INCOMPLETE))
+			(mission.completed1[0] < OB_INCOMPLETE))
 		engine.timeMission = 1;
 
 	// specific to the Asteroid belt
 	if ((game.area == MISN_MARS) &&
-		(currentMission.completed1[0] < OB_INCOMPLETE))
+		(mission.completed1[0] < OB_INCOMPLETE))
 	{
-		currentMission.completed1[0] = OB_COMPLETED;
+		mission.completed1[0] = OB_COMPLETED;
 		mission_killAllEnemies();
 		engine.addAliens = -1;
 		info_setLine("*** All Primary Objectives Completed ***", FONT_GREEN);
@@ -700,20 +700,20 @@ void mission_updateRequirements(int type, int id, int value)
 	if ((type == M_DESTROY_TARGET_TYPE) && (id == CD_SID))
 	{
 		info_setLine("Sid has been killed!", FONT_RED);
-		currentMission.completed1[0] = OB_JUST_FAILED;
+		mission.completed1[0] = OB_JUST_FAILED;
 	}
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if ((currentMission.completed1[i] == OB_INCOMPLETE) || (currentMission.completed1[i] == OB_CONDITION))
+		if ((mission.completed1[i] == OB_INCOMPLETE) || (mission.completed1[i] == OB_CONDITION))
 		{
-			if ((currentMission.primaryType[i] == type) &&
-					((currentMission.target1[i] == id) ||
-						(currentMission.target1[i] == CD_ANY)))
+			if ((mission.primaryType[i] == type) &&
+					((mission.target1[i] == id) ||
+						(mission.target1[i] == CD_ANY)))
 			{
 				matched = 1;
-				currentMission.targetValue1[i] -= value;
-				mission_evaluate(type, id, &currentMission.completed1[i], &currentMission.targetValue1[i], FONT_CYAN);
+				mission.targetValue1[i] -= value;
+				mission_evaluate(type, id, &mission.completed1[i], &mission.targetValue1[i], FONT_CYAN);
 			}
 		}
 	}
@@ -724,14 +724,14 @@ void mission_updateRequirements(int type, int id, int value)
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if ((currentMission.completed2[i] == OB_INCOMPLETE) || (currentMission.completed2[i] == OB_CONDITION))
+		if ((mission.completed2[i] == OB_INCOMPLETE) || (mission.completed2[i] == OB_CONDITION))
 		{
-			if ((currentMission.secondaryType[i] == type) &&
-					((currentMission.target2[i] == id) ||
-						(currentMission.target2[i] == CD_ANY)))
+			if ((mission.secondaryType[i] == type) &&
+					((mission.target2[i] == id) ||
+						(mission.target2[i] == CD_ANY)))
 			{
-				currentMission.targetValue2[i] -= value;
-				mission_evaluate(type, id, &currentMission.completed2[i], &currentMission.targetValue2[i], FONT_YELLOW);
+				mission.targetValue2[i] -= value;
+				mission_evaluate(type, id, &mission.completed2[i], &mission.targetValue2[i], FONT_YELLOW);
 				return;
 			}
 		}
@@ -778,10 +778,10 @@ static int mission_revealObjectives()
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if (currentMission.completed1[i] == OB_HIDDEN)
+		if (mission.completed1[i] == OB_HIDDEN)
 		{
-			currentMission.completed1[i] = OB_INCOMPLETE;
-			sprintf(string, "New Objective - %s", currentMission.primaryObjective[i]);
+			mission.completed1[i] = OB_INCOMPLETE;
+			sprintf(string, "New Objective - %s", mission.primaryObjective[i]);
 			info_setLine(string, FONT_CYAN);
 			allDone = 0;
 		}
@@ -810,11 +810,11 @@ int mission_checkCompleted()
 {
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if (currentMission.completed1[i] == OB_INCOMPLETE)
+		if (mission.completed1[i] == OB_INCOMPLETE)
 		{
-			if ((currentMission.primaryType[i] == M_DESTROY_ALL_TARGETS) && (engine.allAliensDead) && (currentMission.remainingObjectives1 + currentMission.remainingObjectives2 == 1))
+			if ((mission.primaryType[i] == M_DESTROY_ALL_TARGETS) && (engine.allAliensDead) && (mission.remainingObjectives1 + mission.remainingObjectives2 == 1))
 			{
-				currentMission.completed1[i] = OB_JUST_COMPLETED;
+				mission.completed1[i] = OB_JUST_COMPLETED;
 				mission_checkTimer();
 			}
 		}
@@ -822,11 +822,11 @@ int mission_checkCompleted()
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if (currentMission.completed2[i] == OB_INCOMPLETE)
+		if (mission.completed2[i] == OB_INCOMPLETE)
 		{
-			if ((currentMission.secondaryType[i] == M_DESTROY_ALL_TARGETS) && (engine.allAliensDead) && (currentMission.remainingObjectives1 + currentMission.remainingObjectives2 == 1))
+			if ((mission.secondaryType[i] == M_DESTROY_ALL_TARGETS) && (engine.allAliensDead) && (mission.remainingObjectives1 + mission.remainingObjectives2 == 1))
 			{
-				currentMission.completed2[i] = OB_JUST_COMPLETED;
+				mission.completed2[i] = OB_JUST_COMPLETED;
 				mission_checkTimer();
 			}
 		}
@@ -834,19 +834,19 @@ int mission_checkCompleted()
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if (currentMission.completed1[i] == OB_JUST_COMPLETED)
+		if (mission.completed1[i] == OB_JUST_COMPLETED)
 		{
-			if (currentMission.remainingObjectives1 > 1)
+			if (mission.remainingObjectives1 > 1)
 			{
 				if ((game.area != MISN_POSWIC) || (i != 1))
 					info_setLine("*** Primary Objective Completed ***", FONT_GREEN);
 				else
 					info_setLine(">>> Primary Objective Failed <<<", FONT_RED);
-				currentMission.completed1[i] = OB_COMPLETED;
+				mission.completed1[i] = OB_COMPLETED;
 			}
 			else
 			{
-				if (currentMission.remainingObjectives2 > 0)
+				if (mission.remainingObjectives2 > 0)
 				{
 					info_setLine("Emergency warp drive activated. Press button to engage.", FONT_CYAN);
 				}
@@ -855,7 +855,7 @@ int mission_checkCompleted()
 					info_setLine("*** All Primary Objectives Completed ***", FONT_GREEN);
 				else
 					info_setLine("*** Interception Destroyed ***", FONT_GREEN);
-				currentMission.completed1[i] = OB_COMPLETED;
+				mission.completed1[i] = OB_COMPLETED;
 
 				// do some area specific things
 				if ((game.area == MISN_MOEBO) ||
@@ -863,7 +863,7 @@ int mission_checkCompleted()
 					(game.area == MISN_ELLESH) ||
 					(game.area == MISN_MARS))
 				{
-					if (currentMission.remainingObjectives2 == 0)
+					if (mission.remainingObjectives2 == 0)
 					{
 						mission_killAllEnemies();
 						engine.addAliens = -1;
@@ -875,21 +875,21 @@ int mission_checkCompleted()
 			}
 		}
 
-		if (currentMission.completed2[i] == OB_JUST_COMPLETED)
+		if (mission.completed2[i] == OB_JUST_COMPLETED)
 		{
-			if (currentMission.remainingObjectives2 > 1)
+			if (mission.remainingObjectives2 > 1)
 			{
 				info_setLine("*** Secondary Objective Completed ***", FONT_GREEN);
-				currentMission.completed2[i] = OB_COMPLETED;
+				mission.completed2[i] = OB_COMPLETED;
 			}
 			else
 			{
 				info_setLine("*** All Secondary Objectives Completed ***", FONT_GREEN);
-				currentMission.completed2[i] = OB_COMPLETED;
+				mission.completed2[i] = OB_COMPLETED;
 
 				// do some area specific things
 				if ((game.area == MISN_DORIM) &&
-					(currentMission.remainingObjectives1 == 0))
+					(mission.remainingObjectives1 == 0))
 				{
 					mission_killAllEnemies();
 					engine.addAliens = -1;
@@ -897,16 +897,16 @@ int mission_checkCompleted()
 			}
 		}
 
-		if (currentMission.completed1[i] == OB_JUST_FAILED)
+		if (mission.completed1[i] == OB_JUST_FAILED)
 		{
 			info_setLine(">>> MISSION FAILED <<<", FONT_RED);
-			currentMission.completed1[i] = OB_FAILED;
+			mission.completed1[i] = OB_FAILED;
 		}
 
-		if (currentMission.completed2[i] == OB_JUST_FAILED)
+		if (mission.completed2[i] == OB_JUST_FAILED)
 		{
 			info_setLine(">>> Secondary Objective Failed <<<", FONT_RED);
-			currentMission.completed2[i] = OB_FAILED;
+			mission.completed2[i] = OB_FAILED;
 		}
 	}
 
@@ -915,29 +915,29 @@ int mission_checkCompleted()
 	int allDone = 1;
 
 	// Zero Objective list for a recount
-	currentMission.remainingObjectives1 = currentMission.remainingObjectives2 = 0;
+	mission.remainingObjectives1 = mission.remainingObjectives2 = 0;
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if (currentMission.primaryType[i] != M_NONE)
+		if (mission.primaryType[i] != M_NONE)
 		{
-			if (currentMission.completed1[i] == OB_INCOMPLETE)
+			if (mission.completed1[i] == OB_INCOMPLETE)
 			{
-				currentMission.remainingObjectives1++;
-				if (currentMission.primaryType[i] == M_DESTROY_ALL_TARGETS)
+				mission.remainingObjectives1++;
+				if (mission.primaryType[i] == M_DESTROY_ALL_TARGETS)
 					add = 1;
 				allDone = 0;
 			}
 
-			if (currentMission.completed1[i] < OB_INCOMPLETE)
+			if (mission.completed1[i] < OB_INCOMPLETE)
 				return 0;
 		}
-		if (currentMission.secondaryType[i] != M_NONE)
+		if (mission.secondaryType[i] != M_NONE)
 		{
-			if (currentMission.completed2[i] == OB_INCOMPLETE)
+			if (mission.completed2[i] == OB_INCOMPLETE)
 			{
-				currentMission.remainingObjectives2++;
-				if (currentMission.secondaryType[i] == M_DESTROY_ALL_TARGETS)
+				mission.remainingObjectives2++;
+				if (mission.secondaryType[i] == M_DESTROY_ALL_TARGETS)
 					add = 1;
 				allDone = 0;
 			}
@@ -947,7 +947,7 @@ int mission_checkCompleted()
 	if (allDone)
 		allDone = mission_revealObjectives();
 
-	remaining = currentMission.remainingObjectives1 + currentMission.remainingObjectives2;
+	remaining = mission.remainingObjectives1 + mission.remainingObjectives2;
 
 	// We've only got one Objective left and it's destroy all targets,
 	// so stop adding aliens (otherwise it might be impossible to finish!)
@@ -961,7 +961,7 @@ int mission_checkFailed()
 {
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if (currentMission.completed1[i] < OB_INCOMPLETE)
+		if (mission.completed1[i] < OB_INCOMPLETE)
 		{
 			return 1;
 		}
@@ -988,13 +988,13 @@ static void mission_drawScreen()
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if ((currentMission.primaryType[i] != M_NONE) && (currentMission.completed1[i] != OB_HIDDEN))
+		if ((mission.primaryType[i] != M_NONE) && (mission.completed1[i] != OB_HIDDEN))
 		{
-			screen_renderString(currentMission.primaryObjective[i], 160, 114 + (i * 30), FONT_WHITE);
+			screen_renderString(mission.primaryObjective[i], 160, 114 + (i * 30), FONT_WHITE);
 		}
 	}
 
-	if (currentMission.secondaryType[0] != M_NONE)
+	if (mission.secondaryType[0] != M_NONE)
 	{
 		screen_drawRect(140, 230, 500, 20, 0x00, 0x77, 0x77);
 		screen_drawRect(140, 250, 500, 130, 0x00, 0x33, 0x33);
@@ -1002,9 +1002,9 @@ static void mission_drawScreen()
 
 		for (int i = 0 ; i < 3 ; i++)
 		{
-			if (currentMission.secondaryType[i] != M_NONE)
+			if (mission.secondaryType[i] != M_NONE)
 			{
-				screen_renderString(currentMission.secondaryObjective[i], 160, 274 + (i * 30), FONT_WHITE);
+				screen_renderString(mission.secondaryObjective[i], 160, 274 + (i * 30), FONT_WHITE);
 				game.secondaryMissions++;
 			}
 		}
@@ -1017,7 +1017,7 @@ static void mission_drawScreen()
 
 /*
 Simply displays a screen with all the mission information on it, pulled
-back from the data stored in the currentMission Object. The music for the
+back from the data stored in the mission Object. The music for the
 mission begins playing here.
 */
 void mission_showStartScreen()
@@ -1030,13 +1030,13 @@ void mission_showStartScreen()
 		screen_clear(black);
 		mission_drawScreen();
 
-		if (currentMission.timeLimit1[0] > 0)
+		if (mission.timeLimit1[0] > 0)
 		{
 			char temp[50];
 			if (game.area != MISN_MARS)
-				sprintf(temp, "TIME LIMIT: %d minutes", currentMission.timeLimit1[0]);
+				sprintf(temp, "TIME LIMIT: %d minutes", mission.timeLimit1[0]);
 			else
-				sprintf(temp, "SURVIVAL FOR %d minutes", currentMission.timeLimit1[0]);
+				sprintf(temp, "SURVIVAL FOR %d minutes", mission.timeLimit1[0]);
 			screen_renderString(temp, -1, 500, FONT_RED);
 		}
 
@@ -1139,7 +1139,7 @@ void mission_showFinishedScreen()
 
 		for (int i = 0 ; i < 3 ; i++)
 		{
-			if (currentMission.primaryType[i] != M_NONE)
+			if (mission.primaryType[i] != M_NONE)
 			{
 				if ((game.area != MISN_POSWIC) || (i != 1))
 					screen_renderString("COMPLETED", 550, 114 + (i * 30), FONT_GREEN);
@@ -1148,14 +1148,14 @@ void mission_showFinishedScreen()
 			}
 		}
 
-		if (currentMission.secondaryType[0] != M_NONE)
+		if (mission.secondaryType[0] != M_NONE)
 		{
 			for (int i = 0 ; i < 3 ; i++)
 			{
-				if (currentMission.secondaryType[i] != M_NONE)
+				if (mission.secondaryType[i] != M_NONE)
 				{
-					strcpy(temp, currentMission.secondaryObjective[i]);
-					if (currentMission.completed2[i] >= OB_COMPLETED)
+					strcpy(temp, mission.secondaryObjective[i]);
+					if (mission.completed2[i] >= OB_COMPLETED)
 					{
 						screen_renderString("COMPLETED", 550, 274 + (i * 30), FONT_GREEN);
 						game.secondaryMissionsCompleted++;
@@ -1168,7 +1168,7 @@ void mission_showFinishedScreen()
 			}
 		}
 
-		if (currentMission.remainingObjectives1 + currentMission.remainingObjectives2 == 0)
+		if (mission.remainingObjectives1 + mission.remainingObjectives2 == 0)
 		{
 			if (game.difficulty == DIFFICULTY_NIGHTMARE)
 				shield_bonus = 100;

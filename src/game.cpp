@@ -1357,7 +1357,7 @@ static void game_doPlayer()
 			if (engine.keyState[KEY_ESCAPE])
 			{
 				if ((engine.done == 0) && (engine.gameSection == SECTION_GAME) &&
-					(currentMission.remainingObjectives1 == 0))
+					(mission.remainingObjectives1 == 0))
 				{
 					audio_playSound(SFX_FLY, screen->w / 2, screen->h / 2);
 					engine.done = 2;
@@ -1747,7 +1747,7 @@ static void game_doHud()
 	if (game.area != MISN_INTERCEPTION)
 	{
 		screen_blitText(TS_OBJECTIVES_T);
-		sprintf(text, "%d", (currentMission.remainingObjectives1 + currentMission.remainingObjectives2));
+		sprintf(text, "%d", (mission.remainingObjectives1 + mission.remainingObjectives2));
 		gfx_createTextObject(TS_OBJECTIVES, text, screen->w - 55, 21, FONT_WHITE);
 		screen_blitText(TS_OBJECTIVES);
 	}
@@ -1831,10 +1831,10 @@ static void game_doHud()
 				engine.counter = (SDL_GetTicks() + 1000);
 				for (int i = 0 ; i < 3 ; i++)
 				{
-					if (currentMission.timeLimit1[i] > -1)
-						currentMission.timeLimit1[i]--;
-					if (currentMission.timeLimit2[i] > -1)
-						currentMission.timeLimit2[i]--;
+					if (mission.timeLimit1[i] > -1)
+						mission.timeLimit1[i]--;
+					if (mission.timeLimit2[i] > -1)
+						mission.timeLimit2[i]--;
 				}
 				mission_checkTimer();
 				events_check();
@@ -1844,10 +1844,10 @@ static void game_doHud()
 			{
 				for (int i = 0 ; i < 3 ; i++)
 				{
-					if (currentMission.timeLimit1[i] > -1)
-						currentMission.timeLimit1[i]--;
-					if (currentMission.timeLimit2[i] > -1)
-						currentMission.timeLimit2[i]--;
+					if (mission.timeLimit1[i] > -1)
+						mission.timeLimit1[i]--;
+					if (mission.timeLimit2[i] > -1)
+						mission.timeLimit2[i]--;
 				}
 				mission_checkTimer();
 				events_check();
@@ -2219,11 +2219,11 @@ int game_mainLoop()
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if ((currentMission.primaryType[i] == M_DESTROY_TARGET_TYPE) &&
-				(currentMission.target1[i] == CD_ANY))
-			allowableAliens = currentMission.targetValue1[i];
+		if ((mission.primaryType[i] == M_DESTROY_TARGET_TYPE) &&
+				(mission.target1[i] == CD_ANY))
+			allowableAliens = mission.targetValue1[i];
 
-		if (currentMission.primaryType[i] == M_DESTROY_ALL_TARGETS)
+		if (mission.primaryType[i] == M_DESTROY_ALL_TARGETS)
 			allowableAliens = 999999999;
 	}
 
@@ -2381,7 +2381,7 @@ int game_mainLoop()
 
 		if (engine.addAliens > -1)
 		{
-			WRAP_ADD(engine.addAliens, -1, 0, currentMission.addAliens);
+			WRAP_ADD(engine.addAliens, -1, 0, mission.addAliens);
 			if ((engine.addAliens == 0) && (allowableAliens > 0))
 			{
 				allowableAliens -= alien_add();
