@@ -30,7 +30,7 @@ SDL_Surface *gfx_faceSprites[FS_MAX];
 SDL_Surface *gfx_shipSprites[SS_MAX];
 SDL_Surface *gfx_fontSprites[FONT_MAX];
 SDL_Surface *gfx_shopSprites[SHOP_S_MAX];
-textObject gfx_textSprites[TS_MAX];
+TextObject gfx_textSprites[TS_MAX];
 SDL_Surface *gfx_messageBox;
 
 void gfx_init()

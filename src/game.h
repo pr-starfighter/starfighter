@@ -20,8 +20,83 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef GAME_H
 #define GAME_H
 
+#include "SDL.h"
+
 #include "defs.h"
 #include "structs.h"
+
+typedef struct Game_ {
+	Object thePlayer;
+	Object playerWeapon;
+
+	int saveFormat;
+
+	int difficulty;
+
+	int system;
+	int area;
+	int musicVolume;
+	int sfxVolume;
+
+	int cash;
+	int cashEarned;
+	
+	int shots;
+	int hits;
+	int accuracy;
+	int hasWingMate1;
+	int hasWingMate2;
+	int totalKills;
+	int wingMate1Kills;
+	int wingMate2Kills;
+	int wingMate1Ejects;
+	int wingMate2Ejects;
+	int totalOtherKills;
+	int secondaryMissions;
+	int secondaryMissionsCompleted;
+	int shieldPickups;
+	int rocketPickups;
+	int cellPickups;
+	int powerups;
+	int minesKilled;
+	int cargoPickups;
+
+	// slaves for Eyananth
+	int slavesRescued;
+
+	// remaining shield for experimental fighter
+	int experimentalShield;
+
+	Uint32 timeTaken; // In seconds
+	int missionCompleted[10];
+
+	int stationedPlanet;
+	int destinationPlanet;
+
+	char stationedName[20];
+	char destinationName[20];
+	int distanceCovered;
+
+	int minPlasmaRate;
+	int minPlasmaDamage;
+	int minPlasmaOutput;
+	int maxPlasmaRate;
+	int maxPlasmaDamage;
+	int maxPlasmaOutput;
+	int maxPlasmaAmmo;
+	int maxRocketAmmo;
+
+	// Limits on shop upgrades
+	int minPlasmaRateLimit;
+	int minPlasmaDamageLimit;
+	int minPlasmaOutputLimit;
+	int maxPlasmaRateLimit;
+	int maxPlasmaDamageLimit;
+	int maxPlasmaOutputLimit;
+	int maxPlasmaAmmoLimit;
+	int maxRocketAmmoLimit;
+
+} Game;
 
 extern Game game;
 

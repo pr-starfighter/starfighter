@@ -22,6 +22,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "defs.h"
 #include "structs.h"
 
+typedef struct ShopItem_ {
+
+	int x, y;
+	int price;
+	char name[50];
+	char description[255];
+	int image;
+
+} ShopItem;
+
 static ShopItem shopItems[SHOP_MAX];
 static int shopSelectedItem;
 

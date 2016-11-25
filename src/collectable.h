@@ -20,8 +20,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef COLLECTABLE_H
 #define COLLECTABLE_H
 
+#include "SDL.h"
+
 #include "defs.h"
 #include "structs.h"
+
+typedef struct Collectable_ {
+
+	int active;
+	float x, y, dx, dy;
+	SDL_Surface *image;
+	int type; // What kind of collectable is it?
+	int value; // How much is it worth?
+	int life; // How long it will stay around for
+
+	struct Collectable_ *next;
+
+} Collectable;
 
 void collectable_add(float x, float y, int type, int value, int life);
 int collectable_collision(Collectable *collectable, Object *ship);

@@ -24,6 +24,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "radio.h"
 
+typedef struct Star_ {
+
+	float x, y, dx, dy;
+	int speed; // How fast the star moves
+
+} Star;
+
 Game game;
 
 static Star stars[STARS_NUM];

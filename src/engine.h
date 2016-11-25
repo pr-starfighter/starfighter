@@ -25,6 +25,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "defs.h"
 #include "structs.h"
 
+#include "collectable.h"
+
 
 typedef struct Engine_ {
 

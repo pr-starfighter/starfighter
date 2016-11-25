@@ -68,49 +68,7 @@ typedef struct Object_ {
 
 } Object;
 
-typedef struct Mission_ {
-
-	char primaryObjective[3][50]; // Description
-	int primaryType[3]; // The type of mission this is
-	int target1[3]; // index of target in aliens array
-	int targetValue1[3]; // Number of things to collect (slaves, cash, etc)
-	int timeLimit1[3]; // In minutes
-	int completed1[3];
-
-	char secondaryObjective[3][50]; // Description
-	int secondaryType[3]; // The type of mission this is
-	int target2[3]; // index of target in aliens array
-	int targetValue2[3]; // Number of things to collect (slaves, cash, etc)
-	int timeLimit2[3]; // In minutes
-	int completed2[3];
-
-	int remainingObjectives1;
-	int remainingObjectives2;
-	int addAliens; // How often to add new enemies
-
-} Mission;
-
-typedef struct Star_ {
-
-	float x, y, dx, dy;
-	int speed; // How fast the star moves
-
-} Star;
-
-typedef struct Collectable_ {
-
-	int active;
-	float x, y, dx, dy;
-	SDL_Surface *image;
-	int type; // What kind of collectable is it?
-	int value; // How much is it worth?
-	int life; // How long it will stay around for
-
-	struct Collectable_ *next;
-
-} Collectable;
-
-typedef struct textObject_ {
+typedef struct TextObject_ {
 
 	SDL_Surface *image;
 	int life;
@@ -118,90 +76,7 @@ typedef struct textObject_ {
 	int fontColor;
 	char text[255];
 
-} textObject;
-
-typedef struct Game_ {
-	Object thePlayer;
-	Object playerWeapon;
-
-	int saveFormat;
-
-	int difficulty;
-
-	int system;
-	int area;
-	int musicVolume;
-	int sfxVolume;
-
-	int cash;
-	int cashEarned;
-	
-	int shots;
-	int hits;
-	int accuracy;
-	int hasWingMate1;
-	int hasWingMate2;
-	int totalKills;
-	int wingMate1Kills;
-	int wingMate2Kills;
-	int wingMate1Ejects;
-	int wingMate2Ejects;
-	int totalOtherKills;
-	int secondaryMissions;
-	int secondaryMissionsCompleted;
-	int shieldPickups;
-	int rocketPickups;
-	int cellPickups;
-	int powerups;
-	int minesKilled;
-	int cargoPickups;
-
-	// slaves for Eyananth
-	int slavesRescued;
-
-	// remaining shield for experimental fighter
-	int experimentalShield;
-
-	Uint32 timeTaken; // In seconds
-	int missionCompleted[10];
-
-	int stationedPlanet;
-	int destinationPlanet;
-
-	char stationedName[20];
-	char destinationName[20];
-	int distanceCovered;
-
-	int minPlasmaRate;
-	int minPlasmaDamage;
-	int minPlasmaOutput;
-	int maxPlasmaRate;
-	int maxPlasmaDamage;
-	int maxPlasmaOutput;
-	int maxPlasmaAmmo;
-	int maxRocketAmmo;
-
-	// Limits on shop upgrades
-	int minPlasmaRateLimit;
-	int minPlasmaDamageLimit;
-	int minPlasmaOutputLimit;
-	int maxPlasmaRateLimit;
-	int maxPlasmaDamageLimit;
-	int maxPlasmaOutputLimit;
-	int maxPlasmaAmmoLimit;
-	int maxRocketAmmoLimit;
-
-} Game;
-
-typedef struct ShopItem_ {
-
-	int x, y;
-	int price;
-	char name[50];
-	char description[255];
-	int image;
-
-} ShopItem;
+} TextObject;
 
 typedef struct bRect_ {
 
