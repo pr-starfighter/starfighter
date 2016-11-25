@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define COLLECTABLE_H
 
 void collectable_add(float x, float y, int type, int value, int life);
-int collectable_collision(collectables *collectable, object *ship);
-void collectable_explode(collectables *collectable);
+int collectable_collision(Collectable *collectable, Object *ship);
+void collectable_explode(Collectable *collectable);
 
 #endif

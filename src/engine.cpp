@@ -38,19 +38,19 @@ void engine_init()
 	engine.smx = 0;
 	engine.smy = 0;
 
-	engine.bulletHead = new object;
+	engine.bulletHead = new Object;
 	engine.bulletHead->next = NULL;
 	engine.bulletTail = engine.bulletHead;
 
-	engine.explosionHead = new object;
+	engine.explosionHead = new Object;
 	engine.explosionHead->next = NULL;
 	engine.explosionTail = engine.explosionHead;
 
-	engine.collectableHead = new collectables;
+	engine.collectableHead = new Collectable;
 	engine.collectableHead->next = NULL;
 	engine.collectableTail = engine.collectableHead;
 
-	engine.debrisHead = new object;
+	engine.debrisHead = new Object;
 	engine.debrisHead->next = NULL;
 	engine.debrisTail = engine.debrisHead;
 
@@ -250,8 +250,8 @@ void engine_setMode()
 
 void engine_resetLists()
 {
-	object *ob, *ob2;
-	collectables *c1, *c2;
+	Object *ob, *ob2;
+	Collectable *c1, *c2;
 	bRect *r1, *r2;
 
 	ob = engine.bulletHead->next;

@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-object player;
+Object player;
 int player_chargerFired = 0;
 
 /*
@@ -74,7 +74,7 @@ void player_checkShockDamage(float x, float y)
 	float distY = fabsf(y - player.y);
 
 	// Don't let the player be hurt by an explosion after they have completed
-	// all the mission objectives. That would be *really* annoying!
+	// all the mission Objectives. That would be *really* annoying!
 	if ((engine.cheatShield) || (engine.missionCompleteTimer != 0))
 		return;
 

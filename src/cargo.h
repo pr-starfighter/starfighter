@@ -20,10 +20,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef _CARGO_H_
 #define _CARGO_H_
 
-extern object cargo[MAX_CARGO];
+extern Object cargo[MAX_CARGO];
 
 void cargo_init();
-object *cargo_add(object *owner, int cargoType);
+Object *cargo_add(Object *owner, int cargoType);
 void cargo_becomeCollectable(int i);
 
 #endif

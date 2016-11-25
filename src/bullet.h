@@ -20,8 +20,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef BULLETS_H
 #define BULLETS_H
 
-void bullet_add(object *theWeapon, object *attacker, int y, int dy);
-object *bullet_getTarget(object *bullet);
-int bullet_collision(object *bullet, object *ship);
+void bullet_add(Object *theWeapon, Object *attacker, int y, int dy);
+Object *bullet_getTarget(Object *bullet);
+int bullet_collision(Object *bullet, Object *ship);
 
 #endif

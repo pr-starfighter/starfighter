@@ -21,6 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define EXPLOSIONS_H
 
 void explosion_add(float x, float y, int type);
-void explosion_addEngine(object *craft);
+void explosion_addEngine(Object *craft);
 
 #endif

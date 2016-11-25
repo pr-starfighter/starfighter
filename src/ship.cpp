@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-int ship_collision(object *ship, object *otherShip)
+int ship_collision(Object *ship, Object *otherShip)
 {
 	float x0 = ship->x;
 	float y0 = ship->y;
@@ -43,7 +43,7 @@ int ship_collision(object *ship, object *otherShip)
 /*
 Fill in later...
 */
-void ship_fireBullet(object *ship, int weaponType)
+void ship_fireBullet(Object *ship, int weaponType)
 {
 	if (ship->reload[weaponType] > 0)
 		return;
@@ -54,7 +54,7 @@ void ship_fireBullet(object *ship, int weaponType)
 	if ((ship == &player) && (weaponType == 1) && (!engine.cheatAmmo))
 		player.ammo[1]--;
 
-	object *theWeapon = &weapon[ship->weaponType[weaponType]];
+	Object *theWeapon = &weapon[ship->weaponType[weaponType]];
 
 	switch(theWeapon->id)
 	{
@@ -139,7 +139,7 @@ void ship_fireBullet(object *ship, int weaponType)
 /*
 Fill in later...
 */
-void ship_fireRay(object *ship)
+void ship_fireRay(Object *ship)
 {
 	SDL_Rect ray;
 

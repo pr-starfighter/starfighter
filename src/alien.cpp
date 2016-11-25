@@ -20,8 +20,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "Starfighter.h"
 #include "radio.h"
 
-object alien_defs[CD_MAX];
-object aliens[ALIEN_MAX];
+Object alien_defs[CD_MAX];
+Object aliens[ALIEN_MAX];
 
 static const int nChrisKillMessage = 15;
 static const char *chrisKillMessage[nChrisKillMessage] = {
@@ -1217,7 +1217,7 @@ int alien_add()
 	return 1;
 }
 
-void alien_addDrone(object *hostAlien)
+void alien_addDrone(Object *hostAlien)
 {
 	int index = alien_getFreeIndex();
 
@@ -1238,7 +1238,7 @@ void alien_addDrone(object *hostAlien)
 	aliens[index].y = hostAlien->y + rand() % 50;
 }
 
-void alien_addSmallAsteroid(object *hostAlien)
+void alien_addSmallAsteroid(Object *hostAlien)
 {
 	if (engine.missionCompleteTimer != 0)
 		return;
@@ -1305,7 +1305,7 @@ void alien_addFriendly(int type)
 		aliens[type].flags |= FL_IMMORTAL;
 }
 
-int alien_place(object *alien)
+int alien_place(Object *alien)
 {
 	if (rand() % 2 == 0)
 		alien->x = RANDRANGE(screen->w, screen->w * 2);
@@ -1335,7 +1335,7 @@ int alien_place(object *alien)
 	return 1;
 }
 
-void alien_setAI(object *alien)
+void alien_setAI(Object *alien)
 {
 	int i;
 	float tx;
@@ -1420,7 +1420,7 @@ void alien_setAI(object *alien)
 	}
 }
 
-void alien_setKlineAttackMethod(object *alien)
+void alien_setKlineAttackMethod(Object *alien)
 {
 	if (alien->shield <= 500)
 	{
@@ -1454,7 +1454,7 @@ void alien_setKlineAttackMethod(object *alien)
 /*
 This AI is exclusively for Kline.
 */
-void alien_setKlineAI(object *alien)
+void alien_setKlineAI(Object *alien)
 {
 	// Weapon type change
 	if (CHANCE(1. / 3.))
@@ -1514,7 +1514,7 @@ void alien_setKlineAI(object *alien)
 "Looks" for an enemy by picking a randomly active enemy and using them
 as a target. If the target is too far away, it will be ignored.
 */
-void alien_searchForTarget(object *alien)
+void alien_searchForTarget(Object *alien)
 {
 	int i;
 
@@ -1531,7 +1531,7 @@ void alien_searchForTarget(object *alien)
 
 	i = rand() % ALIEN_MAX;
 
-	object *targetEnemy = &aliens[i];
+	Object *targetEnemy = &aliens[i];
 
 	// Tell Sid not to attack craft that are already disabled or can
 	// return fire. This will save him from messing about (unless we're on the last mission)
@@ -1577,7 +1577,7 @@ void alien_searchForTarget(object *alien)
 /*
 Do various checks to see if the alien can fire at the target.
 */
-int alien_checkTarget(object *alien)
+int alien_checkTarget(Object *alien)
 {
 	// No target
 	if (alien->target == alien)
@@ -1618,7 +1618,7 @@ int alien_checkTarget(object *alien)
 Currently only used for the allies. Whilst flying around, the allies will fire on
 any enemy craft that enter their line of sight.
 */
-int alien_enemiesInFront(object *alien)
+int alien_enemiesInFront(Object *alien)
 {
 	for (int i = 0 ; i < ALIEN_MAX ; i++)
 	{
@@ -1639,7 +1639,7 @@ int alien_enemiesInFront(object *alien)
 	return 0;
 }
 
-void alien_move(object *alien)
+void alien_move(Object *alien)
 {
 	int checkCollisions;
 
@@ -1741,7 +1741,7 @@ void alien_move(object *alien)
 /*
 Fill in later...
 */
-void alien_destroy(object *alien, object *attacker)
+void alien_destroy(Object *alien, Object *attacker)
 {
 	int r;
 
@@ -1839,7 +1839,7 @@ void alien_destroy(object *alien, object *attacker)
 	}
 }
 
-void alien_hurt(object *alien, object *attacker, int damage, int ion)
+void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 {
 	double run_chance;
 

@@ -189,14 +189,14 @@ static void game_addDebris(int x, int y, int amount)
 	else
 		audio_playSound(SFX_DEBRIS2, x, y);
 
-	object *debris;
+	Object *debris;
 	
 	amount = RANDRANGE(3, amount);
 	LIMIT(amount, 3, 8);
 
 	for (int i = 0 ; i < amount ; i++)
 	{
-		debris = new object;
+		debris = new Object;
 
 		debris->next = NULL;
 		debris->x = x;
@@ -273,8 +273,8 @@ will be updated. Information will be displayed and appropriate player variables 
 */
 static void game_doCollectables()
 {
-	collectables *collectable = engine.collectableHead;
-	collectables *prevCollectable = engine.collectableHead;
+	Collectable *collectable = engine.collectableHead;
+	Collectable *prevCollectable = engine.collectableHead;
 	engine.collectableTail = engine.collectableHead;
 	char temp[40];
 
@@ -546,11 +546,11 @@ spawned.
 */
 static void game_doBullets()
 {
-	object *bullet = engine.bulletHead;
-	object *prevBullet = engine.bulletHead;
+	Object *bullet = engine.bulletHead;
+	Object *prevBullet = engine.bulletHead;
 
-	collectables *collectable;
-	collectables *prevCollectable;
+	Collectable *collectable;
+	Collectable *prevCollectable;
 
 	int okayToHit = 0;
 	int old_shield;
@@ -1561,8 +1561,8 @@ static void game_doCargo()
 
 static void game_doDebris()
 {
-	object *prevDebris = engine.debrisHead;
-	object *debris = engine.debrisHead;
+	Object *prevDebris = engine.debrisHead;
+	Object *debris = engine.debrisHead;
 	engine.debrisTail = engine.debrisHead;
 
 	while (debris->next != NULL)
@@ -1604,8 +1604,8 @@ the explosion is killed off.
 */
 void game_doExplosions()
 {
-	object *prevExplosion = engine.explosionHead;
-	object *explosion = engine.explosionHead;
+	Object *prevExplosion = engine.explosionHead;
+	Object *explosion = engine.explosionHead;
 	engine.explosionTail = engine.explosionHead;
 	
 	while (explosion->next != NULL)

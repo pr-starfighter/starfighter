@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "Starfighter.h"
 #include "radio.h"
 
-object cargo[MAX_CARGO];
+Object cargo[MAX_CARGO];
 
 void cargo_init()
 {
@@ -45,7 +45,7 @@ static int cargo_get()
 	return -1;
 }
 
-object *cargo_add(object *owner, int cargoType)
+Object *cargo_add(Object *owner, int cargoType)
 {
 	int index = cargo_get();
 

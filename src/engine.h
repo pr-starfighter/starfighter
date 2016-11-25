@@ -42,14 +42,14 @@ typedef struct Engine_ {
 	float smx;
 	float smy;
 
-	object *bulletHead;
-	object *bulletTail;
-	object *explosionHead;
-	object *explosionTail;
-	collectables *collectableHead;
-	collectables *collectableTail;
-	object *debrisHead;
-	object *debrisTail;
+	Object *bulletHead;
+	Object *bulletTail;
+	Object *explosionHead;
+	Object *explosionTail;
+	Collectable *collectableHead;
+	Collectable *collectableTail;
+	Object *debrisHead;
+	Object *debrisTail;
 
 	int cursor_x, cursor_y;
 

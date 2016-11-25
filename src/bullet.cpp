@@ -19,13 +19,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
-void bullet_add(object *theWeapon, object *attacker, int y, int dy)
+void bullet_add(Object *theWeapon, Object *attacker, int y, int dy)
 {
-	object *bullet;
+	Object *bullet;
 	int imageIndex;
 	int tempX, tempY, steps;
 
-	bullet = new object;
+	bullet = new Object;
 
 	if (attacker == &player)
 		game.shots++;
@@ -145,9 +145,9 @@ already have a target. If the target it is currently chasing is killed, it will
 begin to look for a new one (done in doBullets()). The homing missile will make
 one attempt per call (one call per frame) to find a suitable target. If the target
 it picks is dead or outside the screen range, then it returns NULL. A suitable
-target will be returned as the object address.
+target will be returned as the Object address.
 */
-object *bullet_getTarget(object *bullet)
+Object *bullet_getTarget(Object *bullet)
 {
 	int i;
 
@@ -182,7 +182,7 @@ object *bullet_getTarget(object *bullet)
 	return &aliens[i];
 }
 
-int bullet_collision(object *bullet, object *ship)
+int bullet_collision(Object *bullet, Object *ship)
 {
 	float x0 = bullet->x;
 	float y0 = bullet->y;

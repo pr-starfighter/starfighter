@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef PLAYER_H
 #define PLAYER_H
 
-extern object player;
+extern Object player;
 extern int player_chargerFired;
 
 extern void initPlayer();

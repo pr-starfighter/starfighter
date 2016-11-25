@@ -27,7 +27,7 @@ to change frames on a 21, 14, 7 basis.
 */
 void explosion_add(float x, float y, int type)
 {
-	object *explosion = new object;
+	Object *explosion = new Object;
 
 	explosion->next = NULL;
 	explosion->active = 1;
@@ -45,7 +45,7 @@ void explosion_add(float x, float y, int type)
 * This very simply just adds a tiny explosion at the coordinate specified.
 * It creates a small engine like effect.
 */
-void explosion_addEngine(object *craft)
+void explosion_addEngine(Object *craft)
 {
 	if (CHANCE(0.5))
 		return;

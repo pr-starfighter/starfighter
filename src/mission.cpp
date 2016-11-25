@@ -508,7 +508,7 @@ void mission_init()
 }
 
 /*
-Sets the currentMission object to the mission number the player
+Sets the currentMission Object to the mission number the player
 is currently on. Timing is assigned if it is required. The rate
 at which to add enemies in this mission is also set.
 */
@@ -718,7 +718,7 @@ void mission_updateRequirements(int type, int id, int value)
 		}
 	}
 
-	// Don't evaluate secondary objectives at the same time!
+	// Don't evaluate secondary Objectives at the same time!
 	if (matched)
 		return;
 
@@ -914,7 +914,7 @@ int mission_checkCompleted()
 	int add = 0;
 	int allDone = 1;
 
-	// Zero objective list for a recount
+	// Zero Objective list for a recount
 	currentMission.remainingObjectives1 = currentMission.remainingObjectives2 = 0;
 
 	for (int i = 0 ; i < 3 ; i++)
@@ -949,7 +949,7 @@ int mission_checkCompleted()
 
 	remaining = currentMission.remainingObjectives1 + currentMission.remainingObjectives2;
 
-	// We've only got one objective left and it's destroy all targets,
+	// We've only got one Objective left and it's destroy all targets,
 	// so stop adding aliens (otherwise it might be impossible to finish!)
 	if ((add) && (remaining == 1))
 		engine.addAliens = -1;
@@ -1017,7 +1017,7 @@ static void mission_drawScreen()
 
 /*
 Simply displays a screen with all the mission information on it, pulled
-back from the data stored in the currentMission object. The music for the
+back from the data stored in the currentMission Object. The music for the
 mission begins playing here.
 */
 void mission_showStartScreen()
@@ -1117,7 +1117,7 @@ void mission_showStartScreen()
 
 /*
 Display a screen showing all the information from the mission
-the player has just done. This includes objectives that have been
+the player has just done. This includes Objectives that have been
 completed and failed. A mission timer is also displayed at the bottom
 of the screen.
 */

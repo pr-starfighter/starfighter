@@ -131,7 +131,7 @@ void collectable_add(float x, float y, int type, int value, int life)
 		}
 	}
 
-	collectables *collectable = new collectables;
+	Collectable *collectable = new Collectable;
 
 	collectable->next = NULL;
 	collectable->active = 1;
@@ -206,7 +206,7 @@ void collectable_add(float x, float y, int type, int value, int life)
 	engine.collectableTail = collectable;
 }
 
-int collectable_collision(collectables *collectable, object *ship)
+int collectable_collision(Collectable *collectable, Object *ship)
 {
 	float x0 = collectable->x;
 	float y0 = collectable->y;
@@ -227,7 +227,7 @@ int collectable_collision(collectables *collectable, object *ship)
 	return !(x1<x2 || x3<x0 || y1<y2 || y3<y0);
 }
 
-void collectable_explode(collectables *collectable)
+void collectable_explode(Collectable *collectable)
 {
 	audio_playSound(SFX_EXPLOSION, collectable->x, collectable->y);
 

@@ -20,14 +20,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef STRUCTS_H
 #define STRUCTS_H
 
-typedef struct object_ {
+typedef struct Object_ {
 
 	int active;
 	int classDef; // Used by aliens to determine what they are
 	int AIType; // Type of articifial intelligence
 
-	int id; // The "job" of the object
-	struct object_ *target; //  index target in aliens array
+	int id; // The "job" of the Object
+	struct Object_ *target; //  index target in aliens array
 
 	int reload[2];
 
@@ -42,7 +42,7 @@ typedef struct object_ {
 
 	int face; // Either 0 or 1
 
-	struct object_ *owner; // Who owns this object
+	struct Object_ *owner; // Who owns this Object
 
 	int chance[2]; // Chance of using the weapons (out of 1000)
 
@@ -53,20 +53,20 @@ typedef struct object_ {
 	int engineX; // The place for the engine on the other side of the craft
 	int engineY; // The middle of the engine on the craft
 
-	int thinktime; // When the object will next react
+	int thinktime; // When the Object will next react
 	int weaponType[2]; // Weapon types
 
-	int collectChance; // Chance of dropping the object
-	int collectType; // What the object is carrying
+	int collectChance; // Chance of dropping the Object
+	int collectType; // What the Object is carrying
 	int collectValue; // What it is worth
 
-	unsigned long int flags; // Various flags for an object
+	unsigned long int flags; // Various flags for an Object
 
 	float x, y, dx, dy;
 
-	struct object_ *next;
+	struct Object_ *next;
 
-} object;
+} Object;
 
 typedef struct Mission_ {
 
@@ -97,7 +97,7 @@ typedef struct Star_ {
 
 } Star;
 
-typedef struct collectables_ {
+typedef struct Collectable_ {
 
 	int active;
 	float x, y, dx, dy;
@@ -106,9 +106,9 @@ typedef struct collectables_ {
 	int value; // How much is it worth?
 	int life; // How long it will stay around for
 
-	struct collectables_ *next;
+	struct Collectable_ *next;
 
-} collectables;
+} Collectable;
 
 typedef struct textObject_ {
 
@@ -121,8 +121,8 @@ typedef struct textObject_ {
 } textObject;
 
 typedef struct Game_ {
-	object thePlayer;
-	object playerWeapon;
+	Object thePlayer;
+	Object playerWeapon;
 
 	int saveFormat;
 
