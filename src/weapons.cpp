@@ -24,7 +24,7 @@ Object weapons[W_MAX];
 /*
 A list of predefined weaponary.
 */
-void initWeapons()
+void weapons_init()
 {
 	// Player's weapon (this NEVER allocated to anything else)
 	weapons[W_PLAYER_WEAPON].id = WT_PLASMA;

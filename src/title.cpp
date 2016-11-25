@@ -188,7 +188,7 @@ static int showCheatMenu()
 This is the main title screen, with the stars whirling past and the
 "Parallel Realities, Present..." text. Nothing too special.
 */
-int doTitle()
+int title_show()
 {
 	int continueSaveSlot;
 
@@ -421,7 +421,7 @@ int doTitle()
 		// if someone has invoked the credits cheat
 		if (engine.cheatCredits)
 		{
-			doCredits();
+			title_showCredits();
 			engine.cheatCredits = 0;
 		}
 
@@ -602,58 +602,7 @@ int doTitle()
 	return selectedOption;
 }
 
-/*
-The game over screen :(
-*/
-void gameover()
-{
-	screen_flushBuffer();
-	gfx_free();
-	SDL_FillRect(gfx_background, NULL, black);
-
-	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
-	engine.gameSection = SECTION_INTERMISSION;
-
-	SDL_Surface *gameover = gfx_loadImage("gfx/gameover.png");
-
-	screen_clear(black);
-	renderer_update();
-	screen_clear(black);
-	SDL_Delay(1000);
-
-	audio_playMusic("music/death.ogg", -1);
-
-	int x = (screen->w - gameover->w) / 2;
-	int y = (screen->h - gameover->h) / 2;
-
-	renderer_update();
-
-	flushInput();
-	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
-
-	while (1)
-	{
-		getPlayerInput();
-
-		if (engine.keyState[KEY_FIRE] || engine.keyState[KEY_ALTFIRE])
-			break;
-
-		renderer_update();
-
-		screen_unBuffer();
-		x = ((screen->w - gameover->w) / 2) - RANDRANGE(-2, 2);
-		y = ((screen->h - gameover->h) / 2)  - RANDRANGE(-2, 2);
-		screen_blit(gameover, x,  y);
-
-		game_delayFrame();
-	}
-
-	SDL_FreeSurface(gameover);
-	audio_haltMusic();
-	screen_flushBuffer();
-}
-
-void doCredits()
+void title_showCredits()
 {
 	gfx_loadBackground("gfx/credits.jpg");
 	screen_flushBuffer();

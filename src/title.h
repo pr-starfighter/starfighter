@@ -20,8 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef TITLE_H
 #define TITLE_H
 
-extern int doTitle();
-extern void gameover();
-extern void doCredits();
+int title_show();
+void title_showCredits();
 
 #endif

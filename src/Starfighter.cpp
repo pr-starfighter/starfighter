@@ -120,7 +120,7 @@ int main(int argc, char **argv)
 	gfx_free();
 	audio_loadSounds();
 
-	initWeapons();
+	weapons_init();
 
 	srand(time(NULL));
 
@@ -145,7 +145,7 @@ int main(int argc, char **argv)
 		switch (section)
 		{
 			case 0:
-				section = doTitle();
+				section = title_show();
 				break;
 
 			case 1:

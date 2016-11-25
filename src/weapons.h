@@ -22,6 +22,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 extern Object weapons[W_MAX];
 
-extern void initWeapons();
+void weapons_init();
 
 #endif

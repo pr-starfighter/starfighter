@@ -177,7 +177,7 @@ void game_init()
 		stars[i].speed = 1 + (rand() % 3);
 	}
 
-	initWeapons();
+	weapons_init();
 	mission_init();
 	intermission_initPlanets(game.system);
 }
@@ -2068,6 +2068,57 @@ int game_collision(float x0, float y0, int w0, int h0, float x2, float y2, int w
 	return !(x1<x2 || x3<x0 || y1<y2 || y3<y0);
 }
 
+/*
+The game over screen :(
+*/
+static void game_showGameOver()
+{
+	screen_flushBuffer();
+	gfx_free();
+	SDL_FillRect(gfx_background, NULL, black);
+
+	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
+	engine.gameSection = SECTION_INTERMISSION;
+
+	SDL_Surface *gameover = gfx_loadImage("gfx/gameover.png");
+
+	screen_clear(black);
+	renderer_update();
+	screen_clear(black);
+	SDL_Delay(1000);
+
+	audio_playMusic("music/death.ogg", -1);
+
+	int x = (screen->w - gameover->w) / 2;
+	int y = (screen->h - gameover->h) / 2;
+
+	renderer_update();
+
+	flushInput();
+	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
+
+	while (1)
+	{
+		getPlayerInput();
+
+		if (engine.keyState[KEY_FIRE] || engine.keyState[KEY_ALTFIRE])
+			break;
+
+		renderer_update();
+
+		screen_unBuffer();
+		x = ((screen->w - gameover->w) / 2) - RANDRANGE(-2, 2);
+		y = ((screen->h - gameover->h) / 2)  - RANDRANGE(-2, 2);
+		screen_blit(gameover, x,  y);
+
+		game_delayFrame();
+	}
+
+	SDL_FreeSurface(gameover);
+	audio_haltMusic();
+	screen_flushBuffer();
+}
+
 int game_mainLoop()
 {
 	engine_resetLists();
@@ -2437,7 +2488,7 @@ int game_mainLoop()
 				cutscene_init(6);
 				break;
 			case MISN_VENUS:
-				doCredits();
+				title_showCredits();
 				break;
 		}
 		
@@ -2454,7 +2505,7 @@ int game_mainLoop()
 	}
 	else
 	{
-		gameover();
+		game_showGameOver();
 		rtn = 0;
 	}
 
