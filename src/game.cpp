@@ -178,8 +178,8 @@ void game_init()
 	}
 
 	initWeapons();
-	initMissions();
-	initPlanetMissions(game.system);
+	mission_init();
+	intermission_initPlanets(game.system);
 }
 
 static void game_addDebris(int x, int y, int amount)
@@ -484,7 +484,7 @@ static void game_doCollectables()
 						break;
 				}
 
-				updateMissionRequirements(M_COLLECT, collectable->type,
+				mission_updateRequirements(M_COLLECT, collectable->type,
 					collectable->value);
 
 				collectable->active = 0;
@@ -513,7 +513,7 @@ static void game_doCollectables()
 			if ((collectable->type == P_CARGO) ||
 					(collectable->type == P_ESCAPEPOD) ||
 					(collectable->type == P_SLAVES))
-				updateMissionRequirements(M_PROTECT_PICKUP, collectable->type, 1);
+				mission_updateRequirements(M_PROTECT_PICKUP, collectable->type, 1);
 		}
 
 		if (collectable->active)
@@ -795,7 +795,7 @@ static void game_doBullets()
 								explosion_add(cargo[j].x + RANDRANGE(-15, 15),
 									cargo[j].y + RANDRANGE(-15, 15),
 									SP_BIG_EXPLOSION);
-							updateMissionRequirements(M_PROTECT_PICKUP,
+							mission_updateRequirements(M_PROTECT_PICKUP,
 								P_CARGO, 1);
 						}
 					}
@@ -1020,11 +1020,11 @@ static void game_doAliens()
 						}
 
 						aliens[i].shield = 0;
-						updateMissionRequirements(M_ESCAPE_TARGET,
+						mission_updateRequirements(M_ESCAPE_TARGET,
 							aliens[i].classDef, 1);
 					
 						if (aliens[i].classDef != CD_CLOAKFIGHTER)
-							updateMissionRequirements(M_DESTROY_TARGET_TYPE,
+							mission_updateRequirements(M_DESTROY_TARGET_TYPE,
 								aliens[i].classDef, 1);
 					}
 				}
@@ -1802,7 +1802,7 @@ static void game_doHud()
 		}
 	}
 
-	if ((!allMissionsCompleted()) && (SDL_GetTicks() >= engine.counter2))
+	if ((!mission_checkCompleted()) && (SDL_GetTicks() >= engine.counter2))
 	{
 		engine.timeTaken++;
 		engine.counter2 = SDL_GetTicks() + 1000;
@@ -1836,7 +1836,7 @@ static void game_doHud()
 					if (currentMission.timeLimit2[i] > -1)
 						currentMission.timeLimit2[i]--;
 				}
-				checkTimer();
+				mission_checkTimer();
 				events_check();
 			}
 
@@ -1849,7 +1849,7 @@ static void game_doHud()
 					if (currentMission.timeLimit2[i] > -1)
 						currentMission.timeLimit2[i]--;
 				}
-				checkTimer();
+				mission_checkTimer();
 				events_check();
 				engine.counter = (SDL_GetTicks() + 1000);
 			}
@@ -2072,8 +2072,8 @@ int game_mainLoop()
 {
 	engine_resetLists();
 
-	setMission(game.area);
-	missionBriefScreen();
+	mission_set(game.area);
+	mission_showStartScreen();
 
 	cargo_init();
 	initPlayer();
@@ -2249,12 +2249,12 @@ int game_mainLoop()
 	{
 		renderer_update();
 
-		if ((allMissionsCompleted()) && (engine.missionCompleteTimer == 0))
+		if ((mission_checkCompleted()) && (engine.missionCompleteTimer == 0))
 		{
 			engine.missionCompleteTimer = SDL_GetTicks() + 4000;
 		}
 
-		if ((missionFailed()) && (engine.missionCompleteTimer == 0))
+		if ((mission_checkFailed()) && (engine.missionCompleteTimer == 0))
 		{
 			if (game.area != MISN_MOEBO)
 				engine.missionCompleteTimer = SDL_GetTicks() + 4000;
@@ -2267,7 +2267,7 @@ int game_mainLoop()
 			{
 				if (SDL_GetTicks() >= engine.missionCompleteTimer)
 				{
-					if ((!missionFailed()) && (game.area != MISN_VENUS))
+					if ((!mission_checkFailed()) && (game.area != MISN_VENUS))
 					{
 						leaveSector();
 						if ((engine.done == 2) &&
@@ -2413,10 +2413,10 @@ int game_mainLoop()
 
 	screen_flushBuffer();
 
-	if ((player.shield > 0) && (!missionFailed()))
+	if ((player.shield > 0) && (!mission_checkFailed()))
 	{
 		if (game.area < MISN_VENUS)
-			missionFinishedScreen();
+			mission_showFinishedScreen();
 
 		switch (game.area)
 		{
@@ -2443,7 +2443,7 @@ int game_mainLoop()
 		
 		if (game.area < MISN_VENUS)
 		{
-			updateSystemStatus();
+			intermission_updateSystemStatus();
 			save(0);
 		}
 

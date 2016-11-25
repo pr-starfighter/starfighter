@@ -1802,8 +1802,8 @@ void alien_destroy(object *alien, object *attacker)
 		}
 	}
 
-	updateMissionRequirements(M_DESTROY_TARGET_TYPE, alien->classDef, 1);
-	updateMissionRequirements(M_PROTECT_TARGET, alien->classDef, 1);
+	mission_updateRequirements(M_DESTROY_TARGET_TYPE, alien->classDef, 1);
+	mission_updateRequirements(M_PROTECT_TARGET, alien->classDef, 1);
 
 	if (rand() % 100 <= alien->collectChance)
 	{
@@ -1918,7 +1918,7 @@ void alien_hurt(object *alien, object *attacker, int damage, int ion)
 		if (!(alien->flags & FL_DISABLED))
 		{
 			alien->flags += FL_DISABLED;
-			updateMissionRequirements(M_DISABLE_TARGET,
+			mission_updateRequirements(M_DISABLE_TARGET,
 				alien->classDef, 1);
 		}
 

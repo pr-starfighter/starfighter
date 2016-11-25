@@ -17,22 +17,18 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef MISSIONS_H
-#define MISSIONS_H
+#ifndef MISSION_H
+#define MISSION_H
 
-extern Planet systemPlanet[10];
-extern mission currentMission;
+extern Mission currentMission;
 
-extern void initPlanetMissions(int system);
-extern void checkForBossMission();
-extern void updateSystemStatus();
-extern void setMission(int mission);
-extern void checkTimer();
-extern void updateMissionRequirements(int type, int id, int value);
-extern int allMissionsCompleted();
-extern int missionFailed();
-extern void missionBriefScreen();
-extern void missionFinishedScreen();
-extern void initMissions();
+void mission_set(int mission);
+void mission_checkTimer();
+void mission_updateRequirements(int type, int id, int value);
+int mission_checkCompleted();
+int mission_checkFailed();
+void mission_showStartScreen();
+void mission_showFinishedScreen();
+void mission_init();
 
 #endif

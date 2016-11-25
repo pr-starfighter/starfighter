@@ -20,6 +20,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef INTERMISSION_H
 #define INTERMISSION_H
 
+extern Planet intermission_planets[10];
+
+void intermission_initPlanets(int system);
+void intermission_unlockPlanets();
+void intermission_updateSystemStatus();
 int intermission();
 
 #endif

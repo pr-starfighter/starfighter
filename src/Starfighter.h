@@ -50,7 +50,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "intermission.h"
 #include "save.h"
 #include "info.h"
-#include "missions.h"
+#include "mission.h"
 #include "player.h"
 #include "renderer.h"
 #include "resources.h"

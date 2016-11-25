@@ -241,12 +241,12 @@ int save_load(int slot)
 	}
 
 	// Re-init all the planets in this system...
-	initPlanetMissions(game.system);
+	intermission_initPlanets(game.system);
 
 	// ... and then override with completition status
 	// XXX: Magic number
 	for (int i = 0 ; i < 10 ; i++)
-		systemPlanet[i].missionCompleted = game.missionCompleted[i];
+		intermission_planets[i].missionCompleted = game.missionCompleted[i];
 
 	return 1;
 }
@@ -269,7 +269,7 @@ void save(int slot)
 	game.saveFormat = 4;
 	// XXX: Magic number
 	for (int i = 0 ; i < 10 ; i++)
-		game.missionCompleted[i] = systemPlanet[i].missionCompleted;
+		game.missionCompleted[i] = intermission_planets[i].missionCompleted;
 
 	if (fp != NULL)
 	{

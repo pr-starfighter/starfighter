@@ -98,6 +98,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define WF_DISABLE 1024
 #define WF_TIMEDEXPLOSION 2048
 
+#define MT_NONE -2
+
 #define MAX_CARGO 20
 #define MAX_INFOLINES 3
 #define MAX_EVENTS 20

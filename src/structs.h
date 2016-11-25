@@ -68,7 +68,7 @@ typedef struct object_ {
 
 } object;
 
-typedef struct mission_ {
+typedef struct Mission_ {
 
 	char primaryObjective[3][50]; // Description
 	int primaryType[3]; // The type of mission this is
@@ -88,7 +88,7 @@ typedef struct mission_ {
 	int remainingObjectives2;
 	int addAliens; // How often to add new enemies
 
-} mission;
+} Mission;
 
 typedef struct Star_ {
 

@@ -19,6 +19,185 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Starfighter.h"
 
+// XXX: Magic number
+Planet intermission_planets[10];
+
+void intermission_initPlanets(int system)
+{
+	// XXX: Magic number
+	for (int i = 0 ; i < 10 ; i++)
+	{
+		intermission_planets[i].missionNumber = -1; // no mission for this planet
+		intermission_planets[i].missionCompleted = 1;
+	}
+
+	switch(system)
+	{
+		// Spirit
+		case SYSTEM_SPIRIT:
+			intermission_planets[PLANET_HAIL].missionNumber = MISN_HAIL;
+			intermission_planets[PLANET_HAIL].missionCompleted = 0;
+
+			intermission_planets[PLANET_CERADSE].missionNumber = MISN_CERADSE;
+			intermission_planets[PLANET_CERADSE].missionCompleted = 0;
+
+			intermission_planets[PLANET_HINSTAG].missionNumber = MISN_HINSTAG;
+			intermission_planets[PLANET_HINSTAG].missionCompleted = 0;
+
+			intermission_planets[PLANET_JOLDAR].missionNumber = MISN_JOLDAR;
+			intermission_planets[PLANET_JOLDAR].missionCompleted = 0;
+
+			intermission_planets[PLANET_MOEBO].missionNumber = MISN_MOEBO;
+			intermission_planets[PLANET_MOEBO].missionCompleted = -1;
+
+			break;
+
+		// Eyananth
+		case SYSTEM_EYANANTH:
+			intermission_planets[PLANET_NEROD].missionNumber = MISN_NEROD;
+			intermission_planets[PLANET_NEROD].missionCompleted = 0;
+
+			intermission_planets[PLANET_ALLEZ].missionNumber = MISN_ALLEZ;
+			intermission_planets[PLANET_ALLEZ].missionCompleted = 0;
+
+			intermission_planets[PLANET_URUSOR].missionNumber = MISN_URUSOR;
+			intermission_planets[PLANET_URUSOR].missionCompleted = -1;
+
+			intermission_planets[PLANET_DORIM].missionNumber = MISN_DORIM;
+			intermission_planets[PLANET_DORIM].missionCompleted = -1;
+
+			intermission_planets[PLANET_ELAMALE].missionNumber = MISN_ELAMALE;
+			intermission_planets[PLANET_ELAMALE].missionCompleted = -2;
+
+			// This one is for the slaves
+			intermission_planets[PLANET_RESCUESLAVES].missionNumber = MISN_RESCUESLAVES;
+			intermission_planets[PLANET_RESCUESLAVES].missionCompleted = 0;
+
+			break;
+
+		// Mordor
+		case SYSTEM_MORDOR:
+			intermission_planets[PLANET_ODEON].missionNumber = MISN_ODEON;
+			intermission_planets[PLANET_ODEON].missionCompleted = 0;
+
+			intermission_planets[PLANET_FELLON].missionNumber = MISN_FELLON;
+			intermission_planets[PLANET_FELLON].missionCompleted = 0;
+
+			intermission_planets[PLANET_SIVEDI].missionNumber = MISN_SIVEDI;
+			intermission_planets[PLANET_SIVEDI].missionCompleted = -1;
+
+			intermission_planets[PLANET_ALMARTHA].missionNumber = MISN_ALMARTHA;
+			intermission_planets[PLANET_ALMARTHA].missionCompleted = -1;
+
+			intermission_planets[PLANET_POSWIC].missionNumber = MISN_POSWIC;
+			intermission_planets[PLANET_POSWIC].missionCompleted = -2;
+
+			intermission_planets[PLANET_ELLESH].missionNumber = MISN_ELLESH;
+			intermission_planets[PLANET_ELLESH].missionCompleted = -3;
+
+			// This one is for the experimental fighter
+			intermission_planets[PLANET_CLOAKFIGHTER].missionNumber = MISN_CLOAKFIGHTER;
+			intermission_planets[PLANET_CLOAKFIGHTER].missionCompleted = 0;
+
+			break;
+
+		// Sol
+		case SYSTEM_SOL:
+			intermission_planets[PLANET_PLUTO].missionNumber = MISN_PLUTO;
+			intermission_planets[PLANET_PLUTO].missionCompleted = 0;
+
+			intermission_planets[PLANET_NEPTUNE].missionNumber = MISN_NEPTUNE;
+			intermission_planets[PLANET_NEPTUNE].missionCompleted = 0;
+
+			intermission_planets[PLANET_URANUS].missionNumber = MISN_URANUS;
+			intermission_planets[PLANET_URANUS].missionCompleted = 0;
+
+			intermission_planets[PLANET_SATURN].missionNumber = MISN_SATURN;
+			intermission_planets[PLANET_SATURN].missionCompleted = -1;
+
+			intermission_planets[PLANET_JUPITER].missionNumber = MISN_JUPITER;
+			intermission_planets[PLANET_JUPITER].missionCompleted = -2;
+
+			intermission_planets[PLANET_MARS].missionNumber = MISN_MARS;
+			intermission_planets[PLANET_MARS].missionCompleted = -3;
+
+			intermission_planets[PLANET_EARTH].missionNumber = MISN_EARTH;
+			intermission_planets[PLANET_EARTH].missionCompleted = -4;
+
+			intermission_planets[PLANET_VENUS].missionNumber = MISN_VENUS;
+			intermission_planets[PLANET_VENUS].missionCompleted = -5;
+
+			break;
+	}
+}
+
+void intermission_unlockPlanets()
+{
+	// XXX: Magic number
+	for (int i = 0 ; i < 10 ; i++)
+	{
+		if ((intermission_planets[i].missionCompleted == 0) && (intermission_planets[i].missionNumber != -1))
+			return;
+	}
+
+	for (int i = 0 ; i < 10 ; i++)
+	{
+		if (intermission_planets[i].missionCompleted < 0)
+			intermission_planets[i].missionCompleted++;
+	}
+}
+
+void intermission_updateSystemStatus()
+{
+	if (game.area == MISN_START)
+	{
+		game.stationedPlanet = 0;
+		game.area = 1;
+		strcpy(game.stationedName, "Hail");
+		intermission_initPlanets(game.system);
+	}
+	else if (game.area == MISN_MOEBO)
+	{
+		game.stationedPlanet = 0;
+		game.system = 1;
+		game.area = MISN_RESCUESLAVES;
+		strcpy(game.stationedName, "Nerod");
+		intermission_initPlanets(game.system);
+
+		if (game.difficulty == DIFFICULTY_ORIGINAL)
+			player.maxShield = 50;
+	}
+	else if (game.area == MISN_ELAMALE)
+	{
+		game.stationedPlanet = 0;
+		game.system = 2;
+		game.area = MISN_CLOAKFIGHTER;
+		strcpy(game.stationedName, "Odeon");
+		intermission_initPlanets(game.system);
+
+		if (game.difficulty == DIFFICULTY_ORIGINAL)
+			player.maxShield = 75;
+	}
+	else if (game.area == MISN_ELLESH)
+	{
+		game.stationedPlanet = 8;
+		game.system = 3;
+		game.area = MISN_PLUTO;
+		strcpy(game.stationedName, "Pluto");
+		intermission_initPlanets(game.system);
+
+		if (game.difficulty == DIFFICULTY_ORIGINAL)
+			player.maxShield = 100;
+	}
+	else // Update the mission for the planet
+	{
+		intermission_planets[game.stationedPlanet].missionCompleted = 1;
+	}
+
+	strcpy(game.destinationName, "None");
+	game.destinationPlanet = game.stationedPlanet;
+}
+
 /*
 Drives the cursor. Is used by some other screens too
 */
@@ -135,264 +314,264 @@ static void intermission_setStatusLines()
 /*
 Sets the names and stats of the planets within the current system.
 */
-static void intermission_setSystemPlanets()
+static void intermission_setPlanets()
 {
 	for (int i = 0 ; i < 10 ; i++)
 	{
-		systemPlanet[i].y = -1;
-		strcpy(systemPlanet[i].name, "");
-		systemPlanet[i].image = NULL;
-		systemPlanet[i].messageMission = -1;
-		systemPlanet[i].messageSlot = -1;
-		systemPlanet[i].faceImage = -1;
-		strcpy(systemPlanet[i].subject, "ERROR");
+		intermission_planets[i].y = -1;
+		strcpy(intermission_planets[i].name, "");
+		intermission_planets[i].image = NULL;
+		intermission_planets[i].messageMission = -1;
+		intermission_planets[i].messageSlot = -1;
+		intermission_planets[i].faceImage = -1;
+		strcpy(intermission_planets[i].subject, "ERROR");
 	}
 
 	switch (game.system)
 	{
 		case SYSTEM_SPIRIT:
-			systemPlanet[PLANET_HAIL].y = 15;
-			strcpy(systemPlanet[PLANET_HAIL].name, "Hail");
-			systemPlanet[PLANET_HAIL].image = gfx_sprites[SP_PLANET_GREEN];
+			intermission_planets[PLANET_HAIL].y = 15;
+			strcpy(intermission_planets[PLANET_HAIL].name, "Hail");
+			intermission_planets[PLANET_HAIL].image = gfx_sprites[SP_PLANET_GREEN];
 
-			systemPlanet[PLANET_CERADSE].y = 30;
-			strcpy(systemPlanet[PLANET_CERADSE].name, "Ceradse");
-			systemPlanet[PLANET_CERADSE].image = gfx_sprites[SP_PLANET_BLUE];
+			intermission_planets[PLANET_CERADSE].y = 30;
+			strcpy(intermission_planets[PLANET_CERADSE].name, "Ceradse");
+			intermission_planets[PLANET_CERADSE].image = gfx_sprites[SP_PLANET_BLUE];
 
-			systemPlanet[PLANET_HINSTAG].y = 30;
-			strcpy(systemPlanet[PLANET_HINSTAG].name, "Hinstag");
-			systemPlanet[PLANET_HINSTAG].image = gfx_sprites[SP_PLANET_RED];
+			intermission_planets[PLANET_HINSTAG].y = 30;
+			strcpy(intermission_planets[PLANET_HINSTAG].name, "Hinstag");
+			intermission_planets[PLANET_HINSTAG].image = gfx_sprites[SP_PLANET_RED];
 
-			systemPlanet[PLANET_JOLDAR].y = 20;
-			strcpy(systemPlanet[PLANET_JOLDAR].name, "Joldar");
-			systemPlanet[PLANET_JOLDAR].image = gfx_sprites[SP_PLANET_GREEN];
+			intermission_planets[PLANET_JOLDAR].y = 20;
+			strcpy(intermission_planets[PLANET_JOLDAR].name, "Joldar");
+			intermission_planets[PLANET_JOLDAR].image = gfx_sprites[SP_PLANET_GREEN];
 
-			systemPlanet[PLANET_MOEBO].y = 40;
-			strcpy(systemPlanet[PLANET_MOEBO].name, "Moebo");
-			systemPlanet[PLANET_MOEBO].image = gfx_sprites[SP_PLANET_ORANGE];
+			intermission_planets[PLANET_MOEBO].y = 40;
+			strcpy(intermission_planets[PLANET_MOEBO].name, "Moebo");
+			intermission_planets[PLANET_MOEBO].image = gfx_sprites[SP_PLANET_ORANGE];
 
-			systemPlanet[PLANET_HAIL].messageMission = MISN_HAIL;
-			systemPlanet[PLANET_HAIL].messageSlot = 0;
-			systemPlanet[PLANET_HAIL].faceImage = FS_KRASS;
-			strcpy(systemPlanet[PLANET_HAIL].subject, "Destroy WEAPCO training ground");
+			intermission_planets[PLANET_HAIL].messageMission = MISN_HAIL;
+			intermission_planets[PLANET_HAIL].messageSlot = 0;
+			intermission_planets[PLANET_HAIL].faceImage = FS_KRASS;
+			strcpy(intermission_planets[PLANET_HAIL].subject, "Destroy WEAPCO training ground");
 
-			systemPlanet[PLANET_CERADSE].messageMission = MISN_CERADSE;
-			systemPlanet[PLANET_CERADSE].messageSlot = 1;
-			systemPlanet[PLANET_CERADSE].faceImage = FS_SID;
-			strcpy(systemPlanet[PLANET_CERADSE].subject, "Collect 6 cargo pods");
+			intermission_planets[PLANET_CERADSE].messageMission = MISN_CERADSE;
+			intermission_planets[PLANET_CERADSE].messageSlot = 1;
+			intermission_planets[PLANET_CERADSE].faceImage = FS_SID;
+			strcpy(intermission_planets[PLANET_CERADSE].subject, "Collect 6 cargo pods");
 
-			systemPlanet[PLANET_HINSTAG].messageMission = MISN_HINSTAG;
-			systemPlanet[PLANET_HINSTAG].messageSlot = 2;
-			systemPlanet[PLANET_HINSTAG].faceImage = FS_SID;
-			strcpy(systemPlanet[PLANET_HINSTAG].subject, "Destroy 5 WEAPCO missile boats");
+			intermission_planets[PLANET_HINSTAG].messageMission = MISN_HINSTAG;
+			intermission_planets[PLANET_HINSTAG].messageSlot = 2;
+			intermission_planets[PLANET_HINSTAG].faceImage = FS_SID;
+			strcpy(intermission_planets[PLANET_HINSTAG].subject, "Destroy 5 WEAPCO missile boats");
 
-			systemPlanet[PLANET_JOLDAR].messageMission = MISN_JOLDAR;
-			systemPlanet[PLANET_JOLDAR].messageSlot = 3;
-			systemPlanet[PLANET_JOLDAR].faceImage = FS_SID;
-			strcpy(systemPlanet[PLANET_JOLDAR].subject, "Clear the mine field around Joldar");
+			intermission_planets[PLANET_JOLDAR].messageMission = MISN_JOLDAR;
+			intermission_planets[PLANET_JOLDAR].messageSlot = 3;
+			intermission_planets[PLANET_JOLDAR].faceImage = FS_SID;
+			strcpy(intermission_planets[PLANET_JOLDAR].subject, "Clear the mine field around Joldar");
 
-			systemPlanet[PLANET_MOEBO].messageMission = MISN_MOEBO;
-			systemPlanet[PLANET_MOEBO].messageSlot = 0;
-			systemPlanet[PLANET_MOEBO].faceImage = FS_SID;
-			strcpy(systemPlanet[PLANET_MOEBO].subject, "Destroy WEAPCO frigate");
+			intermission_planets[PLANET_MOEBO].messageMission = MISN_MOEBO;
+			intermission_planets[PLANET_MOEBO].messageSlot = 0;
+			intermission_planets[PLANET_MOEBO].faceImage = FS_SID;
+			strcpy(intermission_planets[PLANET_MOEBO].subject, "Destroy WEAPCO frigate");
 
 			break;
 
 		case SYSTEM_EYANANTH:
-			strcpy(systemPlanet[PLANET_RESCUESLAVES].name, "WEAPCO interceptions");
+			strcpy(intermission_planets[PLANET_RESCUESLAVES].name, "WEAPCO interceptions");
 
-			systemPlanet[PLANET_NEROD].y = 15;
-			strcpy(systemPlanet[PLANET_NEROD].name, "Nerod");
-			systemPlanet[PLANET_NEROD].image = gfx_sprites[SP_PLANET_GREEN];
+			intermission_planets[PLANET_NEROD].y = 15;
+			strcpy(intermission_planets[PLANET_NEROD].name, "Nerod");
+			intermission_planets[PLANET_NEROD].image = gfx_sprites[SP_PLANET_GREEN];
 
-			systemPlanet[PLANET_ALLEZ].y = 30;
-			strcpy(systemPlanet[PLANET_ALLEZ].name, "Allez");
-			systemPlanet[PLANET_ALLEZ].image = gfx_sprites[SP_PLANET_BLUE];
+			intermission_planets[PLANET_ALLEZ].y = 30;
+			strcpy(intermission_planets[PLANET_ALLEZ].name, "Allez");
+			intermission_planets[PLANET_ALLEZ].image = gfx_sprites[SP_PLANET_BLUE];
 
-			systemPlanet[PLANET_URUSOR].y = 30;
-			strcpy(systemPlanet[PLANET_URUSOR].name, "Urusor");
-			systemPlanet[PLANET_URUSOR].image = gfx_sprites[SP_PLANET_RED];
+			intermission_planets[PLANET_URUSOR].y = 30;
+			strcpy(intermission_planets[PLANET_URUSOR].name, "Urusor");
+			intermission_planets[PLANET_URUSOR].image = gfx_sprites[SP_PLANET_RED];
 
-			systemPlanet[PLANET_DORIM].y = 20;
-			strcpy(systemPlanet[PLANET_DORIM].name, "Dorim");
-			systemPlanet[PLANET_DORIM].image = gfx_sprites[SP_PLANET_GREEN];
+			intermission_planets[PLANET_DORIM].y = 20;
+			strcpy(intermission_planets[PLANET_DORIM].name, "Dorim");
+			intermission_planets[PLANET_DORIM].image = gfx_sprites[SP_PLANET_GREEN];
 
-			systemPlanet[PLANET_ELAMALE].y = 40;
-			strcpy(systemPlanet[PLANET_ELAMALE].name, "Elamale");
-			systemPlanet[PLANET_ELAMALE].image = gfx_sprites[SP_PLANET_ORANGE];
+			intermission_planets[PLANET_ELAMALE].y = 40;
+			strcpy(intermission_planets[PLANET_ELAMALE].name, "Elamale");
+			intermission_planets[PLANET_ELAMALE].image = gfx_sprites[SP_PLANET_ORANGE];
 
-			systemPlanet[PLANET_RESCUESLAVES].messageMission = MISN_RESCUESLAVES;
-			systemPlanet[PLANET_RESCUESLAVES].messageSlot = 0;
-			systemPlanet[PLANET_RESCUESLAVES].faceImage = FS_SID;
-			strcpy(systemPlanet[PLANET_RESCUESLAVES].subject, "Rescue slaves");
+			intermission_planets[PLANET_RESCUESLAVES].messageMission = MISN_RESCUESLAVES;
+			intermission_planets[PLANET_RESCUESLAVES].messageSlot = 0;
+			intermission_planets[PLANET_RESCUESLAVES].faceImage = FS_SID;
+			strcpy(intermission_planets[PLANET_RESCUESLAVES].subject, "Rescue slaves");
 
-			systemPlanet[PLANET_NEROD].messageMission = MISN_NEROD;
-			systemPlanet[PLANET_NEROD].messageSlot = 1;
-			systemPlanet[PLANET_NEROD].faceImage = FS_PHOEBE;
-			strcpy(systemPlanet[PLANET_NEROD].subject, "SOS");
+			intermission_planets[PLANET_NEROD].messageMission = MISN_NEROD;
+			intermission_planets[PLANET_NEROD].messageSlot = 1;
+			intermission_planets[PLANET_NEROD].faceImage = FS_PHOEBE;
+			strcpy(intermission_planets[PLANET_NEROD].subject, "SOS");
 
-			systemPlanet[PLANET_ALLEZ].messageMission = MISN_ALLEZ;
-			systemPlanet[PLANET_ALLEZ].messageSlot = 2;
-			systemPlanet[PLANET_ALLEZ].faceImage = FS_SID;
-			strcpy(systemPlanet[PLANET_ALLEZ].subject, "Assist medical supply craft");
+			intermission_planets[PLANET_ALLEZ].messageMission = MISN_ALLEZ;
+			intermission_planets[PLANET_ALLEZ].messageSlot = 2;
+			intermission_planets[PLANET_ALLEZ].faceImage = FS_SID;
+			strcpy(intermission_planets[PLANET_ALLEZ].subject, "Assist medical supply craft");
 
-			systemPlanet[PLANET_URUSOR].messageMission = MISN_URUSOR;
-			systemPlanet[PLANET_URUSOR].messageSlot = 0;
-			systemPlanet[PLANET_URUSOR].faceImage = FS_SID;
-			strcpy(systemPlanet[PLANET_URUSOR].subject, "Capture five WEAPCO supply craft");
+			intermission_planets[PLANET_URUSOR].messageMission = MISN_URUSOR;
+			intermission_planets[PLANET_URUSOR].messageSlot = 0;
+			intermission_planets[PLANET_URUSOR].faceImage = FS_SID;
+			strcpy(intermission_planets[PLANET_URUSOR].subject, "Capture five WEAPCO supply craft");
 
-			systemPlanet[PLANET_DORIM].messageMission = MISN_DORIM;
-			systemPlanet[PLANET_DORIM].messageSlot = 1;
-			systemPlanet[PLANET_DORIM].faceImage = FS_SID;
-			strcpy(systemPlanet[PLANET_DORIM].subject, "Find WEAPCO scientist");
+			intermission_planets[PLANET_DORIM].messageMission = MISN_DORIM;
+			intermission_planets[PLANET_DORIM].messageSlot = 1;
+			intermission_planets[PLANET_DORIM].faceImage = FS_SID;
+			strcpy(intermission_planets[PLANET_DORIM].subject, "Find WEAPCO scientist");
 
-			systemPlanet[PLANET_ELAMALE].messageMission = MISN_ELAMALE;
-			systemPlanet[PLANET_ELAMALE].messageSlot = 0;
-			systemPlanet[PLANET_ELAMALE].faceImage = FS_PHOEBE;
-			strcpy(systemPlanet[PLANET_ELAMALE].subject, "Destroy WEAPCO Ore Mining craft");
+			intermission_planets[PLANET_ELAMALE].messageMission = MISN_ELAMALE;
+			intermission_planets[PLANET_ELAMALE].messageSlot = 0;
+			intermission_planets[PLANET_ELAMALE].faceImage = FS_PHOEBE;
+			strcpy(intermission_planets[PLANET_ELAMALE].subject, "Destroy WEAPCO Ore Mining craft");
 
 			break;
 
 		case SYSTEM_MORDOR:
-			strcpy(systemPlanet[PLANET_CLOAKFIGHTER].name, "WEAPCO interceptions");
+			strcpy(intermission_planets[PLANET_CLOAKFIGHTER].name, "WEAPCO interceptions");
 
-			systemPlanet[PLANET_ODEON].y = 15;
-			strcpy(systemPlanet[PLANET_ODEON].name, "Odeon");
-			systemPlanet[PLANET_ODEON].image = gfx_sprites[SP_PLANET_GREEN];
+			intermission_planets[PLANET_ODEON].y = 15;
+			strcpy(intermission_planets[PLANET_ODEON].name, "Odeon");
+			intermission_planets[PLANET_ODEON].image = gfx_sprites[SP_PLANET_GREEN];
 
-			systemPlanet[PLANET_FELLON].y = 30;
-			strcpy(systemPlanet[PLANET_FELLON].name, "Fellon");
-			systemPlanet[PLANET_FELLON].image = gfx_sprites[SP_PLANET_BLUE];
+			intermission_planets[PLANET_FELLON].y = 30;
+			strcpy(intermission_planets[PLANET_FELLON].name, "Fellon");
+			intermission_planets[PLANET_FELLON].image = gfx_sprites[SP_PLANET_BLUE];
 
-			systemPlanet[PLANET_SIVEDI].y = 30;
-			strcpy(systemPlanet[PLANET_SIVEDI].name, "Sivedi");
-			systemPlanet[PLANET_SIVEDI].image = gfx_sprites[SP_PLANET_RED];
+			intermission_planets[PLANET_SIVEDI].y = 30;
+			strcpy(intermission_planets[PLANET_SIVEDI].name, "Sivedi");
+			intermission_planets[PLANET_SIVEDI].image = gfx_sprites[SP_PLANET_RED];
 
-			systemPlanet[PLANET_ALMARTHA].y = 20;
-			strcpy(systemPlanet[PLANET_ALMARTHA].name, "Almartha");
-			systemPlanet[PLANET_ALMARTHA].image = gfx_sprites[SP_PLANET_GREEN];
+			intermission_planets[PLANET_ALMARTHA].y = 20;
+			strcpy(intermission_planets[PLANET_ALMARTHA].name, "Almartha");
+			intermission_planets[PLANET_ALMARTHA].image = gfx_sprites[SP_PLANET_GREEN];
 
-			systemPlanet[PLANET_POSWIC].y = 20;
-			strcpy(systemPlanet[PLANET_POSWIC].name, "Poswic");
-			systemPlanet[PLANET_POSWIC].image = gfx_sprites[SP_PLANET_ORANGE];
+			intermission_planets[PLANET_POSWIC].y = 20;
+			strcpy(intermission_planets[PLANET_POSWIC].name, "Poswic");
+			intermission_planets[PLANET_POSWIC].image = gfx_sprites[SP_PLANET_ORANGE];
 
-			systemPlanet[PLANET_ELLESH].y = 40;
-			strcpy(systemPlanet[PLANET_ELLESH].name, "Ellesh");
-			systemPlanet[PLANET_ELLESH].image = gfx_sprites[SP_PLANET_GREEN];
+			intermission_planets[PLANET_ELLESH].y = 40;
+			strcpy(intermission_planets[PLANET_ELLESH].name, "Ellesh");
+			intermission_planets[PLANET_ELLESH].image = gfx_sprites[SP_PLANET_GREEN];
 
-			systemPlanet[PLANET_CLOAKFIGHTER].messageMission = MISN_CLOAKFIGHTER;
-			systemPlanet[PLANET_CLOAKFIGHTER].messageSlot = 0;
-			systemPlanet[PLANET_CLOAKFIGHTER].faceImage = FS_SID;
-			strcpy(systemPlanet[PLANET_CLOAKFIGHTER].subject, "Destroy experimental fighter");
+			intermission_planets[PLANET_CLOAKFIGHTER].messageMission = MISN_CLOAKFIGHTER;
+			intermission_planets[PLANET_CLOAKFIGHTER].messageSlot = 0;
+			intermission_planets[PLANET_CLOAKFIGHTER].faceImage = FS_SID;
+			strcpy(intermission_planets[PLANET_CLOAKFIGHTER].subject, "Destroy experimental fighter");
 
-			systemPlanet[PLANET_ODEON].messageMission = MISN_ODEON;
-			systemPlanet[PLANET_ODEON].messageSlot = 1;
-			systemPlanet[PLANET_ODEON].faceImage = FS_PHOEBE;
-			strcpy(systemPlanet[PLANET_ODEON].subject, "Rescue Ursula");
+			intermission_planets[PLANET_ODEON].messageMission = MISN_ODEON;
+			intermission_planets[PLANET_ODEON].messageSlot = 1;
+			intermission_planets[PLANET_ODEON].faceImage = FS_PHOEBE;
+			strcpy(intermission_planets[PLANET_ODEON].subject, "Rescue Ursula");
 
-			systemPlanet[PLANET_FELLON].messageMission = MISN_FELLON;
-			systemPlanet[PLANET_FELLON].messageSlot = 2;
-			systemPlanet[PLANET_FELLON].faceImage = FS_SID;
-			strcpy(systemPlanet[PLANET_FELLON].subject, "Assist rebel forces");
+			intermission_planets[PLANET_FELLON].messageMission = MISN_FELLON;
+			intermission_planets[PLANET_FELLON].messageSlot = 2;
+			intermission_planets[PLANET_FELLON].faceImage = FS_SID;
+			strcpy(intermission_planets[PLANET_FELLON].subject, "Assist rebel forces");
 
-			systemPlanet[PLANET_SIVEDI].messageMission = MISN_SIVEDI;
-			systemPlanet[PLANET_SIVEDI].messageSlot = 0;
-			systemPlanet[PLANET_SIVEDI].faceImage = FS_SID;
-			strcpy(systemPlanet[PLANET_SIVEDI].subject, "Mine ore from asteroid belt");
+			intermission_planets[PLANET_SIVEDI].messageMission = MISN_SIVEDI;
+			intermission_planets[PLANET_SIVEDI].messageSlot = 0;
+			intermission_planets[PLANET_SIVEDI].faceImage = FS_SID;
+			strcpy(intermission_planets[PLANET_SIVEDI].subject, "Mine ore from asteroid belt");
 
-			systemPlanet[PLANET_ALMARTHA].messageMission = MISN_ALMARTHA;
-			systemPlanet[PLANET_ALMARTHA].messageSlot = 1;
-			systemPlanet[PLANET_ALMARTHA].faceImage = FS_KRASS;
-			strcpy(systemPlanet[PLANET_ALMARTHA].subject, "Create a diversion");
+			intermission_planets[PLANET_ALMARTHA].messageMission = MISN_ALMARTHA;
+			intermission_planets[PLANET_ALMARTHA].messageSlot = 1;
+			intermission_planets[PLANET_ALMARTHA].faceImage = FS_KRASS;
+			strcpy(intermission_planets[PLANET_ALMARTHA].subject, "Create a diversion");
 
-			systemPlanet[PLANET_POSWIC].messageMission = MISN_POSWIC;
-			systemPlanet[PLANET_POSWIC].messageSlot = 0;
-			systemPlanet[PLANET_POSWIC].faceImage = FS_URSULA;
-			strcpy(systemPlanet[PLANET_POSWIC].subject, "Capture WEAPCO executive transport");
+			intermission_planets[PLANET_POSWIC].messageMission = MISN_POSWIC;
+			intermission_planets[PLANET_POSWIC].messageSlot = 0;
+			intermission_planets[PLANET_POSWIC].faceImage = FS_URSULA;
+			strcpy(intermission_planets[PLANET_POSWIC].subject, "Capture WEAPCO executive transport");
 
-			systemPlanet[PLANET_ELLESH].messageMission = MISN_ELLESH;
-			systemPlanet[PLANET_ELLESH].messageSlot = 0;
-			systemPlanet[PLANET_ELLESH].faceImage = FS_PHOEBE;
-			strcpy(systemPlanet[PLANET_ELLESH].subject, "Destroy WEAPCO executive transport");
+			intermission_planets[PLANET_ELLESH].messageMission = MISN_ELLESH;
+			intermission_planets[PLANET_ELLESH].messageSlot = 0;
+			intermission_planets[PLANET_ELLESH].faceImage = FS_PHOEBE;
+			strcpy(intermission_planets[PLANET_ELLESH].subject, "Destroy WEAPCO executive transport");
 
 			break;
 
 		case SYSTEM_SOL:
-			systemPlanet[PLANET_MERCURY].y = 15;
-			strcpy(systemPlanet[PLANET_MERCURY].name, "Mercury");
-			systemPlanet[PLANET_MERCURY].image = gfx_sprites[SP_PLANET_RED];
+			intermission_planets[PLANET_MERCURY].y = 15;
+			strcpy(intermission_planets[PLANET_MERCURY].name, "Mercury");
+			intermission_planets[PLANET_MERCURY].image = gfx_sprites[SP_PLANET_RED];
 
-			systemPlanet[PLANET_VENUS].y = 20;
-			strcpy(systemPlanet[PLANET_VENUS].name, "Venus");
-			systemPlanet[PLANET_VENUS].image = gfx_sprites[SP_PLANET_ORANGE];
+			intermission_planets[PLANET_VENUS].y = 20;
+			strcpy(intermission_planets[PLANET_VENUS].name, "Venus");
+			intermission_planets[PLANET_VENUS].image = gfx_sprites[SP_PLANET_ORANGE];
 
-			systemPlanet[PLANET_EARTH].y = 20;
-			strcpy(systemPlanet[PLANET_EARTH].name, "Earth");
-			systemPlanet[PLANET_EARTH].image = gfx_sprites[SP_PLANET_BLUE];
+			intermission_planets[PLANET_EARTH].y = 20;
+			strcpy(intermission_planets[PLANET_EARTH].name, "Earth");
+			intermission_planets[PLANET_EARTH].image = gfx_sprites[SP_PLANET_BLUE];
 
-			systemPlanet[PLANET_MARS].y = 20;
-			strcpy(systemPlanet[PLANET_MARS].name, "Mars");
-			systemPlanet[PLANET_MARS].image = gfx_sprites[SP_PLANET_RED];
+			intermission_planets[PLANET_MARS].y = 20;
+			strcpy(intermission_planets[PLANET_MARS].name, "Mars");
+			intermission_planets[PLANET_MARS].image = gfx_sprites[SP_PLANET_RED];
 
-			systemPlanet[PLANET_JUPITER].y = 30;
-			strcpy(systemPlanet[PLANET_JUPITER].name, "Jupiter");
-			systemPlanet[PLANET_JUPITER].image = gfx_sprites[SP_PLANET_ORANGE];
+			intermission_planets[PLANET_JUPITER].y = 30;
+			strcpy(intermission_planets[PLANET_JUPITER].name, "Jupiter");
+			intermission_planets[PLANET_JUPITER].image = gfx_sprites[SP_PLANET_ORANGE];
 
-			systemPlanet[PLANET_SATURN].y = 20;
-			strcpy(systemPlanet[PLANET_SATURN].name, "Saturn");
-			systemPlanet[PLANET_SATURN].image = gfx_sprites[SP_PLANET_GREEN];
+			intermission_planets[PLANET_SATURN].y = 20;
+			strcpy(intermission_planets[PLANET_SATURN].name, "Saturn");
+			intermission_planets[PLANET_SATURN].image = gfx_sprites[SP_PLANET_GREEN];
 
-			systemPlanet[PLANET_URANUS].y = 20;
-			strcpy(systemPlanet[PLANET_URANUS].name, "Uranus");
-			systemPlanet[PLANET_URANUS].image = gfx_sprites[SP_PLANET_BLUE];
+			intermission_planets[PLANET_URANUS].y = 20;
+			strcpy(intermission_planets[PLANET_URANUS].name, "Uranus");
+			intermission_planets[PLANET_URANUS].image = gfx_sprites[SP_PLANET_BLUE];
 
-			systemPlanet[PLANET_NEPTUNE].y = 20;
-			strcpy(systemPlanet[PLANET_NEPTUNE].name, "Neptune");
-			systemPlanet[PLANET_NEPTUNE].image = gfx_sprites[SP_PLANET_BLUE];
+			intermission_planets[PLANET_NEPTUNE].y = 20;
+			strcpy(intermission_planets[PLANET_NEPTUNE].name, "Neptune");
+			intermission_planets[PLANET_NEPTUNE].image = gfx_sprites[SP_PLANET_BLUE];
 
-			systemPlanet[PLANET_PLUTO].y = 20;
-			strcpy(systemPlanet[PLANET_PLUTO].name, "Pluto");
-			systemPlanet[PLANET_PLUTO].image = gfx_sprites[SP_PLANET_BLUE];
+			intermission_planets[PLANET_PLUTO].y = 20;
+			strcpy(intermission_planets[PLANET_PLUTO].name, "Pluto");
+			intermission_planets[PLANET_PLUTO].image = gfx_sprites[SP_PLANET_BLUE];
 
-			systemPlanet[PLANET_PLUTO].messageMission = MISN_PLUTO;
-			systemPlanet[PLANET_PLUTO].messageSlot = 0;
-			systemPlanet[PLANET_PLUTO].faceImage = FS_SID;
-			strcpy(systemPlanet[PLANET_PLUTO].subject, "Secure Pluto");
+			intermission_planets[PLANET_PLUTO].messageMission = MISN_PLUTO;
+			intermission_planets[PLANET_PLUTO].messageSlot = 0;
+			intermission_planets[PLANET_PLUTO].faceImage = FS_SID;
+			strcpy(intermission_planets[PLANET_PLUTO].subject, "Secure Pluto");
 
-			systemPlanet[PLANET_NEPTUNE].messageMission = MISN_NEPTUNE;
-			systemPlanet[PLANET_NEPTUNE].messageSlot = 1;
-			systemPlanet[PLANET_NEPTUNE].faceImage = FS_SID;
-			strcpy(systemPlanet[PLANET_NEPTUNE].subject, "Secure Neptune");
+			intermission_planets[PLANET_NEPTUNE].messageMission = MISN_NEPTUNE;
+			intermission_planets[PLANET_NEPTUNE].messageSlot = 1;
+			intermission_planets[PLANET_NEPTUNE].faceImage = FS_SID;
+			strcpy(intermission_planets[PLANET_NEPTUNE].subject, "Secure Neptune");
 
-			systemPlanet[PLANET_URANUS].messageMission = MISN_URANUS;
-			systemPlanet[PLANET_URANUS].messageSlot = 2;
-			systemPlanet[PLANET_URANUS].faceImage = FS_SID;
-			strcpy(systemPlanet[PLANET_URANUS].subject, "Secure Uranus");
+			intermission_planets[PLANET_URANUS].messageMission = MISN_URANUS;
+			intermission_planets[PLANET_URANUS].messageSlot = 2;
+			intermission_planets[PLANET_URANUS].faceImage = FS_SID;
+			strcpy(intermission_planets[PLANET_URANUS].subject, "Secure Uranus");
 
-			systemPlanet[PLANET_SATURN].messageMission = MISN_SATURN;
-			systemPlanet[PLANET_SATURN].messageSlot = 0;
-			systemPlanet[PLANET_SATURN].faceImage = FS_SID;
-			strcpy(systemPlanet[PLANET_SATURN].subject, "Destroy outer defense system");
+			intermission_planets[PLANET_SATURN].messageMission = MISN_SATURN;
+			intermission_planets[PLANET_SATURN].messageSlot = 0;
+			intermission_planets[PLANET_SATURN].faceImage = FS_SID;
+			strcpy(intermission_planets[PLANET_SATURN].subject, "Destroy outer defense system");
 
-			systemPlanet[PLANET_JUPITER].messageMission = MISN_JUPITER;
-			systemPlanet[PLANET_JUPITER].messageSlot = 0;
-			systemPlanet[PLANET_JUPITER].faceImage = FS_SID;
-			strcpy(systemPlanet[PLANET_JUPITER].subject, "Investigate distress call");
+			intermission_planets[PLANET_JUPITER].messageMission = MISN_JUPITER;
+			intermission_planets[PLANET_JUPITER].messageSlot = 0;
+			intermission_planets[PLANET_JUPITER].faceImage = FS_SID;
+			strcpy(intermission_planets[PLANET_JUPITER].subject, "Investigate distress call");
 
-			systemPlanet[PLANET_MARS].messageMission = MISN_MARS;
-			systemPlanet[PLANET_MARS].messageSlot = 0;
-			systemPlanet[PLANET_MARS].faceImage = FS_SID;
-			strcpy(systemPlanet[PLANET_MARS].subject, "Navigate asteroid belt");
+			intermission_planets[PLANET_MARS].messageMission = MISN_MARS;
+			intermission_planets[PLANET_MARS].messageSlot = 0;
+			intermission_planets[PLANET_MARS].faceImage = FS_SID;
+			strcpy(intermission_planets[PLANET_MARS].subject, "Navigate asteroid belt");
 
-			systemPlanet[PLANET_EARTH].messageMission = MISN_EARTH;
-			systemPlanet[PLANET_EARTH].messageSlot = 0;
-			systemPlanet[PLANET_EARTH].faceImage = FS_CHRIS;
-			strcpy(systemPlanet[PLANET_EARTH].subject, "Take back Earth");
+			intermission_planets[PLANET_EARTH].messageMission = MISN_EARTH;
+			intermission_planets[PLANET_EARTH].messageSlot = 0;
+			intermission_planets[PLANET_EARTH].faceImage = FS_CHRIS;
+			strcpy(intermission_planets[PLANET_EARTH].subject, "Take back Earth");
 
-			systemPlanet[PLANET_VENUS].messageMission = MISN_VENUS;
-			systemPlanet[PLANET_VENUS].messageSlot = 0;
-			systemPlanet[PLANET_VENUS].faceImage = FS_SID;
-			strcpy(systemPlanet[PLANET_VENUS].subject, "Defeat Kline");
+			intermission_planets[PLANET_VENUS].messageMission = MISN_VENUS;
+			intermission_planets[PLANET_VENUS].messageSlot = 0;
+			intermission_planets[PLANET_VENUS].faceImage = FS_SID;
+			strcpy(intermission_planets[PLANET_VENUS].subject, "Defeat Kline");
 
 			break;
 	}
@@ -400,14 +579,14 @@ static void intermission_setSystemPlanets()
 
 /*
 Spins the planets around the sun, spaced according to their Y value
-as defined in intermission_setSystemPlanets(). Moving the cursor over the planet
+as defined in intermission_setPlanets(). Moving the cursor over the planet
 will show their name and their current status
 */
 static int intermission_showSystem(float x, float y, int selectable)
 {
 	SDL_Rect r;
 	int planet = 0;
-	int planetSpace = systemPlanet[planet].y;
+	int planetSpace = intermission_planets[planet].y;
 	int rtn = 0;
 
 	// Blit the sun
@@ -425,29 +604,29 @@ static int intermission_showSystem(float x, float y, int selectable)
 		r.w = 10;
 		r.h = 10;
 
-		r.x -= (systemPlanet[planet].image->w / 2);
-		r.y -= (systemPlanet[planet].image->h / 2);
-		screen_blit(systemPlanet[planet].image, r.x, r.y);
+		r.x -= (intermission_planets[planet].image->w / 2);
+		r.y -= (intermission_planets[planet].image->h / 2);
+		screen_blit(intermission_planets[planet].image, r.x, r.y);
 
 		if (selectable &&
 			game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6,
-				r.x, r.y, systemPlanet[planet].image->w,
-				systemPlanet[planet].image->h))
+				r.x, r.y, intermission_planets[planet].image->w,
+				intermission_planets[planet].image->h))
 		{
-			screen_renderString(systemPlanet[planet].name, -1, 545, FONT_WHITE);
+			screen_renderString(intermission_planets[planet].name, -1, 545, FONT_WHITE);
 			if ((engine.keyState[KEY_FIRE]))
 			{
 				game.destinationPlanet = planet;
-				strcpy(game.destinationName, systemPlanet[game.destinationPlanet].name);
+				strcpy(game.destinationName, intermission_planets[game.destinationPlanet].name);
 				rtn = 1;
 				engine.keyState[KEY_FIRE] = 0;
 			}
 		}
 
 		planet++;
-		if (systemPlanet[planet].y == -1)
+		if (intermission_planets[planet].y == -1)
 			break;
-		planetSpace = systemPlanet[planet].y;
+		planetSpace = intermission_planets[planet].y;
 	}
 
 	return rtn;
@@ -510,7 +689,7 @@ static void intermission_updateCommsSurface(SDL_Surface *comms)
 	gfx_drawRect(comms, 0, 10, comms->w - 1, 55, 0x00, 0x22, 0x00);
 	gfx_blit(gfx_faceSprites[FS_CHRIS], 20, 15, comms);
 	gfx_renderString("Chris Bainfield", 80, 15, FONT_WHITE, 0, comms);
-	sprintf(string, "Current Location: %s", systemPlanet[game.stationedPlanet].name);
+	sprintf(string, "Current Location: %s", intermission_planets[game.stationedPlanet].name);
 	gfx_renderString(string, 80, 35, FONT_WHITE, 0, comms);
 }
 
@@ -527,13 +706,13 @@ static void intermission_createCommsSurface(SDL_Surface *comms)
 	// XXX: Magic number
 	for (int i = 0 ; i < 10 ; i++)
 	{
-		if ((systemPlanet[i].messageSlot != -1) && (systemPlanet[i].missionCompleted == 0))
+		if ((intermission_planets[i].messageSlot != -1) && (intermission_planets[i].missionCompleted == 0))
 		{
-			yOffset = systemPlanet[i].messageSlot * 60;
+			yOffset = intermission_planets[i].messageSlot * 60;
 			gfx_drawRect(comms, 0, 105 + yOffset, comms->w - 1, 55, 0x00, 0x00, 0x77);
-			gfx_blit(gfx_faceSprites[systemPlanet[i].faceImage], 20, 110 + yOffset, comms);
-			gfx_renderString(systemPlanet[i].name, 80, 110 + yOffset, FONT_WHITE, 0, comms);
-			gfx_renderString(systemPlanet[i].subject, 80, 130 + yOffset, FONT_CYAN, 0, comms);
+			gfx_blit(gfx_faceSprites[intermission_planets[i].faceImage], 20, 110 + yOffset, comms);
+			gfx_renderString(intermission_planets[i].name, 80, 110 + yOffset, FONT_WHITE, 0, comms);
+			gfx_renderString(intermission_planets[i].subject, 80, 130 + yOffset, FONT_CYAN, 0, comms);
 		}
 	}
 
@@ -555,18 +734,18 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 	char name[50];
 	char string[2000];
 	int y = 50;
-	int mission = -1;
+	int misn = -1;
 
 	// XXX: Magic number
 	for (int i = 0 ; i < 10 ; i++)
 	{
-		if ((systemPlanet[i].messageSlot == missionSlot) && (systemPlanet[i].missionCompleted == 0))
+		if ((intermission_planets[i].messageSlot == missionSlot) && (intermission_planets[i].missionCompleted == 0))
 		{
-			mission = systemPlanet[i].messageMission;
+			misn = intermission_planets[i].messageMission;
 		}
 	}
 
-	if (mission == -1)
+	if (misn == -1)
 		return;
 
 	gfx_drawRect(comms, 0, 0, comms->w - 1, comms->h - 1, 0x00, 0x00, 0x25);
@@ -575,7 +754,7 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 	// the screen listing all of the comms. For some reason, this has always
 	// been defined twice, which is redundant and has led to inconsistencies in
 	// the past.
-	switch (mission)
+	switch (misn)
 	{
 		case MISN_HAIL:
 			strcpy(name, "Krass Tyler");
@@ -941,7 +1120,7 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			strcpy(string, "Hey, why am I talking to myself? This shouldn't happen! Clearly, this must be a bug.");
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			sprintf(string, "I should go to starfighter.nongnu.org and report this bug there. In that report, I should mention that the mission number is %d.", mission);
+			sprintf(string, "I should go to starfighter.nongnu.org and report this bug there. In that report, I should mention that the mission number is %d.", misn);
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
 			strcpy(string, "Wait, what am I still talking into empty space for? It's not like anyone can hear me...");
@@ -1100,7 +1279,7 @@ int intermission()
 
 	gfx_free();
 
-	checkForBossMission(); // double check just to make sure!
+	intermission_unlockPlanets(); // double check just to make sure!
 
 	// Tell the game we are not in a mission so
 	// do not perform certain keyboard actions
@@ -1172,7 +1351,7 @@ int intermission()
 
 	intermission_setStatusLines();
 	initShop();
-	intermission_setSystemPlanets();
+	intermission_setPlanets();
 
 	SDL_Surface *statsSurface = gfx_createAlphaRect(600, 330, 0x00, 0x00, 0x99);
 	SDL_Surface *savesSurface = gfx_createSurface(350, 300);
@@ -1212,7 +1391,7 @@ int intermission()
 			break;
 		case SYSTEM_SOL:
 			// There is no chance of being interceptted after the final attack on Earth
-			if ((game.system == SYSTEM_SOL) && (systemPlanet[2].missionCompleted))
+			if ((game.system == SYSTEM_SOL) && (intermission_planets[2].missionCompleted))
 				interceptionChance = 0;
 			else
 				interceptionChance = 1. / 100.;
@@ -1239,11 +1418,11 @@ int intermission()
 	gfx_createTextObject(TS_INFO_OPTIONS, "Options", -1, iconInfoY, FONT_WHITE);
 	gfx_createTextObject(TS_INFO_EXIT, "Exit to Title Screen", -1, iconInfoY, FONT_WHITE);
 
-	sprintf(string, "Stationed At: %s", systemPlanet[game.stationedPlanet].name);
+	sprintf(string, "Stationed At: %s", intermission_planets[game.stationedPlanet].name);
 	gfx_createTextObject(TS_CURRENT_PLANET, string, 90, 450, FONT_WHITE);
 
 	if (game.destinationPlanet > -1)
-		sprintf(string, "Destination: %s", systemPlanet[game.destinationPlanet].name);
+		sprintf(string, "Destination: %s", intermission_planets[game.destinationPlanet].name);
 	else
 		strcpy(string, "Destination: None");
 	gfx_createTextObject(TS_DEST_PLANET, string, 550, 450, FONT_WHITE);
@@ -1309,7 +1488,7 @@ int intermission()
 			case 0:
 				if (game.stationedPlanet == game.destinationPlanet)
 				{
-					game.area = systemPlanet[game.stationedPlanet].missionNumber;
+					game.area = intermission_planets[game.stationedPlanet].missionNumber;
 					rtn = 2;
 					engine.done = 1;
 				}
@@ -1323,9 +1502,9 @@ int intermission()
 					if (distance < 1)
 						distance = 1;
 
-					gfx_createTextObject(TS_CURRENT_PLANET, systemPlanet[game.stationedPlanet].name,
+					gfx_createTextObject(TS_CURRENT_PLANET, intermission_planets[game.stationedPlanet].name,
 						135, 480, FONT_WHITE);
-					gfx_createTextObject(TS_DEST_PLANET, systemPlanet[game.destinationPlanet].name,
+					gfx_createTextObject(TS_DEST_PLANET, intermission_planets[game.destinationPlanet].name,
 						635, 480, FONT_WHITE);
 
 					section = 8;
@@ -1354,7 +1533,7 @@ int intermission()
 
 				if (intermission_showSystem(sinX, cosY, 1))
 				{
-					sprintf(string, "Destination: %s", systemPlanet[game.destinationPlanet].name);
+					sprintf(string, "Destination: %s", intermission_planets[game.destinationPlanet].name);
 					gfx_createTextObject(TS_DEST_PLANET, string, 550, 450, FONT_WHITE);
 				}
 
@@ -1394,9 +1573,9 @@ int intermission()
 			case 8:
 				intermission_showSystem(sinX, cosY, 0);
 
-				screen_blit(systemPlanet[game.stationedPlanet].image, 150, 450);
+				screen_blit(intermission_planets[game.stationedPlanet].image, 150, 450);
 				screen_blitText(TS_CURRENT_PLANET);
-				screen_blit(systemPlanet[game.destinationPlanet].image, 650, 450);
+				screen_blit(intermission_planets[game.destinationPlanet].image, 650, 450);
 				screen_blitText(TS_DEST_PLANET);
 
 				destRect.w += distance;
@@ -1408,9 +1587,9 @@ int intermission()
 					game.distanceCovered = 0;
 					player.shield = player.maxShield;
 					sprintf(string, "Stationed At: %s",
-						systemPlanet[game.stationedPlanet].name);
+						intermission_planets[game.stationedPlanet].name);
 					strcpy(game.stationedName,
-						systemPlanet[game.stationedPlanet].name);
+						intermission_planets[game.stationedPlanet].name);
 					gfx_createTextObject(TS_CURRENT_PLANET, string, 90, 450, FONT_WHITE);
 					intermission_updateCommsSurface(commsSurface);
 					section = 1;
@@ -1436,7 +1615,7 @@ int intermission()
 		if (section != 8)
 		{
 			if ((game.stationedPlanet == game.destinationPlanet) &&
-					(!systemPlanet[game.stationedPlanet].missionCompleted))
+					(!intermission_planets[game.stationedPlanet].missionCompleted))
 				screen_blit(gfx_sprites[SP_START_MISSION], 80, 500);
 			else if (game.stationedPlanet != game.destinationPlanet)
 				screen_blit(gfx_sprites[SP_GOTO], 80, 500);
@@ -1451,7 +1630,7 @@ int intermission()
 
 			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 80, 500, 32, 32) &&
 					((game.stationedPlanet != game.destinationPlanet) ||
-						(!systemPlanet[game.stationedPlanet].missionCompleted)))
+						(!intermission_planets[game.stationedPlanet].missionCompleted)))
 			{
 				if (game.stationedPlanet == game.destinationPlanet)
 					screen_blitText(TS_INFO_START_MISSION);
