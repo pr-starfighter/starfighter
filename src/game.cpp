@@ -350,6 +350,14 @@ static void game_doCollectables()
 							weapons[W_PLAYER_WEAPON].reload[0] = MAX(
 								rate2reload[game.maxPlasmaRate],
 								weapons[W_PLAYER_WEAPON].reload[0] - 2);
+
+							if (weapons[W_PLAYER_WEAPON].reload[0] <= rate2reload[game.maxPlasmaRate])
+								sprintf(temp, "Firing rate already at maximum");
+							else
+							{
+								weapons[W_PLAYER_WEAPON].reload[0] -= 2;
+								sprintf(temp, "Firing rate increased");
+							}
 						}
 						else if ((game.area != MISN_INTERCEPTION) ||
 								(player.ammo[0] > 0))
@@ -379,6 +387,14 @@ static void game_doCollectables()
 							player.ammo[0] = MAX(player.ammo[0], 50);
 							weapons[W_PLAYER_WEAPON].ammo[0] = MIN(
 								game.maxPlasmaOutput, weapons[W_PLAYER_WEAPON].ammo[0] + 1);
+
+							if (weapons[W_PLAYER_WEAPON].ammo[0] >= game.maxPlasmaOutput)
+								sprintf(temp, "Plasma output already at maximum");
+							else
+							{
+								weapons[W_PLAYER_WEAPON].ammo[0]++;
+								sprintf(temp, "Plasma output increased");
+							}
 						}
 						else if ((game.area != MISN_INTERCEPTION) ||
 								(player.ammo[0] > 0))
@@ -408,6 +424,14 @@ static void game_doCollectables()
 							player.ammo[0] = MAX(player.ammo[0], 50);
 							weapons[W_PLAYER_WEAPON].damage = MIN(
 								game.maxPlasmaDamage, weapons[W_PLAYER_WEAPON].damage + 1);
+
+							if (weapons[W_PLAYER_WEAPON].damage >= game.maxPlasmaDamage)
+								sprintf(temp, "Plasma damage already at maximum");
+							else
+							{
+								weapons[W_PLAYER_WEAPON].damage++;
+								sprintf(temp, "Plasma damage increased");
+							}
 						}
 						else if ((game.area != MISN_INTERCEPTION) ||
 								(player.ammo[0] > 0))
