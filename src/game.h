@@ -75,7 +75,7 @@ typedef struct Game_ {
 
 	char stationedName[20];
 	char destinationName[20];
-	int distanceCovered;
+	double distanceCovered;
 
 	int minPlasmaRate;
 	int minPlasmaDamage;

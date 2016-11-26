@@ -1268,6 +1268,10 @@ int intermission()
 
 	int section = 1;
 
+	int x;
+	int y;
+	int w;
+
 	float orbit_pos = 300;
 	int movePlanets = 1;
 	int saveSlot = -1;
@@ -1418,13 +1422,13 @@ int intermission()
 	gfx_createTextObject(TS_INFO_EXIT, "Exit to Title Screen", -1, iconInfoY, FONT_WHITE);
 
 	sprintf(string, "Stationed At: %s", intermission_planets[game.stationedPlanet].name);
-	gfx_createTextObject(TS_CURRENT_PLANET, string, 90, screen->h - 150, FONT_WHITE);
+	gfx_createTextObject(TS_CURRENT_PLANET, string, 90, screen->h - 120, FONT_WHITE);
 
 	if (game.destinationPlanet > -1)
 		sprintf(string, "Destination: %s", intermission_planets[game.destinationPlanet].name);
 	else
 		strcpy(string, "Destination: None");
-	gfx_createTextObject(TS_DEST_PLANET, string, screen->w - 250, screen->h - 150, FONT_WHITE);
+	gfx_createTextObject(TS_DEST_PLANET, string, screen->w - 250, screen->h - 120, FONT_WHITE);
 
 	if (game.distanceCovered > 0)
 		section = 0;
@@ -1502,17 +1506,17 @@ int intermission()
 						distance = 1;
 
 					gfx_createTextObject(TS_CURRENT_PLANET, intermission_planets[game.stationedPlanet].name,
-						135, 480, FONT_WHITE);
+						135, screen->h - 120, FONT_WHITE);
 					gfx_createTextObject(TS_DEST_PLANET, intermission_planets[game.destinationPlanet].name,
-						635, 480, FONT_WHITE);
+						screen->w - 165, screen->h - 120, FONT_WHITE);
 
 					section = 8;
 
 					destRect.x = 180;
-					destRect.y = 450;
+					destRect.y = screen->h - 90;
 					destRect.w = 1;
 					if (game.distanceCovered > 0)
-						destRect.w = game.distanceCovered;
+						destRect.w = (int)game.distanceCovered;
 					destRect.h = 20;
 				}
 				break;
@@ -1532,7 +1536,7 @@ int intermission()
 				if (intermission_showSystem(orbit_pos, 1))
 				{
 					sprintf(string, "Destination: %s", intermission_planets[game.destinationPlanet].name);
-					gfx_createTextObject(TS_DEST_PLANET, string, screen->w - 250, screen->h - 150, FONT_WHITE);
+					gfx_createTextObject(TS_DEST_PLANET, string, screen->w - 250, screen->h - 120, FONT_WHITE);
 				}
 
 				screen_blitText(TS_CURRENT_PLANET);
@@ -1571,22 +1575,23 @@ int intermission()
 			case 8:
 				intermission_showSystem(orbit_pos, 0);
 
-				screen_blit(intermission_planets[game.stationedPlanet].image, 150, screen->h - 150);
+				screen_blit(intermission_planets[game.stationedPlanet].image, 150, screen->h - 90);
 				screen_blitText(TS_CURRENT_PLANET);
-				screen_blit(intermission_planets[game.destinationPlanet].image, screen->w - 150, screen->h - 150);
+				screen_blit(intermission_planets[game.destinationPlanet].image, screen->w - 150, screen->h - 90);
 				screen_blitText(TS_DEST_PLANET);
 
-				destRect.w += distance;
+				game.distanceCovered += distance * (screen->w - 350) / 450.;
+				destRect.w = (int)game.distanceCovered;
 				SDL_FillRect(screen, &destRect, red);
 
-				if (destRect.w >= screen->w * 9 / 16)
+				if (game.distanceCovered >= screen->w - 350)
 				{
 					game.stationedPlanet = game.destinationPlanet;
 					game.distanceCovered = 0;
 					player.shield = player.maxShield;
 					sprintf(string, "Stationed At: %s",
 						intermission_planets[game.stationedPlanet].name);
-					gfx_createTextObject(TS_CURRENT_PLANET, string, 90, screen->h - 150, FONT_WHITE);
+					gfx_createTextObject(TS_CURRENT_PLANET, string, 90, screen->h - 120, FONT_WHITE);
 					intermission_updateCommsSurface(commsSurface);
 					section = 1;
 					redrawBackground = 1;
@@ -1599,7 +1604,6 @@ int intermission()
 						game.area = MISN_INTERCEPTION;
 						rtn = 2;
 						engine.done = 1;
-						game.distanceCovered = destRect.w;
 					}
 				}
 
@@ -1610,21 +1614,24 @@ int intermission()
 
 		if (section != 8)
 		{
+			x = screen->w / 16;
+			y = screen->h - 80;
+			w = screen->w - 2 * x - 32;
 			if ((game.stationedPlanet == game.destinationPlanet) &&
 					(!intermission_planets[game.stationedPlanet].missionCompleted))
-				screen_blit(gfx_sprites[SP_START_MISSION], 80, 500);
+				screen_blit(gfx_sprites[SP_START_MISSION], x, y);
 			else if (game.stationedPlanet != game.destinationPlanet)
-				screen_blit(gfx_sprites[SP_GOTO], 80, 500);
+				screen_blit(gfx_sprites[SP_GOTO], x, y);
 
-			screen_blit(gfx_sprites[SP_MAP], 170, 500);
-			screen_blit(gfx_sprites[SP_STATUS], 260, 500);
-			screen_blit(gfx_sprites[SP_SAVE], 350, 500);
-			screen_blit(gfx_sprites[SP_SHOP], 440, 500);
-			screen_blit(gfx_sprites[SP_COMM], 530, 500);
-			screen_blit(gfx_sprites[SP_OPTIONS], 620, 500);
-			screen_blit(gfx_sprites[SP_EXIT], 710, 500);
+			screen_blit(gfx_sprites[SP_MAP], x + w / 7, y);
+			screen_blit(gfx_sprites[SP_STATUS], x + 2 * w / 7, y);
+			screen_blit(gfx_sprites[SP_SAVE], x + 3 * w / 7, y);
+			screen_blit(gfx_sprites[SP_SHOP], x + 4 * w / 7, y);
+			screen_blit(gfx_sprites[SP_COMM], x + 5 * w / 7, y);
+			screen_blit(gfx_sprites[SP_OPTIONS], x + 6 * w / 7, y);
+			screen_blit(gfx_sprites[SP_EXIT], x + w, y);
 
-			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 80, 500, 32, 32) &&
+			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x, y, 32, 32) &&
 					((game.stationedPlanet != game.destinationPlanet) ||
 						(!intermission_planets[game.stationedPlanet].missionCompleted)))
 			{
@@ -1640,7 +1647,7 @@ int intermission()
 					engine.keyState[KEY_FIRE] = 0;
 				}
 			}
-			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 170, 500, 32, 32))
+			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + w / 7, y, 32, 32))
 			{
 				screen_blitText(TS_INFO_MAP);
 
@@ -1651,7 +1658,7 @@ int intermission()
 					engine.keyState[KEY_FIRE] = 0;
 				}
 			}
-			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 260, 500, 32, 32))
+			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 2 * w / 7, y, 32, 32))
 			{
 				screen_blitText(TS_INFO_STATUS);
 
@@ -1662,7 +1669,7 @@ int intermission()
 					engine.keyState[KEY_FIRE] = 0;
 				}
 			}
-			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 350, 500, 32, 32))
+			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 3 * w / 7, y, 32, 32))
 			{
 				screen_blitText(TS_INFO_SAVE_GAME);
 
@@ -1673,7 +1680,7 @@ int intermission()
 					engine.keyState[KEY_FIRE] = 0;
 				}
 			}
-			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 440, 500, 32, 32))
+			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 4 * w / 7, y, 32, 32))
 			{
 				screen_blitText(TS_INFO_SHOP);
 
@@ -1684,7 +1691,7 @@ int intermission()
 					engine.keyState[KEY_FIRE] = 0;
 				}
 			}
-			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 530, 500, 32, 32))
+			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 5 * w / 7, y, 32, 32))
 			{
 				screen_blitText(TS_INFO_COMMS);
 
@@ -1695,7 +1702,7 @@ int intermission()
 					engine.keyState[KEY_FIRE] = 0;
 				}
 			}
-			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 620, 500, 32, 32))
+			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 6 * w / 7, y, 32, 32))
 			{
 				screen_blitText(TS_INFO_OPTIONS);
 
@@ -1706,7 +1713,7 @@ int intermission()
 					engine.keyState[KEY_FIRE] = 0;
 				}
 			}
-			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 710, 500, 32, 32))
+			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + w, y, 32, 32))
 			{
 				screen_blitText(TS_INFO_EXIT);
 
