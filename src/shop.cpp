@@ -721,8 +721,11 @@ static void buy(int i)
 			shop_sellSecondaryWeapon();
 			player.weaponType[1] = W_LASER;
 
-			while (game.maxRocketAmmo > 5)
-				sell(SHOP_ROCKET_MAX_AMMO);
+			if (game.difficulty != DIFFICULTY_ORIGINAL)
+			{
+				while (game.maxRocketAmmo > 5)
+					sell(SHOP_ROCKET_MAX_AMMO);
+			}
 			while (player.ammo[1] > 0)
 				sell(SHOP_ROCKET_AMMO);
 
@@ -754,8 +757,11 @@ static void buy(int i)
 			shop_sellSecondaryWeapon();
 			player.weaponType[1] = W_CHARGER;
 
-			while (game.maxRocketAmmo > 5)
-				sell(SHOP_ROCKET_MAX_AMMO);
+			if (game.difficulty != DIFFICULTY_ORIGINAL)
+			{
+				while (game.maxRocketAmmo > 5)
+					sell(SHOP_ROCKET_MAX_AMMO);
+			}
 			while (player.ammo[1] > 0)
 				sell(SHOP_ROCKET_AMMO);
 
