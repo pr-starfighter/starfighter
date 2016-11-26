@@ -68,7 +68,7 @@ typedef struct Game_ {
 	int experimentalShield;
 
 	Uint32 timeTaken; // In seconds
-	int missionCompleted[10];
+	int missionCompleted[MAX_PLANETS];
 
 	int stationedPlanet;
 	int destinationPlanet;

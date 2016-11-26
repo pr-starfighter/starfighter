@@ -101,6 +101,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MAX_CARGO 20
 #define MAX_INFOLINES 3
 #define MAX_EVENTS 20
+#define MAX_PLANETS 10
 
 
 enum keys {

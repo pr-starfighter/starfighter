@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "defs.h"
 #include "structs.h"
 
-extern Planet intermission_planets[10];
+extern Planet intermission_planets[MAX_PLANETS];
 
 void intermission_initPlanets(int system);
 void intermission_unlockPlanets();

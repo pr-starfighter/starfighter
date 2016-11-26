@@ -87,7 +87,7 @@ typedef struct LinkedRect_ {
 
 typedef struct Planet_ {
 
-	int y;
+	int dist;
 	char name[50];
 	SDL_Surface *image;
 

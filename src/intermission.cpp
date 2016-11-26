@@ -22,13 +22,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "defs.h"
 #include "structs.h"
 
-// XXX: Magic number
-Planet intermission_planets[10];
+Planet intermission_planets[MAX_PLANETS];
 
 void intermission_initPlanets(int system)
 {
-	// XXX: Magic number
-	for (int i = 0 ; i < 10 ; i++)
+	for (int i = 0 ; i < MAX_PLANETS ; i++)
 	{
 		intermission_planets[i].missionNumber = -1; // no mission for this planet
 		intermission_planets[i].missionCompleted = 1;
@@ -136,14 +134,13 @@ void intermission_initPlanets(int system)
 
 void intermission_unlockPlanets()
 {
-	// XXX: Magic number
-	for (int i = 0 ; i < 10 ; i++)
+	for (int i = 0 ; i < MAX_PLANETS ; i++)
 	{
 		if ((intermission_planets[i].missionCompleted == 0) && (intermission_planets[i].missionNumber != -1))
 			return;
 	}
 
-	for (int i = 0 ; i < 10 ; i++)
+	for (int i = 0 ; i < MAX_PLANETS ; i++)
 	{
 		if (intermission_planets[i].missionCompleted < 0)
 			intermission_planets[i].missionCompleted++;
@@ -295,9 +292,9 @@ static void intermission_setStatusLines()
 	gfx_createTextObject(TS_STATUS_HEADER, "Current Status", -1, 83, FONT_WHITE);
 
 	snprintf(string, sizeof string, "Total Time : %2d:%02d:%02d", timeTaken / 3600, (timeTaken / 60) % 60, timeTaken % 60);
-	gfx_createTextObject(TS_STATUS_FOOTER, string, -1, 404, FONT_WHITE);
+	gfx_createTextObject(TS_STATUS_FOOTER, string, -1, screen->h - 126, FONT_WHITE);
 
-	y = 400;
+	y = screen->h - 130;
 	for (int i = TS_STATUS_HEADER + 1 ; i < TS_STATUS_FOOTER ; i++)
 	{
 		y += 20;
@@ -305,7 +302,7 @@ static void intermission_setStatusLines()
 				(i == TS_URSULA_HEADER))
 			y += 25;
 
-		gfx_textSprites[i].x = 150;
+		gfx_textSprites[i].x = (screen->w - (screen->w * 7 / 8)) / 2 + 25;
 		gfx_textSprites[i].y = y;
 	}
 }
@@ -315,9 +312,9 @@ Sets the names and stats of the planets within the current system.
 */
 static void intermission_setPlanets()
 {
-	for (int i = 0 ; i < 10 ; i++)
+	for (int i = 0 ; i < MAX_PLANETS ; i++)
 	{
-		intermission_planets[i].y = -1;
+		intermission_planets[i].dist = -1;
 		strcpy(intermission_planets[i].name, "");
 		intermission_planets[i].image = NULL;
 		intermission_planets[i].messageMission = -1;
@@ -329,23 +326,23 @@ static void intermission_setPlanets()
 	switch (game.system)
 	{
 		case SYSTEM_SPIRIT:
-			intermission_planets[PLANET_HAIL].y = 15;
+			intermission_planets[PLANET_HAIL].dist = 3;
 			strcpy(intermission_planets[PLANET_HAIL].name, "Hail");
 			intermission_planets[PLANET_HAIL].image = gfx_sprites[SP_PLANET_GREEN];
 
-			intermission_planets[PLANET_CERADSE].y = 30;
+			intermission_planets[PLANET_CERADSE].dist = 6;
 			strcpy(intermission_planets[PLANET_CERADSE].name, "Ceradse");
 			intermission_planets[PLANET_CERADSE].image = gfx_sprites[SP_PLANET_BLUE];
 
-			intermission_planets[PLANET_HINSTAG].y = 30;
+			intermission_planets[PLANET_HINSTAG].dist = 6;
 			strcpy(intermission_planets[PLANET_HINSTAG].name, "Hinstag");
 			intermission_planets[PLANET_HINSTAG].image = gfx_sprites[SP_PLANET_RED];
 
-			intermission_planets[PLANET_JOLDAR].y = 20;
+			intermission_planets[PLANET_JOLDAR].dist = 4;
 			strcpy(intermission_planets[PLANET_JOLDAR].name, "Joldar");
 			intermission_planets[PLANET_JOLDAR].image = gfx_sprites[SP_PLANET_GREEN];
 
-			intermission_planets[PLANET_MOEBO].y = 40;
+			intermission_planets[PLANET_MOEBO].dist = 8;
 			strcpy(intermission_planets[PLANET_MOEBO].name, "Moebo");
 			intermission_planets[PLANET_MOEBO].image = gfx_sprites[SP_PLANET_ORANGE];
 
@@ -379,23 +376,23 @@ static void intermission_setPlanets()
 		case SYSTEM_EYANANTH:
 			strcpy(intermission_planets[PLANET_RESCUESLAVES].name, "WEAPCO interceptions");
 
-			intermission_planets[PLANET_NEROD].y = 15;
+			intermission_planets[PLANET_NEROD].dist = 3;
 			strcpy(intermission_planets[PLANET_NEROD].name, "Nerod");
 			intermission_planets[PLANET_NEROD].image = gfx_sprites[SP_PLANET_GREEN];
 
-			intermission_planets[PLANET_ALLEZ].y = 30;
+			intermission_planets[PLANET_ALLEZ].dist = 6;
 			strcpy(intermission_planets[PLANET_ALLEZ].name, "Allez");
 			intermission_planets[PLANET_ALLEZ].image = gfx_sprites[SP_PLANET_BLUE];
 
-			intermission_planets[PLANET_URUSOR].y = 30;
+			intermission_planets[PLANET_URUSOR].dist = 6;
 			strcpy(intermission_planets[PLANET_URUSOR].name, "Urusor");
 			intermission_planets[PLANET_URUSOR].image = gfx_sprites[SP_PLANET_RED];
 
-			intermission_planets[PLANET_DORIM].y = 20;
+			intermission_planets[PLANET_DORIM].dist = 4;
 			strcpy(intermission_planets[PLANET_DORIM].name, "Dorim");
 			intermission_planets[PLANET_DORIM].image = gfx_sprites[SP_PLANET_GREEN];
 
-			intermission_planets[PLANET_ELAMALE].y = 40;
+			intermission_planets[PLANET_ELAMALE].dist = 8;
 			strcpy(intermission_planets[PLANET_ELAMALE].name, "Elamale");
 			intermission_planets[PLANET_ELAMALE].image = gfx_sprites[SP_PLANET_ORANGE];
 
@@ -434,27 +431,27 @@ static void intermission_setPlanets()
 		case SYSTEM_MORDOR:
 			strcpy(intermission_planets[PLANET_CLOAKFIGHTER].name, "WEAPCO interceptions");
 
-			intermission_planets[PLANET_ODEON].y = 15;
+			intermission_planets[PLANET_ODEON].dist = 3;
 			strcpy(intermission_planets[PLANET_ODEON].name, "Odeon");
 			intermission_planets[PLANET_ODEON].image = gfx_sprites[SP_PLANET_GREEN];
 
-			intermission_planets[PLANET_FELLON].y = 30;
+			intermission_planets[PLANET_FELLON].dist = 6;
 			strcpy(intermission_planets[PLANET_FELLON].name, "Fellon");
 			intermission_planets[PLANET_FELLON].image = gfx_sprites[SP_PLANET_BLUE];
 
-			intermission_planets[PLANET_SIVEDI].y = 30;
+			intermission_planets[PLANET_SIVEDI].dist = 6;
 			strcpy(intermission_planets[PLANET_SIVEDI].name, "Sivedi");
 			intermission_planets[PLANET_SIVEDI].image = gfx_sprites[SP_PLANET_RED];
 
-			intermission_planets[PLANET_ALMARTHA].y = 20;
+			intermission_planets[PLANET_ALMARTHA].dist = 4;
 			strcpy(intermission_planets[PLANET_ALMARTHA].name, "Almartha");
 			intermission_planets[PLANET_ALMARTHA].image = gfx_sprites[SP_PLANET_GREEN];
 
-			intermission_planets[PLANET_POSWIC].y = 20;
+			intermission_planets[PLANET_POSWIC].dist = 4;
 			strcpy(intermission_planets[PLANET_POSWIC].name, "Poswic");
 			intermission_planets[PLANET_POSWIC].image = gfx_sprites[SP_PLANET_ORANGE];
 
-			intermission_planets[PLANET_ELLESH].y = 40;
+			intermission_planets[PLANET_ELLESH].dist = 8;
 			strcpy(intermission_planets[PLANET_ELLESH].name, "Ellesh");
 			intermission_planets[PLANET_ELLESH].image = gfx_sprites[SP_PLANET_GREEN];
 
@@ -496,39 +493,39 @@ static void intermission_setPlanets()
 			break;
 
 		case SYSTEM_SOL:
-			intermission_planets[PLANET_MERCURY].y = 15;
+			intermission_planets[PLANET_MERCURY].dist = 3;
 			strcpy(intermission_planets[PLANET_MERCURY].name, "Mercury");
 			intermission_planets[PLANET_MERCURY].image = gfx_sprites[SP_PLANET_RED];
 
-			intermission_planets[PLANET_VENUS].y = 20;
+			intermission_planets[PLANET_VENUS].dist = 4;
 			strcpy(intermission_planets[PLANET_VENUS].name, "Venus");
 			intermission_planets[PLANET_VENUS].image = gfx_sprites[SP_PLANET_ORANGE];
 
-			intermission_planets[PLANET_EARTH].y = 20;
+			intermission_planets[PLANET_EARTH].dist = 4;
 			strcpy(intermission_planets[PLANET_EARTH].name, "Earth");
 			intermission_planets[PLANET_EARTH].image = gfx_sprites[SP_PLANET_BLUE];
 
-			intermission_planets[PLANET_MARS].y = 20;
+			intermission_planets[PLANET_MARS].dist = 4;
 			strcpy(intermission_planets[PLANET_MARS].name, "Mars");
 			intermission_planets[PLANET_MARS].image = gfx_sprites[SP_PLANET_RED];
 
-			intermission_planets[PLANET_JUPITER].y = 30;
+			intermission_planets[PLANET_JUPITER].dist = 6;
 			strcpy(intermission_planets[PLANET_JUPITER].name, "Jupiter");
 			intermission_planets[PLANET_JUPITER].image = gfx_sprites[SP_PLANET_ORANGE];
 
-			intermission_planets[PLANET_SATURN].y = 20;
+			intermission_planets[PLANET_SATURN].dist = 4;
 			strcpy(intermission_planets[PLANET_SATURN].name, "Saturn");
 			intermission_planets[PLANET_SATURN].image = gfx_sprites[SP_PLANET_GREEN];
 
-			intermission_planets[PLANET_URANUS].y = 20;
+			intermission_planets[PLANET_URANUS].dist = 4;
 			strcpy(intermission_planets[PLANET_URANUS].name, "Uranus");
 			intermission_planets[PLANET_URANUS].image = gfx_sprites[SP_PLANET_BLUE];
 
-			intermission_planets[PLANET_NEPTUNE].y = 20;
+			intermission_planets[PLANET_NEPTUNE].dist = 4;
 			strcpy(intermission_planets[PLANET_NEPTUNE].name, "Neptune");
 			intermission_planets[PLANET_NEPTUNE].image = gfx_sprites[SP_PLANET_BLUE];
 
-			intermission_planets[PLANET_PLUTO].y = 20;
+			intermission_planets[PLANET_PLUTO].dist = 4;
 			strcpy(intermission_planets[PLANET_PLUTO].name, "Pluto");
 			intermission_planets[PLANET_PLUTO].image = gfx_sprites[SP_PLANET_BLUE];
 
@@ -577,31 +574,32 @@ static void intermission_setPlanets()
 }
 
 /*
-Spins the planets around the sun, spaced according to their Y value
+Spins the planets around the sun, spaced according to their dist value
 as defined in intermission_setPlanets(). Moving the cursor over the planet
 will show their name and their current status
 */
-static int intermission_showSystem(float x, float y, int selectable)
+static int intermission_showSystem(float pos, int selectable)
 {
+	int h = MIN(screen->h * 5 / 6, screen->w);
 	SDL_Rect r;
+	int printedName = 0;
 	int planet = 0;
-	int planetSpace = intermission_planets[planet].y;
+	int planetSpace = intermission_planets[planet].dist;
 	int rtn = 0;
 
 	// Blit the sun
-	screen_blit(gfx_sprites[SP_SUN], 370, 220);
+	screen_blit(gfx_sprites[SP_SUN], screen->w / 2 - 30, h / 2 - 30);
 
-	for (int i = 50 ; i < 300 ; i+= planetSpace)
+	for (int i = h / 10 ; i < h * 3 / 5 ; i+= planetSpace * h / 100)
 	{
-		x *= 0.75;
-		y *= 0.75;
+		pos *= 0.75;
 
-		gfx_drawCircle(400, 250, i, screen, darkGrey);
+		gfx_drawCircle(screen->w / 2, h / 2, i, screen, darkGrey);
 
-		r.x = int(400 + (sinf(x) * i));
-		r.y = int(250 + (cosf(y) * i));
-		r.w = 10;
-		r.h = 10;
+		r.x = int(screen->w / 2 + (sinf(pos) * i));
+		r.y = int(h / 2 + (cosf(pos) * i));
+		r.w = h / 50;
+		r.h = h / 50;
 
 		r.x -= (intermission_planets[planet].image->w / 2);
 		r.y -= (intermission_planets[planet].image->h / 2);
@@ -612,7 +610,11 @@ static int intermission_showSystem(float x, float y, int selectable)
 				r.x, r.y, intermission_planets[planet].image->w,
 				intermission_planets[planet].image->h))
 		{
-			screen_renderString(intermission_planets[planet].name, -1, 545, FONT_WHITE);
+			if (!printedName)
+			{
+				screen_renderString(intermission_planets[planet].name, -1, screen->h - 25, FONT_WHITE);
+				printedName = 1;
+			}
 			if ((engine.keyState[KEY_FIRE]))
 			{
 				game.destinationPlanet = planet;
@@ -623,9 +625,9 @@ static int intermission_showSystem(float x, float y, int selectable)
 		}
 
 		planet++;
-		if (intermission_planets[planet].y == -1)
+		if (intermission_planets[planet].dist == -1)
 			break;
-		planetSpace = intermission_planets[planet].y;
+		planetSpace = intermission_planets[planet].dist;
 	}
 
 	return rtn;
@@ -639,6 +641,7 @@ list is reset and the information lines begin again from the bottom
 */
 static void intermission_showStatus(SDL_Surface *infoSurface)
 {
+	int x = (screen->w - infoSurface->w) / 2;
 	int y;
 	float speed = 0.25;
 
@@ -647,18 +650,18 @@ static void intermission_showStatus(SDL_Surface *infoSurface)
 	else if(engine.keyState[KEY_UP])
 		speed = -1;
 
-	screen_blit(infoSurface, 100, 80);
+	screen_blit(infoSurface, x, 80);
 
 	for (int i = TS_STATUS_HEADER + 1 ; i < TS_STATUS_FOOTER ; i++)
 	{
 		gfx_textSprites[i].y -= speed;
-		if ((gfx_textSprites[i].y > 80) && (gfx_textSprites[i].y < 400))
+		if ((gfx_textSprites[i].y > 80) && (gfx_textSprites[i].y < 70 + infoSurface->h))
 			screen_blitText(i);
 	}
 
 	if (gfx_textSprites[TS_STATUS_FOOTER - 1].y < 65)
 	{
-		y = 400;
+		y = 70 + infoSurface->h;
 		for (int i = TS_STATUS_HEADER + 1 ; i < TS_STATUS_FOOTER ; i++)
 		{
 			y += 20;
@@ -670,9 +673,9 @@ static void intermission_showStatus(SDL_Surface *infoSurface)
 		}
 	}
 
-	screen_drawRect(100, 80, 600, 20, 0x00, 0x00, 0x99);
+	screen_drawRect(x, 80, infoSurface->w, 20, 0x00, 0x00, 0x99);
 
-	screen_drawRect(100, 400, 600, 20, 0x00, 0x00, 0x99);
+	screen_drawRect(x, infoSurface->h + 70, infoSurface->w, 20, 0x00, 0x00, 0x99);
 
 	screen_blitText(TS_STATUS_HEADER);
 	screen_blitText(TS_STATUS_FOOTER);
@@ -702,8 +705,7 @@ static void intermission_createCommsSurface(SDL_Surface *comms)
 
 	int yOffset;
 
-	// XXX: Magic number
-	for (int i = 0 ; i < 10 ; i++)
+	for (int i = 0 ; i < MAX_PLANETS ; i++)
 	{
 		if ((intermission_planets[i].messageSlot != -1) && (intermission_planets[i].missionCompleted == 0))
 		{
@@ -735,8 +737,7 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 	int y = 50;
 	int misn = -1;
 
-	// XXX: Magic number
-	for (int i = 0 ; i < 10 ; i++)
+	for (int i = 0 ; i < MAX_PLANETS ; i++)
 	{
 		if ((intermission_planets[i].messageSlot == missionSlot) && (intermission_planets[i].missionCompleted == 0))
 		{
@@ -1267,8 +1268,7 @@ int intermission()
 
 	int section = 1;
 
-	float sinX = 300;
-	float cosY = 300;
+	float orbit_pos = 300;
 	int movePlanets = 1;
 	int saveSlot = -1;
 
@@ -1352,7 +1352,7 @@ int intermission()
 	shop_init();
 	intermission_setPlanets();
 
-	SDL_Surface *statsSurface = gfx_createAlphaRect(600, 330, 0x00, 0x00, 0x99);
+	SDL_Surface *statsSurface = gfx_createAlphaRect(screen->w * 7 / 8, screen->h - 200, 0x00, 0x00, 0x99);
 	SDL_Surface *savesSurface = gfx_createSurface(350, 300);
 	SDL_Surface *optionsSurface = gfx_createSurface(320, 240);
 	SDL_Surface *commsSurface = gfx_createSurface(450, 400);
@@ -1405,7 +1405,7 @@ int intermission()
 	sprintf(string, "System : %s", systemNames[game.system]);
 	gfx_createTextObject(TS_CURRENT_SYSTEM, string, -1, 15, FONT_WHITE);
 
-	iconInfoY = 545;
+	iconInfoY = screen->h - 25;
 
 	gfx_createTextObject(TS_INFO_START_MISSION, "Start Next Mission", -1, iconInfoY, FONT_WHITE);
 	gfx_createTextObject(TS_INFO_GOTO, "Go to Destination Planet", -1, iconInfoY, FONT_WHITE);
@@ -1418,13 +1418,13 @@ int intermission()
 	gfx_createTextObject(TS_INFO_EXIT, "Exit to Title Screen", -1, iconInfoY, FONT_WHITE);
 
 	sprintf(string, "Stationed At: %s", intermission_planets[game.stationedPlanet].name);
-	gfx_createTextObject(TS_CURRENT_PLANET, string, 90, 450, FONT_WHITE);
+	gfx_createTextObject(TS_CURRENT_PLANET, string, 90, screen->h - 150, FONT_WHITE);
 
 	if (game.destinationPlanet > -1)
 		sprintf(string, "Destination: %s", intermission_planets[game.destinationPlanet].name);
 	else
 		strcpy(string, "Destination: None");
-	gfx_createTextObject(TS_DEST_PLANET, string, 550, 450, FONT_WHITE);
+	gfx_createTextObject(TS_DEST_PLANET, string, screen->w - 250, screen->h - 150, FONT_WHITE);
 
 	if (game.distanceCovered > 0)
 		section = 0;
@@ -1526,14 +1526,13 @@ int intermission()
 
 				if (movePlanets)
 				{
-					sinX += 0.01;
-					cosY += 0.01;
+					orbit_pos += 0.01;
 				}
 
-				if (intermission_showSystem(sinX, cosY, 1))
+				if (intermission_showSystem(orbit_pos, 1))
 				{
 					sprintf(string, "Destination: %s", intermission_planets[game.destinationPlanet].name);
-					gfx_createTextObject(TS_DEST_PLANET, string, 550, 450, FONT_WHITE);
+					gfx_createTextObject(TS_DEST_PLANET, string, screen->w - 250, screen->h - 150, FONT_WHITE);
 				}
 
 				screen_blitText(TS_CURRENT_PLANET);
@@ -1570,24 +1569,24 @@ int intermission()
 				break;
 
 			case 8:
-				intermission_showSystem(sinX, cosY, 0);
+				intermission_showSystem(orbit_pos, 0);
 
-				screen_blit(intermission_planets[game.stationedPlanet].image, 150, 450);
+				screen_blit(intermission_planets[game.stationedPlanet].image, 150, screen->h - 150);
 				screen_blitText(TS_CURRENT_PLANET);
-				screen_blit(intermission_planets[game.destinationPlanet].image, 650, 450);
+				screen_blit(intermission_planets[game.destinationPlanet].image, screen->w - 150, screen->h - 150);
 				screen_blitText(TS_DEST_PLANET);
 
 				destRect.w += distance;
 				SDL_FillRect(screen, &destRect, red);
 
-				if (destRect.w >= 450)
+				if (destRect.w >= screen->w * 9 / 16)
 				{
 					game.stationedPlanet = game.destinationPlanet;
 					game.distanceCovered = 0;
 					player.shield = player.maxShield;
 					sprintf(string, "Stationed At: %s",
 						intermission_planets[game.stationedPlanet].name);
-					gfx_createTextObject(TS_CURRENT_PLANET, string, 90, 450, FONT_WHITE);
+					gfx_createTextObject(TS_CURRENT_PLANET, string, 90, screen->h - 150, FONT_WHITE);
 					intermission_updateCommsSurface(commsSurface);
 					section = 1;
 					redrawBackground = 1;
@@ -1607,7 +1606,7 @@ int intermission()
 				break;
 		}
 
-		screen_addBuffer(300, 545, 200, 15);
+		screen_addBuffer(screen->w / 2 - 100, screen->h - 25, 200, 15);
 
 		if (section != 8)
 		{

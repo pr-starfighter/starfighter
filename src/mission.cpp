@@ -746,12 +746,12 @@ void mission_updateRequirements(int type, int id, int value)
 	{
 		if ((type == M_COLLECT) && (id == P_SLAVES))
 		{
-			if (intermission_planets[9].missionCompleted == 0)
+			if (intermission_planets[PLANET_RESCUESLAVES].missionCompleted == 0)
 			{
 				if (game.slavesRescued >= 250)
 				{
 					info_setLine("*** Slaves Rescued - Mission Completed ***", FONT_GREEN);
-					intermission_planets[9].missionCompleted = 1;
+					intermission_planets[PLANET_RESCUESLAVES].missionCompleted = 1;
 				}
 				else
 				{
@@ -764,7 +764,7 @@ void mission_updateRequirements(int type, int id, int value)
 		if ((type == M_DESTROY_TARGET_TYPE) && (id == CD_CLOAKFIGHTER))
 		{
 			info_setLine("*** Experimental Fighter Destroyed - Mission Completed ***", FONT_GREEN);
-			intermission_planets[9].missionCompleted = 1;
+			intermission_planets[PLANET_CLOAKFIGHTER].missionCompleted = 1;
 			radio_setMessage(FS_CHRIS, "That's one less suprise that WEAPCO can spring on us!", 1);
 			game.experimentalShield = 0;
 		}
