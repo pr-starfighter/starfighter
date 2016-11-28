@@ -1825,7 +1825,7 @@ void alien_destroy(Object *alien, Object *attacker)
 	mission_updateRequirements(M_DESTROY_TARGET_TYPE, alien->classDef, 1);
 	mission_updateRequirements(M_PROTECT_TARGET, alien->classDef, 1);
 
-	if (rand() % 100 <= alien->collectChance)
+	if (CHANCE(alien->collectChance / 100.))
 	{
 		int value;
 
@@ -1834,10 +1834,10 @@ void alien_destroy(Object *alien, Object *attacker)
 
 		while (alien->collectValue > 0)
 		{
-			value = (10 + (rand() % alien->collectValue));
+			value = RANDRANGE(10, 100);
 			if (value > alien->collectValue)
 				value = alien->collectValue;
-			collectable_add(alien->x, alien->y, alien->collectType, value, 600);
+			collectable_add(alien->x, alien->y, alien->collectType, value, MAX(600, 2 * alien->collectValue));
 			alien->collectValue -= value;
 		}
 	}
