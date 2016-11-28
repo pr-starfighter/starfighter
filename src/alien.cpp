@@ -928,7 +928,7 @@ void aliens_init()
 
 			aliens[i].owner = &aliens[i];
 			aliens[i].target = &aliens[i];
-			aliens[i].face = rand() % 2;
+			aliens[i].face = RANDRANGE(0, 1);
 			aliens[i].active = 1;
 
 			/*
@@ -1185,11 +1185,11 @@ int alien_add()
 	{
 		if ((game.system == SYSTEM_EYANANTH) && (game.area == MISN_INTERCEPTION))
 		{
-			if ((rand() % 5) == 0)
+			if (CHANCE(1. / 5.))
 				randEnemy = CD_SLAVETRANSPORT;
 		}
 
-		if ((rand() % 6) == 0)
+		if (CHANCE(1. / 6.))
 			randEnemy = CD_TRANSPORTSHIP;
 	}
 
@@ -1197,10 +1197,10 @@ int alien_add()
 
 	aliens[index] = alien_defs[randEnemy];
 	aliens[index].active = 1;
-	aliens[index].face = rand() % 2;
+	aliens[index].face = RANDRANGE(0, 1);
 	aliens[index].owner = &aliens[index]; // Most enemies will own themselves
 	aliens[index].target = &aliens[index];
-	aliens[index].thinktime = (50 + rand() % 50);
+	aliens[index].thinktime = RANDRANGE(50, 100);
 	aliens[index].systemPower = aliens[index].maxShield;
 	aliens[index].deathCounter = 0 - (aliens[index].maxShield * 3);
 	aliens[index].hit = 0;
@@ -1246,16 +1246,16 @@ void alien_addDrone(Object *hostAlien)
 
 	aliens[index] = alien_defs[CD_DRONE];
 	aliens[index].active = 1;
-	aliens[index].face = rand() % 2;
+	aliens[index].face = RANDRANGE(0, 1);
 	aliens[index].owner = &aliens[index]; // Most enemies will own themselves
 	aliens[index].target = &aliens[index];
-	aliens[index].thinktime = (50 + rand() % 50);
+	aliens[index].thinktime = RANDRANGE(50, 100);
 	aliens[index].systemPower = aliens[index].maxShield;
 	aliens[index].deathCounter = 0 - (aliens[index].maxShield * 3);
 	aliens[index].hit = 0;
 
-	aliens[index].x = hostAlien->x + rand() % 50;
-	aliens[index].y = hostAlien->y + rand() % 50;
+	aliens[index].x = hostAlien->x + RANDRANGE(0, 50);
+	aliens[index].y = hostAlien->y + RANDRANGE(0, 50);
 }
 
 void alien_addSmallAsteroid(Object *hostAlien)
@@ -1276,7 +1276,7 @@ void alien_addSmallAsteroid(Object *hostAlien)
 	if (index == -1)
 		return;
 
-	if ((rand() % 10) > 3)
+	if (CHANCE(3 / 5.))
 	{
 		aliens[index] = alien_defs[CD_ASTEROID2];
 		aliens[index].imageIndex[0] = RANDRANGE(SS_ASTEROID_SMALL, SS_ASTEROID_SMALL_L);
@@ -1327,12 +1327,12 @@ void alien_addFriendly(int type)
 
 int alien_place(Object *alien)
 {
-	if (rand() % 2 == 0)
+	if (CHANCE(0.5))
 		alien->x = RANDRANGE(screen->w, screen->w * 2);
 	else
 		alien->x = RANDRANGE(-screen->w, 0);
 
-	if (rand() % 2 == 0)
+	if (CHANCE(0.5))
 		alien->y = RANDRANGE(screen->h, screen->h * 2);
 	else
 		alien->y = RANDRANGE(-screen->h, 0);
@@ -1377,7 +1377,7 @@ void alien_setAI(Object *alien)
 		}
 	}
 
-	i = rand() % 10;
+	i = RANDRANGE(0, 9);
 	tx = alien->target->x;
 	ty = alien->target->y;
 
@@ -1418,8 +1418,8 @@ void alien_setAI(Object *alien)
 	if (i <= chase)
 	{
 		// Chase the target
-		alien->dx = ((alien->x - tx) / ((300 / alien->speed) + rand() % 100));
-		alien->dy = ((alien->y - ty) / ((300 / alien->speed) + rand() % 100));
+		alien->dx = ((alien->x - tx) / ((300 / alien->speed) + RANDRANGE(0, 100)));
+		alien->dy = ((alien->y - ty) / ((300 / alien->speed) + RANDRANGE(0, 100)));
 		return;
 	}
 	else if ((i >= point) && (i <= stop))
@@ -1427,8 +1427,8 @@ void alien_setAI(Object *alien)
 		// Fly to a random point around the target
 		tx += RANDRANGE(-area, area);
 		ty += RANDRANGE(-area, area);
-		alien->dx = ((alien->x - tx) / ((300 / alien->speed) + rand() % 100));
-		alien->dy = ((alien->y - ty) / ((300 / alien->speed) + rand() % 100));
+		alien->dx = ((alien->x - tx) / ((300 / alien->speed) + RANDRANGE(0, 100)));
+		alien->dy = ((alien->y - ty) / ((300 / alien->speed) + RANDRANGE(0, 100)));
 		return;
 	}
 	else
@@ -1483,34 +1483,34 @@ void alien_setKlineAI(Object *alien)
 		{
 			alien->flags &= ~FL_AIMS;
 
-			switch(rand() % 2)
+			if (CHANCE(0.5))
 			{
-				case 0:
-					if ((game.area != MISN_VENUS) || (alien->shield > 1500))
-						alien->weaponType[0] = W_TRIPLE_SHOT;
-					else
-						alien->weaponType[0] = W_SPREADSHOT;
-					break;
-				case 1:
-					alien->weaponType[0] = W_AIMED_SHOT;
-					alien->flags |= FL_AIMS;
-					break;
+				if ((game.area != MISN_VENUS) || (alien->shield > 1500))
+					alien->weaponType[0] = W_TRIPLE_SHOT;
+				else
+					alien->weaponType[0] = W_SPREADSHOT;
+			}
+			else
+			{
+				alien->weaponType[0] = W_AIMED_SHOT;
+				alien->flags |= FL_AIMS;
+
 			}
 		}
 	}
 
 	alien->flags &= ~(FL_CIRCLES | FL_CONTINUOUS_FIRE | FL_DROPMINES);
 
-	switch(rand() % 10)
+	switch(RANDRANGE(0, 9))
 	{
 		case 0:
 			if ((alien->weaponType[0] != W_DIRSHOCKMISSILE) &&
 					(alien->weaponType[1] != W_MICRO_HOMING_MISSILES))
 				alien->flags |= FL_CONTINUOUS_FIRE;
 			alien->dx = ((alien->x - alien->target->x) /
-				((300 / alien->speed)  + rand() % 100));
+				((300 / alien->speed)  + RANDRANGE(0, 100)));
 			alien->dy = ((alien->y - alien->target->y) /
-				((300 / alien->speed)  + rand() % 100));
+				((300 / alien->speed)  + RANDRANGE(0, 100)));
 			break;
 		case 1:
 		case 2:
@@ -1537,12 +1537,11 @@ as a target. If the target is too far away, it will be ignored.
 void alien_searchForTarget(Object *alien)
 {
 	int i;
+	Object *targetEnemy;
 
 	if (alien->flags & FL_WEAPCO)
 	{
-		i = (rand() % 10);
-
-		if (i == 0)
+		if (CHANCE(1 / 10.))
 		{
 			alien->target = &player;
 			return;
@@ -1550,8 +1549,7 @@ void alien_searchForTarget(Object *alien)
 	}
 
 	i = rand() % ALIEN_MAX;
-
-	Object *targetEnemy = &aliens[i];
+	targetEnemy = &aliens[i];
 
 	// Tell Sid not to attack craft that are already disabled or can
 	// return fire. This will save him from messing about (unless we're on the last mission)
@@ -1789,7 +1787,7 @@ void alien_destroy(Object *alien, Object *attacker)
 		if (attacker == &player)
 		{
 			game.totalKills++;
-			if (((rand() % 16) == 0) && (alien->flags & FL_WEAPCO) &&
+			if (CHANCE(1 / 16.) && (alien->flags & FL_WEAPCO) &&
 				(!(alien->flags & FL_NOBANTER)))
 			{
 				r = rand() % nChrisKillMessage;
@@ -1799,7 +1797,7 @@ void alien_destroy(Object *alien, Object *attacker)
 		else if (attacker->classDef == CD_PHOEBE)
 		{
 			game.wingMate1Kills++;
-			if (((rand() % 8) == 0) && (alien-> flags & FL_WEAPCO) &&
+			if (CHANCE(1 / 8.) && (alien-> flags & FL_WEAPCO) &&
 				(!(alien->flags & FL_NOBANTER)))
 			{
 				r = rand() % nPhoebeKillMessage;
@@ -1809,7 +1807,7 @@ void alien_destroy(Object *alien, Object *attacker)
 		else if (attacker->classDef == CD_URSULA)
 		{
 			game.wingMate2Kills++;
-			if (((rand() % 8) == 0) && (alien-> flags & FL_WEAPCO) &&
+			if (CHANCE(1 / 8.) && (alien-> flags & FL_WEAPCO) &&
 				(!(alien->flags & FL_NOBANTER)))
 			{
 				r = rand() % nUrsulaKillMessage;
@@ -1829,7 +1827,7 @@ void alien_destroy(Object *alien, Object *attacker)
 	{
 		int value;
 
-		if ((rand() % 10) == 0)
+		if (CHANCE(1 / 10.))
 			alien->collectValue *= 2;
 
 		while (alien->collectValue > 0)

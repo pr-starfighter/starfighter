@@ -51,7 +51,7 @@ void bullet_add(Object *theWeapon, Object *attacker, int y, int dy)
 
 	// Timed explosions live between 1 and 3 seconds
 	if (bullet->flags & WF_TIMEDEXPLOSION)
-		bullet->shield = 60 + ((rand() % 3) * 60);
+		bullet->shield = RANDRANGE(60, 180);
 
 	if (attacker->face == 0)
 	{
@@ -129,7 +129,7 @@ void bullet_add(Object *theWeapon, Object *attacker, int y, int dy)
 		if (!(bullet->flags & WF_TIMEDEXPLOSION))
 			steps /= 8;
 		else
-			steps /= 6 + (rand() % 6);
+			steps /= RANDRANGE(6, 11);
 
 		tempX = (int)(attacker->target->x - attacker->x);
 		tempY = (int)(attacker->target->y - attacker->y);
