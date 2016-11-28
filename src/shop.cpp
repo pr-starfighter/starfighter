@@ -104,14 +104,14 @@ static void adjustShopPrices()
 		shopItems[SHOP_PLASMA_MIN_OUTPUT].price = 1500 * (game.minPlasmaOutput + 1);
 		shopItems[SHOP_PLASMA_MIN_DAMAGE].price = 1500 * (game.minPlasmaDamage + 1);
 		shopItems[SHOP_PLASMA_MIN_RATE].price = 1500 * (game.minPlasmaRate + 1);
-	}
 
-	if (game.maxPlasmaOutput <= game.minPlasmaOutput)
-		shopItems[SHOP_PLASMA_MIN_OUTPUT].price += shopItems[SHOP_PLASMA_MAX_OUTPUT].price;
-	if (game.maxPlasmaDamage <= game.minPlasmaDamage)
-		shopItems[SHOP_PLASMA_MIN_DAMAGE].price += shopItems[SHOP_PLASMA_MAX_DAMAGE].price;
-	if (game.maxPlasmaRate <= game.minPlasmaRate)
-		shopItems[SHOP_PLASMA_MIN_RATE].price += shopItems[SHOP_PLASMA_MAX_RATE].price;
+		if (game.maxPlasmaOutput <= game.minPlasmaOutput)
+			shopItems[SHOP_PLASMA_MIN_OUTPUT].price += shopItems[SHOP_PLASMA_MAX_OUTPUT].price;
+		if (game.maxPlasmaDamage <= game.minPlasmaDamage)
+			shopItems[SHOP_PLASMA_MIN_DAMAGE].price += shopItems[SHOP_PLASMA_MAX_DAMAGE].price;
+		if (game.maxPlasmaRate <= game.minPlasmaRate)
+			shopItems[SHOP_PLASMA_MIN_RATE].price += shopItems[SHOP_PLASMA_MAX_RATE].price;
+	}
 
 	shopItems[SHOP_PLASMA_MAX_AMMO].price = (10 * (game.maxPlasmaAmmo - 75));
 	shopItems[SHOP_ROCKET_MAX_AMMO].price = (25 * game.maxRocketAmmo);
