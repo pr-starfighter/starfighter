@@ -464,7 +464,7 @@ void alien_defs_init()
 	alien_defs[CD_DRONE].collectChance = 10;
 	alien_defs[CD_DRONE].collectType = P_SHIELD;
 	alien_defs[CD_DRONE].collectValue = 1;
-	alien_defs[CD_DRONE].flags = FL_WEAPCO;
+	alien_defs[CD_DRONE].flags = FL_WEAPCO | FL_NOBANTER;
 
 	// Experimental Fighter
 	alien_defs[CD_CLOAKFIGHTER].classDef = CD_CLOAKFIGHTER;
