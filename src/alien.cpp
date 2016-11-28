@@ -994,7 +994,7 @@ void aliens_init()
 
 			if (game.area == MISN_JUPITER)
 			{
-				aliens[i].flags = FL_WEAPCO;
+				aliens[i].flags = FL_WEAPCO | FL_NOBANTER;
 				if (i == ALIEN_BOSS)
 					aliens[i].chance[1] = 5;
 			}
