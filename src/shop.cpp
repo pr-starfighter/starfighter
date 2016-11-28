@@ -811,7 +811,7 @@ static void sell(int i)
 	switch (i)
 	{
 		case SHOP_PLASMA_MAX_OUTPUT:
-			if (game.maxPlasmaOutput <= 1)
+			if (game.maxPlasmaOutput <= ((game.difficulty != DIFFICULTY_ORIGINAL) ? 1 : 2))
 			{
 				shopSelectedItem = -5;
 				return;
@@ -828,7 +828,7 @@ static void sell(int i)
 			break;
 
 		case SHOP_PLASMA_MAX_DAMAGE:
-			if (game.maxPlasmaDamage <= 1)
+			if (game.maxPlasmaDamage <= ((game.difficulty != DIFFICULTY_ORIGINAL) ? 1 : 2))
 			{
 				shopSelectedItem = -5;
 				return;
@@ -845,7 +845,7 @@ static void sell(int i)
 			break;
 
 		case SHOP_PLASMA_MAX_RATE:
-			if (game.maxPlasmaRate <= 1)
+			if (game.maxPlasmaRate <= ((game.difficulty != DIFFICULTY_ORIGINAL) ? 1 : 2))
 			{
 				shopSelectedItem = -5;
 				return;
