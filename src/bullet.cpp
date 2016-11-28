@@ -164,9 +164,7 @@ Object *bullet_getTarget(Object *bullet)
 
 	if (bullet->owner->flags & FL_WEAPCO)
 	{
-		i = (rand() % 10);
-
-		if (i < 1)
+		if (CHANCE(0.1))
 			return &player;
 	}
 
