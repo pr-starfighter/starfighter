@@ -1878,7 +1878,7 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 	{
 		if (game.area == MISN_ELAMALE)
 		{
-			if ((alien->shield <= alien->maxShield - 500) &&
+			if ((alien->shield <= alien->maxShield - ((game.difficulty != DIFFICULTY_ORIGINAL) ? 500 : 750)) &&
 				!(alien->flags & FL_LEAVESECTOR))
 			{
 				alien->flags |= FL_LEAVESECTOR;
@@ -1888,7 +1888,7 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 		}
 		else if (game.area == MISN_EARTH)
 		{
-			if ((alien->shield <= alien->maxShield - 750) &&
+			if ((alien->shield <= alien->maxShield - ((game.difficulty != DIFFICULTY_ORIGINAL) ? 750 : 500)) &&
 				!(alien->flags & FL_LEAVESECTOR))
 			{
 				alien->flags |= FL_LEAVESECTOR;
