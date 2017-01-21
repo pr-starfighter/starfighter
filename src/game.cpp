@@ -17,12 +17,34 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "Starfighter.h"
+#include <math.h>
 
+#include "colors.h"
 #include "defs.h"
 #include "structs.h"
 
+#include "alien.h"
+#include "audio.h"
+#include "bullet.h"
+#include "cargo.h"
+#include "collectable.h"
+#include "cutscene.h"
+#include "engine.h"
+#include "event.h"
+#include "explosion.h"
+#include "game.h"
+#include "gfx.h"
+#include "info.h"
+#include "intermission.h"
+#include "mission.h"
+#include "player.h"
 #include "radio.h"
+#include "renderer.h"
+#include "save.h"
+#include "screen.h"
+#include "ship.h"
+#include "title.h"
+#include "weapons.h"
 
 typedef struct Star_ {
 

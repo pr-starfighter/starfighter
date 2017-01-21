@@ -17,14 +17,27 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "Starfighter.h"
-
-#include <pwd.h>
-#include <unistd.h>
 #include <errno.h>
+#include <pwd.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
+#include "SDL.h"
+#include "SDL_mixer.h"
+
+#include "colors.h"
 #include "defs.h"
 #include "structs.h"
+
+#include "audio.h"
+#include "collectable.h"
+#include "engine.h"
+#include "game.h"
+#include "gfx.h"
+#include "player.h"
+#include "renderer.h"
+#include "screen.h"
+#include "window.h"
 
 Engine engine;
 

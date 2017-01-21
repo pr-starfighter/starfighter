@@ -17,10 +17,18 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "Starfighter.h"
-
+#include "colors.h"
 #include "defs.h"
 #include "structs.h"
+
+#include "alien.h"
+#include "engine.h"
+#include "explosion.h"
+#include "game.h"
+#include "gfx.h"
+#include "player.h"
+#include "renderer.h"
+#include "screen.h"
 
 typedef struct Message_ {
 

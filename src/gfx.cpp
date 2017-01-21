@@ -19,10 +19,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <ctype.h>
 
-#include "Starfighter.h"
+#include "SDL.h"
+#include "SDL_image.h"
 
 #include "defs.h"
 #include "structs.h"
+
+#include "alien.h"
+#include "engine.h"
+#include "game.h"
+#include "screen.h"
+#include "weapons.h"
 
 SDL_Surface *gfx_background;
 SDL_Surface *gfx_sprites[SP_MAX];

@@ -17,11 +17,14 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "Starfighter.h"
-
 #include "defs.h"
 #include "structs.h"
 
+#include "alien.h"
+#include "engine.h"
+#include "event.h"
+#include "game.h"
+#include "player.h"
 #include "radio.h"
 
 static Event events[MAX_EVENTS];
