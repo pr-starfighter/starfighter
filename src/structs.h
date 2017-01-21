@@ -20,6 +20,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef STRUCTS_H
 #define STRUCTS_H
 
+#include "SDL.h"
+
 typedef struct Object_ {
 
 	int active;
