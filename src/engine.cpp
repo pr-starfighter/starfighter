@@ -23,7 +23,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <unistd.h>
 
 #include "SDL.h"
+
+#ifndef NOSOUND
 #include "SDL_mixer.h"
+#endif
 
 #include "colors.h"
 #include "defs.h"
@@ -246,6 +249,7 @@ void engine_setMode()
 		exit(1);
 	}
 
+#ifndef NOSOUND
 	if (engine.useAudio)
 	{
 		if (Mix_OpenAudio(44100, AUDIO_S16, engine.useAudio * 2, 1024) < 0)
@@ -255,6 +259,7 @@ void engine_setMode()
 			engine.useAudio = 0;
 		}
 	}
+#endif
 
 	SDL_ShowCursor(SDL_DISABLE);
 	SDL_EventState(SDL_MOUSEMOTION, SDL_DISABLE);
@@ -353,10 +358,12 @@ void engine_cleanup()
 	sprintf(filename, "%smusic.s3m", engine.configDirectory);
 	remove(filename);
 
+#ifndef NOSOUND
 	if (engine.useAudio)
 	{
 		Mix_CloseAudio();
 	}
+#endif
 
 	// Save the config using current settings
 	FILE *fp;

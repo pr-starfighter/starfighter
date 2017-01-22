@@ -127,11 +127,13 @@ int main(int argc, char **argv)
 
 	srand(time(NULL));
 
+#ifndef NOSOUND
 	if (engine.useAudio)
 	{
 		Mix_Volume(-1, 100);
 		Mix_VolumeMusic(engine.musicVolume);
 	}
+#endif
 
 	alien_defs_init();
 

@@ -29,7 +29,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "SDL.h"
 #include "SDL_image.h"
+
+#ifndef NOSOUND
 #include "SDL_mixer.h"
+#endif
 
 #include "alien.h"
 #include "audio.h"

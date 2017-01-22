@@ -19,7 +19,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <math.h>
 
+#ifndef NOSOUND
 #include "SDL_mixer.h"
+#endif
 
 #include "defs.h"
 #include "structs.h"
@@ -28,11 +30,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "engine.h"
 #include "screen.h"
 
+#ifndef NOSOUND
 static Mix_Chunk *sound[SFX_MAX];
 static Mix_Music *music = NULL;
+#endif
 
 void audio_loadSounds()
 {
+#ifndef NOSOUND
 	sound[SFX_EXPLOSION] = Mix_LoadWAV("sound/explode.ogg");
 	sound[SFX_HIT] = Mix_LoadWAV("sound/explode2.ogg");
 	sound[SFX_DEATH] = Mix_LoadWAV("sound/maledeath.ogg");
@@ -49,10 +54,12 @@ void audio_loadSounds()
 	sound[SFX_LASER] = Mix_LoadWAV("sound/laser.ogg");
 	sound[SFX_PLASMA2] = Mix_LoadWAV("sound/plasma2.ogg");
 	sound[SFX_PLASMA3] = Mix_LoadWAV("sound/plasma3.ogg");
+#endif
 }
 
 void audio_playSound(int sid, float x, float y)
 {
+#ifndef NOSOUND
 	int channel = -1;
 	static int freechannel = 4;
 	static int channelVolume[4] = {0, 0, 0, 0};
@@ -119,10 +126,12 @@ void audio_playSound(int sid, float x, float y)
 	Mix_SetPosition(channel, angle, attenuation);
 	Mix_Volume(channel, volume);
 	Mix_PlayChannel(channel, sound[sid], 0);
+#endif
 }
 
 void audio_haltMusic()
 {
+#ifndef NOSOUND
 	if (Mix_PlayingMusic())
 	{
 		Mix_ResumeMusic();
@@ -134,27 +143,35 @@ void audio_haltMusic()
 		Mix_FreeMusic(music);
 		music = NULL;
 	}
+#endif
 }
 
 void audio_pauseMusic()
 {
+#ifndef NOSOUND
 	if (Mix_PlayingMusic() && !Mix_PausedMusic())
 		Mix_PauseMusic();
+#endif
 }
 
 void audio_resumeMusic()
 {
+#ifndef NOSOUND
 	Mix_ResumeMusic();
+#endif
 }
 
 void audio_setMusicVolume(int volume)
 {
+#ifndef NOSOUND
 	if (engine.useMusic && engine.useAudio)
 		Mix_VolumeMusic(volume);
+#endif
 }
 
 void audio_playMusic(const char *filename, int loops)
 {
+#ifndef NOSOUND
 	if (engine.useMusic && engine.useAudio)
 	{
 		audio_haltMusic();
@@ -162,10 +179,12 @@ void audio_playMusic(const char *filename, int loops)
 		audio_setMusicVolume(100);
 		Mix_PlayMusic(music, loops);
 	}
+#endif
 }
 
 void audio_playRandomTrack()
 {
+#ifndef NOSOUND
 	if ((!engine.useMusic) || (!engine.useAudio))
 		return;
 
@@ -192,10 +211,12 @@ void audio_playRandomTrack()
 		default:
 			audio_playMusic(track[rand() % tracks], -1);
 	}
+#endif
 }
 
 void audio_free()
 {
+#ifndef NOSOUND
 	for (int i = 0 ; i < SFX_MAX ; i++)
 	{
 		if (sound[i] != NULL)
@@ -210,4 +231,5 @@ void audio_free()
 		Mix_FreeMusic(music);
 		music = NULL;
 	}
+#endif
 }
