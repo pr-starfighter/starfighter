@@ -112,7 +112,7 @@ void player_flushInput()
 	while (SDL_PollEvent(&engine.event)){}
 }
 
-static enum keys mapkey(uint32_t code) {
+static enum keys mapkey(int code) {
 	switch (code) {
 		case SDLK_UP:
 		case SDLK_KP_8:
