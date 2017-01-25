@@ -2,7 +2,7 @@
 Project: Starfighter
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012 Guus Sliepen
-Copyright (C) 2015, 2016 Julie Marchant <onpon4@riseup.net>
+Copyright (C) 2015-2017 Julie Marchant <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -18,14 +18,37 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "Starfighter.h"
-
-#include "defs.h"
-#include "structs.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
 
 #ifdef __APPLE__
 #include "CoreFoundation/CoreFoundation.h"
 #endif
+
+#include "SDL.h"
+
+#ifndef NOSOUND
+#include "SDL_mixer.h"
+#endif
+
+#include "colors.h"
+#include "defs.h"
+#include "structs.h"
+
+#include "alien.h"
+#include "audio.h"
+#include "cutscene.h"
+#include "engine.h"
+#include "game.h"
+#include "gfx.h"
+#include "intermission.h"
+#include "renderer.h"
+#include "screen.h"
+#include "title.h"
+#include "weapons.h"
 
 int main(int argc, char **argv)
 {

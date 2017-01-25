@@ -19,6 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <errno.h>
 #include <pwd.h>
+#include <stdio.h>
 #include <sys/stat.h>
 #include <unistd.h>
 

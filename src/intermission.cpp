@@ -17,6 +17,10 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "SDL.h"
 
 #include "colors.h"
@@ -1489,7 +1493,7 @@ int intermission()
 		}
 
 
-		if (rand() % 1000 < 2)
+		if (CHANCE(1. / 500))
 		{
 			engine.ssx = RANDRANGE(-100, 100);
 			engine.ssy = RANDRANGE(-100, 100);

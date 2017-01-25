@@ -17,8 +17,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef GLOBALS_H
-#define GLOBALS_H
+#ifndef ENGINE_H
+#define ENGINE_H
 
 #include "SDL.h"
 
