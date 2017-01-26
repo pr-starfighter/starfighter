@@ -55,14 +55,15 @@ Project: Starfighter depends on the following libraries to build:
 * SDL2_image <http://www.libsdl.org/projects/SDL_image/>
 * SDL2_mixer <http://www.libsdl.org/projects/SDL_mixer/>
 
-Once you have all dependencies installed, simply run:
+Once you have all dependencies installed, you can do the following:
 
+    ./configure
     make
-
-And optionally (as root):
-
     make install
 
-If this doesn't work, you may need to tweak the makefile.
+Run "./configure --help" to see more options.
+
+The third step ("make install") is technically optional, but highly
+recommended.
 
 To play, simply run the starfighter binary.

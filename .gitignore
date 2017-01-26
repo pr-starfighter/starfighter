@@ -3,6 +3,7 @@ dist
 *.o
 *.pak
 starfighter
+src/starfighter
 
 # Autoconf / Automake
 aclocal.m4
@@ -23,18 +24,6 @@ config.h.in~
 src/Makefile
 src/Makefile.in
 src/.deps
-data/Makefile
-data/Makefile.in
-data/.deps
-gfx/Makefile
-gfx/Makefile.in
-gfx/.deps
-music/Makefile
-music/Makefile.in
-music/.deps
-sound/Makefile
-sound/Makefile.in
-sound/.deps
 
 # Mac OS X
 *.DS_Store
