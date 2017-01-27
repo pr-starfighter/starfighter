@@ -2104,7 +2104,6 @@ static int game_checkPauseRequest()
 	if (engine.keyState[KEY_ESCAPE])
 	{
 		engine.paused = 0;
-		engine.done = 1;
 		player.shield = 0;
 		return 1;
 	}
@@ -2474,7 +2473,8 @@ int game_mainLoop()
 				game_delayFrame();
 			}
 
-			audio_resumeMusic();
+			if (!engine.done)
+				audio_resumeMusic();
 		}
 
 		if ((game.area == MISN_MARS) && (engine.addAliens > -1))
