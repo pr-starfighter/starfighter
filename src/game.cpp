@@ -679,7 +679,7 @@ static void game_doBullets()
 				else if (bullet->x > bullet->target->x)
 					LIMIT_ADD(bullet->dx, -homingMissileSpeed, -15, 15);
 
-				//Rocket is (more or less) inline with target. Fly straight
+				//Rocket is (more or less) in line with target. Fly straight
 				if ((bullet->x > bullet->target->x - 1) && (bullet->x < bullet->target->x + 5))
 					bullet->dx = 0;
 
@@ -688,7 +688,7 @@ static void game_doBullets()
 				else if (bullet->y > bullet->target->y)
 					LIMIT_ADD(bullet->dy, -homingMissileSpeed, -15, 15);
 
-				//Rocket is (more or less) inline with target. Fly straight
+				//Rocket is (more or less) in line with target. Fly straight
 				if ((bullet->y > bullet->target->y - 1) && (bullet->y < bullet->target->y + 5))
 					bullet->dy = 0;
 

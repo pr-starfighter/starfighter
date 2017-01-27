@@ -5,7 +5,7 @@
 
 bin_PROGRAMS = starfighter
 
-starfighter_CPPFLAGS = $(STARFIGHTER_CFLAGS) -Wall -O2 -DDATADIR=\"$(pkgdatadir)\"
+starfighter_CPPFLAGS = $(STARFIGHTER_CFLAGS) -DDATADIR=\"$(pkgdatadir)\" -Wall
 starfighter_CXXFLAGS = $(SDL_CFLAGS)
 starfighter_LDADD = $(SDL_LIBS)
 

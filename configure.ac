@@ -35,7 +35,6 @@ AC_SUBST([STARFIGHTER_CFLAGS])
 AC_CHECK_HEADERS([ctype.h errno.h stdio.h stdlib.h string.h time.h math.h pwd.h sys/stat.h unistd.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
-AC_C_INLINE
 
 # Checks for library functions.
 AC_FUNC_MALLOC
