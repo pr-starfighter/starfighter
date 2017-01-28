@@ -233,41 +233,6 @@ void gfx_putPixel(SDL_Surface *surface, int x, int y, Uint32 pixel)
 	}
 }
 
-void gfx_drawLine(SDL_Surface *dest, int x1, int y1, int x2, int y2, int col)
-{
-	int counter = 0;
-
-	if ( SDL_MUSTLOCK(dest) )
-	{
-		if ( SDL_LockSurface(dest) < 0 )
-		{
-			printf("Can't lock screen: %s\n", SDL_GetError());
-			engine_showError(2, "");
-		}
-	}
-
-	while(1)
-	{
-		gfx_putPixel(dest, x1, y1, col);
-
-		if (x1 > x2) x1--;
-		if (x1 < x2) x1++;
-		if (y1 > y2) y1--;
-		if (y1 < y2) y1++;
-
-		if ((x1 == x2) && (y1 == y2))
-			{break;}
-		if (counter >= 1000000)
-			{printf("Loop Error!\n"); break;}
-		counter++;
-	}
-
-	if (SDL_MUSTLOCK(dest))
-	{
-		SDL_UnlockSurface(dest);
-	}
-}
-
 /*
 A quick(?) circle draw function. This code was posted to the SDL
 mailing list... I didn't write it myself.
@@ -321,10 +286,23 @@ void gfx_drawRect(SDL_Surface *dest, int x, int y, int w, int h, Uint8 red, Uint
 	SDL_Rect r = {x, y, w, h};
 	SDL_FillRect(dest, &r, SDL_MapRGB(screen->format, red, green, blue));
 
-	gfx_drawLine(dest, x, y, x + w, y, SDL_MapRGB(screen->format, 255, 255, 255));
-	gfx_drawLine(dest, x, y, x, y + h, SDL_MapRGB(screen->format, 255, 255, 255));
-	gfx_drawLine(dest, x, y + h, x + w, y + h, SDL_MapRGB(screen->format, 128, 128, 128));
-	gfx_drawLine(dest, x + w, y + 1, x + w, y + h, SDL_MapRGB(screen->format, 128, 128, 128));
+	r.h = 1;
+	SDL_FillRect(dest, &r, SDL_MapRGB(screen->format, 255, 255, 255));
+
+	r.w = 1;
+	r.h = h;
+	SDL_FillRect(dest, &r, SDL_MapRGB(screen->format, 255, 255, 255));
+
+	r.y = y + h;
+	r.w = w;
+	r.h = 1;
+	SDL_FillRect(dest, &r, SDL_MapRGB(screen->format, 128, 128, 128));
+
+	r.x = x + w;
+	r.y = y + 1;
+	r.w = 1;
+	r.h = h - 1;
+	SDL_FillRect(dest, &r, SDL_MapRGB(screen->format, 128, 128, 128));
 }
 
 SDL_Surface *gfx_createSurface(int width, int height)
