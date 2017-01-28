@@ -257,7 +257,7 @@ void gfx_drawLine(SDL_Surface *dest, int x1, int y1, int x2, int y2, int col)
 
 		if ((x1 == x2) && (y1 == y2))
 			{break;}
-		if (counter == 1000)
+		if (counter >= 1000000)
 			{printf("Loop Error!\n"); break;}
 		counter++;
 	}

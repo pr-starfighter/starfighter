@@ -29,6 +29,15 @@ PKG_CHECK_EXISTS([SDL2_mixer], [
 	echo "Note: SDL_mixer not found; audio will not be supported."
 ])
 
+AC_ARG_VAR([SF_SCREEN_WIDTH], [The width of the game window in pixels])
+AC_ARG_VAR([SF_SCREEN_HEIGHT], [The height of the game window in pixels])
+AS_IF([test -n "$SF_SCREEN_WIDTH"], [
+	STARFIGHTER_CFLAGS="$STARFIGHTER_CFLAGS -DSCREEN_WIDTH=$SF_SCREEN_WIDTH"
+])
+AS_IF([test -n "$SF_SCREEN_HEIGHT"], [
+	STARFIGHTER_CFLAGS="$STARFIGHTER_CFLAGS -DSCREEN_HEIGHT=$SF_SCREEN_HEIGHT"
+])
+
 AC_SUBST([STARFIGHTER_CFLAGS])
 
 # Checks for header files.
