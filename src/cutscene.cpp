@@ -403,8 +403,8 @@ void cutscene_init(int scene)
 			{
 				explosion_addEngine(&aliens[i]);
 				if (scene == 0 && i > 0 && (timer % 15) == i) {
-					aliens[i].dx += (drand48() - 0.5) * 0.1;
-					aliens[i].dy += (drand48() - 0.5) * 0.1;
+					aliens[i].dx += (DRAND - 0.5) * 0.1;
+					aliens[i].dy += (DRAND - 0.5) * 0.1;
 					if (aliens[i].x > 500 - timer)
 						aliens[i].dx -= 0.2;
 					if (aliens[i].x < 0)

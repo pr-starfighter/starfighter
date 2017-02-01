@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012 Guus Sliepen
-Copyright (C) 2012, 2015, 2016 Julie Marchant <onpon4@riseup.net>
+Copyright (C) 2012, 2015-2017 Julie Marchant <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -33,6 +33,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	((x) + (y) > (b) ? ((a) - (b)) : 0))
 #define CHANCE(x) ((rand() % RAND_MAX) < ((x) * RAND_MAX))
 #define RANDRANGE(x, y) (((x) < (y)) ? ((x) + (rand() % (long)(1 + (y) - (x)))) : (x))
+#define DRAND ((double)rand() / RAND_MAX)
 
 
 // Compile-time options
