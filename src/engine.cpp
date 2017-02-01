@@ -18,10 +18,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include <errno.h>
-#include <pwd.h>
 #include <stdio.h>
 #include <sys/stat.h>
 #include <unistd.h>
+
+#ifndef WINDOWS
+#include <pwd.h>
+#endif
 
 #include "SDL.h"
 
@@ -157,20 +160,37 @@ This gets the user's home directory, then creates the config directory.
 void engine_setupConfigDirectory()
 {
 	const char *userHome;
+	char dir[PATH_MAX];
 
+#ifdef WINDOWS
+	// XXX: This is a bad design, but I just can't be bothered to learn
+	// the Windows API so I can do this properly. If anyone wants to
+	// make this point to the proper directory, be my guest!
+	userHome = ".";
+#else
 	if ((userHome = getenv("HOME")) == NULL)
 		userHome = getpwuid(getuid())->pw_dir;
+#endif
 
-	char dir[PATH_MAX];
 	strcpy(dir, "");
 
 	sprintf(dir, "%s/.config", userHome);
+
+#ifdef WINDOWS
+	if ((mkdir(dir) != 0) && (errno != EEXIST))
+		engine_showError(2, dir);
+
+	sprintf(dir, "%s/.config/starfighter", userHome);
+	if ((mkdir(dir) != 0) && (errno != EEXIST))
+		engine_showError(2, dir);
+#else
 	if ((mkdir(dir, S_IRWXU|S_IRWXG|S_IROTH|S_IXOTH) != 0) && (errno != EEXIST))
 		engine_showError(2, dir);
 
 	sprintf(dir, "%s/.config/starfighter", userHome);
 	if ((mkdir(dir, S_IRWXU|S_IRWXG|S_IROTH|S_IXOTH) != 0) && (errno != EEXIST))
 		engine_showError(2, dir);
+#endif
 
 	sprintf(engine.configDirectory, "%s/.config/starfighter/", userHome);
 }
