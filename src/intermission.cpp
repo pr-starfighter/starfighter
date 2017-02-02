@@ -1153,7 +1153,7 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 	engine.commsSection = 1;
 }
 
-static void intermission_doComms(SDL_Surface *comms)
+static void intermission_doComms(SDL_Surface *comms, int x, int y)
 {
 	if ((engine.keyState[KEY_FIRE]))
 	{
@@ -1161,7 +1161,7 @@ static void intermission_doComms(SDL_Surface *comms)
 		{
 			for (int i = 0 ; i < 4 ; i++)
 			{
-				if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 170, 180 + (i * 60), 430, 50))
+				if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x, y + 110 + (i * 60), 430, 50))
 				{
 					intermission_createMissionDetailSurface(comms, i);
 					engine.keyState[KEY_FIRE] = 0;
@@ -1170,7 +1170,7 @@ static void intermission_doComms(SDL_Surface *comms)
 		}
 		else
 		{
-			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 170, 440, 160, 20))
+			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x, y + 370, 160, 20))
 			{
 				intermission_createCommsSurface(comms);
 				engine.keyState[KEY_FIRE] = 0;
@@ -1221,30 +1221,30 @@ static void intermission_createOptions(SDL_Surface *optionsSurface)
 	gfx_renderString("FULLSCREEN", 30, 150, FONT_WHITE, 0, optionsSurface);
 }
 
-static void intermission_doOptions(SDL_Surface *optionsSurface)
+static void intermission_doOptions(SDL_Surface *optionsSurface, int x, int y)
 {
 	if ((engine.keyState[KEY_FIRE]))
 	{
-		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 172, 45, 22))
+		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 187, y + 42, 45, 22))
 			engine.useSound = 1;
 
-		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 172, 45, 22))
+		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 248, y + 42, 45, 22))
 			engine.useSound = 0;
 
 
-		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 222, 45, 22))
+		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 187, y + 92, 45, 22))
 		{
 			engine.useMusic = 1;
 			audio_playMusic("music/through_space.ogg", -1);
 		}
 
-		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 222, 45, 22))
+		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 248, y + 92, 45, 22))
 		{
 			engine.useMusic = 0;
 			audio_haltMusic();
 		}
 
-		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 417, 272, 45, 22))
+		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 187, y + 142, 45, 22))
 		{
 			if (!engine.fullScreen)
 			{
@@ -1253,7 +1253,7 @@ static void intermission_doOptions(SDL_Surface *optionsSurface)
 			}
 		}
 
-		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 478, 272, 45, 22))
+		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 248, y + 142, 45, 22))
 		{
 			if (engine.fullScreen)
 			{
@@ -1566,8 +1566,10 @@ int intermission()
 				break;
 
 			case 3:
-				screen_blit(savesSurface, 200, 100);
-				saveSlot = save_showSlots(savesSurface, saveSlot);
+				x = screen->w / 2 - savesSurface->w / 2;
+				y = 50;
+				screen_blit(savesSurface, x, y);
+				saveSlot = save_showSlots(savesSurface, saveSlot, x, y);
 				break;
 
 			case 4:
@@ -1575,13 +1577,17 @@ int intermission()
 				break;
 
 			case 5:
-				screen_blit(commsSurface, 170, 70);
-				intermission_doComms(commsSurface);
+				x = screen->w / 2 - commsSurface->w / 2;
+				y = 50;
+				screen_blit(commsSurface, x, y);
+				intermission_doComms(commsSurface, x, y);
 				break;
 
 			case 6:
-				screen_blit(optionsSurface, 230, 130);
-				intermission_doOptions(optionsSurface);
+				x = screen->w / 2 - optionsSurface->w / 2;
+				y = 50;
+				screen_blit(optionsSurface, x, y);
+				intermission_doOptions(optionsSurface, x, y);
 				break;
 
 			case 7:

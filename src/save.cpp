@@ -419,13 +419,13 @@ Displays the save slot available. For use with an interface that
 has the cursor enabled. It returns the index number of the slot clicked
 so that the function invoking it can perform a load or save on that slot.
 */
-int save_showSlots(SDL_Surface *savesSurface, int saveSlot)
+int save_showSlots(SDL_Surface *savesSurface, int saveSlot, int x, int y)
 {
 	int clickedSlot = -1;
 
 	SDL_Rect r;
-	r.x = 201;
-	r.y = 115;
+	r.x = x + 1;
+	r.y = y + 15;
 	r.w = 348;
 	r.h = 25;
 
@@ -442,19 +442,19 @@ int save_showSlots(SDL_Surface *savesSurface, int saveSlot)
 			r.y += 30;
 		}
 
-		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 215,
-			365, 100, 25))
+		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6,
+			x + 15, y + 265, 100, 25))
 		{
 			save(saveSlot);
 			save_createSurface(savesSurface, -10);
 		}
 
-		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 335,
-				365, 100, 25))
+		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6,
+				x + 135, y + 265, 100, 25))
 			save_createSurface(savesSurface, -1);
 
-		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 453,
-			365, 100, 25))
+		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6,
+			x + 253, y + 265, 100, 25))
 		{
 			char filename[PATH_MAX];
 			sprintf(filename, "%ssave%.2d.dat", engine.configDirectory,

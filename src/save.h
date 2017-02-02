@@ -29,6 +29,6 @@ int save_initSlots();
 int save_load(int slot);
 void save(int slot);
 void save_createSurface(SDL_Surface *savesSurface, int clickedSlot);
-int save_showSlots(SDL_Surface *savesSurface, int saveSlot);
+int save_showSlots(SDL_Surface *savesSurface, int saveSlot, int x, int y);
 
 #endif
