@@ -698,27 +698,13 @@ static void intermission_showStatus(SDL_Surface *infoSurface)
 	screen_blitText(TS_STATUS_FOOTER);
 }
 
-static void intermission_updateCommsSurface(SDL_Surface *comms)
-{
-	char string[255];
-
-	if (engine.commsSection == 1)
-		return;
-
-	gfx_drawRect(comms, 0, 10, comms->w - 1, 55, 0x00, 0x22, 0x00);
-	gfx_blit(gfx_faceSprites[FS_CHRIS], 20, 15, comms);
-	gfx_renderString("Chris Bainfield", 80, 15, FONT_WHITE, 0, comms);
-	sprintf(string, "Current Location: %s", intermission_planets[game.stationedPlanet].name);
-	gfx_renderString(string, 80, 35, FONT_WHITE, 0, comms);
-}
-
 static void intermission_createCommsSurface(SDL_Surface *comms)
 {
 	engine.commsSection = 0;
 
 	gfx_drawRect(comms, 0, 0, comms->w - 1, comms->h - 1, 0x00, 0x00, 0x25);
 
-	gfx_renderString("+++ CURRENT MISSIONS (click for info) +++", -1, 80, FONT_GREEN, 0, comms);
+	gfx_renderString("+++ CURRENT MISSIONS (click for info) +++", -1, 15, FONT_GREEN, 0, comms);
 
 	int yOffset;
 
@@ -727,14 +713,12 @@ static void intermission_createCommsSurface(SDL_Surface *comms)
 		if ((intermission_planets[i].messageSlot != -1) && (intermission_planets[i].missionCompleted == 0))
 		{
 			yOffset = intermission_planets[i].messageSlot * 60;
-			gfx_drawRect(comms, 0, 105 + yOffset, comms->w - 1, 55, 0x00, 0x00, 0x77);
-			gfx_blit(gfx_faceSprites[intermission_planets[i].faceImage], 20, 110 + yOffset, comms);
-			gfx_renderString(intermission_planets[i].name, 80, 110 + yOffset, FONT_WHITE, 0, comms);
-			gfx_renderString(intermission_planets[i].subject, 80, 130 + yOffset, FONT_CYAN, 0, comms);
+			gfx_drawRect(comms, 0, 40 + yOffset, comms->w - 1, 55, 0x00, 0x00, 0x77);
+			gfx_blit(gfx_faceSprites[intermission_planets[i].faceImage], 20, 45 + yOffset, comms);
+			gfx_renderString(intermission_planets[i].name, 80, 45 + yOffset, FONT_WHITE, 0, comms);
+			gfx_renderString(intermission_planets[i].subject, 80, 65 + yOffset, FONT_CYAN, 0, comms);
 		}
 	}
-
-	intermission_updateCommsSurface(comms);
 }
 
 static int intermission_renderDialog(SDL_Surface *comms, int y, int face, const char *string)
@@ -749,9 +733,8 @@ static int intermission_renderDialog(SDL_Surface *comms, int y, int face, const 
 
 static void intermission_createMissionDetailSurface(SDL_Surface *comms, int missionSlot)
 {
-	char name[50];
 	char string[2000];
-	int y = 50;
+	int y = 10;
 	int misn = -1;
 
 	for (int i = 0 ; i < MAX_PLANETS ; i++)
@@ -767,15 +750,9 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 
 	gfx_drawRect(comms, 0, 0, comms->w - 1, comms->h - 1, 0x00, 0x00, 0x25);
 
-	// XXX: The "name" should correspond with whatever name was presented in
-	// the screen listing all of the comms. For some reason, this has always
-	// been defined twice, which is redundant and has led to inconsistencies in
-	// the past.
 	switch (misn)
 	{
 		case MISN_HAIL:
-			strcpy(name, "Krass Tyler");
-
 			strcpy(string, "Hey, boy! You still owe me money for the Firefly I stole for you! But instead, I want you to go to the WEAPCO training ground and destroy all the craft there.");
 			y = intermission_renderDialog(comms, y, FS_KRASS, string);
 
@@ -791,8 +768,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_CERADSE:
-			strcpy(name, "Sid Wilson");
-
 			strcpy(string, "Hey, Sid, what's up?");
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
@@ -808,8 +783,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_HINSTAG:
-			strcpy(name, "Sid Wilson");
-
 			strcpy(string, "Wow! Missile boats?");
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
@@ -825,8 +798,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_JOLDAR:
-			strcpy(name, "Sid Wilson");
-
 			strcpy(string, "We're going to have to get rid of the mine deployment unit around Joldar. The minefield is stopping interplanetary traffic.");
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
@@ -839,8 +810,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_MOEBO:
-			strcpy(name, "Sid Wilson");
-
 			strcpy(string, "We've got a major problem here! WEAPCO has decided to stop our resistance by destroying Spirit! The explosion will incinerate everything in the system! You've got to destroy that frigate before it gets in range!");
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
@@ -853,8 +822,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_RESCUESLAVES:
-			strcpy(name, "Sid Wilson");
-
 			strcpy(string, "As you know, WEAPCO has many slaves in this system. If we free a large number of them, it might help to spark a rebellion. I estimate that we will need to rescue around 250 to make a difference.");
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
@@ -867,8 +834,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_NEROD:
-			strcpy(name, "Phoebe Lexx");
-
 			strcpy(string, "Help! This is an SOS! Can anyone hear me?!");
 			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
 
@@ -884,8 +849,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_ALLEZ:
-			strcpy(name, "Sid Wilson");
-
 			strcpy(string, "I've just received another SOS. This one is coming from a supply craft carrying essential medical supplies.");
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
@@ -895,8 +858,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_URUSOR:
-			strcpy(name, "Sid Wilson");
-
 			strcpy(string, "I need some resources before we leave, it'll make life a lot easier in Mordor. Problem is that WEAPCO hoards these parts.");
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
@@ -912,8 +873,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_DORIM:
-			strcpy(name, "Sid Wilson");
-
 			strcpy(string, "A WEAPCO scientist just ran off in an escape pod and hid in the asteroid belt. If we capture him, we may be able to get some information about Mordor.");
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
@@ -923,8 +882,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_ELAMALE:
-			strcpy(name, "Phoebe Lexx");
-
 			strcpy(string, "I've received word that the slaves we rescued have started a rebellion. Looks like the plan worked.");
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
@@ -940,8 +897,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_CLOAKFIGHTER:
-			strcpy(name, "Sid Wilson");
-
 			strcpy(string, "What have you found out about that experimental fighter?");
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
@@ -957,8 +912,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_ODEON:
-			strcpy(name, "Phoebe Lexx");
-
 			strcpy(string, "I've located my sister's ship currently in orbit around Odeon. She's ignoring my hails though.");
 			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
 
@@ -977,8 +930,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_FELLON:
-			strcpy(name, "Sid Wilson");
-
 			strcpy(string, "A rebel group has organized a counter strike. If we can help them secure a victory it will be a real boost to morale.");
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
@@ -991,8 +942,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_SIVEDI:
-			strcpy(name, "Sid Wilson");
-
 			strcpy(string, "Seems like taking out that WEAPCO mining ship wasn't such a good idea. The ore it collected is needed in weapons production.");
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
@@ -1005,8 +954,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_ALMARTHA:
-			strcpy(name, "Krass Tyler");
-
 			strcpy(string, "Hey, Krass! I need you to help us out with something. Phoebe and Ursula are taking out key WEAPCO plants. Can you help me create a diversion by wreaking havoc a little bit away from that?");
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
@@ -1016,8 +963,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_POSWIC:
-			strcpy(name, "Ursula Lexx");
-
 			strcpy(string, "My memory is finally back. Here's something interesting: just before I was captured, I found out that WEAPCO is transporting several important executives to Poswic.");
 			y = intermission_renderDialog(comms, y, FS_URSULA, string);
 
@@ -1030,8 +975,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_ELLESH:
-			strcpy(name, "Phoebe Lexx");
-
 			strcpy(string, "Phoebe, I need you to keep an eye on things here. I'm going after that ship!");
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
@@ -1046,8 +989,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 		case MISN_PLUTO:
 		case MISN_NEPTUNE:
 		case MISN_URANUS:
-			strcpy(name, "Sid Wilson");
-
 			strcpy(string, "We've got to start from the outside and work our way in. That will give us less chance of being flanked during the final operation.");
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
@@ -1063,8 +1004,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_SATURN:
-			strcpy(name, "Sid Wilson");
-
 			strcpy(string, "WEAPCO has set up a highly dangerous defense line between Saturn and Uranus. We'll need to take it out.");
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
@@ -1080,8 +1019,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_JUPITER:
-			strcpy(name, "Sid Wilson");
-
 			strcpy(string, "While you were gone I picked up a distress call coming from around Jupiter.");
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
@@ -1094,8 +1031,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_MARS:
-			strcpy(name, "Sid Wilson");
-
 			strcpy(string, "Chris, we've got a small problem. WEAPCO has a minefield in the asteroid belt. We'll need you to clear a way through.");
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
@@ -1105,8 +1040,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_EARTH:
-			strcpy(name, "Everyone");
-
 			strcpy(string, "Okay people, this is the big one. We go in fast and we go in hard. Don't hold back and hit them with everything we've got!");
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
@@ -1122,8 +1055,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_VENUS:
-			strcpy(name, "Sid Wilson");
-
 			strcpy(string, "Kethlan has run off to Venus. I'm going after him.");
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
@@ -1133,7 +1064,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		default:
-			strcpy(name, "Nobody");
 			strcpy(string, "Hey, why am I talking to myself? This shouldn't happen! Clearly, this must be a bug.");
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
@@ -1143,12 +1073,6 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			strcpy(string, "Wait, what am I still talking into empty space for? It's not like anyone can hear me...");
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 	}
-
-	sprintf(string, "+++ Communication with %s +++", name);
-	gfx_renderString(string, -1, 20, FONT_GREEN, 0, comms);
-
-	gfx_drawRect(comms, 5, comms->h - 28, 180, 20, 0x25, 0x00, 0x00);
-	gfx_renderString("RETURN TO MISSIONS", 15, comms->h - 25, FONT_WHITE, 1, comms);
 
 	engine.commsSection = 1;
 }
@@ -1161,7 +1085,7 @@ static void intermission_doComms(SDL_Surface *comms, int x, int y)
 		{
 			for (int i = 0 ; i < 4 ; i++)
 			{
-				if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x, y + 110 + (i * 60), 430, 50))
+				if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x, y + 45 + (i * 60), 430, 50))
 				{
 					intermission_createMissionDetailSurface(comms, i);
 					engine.keyState[KEY_FIRE] = 0;
@@ -1170,7 +1094,7 @@ static void intermission_doComms(SDL_Surface *comms, int x, int y)
 		}
 		else
 		{
-			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x, y + 370, 160, 20))
+			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x, y, comms->w, comms->h))
 			{
 				intermission_createCommsSurface(comms);
 				engine.keyState[KEY_FIRE] = 0;
@@ -1376,7 +1300,7 @@ int intermission()
 	SDL_Surface *statsSurface = gfx_createAlphaRect(screen->w * 7 / 8, screen->h - 200, 0x00, 0x00, 0x99);
 	SDL_Surface *savesSurface = gfx_createSurface(350, 300);
 	SDL_Surface *optionsSurface = gfx_createSurface(320, 240);
-	SDL_Surface *commsSurface = gfx_createSurface(450, 400);
+	SDL_Surface *commsSurface = gfx_createSurface(450, 336);
 
 	save_createSurface(savesSurface, -1);
 	intermission_createOptions(optionsSurface);
@@ -1615,7 +1539,6 @@ int intermission()
 					sprintf(string, "Stationed At: %s",
 						intermission_planets[game.stationedPlanet].name);
 					gfx_createTextObject(TS_CURRENT_PLANET, string, 90, screen->h - 120, FONT_WHITE);
-					intermission_updateCommsSurface(commsSurface);
 					section = 1;
 					redrawBackground = 1;
 					save(0);
@@ -1722,6 +1645,7 @@ int intermission()
 				{
 					redrawBackground = 1;
 					section = 5;
+					intermission_createCommsSurface(commsSurface);
 					engine.keyState[KEY_FIRE] = 0;
 				}
 			}
