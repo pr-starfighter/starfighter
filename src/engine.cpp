@@ -372,12 +372,6 @@ void engine_cleanup()
 
 	char filename[PATH_MAX];
 	strcpy(filename, "");
-	
-	sprintf(filename, "%smusic.mod", engine.configDirectory);
-	remove(filename);
-
-	sprintf(filename, "%smusic.s3m", engine.configDirectory);
-	remove(filename);
 
 #ifndef NOSOUND
 	if (engine.useAudio)

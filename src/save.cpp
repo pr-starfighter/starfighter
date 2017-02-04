@@ -30,6 +30,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "gfx.h"
 #include "intermission.h"
 #include "player.h"
+#include "save.h"
 #include "screen.h"
 #include "weapons.h"
 
@@ -252,6 +253,9 @@ int save_load(int slot)
 		weapons[W_PLAYER_WEAPON].imageIndex[0] = SP_PLASMA_GREEN;
 		weapons[W_PLAYER_WEAPON].imageIndex[1] = SP_PLASMA_GREEN;
 		player = game.thePlayer;
+
+		save(slot);
+		remove(filename);
 	}
 
 	// Re-init all the planets in this system...
@@ -457,7 +461,7 @@ int save_showSlots(SDL_Surface *savesSurface, int saveSlot, int x, int y)
 			x + 253, y + 265, 100, 25))
 		{
 			char filename[PATH_MAX];
-			sprintf(filename, "%ssave%.2d.dat", engine.configDirectory,
+			sprintf(filename, "%ssave%.2d.sav", engine.configDirectory,
 				saveSlot);
 			remove(filename);
 			save_initSlots();
