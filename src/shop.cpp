@@ -42,6 +42,9 @@ typedef struct ShopItem_ {
 
 } ShopItem;
 
+static const int shop_w = 600;
+static const int shop_x = SCREEN_WIDTH / 2 - shop_w / 2;
+
 static ShopItem shopItems[SHOP_MAX];
 static int shopSelectedItem;
 
@@ -56,31 +59,31 @@ static void drawSecondaryWeaponSurface()
 	switch (player.weaponType[1])
 	{
 		case W_NONE:
-			strcpy(description, "Type : None");
+			strcpy(description, "None");
 			break;
 		case W_ROCKETS:
-			strcpy(description, "Type : Rockets");
+			strcpy(description, "Rockets");
 			break;
 		case W_DOUBLE_ROCKETS:
-			strcpy(description, "Type : Dbl Rockets");
+			strcpy(description, "Dbl Rockets");
 			break;
 		case W_MICRO_ROCKETS:
-			strcpy(description, "Type : Micro Rockets");
+			strcpy(description, "Micro Rockets");
 			break;
 		case W_LASER:
-			strcpy(description, "Type : Laser");
+			strcpy(description, "Laser");
 			break;
 		case W_CHARGER:
-			strcpy(description, "Type : Charger");
+			strcpy(description, "Charger");
 			break;
 		case W_HOMING_MISSILE:
-			strcpy(description, "Type : Homing Missile");
+			strcpy(description, "Homing Missile");
 			break;
 		case W_DOUBLE_HOMING_MISSILES:
-			strcpy(description, "Type : Dbl Homing Missiles");
+			strcpy(description, "Dbl Homing Missiles");
 			break;
 		case W_MICRO_HOMING_MISSILES:
-			strcpy(description, "Type : Mcr Homing Missiles");
+			strcpy(description, "Mcr Homing Missiles");
 			break;
 	}
 	gfx_renderString(description, 10, 22, FONT_WHITE, 0, gfx_shopSprites[2]);
@@ -166,16 +169,16 @@ static void drawShop()
 		}
 	}
 
-	gfx_shopSprites[SHOP_S_PRIMARY] = gfx_createSurface(246, 91);
-	gfx_shopSprites[SHOP_S_POWERUP] = gfx_createSurface(246, 91);
-	gfx_shopSprites[SHOP_S_SECONDARY] = gfx_createSurface(246, 91);
+	gfx_shopSprites[SHOP_S_PRIMARY] = gfx_createSurface(190, 91);
+	gfx_shopSprites[SHOP_S_POWERUP] = gfx_createSurface(190, 91);
+	gfx_shopSprites[SHOP_S_SECONDARY] = gfx_createSurface(190, 91);
 
-	gfx_drawRect(gfx_shopSprites[SHOP_S_PRIMARY], 0, 0, 245, 90, 0x00, 0x00, 0x55);
-	gfx_drawRect(gfx_shopSprites[SHOP_S_PRIMARY], 0, 0, 245, 20, 0x00, 0x00, 0x99);
-	gfx_drawRect(gfx_shopSprites[SHOP_S_POWERUP], 0, 0, 245, 90, 0x00, 0x00, 0x55);
-	gfx_drawRect(gfx_shopSprites[SHOP_S_POWERUP], 0, 0, 245, 20, 0x00, 0x00, 0x99);
-	gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 245, 90, 0x00, 0x00, 0x55);
-	gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 245, 20, 0x00, 0x00, 0x99);
+	gfx_drawRect(gfx_shopSprites[SHOP_S_PRIMARY], 0, 0, 189, 90, 0x00, 0x00, 0x55);
+	gfx_drawRect(gfx_shopSprites[SHOP_S_PRIMARY], 0, 0, 189, 20, 0x00, 0x00, 0x99);
+	gfx_drawRect(gfx_shopSprites[SHOP_S_POWERUP], 0, 0, 189, 90, 0x00, 0x00, 0x55);
+	gfx_drawRect(gfx_shopSprites[SHOP_S_POWERUP], 0, 0, 189, 20, 0x00, 0x00, 0x99);
+	gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 189, 90, 0x00, 0x00, 0x55);
+	gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 189, 20, 0x00, 0x00, 0x99);
 
 	gfx_shopSprites[SHOP_S_SHIP_INFO] = gfx_createAlphaRect(601, 101, 0x00, 0x00, 0x00);
 	gfx_drawRect(gfx_shopSprites[SHOP_S_SHIP_INFO], 0, 0, 600, 100, 0x00, 0x00, 0x33);
@@ -193,48 +196,48 @@ static void drawShop()
 		case SHOP_PLASMA_MAX_DAMAGE:
 		case SHOP_PLASMA_MAX_RATE:
 		case SHOP_PLASMA_MAX_AMMO:
-			gfx_drawRect(gfx_shopSprites[SHOP_S_POWERUP], 0, 0, 245, 90, 0x55, 0x00, 0x00);
-			gfx_drawRect(gfx_shopSprites[SHOP_S_POWERUP], 0, 0, 245, 20, 0x99, 0x00, 0x00);
+			gfx_drawRect(gfx_shopSprites[SHOP_S_POWERUP], 0, 0, 189, 90, 0x55, 0x00, 0x00);
+			gfx_drawRect(gfx_shopSprites[SHOP_S_POWERUP], 0, 0, 189, 20, 0x99, 0x00, 0x00);
 			break;
 		case SHOP_PLASMA_MIN_OUTPUT:
 		case SHOP_PLASMA_MIN_DAMAGE:
 		case SHOP_PLASMA_MIN_RATE:
-			gfx_drawRect(gfx_shopSprites[SHOP_S_PRIMARY], 0, 0, 245, 90, 0x55, 0x00, 0x00);
-			gfx_drawRect(gfx_shopSprites[SHOP_S_PRIMARY], 0, 0, 245, 20, 0x99, 0x00, 0x00);
+			gfx_drawRect(gfx_shopSprites[SHOP_S_PRIMARY], 0, 0, 189, 90, 0x55, 0x00, 0x00);
+			gfx_drawRect(gfx_shopSprites[SHOP_S_PRIMARY], 0, 0, 189, 20, 0x99, 0x00, 0x00);
 			break;
 		case SHOP_PLASMA_AMMO:
 		case SHOP_ROCKET_AMMO:
 			gfx_drawRect(gfx_shopSprites[SHOP_S_SHIP_INFO], 0, 0, 600, 100, 0x33, 0x00, 0x00);
 			break;
 		default:
-			gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 245, 90, 0x55, 0x00, 0x00);
-			gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 245, 20, 0x99, 0x00, 0x00);
+			gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 189, 90, 0x55, 0x00, 0x00);
+			gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 189, 20, 0x99, 0x00, 0x00);
 			break;
 	}
 
 	strcpy(description, "");
 
 	gfx_renderString("Primary Weapon", 10, 3, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_PRIMARY]);
-	sprintf(description, "Plasma Cannons : %d", game.minPlasmaOutput);
+	sprintf(description, "Cannons : %d", game.minPlasmaOutput);
 	gfx_renderString(description, 10, 22, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_PRIMARY]);
-	sprintf(description, "Plasma Power   : Stage %d",
+	sprintf(description, "Power   : Stage %d",
 		game.minPlasmaDamage);
 	gfx_renderString(description, 10, 37, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_PRIMARY]);
-	sprintf(description, "Cooler         : Stage %d",
+	sprintf(description, "Cooler  : Stage %d",
 		game.minPlasmaRate);
 	gfx_renderString(description, 10, 52, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_PRIMARY]);
 
 	gfx_renderString("Powerup Weapon", 10, 3, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
-	sprintf(description, "Plasma Output    : Stage %d",
+	sprintf(description, "Output    : Stage %d",
 		game.maxPlasmaOutput);
 	gfx_renderString(description, 10, 22, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
-	sprintf(description, "Plasma Condensor : Stage %d",
+	sprintf(description, "Condensor : Stage %d",
 		game.maxPlasmaDamage);
 	gfx_renderString(description, 10, 37, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
-	sprintf(description, "Liquid Nitrogen  : Stage %d",
+	sprintf(description, "L.Nitrogen: Stage %d",
 		game.maxPlasmaRate);
 	gfx_renderString(description, 10, 52, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
-	sprintf(description, "Plasma Capacity  : %d", game.maxPlasmaAmmo);
+	sprintf(description, "Capacity  : %d", game.maxPlasmaAmmo);
 	gfx_renderString(description, 10, 67, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
 
 	drawSecondaryWeaponSurface();
@@ -259,7 +262,7 @@ static void drawShop()
 
 	for (int i = 0 ; i < icons ; i++)
 	{
-		gfx_blit(gfx_sprites[shopItems[i].image], shopItems[i].x - 90,
+		gfx_blit(gfx_sprites[shopItems[i].image], shopItems[i].x + 10 - shop_x,
 			shopItems[i].y - 178, gfx_shopSprites[SHOP_S_CATALOG]);
 	}
 
@@ -275,7 +278,7 @@ static void drawShop()
 	gfx_shopSprites[SHOP_S_ITEM_INFO] = gfx_createSurface(601, 56);
 	gfx_drawRect(gfx_shopSprites[SHOP_S_ITEM_INFO], 0, 0, 600, 35, 0x00, 0x99, 0x00);
 	gfx_drawRect(gfx_shopSprites[SHOP_S_ITEM_INFO], 0, 20, 600, 35, 0x00, 0x33, 0x00);
-	gfx_renderString("Information", 5, 4, FONT_WHITE, 0, gfx_shopSprites[5]);
+	gfx_renderString("Information", 5, 4, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
 
 	switch (shopSelectedItem)
 	{
@@ -453,55 +456,55 @@ void shop_init()
 		"Fires several small homing missiles (max %i missiles)", maxMicroHoming);
 	shopItems[SHOP_MICRO_HOMING_MISSILES].image = 25;
 
-	shopItems[SHOP_PLASMA_MAX_OUTPUT].x = 100;
+	shopItems[SHOP_PLASMA_MAX_OUTPUT].x = shop_x;
 	shopItems[SHOP_PLASMA_MAX_OUTPUT].y = 200;
 
-	shopItems[SHOP_PLASMA_MAX_DAMAGE].x = 150;
+	shopItems[SHOP_PLASMA_MAX_DAMAGE].x = shop_x + 50;
 	shopItems[SHOP_PLASMA_MAX_DAMAGE].y = 200;
 
-	shopItems[SHOP_PLASMA_MAX_RATE].x = 200;
+	shopItems[SHOP_PLASMA_MAX_RATE].x = shop_x + 100;
 	shopItems[SHOP_PLASMA_MAX_RATE].y = 200;
 
-	shopItems[SHOP_PLASMA_MIN_OUTPUT].x = 100;
+	shopItems[SHOP_PLASMA_MIN_OUTPUT].x = shop_x;
 	shopItems[SHOP_PLASMA_MIN_OUTPUT].y = 260;
 
-	shopItems[SHOP_PLASMA_MIN_DAMAGE].x = 150;
+	shopItems[SHOP_PLASMA_MIN_DAMAGE].x = shop_x + 50;
 	shopItems[SHOP_PLASMA_MIN_DAMAGE].y = 260;
 
-	shopItems[SHOP_PLASMA_MIN_RATE].x = 200;
+	shopItems[SHOP_PLASMA_MIN_RATE].x = shop_x + 100;
 	shopItems[SHOP_PLASMA_MIN_RATE].y = 260;
 
-	shopItems[SHOP_PLASMA_AMMO].x = 350;
+	shopItems[SHOP_PLASMA_AMMO].x = shop_x + 250;
 	shopItems[SHOP_PLASMA_AMMO].y = 200;
 
-	shopItems[SHOP_ROCKET_AMMO].x = 400;
+	shopItems[SHOP_ROCKET_AMMO].x = shop_x + 300;
 	shopItems[SHOP_ROCKET_AMMO].y = 200;
 
-	shopItems[SHOP_PLASMA_MAX_AMMO].x = 450;
+	shopItems[SHOP_PLASMA_MAX_AMMO].x = shop_x + 350;
 	shopItems[SHOP_PLASMA_MAX_AMMO].y = 200;
 
-	shopItems[SHOP_ROCKET_MAX_AMMO].x = 500;
+	shopItems[SHOP_ROCKET_MAX_AMMO].x = shop_x + 400;
 	shopItems[SHOP_ROCKET_MAX_AMMO].y = 200;
 
-	shopItems[SHOP_DOUBLE_ROCKETS].x = 350;
+	shopItems[SHOP_DOUBLE_ROCKETS].x = shop_x + 250;
 	shopItems[SHOP_DOUBLE_ROCKETS].y = 260;
 
-	shopItems[SHOP_MICRO_ROCKETS].x = 400;
+	shopItems[SHOP_MICRO_ROCKETS].x = shop_x + 300;
 	shopItems[SHOP_MICRO_ROCKETS].y = 260;
 
-	shopItems[SHOP_LASER].x = 450;
+	shopItems[SHOP_LASER].x = shop_x + 350;
 	shopItems[SHOP_LASER].y = 260;
 
-	shopItems[SHOP_HOMING_MISSILE].x = 500;
+	shopItems[SHOP_HOMING_MISSILE].x = shop_x + 400;
 	shopItems[SHOP_HOMING_MISSILE].y = 260;
 
-	shopItems[SHOP_CHARGER].x = 550;
+	shopItems[SHOP_CHARGER].x = shop_x + 450;
 	shopItems[SHOP_CHARGER].y = 260;
 
-	shopItems[SHOP_DOUBLE_HOMING_MISSILES].x = 600;
+	shopItems[SHOP_DOUBLE_HOMING_MISSILES].x = shop_x + 500;
 	shopItems[SHOP_DOUBLE_HOMING_MISSILES].y = 260;
 
-	shopItems[SHOP_MICRO_HOMING_MISSILES].x = 650;
+	shopItems[SHOP_MICRO_HOMING_MISSILES].x = shop_x + 550;
 	shopItems[SHOP_MICRO_HOMING_MISSILES].y = 260;
 
  	shopSelectedItem = -1;
@@ -1041,19 +1044,21 @@ static void sell(int i)
 
 void shop_show()
 {
- 	int icons = SHOP_MAX;
+	int icons = SHOP_MAX;
+	int sell_x = shop_x + shop_w - gfx_sprites[SP_SELL]->w - 2;
+	int buy_x = sell_x - gfx_sprites[SP_BUY]->w - 5;
 
-	screen_blit(gfx_shopSprites[SHOP_S_PRIMARY], 20, 395);
-	screen_blit(gfx_shopSprites[SHOP_S_POWERUP], 275, 395);
-	screen_blit(gfx_shopSprites[SHOP_S_SECONDARY], 530, 395);
-	screen_blit(gfx_shopSprites[SHOP_S_CATALOG], 100, 180);
-	screen_blit(gfx_shopSprites[SHOP_S_SHIP_INFO], 100, 50);
-	screen_blit(gfx_shopSprites[SHOP_S_ITEM_INFO], 100, 320);
+	screen_blit(gfx_shopSprites[SHOP_S_PRIMARY], shop_x, 395);
+	screen_blit(gfx_shopSprites[SHOP_S_POWERUP], shop_x + 203, 395);
+	screen_blit(gfx_shopSprites[SHOP_S_SECONDARY], shop_x + 406, 395);
+	screen_blit(gfx_shopSprites[SHOP_S_CATALOG], shop_x, 180);
+	screen_blit(gfx_shopSprites[SHOP_S_SHIP_INFO], shop_x, 50);
+	screen_blit(gfx_shopSprites[SHOP_S_ITEM_INFO], shop_x, 320);
 
 	if (shopSelectedItem > -1)
 	{
-		screen_blit(gfx_sprites[SP_BUY], 60, 350);
-		screen_blit(gfx_sprites[SP_SELL], 710, 350);
+		screen_blit(gfx_sprites[SP_BUY], buy_x, 323);
+		screen_blit(gfx_sprites[SP_SELL], sell_x, 323);
 	}
 
 	screen_blit(gfx_sprites[SP_FIREFLY], 380, 95);
@@ -1080,14 +1085,14 @@ void shop_show()
 
 		if (shopSelectedItem > -1)
 		{
-			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 60, 350, 24, 16))
+			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, buy_x, 323, 24, 16))
 			{
 				buy(shopSelectedItem);
 				engine.keyState[KEY_FIRE] = 0;
 				drawShop();
 			}
 
-			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, 700, 350, 24, 16))
+			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, sell_x, 323, 24, 16))
 			{
 				sell(shopSelectedItem);
 				engine.keyState[KEY_FIRE] = 0;
