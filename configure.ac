@@ -22,9 +22,9 @@ STARFIGHTER_CFLAGS="-DVERSION=\\\"$PACKAGE_VERSION\\\""
 
 # Checks for libraries.
 PKG_CHECK_EXISTS([SDL2_mixer], [
-	PKG_CHECK_MODULES([SDL], [sdl2 SDL2_image SDL2_mixer])
+	PKG_CHECK_MODULES([SDL], [sdl2 SDL2_image SDL2_gfx SDL2_mixer])
 ], [
-	PKG_CHECK_MODULES([SDL], [sdl2 SDL2_image])
+	PKG_CHECK_MODULES([SDL], [sdl2 SDL2_image SDL2_gfx])
 	STARFIGHTER_CFLAGS="$STARFIGHTER_CFLAGS -DNOSOUND"
 	echo "Note: SDL_mixer not found; audio will not be supported."
 ])

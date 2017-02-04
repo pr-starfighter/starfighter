@@ -453,7 +453,7 @@ int title_show()
 					5, screen->h - 20, FONT_WHITE, 0, gfx_background);
 				gfx_renderString(buildVersion, screen->w - 6 - strlen(buildVersion) * 9,
 					screen->h - 20, FONT_WHITE, 0, gfx_background);
-				screen_addBuffer(0, 560, 800, 40);
+				screen_addBuffer(0, screen->h - 40, screen->w, 40);
 				skip = 1;
 			}
 			else

@@ -452,7 +452,7 @@ void cutscene_init(int scene)
 		if ((showMessage) && (gfx_messageBox != NULL))
 			screen_blit(gfx_messageBox, (screen->w - gfx_messageBox->w) / 2, screen->h - 100);
 
-		screen_renderString("Press [Escape] to skip", -1, 580, FONT_WHITE);
+		screen_renderString("Press [Escape] to skip", -1, screen->h - 20, FONT_WHITE);
 
 		game_delayFrame();
 
