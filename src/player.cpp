@@ -150,6 +150,8 @@ static enum keys mapkey(int code) {
 		case SDLK_1:
 		case SDLK_3:
 		case SDLK_KP_0:
+		case SDLK_HOME:
+		case SDLK_END:
 			return KEY_FIRE;
 		case SDLK_SPACE:
 		case SDLK_x:
@@ -157,6 +159,8 @@ static enum keys mapkey(int code) {
 		case SDLK_PERIOD:
 		case SDLK_2:
 		case SDLK_KP_1:
+		case SDLK_PAGEUP:
+		case SDLK_PAGEDOWN:
 			return KEY_ALTFIRE;
 		case SDLK_LSHIFT:
 		case SDLK_RSHIFT:
@@ -166,10 +170,12 @@ static enum keys mapkey(int code) {
 		case SDLK_KP_9:
 			return KEY_SWITCH;
 		case SDLK_p:
+		case SDLK_PAUSE:
 			return KEY_PAUSE;
 		case SDLK_ESCAPE:
 		case SDLK_q:
 		case SDLK_BACKSPACE:
+		case SDLK_DELETE:
 			return KEY_ESCAPE;
 		case SDLK_F11:
 			return KEY_FULLSCREEN;
