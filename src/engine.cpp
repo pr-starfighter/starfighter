@@ -250,7 +250,7 @@ void engine_setMode()
 	}
 
 	SDL_SetWindowIcon(window, gfx_loadImage("gfx/alienDevice.png"));
-	SDL_SetWindowFullscreen(window, engine.fullScreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
+	SDL_SetWindowFullscreen(window, engine.fullScreen ? FULLSCREEN : 0);
 
 	renderer = SDL_CreateRenderer(window, -1, 0);
 

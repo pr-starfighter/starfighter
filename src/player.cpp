@@ -279,7 +279,7 @@ void player_getInput()
 		if (engine.keyState[KEY_FULLSCREEN])
 		{
 			engine.fullScreen = !engine.fullScreen;
-			SDL_SetWindowFullscreen(window, engine.fullScreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
+			SDL_SetWindowFullscreen(window, engine.fullScreen ? FULLSCREEN : 0);
 			engine.keyState[KEY_FULLSCREEN] = 0;
 		}
 	}

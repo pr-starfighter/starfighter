@@ -551,8 +551,7 @@ int title_show()
 						{
 							engine.fullScreen = !engine.fullScreen;
 							SDL_SetWindowFullscreen(window,
-								(engine.fullScreen ?
-									SDL_WINDOW_FULLSCREEN_DESKTOP : 0));
+								(engine.fullScreen ? FULLSCREEN : 0));
 							selectedOption = listLength;
 						}
 						else if (selectedOption == 4)

@@ -57,6 +57,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PATH_MAX 4096
 #endif
 
+#define FULLSCREEN SDL_WINDOW_FULLSCREEN
+
 #define STARS_NUM 200
 
 // Object Flags

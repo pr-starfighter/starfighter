@@ -1070,16 +1070,16 @@ void mission_showStartScreen()
 			case MISN_ELLESH:
 			case MISN_MARS:
 			case MISN_VENUS:
-				screen_renderString("Phoebe Lexx will not be present", 160, screen->h / 2 + 115, FONT_WHITE);
+				screen_renderString("Phoebe Lexx will not be present", screen->w / 2 - 240, screen->h / 2 + 115, FONT_WHITE);
 				if (game.hasWingMate2)
-					screen_renderString("Ursula Lexx will not be present", 160, screen->h / 2 + 145, FONT_WHITE);
+					screen_renderString("Ursula Lexx will not be present", screen->w / 2 - 240, screen->h / 2 + 145, FONT_WHITE);
 				break;
 		}
 
 		if ((game.area == MISN_URUSOR) ||
 				(game.area == MISN_POSWIC) ||
 				(game.area == MISN_EARTH))
-			screen_renderString("Sid Wilson will join you on this mission", 160, screen->h / 2 + 175, FONT_WHITE);
+			screen_renderString("Sid Wilson will join you on this mission", screen->w / 2 - 240, screen->h / 2 + 175, FONT_WHITE);
 
 		renderer_update();
 	}
