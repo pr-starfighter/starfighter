@@ -476,7 +476,7 @@ int title_show()
 						else if (selectedOption == 4)
 						{
 							menuType = MENU_OPTIONS;
-							selectedOption = 1;
+							selectedOption = 5;
 						}
 						else if (selectedOption == 5)
 						{
@@ -528,7 +528,10 @@ int title_show()
 
 					case MENU_OPTIONS:
 						if ((selectedOption == 1) && (engine.useAudio))
+						{
 							engine.useSound = !engine.useSound;
+							selectedOption = listLength;
+						}
 						else if ((selectedOption == 2) && (engine.useAudio))
 						{
 							engine.useMusic = !engine.useMusic;
@@ -542,6 +545,7 @@ int title_show()
 							{
 								audio_haltMusic();
 							}
+							selectedOption = listLength;
 						}
 						else if (selectedOption == 3)
 						{
@@ -549,15 +553,17 @@ int title_show()
 							SDL_SetWindowFullscreen(window,
 								(engine.fullScreen ?
 									SDL_WINDOW_FULLSCREEN_DESKTOP : 0));
+							selectedOption = listLength;
 						}
 						else if (selectedOption == 4)
 						{
 							engine.autoPause = !engine.autoPause;
+							selectedOption = listLength;
 						}
 						else if (selectedOption == listLength)
 						{
 							menuType = MENU_MAIN;
-							selectedOption = 1;
+							selectedOption = 4;
 						}
 						createOptionsMenu();
 						break;
