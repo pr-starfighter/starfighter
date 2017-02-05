@@ -490,6 +490,7 @@ void gfx_free()
 void gfx_loadBackground(const char *filename)
 {
 	SDL_Surface *new_bg;
+	double scale;
 
 	if (gfx_background != NULL)
 	{
@@ -498,7 +499,8 @@ void gfx_loadBackground(const char *filename)
 	}
 	new_bg = gfx_loadImage(filename);
 	SDL_SetColorKey(new_bg, 0, 0);
-	gfx_background = zoomSurface(new_bg, (double)screen->w / new_bg->w, (double)screen->h / new_bg->h, 0);
+	scale = MAX((double)screen->w / new_bg->w, (double)screen->h / new_bg->h);
+	gfx_background = zoomSurface(new_bg, scale, scale, 0);
 	SDL_FreeSurface(new_bg);
 }
 
