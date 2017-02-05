@@ -269,14 +269,14 @@ static void drawShop()
 			shopItems[i].y - 178, gfx_shopSprites[SHOP_S_CATALOG]);
 	}
 
-	sprintf(description, "Shield Units : %d", player.maxShield);
-	gfx_renderString(description, 10, 4, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
-	sprintf(description, "Cash : $%d", game.cash);
-	gfx_renderString(description, 10, 20, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
+	sprintf(description, "Shield : %d", player.maxShield);
+	gfx_renderString(description, 10, 6, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
+	sprintf(description, "  Cash : $%d", game.cash);
+	gfx_renderString(description, 10, 22, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
 	sprintf(description, "Plasma Cells : %.3d", player.ammo[0]);
-	gfx_renderString(description, 430, 4, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
+	gfx_renderString(description, 430, 6, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
 	sprintf(description, "Rockets :  %.2d", player.ammo[1]);
-	gfx_renderString(description, 475, 20, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
+	gfx_renderString(description, 475, 22, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
 
 	gfx_shopSprites[SHOP_S_ITEM_INFO] = gfx_createSurface(601, 56);
 	gfx_drawRect(gfx_shopSprites[SHOP_S_ITEM_INFO], 0, 0, 600, 35, 0x00, 0x99, 0x00);
