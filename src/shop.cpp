@@ -228,7 +228,7 @@ static void drawShop()
 	gfx_renderString(description, 10, 52, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_PRIMARY]);
 
 	gfx_renderString("Powerup Weapon", 10, 3, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
-	sprintf(description, "Output    : Stage %d",
+	sprintf(description, "Splitter  : Stage %d",
 		game.maxPlasmaOutput);
 	gfx_renderString(description, 10, 22, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
 	sprintf(description, "Condensor : Stage %d",
