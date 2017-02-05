@@ -545,16 +545,10 @@ int title_show()
 						}
 						else if (selectedOption == 3)
 						{
-							if (engine.fullScreen)
-							{
-								SDL_SetWindowFullscreen(window, 0);
-								engine.fullScreen = 0;
-							}
-							else
-							{
-								SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
-								engine.fullScreen = 1;
-							}
+							engine.fullScreen = !engine.fullScreen;
+							SDL_SetWindowFullscreen(window,
+								(engine.fullScreen ?
+									SDL_WINDOW_FULLSCREEN_DESKTOP : 0));
 						}
 						else if (selectedOption == 4)
 						{
@@ -591,7 +585,8 @@ int title_show()
 						break;
 				}
 			}
-			engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
+			engine.keyState[KEY_FIRE] = 0;
+			engine.keyState[KEY_ALTFIRE] = 0;
 		}
 
 		game_delayFrame();
@@ -602,7 +597,8 @@ int title_show()
 	SDL_FreeSurface(prlogo);
 	SDL_FreeSurface(sflogo);
 
-	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
+	engine.keyState[KEY_FIRE] = 0;
+	engine.keyState[KEY_ALTFIRE] = 0;
 
 	engine_resetLists();
 
