@@ -460,55 +460,55 @@ void shop_init()
 	shopItems[SHOP_MICRO_HOMING_MISSILES].image = 25;
 
 	shopItems[SHOP_PLASMA_MAX_OUTPUT].x = shop_x;
-	shopItems[SHOP_PLASMA_MAX_OUTPUT].y = 200;
+	shopItems[SHOP_PLASMA_MAX_OUTPUT].y = shop_y + 150;
 
 	shopItems[SHOP_PLASMA_MAX_DAMAGE].x = shop_x + 50;
-	shopItems[SHOP_PLASMA_MAX_DAMAGE].y = 200;
+	shopItems[SHOP_PLASMA_MAX_DAMAGE].y = shop_y + 150;
 
 	shopItems[SHOP_PLASMA_MAX_RATE].x = shop_x + 100;
-	shopItems[SHOP_PLASMA_MAX_RATE].y = 200;
+	shopItems[SHOP_PLASMA_MAX_RATE].y = shop_y + 150;
 
 	shopItems[SHOP_PLASMA_MIN_OUTPUT].x = shop_x;
-	shopItems[SHOP_PLASMA_MIN_OUTPUT].y = 260;
+	shopItems[SHOP_PLASMA_MIN_OUTPUT].y = shop_y + 210;
 
 	shopItems[SHOP_PLASMA_MIN_DAMAGE].x = shop_x + 50;
-	shopItems[SHOP_PLASMA_MIN_DAMAGE].y = 260;
+	shopItems[SHOP_PLASMA_MIN_DAMAGE].y = shop_y + 210;
 
 	shopItems[SHOP_PLASMA_MIN_RATE].x = shop_x + 100;
-	shopItems[SHOP_PLASMA_MIN_RATE].y = 260;
+	shopItems[SHOP_PLASMA_MIN_RATE].y = shop_y + 210;
 
 	shopItems[SHOP_PLASMA_AMMO].x = shop_x + 250;
-	shopItems[SHOP_PLASMA_AMMO].y = 200;
+	shopItems[SHOP_PLASMA_AMMO].y = shop_y + 150;
 
 	shopItems[SHOP_ROCKET_AMMO].x = shop_x + 300;
-	shopItems[SHOP_ROCKET_AMMO].y = 200;
+	shopItems[SHOP_ROCKET_AMMO].y = shop_y + 150;
 
 	shopItems[SHOP_PLASMA_MAX_AMMO].x = shop_x + 350;
-	shopItems[SHOP_PLASMA_MAX_AMMO].y = 200;
+	shopItems[SHOP_PLASMA_MAX_AMMO].y = shop_y + 150;
 
 	shopItems[SHOP_ROCKET_MAX_AMMO].x = shop_x + 400;
-	shopItems[SHOP_ROCKET_MAX_AMMO].y = 200;
+	shopItems[SHOP_ROCKET_MAX_AMMO].y = shop_y + 150;
 
 	shopItems[SHOP_DOUBLE_ROCKETS].x = shop_x + 250;
-	shopItems[SHOP_DOUBLE_ROCKETS].y = 260;
+	shopItems[SHOP_DOUBLE_ROCKETS].y = shop_y + 210;
 
 	shopItems[SHOP_MICRO_ROCKETS].x = shop_x + 300;
-	shopItems[SHOP_MICRO_ROCKETS].y = 260;
+	shopItems[SHOP_MICRO_ROCKETS].y = shop_y + 210;
 
 	shopItems[SHOP_LASER].x = shop_x + 350;
-	shopItems[SHOP_LASER].y = 260;
+	shopItems[SHOP_LASER].y = shop_y + 210;
 
 	shopItems[SHOP_HOMING_MISSILE].x = shop_x + 400;
-	shopItems[SHOP_HOMING_MISSILE].y = 260;
+	shopItems[SHOP_HOMING_MISSILE].y = shop_y + 210;
 
 	shopItems[SHOP_CHARGER].x = shop_x + 450;
-	shopItems[SHOP_CHARGER].y = 260;
+	shopItems[SHOP_CHARGER].y = shop_y + 210;
 
 	shopItems[SHOP_DOUBLE_HOMING_MISSILES].x = shop_x + 500;
-	shopItems[SHOP_DOUBLE_HOMING_MISSILES].y = 260;
+	shopItems[SHOP_DOUBLE_HOMING_MISSILES].y = shop_y + 210;
 
 	shopItems[SHOP_MICRO_HOMING_MISSILES].x = shop_x + 550;
-	shopItems[SHOP_MICRO_HOMING_MISSILES].y = 260;
+	shopItems[SHOP_MICRO_HOMING_MISSILES].y = shop_y + 210;
 
  	shopSelectedItem = -1;
 
