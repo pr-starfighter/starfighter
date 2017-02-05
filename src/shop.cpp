@@ -1049,7 +1049,9 @@ void shop_show()
 {
 	int icons = SHOP_MAX;
 	int sell_x = shop_x + shop_w - gfx_sprites[SP_SELL]->w - 2;
+	int sell_y = shop_y + 183;
 	int buy_x = sell_x - gfx_sprites[SP_BUY]->w - 5;
+	int buy_y = shop_y + 183;
 
 	screen_blit(gfx_shopSprites[SHOP_S_SHIP_INFO], shop_x, shop_y);
 	screen_blit(gfx_shopSprites[SHOP_S_CATALOG], shop_x, shop_y + 50);
@@ -1060,8 +1062,8 @@ void shop_show()
 
 	if (shopSelectedItem > -1)
 	{
-		screen_blit(gfx_sprites[SP_BUY], buy_x, shop_y + 183);
-		screen_blit(gfx_sprites[SP_SELL], sell_x, shop_y + 183);
+		screen_blit(gfx_sprites[SP_BUY], buy_x, buy_y);
+		screen_blit(gfx_sprites[SP_SELL], sell_x, sell_y);
 	}
 
 	screen_blit(gfx_sprites[SP_FIREFLY], shop_x + 280, shop_y + 15);
@@ -1088,14 +1090,14 @@ void shop_show()
 
 		if (shopSelectedItem > -1)
 		{
-			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, buy_x, 323, 24, 16))
+			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, buy_x, buy_y, 24, 16))
 			{
 				buy(shopSelectedItem);
 				engine.keyState[KEY_FIRE] = 0;
 				drawShop();
 			}
 
-			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, sell_x, 323, 24, 16))
+			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, sell_x, sell_y, 24, 16))
 			{
 				sell(shopSelectedItem);
 				engine.keyState[KEY_FIRE] = 0;
