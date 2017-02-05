@@ -545,10 +545,16 @@ int title_show()
 						}
 						else if (selectedOption == 3)
 						{
-							engine.fullScreen = !engine.fullScreen;
-							SDL_SetWindowFullscreen(window,
-								(engine.fullScreen ?
-									SDL_WINDOW_FULLSCREEN_DESKTOP : 0));
+							if (engine.fullScreen)
+							{
+								SDL_SetWindowFullscreen(window, 0);
+								engine.fullScreen = 0;
+							}
+							else
+							{
+								SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
+								engine.fullScreen = 1;
+							}
 						}
 						else if (selectedOption == 4)
 						{
