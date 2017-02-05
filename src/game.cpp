@@ -1840,7 +1840,7 @@ static void game_doHud()
 			fontColor = FONT_RED;
 		else
 			fontColor = FONT_WHITE;
-		sprintf(text, "%.3d", player.ammo[1]); // rocket ammo
+		sprintf(text, "%.2d", player.ammo[1]); // rocket ammo
 		gfx_createTextObject(TS_AMMO, text, screen->w / 2 + 80, screen->h - 49, fontColor);
 		screen_blitText(TS_AMMO);
 	}

@@ -1003,37 +1003,37 @@ static void mission_drawScreen()
 		SDL_FillRect(screen, &r, SDL_MapRGB(screen->format, 0, i, 0));
 	}
 
-	screen_drawRect(screen->w / 2 - 260, screen->h / 2 - 233, 500, 20, 0x00, 0x77, 0x00);
-	screen_drawRect(screen->w / 2 - 260, screen->h / 2 - 213, 500, 130, 0x00, 0x33, 0x00);
-	screen_renderString("Primary Objectives", screen->w / 2 - 250, screen->h / 2 - 229, FONT_WHITE);
+	screen_drawRect(screen->w / 2 - 260, screen->h / 2 - 235, 500, 20, 0x00, 0x77, 0x00);
+	screen_drawRect(screen->w / 2 - 260, screen->h / 2 - 215, 500, 130, 0x00, 0x33, 0x00);
+	screen_renderString("Primary Objectives", screen->w / 2 - 250, screen->h / 2 - 231, FONT_WHITE);
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
 		if ((mission.primaryType[i] != M_NONE) && (mission.completed1[i] != OB_HIDDEN))
 		{
-			screen_renderString(mission.primaryObjective[i], screen->w / 2 - 240, screen->h / 2 + (i * 30) - 189, FONT_WHITE);
+			screen_renderString(mission.primaryObjective[i], screen->w / 2 - 240, screen->h / 2 + (i * 30) - 191, FONT_WHITE);
 		}
 	}
 
 	if (mission.secondaryType[0] != M_NONE)
 	{
-		screen_drawRect(screen->w / 2 - 260, screen->h / 2 - 73, 500, 20, 0x00, 0x77, 0x77);
-		screen_drawRect(screen->w / 2 - 260, screen->h / 2 - 53, 500, 130, 0x00, 0x33, 0x33);
-		screen_renderString("Secondary Objectives", screen->w / 2 - 250, screen->h / 2 - 69, FONT_WHITE);
+		screen_drawRect(screen->w / 2 - 260, screen->h / 2 - 75, 500, 20, 0x00, 0x77, 0x77);
+		screen_drawRect(screen->w / 2 - 260, screen->h / 2 - 55, 500, 130, 0x00, 0x33, 0x33);
+		screen_renderString("Secondary Objectives", screen->w / 2 - 250, screen->h / 2 - 71, FONT_WHITE);
 
 		for (int i = 0 ; i < 3 ; i++)
 		{
 			if (mission.secondaryType[i] != M_NONE)
 			{
-				screen_renderString(mission.secondaryObjective[i], screen->w / 2 - 240, screen->h / 2 + (i * 30) - 29, FONT_WHITE);
+				screen_renderString(mission.secondaryObjective[i], screen->w / 2 - 240, screen->h / 2 + (i * 30) - 31, FONT_WHITE);
 				game.secondaryMissions++;
 			}
 		}
 	}
 
-	screen_drawRect(screen->w / 2 - 260, screen->h / 2 + 87, 500, 20, 0x77, 0x77, 0x00);
-	screen_drawRect(screen->w / 2 - 260, screen->h / 2 + 107, 500, 130, 0x33, 0x33, 0x00);
-	screen_renderString("Additional Information", screen->w / 2 - 250, screen->h / 2 + 91, FONT_WHITE);
+	screen_drawRect(screen->w / 2 - 260, screen->h / 2 + 85, 500, 20, 0x77, 0x77, 0x00);
+	screen_drawRect(screen->w / 2 - 260, screen->h / 2 + 105, 500, 130, 0x33, 0x33, 0x00);
+	screen_renderString("Additional Information", screen->w / 2 - 250, screen->h / 2 + 89, FONT_WHITE);
 }
 
 /*
@@ -1058,7 +1058,7 @@ void mission_showStartScreen()
 				sprintf(temp, "TIME LIMIT: %d minutes", mission.timeLimit1[0]);
 			else
 				sprintf(temp, "SURVIVAL FOR %d minutes", mission.timeLimit1[0]);
-			screen_renderString(temp, -1, screen->h / 2 + 197, FONT_RED);
+			screen_renderString(temp, -1, screen->h / 2 + 195, FONT_RED);
 		}
 
 		switch (game.area)
@@ -1070,16 +1070,16 @@ void mission_showStartScreen()
 			case MISN_ELLESH:
 			case MISN_MARS:
 			case MISN_VENUS:
-				screen_renderString("Phoebe Lexx will not be present", 160, screen->h / 2 + 117, FONT_WHITE);
+				screen_renderString("Phoebe Lexx will not be present", 160, screen->h / 2 + 115, FONT_WHITE);
 				if (game.hasWingMate2)
-					screen_renderString("Ursula Lexx will not be present", 160, screen->h / 2 + 147, FONT_WHITE);
+					screen_renderString("Ursula Lexx will not be present", 160, screen->h / 2 + 145, FONT_WHITE);
 				break;
 		}
 
 		if ((game.area == MISN_URUSOR) ||
 				(game.area == MISN_POSWIC) ||
 				(game.area == MISN_EARTH))
-			screen_renderString("Sid Wilson will join you on this mission", 160, screen->h / 2 + 177, FONT_WHITE);
+			screen_renderString("Sid Wilson will join you on this mission", 160, screen->h / 2 + 175, FONT_WHITE);
 
 		renderer_update();
 	}
@@ -1161,9 +1161,9 @@ void mission_showFinishedScreen()
 			if (mission.primaryType[i] != M_NONE)
 			{
 				if ((game.area != MISN_POSWIC) || (i != 1))
-					screen_renderString("COMPLETED", screen->w / 2 + 150, screen->h / 2 + (i * 30) - 189, FONT_GREEN);
+					screen_renderString("COMPLETED", screen->w / 2 + 150, screen->h / 2 + (i * 30) - 191, FONT_GREEN);
 				else
-					screen_renderString("FAILED", screen->w / 2 + 150, screen->h / 2 + (i * 30) - 189, FONT_RED);
+					screen_renderString("FAILED", screen->w / 2 + 150, screen->h / 2 + (i * 30) - 191, FONT_RED);
 			}
 		}
 
@@ -1176,12 +1176,12 @@ void mission_showFinishedScreen()
 					strcpy(temp, mission.secondaryObjective[i]);
 					if (mission.completed2[i] >= OB_COMPLETED)
 					{
-						screen_renderString("COMPLETED", screen->w / 2 + 150, screen->h / 2 + (i * 30) - 29, FONT_GREEN);
+						screen_renderString("COMPLETED", screen->w / 2 + 150, screen->h / 2 + (i * 30) - 31, FONT_GREEN);
 						game.secondaryMissionsCompleted++;
 					}
 					else
 					{
-						screen_renderString("FAILED", screen->w / 2 + 150, screen->h / 2 + (i * 30) - 29, FONT_RED);
+						screen_renderString("FAILED", screen->w / 2 + 150, screen->h / 2 + (i * 30) - 31, FONT_RED);
 					}
 				}
 			}
