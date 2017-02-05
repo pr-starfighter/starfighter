@@ -2486,9 +2486,9 @@ int game_mainLoop()
 				// but I'm not entirely sure what the original intention was.
 				// For now, I've set the range to [800, 1500], which
 				// approximately replicates the original's results.
-				collectable_add(RANDRANGE(800, 1500),
+				collectable_add(screen->w + RANDRANGE(0, 700),
 					RANDRANGE(-screen->h / 3, (4 * screen->h) / 3), P_MINE, 25,
-					180 + rand() % 60);
+					180 * screen->w / 800 + RANDRANGE(0, 60));
 		}
 
 		if (engine.addAliens > -1)
