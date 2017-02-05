@@ -31,6 +31,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "engine.h"
 #include "game.h"
 #include "gfx.h"
+#include "intermission.h"
 #include "player.h"
 #include "renderer.h"
 #include "save.h"
@@ -40,8 +41,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "window.h"
 
 Planet intermission_planets[MAX_PLANETS];
-
-static const int y_center = 50 + (SCREEN_HEIGHT - 150) / 2;
 
 void intermission_initPlanets(int system)
 {
@@ -1493,7 +1492,7 @@ int intermission()
 
 			case 3:
 				x = screen->w / 2 - savesSurface->w / 2;
-				y = y_center - savesSurface->h / 2;
+				y = intermission_ycenter - savesSurface->h / 2;
 				screen_blit(savesSurface, x, y);
 				saveSlot = save_showSlots(savesSurface, saveSlot, x, y);
 				break;
@@ -1504,14 +1503,14 @@ int intermission()
 
 			case 5:
 				x = screen->w / 2 - commsSurface->w / 2;
-				y = y_center - commsSurface->h / 2;
+				y = intermission_ycenter - commsSurface->h / 2;
 				screen_blit(commsSurface, x, y);
 				intermission_doComms(commsSurface, x, y);
 				break;
 
 			case 6:
 				x = screen->w / 2 - optionsSurface->w / 2;
-				y = y_center - optionsSurface->h / 2;
+				y = intermission_ycenter - optionsSurface->h / 2;
 				screen_blit(optionsSurface, x, y);
 				intermission_doOptions(optionsSurface, x, y);
 				break;

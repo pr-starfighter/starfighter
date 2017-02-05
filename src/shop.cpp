@@ -27,6 +27,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "engine.h"
 #include "game.h"
 #include "gfx.h"
+#include "intermission.h"
 #include "player.h"
 #include "save.h"
 #include "screen.h"
@@ -44,6 +45,8 @@ typedef struct ShopItem_ {
 
 static const int shop_w = 600;
 static const int shop_x = SCREEN_WIDTH / 2 - shop_w / 2;
+static const int shop_h = 336;
+static const int shop_y = intermission_ycenter - shop_h / 2;
 
 static ShopItem shopItems[SHOP_MAX];
 static int shopSelectedItem;
@@ -180,8 +183,8 @@ static void drawShop()
 	gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 189, 90, 0x00, 0x00, 0x55);
 	gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 189, 20, 0x00, 0x00, 0x99);
 
-	gfx_shopSprites[SHOP_S_SHIP_INFO] = gfx_createAlphaRect(601, 101, 0x00, 0x00, 0x00);
-	gfx_drawRect(gfx_shopSprites[SHOP_S_SHIP_INFO], 0, 0, 600, 100, 0x00, 0x00, 0x33);
+	gfx_shopSprites[SHOP_S_SHIP_INFO] = gfx_createAlphaRect(601, 41, 0x00, 0x00, 0x00);
+	gfx_drawRect(gfx_shopSprites[SHOP_S_SHIP_INFO], 0, 0, 600, 40, 0x00, 0x00, 0x33);
 
 	switch (shopSelectedItem)
 	{
@@ -207,7 +210,7 @@ static void drawShop()
 			break;
 		case SHOP_PLASMA_AMMO:
 		case SHOP_ROCKET_AMMO:
-			gfx_drawRect(gfx_shopSprites[SHOP_S_SHIP_INFO], 0, 0, 600, 100, 0x33, 0x00, 0x00);
+			gfx_drawRect(gfx_shopSprites[SHOP_S_SHIP_INFO], 0, 0, 600, 40, 0x33, 0x00, 0x00);
 			break;
 		default:
 			gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 189, 90, 0x55, 0x00, 0x00);
@@ -223,7 +226,7 @@ static void drawShop()
 	sprintf(description, "Power   : Stage %d",
 		game.minPlasmaDamage);
 	gfx_renderString(description, 10, 37, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_PRIMARY]);
-	sprintf(description, "Cooler  : Stage %d",
+	sprintf(description, "Cooling : Stage %d",
 		game.minPlasmaRate);
 	gfx_renderString(description, 10, 52, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_PRIMARY]);
 
@@ -269,11 +272,11 @@ static void drawShop()
 	sprintf(description, "Shield Units : %d", player.maxShield);
 	gfx_renderString(description, 10, 4, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
 	sprintf(description, "Cash : $%d", game.cash);
-	gfx_renderString(description, 10, 80, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
+	gfx_renderString(description, 10, 20, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
 	sprintf(description, "Plasma Cells : %.3d", player.ammo[0]);
 	gfx_renderString(description, 430, 4, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
-	sprintf(description, "Rockets : %.3d", player.ammo[1]);
-	gfx_renderString(description, 475, 80, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
+	sprintf(description, "Rockets :  %.2d", player.ammo[1]);
+	gfx_renderString(description, 475, 20, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
 
 	gfx_shopSprites[SHOP_S_ITEM_INFO] = gfx_createSurface(601, 56);
 	gfx_drawRect(gfx_shopSprites[SHOP_S_ITEM_INFO], 0, 0, 600, 35, 0x00, 0x99, 0x00);
@@ -1048,20 +1051,20 @@ void shop_show()
 	int sell_x = shop_x + shop_w - gfx_sprites[SP_SELL]->w - 2;
 	int buy_x = sell_x - gfx_sprites[SP_BUY]->w - 5;
 
-	screen_blit(gfx_shopSprites[SHOP_S_PRIMARY], shop_x, 395);
-	screen_blit(gfx_shopSprites[SHOP_S_POWERUP], shop_x + 203, 395);
-	screen_blit(gfx_shopSprites[SHOP_S_SECONDARY], shop_x + 406, 395);
-	screen_blit(gfx_shopSprites[SHOP_S_CATALOG], shop_x, 180);
-	screen_blit(gfx_shopSprites[SHOP_S_SHIP_INFO], shop_x, 50);
-	screen_blit(gfx_shopSprites[SHOP_S_ITEM_INFO], shop_x, 320);
+	screen_blit(gfx_shopSprites[SHOP_S_SHIP_INFO], shop_x, shop_y);
+	screen_blit(gfx_shopSprites[SHOP_S_CATALOG], shop_x, shop_y + 50);
+	screen_blit(gfx_shopSprites[SHOP_S_ITEM_INFO], shop_x, shop_y + 180);
+	screen_blit(gfx_shopSprites[SHOP_S_PRIMARY], shop_x, shop_y + 245);
+	screen_blit(gfx_shopSprites[SHOP_S_POWERUP], shop_x + 203, shop_y + 245);
+	screen_blit(gfx_shopSprites[SHOP_S_SECONDARY], shop_x + 406, shop_y + 245);
 
 	if (shopSelectedItem > -1)
 	{
-		screen_blit(gfx_sprites[SP_BUY], buy_x, 323);
-		screen_blit(gfx_sprites[SP_SELL], sell_x, 323);
+		screen_blit(gfx_sprites[SP_BUY], buy_x, shop_y + 183);
+		screen_blit(gfx_sprites[SP_SELL], sell_x, shop_y + 183);
 	}
 
-	screen_blit(gfx_sprites[SP_FIREFLY], 380, 95);
+	screen_blit(gfx_sprites[SP_FIREFLY], shop_x + 280, shop_y + 15);
 
 	if (game.system == 0)
 		icons = SHOP_DOUBLE_ROCKETS + 1;

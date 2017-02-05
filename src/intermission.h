@@ -25,6 +25,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 extern Planet intermission_planets[MAX_PLANETS];
 
+const int intermission_ycenter = 50 + (SCREEN_HEIGHT - 150) / 2;
+
 void intermission_initPlanets(int system);
 void intermission_unlockPlanets();
 void intermission_updateSystemStatus();
