@@ -67,4 +67,5 @@ Run "./configure --help" to see more options.
 The third step ("make install") is technically optional, but highly
 recommended.
 
-To play, simply run the "starfighter" binary.
+To play, simply run the "starfighter" binary. If you choose not to use
+the "make install" command, you can find it in the "src" directory.
