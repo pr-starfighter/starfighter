@@ -54,6 +54,7 @@ Project: Starfighter depends on the following libraries to build:
 * SDL2 <http://libsdl.org>
 * SDL2_image <http://www.libsdl.org/projects/SDL_image/>
 * SDL2_mixer <http://www.libsdl.org/projects/SDL_mixer/>
+* SDL2_gfx <https://sourceforge.net/projects/sdl2gfx/>
 
 Once you have all dependencies installed, you can do the following:
 
