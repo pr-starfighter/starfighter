@@ -1,9 +1,7 @@
-Copyright (C) 2015, 2016 onpon4 <onpon4@riseup.net>
-
-Copying and distribution of this file, with or without modification,
-are permitted in any medium without royalty provided the copyright
-notice and this notice are preserved.  This file is offered as-is,
-without any warranty.
+This file has been dedicated to the public domain, to the extent
+possible under applicable law, via CC0. See
+http://creativecommons.org/publicdomain/zero/1.0/ for more
+information. This file is offered as-is, without any warranty.
 
 ========================================================================
 
@@ -67,5 +65,11 @@ Run "./configure --help" to see more options.
 The third step ("make install") is technically optional, but highly
 recommended.
 
-To play, simply run the "starfighter" binary. If you choose not to use
-the "make install" command, you can find it in the "src" directory.
+For most GNU/Linux systems, an icon should be added to your menu when
+you run "make install". You can click on this icon to start up the game.
+Otherwise, you can manually install or use the launcher found in the
+"misc" directory, or you can run the "starfighter" command to start up
+the game.
+
+If you choose not to use the "make install" command, you can find the
+"starfighter" binary in the "src" directory.

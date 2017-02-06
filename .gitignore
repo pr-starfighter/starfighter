@@ -24,6 +24,9 @@ config.h.in~
 src/Makefile
 src/Makefile.in
 src/.deps
+misc/Makefile
+misc/Makefile.in
+misc/.deps
 
 # Mac OS X
 *.DS_Store

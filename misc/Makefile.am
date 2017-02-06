@@ -3,9 +3,8 @@
 # http://creativecommons.org/publicdomain/zero/1.0/ for more
 # information. This file is offered as-is, without any warranty.
 
-SUBDIRS = src misc
+desktopdir = $(datadir)/applications
+desktop_DATA = starfighter.desktop
 
-dist_doc_DATA = README.txt COPYING LICENSES
-nobase_dist_doc_DATA = docs/*
-
-nobase_pkgdata_DATA = data/* gfx/* music/* sound/*
+icondir = $(datadir)/pixmaps
+icon_DATA = starfighter.png

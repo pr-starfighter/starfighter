@@ -56,5 +56,6 @@ AC_CHECK_FUNCS([atexit mkdir])
 AC_CONFIG_FILES([
 	Makefile
 	src/Makefile
+	misc/Makefile
 ])
 AC_OUTPUT
