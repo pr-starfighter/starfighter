@@ -426,13 +426,13 @@ int title_show()
 				if (!skip)
 				{
 					gfx_renderString("Copyright Parallel Realities 2003",
-						5, screen->h - 60, FONT_WHITE, 0, gfx_background);
+						5, gfx_background->h - 60, FONT_WHITE, 0, gfx_background);
 					gfx_renderString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012",
-						5, screen->h - 40, FONT_WHITE, 0, gfx_background);
+						5, gfx_background->h - 40, FONT_WHITE, 0, gfx_background);
 					gfx_renderString("Copyright 2015-2017 Julie Marchant",
-						5, screen->h - 20, FONT_WHITE, 0, gfx_background);
-					gfx_renderString(buildVersion, screen->w - 6 - strlen(buildVersion) * 9,
-						screen->h - 20, FONT_WHITE, 0, gfx_background);
+						5, gfx_background->h - 20, FONT_WHITE, 0, gfx_background);
+					gfx_renderString(buildVersion, gfx_background->w - 6 - strlen(buildVersion) * 9,
+						gfx_background->h - 20, FONT_WHITE, 0, gfx_background);
 					screen_addBuffer(0, 0, screen->w, screen->h);
 					skip = 1;
 				}

@@ -23,7 +23,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "SDL.h"
 #include "SDL_image.h"
-#include "SDL2_rotozoom.h"
 
 #include "defs.h"
 #include "structs.h"
@@ -490,7 +489,6 @@ void gfx_free()
 void gfx_loadBackground(const char *filename)
 {
 	SDL_Surface *new_bg;
-	double scale;
 
 	if (gfx_background != NULL)
 	{
@@ -499,8 +497,9 @@ void gfx_loadBackground(const char *filename)
 	}
 	new_bg = gfx_loadImage(filename);
 	SDL_SetColorKey(new_bg, 0, 0);
-	scale = MAX((double)screen->w / new_bg->w, (double)screen->h / new_bg->h);
-	gfx_background = zoomSurface(new_bg, scale, scale, 0);
+	gfx_background = gfx_createSurface(screen->w, screen->h);
+	SDL_SetColorKey(gfx_background, 0, 0);
+	SDL_BlitScaled(new_bg, NULL, gfx_background, NULL);
 	SDL_FreeSurface(new_bg);
 }
 
