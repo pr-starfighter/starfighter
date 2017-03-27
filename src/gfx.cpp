@@ -346,8 +346,14 @@ SDL_Surface *gfx_createTextSurface(const char *inString, int color)
 
 void gfx_createTextObject(int index, const char *inString, int x, int y, int fontColor)
 {
+	// Reset the life of the text object
+	gfx_textSprites[index].life = 0;
+
 	/* Shortcut: if we already rendered the same string in the same color, don't render it again. */
-	if(gfx_textSprites[index].text && gfx_textSprites[index].image && gfx_textSprites[index].fontColor == fontColor && !strcmp(gfx_textSprites[index].text, inString)) {
+	if (gfx_textSprites[index].text && gfx_textSprites[index].image &&
+			gfx_textSprites[index].fontColor == fontColor &&
+			!strcmp(gfx_textSprites[index].text, inString))
+	{
 		gfx_textSprites[index].x = x;
 		gfx_textSprites[index].y = y;
 		if (x == -1)
