@@ -219,7 +219,7 @@ void engine_setMode()
 
 	FILE *fp;
 	sprintf(filename, "%sconf", engine.configDirectory);
-	fp = fopen(filename, "rb");
+	fp = fopen(filename, "r");
 
 	if (fp != NULL)
 	{
@@ -383,7 +383,7 @@ void engine_cleanup()
 	// Save the config using current settings
 	FILE *fp;
 	sprintf(filename, "%sconf", engine.configDirectory);
-	fp = fopen(filename, "wb");
+	fp = fopen(filename, "w");
 	if (fp != NULL)
 	{
 		fprintf(fp, "%d %d %d %d\n", engine.fullScreen, engine.useSound,

@@ -60,7 +60,7 @@ int save_initSlots()
 	for (int i = 0 ; i <= 5 ; i++)
 	{
 		sprintf(fileName, "%ssave%.2d.sav", engine.configDirectory, i);
-		fp = fopen(fileName, "rb");
+		fp = fopen(fileName, "r");
 		if (fp != NULL)
 		{
 			if (fscanf(fp, "%d%*c", &game.saveFormat) < 1)
@@ -105,7 +105,7 @@ int save_initSlots()
 		{
 			sprintf(fileName, "%ssave%.2d.dat", engine.configDirectory, i);
 
-			fp = fopen(fileName, "rb");
+			fp = fopen(fileName, "r");
 			if (fp == NULL)
 			{
 				sprintf(saveSlot[i], (i == 0 ? "AUTOSAVE (Empty)" : "Empty"));
@@ -162,7 +162,7 @@ int save_load(int slot)
 	unsigned long timeTaken;
 
 	sprintf(filename, "%ssave%.2d.sav", engine.configDirectory, slot);
-	fp = fopen(filename, "rb");
+	fp = fopen(filename, "r");
 
 	if (fp != NULL)
 	{
@@ -280,7 +280,7 @@ void save(int slot)
 	}
 
 	sprintf(fileName, "%ssave%.2d.sav", engine.configDirectory, slot);
-	fp = fopen(fileName, "wb");
+	fp = fopen(fileName, "w");
 
 
 	game.saveFormat = 4;
