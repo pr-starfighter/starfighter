@@ -44,7 +44,7 @@ typedef struct ShopItem_ {
 } ShopItem;
 
 static const int shop_w = 600;
-static const int shop_x = SCREEN_WIDTH / 2 - shop_w / 2;
+static const int shop_x = screenWidth / 2 - shop_w / 2;
 static const int shop_h = 336;
 static const int shop_y = intermission_ycenter - shop_h / 2;
 

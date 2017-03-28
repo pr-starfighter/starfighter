@@ -755,8 +755,8 @@ const char * const systemBackground[] = {
 };
 
 const int rate2reload[6] = {15, 15, 13, 11, 9, 7};
-const int screenWidth = SCREEN_WIDTH;
-const int screenHeight = SCREEN_HEIGHT;
+const int screenWidth = MAX(SCREEN_WIDTH, 640);
+const int screenHeight = MAX(SCREEN_HEIGHT, 480);
 const int xViewBorder = 100;
 const int yViewBorder = 100;
 const float cameraMaxSpeed = 3.;
