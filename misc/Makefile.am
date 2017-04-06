@@ -3,8 +3,8 @@
 # http://creativecommons.org/publicdomain/zero/1.0/ for more
 # information. This file is offered as-is, without any warranty.
 
-desktopdir = $(datadir)/applications
+desktopdir = $(datarootdir)/applications
 desktop_DATA = starfighter.desktop
 
-icondir = $(datadir)/pixmaps
+icondir = $(datarootdir)/pixmaps
 icon_DATA = starfighter.png
