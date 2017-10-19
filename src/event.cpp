@@ -54,9 +54,11 @@ void events_init()
 		case MISN_INTERCEPTION:
 			if ((aliens[ALIEN_KLINE].classDef == CD_KLINE) &&
 					(aliens[ALIEN_KLINE].active))
+			{
 				events[0].time = 2;
 				events[0].face = FS_KLINE;
 				strcpy(events[0].message, klineGreeting[rand() % 4]);
+			}
 
 			break;
 
