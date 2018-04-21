@@ -91,7 +91,7 @@ typedef struct Engine_ {
 	int fullScreen;
 	int autoPause;
 
-	char configDirectory[1024];
+	char configDirectory[PATH_MAX];
 	
 	char keyState[KEY_LAST];
 

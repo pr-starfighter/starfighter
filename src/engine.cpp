@@ -174,25 +174,25 @@ void engine_setupConfigDirectory()
 
 	strcpy(dir, "");
 
-	sprintf(dir, "%s/.config", userHome);
+	snprintf(dir, PATH_MAX, "%s/.config", userHome);
 
 #ifdef _WIN32
 	if ((mkdir(dir) != 0) && (errno != EEXIST))
 		engine_showError(2, dir);
 
-	sprintf(dir, "%s/.config/starfighter", userHome);
+	snprintf(dir, PATH_MAX, "%s/.config/starfighter", userHome);
 	if ((mkdir(dir) != 0) && (errno != EEXIST))
 		engine_showError(2, dir);
 #else
 	if ((mkdir(dir, S_IRWXU|S_IRWXG|S_IROTH|S_IXOTH) != 0) && (errno != EEXIST))
 		engine_showError(2, dir);
 
-	sprintf(dir, "%s/.config/starfighter", userHome);
+	snprintf(dir, PATH_MAX, "%s/.config/starfighter", userHome);
 	if ((mkdir(dir, S_IRWXU|S_IRWXG|S_IROTH|S_IXOTH) != 0) && (errno != EEXIST))
 		engine_showError(2, dir);
 #endif
 
-	sprintf(engine.configDirectory, "%s/.config/starfighter/", userHome);
+	snprintf(engine.configDirectory, PATH_MAX, "%s/.config/starfighter/", userHome);
 }
 
 /*
@@ -218,7 +218,7 @@ void engine_setMode()
 	int autoPause = 0;
 
 	FILE *fp;
-	sprintf(filename, "%sconf", engine.configDirectory);
+	snprintf(filename, PATH_MAX, "%sconf", engine.configDirectory);
 	fp = fopen(filename, "r");
 
 	if (fp != NULL)
@@ -382,7 +382,7 @@ void engine_cleanup()
 
 	// Save the config using current settings
 	FILE *fp;
-	sprintf(filename, "%sconf", engine.configDirectory);
+	snprintf(filename, PATH_MAX, "%sconf", engine.configDirectory);
 	fp = fopen(filename, "w");
 	if (fp != NULL)
 	{
