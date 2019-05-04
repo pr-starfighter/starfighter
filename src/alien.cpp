@@ -1515,7 +1515,7 @@ void alien_setKlineAI(Object *alien)
 		case 2:
 			// Kline only attacks when he is ready!
 			if ((!(alien->flags & FL_NOFIRE)) &&
-					((game.area == MISN_MOEBO) ||
+					((game.area == MISN_ELAMALE) ||
 						game.difficulty != DIFFICULTY_ORIGINAL))
 				alien->flags |= FL_DROPMINES;
 			break;
@@ -1926,7 +1926,7 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 	audio_playSound(SFX_HIT, alien->x, alien->y);
 	if (alien->AIType == AI_EVASIVE)
 		alien->thinktime = 0;
-	
+
 	if (alien->shield < 1)
 		alien_destroy(alien, attacker);
 
