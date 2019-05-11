@@ -91,7 +91,7 @@ void player_damage(int amount, int delay)
 
 	if ((!engine.cheatShield) && (engine.missionCompleteTimer == 0) &&
 			((!player.hit) ||
-			(game.difficulty == DIFFICULTY_ORIGINAL) ||
+				(game.difficulty == DIFFICULTY_ORIGINAL) ||
 				((player.shield != engine.lowShield) &&
 					(player.shield != 1))))
 	{
