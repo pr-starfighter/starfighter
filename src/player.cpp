@@ -34,6 +34,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 Object player;
 int player_chargerFired = 0;
+int player_damageDelay = 0;
+int player_resetDamageDelay = 0;
 
 /*
 Initialises the player for a new game.
@@ -81,13 +83,26 @@ void player_setTarget(int index)
 	engine.targetShield /= aliens[index].shield;
 }
 
-void player_damage(int amount)
+void player_damage(int amount, int delay)
 {
 	int oldshield = player.shield;
+
+	player_resetDamageDelay = 0;
+
 	if ((!engine.cheatShield) && (engine.missionCompleteTimer == 0) &&
-			((!player.hit) || (game.difficulty == DIFFICULTY_ORIGINAL)))
+			((!player.hit) ||
+			(game.difficulty == DIFFICULTY_ORIGINAL) ||
+				((player.shield != engine.lowShield) &&
+					(player.shield != 1))))
 	{
-		player.shield -= amount;
+		if ((game.difficulty == DIFFICULTY_ORIGINAL) ||
+				(player_damageDelay >= delay))
+		{
+			player.shield -= amount;
+		}
+		else
+			player_damageDelay += amount;
+
 		LIMIT(player.shield, 0, player.maxShield);
 		player.hit = 5; // Damage flash timer
 

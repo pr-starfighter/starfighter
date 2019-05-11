@@ -25,10 +25,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 extern Object player;
 extern int player_chargerFired;
+extern int player_damageDelay;
+extern int player_resetDamageDelay;
 
 void player_init();
 void player_setTarget(int index);
-void player_damage(int amount);
+void player_damage(int amount, int delay);
 void player_checkShockDamage(float x, float y);
 void player_exit();
 void player_flushInput();

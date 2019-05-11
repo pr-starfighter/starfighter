@@ -1726,7 +1726,7 @@ void alien_move(Object *alien)
 		{
 			if (alien->classDef == CD_ASTEROID)
 			{
-				player_damage(alien->shield);
+				player_damage(alien->shield, 0);
 				alien->shield = 0;
 				audio_playSound(SFX_EXPLOSION, alien->x, alien->y);
 				audio_playSound(SFX_HIT, player.x, player.y);
@@ -1734,7 +1734,7 @@ void alien_move(Object *alien)
 
 			if (alien->classDef == CD_ASTEROID2)
 			{
-				player_damage(alien->shield);
+				player_damage(alien->shield, 0);
 				alien->shield = 0;
 				audio_playSound(SFX_EXPLOSION, alien->x, alien->y);
 				audio_playSound(SFX_HIT, player.x, player.y);
@@ -1742,7 +1742,7 @@ void alien_move(Object *alien)
 
 			if (alien->classDef == CD_BARRIER)
 			{
-				player_damage(1);
+				player_damage(1, 0);
 				audio_playSound(SFX_HIT, player.x, player.y);
 			}
 		}
