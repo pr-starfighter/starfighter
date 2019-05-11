@@ -2452,13 +2452,16 @@ int game_mainLoop()
 		game_doHud();
 
 		// Start delaying damage again gradually
-		if (player_resetDamageDelay)
+		if (player_damageDelay > 0)
 		{
-			LIMIT_ADD(player_damageDelay, -1, 0, 100);
-		}
-		else
-		{
-			player_resetDamageDelay = 1;
+			if (player_resetDamageDelay)
+			{
+				player_damageDelay--;
+			}
+			else
+			{
+				player_resetDamageDelay = 1;
+			}
 		}
 
 		WRAP_ADD(engine.eventTimer, -1, 0, 60);
