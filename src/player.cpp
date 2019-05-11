@@ -28,6 +28,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "game.h"
 #include "gfx.h"
 #include "info.h"
+#include "player.h"
 #include "screen.h"
 #include "weapons.h"
 #include "window.h"
@@ -112,13 +113,19 @@ void player_damage(int amount, int delay)
 		{
 			info_setLine("!!! WARNING: SHIELD LOW !!!", FONT_RED);
 			if (game.difficulty != DIFFICULTY_ORIGINAL)
+			{
 				player.shield = engine.lowShield;
+				player_damageDelay = 0;
+			}
 		}
 		else if ((oldshield > 1) && (player.shield <= 1))
 		{
 			info_setLine("!!! WARNING: SHIELD CRITICAL !!!", FONT_RED);
 			if (game.difficulty != DIFFICULTY_ORIGINAL)
+			{
 				player.shield = 1;
+				player_damageDelay = 0;
+			}
 		}
 	}
 }
@@ -141,9 +148,7 @@ void player_checkShockDamage(float x, float y)
 		if (distY >= 1)
 			distY /= 5;
 
-		player.shield -= (int)(10 - distX);
-		player.shield -= (int)(10 - distY);
-		LIMIT(player.shield, 0, player.maxShield);
+		player_damage((int)((10 - distX) + (10 - distY)), 0);
 		player.hit = 10;
 	}
 }
