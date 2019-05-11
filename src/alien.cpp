@@ -1726,29 +1726,23 @@ void alien_move(Object *alien)
 		{
 			if (alien->classDef == CD_ASTEROID)
 			{
-				if ((!engine.cheatShield) && (engine.missionCompleteTimer == 0))
-					player.shield -= alien->shield;
+				player_damage(alien->shield);
 				alien->shield = 0;
 				audio_playSound(SFX_EXPLOSION, alien->x, alien->y);
-				player.hit = 5;
 				audio_playSound(SFX_HIT, player.x, player.y);
 			}
 
 			if (alien->classDef == CD_ASTEROID2)
 			{
-				if ((!engine.cheatShield) && (engine.missionCompleteTimer == 0))
-					player.shield -= alien->shield;
+				player_damage(alien->shield);
 				alien->shield = 0;
 				audio_playSound(SFX_EXPLOSION, alien->x, alien->y);
-				player.hit = 5;
 				audio_playSound(SFX_HIT, player.x, player.y);
 			}
 
 			if (alien->classDef == CD_BARRIER)
 			{
-				if ((!engine.cheatShield) && (engine.missionCompleteTimer == 0))
-					player.shield--;
-				player.hit = 5;
+				player_damage(1);
 				audio_playSound(SFX_HIT, player.x, player.y);
 			}
 		}

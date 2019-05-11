@@ -27,6 +27,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "engine.h"
 #include "game.h"
 #include "gfx.h"
+#include "info.h"
 #include "screen.h"
 #include "weapons.h"
 #include "window.h"
@@ -78,6 +79,33 @@ void player_setTarget(int index)
 	engine.targetIndex = index;
 	engine.targetShield = 85;
 	engine.targetShield /= aliens[index].shield;
+}
+
+void player_damage(int amount)
+{
+	int oldshield = player.shield;
+	if ((!engine.cheatShield) && (engine.missionCompleteTimer == 0) &&
+			((!player.hit) || (game.difficulty == DIFFICULTY_ORIGINAL)))
+	{
+		player.shield -= amount;
+		LIMIT(player.shield, 0, player.maxShield);
+		player.hit = 5; // Damage flash timer
+
+		// Damage tiers (not in Classic mode)
+		if ((oldshield > engine.lowShield) &&
+				(player.shield <= engine.lowShield))
+		{
+			info_setLine("!!! WARNING: SHIELD LOW !!!", FONT_RED);
+			if (game.difficulty != DIFFICULTY_ORIGINAL)
+				player.shield = engine.lowShield;
+		}
+		else if ((oldshield > 1) && (player.shield <= 1))
+		{
+			info_setLine("!!! WARNING: SHIELD CRITICAL !!!", FONT_RED);
+			if (game.difficulty != DIFFICULTY_ORIGINAL)
+				player.shield = 1;
+		}
+	}
 }
 
 void player_checkShockDamage(float x, float y)

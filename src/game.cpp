@@ -784,16 +784,7 @@ static void game_doBullets()
 				{
 					old_shield = player.shield;
 
-					if ((!engine.cheatShield) && (engine.missionCompleteTimer == 0))
-					{
-						if ((player.shield > engine.lowShield) &&
-								(player.shield - bullet->damage <= engine.lowShield))
-							info_setLine("!!! WARNING: SHIELD LOW !!!", FONT_RED);
-
-						player.shield -= bullet->damage;
-						LIMIT(player.shield, 0, player.maxShield);
-						player.hit = 5;
-					}
+					player_damage(bullet->damage);
 
 					if (player.shield > 0)
 					{
@@ -1531,6 +1522,8 @@ static void game_doPlayer()
 		}
 		else
 		{
+			// Player is dead. At this point, the shield counts down to
+			// -100 and does death and explosion stuff along the way.
 			player.active = 0;
 			player.shield--;
 			if (player.shield == -1)
