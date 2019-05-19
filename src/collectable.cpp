@@ -143,7 +143,12 @@ void collectable_add(float x, float y, int type, int value, int life)
 		}
 	}
 
-	Collectable *collectable = new Collectable;
+	Collectable *collectable = (Collectable*)malloc(sizeof(Collectable));
+	if (collectable == NULL)
+	{
+		engine_warn("Failed to allocate memory for collectable");
+		return;
+	}
 
 	collectable->next = NULL;
 	collectable->active = 1;

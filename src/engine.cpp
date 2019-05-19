@@ -68,15 +68,27 @@ void engine_init()
 	engine.bulletHead->next = NULL;
 	engine.bulletTail = engine.bulletHead;
 
-	engine.explosionHead = new Object;
+	engine.explosionHead = (Object*)malloc(sizeof(Object));
+	if (engine.explosionHead == NULL)
+	{
+		engine_error("Failed to allocate memory for explosion head.");
+	}
 	engine.explosionHead->next = NULL;
 	engine.explosionTail = engine.explosionHead;
 
-	engine.collectableHead = new Collectable;
+	engine.collectableHead = (Collectable*)malloc(sizeof(Collectable));
+	if (engine.collectableHead == NULL)
+	{
+		engine_error("Failed to allocate memory for collectable head.");
+	}
 	engine.collectableHead->next = NULL;
 	engine.collectableTail = engine.collectableHead;
 
-	engine.debrisHead = new Object;
+	engine.debrisHead = (Object*)malloc(sizeof(Object));
+	if (engine.debrisHead == NULL)
+	{
+		engine_error("Failed to allocate memory for debris head.");
+	}
 	engine.debrisHead->next = NULL;
 	engine.debrisTail = engine.debrisHead;
 
@@ -322,7 +334,7 @@ void engine_resetLists()
 	{
 		ob2 = ob;
 		ob = ob->next;
-		delete ob2;
+		free(ob2);
 	}
 	engine.bulletHead->next = NULL;
 	engine.bulletTail = engine.bulletHead;
@@ -332,7 +344,7 @@ void engine_resetLists()
 	{
 		ob2 = ob;
 		ob = ob->next;
-		delete ob2;
+		free(ob2);
 	}
 	engine.explosionHead->next = NULL;
 	engine.explosionTail = engine.explosionHead;
@@ -342,7 +354,7 @@ void engine_resetLists()
 	{
 		c2 = c1;
 		c1 = c1->next;
-		delete c2;
+		free(c2);
 	}
 
 	engine.collectableHead->next = NULL;
@@ -353,7 +365,7 @@ void engine_resetLists()
 	{
 		r2 = r1;
 		r1 = r1->next;
-		delete r2;
+		free(r2);
 	}
 	
 	screen_bufferHead->next = NULL;
@@ -364,7 +376,7 @@ void engine_resetLists()
 	{
 		ob2 = ob;
 		ob = ob->next;
-		delete ob2;
+		free(ob2);
 	}
 	engine.debrisHead->next = NULL;
 	engine.debrisTail = engine.debrisHead;
@@ -382,9 +394,9 @@ void engine_cleanup()
 	audio_free();
 	engine_resetLists();
 	free(engine.bulletHead);
-	delete(engine.explosionHead);
-	delete(engine.collectableHead);
-	delete(screen_bufferHead);
+	free(engine.explosionHead);
+	free(engine.collectableHead);
+	free(screen_bufferHead);
 
 	for (int i = 0 ; i < FONT_MAX ; i++)
 	{

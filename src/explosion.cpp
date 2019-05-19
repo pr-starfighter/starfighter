@@ -33,7 +33,12 @@ to change frames on a 21, 14, 7 basis.
 */
 void explosion_add(float x, float y, int type)
 {
-	Object *explosion = new Object;
+	Object *explosion = (Object*)malloc(sizeof(Object));
+	if (explosion == NULL)
+	{
+		engine_warn("Failed to allocate memory for explosion.");
+		return;
+	}
 
 	explosion->next = NULL;
 	explosion->active = 1;
