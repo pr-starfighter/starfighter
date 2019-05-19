@@ -764,4 +764,6 @@ const int maxHoming = 20;
 const int maxDoubleHoming = 15;
 const int maxMicroHoming = 10;
 
+const int rayDamageDelay = 10;
+
 #endif

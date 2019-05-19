@@ -176,14 +176,7 @@ void ship_fireRay(Object *ship)
 						player.image[0]->h, ray.x, ray.y, ray.w, ray.h) &&
 					(!engine.cheatShield) && (engine.missionCompleteTimer == 0))
 			{
-				if (player.shield > engine.lowShield)
-				{
-					if (player.shield - 1 <= engine.lowShield)
-					{
-						info_setLine("!!! WARNING: SHIELD LOW !!!", FONT_RED);
-					}
-				}
-				player.shield--;
+				player_damage(1, rayDamageDelay);
 
 				explosion_add(player.x, player.y, SP_SMALL_EXPLOSION);
 				audio_playSound(SFX_HIT, player.x, player.y);

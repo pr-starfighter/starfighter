@@ -27,12 +27,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "engine.h"
 #include "game.h"
 #include "gfx.h"
+#include "info.h"
+#include "player.h"
 #include "screen.h"
 #include "weapons.h"
 #include "window.h"
 
 Object player;
 int player_chargerFired = 0;
+int player_damageDelay = 0;
+int player_resetDamageDelay = 0;
 
 /*
 Initialises the player for a new game.
@@ -80,6 +84,52 @@ void player_setTarget(int index)
 	engine.targetShield /= aliens[index].shield;
 }
 
+void player_damage(int amount, int delay)
+{
+	int oldshield = player.shield;
+
+	player_resetDamageDelay = 0;
+
+	if ((!engine.cheatShield) && (engine.missionCompleteTimer == 0) &&
+			((!player.hit) ||
+				(game.difficulty == DIFFICULTY_ORIGINAL) ||
+				((player.shield != engine.lowShield) &&
+					(player.shield != 1))))
+	{
+		if ((game.difficulty == DIFFICULTY_ORIGINAL) ||
+				(player_damageDelay >= delay))
+		{
+			player.shield -= amount;
+		}
+		else
+			player_damageDelay += amount;
+
+		LIMIT(player.shield, 0, player.maxShield);
+		player.hit = 5; // Damage flash timer
+
+		// Damage tiers (not in Classic mode)
+		if ((oldshield > engine.lowShield) &&
+				(player.shield <= engine.lowShield))
+		{
+			info_setLine("!!! WARNING: SHIELD LOW !!!", FONT_RED);
+			if (game.difficulty != DIFFICULTY_ORIGINAL)
+			{
+				player.shield = engine.lowShield;
+				player_damageDelay = 0;
+			}
+		}
+		else if ((oldshield > 1) && (player.shield <= 1))
+		{
+			info_setLine("!!! WARNING: SHIELD CRITICAL !!!", FONT_RED);
+			if (game.difficulty != DIFFICULTY_ORIGINAL)
+			{
+				player.shield = 1;
+				player_damageDelay = 0;
+			}
+		}
+	}
+}
+
 void player_checkShockDamage(float x, float y)
 {
 	float distX = fabsf(x - player.x);
@@ -98,9 +148,7 @@ void player_checkShockDamage(float x, float y)
 		if (distY >= 1)
 			distY /= 5;
 
-		player.shield -= (int)(10 - distX);
-		player.shield -= (int)(10 - distY);
-		LIMIT(player.shield, 0, player.maxShield);
+		player_damage((int)((10 - distX) + (10 - distY)), 0);
 		player.hit = 10;
 	}
 }
