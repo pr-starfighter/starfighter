@@ -60,7 +60,11 @@ void engine_init()
 	engine.smx = 0;
 	engine.smy = 0;
 
-	engine.bulletHead = new Object;
+	engine.bulletHead = (Object*)malloc(sizeof(Object));
+	if (engine.bulletHead == NULL)
+	{
+		engine_error("Failed to allocate memory for bullet head.");
+	}
 	engine.bulletHead->next = NULL;
 	engine.bulletTail = engine.bulletHead;
 
@@ -151,6 +155,24 @@ void engine_showError(int errorId, const char *name)
 		game_delayFrame();
 	}
 
+	exit(1);
+}
+
+/*
+Show a warning. Used when non-fatal things go wrong.
+*/
+void engine_warn(const char *msg)
+{
+	printf("WARNING: %s", msg);
+}
+
+/*
+Show an error and exit. Used for critical errors that should definitely
+never happen.
+*/
+void engine_error(const char *msg)
+{
+	printf("ERROR: %s\nAborting", msg);
 	exit(1);
 }
 
@@ -359,7 +381,7 @@ void engine_cleanup()
 	SDL_FreeSurface(gfx_background);
 	audio_free();
 	engine_resetLists();
-	delete(engine.bulletHead);
+	free(engine.bulletHead);
 	delete(engine.explosionHead);
 	delete(engine.collectableHead);
 	delete(screen_bufferHead);

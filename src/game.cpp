@@ -935,7 +935,7 @@ static void game_doBullets()
 		else
 		{
 			prevBullet->next = bullet->next;
-			delete bullet;
+			free(bullet);
 			bullet = prevBullet;
 		}
 	}

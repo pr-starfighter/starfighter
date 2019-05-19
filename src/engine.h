@@ -108,6 +108,8 @@ extern Engine engine;
 
 void engine_init();
 void engine_showError(int errorId, const char *name);
+void engine_warn(const char *msg);
+void engine_error(const char *msg);
 void engine_setupConfigDirectory();
 void engine_setMode();
 void engine_resetLists();
