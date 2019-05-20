@@ -33,9 +33,15 @@ AC_ARG_VAR([SF_SCREEN_WIDTH], [The width of the game window in pixels])
 AC_ARG_VAR([SF_SCREEN_HEIGHT], [The height of the game window in pixels])
 AS_IF([test -n "$SF_SCREEN_WIDTH"], [
 	STARFIGHTER_CFLAGS="$STARFIGHTER_CFLAGS -DSCREEN_WIDTH=$SF_SCREEN_WIDTH"
+	echo "Using default screen width of $SF_SCREEN_WIDTH"
+], [
+	echo "Using built-in screen width default"
 ])
 AS_IF([test -n "$SF_SCREEN_HEIGHT"], [
 	STARFIGHTER_CFLAGS="$STARFIGHTER_CFLAGS -DSCREEN_HEIGHT=$SF_SCREEN_HEIGHT"
+	echo "Using default screen height of $SF_SCREEN_HEIGHT"
+], [
+	echo "Using built-in screen height default"
 ])
 
 AC_SUBST([STARFIGHTER_CFLAGS])

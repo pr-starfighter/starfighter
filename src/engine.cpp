@@ -267,11 +267,11 @@ void engine_setMode()
 	engine.useMusic = useMusic;
 	engine.autoPause = autoPause;
 
-	screen = SDL_CreateRGBSurface(0, screenWidth, screenHeight, 32, 0xff0000, 0xff00, 0xff, 0xff000000);
+	screen = SDL_CreateRGBSurface(0, DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT, 32, 0xff0000, 0xff00, 0xff, 0xff000000);
 
 	if (!screen)
 	{
-		printf("Couldn't create %ix%ix32 surface: %s\n", screenWidth, screenHeight, SDL_GetError());
+		printf("Couldn't create %ix%ix32 surface: %s\n", DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT, SDL_GetError());
 		exit(1);
 	}
 

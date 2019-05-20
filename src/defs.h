@@ -59,7 +59,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define FULLSCREEN SDL_WINDOW_FULLSCREEN
 
+#define DEFAULT_SCREEN_WIDTH MAX(SCREEN_WIDTH, 640)
+#define DEFAULT_SCREEN_HEIGHT MAX(SCREEN_HEIGHT, 480)
 #define STARS_NUM 200
+const int xViewBorder = 100;
+const int yViewBorder = 100;
+const float cameraMaxSpeed = 3.;
+const int maxHoming = 20;
+const int maxDoubleHoming = 15;
+const int maxMicroHoming = 10;
+
+const int rayDamageDelay = 10;
 
 // Object Flags
 #define FL_WEAPCO 1
@@ -755,15 +765,5 @@ const char * const systemBackground[] = {
 };
 
 const int rate2reload[6] = {15, 15, 13, 11, 9, 7};
-const int screenWidth = MAX(SCREEN_WIDTH, 640);
-const int screenHeight = MAX(SCREEN_HEIGHT, 480);
-const int xViewBorder = 100;
-const int yViewBorder = 100;
-const float cameraMaxSpeed = 3.;
-const int maxHoming = 20;
-const int maxDoubleHoming = 15;
-const int maxMicroHoming = 10;
-
-const int rayDamageDelay = 10;
 
 #endif
