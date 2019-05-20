@@ -34,7 +34,9 @@ void bullet_add(Object *theWeapon, Object *attacker, int y, int dy)
 	int imageIndex;
 	int tempX, tempY, steps;
 
-	bullet = new Object;
+	bullet = (Object*)malloc(sizeof(Object));
+	if (bullet == NULL)
+		return;
 
 	if (attacker == &player)
 		game.shots++;

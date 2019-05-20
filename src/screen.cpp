@@ -56,7 +56,7 @@ void screen_drawBackground()
 
 void screen_addBuffer(int x, int y, int w, int h)
 {
-	LinkedRect *rect = new LinkedRect;
+	LinkedRect *rect = (LinkedRect*)malloc(sizeof(LinkedRect));
 
 	rect->next = NULL;
 	rect->x = x;
@@ -79,7 +79,7 @@ void screen_flushBuffer()
 		rect = rect->next;
 
 		prevRect->next = rect->next;
-		delete rect;
+		free(rect);
 		rect = prevRect;
 	}
 
@@ -110,7 +110,7 @@ void screen_unBuffer()
 		}
 
 		prevRect->next = rect->next;
-		delete rect;
+		free(rect);
 		rect = prevRect;
 	}
 

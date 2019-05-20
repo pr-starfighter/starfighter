@@ -233,7 +233,7 @@ static void game_addDebris(int x, int y, int amount)
 
 	for (int i = 0 ; i < amount ; i++)
 	{
-		debris = new Object;
+		debris = (Object*)malloc(sizeof(Object));
 
 		debris->next = NULL;
 		debris->x = x;
@@ -589,7 +589,7 @@ static void game_doCollectables()
 					(collectable->y <= screen->h))
 				collectable_explode(collectable);
 			prevCollectable->next = collectable->next;
-			delete collectable;
+			free(collectable);
 			collectable = prevCollectable;
 		}
 	}
@@ -897,7 +897,7 @@ static void game_doBullets()
 			{
 				collectable_explode(collectable);
 				prevCollectable->next = collectable->next;
-				delete collectable;
+				free(collectable);
 				collectable = prevCollectable;
 			}
 		}
@@ -926,7 +926,7 @@ static void game_doBullets()
 		else
 		{
 			prevBullet->next = bullet->next;
-			delete bullet;
+			free(bullet);
 			bullet = prevBullet;
 		}
 	}
@@ -1638,7 +1638,7 @@ static void game_doDebris()
 		if (debris->thinktime < 1)
 		{
 			prevDebris->next = debris->next;
-			delete debris;
+			free(debris);
 			debris = prevDebris;
 		}
 		else
@@ -1697,7 +1697,7 @@ void game_doExplosions()
 		else
 		{
 			prevExplosion->next = explosion->next;
-			delete explosion;
+			free(explosion);
 			explosion = prevExplosion;
 		}
 	}

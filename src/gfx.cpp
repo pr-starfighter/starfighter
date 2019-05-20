@@ -44,7 +44,11 @@ SDL_Surface *gfx_messageBox;
 
 void gfx_init()
 {
-	screen_bufferHead = new LinkedRect;
+	screen_bufferHead = (LinkedRect*)malloc(sizeof(LinkedRect));
+	if (screen_bufferHead == NULL)
+	{
+		engine_error("Failed to allocate memory for buffer head.");
+	}
 	screen_bufferHead->next = NULL;
 	screen_bufferTail = screen_bufferHead;
 

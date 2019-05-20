@@ -1073,7 +1073,12 @@ int alien_add()
 	int *alienArray;
 	int numberOfAliens = 1;
 
-	alienArray = new int[8];
+	alienArray = (int*)malloc(8 * sizeof(int));
+	if (alienArray == NULL)
+	{
+		engine_warn("WARNING: Failed to allocate memory for aliens");
+		return 0;
+	}
 
 	switch(game.area)
 	{
@@ -1192,7 +1197,7 @@ int alien_add()
 			randEnemy = CD_TRANSPORTSHIP;
 	}
 
-	delete[] alienArray;
+	free(alienArray);
 
 	aliens[index] = alien_defs[randEnemy];
 	aliens[index].active = 1;
