@@ -5,60 +5,61 @@
 
 bin_PROGRAMS = starfighter
 
-starfighter_CFLAGS = $(STARFIGHTER_CFLAGS) $(SDL_CFLAGS) -DDATADIR=\"$(pkgdatadir)\" -Wall
+starfighter_CPPFLAGS = $(STARFIGHTER_CFLAGS) -DDATADIR=\"$(pkgdatadir)\" -Wall
+starfighter_CXXFLAGS = $(SDL_CFLAGS)
 starfighter_LDADD = $(SDL_LIBS)
 
 starfighter_SOURCES = \
-	Starfighter.c \
-	alien.c \
+	Starfighter.cpp \
+	alien.cpp \
 	alien.h \
-	audio.c \
+	audio.cpp \
 	audio.h \
-	bullet.c \
+	bullet.cpp \
 	bullet.h \
-	cargo.c \
+	cargo.cpp \
 	cargo.h \
-	collectable.c \
+	collectable.cpp \
 	collectable.h \
-	colors.c \
+	colors.cpp \
 	colors.h \
-	cutscene.c \
+	cutscene.cpp \
 	cutscene.h \
 	defs.h \
-	engine.c \
+	engine.cpp \
 	engine.h \
-	event.c \
+	event.cpp \
 	event.h \
-	explosion.c \
+	explosion.cpp \
 	explosion.h \
-	game.c \
+	game.cpp \
 	game.h \
-	gfx.c \
+	gfx.cpp \
 	gfx.h \
-	info.c \
+	info.cpp \
 	info.h \
-	intermission.c \
+	intermission.cpp \
 	intermission.h \
-	mission.c \
+	mission.cpp \
 	mission.h \
-	player.c \
+	player.cpp \
 	player.h \
-	radio.c \
+	radio.cpp \
 	radio.h \
-	renderer.c \
+	renderer.cpp \
 	renderer.h \
-	save.c \
+	save.cpp \
 	save.h \
-	screen.c \
+	screen.cpp \
 	screen.h \
-	ship.c \
+	ship.cpp \
 	ship.h \
-	shop.c \
+	shop.cpp \
 	shop.h \
 	structs.h \
-	title.c \
+	title.cpp \
 	title.h \
-	weapons.c \
+	weapons.cpp \
 	weapons.h \
-	window.c \
+	window.cpp \
 	window.h
