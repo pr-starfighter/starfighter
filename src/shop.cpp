@@ -125,7 +125,11 @@ static void adjustShopPrices()
 			shopItems[SHOP_PLASMA_MIN_RATE].price += shopItems[SHOP_PLASMA_MAX_RATE].price;
 	}
 
-	shopItems[SHOP_PLASMA_MAX_AMMO].price = (10 * (game.maxPlasmaAmmo - 75));
+	if (game.difficulty == DIFFICULTY_ORIGINAL)
+		shopItems[SHOP_PLASMA_MAX_AMMO].price = (5 * game.maxPlasmaAmmo);
+	else
+		shopItems[SHOP_PLASMA_MAX_AMMO].price = (10 * (game.maxPlasmaAmmo - 75));
+
 	shopItems[SHOP_ROCKET_MAX_AMMO].price = (25 * game.maxRocketAmmo);
 	
 	if (game.maxPlasmaOutput >= game.maxPlasmaOutputLimit)
@@ -664,7 +668,10 @@ static void buy(int i)
 				shopSelectedItem = -3;
 				return;
 			}
-			game.maxPlasmaAmmo += 25;
+			if (game.difficulty == DIFFICULTY_ORIGINAL)
+				game.maxPlasmaAmmo += 10;
+			else
+				game.maxPlasmaAmmo += 25;
 			break;
 
 		case SHOP_ROCKET_MAX_AMMO:
@@ -938,7 +945,10 @@ static void sell(int i)
 				shopSelectedItem = -1;
 				return;
 			}
-			game.maxPlasmaAmmo -= 25;
+			if (game.difficulty == DIFFICULTY_ORIGINAL)
+				game.maxPlasmaAmmo -= 10;
+			else
+				game.maxPlasmaAmmo -= 25;
 
 			while (player.ammo[0] > game.maxPlasmaAmmo)
 				sell(SHOP_PLASMA_AMMO);

@@ -66,7 +66,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define Y_VIEW_BORDER 100
 #define CAMERA_MAX_SPEED 3.
 #define MAX_HOMING 20
-#define MAX_DOUBLE_HOMING 15
+#define MAX_DOUBLE_HOMING (game.difficulty != DIFFICULTY_ORIGINAL ? 15 : 10)
 #define MAX_MICRO_HOMING 10
 #define RAY_DAMAGE_DELAY 10
 

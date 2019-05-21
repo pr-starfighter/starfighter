@@ -62,6 +62,10 @@ typedef struct Object_ {
 	int collectType; // What the Object is carrying
 	int collectValue; // What it is worth
 
+	int collectTypeOriginal; // collectType in Classic difficulty
+	int collectValueOriginal; // collectValue in Classic difficulty
+	int score; // Classic difficulty only; money earned by killing
+
 	unsigned long int flags; // Various flags for an Object
 
 	float x, y, dx, dy;
