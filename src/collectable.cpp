@@ -93,8 +93,8 @@ void collectable_add(float x, float y, int type, int value, int life)
 		return; // don't bother!
 
 	// No point in giving the player plasma ammo if the weapons aren't
-	// upgraded! Give them money instead.
-	if (type == P_PLASMA_AMMO)
+	// upgraded! Give them money instead. (Except in Classic difficulty.)
+	if ((type == P_PLASMA_AMMO) && (game.difficulty != DIFFICULTY_ORIGINAL))
 	{
 		if ((weapons[W_PLAYER_WEAPON].reload[0] >= rate2reload[game.minPlasmaRate]) &&
 			(weapons[W_PLAYER_WEAPON].ammo[0] <= game.minPlasmaOutput) &&
