@@ -234,6 +234,11 @@ static enum keys mapkey(int code) {
 
 void player_getInput()
 {
+	static int prevjoyup, prevjoydown, prevjoyleft, prevjoyright;
+	int joyup, joydown, joyleft, joyright;
+	static int px = -1, py = -1;
+	int x, y, w, h;
+
 	while (SDL_PollEvent(&engine.event))
 	{
 		switch (engine.event.type)
@@ -299,20 +304,19 @@ void player_getInput()
 				break;
 
 			case SDL_JOYAXISMOTION:
-				static int prevjoyup, prevjoydown, prevjoyleft, prevjoyright;
 				if (engine.event.jaxis.axis & 1) {
-					int joyup = engine.event.jaxis.value < -16384;
-					int joydown = engine.event.jaxis.value >= 16384;
-					if(joyup != prevjoyup)
+					joyup = engine.event.jaxis.value < -16384;
+					joydown = engine.event.jaxis.value >= 16384;
+					if (joyup != prevjoyup)
 						engine.keyState[KEY_UP] = prevjoyup = joyup;
-					if(joydown != prevjoydown)
+					if (joydown != prevjoydown)
 						engine.keyState[KEY_DOWN] = prevjoydown = joydown;
 				} else {
-					int joyleft = engine.event.jaxis.value < -16384;
-					int joyright = engine.event.jaxis.value >= 16384;
-					if(joyleft != prevjoyleft)
+					joyleft = engine.event.jaxis.value < -16384;
+					joyright = engine.event.jaxis.value >= 16384;
+					if (joyleft != prevjoyleft)
 						engine.keyState[KEY_LEFT] = prevjoyleft = joyleft;
-					if(joyright != prevjoyright)
+					if (joyright != prevjoyright)
 						engine.keyState[KEY_RIGHT] = prevjoyright = joyright;
 				}
 				break;
@@ -335,8 +339,6 @@ void player_getInput()
 	if (engine.gameSection == SECTION_INTERMISSION)
 	{
 		// Get the current mouse position
-		static int px = -1, py = -1;
-		int x, y, w, h;
 		SDL_GetMouseState(&x, &y);
 		SDL_GetWindowSize(window, &w, &h);
 		x = screen->w * x / w;

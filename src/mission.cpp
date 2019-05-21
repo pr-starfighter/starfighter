@@ -84,8 +84,6 @@ This is where all the missions are defined.
 */
 void mission_init()
 {
-	mission_clearAll();
-
 	// Seconds to wait between attempting to add an enemy
 	static const int SOMETIMES    = 40 * 60;
 	static const int NORMAL       = 15 * 60;
@@ -93,6 +91,7 @@ void mission_init()
 	static const int ALWAYS       = 1 * 60;
 	static const int NEVER        = -1;
 
+	mission_clearAll();
 
 	sprintf(missions[MISN_START].primaryObjective[0],
 		"Escape from WEAPCO Persuit");
