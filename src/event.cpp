@@ -31,7 +31,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "radio.h"
 
 static Event events[MAX_EVENTS];
-static const char *klineGreeting[] = {
+
+#define NMSG_KLINE_GREETING 4
+static const char *klineGreeting[NMSG_KLINE_GREETING] = {
 	"How nice to see you again, Bainfield!",
 	"It all ends here, rebel!",
 	"I hope you won't disappoint me this time...",
@@ -57,7 +59,7 @@ void events_init()
 			{
 				events[0].time = 2;
 				events[0].face = FS_KLINE;
-				strcpy(events[0].message, klineGreeting[rand() % 4]);
+				strcpy(events[0].message, klineGreeting[rand() % NMSG_KLINE_GREETING]);
 			}
 
 			break;
@@ -385,3 +387,5 @@ void events_sync()
 		}
 	}
 }
+
+#undef NMSG_KLINE_GREETING

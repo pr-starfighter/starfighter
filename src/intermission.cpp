@@ -1492,7 +1492,7 @@ int intermission()
 
 			case 3:
 				x = screen->w / 2 - savesSurface->w / 2;
-				y = intermission_ycenter - savesSurface->h / 2;
+				y = INTERMISSION_YCENTER - savesSurface->h / 2;
 				screen_blit(savesSurface, x, y);
 				saveSlot = save_showSlots(savesSurface, saveSlot, x, y);
 				break;
@@ -1503,14 +1503,14 @@ int intermission()
 
 			case 5:
 				x = screen->w / 2 - commsSurface->w / 2;
-				y = intermission_ycenter - commsSurface->h / 2;
+				y = INTERMISSION_YCENTER - commsSurface->h / 2;
 				screen_blit(commsSurface, x, y);
 				intermission_doComms(commsSurface, x, y);
 				break;
 
 			case 6:
 				x = screen->w / 2 - optionsSurface->w / 2;
-				y = intermission_ycenter - optionsSurface->h / 2;
+				y = INTERMISSION_YCENTER - optionsSurface->h / 2;
 				screen_blit(optionsSurface, x, y);
 				intermission_doOptions(optionsSurface, x, y);
 				break;

@@ -31,6 +31,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "player.h"
 #include "save.h"
 #include "screen.h"
+#include "shop.h"
 #include "weapons.h"
 
 typedef struct ShopItem_ {
@@ -42,11 +43,6 @@ typedef struct ShopItem_ {
 	int image;
 
 } ShopItem;
-
-static const int shop_w = 600;
-static const int shop_x = DEFAULT_SCREEN_WIDTH / 2 - shop_w / 2;
-static const int shop_h = 336;
-static const int shop_y = intermission_ycenter - shop_h / 2;
 
 static ShopItem shopItems[SHOP_MAX];
 static int shopSelectedItem;
@@ -265,8 +261,8 @@ static void drawShop()
 
 	for (int i = 0 ; i < icons ; i++)
 	{
-		gfx_blit(gfx_sprites[shopItems[i].image], shopItems[i].x + 10 - shop_x,
-			shopItems[i].y - shop_y - 48, gfx_shopSprites[SHOP_S_CATALOG]);
+		gfx_blit(gfx_sprites[shopItems[i].image], shopItems[i].x + 10 - SHOP_X,
+			shopItems[i].y - SHOP_Y - 48, gfx_shopSprites[SHOP_S_CATALOG]);
 	}
 
 	sprintf(description, "Shield : %d", player.maxShield);
@@ -437,7 +433,7 @@ void shop_init()
 	shopItems[SHOP_HOMING_MISSILE].price = 7500;
 	strcpy(shopItems[SHOP_HOMING_MISSILE].name, "Homing Missile Launcher");
 	sprintf(shopItems[SHOP_HOMING_MISSILE].description,
-		"Fires homing missile (max %i missiles)", maxHoming);
+		"Fires homing missile (max %i missiles)", MAX_HOMING);
 	shopItems[SHOP_HOMING_MISSILE].image = 22;
 
 	shopItems[SHOP_CHARGER].price = 10000;
@@ -449,66 +445,66 @@ void shop_init()
 	strcpy(shopItems[SHOP_DOUBLE_HOMING_MISSILES].name,
 		"Dual Homing Missile Launcher");
 	sprintf(shopItems[SHOP_DOUBLE_HOMING_MISSILES].description,
-		"Fires two homing missiles (max %i missiles)", maxDoubleHoming);
+		"Fires two homing missiles (max %i missiles)", MAX_DOUBLE_HOMING);
 	shopItems[SHOP_DOUBLE_HOMING_MISSILES].image = 24;
 
 	shopItems[SHOP_MICRO_HOMING_MISSILES].price = 15000;
 	strcpy(shopItems[SHOP_MICRO_HOMING_MISSILES].name,
 		"Homing Micro Missile Launcher");
 	sprintf(shopItems[SHOP_MICRO_HOMING_MISSILES].description,
-		"Fires several small homing missiles (max %i missiles)", maxMicroHoming);
+		"Fires several small homing missiles (max %i missiles)", MAX_MICRO_HOMING);
 	shopItems[SHOP_MICRO_HOMING_MISSILES].image = 25;
 
-	shopItems[SHOP_PLASMA_MAX_OUTPUT].x = shop_x;
-	shopItems[SHOP_PLASMA_MAX_OUTPUT].y = shop_y + 70;
+	shopItems[SHOP_PLASMA_MAX_OUTPUT].x = SHOP_X;
+	shopItems[SHOP_PLASMA_MAX_OUTPUT].y = SHOP_Y + 70;
 
-	shopItems[SHOP_PLASMA_MAX_DAMAGE].x = shop_x + 50;
-	shopItems[SHOP_PLASMA_MAX_DAMAGE].y = shop_y + 70;
+	shopItems[SHOP_PLASMA_MAX_DAMAGE].x = SHOP_X + 50;
+	shopItems[SHOP_PLASMA_MAX_DAMAGE].y = SHOP_Y + 70;
 
-	shopItems[SHOP_PLASMA_MAX_RATE].x = shop_x + 100;
-	shopItems[SHOP_PLASMA_MAX_RATE].y = shop_y + 70;
+	shopItems[SHOP_PLASMA_MAX_RATE].x = SHOP_X + 100;
+	shopItems[SHOP_PLASMA_MAX_RATE].y = SHOP_Y + 70;
 
-	shopItems[SHOP_PLASMA_MIN_OUTPUT].x = shop_x;
-	shopItems[SHOP_PLASMA_MIN_OUTPUT].y = shop_y + 130;
+	shopItems[SHOP_PLASMA_MIN_OUTPUT].x = SHOP_X;
+	shopItems[SHOP_PLASMA_MIN_OUTPUT].y = SHOP_Y + 130;
 
-	shopItems[SHOP_PLASMA_MIN_DAMAGE].x = shop_x + 50;
-	shopItems[SHOP_PLASMA_MIN_DAMAGE].y = shop_y + 130;
+	shopItems[SHOP_PLASMA_MIN_DAMAGE].x = SHOP_X + 50;
+	shopItems[SHOP_PLASMA_MIN_DAMAGE].y = SHOP_Y + 130;
 
-	shopItems[SHOP_PLASMA_MIN_RATE].x = shop_x + 100;
-	shopItems[SHOP_PLASMA_MIN_RATE].y = shop_y + 130;
+	shopItems[SHOP_PLASMA_MIN_RATE].x = SHOP_X + 100;
+	shopItems[SHOP_PLASMA_MIN_RATE].y = SHOP_Y + 130;
 
-	shopItems[SHOP_PLASMA_AMMO].x = shop_x + 250;
-	shopItems[SHOP_PLASMA_AMMO].y = shop_y + 70;
+	shopItems[SHOP_PLASMA_AMMO].x = SHOP_X + 250;
+	shopItems[SHOP_PLASMA_AMMO].y = SHOP_Y + 70;
 
-	shopItems[SHOP_ROCKET_AMMO].x = shop_x + 300;
-	shopItems[SHOP_ROCKET_AMMO].y = shop_y + 70;
+	shopItems[SHOP_ROCKET_AMMO].x = SHOP_X + 300;
+	shopItems[SHOP_ROCKET_AMMO].y = SHOP_Y + 70;
 
-	shopItems[SHOP_PLASMA_MAX_AMMO].x = shop_x + 350;
-	shopItems[SHOP_PLASMA_MAX_AMMO].y = shop_y + 70;
+	shopItems[SHOP_PLASMA_MAX_AMMO].x = SHOP_X + 350;
+	shopItems[SHOP_PLASMA_MAX_AMMO].y = SHOP_Y + 70;
 
-	shopItems[SHOP_ROCKET_MAX_AMMO].x = shop_x + 400;
-	shopItems[SHOP_ROCKET_MAX_AMMO].y = shop_y + 70;
+	shopItems[SHOP_ROCKET_MAX_AMMO].x = SHOP_X + 400;
+	shopItems[SHOP_ROCKET_MAX_AMMO].y = SHOP_Y + 70;
 
-	shopItems[SHOP_DOUBLE_ROCKETS].x = shop_x + 250;
-	shopItems[SHOP_DOUBLE_ROCKETS].y = shop_y + 130;
+	shopItems[SHOP_DOUBLE_ROCKETS].x = SHOP_X + 250;
+	shopItems[SHOP_DOUBLE_ROCKETS].y = SHOP_Y + 130;
 
-	shopItems[SHOP_MICRO_ROCKETS].x = shop_x + 300;
-	shopItems[SHOP_MICRO_ROCKETS].y = shop_y + 130;
+	shopItems[SHOP_MICRO_ROCKETS].x = SHOP_X + 300;
+	shopItems[SHOP_MICRO_ROCKETS].y = SHOP_Y + 130;
 
-	shopItems[SHOP_LASER].x = shop_x + 350;
-	shopItems[SHOP_LASER].y = shop_y + 130;
+	shopItems[SHOP_LASER].x = SHOP_X + 350;
+	shopItems[SHOP_LASER].y = SHOP_Y + 130;
 
-	shopItems[SHOP_HOMING_MISSILE].x = shop_x + 400;
-	shopItems[SHOP_HOMING_MISSILE].y = shop_y + 130;
+	shopItems[SHOP_HOMING_MISSILE].x = SHOP_X + 400;
+	shopItems[SHOP_HOMING_MISSILE].y = SHOP_Y + 130;
 
-	shopItems[SHOP_CHARGER].x = shop_x + 450;
-	shopItems[SHOP_CHARGER].y = shop_y + 130;
+	shopItems[SHOP_CHARGER].x = SHOP_X + 450;
+	shopItems[SHOP_CHARGER].y = SHOP_Y + 130;
 
-	shopItems[SHOP_DOUBLE_HOMING_MISSILES].x = shop_x + 500;
-	shopItems[SHOP_DOUBLE_HOMING_MISSILES].y = shop_y + 130;
+	shopItems[SHOP_DOUBLE_HOMING_MISSILES].x = SHOP_X + 500;
+	shopItems[SHOP_DOUBLE_HOMING_MISSILES].y = SHOP_Y + 130;
 
-	shopItems[SHOP_MICRO_HOMING_MISSILES].x = shop_x + 550;
-	shopItems[SHOP_MICRO_HOMING_MISSILES].y = shop_y + 130;
+	shopItems[SHOP_MICRO_HOMING_MISSILES].x = SHOP_X + 550;
+	shopItems[SHOP_MICRO_HOMING_MISSILES].y = SHOP_Y + 130;
 
  	shopSelectedItem = -1;
 
@@ -609,19 +605,19 @@ static void buy(int i)
 				return;
 			}
 			if ((player.weaponType[1] == W_HOMING_MISSILE) &&
-				(player.ammo[1] >= maxHoming))
+				(player.ammo[1] >= MAX_HOMING))
 			{
 				shopSelectedItem = -9;
 				return;
 			}
 			if ((player.weaponType[1] == W_DOUBLE_HOMING_MISSILES) &&
-				(player.ammo[1] >= maxDoubleHoming))
+				(player.ammo[1] >= MAX_DOUBLE_HOMING))
 			{
 				shopSelectedItem = -9;
 				return;
 			}
 			if ((player.weaponType[1] == W_MICRO_HOMING_MISSILES) &&
-				(player.ammo[1] >= maxMicroHoming))
+				(player.ammo[1] >= MAX_MICRO_HOMING))
 			{
 				shopSelectedItem = -9;
 				return;
@@ -679,19 +675,19 @@ static void buy(int i)
 				return;
 			}
 			if ((player.weaponType[1] == W_HOMING_MISSILE) &&
-				(game.maxRocketAmmo >= maxHoming))
+				(game.maxRocketAmmo >= MAX_HOMING))
 			{
 				shopSelectedItem = -9;
 				return;
 			}
 			if ((player.weaponType[1] == W_DOUBLE_HOMING_MISSILES) &&
-				(game.maxRocketAmmo >= maxDoubleHoming))
+				(game.maxRocketAmmo >= MAX_DOUBLE_HOMING))
 			{
 				shopSelectedItem = -9;
 				return;
 			}
 			if ((player.weaponType[1] == W_MICRO_HOMING_MISSILES) &&
-				(game.maxRocketAmmo >= maxMicroHoming))
+				(game.maxRocketAmmo >= MAX_MICRO_HOMING))
 			{
 				shopSelectedItem = -9;
 				return;
@@ -757,10 +753,10 @@ static void buy(int i)
 			shop_sellSecondaryWeapon();
 			player.weaponType[1] = W_HOMING_MISSILE;
 
-			while (game.maxRocketAmmo > maxHoming)
+			while (game.maxRocketAmmo > MAX_HOMING)
 				sell(SHOP_ROCKET_MAX_AMMO);
 
-			LIMIT(game.maxRocketAmmo, 5, maxHoming);
+			LIMIT(game.maxRocketAmmo, 5, MAX_HOMING);
 			shopSelectedItem = -1;
 			break;
 
@@ -793,10 +789,10 @@ static void buy(int i)
 			shop_sellSecondaryWeapon();
 			player.weaponType[1] = W_DOUBLE_HOMING_MISSILES;
 
-			while (game.maxRocketAmmo > maxDoubleHoming)
+			while (game.maxRocketAmmo > MAX_DOUBLE_HOMING)
 				sell(SHOP_ROCKET_MAX_AMMO);
 
-			LIMIT(game.maxRocketAmmo, 5, maxDoubleHoming);
+			LIMIT(game.maxRocketAmmo, 5, MAX_DOUBLE_HOMING);
 			shopSelectedItem = -1;
 			break;
 
@@ -809,10 +805,10 @@ static void buy(int i)
 			shop_sellSecondaryWeapon();
 			player.weaponType[1] = W_MICRO_HOMING_MISSILES;
 
-			while (game.maxRocketAmmo > maxMicroHoming)
+			while (game.maxRocketAmmo > MAX_MICRO_HOMING)
 				sell(SHOP_ROCKET_MAX_AMMO);
 
-			LIMIT(game.maxRocketAmmo, 5, maxMicroHoming);
+			LIMIT(game.maxRocketAmmo, 5, MAX_MICRO_HOMING);
 			shopSelectedItem = -1;
 			break;
 	}
@@ -1048,17 +1044,17 @@ static void sell(int i)
 void shop_show()
 {
 	int icons = SHOP_MAX;
-	int sell_x = shop_x + shop_w - gfx_sprites[SP_SELL]->w - 2;
-	int sell_y = shop_y + 183;
+	int sell_x = SHOP_X + SHOP_WIDTH - gfx_sprites[SP_SELL]->w - 2;
+	int sell_y = SHOP_Y + 183;
 	int buy_x = sell_x - gfx_sprites[SP_BUY]->w - 5;
-	int buy_y = shop_y + 183;
+	int buy_y = SHOP_Y + 183;
 
-	screen_blit(gfx_shopSprites[SHOP_S_SHIP_INFO], shop_x, shop_y);
-	screen_blit(gfx_shopSprites[SHOP_S_CATALOG], shop_x, shop_y + 50);
-	screen_blit(gfx_shopSprites[SHOP_S_ITEM_INFO], shop_x, shop_y + 180);
-	screen_blit(gfx_shopSprites[SHOP_S_PRIMARY], shop_x, shop_y + 245);
-	screen_blit(gfx_shopSprites[SHOP_S_POWERUP], shop_x + 203, shop_y + 245);
-	screen_blit(gfx_shopSprites[SHOP_S_SECONDARY], shop_x + 406, shop_y + 245);
+	screen_blit(gfx_shopSprites[SHOP_S_SHIP_INFO], SHOP_X, SHOP_Y);
+	screen_blit(gfx_shopSprites[SHOP_S_CATALOG], SHOP_X, SHOP_Y + 50);
+	screen_blit(gfx_shopSprites[SHOP_S_ITEM_INFO], SHOP_X, SHOP_Y + 180);
+	screen_blit(gfx_shopSprites[SHOP_S_PRIMARY], SHOP_X, SHOP_Y + 245);
+	screen_blit(gfx_shopSprites[SHOP_S_POWERUP], SHOP_X + 203, SHOP_Y + 245);
+	screen_blit(gfx_shopSprites[SHOP_S_SECONDARY], SHOP_X + 406, SHOP_Y + 245);
 
 	if (shopSelectedItem > -1)
 	{
@@ -1066,7 +1062,7 @@ void shop_show()
 		screen_blit(gfx_sprites[SP_SELL], sell_x, sell_y);
 	}
 
-	screen_blit(gfx_sprites[SP_FIREFLY], shop_x + 280, shop_y + 15);
+	screen_blit(gfx_sprites[SP_FIREFLY], SHOP_X + 280, SHOP_Y + 15);
 
 	if (game.system == 0)
 		icons = SHOP_DOUBLE_ROCKETS + 1;

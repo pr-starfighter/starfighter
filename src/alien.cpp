@@ -42,8 +42,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 Object alien_defs[CD_MAX];
 Object aliens[ALIEN_MAX];
 
-static const int nChrisKillMessage = 15;
-static const char *chrisKillMessage[nChrisKillMessage] = {
+#define NMSG_CHRIS_KILL 15
+static const char *chrisKillMessage[NMSG_CHRIS_KILL] = {
 	"Take that, robot oppressors!",
 	"Come on, WEAPCO, give me a challenge already!",
 	"Is that all you've got?",
@@ -61,8 +61,8 @@ static const char *chrisKillMessage[nChrisKillMessage] = {
 	"Maybe you should change your name to WEEPCO!"
 };
 
-static const int nPhoebeKillMessage = 11;
-static const char *phoebeKillMessage[nPhoebeKillMessage] = {
+#define NMSG_PHOEBE_KILL 11
+static const char *phoebeKillMessage[NMSG_PHOEBE_KILL] = {
 	"I got another one!",
 	"Target destroyed!",
 	"One more for me!",
@@ -76,8 +76,8 @@ static const char *phoebeKillMessage[nPhoebeKillMessage] = {
 	"I got it!"
 };
 
-static const int nUrsulaKillMessage = 14;
-static const char *ursulaKillMessage[nUrsulaKillMessage] = {
+#define NMSG_URSULA_KILL 14
+static const char *ursulaKillMessage[NMSG_URSULA_KILL] = {
 	"Kicked your ass!",
 	"You ain't so tough!",
 	"I was always a better WEAPCO pilot than you!",
@@ -1788,7 +1788,7 @@ void alien_destroy(Object *alien, Object *attacker)
 			if (CHANCE(1 / 16.) && (alien->flags & FL_WEAPCO) &&
 				(!(alien->flags & FL_NOBANTER)))
 			{
-				r = rand() % nChrisKillMessage;
+				r = rand() % NMSG_CHRIS_KILL;
 				radio_setMessage(FS_CHRIS, chrisKillMessage[r], 0);
 			}
 		}
@@ -1798,7 +1798,7 @@ void alien_destroy(Object *alien, Object *attacker)
 			if (CHANCE(1 / 8.) && (alien-> flags & FL_WEAPCO) &&
 				(!(alien->flags & FL_NOBANTER)))
 			{
-				r = rand() % nPhoebeKillMessage;
+				r = rand() % NMSG_PHOEBE_KILL;
 				radio_setMessage(FS_PHOEBE, phoebeKillMessage[r], 0);
 			}
 		}
@@ -1808,7 +1808,7 @@ void alien_destroy(Object *alien, Object *attacker)
 			if (CHANCE(1 / 8.) && (alien-> flags & FL_WEAPCO) &&
 				(!(alien->flags & FL_NOBANTER)))
 			{
-				r = rand() % nUrsulaKillMessage;
+				r = rand() % NMSG_URSULA_KILL;
 				radio_setMessage(FS_URSULA, ursulaKillMessage[r], 0);
 			}
 		}
@@ -1943,3 +1943,7 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 			alien->systemPower = alien->maxShield;
 	}
 }
+
+#undef NMSG_CHRIS_KILL
+#undef NMSG_PHOEBE_KILL
+#undef NMSG_URSULA_KILL

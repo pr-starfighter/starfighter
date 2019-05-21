@@ -62,14 +62,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DEFAULT_SCREEN_WIDTH MAX(SCREEN_WIDTH, 640)
 #define DEFAULT_SCREEN_HEIGHT MAX(SCREEN_HEIGHT, 480)
 #define STARS_NUM 200
-const int xViewBorder = 100;
-const int yViewBorder = 100;
-const float cameraMaxSpeed = 3.;
-const int maxHoming = 20;
-const int maxDoubleHoming = 15;
-const int maxMicroHoming = 10;
-
-const int rayDamageDelay = 10;
+#define X_VIEW_BORDER 100
+#define Y_VIEW_BORDER 100
+#define CAMERA_MAX_SPEED 3.
+#define MAX_HOMING 20
+#define MAX_DOUBLE_HOMING 15
+#define MAX_MICRO_HOMING 10
+#define RAY_DAMAGE_DELAY 10
 
 // Object Flags
 #define FL_WEAPCO 1

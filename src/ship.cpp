@@ -176,7 +176,7 @@ void ship_fireRay(Object *ship)
 						player.image[0]->h, ray.x, ray.y, ray.w, ray.h) &&
 					(!engine.cheatShield) && (engine.missionCompleteTimer == 0))
 			{
-				player_damage(1, rayDamageDelay);
+				player_damage(1, RAY_DAMAGE_DELAY);
 
 				explosion_add(player.x, player.y, SP_SMALL_EXPLOSION);
 				audio_playSound(SFX_HIT, player.x, player.y);

@@ -63,39 +63,39 @@ static Star stars[STARS_NUM];
 static Uint32 frameLimit = 0;
 static int thirds = 0;
 
-static const int nKlineInsult = 3;
-static const char *klineInsult[nKlineInsult] = {
+#define NMSG_KLINE_INSULT 3
+static const char *klineInsult[NMSG_KLINE_INSULT] = {
 	"Pathetic.", "How very disappointing...", "Heroic. And stupid."
 };
 
-static const int nKlineVenusInsult = 2;
-static const char *klineVenusInsult[nKlineVenusInsult] = {
+#define NMSG_KLINE_VENUS_INSULT 2
+static const char *klineVenusInsult[NMSG_KLINE_VENUS_INSULT] = {
 	"Fool.", "And now you're nothing but a DEAD hero."
 };
 
-static const int nPhoebePlayerHitMessage = 3;
-static const char *phoebePlayerHitMessage[nPhoebePlayerHitMessage] = {
+#define NMSG_PHOEBE_PLAYER_HIT 3
+static const char *phoebePlayerHitMessage[NMSG_PHOEBE_PLAYER_HIT] = {
 	"Oops! Sorry!",
 	"Whoops! Are you OK, Chris?",
 	"Oh, sorry! I didn't see you there!"
 };
 
-static const int nUrsulaPlayerHitMessage = 3;
-static const char *ursulaPlayerHitMessage[nUrsulaPlayerHitMessage] = {
+#define NMSG_URSULA_PLAYER_HIT 3
+static const char *ursulaPlayerHitMessage[NMSG_URSULA_PLAYER_HIT] = {
 	"Get out of the way!",
 	"Don't fly into my missiles!",
 	"Dammit, Chris, you made me miss!"
 };
 
-static const int nPlayerPhoebeHitMessage = 3;
-static const char *playerPhoebeHitMessage[nPlayerPhoebeHitMessage] = {
+#define NMSG_PLAYER_PHOEBE_HIT 3
+static const char *playerPhoebeHitMessage[NMSG_PLAYER_PHOEBE_HIT] = {
 	"OW! I hope that was an accident!",
 	"Chris, please be more careful!",
 	"Ouch! What are you shooting at me for?"
 };
 
-static const int nPlayerUrsulaHitMessage = 5;
-static const char *playerUrsulaHitMessage[nPlayerUrsulaHitMessage] = {
+#define NMSG_PLAYER_URSULA_HIT 5
+static const char *playerUrsulaHitMessage[NMSG_PLAYER_URSULA_HIT] = {
 	"I am NOT your enemy!",
 	"Hey! Watch it!",
 	"What are you doing?! Shoot THEM!",
@@ -727,9 +727,9 @@ static void game_doBullets()
 						{
 							game.hits++;
 							if (aliens[i].classDef == CD_PHOEBE)
-								radio_setMessage(FS_PHOEBE, playerPhoebeHitMessage[rand() % nPlayerPhoebeHitMessage], 0);
+								radio_setMessage(FS_PHOEBE, playerPhoebeHitMessage[rand() % NMSG_PLAYER_PHOEBE_HIT], 0);
 							else if (aliens[i].classDef == CD_URSULA)
-								radio_setMessage(FS_URSULA, playerUrsulaHitMessage[rand() % nPlayerUrsulaHitMessage], 0);
+								radio_setMessage(FS_URSULA, playerUrsulaHitMessage[rand() % NMSG_PLAYER_URSULA_HIT], 0);
 						}
 
 						if (!(aliens[i].flags & FL_IMMORTAL))
@@ -790,11 +790,11 @@ static void game_doBullets()
 					{
 						if (bullet->owner->classDef == CD_PHOEBE)
 						{
-							radio_setMessage(FS_PHOEBE, phoebePlayerHitMessage[rand() % nPhoebePlayerHitMessage], 0);
+							radio_setMessage(FS_PHOEBE, phoebePlayerHitMessage[rand() % NMSG_PHOEBE_PLAYER_HIT], 0);
 						}
 						else if (bullet->owner->classDef == CD_URSULA)
 						{
-							radio_setMessage(FS_URSULA, ursulaPlayerHitMessage[rand() % nUrsulaPlayerHitMessage], 0);
+							radio_setMessage(FS_URSULA, ursulaPlayerHitMessage[rand() % NMSG_URSULA_PLAYER_HIT], 0);
 						}
 					}
 
@@ -1439,15 +1439,15 @@ static void game_doPlayer()
 				{
 					if (xmoved)
 					{
-						if (player.x < xViewBorder)
+						if (player.x < X_VIEW_BORDER)
 						{
-							engine.smx += xViewBorder - player.x;
-							player.x = xViewBorder;
+							engine.smx += X_VIEW_BORDER - player.x;
+							player.x = X_VIEW_BORDER;
 						}
-						else if (player.x > screen->w - xViewBorder)
+						else if (player.x > screen->w - X_VIEW_BORDER)
 						{
-							engine.smx += (screen->w - xViewBorder) - player.x;
-							player.x = screen->w - xViewBorder;
+							engine.smx += (screen->w - X_VIEW_BORDER) - player.x;
+							player.x = screen->w - X_VIEW_BORDER;
 						}
 					}
 					else if (game.difficulty != DIFFICULTY_ORIGINAL)
@@ -1455,13 +1455,13 @@ static void game_doPlayer()
 						cd = player.x - screen->w / 2;
 						if (cd < 0)
 						{
-							cc = MAX(cd / 10, MAX(0, engine.ssx) - cameraMaxSpeed);
+							cc = MAX(cd / 10, MAX(0, engine.ssx) - CAMERA_MAX_SPEED);
 							player.x -= cc;
 							engine.smx -= cc;
 						}
 						else if (cd > 0)
 						{
-							cc = MIN(cd / 10, cameraMaxSpeed + MIN(0, engine.ssx));
+							cc = MIN(cd / 10, CAMERA_MAX_SPEED + MIN(0, engine.ssx));
 							player.x -= cc;
 							engine.smx -= cc;
 						}
@@ -1469,15 +1469,15 @@ static void game_doPlayer()
 
 					if (ymoved)
 					{
-						if (player.y < yViewBorder)
+						if (player.y < Y_VIEW_BORDER)
 						{
-							engine.smy += yViewBorder - player.y;
-							player.y = yViewBorder;
+							engine.smy += Y_VIEW_BORDER - player.y;
+							player.y = Y_VIEW_BORDER;
 						}
-						else if (player.y > screen->h - yViewBorder)
+						else if (player.y > screen->h - Y_VIEW_BORDER)
 						{
-							engine.smy += (screen->h - yViewBorder) - player.y;
-							player.y = screen->h - yViewBorder;
+							engine.smy += (screen->h - Y_VIEW_BORDER) - player.y;
+							player.y = screen->h - Y_VIEW_BORDER;
 						}
 					}
 					else if (game.difficulty != DIFFICULTY_ORIGINAL)
@@ -1485,13 +1485,13 @@ static void game_doPlayer()
 						cd = player.y - screen->h / 2;
 						if (cd < 0)
 						{
-							cc = MAX(cd / 10, MAX(0, engine.ssy) - cameraMaxSpeed);
+							cc = MAX(cd / 10, MAX(0, engine.ssy) - CAMERA_MAX_SPEED);
 							player.y -= cc;
 							engine.smy -= cc;
 						}
 						else if (cd > 0)
 						{
-							cc = MIN(cd / 10, cameraMaxSpeed + MIN(0, engine.ssy));
+							cc = MIN(cd / 10, CAMERA_MAX_SPEED + MIN(0, engine.ssy));
 							player.y -= cc;
 							engine.smy -= cc;
 						}
@@ -1499,8 +1499,8 @@ static void game_doPlayer()
 				}
 				else
 				{
-					LIMIT(player.x, xViewBorder, screen->w - xViewBorder);
-					LIMIT(player.y, yViewBorder, screen->h - yViewBorder);
+					LIMIT(player.x, X_VIEW_BORDER, screen->w - X_VIEW_BORDER);
+					LIMIT(player.y, Y_VIEW_BORDER, screen->h - Y_VIEW_BORDER);
 				}
 			}
 
@@ -1531,9 +1531,9 @@ static void game_doPlayer()
 				if (aliens[ALIEN_KLINE].active)
 				{
 					if (game.area == MISN_VENUS)
-						radio_setMessage(FS_KLINE, klineVenusInsult[rand() % nKlineVenusInsult], 1);
+						radio_setMessage(FS_KLINE, klineVenusInsult[rand() % NMSG_KLINE_VENUS_INSULT], 1);
 					else
-						radio_setMessage(FS_KLINE, klineInsult[rand() % nKlineInsult], 1);
+						radio_setMessage(FS_KLINE, klineInsult[rand() % NMSG_KLINE_INSULT], 1);
 				}
 				else if ((aliens[ALIEN_BOSS].active) && (aliens[ALIEN_BOSS].classDef == CD_KRASS))
 				{
@@ -1560,8 +1560,8 @@ static void game_doPlayer()
 		}
 	}
 
-	LIMIT(engine.ssx, -cameraMaxSpeed, cameraMaxSpeed);
-	LIMIT(engine.ssy, -cameraMaxSpeed, cameraMaxSpeed);
+	LIMIT(engine.ssx, -CAMERA_MAX_SPEED, CAMERA_MAX_SPEED);
+	LIMIT(engine.ssy, -CAMERA_MAX_SPEED, CAMERA_MAX_SPEED);
 
 	// Specific for the mission were you have to chase the Executive Transport
 	if (((game.area == MISN_ELLESH) && (player.shield > 0)) ||
@@ -2580,3 +2580,10 @@ int game_mainLoop()
 
 	return rtn;
 }
+
+#undef NMSG_KLINE_INSULT
+#undef NMSG_KLINE_VENUS_INSULT
+#undef NMSG_PHOEBE_PLAYER_HIT
+#undef NMSG_URSULA_PLAYER_HIT
+#undef NMSG_PLAYER_PHOEBE_HIT
+#undef NMSG_PLAYER_URSULA_HIT
