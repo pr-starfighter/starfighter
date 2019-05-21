@@ -92,8 +92,16 @@ void ship_fireBullet(Object *ship, int weaponIndex)
 
 	if (theWeapon->flags & WF_SPREAD && theWeapon->ammo[0] >= 3)
 	{
-		bullet_add(theWeapon, ship, y * 2, -1);
-		bullet_add(theWeapon, ship, y * 4, 1);
+		if (game.difficulty == DIFFICULTY_ORIGINAL)
+		{
+			bullet_add(theWeapon, ship, y * 1, -2);
+			bullet_add(theWeapon, ship, y * 5, 2);
+		}
+		else
+		{
+			bullet_add(theWeapon, ship, y * 2, -1);
+			bullet_add(theWeapon, ship, y * 4, 1);
+		}
 
 		if (theWeapon->ammo[0] != 4)
 			bullet_add(theWeapon, ship, y * 3, 0);
@@ -105,8 +113,16 @@ void ship_fireBullet(Object *ship, int weaponIndex)
 
 		if (theWeapon->ammo[0] == 5)
 		{
-			bullet_add(theWeapon, ship, y * 1, -2);
-			bullet_add(theWeapon, ship, y * 5, 2);
+			if (game.difficulty == DIFFICULTY_ORIGINAL)
+			{
+				bullet_add(theWeapon, ship, y * 2, -1);
+				bullet_add(theWeapon, ship, y * 4, 1);
+			}
+			else
+			{
+				bullet_add(theWeapon, ship, y * 1, -2);
+				bullet_add(theWeapon, ship, y * 5, 2);
+			}
 		}
 	}
 	else
