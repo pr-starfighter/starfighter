@@ -232,8 +232,33 @@ These are set only once.
 static void intermission_setStatusLines()
 {
 	char string[50];
+	char difficulty[50];
 	int timeTaken = game.timeTaken;
 	int y;
+
+	switch (game.difficulty)
+	{
+		case DIFFICULTY_EASY:
+			strcpy(difficulty, "Easy");
+			break;
+		case DIFFICULTY_NORMAL:
+			strcpy(difficulty, "Normal");
+			break;
+		case DIFFICULTY_HARD:
+			strcpy(difficulty, "Hard");
+			break;
+		case DIFFICULTY_NIGHTMARE:
+			strcpy(difficulty, "Nightmare!");
+			break;
+		case DIFFICULTY_ORIGINAL:
+			strcpy(difficulty, "Classic");
+			break;
+		default:
+			strcpy(difficulty, "???");
+	}
+	
+	sprintf(string, "Difficulty : %s", difficulty);
+	gfx_createTextObject(TS_STATUS_DIFFICULTY, string, 0, 0, FONT_WHITE);
 
 	sprintf(string, "Shots Fired : %d", game.shots);
 	gfx_createTextObject(TS_SHOTS_FIRED, string, 0, 0, FONT_WHITE);
