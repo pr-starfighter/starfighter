@@ -1430,9 +1430,7 @@ static void game_doPlayer()
 
 			if (engine.done == 0)
 			{
-				if ((game.difficulty != DIFFICULTY_ORIGINAL) ||
-					((game.area != MISN_ELLESH) &&
-						(game.area != MISN_MARS)))
+				if (game.difficulty != DIFFICULTY_ORIGINAL)
 				{
 					if (xmoved)
 					{
@@ -1447,7 +1445,7 @@ static void game_doPlayer()
 							player.x = screen->w - X_VIEW_BORDER;
 						}
 					}
-					else if (game.difficulty != DIFFICULTY_ORIGINAL)
+					else
 					{
 						cd = player.x - screen->w / 2;
 						if (cd < 0)
@@ -1477,7 +1475,7 @@ static void game_doPlayer()
 							player.y = screen->h - Y_VIEW_BORDER;
 						}
 					}
-					else if (game.difficulty != DIFFICULTY_ORIGINAL)
+					else
 					{
 						cd = player.y - screen->h / 2;
 						if (cd < 0)
