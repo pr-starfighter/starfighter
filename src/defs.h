@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012 Guus Sliepen
-Copyright (C) 2012, 2015-2017 Julie Marchant <onpon4@riseup.net>
+Copyright (C) 2012, 2015-2019 Julie Marchant <onpon4@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -547,6 +547,7 @@ enum {
 
 	// Status
 	TS_STATUS_HEADER,
+	TS_STATUS_DIFFICULTY,
 	TS_SHOTS_FIRED,
 	TS_HITS_SCORED,
 	TS_ACCURACY,
