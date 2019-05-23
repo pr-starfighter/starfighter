@@ -28,7 +28,9 @@ compared to the original:
 
 * There are several gameplay changes. These changes were mostly done to
   balance the game better. However, if you want the original experience,
-  "Classic" difficulty approximates it as closely as possible.
+  "Classic" difficulty emulates it as closely as possible (see the
+  CLASSIC DIFFICULTY DIFFERENCES section to read about the few
+  differences that exist).
 
 * Much of the dialog has been changed. There are various reasons for
   this; some of these include fixing bad writing, making the dialog
@@ -44,6 +46,97 @@ compared to the original:
   else. I'll let you figure out what the new method to access the cheat
   menu is. :)
 
+------------------------------------------------------------------------
+
+CLASSIC DIFFICULTY DIFFERENCES
+
+Classic difficulty is designed to emulate the experience of version 1.1
+of the game (the last version released by Parallel Realities) as closely
+as possible. However, there are a few minor differences in addition to
+the changes to graphics, sound, and dialog:
+
+* Where targets are is shown via arrows at the edge of the screen, and
+  all targets are indicated in this way; the main target is indicated
+  with text that says "Target", unless the target is one of the cast of
+  named characters, and all named characters have their arrows indicated
+  with their respective arrows.  In contrast, version 1.1 only had an
+  optional arrow that rested in the middle of the screen and pointed in
+  the general direction of the active (main) target.
+
+* The active (main) target of the Poswic mission is Sid Wilson.  In
+  version 1.1, the active target was instead the executive transport.
+  The practical effect of this is that Sid Wilson's shield is indicated
+  in this mission, whereas it wasn't in version 1.1.
+
+* Attachments to "boss"-like enemies have damage inflicted on them
+  immediately applied to the boss itself.  Version 1.1 did not do this
+  until the attachment was completely destroyed.
+
+* In the Venus mission, Kline starts some distance away directly to the
+  right and immediately begins combat.  In contrast, version 1.1 spawned
+  Kline much closer to the player (to the point where his ship was
+  visible on the screen) and a bit further down, unmoving until a string
+  of dialog boxes finished being displayed.  This change was made to
+  accommodate new music and dialog.
+
+* Similar to the above, the time spent to accommodate Kline's banter
+  when he first appears in the Elamale mission is different from version
+  1.1 in order to accommodate new music and dialog.
+
+* Version 1.1 had a bug in the shop which caused selling something to
+  redeem half the cost of the next item, rather than half the cost of
+  the item being sold. This led to the last item in a series being sold
+  for nothing (actually a result of undefined behavior), and it also
+  allowed the player to continuously gain money by buying and selling
+  the first permanent cooling upgrade.  This bug is fixed in the current
+  release (including Classic difficulty).
+
+* Version 1.1 had some overflow bugs, most notably with plasma ammo.
+  The effect of this bug was that you could sometimes gain too much
+  plasma ammo, resulting in the recorded amount being lower than before
+  the powerup was picked up.  These bugs are fixed in the current
+  release (including Classic difficulty).
+
+* The Odeon mission in version 1.1 had a broken event with undefined
+  behavior.  Players saw it as a message from Sid Wilson saying that
+  Ursula was running away, followed by an error message.  In fact the
+  source code never defined a fail condition for Ursula running away, so
+  if the event had been defined properly, all it would have done is
+  render the mission unwinnable.  The current release simply removes the
+  broken event entirely (including for Classic difficulty).
+
+------------------------------------------------------------------------
+
+GENERATING CONFIGURE SCRIPT
+
+If you contribute to Project: Starfighter's source code, you will need
+to know how to generate a configure script for compiling the program.
+NOTE: This is for developers only. End-users simply compiling releases
+of Starfighter from source can ignore this section and skip straight to
+the COMPILING FROM SOURCE section.
+
+The following components are required to generate the configure script:
+
+* Autoconf
+* Automake
+* pkg-config
+
+Once these dependencies are installed, simply do the following from a
+terminal window:
+
+    autoreconf -vif
+
+The arguments are technically optional, but recommended.
+
+If for some reason you need to remove all of these files from your
+directory, you can do so via the following command (requires Git):
+
+	git clean -fdx
+
+Note: automatically generated files are listed in .gitignore, so you
+generally don't actually have to do this.
+
+------------------------------------------------------------------------
 
 COMPILING FROM SOURCE
 
@@ -53,7 +146,8 @@ Project: Starfighter depends on the following libraries to build:
 * SDL2_image <http://www.libsdl.org/projects/SDL_image/>
 * SDL2_mixer <http://www.libsdl.org/projects/SDL_mixer/>
 
-Once you have all dependencies installed, you can do the following:
+Once you have all dependencies installed, you can do the following from
+a terminal window:
 
     ./configure
     make
