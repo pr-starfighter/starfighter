@@ -77,7 +77,7 @@ the changes to graphics, sound, and dialog:
 
 * Similar to the above, the time spent to accommodate Kline's banter
   when he first appears in the Elamale mission is different from version
-  1.1 in order to accommodate new music and dialog.
+  1.1.
 
 * Version 1.1 had a bug in the shop which caused selling something to
   redeem half the cost of the next item, rather than half the cost of
