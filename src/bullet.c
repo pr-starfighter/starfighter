@@ -34,9 +34,12 @@ void bullet_add(Object *theWeapon, Object *attacker, int y, int dy)
 	int imageIndex;
 	int tempX, tempY, steps;
 
-	bullet = malloc(sizeof(Object));
+	bullet = malloc(sizeof(*bullet));
 	if (bullet == NULL)
+	{
+		engine_warn("Failed to allocate memor for bullet");
 		return;
+	}
 
 	if (attacker == &player)
 		game.shots++;

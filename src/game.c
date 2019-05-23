@@ -233,7 +233,12 @@ static void game_addDebris(int x, int y, int amount)
 
 	for (int i = 0 ; i < amount ; i++)
 	{
-		debris = malloc(sizeof(Object));
+		debris = malloc(sizeof(*debris));
+		if (debris == NULL)
+		{
+			engine_warn("Failed to allocate memory for debris");
+			return;
+		}
 
 		debris->next = NULL;
 		debris->x = x;

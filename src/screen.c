@@ -56,7 +56,14 @@ void screen_drawBackground()
 
 void screen_addBuffer(int x, int y, int w, int h)
 {
-	LinkedRect *rect = malloc(sizeof(LinkedRect));
+	LinkedRect *rect;
+
+	rect = malloc(sizeof(*rect));
+	if (rect == NULL)
+	{
+		engine_warn("Failed to allocate memor for screen buffer");
+		return;
+	}
 
 	rect->next = NULL;
 	rect->x = x;

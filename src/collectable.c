@@ -37,6 +37,7 @@ Create a new collectable item based on supplied arguments.
 void collectable_add(float x, float y, int type, int value, int life)
 {
 	int r;
+	Collectable *collectable;
 
 	if (type == P_ANYTHING)
 	{
@@ -143,7 +144,7 @@ void collectable_add(float x, float y, int type, int value, int life)
 		}
 	}
 
-	Collectable *collectable = malloc(sizeof(Collectable));
+	collectable = malloc(sizeof(*collectable));
 	if (collectable == NULL)
 	{
 		engine_warn("Failed to allocate memory for collectable");

@@ -663,7 +663,12 @@ void title_showCredits()
 	// FIXME: It would be nice for the size of this array to be determined
 	// by the number of lines in the text file. I'm not sure how to do
 	// that at the moment, so just giving it a very large number for now.
-	credit = malloc(sizeof(TextObject) * 300);
+	credit = malloc(300 * sizeof(*credit));
+	if (credit == NULL)
+	{
+		engine_warn("Failed to allocate memory for credits");
+		return;
+	}
 
 	while (fscanf(fp, "%d %[^\n]%*c", &yPos, text) == 2)
 	{
