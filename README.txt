@@ -68,10 +68,6 @@ the changes to graphics, sound, and dialog:
   The practical effect of this is that Sid Wilson's shield is indicated
   in this mission, whereas it wasn't in version 1.1.
 
-* Attachments to "boss"-like enemies have damage inflicted on them
-  immediately applied to the boss itself.  Version 1.1 did not do this
-  until the attachment was completely destroyed.
-
 * In the Venus mission, Kline starts some distance away directly to the
   right and immediately begins combat.  In contrast, version 1.1 spawned
   Kline much closer to the player (to the point where his ship was

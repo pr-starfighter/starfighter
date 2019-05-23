@@ -1878,6 +1878,13 @@ void alien_destroy(Object *alien, Object *attacker)
 
 	audio_playSound(SFX_EXPLOSION, alien->x, alien->y);
 
+	// Chain reaction damage if needed (Classic Difficulty version)
+	if ((game.difficulty == DIFFICULTY_ORIGINAL) &&
+			(alien->owner != alien) && (alien->flags & FL_DAMAGEOWNER))
+	{
+		alien_hurt(alien->owner, attacker, alien->maxShield, 0);
+	}
+
 	if (alien->flags & FL_FRIEND)
 	{
 		if (alien->classDef == CD_PHOEBE)
@@ -1998,7 +2005,8 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 		alien->shield -= damage;
 
 	// Chain reaction damage if needed
-	if ((alien->owner != alien) && (alien->flags & FL_DAMAGEOWNER))
+	if ((game.difficulty != DIFFICULTY_ORIGINAL) &&
+			(alien->owner != alien) && (alien->flags & FL_DAMAGEOWNER))
 	{
 		alien_hurt(alien->owner, attacker, damage, ion);
 	}
