@@ -449,7 +449,7 @@ int title_show()
 					5, screen->h - 60, FONT_WHITE, 0, gfx_background);
 				gfx_renderString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012",
 					5, screen->h - 40, FONT_WHITE, 0, gfx_background);
-				gfx_renderString("Copyright 2015-2017 Julie Marchant",
+				gfx_renderString("Copyright 2015-2019 Julie Marchant",
 					5, screen->h - 20, FONT_WHITE, 0, gfx_background);
 				gfx_renderString(buildVersion, screen->w - 6 - strlen(buildVersion) * 9,
 					screen->h - 20, FONT_WHITE, 0, gfx_background);
