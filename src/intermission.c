@@ -639,8 +639,8 @@ static int intermission_showSystem(float pos, int selectable)
 
 		gfx_drawCircle(screen->w / 2, h / 2, i, screen, darkGrey);
 
-		r.x = int(screen->w / 2 + (sinf(pos) * i));
-		r.y = int(h / 2 + (cosf(pos) * i));
+		r.x = (int)(screen->w / 2 + (sinf(pos) * i));
+		r.y = (int)(h / 2 + (cosf(pos) * i));
 		r.w = h / 50;
 		r.h = h / 50;
 

@@ -6,60 +6,61 @@
 bin_PROGRAMS = starfighter
 
 starfighter_CPPFLAGS = $(STARFIGHTER_CFLAGS) -DDATADIR=\"$(pkgdatadir)\" -Wall
-starfighter_CXXFLAGS = $(SDL_CFLAGS)
+starfighter_CFLAGS = $(SDL_CFLAGS) -lm
 starfighter_LDADD = $(SDL_LIBS)
 
 starfighter_SOURCES = \
-	Starfighter.cpp \
-	alien.cpp \
+	Starfighter.c \
+	alien.c \
 	alien.h \
-	audio.cpp \
+	audio.c \
 	audio.h \
-	bullet.cpp \
+	bullet.c \
 	bullet.h \
-	cargo.cpp \
+	cargo.c \
 	cargo.h \
-	collectable.cpp \
+	collectable.c \
 	collectable.h \
-	colors.cpp \
+	colors.c \
 	colors.h \
-	cutscene.cpp \
+	cutscene.c \
 	cutscene.h \
+	defs.c \
 	defs.h \
-	engine.cpp \
+	engine.c \
 	engine.h \
-	event.cpp \
+	event.c \
 	event.h \
-	explosion.cpp \
+	explosion.c \
 	explosion.h \
-	game.cpp \
+	game.c \
 	game.h \
-	gfx.cpp \
+	gfx.c \
 	gfx.h \
-	info.cpp \
+	info.c \
 	info.h \
-	intermission.cpp \
+	intermission.c \
 	intermission.h \
-	mission.cpp \
+	mission.c \
 	mission.h \
-	player.cpp \
+	player.c \
 	player.h \
-	radio.cpp \
+	radio.c \
 	radio.h \
-	renderer.cpp \
+	renderer.c \
 	renderer.h \
-	save.cpp \
+	save.c \
 	save.h \
-	screen.cpp \
+	screen.c \
 	screen.h \
-	ship.cpp \
+	ship.c \
 	ship.h \
-	shop.cpp \
+	shop.c \
 	shop.h \
 	structs.h \
-	title.cpp \
+	title.c \
 	title.h \
-	weapons.cpp \
+	weapons.c \
 	weapons.h \
-	window.cpp \
+	window.c \
 	window.h
