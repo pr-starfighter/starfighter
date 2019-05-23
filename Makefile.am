@@ -6,6 +6,5 @@
 SUBDIRS = src misc
 
 dist_doc_DATA = README.txt COPYING LICENSES
-nobase_dist_doc_DATA = docs/*
 
 nobase_pkgdata_DATA = data/* gfx/* music/* sound/*

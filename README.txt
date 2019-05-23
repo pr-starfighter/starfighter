@@ -6,9 +6,7 @@ information. This file is offered as-is, without any warranty.
 ========================================================================
 
 
-Thank you for downloading Project: Starfighter! This readme is just a
-basic overview of the game and instructions for building; for
-instructions on how to play the game, see docs/index.html.
+Thank you for downloading Project: Starfighter!
 
 Project: Starfighter is a space shoot 'em up game originally developed
 by Parallel Realities in 2002, and released in 2003. You assume the role
@@ -162,3 +160,23 @@ the game.
 
 If you choose not to use the "make install" command, you can find the
 "starfighter" binary in the "src" directory.
+
+------------------------------------------------------------------------
+
+PLAYING THE GAME
+
+The basic controls are the arrow keys, Ctrl, Space, Shift, and Escape.
+Other keys on they keyboard can also be used in case of keyjamming or if
+you simply prefer other controls; alternative keys include the keypad,
+ZXC, ASD, <>?, and 123. A gamepad or joystick can also be used.
+
+The basic objective of Project: Starfighter is simply to complete all
+missions. Exactly what entails completing a mission varies and is
+explained in-game.
+
+In the system overview screen, various sections can be accessed by
+clicking the icons on the bottom of the screen. You can also use the
+keyboard or a gamepad if you prefer.
+
+Other than that, have fun, and good luck!
+
