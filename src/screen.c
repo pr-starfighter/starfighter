@@ -56,7 +56,7 @@ void screen_drawBackground()
 
 void screen_addBuffer(int x, int y, int w, int h)
 {
-	LinkedRect *rect = (LinkedRect*)malloc(sizeof(LinkedRect));
+	LinkedRect *rect = malloc(sizeof(LinkedRect));
 
 	rect->next = NULL;
 	rect->x = x;

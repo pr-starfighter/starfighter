@@ -759,9 +759,7 @@ enum {
 };
 
 extern const char * const systemNames[];
-
 extern const char * const systemBackground[];
-
 extern const int rate2reload[6];
 
 #endif

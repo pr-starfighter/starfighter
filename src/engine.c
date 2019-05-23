@@ -60,7 +60,7 @@ void engine_init()
 	engine.smx = 0;
 	engine.smy = 0;
 
-	engine.bulletHead = (Object*)malloc(sizeof(Object));
+	engine.bulletHead = malloc(sizeof(Object));
 	if (engine.bulletHead == NULL)
 	{
 		engine_error("Failed to allocate memory for bullet head.");
@@ -68,7 +68,7 @@ void engine_init()
 	engine.bulletHead->next = NULL;
 	engine.bulletTail = engine.bulletHead;
 
-	engine.explosionHead = (Object*)malloc(sizeof(Object));
+	engine.explosionHead = malloc(sizeof(Object));
 	if (engine.explosionHead == NULL)
 	{
 		engine_error("Failed to allocate memory for explosion head.");
@@ -76,7 +76,7 @@ void engine_init()
 	engine.explosionHead->next = NULL;
 	engine.explosionTail = engine.explosionHead;
 
-	engine.collectableHead = (Collectable*)malloc(sizeof(Collectable));
+	engine.collectableHead = malloc(sizeof(Collectable));
 	if (engine.collectableHead == NULL)
 	{
 		engine_error("Failed to allocate memory for collectable head.");
@@ -84,7 +84,7 @@ void engine_init()
 	engine.collectableHead->next = NULL;
 	engine.collectableTail = engine.collectableHead;
 
-	engine.debrisHead = (Object*)malloc(sizeof(Object));
+	engine.debrisHead = malloc(sizeof(Object));
 	if (engine.debrisHead == NULL)
 	{
 		engine_error("Failed to allocate memory for debris head.");

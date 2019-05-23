@@ -233,7 +233,7 @@ static void game_addDebris(int x, int y, int amount)
 
 	for (int i = 0 ; i < amount ; i++)
 	{
-		debris = (Object*)malloc(sizeof(Object));
+		debris = malloc(sizeof(Object));
 
 		debris->next = NULL;
 		debris->x = x;

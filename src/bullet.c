@@ -34,7 +34,7 @@ void bullet_add(Object *theWeapon, Object *attacker, int y, int dy)
 	int imageIndex;
 	int tempX, tempY, steps;
 
-	bullet = (Object*)malloc(sizeof(Object));
+	bullet = malloc(sizeof(Object));
 	if (bullet == NULL)
 		return;
 

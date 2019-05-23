@@ -1187,7 +1187,7 @@ int alien_add()
 	int *alienArray;
 	int numberOfAliens = 1;
 
-	alienArray = (int*)malloc(8 * sizeof(int));
+	alienArray = malloc(8 * sizeof(int));
 	if (alienArray == NULL)
 	{
 		engine_warn("WARNING: Failed to allocate memory for aliens");
