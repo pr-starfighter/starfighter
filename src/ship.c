@@ -193,14 +193,7 @@ void ship_fireRay(Object *ship)
 					(!engine.cheatShield) && (engine.missionCompleteTimer == 0))
 			{
 				player_damage(1, RAY_DAMAGE_DELAY);
-
 				explosion_add(player.x, player.y, SP_SMALL_EXPLOSION);
-				audio_playSound(SFX_HIT, player.x, player.y);
-				if (player.shield < 1)
-				{
-					audio_playSound(SFX_DEATH, player.x, player.y);
-					audio_playSound(SFX_EXPLOSION, player.x, player.y);
-				}
 			}
 		}
 	}

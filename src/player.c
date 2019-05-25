@@ -84,6 +84,12 @@ void player_setTarget(int index)
 	engine.targetShield /= aliens[index].shield;
 }
 
+/*
+Attempt to damage the player by ``amount``.  If ``delay`` is specified,
+delay any damage dealt by that number of frames (i.e. require that
+number of frames of continuous damage before it registers).
+Return 1 if damage is inflicted, 0 otherwise.
+*/
 void player_damage(int amount, int delay)
 {
 	int oldshield = player.shield;
@@ -100,32 +106,35 @@ void player_damage(int amount, int delay)
 				(player_damageDelay >= delay))
 		{
 			player.shield -= amount;
+
+			LIMIT(player.shield, 0, player.maxShield);
+			player.hit = 5; // Damage flash timer
+			audio_playSound(SFX_HIT, player.x, player.y);
+
+			// Damage tiers (not in Classic mode)
+			if ((oldshield > engine.lowShield) &&
+					(player.shield <= engine.lowShield))
+			{
+				info_setLine("!!! WARNING: SHIELD LOW !!!", FONT_RED);
+				if (game.difficulty != DIFFICULTY_ORIGINAL)
+				{
+					player.shield = engine.lowShield;
+					player_damageDelay = 0;
+				}
+			}
+			else if ((oldshield > 1) && (player.shield <= 1))
+			{
+				info_setLine("!!! WARNING: SHIELD CRITICAL !!!", FONT_RED);
+				if (game.difficulty != DIFFICULTY_ORIGINAL)
+				{
+					player.shield = 1;
+					player_damageDelay = 0;
+				}
+			}
 		}
 		else
+		{
 			player_damageDelay += amount;
-
-		LIMIT(player.shield, 0, player.maxShield);
-		player.hit = 5; // Damage flash timer
-
-		// Damage tiers (not in Classic mode)
-		if ((oldshield > engine.lowShield) &&
-				(player.shield <= engine.lowShield))
-		{
-			info_setLine("!!! WARNING: SHIELD LOW !!!", FONT_RED);
-			if (game.difficulty != DIFFICULTY_ORIGINAL)
-			{
-				player.shield = engine.lowShield;
-				player_damageDelay = 0;
-			}
-		}
-		else if ((oldshield > 1) && (player.shield <= 1))
-		{
-			info_setLine("!!! WARNING: SHIELD CRITICAL !!!", FONT_RED);
-			if (game.difficulty != DIFFICULTY_ORIGINAL)
-			{
-				player.shield = 1;
-				player_damageDelay = 0;
-			}
 		}
 	}
 }

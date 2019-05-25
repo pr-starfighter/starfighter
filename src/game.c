@@ -819,8 +819,6 @@ static void game_doBullets()
 						bullet->shield = 0;
 					}
 
-					audio_playSound(SFX_HIT, player.x, player.y);
-
 					if (bullet->id == WT_ROCKET)
 						explosion_add(bullet->x, bullet->y, SP_BIG_EXPLOSION);
 					else

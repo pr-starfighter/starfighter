@@ -175,7 +175,7 @@ Show a warning. Used when non-fatal things go wrong.
 */
 void engine_warn(const char *msg)
 {
-	printf("WARNING: %s", msg);
+	printf("WARNING: %s\n", msg);
 }
 
 /*
@@ -184,7 +184,7 @@ never happen.
 */
 void engine_error(const char *msg)
 {
-	printf("ERROR: %s\nAborting", msg);
+	printf("ERROR: %s\nAborting\n", msg);
 	exit(1);
 }
 

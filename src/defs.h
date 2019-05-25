@@ -68,7 +68,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MAX_HOMING 20
 #define MAX_DOUBLE_HOMING (game.difficulty != DIFFICULTY_ORIGINAL ? 15 : 10)
 #define MAX_MICRO_HOMING 10
-#define RAY_DAMAGE_DELAY 10
+#define RAY_DAMAGE_DELAY 5
 
 // Object Flags
 #define FL_WEAPCO 1
