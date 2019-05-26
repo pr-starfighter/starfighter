@@ -50,18 +50,28 @@ CLASSIC DIFFICULTY DIFFERENCES
 
 Classic difficulty is designed to emulate the experience of version 1.1
 of the game (the last version released by Parallel Realities) as closely
-as possible. However, there are a few minor differences in addition to
-the changes to graphics, sound, and dialog:
+as possible. However, there are several minor differences in addition to
+the changes to graphics, sound, and dialog.  Here you can fine a list of
+notable differences.
 
-* The current target is shown by an arrow at the edge of the screen which
-  precisely indicates the target's position.  In contrast, version 1.1's
-  optional target arrow rested in the middle of the screen and only
-  pointed in the general direction (north, south, east, west, northwest,
-  northeast, southwest, southeast) of the target.
+* The arrow pointing toward the current target is colored green if the
+  target is an ally, whereas version 1.1 always showed a red arrow.
+  The arrow is also positioned lower than in version 1.1 and does not
+  disappear when radio messages are broadcast.
+
+* Life bars for named characters are labeled with the respective
+  character's name instead of "Target".
 
 * Selling your secondary weapon leaves you with standard Rockets.  In
   version 1.1, it instead left you with no secondary weapon at all (with
   no way to gain standard Rockets back).
+
+* If you buy a secondary weapon while one other than standard Rockets
+  is already equipped, the currently equipped secondary weapon is
+  automatically sold for you (which gives you money equal to half of
+  said weapon's cost). In version 1.1, the old secondary weapon would
+  simply disappear in this case, meaning the money was lost unless you
+  explicitly used the "Sell" button.
 
 * Travel in Spirit works the same as in every other system, except that
   there is no chance of interceptions in Classic difficulty.  Version
@@ -79,41 +89,19 @@ the changes to graphics, sound, and dialog:
   when he first appears in the Elamale mission is different from version
   1.1.
 
-* Version 1.1 had a bug in the shop which caused selling something to
-  redeem half the cost of the next item, rather than half the cost of
-  the item being sold. This led to the last item in a series being sold
-  for nothing (actually a result of undefined behavior), and it also
-  allowed the player to continuously gain money by buying and selling
-  the first permanent cooling upgrade.  This bug is fixed in the current
-  release (including Classic difficulty).
+* Several bugs present in version 1.1 have been fixed. Many of these
+  bugs affected gameplay in notable ways; such bugs include:
 
-* Version 1.1 had some overflow bugs, most notably with plasma ammo.
-  The effect of this bug was that you could sometimes gain too much
-  plasma ammo, resulting in the recorded amount being lower than before
-  the powerup was picked up.  These bugs are fixed in the current
-  release (including Classic difficulty).
-
-* A bug made it possible to occasionally get damaged after completing a
-  mission, during the warp out sequence (the code was designed to
-  protect against this, but a mistake led to one case being uncovered).
-  The current release fixes this bug.
-
-* The Odeon mission in version 1.1 had a broken event with undefined
-  behavior.  Players saw it as a message from Sid Wilson saying that
-  Ursula was running away, followed by an error message.  In fact the
-  source code never defined a fail condition for Ursula running away, so
-  if the event had been defined properly, all it would have done is
-  render the mission unwinnable.  The current release simply removes the
-  broken event entirely (including for Classic difficulty).
-
-* The "unlimited time" cheat option in version 1.1 caused the Mars
-  mission to be unwinnable.  The current release fixes that by allowing
-  the timer to count down on the Mars mission only while this cheat is
-  enabled.
-
-* The code checking for rescued slaves for the interception mission in
-  Eyananth failed to work after the interception was cleared in version
-  1.1.  This bug is fixed in the current release.
+  * A bug in the shop that caused goods to be sold at the wrong price
+    (notably exploitable to gain infinite cash by buying and selling
+    the permanent cooling upgrade)
+  * Overflow bugs that caused various numbers (especially plasma ammo)
+    to "wrap around" to zero (leading to cases where gaining plasma
+    ammo would cause you to lose plasma ammo instead)
+  * A broken event in the Odeon mission that showed a odd error message
+  * A bug that caused slaves rescued after the interception is destroyed
+    to not count toward the total for the purpose of the Eyananth
+    interception mission
 
 ------------------------------------------------------------------------
 

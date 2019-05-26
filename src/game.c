@@ -1742,32 +1742,45 @@ static void game_doArrow(int i)
 
 	if (arrow != -1)
 	{
-		arrowX = aliens[i].x + aliens[i].image[0]->w / 2 - gfx_sprites[arrow]->w;
-		arrowX = MAX(0, MIN(arrowX, screen->w - gfx_sprites[arrow]->w));
-		arrowY = aliens[i].y + aliens[i].image[0]->h / 2 - gfx_sprites[arrow]->h;
-		arrowY = MAX(0, MIN(arrowY, screen->h - gfx_sprites[arrow]->h));
-		screen_blit(gfx_sprites[arrow], arrowX, arrowY);
-
-		if (i == ALIEN_SID)
-			indicator = SP_INDICATOR_SID;
-		else if (i == ALIEN_PHOEBE)
-			indicator = SP_INDICATOR_PHOEBE;
-		else if (i == ALIEN_URSULA)
-			indicator = SP_INDICATOR_URSULA;
-		else if (i == ALIEN_KLINE)
-			indicator = SP_INDICATOR_KLINE;
-		else if (i == engine.targetIndex)
-			indicator = SP_INDICATOR_TARGET;
-
-		if (indicator != -1)
+		if (game.difficulty == DIFFICULTY_ORIGINAL)
 		{
-			indicatorX = arrowX + gfx_sprites[arrow]->w / 2 - gfx_sprites[indicator]->w / 2;
-			indicatorX = MAX(indicatorX, gfx_sprites[arrow]->w + 5);
-			indicatorX = MIN(indicatorX, screen->w - gfx_sprites[arrow]->w - gfx_sprites[indicator]->w - 5);
-			indicatorY = arrowY + gfx_sprites[arrow]->h / 2 - gfx_sprites[indicator]->h / 2;
-			indicatorY = MAX(indicatorY, gfx_sprites[arrow]->h + 5);
-			indicatorY = MIN(indicatorY, screen->h - gfx_sprites[arrow]->h - gfx_sprites[indicator]->h - 5);
+			indicator = SP_INDICATOR_TARGET;
+			indicatorX = (screen->w / 2) - (gfx_sprites[indicator]->w / 2);
+			indicatorY = 120;
+			arrowX = indicatorX + gfx_sprites[indicator]->w / 2 - (gfx_sprites[arrow]->w / 2);
+			arrowY = indicatorY + gfx_sprites[indicator]->h + 5;
+			screen_blit(gfx_sprites[arrow], arrowX, arrowY);
 			screen_blit(gfx_sprites[indicator], indicatorX, indicatorY);
+		}
+		else
+		{
+			arrowX = aliens[i].x + aliens[i].image[0]->w / 2 - gfx_sprites[arrow]->w;
+			arrowX = MAX(0, MIN(arrowX, screen->w - gfx_sprites[arrow]->w));
+			arrowY = aliens[i].y + aliens[i].image[0]->h / 2 - gfx_sprites[arrow]->h;
+			arrowY = MAX(0, MIN(arrowY, screen->h - gfx_sprites[arrow]->h));
+			screen_blit(gfx_sprites[arrow], arrowX, arrowY);
+
+			if (i == ALIEN_SID)
+				indicator = SP_INDICATOR_SID;
+			else if (i == ALIEN_PHOEBE)
+				indicator = SP_INDICATOR_PHOEBE;
+			else if (i == ALIEN_URSULA)
+				indicator = SP_INDICATOR_URSULA;
+			else if (i == ALIEN_KLINE)
+				indicator = SP_INDICATOR_KLINE;
+			else if (i == engine.targetIndex)
+				indicator = SP_INDICATOR_TARGET;
+
+			if (indicator != -1)
+			{
+				indicatorX = arrowX + gfx_sprites[arrow]->w / 2 - gfx_sprites[indicator]->w / 2;
+				indicatorX = MAX(indicatorX, gfx_sprites[arrow]->w + 5);
+				indicatorX = MIN(indicatorX, screen->w - gfx_sprites[arrow]->w - gfx_sprites[indicator]->w - 5);
+				indicatorY = arrowY + gfx_sprites[arrow]->h / 2 - gfx_sprites[indicator]->h / 2;
+				indicatorY = MAX(indicatorY, gfx_sprites[arrow]->h + 5);
+				indicatorY = MIN(indicatorY, screen->h - gfx_sprites[arrow]->h - gfx_sprites[indicator]->h - 5);
+				screen_blit(gfx_sprites[indicator], indicatorX, indicatorY);
+			}
 		}
 	}
 }
