@@ -1101,7 +1101,9 @@ static void game_doAliens()
 					aliens[i].dy = 20 + (cosf(barrierLoop + aliens[i].speed) * 40);
 				}
 
-				if (aliens[i].classDef == CD_MOBILESHIELD)
+				if ((aliens[i].classDef == CD_MOBILESHIELD) &&
+						(aliens[ALIEN_BOSS].active) &&
+						(aliens[ALIEN_BOSS].shield > 0))
 				{
 					LIMIT_ADD(aliens[ALIEN_BOSS].shield, 1, 0,
 						aliens[ALIEN_BOSS].maxShield);
@@ -1111,7 +1113,7 @@ static void game_doAliens()
 				LIMIT_ADD(aliens[i].reload[1], -1, 0, 999);
 
 				if ((!(aliens[i].flags & FL_DISABLED)) &&
-					(!(aliens[i].flags & FL_NOFIRE)))
+						(!(aliens[i].flags & FL_NOFIRE)))
 				{
 					if ((aliens[i].target->shield > 0))
 						canFire = alien_checkTarget(&aliens[i]);
