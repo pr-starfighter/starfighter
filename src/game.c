@@ -1720,25 +1720,41 @@ static void game_doArrow(int i)
 	if (aliens[i].x + aliens[i].image[0]->w < 0)
 	{
 		if (aliens[i].y + aliens[i].image[0]->h < 0)
-			arrow = (aliens[i].flags & FL_FRIEND) ? SP_ARROW_FRIEND_NORTHWEST : SP_ARROW_NORTHWEST;
+			arrow = (((game.difficulty != DIFFICULTY_ORIGINAL) &&
+				(aliens[i].flags & FL_FRIEND)) ?
+					SP_ARROW_FRIEND_NORTHWEST : SP_ARROW_NORTHWEST);
 		else if (aliens[i].y > screen->h)
-			arrow = (aliens[i].flags & FL_FRIEND) ? SP_ARROW_FRIEND_SOUTHWEST : SP_ARROW_SOUTHWEST;
+			arrow = (((game.difficulty != DIFFICULTY_ORIGINAL) &&
+				(aliens[i].flags & FL_FRIEND)) ?
+					SP_ARROW_FRIEND_SOUTHWEST : SP_ARROW_SOUTHWEST);
 		else
-			arrow = (aliens[i].flags & FL_FRIEND) ? SP_ARROW_FRIEND_WEST : SP_ARROW_WEST;
+			arrow = (((game.difficulty != DIFFICULTY_ORIGINAL) &&
+				(aliens[i].flags & FL_FRIEND)) ?
+					SP_ARROW_FRIEND_WEST : SP_ARROW_WEST);
 	}
 	else if (aliens[i].x > screen->w)
 	{
 		if (aliens[i].y + aliens[i].image[0]->h < 0)
-			arrow = (aliens[i].flags & FL_FRIEND) ? SP_ARROW_FRIEND_NORTHEAST : SP_ARROW_NORTHEAST;
+			arrow = (((game.difficulty != DIFFICULTY_ORIGINAL) &&
+				(aliens[i].flags & FL_FRIEND)) ?
+					SP_ARROW_FRIEND_NORTHEAST : SP_ARROW_NORTHEAST);
 		else if (aliens[i].y > screen->h)
-			arrow = (aliens[i].flags & FL_FRIEND) ? SP_ARROW_FRIEND_SOUTHEAST : SP_ARROW_SOUTHEAST;
+			arrow = (((game.difficulty != DIFFICULTY_ORIGINAL) &&
+				(aliens[i].flags & FL_FRIEND)) ?
+					SP_ARROW_FRIEND_SOUTHEAST : SP_ARROW_SOUTHEAST);
 		else
-			arrow = (aliens[i].flags & FL_FRIEND) ? SP_ARROW_FRIEND_EAST : SP_ARROW_EAST;
+			arrow = (((game.difficulty != DIFFICULTY_ORIGINAL) &&
+				(aliens[i].flags & FL_FRIEND)) ?
+					SP_ARROW_FRIEND_EAST : SP_ARROW_EAST);
 	}
 	else if (aliens[i].y + aliens[i].image[0]->h < 0)
-		arrow = (aliens[i].flags & FL_FRIEND) ? SP_ARROW_FRIEND_NORTH : SP_ARROW_NORTH;
+		arrow = (((game.difficulty != DIFFICULTY_ORIGINAL) &&
+			(aliens[i].flags & FL_FRIEND)) ?
+				SP_ARROW_FRIEND_NORTH : SP_ARROW_NORTH);
 	else if (aliens[i].y > screen->h)
-		arrow = (aliens[i].flags & FL_FRIEND) ? SP_ARROW_FRIEND_SOUTH : SP_ARROW_SOUTH;
+		arrow = (((game.difficulty != DIFFICULTY_ORIGINAL) &&
+			(aliens[i].flags & FL_FRIEND)) ?
+				SP_ARROW_FRIEND_SOUTH : SP_ARROW_SOUTH);
 
 	if (arrow != -1)
 	{

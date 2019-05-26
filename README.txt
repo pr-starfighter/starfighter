@@ -54,11 +54,6 @@ as possible. However, there are several minor differences in addition to
 the changes to graphics, sound, and dialog.  Here you can fine a list of
 notable differences.
 
-* The arrow pointing toward the current target is colored green if the
-  target is an ally, whereas version 1.1 always showed a red arrow.
-  The arrow is also positioned lower than in version 1.1 and does not
-  disappear when radio messages are broadcast.
-
 * Life bars for named characters are labeled with the respective
   character's name instead of "Target".
 
