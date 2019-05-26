@@ -61,10 +61,14 @@ the changes to graphics, sound, and dialog:
   optional arrow that rested in the middle of the screen and pointed in
   the general direction of the active (main) target.
 
-* The active (main) target of the Poswic mission is Sid Wilson.  In
-  version 1.1, the active target was instead the executive transport.
-  The practical effect of this is that Sid Wilson's shield is indicated
-  in this mission, whereas it wasn't in version 1.1.
+* Selling your secondary weapon leaves you with standard Rockets.  In
+  version 1.1, it instead left you with no secondary weapon at all (with
+  no way to gain standard Rockets back).
+
+* Travel in Spirit works the same as in every other system, except that
+  there is no chance of interceptions in Classic difficulty.  Version
+  1.1 instead instantly teleported you to the target planet as soon as
+  you clicked on it.
 
 * In the Venus mission, Kline starts some distance away directly to the
   right and immediately begins combat.  In contrast, version 1.1 spawned
@@ -91,6 +95,11 @@ the changes to graphics, sound, and dialog:
   the powerup was picked up.  These bugs are fixed in the current
   release (including Classic difficulty).
 
+* A bug made it possible to occasionally get damaged after completing a
+  mission, during the warp out sequence (the code was designed to
+  protect against this, but a mistake led to one case being uncovered).
+  The current release fixes this bug.
+
 * The Odeon mission in version 1.1 had a broken event with undefined
   behavior.  Players saw it as a message from Sid Wilson saying that
   Ursula was running away, followed by an error message.  In fact the
@@ -98,6 +107,15 @@ the changes to graphics, sound, and dialog:
   if the event had been defined properly, all it would have done is
   render the mission unwinnable.  The current release simply removes the
   broken event entirely (including for Classic difficulty).
+
+* The "unlimited time" cheat option in version 1.1 caused the Mars
+  mission to be unwinnable.  The current release fixes that by allowing
+  the timer to count down on the Mars mission only while this cheat is
+  enabled.
+
+* The code checking for rescued slaves for the interception mission in
+  Eyananth failed to work after the interception was cleared in version
+  1.1.  This bug is fixed in the current release.
 
 ------------------------------------------------------------------------
 

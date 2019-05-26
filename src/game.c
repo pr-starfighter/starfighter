@@ -2289,8 +2289,13 @@ int game_mainLoop()
 			player_setTarget(ALIEN_FRIEND1);
 			break;
 		case MISN_URUSOR:
-		case MISN_POSWIC:
 			player_setTarget(ALIEN_SID);
+			break;
+		case MISN_POSWIC:
+			if (game.difficulty == DIFFICULTY_ORIGINAL)
+				player_setTarget(ALIEN_BOSS);
+			else
+				player_setTarget(ALIEN_SID);
 			break;
 		case MISN_EARTH:
 		case MISN_VENUS:
