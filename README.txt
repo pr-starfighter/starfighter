@@ -77,12 +77,6 @@ the changes to graphics, sound, and dialog:
   when he first appears in the Elamale mission is different from version
   1.1.
 
-* The executive transport in the Poswic and Ellesh missions has a
-  "wandering" A.I. type; in contrast, version 1.1 gave this ship a
-  "normal" A.I. type.  The difference is that the "wandering" A.I. type
-  never attempts to chase you, travels a further distance away on
-  average, and starts to run away when shot at.
-
 * Version 1.1 had a bug in the shop which caused selling something to
   redeem half the cost of the next item, rather than half the cost of
   the item being sold. This led to the last item in a series being sold

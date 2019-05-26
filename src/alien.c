@@ -117,6 +117,7 @@ void alien_defs_init()
 	// Dual Plasma Fighter.
 	alien_defs[CD_DUALFIGHTER].classDef = CD_DUALFIGHTER;
 	alien_defs[CD_DUALFIGHTER].AIType = AI_NORMAL;
+	alien_defs[CD_DUALFIGHTER].AITypeOriginal = AI_NORMAL;
 	alien_defs[CD_DUALFIGHTER].speed = 4;
 	alien_defs[CD_DUALFIGHTER].maxShield = 5;
 	alien_defs[CD_DUALFIGHTER].shield = 5;
@@ -137,6 +138,7 @@ void alien_defs_init()
 	// Missile Boat
 	alien_defs[CD_MISSILEBOAT].classDef = CD_MISSILEBOAT;
 	alien_defs[CD_MISSILEBOAT].AIType = AI_DEFENSIVE;
+	alien_defs[CD_MISSILEBOAT].AITypeOriginal = AI_DEFENSIVE;
 	alien_defs[CD_MISSILEBOAT].speed = 2;
 	alien_defs[CD_MISSILEBOAT].maxShield = 50;
 	alien_defs[CD_MISSILEBOAT].shield = 50;
@@ -157,6 +159,7 @@ void alien_defs_init()
 	//Prototype fighter
 	alien_defs[CD_PROTOFIGHTER].classDef = CD_PROTOFIGHTER;
 	alien_defs[CD_PROTOFIGHTER].AIType = AI_DEFENSIVE;
+	alien_defs[CD_PROTOFIGHTER].AITypeOriginal = AI_DEFENSIVE;
 	alien_defs[CD_PROTOFIGHTER].speed = 5;
 	alien_defs[CD_PROTOFIGHTER].maxShield = 15;
 	alien_defs[CD_PROTOFIGHTER].shield = 15;
@@ -177,6 +180,7 @@ void alien_defs_init()
 	// Phoebe and Ursula
 	alien_defs[CD_FRIEND].classDef = CD_FRIEND;
 	alien_defs[CD_FRIEND].AIType = AI_OFFENSIVE;
+	alien_defs[CD_FRIEND].AITypeOriginal = AI_OFFENSIVE;
 	alien_defs[CD_FRIEND].speed = 3;
 	alien_defs[CD_FRIEND].maxShield = 50;
 	alien_defs[CD_FRIEND].shield = 50;
@@ -197,6 +201,7 @@ void alien_defs_init()
 	// Boss 1
 	alien_defs[CD_FRIGATE].classDef = CD_BOSS;
 	alien_defs[CD_FRIGATE].AIType = AI_NORMAL;
+	alien_defs[CD_FRIGATE].AITypeOriginal = AI_NORMAL;
 	alien_defs[CD_FRIGATE].speed = 2;
 	alien_defs[CD_FRIGATE].maxShield = 550;
 	alien_defs[CD_FRIGATE].shield = 550;
@@ -216,6 +221,7 @@ void alien_defs_init()
 
 	alien_defs[CD_FRIGATE_WING1].classDef = CD_FRIGATE_WING1;
 	alien_defs[CD_FRIGATE_WING1].AIType = AI_NORMAL;
+	alien_defs[CD_FRIGATE_WING1].AITypeOriginal = AI_NORMAL;
 	alien_defs[CD_FRIGATE_WING1].speed = 2;
 	alien_defs[CD_FRIGATE_WING1].maxShield = 100;
 	alien_defs[CD_FRIGATE_WING1].shield = 100;
@@ -235,6 +241,7 @@ void alien_defs_init()
 
 	alien_defs[CD_FRIGATE_WING2].classDef = CD_FRIGATE_WING2;
 	alien_defs[CD_FRIGATE_WING2].AIType = AI_NORMAL;
+	alien_defs[CD_FRIGATE_WING2].AITypeOriginal = AI_NORMAL;
 	alien_defs[CD_FRIGATE_WING2].speed = 2;
 	alien_defs[CD_FRIGATE_WING2].maxShield = 100;
 	alien_defs[CD_FRIGATE_WING2].shield = 100;
@@ -255,6 +262,7 @@ void alien_defs_init()
 	// Transport ship
 	alien_defs[CD_TRANSPORTSHIP].classDef = CD_TRANSPORTSHIP;
 	alien_defs[CD_TRANSPORTSHIP].AIType = AI_EVASIVE;
+	alien_defs[CD_TRANSPORTSHIP].AITypeOriginal = AI_EVASIVE;
 	alien_defs[CD_TRANSPORTSHIP].speed = 4;
 	alien_defs[CD_TRANSPORTSHIP].maxShield = 10;
 	alien_defs[CD_TRANSPORTSHIP].shield = 10;
@@ -275,6 +283,7 @@ void alien_defs_init()
 	// Cargo ship
 	alien_defs[CD_CARGOSHIP].classDef = CD_CARGOSHIP;
 	alien_defs[CD_CARGOSHIP].AIType = AI_EVASIVE;
+	alien_defs[CD_CARGOSHIP].AITypeOriginal = AI_EVASIVE;
 	alien_defs[CD_CARGOSHIP].speed = 4;
 	alien_defs[CD_CARGOSHIP].maxShield = 10;
 	alien_defs[CD_CARGOSHIP].shield = 10;
@@ -295,6 +304,7 @@ void alien_defs_init()
 	// Weapco Miner
 	alien_defs[CD_MINER].classDef = CD_MINER;
 	alien_defs[CD_MINER].AIType = AI_EVASIVE;
+	alien_defs[CD_MINER].AITypeOriginal = AI_EVASIVE;
 	alien_defs[CD_MINER].speed = 4;
 	alien_defs[CD_MINER].maxShield = 25;
 	alien_defs[CD_MINER].shield = 25;
@@ -315,6 +325,7 @@ void alien_defs_init()
 	// Kline
 	alien_defs[CD_KLINE].classDef = CD_KLINE;
 	alien_defs[CD_KLINE].AIType = AI_OFFENSIVE;
+	alien_defs[CD_KLINE].AITypeOriginal = AI_OFFENSIVE;
 	alien_defs[CD_KLINE].speed = 5;
 	alien_defs[CD_KLINE].maxShield = 2000;
 	alien_defs[CD_KLINE].shield = 2000;
@@ -335,6 +346,7 @@ void alien_defs_init()
 	// Aim Fighter
 	alien_defs[CD_AIMFIGHTER].classDef = CD_AIMFIGHTER;
 	alien_defs[CD_AIMFIGHTER].AIType = AI_NORMAL;
+	alien_defs[CD_AIMFIGHTER].AITypeOriginal = AI_NORMAL;
 	alien_defs[CD_AIMFIGHTER].speed = 3;
 	alien_defs[CD_AIMFIGHTER].maxShield = 15;
 	alien_defs[CD_AIMFIGHTER].shield = 15;
@@ -355,6 +367,7 @@ void alien_defs_init()
 	// Slave ship
 	alien_defs[CD_SLAVETRANSPORT].classDef = CD_SLAVETRANSPORT;
 	alien_defs[CD_SLAVETRANSPORT].AIType = AI_EVASIVE;
+	alien_defs[CD_SLAVETRANSPORT].AITypeOriginal = AI_EVASIVE;
 	alien_defs[CD_SLAVETRANSPORT].speed = 2;
 	alien_defs[CD_SLAVETRANSPORT].maxShield = 10;
 	alien_defs[CD_SLAVETRANSPORT].shield = 20;
@@ -375,6 +388,7 @@ void alien_defs_init()
 	// Good Transport
 	alien_defs[CD_GOODTRANSPORT].classDef = CD_GOODTRANSPORT;
 	alien_defs[CD_GOODTRANSPORT].AIType = AI_EVASIVE;
+	alien_defs[CD_GOODTRANSPORT].AITypeOriginal = AI_EVASIVE;
 	alien_defs[CD_GOODTRANSPORT].speed = 3;
 	alien_defs[CD_GOODTRANSPORT].maxShield = 75;
 	alien_defs[CD_GOODTRANSPORT].shield = 75;
@@ -395,6 +409,7 @@ void alien_defs_init()
 	// Sid Wilson
 	alien_defs[CD_SID].classDef = CD_SID;
 	alien_defs[CD_SID].AIType = AI_NORMAL;
+	alien_defs[CD_SID].AITypeOriginal = AI_NORMAL;
 	alien_defs[CD_SID].speed = 3;
 	alien_defs[CD_SID].maxShield = 50;
 	alien_defs[CD_SID].shield = 50;
@@ -415,6 +430,7 @@ void alien_defs_init()
 	// Mining Vessel Boss
 	alien_defs[CD_MINEBOSS].classDef = CD_BOSS;
 	alien_defs[CD_MINEBOSS].AIType = AI_NORMAL;
+	alien_defs[CD_MINEBOSS].AITypeOriginal = AI_NORMAL;
 	alien_defs[CD_MINEBOSS].speed = 3;
 	alien_defs[CD_MINEBOSS].maxShield = 1000;
 	alien_defs[CD_MINEBOSS].shield = 1000;
@@ -434,6 +450,7 @@ void alien_defs_init()
 
 	alien_defs[CD_BOSS2_WING1].classDef = CD_BOSS2_WING1;
 	alien_defs[CD_BOSS2_WING1].AIType = AI_NORMAL;
+	alien_defs[CD_BOSS2_WING1].AITypeOriginal = AI_NORMAL;
 	alien_defs[CD_BOSS2_WING1].speed = 1;
 	alien_defs[CD_BOSS2_WING1].maxShield = 250;
 	alien_defs[CD_BOSS2_WING1].shield = 250;
@@ -453,6 +470,7 @@ void alien_defs_init()
 
 	alien_defs[CD_BOSS2_WING2].classDef = CD_BOSS2_WING2;
 	alien_defs[CD_BOSS2_WING2].AIType = AI_NORMAL;
+	alien_defs[CD_BOSS2_WING2].AITypeOriginal = AI_NORMAL;
 	alien_defs[CD_BOSS2_WING2].speed = 1;
 	alien_defs[CD_BOSS2_WING2].maxShield = 500;
 	alien_defs[CD_BOSS2_WING2].shield = 500;
@@ -472,6 +490,7 @@ void alien_defs_init()
 
 	alien_defs[CD_BOSS2_WING3].classDef = CD_BOSS2_WING3;
 	alien_defs[CD_BOSS2_WING3].AIType = AI_NORMAL;
+	alien_defs[CD_BOSS2_WING3].AITypeOriginal = AI_NORMAL;
 	alien_defs[CD_BOSS2_WING3].speed = 1;
 	alien_defs[CD_BOSS2_WING3].maxShield = 500;
 	alien_defs[CD_BOSS2_WING3].shield = 500;
@@ -491,6 +510,7 @@ void alien_defs_init()
 
 	alien_defs[CD_BOSS2_WING4].classDef = CD_BOSS2_WING4;
 	alien_defs[CD_BOSS2_WING4].AIType = AI_NORMAL;
+	alien_defs[CD_BOSS2_WING4].AITypeOriginal = AI_NORMAL;
 	alien_defs[CD_BOSS2_WING4].speed = 1;
 	alien_defs[CD_BOSS2_WING4].maxShield = 250;
 	alien_defs[CD_BOSS2_WING4].shield = 250;
@@ -511,6 +531,7 @@ void alien_defs_init()
 	// Drone
 	alien_defs[CD_DRONE].classDef = CD_DRONE;
 	alien_defs[CD_DRONE].AIType = AI_OFFENSIVE;
+	alien_defs[CD_DRONE].AITypeOriginal = AI_OFFENSIVE;
 	alien_defs[CD_DRONE].speed = 8;
 	alien_defs[CD_DRONE].maxShield = 5;
 	alien_defs[CD_DRONE].shield = 5;
@@ -531,6 +552,7 @@ void alien_defs_init()
 	// Experimental Fighter
 	alien_defs[CD_CLOAKFIGHTER].classDef = CD_CLOAKFIGHTER;
 	alien_defs[CD_CLOAKFIGHTER].AIType = AI_OFFENSIVE;
+	alien_defs[CD_CLOAKFIGHTER].AITypeOriginal = AI_OFFENSIVE;
 	alien_defs[CD_CLOAKFIGHTER].speed = 6;
 	alien_defs[CD_CLOAKFIGHTER].maxShield = 1000;
 	alien_defs[CD_CLOAKFIGHTER].shield = 1000;
@@ -551,6 +573,7 @@ void alien_defs_init()
 	// Evil Ursula
 	alien_defs[CD_EVILURSULA].classDef = CD_EVILURSULA;
 	alien_defs[CD_EVILURSULA].AIType = AI_OFFENSIVE;
+	alien_defs[CD_EVILURSULA].AITypeOriginal = AI_OFFENSIVE;
 	alien_defs[CD_EVILURSULA].speed = 5;
 	alien_defs[CD_EVILURSULA].maxShield = 500;
 	alien_defs[CD_EVILURSULA].shield = 500;
@@ -571,6 +594,7 @@ void alien_defs_init()
 	// Mercenary
 	alien_defs[CD_KRASS].classDef = CD_KRASS;
 	alien_defs[CD_KRASS].AIType = AI_OFFENSIVE;
+	alien_defs[CD_KRASS].AITypeOriginal = AI_OFFENSIVE;
 	alien_defs[CD_KRASS].speed = 5;
 	alien_defs[CD_KRASS].maxShield = 1000;
 	alien_defs[CD_KRASS].shield = 1000;
@@ -591,6 +615,7 @@ void alien_defs_init()
 	// Executive Transport
 	alien_defs[CD_EXEC].classDef = CD_BOSS;
 	alien_defs[CD_EXEC].AIType = AI_EVASIVE;
+	alien_defs[CD_EXEC].AITypeOriginal = AI_NORMAL;
 	alien_defs[CD_EXEC].speed = 5;
 	alien_defs[CD_EXEC].maxShield = 1000;
 	alien_defs[CD_EXEC].shield = 1000;
@@ -611,6 +636,7 @@ void alien_defs_init()
 	// Asteroid
 	alien_defs[CD_ASTEROID].classDef = CD_ASTEROID;
 	alien_defs[CD_ASTEROID].AIType = AI_WANDER;
+	alien_defs[CD_ASTEROID].AITypeOriginal = AI_WANDER;
 	alien_defs[CD_ASTEROID].speed = 1;
 	alien_defs[CD_ASTEROID].maxShield = 50;
 	alien_defs[CD_ASTEROID].shield = 50;
@@ -630,6 +656,7 @@ void alien_defs_init()
 
 	alien_defs[CD_ASTEROID2].classDef = CD_ASTEROID2;
 	alien_defs[CD_ASTEROID2].AIType = AI_WANDER;
+	alien_defs[CD_ASTEROID2].AITypeOriginal = AI_WANDER;
 	alien_defs[CD_ASTEROID2].speed = 1;
 	alien_defs[CD_ASTEROID2].maxShield = 10;
 	alien_defs[CD_ASTEROID2].shield = 10;
@@ -650,6 +677,7 @@ void alien_defs_init()
 	// Escort
 	alien_defs[CD_ESCORT].classDef = CD_ESCORT;
 	alien_defs[CD_ESCORT].AIType = AI_NORMAL;
+	alien_defs[CD_ESCORT].AITypeOriginal = AI_NORMAL;
 	alien_defs[CD_ESCORT].speed = 3;
 	alien_defs[CD_ESCORT].maxShield = 200;
 	alien_defs[CD_ESCORT].shield = 200;
@@ -670,6 +698,7 @@ void alien_defs_init()
 	// Mobile Ray Cannon
 	alien_defs[CD_MOBILE_RAY].classDef = CD_MOBILE_RAY;
 	alien_defs[CD_MOBILE_RAY].AIType = AI_OFFENSIVE;
+	alien_defs[CD_MOBILE_RAY].AITypeOriginal = AI_OFFENSIVE;
 	alien_defs[CD_MOBILE_RAY].speed = 5;
 	alien_defs[CD_MOBILE_RAY].maxShield = 250;
 	alien_defs[CD_MOBILE_RAY].shield = 250;
@@ -690,6 +719,7 @@ void alien_defs_init()
 	// Rebel Carrier
 	alien_defs[CD_REBELCARRIER].classDef = CD_REBELCARRIER;
 	alien_defs[CD_REBELCARRIER].AIType = AI_OFFENSIVE;
+	alien_defs[CD_REBELCARRIER].AITypeOriginal = AI_OFFENSIVE;
 	alien_defs[CD_REBELCARRIER].speed = 2;
 	alien_defs[CD_REBELCARRIER].maxShield = 100;
 	alien_defs[CD_REBELCARRIER].shield = 100;
@@ -710,6 +740,7 @@ void alien_defs_init()
 	// Pluto Boss
 	alien_defs[CD_PLUTOBOSS].classDef = CD_PLUTOBOSS;
 	alien_defs[CD_PLUTOBOSS].AIType = AI_OFFENSIVE;
+	alien_defs[CD_PLUTOBOSS].AITypeOriginal = AI_OFFENSIVE;
 	alien_defs[CD_PLUTOBOSS].speed = 4;
 	alien_defs[CD_PLUTOBOSS].maxShield = 500;
 	alien_defs[CD_PLUTOBOSS].shield = 500;
@@ -730,6 +761,7 @@ void alien_defs_init()
 	// Pluto Boss Barrier
 	alien_defs[CD_BARRIER].classDef = CD_BARRIER;
 	alien_defs[CD_BARRIER].AIType = AI_OFFENSIVE;
+	alien_defs[CD_BARRIER].AITypeOriginal = AI_OFFENSIVE;
 	alien_defs[CD_BARRIER].speed = 1;
 	alien_defs[CD_BARRIER].maxShield = 250;
 	alien_defs[CD_BARRIER].shield = 250;
@@ -750,6 +782,7 @@ void alien_defs_init()
 	// Neptune Boss
 	alien_defs[CD_NEPTUNEBOSS].classDef = CD_NEPTUNEBOSS;
 	alien_defs[CD_NEPTUNEBOSS].AIType = AI_OFFENSIVE;
+	alien_defs[CD_NEPTUNEBOSS].AITypeOriginal = AI_OFFENSIVE;
 	alien_defs[CD_NEPTUNEBOSS].speed = 4;
 	alien_defs[CD_NEPTUNEBOSS].maxShield = 800;
 	alien_defs[CD_NEPTUNEBOSS].shield = 800;
@@ -770,6 +803,7 @@ void alien_defs_init()
 	// Mobile Shield
 	alien_defs[CD_MOBILESHIELD].classDef = CD_MOBILESHIELD;
 	alien_defs[CD_MOBILESHIELD].AIType = AI_EVASIVE;
+	alien_defs[CD_MOBILESHIELD].AITypeOriginal = AI_EVASIVE;
 	alien_defs[CD_MOBILESHIELD].speed = 6;
 	alien_defs[CD_MOBILESHIELD].maxShield = 150;
 	alien_defs[CD_MOBILESHIELD].shield = 150;
@@ -790,6 +824,7 @@ void alien_defs_init()
 	// Firefly
 	alien_defs[CD_FIREFLY].classDef = CD_FIREFLY;
 	alien_defs[CD_FIREFLY].AIType = AI_OFFENSIVE;
+	alien_defs[CD_FIREFLY].AITypeOriginal = AI_OFFENSIVE;
 	alien_defs[CD_FIREFLY].speed = 5;
 	alien_defs[CD_FIREFLY].maxShield = 250;
 	alien_defs[CD_FIREFLY].shield = 250;
@@ -810,6 +845,7 @@ void alien_defs_init()
 	// Uranus Boss
 	alien_defs[CD_URANUSBOSS].classDef = CD_URANUSBOSS;
 	alien_defs[CD_URANUSBOSS].AIType = AI_OFFENSIVE;
+	alien_defs[CD_URANUSBOSS].AITypeOriginal = AI_OFFENSIVE;
 	alien_defs[CD_URANUSBOSS].speed = 4;
 	alien_defs[CD_URANUSBOSS].maxShield = 750;
 	alien_defs[CD_URANUSBOSS].shield = 750;
@@ -830,6 +866,7 @@ void alien_defs_init()
 	// Uranus Boss Wing 1
 	alien_defs[CD_URANUSBOSSWING1].classDef = CD_URANUSBOSSWING1;
 	alien_defs[CD_URANUSBOSSWING1].AIType = AI_OFFENSIVE;
+	alien_defs[CD_URANUSBOSSWING1].AITypeOriginal = AI_OFFENSIVE;
 	alien_defs[CD_URANUSBOSSWING1].speed = 4;
 	alien_defs[CD_URANUSBOSSWING1].maxShield = 250;
 	alien_defs[CD_URANUSBOSSWING1].shield = 250;
@@ -850,6 +887,7 @@ void alien_defs_init()
 	// Uranus Boss Wing 2
 	alien_defs[CD_URANUSBOSSWING2].classDef = CD_URANUSBOSSWING2;
 	alien_defs[CD_URANUSBOSSWING2].AIType = AI_OFFENSIVE;
+	alien_defs[CD_URANUSBOSSWING2].AITypeOriginal = AI_OFFENSIVE;
 	alien_defs[CD_URANUSBOSSWING2].speed = 4;
 	alien_defs[CD_URANUSBOSSWING2].maxShield = 250;
 	alien_defs[CD_URANUSBOSSWING2].shield = 250;
@@ -1499,7 +1537,8 @@ void alien_setAI(Object *alien)
 	tx = alien->target->x;
 	ty = alien->target->y;
 
-	switch (alien->AIType)
+	switch ((game.difficulty == DIFFICULTY_ORIGINAL) ?
+			alien->AITypeOriginal : alien->AIType)
 	{
 		case AI_NORMAL:
 			chase = 3;
@@ -1994,7 +2033,11 @@ void alien_destroy(Object *alien, Object *attacker)
 
 void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 {
+	int ai_type;
 	double run_chance;
+	
+	ai_type = ((game.difficulty == DIFFICULTY_ORIGINAL) ?
+		alien->AITypeOriginal : alien->AIType);
 
 	if (ion)
 		alien->systemPower -= damage;
@@ -2061,7 +2104,7 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 	}
 
 	audio_playSound(SFX_HIT, alien->x, alien->y);
-	if (alien->AIType == AI_EVASIVE)
+	if (ai_type == AI_EVASIVE)
 		alien->thinktime = 0;
 
 	if (alien->shield < 1)

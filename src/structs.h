@@ -27,6 +27,7 @@ typedef struct Object_ {
 	int active;
 	int classDef; // Used by aliens to determine what they are
 	int AIType; // Type of articifial intelligence
+	int AITypeOriginal; // AIType in Classic difficulty
 
 	int id; // The "job" of the Object
 	struct Object_ *target; //  index target in aliens array
