@@ -53,13 +53,11 @@ of the game (the last version released by Parallel Realities) as closely
 as possible. However, there are a few minor differences in addition to
 the changes to graphics, sound, and dialog:
 
-* Where targets are is shown via arrows at the edge of the screen, and
-  all targets are indicated in this way; the main target is indicated
-  with text that says "Target", unless the target is one of the cast of
-  named characters, and all named characters have their arrows indicated
-  with their respective arrows.  In contrast, version 1.1 only had an
-  optional arrow that rested in the middle of the screen and pointed in
-  the general direction of the active (main) target.
+* The current target is shown by an arrow at the edge of the screen which
+  precisely indicates the target's position.  In contrast, version 1.1's
+  optional target arrow rested in the middle of the screen and only
+  pointed in the general direction (north, south, east, west, northwest,
+  northeast, southwest, southeast) of the target.
 
 * Selling your secondary weapon leaves you with standard Rockets.  In
   version 1.1, it instead left you with no secondary weapon at all (with

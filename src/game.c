@@ -1774,10 +1774,12 @@ static void game_doArrow(int i)
 
 static void game_doHud()
 {
+	static int last_arrow = -1;
 	int shieldColor = 0;
 	SDL_Rect bar;
 	int fontColor;
 	char text[25];
+	int i;
 
 	screen_addBuffer(0, 20, screen->w, 25);
 	screen_addBuffer(0, screen->h - 50, screen->w, 34);
@@ -1809,8 +1811,31 @@ static void game_doHud()
 	gfx_createTextObject(TS_CASH, text, 90, 21, FONT_WHITE);
 	screen_blitText(TS_CASH);
 
-	for (int i = 0; i < ALIEN_MAX; i++)
-		game_doArrow(i);
+	if (game.difficulty == DIFFICULTY_ORIGINAL)
+	{
+		i = engine.targetIndex;
+		if ((i >= 0) && aliens[i].active && (aliens[i].shield > 0) && (!(aliens[i].flags & FL_ISCLOAKED)))
+			game_doArrow(i);
+		else
+		{
+			i = last_arrow;
+			if ((i >= 0) && aliens[i].active && (aliens[i].shield > 0) && (!(aliens[i].flags & FL_ISCLOAKED)))
+				game_doArrow(i);
+			else
+			{
+				last_arrow = rand() % ALIEN_MAX;
+				if (aliens[last_arrow].flags & FL_FRIEND)
+					last_arrow = 0;
+				
+				game_doArrow(last_arrow);
+			}
+		}
+	}
+	else
+	{
+		for (i = 0; i < ALIEN_MAX; i++)
+			game_doArrow(i);
+	}
 
 	fontColor = FONT_WHITE;
 	if (player.ammo[0] > 0)
