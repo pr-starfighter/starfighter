@@ -38,6 +38,19 @@ void collectable_add(float x, float y, int type, int value, int life)
 {
 	int r;
 	Collectable *collectable;
+	int plasma_useless, shield_useless, rockets_useless;
+	
+	plasma_useless = (((weapons[W_PLAYER_WEAPON].reload[0] >= rate2reload[game.minPlasmaRate]) &&
+			(weapons[W_PLAYER_WEAPON].ammo[0] <= game.minPlasmaOutput) &&
+			(weapons[W_PLAYER_WEAPON].damage <= game.minPlasmaDamage)) ||
+		(player.ammo[0] >= game.maxPlasmaAmmo));
+	
+	shield_useless = ((game.difficulty == DIFFICULTY_NIGHTMARE) ||
+		(player.shield >= player.maxShield));
+	
+	rockets_useless = ((player.weaponType[1] == W_CHARGER) ||
+		(player.weaponType[1] == W_LASER) || (game.maxRocketAmmo <= 0) ||
+		(player.ammo[1] >= game.maxRocketAmmo));
 
 	if (type == P_ANYTHING)
 	{
@@ -48,14 +61,58 @@ void collectable_add(float x, float y, int type, int value, int life)
 		switch (r)
 		{
 			case 0:
-				type = P_PLASMA_AMMO;
+				if ((game.difficulty == DIFFICULTY_ORIGINAL) ||
+						(game.difficulty == DIFFICULTY_NIGHTMARE))
+				{
+					type = P_PLASMA_AMMO;
+				}
+				else
+				{
+					if ((!shield_useless) &&
+							(CHANCE(2 * (player.maxShield - player.shield) / player.maxShield)))
+					{
+						type = P_SHIELD;
+							
+					}
+					else if ((!rockets_useless) && (game.maxRocketAmmo > 0) &&
+							(CHANCE((game.maxRocketAmmo - player.ammo[1]) / game.maxRocketAmmo)))
+					{
+						type = P_ROCKET;
+					}
+					else
+					{
+						type = P_PLASMA_AMMO;
+					}
+				}
 				break;
+
 			case 1:
 				type = P_SHIELD;
 				break;
+
 			case 2:
-				type = P_ROCKET;
-				value /= 10;
+				if ((game.difficulty == DIFFICULTY_ORIGINAL) ||
+						(game.difficulty == DIFFICULTY_NIGHTMARE))
+				{
+					type = P_ROCKET;
+				}
+				else
+				{
+					if ((!shield_useless) &&
+							(CHANCE(2 * (player.maxShield - player.shield) / player.maxShield)))
+					{
+						type = P_SHIELD;
+					}
+					else if ((!plasma_useless) && (game.maxPlasmaAmmo > 0) &&
+							(CHANCE((game.maxPlasmaAmmo - player.ammo[0]) / game.maxPlasmaAmmo)))
+					{
+						type = P_PLASMA_AMMO;
+					}
+					else
+					{
+						type = P_ROCKET;
+					}
+				}
 				break;
 		}
 	}
@@ -97,9 +154,7 @@ void collectable_add(float x, float y, int type, int value, int life)
 	// upgraded! Give them money instead. (Except in Classic difficulty.)
 	if ((type == P_PLASMA_AMMO) && (game.difficulty != DIFFICULTY_ORIGINAL))
 	{
-		if ((weapons[W_PLAYER_WEAPON].reload[0] >= rate2reload[game.minPlasmaRate]) &&
-			(weapons[W_PLAYER_WEAPON].ammo[0] <= game.minPlasmaOutput) &&
-			(weapons[W_PLAYER_WEAPON].damage <= game.minPlasmaDamage))
+		if (plasma_useless)
 		{
 			type = P_CASH;
 		}
@@ -113,12 +168,17 @@ void collectable_add(float x, float y, int type, int value, int life)
 		{
 			type = P_CASH;
 		}
+		else
+		{
+			value /= 10;
+		}
 	}
 
-	// Shield bonus is useless in Nightmare difficulty; give cash instead.
-	if (type == P_SHIELD)
+	// Shield bonus is useless if you can't heal; give cash instead.
+	if ((type == P_SHIELD) && (game.difficulty != DIFFICULTY_ORIGINAL))
 	{
-		if (game.difficulty == DIFFICULTY_NIGHTMARE)
+		if  ((game.difficulty == DIFFICULTY_NIGHTMARE) ||
+				(player.shield >= player.maxShield))
 		{
 			type = P_CASH;
 		}
