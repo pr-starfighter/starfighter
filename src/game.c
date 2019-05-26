@@ -1928,7 +1928,7 @@ static void game_doHud()
 	}
 
 	// Show the radio message if there is one
-	if (gfx_textSprites[TS_RADIO].life > 0)
+	if ((gfx_textSprites[TS_RADIO].life > 0) && (gfx_messageBox != NULL))
 	{
 		screen_blit(gfx_messageBox, (screen->w - gfx_messageBox->w) / 2, 50);
 		gfx_textSprites[TS_RADIO].life--;
@@ -2222,6 +2222,7 @@ int game_mainLoop()
 	{
 		aliens[0].collectChance = 100;
 		aliens[0].collectType = P_ESCAPEPOD;
+		aliens[0].collectTypeOriginal = P_ESCAPEPOD;
 	}
 
 	// Some specifics for interception missions
