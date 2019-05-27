@@ -1918,7 +1918,8 @@ static void game_doHud()
 			events_check();
 	}
 
-	if ((engine.timeMission) && (!engine.cheatTime) && (player.shield > 0))
+	if ((engine.timeMission) && (player.shield > 0) &&
+			((!engine.cheatTime) || (game.area == MISN_MARS)))
 	{
 		if (SDL_GetTicks() >= engine.counter)
 		{
