@@ -22,7 +22,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <sys/stat.h>
 #include <unistd.h>
 
-#ifndef _WIN32
+#ifdef _WIN32
+#include <Shlobj.h>
+#else
 #include <pwd.h>
 #endif
 
@@ -197,10 +199,11 @@ void engine_setupConfigDirectory()
 	char dir[PATH_MAX];
 
 #ifdef _WIN32
-	// XXX: This is a bad design, but I just can't be bothered to learn
-	// the Windows API so I can do this properly. If anyone wants to
-	// make this point to the proper directory, be my guest!
-	userHome = ".";
+	if (SHGetKnownFolderPath(FOLDERID_LocalAppData, KF_FLAG_CREATE, NULL, &userHome) != S_OK)
+	{
+		userHome = ".";
+		engine_warn("Could not get appdata location; using the current working directory instead.");
+	}
 #else
 	if ((userHome = getenv("HOME")) == NULL)
 		userHome = getpwuid(getuid())->pw_dir;
