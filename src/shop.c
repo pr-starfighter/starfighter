@@ -974,7 +974,7 @@ static void sell(int i)
 				shopSelectedItem = -1;
 				return;
 			}
-			player.weaponType[1] = W_ROCKETS;
+			player.weaponType[1] = (game.difficulty == DIFFICULTY_ORIGINAL ? W_NONE : W_ROCKETS);
 			shopSelectedItem = -1;
 			break;
 
@@ -984,7 +984,7 @@ static void sell(int i)
 				shopSelectedItem = -1;
 				return;
 			}
-			player.weaponType[1] = W_ROCKETS;
+			player.weaponType[1] = (game.difficulty == DIFFICULTY_ORIGINAL ? W_NONE : W_ROCKETS);
 			shopSelectedItem = -1;
 			break;
 
@@ -994,7 +994,7 @@ static void sell(int i)
 				shopSelectedItem = -1;
 				return;
 			}
-			player.weaponType[1] = W_ROCKETS;
+			player.weaponType[1] = (game.difficulty == DIFFICULTY_ORIGINAL ? W_NONE : W_ROCKETS);
 			player.ammo[1] = 0;
 			shopSelectedItem = -1;
 			break;
@@ -1005,7 +1005,7 @@ static void sell(int i)
 				shopSelectedItem = -1;
 				return;
 			}
-			player.weaponType[1] = W_ROCKETS;
+			player.weaponType[1] = (game.difficulty == DIFFICULTY_ORIGINAL ? W_NONE : W_ROCKETS);
 			shopSelectedItem = -1;
 			break;
 
@@ -1015,7 +1015,7 @@ static void sell(int i)
 				shopSelectedItem = -1;
 				return;
 			}
-			player.weaponType[1] = W_ROCKETS;
+			player.weaponType[1] = (game.difficulty == DIFFICULTY_ORIGINAL ? W_NONE : W_ROCKETS);
 			player.ammo[1] = 0;
 			shopSelectedItem = -1;
 			break;
@@ -1026,7 +1026,7 @@ static void sell(int i)
 				shopSelectedItem = -1;
 				return;
 			}
-			player.weaponType[1] = W_ROCKETS;
+			player.weaponType[1] = (game.difficulty == DIFFICULTY_ORIGINAL ? W_NONE : W_ROCKETS);
 			shopSelectedItem = -1;
 			break;
 
@@ -1036,7 +1036,7 @@ static void sell(int i)
 				shopSelectedItem = -1;
 				return;
 			}
-			player.weaponType[1] = W_ROCKETS;
+			player.weaponType[1] = (game.difficulty == DIFFICULTY_ORIGINAL ? W_NONE : W_ROCKETS);
 			shopSelectedItem = -1;
 			break;
 	}

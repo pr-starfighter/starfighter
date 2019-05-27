@@ -50,36 +50,12 @@ CLASSIC DIFFICULTY DIFFERENCES
 
 Classic difficulty is designed to emulate the experience of version 1.1
 of the game (the last version released by Parallel Realities) as closely
-as possible. However, there are several minor differences in addition to
+as possible. However, there are some minor differences in addition to
 the changes to graphics, sound, and dialog.  Here you can fine a list of
 notable differences.
 
-* Selling your secondary weapon leaves you with standard Rockets.  In
-  version 1.1, it instead left you with no secondary weapon at all (with
-  no way to gain standard Rockets back).
-
-* If you buy a secondary weapon while one other than standard Rockets
-  is already equipped, the currently equipped secondary weapon is
-  automatically sold for you (which gives you money equal to half of
-  said weapon's cost). In version 1.1, the old secondary weapon would
-  simply disappear in this case, meaning the money was lost unless you
-  explicitly used the "Sell" button.
-
-* Travel in Spirit works the same as in every other system, except that
-  there is no chance of interceptions in Classic difficulty.  Version
-  1.1 instead instantly teleported you to the target planet as soon as
-  you clicked on it.
-
-* In the Venus mission, Kline starts some distance away directly to the
-  right and immediately begins combat.  In contrast, version 1.1 spawned
-  Kline much closer to the player (to the point where his ship was
-  visible on the screen) and a bit further down, unmoving until a string
-  of dialog boxes finished being displayed.  This change was made to
-  accommodate new music and dialog.
-
-* Similar to the above, the time spent to accommodate Kline's banter
-  when he first appears in the Elamale mission is different from version
-  1.1.
+* The timing of some events, most notably those pertaining to Kline,
+  has been adjusted to match with new dialog and music.
 
 * Several bugs present in version 1.1 have been fixed. Many of these
   bugs affected gameplay in notable ways; such bugs include:
