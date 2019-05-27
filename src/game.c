@@ -1997,14 +1997,21 @@ static void game_doHud()
 		if ((engine.targetIndex > -1) && (aliens[engine.targetIndex].shield > 0) &&
 				(engine.targetIndex > engine.maxAliens))
 		{
-			if (engine.targetIndex == ALIEN_SID)
-				screen_blitText(TS_TARGET_SID);
-			else if (engine.targetIndex == ALIEN_PHOEBE)
-				screen_blitText(TS_TARGET_PHOEBE);
-			else if (engine.targetIndex == ALIEN_KLINE)
-				screen_blitText(TS_TARGET_KLINE);
-			else
+			if (game.difficulty == DIFFICULTY_ORIGINAL)
+			{
 				screen_blitText(TS_TARGET);
+			}
+			else
+			{
+				if (engine.targetIndex == ALIEN_SID)
+					screen_blitText(TS_TARGET_SID);
+				else if (engine.targetIndex == ALIEN_PHOEBE)
+					screen_blitText(TS_TARGET_PHOEBE);
+				else if (engine.targetIndex == ALIEN_KLINE)
+					screen_blitText(TS_TARGET_KLINE);
+				else
+					screen_blitText(TS_TARGET);
+			}
 
 			bar.w = MAX(screen->w / 800, 1);
 			bar.h = 12;

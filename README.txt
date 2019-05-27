@@ -54,9 +54,6 @@ as possible. However, there are several minor differences in addition to
 the changes to graphics, sound, and dialog.  Here you can fine a list of
 notable differences.
 
-* Life bars for named characters are labeled with the respective
-  character's name instead of "Target".
-
 * Selling your secondary weapon leaves you with standard Rockets.  In
   version 1.1, it instead left you with no secondary weapon at all (with
   no way to gain standard Rockets back).
