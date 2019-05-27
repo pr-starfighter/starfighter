@@ -1,5 +1,4 @@
 data/*
-docs/*
 mac/*
 
 License: GNU GPLv3 or later <https://gnu.org/licenses/gpl.html>
@@ -415,7 +414,7 @@ Source: http://opengameart.org/content/various-inventory-24-pixel-icon-set
 
 ------------------------------------------------------------------------
 
-icon21.png
+gfx/icon21.png
 
 Authors:
   Torsten Henning
@@ -425,7 +424,7 @@ Source: http://en.wikipedia.org/wiki/File:DIN_4844-2_Warnung_vor_Laserstrahl_D-W
 
 ------------------------------------------------------------------------
 
-icon4.png
+gfx/icon4.png
 
 Authors:
   Gobusto <http://opengameart.org/users/gobusto>
@@ -519,6 +518,24 @@ gfx/credits.jpg
 Author: NASA
 License: Public Domain
 Source: http://hubblesite.org/gallery/album/nebula/pr2005012b/
+
+------------------------------------------------------------------------
+
+misc/starfighter.png
+
+Made by Julie Marchant by combining several images used by the game:
+
+- Firefly ship by Lamoot (edited)
+- Kline ship by Daniel Cook <http://lostgarden.com/>
+- Dual fighter ship by Daniel Cook <http://lostgarden.com/>
+- Tiny explosion by Astrid S. de Wijn
+- Alien Device logo by Parallel Realities
+
+License: GNU GPLv3 only <https://gnu.org/licenses/gpl.html>
+  Any version of the GNU GPL later than version 3 determined by Creative
+  Commons to be compatible with CC BY-SA 4.0 may also be used. The
+  following page indicates such licenses:
+    https://creativecommons.org/share-your-work/licensing-considerations/compatible-licenses
 
 ------------------------------------------------------------------------
 

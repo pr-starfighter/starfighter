@@ -46,33 +46,6 @@ compared to the original:
 
 ------------------------------------------------------------------------
 
-CLASSIC DIFFICULTY DIFFERENCES
-
-Classic difficulty is designed to emulate the experience of version 1.1
-of the game (the last version released by Parallel Realities) as closely
-as possible. However, there are some minor differences in addition to
-the changes to graphics, sound, and dialog.  Here you can fine a list of
-notable differences.
-
-* The timing of some events, most notably those pertaining to Kline,
-  has been adjusted to match with new dialog and music.
-
-* Several bugs present in version 1.1 have been fixed. Many of these
-  bugs affected gameplay in notable ways; such bugs include:
-
-  * A bug in the shop that caused goods to be sold at the wrong price
-    (notably exploitable to gain infinite cash by buying and selling
-    the permanent cooling upgrade)
-  * Overflow bugs that caused various numbers (especially plasma ammo)
-    to "wrap around" to zero (leading to cases where gaining plasma
-    ammo would cause you to lose plasma ammo instead)
-  * A broken event in the Odeon mission that showed a odd error message
-  * A bug that caused slaves rescued after the interception is destroyed
-    to not count toward the total for the purpose of the Eyananth
-    interception mission
-
-------------------------------------------------------------------------
-
 GENERATING CONFIGURE SCRIPT
 
 If you contribute to Project: Starfighter's source code, you will need
@@ -124,8 +97,8 @@ Run "./configure --help" to see more options.
 The third step ("make install") is technically optional, but highly
 recommended.
 
-For most GNU/Linux systems, an icon should be added to your menu when
-you run "make install". You can click on this icon to start up the game.
+For most Linux systems, an icon should be added to your menu when you
+run "make install". You can click on this icon to start up the game.
 Otherwise, you can manually install or use the launcher found in the
 "misc" directory, or you can run the "starfighter" command to start up
 the game.
@@ -148,7 +121,8 @@ explained in-game.
 
 In the system overview screen, various sections can be accessed by
 clicking the icons on the bottom of the screen. You can also use the
-keyboard or a gamepad if you prefer.
+keyboard or a gamepad if you prefer (use the arrows to move the cursor
+and the fire button to "click" on things).
 
-Other than that, have fun, and good luck!
+Other than that, have fun, and good luck! 🙂
 
