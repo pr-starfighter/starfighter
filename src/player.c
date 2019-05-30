@@ -25,10 +25,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "alien.h"
 #include "audio.h"
 #include "engine.h"
+#include "colors.h"
 #include "game.h"
 #include "gfx.h"
 #include "info.h"
 #include "player.h"
+#include "renderer.h"
 #include "screen.h"
 #include "weapons.h"
 #include "window.h"
@@ -333,6 +335,14 @@ void player_getInput()
 				break;
 
 			case SDL_WINDOWEVENT:
+				if (engine.event.window.event == SDL_WINDOWEVENT_SIZE_CHANGED)
+				{
+					screen_clear(black);
+					renderer_update();
+					screen_clear(black);
+					screen_addBuffer(0, 0, screen->w, screen->h);
+				}
+
 				if (engine.autoPause &&
 						(engine.event.window.event == SDL_WINDOWEVENT_FOCUS_LOST))
 					engine.paused = 1;

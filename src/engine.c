@@ -277,7 +277,9 @@ void engine_setMode()
 		exit(1);
 	}
 
-	window = SDL_CreateWindow("Project: Starfighter", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screen->w, screen->h, 0);
+	window = SDL_CreateWindow("Project: Starfighter",
+		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+		screen->w, screen->h, SDL_WINDOW_RESIZABLE);
 	if (window == NULL)
 	{
 		printf("Could not create window: %s\n", SDL_GetError());
@@ -329,6 +331,8 @@ void engine_setFullscreen(int value)
 	// Clear the screen (prevents artifacts)
 	screen_clear(black);
 	renderer_update();
+	screen_clear(black);
+	screen_addBuffer(0, 0, screen->w, screen->h);
 
 	SDL_SetWindowFullscreen(window, engine.fullScreen ? FULLSCREEN : 0);
 }
