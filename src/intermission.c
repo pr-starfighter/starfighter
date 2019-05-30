@@ -1198,8 +1198,7 @@ static void intermission_doOptions(SDL_Surface *optionsSurface, int x, int y)
 		{
 			if (!engine.fullScreen)
 			{
-				SDL_SetWindowFullscreen(window, FULLSCREEN);
-				engine.fullScreen = 1;
+				engine_setFullscreen(1);
 			}
 		}
 
@@ -1207,8 +1206,7 @@ static void intermission_doOptions(SDL_Surface *optionsSurface, int x, int y)
 		{
 			if (engine.fullScreen)
 			{
-				SDL_SetWindowFullscreen(window, 0);
-				engine.fullScreen = 0;
+				engine_setFullscreen(0);
 			}
 		}
 

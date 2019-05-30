@@ -1045,44 +1045,6 @@ void mission_showStartScreen()
 	screen_clear(black);
 	renderer_update();
 
-	if (game.area != MISN_INTERCEPTION)
-	{
-		screen_clear(black);
-		mission_drawScreen();
-
-		if (mission.timeLimit1[0] > 0)
-		{
-			char temp[50];
-			if (game.area != MISN_MARS)
-				sprintf(temp, "TIME LIMIT: %d minutes", mission.timeLimit1[0]);
-			else
-				sprintf(temp, "SURVIVAL FOR %d minutes", mission.timeLimit1[0]);
-			screen_renderString(temp, -1, screen->h / 2 + 195, FONT_RED);
-		}
-
-		switch (game.area)
-		{
-			case MISN_URUSOR:
-			case MISN_DORIM:
-			case MISN_SIVEDI:
-			case MISN_ALMARTHA:
-			case MISN_ELLESH:
-			case MISN_MARS:
-			case MISN_VENUS:
-				screen_renderString("Phoebe Lexx will not be present", screen->w / 2 - 240, screen->h / 2 + 115, FONT_WHITE);
-				if (game.hasWingMate2)
-					screen_renderString("Ursula Lexx will not be present", screen->w / 2 - 240, screen->h / 2 + 145, FONT_WHITE);
-				break;
-		}
-
-		if ((game.area == MISN_URUSOR) ||
-				(game.area == MISN_POSWIC) ||
-				(game.area == MISN_EARTH))
-			screen_renderString("Sid Wilson will join you on this mission", screen->w / 2 - 240, screen->h / 2 + 175, FONT_WHITE);
-
-		renderer_update();
-	}
-
 	gfx_loadSprites();
 	gfx_createTextObject(TS_SHIELD, "Shield", screen->w / 32, screen->h - 50, FONT_WHITE);
 	gfx_createTextObject(TS_PLASMA_T, "Plasma:", screen->w * 5 / 16, screen->h - 50, FONT_WHITE);
@@ -1118,6 +1080,41 @@ void mission_showStartScreen()
 
 		while (1)
 		{
+			screen_clear(black);
+			mission_drawScreen();
+
+			if (mission.timeLimit1[0] > 0)
+			{
+				char temp[50];
+				if (game.area != MISN_MARS)
+					sprintf(temp, "TIME LIMIT: %d minutes", mission.timeLimit1[0]);
+				else
+					sprintf(temp, "SURVIVAL FOR %d minutes", mission.timeLimit1[0]);
+				screen_renderString(temp, -1, screen->h / 2 + 195, FONT_RED);
+			}
+
+			switch (game.area)
+			{
+				case MISN_URUSOR:
+				case MISN_DORIM:
+				case MISN_SIVEDI:
+				case MISN_ALMARTHA:
+				case MISN_ELLESH:
+				case MISN_MARS:
+				case MISN_VENUS:
+					screen_renderString("Phoebe Lexx will not be present", screen->w / 2 - 240, screen->h / 2 + 115, FONT_WHITE);
+					if (game.hasWingMate2)
+						screen_renderString("Ursula Lexx will not be present", screen->w / 2 - 240, screen->h / 2 + 145, FONT_WHITE);
+					break;
+			}
+
+			if ((game.area == MISN_URUSOR) ||
+					(game.area == MISN_POSWIC) ||
+					(game.area == MISN_EARTH))
+				screen_renderString("Sid Wilson will join you on this mission", screen->w / 2 - 240, screen->h / 2 + 175, FONT_WHITE);
+
+			renderer_update();
+
 			game_delayFrame();
 			player_getInput();
 			if ((engine.keyState[KEY_FIRE]) || (engine.keyState[KEY_ALTFIRE]) ||

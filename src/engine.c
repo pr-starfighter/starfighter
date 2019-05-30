@@ -322,6 +322,17 @@ void engine_setMode()
 	SDL_JoystickOpen(0);
 }
 
+void engine_setFullscreen(int value)
+{
+	engine.fullScreen = value;
+
+	// Clear the screen (prevents artifacts)
+	screen_clear(black);
+	renderer_update();
+
+	SDL_SetWindowFullscreen(window, engine.fullScreen ? FULLSCREEN : 0);
+}
+
 void engine_resetLists()
 {
 	Object *ob, *ob2;

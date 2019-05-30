@@ -112,6 +112,7 @@ void engine_warn(const char *msg);
 void engine_error(const char *msg);
 void engine_setupConfigDirectory();
 void engine_setMode();
+void engine_setFullscreen(int value);
 void engine_resetLists();
 void engine_cleanup();
 
