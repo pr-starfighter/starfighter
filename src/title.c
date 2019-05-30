@@ -211,15 +211,12 @@ This is the main title screen, with the stars whirling past and the
 */
 int title_show()
 {
-	int continueSaveSlot = -1;
+	int continueSaveSlot;
 
-	int lastScreenW = -1;
-	int lastScreenH = -1;
-
-	int prx = 0;
-	int pry = 0;
-	int sfx = 0;
-	int sfy = 0;
+	int prx;
+	int pry;
+	int sfx;
+	int sfy;
 
 	int then;
 	int now;
@@ -251,11 +248,44 @@ int title_show()
 	renderer_update();
 	screen_clear(black);
 
+	continueSaveSlot = save_initSlots();
+
 	gfx_loadBackground("gfx/spirit.jpg");
 
 	SDL_Surface *prlogo, *sflogo;
 	prlogo = gfx_loadImage("gfx/prlogo.png");
 	sflogo = gfx_loadImage("gfx/sflogo.png");
+
+	prx = ((screen->w - prlogo->w) / 2);
+	pry = ((screen->h - prlogo->h) / 2);
+
+	sfx = ((screen->w - sflogo->w) / 2);
+	sfy = ((screen->h - sflogo->h) / 3);
+
+	gfx_createTextObject(TS_PRESENTS, "PRESENTS",
+		-1, screen->h / 2, FONT_WHITE);
+	gfx_createTextObject(TS_AN_SDL_GAME, "AN SDL GAME",
+		-1, screen->h / 2, FONT_WHITE);
+	gfx_createTextObject(TS_START_NEW_GAME, "START NEW GAME",
+		-1, screen->h / 3 + 50, FONT_WHITE);
+	gfx_createTextObject(TS_LOAD_GAME, "LOAD GAME",
+		-1, screen->h / 3 + 70, FONT_WHITE);
+	gfx_createTextObject(TS_CONTINUE_CURRENT_GAME, "CONTINUE CURRENT GAME",
+		-1, screen->h / 3 + 90, FONT_WHITE);
+	gfx_createTextObject(TS_OPTIONS, "OPTIONS",
+		-1, screen->h / 3 + 110, FONT_WHITE);
+	gfx_createTextObject(TS_CREDITS, "CREDITS",
+		-1, screen->h / 3 + 130, FONT_WHITE);
+	gfx_createTextObject(TS_CHEAT_OPTIONS, "CHEAT OPTIONS",
+		-1, screen->h / 3 + 150, FONT_WHITE);
+	gfx_createTextObject(TS_QUIT, "QUIT",
+		-1, screen->h / 3 + 150, FONT_WHITE);
+
+	createOptionsMenu();
+	createDifficultyMenu();
+	gfx_createTextObject(TS_BACK_TO_MAIN_MENU, "BACK TO MAIN MENU", -1, 0, FONT_WHITE);
+
+	createCheatMenu();
 
 	// Set the star motion
 	engine.ssx = -0.5;
@@ -281,13 +311,17 @@ int title_show()
     sprintf(buildVersion, "Version %s", VERSION );
 
 	SDL_Rect optionRec;
-	
-	// Initializing is actually unnecessary as these will get
-	// overridden; these are just here to suppress compiler warnings.
+
 	optionRec.x = screen->w / 2 - 110;
 	optionRec.y = screen->h / 3 + 45;
 	optionRec.h = 22;
 	optionRec.w = 215;
+
+	if (continueSaveSlot != -1)
+	{
+		selectedOption = 3;
+		optionRec.y += 40;
+	}
 
 	screen_drawBackground();
 
@@ -299,53 +333,6 @@ int title_show()
 
 	while (!engine.done)
 	{
-		if ((lastScreenW != screen->w) || (lastScreenH != screen->h))
-		{
-			lastScreenW = screen->w;
-			lastScreenH = screen->h;
-
-			prx = ((screen->w - prlogo->w) / 2);
-			pry = ((screen->h - prlogo->h) / 2);
-
-			sfx = ((screen->w - sflogo->w) / 2);
-			sfy = ((screen->h - sflogo->h) / 3);
-
-			gfx_createTextObject(TS_PRESENTS, "PRESENTS",
-				-1, screen->h / 2, FONT_WHITE);
-			gfx_createTextObject(TS_AN_SDL_GAME, "AN SDL GAME",
-				-1, screen->h / 2, FONT_WHITE);
-			gfx_createTextObject(TS_START_NEW_GAME, "START NEW GAME",
-				-1, screen->h / 3 + 50, FONT_WHITE);
-			gfx_createTextObject(TS_LOAD_GAME, "LOAD GAME",
-				-1, screen->h / 3 + 70, FONT_WHITE);
-			gfx_createTextObject(TS_CONTINUE_CURRENT_GAME, "CONTINUE CURRENT GAME",
-				-1, screen->h / 3 + 90, FONT_WHITE);
-			gfx_createTextObject(TS_OPTIONS, "OPTIONS",
-				-1, screen->h / 3 + 110, FONT_WHITE);
-			gfx_createTextObject(TS_CREDITS, "CREDITS",
-				-1, screen->h / 3 + 130, FONT_WHITE);
-			gfx_createTextObject(TS_CHEAT_OPTIONS, "CHEAT OPTIONS",
-				-1, screen->h / 3 + 150, FONT_WHITE);
-			gfx_createTextObject(TS_QUIT, "QUIT",
-				-1, screen->h / 3 + 150, FONT_WHITE);
-
-			continueSaveSlot = save_initSlots();
-
-			createOptionsMenu();
-			createDifficultyMenu();
-			gfx_createTextObject(TS_BACK_TO_MAIN_MENU, "BACK TO MAIN MENU", -1, 0, FONT_WHITE);
-
-			createCheatMenu();
-
-			optionRec.x = screen->w / 2 - 110;
-			optionRec.h = 22;
-			optionRec.w = 215;
-
-			optionRec.y = screen->h / 3 + 26 + (20 * selectedOption);
-			if ((menuType > MENU_MAIN) && (selectedOption == listLength))
-				optionRec.y += 20;
-		}
-
 		renderer_update();
 		screen_unBuffer();
 
@@ -416,9 +403,10 @@ int title_show()
 				{
 					engine.keyState[KEY_UP] = 0;
 					WRAP_ADD(selectedOption, -1, 1, listLength + 1);
-					if ((menuType == MENU_MAIN) && (selectedOption == 3) &&
-							(continueSaveSlot == -1))
-						selectedOption = 2;
+					if (menuType == MENU_MAIN)
+						if (selectedOption == 3)
+							if (continueSaveSlot == -1)
+								selectedOption = 2;
 				}
 				if (engine.keyState[KEY_DOWN])
 				{
@@ -431,24 +419,24 @@ int title_show()
 				}
 
 				optionRec.y = screen->h / 3 + 26 + (20 * selectedOption);
-				if ((menuType > MENU_MAIN) && (selectedOption == listLength))
-					optionRec.y += 20;
+				if (menuType > MENU_MAIN)
+					if (selectedOption == listLength)
+						optionRec.y += 20;
 
-				skip = 1;
+				if (!skip)
+				{
+					gfx_renderString("Copyright Parallel Realities 2003",
+						5, gfx_background->h - 60, FONT_WHITE, 0, gfx_background);
+					gfx_renderString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012",
+						5, gfx_background->h - 40, FONT_WHITE, 0, gfx_background);
+					gfx_renderString("Copyright 2015-2017 Julie Marchant",
+						5, gfx_background->h - 20, FONT_WHITE, 0, gfx_background);
+					gfx_renderString(buildVersion, gfx_background->w - 6 - strlen(buildVersion) * 9,
+						gfx_background->h - 20, FONT_WHITE, 0, gfx_background);
+					screen_addBuffer(0, 0, screen->w, screen->h);
+					skip = 1;
+				}
 			}
-		}
-		
-		if (skip)
-		{
-			gfx_renderString("Copyright Parallel Realities 2003",
-				5, screen->h - 60, FONT_WHITE, 0, screen);
-			gfx_renderString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012",
-				5, screen->h - 40, FONT_WHITE, 0, screen);
-			gfx_renderString("Copyright 2015-2019 Julie Marchant",
-				5, screen->h - 20, FONT_WHITE, 0, screen);
-			gfx_renderString(buildVersion, screen->w - 6 - strlen(buildVersion) * 9,
-				screen->h - 20, FONT_WHITE, 0, screen);
-			screen_addBuffer(0, screen->h - 40, screen->w, 40);
 		}
 
 		player_getInput();
@@ -457,6 +445,15 @@ int title_show()
 		{
 			if ((now - then <= 27500) && (!skip))
 			{
+				gfx_renderString("Copyright Parallel Realities 2003",
+					5, screen->h - 60, FONT_WHITE, 0, gfx_background);
+				gfx_renderString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012",
+					5, screen->h - 40, FONT_WHITE, 0, gfx_background);
+				gfx_renderString("Copyright 2015-2019 Julie Marchant",
+					5, screen->h - 20, FONT_WHITE, 0, gfx_background);
+				gfx_renderString(buildVersion, screen->w - 6 - strlen(buildVersion) * 9,
+					screen->h - 20, FONT_WHITE, 0, gfx_background);
+				screen_addBuffer(0, screen->h - 40, screen->w, 40);
 				skip = 1;
 			}
 			else
