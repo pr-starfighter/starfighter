@@ -133,3 +133,43 @@ void screen_drawRect(int x, int y, int w, int h, Uint8 red, Uint8 green, Uint8 b
 {
 	gfx_drawRect(screen, x, y, w, h, red, green, blue);
 }
+
+/*
+Adjust the dimensions of the screen to match the aspect ratio of the
+window, using DEFAULT_SCREEN_WIDTH and DEFAULT_SCREEN_HEIGHT as a
+baseline.
+*/
+void screen_adjustDimensions(int w, int h)
+{
+	double default_ratio = (double)DEFAULT_SCREEN_WIDTH / (double)DEFAULT_SCREEN_HEIGHT;
+	double new_ratio = (double)w / (double)h;
+	
+	// Calculate dimensions
+	if (new_ratio > default_ratio)
+	{
+		// Wide screen
+		w = (DEFAULT_SCREEN_HEIGHT * w) / h;
+		h = DEFAULT_SCREEN_HEIGHT;
+	}
+	else
+	{
+		// Tall screen
+		w = DEFAULT_SCREEN_WIDTH;
+		h = (DEFAULT_SCREEN_WIDTH * h) / w;
+	}
+	
+	// Free previous surface (if it exists)
+	if (screen != NULL)
+	{
+		SDL_FreeSurface(screen);
+		screen = NULL;
+	}
+	
+	// Create the surface
+	screen = SDL_CreateRGBSurface(0, w, h, 32, 0xff0000, 0xff00, 0xff, 0xff000000);
+	if (screen == NULL)
+	{
+		printf("Couldn't create %ix%ix32 surface: %s\n", w, h, SDL_GetError());
+		exit(1);
+	}
+}

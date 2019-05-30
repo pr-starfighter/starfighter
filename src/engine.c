@@ -270,12 +270,7 @@ void engine_setMode()
 	engine.useMusic = useMusic;
 	engine.autoPause = autoPause;
 
-	screen = SDL_CreateRGBSurface(0, DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT, 32, 0xff0000, 0xff00, 0xff, 0xff000000);
-	if (screen == NULL)
-	{
-		printf("Couldn't create %ix%ix32 surface: %s\n", DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT, SDL_GetError());
-		exit(1);
-	}
+	screen_adjustDimensions(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT);
 
 	window = SDL_CreateWindow("Project: Starfighter",
 		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
@@ -289,21 +284,7 @@ void engine_setMode()
 	SDL_SetWindowIcon(window, gfx_loadImage("gfx/alienDevice.png"));
 	SDL_SetWindowFullscreen(window, engine.fullScreen ? FULLSCREEN : 0);
 
-	renderer = SDL_CreateRenderer(window, -1, 0);
-	if (renderer == NULL)
-	{
-		printf("Could not create renderer: %s\n", SDL_GetError());
-		exit(1);
-	}
-
-	SDL_RenderSetLogicalSize(renderer, screen->w, screen->h);
-
-	renderer_texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, screen->w, screen->h);
-	if (renderer_texture == NULL)
-	{
-		printf("Couldn't create %ix%ix32 texture: %s\n", screen->w, screen->h, SDL_GetError());
-		exit(1);
-	}
+	renderer_reset();
 
 #ifndef NOSOUND
 	if (engine.useAudio)

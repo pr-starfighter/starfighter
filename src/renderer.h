@@ -29,5 +29,6 @@ extern SDL_Renderer *renderer;
 extern SDL_Texture *renderer_texture;
 
 void renderer_update();
+void renderer_reset();
 
 #endif

@@ -23,6 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "structs.h"
 
 #include "screen.h"
+#include "window.h"
 
 SDL_Renderer *renderer;
 SDL_Texture *renderer_texture;
@@ -35,4 +36,29 @@ void renderer_update()
 	SDL_UpdateTexture(renderer_texture, NULL, screen->pixels, screen->w * 4);
 	SDL_RenderCopy(renderer, renderer_texture, NULL, NULL);
 	SDL_RenderPresent(renderer);
+}
+
+// Call after screen_adjustDimensions.
+void renderer_reset()
+{
+	if (renderer == NULL)
+	{
+		renderer = SDL_CreateRenderer(window, -1, 0);
+		if (renderer == NULL)
+		{
+			printf("Could not create renderer: %s\n", SDL_GetError());
+			exit(1);
+		}
+	}
+	SDL_RenderSetLogicalSize(renderer, screen->w, screen->h);
+
+	if (renderer_texture != NULL)
+		SDL_DestroyTexture(renderer_texture);
+
+	renderer_texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, screen->w, screen->h);
+	if (renderer_texture == NULL)
+	{
+		printf("Couldn't create %ix%ix32 texture: %s\n", screen->w, screen->h, SDL_GetError());
+		exit(1);
+	}
 }

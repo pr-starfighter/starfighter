@@ -337,6 +337,8 @@ void player_getInput()
 			case SDL_WINDOWEVENT:
 				if (engine.event.window.event == SDL_WINDOWEVENT_SIZE_CHANGED)
 				{
+					screen_adjustDimensions(engine.event.window.data1, engine.event.window.data2);
+					renderer_reset();
 					screen_clear(black);
 					renderer_update();
 					screen_clear(black);
