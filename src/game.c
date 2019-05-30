@@ -1820,13 +1820,14 @@ static void game_doHud()
 
 	if (engine.minutes > -1)
 	{
+		gfx_createTextObject(TS_TIME_T, "Time Remaining - ", screen->w / 2 - 140, 20, FONT_WHITE);
+		screen_blitText(TS_TIME_T);
 		if ((engine.minutes == 0) && (engine.seconds <= 29))
 			fontColor = FONT_RED;
 		else if ((engine.minutes == 0) && (engine.seconds > 29))
 			fontColor = FONT_YELLOW;
 		else
 			fontColor = FONT_WHITE;
-		screen_blitText(TS_TIME_T);
 		sprintf(text, "%.2d:%.2d", engine.minutes, engine.seconds);
 		gfx_createTextObject(TS_TIME, text, screen->w / 2 + 10, 21, fontColor);
 		screen_blitText(TS_TIME);
@@ -1834,13 +1835,15 @@ static void game_doHud()
 
 	if (game.area != MISN_INTERCEPTION)
 	{
+		gfx_createTextObject(TS_OBJECTIVES_T, "Objectives Remaining:", screen->w - 250, 20, FONT_WHITE);
 		screen_blitText(TS_OBJECTIVES_T);
 		sprintf(text, "%d", (mission.remainingObjectives1 + mission.remainingObjectives2));
 		gfx_createTextObject(TS_OBJECTIVES, text, screen->w - 55, 21, FONT_WHITE);
 		screen_blitText(TS_OBJECTIVES);
 	}
 
-	screen_blitText(TS_CASH_T); // cash
+	gfx_createTextObject(TS_CASH_T, "Cash: $", 25, 20, FONT_WHITE);
+	screen_blitText(TS_CASH_T);
 	sprintf(text, "%.6d", game.cash);
 	gfx_createTextObject(TS_CASH, text, 90, 21, FONT_WHITE);
 	screen_blitText(TS_CASH);
@@ -1877,10 +1880,18 @@ static void game_doHud()
 		if (player.ammo[0] <= 25) fontColor = FONT_YELLOW;
 		if (player.ammo[0] <= 10) fontColor = FONT_RED;
 	}
+	gfx_createTextObject(TS_PLASMA_T, "Plasma:", screen->w * 5 / 16, screen->h - 50, FONT_WHITE);
 	screen_blitText(TS_PLASMA_T);
 	sprintf(text, "%.3d", player.ammo[0]);
 	gfx_createTextObject(TS_PLASMA, text, screen->w * 5 / 16 + 70, screen->h - 49, fontColor);
 	screen_blitText(TS_PLASMA);
+
+	if (player.weaponType[1] == W_CHARGER)
+		gfx_createTextObject(TS_AMMO_T, "Charge", screen->w / 2, screen->h - 50, FONT_WHITE);
+	else if (player.weaponType[1] == W_LASER)
+		gfx_createTextObject(TS_AMMO_T, "Heat", screen->w / 2 + 20, screen->h - 50, FONT_WHITE);
+	else
+		gfx_createTextObject(TS_AMMO_T, "Rockets:", screen->w / 2, screen->h - 50, FONT_WHITE);
 
 	screen_blitText(TS_AMMO_T);
 
@@ -2000,6 +2011,11 @@ static void game_doHud()
 		if ((engine.targetIndex > -1) && (aliens[engine.targetIndex].shield > 0) &&
 				(engine.targetIndex > engine.maxAliens))
 		{
+			gfx_createTextObject(TS_TARGET, "Target", screen->w * 11 / 16, screen->h - 50, FONT_WHITE);
+			gfx_createTextObject(TS_TARGET_SID, "Sid", screen->w * 11 / 16 + 27, screen->h - 50, FONT_WHITE);
+			gfx_createTextObject(TS_TARGET_PHOEBE, "Phoebe", screen->w * 11 / 16, screen->h - 50, FONT_WHITE);
+			gfx_createTextObject(TS_TARGET_KLINE, "Kline", screen->w * 11 / 16 + 9, screen->h - 50, FONT_WHITE);
+
 			if (game.difficulty == DIFFICULTY_ORIGINAL)
 			{
 				screen_blitText(TS_TARGET);
@@ -2036,6 +2052,7 @@ static void game_doHud()
 		}
 	}
 
+	gfx_createTextObject(TS_POWER, "Power", screen->w / 32, screen->h - 30, FONT_WHITE);
 	screen_blitText(TS_POWER);
 
 	bar.w = screen->w / 32;
@@ -2055,6 +2072,7 @@ static void game_doHud()
 		bar.x += screen->w * 3 / 80;
 	}
 
+	gfx_createTextObject(TS_OUTPUT, "Output", screen->w * 5 / 16, screen->h - 30, FONT_WHITE);
 	screen_blitText(TS_OUTPUT);
 
 	bar.w = screen->w / 32;
@@ -2076,6 +2094,7 @@ static void game_doHud()
 		bar.x += screen->w * 3 / 80;
 	}
 
+	gfx_createTextObject(TS_COOLER, "Cooler", screen->w * 97 / 160, screen->h - 30, FONT_WHITE);
 	screen_blitText(TS_COOLER);
 
 	bar.w = screen->w / 32;
@@ -2096,6 +2115,7 @@ static void game_doHud()
 		bar.x += screen->w * 3 / 80;
 	}
 
+	gfx_createTextObject(TS_SHIELD, "Shield", screen->w / 32, screen->h - 50, FONT_WHITE);
 	screen_blitText(TS_SHIELD);
 	if (player.shield < 1)
 		return;
