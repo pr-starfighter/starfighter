@@ -1826,24 +1826,24 @@ static void game_doHud()
 			fontColor = FONT_YELLOW;
 		else
 			fontColor = FONT_WHITE;
-		screen_blitTextInPlace(TS_TIME_T);
+		screen_blitText(TS_TIME_T, screen->w / 2 - 140, 20);
 		sprintf(text, "%.2d:%.2d", engine.minutes, engine.seconds);
-		gfx_createTextObject(TS_TIME, text, screen->w / 2 + 10, 21, fontColor);
-		screen_blitTextInPlace(TS_TIME);
+		gfx_createTextObject(TS_TIME, text, 0, 0, fontColor);
+		screen_blitText(TS_TIME, screen->w / 2 + 10, 21);
 	}
 
 	if (game.area != MISN_INTERCEPTION)
 	{
-		screen_blitTextInPlace(TS_OBJECTIVES_T);
+		screen_blitText(TS_OBJECTIVES_T, screen->w - 250, 20);
 		sprintf(text, "%d", (mission.remainingObjectives1 + mission.remainingObjectives2));
-		gfx_createTextObject(TS_OBJECTIVES, text, screen->w - 55, 21, FONT_WHITE);
-		screen_blitTextInPlace(TS_OBJECTIVES);
+		gfx_createTextObject(TS_OBJECTIVES, text, 0, 0, FONT_WHITE);
+		screen_blitText(TS_OBJECTIVES, screen->w - 55, 21);
 	}
 
-	screen_blitTextInPlace(TS_CASH_T); // cash
+	screen_blitText(TS_CASH_T, 25, 20);
 	sprintf(text, "%.6d", game.cash);
-	gfx_createTextObject(TS_CASH, text, 90, 21, FONT_WHITE);
-	screen_blitTextInPlace(TS_CASH);
+	gfx_createTextObject(TS_CASH, text, 0, 0, FONT_WHITE);
+	screen_blitText(TS_CASH, 90, 21);
 
 	if (game.difficulty == DIFFICULTY_ORIGINAL)
 	{
@@ -1972,8 +1972,7 @@ static void game_doHud()
 	{
 		if (gfx_textSprites[i].life > 0)
 		{
-			gfx_textSprites[i].y = screen->h - 75 - (i * 20);
-			screen_blitTextInPlace(i);
+			screen_blitText(i, -1, screen->h - 75 - (i * 20));
 			gfx_textSprites[i].life--;
 
 			if (gfx_textSprites[i].life == 0)

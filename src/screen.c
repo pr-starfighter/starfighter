@@ -48,7 +48,11 @@ void screen_blitText(int i, int x, int y)
 // Legacy function; will be removed later
 void screen_blitTextInPlace(int i)
 {
-	screen_blit(gfx_textSprites[i].image, (int)gfx_textSprites[i].x, (int)gfx_textSprites[i].y);
+	int x = gfx_textSprites[i].x;
+	if (x == -1)
+		x = (screen->w - gfx_textSprites[i].image->w) / 2;
+
+	screen_blit(gfx_textSprites[i].image, x, (int)gfx_textSprites[i].y);
 }
 
 int screen_renderString(const char *in, int x, int y, int fontColor)

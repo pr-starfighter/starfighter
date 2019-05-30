@@ -33,7 +33,7 @@ void info_clearLines()
 // from a to b
 void info_copyLine(int a, int b)
 {
-	gfx_createTextObject(b, gfx_textSprites[a].text, -1, 0, gfx_textSprites[a].fontColor);
+	gfx_createTextObject(b, gfx_textSprites[a].text, 0, 0, gfx_textSprites[a].fontColor);
 	gfx_textSprites[b].life = gfx_textSprites[a].life;
 }
 
@@ -65,6 +65,6 @@ void info_setLine(const char *in, int color)
 		}
 	}
 
-	gfx_createTextObject(index, in, -1, 0, color);
+	gfx_createTextObject(index, in, 0, 0, color);
 	gfx_textSprites[index].life = 240;
 }

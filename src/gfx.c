@@ -361,8 +361,6 @@ void gfx_createTextObject(int index, const char *inString, int x, int y, int fon
 	{
 		gfx_textSprites[index].x = x;
 		gfx_textSprites[index].y = y;
-		if (x == -1)
-			gfx_textSprites[index].x = (screen->w - gfx_textSprites[index].image->w) / 2;
 		return;
 	}
 
@@ -375,8 +373,6 @@ void gfx_createTextObject(int index, const char *inString, int x, int y, int fon
 		SDL_FreeSurface(gfx_textSprites[index].image);
 	}
 	gfx_textSprites[index].image = gfx_createTextSurface(inString, fontColor);
-	if (x == -1)
-		gfx_textSprites[index].x = (screen->w - gfx_textSprites[index].image->w) / 2;
 }
 
 SDL_Surface *gfx_createAlphaRect(int width, int height, Uint8 red, Uint8 green, Uint8 blue)
