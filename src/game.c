@@ -1879,8 +1879,8 @@ static void game_doHud()
 	}
 	screen_blitTextInPlace(TS_PLASMA_T);
 	sprintf(text, "%.3d", player.ammo[0]);
-	gfx_createTextObject(TS_PLASMA, text, screen->w * 5 / 16 + 70, screen->h - 49, fontColor);
-	screen_blitTextInPlace(TS_PLASMA);
+	gfx_createTextObject(TS_PLASMA, text, 0, 0, fontColor);
+	screen_blitText(TS_PLASMA, screen->w * 5 / 16 + 70, screen->h - 49);
 
 	screen_blitTextInPlace(TS_AMMO_T);
 
@@ -1891,8 +1891,8 @@ static void game_doHud()
 		else
 			fontColor = FONT_WHITE;
 		sprintf(text, "%.2d", player.ammo[1]); // rocket ammo
-		gfx_createTextObject(TS_AMMO, text, screen->w / 2 + 80, screen->h - 49, fontColor);
-		screen_blitTextInPlace(TS_AMMO);
+		gfx_createTextObject(TS_AMMO, text, 0, 0, fontColor);
+		screen_blitText(TS_AMMO, screen->w / 2 + 80, screen->h - 49);
 	}
 
 	if (((player.weaponType[1] == W_CHARGER) || (player.weaponType[1] == W_LASER)) && (player.ammo[1] > 0))
@@ -2538,8 +2538,8 @@ int game_mainLoop()
 
 		if (engine.paused)
 		{
-			gfx_createTextObject(TS_PAUSED, "PAUSED", -1, screen->h / 2, FONT_WHITE);
-			screen_blitTextInPlace(TS_PAUSED);
+			gfx_createTextObject(TS_PAUSED, "PAUSED", 0, 0, FONT_WHITE);
+			screen_blitText(TS_PAUSED, -1, screen->h / 2);
 			renderer_update();
 			audio_pauseMusic();
 
