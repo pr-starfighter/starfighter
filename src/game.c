@@ -1435,9 +1435,12 @@ static void game_doPlayer()
 
 			if (engine.done == 0)
 			{
-				if ((game.difficulty != DIFFICULTY_ORIGINAL) ||
-					((game.area != MISN_ELLESH) &&
-						(game.area != MISN_MARS)))
+				if (game.difficulty == DIFFICULTY_ORIGINAL)
+				{
+					LIMIT(player.x, X_VIEW_BORDER, screen->w - X_VIEW_BORDER);
+					LIMIT(player.y, Y_VIEW_BORDER, screen->h - Y_VIEW_BORDER);
+				}
+				else
 				{
 					if (xmoved)
 					{
@@ -1498,11 +1501,6 @@ static void game_doPlayer()
 							engine.smy -= cc;
 						}
 					}
-				}
-				else
-				{
-					LIMIT(player.x, X_VIEW_BORDER, screen->w - X_VIEW_BORDER);
-					LIMIT(player.y, Y_VIEW_BORDER, screen->h - Y_VIEW_BORDER);
 				}
 			}
 
