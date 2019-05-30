@@ -699,7 +699,7 @@ static void intermission_showStatus(SDL_Surface *infoSurface)
 	{
 		gfx_textSprites[i].y -= speed;
 		if ((gfx_textSprites[i].y > 80) && (gfx_textSprites[i].y < 70 + infoSurface->h))
-			screen_blitText(i);
+			screen_blitTextInPlace(i);
 	}
 
 	if (gfx_textSprites[TS_STATUS_FOOTER - 1].y < 65)
@@ -720,8 +720,8 @@ static void intermission_showStatus(SDL_Surface *infoSurface)
 
 	screen_drawRect(x, infoSurface->h + 70, infoSurface->w, 20, 0x00, 0x00, 0x99);
 
-	screen_blitText(TS_STATUS_HEADER);
-	screen_blitText(TS_STATUS_FOOTER);
+	screen_blitTextInPlace(TS_STATUS_HEADER);
+	screen_blitTextInPlace(TS_STATUS_FOOTER);
 }
 
 static void intermission_createCommsSurface(SDL_Surface *comms)
@@ -1449,7 +1449,7 @@ int intermission()
 			engine.ssy /= 100;
 		}
 
-		screen_blitText(TS_CURRENT_SYSTEM);
+		screen_blitTextInPlace(TS_CURRENT_SYSTEM);
 
 		switch(section)
 		{
@@ -1504,9 +1504,9 @@ int intermission()
 					gfx_createTextObject(TS_DEST_PLANET, string, screen->w - 250, screen->h - 120, FONT_WHITE);
 				}
 
-				screen_blitText(TS_CURRENT_PLANET);
+				screen_blitTextInPlace(TS_CURRENT_PLANET);
 				if (game.stationedPlanet != game.destinationPlanet)
-					screen_blitText(TS_DEST_PLANET);
+					screen_blitTextInPlace(TS_DEST_PLANET);
 				break;
 
 			case 2:
@@ -1547,9 +1547,9 @@ int intermission()
 				intermission_showSystem(orbit_pos, 0);
 
 				screen_blit(intermission_planets[game.stationedPlanet].image, 150, screen->h - 90);
-				screen_blitText(TS_CURRENT_PLANET);
+				screen_blitTextInPlace(TS_CURRENT_PLANET);
 				screen_blit(intermission_planets[game.destinationPlanet].image, screen->w - 150, screen->h - 90);
-				screen_blitText(TS_DEST_PLANET);
+				screen_blitTextInPlace(TS_DEST_PLANET);
 
 				game.distanceCovered += distance * (screen->w - 350) / 450.;
 				destRect.w = (int)game.distanceCovered;
@@ -1606,9 +1606,9 @@ int intermission()
 						(!intermission_planets[game.stationedPlanet].missionCompleted)))
 			{
 				if (game.stationedPlanet == game.destinationPlanet)
-					screen_blitText(TS_INFO_START_MISSION);
+					screen_blitTextInPlace(TS_INFO_START_MISSION);
 				else
-					screen_blitText(TS_INFO_GOTO);
+					screen_blitTextInPlace(TS_INFO_GOTO);
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
@@ -1619,7 +1619,7 @@ int intermission()
 			}
 			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + w / 7, y, 32, 32))
 			{
-				screen_blitText(TS_INFO_MAP);
+				screen_blitTextInPlace(TS_INFO_MAP);
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
@@ -1630,7 +1630,7 @@ int intermission()
 			}
 			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 2 * w / 7, y, 32, 32))
 			{
-				screen_blitText(TS_INFO_STATUS);
+				screen_blitTextInPlace(TS_INFO_STATUS);
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
@@ -1641,7 +1641,7 @@ int intermission()
 			}
 			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 3 * w / 7, y, 32, 32))
 			{
-				screen_blitText(TS_INFO_SAVE_GAME);
+				screen_blitTextInPlace(TS_INFO_SAVE_GAME);
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
@@ -1652,7 +1652,7 @@ int intermission()
 			}
 			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 4 * w / 7, y, 32, 32))
 			{
-				screen_blitText(TS_INFO_SHOP);
+				screen_blitTextInPlace(TS_INFO_SHOP);
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
@@ -1663,7 +1663,7 @@ int intermission()
 			}
 			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 5 * w / 7, y, 32, 32))
 			{
-				screen_blitText(TS_INFO_COMMS);
+				screen_blitTextInPlace(TS_INFO_COMMS);
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
@@ -1675,7 +1675,7 @@ int intermission()
 			}
 			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 6 * w / 7, y, 32, 32))
 			{
-				screen_blitText(TS_INFO_OPTIONS);
+				screen_blitTextInPlace(TS_INFO_OPTIONS);
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
@@ -1686,7 +1686,7 @@ int intermission()
 			}
 			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + w, y, 32, 32))
 			{
-				screen_blitText(TS_INFO_EXIT);
+				screen_blitTextInPlace(TS_INFO_EXIT);
 
 				if ((engine.keyState[KEY_FIRE]))
 				{

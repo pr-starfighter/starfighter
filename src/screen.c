@@ -36,7 +36,17 @@ void screen_blit(SDL_Surface *image, int x, int y)
 	gfx_blit(image, x, y, screen);
 }
 
-void screen_blitText(int i)
+void screen_blitText(int i, int x, int y)
+{
+	if (x == -1)
+		x = (screen->w - gfx_textSprites[i].image->w) / 2;
+
+	screen_blit(gfx_textSprites[i].image,
+		(x + (int)gfx_textSprites[i].x), (y +(int)gfx_textSprites[i].y));
+}
+
+// Legacy function; will be removed later
+void screen_blitTextInPlace(int i)
 {
 	screen_blit(gfx_textSprites[i].image, (int)gfx_textSprites[i].x, (int)gfx_textSprites[i].y);
 }

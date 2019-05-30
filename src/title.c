@@ -41,24 +41,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 static int showGameMenu(int continueSaveSlot)
 {
-	screen_blitText(TS_START_NEW_GAME);
-	screen_blitText(TS_LOAD_GAME);
+	screen_blitTextInPlace(TS_START_NEW_GAME);
+	screen_blitTextInPlace(TS_LOAD_GAME);
 	if (continueSaveSlot != -1)
 	{
-		screen_blitText(TS_CONTINUE_CURRENT_GAME);
+		screen_blitTextInPlace(TS_CONTINUE_CURRENT_GAME);
 	}
-	screen_blitText(TS_OPTIONS);
-	screen_blitText(TS_CREDITS);
+	screen_blitTextInPlace(TS_OPTIONS);
+	screen_blitTextInPlace(TS_CREDITS);
 	if (engine.cheat)
 	{
 		gfx_textSprites[TS_QUIT].y = screen->h / 3 + 170;
-		screen_blitText(TS_CHEAT_OPTIONS);
+		screen_blitTextInPlace(TS_CHEAT_OPTIONS);
 	}
 	else
 	{
 		gfx_textSprites[TS_QUIT].y = screen->h / 3 + 150;
 	}
-	screen_blitText(TS_QUIT);
+	screen_blitTextInPlace(TS_QUIT);
 
 	if (engine.cheat)
 		return 7;
@@ -75,11 +75,11 @@ static int showLoadMenu()
 		rtn++;
 		if (gfx_textSprites[i].image != NULL)
 		{
-			screen_blitText(i);
+			screen_blitTextInPlace(i);
 			gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = gfx_textSprites[i].y + 40;
 		}
 	}
-	screen_blitText(TS_BACK_TO_MAIN_MENU);
+	screen_blitTextInPlace(TS_BACK_TO_MAIN_MENU);
 
 	return rtn;
 }
@@ -110,9 +110,9 @@ static int showDifficultyMenu()
 {
 	gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = screen->h / 3 + 110;
 
-	screen_blitText(TS_START_GAME);
-	screen_blitText(TS_DIFFICULTY);
-	screen_blitText(TS_BACK_TO_MAIN_MENU);
+	screen_blitTextInPlace(TS_START_GAME);
+	screen_blitTextInPlace(TS_DIFFICULTY);
+	screen_blitTextInPlace(TS_BACK_TO_MAIN_MENU);
 
 	return 3;
 }
@@ -152,11 +152,11 @@ static int showOptionsMenu()
 {
 	gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = screen->h / 3 + 150;
 
-	screen_blitText(TS_SOUND);
-	screen_blitText(TS_MUSIC);
-	screen_blitText(TS_FULLSCREEN);
-	screen_blitText(TS_AUTOPAUSE);
-	screen_blitText(TS_BACK_TO_MAIN_MENU);
+	screen_blitTextInPlace(TS_SOUND);
+	screen_blitTextInPlace(TS_MUSIC);
+	screen_blitTextInPlace(TS_FULLSCREEN);
+	screen_blitTextInPlace(TS_AUTOPAUSE);
+	screen_blitTextInPlace(TS_BACK_TO_MAIN_MENU);
 
 	return 5;
 }
@@ -196,11 +196,11 @@ static int showCheatMenu()
 {
 	gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = screen->h / 3 + 150;
 
-	screen_blitText(TS_UNLIMITED_SHIELD);
-	screen_blitText(TS_UNLIMITED_AMMO);
-	screen_blitText(TS_UNLIMITED_CASH);
-	screen_blitText(TS_UNLIMITED_TIME);
-	screen_blitText(TS_BACK_TO_MAIN_MENU);
+	screen_blitTextInPlace(TS_UNLIMITED_SHIELD);
+	screen_blitTextInPlace(TS_UNLIMITED_AMMO);
+	screen_blitTextInPlace(TS_UNLIMITED_CASH);
+	screen_blitTextInPlace(TS_UNLIMITED_TIME);
+	screen_blitTextInPlace(TS_BACK_TO_MAIN_MENU);
 
 	return 5;
 }
@@ -360,11 +360,11 @@ int title_show()
 		}
 		else if ((now - then > 9000) && (now - then < 15000) && (!skip))
 		{
-			screen_blitText(TS_PRESENTS);
+			screen_blitTextInPlace(TS_PRESENTS);
 		}
 		else if ((now - then > 16000) && (now - then < 21000) && (!skip))
 		{
-			screen_blitText(TS_AN_SDL_GAME);
+			screen_blitTextInPlace(TS_AN_SDL_GAME);
 		}
 		else if ((now - then > 25500) || (skip))
 		{

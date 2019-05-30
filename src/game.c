@@ -1826,24 +1826,24 @@ static void game_doHud()
 			fontColor = FONT_YELLOW;
 		else
 			fontColor = FONT_WHITE;
-		screen_blitText(TS_TIME_T);
+		screen_blitTextInPlace(TS_TIME_T);
 		sprintf(text, "%.2d:%.2d", engine.minutes, engine.seconds);
 		gfx_createTextObject(TS_TIME, text, screen->w / 2 + 10, 21, fontColor);
-		screen_blitText(TS_TIME);
+		screen_blitTextInPlace(TS_TIME);
 	}
 
 	if (game.area != MISN_INTERCEPTION)
 	{
-		screen_blitText(TS_OBJECTIVES_T);
+		screen_blitTextInPlace(TS_OBJECTIVES_T);
 		sprintf(text, "%d", (mission.remainingObjectives1 + mission.remainingObjectives2));
 		gfx_createTextObject(TS_OBJECTIVES, text, screen->w - 55, 21, FONT_WHITE);
-		screen_blitText(TS_OBJECTIVES);
+		screen_blitTextInPlace(TS_OBJECTIVES);
 	}
 
-	screen_blitText(TS_CASH_T); // cash
+	screen_blitTextInPlace(TS_CASH_T); // cash
 	sprintf(text, "%.6d", game.cash);
 	gfx_createTextObject(TS_CASH, text, 90, 21, FONT_WHITE);
-	screen_blitText(TS_CASH);
+	screen_blitTextInPlace(TS_CASH);
 
 	if (game.difficulty == DIFFICULTY_ORIGINAL)
 	{
@@ -1877,12 +1877,12 @@ static void game_doHud()
 		if (player.ammo[0] <= 25) fontColor = FONT_YELLOW;
 		if (player.ammo[0] <= 10) fontColor = FONT_RED;
 	}
-	screen_blitText(TS_PLASMA_T);
+	screen_blitTextInPlace(TS_PLASMA_T);
 	sprintf(text, "%.3d", player.ammo[0]);
 	gfx_createTextObject(TS_PLASMA, text, screen->w * 5 / 16 + 70, screen->h - 49, fontColor);
-	screen_blitText(TS_PLASMA);
+	screen_blitTextInPlace(TS_PLASMA);
 
-	screen_blitText(TS_AMMO_T);
+	screen_blitTextInPlace(TS_AMMO_T);
 
 	if ((player.weaponType[1] != W_CHARGER) && (player.weaponType[1] != W_LASER))
 	{
@@ -1892,7 +1892,7 @@ static void game_doHud()
 			fontColor = FONT_WHITE;
 		sprintf(text, "%.2d", player.ammo[1]); // rocket ammo
 		gfx_createTextObject(TS_AMMO, text, screen->w / 2 + 80, screen->h - 49, fontColor);
-		screen_blitText(TS_AMMO);
+		screen_blitTextInPlace(TS_AMMO);
 	}
 
 	if (((player.weaponType[1] == W_CHARGER) || (player.weaponType[1] == W_LASER)) && (player.ammo[1] > 0))
@@ -1973,7 +1973,7 @@ static void game_doHud()
 		if (gfx_textSprites[i].life > 0)
 		{
 			gfx_textSprites[i].y = screen->h - 75 - (i * 20);
-			screen_blitText(i);
+			screen_blitTextInPlace(i);
 			gfx_textSprites[i].life--;
 
 			if (gfx_textSprites[i].life == 0)
@@ -2002,18 +2002,18 @@ static void game_doHud()
 		{
 			if (game.difficulty == DIFFICULTY_ORIGINAL)
 			{
-				screen_blitText(TS_TARGET);
+				screen_blitTextInPlace(TS_TARGET);
 			}
 			else
 			{
 				if (engine.targetIndex == ALIEN_SID)
-					screen_blitText(TS_TARGET_SID);
+					screen_blitTextInPlace(TS_TARGET_SID);
 				else if (engine.targetIndex == ALIEN_PHOEBE)
-					screen_blitText(TS_TARGET_PHOEBE);
+					screen_blitTextInPlace(TS_TARGET_PHOEBE);
 				else if (engine.targetIndex == ALIEN_KLINE)
-					screen_blitText(TS_TARGET_KLINE);
+					screen_blitTextInPlace(TS_TARGET_KLINE);
 				else
-					screen_blitText(TS_TARGET);
+					screen_blitTextInPlace(TS_TARGET);
 			}
 
 			bar.w = MAX(screen->w / 800, 1);
@@ -2036,7 +2036,7 @@ static void game_doHud()
 		}
 	}
 
-	screen_blitText(TS_POWER);
+	screen_blitTextInPlace(TS_POWER);
 
 	bar.w = screen->w / 32;
 	bar.h = 12;
@@ -2055,7 +2055,7 @@ static void game_doHud()
 		bar.x += screen->w * 3 / 80;
 	}
 
-	screen_blitText(TS_OUTPUT);
+	screen_blitTextInPlace(TS_OUTPUT);
 
 	bar.w = screen->w / 32;
 	bar.h = 12;
@@ -2076,7 +2076,7 @@ static void game_doHud()
 		bar.x += screen->w * 3 / 80;
 	}
 
-	screen_blitText(TS_COOLER);
+	screen_blitTextInPlace(TS_COOLER);
 
 	bar.w = screen->w / 32;
 	bar.h = 12;
@@ -2096,7 +2096,7 @@ static void game_doHud()
 		bar.x += screen->w * 3 / 80;
 	}
 
-	screen_blitText(TS_SHIELD);
+	screen_blitTextInPlace(TS_SHIELD);
 	if (player.shield < 1)
 		return;
 
@@ -2540,7 +2540,7 @@ int game_mainLoop()
 		if (engine.paused)
 		{
 			gfx_createTextObject(TS_PAUSED, "PAUSED", -1, screen->h / 2, FONT_WHITE);
-			screen_blitText(TS_PAUSED);
+			screen_blitTextInPlace(TS_PAUSED);
 			renderer_update();
 			audio_pauseMusic();
 
