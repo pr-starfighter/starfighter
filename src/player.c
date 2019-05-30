@@ -339,6 +339,7 @@ void player_getInput()
 				{
 					screen_adjustDimensions(engine.event.window.data1, engine.event.window.data2);
 					renderer_reset();
+					gfx_scaleBackground();
 					screen_clear(black);
 					renderer_update();
 					screen_clear(black);

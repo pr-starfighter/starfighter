@@ -25,6 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "defs.h"
 #include "structs.h"
 
+extern SDL_Surface *gfx_unscaledBackground;
 extern SDL_Surface *gfx_background;
 extern SDL_Surface *gfx_sprites[SP_MAX];
 extern SDL_Surface *gfx_faceSprites[FS_MAX];
@@ -48,6 +49,7 @@ SDL_Surface *gfx_createAlphaRect(int width, int height, Uint8 red, Uint8 green, 
 void gfx_createMessageBox(SDL_Surface *face, const char *message, int transparent);
 SDL_Surface *gfx_loadImage(const char *filename);
 void gfx_free();
+void gfx_scaleBackground();
 void gfx_loadBackground(const char *filename);
 void gfx_loadSprites();
 void gfx_loadFont();

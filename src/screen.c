@@ -51,7 +51,8 @@ Draws the background surface that has been loaded
 */
 void screen_drawBackground()
 {
-	screen_blit(gfx_background, 0, 0);
+	if (gfx_background != NULL)
+		screen_blit(gfx_background, 0, 0);
 }
 
 void screen_addBuffer(int x, int y, int w, int h)

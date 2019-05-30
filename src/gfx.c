@@ -33,6 +33,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "screen.h"
 #include "weapons.h"
 
+SDL_Surface *gfx_unscaledBackground;
 SDL_Surface *gfx_background;
 SDL_Surface *gfx_sprites[SP_MAX];
 SDL_Surface *gfx_faceSprites[FS_MAX];
@@ -496,21 +497,34 @@ void gfx_free()
 	}
 }
 
-void gfx_loadBackground(const char *filename)
+void gfx_scaleBackground()
 {
-	SDL_Surface *new_bg;
-
 	if (gfx_background != NULL)
 	{
 		SDL_FreeSurface(gfx_background);
 		gfx_background = NULL;
 	}
-	new_bg = gfx_loadImage(filename);
-	SDL_SetColorKey(new_bg, 0, 0);
 	gfx_background = gfx_createSurface(screen->w, screen->h);
+	if (gfx_background == NULL)
+		engine_error("Failed to create surface for scaled background");
+
 	SDL_SetColorKey(gfx_background, 0, 0);
-	SDL_BlitScaled(new_bg, NULL, gfx_background, NULL);
-	SDL_FreeSurface(new_bg);
+	SDL_BlitScaled(gfx_unscaledBackground, NULL, gfx_background, NULL);
+}
+
+void gfx_loadBackground(const char *filename)
+{
+	if (gfx_unscaledBackground != NULL)
+	{
+		SDL_FreeSurface(gfx_unscaledBackground);
+		gfx_unscaledBackground = NULL;
+	}
+	gfx_unscaledBackground = gfx_loadImage(filename);
+	if (gfx_unscaledBackground == NULL)
+		engine_error("Failed to load unscaled background image");
+
+	SDL_SetColorKey(gfx_unscaledBackground, 0, 0);
+	gfx_scaleBackground();
 }
 
 void gfx_loadSprites()

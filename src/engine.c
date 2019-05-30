@@ -386,6 +386,7 @@ void engine_cleanup()
 {
 	gfx_free();
 	SDL_FreeSurface(gfx_background);
+	SDL_FreeSurface(gfx_unscaledBackground);
 	audio_free();
 	engine_resetLists();
 	free(engine.bulletHead);
