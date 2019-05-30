@@ -1551,7 +1551,10 @@ static void game_doPlayer()
 				audio_playSound(SFX_EXPLOSION, player.x, player.y);
 			}
 
-			engine.keyState[KEY_UP] = engine.keyState[KEY_DOWN] = engine.keyState[KEY_LEFT] = engine.keyState[KEY_RIGHT] = 0;
+			engine.keyState[KEY_UP] = 0;
+			engine.keyState[KEY_DOWN] = 0;
+			engine.keyState[KEY_LEFT] = 0;
+			engine.keyState[KEY_RIGHT] = 0;
 			if (CHANCE(1. / 3.))
 				explosion_add(player.x + RANDRANGE(-10, 10),
 					player.y + RANDRANGE(-10, 10), SP_BIG_EXPLOSION);

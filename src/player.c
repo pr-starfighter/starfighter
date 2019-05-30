@@ -265,11 +265,13 @@ void player_getInput()
 				break;
 
 			case SDL_KEYDOWN:
-				engine.keyState[mapkey(engine.event.key.keysym.sym)] = 1;
+				if (!engine.event.key.repeat)
+				{
+					engine.keyState[mapkey(engine.event.key.keysym.sym)] = 1;
 
-				if (engine.gameSection != SECTION_GAME)
-					engine.paused = 0;
-
+					if (engine.gameSection != SECTION_GAME)
+						engine.paused = 0;
+				}
 				break;
 
 			case SDL_KEYUP:

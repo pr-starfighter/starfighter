@@ -530,7 +530,6 @@ int title_show()
 						if ((selectedOption == 1) && (engine.useAudio))
 						{
 							engine.useSound = !engine.useSound;
-							selectedOption = listLength;
 						}
 						else if ((selectedOption == 2) && (engine.useAudio))
 						{
@@ -545,19 +544,16 @@ int title_show()
 							{
 								audio_haltMusic();
 							}
-							selectedOption = listLength;
 						}
 						else if (selectedOption == 3)
 						{
 							engine.fullScreen = !engine.fullScreen;
 							SDL_SetWindowFullscreen(window,
 								(engine.fullScreen ? FULLSCREEN : 0));
-							selectedOption = listLength;
 						}
 						else if (selectedOption == 4)
 						{
 							engine.autoPause = !engine.autoPause;
-							selectedOption = listLength;
 						}
 						else if (selectedOption == listLength)
 						{
@@ -699,9 +695,9 @@ void title_showCredits()
 			break;
 
 		float speed = 0.5;
-		if(engine.keyState[KEY_DOWN])
+		if (engine.keyState[KEY_DOWN])
 			speed = 2;
-		else if(engine.keyState[KEY_UP])
+		else if (engine.keyState[KEY_UP])
 			speed = -2;
 
 		for (i = 0 ; i <= lastCredit ; i++)

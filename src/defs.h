@@ -57,7 +57,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PATH_MAX 4096
 #endif
 
-#define FULLSCREEN SDL_WINDOW_FULLSCREEN
+#define FULLSCREEN SDL_WINDOW_FULLSCREEN_DESKTOP
 
 #define DEFAULT_SCREEN_WIDTH MAX(SCREEN_WIDTH, 640)
 #define DEFAULT_SCREEN_HEIGHT MAX(SCREEN_HEIGHT, 480)
