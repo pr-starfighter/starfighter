@@ -234,7 +234,6 @@ static void intermission_setStatusLines()
 	char string[50];
 	char difficulty[50];
 	int timeTaken = game.timeTaken;
-	int y;
 
 	switch (game.difficulty)
 	{
@@ -332,22 +331,10 @@ static void intermission_setStatusLines()
 		gfx_createTextObject(TS_URSULA_DEATHS, "", 0, 0, FONT_WHITE);
 	}
 
-	gfx_createTextObject(TS_STATUS_HEADER, "Current Status", -1, 83, FONT_WHITE);
+	gfx_createTextObject(TS_STATUS_HEADER, "Current Status", 0, 0, FONT_WHITE);
 
 	snprintf(string, sizeof string, "Total Time : %2d:%02d:%02d", timeTaken / 3600, (timeTaken / 60) % 60, timeTaken % 60);
-	gfx_createTextObject(TS_STATUS_FOOTER, string, -1, screen->h - 126, FONT_WHITE);
-
-	y = screen->h - 130;
-	for (int i = TS_STATUS_HEADER + 1 ; i < TS_STATUS_FOOTER ; i++)
-	{
-		y += 20;
-		if ((i == TS_CHRIS_HEADER) || (i == TS_PHOEBE_HEADER) ||
-				(i == TS_URSULA_HEADER))
-			y += 25;
-
-		gfx_textSprites[i].x = (screen->w - (screen->w * 7 / 8)) / 2 + 25;
-		gfx_textSprites[i].y = y;
-	}
+	gfx_createTextObject(TS_STATUS_FOOTER, string, 0, 0, FONT_WHITE);
 }
 
 /*
@@ -698,13 +685,13 @@ static void intermission_showStatus(SDL_Surface *infoSurface)
 	for (int i = TS_STATUS_HEADER + 1 ; i < TS_STATUS_FOOTER ; i++)
 	{
 		gfx_textSprites[i].y -= speed;
-		if ((gfx_textSprites[i].y > 80) && (gfx_textSprites[i].y < 70 + infoSurface->h))
-			screen_blitTextInPlace(i);
+		if ((gfx_textSprites[i].y > 10) && (gfx_textSprites[i].y < infoSurface->h))
+			screen_blitText(i, x + 25, 70);
 	}
 
-	if (gfx_textSprites[TS_STATUS_FOOTER - 1].y < 65)
+	if (gfx_textSprites[TS_STATUS_FOOTER - 1].y < -5)
 	{
-		y = 70 + infoSurface->h;
+		y = infoSurface->h;
 		for (int i = TS_STATUS_HEADER + 1 ; i < TS_STATUS_FOOTER ; i++)
 		{
 			y += 20;
@@ -720,8 +707,8 @@ static void intermission_showStatus(SDL_Surface *infoSurface)
 
 	screen_drawRect(x, infoSurface->h + 70, infoSurface->w, 20, 0x00, 0x00, 0x99);
 
-	screen_blitTextInPlace(TS_STATUS_HEADER);
-	screen_blitTextInPlace(TS_STATUS_FOOTER);
+	screen_blitText(TS_STATUS_HEADER, -1, 83);
+	screen_blitText(TS_STATUS_FOOTER, -1, screen->h - 126);
 }
 
 static void intermission_createCommsSurface(SDL_Surface *comms)

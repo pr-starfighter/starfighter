@@ -1877,12 +1877,12 @@ static void game_doHud()
 		if (player.ammo[0] <= 25) fontColor = FONT_YELLOW;
 		if (player.ammo[0] <= 10) fontColor = FONT_RED;
 	}
-	screen_blitTextInPlace(TS_PLASMA_T);
+	screen_blitText(TS_PLASMA_T, screen->w * 5 / 16, screen->h - 50);
 	sprintf(text, "%.3d", player.ammo[0]);
 	gfx_createTextObject(TS_PLASMA, text, 0, 0, fontColor);
 	screen_blitText(TS_PLASMA, screen->w * 5 / 16 + 70, screen->h - 49);
 
-	screen_blitTextInPlace(TS_AMMO_T);
+	screen_blitText(TS_AMMO_T, screen->w / 2, screen->h - 50);
 
 	if ((player.weaponType[1] != W_CHARGER) && (player.weaponType[1] != W_LASER))
 	{
@@ -2001,18 +2001,18 @@ static void game_doHud()
 		{
 			if (game.difficulty == DIFFICULTY_ORIGINAL)
 			{
-				screen_blitTextInPlace(TS_TARGET);
+				screen_blitText(TS_TARGET, screen->w * 11 / 16, screen->h - 50);
 			}
 			else
 			{
 				if (engine.targetIndex == ALIEN_SID)
-					screen_blitTextInPlace(TS_TARGET_SID);
+					screen_blitText(TS_TARGET_SID, screen->w * 11 / 16 + 27, screen->h - 50);
 				else if (engine.targetIndex == ALIEN_PHOEBE)
-					screen_blitTextInPlace(TS_TARGET_PHOEBE);
+					screen_blitText(TS_TARGET_PHOEBE, screen->w * 11 / 16, screen->h - 50);
 				else if (engine.targetIndex == ALIEN_KLINE)
-					screen_blitTextInPlace(TS_TARGET_KLINE);
+					screen_blitText(TS_TARGET_KLINE, screen->w * 11 / 16 + 9, screen->h - 50);
 				else
-					screen_blitTextInPlace(TS_TARGET);
+					screen_blitText(TS_TARGET, screen->w * 11 / 16, screen->h - 50);
 			}
 
 			bar.w = MAX(screen->w / 800, 1);
@@ -2035,7 +2035,7 @@ static void game_doHud()
 		}
 	}
 
-	screen_blitTextInPlace(TS_POWER);
+	screen_blitText(TS_POWER, screen->w / 32, screen->h - 30);
 
 	bar.w = screen->w / 32;
 	bar.h = 12;
@@ -2054,7 +2054,7 @@ static void game_doHud()
 		bar.x += screen->w * 3 / 80;
 	}
 
-	screen_blitTextInPlace(TS_OUTPUT);
+	screen_blitText(TS_OUTPUT, screen->w * 5 / 16, screen->h - 30);
 
 	bar.w = screen->w / 32;
 	bar.h = 12;
@@ -2075,7 +2075,7 @@ static void game_doHud()
 		bar.x += screen->w * 3 / 80;
 	}
 
-	screen_blitTextInPlace(TS_COOLER);
+	screen_blitText(TS_COOLER, screen->w * 97 / 160, screen->h - 30);
 
 	bar.w = screen->w / 32;
 	bar.h = 12;
@@ -2095,7 +2095,7 @@ static void game_doHud()
 		bar.x += screen->w * 3 / 80;
 	}
 
-	screen_blitTextInPlace(TS_SHIELD);
+	screen_blitText(TS_SHIELD, screen->w / 32, screen->h - 50);
 	if (player.shield < 1)
 		return;
 

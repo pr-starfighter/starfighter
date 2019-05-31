@@ -1046,26 +1046,26 @@ void mission_showStartScreen()
 	renderer_update();
 
 	gfx_loadSprites();
-	gfx_createTextObject(TS_SHIELD, "Shield", screen->w / 32, screen->h - 50, FONT_WHITE);
-	gfx_createTextObject(TS_PLASMA_T, "Plasma:", screen->w * 5 / 16, screen->h - 50, FONT_WHITE);
+	gfx_createTextObject(TS_SHIELD, "Shield", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_PLASMA_T, "Plasma:", 0, 0, FONT_WHITE);
 
 	if (player.weaponType[1] == W_CHARGER)
-		gfx_createTextObject(TS_AMMO_T, "Charge", screen->w / 2, screen->h - 50, FONT_WHITE);
+		gfx_createTextObject(TS_AMMO_T, "Charge", 0, 0, FONT_WHITE);
 	else if (player.weaponType[1] == W_LASER)
-		gfx_createTextObject(TS_AMMO_T, "Heat", screen->w / 2 + 20, screen->h - 50, FONT_WHITE);
+		gfx_createTextObject(TS_AMMO_T, "Heat", 20, 0, FONT_WHITE);
 	else
-		gfx_createTextObject(TS_AMMO_T, "Rockets:", screen->w / 2, screen->h - 50, FONT_WHITE);
+		gfx_createTextObject(TS_AMMO_T, "Rockets:", 0, 0, FONT_WHITE);
 
-	gfx_createTextObject(TS_TARGET, "Target", screen->w * 11 / 16, screen->h - 50, FONT_WHITE);
-	gfx_createTextObject(TS_TARGET_SID, "Sid", screen->w * 11 / 16 + 27, screen->h - 50, FONT_WHITE);
-	gfx_createTextObject(TS_TARGET_PHOEBE, "Phoebe", screen->w * 11 / 16, screen->h - 50, FONT_WHITE);
-	gfx_createTextObject(TS_TARGET_KLINE, "Kline", screen->w * 11 / 16 + 9, screen->h - 50, FONT_WHITE);
+	gfx_createTextObject(TS_TARGET, "Target", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_TARGET_SID, "Sid", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_TARGET_PHOEBE, "Phoebe", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_TARGET_KLINE, "Kline", 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_CASH_T, "Cash: $", 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_OBJECTIVES_T, "Objectives Remaining:", 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_TIME_T, "Time Remaining - ", 0, 0, FONT_WHITE);
-	gfx_createTextObject(TS_POWER, "Power", screen->w / 32, screen->h - 30, FONT_WHITE);
-	gfx_createTextObject(TS_OUTPUT, "Output", screen->w * 5 / 16, screen->h - 30, FONT_WHITE);
-	gfx_createTextObject(TS_COOLER, "Cooler", screen->w * 97 / 160, screen->h - 30, FONT_WHITE);
+	gfx_createTextObject(TS_POWER, "Power", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_OUTPUT, "Output", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_COOLER, "Cooler", 0, 0, FONT_WHITE);
 	audio_playRandomTrack();
 
 	if (game.area != MISN_INTERCEPTION)
