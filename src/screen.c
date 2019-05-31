@@ -169,8 +169,8 @@ void screen_adjustDimensions(int w, int h)
 	else
 	{
 		// Tall screen
-		w = DEFAULT_SCREEN_WIDTH;
 		h = (DEFAULT_SCREEN_WIDTH * h) / w;
+		w = DEFAULT_SCREEN_WIDTH;
 	}
 	
 	// Free previous surface (if it exists)

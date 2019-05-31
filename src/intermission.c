@@ -1374,13 +1374,13 @@ int intermission()
 	gfx_createTextObject(TS_INFO_EXIT, "Exit to Title Screen", -1, iconInfoY, FONT_WHITE);
 
 	sprintf(string, "Stationed At: %s", intermission_planets[game.stationedPlanet].name);
-	gfx_createTextObject(TS_CURRENT_PLANET, string, 90, screen->h - 120, FONT_WHITE);
+	gfx_createTextObject(TS_CURRENT_PLANET, string, 90, 0, FONT_WHITE);
 
 	if (game.destinationPlanet > -1)
 		sprintf(string, "Destination: %s", intermission_planets[game.destinationPlanet].name);
 	else
 		strcpy(string, "Destination: None");
-	gfx_createTextObject(TS_DEST_PLANET, string, screen->w - 250, screen->h - 120, FONT_WHITE);
+	gfx_createTextObject(TS_DEST_PLANET, string, 0, 0, FONT_WHITE);
 
 	if (game.distanceCovered > 0)
 		section = 0;
@@ -1458,9 +1458,9 @@ int intermission()
 						distance = 1;
 
 					gfx_createTextObject(TS_CURRENT_PLANET, intermission_planets[game.stationedPlanet].name,
-						135, screen->h - 120, FONT_WHITE);
+						135, 0, FONT_WHITE);
 					gfx_createTextObject(TS_DEST_PLANET, intermission_planets[game.destinationPlanet].name,
-						screen->w - 165, screen->h - 120, FONT_WHITE);
+						85, 0, FONT_WHITE);
 
 					section = 8;
 
@@ -1488,12 +1488,12 @@ int intermission()
 				if (intermission_showSystem(orbit_pos, 1))
 				{
 					sprintf(string, "Destination: %s", intermission_planets[game.destinationPlanet].name);
-					gfx_createTextObject(TS_DEST_PLANET, string, screen->w - 250, screen->h - 120, FONT_WHITE);
+					gfx_createTextObject(TS_DEST_PLANET, string, 0, 0, FONT_WHITE);
 				}
 
-				screen_blitTextInPlace(TS_CURRENT_PLANET);
+				screen_blitText(TS_CURRENT_PLANET, 0, screen->h - 120);
 				if (game.stationedPlanet != game.destinationPlanet)
-					screen_blitTextInPlace(TS_DEST_PLANET);
+					screen_blitText(TS_DEST_PLANET, screen->w - 250, screen->h - 120);
 				break;
 
 			case 2:
@@ -1534,9 +1534,9 @@ int intermission()
 				intermission_showSystem(orbit_pos, 0);
 
 				screen_blit(intermission_planets[game.stationedPlanet].image, 150, screen->h - 90);
-				screen_blitTextInPlace(TS_CURRENT_PLANET);
+				screen_blitText(TS_CURRENT_PLANET, 0, screen->h - 120);
 				screen_blit(intermission_planets[game.destinationPlanet].image, screen->w - 150, screen->h - 90);
-				screen_blitTextInPlace(TS_DEST_PLANET);
+				screen_blitText(TS_DEST_PLANET, screen->w - 250, screen->h - 120);
 
 				game.distanceCovered += distance * (screen->w - 350) / 450.;
 				destRect.w = (int)game.distanceCovered;
@@ -1549,7 +1549,7 @@ int intermission()
 					player.shield = player.maxShield;
 					sprintf(string, "Stationed At: %s",
 						intermission_planets[game.stationedPlanet].name);
-					gfx_createTextObject(TS_CURRENT_PLANET, string, 90, screen->h - 120, FONT_WHITE);
+					gfx_createTextObject(TS_CURRENT_PLANET, string, 90, 0, FONT_WHITE);
 					section = 1;
 					redrawBackground = 1;
 					save(0);
