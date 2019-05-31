@@ -1209,8 +1209,6 @@ selected an icon.
 */
 int intermission()
 {
-	int iconInfoY;
-
 	char string[25];
 
 	SDL_Rect r;
@@ -1359,19 +1357,17 @@ int intermission()
 		audio_playMusic("music/through_space.ogg", -1);
 
 	sprintf(string, "System : %s", systemNames[game.system]);
-	gfx_createTextObject(TS_CURRENT_SYSTEM, string, -1, 15, FONT_WHITE);
+	gfx_createTextObject(TS_CURRENT_SYSTEM, string, 0, 0, FONT_WHITE);
 
-	iconInfoY = screen->h - 25;
-
-	gfx_createTextObject(TS_INFO_START_MISSION, "Start Next Mission", -1, iconInfoY, FONT_WHITE);
-	gfx_createTextObject(TS_INFO_GOTO, "Go to Destination Planet", -1, iconInfoY, FONT_WHITE);
-	gfx_createTextObject(TS_INFO_MAP, "View System Map", -1, iconInfoY, FONT_WHITE);
-	gfx_createTextObject(TS_INFO_STATUS, "Current Status", -1, iconInfoY, FONT_WHITE);
-	gfx_createTextObject(TS_INFO_SAVE_GAME, "Save Game", -1, iconInfoY, FONT_WHITE);
-	gfx_createTextObject(TS_INFO_SHOP, "Upgrade FIREFLY", -1, iconInfoY, FONT_WHITE);
-	gfx_createTextObject(TS_INFO_COMMS, "Missions", -1, iconInfoY, FONT_WHITE);
-	gfx_createTextObject(TS_INFO_OPTIONS, "Options", -1, iconInfoY, FONT_WHITE);
-	gfx_createTextObject(TS_INFO_EXIT, "Exit to Title Screen", -1, iconInfoY, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_START_MISSION, "Start Next Mission", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_GOTO, "Go to Destination Planet", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_MAP, "View System Map", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_STATUS, "Current Status", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_SAVE_GAME, "Save Game", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_SHOP, "Upgrade FIREFLY", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_COMMS, "Missions", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_OPTIONS, "Options", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_EXIT, "Exit to Title Screen", 0, 0, FONT_WHITE);
 
 	sprintf(string, "Stationed At: %s", intermission_planets[game.stationedPlanet].name);
 	gfx_createTextObject(TS_CURRENT_PLANET, string, 90, 0, FONT_WHITE);
@@ -1436,7 +1432,7 @@ int intermission()
 			engine.ssy /= 100;
 		}
 
-		screen_blitTextInPlace(TS_CURRENT_SYSTEM);
+		screen_blitText(TS_CURRENT_SYSTEM, -1, 15);
 
 		switch(section)
 		{
@@ -1593,9 +1589,9 @@ int intermission()
 						(!intermission_planets[game.stationedPlanet].missionCompleted)))
 			{
 				if (game.stationedPlanet == game.destinationPlanet)
-					screen_blitTextInPlace(TS_INFO_START_MISSION);
+					screen_blitText(TS_INFO_START_MISSION, -1, screen->h - 25);
 				else
-					screen_blitTextInPlace(TS_INFO_GOTO);
+					screen_blitText(TS_INFO_GOTO, -1, screen->h - 25);
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
@@ -1606,7 +1602,7 @@ int intermission()
 			}
 			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + w / 7, y, 32, 32))
 			{
-				screen_blitTextInPlace(TS_INFO_MAP);
+				screen_blitText(TS_INFO_MAP, -1, screen->h - 25);
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
@@ -1617,7 +1613,7 @@ int intermission()
 			}
 			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 2 * w / 7, y, 32, 32))
 			{
-				screen_blitTextInPlace(TS_INFO_STATUS);
+				screen_blitText(TS_INFO_STATUS, -1, screen->h - 25);
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
@@ -1628,7 +1624,7 @@ int intermission()
 			}
 			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 3 * w / 7, y, 32, 32))
 			{
-				screen_blitTextInPlace(TS_INFO_SAVE_GAME);
+				screen_blitText(TS_INFO_SAVE_GAME, -1, screen->h - 25);
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
@@ -1639,7 +1635,7 @@ int intermission()
 			}
 			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 4 * w / 7, y, 32, 32))
 			{
-				screen_blitTextInPlace(TS_INFO_SHOP);
+				screen_blitText(TS_INFO_SHOP, -1, screen->h - 25);
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
@@ -1650,7 +1646,7 @@ int intermission()
 			}
 			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 5 * w / 7, y, 32, 32))
 			{
-				screen_blitTextInPlace(TS_INFO_COMMS);
+				screen_blitText(TS_INFO_COMMS, -1, screen->h - 25);
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
@@ -1662,7 +1658,7 @@ int intermission()
 			}
 			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 6 * w / 7, y, 32, 32))
 			{
-				screen_blitTextInPlace(TS_INFO_OPTIONS);
+				screen_blitText(TS_INFO_OPTIONS, -1, screen->h - 25);
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
@@ -1673,7 +1669,7 @@ int intermission()
 			}
 			else if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + w, y, 32, 32))
 			{
-				screen_blitTextInPlace(TS_INFO_EXIT);
+				screen_blitText(TS_INFO_EXIT, -1, screen->h - 25);
 
 				if ((engine.keyState[KEY_FIRE]))
 				{
