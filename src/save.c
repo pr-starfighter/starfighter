@@ -48,7 +48,7 @@ int save_initSlots()
 	char fileName[PATH_MAX];
 	int system;
 	char stationedName[255];
-	int imagePos = screen->h / 3 + 50;
+	int imagePos = 0;
 	Game tempGame;
 	struct stat fileInfo;
 	int modTime = 0;
@@ -90,7 +90,7 @@ int save_initSlots()
 				}
 
 				if (engine.gameSection == SECTION_TITLE)
-					gfx_createTextObject(TS_SAVESLOT_0 + i, saveSlot[i], -1,
+					gfx_createTextObject(TS_SAVESLOT_0 + i, saveSlot[i], 0,
 						imagePos, FONT_WHITE);
 
 				if (stat(fileName, &fileInfo) != -1)
@@ -111,7 +111,7 @@ int save_initSlots()
 				sprintf(saveSlot[i], (i == 0 ? "AUTOSAVE (Empty)" : "Empty"));
 				if (engine.gameSection == SECTION_TITLE)
 					gfx_createTextObject(TS_SAVESLOT_0 + i, saveSlot[i],
-						-1, imagePos, FONT_WHITE);
+						0, imagePos, FONT_WHITE);
 			}
 			else
 			{
@@ -134,7 +134,7 @@ int save_initSlots()
 				}
 
 				if (engine.gameSection == SECTION_TITLE)
-					gfx_createTextObject(TS_SAVESLOT_0 + i, saveSlot[i], -1,
+					gfx_createTextObject(TS_SAVESLOT_0 + i, saveSlot[i], 0,
 						imagePos, FONT_WHITE);
 
 				if (stat(fileName, &fileInfo) != -1)

@@ -75,11 +75,11 @@ static int showLoadMenu()
 		rtn++;
 		if (gfx_textSprites[i].image != NULL)
 		{
-			screen_blitTextInPlace(i);
+			screen_blitText(i, -1, screen->h / 3 + 50);
 			gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = gfx_textSprites[i].y + 40;
 		}
 	}
-	screen_blitTextInPlace(TS_BACK_TO_MAIN_MENU);
+	screen_blitText(TS_BACK_TO_MAIN_MENU, -1, screen->h / 3 + 50);
 
 	return rtn;
 }
