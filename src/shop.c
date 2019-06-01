@@ -53,7 +53,7 @@ static void drawSecondaryWeaponSurface()
 {
 	char description[50] = "";
 
-	gfx_renderString("Secondary Weapon", 10, 3, FONT_WHITE, 0, gfx_shopSprites[2]);
+	gfx_renderString("Secondary Weapon", 10, 3, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SECONDARY]);
 
 	switch (player.weaponType[1])
 	{
@@ -85,13 +85,13 @@ static void drawSecondaryWeaponSurface()
 			strcpy(description, "Mcr Homing Missiles");
 			break;
 	}
-	gfx_renderString(description, 10, 22, FONT_WHITE, 0, gfx_shopSprites[2]);
+	gfx_renderString(description, 10, 22, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SECONDARY]);
 
 	if ((player.weaponType[1] != W_LASER) &&
 		(player.weaponType[1] != W_CHARGER) && (player.weaponType[1] != W_NONE))
 	{
 		sprintf(description, "Capacity : %d", game.maxRocketAmmo);
-		gfx_renderString(description, 10, 37, FONT_WHITE, 0, gfx_shopSprites[2]);
+		gfx_renderString(description, 10, 37, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SECONDARY]);
 	}
 }
 
@@ -163,6 +163,57 @@ static void drawShop()
 	int icons = SHOP_MAX;
 
 	adjustShopPrices();
+
+	shopItems[SHOP_PLASMA_MAX_OUTPUT].x = SHOP_X;
+	shopItems[SHOP_PLASMA_MAX_OUTPUT].y = SHOP_Y + 70;
+
+	shopItems[SHOP_PLASMA_MAX_DAMAGE].x = SHOP_X + 50;
+	shopItems[SHOP_PLASMA_MAX_DAMAGE].y = SHOP_Y + 70;
+
+	shopItems[SHOP_PLASMA_MAX_RATE].x = SHOP_X + 100;
+	shopItems[SHOP_PLASMA_MAX_RATE].y = SHOP_Y + 70;
+
+	shopItems[SHOP_PLASMA_MIN_OUTPUT].x = SHOP_X;
+	shopItems[SHOP_PLASMA_MIN_OUTPUT].y = SHOP_Y + 130;
+
+	shopItems[SHOP_PLASMA_MIN_DAMAGE].x = SHOP_X + 50;
+	shopItems[SHOP_PLASMA_MIN_DAMAGE].y = SHOP_Y + 130;
+
+	shopItems[SHOP_PLASMA_MIN_RATE].x = SHOP_X + 100;
+	shopItems[SHOP_PLASMA_MIN_RATE].y = SHOP_Y + 130;
+
+	shopItems[SHOP_PLASMA_AMMO].x = SHOP_X + 250;
+	shopItems[SHOP_PLASMA_AMMO].y = SHOP_Y + 70;
+
+	shopItems[SHOP_ROCKET_AMMO].x = SHOP_X + 300;
+	shopItems[SHOP_ROCKET_AMMO].y = SHOP_Y + 70;
+
+	shopItems[SHOP_PLASMA_MAX_AMMO].x = SHOP_X + 350;
+	shopItems[SHOP_PLASMA_MAX_AMMO].y = SHOP_Y + 70;
+
+	shopItems[SHOP_ROCKET_MAX_AMMO].x = SHOP_X + 400;
+	shopItems[SHOP_ROCKET_MAX_AMMO].y = SHOP_Y + 70;
+
+	shopItems[SHOP_DOUBLE_ROCKETS].x = SHOP_X + 250;
+	shopItems[SHOP_DOUBLE_ROCKETS].y = SHOP_Y + 130;
+
+	shopItems[SHOP_MICRO_ROCKETS].x = SHOP_X + 300;
+	shopItems[SHOP_MICRO_ROCKETS].y = SHOP_Y + 130;
+
+	shopItems[SHOP_LASER].x = SHOP_X + 350;
+	shopItems[SHOP_LASER].y = SHOP_Y + 130;
+
+	shopItems[SHOP_HOMING_MISSILE].x = SHOP_X + 400;
+	shopItems[SHOP_HOMING_MISSILE].y = SHOP_Y + 130;
+
+	shopItems[SHOP_CHARGER].x = SHOP_X + 450;
+	shopItems[SHOP_CHARGER].y = SHOP_Y + 130;
+
+	shopItems[SHOP_DOUBLE_HOMING_MISSILES].x = SHOP_X + 500;
+	shopItems[SHOP_DOUBLE_HOMING_MISSILES].y = SHOP_Y + 130;
+
+	shopItems[SHOP_MICRO_HOMING_MISSILES].x = SHOP_X + 550;
+	shopItems[SHOP_MICRO_HOMING_MISSILES].y = SHOP_Y + 130;
 
 	for (int i = 0 ; i < SHOP_S_MAX ; i++)
 	{
@@ -348,19 +399,19 @@ void shop_init()
 	strcpy(shopItems[SHOP_PLASMA_MAX_OUTPUT].name, "Plasma channel splitter");
 	strcpy(shopItems[SHOP_PLASMA_MAX_OUTPUT].description,
 		"Improves poweredup plasma output");
-	shopItems[SHOP_PLASMA_MAX_OUTPUT].image = 9;
+	shopItems[SHOP_PLASMA_MAX_OUTPUT].image = SP_PLASMA_MAX_OUTPUT;
 
 	shopItems[SHOP_PLASMA_MAX_DAMAGE].price = 0; // Overwritten later
 	strcpy(shopItems[SHOP_PLASMA_MAX_DAMAGE].name, "Plasma capacity condensor");
 	strcpy(shopItems[SHOP_PLASMA_MAX_DAMAGE].description,
 		"Increases poweredup plasma damage");
-	shopItems[SHOP_PLASMA_MAX_DAMAGE].image = 10;
+	shopItems[SHOP_PLASMA_MAX_DAMAGE].image = SP_PLASMA_MAX_POWER;
 
 	shopItems[SHOP_PLASMA_MAX_RATE].price = 0; // Overwritten later
 	strcpy(shopItems[SHOP_PLASMA_MAX_RATE].name, "Liquid nitrogen capsules");
 	strcpy(shopItems[SHOP_PLASMA_MAX_RATE].description,
 		"Increases plasma firing rate");
-	shopItems[SHOP_PLASMA_MAX_RATE].image = 11;
+	shopItems[SHOP_PLASMA_MAX_RATE].image = SP_PLASMA_MAX_RATE;
 
 	if (game.difficulty == DIFFICULTY_ORIGINAL)
 		shopItems[SHOP_PLASMA_AMMO].price = 50;
@@ -369,7 +420,7 @@ void shop_init()
 
 	strcpy(shopItems[SHOP_PLASMA_AMMO].name, "10 Plasma cells");
 	strcpy(shopItems[SHOP_PLASMA_AMMO].description, "Plasma ammunition");
-	shopItems[SHOP_PLASMA_AMMO].image = 12;
+	shopItems[SHOP_PLASMA_AMMO].image = SP_PLASMA_AMMO;
 
 	if (game.difficulty == DIFFICULTY_ORIGINAL)
 		shopItems[SHOP_ROCKET_AMMO].price = 50;
@@ -379,7 +430,7 @@ void shop_init()
 	strcpy(shopItems[SHOP_ROCKET_AMMO].name, "Rocket Ammo");
 	strcpy(shopItems[SHOP_ROCKET_AMMO].description,
 		"High velocity dumb fire rocket");
-	shopItems[SHOP_ROCKET_AMMO].image = 13;
+	shopItems[SHOP_ROCKET_AMMO].image = SP_ROCKET_AMMO;
 
 	/* ----------- Permanent Items ----------- */
 
@@ -387,19 +438,19 @@ void shop_init()
 	strcpy(shopItems[SHOP_PLASMA_MIN_OUTPUT].name, "Additional Plasma Cannon");
 	strcpy(shopItems[SHOP_PLASMA_MIN_OUTPUT].description,
 		"Adds an extra plasma cannon to the Firefly");
-	shopItems[SHOP_PLASMA_MIN_OUTPUT].image = 14;
+	shopItems[SHOP_PLASMA_MIN_OUTPUT].image = SP_PLASMA_MIN_OUTPUT;
 
 	shopItems[SHOP_PLASMA_MIN_DAMAGE].price = 0; // Overwritten later
 	strcpy(shopItems[SHOP_PLASMA_MIN_DAMAGE].name, "Plasma Power Booster");
 	strcpy(shopItems[SHOP_PLASMA_MIN_DAMAGE].description,
 		"Increases power of plasma shots");
-	shopItems[SHOP_PLASMA_MIN_DAMAGE].image = 15;
+	shopItems[SHOP_PLASMA_MIN_DAMAGE].image = SP_PLASMA_MIN_POWER;
 
 	shopItems[SHOP_PLASMA_MIN_RATE].price = 0; // Overwritten later
 	strcpy(shopItems[SHOP_PLASMA_MIN_RATE].name, "Plasma Cooling Booster");
 	strcpy(shopItems[SHOP_PLASMA_MIN_RATE].description,
 		"Permanently increases firing rate");
-	shopItems[SHOP_PLASMA_MIN_RATE].image = 16;
+	shopItems[SHOP_PLASMA_MIN_RATE].image = SP_PLASMA_MIN_RATE;
 
 	/* ----------- Ammo Items -------------- */
 
@@ -407,13 +458,13 @@ void shop_init()
 	strcpy(shopItems[SHOP_PLASMA_MAX_AMMO].name, "Plasma compressor");
 	strcpy(shopItems[SHOP_PLASMA_MAX_AMMO].description,
 		"Increases plasma ammo capacity");
-	shopItems[SHOP_PLASMA_MAX_AMMO].image = 17;
+	shopItems[SHOP_PLASMA_MAX_AMMO].image = SP_PLASMA_MAX_AMMO;
 
 	shopItems[SHOP_ROCKET_MAX_AMMO].price = 0; // Overwritten later
 	strcpy(shopItems[SHOP_ROCKET_MAX_AMMO].name, "Rocket Pod");
 	strcpy(shopItems[SHOP_ROCKET_MAX_AMMO].description,
 		"Allows for an additional 5 rockets to be carried");
-	shopItems[SHOP_ROCKET_MAX_AMMO].image = 18;
+	shopItems[SHOP_ROCKET_MAX_AMMO].image = SP_ROCKET_MAX_AMMO;
 
 	/* ---------- Weaponary --------------- */
 
@@ -421,94 +472,43 @@ void shop_init()
 	strcpy(shopItems[SHOP_DOUBLE_ROCKETS].name, "Dual Rocket Launcher");
 	strcpy(shopItems[SHOP_DOUBLE_ROCKETS].description,
 		"Allows for two rockets to be fired at once");
-	shopItems[SHOP_DOUBLE_ROCKETS].image = 19;
+	shopItems[SHOP_DOUBLE_ROCKETS].image = SP_DOUBLE_ROCKETS;
 
 	shopItems[SHOP_MICRO_ROCKETS].price = 2500;
 	strcpy(shopItems[SHOP_MICRO_ROCKETS].name, "Micro Rocket Launcher");
 	strcpy(shopItems[SHOP_MICRO_ROCKETS].description,
 		"Launches several less powerful rockets at once");
-	shopItems[SHOP_MICRO_ROCKETS].image = 20;
+	shopItems[SHOP_MICRO_ROCKETS].image = SP_MICRO_ROCKETS;
 
 	shopItems[SHOP_LASER].price = 5000;
 	strcpy(shopItems[SHOP_LASER].name, "Laser Cannon");
 	strcpy(shopItems[SHOP_LASER].description, "Laser Cannon");
-	shopItems[SHOP_LASER].image = 21;
+	shopItems[SHOP_LASER].image = SP_LASER;
 
 	shopItems[SHOP_HOMING_MISSILE].price = 7500;
 	strcpy(shopItems[SHOP_HOMING_MISSILE].name, "Homing Missile Launcher");
 	sprintf(shopItems[SHOP_HOMING_MISSILE].description,
 		"Fires homing missile (max %i missiles)", MAX_HOMING);
-	shopItems[SHOP_HOMING_MISSILE].image = 22;
+	shopItems[SHOP_HOMING_MISSILE].image = SP_HOMING_MISSILE;
 
 	shopItems[SHOP_CHARGER].price = 10000;
 	strcpy(shopItems[SHOP_CHARGER].name, "Charge Cannon");
 	strcpy(shopItems[SHOP_CHARGER].description, "A charge up cannon");
-	shopItems[SHOP_CHARGER].image = 23;
+	shopItems[SHOP_CHARGER].image = SP_CHARGER;
 
 	shopItems[SHOP_DOUBLE_HOMING_MISSILES].price = 10000;
 	strcpy(shopItems[SHOP_DOUBLE_HOMING_MISSILES].name,
 		"Dual Homing Missile Launcher");
 	sprintf(shopItems[SHOP_DOUBLE_HOMING_MISSILES].description,
 		"Fires two homing missiles (max %i missiles)", MAX_DOUBLE_HOMING);
-	shopItems[SHOP_DOUBLE_HOMING_MISSILES].image = 24;
+	shopItems[SHOP_DOUBLE_HOMING_MISSILES].image = SP_DOUBLE_HOMING_MISSILES;
 
 	shopItems[SHOP_MICRO_HOMING_MISSILES].price = 15000;
 	strcpy(shopItems[SHOP_MICRO_HOMING_MISSILES].name,
 		"Homing Micro Missile Launcher");
 	sprintf(shopItems[SHOP_MICRO_HOMING_MISSILES].description,
 		"Fires several small homing missiles (max %i missiles)", MAX_MICRO_HOMING);
-	shopItems[SHOP_MICRO_HOMING_MISSILES].image = 25;
-
-	shopItems[SHOP_PLASMA_MAX_OUTPUT].x = SHOP_X;
-	shopItems[SHOP_PLASMA_MAX_OUTPUT].y = SHOP_Y + 70;
-
-	shopItems[SHOP_PLASMA_MAX_DAMAGE].x = SHOP_X + 50;
-	shopItems[SHOP_PLASMA_MAX_DAMAGE].y = SHOP_Y + 70;
-
-	shopItems[SHOP_PLASMA_MAX_RATE].x = SHOP_X + 100;
-	shopItems[SHOP_PLASMA_MAX_RATE].y = SHOP_Y + 70;
-
-	shopItems[SHOP_PLASMA_MIN_OUTPUT].x = SHOP_X;
-	shopItems[SHOP_PLASMA_MIN_OUTPUT].y = SHOP_Y + 130;
-
-	shopItems[SHOP_PLASMA_MIN_DAMAGE].x = SHOP_X + 50;
-	shopItems[SHOP_PLASMA_MIN_DAMAGE].y = SHOP_Y + 130;
-
-	shopItems[SHOP_PLASMA_MIN_RATE].x = SHOP_X + 100;
-	shopItems[SHOP_PLASMA_MIN_RATE].y = SHOP_Y + 130;
-
-	shopItems[SHOP_PLASMA_AMMO].x = SHOP_X + 250;
-	shopItems[SHOP_PLASMA_AMMO].y = SHOP_Y + 70;
-
-	shopItems[SHOP_ROCKET_AMMO].x = SHOP_X + 300;
-	shopItems[SHOP_ROCKET_AMMO].y = SHOP_Y + 70;
-
-	shopItems[SHOP_PLASMA_MAX_AMMO].x = SHOP_X + 350;
-	shopItems[SHOP_PLASMA_MAX_AMMO].y = SHOP_Y + 70;
-
-	shopItems[SHOP_ROCKET_MAX_AMMO].x = SHOP_X + 400;
-	shopItems[SHOP_ROCKET_MAX_AMMO].y = SHOP_Y + 70;
-
-	shopItems[SHOP_DOUBLE_ROCKETS].x = SHOP_X + 250;
-	shopItems[SHOP_DOUBLE_ROCKETS].y = SHOP_Y + 130;
-
-	shopItems[SHOP_MICRO_ROCKETS].x = SHOP_X + 300;
-	shopItems[SHOP_MICRO_ROCKETS].y = SHOP_Y + 130;
-
-	shopItems[SHOP_LASER].x = SHOP_X + 350;
-	shopItems[SHOP_LASER].y = SHOP_Y + 130;
-
-	shopItems[SHOP_HOMING_MISSILE].x = SHOP_X + 400;
-	shopItems[SHOP_HOMING_MISSILE].y = SHOP_Y + 130;
-
-	shopItems[SHOP_CHARGER].x = SHOP_X + 450;
-	shopItems[SHOP_CHARGER].y = SHOP_Y + 130;
-
-	shopItems[SHOP_DOUBLE_HOMING_MISSILES].x = SHOP_X + 500;
-	shopItems[SHOP_DOUBLE_HOMING_MISSILES].y = SHOP_Y + 130;
-
-	shopItems[SHOP_MICRO_HOMING_MISSILES].x = SHOP_X + 550;
-	shopItems[SHOP_MICRO_HOMING_MISSILES].y = SHOP_Y + 130;
+	shopItems[SHOP_MICRO_HOMING_MISSILES].image = SP_MICRO_HOMING_MISSILES;
 
  	shopSelectedItem = -1;
 
@@ -1058,6 +1058,8 @@ void shop_show()
 	int sell_y = SHOP_Y + 183;
 	int buy_x = sell_x - gfx_sprites[SP_BUY]->w - 5;
 	int buy_y = SHOP_Y + 183;
+
+	drawShop();
 
 	screen_blit(gfx_shopSprites[SHOP_S_SHIP_INFO], SHOP_X, SHOP_Y);
 	screen_blit(gfx_shopSprites[SHOP_S_CATALOG], SHOP_X, SHOP_Y + 50);
