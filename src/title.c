@@ -41,24 +41,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 static int showGameMenu(int continueSaveSlot)
 {
-	screen_blitTextInPlace(TS_START_NEW_GAME);
-	screen_blitTextInPlace(TS_LOAD_GAME);
+	screen_blitText(TS_START_NEW_GAME, -1, screen->h / 3 + 50);
+	screen_blitText(TS_LOAD_GAME, -1, screen->h / 3 + 70);
 	if (continueSaveSlot != -1)
 	{
-		screen_blitTextInPlace(TS_CONTINUE_CURRENT_GAME);
+		screen_blitText(TS_CONTINUE_CURRENT_GAME, -1, screen->h / 3 + 90);
 	}
-	screen_blitTextInPlace(TS_OPTIONS);
-	screen_blitTextInPlace(TS_CREDITS);
+	screen_blitText(TS_OPTIONS, -1, screen->h / 3 + 110);
+	screen_blitText(TS_CREDITS, -1, screen->h / 3 + 130);
 	if (engine.cheat)
 	{
-		gfx_textSprites[TS_QUIT].y = screen->h / 3 + 170;
-		screen_blitTextInPlace(TS_CHEAT_OPTIONS);
+		gfx_textSprites[TS_QUIT].y = 20;
+		screen_blitText(TS_CHEAT_OPTIONS, -1, screen->h / 3 + 150);
 	}
 	else
 	{
-		gfx_textSprites[TS_QUIT].y = screen->h / 3 + 150;
+		gfx_textSprites[TS_QUIT].y = 0;
 	}
-	screen_blitTextInPlace(TS_QUIT);
+	screen_blitText(TS_QUIT, -1, screen->h / 3 + 150);
 
 	if (engine.cheat)
 		return 7;
@@ -213,11 +213,6 @@ int title_show()
 {
 	int continueSaveSlot;
 
-	int prx;
-	int pry;
-	int sfx;
-	int sfy;
-
 	int then;
 	int now;
 
@@ -256,30 +251,15 @@ int title_show()
 	prlogo = gfx_loadImage("gfx/prlogo.png");
 	sflogo = gfx_loadImage("gfx/sflogo.png");
 
-	prx = ((screen->w - prlogo->w) / 2);
-	pry = ((screen->h - prlogo->h) / 2);
-
-	sfx = ((screen->w - sflogo->w) / 2);
-	sfy = ((screen->h - sflogo->h) / 3);
-
-	gfx_createTextObject(TS_PRESENTS, "PRESENTS",
-		-1, screen->h / 2, FONT_WHITE);
-	gfx_createTextObject(TS_AN_SDL_GAME, "AN SDL GAME",
-		-1, screen->h / 2, FONT_WHITE);
-	gfx_createTextObject(TS_START_NEW_GAME, "START NEW GAME",
-		-1, screen->h / 3 + 50, FONT_WHITE);
-	gfx_createTextObject(TS_LOAD_GAME, "LOAD GAME",
-		-1, screen->h / 3 + 70, FONT_WHITE);
-	gfx_createTextObject(TS_CONTINUE_CURRENT_GAME, "CONTINUE CURRENT GAME",
-		-1, screen->h / 3 + 90, FONT_WHITE);
-	gfx_createTextObject(TS_OPTIONS, "OPTIONS",
-		-1, screen->h / 3 + 110, FONT_WHITE);
-	gfx_createTextObject(TS_CREDITS, "CREDITS",
-		-1, screen->h / 3 + 130, FONT_WHITE);
-	gfx_createTextObject(TS_CHEAT_OPTIONS, "CHEAT OPTIONS",
-		-1, screen->h / 3 + 150, FONT_WHITE);
-	gfx_createTextObject(TS_QUIT, "QUIT",
-		-1, screen->h / 3 + 150, FONT_WHITE);
+	gfx_createTextObject(TS_PRESENTS, "PRESENTS", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_AN_SDL_GAME, "AN SDL GAME", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_START_NEW_GAME, "START NEW GAME", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_LOAD_GAME, "LOAD GAME", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_CONTINUE_CURRENT_GAME, "CONTINUE CURRENT GAME", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_OPTIONS, "OPTIONS", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_CREDITS, "CREDITS", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_CHEAT_OPTIONS, "CHEAT OPTIONS", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_QUIT, "QUIT", 0, 0, FONT_WHITE);
 
 	createOptionsMenu();
 	createDifficultyMenu();
@@ -356,24 +336,30 @@ int title_show()
 
 		if ((now - then > 2000) && (now - then < 8000) && (!skip))
 		{
-			screen_blit(prlogo, prx, pry);
+			screen_blit(prlogo, ((screen->w - prlogo->w) / 2), ((screen->h - prlogo->h) / 2));
 		}
 		else if ((now - then > 9000) && (now - then < 15000) && (!skip))
 		{
-			screen_blitTextInPlace(TS_PRESENTS);
+			screen_blitText(TS_PRESENTS, -1, screen->h / 2);
 		}
 		else if ((now - then > 16000) && (now - then < 21000) && (!skip))
 		{
-			screen_blitTextInPlace(TS_AN_SDL_GAME);
+			screen_blitText(TS_AN_SDL_GAME, -1, screen->h / 2);
 		}
 		else if ((now - then > 25500) || (skip))
 		{
-			screen_blit(sflogo, sfx, sfy);
+			screen_blit(sflogo, ((screen->w - sflogo->w) / 2), ((screen->h - sflogo->h) / 3));
 
 			if ((now - then >= 27500) || (skip))
 			{
 				screen_addBuffer(0, 0, screen->w, screen->h);
 
+				optionRec.x = screen->w / 2 - 110;
+				optionRec.y = screen->h / 3 + 26 + (20 * selectedOption);
+				if (menuType > MENU_MAIN)
+					if (selectedOption == listLength)
+						optionRec.y += 20;
+				
 				screen_drawRect(optionRec.x, optionRec.y, optionRec.w, optionRec.h, redGlow, 0x00, 0x00);
 
 				switch(menuType)
@@ -417,11 +403,6 @@ int title_show()
 							if (continueSaveSlot == -1)
 								selectedOption = 4;
 				}
-
-				optionRec.y = screen->h / 3 + 26 + (20 * selectedOption);
-				if (menuType > MENU_MAIN)
-					if (selectedOption == listLength)
-						optionRec.y += 20;
 
 				if (!skip)
 				{
