@@ -1197,9 +1197,8 @@ static void intermission_doOptions(SDL_Surface *optionsSurface, int x, int y)
 				engine_setFullscreen(0);
 			}
 		}
-
-		intermission_createOptions(optionsSurface);
 	}
+	intermission_createOptions(optionsSurface);
 }
 
 /*
