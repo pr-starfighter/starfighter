@@ -86,33 +86,26 @@ static int showLoadMenu()
 
 static void createDifficultyMenu()
 {
-	gfx_createTextObject(TS_START_GAME, "START GAME",
-		-1, screen->h / 3 + 50, FONT_WHITE);
+	gfx_createTextObject(TS_START_GAME, "START GAME", 0, 0, FONT_WHITE);
 
 	if (game.difficulty == DIFFICULTY_EASY)
-		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - EASY",
-			-1, screen->h / 3 + 70, FONT_WHITE);
+		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - EASY", 0, 0, FONT_WHITE);
 	else if (game.difficulty == DIFFICULTY_HARD)
-		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - HARD",
-			-1, screen->h / 3 + 70, FONT_WHITE);
+		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - HARD", 0, 0, FONT_WHITE);
 	else if (game.difficulty == DIFFICULTY_NIGHTMARE)
-		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - NIGHTMARE!",
-			-1, screen->h / 3 + 70, FONT_WHITE);
+		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - NIGHTMARE!", 0, 0, FONT_WHITE);
 	else if (game.difficulty == DIFFICULTY_ORIGINAL)
-		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - CLASSIC",
-			-1, screen->h / 3 + 70, FONT_WHITE);
+		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - CLASSIC", 0, 0, FONT_WHITE);
 	else
-		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - NORMAL",
-			-1, screen->h / 3 + 70, FONT_WHITE);
+		gfx_createTextObject(TS_DIFFICULTY, "DIFFICULTY - NORMAL", 0, 0, FONT_WHITE);
 }
 
 static int showDifficultyMenu()
 {
-	gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = screen->h / 3 + 110;
-
-	screen_blitTextInPlace(TS_START_GAME);
-	screen_blitTextInPlace(TS_DIFFICULTY);
-	screen_blitTextInPlace(TS_BACK_TO_MAIN_MENU);
+	screen_blitText(TS_START_GAME, -1, screen->h / 3 + 50);
+	screen_blitText(TS_DIFFICULTY, -1, screen->h / 3 + 70);
+	gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = 0;
+	screen_blitText(TS_BACK_TO_MAIN_MENU, -1, screen->h / 3 + 110);
 
 	return 3;
 }
@@ -120,43 +113,34 @@ static int showDifficultyMenu()
 static void createOptionsMenu()
 {
 	if (engine.useSound)
-		gfx_createTextObject(TS_SOUND, "SOUND - ON",
-			-1, screen->h / 3 + 50, FONT_WHITE);
+		gfx_createTextObject(TS_SOUND, "SOUND - ON", 0, 0, FONT_WHITE);
 	else
-		gfx_createTextObject(TS_SOUND, "SOUND - OFF",
-			-1, screen->h / 3 + 50, FONT_WHITE);
+		gfx_createTextObject(TS_SOUND, "SOUND - OFF", 0, 0, FONT_WHITE);
 
 	if (engine.useMusic)
-		gfx_createTextObject(TS_MUSIC, "MUSIC - ON",
-			-1, screen->h / 3 + 70, FONT_WHITE);
+		gfx_createTextObject(TS_MUSIC, "MUSIC - ON", 0, 0, FONT_WHITE);
 	else
-		gfx_createTextObject(TS_MUSIC, "MUSIC - OFF",
-			-1, screen->h / 3 + 70, FONT_WHITE);
+		gfx_createTextObject(TS_MUSIC, "MUSIC - OFF", 0, 0, FONT_WHITE);
 
 	if (engine.fullScreen)
-		gfx_createTextObject(TS_FULLSCREEN, "FULLSCREEN - ON",
-			-1, screen->h / 3 + 90, FONT_WHITE);
+		gfx_createTextObject(TS_FULLSCREEN, "FULLSCREEN - ON", 0, 0, FONT_WHITE);
 	else
-		gfx_createTextObject(TS_FULLSCREEN, "FULLSCREEN - OFF",
-			-1, screen->h / 3 + 90, FONT_WHITE);
+		gfx_createTextObject(TS_FULLSCREEN, "FULLSCREEN - OFF", 0, 0, FONT_WHITE);
 
 	if (engine.autoPause)
-		gfx_createTextObject(TS_AUTOPAUSE, "AUTOPAUSE - ON",
-			-1, screen->h / 3 + 110, FONT_WHITE);
+		gfx_createTextObject(TS_AUTOPAUSE, "AUTOPAUSE - ON", 0, 0, FONT_WHITE);
 	else
-		gfx_createTextObject(TS_AUTOPAUSE, "AUTOPAUSE - OFF",
-			-1, screen->h / 3 + 110, FONT_WHITE);
+		gfx_createTextObject(TS_AUTOPAUSE, "AUTOPAUSE - OFF", 0, 0, FONT_WHITE);
 }
 
 static int showOptionsMenu()
 {
-	gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = screen->h / 3 + 150;
-
-	screen_blitTextInPlace(TS_SOUND);
-	screen_blitTextInPlace(TS_MUSIC);
-	screen_blitTextInPlace(TS_FULLSCREEN);
-	screen_blitTextInPlace(TS_AUTOPAUSE);
-	screen_blitTextInPlace(TS_BACK_TO_MAIN_MENU);
+	screen_blitText(TS_SOUND, -1, screen->h / 3 + 50);
+	screen_blitText(TS_MUSIC, -1, screen->h / 3 + 70);
+	screen_blitText(TS_FULLSCREEN, -1, screen->h / 3 + 90);
+	screen_blitText(TS_AUTOPAUSE, -1, screen->h / 3 + 110);
+	gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = 0;
+	screen_blitText(TS_BACK_TO_MAIN_MENU, -1, screen->h / 3 + 150);
 
 	return 5;
 }
@@ -164,43 +148,34 @@ static int showOptionsMenu()
 static void createCheatMenu()
 {
 	if (engine.cheatShield)
-		gfx_createTextObject(TS_UNLIMITED_SHIELD, "UNLIMITED SHIELD - ON",
-			-1, screen->h / 3 + 50, FONT_WHITE);
+		gfx_createTextObject(TS_UNLIMITED_SHIELD, "UNLIMITED SHIELD - ON", 0, 0, FONT_WHITE);
 	else
-		gfx_createTextObject(TS_UNLIMITED_SHIELD, "UNLIMITED SHIELD - OFF",
-			-1, screen->h / 3 + 50, FONT_WHITE);
+		gfx_createTextObject(TS_UNLIMITED_SHIELD, "UNLIMITED SHIELD - OFF", 0, 0, FONT_WHITE);
 
 	if (engine.cheatAmmo)
-		gfx_createTextObject(TS_UNLIMITED_AMMO, "UNLIMITED AMMO - ON",
-			-1, screen->h / 3 + 70, FONT_WHITE);
+		gfx_createTextObject(TS_UNLIMITED_AMMO, "UNLIMITED AMMO - ON", 0, 0, FONT_WHITE);
 	else
-		gfx_createTextObject(TS_UNLIMITED_AMMO, "UNLIMITED AMMO - OFF",
-			-1, screen->h / 3 + 70, FONT_WHITE);
+		gfx_createTextObject(TS_UNLIMITED_AMMO, "UNLIMITED AMMO - OFF", 0, 0, FONT_WHITE);
 
 	if (engine.cheatCash)
-		gfx_createTextObject(TS_UNLIMITED_CASH, "UNLIMITED CASH - ON",
-			-1, screen->h / 3 + 90, FONT_WHITE);
+		gfx_createTextObject(TS_UNLIMITED_CASH, "UNLIMITED CASH - ON", 0, 0, FONT_WHITE);
 	else
-		gfx_createTextObject(TS_UNLIMITED_CASH, "UNLIMITED CASH - OFF",
-			-1, screen->h / 3 + 90, FONT_WHITE);
+		gfx_createTextObject(TS_UNLIMITED_CASH, "UNLIMITED CASH - OFF", 0, 0, FONT_WHITE);
 
 	if (engine.cheatTime)
-		gfx_createTextObject(TS_UNLIMITED_TIME, "UNLIMITED TIME - ON",
-			-1, screen->h / 3 + 110, FONT_WHITE);
+		gfx_createTextObject(TS_UNLIMITED_TIME, "UNLIMITED TIME - ON", 0, 0, FONT_WHITE);
 	else
-		gfx_createTextObject(TS_UNLIMITED_TIME, "UNLIMITED TIME - OFF",
-			-1, screen->h / 3 + 110, FONT_WHITE);
+		gfx_createTextObject(TS_UNLIMITED_TIME, "UNLIMITED TIME - OFF", 0, 0, FONT_WHITE);
 }
 
 static int showCheatMenu()
 {
-	gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = screen->h / 3 + 150;
-
-	screen_blitTextInPlace(TS_UNLIMITED_SHIELD);
-	screen_blitTextInPlace(TS_UNLIMITED_AMMO);
-	screen_blitTextInPlace(TS_UNLIMITED_CASH);
-	screen_blitTextInPlace(TS_UNLIMITED_TIME);
-	screen_blitTextInPlace(TS_BACK_TO_MAIN_MENU);
+	screen_blitText(TS_UNLIMITED_SHIELD, -1, screen->h / 3 + 50);
+	screen_blitText(TS_UNLIMITED_AMMO, -1, screen->h / 3 + 70);
+	screen_blitText(TS_UNLIMITED_CASH, -1, screen->h / 3 + 90);
+	screen_blitText(TS_UNLIMITED_TIME, -1, screen->h / 3 + 110);
+	gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = 0;
+	screen_blitText(TS_BACK_TO_MAIN_MENU, -1, screen->h / 3 + 150);
 
 	return 5;
 }
@@ -263,7 +238,7 @@ int title_show()
 
 	createOptionsMenu();
 	createDifficultyMenu();
-	gfx_createTextObject(TS_BACK_TO_MAIN_MENU, "BACK TO MAIN MENU", -1, 0, FONT_WHITE);
+	gfx_createTextObject(TS_BACK_TO_MAIN_MENU, "BACK TO MAIN MENU", 0, 0, FONT_WHITE);
 
 	createCheatMenu();
 
