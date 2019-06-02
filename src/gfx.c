@@ -241,6 +241,7 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 	int errorcode;
 	int i, j;
 	int done_rendering;
+	SDL_Rect area;
 	int nextline_y = y;
 
 	color.r = fontColor & 0xff0000;
@@ -265,7 +266,7 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 				i += utf8proc_iterate(&remainingStr[i], -1, &buf);
 				if (buf < 0)
 				{
-					printf("WARNING: Unicode string \"%s\" contains invalid characters!", in);
+					printf("WARNING: Unicode string \"%s\" contains invalid characters!\n", in);
 					break;
 				}
 				else
@@ -309,6 +310,7 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 				{
 					currentLine = "";
 					nCurrentLine = 0;
+					remainingStr = "";
 					done_rendering = 0;
 					for (j = 0; j < nCharList - 1; j++)
 					{
@@ -317,7 +319,10 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 							utf8proc_encode_char(charList[j], &remainingStr[j - nCurrentLine]);
 						}
 						else
+						{
 							utf8proc_encode_char(charList[j], &currentLine[j]);
+							nCurrentLine++;
+						}
 
 						if (j == breakPoints[i])
 						{
@@ -325,7 +330,16 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 						}
 					}
 					textSurf = TTF_RenderUTF8_Solid(gfx_unicodeFont, currentLine, color);
-					# TODO
+					area.x = x;
+					area.y = y;
+					area.w = textSurf->w
+					area.h = textSurf->h
+					if (SDL_BlitSurface(textSurf, NULL, dest, &area) < 0)
+					{
+						printf("BlitSurface error: %s\n", SDL_GetError());
+						engine_showError(2, "");
+					}
+					y += TTF_FontHeight(gfx_unicodeFont);
 					break;
 				}
 			}
@@ -336,6 +350,8 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 			}
 		}
 	}
+
+	return y;
 }
 
 int gfx_renderUnicode(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest)
