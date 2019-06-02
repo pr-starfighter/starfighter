@@ -2539,12 +2539,12 @@ int game_mainLoop()
 		if (engine.paused)
 		{
 			gfx_createTextObject(TS_PAUSED, "PAUSED", 0, 0, FONT_WHITE);
-			screen_blitText(TS_PAUSED, -1, screen->h / 2);
-			renderer_update();
 			audio_pauseMusic();
 
 			while (engine.paused)
 			{
+				screen_blitText(TS_PAUSED, -1, screen->h / 2);
+				renderer_update();
 				engine.done = game_checkPauseRequest();
 				game_delayFrame();
 			}
