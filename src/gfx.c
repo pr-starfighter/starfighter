@@ -233,12 +233,14 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 	int nCharList;
 	int breakPoints[STRMAX];
 	int nBreakPoints;
-	char newStr[STRMAX];
 	char testStr[STRMAX];
+	char currentLine[STRMAX];
+	int nCurrentLine;
+	char remainingStr[STRMAX];
 	int state;
 	int errorcode;
 	int i, j;
-	int offset;
+	int done_rendering;
 	int nextline_y = y;
 
 	color.r = fontColor & 0xff0000;
@@ -252,13 +254,15 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 			engine_error(TTF_GetError());
 		}
 		
-		if (w > dest->w)
+		remainingStr = strcpy(in);
+
+		while (w > dest->w)
 		{
 			nCharList = 0;
 			i = 0;
 			while (i < STRMAX)
 			{
-				i += utf8proc_iterate(&in[i], -1, &buf);
+				i += utf8proc_iterate(&remainingStr[i], -1, &buf);
 				if (buf < 0)
 				{
 					printf("WARNING: Unicode string \"%s\" contains invalid characters!", in);
@@ -285,49 +289,52 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 					nBreakPoints++;
 				}
 			}
-			
-			newStr = strcpy(in);
-			
-			while (w > dest->w)
+
+			for (i = nBreakPoints - 1; i >= 0; i--)
 			{
-				for (i = nBreakPoints - 1; i >= 0; i--)
+				testStr = "";
+				for (j = 0; j < nCharList - 1; j++)
 				{
-					testStr = "";
-					for (j = 0; j < nCharList - 1; j++)
+					utf8proc_encode_char(charList[j], &testStr[j + offset]);
+					if (j == breakPoints[i])
 					{
-						utf8proc_encode_char(charList[j], &testStr[j + offset]);
-						if (j == breakPoints[i])
-						{
-							break;
-						}
-					}
-					if (TTF_SizeUTF8(gfx_unicodeFont, testStr, &w, &h) < 0)
-					{
-						engine_error(TTF_GetError());
-					}
-					if (w <= dest->w)
-					{
-						offset = 0;
-						for (j = 0; j < nCharList - 1; j++)
-						{
-							utf8proc_encode_char(charList[j], &newStr[j + offset]);
-							if (j == breakPoints[i])
-							{
-								offset++;
-								newStr[j + offset] = '\n';
-							}
-						}
 						break;
 					}
 				}
-
-				if (TTF_SizeUTF8(gfx_unicodeFont, newStr, &w, &h) < 0)
+				if (TTF_SizeUTF8(gfx_unicodeFont, testStr, &w, &h) < 0)
 				{
 					engine_error(TTF_GetError());
 				}
+				if (w <= dest->w)
+				{
+					currentLine = "";
+					nCurrentLine = 0;
+					done_rendering = 0;
+					for (j = 0; j < nCharList - 1; j++)
+					{
+						if (done_rendering)
+						{
+							utf8proc_encode_char(charList[j], &remainingStr[j - nCurrentLine]);
+						}
+						else
+							utf8proc_encode_char(charList[j], &currentLine[j]);
+
+						if (j == breakPoints[i])
+						{
+							done_rendering = 1;
+						}
+					}
+					textSurf = TTF_RenderUTF8_Solid(gfx_unicodeFont, currentLine, color);
+					# TODO
+					break;
+				}
+			}
+
+			if (TTF_SizeUTF8(gfx_unicodeFont, remainingStr, &w, &h) < 0)
+			{
+				engine_error(TTF_GetError());
 			}
 		}
-		textSurf = TTF_RenderUTF8_Solid(gfx_unicodeFont, in, color);
 	}
 }
 
