@@ -671,7 +671,8 @@ list is reset and the information lines begin again from the bottom
 */
 static void intermission_showStatus(SDL_Surface *infoSurface)
 {
-	int x = (screen->w - infoSurface->w) / 2;
+	int status_x = (screen->w - infoSurface->w) / 2;
+	int status_y = (screen->h - infoSurface->h) / 2 - 40;
 	int y;
 	float speed = 0.25;
 
@@ -680,13 +681,13 @@ static void intermission_showStatus(SDL_Surface *infoSurface)
 	else if(engine.keyState[KEY_UP])
 		speed = -1;
 
-	screen_blit(infoSurface, x, 80);
+	screen_blit(infoSurface, status_x, status_y);
 
 	for (int i = TS_STATUS_HEADER + 1 ; i < TS_STATUS_FOOTER ; i++)
 	{
 		gfx_textSprites[i].y -= speed;
 		if ((gfx_textSprites[i].y > 10) && (gfx_textSprites[i].y < infoSurface->h))
-			screen_blitText(i, x + 25, 70);
+			screen_blitText(i, status_x + 25, status_y - 10);
 	}
 
 	if (gfx_textSprites[TS_STATUS_FOOTER - 1].y < -5)
@@ -703,12 +704,12 @@ static void intermission_showStatus(SDL_Surface *infoSurface)
 		}
 	}
 
-	screen_drawRect(x, 80, infoSurface->w, 20, 0x00, 0x00, 0x99);
+	screen_drawRect(status_x, status_y, infoSurface->w, 20, 0x00, 0x00, 0x99);
 
-	screen_drawRect(x, infoSurface->h + 70, infoSurface->w, 20, 0x00, 0x00, 0x99);
+	screen_drawRect(status_x, status_y + infoSurface->h - 10, infoSurface->w, 20, 0x00, 0x00, 0x99);
 
-	screen_blitText(TS_STATUS_HEADER, -1, 83);
-	screen_blitText(TS_STATUS_FOOTER, -1, screen->h - 126);
+	screen_blitText(TS_STATUS_HEADER, -1, status_y + 3);
+	screen_blitText(TS_STATUS_FOOTER, -1, status_y + infoSurface->h - 6);
 }
 
 static void intermission_createCommsSurface(SDL_Surface *comms)
