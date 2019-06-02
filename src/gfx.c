@@ -239,6 +239,7 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 	int errorcode;
 	int i, j;
 	int offset;
+	int nextline_y = y;
 
 	color.r = fontColor & 0xff0000;
 	color.g = fontColor & 0x00ff00;
