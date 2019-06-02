@@ -17,12 +17,19 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+// Fonts not ready yet
+#define NOFONT
+
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
 
 #include "SDL.h"
 #include "SDL_image.h"
+#ifndef NOFONT
+#include "SDL_ttf.h"
+#include "utf8proc.h"
+#endif
 
 #include "defs.h"
 #include "structs.h"
@@ -42,6 +49,10 @@ SDL_Surface *gfx_fontSprites[FONT_MAX];
 SDL_Surface *gfx_shopSprites[SHOP_S_MAX];
 TextObject gfx_textSprites[TS_MAX];
 SDL_Surface *gfx_messageBox;
+
+#ifndef NOFONT
+TTF_Font *gfx_unicodeFont;
+#endif
 
 void gfx_init()
 {
@@ -72,6 +83,15 @@ void gfx_init()
 	gfx_messageBox = NULL;
 
 	screen = NULL;
+
+#ifndef NOFONT
+	gfx_unicodeFont = TTF_OpenFont("data/DroidSansFallbackFull.ttf", 14);
+	if (gfx_unicodeFont == NULL)
+	{
+		printf("ERROR: TTF_OpenFont: %s\n", TTF_GetError());
+		exit(1);
+	}
+#endif
 }
 
 SDL_Surface *gfx_setTransparent(SDL_Surface *sprite)
@@ -196,6 +216,125 @@ int gfx_renderString(const char *in, int x, int y, int fontColor, int wrap, SDL_
 	gfx_renderStringBase(in, x + 1, y, FONT_OUTLINE, wrap, dest);
 	return gfx_renderStringBase(in, x, y, fontColor, wrap, dest);
 }
+
+#ifdef NOFONT
+int gfx_renderUnicode(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest)
+{
+	return gfx_renderString(in, x, y, fontColor, wrap, dest);
+}
+#else
+int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest)
+{
+	SDL_Surface *textSurf;
+	SDL_Color color;
+	int w, h;
+	utf8proc_int32_t charList[STRMAX];
+	utf8proc_int32_t buf;
+	int nCharList;
+	int breakPoints[STRMAX];
+	int nBreakPoints;
+	char newStr[STRMAX];
+	char testStr[STRMAX];
+	int state;
+	int errorcode;
+	int i, j;
+	int offset;
+
+	color.r = fontColor & 0xff0000;
+	color.g = fontColor & 0x00ff00;
+	color.b = fontColor & 0x0000ff;
+
+	if (gfx_unicodeFont != NULL)
+	{
+		if (TTF_SizeUTF8(gfx_unicodeFont, in, &w, &h) < 0)
+		{
+			engine_error(TTF_GetError());
+		}
+		
+		if (w > dest->w)
+		{
+			nCharList = 0;
+			i = 0;
+			while (i < STRMAX)
+			{
+				i += utf8proc_iterate(&in[i], -1, &buf);
+				if (buf < 0)
+				{
+					printf("WARNING: Unicode string \"%s\" contains invalid characters!", in);
+					break;
+				}
+				else
+				{
+					charList[nCharList] = buf;
+					nCharList++;
+					if (buf == '\0')
+					{
+						break;
+					}
+				}
+			}
+
+			state = 0;
+			nBreakPoints = 0;
+			for (i = 0; i < nCharList - 1; i++)
+			{
+				if (utf8proc_grapheme_break_stateful(charList[i], charList[i + 1], &state))
+				{
+					breakPoints[nBreakPoints] = i;
+					nBreakPoints++;
+				}
+			}
+			
+			newStr = strcpy(in);
+			
+			while (w > dest->w)
+			{
+				for (i = nBreakPoints - 1; i >= 0; i--)
+				{
+					testStr = "";
+					for (j = 0; j < nCharList - 1; j++)
+					{
+						utf8proc_encode_char(charList[j], &testStr[j + offset]);
+						if (j == breakPoints[i])
+						{
+							break;
+						}
+					}
+					if (TTF_SizeUTF8(gfx_unicodeFont, testStr, &w, &h) < 0)
+					{
+						engine_error(TTF_GetError());
+					}
+					if (w <= dest->w)
+					{
+						offset = 0;
+						for (j = 0; j < nCharList - 1; j++)
+						{
+							utf8proc_encode_char(charList[j], &newStr[j + offset]);
+							if (j == breakPoints[i])
+							{
+								offset++;
+								newStr[j + offset] = '\n';
+							}
+						}
+						break;
+					}
+				}
+
+				if (TTF_SizeUTF8(gfx_unicodeFont, newStr, &w, &h) < 0)
+				{
+					engine_error(TTF_GetError());
+				}
+			}
+		}
+		textSurf = TTF_RenderUTF8_Solid(gfx_unicodeFont, in, color);
+	}
+}
+
+int gfx_renderUnicode(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest)
+{
+	gfx_renderString(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest);
+}
+#endif
 
 /*
  * Set the pixel at (x, y) to the given value
@@ -491,6 +630,14 @@ void gfx_free()
 		SDL_FreeSurface(gfx_messageBox);
 		gfx_messageBox = NULL;
 	}
+
+#ifndef NOFONT
+	if (gfx_unicodeFont != NULL)
+	{
+		TTF_CloseFont(gfx_unicodeFont);
+		gfx_unicodeFont = NULL;
+	}
+#endif
 }
 
 void gfx_scaleBackground()

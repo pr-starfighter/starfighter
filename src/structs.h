@@ -81,7 +81,7 @@ typedef struct TextObject_ {
 	int life;
 	float x, y;
 	int fontColor;
-	char text[255];
+	char text[STRMAX];
 
 } TextObject;
 

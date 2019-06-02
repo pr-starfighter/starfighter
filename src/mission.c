@@ -794,7 +794,7 @@ Missions 11 and 23 to be exact!
 static int mission_revealObjectives()
 {
 	int allDone = 1;
-	char string[255] = "";
+	char string[STRMAX] = "";
 
 	for (int i = 0 ; i < 3 ; i++)
 	{

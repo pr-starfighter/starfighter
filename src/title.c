@@ -594,7 +594,7 @@ void title_showCredits()
 
 	int yPos = 0;
 	int yPos2 = screen->h;
-	char text[255];
+	char text[STRMAX];
 	int i;
 
 	TextObject *credit;

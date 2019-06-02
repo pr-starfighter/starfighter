@@ -27,7 +27,7 @@ typedef struct Event_ {
 
 	int time;
 	int face;
-	char message[255];
+	char message[STRMAX];
 	int entity;
 	int flag;
 

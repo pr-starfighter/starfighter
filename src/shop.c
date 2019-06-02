@@ -39,7 +39,7 @@ typedef struct ShopItem_ {
 	int x, y;
 	int price;
 	char name[50];
-	char description[255];
+	char description[STRMAX];
 	int image;
 
 } ShopItem;

@@ -36,7 +36,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 typedef struct Message_ {
 
 	int face;
-	char message[255];
+	char message[STRMAX];
 
 } Message;
 

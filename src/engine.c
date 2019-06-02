@@ -134,7 +134,7 @@ void engine_showError(int errorId, const char *name)
 		exit(1);
 	}
 
-	char string[255];
+	char string[STRMAX];
 
 	switch(errorId)
 	{

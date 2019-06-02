@@ -47,7 +47,7 @@ int save_initSlots()
 {
 	char fileName[PATH_MAX];
 	int system;
-	char stationedName[255];
+	char stationedName[STRMAX];
 	int imagePos = 0;
 	Game tempGame;
 	struct stat fileInfo;
