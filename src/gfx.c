@@ -17,7 +17,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-// TODO: Not ready yet
+// Not ready yet
 #define NOFONT
 
 #include <ctype.h>
@@ -232,12 +232,10 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 	utf8proc_int32_t prev;
 	int breakPoints[STRMAX];
 	int nBreakPoints;
-	utf8proc_uint8_t testStr[STRMAX];
-	utf8proc_uint8_t remainingStr[STRMAX];
+	char testStr[STRMAX];
+	char remainingStr[STRMAX];
 	int state;
-	int errorcode;
 	int i, j;
-	int done_rendering;
 	SDL_Rect area;
 
 	color.r = (Uint8)((fontColor & 0xff0000) >> 16);
@@ -261,7 +259,7 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 			nBreakPoints = 0;
 			while (i < strlen(remainingStr))
 			{
-				j = utf8proc_iterate(&remainingStr[i], -1, &buf);
+				j = utf8proc_iterate((utf8proc_uint8_t*)(&remainingStr[i]), -1, &buf);
 				if (buf < 0)
 				{
 					printf("WARNING: Unicode string \"%s\" contains an invalid character!\n", remainingStr);
@@ -281,7 +279,7 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 
 			for (i = nBreakPoints - 1; i >= 0; i--)
 			{
-				strncpy(testStr, remainingStr, breakPoints[i])
+				strncpy(testStr, remainingStr, breakPoints[i]);
 				if (TTF_SizeUTF8(gfx_unicodeFont, testStr, &w, &h) < 0)
 				{
 					engine_error(TTF_GetError());
@@ -291,8 +289,8 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 					textSurf = TTF_RenderUTF8_Solid(gfx_unicodeFont, testStr, color);
 					area.x = x;
 					area.y = y;
-					area.w = textSurf->w
-					area.h = textSurf->h
+					area.w = textSurf->w;
+					area.h = textSurf->h;
 					if (SDL_BlitSurface(textSurf, NULL, dest, &area) < 0)
 					{
 						printf("BlitSurface error: %s\n", SDL_GetError());
@@ -300,7 +298,7 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 					}
 					y += TTF_FontHeight(gfx_unicodeFont);
 					
-					memmove(newStr, newStr + breakPoints[i], strlen(newStr) - breakPoints[i] + 1)
+					memmove(remainingStr, remainingStr + breakPoints[i], strlen(remainingStr) - breakPoints[i] + 1);
 					break;
 				}
 			}
