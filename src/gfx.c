@@ -17,7 +17,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-// Fonts not ready yet
+// TODO: Not ready yet
 #define NOFONT
 
 #include <ctype.h>
@@ -236,7 +236,7 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 	char testStr[STRMAX];
 	char currentLine[STRMAX];
 	int nCurrentLine;
-	char remainingStr[STRMAX];
+	const utf8proc_uint8_t remainingStr[STRMAX];
 	int state;
 	int errorcode;
 	int i, j;
@@ -244,9 +244,9 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 	SDL_Rect area;
 	int nextline_y = y;
 
-	color.r = fontColor & 0xff0000;
-	color.g = fontColor & 0x00ff00;
-	color.b = fontColor & 0x0000ff;
+	color.r = (Uint8)(fontColor & 0xff0000);
+	color.g = (Uint8)(fontColor & 0x00ff00);
+	color.b = (Uint8)(fontColor & 0x0000ff);
 
 	if (gfx_unicodeFont != NULL)
 	{
@@ -255,7 +255,7 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 			engine_error(TTF_GetError());
 		}
 		
-		remainingStr = strcpy(in);
+		strcpy(remainingStr, in);
 
 		while (w > dest->w)
 		{
@@ -293,10 +293,11 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 
 			for (i = nBreakPoints - 1; i >= 0; i--)
 			{
-				testStr = "";
 				for (j = 0; j < nCharList - 1; j++)
 				{
-					utf8proc_encode_char(charList[j], &testStr[j + offset]);
+					utf8proc_encode_char(charList[j], &testStr[j]);
+					if (j < STRMAX - 1)
+						testStr[j + 1] = '\0';
 					if (j == breakPoints[i])
 					{
 						break;
@@ -308,20 +309,22 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 				}
 				if (w <= dest->w)
 				{
-					currentLine = "";
 					nCurrentLine = 0;
-					remainingStr = "";
 					done_rendering = 0;
 					for (j = 0; j < nCharList - 1; j++)
 					{
 						if (done_rendering)
 						{
 							utf8proc_encode_char(charList[j], &remainingStr[j - nCurrentLine]);
+							if (j < STRMAX - 1)
+								remainingStr[j + 1] = '\0';
 						}
 						else
 						{
 							utf8proc_encode_char(charList[j], &currentLine[j]);
 							nCurrentLine++;
+							if (j < STRMAX - 1)
+								currentLine[j + 1] = '\0';
 						}
 
 						if (j == breakPoints[i])
@@ -356,7 +359,13 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 
 int gfx_renderUnicode(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest)
 {
-	gfx_renderString(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest);
+	gfx_renderUnicodeBase(in, x, y - 1, FONT_OUTLINE, wrap, dest);
+	gfx_renderUnicodeBase(in, x, y + 1, FONT_OUTLINE, wrap, dest);
+	gfx_renderUnicodeBase(in, x, y + 2, FONT_OUTLINE, wrap, dest);
+	gfx_renderUnicodeBase(in, x - 1, y, FONT_OUTLINE, wrap, dest);
+	gfx_renderUnicodeBase(in, x - 2, y, FONT_OUTLINE, wrap, dest);
+	gfx_renderUnicodeBase(in, x + 1, y, FONT_OUTLINE, wrap, dest);
+	return gfx_renderUnicodeBase(in, x, y, fontColor, wrap, dest);
 }
 #endif
 
