@@ -228,111 +228,67 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 	SDL_Surface *textSurf;
 	SDL_Color color;
 	int w, h;
-	utf8proc_int32_t charList[STRMAX];
 	utf8proc_int32_t buf;
-	int nCharList;
+	utf8proc_int32_t prev;
 	int breakPoints[STRMAX];
 	int nBreakPoints;
-	char testStr[STRMAX];
-	char currentLine[STRMAX];
-	int nCurrentLine;
-	const utf8proc_uint8_t remainingStr[STRMAX];
+	utf8proc_uint8_t testStr[STRMAX];
+	utf8proc_uint8_t remainingStr[STRMAX];
 	int state;
 	int errorcode;
 	int i, j;
 	int done_rendering;
 	SDL_Rect area;
-	int nextline_y = y;
 
-	color.r = (Uint8)(fontColor & 0xff0000);
-	color.g = (Uint8)(fontColor & 0x00ff00);
+	color.r = (Uint8)((fontColor & 0xff0000) >> 16);
+	color.g = (Uint8)((fontColor & 0x00ff00) >> 8);
 	color.b = (Uint8)(fontColor & 0x0000ff);
 
 	if (gfx_unicodeFont != NULL)
 	{
-		if (TTF_SizeUTF8(gfx_unicodeFont, in, &w, &h) < 0)
+		strcpy(remainingStr, in);
+		if (TTF_SizeUTF8(gfx_unicodeFont, remainingStr, &w, &h) < 0)
 		{
 			engine_error(TTF_GetError());
 		}
-		
-		strcpy(remainingStr, in);
 
 		while (w > dest->w)
 		{
-			nCharList = 0;
 			i = 0;
-			while (i < STRMAX)
+			j = 0;
+			prev = '\0';
+			state = 0;
+			nBreakPoints = 0;
+			while (i < strlen(remainingStr))
 			{
-				i += utf8proc_iterate(&remainingStr[i], -1, &buf);
+				j = utf8proc_iterate(&remainingStr[i], -1, &buf);
 				if (buf < 0)
 				{
-					printf("WARNING: Unicode string \"%s\" contains invalid characters!\n", in);
+					printf("WARNING: Unicode string \"%s\" contains an invalid character!\n", remainingStr);
 					break;
 				}
 				else
 				{
-					charList[nCharList] = buf;
-					nCharList++;
-					if (buf == '\0')
+					if (utf8proc_grapheme_break_stateful(prev, buf, &state))
 					{
-						break;
+						breakPoints[nBreakPoints] = i + 1;
+						nBreakPoints++;
 					}
 				}
-			}
-
-			state = 0;
-			nBreakPoints = 0;
-			for (i = 0; i < nCharList - 1; i++)
-			{
-				if (utf8proc_grapheme_break_stateful(charList[i], charList[i + 1], &state))
-				{
-					breakPoints[nBreakPoints] = i;
-					nBreakPoints++;
-				}
+				i += j;
+				prev = buf;
 			}
 
 			for (i = nBreakPoints - 1; i >= 0; i--)
 			{
-				for (j = 0; j < nCharList - 1; j++)
-				{
-					utf8proc_encode_char(charList[j], &testStr[j]);
-					if (j < STRMAX - 1)
-						testStr[j + 1] = '\0';
-					if (j == breakPoints[i])
-					{
-						break;
-					}
-				}
+				strncpy(testStr, remainingStr, breakPoints[i])
 				if (TTF_SizeUTF8(gfx_unicodeFont, testStr, &w, &h) < 0)
 				{
 					engine_error(TTF_GetError());
 				}
 				if (w <= dest->w)
 				{
-					nCurrentLine = 0;
-					done_rendering = 0;
-					for (j = 0; j < nCharList - 1; j++)
-					{
-						if (done_rendering)
-						{
-							utf8proc_encode_char(charList[j], &remainingStr[j - nCurrentLine]);
-							if (j < STRMAX - 1)
-								remainingStr[j + 1] = '\0';
-						}
-						else
-						{
-							utf8proc_encode_char(charList[j], &currentLine[j]);
-							nCurrentLine++;
-							if (j < STRMAX - 1)
-								currentLine[j + 1] = '\0';
-						}
-
-						if (j == breakPoints[i])
-						{
-							done_rendering = 1;
-						}
-					}
-					textSurf = TTF_RenderUTF8_Solid(gfx_unicodeFont, currentLine, color);
+					textSurf = TTF_RenderUTF8_Solid(gfx_unicodeFont, testStr, color);
 					area.x = x;
 					area.y = y;
 					area.w = textSurf->w
@@ -343,6 +299,8 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 						engine_showError(2, "");
 					}
 					y += TTF_FontHeight(gfx_unicodeFont);
+					
+					memmove(newStr, newStr + breakPoints[i], strlen(newStr) - breakPoints[i] + 1)
 					break;
 				}
 			}
