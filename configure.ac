@@ -39,10 +39,10 @@ PKG_CHECK_EXISTS([SDL2_mixer], [
 	STARFIGHTER_CFLAGS="$STARFIGHTER_CFLAGS -DNOSOUND"
 	echo "Note: SDL_mixer not found; audio will not be supported."
 ])
-PKG_CHECK_MODULES([UTF8PROC], [libutf8proc], [
+PKG_CHECK_MODULES([PANGO], [pango], [
 ], [
 	STARFIGHTER_CFLAGS="$STARFIGHTER_CFLAGS -DNOFONT"
-	echo "Note: utf8proc not found; Unicode will not be supported."
+	echo "Note: Pango not found; Unicode will not be supported."
 ])
 
 AC_ARG_VAR([SF_SCREEN_WIDTH], [The width of the game window in pixels])

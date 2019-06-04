@@ -6,8 +6,8 @@
 bin_PROGRAMS = starfighter
 
 starfighter_CPPFLAGS = $(STARFIGHTER_CFLAGS) -DDATADIR=\"$(pkgdatadir)\" -Wall
-starfighter_CFLAGS = $(SDL_CFLAGS) $(UTF8PROC_CFLAGS) -lm
-starfighter_LDADD = $(SDL_LIBS) $(UTF8PROC_LIBS)
+starfighter_CFLAGS = $(SDL_CFLAGS) $(PANGO_CFLAGS) -lm
+starfighter_LDADD = $(SDL_LIBS) $(PANGO_LIBS)
 
 starfighter_SOURCES = \
 	Starfighter.c \

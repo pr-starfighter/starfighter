@@ -26,7 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifndef NOFONT
 #include "SDL_ttf.h"
-#include "utf8proc.h"
+#include "pango.h"
 #endif
 
 #include "defs.h"
@@ -236,12 +236,12 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 	SDL_Color color;
 	int w, h;
 	int changed;
-	utf8proc_int32_t buf;
-	utf8proc_int32_t prev;
 	int breakPoints[STRMAX];
 	int nBreakPoints;
-	char testStr[STRMAX];
+	const char testStr[STRMAX];
 	char remainingStr[STRMAX];
+	PangoLogAttr logAttrs[STRMAX];
+	int nLogAttrs;
 	int state;
 	int i, j;
 	SDL_Rect area;
@@ -261,29 +261,17 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 		changed = 1;
 		while (changed && (w > dest->w))
 		{
-			i = 0;
-			j = 0;
-			prev = '\0';
-			state = 0;
+			nLogAttrs = strlen(remainingStr) + 1;
+			pango_get_log_attrs(remainingStr, strlen(remainingStr), -1, NULL, logAttrs, nLogAttrs);
+			
 			nBreakPoints = 0;
-			while (i < strlen(remainingStr))
+			for (i = 0; i < nLogAttrs; i++)
 			{
-				j = utf8proc_iterate((utf8proc_uint8_t*)(&remainingStr[i]), -1, &buf);
-				if (buf < 0)
+				if (logAttrs[i].is_line_break)
 				{
-					printf("WARNING: Unicode string \"%s\" contains an invalid character!\n", remainingStr);
-					break;
+					breakPoints[nBreakPoints] = i;
+					nBreakPoints++;
 				}
-				else
-				{
-					if (utf8proc_grapheme_break_stateful(prev, buf, &state))
-					{
-						breakPoints[nBreakPoints] = i + 1;
-						nBreakPoints++;
-					}
-				}
-				i += j;
-				prev = buf;
 			}
 
 			changed = 0;
