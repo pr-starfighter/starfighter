@@ -394,23 +394,23 @@ void save_createSurface(SDL_Surface *savesSurface, int clickedSlot)
 			gfx_renderString("CANCEL", 150, 270, FONT_WHITE, 0, savesSurface);
 			gfx_renderString("DELETE", 270, 270, FONT_WHITE, 0, savesSurface);
 
-			gfx_renderString("SAVE will save the game", 17, 200, FONT_WHITE, 0,
+			gfx_renderUnicode("SAVE will save the game", 17, 200, FONT_WHITE, 0,
 				savesSurface);
-			gfx_renderString("CANCEL will unselect that slot", 17, 220,
+			gfx_renderUnicode("CANCEL will unselect that slot", 17, 220,
 				FONT_WHITE, 0, savesSurface);
-			gfx_renderString("DELETE will remove the save", 17, 240,
+			gfx_renderUnicode("DELETE will remove the save", 17, 240,
 				FONT_WHITE, 0, savesSurface);
 			break;
 		case -1:
-			gfx_renderString("First click a Save game slot to use", 17, 200,
+			gfx_renderUnicode("First click a Save game slot to use", 17, 200,
 				FONT_WHITE, 0, savesSurface);
 			break;
 		case -10:
-			gfx_renderString("Game Saved", 130, 200, FONT_WHITE, 0,
+			gfx_renderUnicode("Game Saved", 130, 200, FONT_WHITE, 0,
 				savesSurface);
 			break;
 		case -11:
-			gfx_renderString("Save Deleted", 130, 200, FONT_WHITE, 0,
+			gfx_renderUnicode("Save Deleted", 130, 200, FONT_WHITE, 0,
 				savesSurface);
 			break;
 	}

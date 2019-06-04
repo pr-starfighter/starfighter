@@ -339,37 +339,37 @@ static void drawShop()
 		case -1:
 			break;
 		case -2:
-			gfx_renderString("You don't have enough money", 20, 30, FONT_WHITE,
+			gfx_renderUnicode("You don't have enough money", 20, 30, FONT_WHITE,
 				0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
 			break;
 		case -3:
-			gfx_renderString("Cannot upgrade ship", 5, 22, FONT_WHITE, 0,
+			gfx_renderUnicode("Cannot upgrade ship", 5, 22, FONT_WHITE, 0,
 				gfx_shopSprites[SHOP_S_ITEM_INFO]);
-			gfx_renderString("Hardware capacity has been reached", 20, 38,
+			gfx_renderUnicode("Hardware capacity has been reached", 20, 38,
 				FONT_CYAN, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
 			break;
 		case -4:
-			gfx_renderString("Ammunition limit reached", 20, 30, FONT_WHITE, 0,
+			gfx_renderUnicode("Ammunition limit reached", 20, 30, FONT_WHITE, 0,
 				gfx_shopSprites[SHOP_S_ITEM_INFO]);
 			break;
 		case -5:
-			gfx_renderString("You cannot sell that item", 20, 30, FONT_WHITE,
+			gfx_renderUnicode("You cannot sell that item", 20, 30, FONT_WHITE,
 				0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
 			break;
 		case -6:
-			gfx_renderString("Nothing to sell", 20, 30, FONT_WHITE, 0,
+			gfx_renderUnicode("Nothing to sell", 20, 30, FONT_WHITE, 0,
 				gfx_shopSprites[SHOP_S_ITEM_INFO]);
 			break;
 		case -7:
-			gfx_renderString("Rockets cannot be bought for Laser or Charger Cannon",
+			gfx_renderUnicode("Rockets cannot be bought for Laser or Charger Cannon",
 				5, 30, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
 			break;
 		case -8:
-			gfx_renderString("You already have that weapon", 20, 30,
+			gfx_renderUnicode("You already have that weapon", 20, 30,
 				FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
 			break;
 		case -9:
-			gfx_renderString("This weapon's ammo limit has been reached", 20,
+			gfx_renderUnicode("This weapon's ammo limit has been reached", 20,
 				30, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
 			break;
 		default:
@@ -386,7 +386,7 @@ static void drawShop()
 			}
 			gfx_renderString(shopItems[shopSelectedItem].name, 5, 22,
 				FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
-			gfx_renderString(description, 20, 38, FONT_CYAN, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
+			gfx_renderUnicode(description, 20, 38, FONT_CYAN, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
 			break;
 	}
 }

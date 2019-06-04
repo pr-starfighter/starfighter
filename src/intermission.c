@@ -718,7 +718,7 @@ static void intermission_createCommsSurface(SDL_Surface *comms)
 
 	gfx_drawRect(comms, 0, 0, comms->w - 1, comms->h - 1, 0x00, 0x00, 0x25);
 
-	gfx_renderString("+++ CURRENT MISSIONS (click for info) +++", -1, 15, FONT_GREEN, 0, comms);
+	gfx_renderUnicode("+++ CURRENT MISSIONS (click for info) +++", -1, 15, FONT_GREEN, 0, comms);
 
 	int yOffset;
 
@@ -739,7 +739,7 @@ static int intermission_renderDialog(SDL_Surface *comms, int y, int face, const 
 {
 	int newY;
 	gfx_blit(gfx_faceSprites[face], 10, y, comms);
-	newY = gfx_renderString(string, 80, y, FONT_WHITE, 1, comms) + 25;
+	newY = gfx_renderUnicode(string, 80, y, FONT_WHITE, 1, comms) + 25;
 	if (newY < y + 60)
 		newY += (60 - (newY - y));
 	return newY;

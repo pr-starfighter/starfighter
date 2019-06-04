@@ -190,6 +190,8 @@ int title_show()
 
 	int then;
 	int now;
+	int x;
+	int y;
 
 	int redGlow = 255;
 	int redDir = -2;
@@ -199,6 +201,9 @@ int title_show()
 	int skip = 0;
 	int listLength = 6; // menu list length
 	int menuType = MENU_MAIN;
+	
+	SDL_Surface *copyrightText;
+	SDL_Surface *infoText;
 
 	game_init();
 
@@ -242,6 +247,18 @@ int title_show()
 
 	createCheatMenu();
 
+	copyrightText = gfx_createSurface(screen->w, 60);
+	gfx_renderString("Copyright Parallel Realities 2003",
+		5, 0, FONT_WHITE, 0, copyrightText);
+	gfx_renderString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012",
+		5, 20, FONT_WHITE, 0, copyrightText);
+	gfx_renderString("Copyright 2015-2019 Julie Marchant",
+		5, 40, FONT_WHITE, 0, copyrightText);
+
+	sprintf(buildVersion, "Version %s", VERSION );
+	infoText = gfx_createSurface(strlen(buildVersion) * 9 + 6, 20);
+	gfx_renderString(buildVersion, 0, 0, FONT_WHITE, 0, infoText);
+
 	// Set the star motion
 	engine.ssx = -0.5;
 	engine.ssy = 0;
@@ -262,8 +279,6 @@ int title_show()
 		aliens[i].dx = 1 + rand() % 3;
 		aliens[i].face = 0;
 	}
-
-    sprintf(buildVersion, "Version %s", VERSION );
 
 	SDL_Rect optionRec;
 
@@ -327,8 +342,6 @@ int title_show()
 
 			if ((now - then >= 27500) || (skip))
 			{
-				screen_addBuffer(0, 0, screen->w, screen->h);
-
 				optionRec.x = screen->w / 2 - 110;
 				optionRec.y = screen->h / 3 + 26 + (20 * selectedOption);
 				if (menuType > MENU_MAIN)
@@ -336,6 +349,7 @@ int title_show()
 						optionRec.y += 20;
 				
 				screen_drawRect(optionRec.x, optionRec.y, optionRec.w, optionRec.h, redGlow, 0x00, 0x00);
+				screen_addBuffer(optionRec.x, optionRec.y, optionRec.w, optionRec.h);
 
 				switch(menuType)
 				{
@@ -379,15 +393,15 @@ int title_show()
 								selectedOption = 4;
 				}
 
-				gfx_renderString("Copyright Parallel Realities 2003",
-					5, gfx_background->h - 60, FONT_WHITE, 0, gfx_background);
-				gfx_renderString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012",
-					5, gfx_background->h - 40, FONT_WHITE, 0, gfx_background);
-				gfx_renderString("Copyright 2015-2017 Julie Marchant",
-					5, gfx_background->h - 20, FONT_WHITE, 0, gfx_background);
-				gfx_renderString(buildVersion, gfx_background->w - 6 - strlen(buildVersion) * 9,
-					gfx_background->h - 20, FONT_WHITE, 0, gfx_background);
-				screen_addBuffer(0, 0, screen->w, screen->h);
+				x = 0;
+				y = screen->h - copyrightText->h;
+				screen_blit(copyrightText, x, y);
+				screen_addBuffer(x, y, copyrightText->w, copyrightText->h);
+				
+				x = screen->w - infoText->w;
+				y = screen->h - infoText->h;
+				screen_blit(infoText, x, y);
+				screen_addBuffer(x, y, infoText->w, infoText->h);
 			}
 		}
 
@@ -397,15 +411,6 @@ int title_show()
 		{
 			if ((now - then <= 27500) && (!skip))
 			{
-				gfx_renderString("Copyright Parallel Realities 2003",
-					5, screen->h - 60, FONT_WHITE, 0, gfx_background);
-				gfx_renderString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012",
-					5, screen->h - 40, FONT_WHITE, 0, gfx_background);
-				gfx_renderString("Copyright 2015-2019 Julie Marchant",
-					5, screen->h - 20, FONT_WHITE, 0, gfx_background);
-				gfx_renderString(buildVersion, screen->w - 6 - strlen(buildVersion) * 9,
-					screen->h - 20, FONT_WHITE, 0, gfx_background);
-				screen_addBuffer(0, screen->h - 40, screen->w, 40);
 				skip = 1;
 			}
 			else
@@ -549,6 +554,8 @@ int title_show()
 
 	SDL_FreeSurface(prlogo);
 	SDL_FreeSurface(sflogo);
+	SDL_FreeSurface(copyrightText);
+	SDL_FreeSurface(infoText);
 
 	engine.keyState[KEY_FIRE] = 0;
 	engine.keyState[KEY_ALTFIRE] = 0;
