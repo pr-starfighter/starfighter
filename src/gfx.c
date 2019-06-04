@@ -26,7 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifndef NOFONT
 #include "SDL_ttf.h"
-#include "pango.h"
+#include <pango/pango-break.h>
 #endif
 
 #include "defs.h"
@@ -221,9 +221,6 @@ int gfx_renderString(const char *in, int x, int y, int fontColor, int wrap, SDL_
 	return gfx_renderStringBase(in, x, y, fontColor, wrap, dest);
 }
 
-// TODO
-#define NOFONT
-
 #ifdef NOFONT
 int gfx_renderUnicode(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest)
 {
@@ -238,12 +235,11 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 	int changed;
 	int breakPoints[STRMAX];
 	int nBreakPoints;
-	const char testStr[STRMAX];
+	char testStr[STRMAX];
 	char remainingStr[STRMAX];
 	PangoLogAttr logAttrs[STRMAX];
 	int nLogAttrs;
-	int state;
-	int i, j;
+	int i;
 	SDL_Rect area;
 
 	color.r = (Uint8)((fontColor & 0xff0000) >> 16);
@@ -279,6 +275,7 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 			{
 				printf("Breakpoint %d (%c)\n", i, remainingStr[breakPoints[i]]);
 				strncpy(testStr, remainingStr, breakPoints[i]);
+				testStr[breakPoints[i]] = '\0';
 				printf("Checking '%s'...\n", testStr);
 				if (TTF_SizeUTF8(gfx_unicodeFont, testStr, &w, &h) < 0)
 				{
@@ -286,6 +283,7 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 				}
 				if (w <= dest->w)
 				{
+					printf("Under designated width. Render '%s'\n", testStr);
 					textSurf = TTF_RenderUTF8_Solid(gfx_unicodeFont, testStr, color);
 					area.x = x;
 					area.y = y;
@@ -296,9 +294,12 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 						printf("BlitSurface error: %s\n", SDL_GetError());
 						engine_showError(2, "");
 					}
+					SDL_FreeSurface(textSurf);
+					textSurf = NULL;
 					y += TTF_FontHeight(gfx_unicodeFont);
 					
-					memmove(remainingStr, remainingStr + breakPoints[i], strlen(remainingStr) - breakPoints[i] + 1);
+					memmove(remainingStr, remainingStr + breakPoints[i],
+						(strlen(remainingStr) - breakPoints[i]) + 1);
 					changed = 1;
 					break;
 				}
