@@ -22,6 +22,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "SDL.h"
 
+#ifndef NOFONT
+#include "SDL_ttf.h"
+#endif
+
 #include "defs.h"
 #include "structs.h"
 
@@ -35,10 +39,15 @@ extern SDL_Surface *gfx_shopSprites[SHOP_S_MAX];
 extern TextObject gfx_textSprites[TS_MAX];
 extern SDL_Surface *gfx_messageBox;
 
+#ifndef NOFONT
+extern TTF_Font *gfx_unicodeFont;
+#endif
+
 void gfx_init();
 SDL_Surface *gfx_setTransparent(SDL_Surface *sprite);
 void gfx_blit(SDL_Surface *image, int x, int y, SDL_Surface *dest);
 int gfx_renderString(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest);
+int gfx_renderUnicode(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest);
 void gfx_putPixel(SDL_Surface *surface, int x, int y, Uint32 pixel);
 void gfx_drawCircle(int xc, int yc, int R, SDL_Surface *PIX, int col);
 void gfx_drawRect(SDL_Surface *dest, int x, int y, int w, int h, Uint8 red, Uint8 green, Uint8 blue);

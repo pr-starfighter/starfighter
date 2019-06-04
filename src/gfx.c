@@ -23,6 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "SDL.h"
 #include "SDL_image.h"
+
 #ifndef NOFONT
 #include "SDL_ttf.h"
 #include "utf8proc.h"
@@ -82,6 +83,12 @@ void gfx_init()
 	screen = NULL;
 
 #ifndef NOFONT
+	if (TTF_Init() < 0)
+	{
+		printf("ERROR: Could not initialize TTF: %s\n", TTF_GetError());
+		exit(1);
+	}
+
 	gfx_unicodeFont = TTF_OpenFont("data/DroidSansFallbackFull.ttf", 14);
 	if (gfx_unicodeFont == NULL)
 	{
@@ -214,6 +221,9 @@ int gfx_renderString(const char *in, int x, int y, int fontColor, int wrap, SDL_
 	return gfx_renderStringBase(in, x, y, fontColor, wrap, dest);
 }
 
+// TODO
+#define NOFONT
+
 #ifdef NOFONT
 int gfx_renderUnicode(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest)
 {
@@ -225,6 +235,7 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 	SDL_Surface *textSurf;
 	SDL_Color color;
 	int w, h;
+	int changed;
 	utf8proc_int32_t buf;
 	utf8proc_int32_t prev;
 	int breakPoints[STRMAX];
@@ -247,7 +258,8 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 			engine_error(TTF_GetError());
 		}
 
-		while (w > dest->w)
+		changed = 1;
+		while (changed && (w > dest->w))
 		{
 			i = 0;
 			j = 0;
@@ -274,9 +286,12 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 				prev = buf;
 			}
 
+			changed = 0;
 			for (i = nBreakPoints - 1; i >= 0; i--)
 			{
+				printf("Breakpoint %d (%c)\n", i, remainingStr[breakPoints[i]]);
 				strncpy(testStr, remainingStr, breakPoints[i]);
+				printf("Checking '%s'...\n", testStr);
 				if (TTF_SizeUTF8(gfx_unicodeFont, testStr, &w, &h) < 0)
 				{
 					engine_error(TTF_GetError());
@@ -296,6 +311,7 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 					y += TTF_FontHeight(gfx_unicodeFont);
 					
 					memmove(remainingStr, remainingStr + breakPoints[i], strlen(remainingStr) - breakPoints[i] + 1);
+					changed = 1;
 					break;
 				}
 			}
@@ -305,6 +321,22 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 				engine_error(TTF_GetError());
 			}
 		}
+		printf("Done splitting. Render '%s'\n", remainingStr);
+		textSurf = TTF_RenderUTF8_Solid(gfx_unicodeFont, remainingStr, color);
+		area.x = x;
+		area.y = y;
+		area.w = textSurf->w;
+		area.h = textSurf->h;
+		if (SDL_BlitSurface(textSurf, NULL, dest, &area) < 0)
+		{
+			printf("BlitSurface error: %s\n", SDL_GetError());
+			engine_showError(2, "");
+		}
+		y += TTF_FontHeight(gfx_unicodeFont);
+	}
+	else
+	{
+		engine_warn("gfx_unicodeFont is NULL!");
 	}
 
 	return y;
@@ -537,7 +569,7 @@ void gfx_createMessageBox(SDL_Surface *face, const char *message, int transparen
 		x = 10;
 	}
 
-	gfx_renderString(message, x, 5, FONT_WHITE, 1, gfx_messageBox);
+	gfx_renderUnicode(message, x, 5, FONT_WHITE, 1, gfx_messageBox);
 }
 
 SDL_Surface *gfx_loadImage(const char *filename)
@@ -616,14 +648,6 @@ void gfx_free()
 		SDL_FreeSurface(gfx_messageBox);
 		gfx_messageBox = NULL;
 	}
-
-#ifndef NOFONT
-	if (gfx_unicodeFont != NULL)
-	{
-		TTF_CloseFont(gfx_unicodeFont);
-		gfx_unicodeFont = NULL;
-	}
-#endif
 }
 
 void gfx_scaleBackground()

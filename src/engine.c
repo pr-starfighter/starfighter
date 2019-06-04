@@ -30,6 +30,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "SDL.h"
 
+#ifndef NOFONT
+#include "SDL_ttf.h"
+#endif
+
 #ifndef NOSOUND
 #include "SDL_mixer.h"
 #endif
@@ -402,6 +406,18 @@ void engine_cleanup()
 
 	char filename[PATH_MAX];
 	strcpy(filename, "");
+
+#ifndef NOFONT
+	if (gfx_unicodeFont != NULL)
+	{
+		TTF_CloseFont(gfx_unicodeFont);
+		gfx_unicodeFont = NULL;
+	}
+	if (TTF_WasInit())
+	{
+		TTF_Quit();
+	}
+#endif
 
 #ifndef NOSOUND
 	if (engine.useAudio)
