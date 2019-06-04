@@ -21,11 +21,28 @@ STARFIGHTER_CFLAGS="-DVERSION=\\\"$PACKAGE_VERSION\\\""
 
 # Checks for libraries.
 PKG_CHECK_EXISTS([SDL2_mixer], [
-	PKG_CHECK_MODULES([SDL], [sdl2 SDL2_image SDL2_mixer])
+	PKG_CHECK_EXISTS([SDL2_ttf], [
+		PKG_CHECK_MODULES([SDL], [sdl2 SDL2_image SDL2_mixer SDL2_ttf])
+	], [
+		PKG_CHECK_MODULES([SDL], [sdl2 SDL2_image SDL2_mixer])
+		STARFIGHTER_CFLAGS="$STARFIGHTER_CFLAGS -DNOFONT"
+		echo "Note: SDL_ttf not found; Unicode will not be supported."
+	])
 ], [
-	PKG_CHECK_MODULES([SDL], [sdl2 SDL2_image])
+	PKG_CHECK_EXISTS([SDL2_ttf], [
+		PKG_CHECK_MODULES([SDL], [sdl2 SDL2_image SDL2_ttf])
+	], [
+		PKG_CHECK_MODULES([SDL], [sdl2 SDL2_image])
+		STARFIGHTER_CFLAGS="$STARFIGHTER_CFLAGS -DNOFONT"
+		echo "Note: SDL_ttf not found; Unicode will not be supported."
+	])
 	STARFIGHTER_CFLAGS="$STARFIGHTER_CFLAGS -DNOSOUND"
 	echo "Note: SDL_mixer not found; audio will not be supported."
+])
+PKG_CHECK_MODULES([UTF8PROC], [libutf8proc], [
+], [
+	STARFIGHTER_CFLAGS="$STARFIGHTER_CFLAGS -DNOFONT"
+	echo "Note: utf8proc not found; Unicode will not be supported."
 ])
 
 AC_ARG_VAR([SF_SCREEN_WIDTH], [The width of the game window in pixels])
