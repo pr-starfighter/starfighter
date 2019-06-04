@@ -89,12 +89,13 @@ void gfx_init()
 		exit(1);
 	}
 
-	gfx_unicodeFont = TTF_OpenFont("data/DroidSansFallbackFull.ttf", 14);
+	gfx_unicodeFont = TTF_OpenFont("data/TakaoGothic.ttf", 14);
 	if (gfx_unicodeFont == NULL)
 	{
 		printf("ERROR: TTF_OpenFont: %s\n", TTF_GetError());
 		exit(1);
 	}
+	TTF_SetFontStyle(gfx_unicodeFont, TTF_STYLE_BOLD);
 #endif
 }
 
@@ -279,7 +280,6 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 			color.g = 255;
 			color.b = 255;
 	}
-	printf("Color appears to be: %d %d %d\n", color.r, color.g, color.b);
 
 	if (gfx_unicodeFont != NULL)
 	{
@@ -308,17 +308,14 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 			changed = 0;
 			for (i = nBreakPoints - 1; i >= 0; i--)
 			{
-				printf("Breakpoint %d (%c)\n", i, remainingStr[breakPoints[i]]);
 				strncpy(testStr, remainingStr, breakPoints[i]);
 				testStr[breakPoints[i]] = '\0';
-				printf("Checking '%s'...\n", testStr);
 				if (TTF_SizeUTF8(gfx_unicodeFont, testStr, &w, &h) < 0)
 				{
 					engine_error(TTF_GetError());
 				}
 				if (w <= dest->w)
 				{
-					printf("Under designated width. Render '%s'\n", testStr);
 					textSurf = TTF_RenderUTF8_Solid(gfx_unicodeFont, testStr, color);
 					area.x = x;
 					area.y = y;
@@ -345,7 +342,6 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 				engine_error(TTF_GetError());
 			}
 		}
-		printf("Done splitting. Render '%s'\n", remainingStr);
 		textSurf = TTF_RenderUTF8_Solid(gfx_unicodeFont, remainingStr, color);
 		area.x = x;
 		area.y = y;
@@ -569,7 +565,10 @@ SDL_Surface *gfx_createAlphaRect(int width, int height, Uint8 red, Uint8 green, 
 
 void gfx_createMessageBox(SDL_Surface *face, const char *message, int transparent)
 {
-	int x = 60;
+	int border = 5;
+	int x = border;
+	int y = border;
+	SDL_Surface *textArea;
 
 	if (gfx_messageBox != NULL)
 	{
@@ -585,15 +584,20 @@ void gfx_createMessageBox(SDL_Surface *face, const char *message, int transparen
 	if (face != NULL)
 	{
 		gfx_drawRect(gfx_messageBox, 0, 0, gfx_messageBox->w - 1, gfx_messageBox->h - 1, 0x00, 0x00, 0xaa);
-		gfx_blit(face, 5, 5, gfx_messageBox);
+		gfx_blit(face, border, border, gfx_messageBox);
+		x = (2 * border) + face->w;
 	}
 	else
 	{
 		gfx_drawRect(gfx_messageBox, 0, 0, gfx_messageBox->w - 1, gfx_messageBox->h - 1, 0x00, 0x00, 0x00);
-		x = 10;
+		x = border;
 	}
-
-	gfx_renderUnicode(message, x, 5, FONT_WHITE, 1, gfx_messageBox);
+	
+	textArea = gfx_createSurface(gfx_messageBox->w - (x + border), gfx_messageBox->h - y);
+	gfx_renderUnicode(message, 0, 0, FONT_WHITE, 1, textArea);
+	gfx_blit(textArea, x, y, gfx_messageBox);
+	SDL_FreeSurface(textArea);
+	textArea = NULL;
 }
 
 SDL_Surface *gfx_loadImage(const char *filename)
