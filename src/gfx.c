@@ -241,10 +241,45 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 	int nLogAttrs;
 	int i;
 	SDL_Rect area;
-
-	color.r = (Uint8)((fontColor & 0xff0000) >> 16);
-	color.g = (Uint8)((fontColor & 0x00ff00) >> 8);
-	color.b = (Uint8)(fontColor & 0x0000ff);
+	
+	switch (fontColor)
+	{
+		case FONT_WHITE:
+			color.r = 255;
+			color.g = 255;
+			color.b = 255;
+			break;
+		case FONT_RED:
+			color.r = 255;
+			color.g = 0;
+			color.b = 0;
+			break;
+		case FONT_YELLOW:
+			color.r = 255;
+			color.g = 255;
+			color.b = 0;
+			break;
+		case FONT_GREEN:
+			color.r = 0;
+			color.g = 255;
+			color.b = 0;
+			break;
+		case FONT_CYAN:
+			color.r = 0;
+			color.g = 255;
+			color.b = 255;
+			break;
+		case FONT_OUTLINE:
+			color.r = 0;
+			color.g = 0;
+			color.b = 10;
+			break;
+		default:
+			color.r = 255;
+			color.g = 255;
+			color.b = 255;
+	}
+	printf("Color appears to be: %d %d %d\n", color.r, color.g, color.b);
 
 	if (gfx_unicodeFont != NULL)
 	{
