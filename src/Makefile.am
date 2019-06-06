@@ -5,7 +5,12 @@
 
 bin_PROGRAMS = starfighter
 
+if RUN_IN_PLACE
+starfighter_CPPFLAGS = $(STARFIGHTER_CFLAGS) -Wall
+else
 starfighter_CPPFLAGS = $(STARFIGHTER_CFLAGS) -DDATADIR=\"$(pkgdatadir)\" -Wall
+endif
+
 starfighter_CFLAGS = $(SDL_CFLAGS) $(PANGO_CFLAGS) -lm
 starfighter_LDADD = $(SDL_LIBS) $(PANGO_LIBS)
 

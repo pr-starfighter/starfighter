@@ -17,6 +17,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <libintl.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -62,46 +63,6 @@ Game game;
 static Star stars[STARS_NUM];
 static Uint32 frameLimit = 0;
 static int thirds = 0;
-
-#define NMSG_KLINE_INSULT 3
-static const char *klineInsult[NMSG_KLINE_INSULT] = {
-	"Pathetic.", "How very disappointing...", "Heroic. And stupid."
-};
-
-#define NMSG_KLINE_VENUS_INSULT 2
-static const char *klineVenusInsult[NMSG_KLINE_VENUS_INSULT] = {
-	"Fool.", "And now you're nothing but a DEAD hero."
-};
-
-#define NMSG_PHOEBE_PLAYER_HIT 3
-static const char *phoebePlayerHitMessage[NMSG_PHOEBE_PLAYER_HIT] = {
-	"Oops! Sorry!",
-	"Whoops! Are you OK, Chris?",
-	"Oh, sorry! I didn't see you there!"
-};
-
-#define NMSG_URSULA_PLAYER_HIT 3
-static const char *ursulaPlayerHitMessage[NMSG_URSULA_PLAYER_HIT] = {
-	"Get out of the way!",
-	"Don't fly into my missiles!",
-	"Dammit, Chris, you made me miss!"
-};
-
-#define NMSG_PLAYER_PHOEBE_HIT 3
-static const char *playerPhoebeHitMessage[NMSG_PLAYER_PHOEBE_HIT] = {
-	"OW! I hope that was an accident!",
-	"Chris, please be more careful!",
-	"Ouch! What are you shooting at me for?"
-};
-
-#define NMSG_PLAYER_URSULA_HIT 5
-static const char *playerUrsulaHitMessage[NMSG_PLAYER_URSULA_HIT] = {
-	"I am NOT your enemy!",
-	"Hey! Watch it!",
-	"What are you doing?! Shoot THEM!",
-	"Open your eyes!",
-	"Are you blind?!"
-};
 
 
 void game_init()
@@ -227,7 +188,7 @@ static void game_addDebris(int x, int y, int amount)
 		audio_playSound(SFX_DEBRIS2, x, y);
 
 	Object *debris;
-	
+
 	amount = RANDRANGE(3, amount);
 	LIMIT(amount, 3, 8);
 
@@ -620,6 +581,8 @@ static void game_doBullets()
 	float homingMissileSpeed = 0;
 	int charger_num;
 
+	char msg[STRMAX];
+
 	bullet = engine.bulletHead;
 	prevBullet = engine.bulletHead;
 	engine.bulletTail = engine.bulletHead;
@@ -729,9 +692,39 @@ static void game_doBullets()
 						{
 							game.hits++;
 							if (aliens[i].classDef == CD_PHOEBE)
-								radio_setMessage(FS_PHOEBE, playerPhoebeHitMessage[rand() % NMSG_PLAYER_PHOEBE_HIT], 0);
+							{
+								radio_getRandomMessage(msg, _(
+									/// Chris: Phoebe Hit Messages
+									/// This is a list of messages separated by "\n".  They are randomly
+									/// broadcast by Phoebe when Chris (the player) damages her.
+									/// Instead of directly translating these, please populate the list
+									/// with messages that work well in the target language,
+									/// following the English version only as a general guideline.  Any
+									/// number of messages is permitted.
+									"OW! I hope that was an accident!\n"
+									"Chris, please be more careful!\n"
+									"Ouch! What are you shooting at me for?"
+								));
+								radio_setMessage(FS_PHOEBE, msg, 0);
+							}
 							else if (aliens[i].classDef == CD_URSULA)
-								radio_setMessage(FS_URSULA, playerUrsulaHitMessage[rand() % NMSG_PLAYER_URSULA_HIT], 0);
+							{
+								radio_getRandomMessage(msg, _(
+									/// Chris: Ursula Hit Messages
+									/// This is a list of messages separated by "\n".  They are randomly
+									/// broadcast by Phoebe when Chris (the player) damages her.
+									/// Instead of directly translating these, please populate the list
+									/// with messages that work well in the target language,
+									/// following the English version only as a general guideline.  Any
+									/// number of messages is permitted.
+									"I am NOT your enemy!\n"
+									"Hey! Watch it!\n"
+									"What are you doing?! Shoot THEM!\n"
+									"Open your eyes!\n"
+									"Are you blind?!"
+								));
+								radio_setMessage(FS_URSULA, msg, 0);
+							}
 						}
 
 						if (!(aliens[i].flags & FL_IMMORTAL))
@@ -792,11 +785,35 @@ static void game_doBullets()
 					{
 						if (bullet->owner->classDef == CD_PHOEBE)
 						{
-							radio_setMessage(FS_PHOEBE, phoebePlayerHitMessage[rand() % NMSG_PHOEBE_PLAYER_HIT], 0);
+							radio_getRandomMessage(msg, _(
+								/// Phoebe: Player Hit Messages
+								/// This is a list of messages separated by "\n".  They are randomly
+								/// broadcast when Phoebe accidentally damages Chris (the player).
+								/// Instead of directly translating these, please populate the list
+								/// with messages that work well in the target language,
+								/// following the English version only as a general guideline.  Any
+								/// number of messages is permitted.
+								"Oops! Sorry!\n"
+								"Whoops! Are you OK, Chris?\n"
+								"Oh, sorry! I didn't see you there!"
+							));
+							radio_setMessage(FS_PHOEBE, msg, 0);
 						}
 						else if (bullet->owner->classDef == CD_URSULA)
 						{
-							radio_setMessage(FS_URSULA, ursulaPlayerHitMessage[rand() % NMSG_URSULA_PLAYER_HIT], 0);
+							radio_getRandomMessage(msg, _(
+								/// Ursula: Player Hit Messages
+								/// This is a list of messages separated by "\n".  They are randomly
+								/// broadcast when Ursula accidentally damages Chris (the player).
+								/// Instead of directly translating these, please populate the list
+								/// with messages that work well in the target language,
+								/// following the English version only as a general guideline.  Any
+								/// number of messages is permitted.
+								"Get out of the way!\n"
+								"Don't fly into my missiles!\n"
+								"Dammit, Chris, you made me miss!"
+							));
+							radio_setMessage(FS_URSULA, msg, 0);
 						}
 					}
 
@@ -868,7 +885,7 @@ static void game_doBullets()
 				if (collectable_collision(collectable, bullet))
 				{
 					collectable->active = 0;
-					
+
 					if (bullet->id != WT_CHARGER)
 					{
 						bullet->active = 0;
@@ -1074,7 +1091,7 @@ static void game_doAliens()
 						aliens[i].shield = 0;
 						mission_updateRequirements(M_ESCAPE_TARGET,
 							aliens[i].classDef, 1);
-					
+
 						if (aliens[i].classDef != CD_CLOAKFIGHTER)
 							mission_updateRequirements(M_DESTROY_TARGET_TYPE,
 								aliens[i].classDef, 1);
@@ -1271,18 +1288,19 @@ static void game_doAliens()
 
 static void game_doPlayer()
 {
+	int shapeToUse;
+	float cd;
+	float cc;
+	int xmoved = 0;
+	int ymoved = 0;
+	char msg[STRMAX];
+
 	// This causes the motion to slow
 	engine.ssx *= 0.99;
 	engine.ssy *= 0.99;
 
 	engine.smx = 0;
 	engine.smy = 0;
-
-	int shapeToUse;
-	float cd;
-	float cc;
-	int xmoved = 0;
-	int ymoved = 0;
 
 	if (player.shield > -100)
 	{
@@ -1531,13 +1549,42 @@ static void game_doPlayer()
 				if (aliens[ALIEN_KLINE].active)
 				{
 					if (game.area == MISN_VENUS)
-						radio_setMessage(FS_KLINE, klineVenusInsult[rand() % NMSG_KLINE_VENUS_INSULT], 1);
+					{
+						radio_getRandomMessage(msg, _(
+							/// Kline Venus insult messages
+							/// This is a list of insults separated by "\n".  They are randomly
+							/// broadcast when the player dies in the Venus mission.
+							/// Instead of directly translating these, please populate the list
+							/// with insults that work well in the target language,
+							/// following the English version only as a general guideline.  Any
+							/// number of insults is permitted.
+							"Fool.\n"
+							"And now you're nothing but a DEAD hero.\n"
+						));
+						radio_setMessage(FS_KLINE, msg, 1);
+					}
 					else
-						radio_setMessage(FS_KLINE, klineInsult[rand() % NMSG_KLINE_INSULT], 1);
+					{
+						radio_getRandomMessage(msg, _(
+							/// Kline insult messages
+							/// This is a list of insults separated by "\n".  They are randomly
+							/// broadcast when the player dies in a mission Kline is in (except Venus).
+							/// Instead of directly translating these, please populate the list
+							/// with insults that work well in the target language,
+							/// following the English version only as a general guideline.  Any
+							/// number of insults is permitted.
+							"Pathetic.\n"
+							"How very disappointing...\n"
+							"Heroic. And stupid."
+						));
+						radio_setMessage(FS_KLINE, msg, 1);
+					}
 				}
 				else if ((aliens[ALIEN_BOSS].active) && (aliens[ALIEN_BOSS].classDef == CD_KRASS))
 				{
-					radio_setMessage(FS_KRASS, "That was the easiest $90,000,000 I've ever earned! Bwah! Ha! Ha! Ha!", 1);
+					/// Dialog: Krass Tyler
+					/// Used when the player is killed in the Jupiter mission.
+					radio_setMessage(FS_KRASS, _("That was the easiest $90,000,000 I've ever earned! Bwah! Ha! Ha! Ha!"), 1);
 				}
 
 				// Make it look like the ships are all still moving...
@@ -1664,7 +1711,7 @@ void game_doExplosions()
 	Object *prevExplosion = engine.explosionHead;
 	Object *explosion = engine.explosionHead;
 	engine.explosionTail = engine.explosionHead;
-	
+
 	while (explosion->next != NULL)
 	{
 		explosion = explosion->next;
@@ -1860,7 +1907,7 @@ static void game_doHud()
 				last_arrow = rand() % ALIEN_MAX;
 				if (aliens[last_arrow].flags & FL_FRIEND)
 					last_arrow = 0;
-				
+
 				game_doArrow(last_arrow);
 			}
 		}
@@ -1972,7 +2019,7 @@ static void game_doHud()
 	{
 		if (gfx_textSprites[i].life > 0)
 		{
-			screen_blitText(i, -1, screen->h - 75 - (i * 20));
+			screen_blitText(i, -1, screen->h - 75 - (i * MENU_SPACING));
 			gfx_textSprites[i].life--;
 
 			if (gfx_textSprites[i].life == 0)
@@ -2157,14 +2204,14 @@ pressed, the game automatically ends and goes back to the title screen
 static int game_checkPauseRequest()
 {
 	player_getInput();
-		
+
 	if (engine.keyState[KEY_ESCAPE])
 	{
 		engine.paused = 0;
 		player.shield = 0;
 		return 1;
 	}
-	
+
 	if (engine.keyState[KEY_PAUSE])
 	{
 		engine.paused = 0;
@@ -2628,7 +2675,7 @@ int game_mainLoop()
 				title_showCredits();
 				break;
 		}
-		
+
 		if (game.area < MISN_VENUS)
 		{
 			intermission_updateSystemStatus();
@@ -2636,7 +2683,7 @@ int game_mainLoop()
 		}
 
 		rtn = 1;
-		
+
 		if (game.area == MISN_VENUS)
 			rtn = 0;
 	}
@@ -2650,10 +2697,3 @@ int game_mainLoop()
 
 	return rtn;
 }
-
-#undef NMSG_KLINE_INSULT
-#undef NMSG_KLINE_VENUS_INSULT
-#undef NMSG_PHOEBE_PLAYER_HIT
-#undef NMSG_URSULA_PLAYER_HIT
-#undef NMSG_PLAYER_PHOEBE_HIT
-#undef NMSG_PLAYER_URSULA_HIT

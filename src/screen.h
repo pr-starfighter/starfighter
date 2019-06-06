@@ -32,6 +32,7 @@ extern LinkedRect *screen_bufferTail;
 void screen_blit(SDL_Surface *image, int x, int y);
 void screen_blitText(int i, int x, int y);
 int screen_renderString(const char *in, int x, int y, int fontColor);
+int screen_renderUnicode(const char *in, int x, int y, int fontColor);
 void screen_drawBackground();
 void screen_addBuffer(int x, int y, int w, int h);
 void screen_flushBuffer();

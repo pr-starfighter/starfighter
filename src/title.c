@@ -41,24 +41,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 static int showGameMenu(int continueSaveSlot)
 {
-	screen_blitText(TS_START_NEW_GAME, -1, screen->h / 3 + 50);
-	screen_blitText(TS_LOAD_GAME, -1, screen->h / 3 + 70);
+	screen_blitText(TS_START_NEW_GAME, -1, MENU_Y);
+	screen_blitText(TS_LOAD_GAME, -1, MENU_Y + MENU_SPACING);
 	if (continueSaveSlot != -1)
 	{
-		screen_blitText(TS_CONTINUE_CURRENT_GAME, -1, screen->h / 3 + 90);
+		screen_blitText(TS_CONTINUE_CURRENT_GAME, -1, MENU_Y + 2 * MENU_SPACING);
 	}
-	screen_blitText(TS_OPTIONS, -1, screen->h / 3 + 110);
-	screen_blitText(TS_CREDITS, -1, screen->h / 3 + 130);
+	screen_blitText(TS_OPTIONS, -1, MENU_Y + 3 * MENU_SPACING);
+	screen_blitText(TS_CREDITS, -1, MENU_Y + 4 * MENU_SPACING);
 	if (engine.cheat)
 	{
-		gfx_textSprites[TS_QUIT].y = 20;
-		screen_blitText(TS_CHEAT_OPTIONS, -1, screen->h / 3 + 150);
+		gfx_textSprites[TS_QUIT].y = MENU_SPACING;
+		screen_blitText(TS_CHEAT_OPTIONS, -1, MENU_Y + 5 * MENU_SPACING);
 	}
 	else
 	{
 		gfx_textSprites[TS_QUIT].y = 0;
 	}
-	screen_blitText(TS_QUIT, -1, screen->h / 3 + 150);
+	screen_blitText(TS_QUIT, -1, MENU_Y + 5 * MENU_SPACING);
 
 	if (engine.cheat)
 		return 7;
@@ -75,11 +75,11 @@ static int showLoadMenu()
 		rtn++;
 		if (gfx_textSprites[i].image != NULL)
 		{
-			screen_blitText(i, -1, screen->h / 3 + 50);
-			gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = gfx_textSprites[i].y + 40;
+			screen_blitText(i, -1, MENU_Y);
+			gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = gfx_textSprites[i].y + 2 * MENU_SPACING;
 		}
 	}
-	screen_blitText(TS_BACK_TO_MAIN_MENU, -1, screen->h / 3 + 50);
+	screen_blitText(TS_BACK_TO_MAIN_MENU, -1, MENU_Y);
 
 	return rtn;
 }
@@ -102,10 +102,10 @@ static void createDifficultyMenu()
 
 static int showDifficultyMenu()
 {
-	screen_blitText(TS_START_GAME, -1, screen->h / 3 + 50);
-	screen_blitText(TS_DIFFICULTY, -1, screen->h / 3 + 70);
+	screen_blitText(TS_START_GAME, -1, MENU_Y);
+	screen_blitText(TS_DIFFICULTY, -1, MENU_Y + MENU_SPACING);
 	gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = 0;
-	screen_blitText(TS_BACK_TO_MAIN_MENU, -1, screen->h / 3 + 110);
+	screen_blitText(TS_BACK_TO_MAIN_MENU, -1, MENU_Y + 3 * MENU_SPACING);
 
 	return 3;
 }
@@ -135,12 +135,12 @@ static void createOptionsMenu()
 
 static int showOptionsMenu()
 {
-	screen_blitText(TS_SOUND, -1, screen->h / 3 + 50);
-	screen_blitText(TS_MUSIC, -1, screen->h / 3 + 70);
-	screen_blitText(TS_FULLSCREEN, -1, screen->h / 3 + 90);
-	screen_blitText(TS_AUTOPAUSE, -1, screen->h / 3 + 110);
+	screen_blitText(TS_SOUND, -1, MENU_Y);
+	screen_blitText(TS_MUSIC, -1, MENU_Y + MENU_SPACING);
+	screen_blitText(TS_FULLSCREEN, -1, MENU_Y + 2 * MENU_SPACING);
+	screen_blitText(TS_AUTOPAUSE, -1, MENU_Y + 3 * MENU_SPACING);
 	gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = 0;
-	screen_blitText(TS_BACK_TO_MAIN_MENU, -1, screen->h / 3 + 150);
+	screen_blitText(TS_BACK_TO_MAIN_MENU, -1, MENU_Y + 5 * MENU_SPACING);
 
 	return 5;
 }
@@ -170,12 +170,12 @@ static void createCheatMenu()
 
 static int showCheatMenu()
 {
-	screen_blitText(TS_UNLIMITED_SHIELD, -1, screen->h / 3 + 50);
-	screen_blitText(TS_UNLIMITED_AMMO, -1, screen->h / 3 + 70);
-	screen_blitText(TS_UNLIMITED_CASH, -1, screen->h / 3 + 90);
-	screen_blitText(TS_UNLIMITED_TIME, -1, screen->h / 3 + 110);
+	screen_blitText(TS_UNLIMITED_SHIELD, -1, MENU_Y);
+	screen_blitText(TS_UNLIMITED_AMMO, -1, MENU_Y + MENU_SPACING);
+	screen_blitText(TS_UNLIMITED_CASH, -1, MENU_Y + 2 * MENU_SPACING);
+	screen_blitText(TS_UNLIMITED_TIME, -1, MENU_Y + 3 * MENU_SPACING);
 	gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = 0;
-	screen_blitText(TS_BACK_TO_MAIN_MENU, -1, screen->h / 3 + 150);
+	screen_blitText(TS_BACK_TO_MAIN_MENU, -1, MENU_Y + 5 * MENU_SPACING);
 
 	return 5;
 }
@@ -201,7 +201,7 @@ int title_show()
 	int skip = 0;
 	int listLength = 6; // menu list length
 	int menuType = MENU_MAIN;
-	
+
 	SDL_Surface *copyrightText;
 	SDL_Surface *infoText;
 
@@ -212,7 +212,7 @@ int title_show()
 	screen_flushBuffer();
 	gfx_free();
 	engine_resetLists();
-	
+
 	// required to stop the title screen crashing
 	game.system = 0;
 	game.area = MISN_START;
@@ -247,16 +247,16 @@ int title_show()
 
 	createCheatMenu();
 
-	copyrightText = gfx_createSurface(screen->w, 60);
+	copyrightText = gfx_createSurface(screen->w, 3 * MENU_SPACING);
 	gfx_renderString("Copyright Parallel Realities 2003",
 		5, 0, FONT_WHITE, 0, copyrightText);
 	gfx_renderString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012",
-		5, 20, FONT_WHITE, 0, copyrightText);
+		5, MENU_SPACING, FONT_WHITE, 0, copyrightText);
 	gfx_renderString("Copyright 2015-2019 Julie Marchant",
-		5, 40, FONT_WHITE, 0, copyrightText);
+		5, 2 * MENU_SPACING, FONT_WHITE, 0, copyrightText);
 
 	sprintf(buildVersion, "Version %s", VERSION );
-	infoText = gfx_createSurface(strlen(buildVersion) * 9 + 6, 20);
+	infoText = gfx_createSurface(strlen(buildVersion) * (PIXFONT_W + 1) + 6, MENU_SPACING);
 	gfx_renderString(buildVersion, 0, 0, FONT_WHITE, 0, infoText);
 
 	// Set the star motion
@@ -283,8 +283,8 @@ int title_show()
 	SDL_Rect optionRec;
 
 	optionRec.x = screen->w / 2 - 110;
-	optionRec.y = screen->h / 3 + 45;
-	optionRec.h = 22;
+	optionRec.y = MENU_Y - 5;
+	optionRec.h = MENU_SPACING + 2;
 	optionRec.w = 215;
 
 	if (continueSaveSlot != -1)
@@ -343,13 +343,13 @@ int title_show()
 			if ((now - then >= 27500) || (skip))
 			{
 				optionRec.x = screen->w / 2 - 110;
-				optionRec.y = screen->h / 3 + 26 + (20 * selectedOption);
+				optionRec.y = (MENU_Y - 4 - MENU_SPACING) + MENU_SPACING * selectedOption;
 				if (menuType > MENU_MAIN)
 					if (selectedOption == listLength)
-						optionRec.y += 20;
-				
+						optionRec.y += MENU_SPACING;
+
 				screen_drawRect(optionRec.x, optionRec.y, optionRec.w, optionRec.h, redGlow, 0x00, 0x00);
-				screen_addBuffer(optionRec.x, optionRec.y, optionRec.w, optionRec.h);
+				screen_addBuffer(optionRec.x, optionRec.y, optionRec.w + 1, optionRec.h + 1);
 
 				switch(menuType)
 				{
@@ -369,6 +369,8 @@ int title_show()
 						listLength = showCheatMenu();
 						break;
 				}
+
+				screen_addBuffer(optionRec.x - 1, MENU_Y, optionRec.w + 2, listLength * MENU_SPACING);
 
 				redGlow += redDir;
 				if (redGlow <= 0) {redDir = 2; redGlow = 0;}
@@ -397,7 +399,7 @@ int title_show()
 				y = screen->h - copyrightText->h;
 				screen_blit(copyrightText, x, y);
 				screen_addBuffer(x, y, copyrightText->w, copyrightText->h);
-				
+
 				x = screen->w - infoText->w;
 				y = screen->h - infoText->h;
 				screen_blit(infoText, x, y);

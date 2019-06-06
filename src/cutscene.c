@@ -17,6 +17,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <libintl.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -49,7 +50,7 @@ void cutscene_init(int scene)
 	renderer_update();
 	screen_clear(black);
 
-	engine.keyState[KEY_FIRE] = 0; 
+	engine.keyState[KEY_FIRE] = 0;
 	engine.keyState[KEY_ALTFIRE] = 0;
 
 	engine.ssx = -0.5;
@@ -100,16 +101,20 @@ void cutscene_init(int scene)
 			}
 
 			messages[0].face = -1;
-			strcpy(messages[0].message, "While escaping with his newly acquired Firefly, Chris Bainfield is intercepted by a WEAPCO patrol...");
+			/// Cutscene (narration)
+			strcpy(messages[0].message, _("While escaping with his newly acquired Firefly, Chris Bainfield is intercepted by a WEAPCO patrol..."));
 
 			messages[1].face = FS_CHRIS;
-			strcpy(messages[1].message, "These things just won't give up, will they?");
+			/// Cutscene (Chris Bainfield)
+			strcpy(messages[1].message, _("These things just won't give up, will they?"));
 
 			messages[2].face = FS_CHRIS;
-			strcpy(messages[2].message, "What a dilemma! I'm not all that familiar with this ship's controls, but I can't let this patrol reach my rendezvous point...");
+			/// Cutscene (Chris Bainfield)
+			strcpy(messages[2].message, _("What a dilemma! I'm not all that familiar with this ship's controls, but I can't let this patrol reach my rendezvous point..."));
 
 			messages[3].face = FS_CHRIS;
-			strcpy(messages[3].message, "I guess I'll have to fight them, then. Let's see what this ship can do!");
+			/// Cutscene (Chris Bainfield)
+			strcpy(messages[3].message, _("I guess I'll have to fight them, then. Let's see what this ship can do!"));
 
 			break;
 
@@ -134,19 +139,24 @@ void cutscene_init(int scene)
 			}
 
 			messages[0].face = -1;
-			strcpy(messages[0].message, "A few hours later, in the Sol system, news has already spread of Chris Bainfield's heroic actions. The commander of WEAPCO's navy considers his options.");
+			/// Cutscene (narration)
+			strcpy(messages[0].message, _("A few hours later, in the Sol system, news has already spread of Chris Bainfield's heroic actions. The commander of WEAPCO's navy considers his options."));
 
 			messages[1].face = FS_KLINE;
-			strcpy(messages[1].message, "The Emperor will not be pleased. Spirit is now a free star system thanks to that interfering rebel pilot.");
+			/// Cutscene (Kline Kethlan)
+			strcpy(messages[1].message, _("The Emperor will not be pleased. Spirit is now a free star system thanks to that interfering rebel pilot."));
 
 			messages[2].face = FS_KLINE;
-			strcpy(messages[2].message, "It was reported that he was able to take down one of our most powerful frigates in under 3 minutes!");
+			/// Cutscene (Kline Kethlan)
+			strcpy(messages[2].message, _("It was reported that he was able to take down one of our most powerful frigates in under 3 minutes!"));
 
 			messages[3].face = FS_KLINE;
-			strcpy(messages[3].message, "Talent like that does not appear every day. He would be a perfect candidate for our new AI training program!");
+			/// Cutscene (Kline Kethlan)
+			strcpy(messages[3].message, _("Talent like that does not appear every day. He would be a perfect candidate for our new AI training program!"));
 
 			messages[4].face = FS_KLINE;
-			strcpy(messages[4].message, "What a pity I must kill him...");
+			/// Cutscene (Kline Kethlan)
+			strcpy(messages[4].message, _("What a pity I must kill him..."));
 
 			break;
 
@@ -168,19 +178,24 @@ void cutscene_init(int scene)
 			aliens[1].active = 1;
 
 			messages[0].face = FS_SID;
-			strcpy(messages[0].message, "We're nearly ready to make the jump to Eyananth.");
+			/// Cutscene (Sid Wilson)
+			strcpy(messages[0].message, _("We're nearly ready to make the jump to Eyananth."));
 
 			messages[1].face = FS_CHRIS;
-			strcpy(messages[1].message, "Aren't there a lot of WEAPCO slaves in this system?");
+			/// Cutscene (Chris Bainfield)
+			strcpy(messages[1].message, _("Aren't there a lot of WEAPCO slaves in this system?"));
 
 			messages[2].face = FS_SID;
-			strcpy(messages[2].message, "Yes. It's got one of the highest mortality rates in the galaxy.");
+			/// Cutscene (Sid Wilson)
+			strcpy(messages[2].message, _("Yes. It's got one of the highest mortality rates in the galaxy."));
 
 			messages[3].face = FS_CHRIS;
-			strcpy(messages[3].message, "You think we can use that to our advantage?");
+			/// Cutscene (Chris Bainfield)
+			strcpy(messages[3].message, _("You think we can use that to our advantage?"));
 
 			messages[4].face = FS_SID;
-			strcpy(messages[4].message, "I think so. I'll come up with a plan of action.");
+			/// Cutscene (Sid Wilson)
+			strcpy(messages[4].message, _("I think so. I'll come up with a plan of action."));
 
 			break;
 
@@ -208,25 +223,32 @@ void cutscene_init(int scene)
 			aliens[2].active = 1;
 
 			messages[0].face = FS_PHOEBE;
-			strcpy(messages[0].message, "Nice head gear! You shop at the same place as me, huh?");
+			/// Cutscene (Phoebe Lexx)
+			strcpy(messages[0].message, _("Nice head gear! You shop at the same place as me, huh?"));
 
 			messages[1].face = FS_CHRIS;
-			strcpy(messages[1].message, "More importantly, what were you doing out there? You're lucky I was around!");
+			/// Cutscene (Chris Bainfield)
+			strcpy(messages[1].message, _("More importantly, what were you doing out there? You're lucky I was around!"));
 
 			messages[2].face = FS_PHOEBE;
-			strcpy(messages[2].message, "I'm looking for my sister. She vanished about a week ago.");
+			/// Cutscene (Phoebe Lexx)
+			strcpy(messages[2].message, _("I'm looking for my sister. She vanished about a week ago."));
 
 			messages[3].face = FS_PHOEBE;
-			strcpy(messages[3].message, "Hey! Wait a moment! You're that rebel from Spirit! I think you're so cool! Can I come with you?");
+			/// Cutscene (Phoebe Lexx)
+			strcpy(messages[3].message, _("Hey! Wait a moment! You're that rebel from Spirit! I think you're so cool! Can I come with you?"));
 
 			messages[4].face = FS_CHRIS;
-			strcpy(messages[4].message, "Extra firepower? I wouldn't mind one bit! What do you think, Sid?");
+			/// Cutscene (Chris Bainfield)
+			strcpy(messages[4].message, _("Extra firepower? I wouldn't mind one bit! What do you think, Sid?"));
 
 			messages[5].face = FS_SID;
-			strcpy(messages[5].message, "I agree. I'm also interested in studying her homing missile launcher; it could come in handy.");
+			/// Cutscene (Sid Wilson)
+			strcpy(messages[5].message, _("I agree. I'm also interested in studying her homing missile launcher; it could come in handy."));
 
 			messages[6].face = FS_CHRIS;
-			strcpy(messages[6].message, "In that case, welcome aboard!");
+			/// Cutscene (Chris Bainfield)
+			strcpy(messages[6].message, _("In that case, welcome aboard, Phoebe!"));
 
 			break;
 
@@ -254,31 +276,40 @@ void cutscene_init(int scene)
 			aliens[2].active = 1;
 
 			messages[0].face = FS_SID;
-			strcpy(messages[0].message, "What happened back there, Chris? The video feed was jammed.");
+			/// Cutscene (Sid Wilson)
+			strcpy(messages[0].message, _("What happened back there, Chris? The video feed was jammed."));
 
 			messages[1].face = FS_CHRIS;
-			strcpy(messages[1].message, "We took down the WEAPCO mining vessel and then I was jumped by a man claiming to be Kline Kethlan.");
+			/// Cutscene (Chris Bainfield)
+			strcpy(messages[1].message, _("We took down the WEAPCO mining vessel and then I was jumped by a man claiming to be Kline Kethlan."));
 
 			messages[2].face = FS_SID;
-			strcpy(messages[2].message, "I've heard of him. He's the Commander of WEAPCO's naval forces. One of the best pilots they ever had.");
+			/// Cutscene (Sid Wilson)
+			strcpy(messages[2].message, _("I've heard of him. He's the Commander of WEAPCO's naval forces. One of the best pilots they ever had."));
 
 			messages[3].face = FS_CHRIS;
-			strcpy(messages[3].message, "He did put up one hell of a fight! He didn't stick around for long, though.");
+			/// Cutscene (Chris Bainfield)
+			strcpy(messages[3].message, _("He did put up one hell of a fight! He didn't stick around for long, though."));
 
 			messages[4].face = FS_CHRIS;
-			strcpy(messages[4].message, "Anyway, what's the scoop on Mordor, Sid?");
+			/// Cutscene (Chris Bainfield)
+			strcpy(messages[4].message, _("Anyway, what's the scoop on Mordor, Sid?"));
 
 			messages[5].face = FS_SID;
-			strcpy(messages[5].message, "I've learned from the scientist we captured that WEAPCO is testing a new fighter craft there.");
+			/// Cutscene (Sid Wilson)
+			strcpy(messages[5].message, _("I've learned from the scientist we captured that WEAPCO is testing a new fighter craft there."));
 
 			messages[6].face = FS_CHRIS;
-			strcpy(messages[6].message, "We should probably destroy that craft, then. We might be able to thwart its development somewhat.");
+			/// Cutscene (Chris Bainfield)
+			strcpy(messages[6].message, _("We should probably destroy that craft, then. We might be able to thwart its development somewhat."));
 
 			messages[7].face = FS_SID;
-			strcpy(messages[7].message, "Agreed.");
+			/// Cutscene (Sid Wilson)
+			strcpy(messages[7].message, _("Agreed. Capturing it would be better, but that's probably not going to happen."));
 
 			messages[8].face = FS_PHOEBE;
-			strcpy(messages[8].message, "I wonder if my sister will be here...");
+			/// Cutscene (Phoebe Lexx)
+			strcpy(messages[8].message, _("I wonder if my sister will be here..."));
 
 			break;
 
@@ -306,19 +337,24 @@ void cutscene_init(int scene)
 			aliens[2].active = 1;
 
 			messages[0].face = FS_PHOEBE;
-			strcpy(messages[0].message, "Will she be okay?");
+			/// Cutscene (Phoebe Lexx)
+			strcpy(messages[0].message, _("Will she be okay?"));
 
 			messages[1].face = FS_SID;
-			strcpy(messages[1].message, "I've had a look at the implants and they should be easy to remove. She'll just have a headache for a while.");
+			/// Cutscene (Sid Wilson)
+			strcpy(messages[1].message, _("I've had a look at the implants and they should be easy to remove. She'll just have a headache for a while."));
 
 			messages[2].face = FS_CHRIS;
-			strcpy(messages[2].message, "Will she be able to tell us anything useful?");
+			/// Cutscene (Chris Bainfield)
+			strcpy(messages[2].message, _("Will she be able to tell us anything useful?"));
 
 			messages[3].face = FS_SID;
-			strcpy(messages[3].message, "We'll have to wait for her memory to come back. She might not be able to remember anything she did while the implants were in.");
+			/// Cutscene (Sid Wilson)
+			strcpy(messages[3].message, _("We'll have to wait for her memory to come back. She might not be able to remember anything she did while the implants were in."));
 
 			messages[4].face = FS_SID;
-			strcpy(messages[4].message, "She'll still be able to pilot a ship though.");
+			/// Cutscene (Sid Wilson)
+			strcpy(messages[4].message, _("She'll still be able to pilot a ship though."));
 
 			break;
 
@@ -352,25 +388,30 @@ void cutscene_init(int scene)
 			aliens[3].active = 1;
 
 			messages[0].face = FS_CHRIS;
-			strcpy(messages[0].message, "Sorry folks, we just lost our bargaining chip.");
+			/// Cutscene (Chris Bainfield)
+			strcpy(messages[0].message, _("Sorry folks, we just lost our bargaining chip."));
 
 			messages[1].face = FS_SID;
-			strcpy(messages[1].message, "Don't worry about it. It's not what I hoped for, but it should still make it easier to defeat WEAPCO.");
+			/// Cutscene (Sid Wilson)
+			strcpy(messages[1].message, _("Don't worry about it. It's not what I hoped for, but it should still make it easier to defeat WEAPCO."));
 
 			messages[2].face = FS_URSULA;
-			strcpy(messages[2].message, "Sol is going to be difficult. I've heard they have a lot of heavy defenses on the outer planets.");
+			/// Cutscene (Ursula Lexx)
+			strcpy(messages[2].message, _("Sol is going to be difficult. I've heard they have a lot of heavy defenses on the outer planets."));
 
 			messages[3].face = FS_SID;
-			strcpy(messages[3].message, "We'll have to start there, then.");
+			/// Cutscene (Sid Wilson)
+			strcpy(messages[3].message, _("We'll have to start there, then."));
 
 			messages[4].face = FS_SID;
-			strcpy(messages[4].message, "The forces here will be unlike anything we've met so far. Just be careful, everyone.");
+			/// Cutscene (Sid Wilson)
+			strcpy(messages[4].message, _("The forces here will be unlike anything we've met so far. Just be careful, everyone."));
 
 			break;
 	}
 
 	/*
-		Because we can fiddle with the images, we need to set the engines to 
+		Because we can fiddle with the images, we need to set the engines to
 		the correct places on the craft. Otherwise it will look wrong
 	*/
 	for (int i = 0 ; i < 15 ; i++)
@@ -386,7 +427,7 @@ void cutscene_init(int scene)
 	screen_drawBackground();
 
 	SDL_Surface *face;
-	
+
 	player_flushInput();
 
 	while (1)
@@ -452,7 +493,7 @@ void cutscene_init(int scene)
 		if ((showMessage) && (gfx_messageBox != NULL))
 			screen_blit(gfx_messageBox, (screen->w - gfx_messageBox->w) / 2, screen->h - 100);
 
-		screen_renderString("Press [Escape] to skip", -1, screen->h - 20, FONT_WHITE);
+		screen_renderUnicode(_("Press [Escape] to skip"), -1, screen->h - 20, FONT_WHITE);
 
 		game_delayFrame();
 

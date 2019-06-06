@@ -3,8 +3,12 @@
 # http://creativecommons.org/publicdomain/zero/1.0/ for more
 # information. This file is offered as-is, without any warranty.
 
+if !RUN_IN_PLACE
+
 desktopdir = $(datarootdir)/applications
 desktop_DATA = starfighter.desktop
 
 icondir = $(datarootdir)/pixmaps
 icon_DATA = starfighter.png
+
+endif

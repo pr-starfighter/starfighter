@@ -60,10 +60,16 @@ AS_IF([test -n "$SF_SCREEN_HEIGHT"], [
 	echo "Using built-in screen height default"
 ])
 
+AS_IF([test -n "$SF_RUN_IN_PLACE"], [
+	echo "Preparing a run-in-place build"
+])
+
+AM_CONDITIONAL([RUN_IN_PLACE], [test -n "$SF_RUN_IN_PLACE"])
+
 AC_SUBST([STARFIGHTER_CFLAGS])
 
 # Checks for header files.
-AC_CHECK_HEADERS([ctype.h errno.h stdio.h stdlib.h string.h time.h math.h pwd.h sys/stat.h unistd.h])
+AC_CHECK_HEADERS([ctype.h errno.h libintl.h locale.h stdio.h stdlib.h string.h time.h math.h pwd.h sys/stat.h unistd.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 

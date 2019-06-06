@@ -1,0 +1,1839 @@
+# Project: Starfighter Translatable Text
+# Copyright (C) 2003 Parallel Relaities
+# Copyright (C) 2011, 2012, 2013 Guus Sliepen
+# Copyright (C) 2012, 2015-2019 Julie Marchant
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 2.0\n"
+"Report-Msgid-Bugs-To: http://starfighter.nongnu.org\n"
+"POT-Creation-Date: 2019-06-05 21:55-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. / Chris brag messages
+#. / This is a list of brags separated by "\n".  They are randomly
+#. / broadcast when Chris successfully kills an enemy.
+#. / Instead of directly translating these, please populate the list
+#. / with brag messages that work well in the target language,
+#. / following the English version only as a general guideline.  Any
+#. / number of brag messages is permitted.
+#: src/alien.c:1916
+msgid ""
+"Take that, robot oppressors!\n"
+"Come on, WEAPCO, give me a challenge already!\n"
+"Is that all you've got?\n"
+"I could kill these robots with my hands tied behind my back!\n"
+"And now you're nothing but a pile of scrap metal!\n"
+"Who else wants some?!\n"
+"Humans do it better!\n"
+"A century of AI research is no match for me!\n"
+"What's the matter, WEAPCO? Can't keep up?\n"
+"I eat robots like you for breakfast!\n"
+"Target destroyed!\n"
+"Bring it on, WEAPCO!\n"
+"I wish the guys back at home could see this!\n"
+"How do you like that, WEAPCO?\n"
+"Maybe you should change your name to WEEPCO!"
+msgstr ""
+
+#. / Phoebe brag messages
+#. / This is a list of brags separated by "\n".  They are randomly
+#. / broadcast when Phoebe successfully kills an enemy.
+#. / Instead of directly translating these, please populate the list
+#. / with brag messages that work well in the target language,
+#. / following the English version only as a general guideline.  Any
+#. / number of brag messages is permitted.
+#: src/alien.c:1949
+msgid ""
+"I got another one!\n"
+"Target destroyed!\n"
+"One more for me!\n"
+"Yes! Did you see that, Chris?\n"
+"Hey Chris, remind me to check my kill count later!\n"
+"Bring it on, WEAPCO!\n"
+"Take that, WEAPCO!\n"
+"My kill count is going up!\n"
+"Another one bites the dust!\n"
+"Yeah! Nothing can stand in our way!\n"
+"I got it!"
+msgstr ""
+
+#. / Ursula brag messages
+#. / This is a list of brags separated by "\n".  They are randomly
+#. / broadcast when Ursula successfully kills an enemy.
+#. / Instead of directly translating these, please populate the list
+#. / with brag messages that work well in the target language,
+#. / following the English version only as a general guideline.  Any
+#. / number of brag messages is permitted.
+#: src/alien.c:1978
+msgid ""
+"Kicked your ass!\n"
+"You ain't so tough!\n"
+"I was always a better WEAPCO pilot than you!\n"
+"Target destroyed!\n"
+"That'll teach you!\n"
+"Take that, you cruddy robots!\n"
+"Is that all you've got?\n"
+"Who else wants some?!\n"
+"I'm not letting you beat me, Phoebe!\n"
+"Bring it on, you mindless drones!\n"
+"Oh, I'm sorry, are you getting your metal asses handed to you?\n"
+"No one messes with the Lexx family!\n"
+"Die, damned WEAPCO drones!\n"
+"Don't think you can get away from me!"
+msgstr ""
+
+#. / Cutscene (narration)
+#: src/cutscene.c:105
+msgid ""
+"While escaping with his newly acquired Firefly, Chris Bainfield is "
+"intercepted by a WEAPCO patrol..."
+msgstr ""
+
+#. / Cutscene (Chris Bainfield)
+#: src/cutscene.c:109
+msgid "These things just won't give up, will they?"
+msgstr ""
+
+#. / Cutscene (Chris Bainfield)
+#: src/cutscene.c:113
+msgid ""
+"What a dilemma! I'm not all that familiar with this ship's controls, but I "
+"can't let this patrol reach my rendezvous point..."
+msgstr ""
+
+#. / Cutscene (Chris Bainfield)
+#: src/cutscene.c:117
+msgid "I guess I'll have to fight them, then. Let's see what this ship can do!"
+msgstr ""
+
+#. / Cutscene (narration)
+#: src/cutscene.c:143
+msgid ""
+"A few hours later, in the Sol system, news has already spread of Chris "
+"Bainfield's heroic actions. The commander of WEAPCO's navy considers his "
+"options."
+msgstr ""
+
+#. / Cutscene (Kline Kethlan)
+#: src/cutscene.c:147
+msgid ""
+"The Emperor will not be pleased. Spirit is now a free star system thanks to "
+"that interfering rebel pilot."
+msgstr ""
+
+#. / Cutscene (Kline Kethlan)
+#: src/cutscene.c:151
+msgid ""
+"It was reported that he was able to take down one of our most powerful "
+"frigates in under 3 minutes!"
+msgstr ""
+
+#. / Cutscene (Kline Kethlan)
+#: src/cutscene.c:155
+msgid ""
+"Talent like that does not appear every day. He would be a perfect candidate "
+"for our new AI training program!"
+msgstr ""
+
+#. / Cutscene (Kline Kethlan)
+#: src/cutscene.c:159
+msgid "What a pity I must kill him..."
+msgstr ""
+
+#. / Cutscene (Sid Wilson)
+#: src/cutscene.c:182
+msgid "We're nearly ready to make the jump to Eyananth."
+msgstr ""
+
+#. / Cutscene (Chris Bainfield)
+#: src/cutscene.c:186
+msgid "Aren't there a lot of WEAPCO slaves in this system?"
+msgstr ""
+
+#. / Cutscene (Sid Wilson)
+#: src/cutscene.c:190
+msgid "Yes. It's got one of the highest mortality rates in the galaxy."
+msgstr ""
+
+#. / Cutscene (Chris Bainfield)
+#: src/cutscene.c:194
+msgid "You think we can use that to our advantage?"
+msgstr ""
+
+#. / Cutscene (Sid Wilson)
+#: src/cutscene.c:198
+msgid "I think so. I'll come up with a plan of action."
+msgstr ""
+
+#. / Cutscene (Phoebe Lexx)
+#: src/cutscene.c:227
+msgid "Nice head gear! You shop at the same place as me, huh?"
+msgstr ""
+
+#. / Cutscene (Chris Bainfield)
+#: src/cutscene.c:231
+msgid ""
+"More importantly, what were you doing out there? You're lucky I was around!"
+msgstr ""
+
+#. / Cutscene (Phoebe Lexx)
+#: src/cutscene.c:235
+msgid "I'm looking for my sister. She vanished about a week ago."
+msgstr ""
+
+#. / Cutscene (Phoebe Lexx)
+#: src/cutscene.c:239
+msgid ""
+"Hey! Wait a moment! You're that rebel from Spirit! I think you're so cool! "
+"Can I come with you?"
+msgstr ""
+
+#. / Cutscene (Chris Bainfield)
+#: src/cutscene.c:243
+msgid "Extra firepower? I wouldn't mind one bit! What do you think, Sid?"
+msgstr ""
+
+#. / Cutscene (Sid Wilson)
+#: src/cutscene.c:247
+msgid ""
+"I agree. I'm also interested in studying her homing missile launcher; it "
+"could come in handy."
+msgstr ""
+
+#. / Cutscene (Chris Bainfield)
+#: src/cutscene.c:251
+msgid "In that case, welcome aboard, Phoebe!"
+msgstr ""
+
+#. / Cutscene (Sid Wilson)
+#: src/cutscene.c:280
+msgid "What happened back there, Chris? The video feed was jammed."
+msgstr ""
+
+#. / Cutscene (Chris Bainfield)
+#: src/cutscene.c:284
+msgid ""
+"We took down the WEAPCO mining vessel and then I was jumped by a man "
+"claiming to be Kline Kethlan."
+msgstr ""
+
+#. / Cutscene (Sid Wilson)
+#: src/cutscene.c:288
+msgid ""
+"I've heard of him. He's the Commander of WEAPCO's naval forces. One of the "
+"best pilots they ever had."
+msgstr ""
+
+#. / Cutscene (Chris Bainfield)
+#: src/cutscene.c:292
+msgid ""
+"He did put up one hell of a fight! He didn't stick around for long, though."
+msgstr ""
+
+#. / Cutscene (Chris Bainfield)
+#: src/cutscene.c:296
+msgid "Anyway, what's the scoop on Mordor, Sid?"
+msgstr ""
+
+#. / Cutscene (Sid Wilson)
+#: src/cutscene.c:300
+msgid ""
+"I've learned from the scientist we captured that WEAPCO is testing a new "
+"fighter craft there."
+msgstr ""
+
+#. / Cutscene (Chris Bainfield)
+#: src/cutscene.c:304
+msgid ""
+"We should probably destroy that craft, then. We might be able to thwart its "
+"development somewhat."
+msgstr ""
+
+#. / Cutscene (Sid Wilson)
+#: src/cutscene.c:308
+msgid ""
+"Agreed. Capturing it would be better, but that's probably not going to "
+"happen."
+msgstr ""
+
+#. / Cutscene (Phoebe Lexx)
+#: src/cutscene.c:312
+msgid "I wonder if my sister will be here..."
+msgstr ""
+
+#. / Cutscene (Phoebe Lexx)
+#: src/cutscene.c:341
+msgid "Will she be okay?"
+msgstr ""
+
+#. / Cutscene (Sid Wilson)
+#: src/cutscene.c:345
+msgid ""
+"I've had a look at the implants and they should be easy to remove. She'll "
+"just have a headache for a while."
+msgstr ""
+
+#. / Cutscene (Chris Bainfield)
+#: src/cutscene.c:349
+msgid "Will she be able to tell us anything useful?"
+msgstr ""
+
+#. / Cutscene (Sid Wilson)
+#: src/cutscene.c:353
+msgid ""
+"We'll have to wait for her memory to come back. She might not be able to "
+"remember anything she did while the implants were in."
+msgstr ""
+
+#. / Cutscene (Sid Wilson)
+#: src/cutscene.c:357
+msgid "She'll still be able to pilot a ship though."
+msgstr ""
+
+#. / Cutscene (Chris Bainfield)
+#: src/cutscene.c:392
+msgid "Sorry folks, we just lost our bargaining chip."
+msgstr ""
+
+#. / Cutscene (Sid Wilson)
+#: src/cutscene.c:396
+msgid ""
+"Don't worry about it. It's not what I hoped for, but it should still make it "
+"easier to defeat WEAPCO."
+msgstr ""
+
+#. / Cutscene (Ursula Lexx)
+#: src/cutscene.c:400
+msgid ""
+"Sol is going to be difficult. I've heard they have a lot of heavy defenses "
+"on the outer planets."
+msgstr ""
+
+#. / Cutscene (Sid Wilson)
+#: src/cutscene.c:404
+msgid "We'll have to start there, then."
+msgstr ""
+
+#. / Cutscene (Sid Wilson)
+#: src/cutscene.c:408
+msgid ""
+"The forces here will be unlike anything we've met so far. Just be careful, "
+"everyone."
+msgstr ""
+
+#: src/cutscene.c:496
+msgid "Press [Escape] to skip"
+msgstr ""
+
+#. / This is a list of taunts broadcast by Kline Kethlan when he shows
+#. / up at interceptions.  Taunts are separated by a single "\n".  Instead
+#. / of directly translating these, please populate the list with taunts
+#. / that work well in the target language, following the English
+#. / version only as a general guideline.  Any number of taunts is
+#. / permitted.
+#: src/event.c:63
+msgid ""
+"How nice to see you again, Bainfield!\n"
+"It all ends here, rebel!\n"
+"I hope you won't disappoint me this time...\n"
+"Do you really think you can defeat us?!"
+msgstr ""
+
+#. / Dialog (Sid Wilson)
+#: src/event.c:76
+msgid "You should try and destroy some of the frigate's weaponary, it'll help!"
+msgstr ""
+
+#. / Dialog (Sid Wilson)
+#: src/event.c:81
+msgid "Chris, get a move on! The frigate is almost in range!"
+msgstr ""
+
+#. / Dialog (Sid Wilson)
+#: src/event.c:86
+msgid "The frigate is charging its cannon!"
+msgstr ""
+
+#. / Dialog (Sid Wilson)
+#: src/event.c:91
+msgid "Chris, HURRY!"
+msgstr ""
+
+#. / Dialog (Sid Wilson)
+#: src/event.c:96
+msgid "Oh my god..."
+msgstr ""
+
+#. / Dialog (Phoebe Lexx)
+#: src/event.c:106
+msgid "Hey, over here! Destroy this tug so I can break free!"
+msgstr ""
+
+#. / Dialog (friendly transport from Eyananth, Allez mission)
+#: src/event.c:114
+msgid "Thank God! Please, help us! If they destroy this ship..."
+msgstr ""
+
+#. / Dialog (Chris Bainfield)
+#: src/event.c:119
+msgid "How long do you need?"
+msgstr ""
+
+#. / Dialog (friendly transport from Eyananth, Allez mission)
+#: src/event.c:124
+msgid "Just a few minutes!"
+msgstr ""
+
+#. / Dialog (friendly transport from Eyananth, Allez mission)
+#: src/event.c:129
+msgid ""
+"Alright! We've got the weapons working again! Now to look at the engines..."
+msgstr ""
+
+#. / Dialog (friendly transport from Eyananth, Allez mission)
+#: src/event.c:136
+msgid "DAMN! The guns are offline again! What you guys doing back there?!"
+msgstr ""
+
+#. / Dialog (friendly transport from Eyananth, Allez mission)
+#: src/event.c:143
+msgid ""
+"Chris, HELP! We've lost all system power! We're a sitting duck out here!"
+msgstr ""
+
+#. / Dialog (friendly transport from Eyananth, Allez mission)
+#: src/event.c:150
+msgid "Just a little longer..."
+msgstr ""
+
+#. / Dialog (friendly transport from Eyananth, Allez mission)
+#: src/event.c:155
+msgid ""
+"Okay! We've fixed that one. We think we've found the problem with the "
+"engines too..."
+msgstr ""
+
+#. / Dialog (friendly transport from Eyananth, Allez mission)
+#: src/event.c:162
+msgid "Engines fixed! Let's move!"
+msgstr ""
+
+#. / Dialog (Phoebe Lexx)
+#: src/event.c:174
+msgid ""
+"Ummm... something about this doesn't look right! They should be offering "
+"more resistance than this!"
+msgstr ""
+
+#. / Dialog (Phoebe Lexx)
+#: src/event.c:179
+msgid "DAMMIT! It's a trap! Come on, Chris, we have to leave NOW!"
+msgstr ""
+
+#. / Dialog (Sid Wilson)
+#: src/event.c:188
+msgid "Chris, wh..."
+msgstr ""
+
+#. / Dialog (Kline Kethlan)
+#: src/event.c:193
+msgid "So finally I meet the man who has been causing us so much trouble!"
+msgstr ""
+
+#. / Dialog (Chris Bainfield)
+#: src/event.c:198
+msgid "I see you've jammed up my warp drive. Who are you?"
+msgstr ""
+
+#. / Dialog (Kline Kethlan)
+#: src/event.c:203
+msgid ""
+"I am Kline Kethlan. And I am here to put to a stop to your worthless little "
+"crusade!"
+msgstr ""
+
+#. / Dialog (Chris Bainfield)
+#: src/event.c:208
+msgid "Kline Kethlan, huh? You sure sound confident."
+msgstr ""
+
+#. / Dialog (Kline Kethlan)
+#: src/event.c:213
+msgid ""
+"Nowhere to run, nowhere to hide, and no one to help you! This will certainly "
+"be interesting..."
+msgstr ""
+
+#. / Dialog (Ursula Lexx under mind control)
+#. / Translation note: This should appear robotic or at least monotone.
+#: src/event.c:226
+msgid "Unidentified craft sighted. Will proceed to destroy all targets."
+msgstr ""
+
+#. / Dialog (Chris Bainfield)
+#: src/event.c:231
+msgid ""
+"Looks like she's got one of those homing missile launchers too! Any advice, "
+"Phoebe?"
+msgstr ""
+
+#. / Dialog (Phoebe Lexx)
+#: src/event.c:236
+msgid "Just try and dodge them!"
+msgstr ""
+
+#. / Dialog (Chris Bainfield)
+#: src/event.c:244
+msgid "That's a nice ship you got there, old-timer!"
+msgstr ""
+
+#. / Dialog (Krass Tyler)
+#: src/event.c:249
+msgid "Thanks, boy. Made it myself!"
+msgstr ""
+
+#. / Dialog (Krass Tyler)
+#: src/event.c:254
+msgid ""
+"Hey, boy, we've got company! Looks like your friends didn't do a very good "
+"job after all!"
+msgstr ""
+
+#. / Dialog (Krass Tyler)
+#: src/event.c:265
+msgid "Keep those things off my back or it'll cost you extra!"
+msgstr ""
+
+#. / Dialog (Phoebe Lexx)
+#: src/event.c:274
+msgid "Hey! Did we miss anything exciting?"
+msgstr ""
+
+#. / Dialog (Krass Tyler)
+#: src/event.c:285
+msgid "I've earned my fee. I'll see you around, boy!"
+msgstr ""
+
+#. / Dialog (Sid Wilson)
+#: src/event.c:295
+msgid "DAMMIT! It's getting away! We've got to stop it!"
+msgstr ""
+
+#. / Dialog (Sid Wilson)
+#: src/event.c:305
+msgid "Chris! Another two of those ray cannons just arrived in your sector!"
+msgstr ""
+
+#. / Dialog (Sid Wilson)
+#: src/event.c:316
+msgid "Two more!"
+msgstr ""
+
+#. / Dialog (Ursula Lexx)
+#: src/event.c:334
+msgid "It's a trap! My God! It's Tyler!"
+msgstr ""
+
+#. / Dialog (Krass Tyler)
+#: src/event.c:339
+msgid ""
+"I'm a mercenary, what do you expect?! WEAPCO hired me to do a job, just like "
+"you have been doing."
+msgstr ""
+
+#. / Dialog (Chris Bainfield)
+#: src/event.c:344
+msgid "Good point. It would be foolish to expect anything else."
+msgstr ""
+
+#. / Dialog (Krass Tyler)
+#: src/event.c:353
+msgid ""
+"Now if you'll assist me in dying quickly, I have a cheque to earn, boy..."
+msgstr ""
+
+#. / Dialog (Chris Bainfield)
+#: src/event.c:358
+msgid "I have a name, you know. Do you remember it?"
+msgstr ""
+
+#. / Dialog (Kline Kethlan)
+#: src/event.c:374
+msgid ""
+"That's far enough, Bainfield. You've been lucky so far, but your luck is "
+"about to run out!"
+msgstr ""
+
+#. / Dialog (Chris Bainfield)
+#: src/event.c:379
+msgid "Yeah, right! Like I'd lose to you after coming this far!"
+msgstr ""
+
+#. / Dialog (Chris Bainfield)
+#: src/event.c:387
+msgid ""
+"WEAPCO is finished, Kethlan! You have nowhere to run, nowhere to hide, and "
+"no one to help you."
+msgstr ""
+
+#. / Dialog (Kline Kethlan)
+#: src/event.c:392
+msgid "You underestimate me, Bainfield."
+msgstr ""
+
+#. / Chris: Phoebe Hit Messages
+#. / This is a list of messages separated by "\n".  They are randomly
+#. / broadcast by Phoebe when Chris (the player) damages her.
+#. / Instead of directly translating these, please populate the list
+#. / with messages that work well in the target language,
+#. / following the English version only as a general guideline.  Any
+#. / number of messages is permitted.
+#: src/game.c:704
+msgid ""
+"OW! I hope that was an accident!\n"
+"Chris, please be more careful!\n"
+"Ouch! What are you shooting at me for?"
+msgstr ""
+
+#. / Chris: Ursula Hit Messages
+#. / This is a list of messages separated by "\n".  They are randomly
+#. / broadcast by Phoebe when Chris (the player) damages her.
+#. / Instead of directly translating these, please populate the list
+#. / with messages that work well in the target language,
+#. / following the English version only as a general guideline.  Any
+#. / number of messages is permitted.
+#: src/game.c:720
+msgid ""
+"I am NOT your enemy!\n"
+"Hey! Watch it!\n"
+"What are you doing?! Shoot THEM!\n"
+"Open your eyes!\n"
+"Are you blind?!"
+msgstr ""
+
+#. / Phoebe: Player Hit Messages
+#. / This is a list of messages separated by "\n".  They are randomly
+#. / broadcast when Phoebe accidentally damages Chris (the player).
+#. / Instead of directly translating these, please populate the list
+#. / with messages that work well in the target language,
+#. / following the English version only as a general guideline.  Any
+#. / number of messages is permitted.
+#: src/game.c:796
+msgid ""
+"Oops! Sorry!\n"
+"Whoops! Are you OK, Chris?\n"
+"Oh, sorry! I didn't see you there!"
+msgstr ""
+
+#. / Ursula: Player Hit Messages
+#. / This is a list of messages separated by "\n".  They are randomly
+#. / broadcast when Ursula accidentally damages Chris (the player).
+#. / Instead of directly translating these, please populate the list
+#. / with messages that work well in the target language,
+#. / following the English version only as a general guideline.  Any
+#. / number of messages is permitted.
+#: src/game.c:812
+msgid ""
+"Get out of the way!\n"
+"Don't fly into my missiles!\n"
+"Dammit, Chris, you made me miss!"
+msgstr ""
+
+#. / Kline Venus insult messages
+#. / This is a list of insults separated by "\n".  They are randomly
+#. / broadcast when the player dies in the Venus mission.
+#. / Instead of directly translating these, please populate the list
+#. / with insults that work well in the target language,
+#. / following the English version only as a general guideline.  Any
+#. / number of insults is permitted.
+#: src/game.c:1561
+msgid ""
+"Fool.\n"
+"And now you're nothing but a DEAD hero.\n"
+msgstr ""
+
+#. / Kline insult messages
+#. / This is a list of insults separated by "\n".  They are randomly
+#. / broadcast when the player dies in a mission Kline is in (except Venus).
+#. / Instead of directly translating these, please populate the list
+#. / with insults that work well in the target language,
+#. / following the English version only as a general guideline.  Any
+#. / number of insults is permitted.
+#: src/game.c:1576
+msgid ""
+"Pathetic.\n"
+"How very disappointing...\n"
+"Heroic. And stupid."
+msgstr ""
+
+#. / Dialog: Krass Tyler
+#. / Used when the player is killed in the Jupiter mission.
+#: src/game.c:1587
+msgid "That was the easiest $90,000,000 I've ever earned! Bwah! Ha! Ha! Ha!"
+msgstr ""
+
+#. / If the TakaoGothic font is able to display the text of the language
+#. / being translated to, DO NOT CHANGE THIS!  If, however, the language
+#. / requires characters not available in the default font, you can
+#. / place that font in the "data" directory and indicate the name of the
+#. / alternate font as a translation to "TakaoPGothic.ttf" (leaving the
+#. / rest of the string unchanged).  Please ensure  that the font displays
+#. / correctly with ALL text (space is limited and some fonts take up
+#. / more space than others), and also check the license of the font
+#. / before distributing to make sure you are allowed to do so.
+#: src/gfx.c:116
+msgid "data/TakaoPGothic.ttf"
+msgstr ""
+
+#. / Spirit, Hail mission summary
+#: src/intermission.c:384
+msgid "Destroy WEAPCO training ground"
+msgstr ""
+
+#. / Spirit, Ceradse mission summary
+#: src/intermission.c:390
+msgid "Collect 6 cargo pods"
+msgstr ""
+
+#. / Spirit, Hinstag mission summary
+#: src/intermission.c:396
+msgid "Destroy 5 WEAPCO missile boats"
+msgstr ""
+
+#. / Spirit, Joldar mission summary
+#: src/intermission.c:402
+msgid "Clear the mine field around Joldar"
+msgstr ""
+
+#. / Spirit, Moebo mission summary
+#: src/intermission.c:408
+msgid "Destroy WEAPCO frigate"
+msgstr ""
+
+#. / Eyananth, interception mission summary
+#: src/intermission.c:439
+msgid "Rescue slaves"
+msgstr ""
+
+#. / Eyananth, Nerod mission summary
+#: src/intermission.c:445
+msgid "SOS"
+msgstr ""
+
+#. / Eyananth, Allez mission summary
+#. / Mission objective (Allez)
+#: src/intermission.c:451 src/mission.c:205
+msgid "Assist medical supply craft"
+msgstr ""
+
+#. / Eyananth, Urusor mission summary
+#: src/intermission.c:457
+msgid "Capture five WEAPCO supply craft"
+msgstr ""
+
+#. / Eyananth, Dorim mission summary
+#: src/intermission.c:463
+msgid "Find WEAPCO scientist"
+msgstr ""
+
+#. / Eyananth, Elamale mission summary
+#: src/intermission.c:469
+msgid "Destroy WEAPCO Ore Mining craft"
+msgstr ""
+
+#. / Mordor, incerception mission summary
+#: src/intermission.c:504
+msgid "Destroy experimental fighter"
+msgstr ""
+
+#. / Mordor, Odeon mission summary
+#: src/intermission.c:510
+msgid "Rescue Ursula"
+msgstr ""
+
+#. / Mordor, Fellon mission summary
+#: src/intermission.c:516
+msgid "Assist rebel forces"
+msgstr ""
+
+#. / Mordor, Sivedi mission summary
+#: src/intermission.c:522
+msgid "Mine ore from asteroid belt"
+msgstr ""
+
+#. / Mordor, Almartha mission summary
+#: src/intermission.c:528
+msgid "Create a diversion"
+msgstr ""
+
+#. / Mordor, Poswic mission summary
+#: src/intermission.c:534
+msgid "Capture WEAPCO executive transport"
+msgstr ""
+
+#. / Mordor, Ellesh mission summary
+#: src/intermission.c:540
+msgid "Destroy WEAPCO executive transport"
+msgstr ""
+
+#. / Sol, Pluto mission summary
+#: src/intermission.c:585
+msgid "Secure Pluto"
+msgstr ""
+
+#. / Sol, Neptune mission summary
+#: src/intermission.c:591
+msgid "Secure Neptune"
+msgstr ""
+
+#. / Sol, Uranus mission summary
+#: src/intermission.c:597
+msgid "Secure Uranus"
+msgstr ""
+
+#. / Sol, Saturn mission summary
+#: src/intermission.c:603
+msgid "Destroy outer defense system"
+msgstr ""
+
+#. / Sol, Jupiter mission summary
+#. / Mission objective (Jupiter)
+#: src/intermission.c:609 src/mission.c:471
+msgid "Investigate distress call"
+msgstr ""
+
+#. / Sol, Mars mission summary
+#. / Mission objective (Mars)
+#: src/intermission.c:615 src/mission.c:493
+msgid "Navigate asteroid belt"
+msgstr ""
+
+#. / Sol, Earth mission summary
+#: src/intermission.c:621
+msgid "Take back Earth"
+msgstr ""
+
+#. / Sol, Venus mission summary
+#. / Mission objective (Venus)
+#: src/intermission.c:627 src/mission.c:515
+msgid "Defeat Kline"
+msgstr ""
+
+#. / Please keep this short; it is always rendered as a single line.
+#: src/intermission.c:754
+msgid "click for info"
+msgstr ""
+
+#. / Mission dialog: Spirit, Hail (Krass Tyler)
+#: src/intermission.c:804
+msgid ""
+"Hey, boy! You still owe me money for the Firefly I stole for you! But "
+"instead, I want you to go to the WEAPCO training ground and destroy all the "
+"craft there."
+msgstr ""
+
+#. / Mission dialog: Spirit, Hail (Chris Bainfield)
+#: src/intermission.c:808
+msgid "Oh? That's the job I contracted you to do, was it not?"
+msgstr ""
+
+#. / Mission dialog: Spirit, Hail (Krass Tyler)
+#: src/intermission.c:812
+msgid ""
+"I know, but this way we can resolve your debt right now. Do this job, and "
+"also collect $500, and we will call it quits. And if you die... well, I "
+"guess the ship was not worth stealing! HA HA HA!"
+msgstr ""
+
+#. / Mission dialog: Spirit, Hail (Chris Bainfield)
+#: src/intermission.c:816
+msgid "As usual, you take me too lightly, Krass."
+msgstr ""
+
+#. / Mission dialog: Spirit, Ceradse (Chris Bainfield)
+#: src/intermission.c:823
+msgid "Hey, Sid, what's up?"
+msgstr ""
+
+#. / Mission dialog: Spirit, Ceradse (Sid Wilson)
+#: src/intermission.c:827
+msgid ""
+"Chris, I've intercepted a communication from WEAPCO. Seems they're "
+"transporting some medical supplies around Ceradse. We need to get hold of "
+"those pods to save some lives!"
+msgstr ""
+
+#. / Mission dialog: Spirit, Ceradse (Chris Bainfield)
+#: src/intermission.c:831
+msgid "How many do we need?"
+msgstr ""
+
+#. / Mission dialog: Spirit, Ceradse (Sid Wilson)
+#: src/intermission.c:835
+msgid ""
+"All six, Chris! If you lose even a single one, thousands of people could "
+"perish in Spirit within the next few months."
+msgstr ""
+
+#. / Mission dialog: Spirit, Hinstag (Chris Bainfield)
+#: src/intermission.c:842
+msgid "Wow! Missile boats?"
+msgstr ""
+
+#. / Mission dialog: Spirit, Hinstag (Sid Wilson)
+#: src/intermission.c:846
+msgid "Yup. Looks like WEAPCO is starting to take notice of your actions."
+msgstr ""
+
+#. / Mission dialog: Spirit, Hinstag (Chris Bainfield)
+#: src/intermission.c:850
+msgid ""
+"Awesome! This will really put the Firefly's fighting ability to the test!"
+msgstr ""
+
+#. / Mission dialog: Spirit, Hinstag (Sid Wilson)
+#: src/intermission.c:854
+msgid ""
+"Please be careful, Chris. A single missile boat carries enough rockets to "
+"level most major cities. Try not to face them head-on, and keep your "
+"distance."
+msgstr ""
+
+#. / Mission dialog: Spirit, Joldar (Sid Wilson)
+#: src/intermission.c:861
+msgid ""
+"We're going to have to get rid of the mine deployment unit around Joldar. "
+"The minefield is stopping interplanetary traffic."
+msgstr ""
+
+#. / Mission dialog: Spirit, Joldar (Chris Bainfield)
+#: src/intermission.c:865
+msgid "Are any fighters around to keep me entertained?"
+msgstr ""
+
+#. / Mission dialog: Spirit, Joldar (Sid Wilson)
+#: src/intermission.c:869
+msgid ""
+"Not at the moment, but that doesn't mean they won't turn up. Be very careful "
+"of those mines! They'll only explode when they encounter a ship that's not "
+"transmitting a WEAPCO signal. Shoot them down if they get in your way."
+msgstr ""
+
+#. / Mission dialog: Spirit, Moebo (Sid Wilson)
+#: src/intermission.c:876
+msgid ""
+"We've got a major problem here! WEAPCO has decided to stop our resistance by "
+"destroying Spirit! The explosion will incinerate everything in the system! "
+"You've got to destroy that frigate before it gets in range!"
+msgstr ""
+
+#. / Mission dialog: Spirit, Moebo (Chris Bainfield)
+#: src/intermission.c:880
+msgid "Damn! I'll get right on it, then!"
+msgstr ""
+
+#. / Mission dialog: Spirit, Moebo (Sid Wilson)
+#: src/intermission.c:884
+msgid ""
+"We're all counting on you, Chris! But just remember - They didn't call that "
+"thing \"Star Killer\" just because it sounded nice!"
+msgstr ""
+
+#. / Mission dialog: Eyananth, interceptions (Sid Wilson)
+#: src/intermission.c:891
+msgid ""
+"As you know, WEAPCO has many slaves in this system. If we free a large "
+"number of them, it might help to spark a rebellion. I estimate that we will "
+"need to rescue around 250 to make a difference."
+msgstr ""
+
+#. / Mission dialog: Eyananth, interceptions (Chris Bainfield)
+#: src/intermission.c:895
+msgid "Most of the slaves are working in ore mines, aren't they?"
+msgstr ""
+
+#. / Mission dialog: Eyananth, interceptions (Sid Wilson)
+#: src/intermission.c:899
+msgid ""
+"Yes, but attacking the mines directly would be dangerous. You'd be better "
+"off intercepting slave transports. What you'll have to do is fly around and "
+"see if you can intercept a WEAPCO patrol. Of course, they might not be "
+"escorting any slave units, so be careful!"
+msgstr ""
+
+#. / Mission dialog: Eyananth, Nerod (Phoebe Lexx)
+#: src/intermission.c:906
+msgid "Help! This is an SOS! Can anyone hear me?!"
+msgstr ""
+
+#. / Mission dialog: Eyananth, Nerod (Chris Bainfield)
+#: src/intermission.c:910
+msgid "I'm hearing you loud and clear! What's up?"
+msgstr ""
+
+#. / Mission dialog: Eyananth, Nerod (Phoebe Lexx)
+#: src/intermission.c:914
+msgid ""
+"Oh, thank God! I was intercepted by a large WEAPCO force near Nerod! I'm in "
+"need of assistance!"
+msgstr ""
+
+#. / Mission dialog: Eyananth, Nerod (Chris Bainfield)
+#: src/intermission.c:918
+msgid "I'm on my way!"
+msgstr ""
+
+#. / Mission dialog: Eyananth, Allez (Sid Wilson)
+#: src/intermission.c:925
+msgid ""
+"I've just received another SOS. This one is coming from a supply craft "
+"carrying essential medical supplies."
+msgstr ""
+
+#. / Mission dialog: Eyananth, Allez (Chris Bainfield)
+#: src/intermission.c:929
+msgid "Alright, Tell 'em I'm on my way."
+msgstr ""
+
+#. / Mission dialog: Eyananth, Urusor (Sid Wilson)
+#: src/intermission.c:936
+msgid ""
+"I need some resources before we leave, it'll make life a lot easier in "
+"Mordor. Problem is that WEAPCO hoards these parts."
+msgstr ""
+
+#. / Mission dialog: Eyananth, Urusor (Chris Bainfield)
+#: src/intermission.c:940
+msgid "Where can we get them, then?"
+msgstr ""
+
+#. / Mission dialog: Eyananth, Urusor (Sid Wilson)
+#: src/intermission.c:944
+msgid ""
+"There's a big shipment of them nearby. I can disable the supply craft "
+"carrying them; I just need you to give me some cover while I do it."
+msgstr ""
+
+#. / Mission dialog: Eyananth, Urusor (Chris Bainfield)
+#: src/intermission.c:948
+msgid "You got it!"
+msgstr ""
+
+#. / Mission dialog: Eyananth, Dorim (Sid Wilson)
+#: src/intermission.c:955
+msgid ""
+"A WEAPCO scientist just ran off in an escape pod and hid in the asteroid "
+"belt. If we capture him, we may be able to get some information about Mordor."
+msgstr ""
+
+#. / Mission dialog: Eyananth, Dorim (Chris Bainfield)
+#: src/intermission.c:959
+msgid ""
+"Alright, I'll go look for him. I guess I'll grab some ore along the way."
+msgstr ""
+
+#. / Mission dialog: Eyananth, Elamale (Sid Wilson)
+#: src/intermission.c:966
+msgid ""
+"I've received word that the slaves we rescued have started a rebellion. "
+"Looks like the plan worked."
+msgstr ""
+
+#. / Mission dialog: Eyananth, Elamale (Phoebe Lexx)
+#: src/intermission.c:970
+msgid ""
+"WEAPCO has an automated mining ship in orbit around Elamale. How about we "
+"take it out and cause some confusion?"
+msgstr ""
+
+#. / Mission dialog: Eyananth, Elamale (Chris Bainfield)
+#: src/intermission.c:974
+msgid "I like that idea!"
+msgstr ""
+
+#. / Mission dialog: Eyananth, Elamale (Sid Wilson)
+#: src/intermission.c:978
+msgid "It'll work, but be careful."
+msgstr ""
+
+#. / Mission dialog: Mordor, interceptions (Chris Bainfield)
+#: src/intermission.c:985
+msgid "What have you found out about that experimental fighter?"
+msgstr ""
+
+#. / Mission dialog: Mordor, interceptions (Sid Wilson)
+#: src/intermission.c:989
+msgid ""
+"It's got some kind of cloaking device that makes it invisible to radar. "
+"Could prove hard to track down."
+msgstr ""
+
+#. / Mission dialog: Mordor, interceptions (Chris Bainfield)
+#: src/intermission.c:993
+msgid "I'll just have to run around the system until I find it."
+msgstr ""
+
+#. / Mission dialog: Mordor, interceptions (Sid Wilson)
+#: src/intermission.c:997
+msgid ""
+"It's likely to run away if you engage it in battle, so try and do as much "
+"damage to it as possible."
+msgstr ""
+
+#. / Mission dialog: Mordor, Odeon (Phoebe Lexx)
+#: src/intermission.c:1004
+msgid ""
+"I've located my sister's ship currently in orbit around Odeon. She's "
+"ignoring my hails though."
+msgstr ""
+
+#. / Mission dialog: Mordor, Odeon (Sid Wilson)
+#: src/intermission.c:1008
+msgid ""
+"Something's off here. She seems to be travelling freely with a WEAPCO group."
+msgstr ""
+
+#. / Mission dialog: Mordor, Odeon (Chris Bainfield)
+#: src/intermission.c:1012
+msgid "Do you think she's turned traitor?"
+msgstr ""
+
+#. / Mission dialog: Mordor, Odeon (Phoebe Lexx)
+#: src/intermission.c:1016
+msgid "No way. She hates WEAPCO with a passion."
+msgstr ""
+
+#. / Mission dialog: Mordor, Odeon (Sid Wilson)
+#: src/intermission.c:1020
+msgid ""
+"She must be under some kind of mind control. I've heard of WEAPCO developing "
+"a new \"AI training program\" recently. We'd better rescue her!"
+msgstr ""
+
+#. / Mission dialog: Mordor, Fellon (Sid Wilson)
+#: src/intermission.c:1027
+msgid ""
+"A rebel group has organized a counter strike. If we can help them secure a "
+"victory it will be a real boost to morale."
+msgstr ""
+
+#. / Mission dialog: Mordor, Fellon (Chris Bainfield)
+#: src/intermission.c:1031
+msgid "Awesome! Let's do it!"
+msgstr ""
+
+#. / Mission dialog: Mordor, Fellon (Sid Wilson)
+#: src/intermission.c:1035
+msgid "Just make sure the rebel ships don't all get destroyed."
+msgstr ""
+
+#. / Mission dialog: Mordor, Sivedi (Sid Wilson)
+#: src/intermission.c:1042
+msgid ""
+"Seems like taking out that WEAPCO mining ship wasn't such a good idea. The "
+"ore it collected is needed in weapons production."
+msgstr ""
+
+#. / Mission dialog: Mordor, Sivedi (Chris Bainfield)
+#: src/intermission.c:1046
+msgid "Damn! I guess that means I'll have to mine some myself, then, huh?"
+msgstr ""
+
+#. / Mission dialog: Mordor, Sivedi (Sid Wilson)
+#: src/intermission.c:1050
+msgid ""
+"Yes. Be careful, Chris. Your weapons weren't designed for that sort of work, "
+"after all."
+msgstr ""
+
+#. / Mission dialog: Mordor, Almartha (Chris Bainfield)
+#: src/intermission.c:1057
+msgid ""
+"Hey, Krass! I need you to help us out with something. Phoebe and Ursula are "
+"taking out key WEAPCO plants. Can you help me create a diversion by wreaking "
+"havoc a little bit away from that?"
+msgstr ""
+
+#. / Mission dialog: Mordor, Almartha (Krass Tyler)
+#: src/intermission.c:1061
+msgid "Sure, I can help you out, boy. But I'll be needing my fee..."
+msgstr ""
+
+#. / Mission dialog: Mordor, Poswic (Ursula Lexx)
+#: src/intermission.c:1068
+msgid ""
+"My memory is finally back. Here's something interesting: just before I was "
+"captured, I found out that WEAPCO is transporting several important "
+"executives to Poswic."
+msgstr ""
+
+#. / Mission dialog: Mordor, Poswic (Sid Wilson)
+#: src/intermission.c:1072
+msgid ""
+"We can't let a rare opportunity like this slip through our fingers! I'll "
+"need some cover so I can disable that ship."
+msgstr ""
+
+#. / Mission dialog: Mordor, Poswic (Chris Bainfield)
+#: src/intermission.c:1076
+msgid "I've got you covered, Sid!"
+msgstr ""
+
+#. / Mission dialog: Mordor, Ellesh (Chris Bainfield)
+#: src/intermission.c:1083
+msgid ""
+"Phoebe, I need you to keep an eye on things here. I'm going after that ship!"
+msgstr ""
+
+#. / Mission dialog: Mordor, Ellesh (Phoebe Lexx)
+#: src/intermission.c:1087
+msgid "Are you sure you can catch up to it?"
+msgstr ""
+
+#. / Mission dialog: Mordor, Ellesh (Chris Bainfield)
+#: src/intermission.c:1091
+msgid ""
+"Absolutely. One thing that's really nice about the Firefly is its speed. "
+"I'll see you in a bit!"
+msgstr ""
+
+#. / Mission dialog: Sol, Pluto/Neptune/Uranus (Sid Wilson)
+#: src/intermission.c:1100
+msgid ""
+"We've got to start from the outside and work our way in. That will give us "
+"less chance of being flanked during the final operation."
+msgstr ""
+
+#. / Mission dialog: Sol, Pluto/Neptune/Uranus (Phoebe Lexx)
+#: src/intermission.c:1104
+msgid "Sounds like a plan, Sid!"
+msgstr ""
+
+#. / Mission dialog: Sol, Pluto/Neptune/Uranus (Ursula Lexx)
+#: src/intermission.c:1108
+msgid "Better safe than sorry, I guess."
+msgstr ""
+
+#. / Mission dialog: Sol, Pluto/Neptune/Uranus (Chris Bainfield)
+#: src/intermission.c:1112
+msgid "Boring, but I guess you're right, Sid, as usual."
+msgstr ""
+
+#. / Mission dialog: Sol, Saturn (Chris Bainfield)
+#: src/intermission.c:1119
+msgid ""
+"WEAPCO has set up a highly dangerous defense line between Saturn and Uranus. "
+"We'll need to take it out."
+msgstr ""
+
+#. / Mission dialog: Sol, Saturn (Ursula Lexx)
+#: src/intermission.c:1123
+msgid "What kind of defense system?"
+msgstr ""
+
+#. / Mission dialog: Sol, Saturn (Chris Bainfield)
+#: src/intermission.c:1127
+msgid ""
+"Several mobile Energy Ray cannons, not unlike the weapon used by the Star "
+"Killer back in Spirit."
+msgstr ""
+
+#. / Mission dialog: Sol, Saturn (Phoebe Lexx)
+#: src/intermission.c:1131
+msgid "Best check my ejection system, then!"
+msgstr ""
+
+#. / Mission dialog: Sol, Jupiter (Sid Wilson)
+#: src/intermission.c:1138
+msgid ""
+"While you were gone I picked up a distress call coming from around Jupiter."
+msgstr ""
+
+#. / Mission dialog: Sol, Jupiter (Ursula Lexx)
+#: src/intermission.c:1142
+msgid "Who would be sending out a distress call within Sol?"
+msgstr ""
+
+#. / Mission dialog: Sol, Jupiter (Chris Bainfield)
+#: src/intermission.c:1146
+msgid "Let's check it out. Even if it's a trap, I think we can handle it."
+msgstr ""
+
+#. / Mission dialog: Sol, Mars (Sid Wilson)
+#: src/intermission.c:1153
+msgid ""
+"Chris, we've got a small problem. WEAPCO has deployed a minefield in the "
+"asteroid belt. We'll need you to clear a way through."
+msgstr ""
+
+#. / Mission dialog: Sol, Mars (Chris Bainfield)
+#: src/intermission.c:1157
+msgid "Alright. I'll radio in once I've cleared a safe path."
+msgstr ""
+
+#. / Mission dialog: Sol, Earth (Chris Bainfield)
+#: src/intermission.c:1164
+msgid ""
+"Okay people, this is the big one. We go in fast and we go in hard. Don't "
+"hold back and hit them with everything we've got!"
+msgstr ""
+
+#. / Mission dialog: Sol, Earth (Sid Wilson)
+#: src/intermission.c:1168
+msgid "We've come too far to turn back now. None of us better die out there!"
+msgstr ""
+
+#. / Mission dialog: Sol, Earth (Phoebe Lexx)
+#: src/intermission.c:1172
+msgid "Right with you, Chris!"
+msgstr ""
+
+#. / Mission dialog: Sol, Earth (Ursula Lexx)
+#: src/intermission.c:1176
+msgid "WEAPCO'll regret sticking probes into my head!"
+msgstr ""
+
+#. / Mission dialog: Sol, Venus (Chris Bainfield)
+#: src/intermission.c:1183
+msgid "Kethlan has run off to Venus. I'm going after him."
+msgstr ""
+
+#. / Mission dialog: Sol, Venus (Sid Wilson)
+#: src/intermission.c:1187
+msgid ""
+"Be careful, Chris. We've won the war, but it would be a real shame if you "
+"died now!"
+msgstr ""
+
+#. / Mission objective
+#: src/mission.c:96
+msgid "Destroy all remaining WEAPCO fighters"
+msgstr ""
+
+#. / Mission objective (start)
+#: src/mission.c:101
+msgid "Escape from WEAPCO Persuit"
+msgstr ""
+
+#. / Mission objective (Hail)
+#: src/mission.c:107
+msgid "Collect $500 to pay Mercenary for FIREFLY"
+msgstr ""
+
+#. / Mission objective (Ceradse)
+#: src/mission.c:121
+msgid "Collect 6 Cargo Pods"
+msgstr ""
+
+#. / Mission objective (Ceradse)
+#: src/mission.c:128
+msgid "Do not destroy *ANY* Cargo Pods"
+msgstr ""
+
+#. / Mission objective (Hinstag)
+#: src/mission.c:142
+msgid "Destroy 5 WEAPCO Missile Boats"
+msgstr ""
+
+#. / Mission objective (Joldar)
+#: src/mission.c:156
+msgid "Destroy 9 WEAPCO Mine-droppers"
+msgstr ""
+
+#. / Mission objective (Moebo)
+#: src/mission.c:170
+msgid "Destroy WEAPCO Frigate"
+msgstr ""
+
+#. / Mission objective (Nerod)
+#: src/mission.c:182
+msgid "Rescue Phoebe Lexx"
+msgstr ""
+
+#. / Mission objective (Nerod)
+#: src/mission.c:189
+msgid "Do not allow Phoebe to be killed"
+msgstr ""
+
+#. / Mission objective (Allez)
+#: src/mission.c:212
+msgid "Do not allow supply craft to be destroyed"
+msgstr ""
+
+#. / Mission objective (Urusor)
+#: src/mission.c:226
+msgid "Disable five WEAPCO supply craft"
+msgstr ""
+
+#. / Mission objective (Urusor)
+#: src/mission.c:237
+msgid "Protect supply craft AND Sid Wilson"
+msgstr ""
+
+#. / Mission objective (Dorim)
+#: src/mission.c:247
+msgid "Locate doctor's escape pod"
+msgstr ""
+
+#. / Mission objective (Dorim)
+#: src/mission.c:254
+msgid "Do not destroy doctor's escape pod"
+msgstr ""
+
+#. / Mission objective (Dorim)
+#: src/mission.c:261
+msgid "Collect 10 pieces of Ore"
+msgstr ""
+
+#. / Mission objective (Elamale)
+#: src/mission.c:274
+msgid "Destroy WEAPCO ore mining craft"
+msgstr ""
+
+#. / Mission objective (Elamale)
+#: src/mission.c:281
+msgid "Save present slaves"
+msgstr ""
+
+#. / Mission objective (Elamale)
+#: src/mission.c:287
+msgid "Battle Kline"
+msgstr ""
+
+#. / Mission objective (Odeon)
+#: src/mission.c:297
+msgid "Destroy Ursula's ship"
+msgstr ""
+
+#. / Mission objective (Odeon)
+#: src/mission.c:304
+msgid "Capture Ursula's escape pod"
+msgstr ""
+
+#. / Mission objective (Odeon)
+#: src/mission.c:311
+msgid "Do not kill Ursula"
+msgstr ""
+
+#. / Mission objective (Fellon)
+#: src/mission.c:325
+msgid "Assist attack on WEAPCO ore mining craft"
+msgstr ""
+
+#. / Mission objective (Fellon)
+#: src/mission.c:332
+msgid "At least 1 rebel craft must survive"
+msgstr ""
+
+#. / Mission objective (Sivedi)
+#: src/mission.c:346
+msgid "Collect 25 pieces of Ore"
+msgstr ""
+
+#. / Mission objective (Sivedi)
+#: src/mission.c:353
+msgid "Collect 50 pieces of Ore"
+msgstr ""
+
+#. / Mission objective (Almartha)
+#: src/mission.c:363
+msgid "Collect $2000 to pay mercenary"
+msgstr ""
+
+#. / Mission objective (Poswic)
+#: src/mission.c:377
+msgid "Destroy escorts"
+msgstr ""
+
+#. / Mission objective (Poswic)
+#: src/mission.c:384
+msgid "Disable executive transport"
+msgstr ""
+
+#. / Mission objective (Ellesh)
+#: src/mission.c:398
+msgid "Destroy executive transport"
+msgstr ""
+
+#. / Mission objective (Pluto, Neptune, Uranus)
+#: src/mission.c:408
+msgid "Destroy planetary guardian"
+msgstr ""
+
+#. / Mission objective (Saturn)
+#: src/mission.c:457
+msgid "Destroy outer defence systems"
+msgstr ""
+
+#. / Mission objective (Jupiter)
+#: src/mission.c:476
+msgid "Defeat Krass Tyler"
+msgstr ""
+
+#. / Mission objective (Jupiter)
+#: src/mission.c:483
+msgid "Destroy Krass' support group"
+msgstr ""
+
+#. / Mission objective (Earth)
+#: src/mission.c:505
+msgid "Destroy WEAPCO frontline forces"
+msgstr ""
+
+#. / Dialog (Sid Wilson)
+#. / Used when Sid disables the last target in the Urusor mission.
+#: src/mission.c:627
+msgid "All vessels disabled!"
+msgstr ""
+
+#. Get lectured by Sid
+#. / Dialog (Sid Wilson)
+#. / Used when a cargo pod is destroyed in the Ceradse mission.
+#: src/mission.c:664
+msgid ""
+"Chris, we needed that pod! I told you that we couldn't afford to lose a "
+"single one!"
+msgstr ""
+
+#. / Dialog (Phoebe Lexx)
+#. / Used when Ursula is lost in the Odeon mission.
+#: src/mission.c:672
+msgid "No... Ursula..."
+msgstr ""
+
+#. / Dialog (Sid Wilson)
+#. / Used when Phoebe is killed in the Nerod mission.
+#: src/mission.c:686
+msgid "Dammit, Chris! We just lost her!"
+msgstr ""
+
+#. / Dialog (friendly transport from Eyananth, Allez mission)
+#. / Used when the friendly transport in the Allez mission is destroyed.
+#: src/mission.c:691
+msgid "Noooo! Hull bre-..."
+msgstr ""
+
+#. / Dialog (Sid Wilson)
+#. / Used when a target transport is destroyed in the Urusor mission.
+#: src/mission.c:696
+msgid "Chris, we've got to disable them, not destroy them!!"
+msgstr ""
+
+#. / Dialog (Sid Wilson)
+#. / Used when Sid is killed.
+#. / Translation note: the end is Sid trying to say "FUCK" and getting cut
+#. / out because of the failure of his communication system, so please
+#. / translate that to the start of a similar curse word in the target
+#. / language being similarly cut out.
+#: src/mission.c:741
+msgid "HULL BREACHED! SYSTEMS FAILING! F-..."
+msgstr ""
+
+#. / Dialog (Chris Bainfield)
+#. / Used when you rescue enough slaves for the Eyananth slave rescue mission.
+#: src/mission.c:791
+msgid ""
+"Alright, I think I've rescued enough slaves to stir up some trouble for "
+"WEAPCO!"
+msgstr ""
+
+#. / Dialog (Chris Bainfield)
+#. / Used when the Mordor cloak ship is destroyed.
+#: src/mission.c:807
+msgid "That's one less suprise that WEAPCO can spring on us!"
+msgstr ""
+
+#. / Dialog (Chris Bainfield)
+#. / Used when the Earth mission is completed.
+#: src/mission.c:917
+msgid ""
+"You guys stay here and keep things under control. I'm going after Kethlan!"
+msgstr ""
+
+#: src/mission.c:1031
+msgid "Primary Objectives"
+msgstr ""
+
+#: src/mission.c:1045
+msgid "Secondary Objectives"
+msgstr ""
+
+#: src/mission.c:1059
+msgid "Additional Information"
+msgstr ""
+
+#. / "%d" must be retained.  It is replaced with the mission time
+#. / limit in minutes.
+#: src/mission.c:1117
+#, c-format
+msgid "TIME LIMIT: %d minutes"
+msgstr ""
+
+#. / "%d" must be retained.  It is replaced with the mission required
+#. / survival time in minutes.
+#: src/mission.c:1123
+#, c-format
+msgid "SURVIVAL FOR %d minutes"
+msgstr ""
+
+#: src/mission.c:1137
+msgid "Phoebe Lexx will not be present"
+msgstr ""
+
+#: src/mission.c:1139
+msgid "Ursula Lexx will not be present"
+msgstr ""
+
+#: src/mission.c:1146
+msgid "Sid Wilson will join you on this mission"
+msgstr ""
+
+#: src/mission.c:1192 src/mission.c:1207
+msgid "COMPLETED"
+msgstr ""
+
+#: src/mission.c:1194 src/mission.c:1212
+msgid "FAILED"
+msgstr ""
+
+#. / "%d" must be retained.  It is replaced with the money earned
+#. / from the shield bonus.  Please keep "$" as-is as well for the
+#. / sake of continuity with untranslateable parts of the interface.
+#: src/mission.c:1227
+#, c-format
+msgid "Shield Bonus: $%d"
+msgstr ""
+
+#. / "%02ld" sequences (which represent minutes and seconds,
+#. / respectively) must remain and stay in the same order relative
+#. / to each other.  The ":"s between them can be changed to other
+#. / characters if desired, e.g. this would be acceptable:
+#. /
+#. /     "Mission time: %02ldm %02lds"
+#. /
+#. / If you are familiar with printf formatting, you may also change
+#. / the formatting as long as the "ld" type remains. For example,
+#. / the "%02ld" sequences may be changed to "%ld" if you wish to
+#. / not force two digits to be filled in (e.g. to render the number
+#. / 3 as "3" instead of "03").
+#: src/mission.c:1247
+#, c-format
+msgid "Mission Time: %02ld:%02ld"
+msgstr ""
+
+#. / Explanation of what the SAVE button does (note: "SAVE" is untranslated).
+#. / This must be short enough to fit on a single line.
+#: src/save.c:400
+msgid "SAVE will save the game"
+msgstr ""
+
+#. / Explanation of what the CANCEL button does (note: "CANCEL" is untranslated)
+#. / This must be short enough to fit on a single line.
+#: src/save.c:404
+msgid "CANCEL will unselect that slot"
+msgstr ""
+
+#. / Explanation of what the DELETE button does (note: "DELETE" is untranslated)
+#. / This must be short enough to fit on a single line.
+#: src/save.c:408
+msgid "DELETE will remove the save"
+msgstr ""
+
+#. / For when the player attempts to click "SAVE" or "DELETE" without selecting a slot.
+#. / This must be short enough to fit on a single line.
+#: src/save.c:413
+msgid "First click a Save game slot to use"
+msgstr ""
+
+#. / For when the game is successfully saved.
+#. / This must be short enough to fit on a single line.
+#: src/save.c:418
+msgid "Game Saved"
+msgstr ""
+
+#. / For when the save slot is successfully deleted.
+#. / This must be short enough to fit on a single line.
+#: src/save.c:423
+msgid "Save Deleted"
+msgstr ""
+
+#. / For when the player attempts to buy something they can't afford.
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:345
+msgid "You don't have enough money"
+msgstr ""
+
+#. / For when the player attempts an upgrade beyond the maximum (line 1 of 2).
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:350
+msgid "Cannot upgrade ship"
+msgstr ""
+
+#. / For when the player attempts an upgrade beyond the maximum (line 2 of 2).
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:354
+msgid "Hardware capacity has been reached"
+msgstr ""
+
+#. / For when the player attempts to buy more ammo than the ship can hold.
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:359
+msgid "Ammunition limit reached"
+msgstr ""
+
+#. / For when the player attempts to sell an item they aren't allowed to sell.
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:364
+msgid "You cannot sell that item"
+msgstr ""
+
+#. / For when the player attempts to sell an item they don't have any of.
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:369
+msgid "Nothing to sell"
+msgstr ""
+
+#. / For when the player attempts to buy rockets or rocket capacity
+#. / while secondary weapon is either laser or charge cannon.
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:375
+msgid "Rockets cannot be bought for Laser or Charger Cannon"
+msgstr ""
+
+#. / For when the player attempts to buy a weapon they already have.
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:380
+msgid "You already have that weapon"
+msgstr ""
+
+#. / For when the player attempts to increase rocket capacity beyond
+#. / what is allowed for the weapon (used for homing missiles).
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:386
+msgid "This weapon's ammo limit has been reached"
+msgstr ""
+
+#. / Shop item description: Plasma Channel Splitter (PLASMA_MAX_OUTPUT)
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:415
+msgid "Improves poweredup plasma output"
+msgstr ""
+
+#. / Shop item description: Plasma Capacity Condensor (PLASMA_MAX_DAMAGE)
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:422
+msgid "Increases poweredup plasma damage"
+msgstr ""
+
+#. / Shop item description: Liquid Nitrogen Capsules (PLASMA_MAX_RATE)
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:429
+msgid "Increases plasma firing rate"
+msgstr ""
+
+#. / Shop item description: Plasma Cells
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:440
+msgid "Plasma ammunition (10 cells each)"
+msgstr ""
+
+#. / Shop item description: Rocket Ammo
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:451
+msgid "High velocity dumb fire rocket"
+msgstr ""
+
+#. / Shop item description: Additional Plasma Cannon (PLASMA_MIN_OUTPUT)
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:460
+msgid "Adds an extra plasma cannon to the Firefly"
+msgstr ""
+
+#. / Shop item description: Plasma Power Booster (PLASMA_MIN_DAMAGE)
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:467
+msgid "Increases power of plasma shots"
+msgstr ""
+
+#. / Shop item description: Plasma Cooling Booster (PLASMA_MIN_RATE)
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:474
+msgid "Permanently increases firing rate"
+msgstr ""
+
+#. / Shop item description: Plasma Compressor (PLASMA_MAX_AMMO)
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:483
+msgid "Increases plasma ammo capacity"
+msgstr ""
+
+#. / Shop item description: Rocket Pod (ROCKET_MAX_AMMO)
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:490
+msgid "Allows for an additional 5 rockets to be carried"
+msgstr ""
+
+#. / Shop item description: Dual Rocket Launcher
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:499
+msgid "Launches two rockets at once"
+msgstr ""
+
+#. / Shop item description: Micro Rocket Launcher
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:506
+msgid "Launches several less powerful rockets at once"
+msgstr ""
+
+#. / Shop item description: Laser Cannon
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:513
+msgid "Fires a continuous stream of energy particles"
+msgstr ""
+
+#. / Shop item description: Charge Cannon
+#. / This must be short enough to fit on a single line.
+#: src/shop.c:529
+msgid "Compacts plasma into clusters for greater damage"
+msgstr ""
+
+#. / Shop item description: Dual Homing Missile Launcher
+#. / This must be short enough to fit on a single line.
+#. / %i must be retained.  It is replaced by the maximum missile
+#. / capacity of the weapon.
+#: src/shop.c:538
+#, c-format
+msgid "Fires two homing missiles (max %i missiles)"
+msgstr ""
+
+#. / Shop item description: Micro Homing Missile Launcher
+#. / This must be short enough to fit on a single line.
+#. / %i must be retained.  It is replaced by the maximum missile
+#. / capacity of the weapon.
+#: src/shop.c:547
+#, c-format
+msgid "Fires several small homing missiles (max %i missiles)"
+msgstr ""

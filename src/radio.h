@@ -24,5 +24,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "structs.h"
 
 void radio_setMessage(int face, const char *in, int priority);
+void radio_getRandomMessage(char *dest, const char *messages);
 
 #endif

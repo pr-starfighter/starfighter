@@ -18,6 +18,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <libintl.h>
+#include <locale.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -55,7 +57,7 @@ int main(int argc, char **argv)
 	int cheatAttempt;
 	int cheatCount;
 	int section;
- 
+
 #ifdef __APPLE__
 	// This makes relative paths work in Xcode by changing directory to the Resources folder inside the .app bundle
 	CFBundleRef mainBundle = CFBundleGetMainBundle();
@@ -75,6 +77,10 @@ int main(int argc, char **argv)
 	if (chdir(DATADIR) == -1)
 		printf("Warning: failed to change directory to \"%s\"\n", DATADIR);
 #endif
+
+	setlocale(LC_ALL, "");
+	bindtextdomain("pr-starfighter", "./locale/");
+	textdomain("pr-starfighter");
 
 	engine_init(); // Must do this first!
 

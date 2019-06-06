@@ -2,6 +2,7 @@ build
 dist
 *.o
 *.pak
+*.mo
 starfighter
 src/starfighter
 

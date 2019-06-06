@@ -17,6 +17,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <libintl.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -255,7 +256,7 @@ static void intermission_setStatusLines()
 		default:
 			strcpy(difficulty, "???");
 	}
-	
+
 	sprintf(string, "Difficulty : %s", difficulty);
 	gfx_createTextObject(TS_STATUS_DIFFICULTY, string, 0, 0, FONT_WHITE);
 
@@ -379,27 +380,32 @@ static void intermission_setPlanets()
 			intermission_planets[PLANET_HAIL].messageMission = MISN_HAIL;
 			intermission_planets[PLANET_HAIL].messageSlot = 0;
 			intermission_planets[PLANET_HAIL].faceImage = FS_KRASS;
-			strcpy(intermission_planets[PLANET_HAIL].subject, "Destroy WEAPCO training ground");
+			/// Spirit, Hail mission summary
+			strcpy(intermission_planets[PLANET_HAIL].subject, _("Destroy WEAPCO training ground"));
 
 			intermission_planets[PLANET_CERADSE].messageMission = MISN_CERADSE;
 			intermission_planets[PLANET_CERADSE].messageSlot = 1;
 			intermission_planets[PLANET_CERADSE].faceImage = FS_SID;
-			strcpy(intermission_planets[PLANET_CERADSE].subject, "Collect 6 cargo pods");
+			/// Spirit, Ceradse mission summary
+			strcpy(intermission_planets[PLANET_CERADSE].subject, _("Collect 6 cargo pods"));
 
 			intermission_planets[PLANET_HINSTAG].messageMission = MISN_HINSTAG;
 			intermission_planets[PLANET_HINSTAG].messageSlot = 2;
 			intermission_planets[PLANET_HINSTAG].faceImage = FS_SID;
-			strcpy(intermission_planets[PLANET_HINSTAG].subject, "Destroy 5 WEAPCO missile boats");
+			/// Spirit, Hinstag mission summary
+			strcpy(intermission_planets[PLANET_HINSTAG].subject, _("Destroy 5 WEAPCO missile boats"));
 
 			intermission_planets[PLANET_JOLDAR].messageMission = MISN_JOLDAR;
 			intermission_planets[PLANET_JOLDAR].messageSlot = 3;
 			intermission_planets[PLANET_JOLDAR].faceImage = FS_SID;
-			strcpy(intermission_planets[PLANET_JOLDAR].subject, "Clear the mine field around Joldar");
+			/// Spirit, Joldar mission summary
+			strcpy(intermission_planets[PLANET_JOLDAR].subject, _("Clear the mine field around Joldar"));
 
 			intermission_planets[PLANET_MOEBO].messageMission = MISN_MOEBO;
 			intermission_planets[PLANET_MOEBO].messageSlot = 0;
 			intermission_planets[PLANET_MOEBO].faceImage = FS_SID;
-			strcpy(intermission_planets[PLANET_MOEBO].subject, "Destroy WEAPCO frigate");
+			/// Spirit, Moebo mission summary
+			strcpy(intermission_planets[PLANET_MOEBO].subject, _("Destroy WEAPCO frigate"));
 
 			break;
 
@@ -429,32 +435,38 @@ static void intermission_setPlanets()
 			intermission_planets[PLANET_RESCUESLAVES].messageMission = MISN_RESCUESLAVES;
 			intermission_planets[PLANET_RESCUESLAVES].messageSlot = 0;
 			intermission_planets[PLANET_RESCUESLAVES].faceImage = FS_SID;
-			strcpy(intermission_planets[PLANET_RESCUESLAVES].subject, "Rescue slaves");
+			/// Eyananth, interception mission summary
+			strcpy(intermission_planets[PLANET_RESCUESLAVES].subject, _("Rescue slaves"));
 
 			intermission_planets[PLANET_NEROD].messageMission = MISN_NEROD;
 			intermission_planets[PLANET_NEROD].messageSlot = 1;
 			intermission_planets[PLANET_NEROD].faceImage = FS_PHOEBE;
-			strcpy(intermission_planets[PLANET_NEROD].subject, "SOS");
+			/// Eyananth, Nerod mission summary
+			strcpy(intermission_planets[PLANET_NEROD].subject, _("SOS"));
 
 			intermission_planets[PLANET_ALLEZ].messageMission = MISN_ALLEZ;
 			intermission_planets[PLANET_ALLEZ].messageSlot = 2;
 			intermission_planets[PLANET_ALLEZ].faceImage = FS_SID;
-			strcpy(intermission_planets[PLANET_ALLEZ].subject, "Assist medical supply craft");
+			/// Eyananth, Allez mission summary
+			strcpy(intermission_planets[PLANET_ALLEZ].subject, _("Assist medical supply craft"));
 
 			intermission_planets[PLANET_URUSOR].messageMission = MISN_URUSOR;
 			intermission_planets[PLANET_URUSOR].messageSlot = 0;
 			intermission_planets[PLANET_URUSOR].faceImage = FS_SID;
-			strcpy(intermission_planets[PLANET_URUSOR].subject, "Capture five WEAPCO supply craft");
+			/// Eyananth, Urusor mission summary
+			strcpy(intermission_planets[PLANET_URUSOR].subject, _("Capture five WEAPCO supply craft"));
 
 			intermission_planets[PLANET_DORIM].messageMission = MISN_DORIM;
 			intermission_planets[PLANET_DORIM].messageSlot = 1;
 			intermission_planets[PLANET_DORIM].faceImage = FS_SID;
-			strcpy(intermission_planets[PLANET_DORIM].subject, "Find WEAPCO scientist");
+			/// Eyananth, Dorim mission summary
+			strcpy(intermission_planets[PLANET_DORIM].subject, _("Find WEAPCO scientist"));
 
 			intermission_planets[PLANET_ELAMALE].messageMission = MISN_ELAMALE;
 			intermission_planets[PLANET_ELAMALE].messageSlot = 0;
 			intermission_planets[PLANET_ELAMALE].faceImage = FS_PHOEBE;
-			strcpy(intermission_planets[PLANET_ELAMALE].subject, "Destroy WEAPCO Ore Mining craft");
+			/// Eyananth, Elamale mission summary
+			strcpy(intermission_planets[PLANET_ELAMALE].subject, _("Destroy WEAPCO Ore Mining craft"));
 
 			break;
 
@@ -488,37 +500,44 @@ static void intermission_setPlanets()
 			intermission_planets[PLANET_CLOAKFIGHTER].messageMission = MISN_CLOAKFIGHTER;
 			intermission_planets[PLANET_CLOAKFIGHTER].messageSlot = 0;
 			intermission_planets[PLANET_CLOAKFIGHTER].faceImage = FS_SID;
-			strcpy(intermission_planets[PLANET_CLOAKFIGHTER].subject, "Destroy experimental fighter");
+			/// Mordor, incerception mission summary
+			strcpy(intermission_planets[PLANET_CLOAKFIGHTER].subject, _("Destroy experimental fighter"));
 
 			intermission_planets[PLANET_ODEON].messageMission = MISN_ODEON;
 			intermission_planets[PLANET_ODEON].messageSlot = 1;
 			intermission_planets[PLANET_ODEON].faceImage = FS_PHOEBE;
-			strcpy(intermission_planets[PLANET_ODEON].subject, "Rescue Ursula");
+			/// Mordor, Odeon mission summary
+			strcpy(intermission_planets[PLANET_ODEON].subject, _("Rescue Ursula"));
 
 			intermission_planets[PLANET_FELLON].messageMission = MISN_FELLON;
 			intermission_planets[PLANET_FELLON].messageSlot = 2;
 			intermission_planets[PLANET_FELLON].faceImage = FS_SID;
-			strcpy(intermission_planets[PLANET_FELLON].subject, "Assist rebel forces");
+			/// Mordor, Fellon mission summary
+			strcpy(intermission_planets[PLANET_FELLON].subject, _("Assist rebel forces"));
 
 			intermission_planets[PLANET_SIVEDI].messageMission = MISN_SIVEDI;
 			intermission_planets[PLANET_SIVEDI].messageSlot = 0;
 			intermission_planets[PLANET_SIVEDI].faceImage = FS_SID;
-			strcpy(intermission_planets[PLANET_SIVEDI].subject, "Mine ore from asteroid belt");
+			/// Mordor, Sivedi mission summary
+			strcpy(intermission_planets[PLANET_SIVEDI].subject, _("Mine ore from asteroid belt"));
 
 			intermission_planets[PLANET_ALMARTHA].messageMission = MISN_ALMARTHA;
 			intermission_planets[PLANET_ALMARTHA].messageSlot = 1;
 			intermission_planets[PLANET_ALMARTHA].faceImage = FS_KRASS;
-			strcpy(intermission_planets[PLANET_ALMARTHA].subject, "Create a diversion");
+			/// Mordor, Almartha mission summary
+			strcpy(intermission_planets[PLANET_ALMARTHA].subject, _("Create a diversion"));
 
 			intermission_planets[PLANET_POSWIC].messageMission = MISN_POSWIC;
 			intermission_planets[PLANET_POSWIC].messageSlot = 0;
 			intermission_planets[PLANET_POSWIC].faceImage = FS_URSULA;
-			strcpy(intermission_planets[PLANET_POSWIC].subject, "Capture WEAPCO executive transport");
+			/// Mordor, Poswic mission summary
+			strcpy(intermission_planets[PLANET_POSWIC].subject, _("Capture WEAPCO executive transport"));
 
 			intermission_planets[PLANET_ELLESH].messageMission = MISN_ELLESH;
 			intermission_planets[PLANET_ELLESH].messageSlot = 0;
 			intermission_planets[PLANET_ELLESH].faceImage = FS_PHOEBE;
-			strcpy(intermission_planets[PLANET_ELLESH].subject, "Destroy WEAPCO executive transport");
+			/// Mordor, Ellesh mission summary
+			strcpy(intermission_planets[PLANET_ELLESH].subject, _("Destroy WEAPCO executive transport"));
 
 			break;
 
@@ -562,42 +581,50 @@ static void intermission_setPlanets()
 			intermission_planets[PLANET_PLUTO].messageMission = MISN_PLUTO;
 			intermission_planets[PLANET_PLUTO].messageSlot = 0;
 			intermission_planets[PLANET_PLUTO].faceImage = FS_SID;
-			strcpy(intermission_planets[PLANET_PLUTO].subject, "Secure Pluto");
+			/// Sol, Pluto mission summary
+			strcpy(intermission_planets[PLANET_PLUTO].subject, _("Secure Pluto"));
 
 			intermission_planets[PLANET_NEPTUNE].messageMission = MISN_NEPTUNE;
 			intermission_planets[PLANET_NEPTUNE].messageSlot = 1;
 			intermission_planets[PLANET_NEPTUNE].faceImage = FS_SID;
-			strcpy(intermission_planets[PLANET_NEPTUNE].subject, "Secure Neptune");
+			/// Sol, Neptune mission summary
+			strcpy(intermission_planets[PLANET_NEPTUNE].subject, _("Secure Neptune"));
 
 			intermission_planets[PLANET_URANUS].messageMission = MISN_URANUS;
 			intermission_planets[PLANET_URANUS].messageSlot = 2;
 			intermission_planets[PLANET_URANUS].faceImage = FS_SID;
-			strcpy(intermission_planets[PLANET_URANUS].subject, "Secure Uranus");
+			/// Sol, Uranus mission summary
+			strcpy(intermission_planets[PLANET_URANUS].subject, _("Secure Uranus"));
 
 			intermission_planets[PLANET_SATURN].messageMission = MISN_SATURN;
 			intermission_planets[PLANET_SATURN].messageSlot = 0;
 			intermission_planets[PLANET_SATURN].faceImage = FS_SID;
-			strcpy(intermission_planets[PLANET_SATURN].subject, "Destroy outer defense system");
+			/// Sol, Saturn mission summary
+			strcpy(intermission_planets[PLANET_SATURN].subject, _("Destroy outer defense system"));
 
 			intermission_planets[PLANET_JUPITER].messageMission = MISN_JUPITER;
 			intermission_planets[PLANET_JUPITER].messageSlot = 0;
 			intermission_planets[PLANET_JUPITER].faceImage = FS_SID;
-			strcpy(intermission_planets[PLANET_JUPITER].subject, "Investigate distress call");
+			/// Sol, Jupiter mission summary
+			strcpy(intermission_planets[PLANET_JUPITER].subject, _("Investigate distress call"));
 
 			intermission_planets[PLANET_MARS].messageMission = MISN_MARS;
 			intermission_planets[PLANET_MARS].messageSlot = 0;
 			intermission_planets[PLANET_MARS].faceImage = FS_SID;
-			strcpy(intermission_planets[PLANET_MARS].subject, "Navigate asteroid belt");
+			/// Sol, Mars mission summary
+			strcpy(intermission_planets[PLANET_MARS].subject, _("Navigate asteroid belt"));
 
 			intermission_planets[PLANET_EARTH].messageMission = MISN_EARTH;
 			intermission_planets[PLANET_EARTH].messageSlot = 0;
 			intermission_planets[PLANET_EARTH].faceImage = FS_CHRIS;
-			strcpy(intermission_planets[PLANET_EARTH].subject, "Take back Earth");
+			/// Sol, Earth mission summary
+			strcpy(intermission_planets[PLANET_EARTH].subject, _("Take back Earth"));
 
 			intermission_planets[PLANET_VENUS].messageMission = MISN_VENUS;
 			intermission_planets[PLANET_VENUS].messageSlot = 0;
 			intermission_planets[PLANET_VENUS].faceImage = FS_SID;
-			strcpy(intermission_planets[PLANET_VENUS].subject, "Defeat Kline");
+			/// Sol, Venus mission summary
+			strcpy(intermission_planets[PLANET_VENUS].subject, _("Defeat Kline"));
 
 			break;
 	}
@@ -714,23 +741,29 @@ static void intermission_showStatus(SDL_Surface *infoSurface)
 
 static void intermission_createCommsSurface(SDL_Surface *comms)
 {
+	int yStart;
+	int yOffset;
+
 	engine.commsSection = 0;
 
 	gfx_drawRect(comms, 0, 0, comms->w - 1, comms->h - 1, 0x00, 0x00, 0x25);
 
-	gfx_renderUnicode("+++ CURRENT MISSIONS (click for info) +++", -1, 15, FONT_GREEN, 0, comms);
+	gfx_renderString("+++ CURRENT MISSIONS +++", -1, 15, FONT_GREEN, 0, comms);
 
-	int yOffset;
+	/// Please keep this short; it is always rendered as a single line.
+	gfx_renderUnicode(_("click for info"), -1, 35, FONT_WHITE, 0, comms);
+
+	yStart = 60;
 
 	for (int i = 0 ; i < MAX_PLANETS ; i++)
 	{
 		if ((intermission_planets[i].messageSlot != -1) && (intermission_planets[i].missionCompleted == 0))
 		{
 			yOffset = intermission_planets[i].messageSlot * 60;
-			gfx_drawRect(comms, 0, 40 + yOffset, comms->w - 1, 55, 0x00, 0x00, 0x77);
-			gfx_blit(gfx_faceSprites[intermission_planets[i].faceImage], 20, 45 + yOffset, comms);
-			gfx_renderString(intermission_planets[i].name, 80, 45 + yOffset, FONT_WHITE, 0, comms);
-			gfx_renderString(intermission_planets[i].subject, 80, 65 + yOffset, FONT_CYAN, 0, comms);
+			gfx_drawRect(comms, 0, yStart + yOffset, comms->w - 1, 55, 0x00, 0x00, 0x77);
+			gfx_blit(gfx_faceSprites[intermission_planets[i].faceImage], 20, yStart + 5 + yOffset, comms);
+			gfx_renderString(intermission_planets[i].name, 80, yStart + 5 + yOffset, FONT_WHITE, 0, comms);
+			gfx_renderUnicode(intermission_planets[i].subject, 80, yStart + 25 + yOffset, FONT_CYAN, 0, comms);
 		}
 	}
 }
@@ -739,7 +772,7 @@ static int intermission_renderDialog(SDL_Surface *comms, int y, int face, const 
 {
 	int newY;
 	gfx_blit(gfx_faceSprites[face], 10, y, comms);
-	newY = gfx_renderUnicode(string, 80, y, FONT_WHITE, 1, comms) + 25;
+	newY = gfx_renderUnicode(string, 80, y, FONT_WHITE, 1, comms) + 20;
 	if (newY < y + 60)
 		newY += (60 - (newY - y));
 	return newY;
@@ -767,235 +800,295 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 	switch (misn)
 	{
 		case MISN_HAIL:
-			strcpy(string, "Hey, boy! You still owe me money for the Firefly I stole for you! But instead, I want you to go to the WEAPCO training ground and destroy all the craft there.");
+			/// Mission dialog: Spirit, Hail (Krass Tyler)
+			strcpy(string, _("Hey, boy! You still owe me money for the Firefly I stole for you! But instead, I want you to go to the WEAPCO training ground and destroy all the craft there."));
 			y = intermission_renderDialog(comms, y, FS_KRASS, string);
 
-			strcpy(string, "Oh? That's the job I contracted you to do, was it not?");
+			/// Mission dialog: Spirit, Hail (Chris Bainfield)
+			strcpy(string, _("Oh? That's the job I contracted you to do, was it not?"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "I know, but this way we can resolve your debt right now. Do this job, and also collect $500, and we will call it quits. And if you die... well, I guess the ship was not worth stealing! HA HA HA!");
+			/// Mission dialog: Spirit, Hail (Krass Tyler)
+			strcpy(string, _("I know, but this way we can resolve your debt right now. Do this job, and also collect $500, and we will call it quits. And if you die... well, I guess the ship was not worth stealing! HA HA HA!"));
 			y = intermission_renderDialog(comms, y, FS_KRASS, string);
 
-			strcpy(string, "As usual, you take me too lightly, Krass.");
+			/// Mission dialog: Spirit, Hail (Chris Bainfield)
+			strcpy(string, _("As usual, you take me too lightly, Krass."));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
 			break;
 
 		case MISN_CERADSE:
-			strcpy(string, "Hey, Sid, what's up?");
+			/// Mission dialog: Spirit, Ceradse (Chris Bainfield)
+			strcpy(string, _("Hey, Sid, what's up?"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "Chris, I've intercepted a communication from WEAPCO. Seems they're transporting some medical supplies around Ceradse. We need to get hold of those pods to save some lives!");
+			/// Mission dialog: Spirit, Ceradse (Sid Wilson)
+			strcpy(string, _("Chris, I've intercepted a communication from WEAPCO. Seems they're transporting some medical supplies around Ceradse. We need to get hold of those pods to save some lives!"));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			strcpy(string, "How many do we need?");
+			/// Mission dialog: Spirit, Ceradse (Chris Bainfield)
+			strcpy(string, _("How many do we need?"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "All six, Chris! If you lose even a single one, thousands of people could perish in Spirit within the next few months.");
+			/// Mission dialog: Spirit, Ceradse (Sid Wilson)
+			strcpy(string, _("All six, Chris! If you lose even a single one, thousands of people could perish in Spirit within the next few months."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
 			break;
 
 		case MISN_HINSTAG:
-			strcpy(string, "Wow! Missile boats?");
+			/// Mission dialog: Spirit, Hinstag (Chris Bainfield)
+			strcpy(string, _("Wow! Missile boats?"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "Yup. Looks like WEAPCO is starting to take notice of your actions.");
+			/// Mission dialog: Spirit, Hinstag (Sid Wilson)
+			strcpy(string, _("Yup. Looks like WEAPCO is starting to take notice of your actions."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			strcpy(string, "Sounds like fun! This will really put the Firefly's fighting ability to the test!");
+			/// Mission dialog: Spirit, Hinstag (Chris Bainfield)
+			strcpy(string, _("Awesome! This will really put the Firefly's fighting ability to the test!"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "Please be careful, Chris. A single missile boat carries enough rockets to level most major cities. Try not to face them head-on, and keep your distance.");
+			/// Mission dialog: Spirit, Hinstag (Sid Wilson)
+			strcpy(string, _("Please be careful, Chris. A single missile boat carries enough rockets to level most major cities. Try not to face them head-on, and keep your distance."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
 			break;
 
 		case MISN_JOLDAR:
-			strcpy(string, "We're going to have to get rid of the mine deployment unit around Joldar. The minefield is stopping interplanetary traffic.");
+			/// Mission dialog: Spirit, Joldar (Sid Wilson)
+			strcpy(string, _("We're going to have to get rid of the mine deployment unit around Joldar. The minefield is stopping interplanetary traffic."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			strcpy(string, "Are any fighters around to keep me entertained?");
+			/// Mission dialog: Spirit, Joldar (Chris Bainfield)
+			strcpy(string, _("Are any fighters around to keep me entertained?"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "Not at the moment, but that doesn't mean they won't turn up. Be very careful of those mines! They'll only explode when they encounter a ship that's not transmitting a WEAPCO signal. Shoot them down if they get in your way.");
+			/// Mission dialog: Spirit, Joldar (Sid Wilson)
+			strcpy(string, _("Not at the moment, but that doesn't mean they won't turn up. Be very careful of those mines! They'll only explode when they encounter a ship that's not transmitting a WEAPCO signal. Shoot them down if they get in your way."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
 			break;
 
 		case MISN_MOEBO:
-			strcpy(string, "We've got a major problem here! WEAPCO has decided to stop our resistance by destroying Spirit! The explosion will incinerate everything in the system! You've got to destroy that frigate before it gets in range!");
+			/// Mission dialog: Spirit, Moebo (Sid Wilson)
+			strcpy(string, _("We've got a major problem here! WEAPCO has decided to stop our resistance by destroying Spirit! The explosion will incinerate everything in the system! You've got to destroy that frigate before it gets in range!"));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			strcpy(string, "Damn! I'll get right on it, then!");
+			/// Mission dialog: Spirit, Moebo (Chris Bainfield)
+			strcpy(string, _("Damn! I'll get right on it, then!"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "We're all counting on you, Chris! But just remember - They didn't call that thing \"Star Killer\" just because it sounded nice!");
+			/// Mission dialog: Spirit, Moebo (Sid Wilson)
+			strcpy(string, _("We're all counting on you, Chris! But just remember - They didn't call that thing \"Star Killer\" just because it sounded nice!"));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
 			break;
 
 		case MISN_RESCUESLAVES:
-			strcpy(string, "As you know, WEAPCO has many slaves in this system. If we free a large number of them, it might help to spark a rebellion. I estimate that we will need to rescue around 250 to make a difference.");
+			/// Mission dialog: Eyananth, interceptions (Sid Wilson)
+			strcpy(string, _("As you know, WEAPCO has many slaves in this system. If we free a large number of them, it might help to spark a rebellion. I estimate that we will need to rescue around 250 to make a difference."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			strcpy(string, "Most of the slaves are working in ore mines, aren't they?");
+			/// Mission dialog: Eyananth, interceptions (Chris Bainfield)
+			strcpy(string, _("Most of the slaves are working in ore mines, aren't they?"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "Yes, but attacking the mines directly would be dangerous. You'd be better off intercepting slave transports. What you'll have to do is fly around and see if you can intercept a WEAPCO patrol. Of course, they might not be escorting any slave units, so be careful!");
+			/// Mission dialog: Eyananth, interceptions (Sid Wilson)
+			strcpy(string, _("Yes, but attacking the mines directly would be dangerous. You'd be better off intercepting slave transports. What you'll have to do is fly around and see if you can intercept a WEAPCO patrol. Of course, they might not be escorting any slave units, so be careful!"));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
 			break;
 
 		case MISN_NEROD:
-			strcpy(string, "Help! This is an SOS! Can anyone hear me?!");
+			/// Mission dialog: Eyananth, Nerod (Phoebe Lexx)
+			strcpy(string, _("Help! This is an SOS! Can anyone hear me?!"));
 			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
 
-			strcpy(string, "I'm hearing you loud and clear! What's up?");
+			/// Mission dialog: Eyananth, Nerod (Chris Bainfield)
+			strcpy(string, _("I'm hearing you loud and clear! What's up?"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "Oh, thank God! I was intercepted by a large WEAPCO force near Nerod! I'm in need of assistance!");
+			/// Mission dialog: Eyananth, Nerod (Phoebe Lexx)
+			strcpy(string, _("Oh, thank God! I was intercepted by a large WEAPCO force near Nerod! I'm in need of assistance!"));
 			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
 
-			strcpy(string, "I'm on my way!");
+			/// Mission dialog: Eyananth, Nerod (Chris Bainfield)
+			strcpy(string, _("I'm on my way!"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
 			break;
 
 		case MISN_ALLEZ:
-			strcpy(string, "I've just received another SOS. This one is coming from a supply craft carrying essential medical supplies.");
+			/// Mission dialog: Eyananth, Allez (Sid Wilson)
+			strcpy(string, _("I've just received another SOS. This one is coming from a supply craft carrying essential medical supplies."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			strcpy(string, "Alright, Tell 'em I'm on my way.");
+			/// Mission dialog: Eyananth, Allez (Chris Bainfield)
+			strcpy(string, _("Alright, Tell 'em I'm on my way."));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
 			break;
 
 		case MISN_URUSOR:
-			strcpy(string, "I need some resources before we leave, it'll make life a lot easier in Mordor. Problem is that WEAPCO hoards these parts.");
+			/// Mission dialog: Eyananth, Urusor (Sid Wilson)
+			strcpy(string, _("I need some resources before we leave, it'll make life a lot easier in Mordor. Problem is that WEAPCO hoards these parts."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			strcpy(string, "Where can we get them, then?");
+			/// Mission dialog: Eyananth, Urusor (Chris Bainfield)
+			strcpy(string, _("Where can we get them, then?"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "There's a big shipment of them nearby. I can disable the supply craft carrying them; I just need you to give me some cover while I do it.");
+			/// Mission dialog: Eyananth, Urusor (Sid Wilson)
+			strcpy(string, _("There's a big shipment of them nearby. I can disable the supply craft carrying them; I just need you to give me some cover while I do it."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			strcpy(string, "You got it!");
+			/// Mission dialog: Eyananth, Urusor (Chris Bainfield)
+			strcpy(string, _("You got it!"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
 			break;
 
 		case MISN_DORIM:
-			strcpy(string, "A WEAPCO scientist just ran off in an escape pod and hid in the asteroid belt. If we capture him, we may be able to get some information about Mordor.");
+			/// Mission dialog: Eyananth, Dorim (Sid Wilson)
+			strcpy(string, _("A WEAPCO scientist just ran off in an escape pod and hid in the asteroid belt. If we capture him, we may be able to get some information about Mordor."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			strcpy(string, "I'm on it.");
+			/// Mission dialog: Eyananth, Dorim (Chris Bainfield)
+			strcpy(string, _("Alright, I'll go look for him. I guess I'll grab some ore along the way."));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
 			break;
 
 		case MISN_ELAMALE:
-			strcpy(string, "I've received word that the slaves we rescued have started a rebellion. Looks like the plan worked.");
+			/// Mission dialog: Eyananth, Elamale (Sid Wilson)
+			strcpy(string, _("I've received word that the slaves we rescued have started a rebellion. Looks like the plan worked."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			strcpy(string, "WEAPCO has an automated mining ship in orbit around Elamale. How about we take it out and cause some confusion?");
+			/// Mission dialog: Eyananth, Elamale (Phoebe Lexx)
+			strcpy(string, _("WEAPCO has an automated mining ship in orbit around Elamale. How about we take it out and cause some confusion?"));
 			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
 
-			strcpy(string, "I like that idea!");
+			/// Mission dialog: Eyananth, Elamale (Chris Bainfield)
+			strcpy(string, _("I like that idea!"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "It'll work, but be careful.");
+			/// Mission dialog: Eyananth, Elamale (Sid Wilson)
+			strcpy(string, _("It'll work, but be careful."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
 			break;
 
 		case MISN_CLOAKFIGHTER:
-			strcpy(string, "What have you found out about that experimental fighter?");
+			/// Mission dialog: Mordor, interceptions (Chris Bainfield)
+			strcpy(string, _("What have you found out about that experimental fighter?"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "It's got some kind of cloaking device that makes it invisible to radar. Could prove hard to track down.");
+			/// Mission dialog: Mordor, interceptions (Sid Wilson)
+			strcpy(string, _("It's got some kind of cloaking device that makes it invisible to radar. Could prove hard to track down."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			strcpy(string, "I'll just have to run around the system until I find it.");
+			/// Mission dialog: Mordor, interceptions (Chris Bainfield)
+			strcpy(string, _("I'll just have to run around the system until I find it."));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "It's likely to run away if you engage it in battle, so try and do as much damage to it as possible.");
+			/// Mission dialog: Mordor, interceptions (Sid Wilson)
+			strcpy(string, _("It's likely to run away if you engage it in battle, so try and do as much damage to it as possible."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
 			break;
 
 		case MISN_ODEON:
-			strcpy(string, "I've located my sister's ship currently in orbit around Odeon. She's ignoring my hails though.");
+			/// Mission dialog: Mordor, Odeon (Phoebe Lexx)
+			strcpy(string, _("I've located my sister's ship currently in orbit around Odeon. She's ignoring my hails though."));
 			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
 
-			strcpy(string, "Something's off here. She seems to be travelling freely with a WEAPCO group.");
+			/// Mission dialog: Mordor, Odeon (Sid Wilson)
+			strcpy(string, _("Something's off here. She seems to be travelling freely with a WEAPCO group."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			strcpy(string, "Do you think she's turned traitor?");
+			/// Mission dialog: Mordor, Odeon (Chris Bainfield)
+			strcpy(string, _("Do you think she's turned traitor?"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "No way. She hates WEAPCO with a passion.");
+			/// Mission dialog: Mordor, Odeon (Phoebe Lexx)
+			strcpy(string, _("No way. She hates WEAPCO with a passion."));
 			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
 
-			strcpy(string, "She must be under some kind of mind control. I've heard of WEAPCO developing a new \"AI training program\" recently. We'd better rescue her!");
+			/// Mission dialog: Mordor, Odeon (Sid Wilson)
+			strcpy(string, _("She must be under some kind of mind control. I've heard of WEAPCO developing a new \"AI training program\" recently. We'd better rescue her!"));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
 			break;
 
 		case MISN_FELLON:
-			strcpy(string, "A rebel group has organized a counter strike. If we can help them secure a victory it will be a real boost to morale.");
+			/// Mission dialog: Mordor, Fellon (Sid Wilson)
+			strcpy(string, _("A rebel group has organized a counter strike. If we can help them secure a victory it will be a real boost to morale."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			strcpy(string, "Awesome! I'm on it!");
+			/// Mission dialog: Mordor, Fellon (Chris Bainfield)
+			strcpy(string, _("Awesome! Let's do it!"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "Just make sure the rebel ships don't all get destroyed.");
+			/// Mission dialog: Mordor, Fellon (Sid Wilson)
+			strcpy(string, _("Just make sure the rebel ships don't all get destroyed."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
 			break;
 
 		case MISN_SIVEDI:
-			strcpy(string, "Seems like taking out that WEAPCO mining ship wasn't such a good idea. The ore it collected is needed in weapons production.");
+			/// Mission dialog: Mordor, Sivedi (Sid Wilson)
+			strcpy(string, _("Seems like taking out that WEAPCO mining ship wasn't such a good idea. The ore it collected is needed in weapons production."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			strcpy(string, "Damn! I guess that means I'll have to mine some myself, then, huh?");
+			/// Mission dialog: Mordor, Sivedi (Chris Bainfield)
+			strcpy(string, _("Damn! I guess that means I'll have to mine some myself, then, huh?"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "Yes. Be careful, Chris. Your weapons weren't designed for that sort of work, after all.");
+			/// Mission dialog: Mordor, Sivedi (Sid Wilson)
+			strcpy(string, _("Yes. Be careful, Chris. Your weapons weren't designed for that sort of work, after all."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
 			break;
 
 		case MISN_ALMARTHA:
-			strcpy(string, "Hey, Krass! I need you to help us out with something. Phoebe and Ursula are taking out key WEAPCO plants. Can you help me create a diversion by wreaking havoc a little bit away from that?");
+			/// Mission dialog: Mordor, Almartha (Chris Bainfield)
+			strcpy(string, _("Hey, Krass! I need you to help us out with something. Phoebe and Ursula are taking out key WEAPCO plants. Can you help me create a diversion by wreaking havoc a little bit away from that?"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "Sure, I can help you out, boy. But I'll be needing my fee...");
+			/// Mission dialog: Mordor, Almartha (Krass Tyler)
+			strcpy(string, _("Sure, I can help you out, boy. But I'll be needing my fee..."));
 			y = intermission_renderDialog(comms, y, FS_KRASS, string);
 
 			break;
 
 		case MISN_POSWIC:
-			strcpy(string, "My memory is finally back. Here's something interesting: just before I was captured, I found out that WEAPCO is transporting several important executives to Poswic.");
+			/// Mission dialog: Mordor, Poswic (Ursula Lexx)
+			strcpy(string, _("My memory is finally back. Here's something interesting: just before I was captured, I found out that WEAPCO is transporting several important executives to Poswic."));
 			y = intermission_renderDialog(comms, y, FS_URSULA, string);
 
-			strcpy(string, "We can't let a rare opportunity like this slip through our fingers! I'll need some cover so I can disable that ship.");
+			/// Mission dialog: Mordor, Poswic (Sid Wilson)
+			strcpy(string, _("We can't let a rare opportunity like this slip through our fingers! I'll need some cover so I can disable that ship."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			strcpy(string, "You got it!");
+			/// Mission dialog: Mordor, Poswic (Chris Bainfield)
+			strcpy(string, _("I've got you covered, Sid!"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
 			break;
 
 		case MISN_ELLESH:
-			strcpy(string, "Phoebe, I need you to keep an eye on things here. I'm going after that ship!");
+			/// Mission dialog: Mordor, Ellesh (Chris Bainfield)
+			strcpy(string, _("Phoebe, I need you to keep an eye on things here. I'm going after that ship!"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "Are you sure you can catch up to it?");
+			/// Mission dialog: Mordor, Ellesh (Phoebe Lexx)
+			strcpy(string, _("Are you sure you can catch up to it?"));
 			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
 
-			strcpy(string, "Absolutely. One thing that's really nice about the Firefly is its speed. I'll see you in a bit!");
+			/// Mission dialog: Mordor, Ellesh (Chris Bainfield)
+			strcpy(string, _("Absolutely. One thing that's really nice about the Firefly is its speed. I'll see you in a bit!"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
 			break;
@@ -1003,76 +1096,95 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 		case MISN_PLUTO:
 		case MISN_NEPTUNE:
 		case MISN_URANUS:
-			strcpy(string, "We've got to start from the outside and work our way in. That will give us less chance of being flanked during the final operation.");
+			/// Mission dialog: Sol, Pluto/Neptune/Uranus (Sid Wilson)
+			strcpy(string, _("We've got to start from the outside and work our way in. That will give us less chance of being flanked during the final operation."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			strcpy(string, "Gotcha.");
+			/// Mission dialog: Sol, Pluto/Neptune/Uranus (Phoebe Lexx)
+			strcpy(string, _("Sounds like a plan, Sid!"));
 			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
 
-			strcpy(string, "Okay.");
+			/// Mission dialog: Sol, Pluto/Neptune/Uranus (Ursula Lexx)
+			strcpy(string, _("Better safe than sorry, I guess."));
 			y = intermission_renderDialog(comms, y, FS_URSULA, string);
 
-			strcpy(string, "Alright.");
+			/// Mission dialog: Sol, Pluto/Neptune/Uranus (Chris Bainfield)
+			strcpy(string, _("Boring, but I guess you're right, Sid, as usual."));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
 			break;
 
 		case MISN_SATURN:
-			strcpy(string, "WEAPCO has set up a highly dangerous defense line between Saturn and Uranus. We'll need to take it out.");
+			/// Mission dialog: Sol, Saturn (Chris Bainfield)
+			strcpy(string, _("WEAPCO has set up a highly dangerous defense line between Saturn and Uranus. We'll need to take it out."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			strcpy(string, "What kind of defense system?");
+			/// Mission dialog: Sol, Saturn (Ursula Lexx)
+			strcpy(string, _("What kind of defense system?"));
 			y = intermission_renderDialog(comms, y, FS_URSULA, string);
 
-			strcpy(string, "Several mobile Energy Ray cannons, not unlike the weapon used by the Star Killer back in Spirit.");
+			/// Mission dialog: Sol, Saturn (Chris Bainfield)
+			strcpy(string, _("Several mobile Energy Ray cannons, not unlike the weapon used by the Star Killer back in Spirit."));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "Best check my ejection system, then!");
+			/// Mission dialog: Sol, Saturn (Phoebe Lexx)
+			strcpy(string, _("Best check my ejection system, then!"));
 			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
 
 			break;
 
 		case MISN_JUPITER:
-			strcpy(string, "While you were gone I picked up a distress call coming from around Jupiter.");
+			/// Mission dialog: Sol, Jupiter (Sid Wilson)
+			strcpy(string, _("While you were gone I picked up a distress call coming from around Jupiter."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			strcpy(string, "Who would be sending out a distress call within Sol?");
+			/// Mission dialog: Sol, Jupiter (Ursula Lexx)
+			strcpy(string, _("Who would be sending out a distress call within Sol?"));
 			y = intermission_renderDialog(comms, y, FS_URSULA, string);
 
-			strcpy(string, "Let's check it out. Even if it's a trap, I think we can handle it.");
+			/// Mission dialog: Sol, Jupiter (Chris Bainfield)
+			strcpy(string, _("Let's check it out. Even if it's a trap, I think we can handle it."));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
 			break;
 
 		case MISN_MARS:
-			strcpy(string, "Chris, we've got a small problem. WEAPCO has a minefield in the asteroid belt. We'll need you to clear a way through.");
+			/// Mission dialog: Sol, Mars (Sid Wilson)
+			strcpy(string, _("Chris, we've got a small problem. WEAPCO has deployed a minefield in the asteroid belt. We'll need you to clear a way through."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			strcpy(string, "Alright. I'll radio in once I've cleared a safe path.");
+			/// Mission dialog: Sol, Mars (Chris Bainfield)
+			strcpy(string, _("Alright. I'll radio in once I've cleared a safe path."));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
 			break;
 
 		case MISN_EARTH:
-			strcpy(string, "Okay people, this is the big one. We go in fast and we go in hard. Don't hold back and hit them with everything we've got!");
+			/// Mission dialog: Sol, Earth (Chris Bainfield)
+			strcpy(string, _("Okay people, this is the big one. We go in fast and we go in hard. Don't hold back and hit them with everything we've got!"));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "We've come too far to turn back now. None of us better die out there!");
+			/// Mission dialog: Sol, Earth (Sid Wilson)
+			strcpy(string, _("We've come too far to turn back now. None of us better die out there!"));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			strcpy(string, "Right with you, Chris!");
+			/// Mission dialog: Sol, Earth (Phoebe Lexx)
+			strcpy(string, _("Right with you, Chris!"));
 			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
 
-			strcpy(string, "WEAPCO'll regret sticking probes into my head!");
+			/// Mission dialog: Sol, Earth (Ursula Lexx)
+			strcpy(string, _("WEAPCO'll regret sticking probes into my head!"));
 			y = intermission_renderDialog(comms, y, FS_URSULA, string);
 
 			break;
 
 		case MISN_VENUS:
-			strcpy(string, "Kethlan has run off to Venus. I'm going after him.");
+			/// Mission dialog: Sol, Venus (Chris Bainfield)
+			strcpy(string, _("Kethlan has run off to Venus. I'm going after him."));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			strcpy(string, "Be careful, Chris. We've won the war, but it would be a real shame if you died now!");
+			/// Mission dialog: Sol, Venus (Sid Wilson)
+			strcpy(string, _("Be careful, Chris. We've won the war, but it would be a real shame if you died now!"));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
 			break;

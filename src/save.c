@@ -17,6 +17,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <libintl.h>
 #include <stdio.h>
 #include <sys/stat.h>
 
@@ -394,24 +395,32 @@ void save_createSurface(SDL_Surface *savesSurface, int clickedSlot)
 			gfx_renderString("CANCEL", 150, 270, FONT_WHITE, 0, savesSurface);
 			gfx_renderString("DELETE", 270, 270, FONT_WHITE, 0, savesSurface);
 
-			gfx_renderUnicode("SAVE will save the game", 17, 200, FONT_WHITE, 0,
-				savesSurface);
-			gfx_renderUnicode("CANCEL will unselect that slot", 17, 220,
-				FONT_WHITE, 0, savesSurface);
-			gfx_renderUnicode("DELETE will remove the save", 17, 240,
-				FONT_WHITE, 0, savesSurface);
+			/// Explanation of what the SAVE button does (note: "SAVE" is untranslated).
+			/// This must be short enough to fit on a single line.
+			gfx_renderUnicode(_("SAVE will save the game"), 17, 200, FONT_WHITE, 0, savesSurface);
+
+			/// Explanation of what the CANCEL button does (note: "CANCEL" is untranslated)
+			/// This must be short enough to fit on a single line.
+			gfx_renderUnicode(_("CANCEL will unselect that slot"), 17, 220, FONT_WHITE, 0, savesSurface);
+
+			/// Explanation of what the DELETE button does (note: "DELETE" is untranslated)
+			/// This must be short enough to fit on a single line.
+			gfx_renderUnicode(_("DELETE will remove the save"), 17, 240, FONT_WHITE, 0, savesSurface);
 			break;
 		case -1:
-			gfx_renderUnicode("First click a Save game slot to use", 17, 200,
-				FONT_WHITE, 0, savesSurface);
+			/// For when the player attempts to click "SAVE" or "DELETE" without selecting a slot.
+			/// This must be short enough to fit on a single line.
+			gfx_renderUnicode(_("First click a Save game slot to use"), 17, 200, FONT_WHITE, 0, savesSurface);
 			break;
 		case -10:
-			gfx_renderUnicode("Game Saved", 130, 200, FONT_WHITE, 0,
-				savesSurface);
+			/// For when the game is successfully saved.
+			/// This must be short enough to fit on a single line.
+			gfx_renderUnicode(_("Game Saved"), 130, 200, FONT_WHITE, 0, savesSurface);
 			break;
 		case -11:
-			gfx_renderUnicode("Save Deleted", 130, 200, FONT_WHITE, 0,
-				savesSurface);
+			/// For when the save slot is successfully deleted.
+			/// This must be short enough to fit on a single line.
+			gfx_renderUnicode(_("Save Deleted"), 130, 200, FONT_WHITE, 0, savesSurface);
 			break;
 	}
 

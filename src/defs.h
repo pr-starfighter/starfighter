@@ -22,8 +22,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 // Macros
-#define MIN(a, b) ((a) < (b) ? (a) : (b))
-#define MAX(a, b) ((a) > (b) ? (a) : (b))
 #define LIMIT(x, a, b) x = ((x) < (b) ? ((x) > (a) ? (x) : (a)) : (b))
 #define LIMIT_ADD(x, y, a, b) x = (((x) + (y)) < (b) ? \
 	(((x) + (y)) > (a) ? \
@@ -34,6 +32,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define CHANCE(x) ((rand() % RAND_MAX) < ((x) * RAND_MAX))
 #define RANDRANGE(x, y) (((x) < (y)) ? ((x) + (rand() % (long)(1 + (y) - (x)))) : (x))
 #define DRAND ((double)rand() / RAND_MAX)
+#define _(s) gettext(s)
+
+// A soft dependency defines these as well, so check if they are
+// defined before defining (avoids compiler warnings)
+#ifndef MIN
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+#endif
+
+#ifndef MAX
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+#endif
 
 
 // Compile-time options
@@ -43,7 +52,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifndef DATADIR
 #define DATADIR "."
-#endif 
+#endif
 
 #ifndef SCREEN_WIDTH
 #define SCREEN_WIDTH 800
@@ -71,6 +80,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MAX_DOUBLE_HOMING (game.difficulty != DIFFICULTY_ORIGINAL ? 15 : 10)
 #define MAX_MICRO_HOMING 10
 #define RAY_DAMAGE_DELAY 5
+
+#define PIXFONT_LINE_HEIGHT 16
+#define PIXFONT_W 8
+#define PIXFONT_H 14
+
+#define MENU_Y (screen->h / 3 + 50)
+#define MENU_SPACING 20
 
 // Object Flags
 #define FL_WEAPCO 1
@@ -606,7 +622,18 @@ enum {
 };
 
 // Shop items
+// Note: The error codes are set manually because every actual items
+// must be >= 0; the real items are used to index an array.
 enum {
+	SHOP_ERROR_WEAPON_CAPACITY = -9,
+	SHOP_ERROR_ALREADY_OWNED = -8,
+	SHOP_ERROR_IS_NOT_ROCKETS = -7,
+	SHOP_ERROR_NOTHING_TO_SELL = -6,
+	SHOP_ERROR_CANNOT_SELL = -5,
+	SHOP_ERROR_AMMO_LIMIT = -4,
+	SHOP_ERROR_CANNOT_UPGRADE = -3,
+	SHOP_ERROR_INSUFFICIENT_FUNDS = -2,
+	SHOP_NOTHING = -1,
 	SHOP_PLASMA_MAX_OUTPUT,
 	SHOP_PLASMA_MAX_DAMAGE,
 	SHOP_PLASMA_MAX_RATE,

@@ -50,6 +50,11 @@ int screen_renderString(const char *in, int x, int y, int fontColor)
 	return gfx_renderString(in, x, y, fontColor, 0, screen);
 }
 
+int screen_renderUnicode(const char *in, int x, int y, int fontColor)
+{
+	return gfx_renderUnicode(in, x, y, fontColor, 0, screen);
+}
+
 /*
 Draws the background surface that has been loaded
 */
@@ -148,7 +153,7 @@ void screen_adjustDimensions(int w, int h)
 {
 	double default_ratio = (double)DEFAULT_SCREEN_WIDTH / (double)DEFAULT_SCREEN_HEIGHT;
 	double new_ratio = (double)w / (double)h;
-	
+
 	// Calculate dimensions
 	if (new_ratio > default_ratio)
 	{
@@ -162,14 +167,14 @@ void screen_adjustDimensions(int w, int h)
 		h = (DEFAULT_SCREEN_WIDTH * h) / w;
 		w = DEFAULT_SCREEN_WIDTH;
 	}
-	
+
 	// Free previous surface (if it exists)
 	if (screen != NULL)
 	{
 		SDL_FreeSurface(screen);
 		screen = NULL;
 	}
-	
+
 	// Create the surface
 	screen = SDL_CreateRGBSurface(0, w, h, 32, 0xff0000, 0xff00, 0xff, 0xff000000);
 	if (screen == NULL)

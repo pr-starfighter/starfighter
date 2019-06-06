@@ -17,6 +17,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <libintl.h>
 #include <math.h>
 #include <stdlib.h>
 
@@ -42,57 +43,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 Object alien_defs[CD_MAX];
 Object aliens[ALIEN_MAX];
 
-#define NMSG_CHRIS_KILL 15
-static const char *chrisKillMessage[NMSG_CHRIS_KILL] = {
-	"Take that, robot oppressors!",
-	"Come on, WEAPCO, give me a challenge already!",
-	"Is that all you've got?",
-	"I could kill these robots with my hands tied behind my back!",
-	"And now you're nothing but a pile of scrap metal!",
-	"Who else wants some?!",
-	"Humans do it better!",
-	"A century of AI research is no match for me!",
-	"What's the matter, WEAPCO? Can't keep up?",
-	"I eat robots like you for breakfast!",
-	"Target destroyed!",
-	"Bring it on, WEAPCO!",
-	"I wish the guys back at home could see this!",
-	"How do you like that, WEAPCO?",
-	"Maybe you should change your name to WEEPCO!"
-};
-
-#define NMSG_PHOEBE_KILL 11
-static const char *phoebeKillMessage[NMSG_PHOEBE_KILL] = {
-	"I got another one!",
-	"Target destroyed!",
-	"One more for me!",
-	"Yes! Did you see that, Chris?",
-	"Hey Chris, remind me to check my kill count later!",
-	"Bring it on, WEAPCO!",
-	"Take that, WEAPCO!",
-	"My kill count is going up!",
-	"Another one bites the dust!",
-	"Yeah! Nothing can stand in our way!",
-	"I got it!"
-};
-
-#define NMSG_URSULA_KILL 14
-static const char *ursulaKillMessage[NMSG_URSULA_KILL] = {
-	"Kicked your ass!",
-	"You ain't so tough!",
-	"I was always a better WEAPCO pilot than you!",
-	"Target destroyed!",
-	"That'll teach you!",
-	"Take that, you cruddy robots!",
-	"Is that all you've got?",
-	"Who else wants some?!",
-	"I'm not letting you beat me, Phoebe!",
-	"Bring it on, you mindless drones!",
-	"Oh, I'm sorry, are you getting your metal asses handed to you?",
-	"No one messes with the Lexx family!",
-	"Die, damned WEAPCO drones!",
-	"Don't think you can get away from me!"
-};
 
 /*
 This simply pulls back an alien from the array that is
@@ -1909,8 +1859,8 @@ Fill in later...
 */
 void alien_destroy(Object *alien, Object *attacker)
 {
-	int r;
 	int collect_type, collect_value, value;
+	char msg[STRMAX];
 
 	audio_playSound(SFX_EXPLOSION, alien->x, alien->y);
 
@@ -1955,8 +1905,31 @@ void alien_destroy(Object *alien, Object *attacker)
 			if (CHANCE(1 / 16.) && (alien->flags & FL_WEAPCO) &&
 				(!(alien->flags & FL_NOBANTER)))
 			{
-				r = rand() % NMSG_CHRIS_KILL;
-				radio_setMessage(FS_CHRIS, chrisKillMessage[r], 0);
+				radio_getRandomMessage(msg, _(
+					/// Chris brag messages
+					/// This is a list of brags separated by "\n".  They are randomly
+					/// broadcast when Chris successfully kills an enemy.
+					/// Instead of directly translating these, please populate the list
+					/// with brag messages that work well in the target language,
+					/// following the English version only as a general guideline.  Any
+					/// number of brag messages is permitted.
+					"Take that, robot oppressors!\n"
+					"Come on, WEAPCO, give me a challenge already!\n"
+					"Is that all you've got?\n"
+					"I could kill these robots with my hands tied behind my back!\n"
+					"And now you're nothing but a pile of scrap metal!\n"
+					"Who else wants some?!\n"
+					"Humans do it better!\n"
+					"A century of AI research is no match for me!\n"
+					"What's the matter, WEAPCO? Can't keep up?\n"
+					"I eat robots like you for breakfast!\n"
+					"Target destroyed!\n"
+					"Bring it on, WEAPCO!\n"
+					"I wish the guys back at home could see this!\n"
+					"How do you like that, WEAPCO?\n"
+					"Maybe you should change your name to WEEPCO!"
+				));
+				radio_setMessage(FS_CHRIS, msg, 0);
 			}
 		}
 		else if (attacker->classDef == CD_PHOEBE)
@@ -1965,8 +1938,27 @@ void alien_destroy(Object *alien, Object *attacker)
 			if (CHANCE(1 / 8.) && (alien-> flags & FL_WEAPCO) &&
 				(!(alien->flags & FL_NOBANTER)))
 			{
-				r = rand() % NMSG_PHOEBE_KILL;
-				radio_setMessage(FS_PHOEBE, phoebeKillMessage[r], 0);
+				radio_getRandomMessage(msg, _(
+					/// Phoebe brag messages
+					/// This is a list of brags separated by "\n".  They are randomly
+					/// broadcast when Phoebe successfully kills an enemy.
+					/// Instead of directly translating these, please populate the list
+					/// with brag messages that work well in the target language,
+					/// following the English version only as a general guideline.  Any
+					/// number of brag messages is permitted.
+					"I got another one!\n"
+					"Target destroyed!\n"
+					"One more for me!\n"
+					"Yes! Did you see that, Chris?\n"
+					"Hey Chris, remind me to check my kill count later!\n"
+					"Bring it on, WEAPCO!\n"
+					"Take that, WEAPCO!\n"
+					"My kill count is going up!\n"
+					"Another one bites the dust!\n"
+					"Yeah! Nothing can stand in our way!\n"
+					"I got it!"
+				));
+				radio_setMessage(FS_PHOEBE, msg, 0);
 			}
 		}
 		else if (attacker->classDef == CD_URSULA)
@@ -1975,8 +1967,30 @@ void alien_destroy(Object *alien, Object *attacker)
 			if (CHANCE(1 / 8.) && (alien-> flags & FL_WEAPCO) &&
 				(!(alien->flags & FL_NOBANTER)))
 			{
-				r = rand() % NMSG_URSULA_KILL;
-				radio_setMessage(FS_URSULA, ursulaKillMessage[r], 0);
+				radio_getRandomMessage(msg, _(
+					/// Ursula brag messages
+					/// This is a list of brags separated by "\n".  They are randomly
+					/// broadcast when Ursula successfully kills an enemy.
+					/// Instead of directly translating these, please populate the list
+					/// with brag messages that work well in the target language,
+					/// following the English version only as a general guideline.  Any
+					/// number of brag messages is permitted.
+					"Kicked your ass!\n"
+					"You ain't so tough!\n"
+					"I was always a better WEAPCO pilot than you!\n"
+					"Target destroyed!\n"
+					"That'll teach you!\n"
+					"Take that, you cruddy robots!\n"
+					"Is that all you've got?\n"
+					"Who else wants some?!\n"
+					"I'm not letting you beat me, Phoebe!\n"
+					"Bring it on, you mindless drones!\n"
+					"Oh, I'm sorry, are you getting your metal asses handed to you?\n"
+					"No one messes with the Lexx family!\n"
+					"Die, damned WEAPCO drones!\n"
+					"Don't think you can get away from me!"
+				));
+				radio_setMessage(FS_URSULA, msg, 0);
 			}
 		}
 		else
@@ -2035,7 +2049,7 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 {
 	int ai_type;
 	double run_chance;
-	
+
 	ai_type = ((game.difficulty == DIFFICULTY_ORIGINAL) ?
 		alien->AITypeOriginal : alien->AIType);
 
@@ -2124,7 +2138,3 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 			alien->systemPower = alien->maxShield;
 	}
 }
-
-#undef NMSG_CHRIS_KILL
-#undef NMSG_PHOEBE_KILL
-#undef NMSG_URSULA_KILL

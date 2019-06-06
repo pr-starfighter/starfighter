@@ -18,16 +18,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include <ctype.h>
+#include <libintl.h>
 #include <stdio.h>
 #include <string.h>
 
 #include "SDL.h"
 #include "SDL_image.h"
 
+
 #ifndef NOFONT
+
+// Undef MIN and MAX since pango-break.h includes these macros
+// (avoids compiler warnings)
+#ifdef MIN
+#undef MIN
+#endif
+
+#ifdef MAX
+#undef MAX
+#endif
+
 #include "SDL_ttf.h"
 #include <pango/pango-break.h>
+
 #endif
+
 
 #include "defs.h"
 #include "structs.h"
@@ -89,7 +104,16 @@ void gfx_init()
 		exit(1);
 	}
 
-	gfx_unicodeFont = TTF_OpenFont("data/TakaoGothic.ttf", 14);
+	/// If the TakaoGothic font is able to display the text of the language
+	/// being translated to, DO NOT CHANGE THIS!  If, however, the language
+	/// requires characters not available in the default font, you can
+	/// place that font in the "data" directory and indicate the name of the
+	/// alternate font as a translation to "TakaoPGothic.ttf" (leaving the
+	/// rest of the string unchanged).  Please ensure  that the font displays
+	/// correctly with ALL text (space is limited and some fonts take up
+	/// more space than others), and also check the license of the font
+	/// before distributing to make sure you are allowed to do so.
+	gfx_unicodeFont = TTF_OpenFont(_("data/TakaoPGothic.ttf"), 13);
 	if (gfx_unicodeFont == NULL)
 	{
 		printf("ERROR: TTF_OpenFont: %s\n", TTF_GetError());
@@ -144,19 +168,19 @@ static int gfx_renderStringBase(const char *in, int x, int y, int fontColor, int
 
 	area.x = x;
 	area.y = y;
-	area.w = 8;
-	area.h = 14;
+	area.w = PIXFONT_W;
+	area.h = PIXFONT_H;
 
 	letter.y = 0;
-	letter.w = 8;
-	letter.h = 14;
+	letter.w = PIXFONT_W;
+	letter.h = PIXFONT_H;
 
 	while (*in != '\0')
 	{
 		if (*in != ' ')
 		{
 			letter.x = (*in - 33);
-			letter.x *= 8;
+			letter.x *= PIXFONT_W;
 
 			/* Blit onto the screen surface */
 			if (SDL_BlitSurface(gfx_fontSprites[fontColor], &letter, dest, &area) < 0)
@@ -166,13 +190,13 @@ static int gfx_renderStringBase(const char *in, int x, int y, int fontColor, int
 			}
 		}
 
-		area.x += 9;
+		area.x += PIXFONT_W + 1;
 
 		if (wrap)
 		{
 			if ((area.x > (dest->w - 70)) && (*in == ' '))
 			{
-				area.y += 16;
+				area.y += PIXFONT_LINE_HEIGHT;
 				area.x = x;
 			}
 			else if (area.x > (dest->w - 31))
@@ -190,13 +214,13 @@ static int gfx_renderStringBase(const char *in, int x, int y, int fontColor, int
 				if (splitword)
 				{
 					letter.x = (int)('-') - 33;
-					letter.x *= 8;
+					letter.x *= PIXFONT_W;
 					if (SDL_BlitSurface(gfx_fontSprites[fontColor], &letter, dest, &area) < 0)
 					{
 						printf("BlitSurface error: %s\n", SDL_GetError());
 						engine_showError(2, "");
 					}
-					area.y += 16;
+					area.y += PIXFONT_LINE_HEIGHT;
 					area.x = x;
 				}
 			}
@@ -211,7 +235,7 @@ static int gfx_renderStringBase(const char *in, int x, int y, int fontColor, int
 int gfx_renderString(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest)
 {
 	if (x == -1)
-		x = (dest->w - (strlen(in) * 9)) / 2;
+		x = (dest->w - (strlen(in) * (PIXFONT_W + 1))) / 2;
 
 	gfx_renderStringBase(in, x, y - 1, FONT_OUTLINE, wrap, dest);
 	gfx_renderStringBase(in, x, y + 1, FONT_OUTLINE, wrap, dest);
@@ -228,11 +252,12 @@ int gfx_renderUnicode(const char *in, int x, int y, int fontColor, int wrap, SDL
 	return gfx_renderString(in, x, y, fontColor, wrap, dest);
 }
 #else
-int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest)
+int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest, int blended)
 {
 	SDL_Surface *textSurf;
 	SDL_Color color;
 	int w, h;
+	int avail_w;
 	int changed;
 	int breakPoints[STRMAX];
 	int nBreakPoints;
@@ -242,7 +267,9 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 	int nLogAttrs;
 	int i;
 	SDL_Rect area;
-	
+
+	avail_w = dest->w - x;
+
 	switch (fontColor)
 	{
 		case FONT_WHITE:
@@ -289,12 +316,12 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 			engine_error(TTF_GetError());
 		}
 
-		changed = 1;
-		while (changed && (w > dest->w))
+		changed = wrap;
+		while (changed && (w > avail_w))
 		{
 			nLogAttrs = strlen(remainingStr) + 1;
 			pango_get_log_attrs(remainingStr, strlen(remainingStr), -1, NULL, logAttrs, nLogAttrs);
-			
+
 			nBreakPoints = 0;
 			for (i = 0; i < nLogAttrs; i++)
 			{
@@ -314,9 +341,12 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 				{
 					engine_error(TTF_GetError());
 				}
-				if (w <= dest->w)
+				if (w <= avail_w)
 				{
-					textSurf = TTF_RenderUTF8_Solid(gfx_unicodeFont, testStr, color);
+					if (blended)
+						textSurf = TTF_RenderUTF8_Blended(gfx_unicodeFont, testStr, color);
+					else
+						textSurf = TTF_RenderUTF8_Solid(gfx_unicodeFont, testStr, color);
 					area.x = x;
 					area.y = y;
 					area.w = textSurf->w;
@@ -328,8 +358,8 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 					}
 					SDL_FreeSurface(textSurf);
 					textSurf = NULL;
-					y += TTF_FontHeight(gfx_unicodeFont);
-					
+					y += TTF_FontHeight(gfx_unicodeFont) + 1;
+
 					memmove(remainingStr, remainingStr + breakPoints[i],
 						(strlen(remainingStr) - breakPoints[i]) + 1);
 					changed = 1;
@@ -342,7 +372,10 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 				engine_error(TTF_GetError());
 			}
 		}
-		textSurf = TTF_RenderUTF8_Solid(gfx_unicodeFont, remainingStr, color);
+		if (blended)
+			textSurf = TTF_RenderUTF8_Blended(gfx_unicodeFont, remainingStr, color);
+		else
+			textSurf = TTF_RenderUTF8_Solid(gfx_unicodeFont, remainingStr, color);
 		area.x = x;
 		area.y = y;
 		area.w = textSurf->w;
@@ -352,7 +385,7 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 			printf("BlitSurface error: %s\n", SDL_GetError());
 			engine_showError(2, "");
 		}
-		y += TTF_FontHeight(gfx_unicodeFont);
+		y += TTF_FontHeight(gfx_unicodeFont) + 1;
 	}
 	else
 	{
@@ -364,13 +397,21 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 
 int gfx_renderUnicode(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest)
 {
-	gfx_renderUnicodeBase(in, x, y - 1, FONT_OUTLINE, wrap, dest);
-	gfx_renderUnicodeBase(in, x, y + 1, FONT_OUTLINE, wrap, dest);
-	gfx_renderUnicodeBase(in, x, y + 2, FONT_OUTLINE, wrap, dest);
-	gfx_renderUnicodeBase(in, x - 1, y, FONT_OUTLINE, wrap, dest);
-	gfx_renderUnicodeBase(in, x - 2, y, FONT_OUTLINE, wrap, dest);
-	gfx_renderUnicodeBase(in, x + 1, y, FONT_OUTLINE, wrap, dest);
-	return gfx_renderUnicodeBase(in, x, y, fontColor, wrap, dest);
+	int w;
+
+	if (x == -1)
+	{
+		TTF_SizeUTF8(gfx_unicodeFont, in, &w, NULL);
+		x = (dest->w - MIN(w, dest->w)) / 2;
+	}
+
+	gfx_renderUnicodeBase(in, x, y - 1, FONT_OUTLINE, wrap, dest, 1);
+	gfx_renderUnicodeBase(in, x, y + 1, FONT_OUTLINE, wrap, dest, 1);
+	gfx_renderUnicodeBase(in, x, y + 2, FONT_OUTLINE, wrap, dest, 1);
+	gfx_renderUnicodeBase(in, x - 1, y, FONT_OUTLINE, wrap, dest, 1);
+	gfx_renderUnicodeBase(in, x - 2, y, FONT_OUTLINE, wrap, dest, 1);
+	gfx_renderUnicodeBase(in, x + 1, y, FONT_OUTLINE, wrap, dest, 1);
+	return gfx_renderUnicodeBase(in, x, y, fontColor, wrap, dest, 1);
 }
 #endif
 
@@ -519,7 +560,7 @@ SDL_Surface *gfx_createSurface(int width, int height)
 SDL_Surface *gfx_createTextSurface(const char *inString, int color)
 {
 	// XXX: Magic numbers
-	SDL_Surface *surface = gfx_createSurface(strlen(inString) * 9, 16);
+	SDL_Surface *surface = gfx_createSurface(strlen(inString) * (PIXFONT_W + 1), PIXFONT_LINE_HEIGHT);
 
 	gfx_renderString(inString, 1, 1, color, 0, surface);
 
@@ -592,7 +633,7 @@ void gfx_createMessageBox(SDL_Surface *face, const char *message, int transparen
 		gfx_drawRect(gfx_messageBox, 0, 0, gfx_messageBox->w - 1, gfx_messageBox->h - 1, 0x00, 0x00, 0x00);
 		x = border;
 	}
-	
+
 	textArea = gfx_createSurface(gfx_messageBox->w - (x + border), gfx_messageBox->h - y);
 	gfx_renderUnicode(message, 0, 0, FONT_WHITE, 1, textArea);
 	gfx_blit(textArea, x, y, gfx_messageBox);
