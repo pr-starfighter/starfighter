@@ -418,7 +418,7 @@ void player_leaveSector()
 	if (engine.done == 2)
 	{
 		player.face = 0;
-		player.x += 12;
+		player.x += WARP_SPEED;
 		engine.ssx -= 0.2;
 		if (player.x > (2 * screen->w))
 			engine.done = 1;

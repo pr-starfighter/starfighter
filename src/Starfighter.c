@@ -112,11 +112,6 @@ int main(int argc, char **argv)
 			printf("No Audio\n");
 			engine.useAudio = 0;
 		}
-		if (strcmp(argv[i], "-mono") == 0)
-		{
-			printf("Mono sound output\n");
-			engine.useAudio = 1;
-		}
 		if ((strcmp(argv[i], "humans") == 0) && (cheatCount == 0))
 			cheatCount = 1;
 		if ((strcmp(argv[i], "do") == 0) && (cheatCount == 1))

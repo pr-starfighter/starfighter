@@ -293,7 +293,7 @@ void engine_setMode()
 #ifndef NOSOUND
 	if (engine.useAudio)
 	{
-		if (Mix_OpenAudio(44100, AUDIO_S16, engine.useAudio * 2, 1024) < 0)
+		if (Mix_OpenAudio(44100, AUDIO_S16, 2, 1024) < 0)
 		{
 			printf("Warning: Couldn't set 44100 Hz 16-bit stereo audio - Reason:\n%s\n", Mix_GetError());
 			printf("Sound and Music will be disabled\n");
@@ -358,7 +358,7 @@ void engine_resetLists()
 
 	engine.collectableHead->next = NULL;
 	engine.collectableTail = engine.collectableHead;
-	
+
 	r1 = screen_bufferHead->next;
 	while (r1 != NULL)
 	{
@@ -366,7 +366,7 @@ void engine_resetLists()
 		r1 = r1->next;
 		free(r2);
 	}
-	
+
 	screen_bufferHead->next = NULL;
 	screen_bufferTail = screen_bufferHead;
 

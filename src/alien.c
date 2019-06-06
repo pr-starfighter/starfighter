@@ -1802,35 +1802,20 @@ void alien_move(Object *alien)
 	{
 		for (int i = 0 ; i < ALIEN_MAX ; i++)
 		{
-			if ((alien->flags & FL_LEAVESECTOR) ||
-				(alien->classDef == CD_DRONE) ||
-				(alien->classDef == CD_ASTEROID2) ||
-				(alien->owner == aliens[i].owner) ||
-				(alien->owner->owner == aliens[i].owner) ||
-				(aliens[i].shield < 1))
+			if ((aliens[i].classDef == CD_BARRIER) &&
+					(aliens[i].owner != alien) &&
+					ship_collision(alien, &aliens[i]))
 			{
-				continue;
-			}
-
-			if (ship_collision(alien, &aliens[i]))
-			{
-				if ((aliens[i].classDef == CD_BARRIER) &&
-					(aliens[i].owner != alien))
-				{
-					alien->shield--;
-					alien->hit = 3;
-					alien->dx *= -1;
-					alien->dy *= -1;
-					audio_playSound(SFX_HIT, alien->x, alien->y);
-				}
+				alien->shield--;
+				alien->hit = 3;
+				alien->dx *= -1;
+				alien->dy *= -1;
+				audio_playSound(SFX_HIT, alien->x, alien->y);
 			}
 		}
-	}
 
-	// Handle a collision with the player
-	if ((player.shield > 0) && (alien->shield > 0) && (checkCollisions))
-	{
-		if (ship_collision(alien, &player))
+		// Handle a collision with the player
+		if ((player.shield > 0) && ship_collision(alien, &player))
 		{
 			if (alien->classDef == CD_ASTEROID)
 			{
