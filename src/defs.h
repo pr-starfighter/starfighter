@@ -79,8 +79,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MAX_HOMING 20
 #define MAX_DOUBLE_HOMING (game.difficulty != DIFFICULTY_ORIGINAL ? 15 : 10)
 #define MAX_MICRO_HOMING 10
+#define RAY_INTERVAL 250
 #define RAY_DAMAGE_DELAY 5
 #define WARP_SPEED MAX(12, 3 * screen->w / 200)
+#define ALIEN_WARP_SPEED MIN(-15, -3 * screen->w / 160)
+#define ALIEN_WARP_ACCEL (game.difficulty == DIFFICULTY_ORIGINAL ? -15: -0.5)
 
 #define PIXFONT_LINE_HEIGHT 16
 #define PIXFONT_W 8

@@ -1070,7 +1070,7 @@ static void game_doAliens()
 					// specified -15 as the *maximum* instead of the
 					// *minimum*, which at the time was equivalent to
 					// ``aliens[i].dx = -15``.
-					LIMIT_ADD(aliens[i].dx, -0.5, -15, 0);
+					LIMIT_ADD(aliens[i].dx, ALIEN_WARP_ACCEL, ALIEN_WARP_SPEED, 0);
 					aliens[i].dy = 0;
 					aliens[i].thinktime = 999;
 					aliens[i].face = 0;
@@ -1163,11 +1163,11 @@ static void game_doAliens()
 							{
 								aliens[i].flags += FL_FIRELASER;
 							}
-							// XXX: This ammo check only seems to work for ammo[0],
-							// not ammo[1], thus necessitating using ammo[0] instead of
-							// ammo[j]. Should be investigated in the future.
+							// Note: ammo[0] is required whether the ray is primary
+							// or secondary because futher below, ammo[0] increases on
+							// any alien that isn't currently firing a ray.
 							else if ((aliens[i].weaponType[j] == W_ENERGYRAY) &&
-								(aliens[i].ammo[0] >= 250))
+								(aliens[i].ammo[0] >= RAY_INTERVAL))
 							{
 								aliens[i].flags += FL_FIRERAY;
 								audio_playSound(SFX_ENERGYRAY, aliens[i].x, aliens[i].y);
@@ -1182,7 +1182,7 @@ static void game_doAliens()
 				}
 				else
 				{
-					LIMIT_ADD(aliens[i].ammo[0], 1, 0, 250);
+					LIMIT_ADD(aliens[i].ammo[0], 1, 0, RAY_INTERVAL);
 				}
 
 				if (aliens[i].flags & FL_FIRELASER)
