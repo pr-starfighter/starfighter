@@ -73,7 +73,7 @@ int save_initSlots()
 			{
 				if (i == 0)
 				{
-					sprintf(saveSlot[i], "AUTOSAVE");
+					sprintf(saveSlot[i], _("AUTOSAVE"));
 					continueSaveIndex = 0;
 				}
 				else
@@ -81,11 +81,11 @@ int save_initSlots()
 					if (fscanf(fp, "%*[^\n]%*c%*[^\n]%*c%d %*d %*d%*c%[^\n]%*c", &system,
 							stationedName) < 2)
 					{
-						sprintf(saveSlot[i], "Corrupt Game Data");
+						sprintf(saveSlot[i], _("Corrupt Game Data"));
 					}
 					else
 					{
-						sprintf(saveSlot[i], "%s, %s", systemNames[system],
+						sprintf(saveSlot[i], "%s, %s", game_systemNames[system],
 							stationedName);
 					}
 				}
@@ -109,7 +109,7 @@ int save_initSlots()
 			fp = fopen(fileName, "r");
 			if (fp == NULL)
 			{
-				sprintf(saveSlot[i], (i == 0 ? "AUTOSAVE (Empty)" : "Empty"));
+				sprintf(saveSlot[i], (i == 0 ? _("AUTOSAVE (Empty)") : _("Empty")));
 				if (engine.gameSection == SECTION_TITLE)
 					gfx_createTextObject(TS_SAVESLOT_0 + i, saveSlot[i],
 						0, imagePos, FONT_WHITE);
@@ -118,18 +118,18 @@ int save_initSlots()
 			{
 				if (i == 0)
 				{
-					sprintf(saveSlot[i], "AUTOSAVE");
+					sprintf(saveSlot[i], _("AUTOSAVE"));
 					continueSaveIndex = 0;
 				}
 				else
 				{
 					if (fread(&tempGame, sizeof(Game), 1, fp) != 1)
 					{
-						sprintf(saveSlot[i], "Corrupt Game Data");
+						sprintf(saveSlot[i], _("Corrupt Game Data"));
 					}
 					else
 					{
-						sprintf(saveSlot[i], "%s, %s", systemNames[tempGame.system],
+						sprintf(saveSlot[i], "%s, %s", game_systemNames[tempGame.system],
 							tempGame.stationedName);
 					}
 				}
@@ -375,11 +375,11 @@ void save_createSurface(SDL_Surface *savesSurface, int clickedSlot)
 			gfx_drawRect(savesSurface, 5, y, 338, 25, 0x99, 0x00, 0x00);
 		else
 			gfx_drawRect(savesSurface, 5, y, 338, 25, 0x00, 0x00, 0x99);
-		gfx_renderString(saveSlot[i], 70, y + 5, FONT_WHITE, 0, savesSurface);
+		gfx_renderUnicode(saveSlot[i], 70, y + 5, FONT_WHITE, 0, savesSurface);
 		y += 30;
 	}
 
-	gfx_renderString("*** HELP ***", 120, 170, FONT_WHITE, 0, savesSurface);
+	gfx_renderUnicode(_("*** HELP ***"), 120, 170, FONT_WHITE, 0, savesSurface);
 
 	switch (clickedSlot)
 	{
@@ -391,35 +391,20 @@ void save_createSurface(SDL_Surface *savesSurface, int clickedSlot)
 			gfx_drawRect(savesSurface, 5, 265, 100, 25, 0x00, 0x99, 0x00);
 			gfx_drawRect(savesSurface, 125, 265, 100, 25, 0x99, 0x99, 0x00);
 			gfx_drawRect(savesSurface, 243, 265, 100, 25, 0x99, 0x00, 0x00);
-			gfx_renderString("SAVE", 40, 270, FONT_WHITE, 0, savesSurface);
-			gfx_renderString("CANCEL", 150, 270, FONT_WHITE, 0, savesSurface);
-			gfx_renderString("DELETE", 270, 270, FONT_WHITE, 0, savesSurface);
-
-			/// Explanation of what the SAVE button does (note: "SAVE" is untranslated).
-			/// This must be short enough to fit on a single line.
+			gfx_renderUnicode(_("SAVE"), 40, 270, FONT_WHITE, 0, savesSurface);
+			gfx_renderUnicode(_("CANCEL"), 150, 270, FONT_WHITE, 0, savesSurface);
+			gfx_renderUnicode(_("DELETE"), 270, 270, FONT_WHITE, 0, savesSurface);
 			gfx_renderUnicode(_("SAVE will save the game"), 17, 200, FONT_WHITE, 0, savesSurface);
-
-			/// Explanation of what the CANCEL button does (note: "CANCEL" is untranslated)
-			/// This must be short enough to fit on a single line.
 			gfx_renderUnicode(_("CANCEL will unselect that slot"), 17, 220, FONT_WHITE, 0, savesSurface);
-
-			/// Explanation of what the DELETE button does (note: "DELETE" is untranslated)
-			/// This must be short enough to fit on a single line.
 			gfx_renderUnicode(_("DELETE will remove the save"), 17, 240, FONT_WHITE, 0, savesSurface);
 			break;
 		case -1:
-			/// For when the player attempts to click "SAVE" or "DELETE" without selecting a slot.
-			/// This must be short enough to fit on a single line.
 			gfx_renderUnicode(_("First click a Save game slot to use"), 17, 200, FONT_WHITE, 0, savesSurface);
 			break;
 		case -10:
-			/// For when the game is successfully saved.
-			/// This must be short enough to fit on a single line.
 			gfx_renderUnicode(_("Game Saved"), 130, 200, FONT_WHITE, 0, savesSurface);
 			break;
 		case -11:
-			/// For when the save slot is successfully deleted.
-			/// This must be short enough to fit on a single line.
 			gfx_renderUnicode(_("Save Deleted"), 130, 200, FONT_WHITE, 0, savesSurface);
 			break;
 	}

@@ -252,7 +252,7 @@ int gfx_renderUnicode(const char *in, int x, int y, int fontColor, int wrap, SDL
 	return gfx_renderString(in, x, y, fontColor, wrap, dest);
 }
 #else
-int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest, int blended)
+int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest)
 {
 	SDL_Surface *textSurf;
 	SDL_Color color;
@@ -267,6 +267,9 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 	int nLogAttrs;
 	int i;
 	SDL_Rect area;
+
+	if (strcmp(in, "") == 0)
+		return y;
 
 	avail_w = dest->w - x;
 
@@ -343,10 +346,13 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 				}
 				if (w <= avail_w)
 				{
-					if (blended)
-						textSurf = TTF_RenderUTF8_Blended(gfx_unicodeFont, testStr, color);
-					else
-						textSurf = TTF_RenderUTF8_Solid(gfx_unicodeFont, testStr, color);
+					textSurf = TTF_RenderUTF8_Blended(gfx_unicodeFont, testStr, color);
+					if (textSurf == NULL)
+					{
+						printf("While rendering testStr \"%s\" as unicode...\n", testStr);
+						engine_error("Attempted to render UTF8, got null surface!");
+					}
+
 					area.x = x;
 					area.y = y;
 					area.w = textSurf->w;
@@ -372,10 +378,13 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 				engine_error(TTF_GetError());
 			}
 		}
-		if (blended)
-			textSurf = TTF_RenderUTF8_Blended(gfx_unicodeFont, remainingStr, color);
-		else
-			textSurf = TTF_RenderUTF8_Solid(gfx_unicodeFont, remainingStr, color);
+		textSurf = TTF_RenderUTF8_Blended(gfx_unicodeFont, remainingStr, color);
+		if (textSurf == NULL)
+		{
+			printf("While rendering remainingStr \"%s\" as unicode...\n", remainingStr);
+			engine_error("Attempted to render UTF8, got null surface!");
+		}
+
 		area.x = x;
 		area.y = y;
 		area.w = textSurf->w;
@@ -385,6 +394,8 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 			printf("BlitSurface error: %s\n", SDL_GetError());
 			engine_showError(2, "");
 		}
+		SDL_FreeSurface(textSurf);
+		textSurf = NULL;
 		y += TTF_FontHeight(gfx_unicodeFont) + 1;
 	}
 	else
@@ -405,13 +416,13 @@ int gfx_renderUnicode(const char *in, int x, int y, int fontColor, int wrap, SDL
 		x = (dest->w - MIN(w, dest->w)) / 2;
 	}
 
-	gfx_renderUnicodeBase(in, x, y - 1, FONT_OUTLINE, wrap, dest, 1);
-	gfx_renderUnicodeBase(in, x, y + 1, FONT_OUTLINE, wrap, dest, 1);
-	gfx_renderUnicodeBase(in, x, y + 2, FONT_OUTLINE, wrap, dest, 1);
-	gfx_renderUnicodeBase(in, x - 1, y, FONT_OUTLINE, wrap, dest, 1);
-	gfx_renderUnicodeBase(in, x - 2, y, FONT_OUTLINE, wrap, dest, 1);
-	gfx_renderUnicodeBase(in, x + 1, y, FONT_OUTLINE, wrap, dest, 1);
-	return gfx_renderUnicodeBase(in, x, y, fontColor, wrap, dest, 1);
+	gfx_renderUnicodeBase(in, x, y - 1, FONT_OUTLINE, wrap, dest);
+	gfx_renderUnicodeBase(in, x, y + 1, FONT_OUTLINE, wrap, dest);
+	gfx_renderUnicodeBase(in, x, y + 2, FONT_OUTLINE, wrap, dest);
+	gfx_renderUnicodeBase(in, x - 1, y, FONT_OUTLINE, wrap, dest);
+	gfx_renderUnicodeBase(in, x - 2, y, FONT_OUTLINE, wrap, dest);
+	gfx_renderUnicodeBase(in, x + 1, y, FONT_OUTLINE, wrap, dest);
+	return gfx_renderUnicodeBase(in, x, y, fontColor, wrap, dest);
 }
 #endif
 
@@ -559,10 +570,25 @@ SDL_Surface *gfx_createSurface(int width, int height)
 
 SDL_Surface *gfx_createTextSurface(const char *inString, int color)
 {
-	// XXX: Magic numbers
-	SDL_Surface *surface = gfx_createSurface(strlen(inString) * (PIXFONT_W + 1), PIXFONT_LINE_HEIGHT);
+	int w, h, th;
 
-	gfx_renderString(inString, 1, 1, color, 0, surface);
+#ifndef NOFONT
+	if (TTF_SizeUTF8(gfx_unicodeFont, inString, &w, &th) < 0)
+	{
+		engine_error(TTF_GetError());
+	}
+	w += 2;
+	th += 2;
+	h = MAX(th, PIXFONT_LINE_HEIGHT);
+#else
+	w = strlen(inString) * (PIXFONT_W + 1) + 1;
+	th = PIXFONT_H;
+	h = MAX(PIXFONT_LINE_HEIGHT, PIXFONT_H + 2);
+#endif
+
+	SDL_Surface *surface = gfx_createSurface(w, h);
+
+	gfx_renderUnicode(inString, 1, (h - th) / 2, color, 0, surface);
 
 	return gfx_setTransparent(surface);
 }

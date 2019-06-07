@@ -17,8 +17,6 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-const char * const systemNames[] = {"Spirit", "Eyananth", "Mordor", "Sol"};
-
 const char * const systemBackground[] = {
 	"gfx/spirit.jpg", "gfx/eyananth.jpg", "gfx/mordor.jpg", "gfx/sol.jpg"
 };

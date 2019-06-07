@@ -67,6 +67,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 #define STRMAX 2000
+#define STRMAX_SHORT 200
 
 #define FULLSCREEN SDL_WINDOW_FULLSCREEN_DESKTOP
 
@@ -90,33 +91,33 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PIXFONT_H 14
 
 #define MENU_Y (screen->h / 3 + 50)
+#define MENU_W 400
 #define MENU_SPACING 20
 
 // Object Flags
-#define FL_WEAPCO 1
-#define FL_FRIEND 2
-#define FL_IMMORTAL 4
-#define FL_NOMOVE 8
-#define FL_NOFIRE 16
-#define FL_FIRERAY 32
-#define FL_DAMAGEOWNER 64
-#define FL_LEAVESECTOR 128
-#define FL_ESCAPED 256
-#define FL_DROPMINES 512
-#define FL_AIMS 1024
-#define FL_DISABLED 2048
-#define FL_CANNOTDIE 4096 // No longer used
-#define FL_RUNSAWAY 8192
-#define FL_ALWAYSFACE 16384 // Kline doesn't turn his back on you! ;)
-#define FL_CIRCLES 32768L // Kline can circle around
-#define FL_CONTINUOUS_FIRE 65536L // Go absolutely nutts(!)
-#define FL_DEPLOYDRONES 131072L // Deploys small drone - Used by Boss 2
-#define FL_CANCLOAK 262144L
-#define FL_ISCLOAKED 524288L
-#define FL_ACTIVATE 1048576L
-#define FL_HASMINIMUMSPEED 2097152L
-#define FL_FIRELASER 4194304L
-#define FL_NOBANTER 8388608L
+#define FL_WEAPCO 			(1L << 0)
+#define FL_FRIEND 			(1L << 1)
+#define FL_IMMORTAL 		(1L << 2)
+#define FL_NOMOVE 			(1L << 3)
+#define FL_NOFIRE 			(1L << 4)
+#define FL_FIRERAY 			(1L << 5)
+#define FL_DAMAGEOWNER 		(1L << 6)
+#define FL_LEAVESECTOR 		(1L << 7)
+#define FL_ESCAPED 			(1L << 8)
+#define FL_DROPMINES 		(1L << 9)
+#define FL_AIMS 			(1L << 10)
+#define FL_DISABLED 		(1L << 11)
+#define FL_RUNSAWAY 		(1L << 12)
+#define FL_ALWAYSFACE 		(1L << 13) // Kline doesn't turn his back on you! ;)
+#define FL_CIRCLES 			(1L << 14) // Kline can circle around
+#define FL_CONTINUOUS_FIRE 	(1L << 15) // Go absolutely nutts(!)
+#define FL_DEPLOYDRONES 	(1L << 16) // Deploys small drone - Used by Boss 2
+#define FL_CANCLOAK 		(1L << 17)
+#define FL_ISCLOAKED 		(1L << 18)
+#define FL_ACTIVATE 		(1L << 19)
+#define FL_HASMINIMUMSPEED 	(1L << 20)
+#define FL_FIRELASER 		(1L << 21)
+#define FL_NOBANTER 		(1L << 22)
 
 // Weapon flags
 #define WF_SPREAD 4
@@ -702,7 +703,8 @@ enum {
 	SYSTEM_SPIRIT,
 	SYSTEM_EYANANTH,
 	SYSTEM_MORDOR,
-	SYSTEM_SOL
+	SYSTEM_SOL,
+	SYSTEM_MAX
 };
 
 // Planets (Spirit)
@@ -791,7 +793,6 @@ enum {
 	DIFFICULTY_MAX
 };
 
-extern const char * const systemNames[];
 extern const char * const systemBackground[];
 extern const int rate2reload[6];
 

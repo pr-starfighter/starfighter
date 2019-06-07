@@ -59,6 +59,7 @@ typedef struct Star_ {
 } Star;
 
 Game game;
+char game_systemNames[SYSTEM_MAX][STRMAX_SHORT];
 
 static Star stars[STARS_NUM];
 static Uint32 frameLimit = 0;
@@ -67,6 +68,11 @@ static int thirds = 0;
 
 void game_init()
 {
+	strcpy(game_systemNames[SYSTEM_SPIRIT], _("Spirit"));
+	strcpy(game_systemNames[SYSTEM_EYANANTH], _("Eyananth"));
+	strcpy(game_systemNames[SYSTEM_MORDOR], _("Mordor"));
+	strcpy(game_systemNames[SYSTEM_SOL], _("Sol"));
+
 	game.system = SYSTEM_SPIRIT;
 	game.area = MISN_START;
 	game.sfxVolume = 0;
@@ -2281,6 +2287,30 @@ static void game_showGameOver()
 	SDL_FreeSurface(gameover);
 	audio_haltMusic();
 	screen_flushBuffer();
+}
+
+void game_getDifficultyText(char *dest, int difficulty)
+{
+	switch (difficulty)
+	{
+		case DIFFICULTY_EASY:
+			strcpy(dest, "Easy");
+			break;
+		case DIFFICULTY_NORMAL:
+			strcpy(dest, "Normal");
+			break;
+		case DIFFICULTY_HARD:
+			strcpy(dest, "Hard");
+			break;
+		case DIFFICULTY_NIGHTMARE:
+			strcpy(dest, "Nightmare!");
+			break;
+		case DIFFICULTY_ORIGINAL:
+			strcpy(dest, "Classic");
+			break;
+		default:
+			strcpy(dest, "???");
+	}
 }
 
 int game_mainLoop()

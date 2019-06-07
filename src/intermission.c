@@ -209,7 +209,7 @@ void intermission_updateSystemStatus()
 		intermission_planets[game.stationedPlanet].missionCompleted = 1;
 	}
 
-	strcpy(game.destinationName, "None");
+	strcpy(game.destinationName, _("None"));
 	game.destinationPlanet = game.stationedPlanet;
 }
 
@@ -232,80 +232,78 @@ These are set only once.
 */
 static void intermission_setStatusLines()
 {
-	char string[50];
-	char difficulty[50];
-	int timeTaken = game.timeTaken;
+	char string[STRMAX_SHORT];
+	char difficulty[STRMAX_SHORT];
+	long timeTaken = game.timeTaken;
 
-	switch (game.difficulty)
-	{
-		case DIFFICULTY_EASY:
-			strcpy(difficulty, "Easy");
-			break;
-		case DIFFICULTY_NORMAL:
-			strcpy(difficulty, "Normal");
-			break;
-		case DIFFICULTY_HARD:
-			strcpy(difficulty, "Hard");
-			break;
-		case DIFFICULTY_NIGHTMARE:
-			strcpy(difficulty, "Nightmare!");
-			break;
-		case DIFFICULTY_ORIGINAL:
-			strcpy(difficulty, "Classic");
-			break;
-		default:
-			strcpy(difficulty, "???");
-	}
+	game_getDifficultyText(difficulty, game.difficulty);
 
-	sprintf(string, "Difficulty : %s", difficulty);
+	/// Retain "%s" as-is.  It is replaced with the current difficulty.
+	sprintf(string, _("Difficulty : %s"), difficulty);
 	gfx_createTextObject(TS_STATUS_DIFFICULTY, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Shots Fired : %d", game.shots);
+	/// Retain "%d" as-is.  It is replaced with the number of shots fired.
+	sprintf(string, _("Shots Fired : %d"), game.shots);
 	gfx_createTextObject(TS_SHOTS_FIRED, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Hits Scored : %d", game.hits);
+	/// Retain "%d" as-is.  It is replaced with the number of hits scored.
+	sprintf(string, _("Hits Scored : %d"), game.hits);
 	gfx_createTextObject(TS_HITS_SCORED, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Accuracy : %d%%", game.accuracy);
+	/// Retain "%d" as-is.  It is replaced with the firing accuracy as a percentage.
+	/// Note: To use the "%" symbol, you must enter "%%", as you can see in
+	/// the English version.
+	sprintf(string, _("Accuracy : %d%%"), game.accuracy);
 	gfx_createTextObject(TS_ACCURACY, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Enemies Killed by Others : %d", game.totalOtherKills);
+	/// Retain "%d" as-is.  It is replaced with the number of kills.
+	sprintf(string, _("Enemies Killed by Others : %d"), game.totalOtherKills);
 	gfx_createTextObject(TS_OTHER_KILLS, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Total Cash Earned : %d", game.cashEarned);
+	/// Retain "%d" as-is.  It is replaced with the amount of cash earned.
+	sprintf(string, _("Total Cash Earned : %d"), game.cashEarned);
 	gfx_createTextObject(TS_CASH_EARNED, string, 0, 0, FONT_WHITE);
 
-	gfx_createTextObject(TS_CHRIS_HEADER, "*** Chris ***", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_CHRIS_HEADER, _("*** Chris ***"), 0, 0, FONT_WHITE);
 
-	sprintf(string, "Enemies Killed : %d", game.totalKills);
+	/// Retain "%d" as-is.  It is replaced with the number of kills.
+	sprintf(string, _("Enemies Killed : %d"), game.totalKills);
 	gfx_createTextObject(TS_CHRIS_KILLS, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Shield Restores Picked Up : %d", game.shieldPickups);
+	/// Retain "%d" as-is.  It is replaced with the number of shield restores picked up.
+	sprintf(string, _("Shield Restores Picked Up : %d"), game.shieldPickups);
 	gfx_createTextObject(TS_CHRIS_SHIELD_PICKUPS, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Plasma Cells Picked Up : %d", game.cellPickups);
+	/// Retain "%d" as-is.  It is replaced with the number of plasma cells picked up.
+	sprintf(string, _("Plasma Cells Picked Up : %d"), game.cellPickups);
 	gfx_createTextObject(TS_CHRIS_PLASMA_PICKUPS, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Rockets Picked Up : %d", game.rocketPickups);
+	/// Retain "%d" as-is.  It is replaced with the number of rockets picked up.
+	sprintf(string, _("Rockets Picked Up : %d"), game.rocketPickups);
 	gfx_createTextObject(TS_CHRIS_ROCKET_PICKUPS, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Powerups Picked Up : %d", game.powerups);
+	/// Retain "%d" as-is.  It is replaced with the number of powerups picked up.
+	sprintf(string, _("Powerups Picked Up : %d"), game.powerups);
 	gfx_createTextObject(TS_CHRIS_POWERUP_PICKUPS, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Mines Destroyed : %d", game.minesKilled);
+	/// Retain "%d" as-is.  It is replaced with the number of mines destroyed.
+	sprintf(string, _("Mines Destroyed : %d"), game.minesKilled);
 	gfx_createTextObject(TS_CHRIS_MINES_KILLED, string, 0, 0, FONT_WHITE);
 
-	sprintf(string, "Slaves Rescued : %d", game.slavesRescued);
+	/// Retain "%d" as-is.  It is replaced with the number of slaves rescued.
+	sprintf(string, _("Slaves Rescued : %d"), game.slavesRescued);
 	gfx_createTextObject(TS_CHRIS_SLAVES_RESCUED, string, 0, 0, FONT_WHITE);
 
 	if (game.hasWingMate1)
 	{
-		gfx_createTextObject(TS_PHOEBE_HEADER, "*** Phoebe ***", 0, 0, FONT_WHITE);
+		gfx_createTextObject(TS_PHOEBE_HEADER, _("*** Phoebe ***"), 0, 0, FONT_WHITE);
 
-		sprintf(string, "Enemies Killed : %d", game.wingMate1Kills);
+		/// Retain "%d" as-is.  It is replaced with the number of kills.
+		sprintf(string, _("Enemies Killed : %d"), game.wingMate1Kills);
 		gfx_createTextObject(TS_PHOEBE_KILLS, string, 0, 0, FONT_WHITE);
 
-		sprintf(string, "Ejections : %d", game.wingMate1Ejects);
+		/// Retain "%d" as-is.  It is replaced with the number of ejections.
+		sprintf(string, _("Ejections : %d"), game.wingMate1Ejects);
 		gfx_createTextObject(TS_PHOEBE_DEATHS, string, 0, 0, FONT_WHITE);
 	}
 	else
@@ -317,12 +315,14 @@ static void intermission_setStatusLines()
 
 	if (game.hasWingMate2)
 	{
-		gfx_createTextObject(TS_URSULA_HEADER, "*** Ursula ***", 0, 0, FONT_WHITE);
+		gfx_createTextObject(TS_URSULA_HEADER, _("*** Ursula ***"), 0, 0, FONT_WHITE);
 
-		sprintf(string, "Enemies Killed : %d", game.wingMate2Kills);
+		/// Retain "%d" as-is.  It is replaced with the number of kills.
+		sprintf(string, _("Enemies Killed : %d"), game.wingMate2Kills);
 		gfx_createTextObject(TS_URSULA_KILLS, string, 0, 0, FONT_WHITE);
 
-		sprintf(string, "Ejections : %d", game.wingMate2Ejects);
+		/// Retain "%d" as-is.  It is replaced with the number of ejections.
+		sprintf(string, _("Ejections : %d"), game.wingMate2Ejects);
 		gfx_createTextObject(TS_URSULA_DEATHS, string, 0, 0, FONT_WHITE);
 	}
 	else
@@ -332,9 +332,22 @@ static void intermission_setStatusLines()
 		gfx_createTextObject(TS_URSULA_DEATHS, "", 0, 0, FONT_WHITE);
 	}
 
-	gfx_createTextObject(TS_STATUS_HEADER, "Current Status", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_STATUS_HEADER, _("Current Status"), 0, 0, FONT_WHITE);
 
-	snprintf(string, sizeof string, "Total Time : %2d:%02d:%02d", timeTaken / 3600, (timeTaken / 60) % 60, timeTaken % 60);
+	/// "%ld" (which represents hours) and "%02ld" sequences (which
+	/// represent minutes and seconds, respectively) must remain and
+	/// stay in the same order relative to each other.  The ":"s
+	/// between them can be changed to other characters if desired,
+	/// e.g. this would be acceptable:
+	///
+	///     "Total Time : %ld hours, %02ld minutes, %02ld seconds"
+	///
+	/// If you are familiar with printf formatting, you may also change
+	/// the formatting of any of these as long as the "ld" type remains.
+	/// For example, the "%02ld" sequences may be changed to "%ld" if
+	/// you wish to not force two digits to be filled in (e.g. to render
+	/// the number 3 as "3" instead of "03").
+	snprintf(string, sizeof string, _("Total Time : %ld:%02ld:%02ld"), timeTaken / 3600, (timeTaken / 60) % 60, timeTaken % 60);
 	gfx_createTextObject(TS_STATUS_FOOTER, string, 0, 0, FONT_WHITE);
 }
 
@@ -358,23 +371,23 @@ static void intermission_setPlanets()
 	{
 		case SYSTEM_SPIRIT:
 			intermission_planets[PLANET_HAIL].dist = 3;
-			strcpy(intermission_planets[PLANET_HAIL].name, "Hail");
+			strcpy(intermission_planets[PLANET_HAIL].name, _("Hail"));
 			intermission_planets[PLANET_HAIL].image = gfx_sprites[SP_PLANET_GREEN];
 
 			intermission_planets[PLANET_CERADSE].dist = 6;
-			strcpy(intermission_planets[PLANET_CERADSE].name, "Ceradse");
+			strcpy(intermission_planets[PLANET_CERADSE].name, _("Ceradse"));
 			intermission_planets[PLANET_CERADSE].image = gfx_sprites[SP_PLANET_BLUE];
 
 			intermission_planets[PLANET_HINSTAG].dist = 6;
-			strcpy(intermission_planets[PLANET_HINSTAG].name, "Hinstag");
+			strcpy(intermission_planets[PLANET_HINSTAG].name, _("Hinstag"));
 			intermission_planets[PLANET_HINSTAG].image = gfx_sprites[SP_PLANET_RED];
 
 			intermission_planets[PLANET_JOLDAR].dist = 4;
-			strcpy(intermission_planets[PLANET_JOLDAR].name, "Joldar");
+			strcpy(intermission_planets[PLANET_JOLDAR].name, _("Joldar"));
 			intermission_planets[PLANET_JOLDAR].image = gfx_sprites[SP_PLANET_GREEN];
 
 			intermission_planets[PLANET_MOEBO].dist = 8;
-			strcpy(intermission_planets[PLANET_MOEBO].name, "Moebo");
+			strcpy(intermission_planets[PLANET_MOEBO].name, _("Moebo"));
 			intermission_planets[PLANET_MOEBO].image = gfx_sprites[SP_PLANET_ORANGE];
 
 			intermission_planets[PLANET_HAIL].messageMission = MISN_HAIL;
@@ -410,26 +423,26 @@ static void intermission_setPlanets()
 			break;
 
 		case SYSTEM_EYANANTH:
-			strcpy(intermission_planets[PLANET_RESCUESLAVES].name, "WEAPCO interceptions");
+			strcpy(intermission_planets[PLANET_RESCUESLAVES].name, _("WEAPCO interceptions"));
 
 			intermission_planets[PLANET_NEROD].dist = 3;
-			strcpy(intermission_planets[PLANET_NEROD].name, "Nerod");
+			strcpy(intermission_planets[PLANET_NEROD].name, _("Nerod"));
 			intermission_planets[PLANET_NEROD].image = gfx_sprites[SP_PLANET_GREEN];
 
 			intermission_planets[PLANET_ALLEZ].dist = 6;
-			strcpy(intermission_planets[PLANET_ALLEZ].name, "Allez");
+			strcpy(intermission_planets[PLANET_ALLEZ].name, _("Allez"));
 			intermission_planets[PLANET_ALLEZ].image = gfx_sprites[SP_PLANET_BLUE];
 
 			intermission_planets[PLANET_URUSOR].dist = 6;
-			strcpy(intermission_planets[PLANET_URUSOR].name, "Urusor");
+			strcpy(intermission_planets[PLANET_URUSOR].name, _("Urusor"));
 			intermission_planets[PLANET_URUSOR].image = gfx_sprites[SP_PLANET_RED];
 
 			intermission_planets[PLANET_DORIM].dist = 4;
-			strcpy(intermission_planets[PLANET_DORIM].name, "Dorim");
+			strcpy(intermission_planets[PLANET_DORIM].name, _("Dorim"));
 			intermission_planets[PLANET_DORIM].image = gfx_sprites[SP_PLANET_GREEN];
 
 			intermission_planets[PLANET_ELAMALE].dist = 8;
-			strcpy(intermission_planets[PLANET_ELAMALE].name, "Elamale");
+			strcpy(intermission_planets[PLANET_ELAMALE].name, _("Elamale"));
 			intermission_planets[PLANET_ELAMALE].image = gfx_sprites[SP_PLANET_ORANGE];
 
 			intermission_planets[PLANET_RESCUESLAVES].messageMission = MISN_RESCUESLAVES;
@@ -471,30 +484,30 @@ static void intermission_setPlanets()
 			break;
 
 		case SYSTEM_MORDOR:
-			strcpy(intermission_planets[PLANET_CLOAKFIGHTER].name, "WEAPCO interceptions");
+			strcpy(intermission_planets[PLANET_CLOAKFIGHTER].name, _("WEAPCO interceptions"));
 
 			intermission_planets[PLANET_ODEON].dist = 3;
-			strcpy(intermission_planets[PLANET_ODEON].name, "Odeon");
+			strcpy(intermission_planets[PLANET_ODEON].name, _("Odeon"));
 			intermission_planets[PLANET_ODEON].image = gfx_sprites[SP_PLANET_GREEN];
 
 			intermission_planets[PLANET_FELLON].dist = 6;
-			strcpy(intermission_planets[PLANET_FELLON].name, "Fellon");
+			strcpy(intermission_planets[PLANET_FELLON].name, _("Fellon"));
 			intermission_planets[PLANET_FELLON].image = gfx_sprites[SP_PLANET_BLUE];
 
 			intermission_planets[PLANET_SIVEDI].dist = 6;
-			strcpy(intermission_planets[PLANET_SIVEDI].name, "Sivedi");
+			strcpy(intermission_planets[PLANET_SIVEDI].name, _("Sivedi"));
 			intermission_planets[PLANET_SIVEDI].image = gfx_sprites[SP_PLANET_RED];
 
 			intermission_planets[PLANET_ALMARTHA].dist = 4;
-			strcpy(intermission_planets[PLANET_ALMARTHA].name, "Almartha");
+			strcpy(intermission_planets[PLANET_ALMARTHA].name, _("Almartha"));
 			intermission_planets[PLANET_ALMARTHA].image = gfx_sprites[SP_PLANET_GREEN];
 
 			intermission_planets[PLANET_POSWIC].dist = 4;
-			strcpy(intermission_planets[PLANET_POSWIC].name, "Poswic");
+			strcpy(intermission_planets[PLANET_POSWIC].name, _("Poswic"));
 			intermission_planets[PLANET_POSWIC].image = gfx_sprites[SP_PLANET_ORANGE];
 
 			intermission_planets[PLANET_ELLESH].dist = 8;
-			strcpy(intermission_planets[PLANET_ELLESH].name, "Ellesh");
+			strcpy(intermission_planets[PLANET_ELLESH].name, _("Ellesh"));
 			intermission_planets[PLANET_ELLESH].image = gfx_sprites[SP_PLANET_GREEN];
 
 			intermission_planets[PLANET_CLOAKFIGHTER].messageMission = MISN_CLOAKFIGHTER;
@@ -543,39 +556,39 @@ static void intermission_setPlanets()
 
 		case SYSTEM_SOL:
 			intermission_planets[PLANET_MERCURY].dist = 3;
-			strcpy(intermission_planets[PLANET_MERCURY].name, "Mercury");
+			strcpy(intermission_planets[PLANET_MERCURY].name, _("Mercury"));
 			intermission_planets[PLANET_MERCURY].image = gfx_sprites[SP_PLANET_RED];
 
 			intermission_planets[PLANET_VENUS].dist = 4;
-			strcpy(intermission_planets[PLANET_VENUS].name, "Venus");
+			strcpy(intermission_planets[PLANET_VENUS].name, _("Venus"));
 			intermission_planets[PLANET_VENUS].image = gfx_sprites[SP_PLANET_ORANGE];
 
 			intermission_planets[PLANET_EARTH].dist = 4;
-			strcpy(intermission_planets[PLANET_EARTH].name, "Earth");
+			strcpy(intermission_planets[PLANET_EARTH].name, _("Earth"));
 			intermission_planets[PLANET_EARTH].image = gfx_sprites[SP_PLANET_BLUE];
 
 			intermission_planets[PLANET_MARS].dist = 4;
-			strcpy(intermission_planets[PLANET_MARS].name, "Mars");
+			strcpy(intermission_planets[PLANET_MARS].name, _("Mars"));
 			intermission_planets[PLANET_MARS].image = gfx_sprites[SP_PLANET_RED];
 
 			intermission_planets[PLANET_JUPITER].dist = 6;
-			strcpy(intermission_planets[PLANET_JUPITER].name, "Jupiter");
+			strcpy(intermission_planets[PLANET_JUPITER].name, _("Jupiter"));
 			intermission_planets[PLANET_JUPITER].image = gfx_sprites[SP_PLANET_ORANGE];
 
 			intermission_planets[PLANET_SATURN].dist = 4;
-			strcpy(intermission_planets[PLANET_SATURN].name, "Saturn");
+			strcpy(intermission_planets[PLANET_SATURN].name, _("Saturn"));
 			intermission_planets[PLANET_SATURN].image = gfx_sprites[SP_PLANET_GREEN];
 
 			intermission_planets[PLANET_URANUS].dist = 4;
-			strcpy(intermission_planets[PLANET_URANUS].name, "Uranus");
+			strcpy(intermission_planets[PLANET_URANUS].name, _("Uranus"));
 			intermission_planets[PLANET_URANUS].image = gfx_sprites[SP_PLANET_BLUE];
 
 			intermission_planets[PLANET_NEPTUNE].dist = 4;
-			strcpy(intermission_planets[PLANET_NEPTUNE].name, "Neptune");
+			strcpy(intermission_planets[PLANET_NEPTUNE].name, _("Neptune"));
 			intermission_planets[PLANET_NEPTUNE].image = gfx_sprites[SP_PLANET_BLUE];
 
 			intermission_planets[PLANET_PLUTO].dist = 4;
-			strcpy(intermission_planets[PLANET_PLUTO].name, "Pluto");
+			strcpy(intermission_planets[PLANET_PLUTO].name, _("Pluto"));
 			intermission_planets[PLANET_PLUTO].image = gfx_sprites[SP_PLANET_BLUE];
 
 			intermission_planets[PLANET_PLUTO].messageMission = MISN_PLUTO;
@@ -669,7 +682,7 @@ static int intermission_showSystem(float pos, int selectable)
 		{
 			if (!printedName)
 			{
-				screen_renderString(intermission_planets[planet].name, -1, screen->h - 25, FONT_WHITE);
+				screen_renderUnicode(intermission_planets[planet].name, -1, screen->h - 25, FONT_WHITE);
 				printedName = 1;
 			}
 			if ((engine.keyState[KEY_FIRE]))
@@ -748,9 +761,7 @@ static void intermission_createCommsSurface(SDL_Surface *comms)
 
 	gfx_drawRect(comms, 0, 0, comms->w - 1, comms->h - 1, 0x00, 0x00, 0x25);
 
-	gfx_renderString("+++ CURRENT MISSIONS +++", -1, 15, FONT_GREEN, 0, comms);
-
-	/// Please keep this short; it is always rendered as a single line.
+	gfx_renderUnicode(_("+++ CURRENT MISSIONS +++"), -1, 15, FONT_GREEN, 0, comms);
 	gfx_renderUnicode(_("click for info"), -1, 35, FONT_WHITE, 0, comms);
 
 	yStart = 60;
@@ -772,7 +783,7 @@ static int intermission_renderDialog(SDL_Surface *comms, int y, int face, const 
 {
 	int newY;
 	gfx_blit(gfx_faceSprites[face], 10, y, comms);
-	newY = gfx_renderUnicode(string, 80, y, FONT_WHITE, 1, comms) + 20;
+	newY = gfx_renderUnicode(string, 80, y, FONT_WHITE, 1, comms) + MENU_SPACING;
 	if (newY < y + 60)
 		newY += (60 - (newY - y));
 	return newY;
@@ -1235,7 +1246,7 @@ static void intermission_createOptions(SDL_Surface *optionsSurface)
 
 	gfx_drawRect(optionsSurface, 0, 0, optionsSurface->w - 2, optionsSurface->h - 2, 0x00, 0x00, 0x44);
 
-	gfx_renderString("++ OPTIONS ++", 105, 8, FONT_WHITE, 0, optionsSurface);
+	gfx_renderUnicode(_("++ OPTIONS ++"), 105, 8, FONT_WHITE, 0, optionsSurface);
 
 	gfx_drawRect(optionsSurface, 190, 45, 50, 22, 0x00, 0x00, 0x00);
 	gfx_drawRect(optionsSurface, 250, 45, 50, 22, 0x00, 0x00, 0x00);
@@ -1244,9 +1255,9 @@ static void intermission_createOptions(SDL_Surface *optionsSurface)
 		gfx_drawRect(optionsSurface, 190, 45, 50, 22, 0xff, 0x00, 0x00);
 	else
 		gfx_drawRect(optionsSurface, 250, 45, 50, 22, 0xff, 0x00, 0x00);
-	gfx_renderString("ON", 207, 50, FONT_WHITE, 0, optionsSurface);
-	gfx_renderString("OFF", 263, 50, FONT_WHITE, 0, optionsSurface);
-	gfx_renderString("SOUND", 30, 50, FONT_WHITE, 0, optionsSurface);
+	gfx_renderUnicode(_("ON"), 207, 50, FONT_WHITE, 0, optionsSurface);
+	gfx_renderUnicode(_("OFF"), 263, 50, FONT_WHITE, 0, optionsSurface);
+	gfx_renderUnicode(_("SOUND"), 30, 50, FONT_WHITE, 0, optionsSurface);
 
 	gfx_drawRect(optionsSurface, 190, 95, 50, 22, 0x00, 0x00, 0x00);
 	gfx_drawRect(optionsSurface, 250, 95, 50, 22, 0x00, 0x00, 0x00);
@@ -1255,9 +1266,9 @@ static void intermission_createOptions(SDL_Surface *optionsSurface)
 		gfx_drawRect(optionsSurface, 190, 95, 50, 22, 0xff, 0x00, 0x00);
 	else
 		gfx_drawRect(optionsSurface, 250, 95, 50, 22, 0xff, 0x00, 0x00);
-	gfx_renderString("ON", 207, 100, FONT_WHITE, 0, optionsSurface);
-	gfx_renderString("OFF", 263, 100, FONT_WHITE, 0, optionsSurface);
-	gfx_renderString("MUSIC", 30, 100, FONT_WHITE, 0, optionsSurface);
+	gfx_renderUnicode(_("ON"), 207, 100, FONT_WHITE, 0, optionsSurface);
+	gfx_renderUnicode(_("OFF"), 263, 100, FONT_WHITE, 0, optionsSurface);
+	gfx_renderUnicode(_("MUSIC"), 30, 100, FONT_WHITE, 0, optionsSurface);
 
  	gfx_drawRect(optionsSurface, 190, 145, 50, 22, 0x00, 0x00, 0x00);
 	gfx_drawRect(optionsSurface, 250, 145, 50, 22, 0x00, 0x00, 0x00);
@@ -1266,9 +1277,9 @@ static void intermission_createOptions(SDL_Surface *optionsSurface)
 		gfx_drawRect(optionsSurface, 190, 145, 50, 22, 0xff, 0x00, 0x00);
 	else
 		gfx_drawRect(optionsSurface, 250, 145, 50, 22, 0xff, 0x00, 0x00);
-	gfx_renderString("ON", 207, 150, FONT_WHITE, 0, optionsSurface);
-	gfx_renderString("OFF", 263, 150, FONT_WHITE, 0, optionsSurface);
-	gfx_renderString("FULLSCREEN", 30, 150, FONT_WHITE, 0, optionsSurface);
+	gfx_renderUnicode(_("ON"), 207, 150, FONT_WHITE, 0, optionsSurface);
+	gfx_renderUnicode(_("OFF"), 263, 150, FONT_WHITE, 0, optionsSurface);
+	gfx_renderUnicode(_("FULLSCREEN"), 30, 150, FONT_WHITE, 0, optionsSurface);
 }
 
 static void intermission_doOptions(SDL_Surface *optionsSurface, int x, int y)
@@ -1321,7 +1332,7 @@ selected an icon.
 */
 int intermission()
 {
-	char string[25];
+	char string[STRMAX_SHORT];
 
 	SDL_Rect r;
 	SDL_Rect destRect;
@@ -1468,26 +1479,35 @@ int intermission()
 	if ((engine.useAudio) && (engine.useMusic))
 		audio_playMusic("music/through_space.ogg", -1);
 
-	sprintf(string, "System : %s", systemNames[game.system]);
+	/// Retain "%s" as-is.  It is replaced with the current system name.
+	sprintf(string, _("System : %s"), game_systemNames[game.system]);
 	gfx_createTextObject(TS_CURRENT_SYSTEM, string, 0, 0, FONT_WHITE);
 
-	gfx_createTextObject(TS_INFO_START_MISSION, "Start Next Mission", 0, 0, FONT_WHITE);
-	gfx_createTextObject(TS_INFO_GOTO, "Go to Destination Planet", 0, 0, FONT_WHITE);
-	gfx_createTextObject(TS_INFO_MAP, "View System Map", 0, 0, FONT_WHITE);
-	gfx_createTextObject(TS_INFO_STATUS, "Current Status", 0, 0, FONT_WHITE);
-	gfx_createTextObject(TS_INFO_SAVE_GAME, "Save Game", 0, 0, FONT_WHITE);
-	gfx_createTextObject(TS_INFO_SHOP, "Upgrade FIREFLY", 0, 0, FONT_WHITE);
-	gfx_createTextObject(TS_INFO_COMMS, "Missions", 0, 0, FONT_WHITE);
-	gfx_createTextObject(TS_INFO_OPTIONS, "Options", 0, 0, FONT_WHITE);
-	gfx_createTextObject(TS_INFO_EXIT, "Exit to Title Screen", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_START_MISSION, _("Start Next Mission"), 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_GOTO, _("Go to Destination Planet"), 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_MAP, _("View System Map"), 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_STATUS, _("Current Status"), 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_SAVE_GAME, _("Save Game"), 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_SHOP, _("Upgrade FIREFLY"), 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_COMMS, _("Missions"), 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_OPTIONS, _("Options"), 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_INFO_EXIT, _("Exit to Title Screen"), 0, 0, FONT_WHITE);
 
-	sprintf(string, "Stationed At: %s", intermission_planets[game.stationedPlanet].name);
+	/// Retain "%s" as-is.  It is replaced with the name of the planet
+	/// the player is currently stationed on.
+	sprintf(string, _("Stationed At: %s"), intermission_planets[game.stationedPlanet].name);
 	gfx_createTextObject(TS_CURRENT_PLANET, string, 90, 0, FONT_WHITE);
 
 	if (game.destinationPlanet > -1)
-		sprintf(string, "Destination: %s", intermission_planets[game.destinationPlanet].name);
+	{
+		/// Retain "%s" as-is.  It is replaced with the name of the planet
+		/// the player's destination is currently set to.
+		sprintf(string, _("Destination: %s"), intermission_planets[game.destinationPlanet].name);
+	}
 	else
-		strcpy(string, "Destination: None");
+	{
+		strcpy(string, _("Destination: None"));
+	}
 	gfx_createTextObject(TS_DEST_PLANET, string, 0, 0, FONT_WHITE);
 
 	if (game.distanceCovered > 0)
@@ -1595,6 +1615,8 @@ int intermission()
 
 				if (intermission_showSystem(orbit_pos, 1))
 				{
+					/// Retain "%s" as-is.  It is replaced with the name of the planet
+					/// the player's destination is currently set to.
 					sprintf(string, "Destination: %s", intermission_planets[game.destinationPlanet].name);
 					gfx_createTextObject(TS_DEST_PLANET, string, 0, 0, FONT_WHITE);
 				}
@@ -1655,7 +1677,9 @@ int intermission()
 					game.stationedPlanet = game.destinationPlanet;
 					game.distanceCovered = 0;
 					player.shield = player.maxShield;
-					sprintf(string, "Stationed At: %s",
+					/// Retain "%s" as-is.  It is replaced with the name of the planet
+					/// the player's destination is currently set to.
+					sprintf(string, _("Stationed At: %s"),
 						intermission_planets[game.stationedPlanet].name);
 					gfx_createTextObject(TS_CURRENT_PLANET, string, 90, 0, FONT_WHITE);
 					section = 1;

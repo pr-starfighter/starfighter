@@ -1028,7 +1028,7 @@ static void mission_drawScreen()
 
 	screen_drawRect(screen->w / 2 - 260, screen->h / 2 - 235, 500, 20, 0x00, 0x77, 0x00);
 	screen_drawRect(screen->w / 2 - 260, screen->h / 2 - 215, 500, 130, 0x00, 0x33, 0x00);
-	screen_renderUnicode(_("Primary Objectives"), screen->w / 2 - 250, screen->h / 2 - 231, FONT_WHITE);
+	screen_renderUnicode(_("Primary Objectives"), screen->w / 2 - 250, screen->h / 2 - 232, FONT_WHITE);
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
@@ -1042,7 +1042,7 @@ static void mission_drawScreen()
 	{
 		screen_drawRect(screen->w / 2 - 260, screen->h / 2 - 75, 500, 20, 0x00, 0x77, 0x77);
 		screen_drawRect(screen->w / 2 - 260, screen->h / 2 - 55, 500, 130, 0x00, 0x33, 0x33);
-		screen_renderUnicode(_("Secondary Objectives"), screen->w / 2 - 250, screen->h / 2 - 71, FONT_WHITE);
+		screen_renderUnicode(_("Secondary Objectives"), screen->w / 2 - 250, screen->h / 2 - 72, FONT_WHITE);
 
 		for (int i = 0 ; i < 3 ; i++)
 		{
@@ -1056,7 +1056,7 @@ static void mission_drawScreen()
 
 	screen_drawRect(screen->w / 2 - 260, screen->h / 2 + 85, 500, 20, 0x77, 0x77, 0x00);
 	screen_drawRect(screen->w / 2 - 260, screen->h / 2 + 105, 500, 130, 0x33, 0x33, 0x00);
-	screen_renderUnicode(_("Additional Information"), screen->w / 2 - 250, screen->h / 2 + 89, FONT_WHITE);
+	screen_renderUnicode(_("Additional Information"), screen->w / 2 - 250, screen->h / 2 + 88, FONT_WHITE);
 }
 
 /*
