@@ -6,6 +6,9 @@ dist
 starfighter
 src/starfighter
 
+# Backups
+*~
+
 # Autoconf / Automake
 aclocal.m4
 autom4te.cache

@@ -1551,7 +1551,9 @@ void alien_setKlineAttackMethod(Object *alien)
 {
 	if (alien->shield <= 500)
 	{
-		radio_setMessage(FS_KLINE, "ENOUGH! THIS ENDS NOW!", 1);
+		/// Dialog (Kline Kethlan)
+		/// Used when the final "stage" of the Venus fight is entered.
+		radio_setMessage(FS_KLINE, _("ENOUGH! THIS ENDS NOW!"), 1);
 		alien->weaponType[0] = W_AIMED_SHOT;
 		alien->weaponType[1] = W_MICRO_HOMING_MISSILES;
 		alien->flags |= FL_CANCLOAK;
@@ -1560,7 +1562,9 @@ void alien_setKlineAttackMethod(Object *alien)
 	}
 	else if (alien->shield <= 1000)
 	{
-		radio_setMessage(FS_KLINE, "Your ability to stay alive irritates me! Try dodging some of these!", 1);
+		/// Dialog (Kline Kethlan)
+		/// Used when the third "stage" of the Vinus fight is entered.
+		radio_setMessage(FS_KLINE, _("Your ability to stay alive irritates me! Try dodging some of these!"), 1);
 		if (game.difficulty == DIFFICULTY_ORIGINAL)
 		{
 			alien->weaponType[0] = W_DIRSHOCKMISSILE;
@@ -1572,7 +1576,9 @@ void alien_setKlineAttackMethod(Object *alien)
 	}
 	else
 	{
-		radio_setMessage(FS_KLINE, "Very good, Bainfield. Now let's get a little more serious...", 1);
+		/// Dialog (Kline Kethlan)
+		/// Used when the second "stage" of the Venus fight is entered.
+		radio_setMessage(FS_KLINE, _("Very good, Bainfield. Now let's get a little more serious..."), 1);
 		alien->weaponType[0] = W_SPREADSHOT;
 		alien->chance[1] = 40;
 	}
@@ -1867,9 +1873,9 @@ void alien_destroy(Object *alien, Object *attacker)
 		if (game.area != MISN_NEROD)
 		{
 			if ((alien->classDef == CD_PHOEBE) || (alien->classDef == CD_URSULA))
-				info_setLine(">> Ally has ejected! <<\n", FONT_RED);
+				info_setLine(_(">> Ally has ejected! <<"), FONT_RED);
 			else
-				info_setLine(">> Friendly craft has been destroyed! <<\n", FONT_RED);
+				info_setLine(_(">> Friendly craft has been destroyed! <<"), FONT_RED);
 		}
 	}
 
@@ -2020,10 +2026,16 @@ void alien_destroy(Object *alien, Object *attacker)
 	}
 
 	if ((alien->classDef == CD_KRASS) && (attacker == &player))
-		radio_setMessage(FS_CHRIS, "The name's CHRIS, old-timer.", 1);
+	{
+		/// Dialog (Chris Bainfield)
+		/// Used when Krass Tyler is beaten in the Jupiter mission.
+		radio_setMessage(FS_CHRIS, _("The name's CHRIS, old-timer."), 1);
+	}
 
 	if (alien->classDef == CD_KLINE)
 	{
+		/// Dialog (Kline Kethlan)
+		/// Used when Kline is killed in the Venus mission.
 		radio_setMessage(FS_KLINE, "It was an honor... to have fought you...", 1);
 		alien->dx = alien->dy = 0;
 		alien->shield = -150;
@@ -2059,7 +2071,9 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 			{
 				alien->flags |= FL_LEAVESECTOR;
 				alien->flags &= ~FL_CIRCLES;
-				radio_setMessage(FS_KLINE, "Seems I underestimated you, Bainfield. We'll meet again!", 1);
+				/// Dialog (Kline Kethlan)
+				/// Used when Kline is beaten in the Elamale mission.
+				radio_setMessage(FS_KLINE, _("Seems I underestimated you, Bainfield. We'll meet again!"), 1);
 			}
 		}
 		else if (game.area == MISN_EARTH)
@@ -2069,7 +2083,9 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 			{
 				alien->flags |= FL_LEAVESECTOR;
 				alien->flags &= ~FL_CIRCLES;
-				radio_setMessage(FS_SID, "Chris, Kethlan is getting away!", 1);
+				/// Dialog (Sid Wilson)
+				/// Used when Kline is beaten in the Earth mission.
+				radio_setMessage(FS_SID, _("Chris, Kethlan is getting away!"), 1);
 			}
 		}
 		else if (game.area == MISN_VENUS)
