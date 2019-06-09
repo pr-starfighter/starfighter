@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "Report-Msgid-Bugs-To: http://starfighter.nongnu.org\n"
-"POT-Creation-Date: 2019-06-07 14:06-0400\n"
+"POT-Creation-Date: 2019-06-09 07:53-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,6 +32,32 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. / Dialog (Kline Kethlan)
+#. / Used when the final "stage" of the Venus fight is entered.
+#: ../src/alien.c:1556
+msgid "ENOUGH! THIS ENDS NOW!"
+msgstr ""
+
+#. / Dialog (Kline Kethlan)
+#. / Used when the third "stage" of the Vinus fight is entered.
+#: ../src/alien.c:1567
+msgid "Your ability to stay alive irritates me! Try dodging some of these!"
+msgstr ""
+
+#. / Dialog (Kline Kethlan)
+#. / Used when the second "stage" of the Venus fight is entered.
+#: ../src/alien.c:1581
+msgid "Very good, Bainfield. Now let's get a little more serious..."
+msgstr ""
+
+#: ../src/alien.c:1876
+msgid ">> Ally has ejected! <<"
+msgstr ""
+
+#: ../src/alien.c:1878
+msgid ">> Friendly craft has been destroyed! <<"
+msgstr ""
+
 #. / Chris brag messages
 #. / This is a list of brags separated by "\n".  They are randomly
 #. / broadcast when Chris successfully kills an enemy.
@@ -39,7 +65,7 @@ msgstr ""
 #. / with brag messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of brag messages is permitted.
-#: ../src/alien.c:1901
+#: ../src/alien.c:1907
 msgid ""
 "Take that, robot oppressors!\n"
 "Come on, WEAPCO, give me a challenge already!\n"
@@ -65,7 +91,7 @@ msgstr ""
 #. / with brag messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of brag messages is permitted.
-#: ../src/alien.c:1934
+#: ../src/alien.c:1940
 msgid ""
 "I got another one!\n"
 "Target destroyed!\n"
@@ -87,7 +113,7 @@ msgstr ""
 #. / with brag messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of brag messages is permitted.
-#: ../src/alien.c:1963
+#: ../src/alien.c:1969
 msgid ""
 "Kicked your ass!\n"
 "You ain't so tough!\n"
@@ -103,6 +129,24 @@ msgid ""
 "No one messes with the Lexx family!\n"
 "Die, damned WEAPCO drones!\n"
 "Don't think you can get away from me!"
+msgstr ""
+
+#. / Dialog (Chris Bainfield)
+#. / Used when Krass Tyler is beaten in the Jupiter mission.
+#: ../src/alien.c:2032
+msgid "The name's CHRIS, old-timer."
+msgstr ""
+
+#. / Dialog (Kline Kethlan)
+#. / Used when Kline is beaten in the Elamale mission.
+#: ../src/alien.c:2076
+msgid "Seems I underestimated you, Bainfield. We'll meet again!"
+msgstr ""
+
+#. / Dialog (Sid Wilson)
+#. / Used when Kline is beaten in the Earth mission.
+#: ../src/alien.c:2088
+msgid "Chris, Kethlan is getting away!"
 msgstr ""
 
 #. / Cutscene (narration)

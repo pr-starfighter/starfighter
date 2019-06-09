@@ -22,8 +22,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "Report-Msgid-Bugs-To: http://starfighter.nongnu.org\n"
-"POT-Creation-Date: 2019-06-07 14:06-0400\n"
-"PO-Revision-Date: 2019-06-05 22:03-0400\n"
+"POT-Creation-Date: 2019-06-09 07:53-0400\n"
+"PO-Revision-Date: 2019-06-09 07:56-0400\n"
 "Last-Translator: Julie <onpon4@riseup.net>\n"
 "Language-Team: English\n"
 "Language: en\n"
@@ -32,6 +32,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#. / Dialog (Kline Kethlan)
+#. / Used when the final "stage" of the Venus fight is entered.
+#: ../src/alien.c:1556
+msgid "ENOUGH! THIS ENDS NOW!"
+msgstr "ENOUGH! THIS ENDS NOW!"
+
+#. / Dialog (Kline Kethlan)
+#. / Used when the third "stage" of the Vinus fight is entered.
+#: ../src/alien.c:1567
+msgid "Your ability to stay alive irritates me! Try dodging some of these!"
+msgstr "Your ability to stay alive irritates me! Try dodging some of these!"
+
+#. / Dialog (Kline Kethlan)
+#. / Used when the second "stage" of the Venus fight is entered.
+#: ../src/alien.c:1581
+msgid "Very good, Bainfield. Now let's get a little more serious..."
+msgstr "Very good, Bainfield. Now let's get a little more serious..."
+
+#: ../src/alien.c:1876
+msgid ">> Ally has ejected! <<"
+msgstr ">> Ally has ejected! <<"
+
+#: ../src/alien.c:1878
+msgid ">> Friendly craft has been destroyed! <<"
+msgstr ">> Friendly craft has been destroyed! <<"
+
 #. / Chris brag messages
 #. / This is a list of brags separated by "\n".  They are randomly
 #. / broadcast when Chris successfully kills an enemy.
@@ -39,7 +65,7 @@ msgstr ""
 #. / with brag messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of brag messages is permitted.
-#: ../src/alien.c:1901
+#: ../src/alien.c:1907
 msgid ""
 "Take that, robot oppressors!\n"
 "Come on, WEAPCO, give me a challenge already!\n"
@@ -80,7 +106,7 @@ msgstr ""
 #. / with brag messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of brag messages is permitted.
-#: ../src/alien.c:1934
+#: ../src/alien.c:1940
 msgid ""
 "I got another one!\n"
 "Target destroyed!\n"
@@ -113,7 +139,7 @@ msgstr ""
 #. / with brag messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of brag messages is permitted.
-#: ../src/alien.c:1963
+#: ../src/alien.c:1969
 msgid ""
 "Kicked your ass!\n"
 "You ain't so tough!\n"
@@ -144,6 +170,24 @@ msgstr ""
 "No one messes with the Lexx family!\n"
 "Die, damned WEAPCO drones!\n"
 "Don't think you can get away from me!"
+
+#. / Dialog (Chris Bainfield)
+#. / Used when Krass Tyler is beaten in the Jupiter mission.
+#: ../src/alien.c:2032
+msgid "The name's CHRIS, old-timer."
+msgstr "The name's CHRIS, old-timer."
+
+#. / Dialog (Kline Kethlan)
+#. / Used when Kline is beaten in the Elamale mission.
+#: ../src/alien.c:2076
+msgid "Seems I underestimated you, Bainfield. We'll meet again!"
+msgstr "Seems I underestimated you, Bainfield. We'll meet again!"
+
+#. / Dialog (Sid Wilson)
+#. / Used when Kline is beaten in the Earth mission.
+#: ../src/alien.c:2088
+msgid "Chris, Kethlan is getting away!"
+msgstr "Chris, Kethlan is getting away!"
 
 #. / Cutscene (narration)
 #: ../src/cutscene.c:105
@@ -712,19 +756,19 @@ msgstr "You underestimate me, Bainfield."
 
 #: ../src/game.c:71
 msgid "Spirit"
-msgstr ""
+msgstr "Spirit"
 
 #: ../src/game.c:72
 msgid "Eyananth"
-msgstr ""
+msgstr "Eyananth"
 
 #: ../src/game.c:73
 msgid "Mordor"
-msgstr ""
+msgstr "Mordor"
 
 #: ../src/game.c:74
 msgid "Sol"
-msgstr ""
+msgstr "Sol"
 
 #. / Chris: Phoebe Hit Messages
 #. / This is a list of messages separated by "\n".  They are randomly
@@ -851,25 +895,25 @@ msgstr "data/TakaoPGothic.ttf"
 
 #: ../src/intermission.c:212 ../src/shop.c:62
 msgid "None"
-msgstr ""
+msgstr "None"
 
 #. / Retain "%s" as-is.  It is replaced with the current difficulty.
 #: ../src/intermission.c:242
 #, c-format
 msgid "Difficulty : %s"
-msgstr ""
+msgstr "Difficulty : %s"
 
 #. / Retain "%d" as-is.  It is replaced with the number of shots fired.
 #: ../src/intermission.c:246
 #, c-format
 msgid "Shots Fired : %d"
-msgstr ""
+msgstr "Shots Fired : %d"
 
 #. / Retain "%d" as-is.  It is replaced with the number of hits scored.
 #: ../src/intermission.c:250
 #, c-format
 msgid "Hits Scored : %d"
-msgstr ""
+msgstr "Hits Scored : %d"
 
 #. / Retain "%d" as-is.  It is replaced with the firing accuracy as a percentage.
 #. / Note: To use the "%" symbol, you must enter "%%", as you can see in
@@ -877,84 +921,84 @@ msgstr ""
 #: ../src/intermission.c:256
 #, c-format
 msgid "Accuracy : %d%%"
-msgstr ""
+msgstr "Accuracy : %d%%"
 
 #. / Retain "%d" as-is.  It is replaced with the number of kills.
 #: ../src/intermission.c:260
 #, c-format
 msgid "Enemies Killed by Others : %d"
-msgstr ""
+msgstr "Enemies Killed by Others : %d"
 
 #. / Retain "%d" as-is.  It is replaced with the amount of cash earned.
 #: ../src/intermission.c:264
 #, c-format
 msgid "Total Cash Earned : %d"
-msgstr ""
+msgstr "Total Cash Earned : %d"
 
 #: ../src/intermission.c:267
 msgid "*** Chris ***"
-msgstr ""
+msgstr "*** Chris ***"
 
 #. / Retain "%d" as-is.  It is replaced with the number of kills.
 #: ../src/intermission.c:270 ../src/intermission.c:302
 #: ../src/intermission.c:321
 #, c-format
 msgid "Enemies Killed : %d"
-msgstr ""
+msgstr "Enemies Killed : %d"
 
 #. / Retain "%d" as-is.  It is replaced with the number of shield restores picked up.
 #: ../src/intermission.c:274
 #, c-format
 msgid "Shield Restores Picked Up : %d"
-msgstr ""
+msgstr "Shield Restores Picked Up : %d"
 
 #. / Retain "%d" as-is.  It is replaced with the number of plasma cells picked up.
 #: ../src/intermission.c:278
 #, c-format
 msgid "Plasma Cells Picked Up : %d"
-msgstr ""
+msgstr "Plasma Cells Picked Up : %d"
 
 #. / Retain "%d" as-is.  It is replaced with the number of rockets picked up.
 #: ../src/intermission.c:282
 #, c-format
 msgid "Rockets Picked Up : %d"
-msgstr ""
+msgstr "Rockets Picked Up : %d"
 
 #. / Retain "%d" as-is.  It is replaced with the number of powerups picked up.
 #: ../src/intermission.c:286
 #, c-format
 msgid "Powerups Picked Up : %d"
-msgstr ""
+msgstr "Powerups Picked Up : %d"
 
 #. / Retain "%d" as-is.  It is replaced with the number of mines destroyed.
 #: ../src/intermission.c:290
 #, c-format
 msgid "Mines Destroyed : %d"
-msgstr ""
+msgstr "Mines Destroyed : %d"
 
 #. / Retain "%d" as-is.  It is replaced with the number of slaves rescued.
 #: ../src/intermission.c:294
 #, c-format
 msgid "Slaves Rescued : %d"
-msgstr ""
+msgstr "Slaves Rescued : %d"
 
 #: ../src/intermission.c:299
 msgid "*** Phoebe ***"
-msgstr ""
+msgstr "*** Phoebe ***"
 
 #. / Retain "%d" as-is.  It is replaced with the number of ejections.
 #: ../src/intermission.c:306 ../src/intermission.c:325
 #, c-format
 msgid "Ejections : %d"
-msgstr ""
+msgstr "Ejections : %d"
 
 #: ../src/intermission.c:318
 msgid "*** Ursula ***"
-msgstr ""
+msgstr "*** Ursula ***"
 
 #: ../src/intermission.c:335 ../src/intermission.c:1489
 msgid "Current Status"
-msgstr ""
+msgstr "Current Status"
 
 #. / "%ld" (which represents hours) and "%02ld" sequences (which
 #. / represent minutes and seconds, respectively) must remain and
@@ -970,29 +1014,29 @@ msgstr ""
 #. / you wish to not force two digits to be filled in (e.g. to render
 #. / the number 3 as "3" instead of "03").
 #: ../src/intermission.c:350
-#, fuzzy, c-format
+#, c-format
 msgid "Total Time : %ld:%02ld:%02ld"
-msgstr "Mission Time: %02ld:%02ld"
+msgstr "Total Time : %ld:%02ld:%02ld"
 
 #: ../src/intermission.c:374
 msgid "Hail"
-msgstr ""
+msgstr "Hail"
 
 #: ../src/intermission.c:378
 msgid "Ceradse"
-msgstr ""
+msgstr "Ceradse"
 
 #: ../src/intermission.c:382
 msgid "Hinstag"
-msgstr ""
+msgstr "Hinstag"
 
 #: ../src/intermission.c:386
 msgid "Joldar"
-msgstr ""
+msgstr "Joldar"
 
 #: ../src/intermission.c:390
 msgid "Moebo"
-msgstr ""
+msgstr "Moebo"
 
 #. / Spirit, Hail mission summary
 #: ../src/intermission.c:397
@@ -1021,27 +1065,27 @@ msgstr "Destroy WEAPCO frigate"
 
 #: ../src/intermission.c:426 ../src/intermission.c:487
 msgid "WEAPCO interceptions"
-msgstr ""
+msgstr "WEAPCO interceptions"
 
 #: ../src/intermission.c:429
 msgid "Nerod"
-msgstr ""
+msgstr "Nerod"
 
 #: ../src/intermission.c:433
 msgid "Allez"
-msgstr ""
+msgstr "Allez"
 
 #: ../src/intermission.c:437
 msgid "Urusor"
-msgstr ""
+msgstr "Urusor"
 
 #: ../src/intermission.c:441
 msgid "Dorim"
-msgstr ""
+msgstr "Dorim"
 
 #: ../src/intermission.c:445
 msgid "Elamale"
-msgstr ""
+msgstr "Elamale"
 
 #. / Eyananth, interception mission summary
 #: ../src/intermission.c:452
@@ -1076,27 +1120,27 @@ msgstr "Destroy WEAPCO Ore Mining craft"
 
 #: ../src/intermission.c:490
 msgid "Odeon"
-msgstr ""
+msgstr "Odeon"
 
 #: ../src/intermission.c:494
 msgid "Fellon"
-msgstr ""
+msgstr "Fellon"
 
 #: ../src/intermission.c:498
 msgid "Sivedi"
-msgstr ""
+msgstr "Sivedi"
 
 #: ../src/intermission.c:502
 msgid "Almartha"
-msgstr ""
+msgstr "Almartha"
 
 #: ../src/intermission.c:506
 msgid "Poswic"
-msgstr ""
+msgstr "Poswic"
 
 #: ../src/intermission.c:510
 msgid "Ellesh"
-msgstr ""
+msgstr "Ellesh"
 
 #. / Mordor, incerception mission summary
 #: ../src/intermission.c:517
@@ -1135,41 +1179,39 @@ msgstr "Destroy WEAPCO executive transport"
 
 #: ../src/intermission.c:559
 msgid "Mercury"
-msgstr ""
+msgstr "Mercury"
 
 #: ../src/intermission.c:563
 msgid "Venus"
-msgstr ""
+msgstr "Venus"
 
 #: ../src/intermission.c:567
 msgid "Earth"
-msgstr ""
+msgstr "Earth"
 
 #: ../src/intermission.c:571
 msgid "Mars"
-msgstr ""
+msgstr "Mars"
 
 #: ../src/intermission.c:575
 msgid "Jupiter"
-msgstr ""
+msgstr "Jupiter"
 
 #: ../src/intermission.c:579
 msgid "Saturn"
-msgstr ""
+msgstr "Saturn"
 
 #: ../src/intermission.c:583
-#, fuzzy
 msgid "Uranus"
-msgstr "Secure Uranus"
+msgstr "Uranus"
 
 #: ../src/intermission.c:587
-#, fuzzy
 msgid "Neptune"
-msgstr "Secure Neptune"
+msgstr "Neptune"
 
 #: ../src/intermission.c:591
 msgid "Pluto"
-msgstr ""
+msgstr "Pluto"
 
 #. / Sol, Pluto mission summary
 #: ../src/intermission.c:598
@@ -1216,7 +1258,7 @@ msgstr "Defeat Kline"
 
 #: ../src/intermission.c:764
 msgid "+++ CURRENT MISSIONS +++"
-msgstr ""
+msgstr "+++ CURRENT MISSIONS +++"
 
 #: ../src/intermission.c:765
 msgid "click for info"
@@ -1791,67 +1833,67 @@ msgstr ""
 
 #: ../src/intermission.c:1249
 msgid "++ OPTIONS ++"
-msgstr ""
+msgstr "++ OPTIONS ++"
 
 #: ../src/intermission.c:1258 ../src/intermission.c:1269
 #: ../src/intermission.c:1280
 msgid "ON"
-msgstr ""
+msgstr "ON"
 
 #: ../src/intermission.c:1259 ../src/intermission.c:1270
 #: ../src/intermission.c:1281
 msgid "OFF"
-msgstr ""
+msgstr "OFF"
 
 #: ../src/intermission.c:1260
 msgid "SOUND"
-msgstr ""
+msgstr "SOUND"
 
 #: ../src/intermission.c:1271
 msgid "MUSIC"
-msgstr ""
+msgstr "MUSIC"
 
 #: ../src/intermission.c:1282
 msgid "FULLSCREEN"
-msgstr ""
+msgstr "FULLSCREEN"
 
 #. / Retain "%s" as-is.  It is replaced with the current system name.
 #: ../src/intermission.c:1483
 #, c-format
 msgid "System : %s"
-msgstr ""
+msgstr "System : %s"
 
 #: ../src/intermission.c:1486
 msgid "Start Next Mission"
-msgstr ""
+msgstr "Start Next Mission"
 
 #: ../src/intermission.c:1487
 msgid "Go to Destination Planet"
-msgstr ""
+msgstr "Go to Destination Planet"
 
 #: ../src/intermission.c:1488
 msgid "View System Map"
-msgstr ""
+msgstr "View System Map"
 
 #: ../src/intermission.c:1490
 msgid "Save Game"
-msgstr ""
+msgstr "Save Game"
 
 #: ../src/intermission.c:1491
 msgid "Upgrade FIREFLY"
-msgstr ""
+msgstr "Upgrade FIREFLY"
 
 #: ../src/intermission.c:1492
 msgid "Missions"
-msgstr ""
+msgstr "Missions"
 
 #: ../src/intermission.c:1493
 msgid "Options"
-msgstr ""
+msgstr "Options"
 
 #: ../src/intermission.c:1494
 msgid "Exit to Title Screen"
-msgstr ""
+msgstr "Exit to Title Screen"
 
 #. / Retain "%s" as-is.  It is replaced with the name of the planet
 #. / the player is currently stationed on.
@@ -1860,18 +1902,18 @@ msgstr ""
 #: ../src/intermission.c:1498 ../src/intermission.c:1682
 #, c-format
 msgid "Stationed At: %s"
-msgstr ""
+msgstr "Stationed At: %s"
 
 #. / Retain "%s" as-is.  It is replaced with the name of the planet
 #. / the player's destination is currently set to.
 #: ../src/intermission.c:1505
 #, c-format
 msgid "Destination: %s"
-msgstr ""
+msgstr "Destination: %s"
 
 #: ../src/intermission.c:1509
 msgid "Destination: None"
-msgstr ""
+msgstr "Destination: None"
 
 #. / Mission objective
 #: ../src/mission.c:96
@@ -2197,38 +2239,38 @@ msgstr "Mission Time: %02ld:%02ld"
 #: ../src/save.c:76 ../src/save.c:121
 #, c-format
 msgid "AUTOSAVE"
-msgstr ""
+msgstr "AUTOSAVE"
 
 #: ../src/save.c:84 ../src/save.c:128
 #, c-format
 msgid "Corrupt Game Data"
-msgstr ""
+msgstr "Corrupt Game Data"
 
 #: ../src/save.c:112
 #, c-format
 msgid "AUTOSAVE (Empty)"
-msgstr ""
+msgstr "AUTOSAVE (Empty)"
 
 #: ../src/save.c:112
 #, c-format
 msgid "Empty"
-msgstr ""
+msgstr "Empty"
 
 #: ../src/save.c:382
 msgid "*** HELP ***"
-msgstr ""
+msgstr "*** HELP ***"
 
 #: ../src/save.c:394
 msgid "SAVE"
-msgstr ""
+msgstr "SAVE"
 
 #: ../src/save.c:395
 msgid "CANCEL"
-msgstr ""
+msgstr "CANCEL"
 
 #: ../src/save.c:396
 msgid "DELETE"
-msgstr ""
+msgstr "DELETE"
 
 #: ../src/save.c:397
 msgid "SAVE will save the game"
@@ -2255,127 +2297,124 @@ msgid "Save Deleted"
 msgstr "Save Deleted"
 
 #: ../src/shop.c:57
-#, fuzzy
 msgid "Secondary Weapon"
-msgstr "Secondary Objectives"
+msgstr "Secondary Weapon"
 
 #: ../src/shop.c:65
 msgid "Rockets"
-msgstr ""
+msgstr "Rockets"
 
 #: ../src/shop.c:68
 msgid "Dbl Rockets"
-msgstr ""
+msgstr "Dbl Rockets"
 
 #: ../src/shop.c:71
 msgid "Micro Rockets"
-msgstr ""
+msgstr "Micro Rockets"
 
 #: ../src/shop.c:74
 msgid "Laser"
-msgstr ""
+msgstr "Laser"
 
 #: ../src/shop.c:77
 msgid "Charger"
-msgstr ""
+msgstr "Charger"
 
 #: ../src/shop.c:80
 msgid "Homing Missile"
-msgstr ""
+msgstr "Homing Missile"
 
 #: ../src/shop.c:83
 msgid "Dbl Homing Missiles"
-msgstr ""
+msgstr "Dbl Homing Missiles"
 
 #: ../src/shop.c:86
 msgid "Mcr Homing Missiles"
-msgstr ""
+msgstr "Mcr Homing Missiles"
 
 #. / Retain "%d" as-is.  It is replaced with the rocket capacity of the Firefly.
 #: ../src/shop.c:95
 #, c-format
 msgid "Capacity : %d"
-msgstr ""
+msgstr "Capacity : %d"
 
 #: ../src/shop.c:276
 msgid "Primary Weapon"
-msgstr ""
+msgstr "Primary Weapon"
 
 #. / Retain "%d" as-is.  It is replaced with the min plasma output.
 #: ../src/shop.c:278
 #, c-format
 msgid "Cannons : %d"
-msgstr ""
+msgstr "Cannons : %d"
 
 #. / Retain "%d" as-is.  It is replaced with the min plasma damage.
 #: ../src/shop.c:281
 #, c-format
 msgid "Power   : Stage %d"
-msgstr ""
+msgstr "Power   : Stage %d"
 
 #. / Retain "%d" as-is.  It is replaced with the min plasma cooling.
 #: ../src/shop.c:285
 #, c-format
 msgid "Cooling : Stage %d"
-msgstr ""
+msgstr "Cooling : Stage %d"
 
 #: ../src/shop.c:289
 msgid "Powerup Weapon"
-msgstr ""
+msgstr "Powerup Weapon"
 
 #. / Retain "%d" as-is.  It is replaced with the max plasma output.
 #: ../src/shop.c:291
 #, c-format
 msgid "Splitter  : Stage %d"
-msgstr ""
+msgstr "Splitter  : Stage %d"
 
 #. / Retain "%d" as-is.  It is replaced with the max plasma damage.
 #: ../src/shop.c:295
 #, c-format
 msgid "Condensor : Stage %d"
-msgstr ""
+msgstr "Condensor : Stage %d"
 
 #. / Retain "%d" as-is.  It is replaced with the max plasma cooling.
 #: ../src/shop.c:299
 #, c-format
 msgid "L.Nitrogen: Stage %d"
-msgstr ""
+msgstr "L.Nitrogen: Stage %d"
 
 #. / Retain "%d" as-is.  It is replaced with the Firefly's plasma ammo capacity.
 #: ../src/shop.c:303
 #, c-format
 msgid "Capacity  : %d"
-msgstr ""
+msgstr "Capacity  : %d"
 
 #: ../src/shop.c:312
 msgid "Temporary Weapons"
-msgstr ""
+msgstr "Temporary Weapons"
 
 #: ../src/shop.c:313
 msgid "Ammo and Storage"
-msgstr ""
+msgstr "Ammo and Storage"
 
 #: ../src/shop.c:315
-#, fuzzy
 msgid "Primary Weapons"
-msgstr "Primary Objectives"
+msgstr "Primary Weapons"
 
 #: ../src/shop.c:317
-#, fuzzy
 msgid "Secondary Weapons"
-msgstr "Secondary Objectives"
+msgstr "Secondary Weapons"
 
 #. / Retain "%d" as-is.  It is replaced with the Firefly's max shield.
 #: ../src/shop.c:333
-#, fuzzy, c-format
+#, c-format
 msgid "Shield : %d"
-msgstr "Shield Bonus: $%d"
+msgstr "Shield : %d"
 
 #. / Retain "%d" as-is.  It is replaced with the player's current cash.
 #: ../src/shop.c:336
 #, c-format
 msgid "  Cash : $%d"
-msgstr ""
+msgstr "  Cash : $%d"
 
 #. / Retain "%.3d".  It is replaced with the ship's current number of plasma cells.
 #. / "%.3d" can be changed to "%d" if you wish to not fill in space with zeroes,
@@ -2383,7 +2422,7 @@ msgstr ""
 #: ../src/shop.c:341
 #, c-format
 msgid "Plasma Cells : %.3d"
-msgstr ""
+msgstr "Plasma Cells : %.3d"
 
 #. / Retain "%.2d".  It is replaced with the ship's current number of rockets.
 #. / "%.2d" can be changed to "%d" if you wish to not fill in space with zeroes,
@@ -2391,12 +2430,11 @@ msgstr ""
 #: ../src/shop.c:346
 #, c-format
 msgid "Rockets :  %.2d"
-msgstr ""
+msgstr "Rockets :  %.2d"
 
 #: ../src/shop.c:352
-#, fuzzy
 msgid "Information"
-msgstr "Additional Information"
+msgstr "Information"
 
 #. / For when the player attempts to buy something they can't afford.
 #: ../src/shop.c:360
@@ -2451,20 +2489,20 @@ msgstr "This weapon's ammo limit has been reached"
 #: ../src/shop.c:401
 #, c-format
 msgid "%s ($%d)"
-msgstr ""
+msgstr "%s ($%d)"
 
 #. / Used for shop items that cannot be bought.
 #. / "%s" is replaced with the item name.
 #: ../src/shop.c:409
 #, c-format
 msgid "%s (N/A)"
-msgstr ""
+msgstr "%s (N/A)"
 
 #. ----------- Temporary Items -----------
 #. Overwritten later
 #: ../src/shop.c:424
 msgid "Plasma Channel Splitter"
-msgstr ""
+msgstr "Plasma Channel Splitter"
 
 #. / Shop item description: Plasma Channel Splitter (PLASMA_MAX_OUTPUT)
 #: ../src/shop.c:426
@@ -2474,7 +2512,7 @@ msgstr "Improves poweredup plasma output"
 #. Overwritten later
 #: ../src/shop.c:430
 msgid "Plasma Capacity Condensor"
-msgstr ""
+msgstr "Plasma Capacity Condensor"
 
 #. / Shop item description: Plasma Capacity Condensor (PLASMA_MAX_DAMAGE)
 #: ../src/shop.c:432
@@ -2484,7 +2522,7 @@ msgstr "Increases poweredup plasma damage"
 #. Overwritten later
 #: ../src/shop.c:436
 msgid "Liquid Nitrogen Capsules"
-msgstr ""
+msgstr "Liquid Nitrogen Capsules"
 
 #. / Shop item description: Liquid Nitrogen Capsules (PLASMA_MAX_RATE)
 #: ../src/shop.c:438
@@ -2493,7 +2531,7 @@ msgstr "Increases plasma firing rate"
 
 #: ../src/shop.c:446
 msgid "Plasma Cells"
-msgstr ""
+msgstr "Plasma Cells"
 
 #. / Shop item description: Plasma Cells
 #: ../src/shop.c:448
@@ -2502,7 +2540,7 @@ msgstr "Plasma ammunition (10 cells each)"
 
 #: ../src/shop.c:456
 msgid "Rocket Ammo"
-msgstr ""
+msgstr "Rocket Ammo"
 
 #. / Shop item description: Rocket Ammo
 #: ../src/shop.c:458
@@ -2512,9 +2550,8 @@ msgstr "High velocity dumb fire rocket"
 #. ----------- Permanent Items -----------
 #. Overwritten later
 #: ../src/shop.c:464
-#, fuzzy
 msgid "Additional Plasma Cannon"
-msgstr "Additional Information"
+msgstr "Additional Plasma Cannon"
 
 #. / Shop item description: Additional Plasma Cannon (PLASMA_MIN_OUTPUT)
 #: ../src/shop.c:466
@@ -2524,7 +2561,7 @@ msgstr "Adds an extra plasma cannon to the Firefly"
 #. Overwritten later
 #: ../src/shop.c:470
 msgid "Plasma Power Booster"
-msgstr ""
+msgstr "Plasma Power Booster"
 
 #. / Shop item description: Plasma Power Booster (PLASMA_MIN_DAMAGE)
 #: ../src/shop.c:472
@@ -2534,7 +2571,7 @@ msgstr "Increases power of plasma shots"
 #. Overwritten later
 #: ../src/shop.c:476
 msgid "Plasma Cooling Booster"
-msgstr ""
+msgstr "Plasma Cooling Booster"
 
 #. / Shop item description: Plasma Cooling Booster (PLASMA_MIN_RATE)
 #: ../src/shop.c:478
@@ -2545,7 +2582,7 @@ msgstr "Permanently increases firing rate"
 #. Overwritten later
 #: ../src/shop.c:484
 msgid "Plasma Compressor"
-msgstr ""
+msgstr "Plasma Compressor"
 
 #. / Shop item description: Plasma Compressor (PLASMA_MAX_AMMO)
 #: ../src/shop.c:486
@@ -2555,7 +2592,7 @@ msgstr "Increases plasma ammo capacity"
 #. Overwritten later
 #: ../src/shop.c:490
 msgid "Rocket Pod"
-msgstr ""
+msgstr "Rocket Pod"
 
 #. / Shop item description: Rocket Pod (ROCKET_MAX_AMMO)
 #: ../src/shop.c:492
@@ -2564,7 +2601,7 @@ msgstr "Allows for an additional 5 rockets to be carried"
 
 #: ../src/shop.c:498
 msgid "Dual Rocket Launcher"
-msgstr ""
+msgstr "Dual Rocket Launcher"
 
 #. / Shop item description: Dual Rocket Launcher
 #: ../src/shop.c:500
@@ -2573,7 +2610,7 @@ msgstr "Launches two rockets at once"
 
 #: ../src/shop.c:504
 msgid "Micro Rocket Launcher"
-msgstr ""
+msgstr "Micro Rocket Launcher"
 
 #. / Shop item description: Micro Rocket Launcher
 #: ../src/shop.c:506
@@ -2582,7 +2619,7 @@ msgstr "Launches several less powerful rockets at once"
 
 #: ../src/shop.c:510
 msgid "Laser Cannon"
-msgstr ""
+msgstr "Laser Cannon"
 
 #. / Shop item description: Laser Cannon
 #: ../src/shop.c:512
@@ -2591,19 +2628,19 @@ msgstr "Fires a continuous stream of energy particles"
 
 #: ../src/shop.c:516
 msgid "Homing Missile Launcher"
-msgstr ""
+msgstr "Homing Missile Launcher"
 
 #. / Shop item description: Homing Missile Launcher
 #. / %i must be retained.  It is replaced by the maximum missile
 #. / capacity of the weapon.
 #: ../src/shop.c:520
-#, fuzzy, c-format
+#, c-format
 msgid "Fires homing missile (max %i missiles)"
-msgstr "Fires two homing missiles (max %i missiles)"
+msgstr "Fires homing missile (max %i missiles)"
 
 #: ../src/shop.c:524
 msgid "Charge Cannon"
-msgstr ""
+msgstr "Charge Cannon"
 
 #. / Shop item description: Charge Cannon
 #: ../src/shop.c:526
@@ -2612,7 +2649,7 @@ msgstr "Compacts plasma into clusters for greater damage"
 
 #: ../src/shop.c:530
 msgid "Dual Homing Missile Launcher"
-msgstr ""
+msgstr "Dual Homing Missile Launcher"
 
 #. / Shop item description: Dual Homing Missile Launcher
 #. / %i must be retained.  It is replaced by the maximum missile
@@ -2624,7 +2661,7 @@ msgstr "Fires two homing missiles (max %i missiles)"
 
 #: ../src/shop.c:538
 msgid "Micro Homing Missile Launcher"
-msgstr ""
+msgstr "Micro Homing Missile Launcher"
 
 #. / Shop item description: Micro Homing Missile Launcher
 #. / %i must be retained.  It is replaced by the maximum missile
@@ -2636,107 +2673,107 @@ msgstr "Fires several small homing missiles (max %i missiles)"
 
 #: ../src/title.c:93
 msgid "START GAME"
-msgstr ""
+msgstr "START GAME"
 
 #. / Difficulty menu option.
 #. / Retain "%s" as-is.  It is replaced with the difficulty chosen.
 #: ../src/title.c:99
 #, c-format
 msgid "DIFFICULTY - %s"
-msgstr ""
+msgstr "DIFFICULTY - %s"
 
 #: ../src/title.c:116
 msgid "SOUND - ON"
-msgstr ""
+msgstr "SOUND - ON"
 
 #: ../src/title.c:118
 msgid "SOUND - OFF"
-msgstr ""
+msgstr "SOUND - OFF"
 
 #: ../src/title.c:121
 msgid "MUSIC - ON"
-msgstr ""
+msgstr "MUSIC - ON"
 
 #: ../src/title.c:123
 msgid "MUSIC - OFF"
-msgstr ""
+msgstr "MUSIC - OFF"
 
 #: ../src/title.c:126
 msgid "FULLSCREEN - ON"
-msgstr ""
+msgstr "FULLSCREEN - ON"
 
 #: ../src/title.c:128
 msgid "FULLSCREEN - OFF"
-msgstr ""
+msgstr "FULLSCREEN - OFF"
 
 #: ../src/title.c:131
 msgid "AUTOPAUSE - ON"
-msgstr ""
+msgstr "AUTOPAUSE - ON"
 
 #: ../src/title.c:133
 msgid "AUTOPAUSE - OFF"
-msgstr ""
+msgstr "AUTOPAUSE - OFF"
 
 #: ../src/title.c:151
 msgid "UNLIMITED SHIELD - ON"
-msgstr ""
+msgstr "UNLIMITED SHIELD - ON"
 
 #: ../src/title.c:153
 msgid "UNLIMITED SHIELD - OFF"
-msgstr ""
+msgstr "UNLIMITED SHIELD - OFF"
 
 #: ../src/title.c:156
 msgid "UNLIMITED AMMO - ON"
-msgstr ""
+msgstr "UNLIMITED AMMO - ON"
 
 #: ../src/title.c:158
 msgid "UNLIMITED AMMO - OFF"
-msgstr ""
+msgstr "UNLIMITED AMMO - OFF"
 
 #: ../src/title.c:161
 msgid "UNLIMITED CASH - ON"
-msgstr ""
+msgstr "UNLIMITED CASH - ON"
 
 #: ../src/title.c:163
 msgid "UNLIMITED CASH - OFF"
-msgstr ""
+msgstr "UNLIMITED CASH - OFF"
 
 #: ../src/title.c:166
 msgid "UNLIMITED TIME - ON"
-msgstr ""
+msgstr "UNLIMITED TIME - ON"
 
 #: ../src/title.c:168
 msgid "UNLIMITED TIME - OFF"
-msgstr ""
+msgstr "UNLIMITED TIME - OFF"
 
 #: ../src/title.c:236
 msgid "START NEW GAME"
-msgstr ""
+msgstr "START NEW GAME"
 
 #: ../src/title.c:237
 msgid "LOAD GAME"
-msgstr ""
+msgstr "LOAD GAME"
 
 #: ../src/title.c:238
 msgid "CONTINUE CURRENT GAME"
-msgstr ""
+msgstr "CONTINUE CURRENT GAME"
 
 #: ../src/title.c:239
 msgid "OPTIONS"
-msgstr ""
+msgstr "OPTIONS"
 
 #: ../src/title.c:240
 msgid "CREDITS"
-msgstr ""
+msgstr "CREDITS"
 
 #: ../src/title.c:241
 msgid "CHEAT OPTIONS"
-msgstr ""
+msgstr "CHEAT OPTIONS"
 
 #: ../src/title.c:242
 msgid "QUIT"
-msgstr ""
+msgstr "QUIT"
 
 #: ../src/title.c:246
 msgid "BACK TO MAIN MENU"
-msgstr ""
+msgstr "BACK TO MAIN MENU"
