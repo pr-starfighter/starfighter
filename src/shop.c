@@ -59,7 +59,8 @@ static void drawSecondaryWeaponSurface()
 	switch (player.weaponType[1])
 	{
 		case W_NONE:
-			strcpy(description, _("None"));
+			/// Used to indicate that there is not Secondary Weapon.
+			strcpy(description, _("Uninstalled"));
 			break;
 		case W_ROCKETS:
 			strcpy(description, _("Rockets"));

@@ -607,13 +607,14 @@ void mission_checkTimer()
 		mission.completed1[0] = OB_COMPLETED;
 		mission_killAllEnemies();
 		engine.addAliens = -1;
-		info_setLine("*** All Primary Objectives Completed ***", FONT_GREEN);
+		info_setLine(_("*** All Primary Objectives Completed ***"), FONT_GREEN);
 	}
 }
 
 static void mission_evaluate(int type, int id, int *completed, int *targetValue, int fontColor)
 {
-	char message[25];
+	char message[STRMAX_SHORT];
+	char fmt[STRMAX_SHORT];
 
 	if ((*targetValue <= 0) && (type != M_PROTECT_TARGET) &&
 			(type != M_PROTECT_PICKUP))
@@ -633,22 +634,26 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 		switch(type)
 		{
 			case M_COLLECT:
+				// FIXME: Add plural support
 				switch(id)
 				{
 					case P_CASH:
-						sprintf(message, "Collect $%d more...", *targetValue);
-						if ((rand() % 2) == 0)
-							sprintf(message, "$%d more to go...", *targetValue);
+						radio_getRandomMessage(fmt, _(
+							"Collect $%d more...\n"
+							"$%d more to go..."))
+						sprintf(message, fmt, *targetValue);
 						break;
 					case P_CARGO:
-						sprintf(message, "Collect %d more...", *targetValue);
-						if ((rand() % 2) == 0)
-							sprintf(message, "%d more to go...", *targetValue);
+						radio_getRandomMessage(fmt, _(
+							"Collect %d more...\n"
+							"%d more to go..."))
+						sprintf(message, fmt, *targetValue);
 						break;
 					case P_ORE:
-						sprintf(message, "Collect %d more...", *targetValue);
-						if ((rand() % 2) == 0)
-							sprintf(message, "%d more to go...", *targetValue);
+						radio_getRandomMessage(fmt, _(
+							"Collect %d more...\n"
+							"%d more to go..."))
+						sprintf(message, fmt, *targetValue);
 						break;
 				}
 				break;
@@ -657,14 +662,14 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 				switch(id)
 				{
 					case P_CARGO:
-						sprintf(message, "Cargo pod destroyed!");
+						sprintf(message, _("Cargo pod destroyed!"));
 						if (game.area == MISN_CERADSE) // Get lectured by Sid
 							/// Dialog (Sid Wilson)
 							/// Used when a cargo pod is destroyed in the Ceradse mission.
 							radio_setMessage(FS_SID, _("Chris, we needed that pod! I told you that we couldn't afford to lose a single one!"), 1);
 						break;
 					case P_ESCAPEPOD:
-						sprintf(message, "Escape Pod lost!");
+						sprintf(message, _("Escape Pod lost!"));
 						if (game.area == MISN_ODEON) // Get lectured by Phoebe
 						{
 							/// Dialog (Phoebe Lexx)
@@ -701,14 +706,16 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 			case M_DESTROY_TARGET_TYPE:
 				if ((*targetValue <= 10) || (*targetValue % 10 == 0))
 				{
-					if (CHANCE(0.5))
-						sprintf(message, "%d more to go...", *targetValue);
-					else
-						sprintf(message, "Destroy %d more...", *targetValue);
+					// XXX: Plurals
+					radio_getRandomMessage(fmt, _(
+						"Destroy %d more...\n"
+						"%d more to go..."))
+					sprintf(message, *fmt, *targetValue);
 				}
 				break;
 			case M_DISABLE_TARGET:
-				sprintf(message, "Disable %d more...", *targetValue);
+				// XXX: Plurals
+				sprintf(message, _("Disable %d more..."), *targetValue);
 				break;
 		}
 
@@ -730,7 +737,7 @@ void mission_updateRequirements(int type, int id, int value)
 	// you will automatically fail the mission(!)
 	if ((type == M_DESTROY_TARGET_TYPE) && (id == CD_SID))
 	{
-		info_setLine("Sid has been killed!", FONT_RED);
+		info_setLine(_("Sid has been killed!"), FONT_RED);
 		mission.completed1[0] = OB_JUST_FAILED;
 		/// Dialog (Sid Wilson)
 		/// Used when Sid is killed.
@@ -784,7 +791,7 @@ void mission_updateRequirements(int type, int id, int value)
 			{
 				if (game.slavesRescued >= 250)
 				{
-					info_setLine("*** Slaves Rescued - Mission Completed ***", FONT_GREEN);
+					info_setLine(_("*** Slaves Rescued - Mission Completed ***"), FONT_GREEN);
 					intermission_planets[PLANET_RESCUESLAVES].missionCompleted = 1;
 					/// Dialog (Chris Bainfield)
 					/// Used when you rescue enough slaves for the Eyananth slave rescue mission.
@@ -792,7 +799,8 @@ void mission_updateRequirements(int type, int id, int value)
 				}
 				else
 				{
-					sprintf(message, "Rescue %d more...", 250 - game.slavesRescued);
+					// XXX: Plurals
+					sprintf(message, _("Rescue %d more..."), 250 - game.slavesRescued);
 					info_setLine(message, FONT_CYAN);
 				}
 			}
@@ -800,7 +808,7 @@ void mission_updateRequirements(int type, int id, int value)
 
 		if ((type == M_DESTROY_TARGET_TYPE) && (id == CD_CLOAKFIGHTER))
 		{
-			info_setLine("*** Experimental Fighter Destroyed - Mission Completed ***", FONT_GREEN);
+			info_setLine(_("*** Experimental Fighter Destroyed - Mission Completed ***"), FONT_GREEN);
 			intermission_planets[PLANET_CLOAKFIGHTER].missionCompleted = 1;
 			/// Dialog (Chris Bainfield)
 			/// Used when the Mordor cloak ship is destroyed.
@@ -879,22 +887,22 @@ int mission_checkCompleted()
 			if (mission.remainingObjectives1 > 1)
 			{
 				if ((game.area != MISN_POSWIC) || (i != 1))
-					info_setLine("*** Primary Objective Completed ***", FONT_GREEN);
+					info_setLine(_("*** Primary Objective Completed ***"), FONT_GREEN);
 				else
-					info_setLine(">>> Primary Objective Failed <<<", FONT_RED);
+					info_setLine(_(">>> Primary Objective Failed <<<"), FONT_RED);
 				mission.completed1[i] = OB_COMPLETED;
 			}
 			else
 			{
 				if (mission.remainingObjectives2 > 0)
 				{
-					info_setLine("Emergency warp drive activated. Press button to engage.", FONT_CYAN);
+					info_setLine(_("Emergency warp drive activated. Press button to engage."), FONT_CYAN);
 				}
 
 				if (game.area != MISN_INTERCEPTION)
-					info_setLine("*** All Primary Objectives Completed ***", FONT_GREEN);
+					info_setLine(_("*** All Primary Objectives Completed ***"), FONT_GREEN);
 				else
-					info_setLine("*** Interception Destroyed ***", FONT_GREEN);
+					info_setLine(_("*** Interception Destroyed ***"), FONT_GREEN);
 				mission.completed1[i] = OB_COMPLETED;
 
 				// do some area specific things
@@ -923,12 +931,12 @@ int mission_checkCompleted()
 		{
 			if (mission.remainingObjectives2 > 1)
 			{
-				info_setLine("*** Secondary Objective Completed ***", FONT_GREEN);
+				info_setLine(_("*** Secondary Objective Completed ***"), FONT_GREEN);
 				mission.completed2[i] = OB_COMPLETED;
 			}
 			else
 			{
-				info_setLine("*** All Secondary Objectives Completed ***", FONT_GREEN);
+				info_setLine(_("*** All Secondary Objectives Completed ***"), FONT_GREEN);
 				mission.completed2[i] = OB_COMPLETED;
 
 				// do some area specific things
@@ -943,13 +951,13 @@ int mission_checkCompleted()
 
 		if (mission.completed1[i] == OB_JUST_FAILED)
 		{
-			info_setLine(">>> MISSION FAILED <<<", FONT_RED);
+			info_setLine(_(">>> MISSION FAILED <<<"), FONT_RED);
 			mission.completed1[i] = OB_FAILED;
 		}
 
 		if (mission.completed2[i] == OB_JUST_FAILED)
 		{
-			info_setLine(">>> Secondary Objective Failed <<<", FONT_RED);
+			info_setLine(_(">>> Secondary Objective Failed <<<"), FONT_RED);
 			mission.completed2[i] = OB_FAILED;
 		}
 	}
@@ -1070,20 +1078,21 @@ void mission_showStartScreen()
 	renderer_update();
 
 	gfx_loadSprites();
-	gfx_createTextObject(TS_SHIELD, "Shield", 0, 0, FONT_WHITE);
-	gfx_createTextObject(TS_PLASMA_T, "Plasma:", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_SHIELD, _("Shield"), 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_PLASMA_T, _("Plasma:"), 0, 0, FONT_WHITE);
 
 	if (player.weaponType[1] == W_CHARGER)
-		gfx_createTextObject(TS_AMMO_T, "Charge", 0, 0, FONT_WHITE);
+		gfx_createTextObject(TS_AMMO_T, _("Charge"), 0, 0, FONT_WHITE);
 	else if (player.weaponType[1] == W_LASER)
-		gfx_createTextObject(TS_AMMO_T, "Heat", 20, 0, FONT_WHITE);
+		gfx_createTextObject(TS_AMMO_T, _("Heat"), 20, 0, FONT_WHITE);
 	else
-		gfx_createTextObject(TS_AMMO_T, "Rockets:", 0, 0, FONT_WHITE);
+		gfx_createTextObject(TS_AMMO_T, _("Rockets:"), 0, 0, FONT_WHITE);
 
-	gfx_createTextObject(TS_TARGET, "Target", 0, 0, FONT_WHITE);
-	gfx_createTextObject(TS_TARGET_SID, "Sid", 0, 0, FONT_WHITE);
-	gfx_createTextObject(TS_TARGET_PHOEBE, "Phoebe", 0, 0, FONT_WHITE);
-	gfx_createTextObject(TS_TARGET_KLINE, "Kline", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_TARGET, _("Target"), 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_TARGET_SID, _("Sid"), 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_TARGET_PHOEBE, _("Phoebe"), 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_TARGET_KLINE, _("Kline"), 0, 0, FONT_WHITE);
+	// XXX: Bad assumption! Replace with string formatting ASAP!
 	gfx_createTextObject(TS_CASH_T, "Cash: $", 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_OBJECTIVES_T, "Objectives Remaining:", 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_TIME_T, "Time Remaining - ", 0, 0, FONT_WHITE);

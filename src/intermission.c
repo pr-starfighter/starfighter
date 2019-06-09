@@ -209,7 +209,7 @@ void intermission_updateSystemStatus()
 		intermission_planets[game.stationedPlanet].missionCompleted = 1;
 	}
 
-	strcpy(game.destinationName, _("None"));
+	strcpy(game.destinationName, _("No Destination"));
 	game.destinationPlanet = game.stationedPlanet;
 }
 
@@ -238,24 +238,29 @@ static void intermission_setStatusLines()
 
 	game_getDifficultyText(difficulty, game.difficulty);
 
+	/// Status Screen text
 	/// Retain "%s" as-is.  It is replaced with the current difficulty.
 	sprintf(string, _("Difficulty : %s"), difficulty);
 	gfx_createTextObject(TS_STATUS_DIFFICULTY, string, 0, 0, FONT_WHITE);
 
+	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the number of shots fired.
 	sprintf(string, _("Shots Fired : %d"), game.shots);
 	gfx_createTextObject(TS_SHOTS_FIRED, string, 0, 0, FONT_WHITE);
 
+	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the number of hits scored.
 	sprintf(string, _("Hits Scored : %d"), game.hits);
 	gfx_createTextObject(TS_HITS_SCORED, string, 0, 0, FONT_WHITE);
 
+	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the firing accuracy as a percentage.
 	/// Note: To use the "%" symbol, you must enter "%%", as you can see in
 	/// the English version.
 	sprintf(string, _("Accuracy : %d%%"), game.accuracy);
 	gfx_createTextObject(TS_ACCURACY, string, 0, 0, FONT_WHITE);
 
+	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the number of kills.
 	sprintf(string, _("Enemies Killed by Others : %d"), game.totalOtherKills);
 	gfx_createTextObject(TS_OTHER_KILLS, string, 0, 0, FONT_WHITE);
@@ -266,30 +271,37 @@ static void intermission_setStatusLines()
 
 	gfx_createTextObject(TS_CHRIS_HEADER, _("*** Chris ***"), 0, 0, FONT_WHITE);
 
+	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the number of kills.
 	sprintf(string, _("Enemies Killed : %d"), game.totalKills);
 	gfx_createTextObject(TS_CHRIS_KILLS, string, 0, 0, FONT_WHITE);
 
+	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the number of shield restores picked up.
 	sprintf(string, _("Shield Restores Picked Up : %d"), game.shieldPickups);
 	gfx_createTextObject(TS_CHRIS_SHIELD_PICKUPS, string, 0, 0, FONT_WHITE);
 
+	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the number of plasma cells picked up.
 	sprintf(string, _("Plasma Cells Picked Up : %d"), game.cellPickups);
 	gfx_createTextObject(TS_CHRIS_PLASMA_PICKUPS, string, 0, 0, FONT_WHITE);
 
+	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the number of rockets picked up.
 	sprintf(string, _("Rockets Picked Up : %d"), game.rocketPickups);
 	gfx_createTextObject(TS_CHRIS_ROCKET_PICKUPS, string, 0, 0, FONT_WHITE);
 
+	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the number of powerups picked up.
 	sprintf(string, _("Powerups Picked Up : %d"), game.powerups);
 	gfx_createTextObject(TS_CHRIS_POWERUP_PICKUPS, string, 0, 0, FONT_WHITE);
 
+	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the number of mines destroyed.
 	sprintf(string, _("Mines Destroyed : %d"), game.minesKilled);
 	gfx_createTextObject(TS_CHRIS_MINES_KILLED, string, 0, 0, FONT_WHITE);
 
+	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the number of slaves rescued.
 	sprintf(string, _("Slaves Rescued : %d"), game.slavesRescued);
 	gfx_createTextObject(TS_CHRIS_SLAVES_RESCUED, string, 0, 0, FONT_WHITE);
@@ -298,11 +310,13 @@ static void intermission_setStatusLines()
 	{
 		gfx_createTextObject(TS_PHOEBE_HEADER, _("*** Phoebe ***"), 0, 0, FONT_WHITE);
 
+		/// Status Screen text
 		/// Retain "%d" as-is.  It is replaced with the number of kills.
 		sprintf(string, _("Enemies Killed : %d"), game.wingMate1Kills);
 		gfx_createTextObject(TS_PHOEBE_KILLS, string, 0, 0, FONT_WHITE);
 
-		/// Retain "%d" as-is.  It is replaced with the number of ejections.
+		/// Retain
+		/// Status Screen text "%d" as-is.  It is replaced with the number of ejections.
 		sprintf(string, _("Ejections : %d"), game.wingMate1Ejects);
 		gfx_createTextObject(TS_PHOEBE_DEATHS, string, 0, 0, FONT_WHITE);
 	}
@@ -315,12 +329,15 @@ static void intermission_setStatusLines()
 
 	if (game.hasWingMate2)
 	{
+		/// Status Screen text
 		gfx_createTextObject(TS_URSULA_HEADER, _("*** Ursula ***"), 0, 0, FONT_WHITE);
 
+		/// Status Screen text
 		/// Retain "%d" as-is.  It is replaced with the number of kills.
 		sprintf(string, _("Enemies Killed : %d"), game.wingMate2Kills);
 		gfx_createTextObject(TS_URSULA_KILLS, string, 0, 0, FONT_WHITE);
 
+		/// Status Screen text
 		/// Retain "%d" as-is.  It is replaced with the number of ejections.
 		sprintf(string, _("Ejections : %d"), game.wingMate2Ejects);
 		gfx_createTextObject(TS_URSULA_DEATHS, string, 0, 0, FONT_WHITE);
@@ -334,6 +351,7 @@ static void intermission_setStatusLines()
 
 	gfx_createTextObject(TS_STATUS_HEADER, _("Current Status"), 0, 0, FONT_WHITE);
 
+	/// Status Screen footer (indicates the total time the game has been played)
 	/// "%ld" (which represents hours) and "%02ld" sequences (which
 	/// represent minutes and seconds, respectively) must remain and
 	/// stay in the same order relative to each other.  The ":"s
@@ -762,6 +780,8 @@ static void intermission_createCommsSurface(SDL_Surface *comms)
 	gfx_drawRect(comms, 0, 0, comms->w - 1, comms->h - 1, 0x00, 0x00, 0x25);
 
 	gfx_renderUnicode(_("+++ CURRENT MISSIONS +++"), -1, 15, FONT_GREEN, 0, comms);
+	/// Brief instructions for how to review a mission conversation, shown below the
+	/// CURRENT MISSIONS header.
 	gfx_renderUnicode(_("click for info"), -1, 35, FONT_WHITE, 0, comms);
 
 	yStart = 60;

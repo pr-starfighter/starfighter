@@ -2294,19 +2294,24 @@ void game_getDifficultyText(char *dest, int difficulty)
 	switch (difficulty)
 	{
 		case DIFFICULTY_EASY:
-			strcpy(dest, "Easy");
+			/// DIFFICULTY_EASY
+			strcpy(dest, _("Easy"));
 			break;
 		case DIFFICULTY_NORMAL:
-			strcpy(dest, "Normal");
+			/// DIFFICULTY_NORMAL
+			strcpy(dest, _("Normal"));
 			break;
 		case DIFFICULTY_HARD:
-			strcpy(dest, "Hard");
+			/// DIFFICULTY_HARD
+			strcpy(dest, _("Hard"));
 			break;
 		case DIFFICULTY_NIGHTMARE:
-			strcpy(dest, "Nightmare!");
+			/// DIFFICULTY_NIGHTMARE
+			strcpy(dest, _("Nightmare!"));
 			break;
 		case DIFFICULTY_ORIGINAL:
-			strcpy(dest, "Classic");
+			/// DIFFICULTY_ORIGINAL (Classic)
+			strcpy(dest, _("Classic"));
 			break;
 		default:
 			strcpy(dest, "???");

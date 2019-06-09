@@ -82,7 +82,9 @@ void cargo_becomeCollectable(int i)
 		aliens[ALIEN_PHOEBE].active = 1;
 		aliens[ALIEN_PHOEBE].x = cargo[i].x;
 		aliens[ALIEN_PHOEBE].y = cargo[i].y;
-		radio_setMessage(FS_PHOEBE, "Thanks! Watch out, WEAPCO! Phoebe's loose and she's ANGRY!", 1);
+		/// Dialog (Phoebe Lexx)
+		/// Used when Phoebe is freed in the Nerod mission.
+		radio_setMessage(FS_PHOEBE, _("Thanks! Watch out, WEAPCO! Phoebe's loose and she's ANGRY!"), 1);
 	}
 
 	cargo[i].active = 0;
