@@ -634,25 +634,68 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 		switch(type)
 		{
 			case M_COLLECT:
-				// FIXME: Add plural support
 				switch(id)
 				{
 					case P_CASH:
-						radio_getRandomMessage(fmt, _(
+						radio_getRandomMessage(fmt, ngettext(
+							/// Info line messages for remaining cash to collect (singular)
+							/// This is a "\n"-separated list of possible choices to make.  Please feel free
+							/// to add as many as you like. Each entry must have one instance of "%d", which
+							/// is replaced with the number remaining.
 							"Collect $%d more...\n"
-							"$%d more to go..."))
+							"$%d more to collect...\n"
+							"Just $%d more needed...\n"
+							"Collect just $%d more...",
+							/// Info line messages for remaining cash to collect (plural)
+							/// This is a "\n"-separated list of possible choices to make.  Please feel free
+							/// to add as many as you like. Each entry must have one instance of "%d", which
+							/// is replaced with the number remaining.
+							"Collect $%d more...\n"
+							"$%d more to collect...\n"
+							"$%d more needed...",
+							*targetValue));
 						sprintf(message, fmt, *targetValue);
 						break;
 					case P_CARGO:
-						radio_getRandomMessage(fmt, _(
-							"Collect %d more...\n"
-							"%d more to go..."))
+						radio_getRandomMessage(fmt, ngettext(
+							/// Info line messages for remaining cargo pods to collect (singular)
+							/// This is a "\n"-separated list of possible choices to make.  Please feel free
+							/// to add as many as you like. Each entry must have one instance of "%d", which
+							/// is replaced with the number remaining.
+							"Collect %d more cargo pod...\n"
+							"%d more cargo pod to collect...\n"
+							"%d more cargo pod needed...\n"
+							"Collect just %d more cargo pod...\n"
+							"Only %d cargo pod left to collect...",
+							/// Info line messages for remaining cargo pods to collect (plural)
+							/// This is a "\n"-separated list of possible choices to make.  Please feel free
+							/// to add as many as you like. Each entry must have one instance of "%d", which
+							/// is replaced with the number remaining.
+							"Collect %d more cargo pods...\n"
+							"%d more cargo pods to collect...\n"
+							"%d more cargo pods needed...\n"
+							"Collect %d remaining cargo pods...",
+							*targetValue));
 						sprintf(message, fmt, *targetValue);
 						break;
 					case P_ORE:
-						radio_getRandomMessage(fmt, _(
-							"Collect %d more...\n"
-							"%d more to go..."))
+						radio_getRandomMessage(fmt,ngettext(
+							/// Info line messages for remaining ore to collect (singular)
+							/// This is a "\n"-separated list of possible choices to make.  Please feel free
+							/// to add as many as you like. Each entry must have one instance of "%d", which
+							/// is replaced with the number remaining.
+							"Collect %d more piece of ore...\n"
+							"%d more piece of ore to collect...\n"
+							"%d more piece of ore needed...\n"
+							"Collect just %d more piece...",
+							/// Info line messages for remaining ore to collect (plural)
+							/// This is a "\n"-separated list of possible choices to make.  Please feel free
+							/// to add as many as you like. Each entry must have one instance of "%d", which
+							/// is replaced with the number remaining.
+							"Collect %d more pieces of ore...\n"
+							"%d more pieces of ore to collect...\n"
+							"%d more pieces of ore needed...",
+							*targetValue));
 						sprintf(message, fmt, *targetValue);
 						break;
 				}
@@ -706,16 +749,48 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 			case M_DESTROY_TARGET_TYPE:
 				if ((*targetValue <= 10) || (*targetValue % 10 == 0))
 				{
-					// XXX: Plurals
-					radio_getRandomMessage(fmt, _(
-						"Destroy %d more...\n"
-						"%d more to go..."))
-					sprintf(message, *fmt, *targetValue);
+					radio_getRandomMessage(fmt, ngettext(
+						/// Info line messages for remaining enemies to destroy (singular)
+						/// This is a "\n"-separated list of possible choices to make.  Please feel free
+						/// to add as many as you like. Each entry must have one instance of "%d", which
+						/// is replaced with the number remaining.
+						"Destroy %d more target...\n"
+						"%d more target to destroy...\n"
+						"%d target remains...\n"
+						"Destroy just %d more...\n"
+						"Only %d target left...\n"
+						"Destroy %d last target...",
+						/// Info line messages for remaining enemies to destroy (plural)
+						/// This is a "\n"-separated list of possible choices to make.  Please feel free
+						/// to add as many as you like. Each entry must have one instance of "%d", which
+						/// is replaced with the number remaining.
+						"Destroy %d more targets...\n"
+						"%d more targets to destroy...\n"
+						"%d targets remain...\n"
+						"Destroy %d remaining targets...",
+						*targetValue));
+					sprintf(message, fmt, *targetValue);
 				}
 				break;
 			case M_DISABLE_TARGET:
-				// XXX: Plurals
-				sprintf(message, _("Disable %d more..."), *targetValue);
+				radio_getRandomMessage(fmt, ngettext(
+					/// Info line messages for remaining enemies to disable (singular)
+					/// This is a "\n"-separated list of possible choices to make.  Please feel free
+					/// to add as many as you like. Each entry must have one instance of "%d", which
+					/// is replaced with the number remaining.
+					"Disable %d more target...\n"
+					"%d more target to disable...\n"
+					"Disable just %d more...\n"
+					"Disable %d last target...",
+					/// Info line messages for remaining enemies to disable (plural)
+					/// This is a "\n"-separated list of possible choices to make.  Please feel free
+					/// to add as many as you like. Each entry must have one instance of "%d", which
+					/// is replaced with the number remaining.
+					"Disable %d more targets...\n"
+					"%d more targets to disable...\n"
+					"Disable %d remaining targets...",
+					*targetValue));
+				sprintf(message, fmt, *targetValue);
 				break;
 		}
 
