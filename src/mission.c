@@ -736,7 +736,7 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 						case MISN_ALLEZ:
 							/// Dialog (friendly transport from Eyananth, Allez mission)
 							/// Used when the friendly transport in the Allez mission is destroyed.
-							radio_setMessage(FS_CREW, _("Noooo! Hull bre-..."), 1);
+							radio_setMessage(FS_CREW, _("No no no no no! Hull bre-..."), 1);
 							break;
 						case MISN_URUSOR:
 							/// Dialog (Sid Wilson)
@@ -801,12 +801,14 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 
 void mission_updateRequirements(int type, int id, int value)
 {
+	char message[STRMAX_SHORT];
+	char fmt[STRMAX_SHORT];
+	int matched = 0;
+	int slavesNeeded;
+
 	// Can't complete missions if you're dead!
 	if (player.shield <= 0)
 		return;
-
-	char message[25];
-	char matched = 0;
 
 	// We don't need to worry here since if Sid dies,
 	// you will automatically fail the mission(!)
@@ -864,7 +866,7 @@ void mission_updateRequirements(int type, int id, int value)
 		{
 			if (intermission_planets[PLANET_RESCUESLAVES].missionCompleted == 0)
 			{
-				if (game.slavesRescued >= 250)
+				if (game.slavesRescued >= SLAVE_RESCUE_TARGET)
 				{
 					info_setLine(_("*** Slaves Rescued - Mission Completed ***"), FONT_GREEN);
 					intermission_planets[PLANET_RESCUESLAVES].missionCompleted = 1;
@@ -874,8 +876,26 @@ void mission_updateRequirements(int type, int id, int value)
 				}
 				else
 				{
-					// XXX: Plurals
-					sprintf(message, _("Rescue %d more..."), 250 - game.slavesRescued);
+					slavesNeeded = SLAVE_RESCUE_TARGET - game.slavesRescued;
+					radio_getRandomMessage(fmt, ngettext(
+						/// Info line messages for remaining slaves to rescue (singular)
+						/// This is a "\n"-separated list of possible choices to make.  Please feel free
+						/// to add as many as you like. Each entry must have one instance of "%d", which
+						/// is replaced with the number remaining.
+						"Rescue %d more slave...\n"
+						"Rescue at least %d more slave...\n"
+						"At least %d more slave to rescue...\n"
+						"At least %d more rescued slave needed...",
+						/// Info line messages for remaining slaves to rescue (plural)
+						/// This is a "\n"-separated list of possible choices to make.  Please feel free
+						/// to add as many as you like. Each entry must have one instance of "%d", which
+						/// is replaced with the number remaining.
+						"Rescue %d more slaves...\n"
+						"Rescue at least %d more slaves...\n"
+						"At least %d more slaves to rescue...\n"
+						"At least %d more rescued slaves needed...",
+						slavesNeeded));
+					sprintf(message, fmt, slavesNeeded);
 					info_setLine(message, FONT_CYAN);
 				}
 			}
@@ -1149,27 +1169,19 @@ mission begins playing here.
 */
 void mission_showStartScreen()
 {
+	// TODO: Replace all "TS_*_T" objs with string formatting, plus adjust
+	// spacing for things like TS_SHIELD
 	screen_clear(black);
 	renderer_update();
 
 	gfx_loadSprites();
+	/// Used to indicate the player's shield meter in the HUD.
 	gfx_createTextObject(TS_SHIELD, _("Shield"), 0, 0, FONT_WHITE);
-	gfx_createTextObject(TS_PLASMA_T, _("Plasma:"), 0, 0, FONT_WHITE);
-
-	if (player.weaponType[1] == W_CHARGER)
-		gfx_createTextObject(TS_AMMO_T, _("Charge"), 0, 0, FONT_WHITE);
-	else if (player.weaponType[1] == W_LASER)
-		gfx_createTextObject(TS_AMMO_T, _("Heat"), 20, 0, FONT_WHITE);
-	else
-		gfx_createTextObject(TS_AMMO_T, _("Rockets:"), 0, 0, FONT_WHITE);
 
 	gfx_createTextObject(TS_TARGET, _("Target"), 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_TARGET_SID, _("Sid"), 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_TARGET_PHOEBE, _("Phoebe"), 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_TARGET_KLINE, _("Kline"), 0, 0, FONT_WHITE);
-	// XXX: Bad assumption! Replace with string formatting ASAP!
-	gfx_createTextObject(TS_CASH_T, "Cash: $", 0, 0, FONT_WHITE);
-	gfx_createTextObject(TS_OBJECTIVES_T, "Objectives Remaining:", 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_TIME_T, "Time Remaining - ", 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_POWER, "Power", 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_OUTPUT, "Output", 0, 0, FONT_WHITE);

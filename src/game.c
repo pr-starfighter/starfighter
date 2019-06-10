@@ -1887,16 +1887,16 @@ static void game_doHud()
 
 	if (game.area != MISN_INTERCEPTION)
 	{
-		screen_blitText(TS_OBJECTIVES_T, screen->w - 250, 20);
-		sprintf(text, "%d", (mission.remainingObjectives1 + mission.remainingObjectives2));
+		/// "%d" must be retained.  It is replaced with the number of mission objectives remaining.
+		sprintf(text, _("Objectives Remaining: %d"), (mission.remainingObjectives1 + mission.remainingObjectives2));
 		gfx_createTextObject(TS_OBJECTIVES, text, 0, 0, FONT_WHITE);
-		screen_blitText(TS_OBJECTIVES, screen->w - 55, 21);
+		screen_blitText(TS_OBJECTIVES, screen->w - gfx_textSprites[TS_OBJECTIVES].image->w - 25, 20);
 	}
 
-	screen_blitText(TS_CASH_T, 25, 20);
-	sprintf(text, "%.6d", game.cash);
+	/// "%d" must be retained.  It is replaced with the player's current total cash.
+	sprintf(text, _("Cash: $%d"), game.cash);
 	gfx_createTextObject(TS_CASH, text, 0, 0, FONT_WHITE);
-	screen_blitText(TS_CASH, 90, 21);
+	screen_blitText(TS_CASH, 25, 20);
 
 	if (game.difficulty == DIFFICULTY_ORIGINAL)
 	{
@@ -1930,23 +1930,28 @@ static void game_doHud()
 		if (player.ammo[0] <= 25) fontColor = FONT_YELLOW;
 		if (player.ammo[0] <= 10) fontColor = FONT_RED;
 	}
-	screen_blitText(TS_PLASMA_T, screen->w * 5 / 16, screen->h - 50);
-	sprintf(text, "%.3d", player.ammo[0]);
+	/// "%.3d" must be retained.  It is replaced with the amount of plasma ammo.
+	sprintf(text, _("Plasma: %.3d"), player.ammo[0]);
 	gfx_createTextObject(TS_PLASMA, text, 0, 0, fontColor);
-	screen_blitText(TS_PLASMA, screen->w * 5 / 16 + 70, screen->h - 49);
+	screen_blitText(TS_PLASMA, screen->w * 5 / 16, screen->h - 50);
 
-	screen_blitText(TS_AMMO_T, screen->w / 2, screen->h - 50);
-
-	if ((player.weaponType[1] != W_CHARGER) && (player.weaponType[1] != W_LASER))
+	if (player.weaponType[1] == W_CHARGER)
 	{
-		if (player.ammo[1] == 1)
-			fontColor = FONT_RED;
-		else
-			fontColor = FONT_WHITE;
-		sprintf(text, "%.2d", player.ammo[1]); // rocket ammo
-		gfx_createTextObject(TS_AMMO, text, 0, 0, fontColor);
-		screen_blitText(TS_AMMO, screen->w / 2 + 80, screen->h - 49);
+		/// Used to indicate the charge meter for the charger cannon in the HUD.
+		gfx_createTextObject(TS_AMMO, _("Charge"), 0, 0, FONT_WHITE);
 	}
+	else if (player.weaponType[1] == W_LASER)
+	{
+		/// Used to indicate the heat meter for the laser cannon in the HUD.
+		gfx_createTextObject(TS_AMMO, _("Heat"), 0, 0, FONT_WHITE);
+	}
+	else
+	{
+		/// "%.2d" must be retained.  It is replaced with the amount of rocket ammo.
+		sprintf(text, _("Rockets: %.2d"), player.ammo[1]);
+		gfx_createTextObject(TS_AMMO, text, 0, 0, FONT_WHITE);
+	}
+	screen_blitText(TS_AMMO, screen->w / 2, screen->h - 50);
 
 	if (((player.weaponType[1] == W_CHARGER) || (player.weaponType[1] == W_LASER)) && (player.ammo[1] > 0))
 	{
@@ -1954,7 +1959,7 @@ static void game_doHud()
 		if (player.ammo[1] > 100)
 			c = red;
 
-		bar.x = screen->w / 2 + 65;
+		bar.x = screen->w / 2 + gfx_textSprites[TS_AMMO].image->w + 10;
 		bar.y = screen->h - 50;
 		bar.h = 12;
 

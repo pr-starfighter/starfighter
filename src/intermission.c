@@ -919,7 +919,9 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 
 		case MISN_RESCUESLAVES:
 			/// Mission dialog: Eyananth, interceptions (Sid Wilson)
-			strcpy(string, _("As you know, WEAPCO has many slaves in this system. If we free a large number of them, it might help to spark a rebellion. I estimate that we will need to rescue around 250 to make a difference."));
+			/// "%d" must be retained as-is. It is replaced with the number of slaves that
+			/// need to be rescued.
+			sprintf(string, _("As you know, WEAPCO has many slaves in this system. If we free a large number of them, it might help to spark a rebellion. I estimate that we will need to rescue around %d to make a difference."), SLAVE_RESCUE_TARGET);
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
 			/// Mission dialog: Eyananth, interceptions (Chris Bainfield)
