@@ -47,6 +47,7 @@ PKG_CHECK_MODULES([PANGO], [pango], [
 
 AC_ARG_VAR([SF_SCREEN_WIDTH], [The width of the game window in pixels])
 AC_ARG_VAR([SF_SCREEN_HEIGHT], [The height of the game window in pixels])
+AC_ARG_VAR([SF_RUN_IN_PLACE], [Set to 1 to compile Starfighter to run in-place (instead of installing)])
 AS_IF([test -n "$SF_SCREEN_WIDTH"], [
 	STARFIGHTER_CFLAGS="$STARFIGHTER_CFLAGS -DSCREEN_WIDTH=$SF_SCREEN_WIDTH"
 	echo "Using default screen width of $SF_SCREEN_WIDTH"
@@ -64,7 +65,7 @@ AS_IF([test -n "$SF_RUN_IN_PLACE"], [
 	echo "Preparing a run-in-place build"
 ])
 
-AM_CONDITIONAL([RUN_IN_PLACE], [test -n "$SF_RUN_IN_PLACE"])
+AM_CONDITIONAL([RUN_IN_PLACE], [test "$SF_RUN_IN_PLACE = 1"])
 
 AC_SUBST([STARFIGHTER_CFLAGS])
 
