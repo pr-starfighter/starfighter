@@ -1773,6 +1773,7 @@ int alien_enemiesInFront(Object *alien)
 void alien_move(Object *alien)
 {
 	int checkCollisions;
+	int collided = 0;
 
 	if ((alien->flags & FL_LEAVESECTOR) || (alien->shield < 1))
 		checkCollisions = 0;
@@ -1808,15 +1809,23 @@ void alien_move(Object *alien)
 	{
 		for (int i = 0 ; i < ALIEN_MAX ; i++)
 		{
-			if ((aliens[i].classDef == CD_BARRIER) &&
-					(aliens[i].owner != alien) &&
-					ship_collision(alien, &aliens[i]))
+			if (ship_collision(alien, &aliens[i]) && (aliens[i].owner != alien))
 			{
-				alien->shield--;
-				alien->hit = 3;
-				alien->dx *= -1;
-				alien->dy *= -1;
-				audio_playSound(SFX_HIT, alien->x, alien->y);
+				if ((game.difficulty == DIFFICULTY_ORIGINAL) && (alien->classDef != CD_DRONE) &&
+						(alien->classDef != CD_ASTEROID) && (alien->classDef != CD_ASTEROID2) &&
+						(alien->owner == alien))
+				{
+					collided = 1;
+				}
+
+				if (aliens[i].classDef == CD_BARRIER)
+				{
+					alien->shield--;
+					alien->hit = 3;
+					alien->dx *= -1;
+					alien->dy *= -1;
+					audio_playSound(SFX_HIT, alien->x, alien->y);
+				}
 			}
 		}
 
@@ -1840,6 +1849,39 @@ void alien_move(Object *alien)
 			if (alien->classDef == CD_BARRIER)
 			{
 				player_damage(1, 0);
+			}
+		}
+		
+		// Ship collision (only in Classic difficulty)
+		if (collided)
+		{
+			if (alien->flags & FL_CIRCLES)
+			{
+				if (alien->face == 0)
+				{
+					alien->dx -= 0.02;
+					alien->dy -= 0.02;
+				}
+				else
+				{
+					alien->dx += 0.02;
+					alien->dy += 0.02;
+				}
+
+				alien->x += (sinf(alien->dx) * 4);
+				alien->y += (cosf(alien->dy) * 4);
+				
+				alien->thinktime = 0;
+			}
+			else
+			{
+				alien->x += alien->dx;
+				alien->y += alien->dy;
+				
+				alien->dx *= -0.2;
+				alien->dy *= -0.2;
+				
+				LIMIT(alien->thinktime, 0, 15);
 			}
 		}
 	}
