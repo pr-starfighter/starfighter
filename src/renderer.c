@@ -30,11 +30,9 @@ SDL_Texture *renderer_texture;
 
 void renderer_update()
 {
-	// XXX: The SDL wiki says that SDL_UpdateTexture is slow and shouldn't
-	// be used for textures that are updated often. This should be looked
-	// into.
-	SDL_UpdateTexture(renderer_texture, NULL, screen->pixels, screen->w * 4);
+	SDL_LockTexture(renderer_texture, NULL, &(screen->pixels), &(screen->pitch));
 	SDL_RenderCopy(renderer, renderer_texture, NULL, NULL);
+	SDL_UnlockTexture(renderer_texture);
 	SDL_RenderPresent(renderer);
 }
 
