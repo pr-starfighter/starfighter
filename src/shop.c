@@ -276,24 +276,24 @@ static void drawShop()
 
 	gfx_renderUnicode(_("Primary Weapon"), 10, 3, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_PRIMARY]);
 	/// Retain "%d" as-is.  It is replaced with the min plasma output.
-	sprintf(description, _("Cannons : %d"), game.minPlasmaOutput);
+	sprintf(description, _("Cannons: %d"), game.minPlasmaOutput);
 	gfx_renderUnicode(description, 10, 22, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_PRIMARY]);
 	/// Retain "%d" as-is.  It is replaced with the min plasma damage.
-	sprintf(description, _("Power   : Stage %d"),
+	sprintf(description, _("Power: Stage %d"),
 		game.minPlasmaDamage);
 	gfx_renderUnicode(description, 10, 37, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_PRIMARY]);
 	/// Retain "%d" as-is.  It is replaced with the min plasma cooling.
-	sprintf(description, _("Cooling : Stage %d"),
+	sprintf(description, _("Cooling: Stage %d"),
 		game.minPlasmaRate);
 	gfx_renderUnicode(description, 10, 52, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_PRIMARY]);
 
 	gfx_renderUnicode(_("Powerup Weapon"), 10, 3, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
 	/// Retain "%d" as-is.  It is replaced with the max plasma output.
-	sprintf(description, _("Splitter  : Stage %d"),
+	sprintf(description, _("Splitter: Stage %d"),
 		game.maxPlasmaOutput);
 	gfx_renderUnicode(description, 10, 22, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
 	/// Retain "%d" as-is.  It is replaced with the max plasma damage.
-	sprintf(description, _("Condensor : Stage %d"),
+	sprintf(description, _("Condensor: Stage %d"),
 		game.maxPlasmaDamage);
 	gfx_renderUnicode(description, 10, 37, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
 	/// Retain "%d" as-is.  It is replaced with the max plasma cooling.
@@ -301,7 +301,7 @@ static void drawShop()
 		game.maxPlasmaRate);
 	gfx_renderUnicode(description, 10, 52, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
 	/// Retain "%d" as-is.  It is replaced with the Firefly's plasma ammo capacity.
-	sprintf(description, _("Capacity  : %d"), game.maxPlasmaAmmo);
+	sprintf(description, _("Capacity: %d"), game.maxPlasmaAmmo);
 	gfx_renderUnicode(description, 10, 67, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
 
 	drawSecondaryWeaponSurface();
@@ -331,20 +331,22 @@ static void drawShop()
 	}
 
 	/// Retain "%d" as-is.  It is replaced with the Firefly's max shield.
-	sprintf(description, _("Shield : %d"), player.maxShield);
+	sprintf(description, _("Shield: %d"), player.maxShield);
 	gfx_renderUnicode(description, 10, 6, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
 	/// Retain "%d" as-is.  It is replaced with the player's current cash.
-	sprintf(description, _("  Cash : $%d"), game.cash);
+	sprintf(description, _("Cash: $%d"), game.cash);
 	gfx_renderUnicode(description, 10, 22, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
 	/// Retain "%.3d".  It is replaced with the ship's current number of plasma cells.
 	/// "%.3d" can be changed to "%d" if you wish to not fill in space with zeroes,
 	/// e.g. render the number 5 as "5" rather than "005".
-	sprintf(description, _("Plasma Cells : %.3d"), player.ammo[0]);
+	sprintf(description, _("Plasma Cells: %.3d"), player.ammo[0]);
+	// XXX: Bad positioning
 	gfx_renderUnicode(description, 430, 6, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
 	/// Retain "%.2d".  It is replaced with the ship's current number of rockets.
 	/// "%.2d" can be changed to "%d" if you wish to not fill in space with zeroes,
 	/// e.g. render the number 3 as "3" rather than "03".
-	sprintf(description, _("Rockets :  %.2d"), player.ammo[1]);
+	sprintf(description, _("Rockets: %.2d"), player.ammo[1]);
+	// XXX: Bad positioning
 	gfx_renderUnicode(description, 475, 22, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
 
 	gfx_shopSprites[SHOP_S_ITEM_INFO] = gfx_createSurface(601, 56);

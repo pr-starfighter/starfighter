@@ -1169,8 +1169,6 @@ mission begins playing here.
 */
 void mission_showStartScreen()
 {
-	// TODO: Replace all "TS_*_T" objs with string formatting, plus adjust
-	// spacing for things like TS_SHIELD
 	screen_clear(black);
 	renderer_update();
 
@@ -1182,7 +1180,6 @@ void mission_showStartScreen()
 	gfx_createTextObject(TS_TARGET_SID, _("Sid"), 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_TARGET_PHOEBE, _("Phoebe"), 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_TARGET_KLINE, _("Kline"), 0, 0, FONT_WHITE);
-	gfx_createTextObject(TS_TIME_T, "Time Remaining - ", 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_POWER, "Power", 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_OUTPUT, "Output", 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_COOLER, "Cooler", 0, 0, FONT_WHITE);

@@ -1865,7 +1865,8 @@ static void game_doHud()
 	int shieldColor = 0;
 	SDL_Rect bar;
 	int fontColor;
-	char text[25];
+	int tTextIndex;
+	char text[STRMAX_SHORT];
 	int i;
 
 	screen_addBuffer(0, 20, screen->w, 25);
@@ -1873,16 +1874,31 @@ static void game_doHud()
 
 	if (engine.minutes > -1)
 	{
-		if ((engine.minutes == 0) && (engine.seconds <= 29))
-			fontColor = FONT_RED;
-		else if ((engine.minutes == 0) && (engine.seconds > 29))
-			fontColor = FONT_YELLOW;
-		else
+		if (game.area == MISN_MARS)
+		{
 			fontColor = FONT_WHITE;
-		screen_blitText(TS_TIME_T, screen->w / 2 - 140, 20);
-		sprintf(text, "%.2d:%.2d", engine.minutes, engine.seconds);
+		}
+		else
+		{
+			if ((engine.minutes == 0) && (engine.seconds <= 29))
+				fontColor = FONT_RED;
+			else if ((engine.minutes == 0) && (engine.seconds > 29))
+				fontColor = FONT_YELLOW;
+			else
+				fontColor = FONT_WHITE;
+		}
+
+		/// Each "%.2d" must be retained.  They are replaced with the minutes and seconds left
+		/// to complete the mission, respectively (or, in the case of the Mars mission, the
+		/// minutes and seconds, respectively, until the mission is completed).
+		/// If you are familiar with C string formatting, they can be modified as long as
+		/// the "d" type remains.  For example, you can replace "%.2d" with "%d" to allow the
+		/// timer to use single-digit numbers.
+		/// The ":" can also be replaced just like any text.  For example, this would be fine:
+		///     "Time Remaining - %d minutes and %d seconds"
+		sprintf(text, _("Time Remaining - %.2d:%.2d"), engine.minutes, engine.seconds);
 		gfx_createTextObject(TS_TIME, text, 0, 0, fontColor);
-		screen_blitText(TS_TIME, screen->w / 2 + 10, 21);
+		screen_blitText(TS_TIME, screen->w / 2 - gfx_textSprites[TS_TIME].image->w / 2, 20);
 	}
 
 	if (game.area != MISN_INTERCEPTION)
@@ -2059,23 +2075,25 @@ static void game_doHud()
 		{
 			if (game.difficulty == DIFFICULTY_ORIGINAL)
 			{
-				screen_blitText(TS_TARGET, screen->w * 11 / 16, screen->h - 50);
+				tTextIndex = TS_TARGET;
 			}
 			else
 			{
 				if (engine.targetIndex == ALIEN_SID)
-					screen_blitText(TS_TARGET_SID, screen->w * 11 / 16 + 27, screen->h - 50);
+					tTextIndex = TS_TARGET_SID;
 				else if (engine.targetIndex == ALIEN_PHOEBE)
-					screen_blitText(TS_TARGET_PHOEBE, screen->w * 11 / 16, screen->h - 50);
+					tTextIndex = TS_TARGET_PHOEBE;
 				else if (engine.targetIndex == ALIEN_KLINE)
-					screen_blitText(TS_TARGET_KLINE, screen->w * 11 / 16 + 9, screen->h - 50);
+					tTextIndex = TS_TARGET_KLINE;
 				else
-					screen_blitText(TS_TARGET, screen->w * 11 / 16, screen->h - 50);
+					tTextIndex = TS_TARGET;
 			}
+
+			screen_blitText(tTextIndex, screen->w * 11 / 16, screen->h - 50);
 
 			bar.w = MAX(screen->w / 800, 1);
 			bar.h = 12;
-			bar.x = screen->w * 11 / 16 + 65;
+			bar.x = screen->w * 11 / 16 + gfx_textSprites[tTextIndex].image->w + 10;
 			bar.y = screen->h - 50;
 
 			for (float i = 0 ; i < (engine.targetShield * aliens[engine.targetIndex].shield) ; i++)
@@ -2097,7 +2115,7 @@ static void game_doHud()
 
 	bar.w = screen->w / 32;
 	bar.h = 12;
-	bar.x = screen->w / 32 + 55;
+	bar.x = screen->w / 32 + gfx_textSprites[TS_POWER].image->w + 10;
 	bar.y = screen->h - 29;
 
 	for (int i = 1 ; i <= 5 ; i++)
@@ -2116,7 +2134,7 @@ static void game_doHud()
 
 	bar.w = screen->w / 32;
 	bar.h = 12;
-	bar.x = screen->w * 5 / 16 + 65;
+	bar.x = screen->w * 5 / 16 + gfx_textSprites[TS_OUTPUT].image->w + 10;
 	bar.y = screen->h - 29;
 	SDL_FillRect(screen, &bar, yellow);
 
@@ -2137,7 +2155,7 @@ static void game_doHud()
 
 	bar.w = screen->w / 32;
 	bar.h = 12;
-	bar.x = screen->w * 97 / 160 + 65;
+	bar.x = screen->w * 97 / 160 + gfx_textSprites[TS_COOLER].image->w + 10;
 	bar.y = screen->h - 29;
 
 	for (int i = 1 ; i <= 5 ; i++)
@@ -2167,7 +2185,7 @@ static void game_doHud()
 
 	bar.w = blockSize;
 	bar.h = 12;
-	bar.x = screen->w / 32 + 65;
+	bar.x = screen->w / 32 + gfx_textSprites[TS_SHIELD].image->w + 10;
 	bar.y = screen->h - 50;
 
 	for (int i = 0 ; i < player.shield ; i += blockSize)
