@@ -598,7 +598,7 @@ void title_showCredits()
 	gfx_free();
 
 	FILE *fp;
-	int lastCredit = -1;
+	int lastCredit;
 
 	int yPos = 0;
 	int yPos2 = screen->h;
@@ -606,6 +606,7 @@ void title_showCredits()
 	int i;
 
 	TextObject *credit;
+	int nCredit;
 
 	screen_clear(black);
 	renderer_update();
@@ -616,23 +617,38 @@ void title_showCredits()
 	audio_playMusic("music/rise_of_spirit.ogg", 1);
 
 	fp = fopen("data/credits.txt", "rb");
-	// FIXME: It would be nice for the size of this array to be determined
-	// by the number of lines in the text file. I'm not sure how to do
-	// that at the moment, so just giving it a very large number for now.
-	credit = malloc(300 * sizeof(*credit));
+
+	nCredit = 0;
+	while (fscanf(fp, "%d %[^\n]%*c", &yPos, text) == 2)
+	{
+		nCredit++;
+	}
+	fseek(fp, 0, SEEK_SET);
+
+	credit = malloc(nCredit * sizeof(*credit));
 	if (credit == NULL)
 	{
 		engine_warn("Failed to allocate memory for credits");
 		return;
 	}
 
+	lastCredit = -1;
 	while (fscanf(fp, "%d %[^\n]%*c", &yPos, text) == 2)
 	{
 		lastCredit++;
-		credit[lastCredit].image = gfx_createTextSurface(text, FONT_WHITE);
-		credit[lastCredit].x = (screen->w - credit[lastCredit].image->w) / 2;
-		yPos2 += yPos;
-		credit[lastCredit].y = yPos2;
+		if (lastCredit < nCredit)
+		{
+			credit[lastCredit].image = gfx_createTextSurface(text, FONT_WHITE);
+			credit[lastCredit].x = (screen->w - credit[lastCredit].image->w) / 2;
+			yPos2 += yPos;
+			credit[lastCredit].y = yPos2;
+		}
+		else
+		{
+			engine_warn("Credit size reached, but still scanning the file!");
+			lastCredit--;
+			break;
+		}
 	}
 
 	fclose(fp);
