@@ -638,7 +638,7 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 				{
 					case P_CASH:
 						radio_getRandomMessage(fmt, ngettext(
-							/// Info line messages for remaining cash to collect (singular)
+							/// Info line messages for remaining cash to collect
 							/// This is a "\n"-separated list of possible choices to make.  Please feel free
 							/// to add as many as you like. Each entry must have one instance of "%d", which
 							/// is replaced with the number remaining.
@@ -646,10 +646,7 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 							"$%d more to collect...\n"
 							"Just $%d more needed...\n"
 							"Collect just $%d more...",
-							/// Info line messages for remaining cash to collect (plural)
-							/// This is a "\n"-separated list of possible choices to make.  Please feel free
-							/// to add as many as you like. Each entry must have one instance of "%d", which
-							/// is replaced with the number remaining.
+							// Plural
 							"Collect $%d more...\n"
 							"$%d more to collect...\n"
 							"$%d more needed...",
@@ -658,7 +655,7 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 						break;
 					case P_CARGO:
 						radio_getRandomMessage(fmt, ngettext(
-							/// Info line messages for remaining cargo pods to collect (singular)
+							/// Info line messages for remaining cargo pods to collect
 							/// This is a "\n"-separated list of possible choices to make.  Please feel free
 							/// to add as many as you like. Each entry must have one instance of "%d", which
 							/// is replaced with the number remaining.
@@ -667,10 +664,7 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 							"%d more cargo pod needed...\n"
 							"Collect just %d more cargo pod...\n"
 							"Only %d cargo pod left to collect...",
-							/// Info line messages for remaining cargo pods to collect (plural)
-							/// This is a "\n"-separated list of possible choices to make.  Please feel free
-							/// to add as many as you like. Each entry must have one instance of "%d", which
-							/// is replaced with the number remaining.
+							// Plural
 							"Collect %d more cargo pods...\n"
 							"%d more cargo pods to collect...\n"
 							"%d more cargo pods needed...\n"
@@ -680,7 +674,7 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 						break;
 					case P_ORE:
 						radio_getRandomMessage(fmt,ngettext(
-							/// Info line messages for remaining ore to collect (singular)
+							/// Info line messages for remaining ore to collect
 							/// This is a "\n"-separated list of possible choices to make.  Please feel free
 							/// to add as many as you like. Each entry must have one instance of "%d", which
 							/// is replaced with the number remaining.
@@ -688,10 +682,7 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 							"%d more piece of ore to collect...\n"
 							"%d more piece of ore needed...\n"
 							"Collect just %d more piece...",
-							/// Info line messages for remaining ore to collect (plural)
-							/// This is a "\n"-separated list of possible choices to make.  Please feel free
-							/// to add as many as you like. Each entry must have one instance of "%d", which
-							/// is replaced with the number remaining.
+							// Plural
 							"Collect %d more pieces of ore...\n"
 							"%d more pieces of ore to collect...\n"
 							"%d more pieces of ore needed...",
@@ -750,7 +741,7 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 				if ((*targetValue <= 10) || (*targetValue % 10 == 0))
 				{
 					radio_getRandomMessage(fmt, ngettext(
-						/// Info line messages for remaining enemies to destroy (singular)
+						/// Info line messages for remaining enemies to destroy
 						/// This is a "\n"-separated list of possible choices to make.  Please feel free
 						/// to add as many as you like. Each entry must have one instance of "%d", which
 						/// is replaced with the number remaining.
@@ -760,10 +751,7 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 						"Destroy just %d more...\n"
 						"Only %d target left...\n"
 						"Destroy %d last target...",
-						/// Info line messages for remaining enemies to destroy (plural)
-						/// This is a "\n"-separated list of possible choices to make.  Please feel free
-						/// to add as many as you like. Each entry must have one instance of "%d", which
-						/// is replaced with the number remaining.
+						// Plural
 						"Destroy %d more targets...\n"
 						"%d more targets to destroy...\n"
 						"%d targets remain...\n"
@@ -774,7 +762,7 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 				break;
 			case M_DISABLE_TARGET:
 				radio_getRandomMessage(fmt, ngettext(
-					/// Info line messages for remaining enemies to disable (singular)
+					/// Info line messages for remaining enemies to disable
 					/// This is a "\n"-separated list of possible choices to make.  Please feel free
 					/// to add as many as you like. Each entry must have one instance of "%d", which
 					/// is replaced with the number remaining.
@@ -782,10 +770,7 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 					"%d more target to disable...\n"
 					"Disable just %d more...\n"
 					"Disable %d last target...",
-					/// Info line messages for remaining enemies to disable (plural)
-					/// This is a "\n"-separated list of possible choices to make.  Please feel free
-					/// to add as many as you like. Each entry must have one instance of "%d", which
-					/// is replaced with the number remaining.
+					// Plural
 					"Disable %d more targets...\n"
 					"%d more targets to disable...\n"
 					"Disable %d remaining targets...",
@@ -878,7 +863,7 @@ void mission_updateRequirements(int type, int id, int value)
 				{
 					slavesNeeded = SLAVE_RESCUE_TARGET - game.slavesRescued;
 					radio_getRandomMessage(fmt, ngettext(
-						/// Info line messages for remaining slaves to rescue (singular)
+						/// Info line messages for remaining slaves to rescue
 						/// This is a "\n"-separated list of possible choices to make.  Please feel free
 						/// to add as many as you like. Each entry must have one instance of "%d", which
 						/// is replaced with the number remaining.
@@ -886,10 +871,7 @@ void mission_updateRequirements(int type, int id, int value)
 						"Rescue at least %d more slave...\n"
 						"At least %d more slave to rescue...\n"
 						"At least %d more rescued slave needed...",
-						/// Info line messages for remaining slaves to rescue (plural)
-						/// This is a "\n"-separated list of possible choices to make.  Please feel free
-						/// to add as many as you like. Each entry must have one instance of "%d", which
-						/// is replaced with the number remaining.
+						// Plural
 						"Rescue %d more slaves...\n"
 						"Rescue at least %d more slaves...\n"
 						"At least %d more slaves to rescue...\n"
@@ -1315,8 +1297,7 @@ void mission_showFinishedScreen()
 			else
 				shield_bonus = player.shield * 10;
 			/// "%d" must be retained.  It is replaced with the money earned
-			/// from the shield bonus.  Please keep "$" as-is as well for the
-			/// sake of continuity with untranslateable parts of the interface.
+			/// from the shield bonus.
 			sprintf(temp, _("Shield Bonus: $%d"), shield_bonus);
 			screen_renderUnicode(temp, -1, screen->h / 2 + 130, FONT_WHITE);
 			game.cash += shield_bonus;

@@ -59,31 +59,39 @@ static void drawSecondaryWeaponSurface()
 	switch (player.weaponType[1])
 	{
 		case W_NONE:
-			/// Used to indicate that there is not Secondary Weapon.
+			/// Shop info: current secondary: none
 			strcpy(description, _("Uninstalled"));
 			break;
 		case W_ROCKETS:
+			/// Shop info: current secondary: rockets
 			strcpy(description, _("Rockets"));
 			break;
 		case W_DOUBLE_ROCKETS:
+			/// Shop info: current secondary: double rockets
 			strcpy(description, _("Dbl Rockets"));
 			break;
 		case W_MICRO_ROCKETS:
+			/// Shop info: current secondary: micro rockets
 			strcpy(description, _("Micro Rockets"));
 			break;
 		case W_LASER:
+			/// Shop info: current secondary: laser
 			strcpy(description, _("Laser"));
 			break;
 		case W_CHARGER:
+			/// Shop info: current secondary: charger
 			strcpy(description, _("Charger"));
 			break;
 		case W_HOMING_MISSILE:
+			/// Shop info: current secondary: homing missile
 			strcpy(description, _("Homing Missile"));
 			break;
 		case W_DOUBLE_HOMING_MISSILES:
+			/// Shop info: current secondary: double homing missiles
 			strcpy(description, _("Dbl Homing Missiles"));
 			break;
 		case W_MICRO_HOMING_MISSILES:
+			/// Shop info: current secondary: micro homing missiles
 			strcpy(description, _("Mcr Homing Missiles"));
 			break;
 	}
@@ -275,31 +283,38 @@ static void drawShop()
 	strcpy(description, "");
 
 	gfx_renderUnicode(_("Primary Weapon"), 10, 3, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_PRIMARY]);
+	/// Shop info: min plasma output
 	/// Retain "%d" as-is.  It is replaced with the min plasma output.
 	sprintf(description, _("Cannons: %d"), game.minPlasmaOutput);
 	gfx_renderUnicode(description, 10, 22, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_PRIMARY]);
+	/// Shop info: min plasma damage
 	/// Retain "%d" as-is.  It is replaced with the min plasma damage.
 	sprintf(description, _("Power: Stage %d"),
 		game.minPlasmaDamage);
 	gfx_renderUnicode(description, 10, 37, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_PRIMARY]);
+	/// Shop info: min plasma rate
 	/// Retain "%d" as-is.  It is replaced with the min plasma cooling.
 	sprintf(description, _("Cooling: Stage %d"),
 		game.minPlasmaRate);
 	gfx_renderUnicode(description, 10, 52, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_PRIMARY]);
 
 	gfx_renderUnicode(_("Powerup Weapon"), 10, 3, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
+	/// Shop info: max plasma output
 	/// Retain "%d" as-is.  It is replaced with the max plasma output.
 	sprintf(description, _("Splitter: Stage %d"),
 		game.maxPlasmaOutput);
 	gfx_renderUnicode(description, 10, 22, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
+	/// Shop info: max plasma damage
 	/// Retain "%d" as-is.  It is replaced with the max plasma damage.
 	sprintf(description, _("Condensor: Stage %d"),
 		game.maxPlasmaDamage);
 	gfx_renderUnicode(description, 10, 37, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
+	/// Shop info: max plasma rate
 	/// Retain "%d" as-is.  It is replaced with the max plasma cooling.
 	sprintf(description, _("L.Nitrogen: Stage %d"),
 		game.maxPlasmaRate);
 	gfx_renderUnicode(description, 10, 52, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
+	/// Shop info: max plasma ammo
 	/// Retain "%d" as-is.  It is replaced with the Firefly's plasma ammo capacity.
 	sprintf(description, _("Capacity: %d"), game.maxPlasmaAmmo);
 	gfx_renderUnicode(description, 10, 67, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);

@@ -109,6 +109,7 @@ int save_initSlots()
 			fp = fopen(fileName, "r");
 			if (fp == NULL)
 			{
+				/// Used for empty save slots.
 				sprintf(saveSlot[i], (i == 0 ? _("AUTOSAVE (Empty)") : _("Empty")));
 				if (engine.gameSection == SECTION_TITLE)
 					gfx_createTextObject(TS_SAVESLOT_0 + i, saveSlot[i],
