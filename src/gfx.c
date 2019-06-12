@@ -247,11 +247,29 @@ int gfx_renderString(const char *in, int x, int y, int fontColor, int wrap, SDL_
 }
 
 #ifdef NOFONT
+int gfx_unicodeWidth(const char *in)
+{
+	return (PIXFONT_W + 1) * strlen(in);
+}
+
 int gfx_renderUnicode(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest)
 {
 	return gfx_renderString(in, x, y, fontColor, wrap, dest);
 }
+
 #else
+int gfx_unicodeWidth(const char *in)
+{
+	int w;
+
+	if (TTF_SizeUTF8(gfx_unicodeFont, in, &w, NULL) < 0)
+	{
+		engine_error(TTF_GetError());
+	}
+
+	return w;
+}
+
 int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest)
 {
 	SDL_Surface *textSurf;

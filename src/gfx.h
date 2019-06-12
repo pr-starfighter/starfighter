@@ -47,6 +47,7 @@ void gfx_init();
 SDL_Surface *gfx_setTransparent(SDL_Surface *sprite);
 void gfx_blit(SDL_Surface *image, int x, int y, SDL_Surface *dest);
 int gfx_renderString(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest);
+int gfx_unicodeWidth(const char *in);
 int gfx_renderUnicode(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest);
 void gfx_putPixel(SDL_Surface *surface, int x, int y, Uint32 pixel);
 void gfx_drawCircle(int xc, int yc, int R, SDL_Surface *PIX, int col);

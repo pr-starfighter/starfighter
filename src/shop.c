@@ -39,7 +39,7 @@ typedef struct ShopItem_ {
 
 	int x, y;
 	int price;
-	char name[50];
+	char name[STRMAX_SHORT];
 	char description[STRMAX];
 	int image;
 
@@ -162,7 +162,7 @@ static void adjustShopPrices()
 
 static void drawShop()
 {
-	char description[100];
+	char description[STRMAX];
 	int icons = SHOP_MAX;
 
 	adjustShopPrices();
@@ -237,8 +237,8 @@ static void drawShop()
 	gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 189, 90, 0x00, 0x00, 0x55);
 	gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 189, 20, 0x00, 0x00, 0x99);
 
-	gfx_shopSprites[SHOP_S_SHIP_INFO] = gfx_createAlphaRect(601, 41, 0x00, 0x00, 0x00);
-	gfx_drawRect(gfx_shopSprites[SHOP_S_SHIP_INFO], 0, 0, 600, 40, 0x00, 0x00, 0x33);
+	gfx_shopSprites[SHOP_S_SHIP_INFO] = gfx_createAlphaRect(SHOP_WIDTH + 1, 41, 0x00, 0x00, 0x00);
+	gfx_drawRect(gfx_shopSprites[SHOP_S_SHIP_INFO], 0, 0, SHOP_WIDTH, 40, 0x00, 0x00, 0x33);
 
 	switch (shopSelectedItem)
 	{
@@ -264,7 +264,7 @@ static void drawShop()
 			break;
 		case SHOP_PLASMA_AMMO:
 		case SHOP_ROCKET_AMMO:
-			gfx_drawRect(gfx_shopSprites[SHOP_S_SHIP_INFO], 0, 0, 600, 40, 0x33, 0x00, 0x00);
+			gfx_drawRect(gfx_shopSprites[SHOP_S_SHIP_INFO], 0, 0, SHOP_WIDTH, 40, 0x33, 0x00, 0x00);
 			break;
 		default:
 			gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 189, 90, 0x55, 0x00, 0x00);
@@ -306,9 +306,9 @@ static void drawShop()
 
 	drawSecondaryWeaponSurface();
 
-	gfx_shopSprites[SHOP_S_CATALOG] = gfx_createSurface(601, 121);
+	gfx_shopSprites[SHOP_S_CATALOG] = gfx_createSurface(SHOP_WIDTH + 1, 121);
 
-	gfx_drawRect(gfx_shopSprites[SHOP_S_CATALOG], 0, 0, 600, 120, 0x00, 0x00, 0x22);
+	gfx_drawRect(gfx_shopSprites[SHOP_S_CATALOG], 0, 0, SHOP_WIDTH, 120, 0x00, 0x00, 0x22);
 
 	gfx_renderUnicode(_("Temporary Weapons"), 10, 2, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_CATALOG]);
 	gfx_renderUnicode(_("Ammo and Storage"), 260, 2, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_CATALOG]);
@@ -340,18 +340,16 @@ static void drawShop()
 	/// "%.3d" can be changed to "%d" if you wish to not fill in space with zeroes,
 	/// e.g. render the number 5 as "5" rather than "005".
 	sprintf(description, _("Plasma Cells: %.3d"), player.ammo[0]);
-	// XXX: Bad positioning
-	gfx_renderUnicode(description, 430, 6, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
+	gfx_renderUnicode(description, SHOP_WIDTH - gfx_unicodeWidth(description) - 10, 6, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
 	/// Retain "%.2d".  It is replaced with the ship's current number of rockets.
 	/// "%.2d" can be changed to "%d" if you wish to not fill in space with zeroes,
 	/// e.g. render the number 3 as "3" rather than "03".
 	sprintf(description, _("Rockets: %.2d"), player.ammo[1]);
-	// XXX: Bad positioning
-	gfx_renderUnicode(description, 475, 22, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
+	gfx_renderUnicode(description, SHOP_WIDTH - gfx_unicodeWidth(description) - 10, 22, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
 
-	gfx_shopSprites[SHOP_S_ITEM_INFO] = gfx_createSurface(601, 56);
-	gfx_drawRect(gfx_shopSprites[SHOP_S_ITEM_INFO], 0, 0, 600, 35, 0x00, 0x99, 0x00);
-	gfx_drawRect(gfx_shopSprites[SHOP_S_ITEM_INFO], 0, 20, 600, 35, 0x00, 0x33, 0x00);
+	gfx_shopSprites[SHOP_S_ITEM_INFO] = gfx_createSurface(SHOP_WIDTH + 1, 56);
+	gfx_drawRect(gfx_shopSprites[SHOP_S_ITEM_INFO], 0, 0, SHOP_WIDTH, 35, 0x00, 0x99, 0x00);
+	gfx_drawRect(gfx_shopSprites[SHOP_S_ITEM_INFO], 0, 20, SHOP_WIDTH, 35, 0x00, 0x33, 0x00);
 	gfx_renderUnicode(_("Information"), 5, 4, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
 
 	switch (shopSelectedItem)
