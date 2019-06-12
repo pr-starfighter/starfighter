@@ -1813,7 +1813,7 @@ void alien_move(Object *alien)
 			{
 				if ((game.difficulty == DIFFICULTY_ORIGINAL) && (alien->classDef != CD_DRONE) &&
 						(alien->classDef != CD_ASTEROID) && (alien->classDef != CD_ASTEROID2) &&
-						(alien->owner == alien))
+						(alien->owner == alien) && (game.area != MISN_ELLESH))
 				{
 					collided = 1;
 				}
