@@ -1809,7 +1809,9 @@ void alien_move(Object *alien)
 	{
 		for (int i = 0 ; i < ALIEN_MAX ; i++)
 		{
-			if (ship_collision(alien, &aliens[i]) && (aliens[i].owner != alien))
+			if ((aliens[i].owner != alien) && (aliens[i].active) &&
+					(aliens[i].shield > 0) && (!(aliens[i].flags & FL_LEAVESECTOR)) &&
+					ship_collision(alien, &aliens[i]))
 			{
 				if ((game.difficulty == DIFFICULTY_ORIGINAL) && (alien->classDef != CD_DRONE) &&
 						(alien->classDef != CD_ASTEROID) && (alien->classDef != CD_ASTEROID2) &&
