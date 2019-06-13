@@ -1340,6 +1340,7 @@ void mission_showFinishedScreen()
 
 		while (1)
 		{
+			renderer_update();
 			game_delayFrame();
 			player_getInput();
 			if ((engine.keyState[KEY_FIRE]))
