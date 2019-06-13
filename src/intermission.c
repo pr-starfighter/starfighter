@@ -793,7 +793,7 @@ static void intermission_createCommsSurface(SDL_Surface *comms)
 			yOffset = intermission_planets[i].messageSlot * 60;
 			gfx_drawRect(comms, 0, yStart + yOffset, comms->w - 1, 55, 0x00, 0x00, 0x77);
 			gfx_blit(gfx_faceSprites[intermission_planets[i].faceImage], 20, yStart + 5 + yOffset, comms);
-			gfx_renderString(intermission_planets[i].name, 80, yStart + 5 + yOffset, FONT_WHITE, 0, comms);
+			gfx_renderUnicode(intermission_planets[i].name, 80, yStart + 5 + yOffset, FONT_WHITE, 0, comms);
 			gfx_renderUnicode(intermission_planets[i].subject, 80, yStart + 25 + yOffset, FONT_CYAN, 0, comms);
 		}
 	}
