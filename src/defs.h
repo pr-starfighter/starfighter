@@ -89,6 +89,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ALIEN_WARP_SPEED MIN(-15, -3 * screen->w / 160)
 #define ALIEN_WARP_ACCEL (game.difficulty == DIFFICULTY_ORIGINAL ? -15: -0.5)
 
+#define SLAVE_RESCUE_TARGET 250
+
 #define PIXFONT_LINE_HEIGHT 16
 #define PIXFONT_W 8
 #define PIXFONT_H 14
@@ -97,7 +99,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MENU_W 400
 #define MENU_SPACING 20
 
-#define SLAVE_RESCUE_TARGET 250
+#define BRIEFING_WIDTH 520
 
 // Object Flags
 #define FL_WEAPCO 			(1L << 0)

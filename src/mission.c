@@ -1111,37 +1111,37 @@ static void mission_drawScreen()
 		SDL_FillRect(screen, &r, SDL_MapRGB(screen->format, 0, i, 0));
 	}
 
-	screen_drawRect(screen->w / 2 - 260, screen->h / 2 - 235, 500, 20, 0x00, 0x77, 0x00);
-	screen_drawRect(screen->w / 2 - 260, screen->h / 2 - 215, 500, 130, 0x00, 0x33, 0x00);
-	screen_renderUnicode(_("Primary Objectives"), screen->w / 2 - 250, screen->h / 2 - 232, FONT_WHITE);
+	screen_drawRect(screen->w / 2 - BRIEFING_WIDTH / 2, screen->h / 2 - 235, BRIEFING_WIDTH, 20, 0x00, 0x77, 0x00);
+	screen_drawRect(screen->w / 2 - BRIEFING_WIDTH / 2, screen->h / 2 - 215, BRIEFING_WIDTH, 130, 0x00, 0x33, 0x00);
+	screen_renderUnicode(_("Primary Objectives"), screen->w / 2 - BRIEFING_WIDTH / 2 + 10, screen->h / 2 - 232, FONT_WHITE);
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
 		if ((mission.primaryType[i] != M_NONE) && (mission.completed1[i] != OB_HIDDEN))
 		{
-			screen_renderUnicode(mission.primaryObjective[i], screen->w / 2 - 240, screen->h / 2 + (i * 30) - 191, FONT_WHITE);
+			screen_renderUnicode(mission.primaryObjective[i], screen->w / 2 - BRIEFING_WIDTH / 2 + 20, screen->h / 2 + (i * 30) - 191, FONT_WHITE);
 		}
 	}
 
 	if (mission.secondaryType[0] != M_NONE)
 	{
-		screen_drawRect(screen->w / 2 - 260, screen->h / 2 - 75, 500, 20, 0x00, 0x77, 0x77);
-		screen_drawRect(screen->w / 2 - 260, screen->h / 2 - 55, 500, 130, 0x00, 0x33, 0x33);
-		screen_renderUnicode(_("Secondary Objectives"), screen->w / 2 - 250, screen->h / 2 - 72, FONT_WHITE);
+		screen_drawRect(screen->w / 2 - BRIEFING_WIDTH / 2, screen->h / 2 - 75, BRIEFING_WIDTH, 20, 0x00, 0x77, 0x77);
+		screen_drawRect(screen->w / 2 - BRIEFING_WIDTH / 2, screen->h / 2 - 55, BRIEFING_WIDTH, 130, 0x00, 0x33, 0x33);
+		screen_renderUnicode(_("Secondary Objectives"), screen->w / 2 - BRIEFING_WIDTH / 2 + 10, screen->h / 2 - 72, FONT_WHITE);
 
 		for (int i = 0 ; i < 3 ; i++)
 		{
 			if (mission.secondaryType[i] != M_NONE)
 			{
-				screen_renderUnicode(mission.secondaryObjective[i], screen->w / 2 - 240, screen->h / 2 + (i * 30) - 31, FONT_WHITE);
+				screen_renderUnicode(mission.secondaryObjective[i], screen->w / 2 - BRIEFING_WIDTH / 2 + 20, screen->h / 2 + (i * 30) - 31, FONT_WHITE);
 				game.secondaryMissions++;
 			}
 		}
 	}
 
-	screen_drawRect(screen->w / 2 - 260, screen->h / 2 + 85, 500, 20, 0x77, 0x77, 0x00);
-	screen_drawRect(screen->w / 2 - 260, screen->h / 2 + 105, 500, 130, 0x33, 0x33, 0x00);
-	screen_renderUnicode(_("Additional Information"), screen->w / 2 - 250, screen->h / 2 + 88, FONT_WHITE);
+	screen_drawRect(screen->w / 2 - BRIEFING_WIDTH / 2, screen->h / 2 + 85, BRIEFING_WIDTH, 20, 0x77, 0x77, 0x00);
+	screen_drawRect(screen->w / 2 - BRIEFING_WIDTH / 2, screen->h / 2 + 105, BRIEFING_WIDTH, 130, 0x33, 0x33, 0x00);
+	screen_renderUnicode(_("Additional Information"), screen->w / 2 - BRIEFING_WIDTH / 2 + 10, screen->h / 2 + 88, FONT_WHITE);
 }
 
 /*
@@ -1209,16 +1209,16 @@ void mission_showStartScreen()
 				case MISN_ELLESH:
 				case MISN_MARS:
 				case MISN_VENUS:
-					screen_renderUnicode(_("Phoebe Lexx will not be present"), screen->w / 2 - 240, screen->h / 2 + 115, FONT_WHITE);
+					screen_renderUnicode(_("Phoebe Lexx will not be present"), screen->w / 2 - BRIEFING_WIDTH / 2 + 20, screen->h / 2 + 115, FONT_WHITE);
 					if (game.hasWingMate2)
-						screen_renderUnicode(_("Ursula Lexx will not be present"), screen->w / 2 - 240, screen->h / 2 + 145, FONT_WHITE);
+						screen_renderUnicode(_("Ursula Lexx will not be present"), screen->w / 2 - BRIEFING_WIDTH / 2 + 20, screen->h / 2 + 145, FONT_WHITE);
 					break;
 			}
 
 			if ((game.area == MISN_URUSOR) ||
 					(game.area == MISN_POSWIC) ||
 					(game.area == MISN_EARTH))
-				screen_renderUnicode(_("Sid Wilson will join you on this mission"), screen->w / 2 - 240, screen->h / 2 + 175, FONT_WHITE);
+				screen_renderUnicode(_("Sid Wilson will join you on this mission"), screen->w / 2 - BRIEFING_WIDTH / 2 + 20, screen->h / 2 + 175, FONT_WHITE);
 
 			renderer_update();
 
@@ -1246,7 +1246,7 @@ of the screen.
 void mission_showFinishedScreen()
 {
 	int shield_bonus;
-	char temp[100];
+	char temp[STRMAX];
 
 	if (game.area != MISN_INTERCEPTION)
 	{
@@ -1256,71 +1256,28 @@ void mission_showFinishedScreen()
 		if (game.shots > 0)
 			game.accuracy = (game.hits * 100) / game.shots;
 
-		screen_clear(black);
-		mission_drawScreen();
-
-		for (int i = 0 ; i < 3 ; i++)
-		{
-			if (mission.primaryType[i] != M_NONE)
-			{
-				if ((game.area != MISN_POSWIC) || (i != 1))
-					screen_renderUnicode(_("COMPLETED"), screen->w / 2 + 150, screen->h / 2 + (i * 30) - 191, FONT_GREEN);
-				else
-					screen_renderUnicode(_("FAILED"), screen->w / 2 + 150, screen->h / 2 + (i * 30) - 191, FONT_RED);
-			}
-		}
-
 		if (mission.secondaryType[0] != M_NONE)
 		{
 			for (int i = 0 ; i < 3 ; i++)
 			{
-				if (mission.secondaryType[i] != M_NONE)
-				{
-					strcpy(temp, mission.secondaryObjective[i]);
-					if (mission.completed2[i] >= OB_COMPLETED)
-					{
-						screen_renderUnicode(_("COMPLETED"), screen->w / 2 + 150, screen->h / 2 + (i * 30) - 31, FONT_GREEN);
-						game.secondaryMissionsCompleted++;
-					}
-					else
-					{
-						screen_renderUnicode(_("FAILED"), screen->w / 2 + 150, screen->h / 2 + (i * 30) - 31, FONT_RED);
-					}
-				}
+				if ((mission.secondaryType[i] != M_NONE) && (mission.completed2[i] >= OB_COMPLETED))
+					game.secondaryMissionsCompleted++;
 			}
 		}
 
+		shield_bonus = 0;
 		if (mission.remainingObjectives1 + mission.remainingObjectives2 == 0)
 		{
 			if (game.difficulty == DIFFICULTY_NIGHTMARE)
 				shield_bonus = 100;
 			else
 				shield_bonus = player.shield * 10;
-			/// "%d" must be retained.  It is replaced with the money earned
-			/// from the shield bonus.
-			sprintf(temp, _("Shield Bonus: $%d"), shield_bonus);
-			screen_renderUnicode(temp, -1, screen->h / 2 + 130, FONT_WHITE);
+
 			game.cash += shield_bonus;
 			game.cashEarned += shield_bonus;
 		}
 
 		game.timeTaken += engine.timeTaken;
-
-		/// "%02ld" sequences (which represent minutes and seconds,
-		/// respectively) must remain and stay in the same order relative
-		/// to each other.  The ":"s between them can be changed to other
-		/// characters if desired, e.g. this would be acceptable:
-		///
-		///     "Mission time: %02ldm %02lds"
-		///
-		/// If you are familiar with printf formatting, you may also change
-		/// the formatting as long as the "ld" type remains. For example,
-		/// the "%02ld" sequences may be changed to "%ld" if you wish to
-		/// not force two digits to be filled in (e.g. to render the number
-		/// 3 as "3" instead of "03").
-		snprintf(temp, sizeof temp, _("Mission Time: %02ld:%02ld"), engine.timeTaken / 60, engine.timeTaken % 60);
-
-		screen_renderUnicode(temp, -1, 500, FONT_WHITE);
 
 		// Do some mission specific stuff here...
 		if (game.area == MISN_HAIL)
@@ -1340,6 +1297,71 @@ void mission_showFinishedScreen()
 
 		while (1)
 		{
+			screen_clear(black);
+			mission_drawScreen();
+
+			for (int i = 0 ; i < 3 ; i++)
+			{
+				if (mission.primaryType[i] != M_NONE)
+				{
+					if ((game.area != MISN_POSWIC) || (i != 1))
+					{
+						strcpy(temp, _("COMPLETED"));
+						screen_renderUnicode(temp, screen->w / 2 + BRIEFING_WIDTH / 2 - gfx_unicodeWidth(temp) - 20, screen->h / 2 + (i * 30) - 191, FONT_GREEN);
+					}
+					else
+					{
+						strcpy(temp, _("FAILED"));
+						screen_renderUnicode(temp, screen->w / 2 + BRIEFING_WIDTH / 2 - gfx_unicodeWidth(temp) - 20, screen->h / 2 + (i * 30) - 191, FONT_RED);
+					}
+				}
+			}
+
+			if (mission.secondaryType[0] != M_NONE)
+			{
+				for (int i = 0 ; i < 3 ; i++)
+				{
+					if (mission.secondaryType[i] != M_NONE)
+					{
+						strcpy(temp, mission.secondaryObjective[i]);
+						if (mission.completed2[i] >= OB_COMPLETED)
+						{
+							strcpy(temp, _("COMPLETED"));
+							screen_renderUnicode(temp, screen->w / 2 + BRIEFING_WIDTH / 2 - gfx_unicodeWidth(temp) - 20, screen->h / 2 + (i * 30) - 31, FONT_GREEN);
+						}
+						else
+						{
+							strcpy(temp, _("FAILED"));
+							screen_renderUnicode(temp, screen->w / 2 + BRIEFING_WIDTH / 2 - gfx_unicodeWidth(temp) - 20, screen->h / 2 + (i * 30) - 31, FONT_RED);
+						}
+					}
+				}
+			}
+
+			if (shield_bonus)
+			{
+				/// "%d" must be retained.  It is replaced with the money earned
+				/// from the shield bonus.
+				sprintf(temp, _("Shield Bonus: $%d"), shield_bonus);
+				screen_renderUnicode(temp, -1, screen->h / 2 + 130, FONT_WHITE);
+			}
+
+			/// "%02ld" sequences (which represent minutes and seconds,
+			/// respectively) must remain and stay in the same order relative
+			/// to each other.  The ":"s between them can be changed to other
+			/// characters if desired, e.g. this would be acceptable:
+			///
+			///     "Mission time: %02ldm %02lds"
+			///
+			/// If you are familiar with printf formatting, you may also change
+			/// the formatting as long as the "ld" type remains. For example,
+			/// the "%02ld" sequences may be changed to "%ld" if you wish to
+			/// not force two digits to be filled in (e.g. to render the number
+			/// 3 as "3" instead of "03").
+			snprintf(temp, sizeof temp, _("Mission Time: %02ld:%02ld"), engine.timeTaken / 60, engine.timeTaken % 60);
+
+			screen_renderUnicode(temp, -1, screen->h / 2 + 200, FONT_WHITE);
+
 			renderer_update();
 			game_delayFrame();
 			player_getInput();

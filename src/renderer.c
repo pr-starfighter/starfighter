@@ -51,7 +51,10 @@ void renderer_reset()
 	SDL_RenderSetLogicalSize(renderer, screen->w, screen->h);
 
 	if (renderer_texture != NULL)
+	{
 		SDL_DestroyTexture(renderer_texture);
+		renderer_texture = NULL;
+	}
 
 	renderer_texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, screen->w, screen->h);
 	if (renderer_texture == NULL)
