@@ -270,7 +270,7 @@ int gfx_unicodeWidth(const char *in)
 	return w;
 }
 
-int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest)
+int gfx_renderUnicodeBase(const char *in, int x, int y, int real_x, int fontColor, int wrap, SDL_Surface *dest)
 {
 	SDL_Surface *textSurf;
 	SDL_Color color;
@@ -289,7 +289,7 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int fontColor, int wrap,
 	if (strcmp(in, "") == 0)
 		return y;
 
-	avail_w = dest->w - x;
+	avail_w = dest->w - real_x;
 
 	switch (fontColor)
 	{
@@ -434,13 +434,13 @@ int gfx_renderUnicode(const char *in, int x, int y, int fontColor, int wrap, SDL
 		x = (dest->w - MIN(w, dest->w)) / 2;
 	}
 
-	gfx_renderUnicodeBase(in, x, y - 1, FONT_OUTLINE, wrap, dest);
-	gfx_renderUnicodeBase(in, x, y + 1, FONT_OUTLINE, wrap, dest);
-	gfx_renderUnicodeBase(in, x, y + 2, FONT_OUTLINE, wrap, dest);
-	gfx_renderUnicodeBase(in, x - 1, y, FONT_OUTLINE, wrap, dest);
-	gfx_renderUnicodeBase(in, x - 2, y, FONT_OUTLINE, wrap, dest);
-	gfx_renderUnicodeBase(in, x + 1, y, FONT_OUTLINE, wrap, dest);
-	return gfx_renderUnicodeBase(in, x, y, fontColor, wrap, dest);
+	gfx_renderUnicodeBase(in, x, y - 1, x, FONT_OUTLINE, wrap, dest);
+	gfx_renderUnicodeBase(in, x, y + 1, x, FONT_OUTLINE, wrap, dest);
+	gfx_renderUnicodeBase(in, x, y + 2, x, FONT_OUTLINE, wrap, dest);
+	gfx_renderUnicodeBase(in, x - 1, y, x, FONT_OUTLINE, wrap, dest);
+	gfx_renderUnicodeBase(in, x - 2, y, x, FONT_OUTLINE, wrap, dest);
+	gfx_renderUnicodeBase(in, x + 1, y, x, FONT_OUTLINE, wrap, dest);
+	return gfx_renderUnicodeBase(in, x, y, x, fontColor, wrap, dest);
 }
 #endif
 
