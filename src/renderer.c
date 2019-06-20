@@ -29,7 +29,7 @@ SDL_Renderer *renderer;
 SDL_Texture *renderer_texture;
 
 void renderer_update()
-{	
+{
 	SDL_UpdateTexture(renderer_texture, NULL, screen->pixels, screen->pitch);
 	SDL_RenderCopy(renderer, renderer_texture, NULL, NULL);
 	SDL_RenderPresent(renderer);
