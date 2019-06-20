@@ -653,7 +653,6 @@ void gfx_createMessageBox(SDL_Surface *face, const char *message, int transparen
 	int border = 5;
 	int x = border;
 	int y = border;
-	SDL_Surface *textArea;
 
 	if (gfx_messageBox != NULL)
 	{
@@ -678,11 +677,7 @@ void gfx_createMessageBox(SDL_Surface *face, const char *message, int transparen
 		x = border;
 	}
 
-	textArea = gfx_createSurface(gfx_messageBox->w - (x + border), gfx_messageBox->h - y);
-	gfx_renderUnicode(message, 0, 0, FONT_WHITE, 1, textArea);
-	gfx_blit(textArea, x, y, gfx_messageBox);
-	SDL_FreeSurface(textArea);
-	textArea = NULL;
+	gfx_renderUnicode(message, x, y, FONT_WHITE, 1, gfx_messageBox);
 }
 
 SDL_Surface *gfx_loadImage(const char *filename)
