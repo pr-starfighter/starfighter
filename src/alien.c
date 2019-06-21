@@ -1854,7 +1854,7 @@ void alien_move(Object *alien)
 				player_damage(1, 0);
 			}
 		}
-		
+
 		// Ship collision (only in Classic difficulty)
 		if (collided)
 		{
@@ -1873,17 +1873,17 @@ void alien_move(Object *alien)
 
 				alien->x += (sinf(alien->dx) * 4);
 				alien->y += (cosf(alien->dy) * 4);
-				
+
 				alien->thinktime = 0;
 			}
 			else
 			{
 				alien->x += alien->dx;
 				alien->y += alien->dy;
-				
+
 				alien->dx *= -0.2;
 				alien->dy *= -0.2;
-				
+
 				LIMIT(alien->thinktime, 0, 15);
 			}
 		}
