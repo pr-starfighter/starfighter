@@ -1721,9 +1721,16 @@ void alien_searchForTarget(Object *alien)
 
 	if (badTarget)
 	{
-		alien->badTargetCount++;
-		if (alien->badTargetCount < BAD_TARGET_ALLOW_TIME)
+		if (game.difficulty == DIFFICULTY_ORIGINAL)
+		{
 			return;
+		}
+		else
+		{
+			alien->badTargetCount++;
+			if (alien->badTargetCount < BAD_TARGET_ALLOW_TIME)
+				return;
+		}
 	}
 
 	alien->target = targetEnemy;
