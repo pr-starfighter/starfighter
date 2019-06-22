@@ -1674,8 +1674,19 @@ void alien_searchForTarget(Object *alien)
 		if (targetEnemy->flags & FL_DISABLED)
 			return;
 
-		if (!(targetEnemy->flags & FL_NOFIRE))
-			badTarget = 1;
+		if (game.difficulty == DIFFICULTY_ORIGINAL)
+		{
+			if (!(targetEnemy->flags & FL_NOFIRE))
+				badTarget = 1;
+		}
+		else
+		{
+			if ((targetEnemy->classDef != CD_CARGOSHIP) &&
+					(targetEnemy->classDef != CD_BOSS))
+			{
+				badTarget = 1;
+			}
+		}
 	}
 
 	// Tell Phoebe and Ursula not to attack ships that cannot fire or are disabled (unless we're on the last mission)
