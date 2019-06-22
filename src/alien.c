@@ -869,6 +869,7 @@ void aliens_init()
 		aliens[i].active = 0;
 		aliens[i].shield = -1;
 		aliens[i].flags = 0;
+		aliens[i].badTargetCount = 0;
 	}
 
 	switch (game.area)
@@ -1651,12 +1652,14 @@ void alien_searchForTarget(Object *alien)
 {
 	int i;
 	Object *targetEnemy;
+	int badTarget = 0;
 
 	if (alien->flags & FL_WEAPCO)
 	{
 		if (CHANCE(1 / 10.))
 		{
 			alien->target = &player;
+			alien->badTargetCount = 0;
 			return;
 		}
 	}
@@ -1668,8 +1671,11 @@ void alien_searchForTarget(Object *alien)
 	// return fire. This will save him from messing about (unless we're on the last mission)
 	if ((alien->classDef == CD_SID) && (game.area != MISN_EARTH))
 	{
-		if ((targetEnemy->flags & FL_DISABLED) || (!(targetEnemy->flags & FL_NOFIRE)))
+		if (targetEnemy->flags & FL_DISABLED)
 			return;
+
+		if (!(targetEnemy->flags & FL_NOFIRE))
+			badTarget = 1;
 	}
 
 	// Tell Phoebe and Ursula not to attack ships that cannot fire or are disabled (unless we're on the last mission)
@@ -1683,7 +1689,7 @@ void alien_searchForTarget(Object *alien)
 
 			if ((targetEnemy->flags & FL_DISABLED) ||
 					(targetEnemy->flags & FL_NOFIRE))
-				return;
+				badTarget = 1;
 		}
 	}
 
@@ -1697,12 +1703,20 @@ void alien_searchForTarget(Object *alien)
 		return;
 
 	if (abs((int)alien->x - (int)alien->target->x) > 550)
-		return;
+		badTarget = 1;
 
 	if (abs((int)alien->y - (int)alien->target->y) > 400)
-		return;
+		badTarget = 1;
+
+	if (badTarget)
+	{
+		alien->badTargetCount++;
+		if (alien->badTargetCount < BAD_TARGET_ALLOW_TIME)
+			return;
+	}
 
 	alien->target = targetEnemy;
+	alien->badTargetCount = 0;
 }
 
 /*

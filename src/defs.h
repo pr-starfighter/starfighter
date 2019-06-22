@@ -89,6 +89,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ALIEN_WARP_SPEED MIN(-15, -3 * screen->w / 160)
 #define ALIEN_WARP_ACCEL (game.difficulty == DIFFICULTY_ORIGINAL ? -15: -0.5)
 
+#define BAD_TARGET_ALLOW_TIME 30
+
 #define SLAVE_RESCUE_TARGET 250
 
 #define PIXFONT_LINE_HEIGHT 16

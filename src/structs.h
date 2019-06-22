@@ -45,6 +45,8 @@ typedef struct Object_ {
 
 	int face; // Either 0 or 1
 
+	int badTargetCount;
+
 	struct Object_ *owner; // Who owns this Object
 
 	int chance[2]; // Chance of using the weapons (out of 1000)
