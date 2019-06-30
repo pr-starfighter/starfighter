@@ -5,10 +5,11 @@
 
 SUBDIRS = src misc
 
+dist_doc_DATA = README.txt COPYING LICENSES
+dist_data_DATA = data gfx music sound locale misc
+
 if !RUN_IN_PLACE
 
-dist_doc_DATA = README.txt COPYING LICENSES
-dist_data_DATA = data gfx music sound locale
 nobase_pkgdata_DATA = data/* gfx/* music/* sound/* locale/*
 
 endif

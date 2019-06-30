@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <unistd.h>
 
 #ifdef _WIN32
-#include <Shlobj.h>
+#include <shlobj.h>
 #else
 #include <pwd.h>
 #endif
