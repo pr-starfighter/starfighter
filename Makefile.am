@@ -6,7 +6,7 @@
 SUBDIRS = src misc
 
 dist_doc_DATA = README.txt COPYING LICENSES
-dist_data_DATA = data gfx music sound locale misc
+dist_data_DATA = win32build.sh data gfx music sound locale misc
 
 if !RUN_IN_PLACE
 
