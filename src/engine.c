@@ -198,36 +198,43 @@ This gets the user's home directory, then creates the config directory.
 void engine_setupConfigDirectory()
 {
 	const char *userHome;
+	const char *subdir;
 	char dir[PATH_MAX];
 
 #ifdef _WIN32
-	userHome = ".";
-#else
-	if ((userHome = getenv("HOME")) == NULL)
-		userHome = getpwuid(getuid())->pw_dir;
-#endif
+	subdir = "pr-starfighter-config";
 
-	strcpy(dir, "");
+	if ((userHome = getenv("APPDATA")) == NULL)
+		userHome = ".";
 
-	snprintf(dir, PATH_MAX, "%s/.config", userHome);
-
-#ifdef _WIN32
+	snprintf(dir, PATH_MAX, "%s/%s", userHome, subdir);
 	if ((mkdir(dir) != 0) && (errno != EEXIST))
 		engine_showError(2, dir);
 
-	snprintf(dir, PATH_MAX, "%s/.config/starfighter", userHome);
-	if ((mkdir(dir) != 0) && (errno != EEXIST))
-		engine_showError(2, dir);
+	snprintf(engine.configDirectory, PATH_MAX, "%s/", dir);
 #else
-	if ((mkdir(dir, S_IRWXU|S_IRWXG|S_IROTH|S_IXOTH) != 0) && (errno != EEXIST))
-		engine_showError(2, dir);
+	subdir = "starfighter";
 
-	snprintf(dir, PATH_MAX, "%s/.config/starfighter", userHome);
+	if ((userHome = getenv("XDG_CONFIG_HOME")) != NULL)
+	{
+		snprintf(dir, PATH_MAX, "%s/%s", userHome, subdir);
+	}
+	{
+		if ((userHome = getenv("HOME")) == NULL)
+			userHome = getpwuid(getuid())->pw_dir;
+
+		snprintf(dir, PATH_MAX, "%s/.config", userHome);
+		if ((mkdir(dir, S_IRWXU|S_IRWXG|S_IROTH|S_IXOTH) != 0) && (errno != EEXIST))
+			engine_showError(2, dir);
+
+		snprintf(dir, PATH_MAX, "%s/.config/%s", userHome, subdir);
+	}
+
 	if ((mkdir(dir, S_IRWXU|S_IRWXG|S_IROTH|S_IXOTH) != 0) && (errno != EEXIST))
 		engine_showError(2, dir);
+	
+	snprintf(engine.configDirectory, PATH_MAX, "%s/", dir);
 #endif
-
-	snprintf(engine.configDirectory, PATH_MAX, "%s/.config/starfighter/", userHome);
 }
 
 /*
