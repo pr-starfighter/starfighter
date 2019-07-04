@@ -7,7 +7,7 @@
 # information. This file is offered as-is, without any warranty.
 
 AC_PREREQ([2.69])
-AC_INIT([Project: Starfighter], [1.8-dev], [onpon4@riseup.net], [starfighter])
+AC_INIT([Project: Starfighter], [2.0], [onpon4@riseup.net], [starfighter])
 AM_INIT_AUTOMAKE([foreign -Wall -Werror])
 AC_CONFIG_SRCDIR([src/Starfighter.c])
 AC_CONFIG_HEADERS([config.h])

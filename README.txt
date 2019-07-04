@@ -26,9 +26,7 @@ compared to the original:
 
 * There are several gameplay changes. These changes were mostly done to
   balance the game better. However, if you want the original experience,
-  "Classic" difficulty emulates it as closely as possible (see the
-  CLASSIC DIFFICULTY DIFFERENCES section to read about the few
-  differences that exist).
+  "Classic" difficulty emulates it as closely as possible.
 
 * Much of the dialog has been changed. There are various reasons for
   this; some of these include fixing bad writing, making the dialog
@@ -38,6 +36,8 @@ compared to the original:
   example, the simplistic target arrow of the original has been replaced
   with a system of several arrows, one for each ship.
 
+* Unicode and gettext translation support have been added.
+
 * Typing "humansdoitbetter" in the title screen no longer enables
   cheats. This is actually because the switch to SDL2 broke the original
   feature, and rather than fixing it, I just replaced it with something
@@ -46,13 +46,74 @@ compared to the original:
 
 ------------------------------------------------------------------------
 
+PLAYING THE GAME
+
+The basic controls are the arrow keys, Ctrl, Space, Shift, and Escape.
+Other keys on they keyboard can also be used in case of keyjamming or if
+you simply prefer other controls; alternative keys include the keypad,
+ZXC, ASD, <>?, and 123. A gamepad or joystick can also be used.
+
+The basic objective of Project: Starfighter is simply to complete all
+missions. Exactly what entails completing a mission varies and is
+explained in-game.
+
+In the system overview screen, various sections can be accessed by
+clicking the icons on the bottom of the screen. You can also use the
+keyboard or a gamepad if you prefer (use the arrows to move the cursor
+and the fire button to "click" on things).
+
+Other than that, have fun, and good luck!
+
+------------------------------------------------------------------------
+
+COMPILING FROM SOURCE
+
+If you are an end-user, it is easiest to use an existing binary
+distribution if possible.  If you want or need to compile yourself,
+however, instructions follow.
+
+Note: Developers compiling the source code from the Git repository,
+please first see the GENERATING CONFIGURE SCRIPT section below.
+
+Project: Starfighter depends on the following libraries to build:
+
+* SDL2 <http://libsdl.org>
+* SDL2_image <http://www.libsdl.org/projects/SDL_image/>
+* SDL2_mixer <http://www.libsdl.org/projects/SDL_mixer/>
+* SDL2_ttf <http://www.libsdl.org/projects/SDL_ttf/>
+* Pango <https://www.pango.org/>
+
+Once you have all dependencies installed,  do the following from the
+Project: Starfighter base directory:
+
+    ./configure
+    make
+    make install
+
+This will perform a system-wide installation, which is recommended for
+most users.  For most Linux systems, an icon should be added to your
+menu which you can then use to run Starfighter; if not, you can use the
+launcher found in the "misc" directory or run the "starfighter" command
+manually.
+
+If you would prefer a "run in place" build, you should instead do the
+following from the Project: Starfighter base directory:
+
+    export SF_RUN_IN_PLACE=1
+    ./configure
+    make
+    mv src/starfighter .
+
+Run "./configure --help" to see all options for compiling.
+
+------------------------------------------------------------------------
+
 GENERATING CONFIGURE SCRIPT
 
 If you contribute to Project: Starfighter's source code, you will need
 to know how to generate a configure script for compiling the program.
 NOTE: This is for developers only. End-users simply compiling releases
-of Starfighter from source can ignore this section and skip straight to
-the COMPILING FROM SOURCE section.
+of Starfighter from source can ignore this section.
 
 The following components are required to generate the configure script:
 
@@ -74,57 +135,4 @@ directory, you can do so via the following command (requires Git):
 
 Note: automatically generated files are listed in .gitignore, so you
 generally don't actually have to do this.
-
-------------------------------------------------------------------------
-
-COMPILING FROM SOURCE
-
-Project: Starfighter depends on the following libraries to build:
-
-* SDL2 <http://libsdl.org>
-* SDL2_image <http://www.libsdl.org/projects/SDL_image/>
-* SDL2_mixer <http://www.libsdl.org/projects/SDL_mixer/>
-* SDL2_ttf <http://www.libsdl.org/projects/SDL_ttf/>
-* Pango <https://www.pango.org/>
-
-Once you have all dependencies installed, you can do the following from
-a terminal window:
-
-    ./configure
-    make
-    make install
-
-Run "./configure --help" to see more options.
-
-The third step ("make install") is technically optional, but highly
-recommended.
-
-For most Linux systems, an icon should be added to your menu when you
-run "make install". You can click on this icon to start up the game.
-Otherwise, you can manually install or use the launcher found in the
-"misc" directory, or you can run the "starfighter" command to start up
-the game.
-
-If you choose not to use the "make install" command, you can find the
-"starfighter" binary in the "src" directory.
-
-------------------------------------------------------------------------
-
-PLAYING THE GAME
-
-The basic controls are the arrow keys, Ctrl, Space, Shift, and Escape.
-Other keys on they keyboard can also be used in case of keyjamming or if
-you simply prefer other controls; alternative keys include the keypad,
-ZXC, ASD, <>?, and 123. A gamepad or joystick can also be used.
-
-The basic objective of Project: Starfighter is simply to complete all
-missions. Exactly what entails completing a mission varies and is
-explained in-game.
-
-In the system overview screen, various sections can be accessed by
-clicking the icons on the bottom of the screen. You can also use the
-keyboard or a gamepad if you prefer (use the arrows to move the cursor
-and the fire button to "click" on things).
-
-Other than that, have fun, and good luck! 🙂
 
