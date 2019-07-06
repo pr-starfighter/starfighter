@@ -3,14 +3,14 @@
 # http://creativecommons.org/publicdomain/zero/1.0/ for more
 # information. This file is offered as-is, without any warranty.
 
-SUBDIRS = src data gfx misc music sound locale
+sflocaledir = $(pkgdatadir)/locale
 
-dist_doc_DATA = README.txt COPYING LICENSES
-EXTRA_DIST = starfighter.sh win32build.sh
+dist_sflocale_DATA = \
+	build.py \
+	genpot.sh \
+	pr-starfighter.pot \
+	en.po
 
-if !RUN_IN_PLACE
-
-nobase_pkgdata_DATA = data/* gfx/* music/* sound/* locale/*
-
-endif
+dist_nobase_sflocale_DATA = \
+    en/LC_MESSAGES/pr-starfighter.mo
 

@@ -3,9 +3,18 @@
 # http://creativecommons.org/publicdomain/zero/1.0/ for more
 # information. This file is offered as-is, without any warranty.
 
-if !RUN_IN_PLACE
+sfmusicdir = $(pkgdatadir)/music
 
-nobase_pkgdata_DATA = *
-
-endif
+dist_sfmusic_DATA = \
+	death.ogg \
+	frozen_jam.ogg \
+	last_cyber_dance.ogg \
+	orbital_colossus.ogg \
+	railjet_short.ogg \
+	RE.ogg \
+	rise_of_spirit.ogg \
+	sound_and_silence.ogg \
+	space_dimensions.ogg \
+	through_space.ogg \
+	walking_among_androids.ogg
 
