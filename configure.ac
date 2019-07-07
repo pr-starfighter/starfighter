@@ -20,6 +20,8 @@ AC_PROG_INSTALL
 STARFIGHTER_CFLAGS="-DVERSION=\\\"$PACKAGE_VERSION\\\""
 
 # Checks for libraries.
+AC_SEARCH_LIBS([atanf], [m])
+
 PKG_CHECK_EXISTS([SDL2_mixer], [
 	PKG_CHECK_EXISTS([SDL2_ttf], [
 		PKG_CHECK_MODULES([SDL], [sdl2 SDL2_image SDL2_mixer SDL2_ttf])
