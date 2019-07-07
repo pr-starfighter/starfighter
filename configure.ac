@@ -67,7 +67,7 @@ AS_IF([test -n "$SF_RUN_IN_PLACE"], [
 	echo "Preparing a run-in-place build"
 ])
 
-AM_CONDITIONAL([RUN_IN_PLACE], [test "$SF_RUN_IN_PLACE = 1"])
+AM_CONDITIONAL([RUN_IN_PLACE], [test -n "$SF_RUN_IN_PLACE"])
 
 AC_SUBST([STARFIGHTER_CFLAGS])
 
