@@ -6,12 +6,6 @@
 SUBDIRS = src misc
 
 dist_doc_DATA = README.txt COPYING LICENSES
-
-if !RUN_IN_PLACE
-
 nobase_dist_pkgdata_DATA = data/* gfx/* music/* sound/* locale/*
-
-endif
-
 EXTRA_DIST = starfighter.sh win32build.sh
 
