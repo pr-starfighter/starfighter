@@ -20,6 +20,8 @@ AC_PROG_INSTALL
 STARFIGHTER_CFLAGS="-DVERSION=\\\"$PACKAGE_VERSION\\\""
 
 # Checks for libraries.
+AC_SEARCH_LIBS([atanf], [m])
+
 PKG_CHECK_EXISTS([SDL2_mixer], [
 	PKG_CHECK_EXISTS([SDL2_ttf], [
 		PKG_CHECK_MODULES([SDL], [sdl2 SDL2_image SDL2_mixer SDL2_ttf])
@@ -65,7 +67,7 @@ AS_IF([test -n "$SF_RUN_IN_PLACE"], [
 	echo "Preparing a run-in-place build"
 ])
 
-AM_CONDITIONAL([RUN_IN_PLACE], [test "$SF_RUN_IN_PLACE = 1"])
+AM_CONDITIONAL([RUN_IN_PLACE], [test -n "$SF_RUN_IN_PLACE"])
 
 AC_SUBST([STARFIGHTER_CFLAGS])
 
