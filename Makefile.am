@@ -6,6 +6,16 @@
 SUBDIRS = src misc
 
 dist_doc_DATA = README.txt COPYING LICENSES
-nobase_dist_pkgdata_DATA = data/* gfx/* music/* sound/* locale/*
+
+# WHEN ADDING TRANSLATIONS: Please append all new gettext file names
+# here (both the .po file and the .mo file).  This insures the
+# translation is both distributed and installed properly.
+nobase_dist_pkgdata_DATA = data/* gfx/* music/* sound/* \
+	locale/build.py \
+	locale/genpot.sh \
+	locale/pr-starfighter.pot \
+	locale/en.po \
+	locale/en/LC_MESSAGES/pr-starfighter.mo
+
 EXTRA_DIST = starfighter.sh win32build.sh misc
 
