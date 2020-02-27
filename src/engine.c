@@ -22,8 +22,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <sys/stat.h>
 #include <unistd.h>
 
+#ifdef __HAIKU__
+#include <FindDirectory.h>
+#else
 #ifndef _WIN32
 #include <pwd.h>
+#endif
 #endif
 
 #include "SDL.h"
@@ -209,6 +213,17 @@ void engine_setupConfigDirectory()
 
 	snprintf(dir, PATH_MAX, "%s/%s", userHome, subdir);
 	if ((mkdir(dir) != 0) && (errno != EEXIST))
+		engine_showError(2, dir);
+
+	snprintf(engine.configDirectory, PATH_MAX, "%s/", dir);
+#elif __HAIKU__
+	subdir = "starfighter";
+
+	char path[PATH_MAX];
+	if (find_directory(B_USER_SETTINGS_DIRECTORY, 0, false, path, PATH_MAX) == B_OK)
+		snprintf(dir, PATH_MAX, "%s/%s", path, subdir);
+
+	if ((mkdir(dir, S_IRWXU|S_IRWXG|S_IROTH|S_IXOTH) != 0) && (errno != EEXIST))
 		engine_showError(2, dir);
 
 	snprintf(engine.configDirectory, PATH_MAX, "%s/", dir);
