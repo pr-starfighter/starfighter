@@ -100,8 +100,7 @@ manually.
 If you would prefer a "run in place" build, you should instead do the
 following from the Project: Starfighter base directory:
 
-    export SF_RUN_IN_PLACE=1
-    ./configure
+    ./configure SF_RUN_IN_PLACE=1
     make
     mv src/starfighter .
 
