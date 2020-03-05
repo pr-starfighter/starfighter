@@ -651,7 +651,7 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 							"$%d more to collect...\n"
 							"$%d more needed...",
 							*targetValue));
-						sprintf(message, fmt, *targetValue);
+						snprintf(message, STRMAX_SHORT, fmt, *targetValue);
 						break;
 					case P_CARGO:
 						radio_getRandomMessage(fmt, ngettext(
@@ -670,7 +670,7 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 							"%d more cargo pods needed...\n"
 							"Collect %d remaining cargo pods...",
 							*targetValue));
-						sprintf(message, fmt, *targetValue);
+						snprintf(message, STRMAX_SHORT, fmt, *targetValue);
 						break;
 					case P_ORE:
 						radio_getRandomMessage(fmt,ngettext(
@@ -687,7 +687,7 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 							"%d more pieces of ore to collect...\n"
 							"%d more pieces of ore needed...",
 							*targetValue));
-						sprintf(message, fmt, *targetValue);
+						snprintf(message, STRMAX_SHORT, fmt, *targetValue);
 						break;
 				}
 				break;
@@ -696,14 +696,14 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 				switch(id)
 				{
 					case P_CARGO:
-						sprintf(message, _("Cargo pod destroyed!"));
+						strcpy(message, _("Cargo pod destroyed!"));
 						if (game.area == MISN_CERADSE) // Get lectured by Sid
 							/// Dialog (Sid Wilson)
 							/// Used when a cargo pod is destroyed in the Ceradse mission.
 							radio_setMessage(FS_SID, _("Chris, we needed that pod! I told you that we couldn't afford to lose a single one!"), 1);
 						break;
 					case P_ESCAPEPOD:
-						sprintf(message, _("Escape Pod lost!"));
+						strcpy(message, _("Escape Pod lost!"));
 						if (game.area == MISN_ODEON) // Get lectured by Phoebe
 						{
 							/// Dialog (Phoebe Lexx)
@@ -757,7 +757,7 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 						"%d targets remain...\n"
 						"Destroy %d remaining targets...",
 						*targetValue));
-					sprintf(message, fmt, *targetValue);
+					snprintf(message, STRMAX_SHORT, fmt, *targetValue);
 				}
 				break;
 			case M_DISABLE_TARGET:
@@ -775,7 +775,7 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 					"%d more targets to disable...\n"
 					"Disable %d remaining targets...",
 					*targetValue));
-				sprintf(message, fmt, *targetValue);
+				snprintf(message, STRMAX_SHORT, fmt, *targetValue);
 				break;
 		}
 
@@ -877,7 +877,7 @@ void mission_updateRequirements(int type, int id, int value)
 						"At least %d more slaves to rescue...\n"
 						"At least %d more rescued slaves needed...",
 						slavesNeeded));
-					sprintf(message, fmt, slavesNeeded);
+					snprintf(message, STRMAX_SHORT, fmt, slavesNeeded);
 					info_setLine(message, FONT_CYAN);
 				}
 			}
@@ -1151,6 +1151,8 @@ mission begins playing here.
 */
 void mission_showStartScreen()
 {
+	char temp[STRMAX_SHORT];
+
 	screen_clear(black);
 	renderer_update();
 
@@ -1184,18 +1186,17 @@ void mission_showStartScreen()
 
 			if (mission.timeLimit1[0] > 0)
 			{
-				char temp[50];
 				if (game.area != MISN_MARS)
 				{
 					/// "%d" must be retained.  It is replaced with the mission time
 					/// limit in minutes.
-					sprintf(temp, _("TIME LIMIT: %d minutes"), mission.timeLimit1[0]);
+					snprintf(temp, STRMAX_SHORT, _("TIME LIMIT: %d minutes"), mission.timeLimit1[0]);
 				}
 				else
 				{
 					/// "%d" must be retained.  It is replaced with the mission required
 					/// survival time in minutes.
-					sprintf(temp, _("SURVIVAL FOR %d minutes"), mission.timeLimit1[0]);
+					snprintf(temp, STRMAX_SHORT, _("SURVIVAL FOR %d minutes"), mission.timeLimit1[0]);
 				}
 				screen_renderUnicode(temp, -1, screen->h / 2 + 195, FONT_RED);
 			}
@@ -1246,7 +1247,7 @@ of the screen.
 void mission_showFinishedScreen()
 {
 	int shield_bonus;
-	char temp[STRMAX];
+	char temp[STRMAX_SHORT];
 
 	if (game.area != MISN_INTERCEPTION)
 	{
@@ -1342,7 +1343,7 @@ void mission_showFinishedScreen()
 			{
 				/// "%d" must be retained.  It is replaced with the money earned
 				/// from the shield bonus.
-				sprintf(temp, _("Shield Bonus: $%d"), shield_bonus);
+				snprintf(temp, STRMAX_SHORT, _("Shield Bonus: $%d"), shield_bonus);
 				screen_renderUnicode(temp, -1, screen->h / 2 + 130, FONT_WHITE);
 			}
 
@@ -1358,7 +1359,7 @@ void mission_showFinishedScreen()
 			/// the "%02ld" sequences may be changed to "%ld" if you wish to
 			/// not force two digits to be filled in (e.g. to render the number
 			/// 3 as "3" instead of "03").
-			snprintf(temp, sizeof temp, _("Mission Time: %02ld:%02ld"), engine.timeTaken / 60, engine.timeTaken % 60);
+			snprintf(temp, STRMAX_SHORT, _("Mission Time: %02ld:%02ld"), engine.timeTaken / 60, engine.timeTaken % 60);
 
 			screen_renderUnicode(temp, -1, screen->h / 2 + 200, FONT_WHITE);
 

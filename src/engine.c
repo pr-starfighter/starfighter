@@ -145,7 +145,7 @@ void engine_showError(int errorId, const char *name)
 	switch(errorId)
 	{
 		case 0:
-			sprintf(string, "%s was not found in the Starfighter data package", name);
+			snprintf(string, STRMAX, "%s was not found in the Starfighter data package", name);
 			screen_renderString(string, -1, 250, FONT_WHITE);
 			screen_renderString("Please try again. If this error persists, contact the authors", -1, 275, FONT_WHITE);
 			screen_renderString("or reinstall the game", -1, 300, FONT_WHITE);

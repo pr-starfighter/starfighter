@@ -285,7 +285,7 @@ static void game_doCollectables()
 	Collectable *collectable = engine.collectableHead;
 	Collectable *prevCollectable = engine.collectableHead;
 	engine.collectableTail = engine.collectableHead;
-	char temp[40];
+	char temp[STRMAX_SHORT];
 
 	while (collectable->next != NULL)
 	{
@@ -313,20 +313,20 @@ static void game_doCollectables()
 					case P_CASH:
 						game.cash += collectable->value;
 						game.cashEarned += collectable->value;
-						sprintf(temp, "Got $%d ", collectable->value);
+						snprintf(temp, STRMAX_SHORT, "Got $%d ", collectable->value);
 						break;
 
 					case P_ROCKET:
 						LIMIT_ADD(player.ammo[1], collectable->value, 0,
 							game.maxRocketAmmo);
 						if (player.ammo[1] == game.maxRocketAmmo)
-							sprintf(temp, "Rocket Ammo at Maximum");
+							strcpy(temp, "Rocket Ammo at Maximum");
 						else
 						{
 							if (collectable->value > 1)
-								sprintf(temp, "Got %d rockets", collectable->value);
+								snprintf(temp, STRMAX_SHORT, "Got %d rockets", collectable->value);
 							else
-								sprintf(temp, "Got a rocket");
+								strcpy(temp, "Got a rocket");
 						}
 						game.rocketPickups += collectable->value;
 						break;
@@ -334,7 +334,7 @@ static void game_doCollectables()
 					case P_SHIELD:
 						LIMIT_ADD(player.shield, 10, 0, player.maxShield);
 						game.shieldPickups ++;
-						sprintf(temp, "Restored 10 shield points");
+						strcpy(temp, "Restored 10 shield points");
 						break;
 
 					case P_PLASMA_RATE:
@@ -347,11 +347,11 @@ static void game_doCollectables()
 								weapons[W_PLAYER_WEAPON].reload[0] - 2);
 
 							if (weapons[W_PLAYER_WEAPON].reload[0] <= rate2reload[game.maxPlasmaRate])
-								sprintf(temp, "Firing rate already at maximum");
+								strcpy(temp, "Firing rate already at maximum");
 							else
 							{
 								weapons[W_PLAYER_WEAPON].reload[0] -= 2;
-								sprintf(temp, "Firing rate increased");
+								strcpy(temp, "Firing rate increased");
 							}
 						}
 						else if ((game.area != MISN_INTERCEPTION) ||
@@ -362,16 +362,16 @@ static void game_doCollectables()
 									0, game.maxPlasmaAmmo);
 
 							if (weapons[W_PLAYER_WEAPON].reload[0] <= rate2reload[game.maxPlasmaRate])
-								sprintf(temp, "Firing rate already at maximum");
+								strcpy(temp, "Firing rate already at maximum");
 							else
 							{
 								weapons[W_PLAYER_WEAPON].reload[0] -= 2;
-								sprintf(temp, "Firing rate increased");
+								strcpy(temp, "Firing rate increased");
 							}
 						}
 						else
 						{
-							sprintf(temp, "Upgrade failed (no plasma ammo)");
+							strcpy(temp, "Upgrade failed (no plasma ammo)");
 						}
 						break;
 
@@ -384,11 +384,11 @@ static void game_doCollectables()
 								game.maxPlasmaOutput, weapons[W_PLAYER_WEAPON].ammo[0] + 1);
 
 							if (weapons[W_PLAYER_WEAPON].ammo[0] >= game.maxPlasmaOutput)
-								sprintf(temp, "Plasma output already at maximum");
+								strcpy(temp, "Plasma output already at maximum");
 							else
 							{
 								weapons[W_PLAYER_WEAPON].ammo[0]++;
-								sprintf(temp, "Plasma output increased");
+								strcpy(temp, "Plasma output increased");
 							}
 						}
 						else if ((game.area != MISN_INTERCEPTION) ||
@@ -399,16 +399,16 @@ static void game_doCollectables()
 									0, game.maxPlasmaAmmo);
 
 							if (weapons[W_PLAYER_WEAPON].ammo[0] >= game.maxPlasmaOutput)
-								sprintf(temp, "Plasma output already at maximum");
+								strcpy(temp, "Plasma output already at maximum");
 							else
 							{
 								weapons[W_PLAYER_WEAPON].ammo[0]++;
-								sprintf(temp, "Plasma output increased");
+								strcpy(temp, "Plasma output increased");
 							}
 						}
 						else
 						{
-							sprintf(temp, "Upgrade failed (no plasma ammo)");
+							strcpy(temp, "Upgrade failed (no plasma ammo)");
 						}
 						break;
 
@@ -421,11 +421,11 @@ static void game_doCollectables()
 								game.maxPlasmaDamage, weapons[W_PLAYER_WEAPON].damage + 1);
 
 							if (weapons[W_PLAYER_WEAPON].damage >= game.maxPlasmaDamage)
-								sprintf(temp, "Plasma damage already at maximum");
+								strcpy(temp, "Plasma damage already at maximum");
 							else
 							{
 								weapons[W_PLAYER_WEAPON].damage++;
-								sprintf(temp, "Plasma damage increased");
+								strcpy(temp, "Plasma damage increased");
 							}
 						}
 						else if ((game.area != MISN_INTERCEPTION) ||
@@ -436,16 +436,16 @@ static void game_doCollectables()
 									0, game.maxPlasmaAmmo);
 
 							if (weapons[W_PLAYER_WEAPON].damage >= game.maxPlasmaDamage)
-								sprintf(temp, "Plasma damage already at maximum");
+								strcpy(temp, "Plasma damage already at maximum");
 							else
 							{
 								weapons[W_PLAYER_WEAPON].damage++;
-								sprintf(temp, "Plasma damage increased");
+								strcpy(temp, "Plasma damage increased");
 							}
 						}
 						else
 						{
-							sprintf(temp, "Upgrade failed (no plasma ammo)");
+							strcpy(temp, "Upgrade failed (no plasma ammo)");
 						}
 						break;
 
@@ -466,30 +466,30 @@ static void game_doCollectables()
 							weapons[W_PLAYER_WEAPON].reload[0] = rate2reload[5];
 							weapons[W_PLAYER_WEAPON].flags |= WF_SPREAD;
 
-							sprintf(temp, "Picked up a Super Charge!");
+							strcpy(temp, "Picked up a Super Charge!");
 						}
 						else
 						{
-							sprintf(temp, "Damn! Upgrade failed (no plasma ammo)");
+							strcpy(temp, "Damn! Upgrade failed (no plasma ammo)");
 						}
 						break;
 
 					case P_PLASMA_AMMO:
 						if (player.ammo[0] >= game.maxPlasmaAmmo)
-							sprintf(temp, "Plasma cells already at Maximum");
+							strcpy(temp, "Plasma cells already at Maximum");
 						else
 						{
 							LIMIT_ADD(player.ammo[0], collectable->value,
 								0, game.maxPlasmaAmmo);
 							if (collectable->value > 1)
 							{
-								sprintf(temp, "Got %d plasma cells", collectable->value);
+								snprintf(temp, STRMAX_SHORT, "Got %d plasma cells", collectable->value);
 							}
 							else
 							{
-								sprintf(temp, "Got a plasma cell");
+								strcpy(temp, "Got a plasma cell");
 								if ((rand() % 25) == 0)
-									sprintf(temp, "Got one whole plasma cell (wahoo!)");
+									strcpy(temp, "Got one whole plasma cell (wahoo!)");
 							}
 						}
 						game.cellPickups += collectable->value;
@@ -501,16 +501,16 @@ static void game_doCollectables()
 						break;
 
 					case P_SLAVES:
-						sprintf(temp, "Rescued %d slaves", collectable->value);
+						snprintf(temp, STRMAX_SHORT, "Rescued %d slaves", collectable->value);
 						game.slavesRescued += collectable->value;
 						break;
 
 					case P_ESCAPEPOD:
-						sprintf(temp, "Picked up an Escape Pod");
+						strcpy(temp, "Picked up an Escape Pod");
 						break;
 
 					case P_ORE:
-						sprintf(temp, "Picked up some Ore");
+						strcpy(temp, "Picked up some Ore");
 						break;
 				}
 
@@ -1896,7 +1896,7 @@ static void game_doHud()
 		/// timer to use single-digit numbers.
 		/// The ":" can also be replaced just like any text.  For example, this would be fine:
 		///     "Time Remaining - %d minutes and %d seconds"
-		sprintf(text, _("Time Remaining - %.2d:%.2d"), engine.minutes, engine.seconds);
+		snprintf(text, STRMAX_SHORT, _("Time Remaining - %.2d:%.2d"), engine.minutes, engine.seconds);
 		gfx_createTextObject(TS_TIME, text, 0, 0, fontColor);
 		screen_blitText(TS_TIME, screen->w / 2 - gfx_textSprites[TS_TIME].image->w / 2, 20);
 	}
@@ -1904,13 +1904,13 @@ static void game_doHud()
 	if (game.area != MISN_INTERCEPTION)
 	{
 		/// "%d" must be retained.  It is replaced with the number of mission objectives remaining.
-		sprintf(text, _("Objectives Remaining: %d"), (mission.remainingObjectives1 + mission.remainingObjectives2));
+		snprintf(text, STRMAX_SHORT, _("Objectives Remaining: %d"), (mission.remainingObjectives1 + mission.remainingObjectives2));
 		gfx_createTextObject(TS_OBJECTIVES, text, 0, 0, FONT_WHITE);
 		screen_blitText(TS_OBJECTIVES, screen->w - gfx_textSprites[TS_OBJECTIVES].image->w - 25, 20);
 	}
 
 	/// "%d" must be retained.  It is replaced with the player's current total cash.
-	sprintf(text, _("Cash: $%d"), game.cash);
+	snprintf(text, STRMAX_SHORT, _("Cash: $%d"), game.cash);
 	gfx_createTextObject(TS_CASH, text, 0, 0, FONT_WHITE);
 	screen_blitText(TS_CASH, 25, 20);
 
@@ -1947,7 +1947,7 @@ static void game_doHud()
 		if (player.ammo[0] <= 10) fontColor = FONT_RED;
 	}
 	/// "%.3d" must be retained.  It is replaced with the amount of plasma ammo.
-	sprintf(text, _("Plasma: %.3d"), player.ammo[0]);
+	snprintf(text, STRMAX_SHORT, _("Plasma: %.3d"), player.ammo[0]);
 	gfx_createTextObject(TS_PLASMA, text, 0, 0, fontColor);
 	screen_blitText(TS_PLASMA, screen->w * 5 / 16, screen->h - 50);
 
@@ -1964,7 +1964,7 @@ static void game_doHud()
 	else
 	{
 		/// "%.2d" must be retained.  It is replaced with the amount of rocket ammo.
-		sprintf(text, _("Rockets: %.2d"), player.ammo[1]);
+		snprintf(text, STRMAX_SHORT, _("Rockets: %.2d"), player.ammo[1]);
 		gfx_createTextObject(TS_AMMO, text, 0, 0, FONT_WHITE);
 	}
 	screen_blitText(TS_AMMO, screen->w / 2, screen->h - 50);

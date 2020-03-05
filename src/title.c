@@ -195,7 +195,7 @@ int title_show()
 
 	int redGlow = 255;
 	int redDir = -2;
-	char buildVersion[25];
+	char buildVersion[STRMAX_SHORT];
 
 	int selectedOption = 1;
 	int skip = 0;
@@ -255,7 +255,7 @@ int title_show()
 	gfx_renderString("Copyright 2015-2019 Layla Marchant",
 		5, 2 * MENU_SPACING, FONT_WHITE, 0, copyrightText);
 
-	sprintf(buildVersion, "Version %s", VERSION );
+	snprintf(buildVersion, STRMAX_SHORT, "Version %s", VERSION );
 	infoText = gfx_createSurface(strlen(buildVersion) * (PIXFONT_W + 1) + 6, MENU_SPACING);
 	gfx_renderString(buildVersion, 0, 0, FONT_WHITE, 0, infoText);
 

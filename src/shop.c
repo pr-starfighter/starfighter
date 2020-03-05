@@ -52,7 +52,7 @@ static void sell(int i);
 
 static void drawSecondaryWeaponSurface()
 {
-	char description[50] = "";
+	char description[STRMAX_SHORT] = "";
 
 	gfx_renderUnicode(_("Secondary Weapon"), 10, 3, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SECONDARY]);
 
@@ -101,7 +101,7 @@ static void drawSecondaryWeaponSurface()
 		(player.weaponType[1] != W_CHARGER) && (player.weaponType[1] != W_NONE))
 	{
 		/// Retain "%d" as-is.  It is replaced with the rocket capacity of the Firefly.
-		sprintf(description, _("Capacity : %d"), game.maxRocketAmmo);
+		snprintf(description, STRMAX_SHORT, _("Capacity : %d"), game.maxRocketAmmo);
 		gfx_renderUnicode(description, 10, 37, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SECONDARY]);
 	}
 }
@@ -285,38 +285,38 @@ static void drawShop()
 	gfx_renderUnicode(_("Primary Weapon"), 10, 3, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_PRIMARY]);
 	/// Shop info: min plasma output
 	/// Retain "%d" as-is.  It is replaced with the min plasma output.
-	sprintf(description, _("Cannons: %d"), game.minPlasmaOutput);
+	snprintf(description, STRMAX, _("Cannons: %d"), game.minPlasmaOutput);
 	gfx_renderUnicode(description, 10, 22, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_PRIMARY]);
 	/// Shop info: min plasma damage
 	/// Retain "%d" as-is.  It is replaced with the min plasma damage.
-	sprintf(description, _("Power: Stage %d"),
+	snprintf(description, STRMAX, _("Power: Stage %d"),
 		game.minPlasmaDamage);
 	gfx_renderUnicode(description, 10, 37, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_PRIMARY]);
 	/// Shop info: min plasma rate
 	/// Retain "%d" as-is.  It is replaced with the min plasma cooling.
-	sprintf(description, _("Cooling: Stage %d"),
+	snprintf(description, STRMAX, _("Cooling: Stage %d"),
 		game.minPlasmaRate);
 	gfx_renderUnicode(description, 10, 52, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_PRIMARY]);
 
 	gfx_renderUnicode(_("Powerup Weapon"), 10, 3, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
 	/// Shop info: max plasma output
 	/// Retain "%d" as-is.  It is replaced with the max plasma output.
-	sprintf(description, _("Splitter: Stage %d"),
+	snprintf(description, STRMAX, _("Splitter: Stage %d"),
 		game.maxPlasmaOutput);
 	gfx_renderUnicode(description, 10, 22, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
 	/// Shop info: max plasma damage
 	/// Retain "%d" as-is.  It is replaced with the max plasma damage.
-	sprintf(description, _("Condensor: Stage %d"),
+	snprintf(description, STRMAX, _("Condensor: Stage %d"),
 		game.maxPlasmaDamage);
 	gfx_renderUnicode(description, 10, 37, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
 	/// Shop info: max plasma rate
 	/// Retain "%d" as-is.  It is replaced with the max plasma cooling.
-	sprintf(description, _("L.Nitrogen: Stage %d"),
+	snprintf(description, STRMAX, _("L.Nitrogen: Stage %d"),
 		game.maxPlasmaRate);
 	gfx_renderUnicode(description, 10, 52, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
 	/// Shop info: max plasma ammo
 	/// Retain "%d" as-is.  It is replaced with the Firefly's plasma ammo capacity.
-	sprintf(description, _("Capacity: %d"), game.maxPlasmaAmmo);
+	snprintf(description, STRMAX, _("Capacity: %d"), game.maxPlasmaAmmo);
 	gfx_renderUnicode(description, 10, 67, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
 
 	drawSecondaryWeaponSurface();
@@ -346,20 +346,20 @@ static void drawShop()
 	}
 
 	/// Retain "%d" as-is.  It is replaced with the Firefly's max shield.
-	sprintf(description, _("Shield: %d"), player.maxShield);
+	snprintf(description, STRMAX, _("Shield: %d"), player.maxShield);
 	gfx_renderUnicode(description, 10, 6, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
 	/// Retain "%d" as-is.  It is replaced with the player's current cash.
-	sprintf(description, _("Cash: $%d"), game.cash);
+	snprintf(description, STRMAX, _("Cash: $%d"), game.cash);
 	gfx_renderUnicode(description, 10, 22, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
 	/// Retain "%.3d".  It is replaced with the ship's current number of plasma cells.
 	/// "%.3d" can be changed to "%d" if you wish to not fill in space with zeroes,
 	/// e.g. render the number 5 as "5" rather than "005".
-	sprintf(description, _("Plasma Cells: %.3d"), player.ammo[0]);
+	snprintf(description, STRMAX, _("Plasma Cells: %.3d"), player.ammo[0]);
 	gfx_renderUnicode(description, SHOP_WIDTH - gfx_unicodeWidth(description) - 10, 6, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
 	/// Retain "%.2d".  It is replaced with the ship's current number of rockets.
 	/// "%.2d" can be changed to "%d" if you wish to not fill in space with zeroes,
 	/// e.g. render the number 3 as "3" rather than "03".
-	sprintf(description, _("Rockets: %.2d"), player.ammo[1]);
+	snprintf(description, STRMAX, _("Rockets: %.2d"), player.ammo[1]);
 	gfx_renderUnicode(description, SHOP_WIDTH - gfx_unicodeWidth(description) - 10, 22, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SHIP_INFO]);
 
 	gfx_shopSprites[SHOP_S_ITEM_INFO] = gfx_createSurface(SHOP_WIDTH + 1, 56);
@@ -414,7 +414,7 @@ static void drawShop()
 				/// Used to put a shop item's name next to its price.
 				/// "%s" is replaced with the item name, and "%d" is replaced
 				/// with the item price.
-				sprintf(description, _("%s ($%d)"),
+				snprintf(description, STRMAX, _("%s ($%d)"),
 					shopItems[shopSelectedItem].description,
 					shopItems[shopSelectedItem].price);
 			}
@@ -422,7 +422,7 @@ static void drawShop()
 			{
 				/// Used for shop items that cannot be bought.
 				/// "%s" is replaced with the item name.
-				sprintf(description, _("%s (N/A)"),
+				snprintf(description, STRMAX, _("%s (N/A)"),
 					shopItems[shopSelectedItem].description);
 			}
 			gfx_renderUnicode(shopItems[shopSelectedItem].name, 5, 22,
@@ -533,7 +533,7 @@ void shop_init()
 	/// Shop item description: Homing Missile Launcher
 	/// %i must be retained.  It is replaced by the maximum missile
 	/// capacity of the weapon.
-	sprintf(shopItems[SHOP_HOMING_MISSILE].description, _("Fires homing missile (max %i missiles)"), MAX_HOMING);
+	snprintf(shopItems[SHOP_HOMING_MISSILE].description, STRMAX, _("Fires homing missile (max %i missiles)"), MAX_HOMING);
 	shopItems[SHOP_HOMING_MISSILE].image = SP_HOMING_MISSILE;
 
 	shopItems[SHOP_CHARGER].price = 10000;
@@ -547,7 +547,7 @@ void shop_init()
 	/// Shop item description: Dual Homing Missile Launcher
 	/// %i must be retained.  It is replaced by the maximum missile
 	/// capacity of the weapon.
-	sprintf(shopItems[SHOP_DOUBLE_HOMING_MISSILES].description, _("Fires two homing missiles (max %i missiles)"), MAX_DOUBLE_HOMING);
+	snprintf(shopItems[SHOP_DOUBLE_HOMING_MISSILES].description, STRMAX, _("Fires two homing missiles (max %i missiles)"), MAX_DOUBLE_HOMING);
 	shopItems[SHOP_DOUBLE_HOMING_MISSILES].image = SP_DOUBLE_HOMING_MISSILES;
 
 	shopItems[SHOP_MICRO_HOMING_MISSILES].price = 15000;
@@ -555,7 +555,7 @@ void shop_init()
 	/// Shop item description: Micro Homing Missile Launcher
 	/// %i must be retained.  It is replaced by the maximum missile
 	/// capacity of the weapon.
-	sprintf(shopItems[SHOP_MICRO_HOMING_MISSILES].description, _("Fires several small homing missiles (max %i missiles)"), MAX_MICRO_HOMING);
+	snprintf(shopItems[SHOP_MICRO_HOMING_MISSILES].description, STRMAX, _("Fires several small homing missiles (max %i missiles)"), MAX_MICRO_HOMING);
 	shopItems[SHOP_MICRO_HOMING_MISSILES].image = SP_MICRO_HOMING_MISSILES;
 
  	shopSelectedItem = SHOP_NOTHING;

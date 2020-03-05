@@ -240,70 +240,70 @@ static void intermission_setStatusLines()
 
 	/// Status Screen text
 	/// Retain "%s" as-is.  It is replaced with the current difficulty.
-	sprintf(string, _("Difficulty : %s"), difficulty);
+	snprintf(string, STRMAX_SHORT, _("Difficulty : %s"), difficulty);
 	gfx_createTextObject(TS_STATUS_DIFFICULTY, string, 0, 0, FONT_WHITE);
 
 	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the number of shots fired.
-	sprintf(string, _("Shots Fired : %d"), game.shots);
+	snprintf(string, STRMAX_SHORT, _("Shots Fired : %d"), game.shots);
 	gfx_createTextObject(TS_SHOTS_FIRED, string, 0, 0, FONT_WHITE);
 
 	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the number of hits scored.
-	sprintf(string, _("Hits Scored : %d"), game.hits);
+	snprintf(string, STRMAX_SHORT, _("Hits Scored : %d"), game.hits);
 	gfx_createTextObject(TS_HITS_SCORED, string, 0, 0, FONT_WHITE);
 
 	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the firing accuracy as a percentage.
 	/// Note: To use the "%" symbol, you must enter "%%", as you can see in
 	/// the English version.
-	sprintf(string, _("Accuracy : %d%%"), game.accuracy);
+	snprintf(string, STRMAX_SHORT, _("Accuracy : %d%%"), game.accuracy);
 	gfx_createTextObject(TS_ACCURACY, string, 0, 0, FONT_WHITE);
 
 	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the number of kills.
-	sprintf(string, _("Enemies Killed by Others : %d"), game.totalOtherKills);
+	snprintf(string, STRMAX_SHORT, _("Enemies Killed by Others : %d"), game.totalOtherKills);
 	gfx_createTextObject(TS_OTHER_KILLS, string, 0, 0, FONT_WHITE);
 
 	/// Retain "%d" as-is.  It is replaced with the amount of cash earned.
-	sprintf(string, _("Total Cash Earned : %d"), game.cashEarned);
+	snprintf(string, STRMAX_SHORT, _("Total Cash Earned : %d"), game.cashEarned);
 	gfx_createTextObject(TS_CASH_EARNED, string, 0, 0, FONT_WHITE);
 
 	gfx_createTextObject(TS_CHRIS_HEADER, _("*** Chris ***"), 0, 0, FONT_WHITE);
 
 	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the number of kills.
-	sprintf(string, _("Enemies Killed : %d"), game.totalKills);
+	snprintf(string, STRMAX_SHORT, _("Enemies Killed : %d"), game.totalKills);
 	gfx_createTextObject(TS_CHRIS_KILLS, string, 0, 0, FONT_WHITE);
 
 	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the number of shield restores picked up.
-	sprintf(string, _("Shield Restores Picked Up : %d"), game.shieldPickups);
+	snprintf(string, STRMAX_SHORT, _("Shield Restores Picked Up : %d"), game.shieldPickups);
 	gfx_createTextObject(TS_CHRIS_SHIELD_PICKUPS, string, 0, 0, FONT_WHITE);
 
 	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the number of plasma cells picked up.
-	sprintf(string, _("Plasma Cells Picked Up : %d"), game.cellPickups);
+	snprintf(string, STRMAX_SHORT, _("Plasma Cells Picked Up : %d"), game.cellPickups);
 	gfx_createTextObject(TS_CHRIS_PLASMA_PICKUPS, string, 0, 0, FONT_WHITE);
 
 	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the number of rockets picked up.
-	sprintf(string, _("Rockets Picked Up : %d"), game.rocketPickups);
+	snprintf(string, STRMAX_SHORT, _("Rockets Picked Up : %d"), game.rocketPickups);
 	gfx_createTextObject(TS_CHRIS_ROCKET_PICKUPS, string, 0, 0, FONT_WHITE);
 
 	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the number of powerups picked up.
-	sprintf(string, _("Powerups Picked Up : %d"), game.powerups);
+	snprintf(string, STRMAX_SHORT, _("Powerups Picked Up : %d"), game.powerups);
 	gfx_createTextObject(TS_CHRIS_POWERUP_PICKUPS, string, 0, 0, FONT_WHITE);
 
 	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the number of mines destroyed.
-	sprintf(string, _("Mines Destroyed : %d"), game.minesKilled);
+	snprintf(string, STRMAX_SHORT, _("Mines Destroyed : %d"), game.minesKilled);
 	gfx_createTextObject(TS_CHRIS_MINES_KILLED, string, 0, 0, FONT_WHITE);
 
 	/// Status Screen text
 	/// Retain "%d" as-is.  It is replaced with the number of slaves rescued.
-	sprintf(string, _("Slaves Rescued : %d"), game.slavesRescued);
+	snprintf(string, STRMAX_SHORT, _("Slaves Rescued : %d"), game.slavesRescued);
 	gfx_createTextObject(TS_CHRIS_SLAVES_RESCUED, string, 0, 0, FONT_WHITE);
 
 	if (game.hasWingMate1)
@@ -312,12 +312,12 @@ static void intermission_setStatusLines()
 
 		/// Status Screen text
 		/// Retain "%d" as-is.  It is replaced with the number of kills.
-		sprintf(string, _("Enemies Killed : %d"), game.wingMate1Kills);
+		snprintf(string, STRMAX_SHORT, _("Enemies Killed : %d"), game.wingMate1Kills);
 		gfx_createTextObject(TS_PHOEBE_KILLS, string, 0, 0, FONT_WHITE);
 
 		/// Retain
 		/// Status Screen text "%d" as-is.  It is replaced with the number of ejections.
-		sprintf(string, _("Ejections : %d"), game.wingMate1Ejects);
+		snprintf(string, STRMAX_SHORT, _("Ejections : %d"), game.wingMate1Ejects);
 		gfx_createTextObject(TS_PHOEBE_DEATHS, string, 0, 0, FONT_WHITE);
 	}
 	else
@@ -334,12 +334,12 @@ static void intermission_setStatusLines()
 
 		/// Status Screen text
 		/// Retain "%d" as-is.  It is replaced with the number of kills.
-		sprintf(string, _("Enemies Killed : %d"), game.wingMate2Kills);
+		snprintf(string, STRMAX_SHORT, _("Enemies Killed : %d"), game.wingMate2Kills);
 		gfx_createTextObject(TS_URSULA_KILLS, string, 0, 0, FONT_WHITE);
 
 		/// Status Screen text
 		/// Retain "%d" as-is.  It is replaced with the number of ejections.
-		sprintf(string, _("Ejections : %d"), game.wingMate2Ejects);
+		snprintf(string, STRMAX_SHORT, _("Ejections : %d"), game.wingMate2Ejects);
 		gfx_createTextObject(TS_URSULA_DEATHS, string, 0, 0, FONT_WHITE);
 	}
 	else
@@ -365,7 +365,7 @@ static void intermission_setStatusLines()
 	/// For example, the "%02ld" sequences may be changed to "%ld" if
 	/// you wish to not force two digits to be filled in (e.g. to render
 	/// the number 3 as "3" instead of "03").
-	snprintf(string, sizeof string, _("Total Time : %ld:%02ld:%02ld"), timeTaken / 3600, (timeTaken / 60) % 60, timeTaken % 60);
+	snprintf(string, STRMAX_SHORT, _("Total Time : %ld:%02ld:%02ld"), timeTaken / 3600, (timeTaken / 60) % 60, timeTaken % 60);
 	gfx_createTextObject(TS_STATUS_FOOTER, string, 0, 0, FONT_WHITE);
 }
 
@@ -811,7 +811,7 @@ static int intermission_renderDialog(SDL_Surface *comms, int y, int face, const 
 
 static void intermission_createMissionDetailSurface(SDL_Surface *comms, int missionSlot)
 {
-	char string[2000];
+	char string[STRMAX];
 	int y = 10;
 	int misn = -1;
 
@@ -921,7 +921,7 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			/// Mission dialog: Eyananth, interceptions (Sid Wilson)
 			/// "%d" must be retained as-is. It is replaced with the number of slaves that
 			/// need to be rescued.
-			sprintf(string, _("As you know, WEAPCO has many slaves in this system. If we free a large number of them, it might help to spark a rebellion. I estimate that we will need to rescue around %d to make a difference."), SLAVE_RESCUE_TARGET);
+			snprintf(string, STRMAX, _("As you know, WEAPCO has many slaves in this system. If we free a large number of them, it might help to spark a rebellion. I estimate that we will need to rescue around %d to make a difference."), SLAVE_RESCUE_TARGET);
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
 			/// Mission dialog: Eyananth, interceptions (Chris Bainfield)
@@ -1226,7 +1226,7 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			strcpy(string, "Hey, why am I talking to myself? This shouldn't happen! Clearly, this must be a bug.");
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			sprintf(string, "I should go to starfighter.nongnu.org and report this bug there. In that report, I should mention that the mission number is %d.", misn);
+			snprintf(string, STRMAX, "I should go to starfighter.nongnu.org and report this bug there. In that report, I should mention that the mission number is %d.", misn);
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
 			strcpy(string, "Wait, what am I still talking into empty space for? It's not like anyone can hear me...");
@@ -1502,7 +1502,7 @@ int intermission()
 		audio_playMusic("music/through_space.ogg", -1);
 
 	/// Retain "%s" as-is.  It is replaced with the current system name.
-	sprintf(string, _("System : %s"), game_systemNames[game.system]);
+	snprintf(string, STRMAX_SHORT, _("System : %s"), game_systemNames[game.system]);
 	gfx_createTextObject(TS_CURRENT_SYSTEM, string, 0, 0, FONT_WHITE);
 
 	gfx_createTextObject(TS_INFO_START_MISSION, _("Start Next Mission"), 0, 0, FONT_WHITE);
@@ -1517,14 +1517,14 @@ int intermission()
 
 	/// Retain "%s" as-is.  It is replaced with the name of the planet
 	/// the player is currently stationed on.
-	sprintf(string, _("Stationed At: %s"), intermission_planets[game.stationedPlanet].name);
+	snprintf(string, STRMAX_SHORT, _("Stationed At: %s"), intermission_planets[game.stationedPlanet].name);
 	gfx_createTextObject(TS_CURRENT_PLANET, string, 90, 0, FONT_WHITE);
 
 	if (game.destinationPlanet > -1)
 	{
 		/// Retain "%s" as-is.  It is replaced with the name of the planet
 		/// the player's destination is currently set to.
-		sprintf(string, _("Destination: %s"), intermission_planets[game.destinationPlanet].name);
+		snprintf(string, STRMAX_SHORT, _("Destination: %s"), intermission_planets[game.destinationPlanet].name);
 	}
 	else
 	{
@@ -1639,7 +1639,7 @@ int intermission()
 				{
 					/// Retain "%s" as-is.  It is replaced with the name of the planet
 					/// the player's destination is currently set to.
-					sprintf(string, "Destination: %s", intermission_planets[game.destinationPlanet].name);
+					snprintf(string, STRMAX_SHORT, "Destination: %s", intermission_planets[game.destinationPlanet].name);
 					gfx_createTextObject(TS_DEST_PLANET, string, 0, 0, FONT_WHITE);
 				}
 
@@ -1701,7 +1701,7 @@ int intermission()
 					player.shield = player.maxShield;
 					/// Retain "%s" as-is.  It is replaced with the name of the planet
 					/// the player's destination is currently set to.
-					sprintf(string, _("Stationed At: %s"),
+					snprintf(string, STRMAX_SHORT, _("Stationed At: %s"),
 						intermission_planets[game.stationedPlanet].name);
 					gfx_createTextObject(TS_CURRENT_PLANET, string, 90, 0, FONT_WHITE);
 					section = 1;

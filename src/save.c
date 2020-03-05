@@ -35,7 +35,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "screen.h"
 #include "weapons.h"
 
-static char saveSlot[10][25];
+static char saveSlot[10][STRMAX_SHORT];
 
 /*
 Reads in each save game that it finds and gives it an appropriate
@@ -60,20 +60,20 @@ int save_initSlots()
 	//READ SAVE GAME DATA
 	for (int i = 0 ; i <= 5 ; i++)
 	{
-		sprintf(fileName, "%ssave%.2d.sav", engine.configDirectory, i);
+		snprintf(fileName, PATH_MAX, "%ssave%.2d.sav", engine.configDirectory, i);
 		fp = fopen(fileName, "r");
 		if (fp != NULL)
 		{
 			if (fscanf(fp, "%d%*c", &game.saveFormat) < 1)
 			{
 				printf("Error: Could not determine the version of the save file.\n");
-				sprintf(saveSlot[i], "Corrupt Game Data");
+				strcpy(saveSlot[i], "Corrupt Game Data");
 			}
 			else
 			{
 				if (i == 0)
 				{
-					sprintf(saveSlot[i], _("AUTOSAVE"));
+					strcpy(saveSlot[i], _("AUTOSAVE"));
 					continueSaveIndex = 0;
 				}
 				else
@@ -81,11 +81,11 @@ int save_initSlots()
 					if (fscanf(fp, "%*[^\n]%*c%*[^\n]%*c%d %*d %*d%*c%[^\n]%*c", &system,
 							stationedName) < 2)
 					{
-						sprintf(saveSlot[i], _("Corrupt Game Data"));
+						strcpy(saveSlot[i], _("Corrupt Game Data"));
 					}
 					else
 					{
-						sprintf(saveSlot[i], "%s, %s", game_systemNames[system],
+						snprintf(saveSlot[i], STRMAX_SHORT, "%s, %s", game_systemNames[system],
 							stationedName);
 					}
 				}
@@ -104,13 +104,13 @@ int save_initSlots()
 		}
 		else
 		{
-			sprintf(fileName, "%ssave%.2d.dat", engine.configDirectory, i);
+			snprintf(fileName, PATH_MAX, "%ssave%.2d.dat", engine.configDirectory, i);
 
 			fp = fopen(fileName, "r");
 			if (fp == NULL)
 			{
 				/// Used for empty save slots.
-				sprintf(saveSlot[i], (i == 0 ? _("AUTOSAVE (Empty)") : _("Empty")));
+				strcpy(saveSlot[i], (i == 0 ? _("AUTOSAVE (Empty)") : _("Empty")));
 				if (engine.gameSection == SECTION_TITLE)
 					gfx_createTextObject(TS_SAVESLOT_0 + i, saveSlot[i],
 						0, imagePos, FONT_WHITE);
@@ -119,18 +119,18 @@ int save_initSlots()
 			{
 				if (i == 0)
 				{
-					sprintf(saveSlot[i], _("AUTOSAVE"));
+					strcpy(saveSlot[i], _("AUTOSAVE"));
 					continueSaveIndex = 0;
 				}
 				else
 				{
 					if (fread(&tempGame, sizeof(Game), 1, fp) != 1)
 					{
-						sprintf(saveSlot[i], _("Corrupt Game Data"));
+						strcpy(saveSlot[i], _("Corrupt Game Data"));
 					}
 					else
 					{
-						sprintf(saveSlot[i], "%s, %s", game_systemNames[tempGame.system],
+						snprintf(saveSlot[i], STRMAX_SHORT, "%s, %s", game_systemNames[tempGame.system],
 							tempGame.stationedName);
 					}
 				}
@@ -163,7 +163,7 @@ int save_load(int slot)
 	FILE *fp;
 	unsigned long timeTaken;
 
-	sprintf(filename, "%ssave%.2d.sav", engine.configDirectory, slot);
+	snprintf(filename, PATH_MAX, "%ssave%.2d.sav", engine.configDirectory, slot);
 	fp = fopen(filename, "r");
 
 	if (fp != NULL)
@@ -233,7 +233,7 @@ int save_load(int slot)
 	}
 	else
 	{
-		sprintf(filename, "%ssave%.2d.dat", engine.configDirectory, slot);
+		snprintf(filename, PATH_MAX, "%ssave%.2d.dat", engine.configDirectory, slot);
 		fp = fopen(filename, "rb");
 
 		if (fp == NULL)
@@ -281,7 +281,7 @@ void save(int slot)
 		return;
 	}
 
-	sprintf(fileName, "%ssave%.2d.sav", engine.configDirectory, slot);
+	snprintf(fileName, PATH_MAX, "%ssave%.2d.sav", engine.configDirectory, slot);
 	fp = fopen(fileName, "w");
 
 
@@ -456,7 +456,7 @@ int save_showSlots(SDL_Surface *savesSurface, int saveSlot, int x, int y)
 			x + 253, y + 265, 100, 25))
 		{
 			char filename[PATH_MAX];
-			sprintf(filename, "%ssave%.2d.sav", engine.configDirectory,
+			snprintf(filename, PATH_MAX, "%ssave%.2d.sav", engine.configDirectory,
 				saveSlot);
 			remove(filename);
 			save_initSlots();

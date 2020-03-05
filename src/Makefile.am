@@ -6,9 +6,9 @@
 bin_PROGRAMS = starfighter
 
 if RUN_IN_PLACE
-starfighter_CPPFLAGS = $(STARFIGHTER_CFLAGS) -Wall
+starfighter_CPPFLAGS = $(STARFIGHTER_CFLAGS) -Wall -Wformat-truncation=0
 else
-starfighter_CPPFLAGS = $(STARFIGHTER_CFLAGS) -DDATADIR=\"$(pkgdatadir)\" -Wall
+starfighter_CPPFLAGS = $(STARFIGHTER_CFLAGS) -DDATADIR=\"$(pkgdatadir)\" -Wall -Wformat-truncation=0
 endif
 
 starfighter_CFLAGS = $(SDL_CFLAGS) $(PANGO_CFLAGS)

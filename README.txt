@@ -73,7 +73,8 @@ distribution if possible.  If you want or need to compile yourself,
 however, instructions follow.
 
 Note: Developers compiling the source code from the Git repository,
-please first see the GENERATING CONFIGURE SCRIPT section below.
+please first see the GENERATING CONFIGURE SCRIPT AND BUILDING LOCALES
+section below.
 
 Project: Starfighter depends on the following libraries to build:
 
@@ -108,12 +109,13 @@ Run "./configure --help" to see all options for compiling.
 
 ------------------------------------------------------------------------
 
-GENERATING CONFIGURE SCRIPT
+GENERATING CONFIGURE SCRIPT AND BUILDING LOCALES
 
 If you contribute to Project: Starfighter's source code, you will need
-to know how to generate a configure script for compiling the program.
-NOTE: This is for developers only. End-users simply compiling releases
-of Starfighter from source can ignore this section.
+to know how to generate a configure script and build locales needed for
+compiling the program. NOTE: This is for developers and other people
+compiling source code taken from the Git repository. End-users simply
+compiling releases of Starfighter from source can ignore this section.
 
 The following components are required to generate the configure script:
 
@@ -121,12 +123,17 @@ The following components are required to generate the configure script:
 * Automake
 * pkg-config
 
+And the following is required to build locales:
+
+* Python
+
 Once these dependencies are installed, simply do the following from a
 terminal window:
 
     autoreconf -vif
+    ./locale/build.py
 
-The arguments are technically optional, but recommended.
+The arguments to autoreconf are technically optional, but recommended.
 
 If for some reason you need to remove all of these files from your
 directory, you can do so via the following command (requires Git):
