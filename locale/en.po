@@ -1,7 +1,7 @@
 # Project: Starfighter Translatable Text
 # Copyright (C) 2003 Parallel Relaities
 # Copyright (C) 2011, 2012, 2013 Guus Sliepen
-# Copyright (C) 2012, 2015-2019 Julie Marchant
+# Copyright (C) 2012, 2015-2019 Layla Marchant
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# Julie Marchant <onpon4@riseup.net>, 2019.
+# Layla Marchant <diligentcircle@riseup.net>, 2019.
 #
 msgid ""
 msgstr ""
@@ -24,7 +24,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://starfighter.nongnu.org\n"
 "POT-Creation-Date: 2019-06-12 11:48-0400\n"
 "PO-Revision-Date: 2019-06-12 11:49-0400\n"
-"Last-Translator: Julie Marchant <onpon4@riseup.net>\n"
+"Last-Translator: Layla Marchant <diligentcircle@riseup.net>\n"
 "Language-Team: English\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
