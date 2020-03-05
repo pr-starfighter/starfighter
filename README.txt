@@ -131,7 +131,7 @@ The arguments are technically optional, but recommended.
 If for some reason you need to remove all of these files from your
 directory, you can do so via the following command (requires Git):
 
-	git clean -fdx
+    git clean -fdx
 
 Note: automatically generated files are listed in .gitignore, so you
 generally don't actually have to do this.
