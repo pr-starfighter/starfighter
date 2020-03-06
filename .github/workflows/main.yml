@@ -1,0 +1,25 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: install
+      run: sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libpango1.0-dev
+    - name: autoconf
+      run: autoreconf -vif
+    - name: build locale
+      run: cd locale && ./build.py && cd ..
+    - name: configure
+      run: ./configure
+    - name: build
+      run: make
