@@ -130,7 +130,9 @@ Once these dependencies are installed, simply do the following from a
 terminal window:
 
     autoreconf -vif
-    ./locale/build.py
+    cd locale
+    ./build.py
+    cd ..
 
 The arguments to autoreconf are technically optional, but recommended.
 
