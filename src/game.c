@@ -1538,8 +1538,7 @@ static void game_doPlayer()
 				}
 			}
 
-			if ((player.maxShield <= 1) || (player.shield > engine.lowShield))
-				explosion_addEngine(&player);
+			explosion_addEngine(&player);
 
 			shapeToUse = player.face;
 
@@ -1550,7 +1549,7 @@ static void game_doPlayer()
 
 			screen_blit(gfx_shipSprites[shapeToUse], (int)player.x, (int)player.y);
 			if ((player.maxShield > 1) && (player.shield <= engine.lowShield) &&
-					(rand() % 5 < 1))
+					CHANCE(1. / 10))
 				explosion_add(player.x + RANDRANGE(-10, 10),
 					player.y + RANDRANGE(-10, 20), SP_SMOKE);
 		}
