@@ -41,5 +41,6 @@ typedef struct Collectable_ {
 void collectable_add(float x, float y, int type, int value, int life);
 int collectable_collision(Collectable *collectable, Object *ship);
 void collectable_explode(Collectable *collectable);
+int collectable_numGood();
 
 #endif

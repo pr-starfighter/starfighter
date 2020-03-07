@@ -315,3 +315,42 @@ void collectable_explode(Collectable *collectable)
 
 	player_checkShockDamage(collectable->x, collectable->y);
 }
+
+/*
+Returns the number of "good" collectables (all collectables excluding
+mines and unneeded refills) that exist.
+*/
+int collectable_numGood()
+{
+	Collectable *col = engine.collectableHead->next;
+	int n = 0;
+
+	while (col != NULL)
+	{
+		if ((col->type != P_MINE) &&
+				((col->type != P_SHIELD) || (player.shield < player.maxShield)) &&
+				((col->type != P_ROCKET) || (player.ammo[1] < game.maxRocketAmmo)) &&
+				((col->type != P_PLASMA_AMMO) || (player.ammo[0] < game.maxPlasmaAmmo)) &&
+				((col->type != P_PLASMA_SHOT) ||
+					(player.ammo[0] < game.maxPlasmaAmmo) ||
+					(weapons[W_PLAYER_WEAPON].ammo[0] < game.maxPlasmaOutput)) &&
+				((col->type != P_PLASMA_DAMAGE) ||
+					(player.ammo[0] < game.maxPlasmaAmmo) ||
+					(weapons[W_PLAYER_WEAPON].damage < game.maxPlasmaDamage)) &&
+				((col->type != P_PLASMA_RATE) ||
+					(player.ammo[0] < game.maxPlasmaAmmo) ||
+					(weapons[W_PLAYER_WEAPON].reload[0] > rate2reload[game.maxPlasmaRate])) &&
+				((col->type != P_SUPER) ||
+					(player.ammo[0] < game.maxPlasmaAmmo) ||
+					(weapons[W_PLAYER_WEAPON].ammo[0] < game.maxPlasmaOutput) ||
+					(weapons[W_PLAYER_WEAPON].damage < game.maxPlasmaDamage) ||
+					(weapons[W_PLAYER_WEAPON].reload[0] > rate2reload[game.maxPlasmaRate])))
+		{
+			n++;
+		}
+
+		col = col->next;
+	}
+
+	return n;
+}

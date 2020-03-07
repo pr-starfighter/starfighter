@@ -2601,7 +2601,11 @@ int game_mainLoop()
 			engine.gameSection = SECTION_INTERMISSION;
 			if (player.shield > 0)
 			{
-				if (SDL_GetTicks() >= engine.missionCompleteTimer)
+				if ((SDL_GetTicks() >= engine.missionCompleteTimer) &&
+					((game.difficulty == DIFFICULTY_ORIGINAL) ||
+						(game.difficulty == DIFFICULTY_NIGHTMARE) ||
+						(game.area == MISN_ELLESH) || (game.area == MISN_MARS) ||
+						(mission_checkFailed()) || (collectable_numGood() <= 0)))
 				{
 					if ((!mission_checkFailed()) && (game.area != MISN_VENUS))
 					{
