@@ -159,10 +159,11 @@ void gfx_blit(SDL_Surface *image, int x, int y, SDL_Surface *dest)
 In 16 bit mode this is slow. VERY slow. Don't write directly to a surface
 that constantly needs updating (eg - the main game screen)
 */
-static int gfx_renderStringBase(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest)
+static int gfx_renderStringBase(const char *in, int x, int y, int real_x, int fontColor, int wrap, SDL_Surface *dest)
 {
 	int i;
 	int splitword;
+	int creal_x;
 	SDL_Rect area;
 	SDL_Rect letter;
 
@@ -170,6 +171,7 @@ static int gfx_renderStringBase(const char *in, int x, int y, int fontColor, int
 	area.y = y;
 	area.w = PIXFONT_W;
 	area.h = PIXFONT_H;
+	creal_x = real_x;
 
 	letter.y = 0;
 	letter.w = PIXFONT_W;
@@ -191,15 +193,17 @@ static int gfx_renderStringBase(const char *in, int x, int y, int fontColor, int
 		}
 
 		area.x += PIXFONT_W + 1;
+		creal_x += PIXFONT_W + 1;
 
 		if (wrap)
 		{
-			if ((area.x > (dest->w - 70)) && (*in == ' '))
+			if ((creal_x > (dest->w - 70)) && (*in == ' '))
 			{
 				area.y += PIXFONT_LINE_HEIGHT;
 				area.x = x;
+				creal_x = real_x;
 			}
-			else if (area.x > (dest->w - 31))
+			else if (creal_x > (dest->w - 31))
 			{
 				splitword = 1;
 				for (i = 0 ; i < 4 ; i++)
@@ -222,6 +226,7 @@ static int gfx_renderStringBase(const char *in, int x, int y, int fontColor, int
 					}
 					area.y += PIXFONT_LINE_HEIGHT;
 					area.x = x;
+					creal_x = real_x;
 				}
 			}
 		}
@@ -232,18 +237,27 @@ static int gfx_renderStringBase(const char *in, int x, int y, int fontColor, int
 	return area.y;
 }
 
+/*
+Legacy text rendering function, the original one which only supports
+ASCII. Generally not used anymore with the exception of some title
+screen bits that remain untranslated, but also used as a fallback if the
+game is compiled without SDL_ttf and Pango. Works OK on the English
+text, but not likely to work well with translations (and won't work at
+all for languages like Chinese or Japanese based on non-Latin
+alphabets).
+*/
 int gfx_renderString(const char *in, int x, int y, int fontColor, int wrap, SDL_Surface *dest)
 {
 	if (x == -1)
 		x = (dest->w - (strlen(in) * (PIXFONT_W + 1))) / 2;
 
-	gfx_renderStringBase(in, x, y - 1, FONT_OUTLINE, wrap, dest);
-	gfx_renderStringBase(in, x, y + 1, FONT_OUTLINE, wrap, dest);
-	gfx_renderStringBase(in, x, y + 2, FONT_OUTLINE, wrap, dest);
-	gfx_renderStringBase(in, x - 1, y, FONT_OUTLINE, wrap, dest);
-	gfx_renderStringBase(in, x - 2, y, FONT_OUTLINE, wrap, dest);
-	gfx_renderStringBase(in, x + 1, y, FONT_OUTLINE, wrap, dest);
-	return gfx_renderStringBase(in, x, y, fontColor, wrap, dest);
+	gfx_renderStringBase(in, x, y - 1, x, FONT_OUTLINE, wrap, dest);
+	gfx_renderStringBase(in, x, y + 1, x, FONT_OUTLINE, wrap, dest);
+	gfx_renderStringBase(in, x, y + 2, x, FONT_OUTLINE, wrap, dest);
+	gfx_renderStringBase(in, x - 1, y, x, FONT_OUTLINE, wrap, dest);
+	gfx_renderStringBase(in, x - 2, y, x, FONT_OUTLINE, wrap, dest);
+	gfx_renderStringBase(in, x + 1, y, x, FONT_OUTLINE, wrap, dest);
+	return gfx_renderStringBase(in, x, y, x, fontColor, wrap, dest);
 }
 
 #ifdef NOFONT

@@ -313,20 +313,27 @@ static void game_doCollectables()
 					case P_CASH:
 						game.cash += collectable->value;
 						game.cashEarned += collectable->value;
-						snprintf(temp, STRMAX_SHORT, "Got $%d ", collectable->value);
+						snprintf(temp, STRMAX_SHORT, ngettext(
+							/// "%d" must be retained. It is replaced with the amount of money that
+							/// was picked up.
+							"Got $%d",
+							"Got $%d",
+							collectable->value), collectable->value);
 						break;
 
 					case P_ROCKET:
 						LIMIT_ADD(player.ammo[1], collectable->value, 0,
 							game.maxRocketAmmo);
 						if (player.ammo[1] == game.maxRocketAmmo)
-							strcpy(temp, "Rocket Ammo at Maximum");
+							strcpy(temp, _("Rocket Ammo at Maximum"));
 						else
 						{
-							if (collectable->value > 1)
-								snprintf(temp, STRMAX_SHORT, "Got %d rockets", collectable->value);
-							else
-								strcpy(temp, "Got a rocket");
+							snprintf(temp, STRMAX_SHORT, ngettext(
+								/// "%d" must be retained. It is replaced with the number of rockets
+								/// picked up.
+								"Got %d rocket",
+								"Got %d rockets",
+								collectable->value), collectable->value);
 						}
 						game.rocketPickups += collectable->value;
 						break;
@@ -334,7 +341,7 @@ static void game_doCollectables()
 					case P_SHIELD:
 						LIMIT_ADD(player.shield, 10, 0, player.maxShield);
 						game.shieldPickups ++;
-						strcpy(temp, "Restored 10 shield points");
+						strcpy(temp, _("Restored 10 shield points"));
 						break;
 
 					case P_PLASMA_RATE:
@@ -347,11 +354,11 @@ static void game_doCollectables()
 								weapons[W_PLAYER_WEAPON].reload[0] - 2);
 
 							if (weapons[W_PLAYER_WEAPON].reload[0] <= rate2reload[game.maxPlasmaRate])
-								strcpy(temp, "Firing rate already at maximum");
+								strcpy(temp, _("Firing rate already at maximum"));
 							else
 							{
 								weapons[W_PLAYER_WEAPON].reload[0] -= 2;
-								strcpy(temp, "Firing rate increased");
+								strcpy(temp, _("Firing rate increased"));
 							}
 						}
 						else if ((game.area != MISN_INTERCEPTION) ||
@@ -362,16 +369,16 @@ static void game_doCollectables()
 									0, game.maxPlasmaAmmo);
 
 							if (weapons[W_PLAYER_WEAPON].reload[0] <= rate2reload[game.maxPlasmaRate])
-								strcpy(temp, "Firing rate already at maximum");
+								strcpy(temp, _("Firing rate already at maximum"));
 							else
 							{
 								weapons[W_PLAYER_WEAPON].reload[0] -= 2;
-								strcpy(temp, "Firing rate increased");
+								strcpy(temp, _("Firing rate increased"));
 							}
 						}
 						else
 						{
-							strcpy(temp, "Upgrade failed (no plasma ammo)");
+							strcpy(temp, _("Upgrade failed (no plasma ammo)"));
 						}
 						break;
 
@@ -384,11 +391,11 @@ static void game_doCollectables()
 								game.maxPlasmaOutput, weapons[W_PLAYER_WEAPON].ammo[0] + 1);
 
 							if (weapons[W_PLAYER_WEAPON].ammo[0] >= game.maxPlasmaOutput)
-								strcpy(temp, "Plasma output already at maximum");
+								strcpy(temp, _("Plasma output already at maximum"));
 							else
 							{
 								weapons[W_PLAYER_WEAPON].ammo[0]++;
-								strcpy(temp, "Plasma output increased");
+								strcpy(temp, _("Plasma output increased"));
 							}
 						}
 						else if ((game.area != MISN_INTERCEPTION) ||
@@ -399,16 +406,16 @@ static void game_doCollectables()
 									0, game.maxPlasmaAmmo);
 
 							if (weapons[W_PLAYER_WEAPON].ammo[0] >= game.maxPlasmaOutput)
-								strcpy(temp, "Plasma output already at maximum");
+								strcpy(temp, _("Plasma output already at maximum"));
 							else
 							{
 								weapons[W_PLAYER_WEAPON].ammo[0]++;
-								strcpy(temp, "Plasma output increased");
+								strcpy(temp, _("Plasma output increased"));
 							}
 						}
 						else
 						{
-							strcpy(temp, "Upgrade failed (no plasma ammo)");
+							strcpy(temp, _("Upgrade failed (no plasma ammo)"));
 						}
 						break;
 
@@ -421,11 +428,11 @@ static void game_doCollectables()
 								game.maxPlasmaDamage, weapons[W_PLAYER_WEAPON].damage + 1);
 
 							if (weapons[W_PLAYER_WEAPON].damage >= game.maxPlasmaDamage)
-								strcpy(temp, "Plasma damage already at maximum");
+								strcpy(temp, _("Plasma damage already at maximum"));
 							else
 							{
 								weapons[W_PLAYER_WEAPON].damage++;
-								strcpy(temp, "Plasma damage increased");
+								strcpy(temp, _("Plasma damage increased"));
 							}
 						}
 						else if ((game.area != MISN_INTERCEPTION) ||
@@ -436,16 +443,16 @@ static void game_doCollectables()
 									0, game.maxPlasmaAmmo);
 
 							if (weapons[W_PLAYER_WEAPON].damage >= game.maxPlasmaDamage)
-								strcpy(temp, "Plasma damage already at maximum");
+								strcpy(temp, _("Plasma damage already at maximum"));
 							else
 							{
 								weapons[W_PLAYER_WEAPON].damage++;
-								strcpy(temp, "Plasma damage increased");
+								strcpy(temp, _("Plasma damage increased"));
 							}
 						}
 						else
 						{
-							strcpy(temp, "Upgrade failed (no plasma ammo)");
+							strcpy(temp, _("Upgrade failed (no plasma ammo)"));
 						}
 						break;
 
@@ -466,51 +473,54 @@ static void game_doCollectables()
 							weapons[W_PLAYER_WEAPON].reload[0] = rate2reload[5];
 							weapons[W_PLAYER_WEAPON].flags |= WF_SPREAD;
 
-							strcpy(temp, "Picked up a Super Charge!");
+							strcpy(temp, _("Picked up a Super Charge!"));
 						}
 						else
 						{
-							strcpy(temp, "Damn! Upgrade failed (no plasma ammo)");
+							/// Rare case of grabbing the super charge when you have no ammo at an
+							/// interception (which means it won't take effect). The "Damn!" serves
+							/// as a little sympathetic easter egg for players unfortunate enough to
+							/// have this happen to them.
+							strcpy(temp, _("Damn! Upgrade failed (no plasma ammo)"));
 						}
 						break;
 
 					case P_PLASMA_AMMO:
 						if (player.ammo[0] >= game.maxPlasmaAmmo)
-							strcpy(temp, "Plasma cells already at Maximum");
+							strcpy(temp, _("Plasma cells already at Maximum"));
 						else
 						{
 							LIMIT_ADD(player.ammo[0], collectable->value,
 								0, game.maxPlasmaAmmo);
-							if (collectable->value > 1)
-							{
-								snprintf(temp, STRMAX_SHORT, "Got %d plasma cells", collectable->value);
-							}
-							else
-							{
-								strcpy(temp, "Got a plasma cell");
-								if ((rand() % 25) == 0)
-									strcpy(temp, "Got one whole plasma cell (wahoo!)");
-							}
+							snprintf(temp, STRMAX_SHORT, ngettext(
+								/// "%d" must be retained. It is replaced with the number of plasma
+								/// cells picked up.
+								"Got %d plasma cell",
+								"Got %d plasma cells",
+								collectable->value), collectable->value);
 						}
 						game.cellPickups += collectable->value;
 						break;
 
 					case P_CARGO:
-						strcpy(temp, "Picked up some Cargo");
+						strcpy(temp, _("Picked up some Cargo"));
 						game.cargoPickups++;
 						break;
 
 					case P_SLAVES:
-						snprintf(temp, STRMAX_SHORT, "Rescued %d slaves", collectable->value);
+						snprintf(temp, STRMAX_SHORT, ngettext(
+							"Rescued %d slave",
+							"Rescued %d slaves",
+							collectable->value), collectable->value);
 						game.slavesRescued += collectable->value;
 						break;
 
 					case P_ESCAPEPOD:
-						strcpy(temp, "Picked up an Escape Pod");
+						strcpy(temp, _("Picked up an Escape Pod"));
 						break;
 
 					case P_ORE:
-						strcpy(temp, "Picked up some Ore");
+						strcpy(temp, _("Picked up some Ore"));
 						break;
 				}
 

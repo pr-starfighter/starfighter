@@ -2113,7 +2113,7 @@ void alien_destroy(Object *alien, Object *attacker)
 	{
 		/// Dialog (Kline Kethlan)
 		/// Used when Kline is killed in the Venus mission.
-		radio_setMessage(FS_KLINE, "It was an honor... to have fought you...", 1);
+		radio_setMessage(FS_KLINE, _("It was an honor... to have fought you..."), 1);
 		alien->dx = alien->dy = 0;
 		alien->shield = -150;
 	}

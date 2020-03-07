@@ -673,7 +673,7 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 						snprintf(message, STRMAX_SHORT, fmt, *targetValue);
 						break;
 					case P_ORE:
-						radio_getRandomMessage(fmt,ngettext(
+						radio_getRandomMessage(fmt, ngettext(
 							/// Info line messages for remaining ore to collect
 							/// This is a "\n"-separated list of possible choices to make.  Please feel free
 							/// to add as many as you like. Each entry must have one instance of "%d", which

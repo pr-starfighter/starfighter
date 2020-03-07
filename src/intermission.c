@@ -1639,7 +1639,7 @@ int intermission()
 				{
 					/// Retain "%s" as-is.  It is replaced with the name of the planet
 					/// the player's destination is currently set to.
-					snprintf(string, STRMAX_SHORT, "Destination: %s", intermission_planets[game.destinationPlanet].name);
+					snprintf(string, STRMAX_SHORT, _("Destination: %s"), intermission_planets[game.destinationPlanet].name);
 					gfx_createTextObject(TS_DEST_PLANET, string, 0, 0, FONT_WHITE);
 				}
 
