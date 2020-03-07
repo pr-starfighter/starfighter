@@ -1874,6 +1874,8 @@ static void game_doHud()
 	static int last_arrow = -1;
 	int shieldColor = 0;
 	SDL_Rect bar;
+	SDL_Rect bar_foutline;
+	SDL_Rect bar_fcolor;
 	int fontColor;
 	int tTextIndex;
 	char text[STRMAX_SHORT];
@@ -2128,16 +2130,31 @@ static void game_doHud()
 	bar.x = screen->w / 32 + gfx_textSprites[TS_POWER].image->w + 10;
 	bar.y = screen->h - 29;
 
+	bar_foutline.x = bar.x + 2;
+	bar_foutline.y = bar.y + 2;
+	bar_foutline.w = bar.w - 4;
+	bar_foutline.h = bar.h - 4;
+
+	bar_fcolor.x = bar_foutline.x + 2;
+	bar_fcolor.y = bar_foutline.y + 2;
+	bar_fcolor.w = bar_foutline.w - 4;
+	bar_fcolor.h = bar_foutline.h - 4;
+
 	for (int i = 1 ; i <= 5 ; i++)
 	{
 		if (weapons[W_PLAYER_WEAPON].damage >= i) {
 			if(i <= game.maxPlasmaDamage || (SDL_GetTicks() % 1000 > (unsigned)i * 100))
 			{
-				SDL_FillRect(screen, &bar, green);
+				SDL_FillRect(screen, &bar, darkGreen);
+				SDL_FillRect(screen, &bar_foutline, green);
+				SDL_FillRect(screen, &bar_fcolor, lightGreen);
 			}
 		} else if (i <= game.maxPlasmaDamage)
 			SDL_FillRect(screen, &bar, darkGreen);
+
 		bar.x += screen->w * 3 / 80;
+		bar_foutline.x = bar.x + 2;
+		bar_fcolor.x = bar_foutline.x + 2;
 	}
 
 	screen_blitText(TS_OUTPUT, screen->w * 5 / 16, screen->h - 30);
@@ -2146,19 +2163,34 @@ static void game_doHud()
 	bar.h = 12;
 	bar.x = screen->w * 5 / 16 + gfx_textSprites[TS_OUTPUT].image->w + 10;
 	bar.y = screen->h - 29;
-	SDL_FillRect(screen, &bar, yellow);
+
+	bar_foutline.x = bar.x + 2;
+	bar_foutline.y = bar.y + 2;
+	bar_foutline.w = bar.w - 4;
+	bar_foutline.h = bar.h - 4;
+
+	bar_fcolor.x = bar_foutline.x + 2;
+	bar_fcolor.y = bar_foutline.y + 2;
+	bar_fcolor.w = bar_foutline.w - 4;
+	bar_fcolor.h = bar_foutline.h - 4;
 
 	for (int i = 1 ; i <= 5 ; i++)
 	{
-		if (weapons[W_PLAYER_WEAPON].ammo[0] >= i) {
-			if(i <= game.maxPlasmaOutput || (SDL_GetTicks() % 1000 > (unsigned)i * 100))
+		if (weapons[W_PLAYER_WEAPON].ammo[0] >= i)
+		{
+			if (i <= game.maxPlasmaOutput || (SDL_GetTicks() % 1000 > (unsigned)i * 100))
 			{
-				SDL_FillRect(screen, &bar, yellow);
+				SDL_FillRect(screen, &bar, darkYellow);
+				SDL_FillRect(screen, &bar_foutline, yellow);
+				SDL_FillRect(screen, &bar_fcolor, lightYellow);
 			}
 		}
 		else if (i <= game.maxPlasmaOutput)
 			SDL_FillRect(screen, &bar, darkYellow);
+
 		bar.x += screen->w * 3 / 80;
+		bar_foutline.x = bar.x + 2;
+		bar_fcolor.x = bar_foutline.x + 2;
 	}
 
 	screen_blitText(TS_COOLER, screen->w * 97 / 160, screen->h - 30);
@@ -2168,17 +2200,33 @@ static void game_doHud()
 	bar.x = screen->w * 97 / 160 + gfx_textSprites[TS_COOLER].image->w + 10;
 	bar.y = screen->h - 29;
 
+	bar_foutline.x = bar.x + 2;
+	bar_foutline.y = bar.y + 2;
+	bar_foutline.w = bar.w - 4;
+	bar_foutline.h = bar.h - 4;
+
+	bar_fcolor.x = bar_foutline.x + 2;
+	bar_fcolor.y = bar_foutline.y + 2;
+	bar_fcolor.w = bar_foutline.w - 4;
+	bar_fcolor.h = bar_foutline.h - 4;
+
 	for (int i = 1 ; i <= 5 ; i++)
 	{
-		if (weapons[W_PLAYER_WEAPON].reload[0] <= rate2reload[i]) {
-			if(i <= game.maxPlasmaRate || (SDL_GetTicks() % 1000 > (unsigned)i * 100))
+		if (weapons[W_PLAYER_WEAPON].reload[0] <= rate2reload[i])
+		{
+			if (i <= game.maxPlasmaRate || (SDL_GetTicks() % 1000 > (unsigned)i * 100))
 			{
-				SDL_FillRect(screen, &bar, blue);
+				SDL_FillRect(screen, &bar, darkBlue);
+				SDL_FillRect(screen, &bar_foutline, lightBlue);
+				SDL_FillRect(screen, &bar_fcolor, lighterBlue);
 			}
 		}
 		else if (i <= game.maxPlasmaRate)
-			SDL_FillRect(screen, &bar, darkerBlue);
+			SDL_FillRect(screen, &bar, darkBlue);
+
 		bar.x += screen->w * 3 / 80;
+		bar_foutline.x = bar.x + 2;
+		bar_fcolor.x = bar_foutline.x + 2;
 	}
 
 	screen_blitText(TS_SHIELD, screen->w / 32, screen->h - 50);

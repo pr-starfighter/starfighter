@@ -28,10 +28,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 extern Uint32 red;
 extern Uint32 darkRed;
 extern Uint32 yellow;
+extern Uint32 lightYellow;
 extern Uint32 darkYellow;
 extern Uint32 green;
+extern Uint32 lightGreen;
 extern Uint32 darkGreen;
 extern Uint32 blue;
+extern Uint32 lightBlue;
+extern Uint32 lighterBlue;
 extern Uint32 darkBlue;
 extern Uint32 darkerBlue;
 extern Uint32 black;
