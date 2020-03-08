@@ -329,7 +329,7 @@ int collectable_numGood()
 
 	while (col != NULL)
 	{
-		if ((col->type != P_MINE) &&
+		if ((col->type != P_MINE) && (col->type != P_ORE) &&
 				((col->type != P_SHIELD) || (player.shield < player.maxShield)) &&
 				((col->type != P_ROCKET) || (player.ammo[1] < game.maxRocketAmmo)) &&
 				((col->type != P_PLASMA_AMMO) || (player.ammo[0] < game.maxPlasmaAmmo)) &&
