@@ -219,12 +219,10 @@ void collectable_add(float x, float y, int type, int value, int life)
 	collectable->y = y;
 
 	collectable->dx = RANDRANGE(-100, 100);
-	if (collectable->dx != 0)
-		collectable->dx /= 100;
+	collectable->dx /= (game.difficulty == DIFFICULTY_ORIGINAL ? 100. : 200.);
 
 	collectable->dy = RANDRANGE(-100, 100);
-	if (collectable->dy != 0)
-		collectable->dy /= 100;
+	collectable->dy /= (game.difficulty == DIFFICULTY_ORIGINAL ? 100. : 200.);
 
 	collectable->type = type;
 	collectable->value = value;
