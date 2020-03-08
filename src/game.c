@@ -2604,6 +2604,7 @@ int game_mainLoop()
 				if ((SDL_GetTicks() >= engine.missionCompleteTimer) &&
 					((game.difficulty == DIFFICULTY_ORIGINAL) ||
 						(game.difficulty == DIFFICULTY_NIGHTMARE) ||
+						(game.area == MISN_INTERCEPTION) ||
 						(game.area == MISN_ELLESH) || (game.area == MISN_MARS) ||
 						(mission_checkFailed()) || (collectable_numGood() <= 0)))
 				{
