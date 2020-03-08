@@ -164,7 +164,9 @@ void collectable_add(float x, float y, int type, int value, int life)
 	// rockets. Causes problems otherwise :)
 	if (type == P_ROCKET)
 	{
-		if ((player.weaponType[1] == W_CHARGER) || (player.weaponType[1] == W_LASER))
+		if ((player.weaponType[1] == W_CHARGER) ||
+				(player.weaponType[1] == W_LASER) ||
+				(value < 10))
 		{
 			type = P_CASH;
 		}
