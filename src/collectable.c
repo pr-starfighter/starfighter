@@ -217,12 +217,14 @@ void collectable_add(float x, float y, int type, int value, int life)
 	collectable->active = 1;
 	collectable->x = x;
 	collectable->y = y;
+	collectable->dx = RANDRANGE(-100, 100) / 100.;
+	collectable->dy = RANDRANGE(-100, 100) / 100.;
 
-	collectable->dx = RANDRANGE(-100, 100);
-	collectable->dx /= (game.difficulty == DIFFICULTY_ORIGINAL ? 100. : 200.);
-
-	collectable->dy = RANDRANGE(-100, 100);
-	collectable->dy /= (game.difficulty == DIFFICULTY_ORIGINAL ? 100. : 200.);
+	if (game.difficulty != DIFFICULTY_ORIGINAL && type != P_MINE)
+	{
+		collectable->dx /= 2;
+		collectable->dy /= 2;
+	}
 
 	collectable->type = type;
 	collectable->value = value;
