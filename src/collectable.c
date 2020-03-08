@@ -220,7 +220,7 @@ void collectable_add(float x, float y, int type, int value, int life)
 	collectable->dx = RANDRANGE(-100, 100) / 100.;
 	collectable->dy = RANDRANGE(-100, 100) / 100.;
 
-	if (game.difficulty != DIFFICULTY_ORIGINAL && type != P_MINE)
+	if ((game.difficulty != DIFFICULTY_ORIGINAL) && (type != P_MINE))
 	{
 		collectable->dx /= 2;
 		collectable->dy /= 2;
