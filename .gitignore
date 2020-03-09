@@ -13,10 +13,12 @@ src/starfighter
 aclocal.m4
 autom4te.cache
 compile
+config.guess
 config.h
 config.h.in
 config.log
 config.status
+config.sub
 configure
 depcomp
 install-sh
@@ -28,6 +30,7 @@ config.h.in~
 src/Makefile
 src/Makefile.in
 src/.deps
+src/conf
 misc/Makefile
 misc/Makefile.in
 misc/.deps

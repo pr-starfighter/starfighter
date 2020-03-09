@@ -136,6 +136,14 @@ terminal window:
 
 The arguments to autoreconf are technically optional, but recommended.
 
+The Python script build.py may fail on MacOS due to a missing msgfmt
+program. msgfmt is part of gettext and the version that ships on a Mac
+does not include the msgfmt utility. This can be solved by using gettext
+from Homebrew:
+
+    brew install gettext
+    export PATH="$(brew --prefix gettext)/bin:$PATH"
+
 If for some reason you need to remove all of these files from your
 directory, you can do so via the following command (requires Git):
 
@@ -143,4 +151,3 @@ directory, you can do so via the following command (requires Git):
 
 Note: automatically generated files are listed in .gitignore, so you
 generally don't actually have to do this.
-
