@@ -65,7 +65,7 @@ int main(int argc, char **argv)
 	char path[PATH_MAX];
 	if (CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (UInt8 *)path, PATH_MAX))
 	{
-		// chdir(path);
+		chdir(path);
 		printf("Current directory \"%s\"\n", path);
 	}
 	else
