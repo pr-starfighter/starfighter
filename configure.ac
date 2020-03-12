@@ -20,8 +20,6 @@ AC_PROG_INSTALL
 STARFIGHTER_CPPFLAGS="-DVERSION=\\\"$PACKAGE_VERSION\\\" -Wall -Wformat-truncation=0"
 STARFIGHTER_LDADD=""
 
-# Checks for libraries.
-
 # Detect MacOS
 AC_CANONICAL_HOST
 
@@ -30,6 +28,8 @@ case $host_os in
 		build_mac=1
 		;;
 esac
+
+# Checks for libraries.
 
 AC_SEARCH_LIBS([atanf], [m])
 
