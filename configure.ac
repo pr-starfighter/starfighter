@@ -18,19 +18,18 @@ AC_PROG_CC
 AC_PROG_INSTALL
 
 STARFIGHTER_CPPFLAGS="-DVERSION=\\\"$PACKAGE_VERSION\\\" -Wall -Wformat-truncation=0"
+STARFIGHTER_LDADD=""
 
 # Checks for libraries.
 
 # Detect MacOS
 AC_CANONICAL_HOST
-build_mac=no
 
 case $host_os in
-  darwin*) build_mac=yes
-  	;;
+	darwin*)
+		build_mac=1
+		;;
 esac
-
-AM_CONDITIONAL([BUILD_MACOS], [test "$build_mac" = "yes"])
 
 AC_SEARCH_LIBS([atanf], [m])
 
@@ -85,9 +84,15 @@ AS_IF([test -n "$SF_RUN_IN_PLACE"], [
 	echo "Preparing a run-in-place build"
 ])
 
+AS_IF([test -n "$build_mac"], [
+	STARFIGHTER_LDADD="$STARFIGHTER_LDADD -framework CoreFoundation"
+	echo "Building for MacOS"
+])
+
 AM_CONDITIONAL([RUN_IN_PLACE], [test -n "$SF_RUN_IN_PLACE"])
 
 AC_SUBST([STARFIGHTER_CPPFLAGS])
+AC_SUBST([STARFIGHTER_LDADD])
 
 # Checks for header files.
 AC_CHECK_HEADERS([ctype.h errno.h libintl.h locale.h stdio.h stdlib.h string.h time.h math.h pwd.h sys/stat.h unistd.h])

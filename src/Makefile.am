@@ -11,12 +11,8 @@ else
 starfighter_CPPFLAGS = $(STARFIGHTER_CPPFLAGS) -DDATADIR=\"$(pkgdatadir)\"
 endif
 
-if BUILD_MACOS
-starfighter_LDFLAGS = -framework CoreFoundation
-endif
-
 starfighter_CFLAGS = $(SDL_CFLAGS) $(PANGO_CFLAGS)
-starfighter_LDADD = $(SDL_LIBS) $(PANGO_LIBS)
+starfighter_LDADD = $(STARFIGHTER_LDADD) $(SDL_LIBS) $(PANGO_LIBS)
 
 starfighter_SOURCES = \
 	Starfighter.c \
