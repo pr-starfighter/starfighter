@@ -17,7 +17,7 @@ PKG_PROG_PKG_CONFIG
 AC_PROG_CC
 AC_PROG_INSTALL
 
-STARFIGHTER_CPPFLAGS="-DVERSION=\\\"$PACKAGE_VERSION\\\" -Wall -Wformat-truncation=0"
+STARFIGHTER_CPPFLAGS="-DVERSION=\\\"$PACKAGE_VERSION\\\""
 STARFIGHTER_LDADD=""
 
 # Detect MacOS
@@ -58,10 +58,16 @@ PKG_CHECK_MODULES([PANGO], [pango], [
 	echo "Note: Pango not found; Unicode will not be supported."
 ])
 
+AC_ARG_VAR([SF_NOWARN], [Set to 1 to disable compiler warnings (useful for older GCC versions)])
 AC_ARG_VAR([SF_SCREEN_WIDTH], [The width of the game window in pixels])
 AC_ARG_VAR([SF_SCREEN_HEIGHT], [The height of the game window in pixels])
 AC_ARG_VAR([SF_NOFONT], [Set to 1 to manually force the compiler not to include font/Unicode support])
 AC_ARG_VAR([SF_RUN_IN_PLACE], [Set to 1 to compile Starfighter to run in-place (instead of installing)])
+AS_IF([test -n "$SF_NOWARN"], [
+	echo "Disabling compiler warnings"
+], [
+	STARFIGHTER_CPPFLAGS="$STARFIGHTER_CPPFLAGS -Wall -Wformat-truncation=0"
+])
 AS_IF([test -n "$SF_SCREEN_WIDTH"], [
 	STARFIGHTER_CPPFLAGS="$STARFIGHTER_CPPFLAGS -DSCREEN_WIDTH=$SF_SCREEN_WIDTH"
 	echo "Using default screen width of $SF_SCREEN_WIDTH"
