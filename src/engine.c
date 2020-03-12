@@ -24,10 +24,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef __HAIKU__
 #include <FindDirectory.h>
-#else
-#ifndef _WIN32
+#elif !defined(_WIN32)
 #include <pwd.h>
-#endif
 #endif
 
 #include "SDL.h"
@@ -216,7 +214,7 @@ void engine_setupConfigDirectory()
 		engine_showError(2, dir);
 
 	snprintf(engine.configDirectory, PATH_MAX, "%s/", dir);
-#elif __HAIKU__
+#elif defined(__HAIKU__)
 	subdir = "starfighter";
 
 	char path[PATH_MAX];
