@@ -20,6 +20,18 @@ AC_PROG_INSTALL
 STARFIGHTER_CPPFLAGS="-DVERSION=\\\"$PACKAGE_VERSION\\\" -Wall -Wformat-truncation=0"
 
 # Checks for libraries.
+
+# Detect MacOS
+AC_CANONICAL_HOST
+build_mac=no
+
+case $host_os in
+  darwin*) build_mac=yes
+  	;;
+esac
+
+AM_CONDITIONAL([BUILD_MACOS], [test "$build_mac" = "yes"])
+
 AC_SEARCH_LIBS([atanf], [m])
 
 PKG_CHECK_EXISTS([SDL2_mixer], [
