@@ -104,10 +104,10 @@ following from the Project: Starfighter base directory:
     make
     mv src/starfighter .
 
-Note that you may see errors relating to 'TTF_OpenFont' failures if you did not move the binary out of the src directory. E.g:
-
-    Current directory "/Users/yourname/code/starfighter/src"
-    ERROR: TTF_OpenFont: Couldn't open data/TakaoPGothic.ttf
+For Windows and MacOS, a run in place build is preferred. Note that the
+final step (moving the Starfighter binary out from the src directory) is
+required; in particular, failure to do so under MacOS leads to a failure
+to load data (images, sounds, fonts) needed by Starfighter.
 
 Run "./configure --help" to see all options for compiling.
 
