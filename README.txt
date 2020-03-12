@@ -134,12 +134,7 @@ And the following is required to build locales:
 Once these dependencies are installed, simply do the following from a
 terminal window:
 
-    autoreconf -vif
-    cd locale
-    ./build.py
-    cd ..
-
-The arguments to autoreconf are technically optional, but recommended.
+    ./autogen.sh
 
 The Python script build.py may fail on MacOS due to a missing msgfmt
 program. msgfmt is part of gettext and the version that ships on a Mac
