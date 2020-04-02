@@ -6,6 +6,9 @@ dist
 starfighter
 src/starfighter
 
+# Dolphin .directory
+.directory
+
 # Backups
 *~
 

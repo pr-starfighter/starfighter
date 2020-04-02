@@ -15,10 +15,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: install
       run: sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libpango1.0-dev
-    - name: autoconf
-      run: autoreconf -vif
-    - name: build locale
-      run: cd locale && ./build.py && cd ..
+    - name: autoconf and locale
+      run: ./autogen.sh
     - name: configure
       run: ./configure
     - name: build
