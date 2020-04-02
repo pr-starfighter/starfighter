@@ -144,10 +144,11 @@ from Homebrew:
     brew install gettext
     export PATH="$(brew --prefix gettext)/bin:$PATH"
 
-If for some reason you need to remove all of these files from your
+If for some reason you need to remove all generated files from your
 directory, you can do so via the following command (requires Git):
 
     git clean -fdx
 
 Note: automatically generated files are listed in .gitignore, so you
-generally don't actually have to do this.
+generally don't actually have to do this. This is mainly useful for
+build tests.
