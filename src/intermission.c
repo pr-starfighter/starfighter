@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012, 2013 Guus Sliepen
-Copyright (C) 2012, 2015-2019 Layla Marchant <diligentcircle@riseup.net>
+Copyright (C) 2012, 2015-2020 Layla Marchant <diligentcircle@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -1442,7 +1442,7 @@ int intermission()
 	gfx_faceSprites[FS_KLINE] = gfx_loadImage("gfx/face_kline.png");
 	gfx_faceSprites[FS_CREW] = gfx_loadImage("gfx/face_crew.png");
 
-	engine.done = 0;
+	engine.done = ENGINE_RUNNING;
 	engine.keyState[KEY_FIRE] = 0;
 	engine.ssx = 0;
 	engine.ssy = 0;
@@ -1539,9 +1539,9 @@ int intermission()
 
 	player_flushInput();
 	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
-	engine.done = 0;
+	engine.done = ENGINE_RUNNING;
 
-	while (!engine.done)
+	while (engine.done == ENGINE_RUNNING)
 	{
 		renderer_update();
 
@@ -1595,7 +1595,7 @@ int intermission()
 				{
 					game.area = intermission_planets[game.stationedPlanet].missionNumber;
 					rtn = 2;
-					engine.done = 1;
+					engine.done = ENGINE_CLOSING;
 				}
 				else
 				{
@@ -1679,7 +1679,7 @@ int intermission()
 
 			case 7:
 				rtn = 0;
-				engine.done = 1;
+				engine.done = ENGINE_CLOSING;
 				break;
 
 			case 8:
@@ -1714,7 +1714,7 @@ int intermission()
 					{
 						game.area = MISN_INTERCEPTION;
 						rtn = 2;
-						engine.done = 1;
+						engine.done = ENGINE_CLOSING;
 					}
 				}
 

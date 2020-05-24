@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2015-2019 Layla Marchant <diligentcircle@riseup.net>
+Copyright (C) 2015-2020 Layla Marchant <diligentcircle@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License

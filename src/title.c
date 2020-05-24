@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012, 2013 Guus Sliepen
-Copyright (C) 2012, 2015-2019 Layla Marchant <diligentcircle@riseup.net>
+Copyright (C) 2012, 2015-2020 Layla Marchant <diligentcircle@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -252,7 +252,7 @@ int title_show()
 		5, 0, FONT_WHITE, 0, copyrightText);
 	gfx_renderString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012",
 		5, MENU_SPACING, FONT_WHITE, 0, copyrightText);
-	gfx_renderString("Copyright 2015-2019 Layla Marchant",
+	gfx_renderString("Copyright 2015-2020 Layla Marchant",
 		5, 2 * MENU_SPACING, FONT_WHITE, 0, copyrightText);
 
 	snprintf(buildVersion, STRMAX_SHORT, "Version %s", VERSION );
@@ -295,7 +295,7 @@ int title_show()
 
 	screen_drawBackground();
 
-	engine.done = 0;
+	engine.done = ENGINE_RUNNING;
 	player_flushInput();
 	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 
@@ -431,7 +431,7 @@ int title_show()
 							selectedOption = 1;
 						}
 						else if (selectedOption == 3)
-							engine.done = 1;
+							engine.done = ENGINE_CLOSING;
 						else if (selectedOption == 4)
 						{
 							menuType = MENU_OPTIONS;
@@ -439,7 +439,7 @@ int title_show()
 						}
 						else if (selectedOption == 5)
 						{
-							engine.done = 1;
+							engine.done = ENGINE_CLOSING;
 						}
 						else if (selectedOption == 6)
 						{
@@ -449,15 +449,15 @@ int title_show()
 								selectedOption = 1;
 							}
 							else
-								engine.done = 1;
+								engine.done = ENGINE_CLOSING;
 						}
 						else if (selectedOption == 7)
-							engine.done = 1;
+							engine.done = ENGINE_CLOSING;
 						break;
 
 					case MENU_DIFFICULTY:
 						if (selectedOption == 1)
-							engine.done = 1;
+							engine.done = ENGINE_CLOSING;
 						else if (selectedOption == 2)
 						{
 							game.difficulty++;
@@ -474,7 +474,7 @@ int title_show()
 					case MENU_LOAD:
 						if (selectedOption != listLength)
 						{
-							engine.done = 1;
+							engine.done = ENGINE_CLOSING;
 							continueSaveSlot = selectedOption - 1;
 							selectedOption = 3;
 						}
@@ -653,7 +653,7 @@ void title_showCredits()
 
 	fclose(fp);
 
-	engine.done = 0;
+	engine.done = ENGINE_RUNNING;
 
 	engine.keyState[KEY_ESCAPE] = 0;
 	engine.keyState[KEY_FIRE] = 0;

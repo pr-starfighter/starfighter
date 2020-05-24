@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012, 2013 Guus Sliepen
-Copyright (C) 2012, 2014-2019 Layla Marchant <diligentcircle@riseup.net>
+Copyright (C) 2012, 2014-2020 Layla Marchant <diligentcircle@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -1444,11 +1444,12 @@ static void game_doPlayer()
 
 			if (engine.keyState[KEY_ESCAPE])
 			{
-				if ((engine.done == 0) && (engine.gameSection == SECTION_GAME) &&
+				if ((engine.done == ENGINE_RUNNING) &&
+					(engine.gameSection == SECTION_GAME) &&
 					(mission.remainingObjectives1 == 0))
 				{
 					audio_playSound(SFX_FLY, screen->w / 2, screen->h / 2);
-					engine.done = 2;
+					engine.done = ENGINE_SYSEXIT;
 					engine.missionCompleteTimer = (SDL_GetTicks() - 1);
 				}
 			}
@@ -1467,7 +1468,7 @@ static void game_doPlayer()
 				ymoved = 1;
 			}
 
-			if (engine.done == 0)
+			if (engine.done == ENGINE_RUNNING)
 			{
 				if (game.difficulty == DIFFICULTY_ORIGINAL)
 				{
@@ -2541,7 +2542,7 @@ int game_mainLoop()
 	engine.smx = 0;
 	engine.smy = 0;
 
-	engine.done = 0;
+	engine.done = ENGINE_RUNNING;
 
 	engine.counter = (SDL_GetTicks() + 1000);
 	engine.counter2 = (SDL_GetTicks() + 1000);
@@ -2581,7 +2582,7 @@ int game_mainLoop()
 	engine.keyState[KEY_ALTFIRE] = 0;
 	player_flushInput();
 
-	while (engine.done != 1)
+	while (engine.done != ENGINE_CLOSING)
 	{
 		renderer_update();
 
@@ -2605,13 +2606,16 @@ int game_mainLoop()
 					((game.difficulty == DIFFICULTY_ORIGINAL) ||
 						(game.difficulty == DIFFICULTY_NIGHTMARE) ||
 						(game.area == MISN_INTERCEPTION) ||
-						(game.area == MISN_ELLESH) || (game.area == MISN_MARS) ||
-						(mission_checkFailed()) || (collectable_numGood() <= 0)))
+						(game.area == MISN_ELLESH) ||
+						(game.area == MISN_MARS) ||
+						(mission_checkFailed()) ||
+						(collectable_numGood() <= 0) ||
+						(engine.done == ENGINE_SYSEXIT)))
 				{
 					if ((!mission_checkFailed()) && (game.area != MISN_VENUS))
 					{
 						player_leaveSector();
-						if ((engine.done == 2) &&
+						if ((engine.done == ENGINE_SYSEXIT) &&
 							(game.area != MISN_DORIM) &&
 							(game.area != MISN_SIVEDI))
 						{
@@ -2654,7 +2658,7 @@ int game_mainLoop()
 					}
 					else
 					{
-						engine.done = 1;
+						engine.done = ENGINE_CLOSING;
 					}
 				}
 				else
@@ -2668,7 +2672,7 @@ int game_mainLoop()
 				audio_setMusicVolume(engine.musicVolume);
 				if (SDL_GetTicks() >= engine.missionCompleteTimer)
 				{
-					engine.done = 1;
+					engine.done = ENGINE_CLOSING;
 				}
 			}
 		}
@@ -2716,7 +2720,7 @@ int game_mainLoop()
 				game_delayFrame();
 			}
 
-			if (!engine.done)
+			if (engine.done == ENGINE_RUNNING)
 				audio_resumeMusic();
 		}
 

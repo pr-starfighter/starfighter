@@ -1,7 +1,7 @@
 # Project: Starfighter Translatable Text
 # Copyright (C) 2003 Parallel Relaities
 # Copyright (C) 2011, 2012, 2013 Guus Sliepen
-# Copyright (C) 2012, 2015-2019 Layla Marchant
+# Copyright (C) 2012, 2015-2020 Layla Marchant
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.0.1\n"
+"Project-Id-Version: 2.1.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-06 19:09-0500\n"
 "PO-Revision-Date: 2020-03-06 19:22-0500\n"

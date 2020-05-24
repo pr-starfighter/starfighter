@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012, 2013 Guus Sliepen
-Copyright (C) 2012, 2015-2019 Layla Marchant <diligentcircle@riseup.net>
+Copyright (C) 2012, 2015-2020 Layla Marchant <diligentcircle@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -1174,7 +1174,7 @@ void mission_showStartScreen()
 		renderer_update();
 
 		player_flushInput();
-		engine.done = 0;
+		engine.done = ENGINE_RUNNING;
 		engine.keyState[KEY_FIRE] = 0;
 		engine.keyState[KEY_ALTFIRE] = 0;
 		engine.keyState[KEY_ESCAPE] = 0;
@@ -1293,7 +1293,7 @@ void mission_showFinishedScreen()
 		renderer_update();
 
 		player_flushInput();
-		engine.done = 0;
+		engine.done = ENGINE_RUNNING;
 		engine.keyState[KEY_FIRE] = 0;
 
 		while (1)

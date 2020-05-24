@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012, 2013 Guus Sliepen
-Copyright (C) 2012, 2015-2019 Layla Marchant <diligentcircle@riseup.net>
+Copyright (C) 2012, 2015-2020 Layla Marchant <diligentcircle@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -392,10 +392,10 @@ void player_leaveSector()
 	engine.keyState[KEY_FIRE] = 0;
 	engine.keyState[KEY_ALTFIRE] = 0;
 
-	if (engine.done == 0)
-		engine.done = 3;
+	if (engine.done == ENGINE_RUNNING)
+		engine.done = ENGINE_FORMATION;
 
-	if (engine.done == 3)
+	if (engine.done == ENGINE_FORMATION)
 	{
 		player.face = 0;
 		if (player.x > -100)
@@ -410,18 +410,18 @@ void player_leaveSector()
 
 		if (player.x <= -100)
 		{
-			engine.done = 2;
+			engine.done = ENGINE_SYSEXIT;
 			audio_playSound(SFX_FLY, screen->w / 2, screen->h / 2);
 		}
 	}
 
-	if (engine.done == 2)
+	if (engine.done == ENGINE_SYSEXIT)
 	{
 		player.face = 0;
 		player.x += WARP_SPEED;
 		engine.ssx -= 0.2;
 		if (player.x > (2 * screen->w))
-			engine.done = 1;
+			engine.done = ENGINE_CLOSING;
 	}
 }
 
