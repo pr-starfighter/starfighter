@@ -1286,9 +1286,9 @@ int alien_add()
 
 	int randEnemy = alienArray[rand() % numberOfAliens];
 
-	if ((game.area != MISN_DORIM) &&
-		(game.area != MISN_SIVEDI) &&
-		(game.area != MISN_MARS))
+	if ((game.area != MISN_DORIM)
+		&& (game.area != MISN_SIVEDI)
+		&& (game.area != MISN_MARS))
 	{
 		if ((game.system == SYSTEM_EYANANTH) && (game.area == MISN_INTERCEPTION))
 		{
@@ -1312,15 +1312,33 @@ int alien_add()
 	aliens[index].deathCounter = 0 - (aliens[index].maxShield * 3);
 	aliens[index].hit = 0;
 
+	if (game.difficulty == DIFFICULTY_SUPEREASY)
+	{
+		if ((aliens[index].classDef == CD_SID)
+			|| (aliens[index].classDef == CD_PHOEBE)
+			|| (aliens[index].classDef == CD_URSULA)
+			|| (aliens[index].classDef == CD_GOODTRANSPORT)
+			|| (aliens[index].classDef == CD_REBELCARRIER)
+			|| ((game.area == MISN_URUSOR)
+				&& (aliens[index].classDef == CD_CARGOSHIP)))
+		{
+			aliens[index].shield *= 2;
+			aliens[index].maxShield *= 2;
+		}
+		else if ((aliens[index].classDef != CD_ASTEROID)
+			&& (aliens[index].classDef != CD_ASTEROID2))
+		{
+			aliens[index].shield /= 2;
+			aliens[index].maxShield /= 2;
+		}
+	}
+
 	LIMIT(aliens[index].deathCounter, -250, 0);
 
 	// Attempts to place an alien. If it fails, the alien is deactivated.
-	for (int i = 0 ; i < 100 ; i++)
+	if (!alien_place(&aliens[index]))
 	{
-		if (alien_place(&aliens[index]))
-			break;
 		aliens[index].active = 0;
-
 		return 0;
 	}
 
@@ -1590,16 +1608,25 @@ This AI is exclusively for Kline.
 */
 void alien_setKlineAI(Object *alien)
 {
+	int threshold;
+
 	// Weapon type change
 	if (CHANCE(1. / 3.))
 	{
-		if ((game.area != MISN_VENUS) || (game.difficulty != DIFFICULTY_ORIGINAL))
+		if ((game.area != MISN_VENUS)
+			|| (game.difficulty != DIFFICULTY_ORIGINAL))
 		{
 			alien->flags &= ~FL_AIMS;
 
 			if (CHANCE(0.5))
 			{
-				if ((game.area != MISN_VENUS) || (alien->shield > 1500))
+				if (game.difficulty == DIFFICULTY_SUPEREASY)
+					threshold = 750;
+				else
+					threshold = 1500;
+
+				if ((game.area != MISN_VENUS)
+						|| (alien->shield > threshold))
 					alien->weaponType[0] = W_TRIPLE_SHOT;
 				else
 					alien->weaponType[0] = W_SPREADSHOT;
@@ -2123,6 +2150,7 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 {
 	int ai_type;
 	double run_chance;
+	int stage1_shield, stage2_shield, stage3_shield;
 
 	ai_type = ((game.difficulty == DIFFICULTY_ORIGINAL) ?
 		alien->AITypeOriginal : alien->AIType);
@@ -2133,8 +2161,8 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 		alien->shield -= damage;
 
 	// Chain reaction damage if needed
-	if ((game.difficulty != DIFFICULTY_ORIGINAL) &&
-			(alien->owner != alien) && (alien->flags & FL_DAMAGEOWNER))
+	if ((game.difficulty != DIFFICULTY_ORIGINAL)
+		&& (alien->owner != alien) && (alien->flags & FL_DAMAGEOWNER))
 	{
 		alien_hurt(alien->owner, attacker, damage, ion);
 	}
@@ -2143,8 +2171,15 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 	{
 		if (game.area == MISN_ELAMALE)
 		{
-			if ((alien->shield <= alien->maxShield - ((game.difficulty != DIFFICULTY_ORIGINAL) ? 500 : 750)) &&
-				!(alien->flags & FL_LEAVESECTOR))
+			if (game.difficulty == DIFFICULTY_ORIGINAL)
+				stage1_shield = 750;
+			else if (game.difficulty == DIFFICULTY_SUPEREASY)
+				stage1_shield = 250;
+			else
+				stage1_shield = 500;
+
+			if ((alien->shield <= alien->maxShield - stage1_shield)
+				&& !(alien->flags & FL_LEAVESECTOR))
 			{
 				alien->flags |= FL_LEAVESECTOR;
 				alien->flags &= ~FL_CIRCLES;
@@ -2155,8 +2190,15 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 		}
 		else if (game.area == MISN_EARTH)
 		{
-			if ((alien->shield <= alien->maxShield - ((game.difficulty != DIFFICULTY_ORIGINAL) ? 750 : 500)) &&
-				!(alien->flags & FL_LEAVESECTOR))
+			if (game.difficulty == DIFFICULTY_ORIGINAL)
+				stage1_shield = 500;
+			else if (game.difficulty == DIFFICULTY_SUPEREASY)
+				stage1_shield = 375;
+			else
+				stage1_shield = 750;
+
+			if ((alien->shield <= alien->maxShield - stage1_shield)
+				&& !(alien->flags & FL_LEAVESECTOR))
 			{
 				alien->flags |= FL_LEAVESECTOR;
 				alien->flags &= ~FL_CIRCLES;
@@ -2167,20 +2209,38 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 		}
 		else if (game.area == MISN_VENUS)
 		{
-			if (alien->shield + damage > 1500 &&
-					alien->shield <= 1500)
+			if (game.difficulty == DIFFICULTY_SUPEREASY)
+			{
+				stage1_shield = 750;
+				stage2_shield = 500;
+				stage3_shield = 250;
+			}
+			else
+			{
+				stage1_shield = 1500;
+				stage2_shield = 1000;
+				stage3_shield = 500;
+			}
+
+			if (alien->shield + damage > stage1_shield
+					&& alien->shield <= stage1_shield)
 				alien_setKlineAttackMethod(alien);
-			else if (alien->shield + damage > 1000 &&
-					alien->shield <= 1000)
+			else if (alien->shield + damage > stage2_shield
+					&& alien->shield <= stage2_shield)
 				alien_setKlineAttackMethod(alien);
-			else if (alien->shield + damage > 500 &&
-					alien->shield <= 500)
+			else if (alien->shield + damage > stage3_shield
+					&& alien->shield <= stage3_shield)
 				alien_setKlineAttackMethod(alien);
 		}
 		else
 		{
-			if ((alien->shield <= alien->maxShield - 100) &&
-				!(alien->flags & FL_LEAVESECTOR))
+			if (game.difficulty == DIFFICULTY_SUPEREASY)
+				stage1_shield = 50;
+			else
+				stage1_shield = 100;
+
+			if ((alien->shield <= alien->maxShield - stage1_shield)
+				&& !(alien->flags & FL_LEAVESECTOR))
 			{
 				alien->flags |= FL_LEAVESECTOR;
 				alien->flags &= ~FL_CIRCLES;

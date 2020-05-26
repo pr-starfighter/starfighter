@@ -60,8 +60,8 @@ void bullet_add(Object *theWeapon, Object *attacker, int y, int dy)
 	if (attacker->face == 0)
 	{
 		bullet->dx = theWeapon->speed;
-		if ((game.area == MISN_ELLESH) ||
-				(game.area == MISN_MARS))
+		if ((game.area == MISN_ELLESH)
+				|| (game.area == MISN_MARS))
 			bullet->dx += fabsf(engine.ssx + engine.smx);
 	}
 	else

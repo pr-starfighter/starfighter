@@ -130,6 +130,7 @@ void game_init()
 
 	switch (game.difficulty)
 	{
+		case DIFFICULTY_SUPEREASY:
 		case DIFFICULTY_EASY:
 			player.maxShield = 100;
 
@@ -872,8 +873,9 @@ static void game_doBullets()
 			}
 		}
 
-		if ((game.difficulty != DIFFICULTY_EASY) &&
-			((bullet->owner == &player) || (bullet->id == WT_ROCKET)))
+		if ((game.difficulty != DIFFICULTY_SUPEREASY)
+			&& (game.difficulty != DIFFICULTY_EASY)
+			&& ((bullet->owner == &player) || (bullet->id == WT_ROCKET)))
 		{
 			for (int j = 0 ; j < 20 ; j++)
 			{
@@ -2386,6 +2388,10 @@ void game_getDifficultyText(char *dest, int difficulty)
 {
 	switch (difficulty)
 	{
+		case DIFFICULTY_SUPEREASY:
+			/// DIFFICULTY_SUPEREASY
+			strcpy(dest, _("Super-Easy"));
+			break;
 		case DIFFICULTY_EASY:
 			/// DIFFICULTY_EASY
 			strcpy(dest, _("Easy"));

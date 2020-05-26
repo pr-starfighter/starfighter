@@ -105,16 +105,8 @@ void ship_fireBullet(Object *ship, int weaponIndex)
 
 		if (theWeapon->ammo[0] == 5)
 		{
-			if (game.difficulty == DIFFICULTY_ORIGINAL)
-			{
-				bullet_add(theWeapon, ship, y * 2, -1);
-				bullet_add(theWeapon, ship, y * 4, 1);
-			}
-			else
-			{
-				bullet_add(theWeapon, ship, y * 1, -2);
-				bullet_add(theWeapon, ship, y * 5, 2);
-			}
+			bullet_add(theWeapon, ship, y * 1, -2);
+			bullet_add(theWeapon, ship, y * 5, 2);
 		}
 	}
 	else
