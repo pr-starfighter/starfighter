@@ -471,15 +471,19 @@ static void game_doCollectables()
 
 					case P_SUPER:
 						game.powerups++;
-						if ((game.area != MISN_INTERCEPTION) ||
-							(game.difficulty == DIFFICULTY_ORIGINAL) ||
-							(player.ammo[0] > 0))
+						if ((game.difficulty == DIFFICULTY_ORIGINAL)
+							|| (game.difficulty == DIFFICULTY_SUPEREASY)
+							|| (game.area != MISN_INTERCEPTION)
+							|| (player.ammo[0] > 0))
 						{
 							if (game.difficulty == DIFFICULTY_ORIGINAL)
 								player.ammo[0] = MAX(player.ammo[0], 50);
-							else if (game.area != MISN_INTERCEPTION)
+							else if ((game.difficulty == DIFFICULTY_SUPEREASY)
+								|| (game.area != MISN_INTERCEPTION))
+							{
 								LIMIT_ADD(player.ammo[0], collectable->value,
 									0, game.maxPlasmaAmmo);
+							}
 
 							weapons[W_PLAYER_WEAPON].ammo[0] = 5;
 							weapons[W_PLAYER_WEAPON].damage = 5;

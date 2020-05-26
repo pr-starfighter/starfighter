@@ -62,6 +62,30 @@ static int alien_getFreeIndex()
 	return -1;
 }
 
+static void alien_nerf(int index)
+{
+	if (game.difficulty == DIFFICULTY_SUPEREASY)
+	{
+		if ((aliens[index].classDef == CD_SID)
+			|| (aliens[index].classDef == CD_PHOEBE)
+			|| (aliens[index].classDef == CD_URSULA)
+			|| (aliens[index].classDef == CD_GOODTRANSPORT)
+			|| (aliens[index].classDef == CD_REBELCARRIER)
+			|| ((game.area == MISN_URUSOR)
+				&& (aliens[index].classDef == CD_CARGOSHIP)))
+		{
+			aliens[index].shield *= 10;
+			aliens[index].maxShield *= 10;
+		}
+		else if ((aliens[index].classDef != CD_ASTEROID)
+			&& (aliens[index].classDef != CD_ASTEROID2))
+		{
+			aliens[index].shield /= 2;
+			aliens[index].maxShield /= 2;
+		}
+	}
+}
+
 void alien_defs_init()
 {
 	// Dual Plasma Fighter.
@@ -1100,6 +1124,8 @@ void aliens_init()
 				if (i == ALIEN_BOSS)
 					aliens[i].chance[1] = 5;
 			}
+
+			alien_nerf(i);
 		}
 	}
 
@@ -1312,27 +1338,6 @@ int alien_add()
 	aliens[index].deathCounter = 0 - (aliens[index].maxShield * 3);
 	aliens[index].hit = 0;
 
-	if (game.difficulty == DIFFICULTY_SUPEREASY)
-	{
-		if ((aliens[index].classDef == CD_SID)
-			|| (aliens[index].classDef == CD_PHOEBE)
-			|| (aliens[index].classDef == CD_URSULA)
-			|| (aliens[index].classDef == CD_GOODTRANSPORT)
-			|| (aliens[index].classDef == CD_REBELCARRIER)
-			|| ((game.area == MISN_URUSOR)
-				&& (aliens[index].classDef == CD_CARGOSHIP)))
-		{
-			aliens[index].shield *= 2;
-			aliens[index].maxShield *= 2;
-		}
-		else if ((aliens[index].classDef != CD_ASTEROID)
-			&& (aliens[index].classDef != CD_ASTEROID2))
-		{
-			aliens[index].shield /= 2;
-			aliens[index].maxShield /= 2;
-		}
-	}
-
 	LIMIT(aliens[index].deathCounter, -250, 0);
 
 	// Attempts to place an alien. If it fails, the alien is deactivated.
@@ -1355,6 +1360,8 @@ int alien_add()
 	aliens[index].dy = RANDRANGE(-2, 2);
 
 	aliens[index].ammo[0] = 0;
+
+	alien_nerf(index);
 
 	if (game.area == MISN_ELLESH)
 		aliens[index].flags |= FL_HASMINIMUMSPEED;
@@ -1381,6 +1388,8 @@ void alien_addDrone(Object *hostAlien)
 
 	aliens[index].x = hostAlien->x + RANDRANGE(0, 50);
 	aliens[index].y = hostAlien->y + RANDRANGE(0, 50);
+	
+	alien_nerf(index);
 }
 
 void alien_addSmallAsteroid(Object *hostAlien)
@@ -1448,6 +1457,8 @@ void alien_addFriendly(int type)
 	// For the sake of it being the final battle :)
 	if (game.area == MISN_EARTH)
 		aliens[type].flags |= FL_IMMORTAL;
+	
+	alien_nerf(type);
 }
 
 int alien_place(Object *alien)
