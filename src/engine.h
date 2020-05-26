@@ -62,7 +62,6 @@ typedef struct Engine_ {
 	int lowShield;
 	int averageShield;
 
-	float targetShield;
 	int targetIndex;
 
 	// Mission completion timer (allows for 4 seconds before leaving sector)

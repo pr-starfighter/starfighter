@@ -82,8 +82,6 @@ void player_init()
 void player_setTarget(int index)
 {
 	engine.targetIndex = index;
-	engine.targetShield = 85;
-	engine.targetShield /= aliens[index].shield;
 }
 
 /*

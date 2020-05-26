@@ -1909,7 +1909,10 @@ static void game_doHud()
 	int fontColor;
 	int tTextIndex;
 	char text[STRMAX_SHORT];
+	float nbars; // A float for the sake of float division
+	float shield_pct;
 	int i;
+	int c;
 
 	screen_addBuffer(0, 20, screen->w, 25);
 	screen_addBuffer(0, screen->h - 50, screen->w, 34);
@@ -2013,7 +2016,7 @@ static void game_doHud()
 
 	if (((player.weaponType[1] == W_CHARGER) || (player.weaponType[1] == W_LASER)) && (player.ammo[1] > 0))
 	{
-		int c = white;
+		c = white;
 		if (player.ammo[1] > 100)
 			c = red;
 
@@ -2021,7 +2024,7 @@ static void game_doHud()
 		bar.y = screen->h - 50;
 		bar.h = 12;
 
-		for (int i = 0 ; i < (player.ammo[1] / 5) ; i++)
+		for (i = 0 ; i < (player.ammo[1] / 5) ; i++)
 		{
 			bar.w = MAX(screen->w / 800, 1);
 			SDL_FillRect(screen, &bar, c);
@@ -2084,7 +2087,7 @@ static void game_doHud()
 		}
 	}
 
-	for (int i = 0 ; i < MAX_INFOLINES ; i++)
+	for (i = 0 ; i < MAX_INFOLINES ; i++)
 	{
 		if (gfx_textSprites[i].life > 0)
 		{
@@ -2137,18 +2140,28 @@ static void game_doHud()
 			bar.h = 12;
 			bar.x = screen->w * 11 / 16 + gfx_textSprites[tTextIndex].image->w + 10;
 			bar.y = screen->h - 50;
+			nbars = 85.;
+			shield_pct = ((float)aliens[engine.targetIndex].shield
+				/ (float)aliens[engine.targetIndex].maxShield);
 
-			for (float i = 0 ; i < (engine.targetShield * aliens[engine.targetIndex].shield) ; i++)
+			for (i = 0 ; i < nbars ; i++)
 			{
-				if (i > engine.targetShield * aliens[engine.targetIndex].maxShield * 2 / 3)
+				if (i / nbars > 2. / 3)
 					shieldColor = green;
-				else if ((i >= engine.targetShield * aliens[engine.targetIndex].maxShield / 3) &&
-						(i <= engine.targetShield * aliens[engine.targetIndex].maxShield * 2 / 3))
+				else if (i / nbars > 1. / 3)
 					shieldColor = yellow;
 				else
 					shieldColor = red;
-				SDL_FillRect(screen, &bar, shieldColor);
-				bar.x += bar.w + (screen->w / 800);
+
+				if (i / nbars <= shield_pct)
+				{
+					SDL_FillRect(screen, &bar, shieldColor);
+					bar.x += bar.w + (screen->w / 800);
+				}
+				else
+				{
+					break;
+				}
 			}
 		}
 	}
