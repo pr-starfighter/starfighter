@@ -74,8 +74,8 @@ void alien_nerf(int index)
 			|| ((game.area == MISN_URUSOR)
 				&& (aliens[index].classDef == CD_CARGOSHIP)))
 		{
-			aliens[index].shield *= 10;
-			aliens[index].maxShield *= 10;
+			aliens[index].shield *= 4;
+			aliens[index].maxShield *= 4;
 		}
 		else if ((aliens[index].classDef != CD_ASTEROID)
 			&& (aliens[index].classDef != CD_ASTEROID2))
