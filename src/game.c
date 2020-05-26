@@ -362,12 +362,16 @@ static void game_doCollectables()
 								strcpy(temp, _("Firing rate increased"));
 							}
 						}
-						else if ((game.area != MISN_INTERCEPTION) ||
-								(player.ammo[0] > 0))
+						else if ((game.difficulty == DIFFICULTY_SUPEREASY)
+							|| (game.area != MISN_INTERCEPTION)
+							|| (player.ammo[0] > 0))
 						{
-							if (game.area != MISN_INTERCEPTION)
+							if ((game.difficulty == DIFFICULTY_SUPEREASY)
+								|| (game.area != MISN_INTERCEPTION))
+							{
 								LIMIT_ADD(player.ammo[0], collectable->value,
 									0, game.maxPlasmaAmmo);
+							}
 
 							if (weapons[W_PLAYER_WEAPON].reload[0] <= rate2reload[game.maxPlasmaRate])
 								strcpy(temp, _("Firing rate already at maximum"));
@@ -399,12 +403,16 @@ static void game_doCollectables()
 								strcpy(temp, _("Plasma output increased"));
 							}
 						}
-						else if ((game.area != MISN_INTERCEPTION) ||
-								(player.ammo[0] > 0))
+						else if ((game.difficulty == DIFFICULTY_SUPEREASY)
+							|| (game.area != MISN_INTERCEPTION)
+							|| (player.ammo[0] > 0))
 						{
-							if (game.area != MISN_INTERCEPTION)
+							if ((game.difficulty == DIFFICULTY_SUPEREASY)
+								|| (game.area != MISN_INTERCEPTION))
+							{
 								LIMIT_ADD(player.ammo[0], collectable->value,
 									0, game.maxPlasmaAmmo);
+							}
 
 							if (weapons[W_PLAYER_WEAPON].ammo[0] >= game.maxPlasmaOutput)
 								strcpy(temp, _("Plasma output already at maximum"));
@@ -436,12 +444,16 @@ static void game_doCollectables()
 								strcpy(temp, _("Plasma damage increased"));
 							}
 						}
-						else if ((game.area != MISN_INTERCEPTION) ||
-								(player.ammo[0] > 0))
+						else if ((game.difficulty == DIFFICULTY_SUPEREASY)
+							|| (game.area != MISN_INTERCEPTION)
+							|| (player.ammo[0] > 0))
 						{
-							if (game.area != MISN_INTERCEPTION)
+							if ((game.difficulty == DIFFICULTY_SUPEREASY)
+								|| (game.area != MISN_INTERCEPTION))
+							{
 								LIMIT_ADD(player.ammo[0], collectable->value,
 									0, game.maxPlasmaAmmo);
+							}
 
 							if (weapons[W_PLAYER_WEAPON].damage >= game.maxPlasmaDamage)
 								strcpy(temp, _("Plasma damage already at maximum"));
