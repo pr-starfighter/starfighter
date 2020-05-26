@@ -2272,7 +2272,5 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 		}
 
 		alien->systemPower = 0;
-		if (alien->classDef == CD_KLINE)
-			alien->systemPower = alien->maxShield;
 	}
 }
