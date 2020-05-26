@@ -26,6 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 extern Object alien_defs[CD_MAX];
 extern Object aliens[ALIEN_MAX];
 
+void alien_nerf(int index);
 void alien_defs_init();
 void aliens_init();
 int alien_add();

@@ -2530,6 +2530,7 @@ int game_mainLoop()
 		aliens[i].systemPower = aliens[i].maxShield;
 		aliens[i].deathCounter = 0 - (aliens[i].maxShield * 3);
 		LIMIT(aliens[i].deathCounter, -350, 0);
+		alien_nerf(i);
 	}
 
 	// Set target energy meter

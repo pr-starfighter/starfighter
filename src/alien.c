@@ -62,7 +62,7 @@ static int alien_getFreeIndex()
 	return -1;
 }
 
-static void alien_nerf(int index)
+void alien_nerf(int index)
 {
 	if (game.difficulty == DIFFICULTY_SUPEREASY)
 	{
@@ -1087,7 +1087,8 @@ void aliens_init()
 			if (aliens[i].classDef == CD_CLOAKFIGHTER)
 			{
 				aliens[i].active = 0;
-				aliens[i].maxShield = aliens[i].shield = 400;
+				aliens[i].maxShield = 400;
+				aliens[i].shield = 400;
 				aliens[i].flags &= ~FL_RUNSAWAY;
 				aliens[i].speed = 3;
 			}
@@ -1124,8 +1125,6 @@ void aliens_init()
 				if (i == ALIEN_BOSS)
 					aliens[i].chance[1] = 5;
 			}
-
-			alien_nerf(i);
 		}
 	}
 
@@ -1361,10 +1360,10 @@ int alien_add()
 
 	aliens[index].ammo[0] = 0;
 
-	alien_nerf(index);
-
 	if (game.area == MISN_ELLESH)
 		aliens[index].flags |= FL_HASMINIMUMSPEED;
+
+	alien_nerf(index);
 
 	return 1;
 }
