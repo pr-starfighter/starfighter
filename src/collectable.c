@@ -203,7 +203,7 @@ void collectable_add(float x, float y, int type, int value, int life)
 				return;
 		}
 	}
-	else
+	else if (game.difficulty != DIFFICULTY_SUPEREASY)
 	{
 		// No cash or ammo on interceptions. Completely stops grinding.
 		if ((game.area == MISN_INTERCEPTION)
