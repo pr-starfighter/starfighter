@@ -33,6 +33,7 @@ void bullet_add(Object *theWeapon, Object *attacker, int y, int dy)
 	Object *bullet;
 	int imageIndex;
 	int tempX, tempY, steps;
+	int min_damage;
 
 	bullet = malloc(sizeof(*bullet));
 	if (bullet == NULL)
@@ -96,11 +97,17 @@ void bullet_add(Object *theWeapon, Object *attacker, int y, int dy)
 	if (bullet->id == WT_CHARGER)
 	{
 		if (game.difficulty == DIFFICULTY_ORIGINAL)
+		{
 			bullet->damage = attacker->ammo[1];
+			min_damage = 50;
+		}
 		else
+		{
 			bullet->damage = attacker->ammo[1] / 2;
+			min_damage = 15;
+		}
 
-		if (bullet->damage < 15)
+		if (bullet->damage < min_damage)
 		{
 			bullet->damage = 1;
 			bullet->id = WT_PLASMA;

@@ -760,11 +760,23 @@ static void game_doBullets()
 
 						if (bullet->id == WT_CHARGER)
 						{
-							bullet->damage -= old_shield;
-							if (bullet->damage <= 0)
+							if (game.difficulty == DIFFICULTY_ORIGINAL)
 							{
-								bullet->active = 0;
-								bullet->shield = 0;
+								bullet->shield -= old_shield;
+								if (bullet->shield < 0)
+									bullet->active = 0;
+							}
+							else
+							{
+								bullet->damage -= old_shield;
+								if (bullet->damage <= 0)
+								{
+									bullet->active = 0;
+									bullet->shield = 0;
+								}
+							}
+							if (!bullet->active)
+							{
 								audio_playSound(SFX_EXPLOSION, bullet->x, bullet->y);
 								for (int i = 0 ; i < 10 ; i++)
 									explosion_add(bullet->x + RANDRANGE(-35, 35),
