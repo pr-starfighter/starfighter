@@ -48,9 +48,10 @@ int save_initSlots()
 {
 	char fileName[PATH_MAX];
 	int system;
-	char stationedName[STRMAX];
+	char stationedName[STRMAX_SHORT];
+	int difficulty;
+	char difficulty_text[STRMAX_SHORT];
 	int imagePos = 0;
-	Game tempGame;
 	struct stat fileInfo;
 	int modTime = 0;
 	int continueSaveIndex = -1;
@@ -78,15 +79,33 @@ int save_initSlots()
 				}
 				else
 				{
-					if (fscanf(fp, "%*[^\n]%*c%*[^\n]%*c%d %*d %*d%*c%[^\n]%*c", &system,
-							stationedName) < 2)
+					switch (game.saveFormat)
 					{
-						strcpy(saveSlot[i], _("Corrupt Game Data"));
-					}
-					else
-					{
-						snprintf(saveSlot[i], STRMAX_SHORT, "%s, %s", game_systemNames[system],
-							stationedName);
+						case 4:
+						case 5:
+							if (fscanf(fp,
+										"%d%*c"
+										"%*[^\n]%*c"
+										"%d %*d %*d%*c%"
+										"[^\n]%*c",
+									&difficulty, &system,
+									stationedName) < 2)
+							{
+								strcpy(saveSlot[i], _("Corrupt Game Data"));
+							}
+							else
+							{
+								if (game.saveFormat == 4)
+									difficulty += DIFFICULTY_EASY;
+
+								game_getDifficultyText(difficulty_text, difficulty);
+								snprintf(saveSlot[i], STRMAX_SHORT,
+									"%s, %s (%s)", game_systemNames[system],
+									stationedName, difficulty_text);
+							}
+							break;
+						default:
+							strcpy(saveSlot[i], _("Corrupt Game Data"));
 					}
 				}
 
@@ -104,49 +123,11 @@ int save_initSlots()
 		}
 		else
 		{
-			snprintf(fileName, PATH_MAX, "%ssave%.2d.dat", engine.configDirectory, i);
-
-			fp = fopen(fileName, "r");
-			if (fp == NULL)
-			{
-				/// Used for empty save slots.
-				strcpy(saveSlot[i], (i == 0 ? _("AUTOSAVE (Empty)") : _("Empty")));
-				if (engine.gameSection == SECTION_TITLE)
-					gfx_createTextObject(TS_SAVESLOT_0 + i, saveSlot[i],
-						0, imagePos, FONT_WHITE);
-			}
-			else
-			{
-				if (i == 0)
-				{
-					strcpy(saveSlot[i], _("AUTOSAVE"));
-					continueSaveIndex = 0;
-				}
-				else
-				{
-					if (fread(&tempGame, sizeof(Game), 1, fp) != 1)
-					{
-						strcpy(saveSlot[i], _("Corrupt Game Data"));
-					}
-					else
-					{
-						snprintf(saveSlot[i], STRMAX_SHORT, "%s, %s", game_systemNames[tempGame.system],
-							tempGame.stationedName);
-					}
-				}
-
-				if (engine.gameSection == SECTION_TITLE)
-					gfx_createTextObject(TS_SAVESLOT_0 + i, saveSlot[i], 0,
-						imagePos, FONT_WHITE);
-
-				if (stat(fileName, &fileInfo) != -1)
-				{
-					if (fileInfo.st_mtime > modTime)
-						{modTime = fileInfo.st_mtime; continueSaveIndex = i;}
-				}
-
-				fclose(fp);
-			}
+			/// Used for empty save slots.
+			strcpy(saveSlot[i], (i == 0 ? _("AUTOSAVE (Empty)") : _("Empty")));
+			if (engine.gameSection == SECTION_TITLE)
+				gfx_createTextObject(TS_SAVESLOT_0 + i, saveSlot[i],
+					0, imagePos, FONT_WHITE);
 		}
 		imagePos += 20;
 	}
@@ -178,6 +159,7 @@ int save_load(int slot)
 		switch (game.saveFormat)
 		{
 			case 4:
+			case 5:
 				if ((fscanf(fp, "%d%*c", &game.difficulty) < 1) ||
 						(fscanf(fp, "%d %d %d %d %d %d %d %d%*c",
 							&game.minPlasmaRateLimit, &game.minPlasmaDamageLimit,
@@ -220,6 +202,8 @@ int save_load(int slot)
 				else
 				{
 					game.timeTaken = (Uint32)(timeTaken);
+					if (game.saveFormat == 4)
+						game.difficulty += DIFFICULTY_EASY;
 				}
 				game.destinationPlanet = game.stationedPlanet;
 				break;
@@ -233,31 +217,7 @@ int save_load(int slot)
 	}
 	else
 	{
-		snprintf(filename, PATH_MAX, "%ssave%.2d.dat", engine.configDirectory, slot);
-		fp = fopen(filename, "rb");
-
-		if (fp == NULL)
-			return 0;
-
-		if (fread(&game, sizeof(Game), 1, fp) != 1)
-		{
-			printf("Save game error. The file was not of the expected format.\n");
-			fclose(fp);
-			return 0;
-		}
-
-		fclose(fp);
-
-		if (game.saveFormat < 2)
-			game.difficulty = DIFFICULTY_NORMAL;
-
-		weapons[W_PLAYER_WEAPON] = game.playerWeapon;
-		weapons[W_PLAYER_WEAPON].imageIndex[0] = SP_PLASMA_GREEN;
-		weapons[W_PLAYER_WEAPON].imageIndex[1] = SP_PLASMA_GREEN;
-		player = game.thePlayer;
-
-		save(slot);
-		remove(filename);
+		return 0;
 	}
 
 	// Re-init all the planets in this system...
@@ -285,7 +245,7 @@ void save(int slot)
 	fp = fopen(fileName, "w");
 
 
-	game.saveFormat = 4;
+	game.saveFormat = 5;
 	for (int i = 0 ; i < MAX_PLANETS ; i++)
 		game.missionCompleted[i] = intermission_planets[i].missionCompleted;
 

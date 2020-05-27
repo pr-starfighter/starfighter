@@ -26,9 +26,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "structs.h"
 
 typedef struct Game_ {
-	Object thePlayer;
-	Object playerWeapon;
-
 	int saveFormat;
 
 	int difficulty;
@@ -73,8 +70,8 @@ typedef struct Game_ {
 	int stationedPlanet;
 	int destinationPlanet;
 
-	char stationedName[20];
-	char destinationName[20];
+	char stationedName[STRMAX_SHORT];
+	char destinationName[STRMAX_SHORT];
 	double distanceCovered;
 
 	int minPlasmaRate;
