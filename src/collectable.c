@@ -154,7 +154,8 @@ void collectable_add(float x, float y, int type, int value, int life)
 	if (value == 0)
 		return; // don't bother!
 	
-	if (game.difficulty == DIFFICULTY_SUPEREASY)
+	if ((game.difficulty == DIFFICULTY_SUPEREASY)
+			&& (type != P_CARGO))
 		value *= 2;
 
 	// No point in giving the player plasma ammo if the weapons aren't
