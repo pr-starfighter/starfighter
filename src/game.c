@@ -1287,8 +1287,8 @@ static void game_doAliens()
 			else
 			{
 				aliens[i].shield--;
-				if ((aliens[i].x > 0) && (aliens[i].x < screen->w) &&
-					(aliens[i].y > 0) && (aliens[i].y < screen->h))
+				if ((aliens[i].x > 0) && (aliens[i].x < screen->w)
+					&& (aliens[i].y > 0) && (aliens[i].y < screen->h))
 				{
 					screen_blit(aliens[i].image[aliens[i].face], (int)aliens[i].x,
 						(int)aliens[i].y);
@@ -1299,13 +1299,15 @@ static void game_doAliens()
 				if (aliens[i].shield < aliens[i].deathCounter)
 				{
 					aliens[i].active = 0;
-					if ((aliens[i].classDef == CD_BOSS) ||
-							(aliens[i].owner == &aliens[ALIEN_BOSS]) ||
-							(aliens[i].flags & FL_FRIEND) ||
-							(aliens[i].classDef == CD_ASTEROID) ||
-							(aliens[i].classDef == CD_KLINE))
+					if ((aliens[i].classDef == CD_BOSS)
+						|| (aliens[i].owner == &aliens[ALIEN_BOSS])
+						|| (aliens[i].flags & FL_FRIEND)
+						|| (aliens[i].classDef == CD_ASTEROID)
+						|| (aliens[i].classDef == CD_KLINE))
+					{
 						game_addDebris((int)aliens[i].x, (int)aliens[i].y,
 							aliens[i].maxShield);
+					}
 
 					if (aliens[i].classDef == CD_ASTEROID)
 					{

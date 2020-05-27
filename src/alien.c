@@ -1586,7 +1586,7 @@ void alien_setAI(Object *alien)
 
 void alien_setKlineAttackMethod(Object *alien)
 {
-	if (alien->shield <= 500)
+	if (alien->shield <= alien->maxShield / 4)
 	{
 		/// Dialog (Kline Kethlan)
 		/// Used when the final "stage" of the Venus fight is entered.
@@ -1597,7 +1597,7 @@ void alien_setKlineAttackMethod(Object *alien)
 		alien->chance[0] = 100;
 		alien->chance[1] = 2;
 	}
-	else if (alien->shield <= 1000)
+	else if (alien->shield <= alien->maxShield / 2)
 	{
 		/// Dialog (Kline Kethlan)
 		/// Used when the third "stage" of the Vinus fight is entered.
@@ -2190,11 +2190,9 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 		if (game.area == MISN_ELAMALE)
 		{
 			if (game.difficulty == DIFFICULTY_ORIGINAL)
-				stage1_shield = 750;
-			else if (game.difficulty == DIFFICULTY_SUPEREASY)
-				stage1_shield = 250;
+				stage1_shield = alien->maxShield * 3 / 8;
 			else
-				stage1_shield = 500;
+				stage1_shield = alien->maxShield / 4;
 
 			if ((alien->shield <= alien->maxShield - stage1_shield)
 				&& !(alien->flags & FL_LEAVESECTOR))
@@ -2209,11 +2207,9 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 		else if (game.area == MISN_EARTH)
 		{
 			if (game.difficulty == DIFFICULTY_ORIGINAL)
-				stage1_shield = 500;
-			else if (game.difficulty == DIFFICULTY_SUPEREASY)
-				stage1_shield = 375;
+				stage1_shield = alien->maxShield / 4;
 			else
-				stage1_shield = 750;
+				stage1_shield = alien->maxShield * 3 / 8;
 
 			if ((alien->shield <= alien->maxShield - stage1_shield)
 				&& !(alien->flags & FL_LEAVESECTOR))
@@ -2227,18 +2223,9 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 		}
 		else if (game.area == MISN_VENUS)
 		{
-			if (game.difficulty == DIFFICULTY_SUPEREASY)
-			{
-				stage1_shield = 750;
-				stage2_shield = 500;
-				stage3_shield = 250;
-			}
-			else
-			{
-				stage1_shield = 1500;
-				stage2_shield = 1000;
-				stage3_shield = 500;
-			}
+			stage1_shield = alien->maxShield * 3 / 4;
+			stage2_shield = alien->maxShield / 2;
+			stage3_shield = alien->maxShield / 4;
 
 			if (alien->shield + damage > stage1_shield
 					&& alien->shield <= stage1_shield)
@@ -2252,10 +2239,7 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 		}
 		else
 		{
-			if (game.difficulty == DIFFICULTY_SUPEREASY)
-				stage1_shield = 50;
-			else
-				stage1_shield = 100;
+			stage1_shield = alien->maxShield / 20;
 
 			if ((alien->shield <= alien->maxShield - stage1_shield)
 				&& !(alien->flags & FL_LEAVESECTOR))
