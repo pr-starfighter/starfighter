@@ -1186,17 +1186,23 @@ void mission_showStartScreen()
 
 			if (mission.timeLimit1[0] > 0)
 			{
-				if (game.area != MISN_MARS)
+				if (game.area == MISN_MARS)
 				{
-					/// "%d" must be retained.  It is replaced with the mission time
-					/// limit in minutes.
-					snprintf(temp, STRMAX_SHORT, _("TIME LIMIT: %d minutes"), mission.timeLimit1[0]);
+					snprintf(temp, STRMAX_SHORT, ngettext(
+						/// "%d" must be retained.  It is replaced with the mission required
+						/// survival time in minutes.
+						"SURVIVAL FOR %d minute",
+						"SURVIVAL FOR %d minutes",
+						mission.timeLimit1[0]), mission.timeLimit1[0]);
 				}
 				else
 				{
-					/// "%d" must be retained.  It is replaced with the mission required
-					/// survival time in minutes.
-					snprintf(temp, STRMAX_SHORT, _("SURVIVAL FOR %d minutes"), mission.timeLimit1[0]);
+					snprintf(temp, STRMAX_SHORT, ngettext(
+						/// "%d" must be retained.  It is replaced with the mission time
+						/// limit in minutes.
+						"TIME LIMIT: %d minute",
+						"TIME LIMIT: %d minutes",
+						mission.timeLimit1[0]), mission.timeLimit1[0]);
 				}
 				screen_renderUnicode(temp, -1, screen->h / 2 + 195, FONT_RED);
 			}

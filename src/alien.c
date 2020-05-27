@@ -1474,8 +1474,16 @@ int alien_place(Object *alien)
 
 	if (game.area == MISN_MARS)
 	{
-		alien->x = screen->w + RANDRANGE(0, 400);
-		alien->y = RANDRANGE(-screen->h / 3, (4 * screen->h) / 3);
+		if (game.difficulty == DIFFICULTY_SUPEREASY)
+		{
+			alien->x = screen->w + RANDRANGE(0, 1200);
+			alien->y = RANDRANGE(-screen->h, screen->h);
+		}
+		else
+		{
+			alien->x = screen->w + RANDRANGE(0, 400);
+			alien->y = RANDRANGE(-screen->h / 3, (4 * screen->h) / 3);
+		}
 	}
 
 	for (int i = 0 ; i < ALIEN_MAX ; i++)

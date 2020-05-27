@@ -2448,6 +2448,8 @@ void game_getDifficultyText(char *dest, int difficulty)
 
 int game_mainLoop()
 {
+	float chance;
+
 	engine_resetLists();
 
 	mission_set(game.area);
@@ -2774,7 +2776,12 @@ int game_mainLoop()
 
 		if ((game.area == MISN_MARS) && (engine.addAliens > -1))
 		{
-			if ((rand() % 5) == 0)
+			if (game.difficulty == DIFFICULTY_SUPEREASY)
+				chance = 1. / 20.;
+			else
+				chance = 1. / 5.;
+
+			if (CHANCE(chance))
 				// Note: The originally specified range for x was [800, 100],
 				// which with the original rrand function caused the result
 				// returned to be `800 + rand() % -699`. Clearly a mistake,
