@@ -16,45 +16,45 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# Natasha Layla Marchant <diligentcircle@riseup.net>, 2020.
+# Layla Marchant <diligentcircle@riseup.net>, 2020.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.1\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-06 19:09-0500\n"
-"PO-Revision-Date: 2020-03-06 19:22-0500\n"
-"Last-Translator: Natasha Layla Marchant <diligentcircle@riseup.net>\n"
+"Project-Id-Version: 2.2\n"
+"Report-Msgid-Bugs-To: Layla Marchant <diligentcircle@riseup.net>\n"
+"POT-Creation-Date: 2020-05-27 02:19-0400\n"
+"PO-Revision-Date: 2020-05-27 02:24-0400\n"
+"Last-Translator: Layla Marchant <diligentcircle@riseup.net>\n"
 "Language-Team: English\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. / Dialog (Kline Kethlan)
 #. / Used when the final "stage" of the Venus fight is entered.
-#: ../src/alien.c:1557
+#: ../src/alien.c:1593
 msgid "ENOUGH! THIS ENDS NOW!"
 msgstr "ENOUGH! THIS ENDS NOW!"
 
 #. / Dialog (Kline Kethlan)
 #. / Used when the third "stage" of the Vinus fight is entered.
-#: ../src/alien.c:1568
+#: ../src/alien.c:1604
 msgid "Your ability to stay alive irritates me! Try dodging some of these!"
 msgstr "Your ability to stay alive irritates me! Try dodging some of these!"
 
 #. / Dialog (Kline Kethlan)
 #. / Used when the second "stage" of the Venus fight is entered.
-#: ../src/alien.c:1582
+#: ../src/alien.c:1618
 msgid "Very good, Bainfield. Now let's get a little more serious..."
 msgstr "Very good, Bainfield. Now let's get a little more serious..."
 
-#: ../src/alien.c:1953
+#: ../src/alien.c:1998
 msgid ">> Ally has ejected! <<"
 msgstr ">> Ally has ejected! <<"
 
-#: ../src/alien.c:1955
+#: ../src/alien.c:2000
 msgid ">> Friendly craft has been destroyed! <<"
 msgstr ">> Friendly craft has been destroyed! <<"
 
@@ -65,7 +65,7 @@ msgstr ">> Friendly craft has been destroyed! <<"
 #. / with brag messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of brag messages is permitted.
-#: ../src/alien.c:1984
+#: ../src/alien.c:2029
 msgid ""
 "Take that, robot oppressors!\n"
 "Come on, WEAPCO, give me a challenge already!\n"
@@ -106,7 +106,7 @@ msgstr ""
 #. / with brag messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of brag messages is permitted.
-#: ../src/alien.c:2017
+#: ../src/alien.c:2062
 msgid ""
 "I got another one!\n"
 "Target destroyed!\n"
@@ -139,7 +139,7 @@ msgstr ""
 #. / with brag messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of brag messages is permitted.
-#: ../src/alien.c:2046
+#: ../src/alien.c:2091
 msgid ""
 "Kicked your ass!\n"
 "You ain't so tough!\n"
@@ -173,25 +173,25 @@ msgstr ""
 
 #. / Dialog (Chris Bainfield)
 #. / Used when Krass Tyler is beaten in the Jupiter mission.
-#: ../src/alien.c:2109
+#: ../src/alien.c:2154
 msgid "The name's CHRIS, old-timer."
 msgstr "The name's CHRIS, old-timer."
 
 #. / Dialog (Kline Kethlan)
 #. / Used when Kline is killed in the Venus mission.
-#: ../src/alien.c:2116
+#: ../src/alien.c:2161
 msgid "It was an honor... to have fought you..."
 msgstr "It was an honor... to have fought you..."
 
 #. / Dialog (Kline Kethlan)
 #. / Used when Kline is beaten in the Elamale mission.
-#: ../src/alien.c:2153
+#: ../src/alien.c:2204
 msgid "Seems I underestimated you, Bainfield. We'll meet again!"
 msgstr "Seems I underestimated you, Bainfield. We'll meet again!"
 
 #. / Dialog (Sid Wilson)
 #. / Used when Kline is beaten in the Earth mission.
-#: ../src/alien.c:2165
+#: ../src/alien.c:2221
 msgid "Chris, Kethlan is getting away!"
 msgstr "Chris, Kethlan is getting away!"
 
@@ -785,59 +785,59 @@ msgstr "Sol"
 
 #. / "%d" must be retained. It is replaced with the amount of money that
 #. / was picked up.
-#: ../src/game.c:319
+#: ../src/game.c:320
 #, c-format
 msgid "Got $%d"
 msgid_plural "Got $%d"
 msgstr[0] "Got $%d"
 msgstr[1] "Got $%d"
 
-#: ../src/game.c:328
+#: ../src/game.c:329
 msgid "Rocket Ammo at Maximum"
 msgstr "Rocket Ammo at Maximum"
 
 #. / "%d" must be retained. It is replaced with the number of rockets
 #. / picked up.
-#: ../src/game.c:334
+#: ../src/game.c:335
 #, c-format
 msgid "Got %d rocket"
 msgid_plural "Got %d rockets"
 msgstr[0] "Got %d rocket"
 msgstr[1] "Got %d rockets"
 
-#: ../src/game.c:344
+#: ../src/game.c:345
 msgid "Restored 10 shield points"
 msgstr "Restored 10 shield points"
 
-#: ../src/game.c:357 ../src/game.c:372
+#: ../src/game.c:358 ../src/game.c:377
 msgid "Firing rate already at maximum"
 msgstr "Firing rate already at maximum"
 
-#: ../src/game.c:361 ../src/game.c:376
+#: ../src/game.c:362 ../src/game.c:381
 msgid "Firing rate increased"
 msgstr "Firing rate increased"
 
-#: ../src/game.c:381 ../src/game.c:418 ../src/game.c:455
+#: ../src/game.c:386 ../src/game.c:427 ../src/game.c:468
 msgid "Upgrade failed (no plasma ammo)"
 msgstr "Upgrade failed (no plasma ammo)"
 
-#: ../src/game.c:394 ../src/game.c:409
+#: ../src/game.c:399 ../src/game.c:418
 msgid "Plasma output already at maximum"
 msgstr "Plasma output already at maximum"
 
-#: ../src/game.c:398 ../src/game.c:413
+#: ../src/game.c:403 ../src/game.c:422
 msgid "Plasma output increased"
 msgstr "Plasma output increased"
 
-#: ../src/game.c:431 ../src/game.c:446
+#: ../src/game.c:440 ../src/game.c:459
 msgid "Plasma damage already at maximum"
 msgstr "Plasma damage already at maximum"
 
-#: ../src/game.c:435 ../src/game.c:450
+#: ../src/game.c:444 ../src/game.c:463
 msgid "Plasma damage increased"
 msgstr "Plasma damage increased"
 
-#: ../src/game.c:476
+#: ../src/game.c:493
 msgid "Picked up a Super Charge!"
 msgstr "Picked up a Super Charge!"
 
@@ -845,39 +845,39 @@ msgstr "Picked up a Super Charge!"
 #. / interception (which means it won't take effect). The "Damn!" serves
 #. / as a little sympathetic easter egg for players unfortunate enough to
 #. / have this happen to them.
-#: ../src/game.c:484
+#: ../src/game.c:501
 msgid "Damn! Upgrade failed (no plasma ammo)"
 msgstr "Damn! Upgrade failed (no plasma ammo)"
 
-#: ../src/game.c:490
+#: ../src/game.c:507
 msgid "Plasma cells already at Maximum"
 msgstr "Plasma cells already at Maximum"
 
 #. / "%d" must be retained. It is replaced with the number of plasma
 #. / cells picked up.
-#: ../src/game.c:498
+#: ../src/game.c:515
 #, c-format
 msgid "Got %d plasma cell"
 msgid_plural "Got %d plasma cells"
 msgstr[0] "Got %d plasma cell"
 msgstr[1] "Got %d plasma cells"
 
-#: ../src/game.c:506
+#: ../src/game.c:523
 msgid "Picked up some Cargo"
 msgstr "Picked up some Cargo"
 
-#: ../src/game.c:512
+#: ../src/game.c:529
 #, c-format
 msgid "Rescued %d slave"
 msgid_plural "Rescued %d slaves"
 msgstr[0] "Rescued %d slave"
 msgstr[1] "Rescued %d slaves"
 
-#: ../src/game.c:519
+#: ../src/game.c:536
 msgid "Picked up an Escape Pod"
 msgstr "Picked up an Escape Pod"
 
-#: ../src/game.c:523
+#: ../src/game.c:540
 msgid "Picked up some Ore"
 msgstr "Picked up some Ore"
 
@@ -888,7 +888,7 @@ msgstr "Picked up some Ore"
 #. / with messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of messages is permitted.
-#: ../src/game.c:720
+#: ../src/game.c:737
 msgid ""
 "OW! I hope that was an accident!\n"
 "Chris, please be more careful!\n"
@@ -905,7 +905,7 @@ msgstr ""
 #. / with messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of messages is permitted.
-#: ../src/game.c:736
+#: ../src/game.c:753
 msgid ""
 "I am NOT your enemy!\n"
 "Hey! Watch it!\n"
@@ -926,7 +926,7 @@ msgstr ""
 #. / with messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of messages is permitted.
-#: ../src/game.c:812
+#: ../src/game.c:841
 msgid ""
 "Oops! Sorry!\n"
 "Whoops! Are you OK, Chris?\n"
@@ -943,7 +943,7 @@ msgstr ""
 #. / with messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of messages is permitted.
-#: ../src/game.c:828
+#: ../src/game.c:857
 msgid ""
 "Get out of the way!\n"
 "Don't fly into my missiles!\n"
@@ -960,7 +960,7 @@ msgstr ""
 #. / with insults that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of insults is permitted.
-#: ../src/game.c:1577
+#: ../src/game.c:1609
 msgid ""
 "Fool.\n"
 "And now you're nothing but a DEAD hero.\n"
@@ -975,7 +975,7 @@ msgstr ""
 #. / with insults that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of insults is permitted.
-#: ../src/game.c:1592
+#: ../src/game.c:1624
 msgid ""
 "Pathetic.\n"
 "How very disappointing...\n"
@@ -987,7 +987,7 @@ msgstr ""
 
 #. / Dialog: Krass Tyler
 #. / Used when the player is killed in the Jupiter mission.
-#: ../src/game.c:1603
+#: ../src/game.c:1635
 msgid "That was the easiest $90,000,000 I've ever earned! Bwah! Ha! Ha! Ha!"
 msgstr "That was the easiest $90,000,000 I've ever earned! Bwah! Ha! Ha! Ha!"
 
@@ -999,37 +999,37 @@ msgstr "That was the easiest $90,000,000 I've ever earned! Bwah! Ha! Ha! Ha!"
 #. / timer to use single-digit numbers.
 #. / The ":" can also be replaced just like any text.  For example, this would be fine:
 #. /     "Time Remaining - %d minutes and %d seconds"
-#: ../src/game.c:1909
+#: ../src/game.c:1946
 #, c-format
 msgid "Time Remaining - %.2d:%.2d"
 msgstr "Time Remaining - %.2d:%.2d"
 
 #. / "%d" must be retained.  It is replaced with the number of mission objectives remaining.
-#: ../src/game.c:1917
+#: ../src/game.c:1954
 #, c-format
 msgid "Objectives Remaining: %d"
 msgstr "Objectives Remaining: %d"
 
 #. / "%d" must be retained.  It is replaced with the player's current total cash.
 #. / Retain "%d" as-is.  It is replaced with the player's current cash.
-#: ../src/game.c:1923 ../src/shop.c:352
+#: ../src/game.c:1960 ../src/shop.c:352
 #, c-format
 msgid "Cash: $%d"
 msgstr "Cash: $%d"
 
 #. / "%.3d" must be retained.  It is replaced with the amount of plasma ammo.
-#: ../src/game.c:1960
+#: ../src/game.c:1997
 #, c-format
 msgid "Plasma: %.3d"
 msgstr "Plasma: %.3d"
 
 #. / Used to indicate the charge meter for the charger cannon in the HUD.
-#: ../src/game.c:1967
+#: ../src/game.c:2004
 msgid "Charge"
 msgstr "Charge"
 
 #. / Used to indicate the heat meter for the laser cannon in the HUD.
-#: ../src/game.c:1972
+#: ../src/game.c:2009
 msgid "Heat"
 msgstr "Heat"
 
@@ -1037,33 +1037,38 @@ msgstr "Heat"
 #. / Retain "%.2d".  It is replaced with the ship's current number of rockets.
 #. / "%.2d" can be changed to "%d" if you wish to not fill in space with zeroes,
 #. / e.g. render the number 3 as "3" rather than "03".
-#: ../src/game.c:1977 ../src/shop.c:362
+#: ../src/game.c:2014 ../src/shop.c:362
 #, c-format
 msgid "Rockets: %.2d"
 msgstr "Rockets: %.2d"
 
+#. / DIFFICULTY_SUPEREASY
+#: ../src/game.c:2424
+msgid "Super-Easy"
+msgstr "Super-Easy"
+
 #. / DIFFICULTY_EASY
-#: ../src/game.c:2331
+#: ../src/game.c:2428
 msgid "Easy"
 msgstr "Easy"
 
 #. / DIFFICULTY_NORMAL
-#: ../src/game.c:2335
+#: ../src/game.c:2432
 msgid "Normal"
 msgstr "Normal"
 
 #. / DIFFICULTY_HARD
-#: ../src/game.c:2339
+#: ../src/game.c:2436
 msgid "Hard"
 msgstr "Hard"
 
 #. / DIFFICULTY_NIGHTMARE
-#: ../src/game.c:2343
+#: ../src/game.c:2440
 msgid "Nightmare!"
 msgstr "Nightmare!"
 
 #. / DIFFICULTY_ORIGINAL (Classic)
-#: ../src/game.c:2347
+#: ../src/game.c:2444
 msgid "Classic"
 msgstr "Classic"
 
@@ -1199,7 +1204,7 @@ msgstr "Ejections : %d"
 msgid "*** Ursula ***"
 msgstr "*** Ursula ***"
 
-#: ../src/intermission.c:352 ../src/intermission.c:1511
+#: ../src/intermission.c:352 ../src/intermission.c:1512
 msgid "Current Status"
 msgstr "Current Status"
 
@@ -2067,40 +2072,40 @@ msgid "FULLSCREEN"
 msgstr "FULLSCREEN"
 
 #. / Retain "%s" as-is.  It is replaced with the current system name.
-#: ../src/intermission.c:1505
+#: ../src/intermission.c:1506
 #, c-format
 msgid "System : %s"
 msgstr "System : %s"
 
-#: ../src/intermission.c:1508
+#: ../src/intermission.c:1509
 msgid "Start Next Mission"
 msgstr "Start Next Mission"
 
-#: ../src/intermission.c:1509
+#: ../src/intermission.c:1510
 msgid "Go to Destination Planet"
 msgstr "Go to Destination Planet"
 
-#: ../src/intermission.c:1510
+#: ../src/intermission.c:1511
 msgid "View System Map"
 msgstr "View System Map"
 
-#: ../src/intermission.c:1512
+#: ../src/intermission.c:1513
 msgid "Save Game"
 msgstr "Save Game"
 
-#: ../src/intermission.c:1513
+#: ../src/intermission.c:1514
 msgid "Upgrade FIREFLY"
 msgstr "Upgrade FIREFLY"
 
-#: ../src/intermission.c:1514
+#: ../src/intermission.c:1515
 msgid "Missions"
 msgstr "Missions"
 
-#: ../src/intermission.c:1515
+#: ../src/intermission.c:1516
 msgid "Options"
 msgstr "Options"
 
-#: ../src/intermission.c:1516
+#: ../src/intermission.c:1517
 msgid "Exit to Title Screen"
 msgstr "Exit to Title Screen"
 
@@ -2108,19 +2113,19 @@ msgstr "Exit to Title Screen"
 #. / the player is currently stationed on.
 #. / Retain "%s" as-is.  It is replaced with the name of the planet
 #. / the player's destination is currently set to.
-#: ../src/intermission.c:1520 ../src/intermission.c:1704
+#: ../src/intermission.c:1521 ../src/intermission.c:1705
 #, c-format
 msgid "Stationed At: %s"
 msgstr "Stationed At: %s"
 
 #. / Retain "%s" as-is.  It is replaced with the name of the planet
 #. / the player's destination is currently set to.
-#: ../src/intermission.c:1527 ../src/intermission.c:1642
+#: ../src/intermission.c:1528 ../src/intermission.c:1643
 #, c-format
 msgid "Destination: %s"
 msgstr "Destination: %s"
 
-#: ../src/intermission.c:1531
+#: ../src/intermission.c:1532
 msgid "Destination: None"
 msgstr "Destination: None"
 
@@ -2625,43 +2630,47 @@ msgstr "Phoebe"
 msgid "Kline"
 msgstr "Kline"
 
-#. / "%d" must be retained.  It is replaced with the mission time
-#. / limit in minutes.
-#: ../src/mission.c:1193
-#, c-format
-msgid "TIME LIMIT: %d minutes"
-msgstr "TIME LIMIT: %d minutes"
-
 #. / "%d" must be retained.  It is replaced with the mission required
 #. / survival time in minutes.
-#: ../src/mission.c:1199
+#: ../src/mission.c:1194
 #, c-format
-msgid "SURVIVAL FOR %d minutes"
-msgstr "SURVIVAL FOR %d minutes"
+msgid "SURVIVAL FOR %d minute"
+msgid_plural "SURVIVAL FOR %d minutes"
+msgstr[0] "SURVIVAL FOR %d minute"
+msgstr[1] "SURVIVAL FOR %d minutes"
 
-#: ../src/mission.c:1213
+#. / "%d" must be retained.  It is replaced with the mission time
+#. / limit in minutes.
+#: ../src/mission.c:1203
+#, c-format
+msgid "TIME LIMIT: %d minute"
+msgid_plural "TIME LIMIT: %d minutes"
+msgstr[0] "TIME LIMIT: %d minute"
+msgstr[1] "TIME LIMIT: %d minutes"
+
+#: ../src/mission.c:1219
 msgid "Phoebe Lexx will not be present"
 msgstr "Phoebe Lexx will not be present"
 
-#: ../src/mission.c:1215
+#: ../src/mission.c:1221
 msgid "Ursula Lexx will not be present"
 msgstr "Ursula Lexx will not be present"
 
-#: ../src/mission.c:1222
+#: ../src/mission.c:1228
 msgid "Sid Wilson will join you on this mission"
 msgstr "Sid Wilson will join you on this mission"
 
-#: ../src/mission.c:1310 ../src/mission.c:1330
+#: ../src/mission.c:1316 ../src/mission.c:1336
 msgid "COMPLETED"
 msgstr "COMPLETED"
 
-#: ../src/mission.c:1315 ../src/mission.c:1335
+#: ../src/mission.c:1321 ../src/mission.c:1341
 msgid "FAILED"
 msgstr "FAILED"
 
 #. / "%d" must be retained.  It is replaced with the money earned
 #. / from the shield bonus.
-#: ../src/mission.c:1346
+#: ../src/mission.c:1352
 #, c-format
 msgid "Shield Bonus: $%d"
 msgstr "Shield Bonus: $%d"
@@ -2678,65 +2687,65 @@ msgstr "Shield Bonus: $%d"
 #. / the "%02ld" sequences may be changed to "%ld" if you wish to
 #. / not force two digits to be filled in (e.g. to render the number
 #. / 3 as "3" instead of "03").
-#: ../src/mission.c:1362
+#: ../src/mission.c:1368
 #, c-format
 msgid "Mission Time: %02ld:%02ld"
 msgstr "Mission Time: %02ld:%02ld"
 
-#: ../src/save.c:76 ../src/save.c:122
+#: ../src/save.c:77
 msgid "AUTOSAVE"
 msgstr "AUTOSAVE"
 
-#: ../src/save.c:84 ../src/save.c:129
+#: ../src/save.c:94 ../src/save.c:108
 msgid "Corrupt Game Data"
 msgstr "Corrupt Game Data"
 
 #. / Used for empty save slots.
-#: ../src/save.c:113
+#: ../src/save.c:127
 msgid "AUTOSAVE (Empty)"
 msgstr "AUTOSAVE (Empty)"
 
-#: ../src/save.c:113
+#: ../src/save.c:127
 msgid "Empty"
 msgstr "Empty"
 
-#: ../src/save.c:383
+#: ../src/save.c:343
 msgid "*** HELP ***"
 msgstr "*** HELP ***"
 
-#: ../src/save.c:395
+#: ../src/save.c:355
 msgid "SAVE"
 msgstr "SAVE"
 
-#: ../src/save.c:396
+#: ../src/save.c:356
 msgid "CANCEL"
 msgstr "CANCEL"
 
-#: ../src/save.c:397
+#: ../src/save.c:357
 msgid "DELETE"
 msgstr "DELETE"
 
-#: ../src/save.c:398
+#: ../src/save.c:358
 msgid "SAVE will save the game"
 msgstr "SAVE will save the game"
 
-#: ../src/save.c:399
+#: ../src/save.c:359
 msgid "CANCEL will unselect that slot"
 msgstr "CANCEL will unselect that slot"
 
-#: ../src/save.c:400
+#: ../src/save.c:360
 msgid "DELETE will remove the save"
 msgstr "DELETE will remove the save"
 
-#: ../src/save.c:403
+#: ../src/save.c:363
 msgid "First click a Save game slot to use"
 msgstr "First click a Save game slot to use"
 
-#: ../src/save.c:406
+#: ../src/save.c:366
 msgid "Game Saved"
 msgstr "Game Saved"
 
-#: ../src/save.c:409
+#: ../src/save.c:369
 msgid "Save Deleted"
 msgstr "Save Deleted"
 
