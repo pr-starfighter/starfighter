@@ -92,7 +92,9 @@ typedef struct Engine_ {
 
 	char configDirectory[PATH_MAX];
 	
-	char keyState[KEY_LAST];
+	int keyState[KEY_LAST];
+	double xaxis;
+	double yaxis;
 
 	int cheat; // overall cheat
 	int cheatShield;

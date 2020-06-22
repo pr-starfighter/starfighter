@@ -1339,6 +1339,8 @@ static void game_doPlayer()
 	int shapeToUse;
 	float cd;
 	float cc;
+	double xm = 0;
+	double ym = 0;
 	int xmoved = 0;
 	int ymoved = 0;
 	char msg[STRMAX];
@@ -1444,34 +1446,27 @@ static void game_doPlayer()
 			LIMIT_ADD(player.reload[0], -1, 0, 999);
 			LIMIT_ADD(player.reload[1], -1, 0, 999);
 
-			if (engine.keyState[KEY_UP])
+			xm = engine.keyState[KEY_RIGHT] - engine.keyState[KEY_LEFT];
+			if (!xm)
+				xm = engine.xaxis;
+			
+			if (xm)
 			{
-				player.y -= player.speed;
-				engine.ssy += 0.1;
-				ymoved = 1;
-			}
-
-			if (engine.keyState[KEY_DOWN])
-			{
-				player.y += player.speed;
-				engine.ssy -= 0.1;
-				ymoved = 1;
-			}
-
-			if (engine.keyState[KEY_LEFT])
-			{
-				player.x -= player.speed;
-				engine.ssx += 0.1;
-				player.face = 1;
+				player.x += xm * player.speed;
+				engine.ssx -= xm * 0.1;
+				player.face = (xm < 0 ? 1 : 0);
 				xmoved = 1;
 			}
 
-			if (engine.keyState[KEY_RIGHT])
+			ym = engine.keyState[KEY_DOWN] - engine.keyState[KEY_UP];
+			if (!ym)
+				ym = engine.yaxis;
+			
+			if (ym)
 			{
-				player.x += player.speed;
-				engine.ssx -= 0.1;
-				player.face = 0;
-				xmoved = 1;
+				player.y += ym * player.speed;
+				engine.ssy -= ym * 0.1;
+				ymoved = 1;
 			}
 
 			if (engine.keyState[KEY_ESCAPE])
@@ -1650,6 +1645,8 @@ static void game_doPlayer()
 			engine.keyState[KEY_DOWN] = 0;
 			engine.keyState[KEY_LEFT] = 0;
 			engine.keyState[KEY_RIGHT] = 0;
+			engine.xaxis = 0;
+			engine.yaxis = 0;
 			if (CHANCE(1. / 3.))
 				explosion_add(player.x + RANDRANGE(-10, 10),
 					player.y + RANDRANGE(-10, 10), SP_BIG_EXPLOSION);
@@ -2705,6 +2702,8 @@ int game_mainLoop()
 						engine.keyState[KEY_RIGHT] = 0;
 						engine.keyState[KEY_FIRE] = 0;
 						engine.keyState[KEY_ALTFIRE] = 0;
+						engine.xaxis = 0;
+						engine.yaxis = 0;
 						LIMIT_ADD(engine.musicVolume, -0.2, 0, 100);
 						audio_setMusicVolume(engine.musicVolume);
 					}

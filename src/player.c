@@ -17,6 +17,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <math.h>
+#include <stdlib.h>
+
 #include "SDL.h"
 
 #include "defs.h"
@@ -243,8 +246,7 @@ static enum keys mapkey(int code) {
 
 void player_getInput()
 {
-	static int prevjoyup, prevjoydown, prevjoyleft, prevjoyright;
-	int joyup, joydown, joyleft, joyright;
+	double val;
 	static int px = -1, py = -1;
 	int x, y, w, h;
 
@@ -315,21 +317,15 @@ void player_getInput()
 				break;
 
 			case SDL_JOYAXISMOTION:
-				if (engine.event.jaxis.axis == 1) {
-					joyup = engine.event.jaxis.value < -16384;
-					joydown = engine.event.jaxis.value >= 16384;
-					if (joyup != prevjoyup)
-						engine.keyState[KEY_UP] = prevjoyup = joyup;
-					if (joydown != prevjoydown)
-						engine.keyState[KEY_DOWN] = prevjoydown = joydown;
-				} else if (engine.event.jaxis.axis == 0) {
-					joyleft = engine.event.jaxis.value < -16384;
-					joyright = engine.event.jaxis.value >= 16384;
-					if (joyleft != prevjoyleft)
-						engine.keyState[KEY_LEFT] = prevjoyleft = joyleft;
-					if (joyright != prevjoyright)
-						engine.keyState[KEY_RIGHT] = prevjoyright = joyright;
-				}
+				val = MIN(1, (double)(abs(engine.event.jaxis.value)) / JS_MAX);
+				if (val < JS_DEADZONE)
+					val = 0;
+
+				if (engine.event.jaxis.axis == 0)
+					engine.xaxis = copysign(val, engine.event.jaxis.value);
+				else if (engine.event.jaxis.axis == 1)
+					engine.yaxis = copysign(val, engine.event.jaxis.value);
+
 				break;
 
 			case SDL_WINDOWEVENT:
@@ -365,14 +361,18 @@ void player_getInput()
 		x = screen->w * x / w;
 		y = screen->h * y / h;
 		if (px == x && py == y) {
-			if(engine.keyState[KEY_UP] && engine.cursor_y > 0)
+			if (engine.keyState[KEY_UP])
 				engine.cursor_y -= 4;
-			if(engine.keyState[KEY_DOWN] && engine.cursor_y < screen->h - 4)
+			if (engine.keyState[KEY_DOWN])
 				engine.cursor_y += 4;
-			if(engine.keyState[KEY_LEFT] && engine.cursor_x > 0)
+			if (engine.keyState[KEY_LEFT])
 				engine.cursor_x -= 4;
-			if(engine.keyState[KEY_RIGHT] && engine.cursor_x < screen->w - 4)
+			if (engine.keyState[KEY_RIGHT])
 				engine.cursor_x += 4;
+			if (engine.xaxis)
+				engine.cursor_x += 10 * engine.xaxis;
+			if (engine.yaxis)
+				engine.cursor_y += 10 * engine.yaxis;
 		} else {
 			engine.cursor_x = px = x;
 			engine.cursor_y = py = y;

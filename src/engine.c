@@ -103,6 +103,9 @@ void engine_init()
 	for (int i = 0; i < KEY_LAST; i++)
 		engine.keyState[i] = 0;
 
+	engine.xaxis = 0;
+	engine.yaxis = 0;
+
 	engine.eventTimer = 0;
 	engine.counter2 = 0;
 	engine.timeTaken = 0;

@@ -103,6 +103,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define BRIEFING_WIDTH 520
 
+#define JS_DEADZONE 0.05
+#define JS_MAX (32767 - JS_DEADZONE*32767)
+
 // Object Flags
 #define FL_WEAPCO 			(1L << 0)
 #define FL_FRIEND 			(1L << 1)
