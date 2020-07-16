@@ -89,6 +89,7 @@ typedef struct Engine_ {
 	int useMusic;
 	int fullScreen;
 	int autoPause;
+	int radioLife;
 
 	char configDirectory[PATH_MAX];
 	

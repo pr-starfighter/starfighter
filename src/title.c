@@ -131,6 +131,19 @@ static void createOptionsMenu()
 		gfx_createTextObject(TS_AUTOPAUSE, _("AUTOPAUSE - ON"), 0, 0, FONT_WHITE);
 	else
 		gfx_createTextObject(TS_AUTOPAUSE, _("AUTOPAUSE - OFF"), 0, 0, FONT_WHITE);
+
+	if (engine.radioLife == RADIO_LIFE_INSTANT)
+		gfx_createTextObject(TS_RADIO_SPEED, _("MESSAGE SPEED - INSTANT"), 0, 0, FONT_WHITE);
+	else if (engine.radioLife == RADIO_LIFE_FAST)
+		gfx_createTextObject(TS_RADIO_SPEED, _("MESSAGE SPEED - FAST"), 0, 0, FONT_WHITE);
+	else if (engine.radioLife == RADIO_LIFE_NORMAL)
+		gfx_createTextObject(TS_RADIO_SPEED, _("MESSAGE SPEED - NORMAL"), 0, 0, FONT_WHITE);
+	else if (engine.radioLife == RADIO_LIFE_SLOW)
+		gfx_createTextObject(TS_RADIO_SPEED, _("MESSAGE SPEED - SLOW"), 0, 0, FONT_WHITE);
+	else if (engine.radioLife == RADIO_LIFE_SLOTH)
+		gfx_createTextObject(TS_RADIO_SPEED, _("MESSAGE SPEED - SLOTH"), 0, 0, FONT_WHITE);
+	else // Shouldn't happen, but adding this just in case
+		gfx_createTextObject(TS_RADIO_SPEED, _("MESSAGE SPEED - ERROR"), 0, 0, FONT_WHITE);
 }
 
 static int showOptionsMenu()
@@ -139,10 +152,11 @@ static int showOptionsMenu()
 	screen_blitText(TS_MUSIC, -1, MENU_Y + MENU_SPACING);
 	screen_blitText(TS_FULLSCREEN, -1, MENU_Y + 2 * MENU_SPACING);
 	screen_blitText(TS_AUTOPAUSE, -1, MENU_Y + 3 * MENU_SPACING);
+	screen_blitText(TS_RADIO_SPEED, -1, MENU_Y + 4 * MENU_SPACING);
 	gfx_textSprites[TS_BACK_TO_MAIN_MENU].y = 0;
-	screen_blitText(TS_BACK_TO_MAIN_MENU, -1, MENU_Y + 5 * MENU_SPACING);
+	screen_blitText(TS_BACK_TO_MAIN_MENU, -1, MENU_Y + 6 * MENU_SPACING);
 
-	return 5;
+	return 6;
 }
 
 static void createCheatMenu()
@@ -435,7 +449,7 @@ int title_show()
 						else if (selectedOption == 4)
 						{
 							menuType = MENU_OPTIONS;
-							selectedOption = 5;
+							selectedOption = 6;
 						}
 						else if (selectedOption == 5)
 						{
@@ -512,6 +526,21 @@ int title_show()
 						else if (selectedOption == 4)
 						{
 							engine.autoPause = !engine.autoPause;
+						}
+						else if (selectedOption == 5)
+						{
+							if (engine.radioLife == RADIO_LIFE_INSTANT)
+								engine.radioLife = RADIO_LIFE_FAST;
+							else if (engine.radioLife == RADIO_LIFE_FAST)
+								engine.radioLife = RADIO_LIFE_NORMAL;
+							else if (engine.radioLife == RADIO_LIFE_NORMAL)
+								engine.radioLife = RADIO_LIFE_SLOW;
+							else if (engine.radioLife == RADIO_LIFE_SLOW)
+								engine.radioLife = RADIO_LIFE_SLOTH;
+							else if (engine.radioLife == RADIO_LIFE_SLOTH)
+								engine.radioLife = RADIO_LIFE_INSTANT;
+							else // Just in case
+								engine.radioLife = RADIO_LIFE_NORMAL;
 						}
 						else if (selectedOption == listLength)
 						{

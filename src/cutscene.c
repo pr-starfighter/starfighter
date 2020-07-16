@@ -88,7 +88,7 @@ void cutscene_init(int scene)
 			aliens[0].image[0] = gfx_shipSprites[SS_FIREFLY];
 			aliens[0].x = screen->w * 3 / 5;
 			aliens[0].y = screen->h / 2;
-			aliens[0].dx = 3.1;
+			aliens[0].dx = 3.05;
 			aliens[0].active = 1;
 
 			for (int i = 1 ; i < 7 ; i++)
@@ -162,7 +162,7 @@ void cutscene_init(int scene)
 
 		case 2:
 			gfx_loadBackground("gfx/spirit.jpg");
-			engine.ssx = -1.4;
+			engine.ssx = -1.45;
 			engine.ssy = 0;
 
 			aliens[0].image[0] = gfx_shipSprites[SS_FIREFLY];
@@ -254,7 +254,7 @@ void cutscene_init(int scene)
 
 		case 4:
 			gfx_loadBackground("gfx/eyananth.jpg");
-			engine.ssx = -1.4;
+			engine.ssx = -1.45;
 			engine.ssy = 0;
 
 			aliens[0].image[0] = gfx_shipSprites[SS_FIREFLY];
@@ -360,7 +360,7 @@ void cutscene_init(int scene)
 
 		case 6:
 			gfx_loadBackground("gfx/mordor.jpg");
-			engine.ssx = -1.4;
+			engine.ssx = -1.45;
 			engine.ssy = 0;
 
 			aliens[0].image[0] = gfx_shipSprites[SS_FIREFLY];
@@ -446,7 +446,7 @@ void cutscene_init(int scene)
 				if (scene == 0 && i > 0 && (timer % 15) == i) {
 					aliens[i].dx += (DRAND - 0.5) * 0.1;
 					aliens[i].dy += (DRAND - 0.5) * 0.1;
-					if (aliens[i].x > 500 - timer)
+					if (aliens[i].x > 500 - (timer % 480))
 						aliens[i].dx -= 0.2;
 					if (aliens[i].x < 0)
 						aliens[i].dx += 0.2;
@@ -468,13 +468,13 @@ void cutscene_init(int scene)
 		}
 
 		timer--;
-		if (timer == 0)
+		if (timer <= 0)
 		{
 			showMessage = !showMessage;
-			timer = 120;
+			timer = 30;
 			if (showMessage)
 			{
-				timer = 60 * 7;
+				timer = engine.radioLife * 2;
 				currentMessage++;
 
 				if (currentMessage == 10)
@@ -498,8 +498,14 @@ void cutscene_init(int scene)
 
 		game_delayFrame();
 
-		if ((engine.keyState[KEY_ESCAPE]) || (engine.keyState[KEY_FIRE]) ||
-				(engine.keyState[KEY_ALTFIRE]))
+		if ((engine.keyState[KEY_FIRE]) || (engine.keyState[KEY_ALTFIRE]))
+		{
+			timer = 0;
+			engine.keyState[KEY_FIRE] = 0;
+			engine.keyState[KEY_ALTFIRE] = 0;
+		}
+
+		if (engine.keyState[KEY_ESCAPE])
 			break;
 	}
 

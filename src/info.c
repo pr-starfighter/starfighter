@@ -21,6 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "structs.h"
 
 #include "gfx.h"
+#include "engine.h"
 
 void info_clearLines()
 {
@@ -66,5 +67,5 @@ void info_setLine(const char *in, int color)
 	}
 
 	gfx_createTextObject(index, in, 0, 0, color);
-	gfx_textSprites[index].life = 240;
+	gfx_textSprites[index].life = engine.radioLife;
 }

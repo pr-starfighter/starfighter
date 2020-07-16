@@ -106,6 +106,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define JS_DEADZONE 0.05
 #define JS_MAX (32767 - JS_DEADZONE*32767)
 
+// Radio life/speed
+#define RADIO_LIFE_INSTANT  60
+#define RADIO_LIFE_FAST     120
+#define RADIO_LIFE_NORMAL   240
+#define RADIO_LIFE_SLOW     360
+#define RADIO_LIFE_SLOTH    480
+#define DEFAULT_RADIO_LIFE  RADIO_LIFE_NORMAL
+
 // Object Flags
 #define FL_WEAPCO 			(1L << 0)
 #define FL_FRIEND 			(1L << 1)
@@ -552,6 +560,7 @@ enum {
 	TS_MUSIC,
 	TS_FULLSCREEN,
 	TS_AUTOPAUSE,
+	TS_RADIO_SPEED,
 	TS_BACK_TO_MAIN_MENU,
 	TS_SAVESLOT_0,
 	TS_SAVESLOT_1,

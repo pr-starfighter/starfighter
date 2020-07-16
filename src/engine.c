@@ -274,6 +274,7 @@ void engine_setMode()
 	int useSound = 1;
 	int useMusic = 1;
 	int autoPause = 0;
+	int radioLife = DEFAULT_RADIO_LIFE;
 
 	FILE *fp;
 	snprintf(filename, PATH_MAX, "%sconf", engine.configDirectory);
@@ -281,7 +282,7 @@ void engine_setMode()
 
 	if (fp != NULL)
 	{
-		if (fscanf(fp, "%d %d %d %d", &fullScreen, &useSound, &useMusic, &autoPause) < 4)
+		if (fscanf(fp, "%d %d %d %d %d", &fullScreen, &useSound, &useMusic, &autoPause, &radioLife) < 5)
 			printf("Warning: Config file \"%s\" is not correctly formatted\n", filename);
 		fclose(fp);
 	}
@@ -290,6 +291,7 @@ void engine_setMode()
 	engine.useSound = useSound;
 	engine.useMusic = useMusic;
 	engine.autoPause = autoPause;
+	engine.radioLife = radioLife;
 
 	screen_adjustDimensions(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT);
 
@@ -449,8 +451,9 @@ void engine_cleanup()
 	fp = fopen(filename, "w");
 	if (fp != NULL)
 	{
-		fprintf(fp, "%d %d %d %d\n", engine.fullScreen, engine.useSound,
-			engine.useMusic, engine.autoPause);
+		fprintf(fp, "%d %d %d %d %d\n",
+			engine.fullScreen, engine.useSound, engine.useMusic,
+			engine.autoPause, engine.radioLife);
 		fclose(fp);
 	}
 	else

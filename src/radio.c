@@ -41,7 +41,7 @@ void radio_setMessage(int face, const char *in, int priority)
 		return;
 
 	gfx_createTextObject(TS_RADIO, in, -1, 50, FONT_WHITE);
-	gfx_textSprites[TS_RADIO].life = 240;
+	gfx_textSprites[TS_RADIO].life = engine.radioLife;
 
 	if (face > -1)
 		faceShape = gfx_faceSprites[face];
