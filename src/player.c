@@ -310,10 +310,10 @@ void player_getInput()
 				break;
 
 			case SDL_JOYHATMOTION:
-				engine.keyState[KEY_UP]    = engine.event.jhat.value & SDL_HAT_UP;
-				engine.keyState[KEY_DOWN]  = engine.event.jhat.value & SDL_HAT_DOWN;
-				engine.keyState[KEY_LEFT]  = engine.event.jhat.value & SDL_HAT_LEFT;
-				engine.keyState[KEY_RIGHT] = engine.event.jhat.value & SDL_HAT_RIGHT;
+				engine.keyState[KEY_UP]    = (engine.event.jhat.value & SDL_HAT_UP ? 1 : 0);
+				engine.keyState[KEY_DOWN]  = (engine.event.jhat.value & SDL_HAT_DOWN ? 1 : 0);
+				engine.keyState[KEY_LEFT]  = (engine.event.jhat.value & SDL_HAT_LEFT ? 1 : 0);
+				engine.keyState[KEY_RIGHT] = (engine.event.jhat.value & SDL_HAT_RIGHT ? 1 : 0);
 				break;
 
 			case SDL_JOYAXISMOTION:
@@ -389,6 +389,8 @@ void player_leaveSector()
 	engine.keyState[KEY_RIGHT] = 0;
 	engine.keyState[KEY_FIRE] = 0;
 	engine.keyState[KEY_ALTFIRE] = 0;
+	engine.xaxis = 0;
+	engine.yaxis = 0;
 
 	if (engine.done == ENGINE_RUNNING)
 		engine.done = ENGINE_FORMATION;
