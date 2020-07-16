@@ -912,7 +912,7 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
 			/// Mission dialog: Spirit, Moebo (Sid Wilson)
-			strcpy(string, _("We're all counting on you, Chris! But just remember - They didn't call that thing \"Star Killer\" just because it sounded nice!"));
+			strcpy(string, _("We're all counting on you, Chris! But remember, they didn't call that thing \"Star Killer\" just because it sounded nice!"));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
 			break;
@@ -959,14 +959,14 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
 			/// Mission dialog: Eyananth, Allez (Chris Bainfield)
-			strcpy(string, _("Alright, Tell 'em I'm on my way."));
+			strcpy(string, _("Alright, tell 'em I'm on my way."));
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
 			break;
 
 		case MISN_URUSOR:
 			/// Mission dialog: Eyananth, Urusor (Sid Wilson)
-			strcpy(string, _("I need some resources before we leave, it'll make life a lot easier in Mordor. Problem is that WEAPCO hoards these parts."));
+			strcpy(string, _("I need some resources before we leave. It'll make life a lot easier in Mordor. Problem is that WEAPCO hoards these parts."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
 			/// Mission dialog: Eyananth, Urusor (Chris Bainfield)
