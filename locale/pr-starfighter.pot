@@ -21,15 +21,15 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.2\n"
+"Project-Id-Version: 2.3\n"
 "Report-Msgid-Bugs-To: Layla Marchant <diligentcircle@riseup.net>\n"
-"POT-Creation-Date: 2020-05-27 02:19-0400\n"
+"POT-Creation-Date: 2020-07-16 14:10-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
@@ -841,7 +841,7 @@ msgstr ""
 #. / with insults that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of insults is permitted.
-#: ../src/game.c:1609
+#: ../src/game.c:1604
 msgid ""
 "Fool.\n"
 "And now you're nothing but a DEAD hero.\n"
@@ -854,7 +854,7 @@ msgstr ""
 #. / with insults that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of insults is permitted.
-#: ../src/game.c:1624
+#: ../src/game.c:1619
 msgid ""
 "Pathetic.\n"
 "How very disappointing...\n"
@@ -863,7 +863,7 @@ msgstr ""
 
 #. / Dialog: Krass Tyler
 #. / Used when the player is killed in the Jupiter mission.
-#: ../src/game.c:1635
+#: ../src/game.c:1630
 msgid "That was the easiest $90,000,000 I've ever earned! Bwah! Ha! Ha! Ha!"
 msgstr ""
 
@@ -875,37 +875,37 @@ msgstr ""
 #. / timer to use single-digit numbers.
 #. / The ":" can also be replaced just like any text.  For example, this would be fine:
 #. /     "Time Remaining - %d minutes and %d seconds"
-#: ../src/game.c:1946
+#: ../src/game.c:1943
 #, c-format
 msgid "Time Remaining - %.2d:%.2d"
 msgstr ""
 
 #. / "%d" must be retained.  It is replaced with the number of mission objectives remaining.
-#: ../src/game.c:1954
+#: ../src/game.c:1951
 #, c-format
 msgid "Objectives Remaining: %d"
 msgstr ""
 
 #. / "%d" must be retained.  It is replaced with the player's current total cash.
 #. / Retain "%d" as-is.  It is replaced with the player's current cash.
-#: ../src/game.c:1960 ../src/shop.c:352
+#: ../src/game.c:1957 ../src/shop.c:352
 #, c-format
 msgid "Cash: $%d"
 msgstr ""
 
 #. / "%.3d" must be retained.  It is replaced with the amount of plasma ammo.
-#: ../src/game.c:1997
+#: ../src/game.c:1994
 #, c-format
 msgid "Plasma: %.3d"
 msgstr ""
 
 #. / Used to indicate the charge meter for the charger cannon in the HUD.
-#: ../src/game.c:2004
+#: ../src/game.c:2001
 msgid "Charge"
 msgstr ""
 
 #. / Used to indicate the heat meter for the laser cannon in the HUD.
-#: ../src/game.c:2009
+#: ../src/game.c:2006
 msgid "Heat"
 msgstr ""
 
@@ -913,38 +913,38 @@ msgstr ""
 #. / Retain "%.2d".  It is replaced with the ship's current number of rockets.
 #. / "%.2d" can be changed to "%d" if you wish to not fill in space with zeroes,
 #. / e.g. render the number 3 as "3" rather than "03".
-#: ../src/game.c:2014 ../src/shop.c:362
+#: ../src/game.c:2011 ../src/shop.c:362
 #, c-format
 msgid "Rockets: %.2d"
 msgstr ""
 
 #. / DIFFICULTY_SUPEREASY
-#: ../src/game.c:2424
+#: ../src/game.c:2421
 msgid "Super-Easy"
 msgstr ""
 
 #. / DIFFICULTY_EASY
-#: ../src/game.c:2428
+#: ../src/game.c:2425
 msgid "Easy"
 msgstr ""
 
 #. / DIFFICULTY_NORMAL
-#: ../src/game.c:2432
+#: ../src/game.c:2429
 msgid "Normal"
 msgstr ""
 
 #. / DIFFICULTY_HARD
-#: ../src/game.c:2436
+#: ../src/game.c:2433
 msgid "Hard"
 msgstr ""
 
 #. / DIFFICULTY_NIGHTMARE
-#: ../src/game.c:2440
+#: ../src/game.c:2437
 msgid "Nightmare!"
 msgstr ""
 
 #. / DIFFICULTY_ORIGINAL (Classic)
-#: ../src/game.c:2444
+#: ../src/game.c:2441
 msgid "Classic"
 msgstr ""
 
@@ -1462,8 +1462,8 @@ msgstr ""
 #. / Mission dialog: Spirit, Moebo (Sid Wilson)
 #: ../src/intermission.c:915
 msgid ""
-"We're all counting on you, Chris! But just remember - They didn't call that "
-"thing \"Star Killer\" just because it sounded nice!"
+"We're all counting on you, Chris! But remember, they didn't call that thing "
+"\"Star Killer\" just because it sounded nice!"
 msgstr ""
 
 #. / Mission dialog: Eyananth, interceptions (Sid Wilson)
@@ -1522,13 +1522,13 @@ msgstr ""
 
 #. / Mission dialog: Eyananth, Allez (Chris Bainfield)
 #: ../src/intermission.c:962
-msgid "Alright, Tell 'em I'm on my way."
+msgid "Alright, tell 'em I'm on my way."
 msgstr ""
 
 #. / Mission dialog: Eyananth, Urusor (Sid Wilson)
 #: ../src/intermission.c:969
 msgid ""
-"I need some resources before we leave, it'll make life a lot easier in "
+"I need some resources before we leave. It'll make life a lot easier in "
 "Mordor. Problem is that WEAPCO hoards these parts."
 msgstr ""
 
@@ -2910,66 +2910,91 @@ msgstr ""
 msgid "AUTOPAUSE - OFF"
 msgstr ""
 
-#: ../src/title.c:151
+#: ../src/title.c:136
+msgid "MESSAGE SPEED - INSTANT"
+msgstr ""
+
+#: ../src/title.c:138
+msgid "MESSAGE SPEED - FAST"
+msgstr ""
+
+#: ../src/title.c:140
+msgid "MESSAGE SPEED - NORMAL"
+msgstr ""
+
+#: ../src/title.c:142
+msgid "MESSAGE SPEED - SLOW"
+msgstr ""
+
+#: ../src/title.c:144
+msgid "MESSAGE SPEED - SLOTH"
+msgstr ""
+
+#. Shouldn't happen, but adding this just in case
+#: ../src/title.c:146
+msgid "MESSAGE SPEED - ERROR"
+msgstr ""
+
+#: ../src/title.c:165
 msgid "UNLIMITED SHIELD - ON"
 msgstr ""
 
-#: ../src/title.c:153
+#: ../src/title.c:167
 msgid "UNLIMITED SHIELD - OFF"
 msgstr ""
 
-#: ../src/title.c:156
+#: ../src/title.c:170
 msgid "UNLIMITED AMMO - ON"
 msgstr ""
 
-#: ../src/title.c:158
+#: ../src/title.c:172
 msgid "UNLIMITED AMMO - OFF"
 msgstr ""
 
-#: ../src/title.c:161
+#: ../src/title.c:175
 msgid "UNLIMITED CASH - ON"
 msgstr ""
 
-#: ../src/title.c:163
+#: ../src/title.c:177
 msgid "UNLIMITED CASH - OFF"
 msgstr ""
 
-#: ../src/title.c:166
+#: ../src/title.c:180
 msgid "UNLIMITED TIME - ON"
 msgstr ""
 
-#: ../src/title.c:168
+#: ../src/title.c:182
 msgid "UNLIMITED TIME - OFF"
 msgstr ""
 
-#: ../src/title.c:236
+#: ../src/title.c:250
 msgid "START NEW GAME"
 msgstr ""
 
-#: ../src/title.c:237
+#: ../src/title.c:251
 msgid "LOAD GAME"
 msgstr ""
 
-#: ../src/title.c:238
+#: ../src/title.c:252
 msgid "CONTINUE CURRENT GAME"
 msgstr ""
 
-#: ../src/title.c:239
+#: ../src/title.c:253
 msgid "OPTIONS"
 msgstr ""
 
-#: ../src/title.c:240
+#: ../src/title.c:254
 msgid "CREDITS"
 msgstr ""
 
-#: ../src/title.c:241
+#: ../src/title.c:255
 msgid "CHEAT OPTIONS"
 msgstr ""
 
-#: ../src/title.c:242
+#: ../src/title.c:256
 msgid "QUIT"
 msgstr ""
 
-#: ../src/title.c:246
+#: ../src/title.c:260
 msgid "BACK TO MAIN MENU"
 msgstr ""
