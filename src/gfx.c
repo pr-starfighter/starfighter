@@ -362,7 +362,7 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int real_x, int fontColo
 			{
 				if (logAttrs[i].is_line_break)
 				{
-					breakPoints[nBreakPoints] = i;
+					breakPoints[nBreakPoints] = i - 1;
 					nBreakPoints++;
 				}
 			}
