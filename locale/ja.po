@@ -18,20 +18,19 @@
 #
 # maruhiro <maruhiro@bridge.ocn.ne.jp>, 2020.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.3\n"
 "Report-Msgid-Bugs-To: Layla Marchant <diligentcircle@riseup.net>\n"
 "POT-Creation-Date: 2020-07-16 14:10-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2020-07-20 11:18-0400\n"
 "Last-Translator: maruhiro <maruhiro@bridge.ocn.ne.jp>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #. / Dialog (Kline Kethlan)
 #. / Used when the final "stage" of the Venus fight is entered.
@@ -724,7 +723,6 @@ msgstr "太陽"
 msgid "Got $%d"
 msgid_plural "Got $%d"
 msgstr[0] "$%d 獲得"
-msgstr[1] "$%d 獲得"
 
 #: ../src/game.c:329
 msgid "Rocket Ammo at Maximum"
@@ -737,7 +735,6 @@ msgstr "ロケット弾 既に最大"
 msgid "Got %d rocket"
 msgid_plural "Got %d rockets"
 msgstr[0] "ロケット弾 %d 獲得"
-msgstr[1] "ロケット弾 %d 獲得"
 
 #: ../src/game.c:345
 msgid "Restored 10 shield points"
@@ -794,7 +791,6 @@ msgstr "プラズマセル 既に最大"
 msgid "Got %d plasma cell"
 msgid_plural "Got %d plasma cells"
 msgstr[0] "プラズマセル %d 獲得"
-msgstr[1] "プラズマセル %d 獲得"
 
 #: ../src/game.c:523
 msgid "Picked up some Cargo"
@@ -805,7 +801,6 @@ msgstr "貨物を回収"
 msgid "Rescued %d slave"
 msgid_plural "Rescued %d slaves"
 msgstr[0] "%d人の奴隷を救出"
-msgstr[1] "%d人の奴隷を救出"
 
 #: ../src/game.c:536
 msgid "Picked up an Escape Pod"
@@ -2180,9 +2175,6 @@ msgid_plural ""
 msgstr[0] ""
 "あと $%d 獲得しろ…\n"
 "あと $%d だ…"
-msgstr[1] ""
-"あと $%d 獲得しろ…\n"
-"あと $%d だ…"
 
 #. / Info line messages for remaining cargo pods to collect
 #. / This is a "\n"-separated list of possible choices to make.  Please feel free
@@ -2204,9 +2196,6 @@ msgid_plural ""
 msgstr[0] ""
 "あと %dつ 回収しろ…\n"
 "あと %dつ だ…"
-msgstr[1] ""
-"あと %dつ 回収しろ…\n"
-"あと %dつ だ…"
 
 #. / Info line messages for remaining ore to collect
 #. / This is a "\n"-separated list of possible choices to make.  Please feel free
@@ -2224,9 +2213,6 @@ msgid_plural ""
 "%d more pieces of ore to collect...\n"
 "%d more pieces of ore needed..."
 msgstr[0] ""
-"あと %d個 獲得しろ…\n"
-"あと %d個 だ…"
-msgstr[1] ""
 "あと %d個 獲得しろ…\n"
 "あと %d個 だ…"
 
@@ -2292,9 +2278,6 @@ msgid_plural ""
 msgstr[0] ""
 "あと %d隻 だ…\n"
 "%d隻 破壊しろ…"
-msgstr[1] ""
-"あと %d隻 だ…\n"
-"%d隻 破壊しろ…"
 
 #. / Info line messages for remaining enemies to disable
 #. / This is a "\n"-separated list of possible choices to make.  Please feel free
@@ -2312,9 +2295,6 @@ msgid_plural ""
 "%d more targets to disable...\n"
 "Disable %d remaining targets..."
 msgstr[0] ""
-"あと %d隻 航行不能にしろ…\n"
-"あと %d隻 だ…"
-msgstr[1] ""
 "あと %d隻 航行不能にしろ…\n"
 "あと %d隻 だ…"
 
@@ -2361,9 +2341,6 @@ msgid_plural ""
 "At least %d more slaves to rescue...\n"
 "At least %d more rescued slaves needed..."
 msgstr[0] ""
-"%d人 の奴隷を救出しろ…\n"
-"あと %d人 だ…"
-msgstr[1] ""
 "%d人 の奴隷を救出しろ…\n"
 "あと %d人 だ…"
 
@@ -2456,7 +2433,6 @@ msgstr "クライン"
 msgid "SURVIVAL FOR %d minute"
 msgid_plural "SURVIVAL FOR %d minutes"
 msgstr[0] "%d分間 生き延びる"
-msgstr[1] "%d分間 生き延びる"
 
 #. / "%d" must be retained.  It is replaced with the mission time
 #. / limit in minutes.
@@ -2465,7 +2441,6 @@ msgstr[1] "%d分間 生き延びる"
 msgid "TIME LIMIT: %d minute"
 msgid_plural "TIME LIMIT: %d minutes"
 msgstr[0] "制限時間: %d分"
-msgstr[1] "制限時間: %d分"
 
 #: ../src/mission.c:1219
 msgid "Phoebe Lexx will not be present"
