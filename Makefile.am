@@ -20,4 +20,3 @@ nobase_dist_pkgdata_DATA = data/* gfx/* music/* sound/* \
 	locale/ja/LC_MESSAGES/pr-starfighter.mo
 
 EXTRA_DIST = autogen.sh win32build.sh misc
-
