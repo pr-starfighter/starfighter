@@ -258,6 +258,15 @@ This sets up the video and sound system, and creates Starfighter's window.
 */
 void engine_setMode()
 {
+	char filename[PATH_MAX];
+	int fullScreen = 0;
+	int useSound = 1;
+	int useMusic = 1;
+	int autoPause = 0;
+	int radioLife = DEFAULT_RADIO_LIFE;
+	char lang[STRMAX_SHORT];
+	strcpy(lang, "default");
+
 	strcpy(engine.configDirectory, "");
 
 	engine_setupConfigDirectory();
@@ -269,20 +278,15 @@ void engine_setMode()
 		exit(1);
 	}
 
-	char filename[PATH_MAX];
-	int fullScreen = 0;
-	int useSound = 1;
-	int useMusic = 1;
-	int autoPause = 0;
-	int radioLife = DEFAULT_RADIO_LIFE;
-
 	FILE *fp;
 	snprintf(filename, PATH_MAX, "%sconf", engine.configDirectory);
 	fp = fopen(filename, "r");
 
 	if (fp != NULL)
 	{
-		if (fscanf(fp, "%d %d %d %d %d", &fullScreen, &useSound, &useMusic, &autoPause, &radioLife) < 5)
+		if (fscanf(fp, "%d %d %d %d %d%*c%[^\n]",
+				&fullScreen, &useSound, &useMusic, &autoPause,
+				&radioLife, lang) < 6)
 			printf("Warning: Config file \"%s\" is not correctly formatted\n", filename);
 		fclose(fp);
 	}
@@ -292,6 +296,7 @@ void engine_setMode()
 	engine.useMusic = useMusic;
 	engine.autoPause = autoPause;
 	engine.radioLife = radioLife;
+	strcpy(engine.lang, lang);
 
 	screen_adjustDimensions(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT);
 
@@ -451,9 +456,11 @@ void engine_cleanup()
 	fp = fopen(filename, "w");
 	if (fp != NULL)
 	{
-		fprintf(fp, "%d %d %d %d %d\n",
+		fprintf(fp,
+			"%d %d %d %d %d\n"
+			"%s\n",
 			engine.fullScreen, engine.useSound, engine.useMusic,
-			engine.autoPause, engine.radioLife);
+			engine.autoPause, engine.radioLife, engine.lang);
 		fclose(fp);
 	}
 	else

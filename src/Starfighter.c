@@ -78,10 +78,6 @@ int main(int argc, char **argv)
 		printf("Warning: failed to change directory to \"%s\"\n", DATADIR);
 #endif
 
-	setlocale(LC_ALL, "");
-	bindtextdomain("pr-starfighter", "./locale/");
-	textdomain("pr-starfighter");
-
 	engine_init(); // Must do this first!
 
 	cheatAttempt = 0;
@@ -129,8 +125,17 @@ int main(int argc, char **argv)
 	atexit(engine_cleanup);
 
 	gfx_init();
-	engine_setMode();
+	engine_setMode(); // Settings get loaded here
 	gfx_loadFont();
+
+	if ((strcmp(engine.lang, "default") == 0)
+			|| (strcmp(engine.lang, "") == 0))
+		setlocale(LC_ALL, "");
+	else
+		setlocale(LC_ALL, engine.lang);
+
+	bindtextdomain("pr-starfighter", "./locale/");
+	textdomain("pr-starfighter");
 
 	if (cheatAttempt && !engine.cheat)
 	{

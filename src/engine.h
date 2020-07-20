@@ -90,6 +90,7 @@ typedef struct Engine_ {
 	int fullScreen;
 	int autoPause;
 	int radioLife;
+	char lang[STRMAX_SHORT];
 
 	char configDirectory[PATH_MAX];
 	
