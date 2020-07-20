@@ -113,12 +113,12 @@ void events_init()
 			/// Dialog (friendly transport from Eyananth, Allez mission)
 			strcpy(events[0].message, _("Thank God! Please, help us! If they destroy this ship..."));
 
-			events[1].time = 6;
+			events[1].time = 3 + engine.radioLife/60;
 			events[1].face = FS_CHRIS;
 			/// Dialog (Chris Bainfield)
 			strcpy(events[1].message, _("How long do you need?"));
 
-			events[2].time = 10;
+			events[2].time = 4 + 2*engine.radioLife/60;
 			events[2].face = FS_CREW;
 			/// Dialog (friendly transport from Eyananth, Allez mission)
 			strcpy(events[2].message, _("Just a few minutes!"));
@@ -168,6 +168,15 @@ void events_init()
 			break;
 
 		case MISN_ELAMALE:
+			/* It would be trivial to modify these radio times for
+			 * engine.radioLife like with everything else, but we don't
+			 * do that here so that the music cue stays the same.  A bit
+			 * inconsistent, but the dialog isn't terribly important,
+			 * just flavor text really, and you can read it at your
+			 * leasure if you want by pausing.  We might change this
+			 * later if we decide that preserving the music cue isn't
+			 * important after all.
+			 */
 			events[0].time = 5;
 			events[0].face = FS_PHOEBE;
 			/// Dialog (Phoebe Lexx)
@@ -225,12 +234,12 @@ void events_init()
 			/// Translation note: This should appear robotic or at least monotone.
 			strcpy(events[0].message, _("Unidentified craft sighted. Will proceed to destroy all targets."));
 
-			events[1].time = 8;
+			events[1].time = 4 + engine.radioLife/60;
 			events[1].face = FS_CHRIS;
 			/// Dialog (Chris Bainfield)
 			strcpy(events[1].message, _("Looks like she's got one of those homing missile launchers too! Any advice, Phoebe?"));
 
-			events[2].time = 14;
+			events[2].time = 5 + 2*engine.radioLife/60;
 			events[2].face = FS_PHOEBE;
 			/// Dialog (Phoebe Lexx)
 			strcpy(events[2].message, _("Just try and dodge them!"));
@@ -243,7 +252,7 @@ void events_init()
 			/// Dialog (Chris Bainfield)
 			strcpy(events[0].message, _("That's a nice ship you got there, old-timer!"));
 
-			events[1].time = 7;
+			events[1].time = 2 + engine.radioLife/60;
 			events[1].face = FS_KRASS;
 			/// Dialog (Krass Tyler)
 			strcpy(events[1].message, _("Thanks, boy. Made it myself!"));
@@ -333,12 +342,12 @@ void events_init()
 			/// Dialog (Ursula Lexx)
 			strcpy(events[1].message, _("It's a trap! My God! It's Tyler!"));
 
-			events[2].time = 8;
+			events[2].time = 3 + engine.radioLife/60;
 			events[2].face = FS_KRASS;
 			/// Dialog (Krass Tyler)
 			strcpy(events[2].message, _("I'm a mercenary, what do you expect?! WEAPCO hired me to do a job, just like you have been doing."));
 
-			events[3].time = 14;
+			events[3].time = 4 + 2*engine.radioLife/60;
 			events[3].face = FS_CHRIS;
 			/// Dialog (Chris Bainfield)
 			strcpy(events[3].message, _("Good point. It would be foolish to expect anything else."));
@@ -347,12 +356,12 @@ void events_init()
 			events[4].entity = ALIEN_BOSS_PART2;
 			events[4].flag = -FL_ACTIVATE;
 
-			events[5].time = 20;
+			events[5].time = 5 + 3*engine.radioLife/60;
 			events[5].face = FS_KRASS;
 			/// Dialog (Krass Tyler)
 			strcpy(events[5].message, _("Now if you'll assist me in dying quickly, I have a cheque to earn, boy..."));
 
-			events[6].time = 25;
+			events[6].time = 6 + 4*engine.radioLife/60;
 			events[6].face = FS_CHRIS;
 			/// Dialog (Chris Bainfield)
 			strcpy(events[6].message, _("I have a name, you know. Do you remember it?"));
@@ -373,7 +382,7 @@ void events_init()
 			/// Dialog (Kline Kethlan)
 			strcpy(events[0].message, _("That's far enough, Bainfield. You've been lucky so far, but your luck is about to run out!"));
 
-			events[1].time = 8;
+			events[1].time = 3 + engine.radioLife/60;
 			events[1].face = FS_CHRIS;
 			/// Dialog (Chris Bainfield)
 			strcpy(events[1].message, _("Yeah, right! Like I'd lose to you after coming this far!"));
@@ -386,7 +395,7 @@ void events_init()
 			/// Dialog (Chris Bainfield)
 			strcpy(events[0].message, _("WEAPCO is finished, Kethlan! You have nowhere to run, nowhere to hide, and no one to help you."));
 
-			events[1].time = 8;
+			events[1].time = 3 + engine.radioLife/60;
 			events[1].face = FS_KLINE;
 			/// Dialog (Kline Kethlan)
 			strcpy(events[1].message, _("You underestimate me, Bainfield."));
