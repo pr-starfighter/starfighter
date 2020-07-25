@@ -296,7 +296,6 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int real_x, int fontColo
 	char testStr[STRMAX];
 	char remainingStr[STRMAX];
 	PangoLogAttr logAttrs[STRMAX];
-	PangoAnalysis *analysis;
 	int nLogAttrs;
 	int i;
 	SDL_Rect area;
@@ -357,16 +356,13 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int real_x, int fontColo
 		{
 			nLogAttrs = strlen(remainingStr) + 1;
 			pango_get_log_attrs(remainingStr, strlen(remainingStr), -1, NULL, logAttrs, nLogAttrs);
-			pango_default_break(
-				remainingStr, strlen(remainingStr), NULL, logAttrs, nLogAttrs);
 
 			nBreakPoints = 0;
 			for (i = 0; i < nLogAttrs; i++)
 			{
-				if (logAttrs[i].is_line_break
-						&& logAttrs[i].is_char_break)
+				if (logAttrs[i].is_line_break)
 				{
-					breakPoints[nBreakPoints] = i;
+					breakPoints[nBreakPoints] = i - 1;
 					nBreakPoints++;
 				}
 			}
