@@ -25,14 +25,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 typedef struct Mission_ {
 
-	char primaryObjective[3][50]; // Description
+	char primaryObjective[3][STRMAX]; // Description
 	int primaryType[3]; // The type of mission this is
 	int target1[3]; // index of target in aliens array
 	int targetValue1[3]; // Number of things to collect (slaves, cash, etc)
 	int timeLimit1[3]; // In minutes
 	int completed1[3];
 
-	char secondaryObjective[3][50]; // Description
+	char secondaryObjective[3][STRMAX]; // Description
 	int secondaryType[3]; // The type of mission this is
 	int target2[3]; // index of target in aliens array
 	int targetValue2[3]; // Number of things to collect (slaves, cash, etc)
