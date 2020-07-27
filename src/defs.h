@@ -33,6 +33,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RANDRANGE(x, y) (((x) < (y)) ? ((x) + (rand() % (long)(1 + (y) - (x)))) : (x))
 #define DRAND ((double)rand() / RAND_MAX)
 #define _(s) gettext(s)
+#define CSDLP(x) (((x) == SDL_PRESSED) ? 1 : 0)
 
 // A soft dependency defines these as well, so check if they are
 // defined before defining (avoids compiler warnings)

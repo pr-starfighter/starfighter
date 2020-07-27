@@ -265,6 +265,9 @@ void engine_setMode()
 	int autoPause = 0;
 	int radioLife = DEFAULT_RADIO_LIFE;
 	char lang[STRMAX_SHORT];
+	int i;
+	int use_gc;
+
 	strcpy(lang, "default");
 
 	strcpy(engine.configDirectory, "");
@@ -272,7 +275,7 @@ void engine_setMode()
 	engine_setupConfigDirectory();
 
 	/* Initialize the SDL library */
-	if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_JOYSTICK) < 0)
+	if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_JOYSTICK|SDL_INIT_GAMECONTROLLER) < 0)
 	{
 		printf("Couldn't initialize SDL: %s\n", SDL_GetError());
 		exit(1);
@@ -329,8 +332,27 @@ void engine_setMode()
 	SDL_ShowCursor(SDL_DISABLE);
 	SDL_EventState(SDL_MOUSEMOTION, SDL_DISABLE);
 
-	SDL_JoystickEventState(SDL_ENABLE);
-	SDL_JoystickOpen(0);
+	// Determine if the GameController API can be used
+	use_gc = 1;
+	for (i=0; i<SDL_NumJoysticks(); i++) {
+		if (!SDL_IsGameController(i)) {
+			use_gc = 0;
+			break;
+		}
+	}
+	
+	if (use_gc)
+		SDL_GameControllerEventState(SDL_ENABLE);
+	else
+		SDL_JoystickEventState(SDL_ENABLE);
+	
+	// Open controllers
+	for (i=0; i<SDL_NumJoysticks(); i++) {
+		if (use_gc)
+			SDL_GameControllerOpen(i);
+		else
+			SDL_JoystickOpen(i);
+	}
 }
 
 void engine_setFullscreen(int value)
