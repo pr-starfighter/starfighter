@@ -2229,13 +2229,25 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 
 			if (alien->shield + damage > stage1_shield
 					&& alien->shield <= stage1_shield)
+			{
 				alien_setKlineAttackMethod(alien);
+				if (game.difficulty == DIFFICULTY_ORIGINAL)
+					alien->shield = stage1_shield;
+			}
 			else if (alien->shield + damage > stage2_shield
 					&& alien->shield <= stage2_shield)
+			{
 				alien_setKlineAttackMethod(alien);
+				if (game.difficulty == DIFFICULTY_ORIGINAL)
+					alien->shield = stage2_shield;
+			}
 			else if (alien->shield + damage > stage3_shield
 					&& alien->shield <= stage3_shield)
+			{
 				alien_setKlineAttackMethod(alien);
+				if (game.difficulty == DIFFICULTY_ORIGINAL)
+					alien->shield = stage3_shield;
+			}
 		}
 		else
 		{
