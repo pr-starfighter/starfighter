@@ -287,148 +287,163 @@ void player_getInput()
 
 			case SDL_JOYBUTTONDOWN:
 			case SDL_JOYBUTTONUP:
-				switch (engine.event.jbutton.button)
+				if (!engine.useController)
 				{
-					case 0:
-					case 3:
-						engine.keyState[KEY_ALTFIRE] = CSDLP(
-							engine.event.jbutton.state);
-						break;
-					case 1:
-					case 2:
-						engine.keyState[KEY_FIRE] = CSDLP(
-							engine.event.jbutton.state);
-						break;
-					case 4:
-					case 6:
-						engine.keyState[KEY_ESCAPE] = CSDLP(
-							engine.event.jbutton.state);
-						break;
-					case 5:
-					case 7:
-					case 8:
-						engine.keyState[KEY_SWITCH] = CSDLP(
-							engine.event.jbutton.state);
-						break;
-					case 9:
-						engine.keyState[KEY_PAUSE] = CSDLP(
-							engine.event.jbutton.state);
-						break;
+					switch (engine.event.jbutton.button)
+					{
+						case 0:
+						case 3:
+							engine.keyState[KEY_ALTFIRE] = CSDLP(
+								engine.event.jbutton.state);
+							break;
+						case 1:
+						case 2:
+							engine.keyState[KEY_FIRE] = CSDLP(
+								engine.event.jbutton.state);
+							break;
+						case 4:
+						case 6:
+							engine.keyState[KEY_ESCAPE] = CSDLP(
+								engine.event.jbutton.state);
+							break;
+						case 5:
+						case 7:
+						case 8:
+							engine.keyState[KEY_SWITCH] = CSDLP(
+								engine.event.jbutton.state);
+							break;
+						case 9:
+							engine.keyState[KEY_PAUSE] = CSDLP(
+								engine.event.jbutton.state);
+							break;
+					}
 				}
 				break;
 			
 			case SDL_CONTROLLERBUTTONDOWN:
 			case SDL_CONTROLLERBUTTONUP:
-				switch (engine.event.cbutton.button)
+				if (engine.useController)
 				{
-					case SDL_CONTROLLER_BUTTON_A:
-					case SDL_CONTROLLER_BUTTON_Y:
-						engine.keyState[KEY_ALTFIRE] = CSDLP(
-							engine.event.cbutton.state);
-						break;
-					case SDL_CONTROLLER_BUTTON_B:
-					case SDL_CONTROLLER_BUTTON_X:
-						engine.keyState[KEY_FIRE] = CSDLP(
-							engine.event.cbutton.state);
-						break;
-					case SDL_CONTROLLER_BUTTON_LEFTSHOULDER:
-						engine.keyState[KEY_ESCAPE] = CSDLP(
-							engine.event.cbutton.state);
-						break;
-					case SDL_CONTROLLER_BUTTON_BACK:
-					case SDL_CONTROLLER_BUTTON_RIGHTSHOULDER:
-						engine.keyState[KEY_SWITCH] = CSDLP(
-							engine.event.cbutton.state);
-						break;
-					case SDL_CONTROLLER_BUTTON_START:
-						engine.keyState[KEY_PAUSE] = CSDLP(
-							engine.event.cbutton.state);
-						break;
-					case SDL_CONTROLLER_BUTTON_DPAD_UP:
-						engine.keyState[KEY_UP] = CSDLP(
-							engine.event.cbutton.state);
-						break;
-					case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
-						engine.keyState[KEY_DOWN] = CSDLP(
-							engine.event.cbutton.state);
-						break;
-					case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
-						engine.keyState[KEY_LEFT] = CSDLP(
-							engine.event.cbutton.state);
-						break;
-					case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
-						engine.keyState[KEY_RIGHT] = CSDLP(
-							engine.event.cbutton.state);
-						break;
+					switch (engine.event.cbutton.button)
+					{
+						case SDL_CONTROLLER_BUTTON_A:
+						case SDL_CONTROLLER_BUTTON_Y:
+							engine.keyState[KEY_ALTFIRE] = CSDLP(
+								engine.event.cbutton.state);
+							break;
+						case SDL_CONTROLLER_BUTTON_B:
+						case SDL_CONTROLLER_BUTTON_X:
+							engine.keyState[KEY_FIRE] = CSDLP(
+								engine.event.cbutton.state);
+							break;
+						case SDL_CONTROLLER_BUTTON_LEFTSHOULDER:
+							engine.keyState[KEY_ESCAPE] = CSDLP(
+								engine.event.cbutton.state);
+							break;
+						case SDL_CONTROLLER_BUTTON_BACK:
+						case SDL_CONTROLLER_BUTTON_RIGHTSHOULDER:
+							engine.keyState[KEY_SWITCH] = CSDLP(
+								engine.event.cbutton.state);
+							break;
+						case SDL_CONTROLLER_BUTTON_START:
+							engine.keyState[KEY_PAUSE] = CSDLP(
+								engine.event.cbutton.state);
+							break;
+						case SDL_CONTROLLER_BUTTON_DPAD_UP:
+							engine.keyState[KEY_UP] = CSDLP(
+								engine.event.cbutton.state);
+							break;
+						case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
+							engine.keyState[KEY_DOWN] = CSDLP(
+								engine.event.cbutton.state);
+							break;
+						case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+							engine.keyState[KEY_LEFT] = CSDLP(
+								engine.event.cbutton.state);
+							break;
+						case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+							engine.keyState[KEY_RIGHT] = CSDLP(
+								engine.event.cbutton.state);
+							break;
+					}
 				}
 				break;
 
 			case SDL_JOYHATMOTION:
-				engine.keyState[KEY_UP]    = (engine.event.jhat.value & SDL_HAT_UP ? 1 : 0);
-				engine.keyState[KEY_DOWN]  = (engine.event.jhat.value & SDL_HAT_DOWN ? 1 : 0);
-				engine.keyState[KEY_LEFT]  = (engine.event.jhat.value & SDL_HAT_LEFT ? 1 : 0);
-				engine.keyState[KEY_RIGHT] = (engine.event.jhat.value & SDL_HAT_RIGHT ? 1 : 0);
+				if (!engine.useController)
+				{
+					engine.keyState[KEY_UP]    = (engine.event.jhat.value & SDL_HAT_UP ? 1 : 0);
+					engine.keyState[KEY_DOWN]  = (engine.event.jhat.value & SDL_HAT_DOWN ? 1 : 0);
+					engine.keyState[KEY_LEFT]  = (engine.event.jhat.value & SDL_HAT_LEFT ? 1 : 0);
+					engine.keyState[KEY_RIGHT] = (engine.event.jhat.value & SDL_HAT_RIGHT ? 1 : 0);
+				}
 				break;
 
 			case SDL_JOYAXISMOTION:
-				if (engine.gameSection == SECTION_TITLE) {
-					if (engine.event.jaxis.axis == 0) {
-						joyleft = engine.event.jaxis.value < -16384;
-						joyright = engine.event.jaxis.value >= 16384;
-						if (joyleft != prevjoyleft)
-							engine.keyState[KEY_LEFT] = prevjoyleft = joyleft;
-						if (joyright != prevjoyright)
-							engine.keyState[KEY_RIGHT] = prevjoyright = joyright;
-					} else if (engine.event.jaxis.axis == 1) {
-						joyup = engine.event.jaxis.value < -16384;
-						joydown = engine.event.jaxis.value >= 16384;
-						if (joyup != prevjoyup)
-							engine.keyState[KEY_UP] = prevjoyup = joyup;
-						if (joydown != prevjoydown)
-							engine.keyState[KEY_DOWN] = prevjoydown = joydown;
-					}
-				} else {
-					val = MIN(1, (double)(abs(engine.event.jaxis.value)) / JS_MAX);
-					if (val < JS_DEADZONE)
-						val = 0;
+				if (!engine.useController)
+				{
+					if (engine.gameSection == SECTION_TITLE) {
+						if (engine.event.jaxis.axis == 0) {
+							joyleft = engine.event.jaxis.value < -16384;
+							joyright = engine.event.jaxis.value >= 16384;
+							if (joyleft != prevjoyleft)
+								engine.keyState[KEY_LEFT] = prevjoyleft = joyleft;
+							if (joyright != prevjoyright)
+								engine.keyState[KEY_RIGHT] = prevjoyright = joyright;
+						} else if (engine.event.jaxis.axis == 1) {
+							joyup = engine.event.jaxis.value < -16384;
+							joydown = engine.event.jaxis.value >= 16384;
+							if (joyup != prevjoyup)
+								engine.keyState[KEY_UP] = prevjoyup = joyup;
+							if (joydown != prevjoydown)
+								engine.keyState[KEY_DOWN] = prevjoydown = joydown;
+						}
+					} else {
+						val = MIN(1, (double)(abs(engine.event.jaxis.value)) / JS_MAX);
+						if (val < JS_DEADZONE)
+							val = 0;
 
-					if (engine.event.jaxis.axis == 0)
-						engine.xaxis = copysign(val, engine.event.jaxis.value);
-					else if (engine.event.jaxis.axis == 1)
-						engine.yaxis = copysign(val, engine.event.jaxis.value);
+						if (engine.event.jaxis.axis == 0)
+							engine.xaxis = copysign(val, engine.event.jaxis.value);
+						else if (engine.event.jaxis.axis == 1)
+							engine.yaxis = copysign(val, engine.event.jaxis.value);
+					}
 				}
 
 				break;
 
 			case SDL_CONTROLLERAXISMOTION:
-				if (engine.gameSection == SECTION_TITLE) {
-					if (engine.event.caxis.axis == SDL_CONTROLLER_AXIS_LEFTX)
-					{
-						joyleft = engine.event.caxis.value < -16384;
-						joyright = engine.event.caxis.value >= 16384;
-						if (joyleft != prevjoyleft)
-							engine.keyState[KEY_LEFT] = prevjoyleft = joyleft;
-						if (joyright != prevjoyright)
-							engine.keyState[KEY_RIGHT] = prevjoyright = joyright;
-					}
-					else if (engine.event.caxis.axis == SDL_CONTROLLER_AXIS_LEFTY)
-					{
-						joyup = engine.event.caxis.value < -16384;
-						joydown = engine.event.caxis.value >= 16384;
-						if (joyup != prevjoyup)
-							engine.keyState[KEY_UP] = prevjoyup = joyup;
-						if (joydown != prevjoydown)
-							engine.keyState[KEY_DOWN] = prevjoydown = joydown;
-					}
-				} else {
-					val = MIN(1, (double)(abs(engine.event.caxis.value)) / JS_MAX);
-					if (val < JS_DEADZONE)
-						val = 0;
+				if (engine.useController)
+				{
+					if (engine.gameSection == SECTION_TITLE) {
+						if (engine.event.caxis.axis == SDL_CONTROLLER_AXIS_LEFTX)
+						{
+							joyleft = engine.event.caxis.value < -16384;
+							joyright = engine.event.caxis.value >= 16384;
+							if (joyleft != prevjoyleft)
+								engine.keyState[KEY_LEFT] = prevjoyleft = joyleft;
+							if (joyright != prevjoyright)
+								engine.keyState[KEY_RIGHT] = prevjoyright = joyright;
+						}
+						else if (engine.event.caxis.axis == SDL_CONTROLLER_AXIS_LEFTY)
+						{
+							joyup = engine.event.caxis.value < -16384;
+							joydown = engine.event.caxis.value >= 16384;
+							if (joyup != prevjoyup)
+								engine.keyState[KEY_UP] = prevjoyup = joyup;
+							if (joydown != prevjoydown)
+								engine.keyState[KEY_DOWN] = prevjoydown = joydown;
+						}
+					} else {
+						val = MIN(1, (double)(abs(engine.event.caxis.value)) / JS_MAX);
+						if (val < JS_DEADZONE)
+							val = 0;
 
-					if (engine.event.caxis.axis == SDL_CONTROLLER_AXIS_LEFTX)
-						engine.xaxis = copysign(val, engine.event.caxis.value);
-					else if (engine.event.caxis.axis == SDL_CONTROLLER_AXIS_LEFTY)
-						engine.yaxis = copysign(val, engine.event.caxis.value);
+						if (engine.event.caxis.axis == SDL_CONTROLLER_AXIS_LEFTX)
+							engine.xaxis = copysign(val, engine.event.caxis.value);
+						else if (engine.event.caxis.axis == SDL_CONTROLLER_AXIS_LEFTY)
+							engine.yaxis = copysign(val, engine.event.caxis.value);
+					}
 				}
 
 				break;

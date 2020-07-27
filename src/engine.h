@@ -97,6 +97,8 @@ typedef struct Engine_ {
 	int keyState[KEY_LAST];
 	double xaxis;
 	double yaxis;
+	
+	int useController;
 
 	int cheat; // overall cheat
 	int cheatShield;

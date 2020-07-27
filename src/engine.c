@@ -266,7 +266,6 @@ void engine_setMode()
 	int radioLife = DEFAULT_RADIO_LIFE;
 	char lang[STRMAX_SHORT];
 	int i;
-	int use_gc;
 
 	strcpy(lang, "default");
 
@@ -333,22 +332,24 @@ void engine_setMode()
 	SDL_EventState(SDL_MOUSEMOTION, SDL_DISABLE);
 
 	// Determine if the GameController API can be used
-	use_gc = 1;
+	engine.useController = 1;
 	for (i=0; i<SDL_NumJoysticks(); i++) {
 		if (!SDL_IsGameController(i)) {
-			use_gc = 0;
+			engine.useController = 0;
 			break;
 		}
 	}
 	
-	if (use_gc)
+	if (engine.useController) {
 		SDL_GameControllerEventState(SDL_ENABLE);
-	else
+	}
+	else {
 		SDL_JoystickEventState(SDL_ENABLE);
+	}
 	
 	// Open controllers
 	for (i=0; i<SDL_NumJoysticks(); i++) {
-		if (use_gc)
+		if (engine.useController)
 			SDL_GameControllerOpen(i);
 		else
 			SDL_JoystickOpen(i);
