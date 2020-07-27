@@ -272,6 +272,20 @@ int gfx_renderUnicode(const char *in, int x, int y, int fontColor, int wrap, SDL
 }
 
 #else
+static int gfx_charIsUTF8Start(unsigned char c)
+{
+	// Top bit not set (single byte ASCII character)
+	if ((c & 0x80) == 0)
+		return 1;
+	
+	// Top two bits set (start of multi-byte character)
+	if ((c & 0x80) && (c & 0x40))
+		return 1;
+	
+	// Top bit set, but second bit not set (somewhere in the middle)
+	return 0;
+}
+
 int gfx_unicodeWidth(const char *in)
 {
 	int w;
@@ -360,7 +374,8 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int real_x, int fontColo
 			nBreakPoints = 0;
 			for (i = 0; i < nLogAttrs; i++)
 			{
-				if (logAttrs[i].is_line_break)
+				if (logAttrs[i].is_line_break
+						&& gfx_charIsUTF8Start(remainingStr[i]))
 				{
 					breakPoints[nBreakPoints] = i;
 					nBreakPoints++;
