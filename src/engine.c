@@ -435,6 +435,8 @@ atexit();
 */
 void engine_cleanup()
 {
+	int i;
+
 	gfx_free();
 	SDL_FreeSurface(gfx_background);
 	SDL_FreeSurface(gfx_unscaledBackground);
@@ -445,7 +447,7 @@ void engine_cleanup()
 	free(engine.collectableHead);
 	free(screen_bufferHead);
 
-	for (int i = 0 ; i < FONT_MAX ; i++)
+	for (i=0 ; i<FONT_MAX ; i++)
 	{
 		if (gfx_fontSprites[i] != NULL)
 			SDL_FreeSurface(gfx_fontSprites[i]);
