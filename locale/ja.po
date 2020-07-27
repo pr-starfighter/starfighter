@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: 2.3\n"
 "Report-Msgid-Bugs-To: Layla Marchant <diligentcircle@riseup.net>\n"
 "POT-Creation-Date: 2020-07-16 14:10-0400\n"
-"PO-Revision-Date: 2020-07-20 11:18-0400\n"
+"PO-Revision-Date: 2020-07-27 13:19-0400\n"
 "Last-Translator: maruhiro <maruhiro@bridge.ocn.ne.jp>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -2614,14 +2614,14 @@ msgstr "プラズマカノン：%d門"
 #: ../src/shop.c:292
 #, c-format
 msgid "Power: Stage %d"
-msgstr "プラズマ火力　：レベル %d"
+msgstr "プラズマ火力：レベル %d"
 
 #. / Shop info: min plasma rate
 #. / Retain "%d" as-is.  It is replaced with the min plasma cooling.
 #: ../src/shop.c:297
 #, c-format
 msgid "Cooling: Stage %d"
-msgstr "冷却装置　　　：レベル %d"
+msgstr "冷却装置：レベル %d"
 
 #: ../src/shop.c:301
 msgid "Powerup Weapon"
@@ -2632,28 +2632,28 @@ msgstr "一時強化"
 #: ../src/shop.c:304
 #, c-format
 msgid "Splitter: Stage %d"
-msgstr "プラズマ出力範囲　　：レベル %d"
+msgstr "出力範囲：レベル %d"
 
 #. / Shop info: max plasma damage
 #. / Retain "%d" as-is.  It is replaced with the max plasma damage.
 #: ../src/shop.c:309
 #, c-format
 msgid "Condensor: Stage %d"
-msgstr "プラズマコンデンサー：レベル %d"
+msgstr "コンデンサー：レベル %d"
 
 #. / Shop info: max plasma rate
 #. / Retain "%d" as-is.  It is replaced with the max plasma cooling.
 #: ../src/shop.c:314
 #, c-format
 msgid "L.Nitrogen: Stage %d"
-msgstr "液体窒素　　　　　　：レベル %d"
+msgstr "液体窒素：レベル %d"
 
 #. / Shop info: max plasma ammo
 #. / Retain "%d" as-is.  It is replaced with the Firefly's plasma ammo capacity.
 #: ../src/shop.c:319
 #, c-format
 msgid "Capacity: %d"
-msgstr "プラズマ容量　　　　：%d"
+msgstr "プラズマ容量：%d"
 
 #: ../src/shop.c:328
 msgid "Temporary Weapons"
