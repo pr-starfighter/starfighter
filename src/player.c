@@ -246,6 +246,8 @@ static enum keys mapkey(int code) {
 
 void player_getInput()
 {
+	static int prevjoyup = 0, prevjoydown = 0, prevjoyleft = 0, prevjoyright = 0;
+	int joyup, joydown, joyleft, joyright;
 	double val;
 	static int px = -1, py = -1;
 	int x, y, w, h;
@@ -317,14 +319,32 @@ void player_getInput()
 				break;
 
 			case SDL_JOYAXISMOTION:
-				val = MIN(1, (double)(abs(engine.event.jaxis.value)) / JS_MAX);
-				if (val < JS_DEADZONE)
-					val = 0;
+				if (engine.gameSection == SECTION_TITLE) {
+					if (engine.event.jaxis.axis == 0) {
+						joyleft = engine.event.jaxis.value < -16384;
+						joyright = engine.event.jaxis.value >= 16384;
+						if (joyleft != prevjoyleft)
+							engine.keyState[KEY_LEFT] = prevjoyleft = joyleft;
+						if (joyright != prevjoyright)
+							engine.keyState[KEY_RIGHT] = prevjoyright = joyright;
+					} else if (engine.event.jaxis.axis == 1) {
+						joyup = engine.event.jaxis.value < -16384;
+						joydown = engine.event.jaxis.value >= 16384;
+						if (joyup != prevjoyup)
+							engine.keyState[KEY_UP] = prevjoyup = joyup;
+						if (joydown != prevjoydown)
+							engine.keyState[KEY_DOWN] = prevjoydown = joydown;
+					}
+				} else {
+					val = MIN(1, (double)(abs(engine.event.jaxis.value)) / JS_MAX);
+					if (val < JS_DEADZONE)
+						val = 0;
 
-				if (engine.event.jaxis.axis == 0)
-					engine.xaxis = copysign(val, engine.event.jaxis.value);
-				else if (engine.event.jaxis.axis == 1)
-					engine.yaxis = copysign(val, engine.event.jaxis.value);
+					if (engine.event.jaxis.axis == 0)
+						engine.xaxis = copysign(val, engine.event.jaxis.value);
+					else if (engine.event.jaxis.axis == 1)
+						engine.yaxis = copysign(val, engine.event.jaxis.value);
+				}
 
 				break;
 
