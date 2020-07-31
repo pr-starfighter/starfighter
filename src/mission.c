@@ -98,7 +98,7 @@ void mission_init()
 	mission_clearAll();
 
 	/// Mission objective (start)
-	strcpy(missions[MISN_START].primaryObjective[0], _("Escape from WEAPCO Persuit"));
+	strcpy(missions[MISN_START].primaryObjective[0], _("Escape from WEAPCO Pursuit"));
 	missions[MISN_START].primaryType[0] = M_DESTROY_ALL_TARGETS;
 	missions[MISN_START].completed1[0] = OB_INCOMPLETE;
 
