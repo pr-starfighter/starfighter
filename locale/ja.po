@@ -1979,7 +1979,7 @@ msgstr "残りのWEAPCOの戦闘機を全て破壊する"
 
 #. / Mission objective (start)
 #: ../src/mission.c:101
-msgid "Escape from WEAPCO Persuit"
+msgid "Escape from WEAPCO Pursuit"
 msgstr "WEAPCOの追撃から逃れる"
 
 #. / Mission objective (Hail)
