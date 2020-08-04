@@ -1926,7 +1926,7 @@ msgstr ""
 
 #. / Mission objective (start)
 #: ../src/mission.c:101
-msgid "Escape from WEAPCO Persuit"
+msgid "Escape from WEAPCO Pursuit"
 msgstr ""
 
 #. / Mission objective (Hail)

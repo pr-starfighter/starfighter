@@ -2136,8 +2136,8 @@ msgstr "Destroy all remaining WEAPCO fighters"
 
 #. / Mission objective (start)
 #: ../src/mission.c:101
-msgid "Escape from WEAPCO Persuit"
-msgstr "Escape from WEAPCO Persuit"
+msgid "Escape from WEAPCO Pursuit"
+msgstr "Escape from WEAPCO Pursuit"
 
 #. / Mission objective (Hail)
 #: ../src/mission.c:107
