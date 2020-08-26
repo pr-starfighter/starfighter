@@ -1618,7 +1618,7 @@ static void game_doPlayer()
 							/// number of insults is permitted.
 							"Pathetic.\n"
 							"How very disappointing...\n"
-							"Heroic. And stupid."
+							"Heroic. And foolish."
 						));
 						radio_setMessage(FS_KLINE, msg, 1);
 					}

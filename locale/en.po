@@ -20,9 +20,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.3\n"
+"Project-Id-Version: 2.3.2\n"
 "Report-Msgid-Bugs-To: Layla Marchant <diligentcircle@riseup.net>\n"
-"POT-Creation-Date: 2020-07-19 8:53-0400\n"
+"POT-Creation-Date: 2020-08-26 12:04-0400\n"
 "PO-Revision-Date: 2020-07-19 8:53-0400\n"
 "Last-Translator: Layla <diligentcircle@riseup.net>\n"
 "Language-Team: English\n"
@@ -979,11 +979,11 @@ msgstr ""
 msgid ""
 "Pathetic.\n"
 "How very disappointing...\n"
-"Heroic. And stupid."
+"Heroic. And foolish."
 msgstr ""
 "Pathetic.\n"
 "How very disappointing...\n"
-"Heroic. And stupid."
+"Heroic. And foolish."
 
 #. / Dialog: Krass Tyler
 #. / Used when the player is killed in the Jupiter mission.
