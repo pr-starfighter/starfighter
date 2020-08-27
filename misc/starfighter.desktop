@@ -8,3 +8,4 @@ Icon=starfighter
 Categories=Game;ActionGame;ArcadeGame;
 Terminal=false
 StartupNotify=false
+Keywords=Games
