@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.3.2\n"
 "Report-Msgid-Bugs-To: Layla Marchant <diligentcircle@riseup.net>\n"
-"POT-Creation-Date: 2020-08-26 12:04-0400\n"
+"POT-Creation-Date: 2020-08-27 10:13-0400\n"
 "PO-Revision-Date: 2020-07-27 13:19-0400\n"
 "Last-Translator: maruhiro <maruhiro@bridge.ocn.ne.jp>\n"
 "Language-Team: Japanese\n"
@@ -460,7 +460,7 @@ msgstr ""
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:76
-msgid "You should try and destroy some of the frigate's weaponary, it'll help!"
+msgid "You should try and destroy some of the frigate's weaponry, it'll help!"
 msgstr "まずフリゲートの武装を破壊しろ。それが助けになる!"
 
 #. / Dialog (Sid Wilson)
@@ -2351,7 +2351,7 @@ msgstr "*** 試作戦闘機を破壊 - 作戦完了 ***"
 #. / Dialog (Chris Bainfield)
 #. / Used when the Mordor cloak ship is destroyed.
 #: ../src/mission.c:892
-msgid "That's one less suprise that WEAPCO can spring on us!"
+msgid "That's one less surprise that WEAPCO can spring on us!"
 msgstr "WEAPCOの奇襲攻撃など、たいしたことはないな!"
 
 #: ../src/mission.c:967

@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 Object weapons[W_MAX];
 
 /*
-A list of predefined weaponary.
+A list of predefined weaponry.
 */
 void weapons_init()
 {

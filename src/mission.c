@@ -889,7 +889,7 @@ void mission_updateRequirements(int type, int id, int value)
 			intermission_planets[PLANET_CLOAKFIGHTER].missionCompleted = 1;
 			/// Dialog (Chris Bainfield)
 			/// Used when the Mordor cloak ship is destroyed.
-			radio_setMessage(FS_CHRIS, _("That's one less suprise that WEAPCO can spring on us!"), 1);
+			radio_setMessage(FS_CHRIS, _("That's one less surprise that WEAPCO can spring on us!"), 1);
 			game.experimentalShield = 0;
 		}
 	}

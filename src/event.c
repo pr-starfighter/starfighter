@@ -73,7 +73,7 @@ void events_init()
 			events[0].time = 2;
 			events[0].face = FS_SID;
 			/// Dialog (Sid Wilson)
-			strcpy(events[0].message, _("You should try and destroy some of the frigate's weaponary, it'll help!"));
+			strcpy(events[0].message, _("You should try and destroy some of the frigate's weaponry, it'll help!"));
 
 			events[1].time = 120;
 			events[1].face = FS_SID;
