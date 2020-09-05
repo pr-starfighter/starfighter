@@ -1226,7 +1226,7 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			strcpy(string, "Hey, why am I talking to myself? This shouldn't happen! Clearly, this must be a bug.");
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			snprintf(string, STRMAX, "I should go to starfighter.nongnu.org and report this bug there. In that report, I should mention that the mission number is %d.", misn);
+			snprintf(string, STRMAX, "I should go to pr-starfighter.github.io and report this bug there. In that report, I should mention that the mission number is %d.", misn);
 			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
 			strcpy(string, "Wait, what am I still talking into empty space for? It's not like anyone can hear me...");
