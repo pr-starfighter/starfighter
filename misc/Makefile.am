@@ -9,3 +9,4 @@ desktop_DATA = starfighter.desktop
 icondir = $(datarootdir)/pixmaps
 icon_DATA = starfighter.png
 
+dist_man6_MANS = starfighter.6
