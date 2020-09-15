@@ -753,8 +753,7 @@ static void game_doBullets()
 									"I am NOT your enemy!\n"
 									"Hey! Watch it!\n"
 									"What are you doing?! Shoot THEM!\n"
-									"Open your eyes!\n"
-									"Are you blind?!"
+									"Pay some damn attention!"
 								));
 								radio_setMessage(FS_URSULA, msg, 0);
 							}

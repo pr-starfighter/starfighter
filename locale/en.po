@@ -20,10 +20,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.3.2\n"
-"Report-Msgid-Bugs-To: Layla Marchant <diligentcircle@riseup.net>\n"
-"POT-Creation-Date: 2020-08-27 10:13-0400\n"
-"PO-Revision-Date: 2020-07-19 8:53-0400\n"
+"Project-Id-Version: 2.3.3\n"
+"Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
+"POT-Creation-Date: 2020-09-15 13:07-0400\n"
+"PO-Revision-Date: 2020-09-15 13:11-0400\n"
 "Last-Translator: Layla <diligentcircle@riseup.net>\n"
 "Language-Team: English\n"
 "Language: en\n"
@@ -506,8 +506,7 @@ msgstr ""
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:76
 msgid "You should try and destroy some of the frigate's weaponry, it'll help!"
-msgstr ""
-"You should try and destroy some of the frigate's weaponry, it'll help!"
+msgstr "You should try and destroy some of the frigate's weaponry, it'll help!"
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:81
@@ -588,7 +587,7 @@ msgid "Engines fixed! Let's move!"
 msgstr "Engines fixed! Let's move!"
 
 #. / Dialog (Phoebe Lexx)
-#: ../src/event.c:174
+#: ../src/event.c:183
 msgid ""
 "Ummm... something about this doesn't look right! They should be offering "
 "more resistance than this!"
@@ -597,27 +596,27 @@ msgstr ""
 "more resistance than this!"
 
 #. / Dialog (Phoebe Lexx)
-#: ../src/event.c:179
+#: ../src/event.c:188
 msgid "DAMMIT! It's a trap! Come on, Chris, we have to leave NOW!"
 msgstr "DAMMIT! It's a trap! Come on, Chris, we have to leave NOW!"
 
 #. / Dialog (Sid Wilson)
-#: ../src/event.c:188
+#: ../src/event.c:197
 msgid "Chris, wh..."
 msgstr "Chris, wh..."
 
 #. / Dialog (Kline Kethlan)
-#: ../src/event.c:193
+#: ../src/event.c:202
 msgid "So finally I meet the man who has been causing us so much trouble!"
 msgstr "So finally I meet the man who has been causing us so much trouble!"
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:198
+#: ../src/event.c:207
 msgid "I see you've jammed up my warp drive. Who are you?"
 msgstr "I see you've jammed up my warp drive. Who are you?"
 
 #. / Dialog (Kline Kethlan)
-#: ../src/event.c:203
+#: ../src/event.c:212
 msgid ""
 "I am Kline Kethlan. And I am here to put to a stop to your worthless little "
 "crusade!"
@@ -626,12 +625,12 @@ msgstr ""
 "crusade!"
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:208
+#: ../src/event.c:217
 msgid "Kline Kethlan, huh? You sure sound confident."
 msgstr "Kline Kethlan, huh? You sure sound confident."
 
 #. / Dialog (Kline Kethlan)
-#: ../src/event.c:213
+#: ../src/event.c:222
 msgid ""
 "Nowhere to run, nowhere to hide, and no one to help you! This will certainly "
 "be interesting..."
@@ -641,12 +640,12 @@ msgstr ""
 
 #. / Dialog (Ursula Lexx under mind control)
 #. / Translation note: This should appear robotic or at least monotone.
-#: ../src/event.c:226
+#: ../src/event.c:235
 msgid "Unidentified craft sighted. Will proceed to destroy all targets."
 msgstr "Unidentified craft sighted. Will proceed to destroy all targets."
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:231
+#: ../src/event.c:240
 msgid ""
 "Looks like she's got one of those homing missile launchers too! Any advice, "
 "Phoebe?"
@@ -655,22 +654,22 @@ msgstr ""
 "Phoebe?"
 
 #. / Dialog (Phoebe Lexx)
-#: ../src/event.c:236
+#: ../src/event.c:245
 msgid "Just try and dodge them!"
 msgstr "Just try and dodge them!"
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:244
+#: ../src/event.c:253
 msgid "That's a nice ship you got there, old-timer!"
 msgstr "That's a nice ship you got there, old-timer!"
 
 #. / Dialog (Krass Tyler)
-#: ../src/event.c:249
+#: ../src/event.c:258
 msgid "Thanks, boy. Made it myself!"
 msgstr "Thanks, boy. Made it myself!"
 
 #. / Dialog (Krass Tyler)
-#: ../src/event.c:254
+#: ../src/event.c:263
 msgid ""
 "Hey, boy, we've got company! Looks like your friends didn't do a very good "
 "job after all!"
@@ -679,42 +678,42 @@ msgstr ""
 "job after all!"
 
 #. / Dialog (Krass Tyler)
-#: ../src/event.c:265
+#: ../src/event.c:274
 msgid "Keep those things off my back or it'll cost you extra!"
 msgstr "Keep those things off my back or it'll cost you extra!"
 
 #. / Dialog (Phoebe Lexx)
-#: ../src/event.c:274
+#: ../src/event.c:283
 msgid "Hey! Did we miss anything exciting?"
 msgstr "Hey! Did we miss anything exciting?"
 
 #. / Dialog (Krass Tyler)
-#: ../src/event.c:285
+#: ../src/event.c:294
 msgid "I've earned my fee. I'll see you around, boy!"
 msgstr "I've earned my fee. I'll see you around, boy!"
 
 #. / Dialog (Sid Wilson)
-#: ../src/event.c:295
+#: ../src/event.c:304
 msgid "DAMMIT! It's getting away! We've got to stop it!"
 msgstr "DAMMIT! It's getting away! We've got to stop it!"
 
 #. / Dialog (Sid Wilson)
-#: ../src/event.c:305
+#: ../src/event.c:314
 msgid "Chris! Another two of those ray cannons just arrived in your sector!"
 msgstr "Chris! Another two of those ray cannons just arrived in your sector!"
 
 #. / Dialog (Sid Wilson)
-#: ../src/event.c:316
+#: ../src/event.c:325
 msgid "Two more!"
 msgstr "Two more!"
 
 #. / Dialog (Ursula Lexx)
-#: ../src/event.c:334
+#: ../src/event.c:343
 msgid "It's a trap! My God! It's Tyler!"
 msgstr "It's a trap! My God! It's Tyler!"
 
 #. / Dialog (Krass Tyler)
-#: ../src/event.c:339
+#: ../src/event.c:348
 msgid ""
 "I'm a mercenary, what do you expect?! WEAPCO hired me to do a job, just like "
 "you have been doing."
@@ -723,24 +722,24 @@ msgstr ""
 "you have been doing."
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:344
+#: ../src/event.c:353
 msgid "Good point. It would be foolish to expect anything else."
 msgstr "Good point. It would be foolish to expect anything else."
 
 #. / Dialog (Krass Tyler)
-#: ../src/event.c:353
+#: ../src/event.c:362
 msgid ""
 "Now if you'll assist me in dying quickly, I have a cheque to earn, boy..."
 msgstr ""
 "Now if you'll assist me in dying quickly, I have a cheque to earn, boy..."
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:358
+#: ../src/event.c:367
 msgid "I have a name, you know. Do you remember it?"
 msgstr "I have a name, you know. Do you remember it?"
 
 #. / Dialog (Kline Kethlan)
-#: ../src/event.c:374
+#: ../src/event.c:383
 msgid ""
 "That's far enough, Bainfield. You've been lucky so far, but your luck is "
 "about to run out!"
@@ -749,12 +748,12 @@ msgstr ""
 "about to run out!"
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:379
+#: ../src/event.c:388
 msgid "Yeah, right! Like I'd lose to you after coming this far!"
 msgstr "Yeah, right! Like I'd lose to you after coming this far!"
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:387
+#: ../src/event.c:396
 msgid ""
 "WEAPCO is finished, Kethlan! You have nowhere to run, nowhere to hide, and "
 "no one to help you."
@@ -763,7 +762,7 @@ msgstr ""
 "no one to help you."
 
 #. / Dialog (Kline Kethlan)
-#: ../src/event.c:392
+#: ../src/event.c:401
 msgid "You underestimate me, Bainfield."
 msgstr "You underestimate me, Bainfield."
 
@@ -910,14 +909,12 @@ msgid ""
 "I am NOT your enemy!\n"
 "Hey! Watch it!\n"
 "What are you doing?! Shoot THEM!\n"
-"Open your eyes!\n"
-"Are you blind?!"
+"Pay some damn attention!"
 msgstr ""
 "I am NOT your enemy!\n"
 "Hey! Watch it!\n"
 "What are you doing?! Shoot THEM!\n"
-"Open your eyes!\n"
-"Are you blind?!"
+"Pay some damn attention!"
 
 #. / Phoebe: Player Hit Messages
 #. / This is a list of messages separated by "\n".  They are randomly
@@ -926,7 +923,7 @@ msgstr ""
 #. / with messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of messages is permitted.
-#: ../src/game.c:841
+#: ../src/game.c:840
 msgid ""
 "Oops! Sorry!\n"
 "Whoops! Are you OK, Chris?\n"
@@ -943,7 +940,7 @@ msgstr ""
 #. / with messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of messages is permitted.
-#: ../src/game.c:857
+#: ../src/game.c:856
 msgid ""
 "Get out of the way!\n"
 "Don't fly into my missiles!\n"
@@ -960,7 +957,7 @@ msgstr ""
 #. / with insults that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of insults is permitted.
-#: ../src/game.c:1604
+#: ../src/game.c:1603
 msgid ""
 "Fool.\n"
 "And now you're nothing but a DEAD hero.\n"
@@ -975,7 +972,7 @@ msgstr ""
 #. / with insults that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of insults is permitted.
-#: ../src/game.c:1619
+#: ../src/game.c:1618
 msgid ""
 "Pathetic.\n"
 "How very disappointing...\n"
@@ -987,7 +984,7 @@ msgstr ""
 
 #. / Dialog: Krass Tyler
 #. / Used when the player is killed in the Jupiter mission.
-#: ../src/game.c:1630
+#: ../src/game.c:1629
 msgid "That was the easiest $90,000,000 I've ever earned! Bwah! Ha! Ha! Ha!"
 msgstr "That was the easiest $90,000,000 I've ever earned! Bwah! Ha! Ha! Ha!"
 
@@ -999,37 +996,37 @@ msgstr "That was the easiest $90,000,000 I've ever earned! Bwah! Ha! Ha! Ha!"
 #. / timer to use single-digit numbers.
 #. / The ":" can also be replaced just like any text.  For example, this would be fine:
 #. /     "Time Remaining - %d minutes and %d seconds"
-#: ../src/game.c:1943
+#: ../src/game.c:1942
 #, c-format
 msgid "Time Remaining - %.2d:%.2d"
 msgstr "Time Remaining - %.2d:%.2d"
 
 #. / "%d" must be retained.  It is replaced with the number of mission objectives remaining.
-#: ../src/game.c:1951
+#: ../src/game.c:1950
 #, c-format
 msgid "Objectives Remaining: %d"
 msgstr "Objectives Remaining: %d"
 
 #. / "%d" must be retained.  It is replaced with the player's current total cash.
 #. / Retain "%d" as-is.  It is replaced with the player's current cash.
-#: ../src/game.c:1957 ../src/shop.c:352
+#: ../src/game.c:1956 ../src/shop.c:352
 #, c-format
 msgid "Cash: $%d"
 msgstr "Cash: $%d"
 
 #. / "%.3d" must be retained.  It is replaced with the amount of plasma ammo.
-#: ../src/game.c:1994
+#: ../src/game.c:1993
 #, c-format
 msgid "Plasma: %.3d"
 msgstr "Plasma: %.3d"
 
 #. / Used to indicate the charge meter for the charger cannon in the HUD.
-#: ../src/game.c:2001
+#: ../src/game.c:2000
 msgid "Charge"
 msgstr "Charge"
 
 #. / Used to indicate the heat meter for the laser cannon in the HUD.
-#: ../src/game.c:2006
+#: ../src/game.c:2005
 msgid "Heat"
 msgstr "Heat"
 
@@ -1037,38 +1034,38 @@ msgstr "Heat"
 #. / Retain "%.2d".  It is replaced with the ship's current number of rockets.
 #. / "%.2d" can be changed to "%d" if you wish to not fill in space with zeroes,
 #. / e.g. render the number 3 as "3" rather than "03".
-#: ../src/game.c:2011 ../src/shop.c:362
+#: ../src/game.c:2010 ../src/shop.c:362
 #, c-format
 msgid "Rockets: %.2d"
 msgstr "Rockets: %.2d"
 
 #. / DIFFICULTY_SUPEREASY
-#: ../src/game.c:2421
+#: ../src/game.c:2420
 msgid "Super-Easy"
 msgstr "Super-Easy"
 
 #. / DIFFICULTY_EASY
-#: ../src/game.c:2425
+#: ../src/game.c:2424
 msgid "Easy"
 msgstr "Easy"
 
 #. / DIFFICULTY_NORMAL
-#: ../src/game.c:2429
+#: ../src/game.c:2428
 msgid "Normal"
 msgstr "Normal"
 
 #. / DIFFICULTY_HARD
-#: ../src/game.c:2433
+#: ../src/game.c:2432
 msgid "Hard"
 msgstr "Hard"
 
 #. / DIFFICULTY_NIGHTMARE
-#: ../src/game.c:2437
+#: ../src/game.c:2436
 msgid "Nightmare!"
 msgstr "Nightmare!"
 
 #. / DIFFICULTY_ORIGINAL (Classic)
-#: ../src/game.c:2441
+#: ../src/game.c:2440
 msgid "Classic"
 msgstr "Classic"
 

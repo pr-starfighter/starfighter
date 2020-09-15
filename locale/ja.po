@@ -21,8 +21,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.3.2\n"
-"Report-Msgid-Bugs-To: Layla Marchant <diligentcircle@riseup.net>\n"
-"POT-Creation-Date: 2020-08-27 10:13-0400\n"
+"Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
+"POT-Creation-Date: 2020-09-15 13:07-0400\n"
 "PO-Revision-Date: 2020-07-27 13:19-0400\n"
 "Last-Translator: maruhiro <maruhiro@bridge.ocn.ne.jp>\n"
 "Language-Team: Japanese\n"
@@ -201,7 +201,9 @@ msgstr "ありがとう!! 見なさい、WEAPCO! 解放されたフェーベの�
 msgid ""
 "While escaping with his newly acquired Firefly, Chris Bainfield is "
 "intercepted by a WEAPCO patrol..."
-msgstr "クリス・バンフィールドは新たに獲得した『ファイアフライ』で逃走する途中、ついにWEAPCOのパトロールに捕捉された…"
+msgstr ""
+"クリス・バンフィールドは新たに獲得した『ファイアフライ』で逃走する途中、つい"
+"にWEAPCOのパトロールに捕捉された…"
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:109
@@ -213,7 +215,9 @@ msgstr "まだ追って来るのか!?"
 msgid ""
 "What a dilemma! I'm not all that familiar with this ship's controls, but I "
 "can't let this patrol reach my rendezvous point..."
-msgstr "まだこの艦の操縦に慣れていないが、パトロール艦を集合地点まで連れて行くわけにはいかない…"
+msgstr ""
+"まだこの艦の操縦に慣れていないが、パトロール艦を集合地点まで連れて行くわけに"
+"はいかない…"
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:117
@@ -226,28 +230,36 @@ msgid ""
 "A few hours later, in the Sol system, news has already spread of Chris "
 "Bainfield's heroic actions. The commander of WEAPCO's navy considers his "
 "options."
-msgstr "数時間後、クリス・バンフィールドの活躍は太陽系まで伝わった。WEAPCOの艦隊司令官は彼の扱いについて考えていた。"
+msgstr ""
+"数時間後、クリス・バンフィールドの活躍は太陽系まで伝わった。WEAPCOの艦隊司令"
+"官は彼の扱いについて考えていた。"
 
 #. / Cutscene (Kline Kethlan)
 #: ../src/cutscene.c:147
 msgid ""
 "The Emperor will not be pleased. Spirit is now a free star system thanks to "
 "that interfering rebel pilot."
-msgstr "帝王は不機嫌だろうな。今やスピリット系はあの反逆者のパイロットによって解放された。"
+msgstr ""
+"帝王は不機嫌だろうな。今やスピリット系はあの反逆者のパイロットによって解放さ"
+"れた。"
 
 #. / Cutscene (Kline Kethlan)
 #: ../src/cutscene.c:151
 msgid ""
 "It was reported that he was able to take down one of our most powerful "
 "frigates in under 3 minutes!"
-msgstr "報告によれば、我々の最も強力なフリゲートの内の一隻を打ちのめすのに3分と掛からなかった!"
+msgstr ""
+"報告によれば、我々の最も強力なフリゲートの内の一隻を打ちのめすのに3分と掛から"
+"なかった!"
 
 #. / Cutscene (Kline Kethlan)
 #: ../src/cutscene.c:155
 msgid ""
 "Talent like that does not appear every day. He would be a perfect candidate "
 "for our new AI training program!"
-msgstr "そんな才能を持つ者はめったにいない。奴は我々の新しいAIトレーニングプログラムの候補としては完璧だ!"
+msgstr ""
+"そんな才能を持つ者はめったにいない。奴は我々の新しいAIトレーニングプログラム"
+"の候補としては完璧だ!"
 
 #. / Cutscene (Kline Kethlan)
 #: ../src/cutscene.c:159
@@ -288,7 +300,8 @@ msgstr "いいヘッドギアね! もしかして同じ店で買ったんじゃ�
 #: ../src/cutscene.c:231
 msgid ""
 "More importantly, what were you doing out there? You're lucky I was around!"
-msgstr "もっと重要なことがある。あそこで何をしてたんだ? 俺が近くにいてよかったよ!"
+msgstr ""
+"もっと重要なことがある。あそこで何をしてたんだ? 俺が近くにいてよかったよ!"
 
 #. / Cutscene (Phoebe Lexx)
 #: ../src/cutscene.c:235
@@ -300,7 +313,9 @@ msgstr "姉さんを探してた。1週間前にいなくなってしまった�
 msgid ""
 "Hey! Wait a moment! You're that rebel from Spirit! I think you're so cool! "
 "Can I come with you?"
-msgstr "待って! あなたたちスピリット系から来た反乱軍でしょう! すごいわ! 私も加わっていい?"
+msgstr ""
+"待って! あなたたちスピリット系から来た反乱軍でしょう! すごいわ! 私も加わって"
+"いい?"
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:243
@@ -329,14 +344,16 @@ msgstr "何があったんだ、クリス。映像が途絶えていた。"
 msgid ""
 "We took down the WEAPCO mining vessel and then I was jumped by a man "
 "claiming to be Kline Kethlan."
-msgstr "WEAPCOの採掘船を破壊したが、その直後にクライン・ケスランと名乗る男に会った。"
+msgstr ""
+"WEAPCOの採掘船を破壊したが、その直後にクライン・ケスランと名乗る男に会った。"
 
 #. / Cutscene (Sid Wilson)
 #: ../src/cutscene.c:288
 msgid ""
 "I've heard of him. He's the Commander of WEAPCO's naval forces. One of the "
 "best pilots they ever had."
-msgstr "聞いたことがある。WEAPCOの艦隊司令官であり、最も優秀なパイロットの一人だ。"
+msgstr ""
+"聞いたことがある。WEAPCOの艦隊司令官であり、最も優秀なパイロットの一人だ。"
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:292
@@ -354,7 +371,8 @@ msgstr "それよりシド、モルドール系の情報はあるか?"
 msgid ""
 "I've learned from the scientist we captured that WEAPCO is testing a new "
 "fighter craft there."
-msgstr "救出した科学者によると、WEAPCOはそこで新型戦闘機の試験をしているそうだ。"
+msgstr ""
+"救出した科学者によると、WEAPCOはそこで新型戦闘機の試験をしているそうだ。"
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:304
@@ -385,7 +403,9 @@ msgstr "姉さんはだいじょうぶ?"
 msgid ""
 "I've had a look at the implants and they should be easy to remove. She'll "
 "just have a headache for a while."
-msgstr "何かインプラントのような物があったが取り除けた。まだしばらくの間は頭痛がするだろう。"
+msgstr ""
+"何かインプラントのような物があったが取り除けた。まだしばらくの間は頭痛がする"
+"だろう。"
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:349
@@ -397,7 +417,9 @@ msgstr "何か重要なことは聞けそうか?"
 msgid ""
 "We'll have to wait for her memory to come back. She might not be able to "
 "remember anything she did while the implants were in."
-msgstr "記憶が戻るまで少し待たなければならない。インプラントがあったときのことは思い出せないだろう。"
+msgstr ""
+"記憶が戻るまで少し待たなければならない。インプラントがあったときのことは思い"
+"出せないだろう。"
 
 #. / Cutscene (Sid Wilson)
 #: ../src/cutscene.c:357
@@ -414,14 +436,17 @@ msgstr "すまない。切り札を失ってしまった。"
 msgid ""
 "Don't worry about it. It's not what I hoped for, but it should still make it "
 "easier to defeat WEAPCO."
-msgstr "気にするな。私の望んだ方法ではなかったが、これでWEAPCOを倒しやすくなった。"
+msgstr ""
+"気にするな。私の望んだ方法ではなかったが、これでWEAPCOを倒しやすくなった。"
 
 #. / Cutscene (Ursula Lexx)
 #: ../src/cutscene.c:400
 msgid ""
 "Sol is going to be difficult. I've heard they have a lot of heavy defenses "
 "on the outer planets."
-msgstr "太陽系での戦いは、困難なものになるだろう。外惑星に強力な防御を敷いていると聞いた。"
+msgstr ""
+"太陽系での戦いは、困難なものになるだろう。外惑星に強力な防御を敷いていると聞"
+"いた。"
 
 #. / Cutscene (Sid Wilson)
 #: ../src/cutscene.c:404
@@ -518,7 +543,8 @@ msgstr "チクショウ! また武器がダメになった! どうすりゃい�
 #: ../src/event.c:143
 msgid ""
 "Chris, HELP! We've lost all system power! We're a sitting duck out here!"
-msgstr "クリス、助けてくれ!! 全システムがダウンだ! 全員デッキで動けなくなっている!"
+msgstr ""
+"クリス、助けてくれ!! 全システムがダウンだ! 全員デッキで動けなくなっている!"
 
 #. / Dialog (friendly transport from Eyananth, Allez mission)
 #: ../src/event.c:150
@@ -538,165 +564,173 @@ msgid "Engines fixed! Let's move!"
 msgstr "エンジンの修理完了! 発進!"
 
 #. / Dialog (Phoebe Lexx)
-#: ../src/event.c:174
+#: ../src/event.c:183
 msgid ""
 "Ummm... something about this doesn't look right! They should be offering "
 "more resistance than this!"
 msgstr "何かがおかしい…! もっと護衛がいてもいいはず!"
 
 #. / Dialog (Phoebe Lexx)
-#: ../src/event.c:179
+#: ../src/event.c:188
 msgid "DAMMIT! It's a trap! Come on, Chris, we have to leave NOW!"
 msgstr "クッ! 罠よ! 来て、クリス、ここを離れましょう!!"
 
 #. / Dialog (Sid Wilson)
-#: ../src/event.c:188
+#: ../src/event.c:197
 msgid "Chris, wh..."
 msgstr "クリス、どうし…た……"
 
 #. / Dialog (Kline Kethlan)
-#: ../src/event.c:193
+#: ../src/event.c:202
 msgid "So finally I meet the man who has been causing us so much trouble!"
 msgstr "ついに最も危険な男に会えた!"
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:198
+#: ../src/event.c:207
 msgid "I see you've jammed up my warp drive. Who are you?"
 msgstr "ワープドライブのときの混線で見かけたな。誰だ?"
 
 #. / Dialog (Kline Kethlan)
-#: ../src/event.c:203
+#: ../src/event.c:212
 msgid ""
 "I am Kline Kethlan. And I am here to put to a stop to your worthless little "
 "crusade!"
 msgstr "私はクライン・ケスラン。その小さなボロ船を止めに来た!"
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:208
+#: ../src/event.c:217
 msgid "Kline Kethlan, huh? You sure sound confident."
 msgstr "クライン・ケスラン? フン、ずいぶんと自信があるようだな。"
 
 #. / Dialog (Kline Kethlan)
-#: ../src/event.c:213
+#: ../src/event.c:222
 msgid ""
 "Nowhere to run, nowhere to hide, and no one to help you! This will certainly "
 "be interesting..."
-msgstr "逃げる場所もなく、隠れる場所もなく、そして助けもいない! どうするか楽しみだ…"
+msgstr ""
+"逃げる場所もなく、隠れる場所もなく、そして助けもいない! どうするか楽しみだ…"
 
 #. / Dialog (Ursula Lexx under mind control)
 #. / Translation note: This should appear robotic or at least monotone.
-#: ../src/event.c:226
+#: ../src/event.c:235
 msgid "Unidentified craft sighted. Will proceed to destroy all targets."
 msgstr "所属不明の艦船を発見。ただちに目標を破壊する。"
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:231
+#: ../src/event.c:240
 msgid ""
 "Looks like she's got one of those homing missile launchers too! Any advice, "
 "Phoebe?"
-msgstr "姉さんも誘導ミサイルランチャーを持っているようだ! フェーベ、何かアドバイスはあるか?"
+msgstr ""
+"姉さんも誘導ミサイルランチャーを持っているようだ! フェーベ、何かアドバイスは"
+"あるか?"
 
 #. / Dialog (Phoebe Lexx)
-#: ../src/event.c:236
+#: ../src/event.c:245
 msgid "Just try and dodge them!"
 msgstr "がんばって避けるしかないわ!"
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:244
+#: ../src/event.c:253
 msgid "That's a nice ship you got there, old-timer!"
 msgstr "いい艦だ!"
 
 #. / Dialog (Krass Tyler)
-#: ../src/event.c:249
+#: ../src/event.c:258
 msgid "Thanks, boy. Made it myself!"
 msgstr "そうだろう、小僧。俺が作ったんだからな!"
 
 #. / Dialog (Krass Tyler)
-#: ../src/event.c:254
+#: ../src/event.c:263
 msgid ""
 "Hey, boy, we've got company! Looks like your friends didn't do a very good "
 "job after all!"
-msgstr "おっと小僧、お客さんだ! どうもお前のダチどもはうまくいってないようだな!"
+msgstr ""
+"おっと小僧、お客さんだ! どうもお前のダチどもはうまくいってないようだな!"
 
 #. / Dialog (Krass Tyler)
-#: ../src/event.c:265
+#: ../src/event.c:274
 msgid "Keep those things off my back or it'll cost you extra!"
 msgstr "こいつらを俺の後ろに近づけるな。さもないと割り増しを取るぞ!!!"
 
 #. / Dialog (Phoebe Lexx)
-#: ../src/event.c:274
+#: ../src/event.c:283
 msgid "Hey! Did we miss anything exciting?"
 msgstr "ちょっと!! 何してるの?"
 
 #. / Dialog (Krass Tyler)
-#: ../src/event.c:285
+#: ../src/event.c:294
 msgid "I've earned my fee. I'll see you around, boy!"
 msgstr "俺は十分に稼いだ。じゃあな小僧!"
 
 #. / Dialog (Sid Wilson)
-#: ../src/event.c:295
+#: ../src/event.c:304
 msgid "DAMMIT! It's getting away! We've got to stop it!"
 msgstr "クソッ! 逃げようとしているぞ! 止めるんだ!"
 
 #. / Dialog (Sid Wilson)
-#: ../src/event.c:305
+#: ../src/event.c:314
 msgid "Chris! Another two of those ray cannons just arrived in your sector!"
 msgstr "クリス! 別の2機のレーザー砲が領域に近づいているぞ!"
 
 #. / Dialog (Sid Wilson)
-#: ../src/event.c:316
+#: ../src/event.c:325
 msgid "Two more!"
 msgstr "2機到着した!"
 
 #. / Dialog (Ursula Lexx)
-#: ../src/event.c:334
+#: ../src/event.c:343
 msgid "It's a trap! My God! It's Tyler!"
 msgstr "罠だ! 何ということだ! タイラーめ!"
 
 #. / Dialog (Krass Tyler)
-#: ../src/event.c:339
+#: ../src/event.c:348
 msgid ""
 "I'm a mercenary, what do you expect?! WEAPCO hired me to do a job, just like "
 "you have been doing."
-msgstr "俺は雇われだ。何を期待していたんだ?! WEAPCOはお前らと同じように俺を雇っただけだ。"
+msgstr ""
+"俺は雇われだ。何を期待していたんだ?! WEAPCOはお前らと同じように俺を雇っただけ"
+"だ。"
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:344
+#: ../src/event.c:353
 msgid "Good point. It would be foolish to expect anything else."
 msgstr "そうだな。お前に何か期待した俺がバカだったよ。"
 
 #. / Dialog (Krass Tyler)
-#: ../src/event.c:353
+#: ../src/event.c:362
 msgid ""
 "Now if you'll assist me in dying quickly, I have a cheque to earn, boy..."
 msgstr "さあ早くくたばれ。小切手が待ってるんだ、小僧…"
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:358
+#: ../src/event.c:367
 msgid "I have a name, you know. Do you remember it?"
 msgstr "俺にも名前がある。憶えているか?"
 
 #. / Dialog (Kline Kethlan)
-#: ../src/event.c:374
+#: ../src/event.c:383
 msgid ""
 "That's far enough, Bainfield. You've been lucky so far, but your luck is "
 "about to run out!"
-msgstr "これで終わりだ、バンフィールド。たいした悪運だったが、それももう尽き果てた!"
+msgstr ""
+"これで終わりだ、バンフィールド。たいした悪運だったが、それももう尽き果てた!"
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:379
+#: ../src/event.c:388
 msgid "Yeah, right! Like I'd lose to you after coming this far!"
 msgstr "その通りだ! お前にはずっと逃げられてたからな!"
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:387
+#: ../src/event.c:396
 msgid ""
 "WEAPCO is finished, Kethlan! You have nowhere to run, nowhere to hide, and "
 "no one to help you."
-msgstr "WEAPCOは終わった、ケスラン! お前には逃げる場所も、隠れる場所も、助けもない。"
+msgstr ""
+"WEAPCOは終わった、ケスラン! お前には逃げる場所も、隠れる場所も、助けもない。"
 
 #. / Dialog (Kline Kethlan)
-#: ../src/event.c:392
+#: ../src/event.c:401
 msgid "You underestimate me, Bainfield."
 msgstr "お前は私を見くびっている、バンフィールド。"
 
@@ -835,12 +869,12 @@ msgstr ""
 #. / following the English version only as a general guideline.  Any
 #. / number of messages is permitted.
 #: ../src/game.c:753
+#, fuzzy
 msgid ""
 "I am NOT your enemy!\n"
 "Hey! Watch it!\n"
 "What are you doing?! Shoot THEM!\n"
-"Open your eyes!\n"
-"Are you blind?!"
+"Pay some damn attention!"
 msgstr ""
 "敵じゃないぞ!\n"
 "おい! よく見るんだ!\n"
@@ -855,7 +889,7 @@ msgstr ""
 #. / with messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of messages is permitted.
-#: ../src/game.c:841
+#: ../src/game.c:840
 msgid ""
 "Oops! Sorry!\n"
 "Whoops! Are you OK, Chris?\n"
@@ -872,7 +906,7 @@ msgstr ""
 #. / with messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of messages is permitted.
-#: ../src/game.c:857
+#: ../src/game.c:856
 msgid ""
 "Get out of the way!\n"
 "Don't fly into my missiles!\n"
@@ -889,7 +923,7 @@ msgstr ""
 #. / with insults that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of insults is permitted.
-#: ../src/game.c:1604
+#: ../src/game.c:1603
 msgid ""
 "Fool.\n"
 "And now you're nothing but a DEAD hero.\n"
@@ -904,7 +938,7 @@ msgstr ""
 #. / with insults that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of insults is permitted.
-#: ../src/game.c:1619
+#: ../src/game.c:1618
 msgid ""
 "Pathetic.\n"
 "How very disappointing...\n"
@@ -916,7 +950,7 @@ msgstr ""
 
 #. / Dialog: Krass Tyler
 #. / Used when the player is killed in the Jupiter mission.
-#: ../src/game.c:1630
+#: ../src/game.c:1629
 msgid "That was the easiest $90,000,000 I've ever earned! Bwah! Ha! Ha! Ha!"
 msgstr "これで$90,000,000とはチョロいもんだ! ガハハハハハッ!!"
 
@@ -928,37 +962,37 @@ msgstr "これで$90,000,000とはチョロいもんだ! ガハハハハハッ!!
 #. / timer to use single-digit numbers.
 #. / The ":" can also be replaced just like any text.  For example, this would be fine:
 #. /     "Time Remaining - %d minutes and %d seconds"
-#: ../src/game.c:1943
+#: ../src/game.c:1942
 #, c-format
 msgid "Time Remaining - %.2d:%.2d"
 msgstr "Time Remaining - %.2d:%.2d"
 
 #. / "%d" must be retained.  It is replaced with the number of mission objectives remaining.
-#: ../src/game.c:1951
+#: ../src/game.c:1950
 #, c-format
 msgid "Objectives Remaining: %d"
 msgstr "残りの作戦: %d"
 
 #. / "%d" must be retained.  It is replaced with the player's current total cash.
 #. / Retain "%d" as-is.  It is replaced with the player's current cash.
-#: ../src/game.c:1957 ../src/shop.c:352
+#: ../src/game.c:1956 ../src/shop.c:352
 #, c-format
 msgid "Cash: $%d"
 msgstr "キャッシュ: $%d"
 
 #. / "%.3d" must be retained.  It is replaced with the amount of plasma ammo.
-#: ../src/game.c:1994
+#: ../src/game.c:1993
 #, c-format
 msgid "Plasma: %.3d"
 msgstr "プラズマ: %.3d"
 
 #. / Used to indicate the charge meter for the charger cannon in the HUD.
-#: ../src/game.c:2001
+#: ../src/game.c:2000
 msgid "Charge"
 msgstr "チャージ"
 
 #. / Used to indicate the heat meter for the laser cannon in the HUD.
-#: ../src/game.c:2006
+#: ../src/game.c:2005
 msgid "Heat"
 msgstr "ヒート"
 
@@ -966,38 +1000,38 @@ msgstr "ヒート"
 #. / Retain "%.2d".  It is replaced with the ship's current number of rockets.
 #. / "%.2d" can be changed to "%d" if you wish to not fill in space with zeroes,
 #. / e.g. render the number 3 as "3" rather than "03".
-#: ../src/game.c:2011 ../src/shop.c:362
+#: ../src/game.c:2010 ../src/shop.c:362
 #, c-format
 msgid "Rockets: %.2d"
 msgstr "ロケット: %.2d"
 
 #. / DIFFICULTY_SUPEREASY
-#: ../src/game.c:2421
+#: ../src/game.c:2420
 msgid "Super-Easy"
 msgstr "とても簡単"
 
 #. / DIFFICULTY_EASY
-#: ../src/game.c:2425
+#: ../src/game.c:2424
 msgid "Easy"
 msgstr "簡単"
 
 #. / DIFFICULTY_NORMAL
-#: ../src/game.c:2429
+#: ../src/game.c:2428
 msgid "Normal"
 msgstr "普通"
 
 #. / DIFFICULTY_HARD
-#: ../src/game.c:2433
+#: ../src/game.c:2432
 msgid "Hard"
 msgstr "難しい"
 
 #. / DIFFICULTY_NIGHTMARE
-#: ../src/game.c:2437
+#: ../src/game.c:2436
 msgid "Nightmare!"
 msgstr "悪夢!"
 
 #. / DIFFICULTY_ORIGINAL (Classic)
-#: ../src/game.c:2441
+#: ../src/game.c:2440
 msgid "Classic"
 msgstr "旧版"
 
@@ -1410,7 +1444,9 @@ msgid ""
 "Hey, boy! You still owe me money for the Firefly I stole for you! But "
 "instead, I want you to go to the WEAPCO training ground and destroy all the "
 "craft there."
-msgstr "おい、小僧! お前のために盗んでやったファイアフライの代金がまだだぞ! だが、その代わりにWEAPCOの訓練場へ行って、そこで全ての艦を破壊してくれ。"
+msgstr ""
+"おい、小僧! お前のために盗んでやったファイアフライの代金がまだだぞ! だが、そ"
+"の代わりにWEAPCOの訓練場へ行って、そこで全ての艦を破壊してくれ。"
 
 #. / Mission dialog: Spirit, Hail (Chris Bainfield)
 #: ../src/intermission.c:839
@@ -1423,7 +1459,10 @@ msgid ""
 "I know, but this way we can resolve your debt right now. Do this job, and "
 "also collect $500, and we will call it quits. And if you die... well, I "
 "guess the ship was not worth stealing! HA HA HA!"
-msgstr "分かっている。だが、この方法ならお前はすぐに借りを返せるぞ。この仕事をして、さらに$500稼いでこい。これで帳消しだ。もしお前が死んだら…そうだな、その艦には盗むだけの価値がなかったってことだ! ハッハッハッ!"
+msgstr ""
+"分かっている。だが、この方法ならお前はすぐに借りを返せるぞ。この仕事をして、"
+"さらに$500稼いでこい。これで帳消しだ。もしお前が死んだら…そうだな、その艦には"
+"盗むだけの価値がなかったってことだ! ハッハッハッ!"
 
 #. / Mission dialog: Spirit, Hail (Chris Bainfield)
 #: ../src/intermission.c:847
@@ -1441,7 +1480,9 @@ msgid ""
 "Chris, I've intercepted a communication from WEAPCO. Seems they're "
 "transporting some medical supplies around Ceradse. We need to get hold of "
 "those pods to save some lives!"
-msgstr "クリス、輸送艦がWEAPCOに襲われた。どうやらセラドセに医療品を運んでいたようだ。多くの命を救うために積荷を取り戻さなければならない!"
+msgstr ""
+"クリス、輸送艦がWEAPCOに襲われた。どうやらセラドセに医療品を運んでいたよう"
+"だ。多くの命を救うために積荷を取り戻さなければならない!"
 
 #. / Mission dialog: Spirit, Ceradse (Chris Bainfield)
 #: ../src/intermission.c:862
@@ -1453,7 +1494,9 @@ msgstr "いくつあるんだ?"
 msgid ""
 "All six, Chris! If you lose even a single one, thousands of people could "
 "perish in Spirit within the next few months."
-msgstr "全部で6つだ! もし1つでも失えば、数ヶ月の内にこのスピリット系の人々が何千人も死んでしまうだろう。"
+msgstr ""
+"全部で6つだ! もし1つでも失えば、数ヶ月の内にこのスピリット系の人々が何千人も"
+"死んでしまうだろう。"
 
 #. / Mission dialog: Spirit, Hinstag (Chris Bainfield)
 #: ../src/intermission.c:873
@@ -1477,14 +1520,18 @@ msgid ""
 "Please be careful, Chris. A single missile boat carries enough rockets to "
 "level most major cities. Try not to face them head-on, and keep your "
 "distance."
-msgstr "気をつけろ、クリス。1隻のミサイル艇でも主要都市を破壊できるほどのロケットを搭載している。奴らには正面から向かわず、十分な距離を保て。"
+msgstr ""
+"気をつけろ、クリス。1隻のミサイル艇でも主要都市を破壊できるほどのロケットを搭"
+"載している。奴らには正面から向かわず、十分な距離を保て。"
 
 #. / Mission dialog: Spirit, Joldar (Sid Wilson)
 #: ../src/intermission.c:892
 msgid ""
 "We're going to have to get rid of the mine deployment unit around Joldar. "
 "The minefield is stopping interplanetary traffic."
-msgstr "ジョルダー周辺の機雷を除去しなければならない。機雷地帯のせいで惑星間交通が阻害されている。"
+msgstr ""
+"ジョルダー周辺の機雷を除去しなければならない。機雷地帯のせいで惑星間交通が阻"
+"害されている。"
 
 #. / Mission dialog: Spirit, Joldar (Chris Bainfield)
 #: ../src/intermission.c:896
@@ -1497,7 +1544,10 @@ msgid ""
 "Not at the moment, but that doesn't mean they won't turn up. Be very careful "
 "of those mines! They'll only explode when they encounter a ship that's not "
 "transmitting a WEAPCO signal. Shoot them down if they get in your way."
-msgstr "今の所はな。だが奴らが引き換えしてこないとは言い切れない。機雷には気をつけろ! WEAPCOの信号を発していない艦は近づいただけで爆発する。邪魔ならば打ち落とせ。"
+msgstr ""
+"今の所はな。だが奴らが引き換えしてこないとは言い切れない。機雷には気をつけ"
+"ろ! WEAPCOの信号を発していない艦は近づいただけで爆発する。邪魔ならば打ち落と"
+"せ。"
 
 #. / Mission dialog: Spirit, Moebo (Sid Wilson)
 #: ../src/intermission.c:907
@@ -1505,7 +1555,10 @@ msgid ""
 "We've got a major problem here! WEAPCO has decided to stop our resistance by "
 "destroying Spirit! The explosion will incinerate everything in the system! "
 "You've got to destroy that frigate before it gets in range!"
-msgstr "緊急事態だ! WEAPCOは我々の活動を止めるためにスピリットを破壊しようとしている! その爆発は星系の全ての惑星を巻き込むだろう! フリゲートが射程内に入る前に破壊しなければならない!"
+msgstr ""
+"緊急事態だ! WEAPCOは我々の活動を止めるためにスピリットを破壊しようとしてい"
+"る! その爆発は星系の全ての惑星を巻き込むだろう! フリゲートが射程内に入る前に"
+"破壊しなければならない!"
 
 #. / Mission dialog: Spirit, Moebo (Chris Bainfield)
 #: ../src/intermission.c:911
@@ -1517,7 +1570,9 @@ msgstr "畜生め! 今すぐ発進する!"
 msgid ""
 "We're all counting on you, Chris! But remember, they didn't call that thing "
 "\"Star Killer\" just because it sounded nice!"
-msgstr "クリス、皆が君に期待している! だが忘れるな - 奴らは決して『スターキラー』とは呼ばない。なぜならそれではきれい過ぎるからだ!"
+msgstr ""
+"クリス、皆が君に期待している! だが忘れるな - 奴らは決して『スターキラー』とは"
+"呼ばない。なぜならそれではきれい過ぎるからだ!"
 
 #. / Mission dialog: Eyananth, interceptions (Sid Wilson)
 #. / "%d" must be retained as-is. It is replaced with the number of slaves that
@@ -1528,7 +1583,10 @@ msgid ""
 "As you know, WEAPCO has many slaves in this system. If we free a large "
 "number of them, it might help to spark a rebellion. I estimate that we will "
 "need to rescue around %d to make a difference."
-msgstr "知っての通り、この星系にはたくさんのWEAPCOの奴隷がいる。彼らを解放できれば反撃のきっかけになるはずだ。変化が現れるためには、%d人は救出する必要があるだろう。"
+msgstr ""
+"知っての通り、この星系にはたくさんのWEAPCOの奴隷がいる。彼らを解放できれば反"
+"撃のきっかけになるはずだ。変化が現れるためには、%d人は救出する必要があるだろ"
+"う。"
 
 #. / Mission dialog: Eyananth, interceptions (Chris Bainfield)
 #: ../src/intermission.c:928
@@ -1542,7 +1600,10 @@ msgid ""
 "off intercepting slave transports. What you'll have to do is fly around and "
 "see if you can intercept a WEAPCO patrol. Of course, they might not be "
 "escorting any slave units, so be careful!"
-msgstr "そうだ。だが、採掘所を直接攻撃するのは危険だ。奴隷の搬入を阻止するのがいいだろう。あたりを飛行し、WEAPCOのパトロールを迎撃しろ。もちろん奴隷船を護衛しているとは限らない。十分に気をつけろ!!"
+msgstr ""
+"そうだ。だが、採掘所を直接攻撃するのは危険だ。奴隷の搬入を阻止するのがいいだ"
+"ろう。あたりを飛行し、WEAPCOのパトロールを迎撃しろ。もちろん奴隷船を護衛して"
+"いるとは限らない。十分に気をつけろ!!"
 
 #. / Mission dialog: Eyananth, Nerod (Phoebe Lexx)
 #: ../src/intermission.c:939
@@ -1583,7 +1644,10 @@ msgstr "分かった。すぐ向かうと伝えてくれ。"
 msgid ""
 "I need some resources before we leave. It'll make life a lot easier in "
 "Mordor. Problem is that WEAPCO hoards these parts."
-msgstr "この星系を離れる前にいくらか資源を確保する必要がある。それがあればモルドール系での活動がより簡単になるだろう。問題は、このあたりではWEAPCOしか持ってないことだ。"
+msgstr ""
+"この星系を離れる前にいくらか資源を確保する必要がある。それがあればモルドール"
+"系での活動がより簡単になるだろう。問題は、このあたりではWEAPCOしか持ってない"
+"ことだ。"
 
 #. / Mission dialog: Eyananth, Urusor (Chris Bainfield)
 #: ../src/intermission.c:973
@@ -1595,7 +1659,8 @@ msgstr "それでどこへ行けば手に入るんだ?"
 msgid ""
 "There's a big shipment of them nearby. I can disable the supply craft "
 "carrying them; I just need you to give me some cover while I do it."
-msgstr "近くにその大型補給艦がいる。私が航行不能にする。君にはその間の援護をたのむ。"
+msgstr ""
+"近くにその大型補給艦がいる。私が航行不能にする。君にはその間の援護をたのむ。"
 
 #. / Mission dialog: Eyananth, Urusor (Chris Bainfield)
 #: ../src/intermission.c:981
@@ -1607,7 +1672,9 @@ msgstr "分かった!"
 msgid ""
 "A WEAPCO scientist just ran off in an escape pod and hid in the asteroid "
 "belt. If we capture him, we may be able to get some information about Mordor."
-msgstr "WEAPCOの科学者がポッドで脱走し、アステロイドベルトに隠れているらしい。救出できればモルドール系の情報を聞けるかもしれない。"
+msgstr ""
+"WEAPCOの科学者がポッドで脱走し、アステロイドベルトに隠れているらしい。救出で"
+"きればモルドール系の情報を聞けるかもしれない。"
 
 #. / Mission dialog: Eyananth, Dorim (Chris Bainfield)
 #: ../src/intermission.c:992
@@ -1620,14 +1687,18 @@ msgstr "すぐ行こう。途中で鉱石も取れそうだ。"
 msgid ""
 "I've received word that the slaves we rescued have started a rebellion. "
 "Looks like the plan worked."
-msgstr "我々が救出した奴隷たちが反乱を起こしたとの情報が入った。計画はうまく進んでいるようだ。"
+msgstr ""
+"我々が救出した奴隷たちが反乱を起こしたとの情報が入った。計画はうまく進んでい"
+"るようだ。"
 
 #. / Mission dialog: Eyananth, Elamale (Phoebe Lexx)
 #: ../src/intermission.c:1003
 msgid ""
 "WEAPCO has an automated mining ship in orbit around Elamale. How about we "
 "take it out and cause some confusion?"
-msgstr "WEAPCOの無人採掘船がエラメールの軌道上にあるわ。これを破壊して撹乱するのはどう?"
+msgstr ""
+"WEAPCOの無人採掘船がエラメールの軌道上にあるわ。これを破壊して撹乱するのはど"
+"う?"
 
 #. / Mission dialog: Eyananth, Elamale (Chris Bainfield)
 #: ../src/intermission.c:1007
@@ -1661,14 +1732,17 @@ msgstr "偶然出会うまで飛び回るしかないな。"
 msgid ""
 "It's likely to run away if you engage it in battle, so try and do as much "
 "damage to it as possible."
-msgstr "たとえ遭遇しても相手は逃げるだろう。見つけたら可能な限りダメージを与えることだ。"
+msgstr ""
+"たとえ遭遇しても相手は逃げるだろう。見つけたら可能な限りダメージを与えること"
+"だ。"
 
 #. / Mission dialog: Mordor, Odeon (Phoebe Lexx)
 #: ../src/intermission.c:1037
 msgid ""
 "I've located my sister's ship currently in orbit around Odeon. She's "
 "ignoring my hails though."
-msgstr "姉さんの艦をオデオンの軌道上で見つけた。でも、こちらの通信を無視しているの。"
+msgstr ""
+"姉さんの艦をオデオンの軌道上で見つけた。でも、こちらの通信を無視しているの。"
 
 #. / Mission dialog: Mordor, Odeon (Sid Wilson)
 #: ../src/intermission.c:1041
@@ -1691,14 +1765,18 @@ msgstr "ありえない。WEAPCOをとても憎んでいたもの。"
 msgid ""
 "She must be under some kind of mind control. I've heard of WEAPCO developing "
 "a new \"AI training program\" recently. We'd better rescue her!"
-msgstr "マインドコントロールの一種かもしれない。WEAPCOが最近新しい「AIトレーニングプログラム」を開発中だと聞いた。早く助けたほうが良いな!"
+msgstr ""
+"マインドコントロールの一種かもしれない。WEAPCOが最近新しい「AIトレーニングプ"
+"ログラム」を開発中だと聞いた。早く助けたほうが良いな!"
 
 #. / Mission dialog: Mordor, Fellon (Sid Wilson)
 #: ../src/intermission.c:1060
 msgid ""
 "A rebel group has organized a counter strike. If we can help them secure a "
 "victory it will be a real boost to morale."
-msgstr "反乱軍による攻撃の計画がある。彼らを支援し勝利できれば、士気は大いに高まるだろう。"
+msgstr ""
+"反乱軍による攻撃の計画がある。彼らを支援し勝利できれば、士気は大いに高まるだ"
+"ろう。"
 
 #. / Mission dialog: Mordor, Fellon (Chris Bainfield)
 #: ../src/intermission.c:1064
@@ -1715,7 +1793,9 @@ msgstr "反乱軍の艦が全て破壊されることだけは避けなければ
 msgid ""
 "Seems like taking out that WEAPCO mining ship wasn't such a good idea. The "
 "ore it collected is needed in weapons production."
-msgstr "WEAPCOの採掘船から奪うのは、あまりよい方法ではなかった。だが、あのアステロイドの鉱石は武器の生産に必要だ。"
+msgstr ""
+"WEAPCOの採掘船から奪うのは、あまりよい方法ではなかった。だが、あのアステロイ"
+"ドの鉱石は武器の生産に必要だ。"
 
 #. / Mission dialog: Mordor, Sivedi (Chris Bainfield)
 #: ../src/intermission.c:1079
@@ -1727,7 +1807,9 @@ msgstr "おいおい! つまり、俺に取りに行けと言っているのか?
 msgid ""
 "Yes. Be careful, Chris. Your weapons weren't designed for that sort of work, "
 "after all."
-msgstr "その通りだ。注意しろ、クリス。君の武器はそのような作業のために設計されていない。"
+msgstr ""
+"その通りだ。注意しろ、クリス。君の武器はそのような作業のために設計されていな"
+"い。"
 
 #. / Mission dialog: Mordor, Almartha (Chris Bainfield)
 #: ../src/intermission.c:1090
@@ -1735,7 +1817,9 @@ msgid ""
 "Hey, Krass! I need you to help us out with something. Phoebe and Ursula are "
 "taking out key WEAPCO plants. Can you help me create a diversion by wreaking "
 "havoc a little bit away from that?"
-msgstr "おいクラス! 手伝ってくれ。フェーベとウーシュラがWEAPCOの重要なプラントを破壊しようとしている。ちょっと騒ぎを起こして、こちらに注意を引き付けられないか?"
+msgstr ""
+"おいクラス! 手伝ってくれ。フェーベとウーシュラがWEAPCOの重要なプラントを破壊"
+"しようとしている。ちょっと騒ぎを起こして、こちらに注意を引き付けられないか?"
 
 #. / Mission dialog: Mordor, Almartha (Krass Tyler)
 #: ../src/intermission.c:1094
@@ -1748,14 +1832,18 @@ msgid ""
 "My memory is finally back. Here's something interesting: just before I was "
 "captured, I found out that WEAPCO is transporting several important "
 "executives to Poswic."
-msgstr "記憶が完全に戻った。そこでは面白いことが行われていたぞ。私が捕らえられる直前、WEAPCOが何人もの重役をポスイックに移送するのを見た。"
+msgstr ""
+"記憶が完全に戻った。そこでは面白いことが行われていたぞ。私が捕らえられる直"
+"前、WEAPCOが何人もの重役をポスイックに移送するのを見た。"
 
 #. / Mission dialog: Mordor, Poswic (Sid Wilson)
 #: ../src/intermission.c:1105
 msgid ""
 "We can't let a rare opportunity like this slip through our fingers! I'll "
 "need some cover so I can disable that ship."
-msgstr "そのようなチャンスを見逃すわけにはいかない! 私もその艦を航行不能にするために参加する。"
+msgstr ""
+"そのようなチャンスを見逃すわけにはいかない! 私もその艦を航行不能にするために"
+"参加する。"
 
 #. / Mission dialog: Mordor, Poswic (Chris Bainfield)
 #: ../src/intermission.c:1109
@@ -1778,14 +1866,17 @@ msgstr "追いつけると思ってるの?"
 msgid ""
 "Absolutely. One thing that's really nice about the Firefly is its speed. "
 "I'll see you in a bit!"
-msgstr "もちろんだ。このファイアフライのスピードがあればな。すぐに見せてやるよ!"
+msgstr ""
+"もちろんだ。このファイアフライのスピードがあればな。すぐに見せてやるよ!"
 
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Sid Wilson)
 #: ../src/intermission.c:1133
 msgid ""
 "We've got to start from the outside and work our way in. That will give us "
 "less chance of being flanked during the final operation."
-msgstr "まず外惑星を制圧し、そこから切り込む。そうすれば最後の作戦のとき両側から挟まれる危険性が小さくなる。"
+msgstr ""
+"まず外惑星を制圧し、そこから切り込む。そうすれば最後の作戦のとき両側から挟ま"
+"れる危険性が小さくなる。"
 
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Phoebe Lexx)
 #: ../src/intermission.c:1137
@@ -1807,7 +1898,9 @@ msgstr "面倒だがそれが正しいだろうな。"
 msgid ""
 "WEAPCO has set up a highly dangerous defense line between Saturn and Uranus. "
 "We'll need to take it out."
-msgstr "WEAPCOは土星と天王星の間に高度な防衛ラインを引いている。これを取り除く必要がある。"
+msgstr ""
+"WEAPCOは土星と天王星の間に高度な防衛ラインを引いている。これを取り除く必要が"
+"ある。"
 
 #. / Mission dialog: Sol, Saturn (Ursula Lexx)
 #: ../src/intermission.c:1156
@@ -1819,7 +1912,9 @@ msgstr "どのような防衛システムなのだ?"
 msgid ""
 "Several mobile Energy Ray cannons, not unlike the weapon used by the Star "
 "Killer back in Spirit."
-msgstr "小型の複数の移動できるレーザー砲で構成されている。かつてスピリット系で戦ったスターキラーとは全く異なる種類の兵器だ。"
+msgstr ""
+"小型の複数の移動できるレーザー砲で構成されている。かつてスピリット系で戦った"
+"スターキラーとは全く異なる種類の兵器だ。"
 
 #. / Mission dialog: Sol, Saturn (Phoebe Lexx)
 #: ../src/intermission.c:1164
@@ -1847,7 +1942,9 @@ msgstr "調べてみよう。罠かもしれんが、何とかなるさ。"
 msgid ""
 "Chris, we've got a small problem. WEAPCO has deployed a minefield in the "
 "asteroid belt. We'll need you to clear a way through."
-msgstr "クリス、少し問題がある。WEAPCOはアステロイドベルトに機雷原を敷いている。これを取り除かなければならない。"
+msgstr ""
+"クリス、少し問題がある。WEAPCOはアステロイドベルトに機雷原を敷いている。これ"
+"を取り除かなければならない。"
 
 #. / Mission dialog: Sol, Mars (Chris Bainfield)
 #: ../src/intermission.c:1190
@@ -1859,7 +1956,9 @@ msgstr "分かった。安全な道を作れたら連絡する。"
 msgid ""
 "Okay people, this is the big one. We go in fast and we go in hard. Don't "
 "hold back and hit them with everything we've got!"
-msgstr "よしみんな、いよいよだ。俺たちは苦しい中をずっと進んできた。退かず全ての力で奴らを叩くしかない!"
+msgstr ""
+"よしみんな、いよいよだ。俺たちは苦しい中をずっと進んできた。退かず全ての力で"
+"奴らを叩くしかない!"
 
 #. / Mission dialog: Sol, Earth (Sid Wilson)
 #: ../src/intermission.c:1201
@@ -1886,7 +1985,9 @@ msgstr "ケスランは金星へ逃げた。俺は奴を追う。"
 msgid ""
 "Be careful, Chris. We've won the war, but it would be a real shame if you "
 "died now!"
-msgstr "気をつけてくれ、クリス。我々は戦争に勝利した。なのに君に死なれたとあっては耐え難い恥辱だ!"
+msgstr ""
+"気をつけてくれ、クリス。我々は戦争に勝利した。なのに君に死なれたとあっては耐"
+"え難い恥辱だ!"
 
 #: ../src/intermission.c:1271
 msgid "++ OPTIONS ++"
