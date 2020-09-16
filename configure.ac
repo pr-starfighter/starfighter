@@ -109,7 +109,11 @@ AC_CHECK_FUNCS([atexit mkdir])
 
 AC_CONFIG_FILES([
 	Makefile
-	src/Makefile
+	gfx/Makefile
+	locale/Makefile
 	misc/Makefile
+	music/Makefile
+	sound/Makefile
+	src/Makefile
 ])
 AC_OUTPUT
