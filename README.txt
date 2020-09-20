@@ -40,9 +40,9 @@ compared to the original:
 
 * Typing "humansdoitbetter" in the title screen no longer enables
   cheats. This is actually because the switch to SDL2 broke the original
-  feature, and rather than fixing it, I just replaced it with something
-  else. I'll let you figure out what the new method to access the cheat
-  menu is. :)
+  feature, and rather than fixing it, we just replaced it with something
+  else. We'll let you figure out what the new method to access the cheat
+  menu is. 😉
 
 ------------------------------------------------------------------------
 

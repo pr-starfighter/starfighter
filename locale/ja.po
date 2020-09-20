@@ -869,7 +869,6 @@ msgstr ""
 #. / following the English version only as a general guideline.  Any
 #. / number of messages is permitted.
 #: ../src/game.c:753
-#, fuzzy
 msgid ""
 "I am NOT your enemy!\n"
 "Hey! Watch it!\n"
