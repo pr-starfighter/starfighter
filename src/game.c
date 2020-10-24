@@ -1601,7 +1601,7 @@ static void game_doPlayer()
 							/// following the English version only as a general guideline.  Any
 							/// number of insults is permitted.
 							"Fool.\n"
-							"And now you're nothing but a DEAD hero.\n"
+							"And now you're nothing but a DEAD hero."
 						));
 						radio_setMessage(FS_KLINE, msg, 1);
 					}

@@ -21,9 +21,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.3.3\n"
+"Project-Id-Version: 2.3.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
-"POT-Creation-Date: 2020-09-15 13:07-0400\n"
+"POT-Creation-Date: 2020-10-24 14:38-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -843,7 +843,7 @@ msgstr ""
 #: ../src/game.c:1603
 msgid ""
 "Fool.\n"
-"And now you're nothing but a DEAD hero.\n"
+"And now you're nothing but a DEAD hero."
 msgstr ""
 
 #. / Kline insult messages

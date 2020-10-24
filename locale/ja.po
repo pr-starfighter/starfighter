@@ -20,10 +20,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.3.2\n"
+"Project-Id-Version: 2.3.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
-"POT-Creation-Date: 2020-09-15 13:07-0400\n"
-"PO-Revision-Date: 2020-07-27 13:19-0400\n"
+"POT-Creation-Date: 2020-10-24 14:38-0400\n"
+"PO-Revision-Date: 2020-10-24 14:41-0400\n"
 "Last-Translator: maruhiro <maruhiro@bridge.ocn.ne.jp>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -925,10 +925,10 @@ msgstr ""
 #: ../src/game.c:1603
 msgid ""
 "Fool.\n"
-"And now you're nothing but a DEAD hero.\n"
+"And now you're nothing but a DEAD hero."
 msgstr ""
 "ばかばかしい。\n"
-"君はもはや過去の英雄にすぎない。\n"
+"君はもはや過去の英雄にすぎない。"
 
 #. / Kline insult messages
 #. / This is a list of insults separated by "\n".  They are randomly

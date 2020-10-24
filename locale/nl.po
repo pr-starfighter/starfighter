@@ -16,22 +16,22 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Heimen Stoffels <vistausss@outlook.com>, 2020.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.3.3\n"
+"Project-Id-Version: 2.3.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
-"POT-Creation-Date: 2020-09-15 13:07-0400\n"
-"PO-Revision-Date: 2020-10-24 17:24+0200\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2020-10-24 14:38-0400\n"
+"PO-Revision-Date: 2020-10-24 14:46-0400\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"Language-Team: Dutch\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.4.1\n"
-"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
-"Language: nl\n"
 
 #. / Dialog (Kline Kethlan)
 #. / Used when the final "stage" of the Venus fight is entered.
@@ -963,7 +963,7 @@ msgstr ""
 #: ../src/game.c:1603
 msgid ""
 "Fool.\n"
-"And now you're nothing but a DEAD hero.\n"
+"And now you're nothing but a DEAD hero."
 msgstr ""
 "Dwaas.\n"
 "Je bent gewoon een held op sokken.\n"
@@ -971,7 +971,7 @@ msgstr ""
 "Ik dacht dat je meer in je mars had...\n"
 "Sukkel.\n"
 "Miserie, miserie, miserie.\n"
-"Mijn gedacht!\n"
+"Mijn gedacht!"
 
 #. / Kline insult messages
 #. / This is a list of insults separated by "\n".  They are randomly
