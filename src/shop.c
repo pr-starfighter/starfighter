@@ -234,16 +234,16 @@ static void drawShop()
 		}
 	}
 
-	gfx_shopSprites[SHOP_S_PRIMARY] = gfx_createSurface(190, 91);
-	gfx_shopSprites[SHOP_S_POWERUP] = gfx_createSurface(190, 91);
-	gfx_shopSprites[SHOP_S_SECONDARY] = gfx_createSurface(190, 91);
+	gfx_shopSprites[SHOP_S_PRIMARY] = gfx_createSurface(194, 91);
+	gfx_shopSprites[SHOP_S_POWERUP] = gfx_createSurface(203, 91);
+	gfx_shopSprites[SHOP_S_SECONDARY] = gfx_createSurface(194, 91);
 
-	gfx_drawRect(gfx_shopSprites[SHOP_S_PRIMARY], 0, 0, 189, 90, 0x00, 0x00, 0x55);
-	gfx_drawRect(gfx_shopSprites[SHOP_S_PRIMARY], 0, 0, 189, 20, 0x00, 0x00, 0x99);
-	gfx_drawRect(gfx_shopSprites[SHOP_S_POWERUP], 0, 0, 189, 90, 0x00, 0x00, 0x55);
-	gfx_drawRect(gfx_shopSprites[SHOP_S_POWERUP], 0, 0, 189, 20, 0x00, 0x00, 0x99);
-	gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 189, 90, 0x00, 0x00, 0x55);
-	gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 189, 20, 0x00, 0x00, 0x99);
+	gfx_drawRect(gfx_shopSprites[SHOP_S_PRIMARY], 0, 0, 193, 90, 0x00, 0x00, 0x55);
+	gfx_drawRect(gfx_shopSprites[SHOP_S_PRIMARY], 0, 0, 193, 20, 0x00, 0x00, 0x99);
+	gfx_drawRect(gfx_shopSprites[SHOP_S_POWERUP], 0, 0, 202, 90, 0x00, 0x00, 0x55);
+	gfx_drawRect(gfx_shopSprites[SHOP_S_POWERUP], 0, 0, 202, 20, 0x00, 0x00, 0x99);
+	gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 193, 90, 0x00, 0x00, 0x55);
+	gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 193, 20, 0x00, 0x00, 0x99);
 
 	gfx_shopSprites[SHOP_S_SHIP_INFO] = gfx_createAlphaRect(SHOP_WIDTH + 1, 41, 0x00, 0x00, 0x00);
 	gfx_drawRect(gfx_shopSprites[SHOP_S_SHIP_INFO], 0, 0, SHOP_WIDTH, 40, 0x00, 0x00, 0x33);
@@ -261,22 +261,22 @@ static void drawShop()
 		case SHOP_PLASMA_MAX_DAMAGE:
 		case SHOP_PLASMA_MAX_RATE:
 		case SHOP_PLASMA_MAX_AMMO:
-			gfx_drawRect(gfx_shopSprites[SHOP_S_POWERUP], 0, 0, 189, 90, 0x55, 0x00, 0x00);
-			gfx_drawRect(gfx_shopSprites[SHOP_S_POWERUP], 0, 0, 189, 20, 0x99, 0x00, 0x00);
+			gfx_drawRect(gfx_shopSprites[SHOP_S_POWERUP], 0, 0, 202, 90, 0x55, 0x00, 0x00);
+			gfx_drawRect(gfx_shopSprites[SHOP_S_POWERUP], 0, 0, 202, 20, 0x99, 0x00, 0x00);
 			break;
 		case SHOP_PLASMA_MIN_OUTPUT:
 		case SHOP_PLASMA_MIN_DAMAGE:
 		case SHOP_PLASMA_MIN_RATE:
-			gfx_drawRect(gfx_shopSprites[SHOP_S_PRIMARY], 0, 0, 189, 90, 0x55, 0x00, 0x00);
-			gfx_drawRect(gfx_shopSprites[SHOP_S_PRIMARY], 0, 0, 189, 20, 0x99, 0x00, 0x00);
+			gfx_drawRect(gfx_shopSprites[SHOP_S_PRIMARY], 0, 0, 193, 90, 0x55, 0x00, 0x00);
+			gfx_drawRect(gfx_shopSprites[SHOP_S_PRIMARY], 0, 0, 193, 20, 0x99, 0x00, 0x00);
 			break;
 		case SHOP_PLASMA_AMMO:
 		case SHOP_ROCKET_AMMO:
 			gfx_drawRect(gfx_shopSprites[SHOP_S_SHIP_INFO], 0, 0, SHOP_WIDTH, 40, 0x33, 0x00, 0x00);
 			break;
 		default:
-			gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 189, 90, 0x55, 0x00, 0x00);
-			gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 189, 20, 0x99, 0x00, 0x00);
+			gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 193, 90, 0x55, 0x00, 0x00);
+			gfx_drawRect(gfx_shopSprites[SHOP_S_SECONDARY], 0, 0, 193, 20, 0x99, 0x00, 0x00);
 			break;
 	}
 
@@ -365,7 +365,7 @@ static void drawShop()
 	gfx_shopSprites[SHOP_S_ITEM_INFO] = gfx_createSurface(SHOP_WIDTH + 1, 56);
 	gfx_drawRect(gfx_shopSprites[SHOP_S_ITEM_INFO], 0, 0, SHOP_WIDTH, 35, 0x00, 0x99, 0x00);
 	gfx_drawRect(gfx_shopSprites[SHOP_S_ITEM_INFO], 0, 20, SHOP_WIDTH, 35, 0x00, 0x33, 0x00);
-	gfx_renderUnicode(_("Information"), 5, 4, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
+	gfx_renderUnicode(_("Information"), 10, 4, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
 
 	switch (shopSelectedItem)
 	{
@@ -373,40 +373,40 @@ static void drawShop()
 			break;
 		case SHOP_ERROR_INSUFFICIENT_FUNDS:
 			/// For when the player attempts to buy something they can't afford.
-			gfx_renderUnicode(_("You don't have enough money"), 20, 30, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
+			gfx_renderUnicode(_("You don't have enough money"), 10, 30, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
 			break;
 		case SHOP_ERROR_CANNOT_UPGRADE:
 			/// For when the player attempts an upgrade beyond the maximum (line 1 of 2).
-			gfx_renderUnicode(_("Cannot upgrade ship"), 5, 22, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
+			gfx_renderUnicode(_("Cannot upgrade ship"), 10, 22, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
 
 			/// For when the player attempts an upgrade beyond the maximum (line 2 of 2).
-			gfx_renderUnicode(_("Hardware capacity has been reached"), 20, 38, FONT_CYAN, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
+			gfx_renderUnicode(_("Hardware capacity has been reached"), 10, 38, FONT_CYAN, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
 			break;
 		case SHOP_ERROR_AMMO_LIMIT:
 			/// For when the player attempts to buy more ammo than the ship can hold.
-			gfx_renderUnicode(_("Ammunition limit reached"), 20, 30, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
+			gfx_renderUnicode(_("Ammunition limit reached"), 10, 30, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
 			break;
 		case SHOP_ERROR_CANNOT_SELL:
 			/// For when the player attempts to sell an item they aren't allowed to sell.
-			gfx_renderUnicode(_("You cannot sell that item"), 20, 30, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
+			gfx_renderUnicode(_("You cannot sell that item"), 10, 30, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
 			break;
 		case SHOP_ERROR_NOTHING_TO_SELL:
 			/// For when the player attempts to sell an item they don't have any of.
-			gfx_renderUnicode(_("Nothing to sell"), 20, 30, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
+			gfx_renderUnicode(_("Nothing to sell"), 10, 30, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
 			break;
 		case SHOP_ERROR_IS_NOT_ROCKETS:
 			/// For when the player attempts to buy rockets or rocket capacity
 			/// while secondary weapon is either laser or charge cannon.
-			gfx_renderUnicode(_("Rockets cannot be bought for Laser or Charger Cannon"), 5, 30, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
+			gfx_renderUnicode(_("Rockets cannot be bought for Laser or Charger Cannon"), 10, 30, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
 			break;
 		case SHOP_ERROR_ALREADY_OWNED:
 			/// For when the player attempts to buy a weapon they already have.
-			gfx_renderUnicode(_("You already have that weapon"), 20, 30, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
+			gfx_renderUnicode(_("You already have that weapon"), 10, 30, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
 			break;
 		case SHOP_ERROR_WEAPON_CAPACITY:
 			/// For when the player attempts to increase rocket capacity beyond
 			/// what is allowed for the weapon (used for homing missiles).
-			gfx_renderUnicode(_("This weapon's ammo limit has been reached"), 20, 30, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
+			gfx_renderUnicode(_("This weapon's ammo limit has been reached"), 10, 30, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
 			break;
 		default:
 			if (shopItems[shopSelectedItem].price != 0)
@@ -425,9 +425,9 @@ static void drawShop()
 				snprintf(description, STRMAX, _("%s (N/A)"),
 					shopItems[shopSelectedItem].description);
 			}
-			gfx_renderUnicode(shopItems[shopSelectedItem].name, 5, 22,
+			gfx_renderUnicode(shopItems[shopSelectedItem].name, 20, 22,
 				FONT_WHITE, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
-			gfx_renderUnicode(description, 20, 38, FONT_CYAN, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
+			gfx_renderUnicode(description, 10, 38, FONT_CYAN, 0, gfx_shopSprites[SHOP_S_ITEM_INFO]);
 			break;
 	}
 }
@@ -1113,8 +1113,8 @@ void shop_show()
 	screen_blit(gfx_shopSprites[SHOP_S_CATALOG], SHOP_X, SHOP_Y + 50);
 	screen_blit(gfx_shopSprites[SHOP_S_ITEM_INFO], SHOP_X, SHOP_Y + 180);
 	screen_blit(gfx_shopSprites[SHOP_S_PRIMARY], SHOP_X, SHOP_Y + 245);
-	screen_blit(gfx_shopSprites[SHOP_S_POWERUP], SHOP_X + 203, SHOP_Y + 245);
-	screen_blit(gfx_shopSprites[SHOP_S_SECONDARY], SHOP_X + 406, SHOP_Y + 245);
+	screen_blit(gfx_shopSprites[SHOP_S_POWERUP], SHOP_X + 199, SHOP_Y + 245);
+	screen_blit(gfx_shopSprites[SHOP_S_SECONDARY], SHOP_X + 407, SHOP_Y + 245);
 
 	if (shopSelectedItem > SHOP_NOTHING)
 	{
