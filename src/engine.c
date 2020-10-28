@@ -376,7 +376,7 @@ void engine_resetLists()
 	LinkedRect *r1, *r2;
 
 	ob = engine.bulletHead->next;
-	while(ob != NULL)
+	while (ob != NULL)
 	{
 		ob2 = ob;
 		ob = ob->next;
@@ -386,7 +386,7 @@ void engine_resetLists()
 	engine.bulletTail = engine.bulletHead;
 
 	ob = engine.explosionHead->next;
-	while(ob != NULL)
+	while (ob != NULL)
 	{
 		ob2 = ob;
 		ob = ob->next;
@@ -418,7 +418,7 @@ void engine_resetLists()
 	screen_bufferTail = screen_bufferHead;
 
 	ob = engine.debrisHead->next;
-	while(ob != NULL)
+	while (ob != NULL)
 	{
 		ob2 = ob;
 		ob = ob->next;
