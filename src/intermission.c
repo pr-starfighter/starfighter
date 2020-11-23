@@ -693,10 +693,10 @@ static int intermission_showSystem(float pos, int selectable)
 		r.y -= (intermission_planets[planet].image->h / 2);
 		screen_blit(intermission_planets[planet].image, r.x, r.y);
 
-		if (selectable &&
-			game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6,
-				r.x, r.y, intermission_planets[planet].image->w,
-				intermission_planets[planet].image->h))
+		if (selectable
+				&& game_collision(engine.cursor_x + 13, engine.cursor_y + 13,
+					6, 6, r.x, r.y, intermission_planets[planet].image->w,
+					intermission_planets[planet].image->h))
 		{
 			if (!printedName)
 			{
@@ -1729,8 +1729,8 @@ int intermission()
 			x = screen->w / 16;
 			y = screen->h - 80;
 			w = screen->w - 2 * x - 32;
-			if ((game.stationedPlanet == game.destinationPlanet) &&
-					(!intermission_planets[game.stationedPlanet].missionCompleted))
+			if ((game.stationedPlanet == game.destinationPlanet)
+					&& (!intermission_planets[game.stationedPlanet].missionCompleted))
 				screen_blit(gfx_sprites[SP_START_MISSION], x, y);
 			else if (game.stationedPlanet != game.destinationPlanet)
 				screen_blit(gfx_sprites[SP_GOTO], x, y);

@@ -48,8 +48,8 @@ void events_init()
 	switch (game.area)
 	{
 		case MISN_INTERCEPTION:
-			if ((aliens[ALIEN_KLINE].classDef == CD_KLINE) &&
-					(aliens[ALIEN_KLINE].active))
+			if ((aliens[ALIEN_KLINE].classDef == CD_KLINE)
+					&& (aliens[ALIEN_KLINE].active))
 			{
 				events[0].time = 2;
 				events[0].face = FS_KLINE;

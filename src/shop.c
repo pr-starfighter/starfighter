@@ -97,8 +97,9 @@ static void drawSecondaryWeaponSurface()
 	}
 	gfx_renderUnicode(description, 10, 22, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_SECONDARY]);
 
-	if ((player.weaponType[1] != W_LASER) &&
-		(player.weaponType[1] != W_CHARGER) && (player.weaponType[1] != W_NONE))
+	if ((player.weaponType[1] != W_LASER)
+			&& (player.weaponType[1] != W_CHARGER)
+			&& (player.weaponType[1] != W_NONE))
 	{
 		/// Retain "%d" as-is.  It is replaced with the rocket capacity of the Firefly.
 		snprintf(description, STRMAX_SHORT, _("Capacity : %d"), game.maxRocketAmmo);
@@ -656,20 +657,20 @@ static void buy(int i)
 				shopSelectedItem = SHOP_ERROR_AMMO_LIMIT;
 				return;
 			}
-			if ((player.weaponType[1] == W_HOMING_MISSILE) &&
-				(player.ammo[1] >= MAX_HOMING))
+			if ((player.weaponType[1] == W_HOMING_MISSILE)
+					&& (player.ammo[1] >= MAX_HOMING))
 			{
 				shopSelectedItem = SHOP_ERROR_WEAPON_CAPACITY;
 				return;
 			}
-			if ((player.weaponType[1] == W_DOUBLE_HOMING_MISSILES) &&
-				(player.ammo[1] >= MAX_DOUBLE_HOMING))
+			if ((player.weaponType[1] == W_DOUBLE_HOMING_MISSILES)
+					&& (player.ammo[1] >= MAX_DOUBLE_HOMING))
 			{
 				shopSelectedItem = SHOP_ERROR_WEAPON_CAPACITY;
 				return;
 			}
-			if ((player.weaponType[1] == W_MICRO_HOMING_MISSILES) &&
-				(player.ammo[1] >= MAX_MICRO_HOMING))
+			if ((player.weaponType[1] == W_MICRO_HOMING_MISSILES)
+					&& (player.ammo[1] >= MAX_MICRO_HOMING))
 			{
 				shopSelectedItem = SHOP_ERROR_WEAPON_CAPACITY;
 				return;
@@ -729,20 +730,20 @@ static void buy(int i)
 				shopSelectedItem = SHOP_ERROR_IS_NOT_ROCKETS;
 				return;
 			}
-			if ((player.weaponType[1] == W_HOMING_MISSILE) &&
-				(game.maxRocketAmmo >= MAX_HOMING))
+			if ((player.weaponType[1] == W_HOMING_MISSILE)
+					&& (game.maxRocketAmmo >= MAX_HOMING))
 			{
 				shopSelectedItem = SHOP_ERROR_WEAPON_CAPACITY;
 				return;
 			}
-			if ((player.weaponType[1] == W_DOUBLE_HOMING_MISSILES) &&
-				(game.maxRocketAmmo >= MAX_DOUBLE_HOMING))
+			if ((player.weaponType[1] == W_DOUBLE_HOMING_MISSILES)
+					&& (game.maxRocketAmmo >= MAX_DOUBLE_HOMING))
 			{
 				shopSelectedItem = SHOP_ERROR_WEAPON_CAPACITY;
 				return;
 			}
-			if ((player.weaponType[1] == W_MICRO_HOMING_MISSILES) &&
-				(game.maxRocketAmmo >= MAX_MICRO_HOMING))
+			if ((player.weaponType[1] == W_MICRO_HOMING_MISSILES)
+					&& (game.maxRocketAmmo >= MAX_MICRO_HOMING))
 			{
 				shopSelectedItem = SHOP_ERROR_WEAPON_CAPACITY;
 				return;

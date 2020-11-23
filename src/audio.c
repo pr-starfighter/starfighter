@@ -109,8 +109,8 @@ void audio_playSound(int sid, float x, float y)
 	}
 	else
 	{
-		if (Mix_Playing(channel) && (volume <= MIX_MAX_VOLUME / 4) &&
-				(channelVolume[channel] >= MIX_MAX_VOLUME * 3 / 4))
+		if (Mix_Playing(channel) && (volume <= MIX_MAX_VOLUME / 4)
+				&& (channelVolume[channel] >= MIX_MAX_VOLUME * 3 / 4))
 			return;
 		else
 			channelVolume[channel] = volume;

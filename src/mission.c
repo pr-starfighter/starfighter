@@ -565,8 +565,8 @@ static void mission_killAllEnemies()
 {
 	for (int i = 0 ; i < ALIEN_MAX ; i++)
 	{
-		if ((aliens[i].flags & FL_WEAPCO) && (aliens[i].active) &&
-				(aliens[i].shield > 0))
+		if ((aliens[i].flags & FL_WEAPCO) && (aliens[i].active)
+				&& (aliens[i].shield > 0))
 			aliens[i].shield = 0;
 	}
 }
@@ -596,13 +596,13 @@ void mission_checkTimer()
 	}
 
 	// specific to Spirit Boss
-	if ((game.area == MISN_MOEBO) &&
-			(mission.completed1[0] < OB_INCOMPLETE))
+	if ((game.area == MISN_MOEBO)
+			&& (mission.completed1[0] < OB_INCOMPLETE))
 		engine.timeMission = 1;
 
 	// specific to the Asteroid belt
-	if ((game.area == MISN_MARS) &&
-		(mission.completed1[0] < OB_INCOMPLETE))
+	if ((game.area == MISN_MARS)
+			&& (mission.completed1[0] < OB_INCOMPLETE))
 	{
 		mission.completed1[0] = OB_COMPLETED;
 		mission_killAllEnemies();
@@ -616,8 +616,8 @@ static void mission_evaluate(int type, int id, int *completed, int *targetValue,
 	char message[STRMAX_SHORT];
 	char fmt[STRMAX_SHORT];
 
-	if ((*targetValue <= 0) && (type != M_PROTECT_TARGET) &&
-			(type != M_PROTECT_PICKUP))
+	if ((*targetValue <= 0) && (type != M_PROTECT_TARGET)
+			&& (type != M_PROTECT_PICKUP))
 	{
 		*completed = OB_JUST_COMPLETED;
 		mission_checkTimer();
@@ -937,7 +937,9 @@ int mission_checkCompleted()
 	{
 		if (mission.completed1[i] == OB_INCOMPLETE)
 		{
-			if ((mission.primaryType[i] == M_DESTROY_ALL_TARGETS) && (engine.allAliensDead) && (mission.remainingObjectives1 + mission.remainingObjectives2 == 1))
+			if ((mission.primaryType[i] == M_DESTROY_ALL_TARGETS)
+				&& (engine.allAliensDead)
+				&& (mission.remainingObjectives1 + mission.remainingObjectives2 == 1))
 			{
 				mission.completed1[i] = OB_JUST_COMPLETED;
 				mission_checkTimer();
@@ -949,7 +951,9 @@ int mission_checkCompleted()
 	{
 		if (mission.completed2[i] == OB_INCOMPLETE)
 		{
-			if ((mission.secondaryType[i] == M_DESTROY_ALL_TARGETS) && (engine.allAliensDead) && (mission.remainingObjectives1 + mission.remainingObjectives2 == 1))
+			if ((mission.secondaryType[i] == M_DESTROY_ALL_TARGETS)
+				&& (engine.allAliensDead)
+				&& (mission.remainingObjectives1 + mission.remainingObjectives2 == 1))
 			{
 				mission.completed2[i] = OB_JUST_COMPLETED;
 				mission_checkTimer();
@@ -1017,8 +1021,8 @@ int mission_checkCompleted()
 				mission.completed2[i] = OB_COMPLETED;
 
 				// do some area specific things
-				if ((game.area == MISN_DORIM) &&
-					(mission.remainingObjectives1 == 0))
+				if ((game.area == MISN_DORIM)
+						&& (mission.remainingObjectives1 == 0))
 				{
 					mission_killAllEnemies();
 					engine.addAliens = -1;

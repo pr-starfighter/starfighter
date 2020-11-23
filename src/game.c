@@ -294,10 +294,10 @@ static void game_doCollectables()
 
 		if (collectable->active)
 		{
-			if ((collectable->x + collectable->image->w > 0) &&
-					(collectable->x < screen->w) &&
-					(collectable->y + collectable->image->h > 0) &&
-					(collectable->y < screen->h))
+			if ((collectable->x + collectable->image->w > 0)
+					&& (collectable->x < screen->w)
+					&& (collectable->y + collectable->image->h > 0)
+					&& (collectable->y < screen->h))
 				screen_blit(collectable->image, (int)collectable->x, (int)collectable->y);
 
 			collectable->x += engine.ssx + engine.smx;
@@ -580,9 +580,9 @@ static void game_doCollectables()
 		}
 		else
 		{
-			if ((collectable->type == P_MINE) && (collectable->x >= 0) &&
-					(collectable->x <= screen->w) && (collectable->y >= 0) &&
-					(collectable->y <= screen->h))
+			if ((collectable->type == P_MINE) && (collectable->x >= 0)
+					&& (collectable->x <= screen->w) && (collectable->y >= 0)
+					&& (collectable->y <= screen->h))
 				collectable_explode(collectable);
 			prevCollectable->next = collectable->next;
 			free(collectable);
@@ -818,8 +818,9 @@ static void game_doBullets()
 			if ((bullet->flags & WF_WEAPCO) || (bullet->id == WT_ROCKET)
 				|| (bullet->id == WT_LASER) || (bullet->id == WT_CHARGER))
 			{
-				if (bullet->active && (player.shield > 0) &&
-					(bullet->owner != &player) && bullet_collision(bullet, &player))
+				if (bullet->active && (player.shield > 0)
+						&& (bullet->owner != &player)
+						&& bullet_collision(bullet, &player))
 				{
 					old_shield = player.shield;
 
@@ -1024,14 +1025,16 @@ static void game_doAliens()
 					if (aliens[i].face == 0)
 						aliens[i].x = aliens[i].owner->x - aliens[i].dx;
 					else
-						aliens[i].x = aliens[i].owner->x + aliens[i].owner->image[0]->w + aliens[i].dx - aliens[i].image[0]->w;
+						aliens[i].x = (aliens[i].owner->x + aliens[i].dx
+								+ aliens[i].owner->image[0]->w
+								- aliens[i].image[0]->w);
 
 					aliens[i].y = (aliens[i].owner->y + aliens[i].dy);
 
 					if (aliens[i].owner->shield < 1)
 					{
-						if ((aliens[i].classDef != CD_URANUSBOSSWING1) &&
-							(aliens[i].classDef != CD_URANUSBOSSWING2))
+						if ((aliens[i].classDef != CD_URANUSBOSSWING1)
+								&& (aliens[i].classDef != CD_URANUSBOSSWING2))
 						{
 							aliens[i].shield = 0;
 						}
@@ -1052,8 +1055,8 @@ static void game_doAliens()
 					aliens[i].target = &aliens[i];
 
 				// Specific to Sid to stop him pissing about(!)
-				if ((aliens[i].classDef == CD_SID) &&
-						(aliens[i].target->flags & FL_DISABLED))
+				if ((aliens[i].classDef == CD_SID)
+						&& (aliens[i].target->flags & FL_DISABLED))
 					aliens[i].target = &aliens[i];
 
  				if (aliens[i].target == &aliens[i])
@@ -1072,9 +1075,9 @@ static void game_doAliens()
 					}
 				}
 
-				if ((!(aliens[i].flags & FL_DISABLED)) &&
-					(aliens[i].thinktime == 0) && (aliens[i].target != &aliens[i]) &&
-					(aliens[i].owner == &aliens[i]))
+				if ((!(aliens[i].flags & FL_DISABLED))
+					&& (aliens[i].thinktime == 0) && (aliens[i].target != &aliens[i])
+					&& (aliens[i].owner == &aliens[i]))
 				{
 					if (aliens[i].classDef == CD_KLINE)
 						alien_setKlineAI(&aliens[i]);
@@ -1163,9 +1166,9 @@ static void game_doAliens()
 					aliens[i].dy = 20 + (cosf(barrierLoop + aliens[i].speed) * 40);
 				}
 
-				if ((aliens[i].classDef == CD_MOBILESHIELD) &&
-						(aliens[ALIEN_BOSS].active) &&
-						(aliens[ALIEN_BOSS].shield > 0))
+				if ((aliens[i].classDef == CD_MOBILESHIELD)
+						&& (aliens[ALIEN_BOSS].active)
+						&& (aliens[ALIEN_BOSS].shield > 0))
 				{
 					LIMIT_ADD(aliens[ALIEN_BOSS].shield, 1, 0,
 						aliens[ALIEN_BOSS].maxShield);
@@ -1174,14 +1177,14 @@ static void game_doAliens()
 				LIMIT_ADD(aliens[i].reload[0], -1, 0, 999);
 				LIMIT_ADD(aliens[i].reload[1], -1, 0, 999);
 
-				if ((!(aliens[i].flags & FL_DISABLED)) &&
-						(!(aliens[i].flags & FL_NOFIRE)))
+				if ((!(aliens[i].flags & FL_DISABLED))
+						&& (!(aliens[i].flags & FL_NOFIRE)))
 				{
 					if ((aliens[i].target->shield > 0))
 						canFire = alien_checkTarget(&aliens[i]);
 
-					if (((aliens[i].thinktime % 2) == 0) &&
-							(aliens[i].flags & FL_FRIEND))
+					if (((aliens[i].thinktime % 2) == 0)
+							&& (aliens[i].flags & FL_FRIEND))
 						canFire = alien_enemiesInFront(&aliens[i]);
 				}
 				else
@@ -1193,12 +1196,12 @@ static void game_doAliens()
 				{
 					for (int j = 0 ; j < 2 ; j++)
 					{
-						if ((aliens[i].reload[j] == 0) &&
-							((rand() % 1000 < aliens[i].chance[j])
-								|| (aliens[i].flags & FL_CONTINUOUS_FIRE)))
+						if ((aliens[i].reload[j] == 0)
+								&& ((rand() % 1000 < aliens[i].chance[j])
+									|| (aliens[i].flags & FL_CONTINUOUS_FIRE)))
 						{
-							if ((aliens[i].weaponType[j] != W_ENERGYRAY) &&
-								(aliens[i].weaponType[j] != W_LASER))
+							if ((aliens[i].weaponType[j] != W_ENERGYRAY)
+									&& (aliens[i].weaponType[j] != W_LASER))
 							{
 								if (aliens[i].weaponType[j] == W_CHARGER)
 									aliens[i].ammo[j] = 50 + rand() % 150;
@@ -1211,8 +1214,8 @@ static void game_doAliens()
 							// Note: ammo[0] is required whether the ray is primary
 							// or secondary because futher below, ammo[0] increases on
 							// any alien that isn't currently firing a ray.
-							else if ((aliens[i].weaponType[j] == W_ENERGYRAY) &&
-								(aliens[i].ammo[0] >= RAY_INTERVAL))
+							else if ((aliens[i].weaponType[j] == W_ENERGYRAY)
+									&& (aliens[i].ammo[0] >= RAY_INTERVAL))
 							{
 								aliens[i].flags += FL_FIRERAY;
 								audio_playSound(SFX_ENERGYRAY, aliens[i].x, aliens[i].y);
@@ -1259,16 +1262,17 @@ static void game_doAliens()
 
 				LIMIT_ADD(aliens[i].hit, -1, 0, 100);
 
-				if ((aliens[i].x + aliens[i].image[0]->w > 0) &&
-					(aliens[i].x < screen->w) &&
-					(aliens[i].y + aliens[i].image[0]->h > 0) &&
-					(aliens[i].y < screen->h))
+				if ((aliens[i].x + aliens[i].image[0]->w > 0)
+						&& (aliens[i].x < screen->w)
+						&& (aliens[i].y + aliens[i].image[0]->h > 0)
+						&& (aliens[i].y < screen->h))
 				{
-					if ((!(aliens[i].flags & FL_DISABLED)) &&
-							(aliens[i].classDef != CD_ASTEROID) &&
-							(aliens[i].classDef != CD_ASTEROID2))
+					if ((!(aliens[i].flags & FL_DISABLED))
+							&& (aliens[i].classDef != CD_ASTEROID)
+							&& (aliens[i].classDef != CD_ASTEROID2))
 						explosion_addEngine(&aliens[i]);
-					if ((!(aliens[i].flags & FL_ISCLOAKED)) || (aliens[i].hit > 0))
+					if ((!(aliens[i].flags & FL_ISCLOAKED))
+							|| (aliens[i].hit > 0))
 						screen_blit(gfx_shipSprites[shapeToUse], (int)aliens[i].x,
 							(int)aliens[i].y);
 					if (aliens[i].flags & FL_DISABLED)
@@ -1320,8 +1324,8 @@ static void game_doAliens()
 			}
 
 			// Adjust the movement even whilst exploding
-			if ((!(aliens[i].flags & FL_NOMOVE)) &&
-					(!(aliens[i].flags & FL_DISABLED)))
+			if ((!(aliens[i].flags & FL_NOMOVE))
+					&& (!(aliens[i].flags & FL_DISABLED)))
 				alien_move(&aliens[i]);
 
 			if ((game.area != MISN_ELLESH) || (aliens[i].shield < 0))
@@ -1360,8 +1364,9 @@ static void game_doPlayer()
 
 			if ((engine.keyState[KEY_ALTFIRE]) && (player.weaponType[1] != W_NONE))
 			{
-				if ((player.weaponType[1] != W_CHARGER) &&
-					(player.weaponType[1] != W_LASER) && (player.ammo[1] > 0))
+				if ((player.weaponType[1] != W_CHARGER)
+						&& (player.weaponType[1] != W_LASER)
+						&& (player.ammo[1] > 0))
 				{
 					ship_fireBullet(&player, 1);
 				}
@@ -1386,9 +1391,9 @@ static void game_doPlayer()
 
 			if (player.weaponType[1] == W_CHARGER)
 			{
-				if (engine.keyState[KEY_ALTFIRE] &&
-					((game.difficulty == DIFFICULTY_ORIGINAL)
-						|| !(engine.keyState[KEY_FIRE])))
+				if (engine.keyState[KEY_ALTFIRE]
+						&& ((game.difficulty == DIFFICULTY_ORIGINAL)
+							|| !(engine.keyState[KEY_FIRE])))
 				{
 					if (!player_chargerFired)
 					{
@@ -1424,8 +1429,8 @@ static void game_doPlayer()
 
 			if ((engine.keyState[KEY_SWITCH]))
 			{
-				if ((weapons[W_PLAYER_WEAPON].ammo[0] >= 3) &&
-					(weapons[W_PLAYER_WEAPON].ammo[0] <= game.maxPlasmaOutput))
+				if ((weapons[W_PLAYER_WEAPON].ammo[0] >= 3)
+					&& (weapons[W_PLAYER_WEAPON].ammo[0] <= game.maxPlasmaOutput))
 				{
 					weapons[W_PLAYER_WEAPON].flags ^= WF_SPREAD;
 
@@ -1470,9 +1475,9 @@ static void game_doPlayer()
 
 			if (engine.keyState[KEY_ESCAPE])
 			{
-				if ((engine.done == ENGINE_RUNNING) &&
-					(engine.gameSection == SECTION_GAME) &&
-					(mission.remainingObjectives1 == 0))
+				if ((engine.done == ENGINE_RUNNING)
+					&& (engine.gameSection == SECTION_GAME)
+					&& (mission.remainingObjectives1 == 0))
 				{
 					audio_playSound(SFX_FLY, screen->w / 2, screen->h / 2);
 					engine.done = ENGINE_SYSEXIT;
@@ -1575,8 +1580,8 @@ static void game_doPlayer()
 			LIMIT_ADD(player.hit, -1, 0, 100);
 
 			screen_blit(gfx_shipSprites[shapeToUse], (int)player.x, (int)player.y);
-			if ((player.maxShield > 1) && (player.shield <= engine.lowShield) &&
-					CHANCE(1. / 10))
+			if ((player.maxShield > 1) && (player.shield <= engine.lowShield)
+					&& CHANCE(1. / 10))
 				explosion_add(player.x + RANDRANGE(-10, 10),
 					player.y + RANDRANGE(-10, 20), SP_SMOKE);
 		}
@@ -1816,41 +1821,41 @@ static void game_doArrow(int i)
 	if (aliens[i].x + aliens[i].image[0]->w < 0)
 	{
 		if (aliens[i].y + aliens[i].image[0]->h < 0)
-			arrow = (((game.difficulty != DIFFICULTY_ORIGINAL) &&
-				(aliens[i].flags & FL_FRIEND)) ?
-					SP_ARROW_FRIEND_NORTHWEST : SP_ARROW_NORTHWEST);
+			arrow = (((game.difficulty != DIFFICULTY_ORIGINAL)
+					&& (aliens[i].flags & FL_FRIEND)) ?
+				SP_ARROW_FRIEND_NORTHWEST : SP_ARROW_NORTHWEST);
 		else if (aliens[i].y > screen->h)
-			arrow = (((game.difficulty != DIFFICULTY_ORIGINAL) &&
-				(aliens[i].flags & FL_FRIEND)) ?
-					SP_ARROW_FRIEND_SOUTHWEST : SP_ARROW_SOUTHWEST);
+			arrow = (((game.difficulty != DIFFICULTY_ORIGINAL)
+					&& (aliens[i].flags & FL_FRIEND)) ?
+				SP_ARROW_FRIEND_SOUTHWEST : SP_ARROW_SOUTHWEST);
 		else
-			arrow = (((game.difficulty != DIFFICULTY_ORIGINAL) &&
-				(aliens[i].flags & FL_FRIEND)) ?
-					SP_ARROW_FRIEND_WEST : SP_ARROW_WEST);
+			arrow = (((game.difficulty != DIFFICULTY_ORIGINAL)
+					&& (aliens[i].flags & FL_FRIEND)) ?
+				SP_ARROW_FRIEND_WEST : SP_ARROW_WEST);
 	}
 	else if (aliens[i].x > screen->w)
 	{
 		if (aliens[i].y + aliens[i].image[0]->h < 0)
-			arrow = (((game.difficulty != DIFFICULTY_ORIGINAL) &&
-				(aliens[i].flags & FL_FRIEND)) ?
-					SP_ARROW_FRIEND_NORTHEAST : SP_ARROW_NORTHEAST);
+			arrow = (((game.difficulty != DIFFICULTY_ORIGINAL)
+					&& (aliens[i].flags & FL_FRIEND)) ?
+				SP_ARROW_FRIEND_NORTHEAST : SP_ARROW_NORTHEAST);
 		else if (aliens[i].y > screen->h)
-			arrow = (((game.difficulty != DIFFICULTY_ORIGINAL) &&
-				(aliens[i].flags & FL_FRIEND)) ?
-					SP_ARROW_FRIEND_SOUTHEAST : SP_ARROW_SOUTHEAST);
+			arrow = (((game.difficulty != DIFFICULTY_ORIGINAL)
+					&& (aliens[i].flags & FL_FRIEND)) ?
+				SP_ARROW_FRIEND_SOUTHEAST : SP_ARROW_SOUTHEAST);
 		else
-			arrow = (((game.difficulty != DIFFICULTY_ORIGINAL) &&
-				(aliens[i].flags & FL_FRIEND)) ?
-					SP_ARROW_FRIEND_EAST : SP_ARROW_EAST);
+			arrow = (((game.difficulty != DIFFICULTY_ORIGINAL)
+					&& (aliens[i].flags & FL_FRIEND)) ?
+				SP_ARROW_FRIEND_EAST : SP_ARROW_EAST);
 	}
 	else if (aliens[i].y + aliens[i].image[0]->h < 0)
-		arrow = (((game.difficulty != DIFFICULTY_ORIGINAL) &&
-			(aliens[i].flags & FL_FRIEND)) ?
-				SP_ARROW_FRIEND_NORTH : SP_ARROW_NORTH);
+		arrow = (((game.difficulty != DIFFICULTY_ORIGINAL)
+				&& (aliens[i].flags & FL_FRIEND)) ?
+			SP_ARROW_FRIEND_NORTH : SP_ARROW_NORTH);
 	else if (aliens[i].y > screen->h)
-		arrow = (((game.difficulty != DIFFICULTY_ORIGINAL) &&
-			(aliens[i].flags & FL_FRIEND)) ?
-				SP_ARROW_FRIEND_SOUTH : SP_ARROW_SOUTH);
+		arrow = (((game.difficulty != DIFFICULTY_ORIGINAL)
+				&& (aliens[i].flags & FL_FRIEND)) ?
+			SP_ARROW_FRIEND_SOUTH : SP_ARROW_SOUTH);
 
 	if (arrow != -1)
 	{
@@ -2038,8 +2043,8 @@ static void game_doHud()
 			events_check();
 	}
 
-	if ((engine.timeMission) && (player.shield > 0) &&
-			((!engine.cheatTime) || (game.area == MISN_MARS)))
+	if ((engine.timeMission) && (player.shield > 0)
+			&& ((!engine.cheatTime) || (game.area == MISN_MARS)))
 	{
 		if (SDL_GetTicks() >= engine.counter)
 		{
@@ -2113,8 +2118,8 @@ static void game_doHud()
 	// Do the target's remaining shield (if required)
 	if (game.area != MISN_DORIM)
 	{
-		if ((engine.targetIndex > -1) && (aliens[engine.targetIndex].shield > 0) &&
-				(engine.targetIndex > engine.maxAliens))
+		if ((engine.targetIndex > -1) && (aliens[engine.targetIndex].shield > 0)
+				&& (engine.targetIndex > engine.maxAliens))
 		{
 			if (game.difficulty == DIFFICULTY_ORIGINAL)
 			{
@@ -2604,8 +2609,8 @@ int game_mainLoop()
 
 	for (int i = 0 ; i < 3 ; i++)
 	{
-		if ((mission.primaryType[i] == M_DESTROY_TARGET_TYPE) &&
-				(mission.target1[i] == CD_ANY))
+		if ((mission.primaryType[i] == M_DESTROY_TARGET_TYPE)
+				&& (mission.target1[i] == CD_ANY))
 			allowableAliens = mission.targetValue1[i];
 
 		if (mission.primaryType[i] == M_DESTROY_ALL_TARGETS)
@@ -2650,33 +2655,33 @@ int game_mainLoop()
 			engine.gameSection = SECTION_INTERMISSION;
 			if (player.shield > 0)
 			{
-				if ((SDL_GetTicks() >= engine.missionCompleteTimer) &&
-					((game.difficulty == DIFFICULTY_ORIGINAL)
-						|| (game.difficulty == DIFFICULTY_NIGHTMARE)
-						|| (game.area == MISN_INTERCEPTION)
-						|| (game.area == MISN_ELLESH)
-						|| (game.area == MISN_MARS)
-						|| (mission_checkFailed())
-						|| (collectable_numGood() <= 0)
-						|| (engine.done == ENGINE_SYSEXIT)))
+				if ((SDL_GetTicks() >= engine.missionCompleteTimer)
+						&& ((game.difficulty == DIFFICULTY_ORIGINAL)
+							|| (game.difficulty == DIFFICULTY_NIGHTMARE)
+							|| (game.area == MISN_INTERCEPTION)
+							|| (game.area == MISN_ELLESH)
+							|| (game.area == MISN_MARS)
+							|| (mission_checkFailed())
+							|| (collectable_numGood() <= 0)
+							|| (engine.done == ENGINE_SYSEXIT)))
 				{
 					if ((!mission_checkFailed()) && (game.area != MISN_VENUS))
 					{
 						player_leaveSector();
-						if ((engine.done == ENGINE_SYSEXIT) &&
-							(game.area != MISN_DORIM) &&
-							(game.area != MISN_SIVEDI))
+						if ((engine.done == ENGINE_SYSEXIT)
+								&& (game.area != MISN_DORIM)
+								&& (game.area != MISN_SIVEDI))
 						{
-							if ((aliens[ALIEN_PHOEBE].shield > 0) &&
-								(game.area != MISN_EARTH))
+							if ((aliens[ALIEN_PHOEBE].shield > 0)
+									&& (game.area != MISN_EARTH))
 							{
 								aliens[ALIEN_PHOEBE].x = player.x - 40;
 								aliens[ALIEN_PHOEBE].y = player.y - 35;
 								aliens[ALIEN_PHOEBE].face = 0;
 							}
 
-							if ((aliens[ALIEN_URSULA].shield > 0) &&
-								(game.area != MISN_EARTH))
+							if ((aliens[ALIEN_URSULA].shield > 0)
+									&& (game.area != MISN_EARTH))
 							{
 								aliens[ALIEN_URSULA].x = player.x - 40;
 								aliens[ALIEN_URSULA].y = player.y + 45;
@@ -2692,8 +2697,8 @@ int game_mainLoop()
 							}
 						}
 					}
-					else if ((game.area == MISN_VENUS) &&
-						(engine.musicVolume > 0))
+					else if ((game.area == MISN_VENUS)
+							&& (engine.musicVolume > 0))
 					{
 						engine.keyState[KEY_UP] = 0;
 						engine.keyState[KEY_DOWN] = 0;
@@ -2806,8 +2811,8 @@ int game_mainLoop()
 			engine.missionCompleteTimer = SDL_GetTicks() + 7000;
 
 		// specific to Boss 1
-		if ((game.area == MISN_MOEBO) &&
-			(aliens[ALIEN_BOSS].flags & FL_ESCAPED))
+		if ((game.area == MISN_MOEBO)
+				&& (aliens[ALIEN_BOSS].flags & FL_ESCAPED))
 		{
 			audio_playSound(SFX_DEATH, aliens[ALIEN_BOSS].x, aliens[ALIEN_BOSS].y);
 			screen_clear(white);

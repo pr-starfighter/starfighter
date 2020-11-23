@@ -68,8 +68,8 @@ void ship_fireBullet(Object *ship, int weaponIndex)
 		return;
 
 	// Remove some ammo from the player
-	if ((ship == &player) && (player.weaponType[weaponIndex] != W_LASER) &&
-			(player.ammo[weaponIndex] > 0) && (!engine.cheatAmmo))
+	if ((ship == &player) && (player.weaponType[weaponIndex] != W_LASER)
+			&& (player.ammo[weaponIndex] > 0) && (!engine.cheatAmmo))
 		player.ammo[weaponIndex]--;
 
 	switch(theWeapon->id)
@@ -130,8 +130,8 @@ void ship_fireBullet(Object *ship, int weaponIndex)
 	// Reset the weapon reload time. Double it if it is not friendly or
 	// a boss or Kline
 	ship->reload[weaponIndex] = theWeapon->reload[0];
-	if ((ship->flags & FL_WEAPCO) && (ship != &aliens[ALIEN_BOSS]) &&
-			(ship != &aliens[ALIEN_KLINE]) && (theWeapon->id != W_LASER))
+	if ((ship->flags & FL_WEAPCO) && (ship != &aliens[ALIEN_BOSS])
+			&& (ship != &aliens[ALIEN_KLINE]) && (theWeapon->id != W_LASER))
 		ship->reload[weaponIndex] *= 2;
 
 	if ((ship == &player) && (weaponIndex == 0))
@@ -173,8 +173,9 @@ void ship_fireRay(Object *ship)
 		if (player.shield > 0)
 		{
 			if (game_collision(player.x, player.y, player.image[0]->w,
-						player.image[0]->h, ray.x, ray.y, ray.w, ray.h) &&
-					(!engine.cheatShield) && (engine.missionCompleteTimer == 0))
+						player.image[0]->h, ray.x, ray.y, ray.w, ray.h)
+					&& (!engine.cheatShield)
+					&& (engine.missionCompleteTimer == 0))
 			{
 				player_damage(1, RAY_DAMAGE_DELAY);
 				explosion_add(player.x, player.y, SP_SMALL_EXPLOSION);
@@ -187,8 +188,8 @@ void ship_fireRay(Object *ship)
 		if (aliens[i].flags & FL_IMMORTAL)
 			continue;
 
-		if ((aliens[i].shield > 0) && (ship != &aliens[i]) &&
-			(ship->classDef != aliens[i].classDef))
+		if ((aliens[i].shield > 0) && (ship != &aliens[i])
+				&& (ship->classDef != aliens[i].classDef))
 		{
 			if (game_collision(aliens[i].x, aliens[i].y, aliens[i].image[0]->w,
 					aliens[i].image[0]->h, ray.x, ray.y, ray.w, ray.h))

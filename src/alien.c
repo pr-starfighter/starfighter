@@ -1110,8 +1110,8 @@ void aliens_init()
 				barrierSpeed++;
 			}
 
-			if ((game.area == MISN_POSWIC) &&
-				(aliens[i].classDef == CD_BOSS))
+			if ((game.area == MISN_POSWIC)
+					&& (aliens[i].classDef == CD_BOSS))
 			{
 				aliens[i].flags |= FL_IMMORTAL;
 			}
@@ -1663,8 +1663,8 @@ void alien_setKlineAI(Object *alien)
 	switch(RANDRANGE(0, 9))
 	{
 		case 0:
-			if ((alien->weaponType[0] != W_DIRSHOCKMISSILE) &&
-					(alien->weaponType[1] != W_MICRO_HOMING_MISSILES))
+			if ((alien->weaponType[0] != W_DIRSHOCKMISSILE)
+					&& (alien->weaponType[1] != W_MICRO_HOMING_MISSILES))
 				alien->flags |= FL_CONTINUOUS_FIRE;
 			alien->dx = ((alien->x - alien->target->x) /
 				((300 / alien->speed)  + RANDRANGE(0, 100)));
@@ -1726,8 +1726,8 @@ void alien_searchForTarget(Object *alien)
 		}
 		else
 		{
-			if ((targetEnemy->classDef != CD_CARGOSHIP) &&
-					(targetEnemy->classDef != CD_BOSS))
+			if ((targetEnemy->classDef != CD_CARGOSHIP)
+					&& (targetEnemy->classDef != CD_BOSS))
 			{
 				badTarget = 1;
 			}
@@ -1830,11 +1830,11 @@ int alien_enemiesInFront(Object *alien)
 {
 	for (int i = 0 ; i < ALIEN_MAX ; i++)
 	{
-		if ((alien != &aliens[i]) && (aliens[i].flags & FL_WEAPCO) &&
-			(aliens[i].shield > 0))
+		if ((alien != &aliens[i]) && (aliens[i].flags & FL_WEAPCO)
+				&& (aliens[i].shield > 0))
 		{
-			if ((alien->y > aliens[i].y - 15) &&
-				(alien->y < aliens[i].y + aliens[i].image[0]->h + 15))
+			if ((alien->y > aliens[i].y - 15)
+					&& (alien->y < aliens[i].y + aliens[i].image[0]->h + 15))
 			{
 				if ((alien->face == 1) && (aliens[i].x < alien->x))
 					return 1;
@@ -1886,14 +1886,18 @@ void alien_move(Object *alien)
 	{
 		for (int i = 0 ; i < ALIEN_MAX ; i++)
 		{
-			if ((aliens[i].owner != alien) && (aliens[i].active) &&
-					(aliens[i].shield > 0) && (!(aliens[i].flags & FL_LEAVESECTOR)) &&
-					(alien->classDef != CD_BARRIER) &&
-					ship_collision(alien, &aliens[i]))
+			if ((aliens[i].owner != alien) && (aliens[i].active)
+					&& (aliens[i].shield > 0)
+					&& (!(aliens[i].flags & FL_LEAVESECTOR))
+					&& (alien->classDef != CD_BARRIER)
+					&& ship_collision(alien, &aliens[i]))
 			{
-				if ((game.difficulty == DIFFICULTY_ORIGINAL) && (alien->classDef != CD_DRONE) &&
-						(alien->classDef != CD_ASTEROID) && (alien->classDef != CD_ASTEROID2) &&
-						(alien->owner == alien) && (game.area != MISN_ELLESH))
+				if ((game.difficulty == DIFFICULTY_ORIGINAL)
+						&& (alien->classDef != CD_DRONE)
+						&& (alien->classDef != CD_ASTEROID)
+						&& (alien->classDef != CD_ASTEROID2)
+						&& (alien->owner == alien)
+						&& (game.area != MISN_ELLESH))
 				{
 					collided = 1;
 				}
@@ -1978,8 +1982,8 @@ void alien_destroy(Object *alien, Object *attacker)
 	audio_playSound(SFX_EXPLOSION, alien->x, alien->y);
 
 	// Chain reaction damage if needed (Classic Difficulty version)
-	if ((game.difficulty == DIFFICULTY_ORIGINAL) &&
-			(alien->owner != alien) && (alien->flags & FL_DAMAGEOWNER))
+	if ((game.difficulty == DIFFICULTY_ORIGINAL)
+			&& (alien->owner != alien) && (alien->flags & FL_DAMAGEOWNER))
 	{
 		alien_hurt(alien->owner, attacker, alien->maxShield, 0);
 	}
@@ -2015,8 +2019,8 @@ void alien_destroy(Object *alien, Object *attacker)
 				}
 			}
 
-			if (CHANCE(1 / 16.) && (alien->flags & FL_WEAPCO) &&
-				(!(alien->flags & FL_NOBANTER)))
+			if (CHANCE(1 / 16.) && (alien->flags & FL_WEAPCO)
+					&& (!(alien->flags & FL_NOBANTER)))
 			{
 				radio_getRandomMessage(msg, _(
 					/// Chris brag messages
@@ -2048,8 +2052,8 @@ void alien_destroy(Object *alien, Object *attacker)
 		else if (attacker->classDef == CD_PHOEBE)
 		{
 			game.wingMate1Kills++;
-			if (CHANCE(1 / 8.) && (alien-> flags & FL_WEAPCO) &&
-				(!(alien->flags & FL_NOBANTER)))
+			if (CHANCE(1 / 8.) && (alien-> flags & FL_WEAPCO)
+					&& (!(alien->flags & FL_NOBANTER)))
 			{
 				radio_getRandomMessage(msg, _(
 					/// Phoebe brag messages
@@ -2077,8 +2081,8 @@ void alien_destroy(Object *alien, Object *attacker)
 		else if (attacker->classDef == CD_URSULA)
 		{
 			game.wingMate2Kills++;
-			if (CHANCE(1 / 8.) && (alien-> flags & FL_WEAPCO) &&
-				(!(alien->flags & FL_NOBANTER)))
+			if (CHANCE(1 / 8.) && (alien-> flags & FL_WEAPCO)
+					&& (!(alien->flags & FL_NOBANTER)))
 			{
 				radio_getRandomMessage(msg, _(
 					/// Ursula brag messages

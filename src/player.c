@@ -99,8 +99,8 @@ void player_damage(int amount, int delay)
 
 	player_resetDamageDelay = 0;
 
-	if ((!engine.cheatShield) && (engine.missionCompleteTimer == 0) &&
-			((!player.hit)
+	if ((!engine.cheatShield) && (engine.missionCompleteTimer == 0)
+			&& ((!player.hit)
 				|| (game.difficulty == DIFFICULTY_ORIGINAL)
 				|| ((player.shield != engine.lowShield)
 					&& (player.shield != 1))))
@@ -115,8 +115,8 @@ void player_damage(int amount, int delay)
 			audio_playSound(SFX_HIT, player.x, player.y);
 
 			// Damage tiers (not in Classic mode)
-			if ((oldshield > engine.lowShield) &&
-					(player.shield <= engine.lowShield))
+			if ((oldshield > engine.lowShield)
+					&& (player.shield <= engine.lowShield))
 			{
 				info_setLine("!!! WARNING: SHIELD LOW !!!", FONT_RED);
 				if (game.difficulty != DIFFICULTY_ORIGINAL)
@@ -460,8 +460,8 @@ void player_getInput()
 					screen_addBuffer(0, 0, screen->w, screen->h);
 				}
 
-				if (engine.autoPause &&
-						(engine.event.window.event == SDL_WINDOWEVENT_FOCUS_LOST))
+				if (engine.autoPause
+						&& (engine.event.window.event == SDL_WINDOWEVENT_FOCUS_LOST))
 					engine.paused = 1;
 				break;
 		}

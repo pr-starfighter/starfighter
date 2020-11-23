@@ -646,9 +646,11 @@ void gfx_createTextObject(int index, const char *inString, int x, int y, int fon
 	gfx_textSprites[index].life = 0;
 
 	/* Shortcut: if we already rendered the same string in the same color, don't render it again. */
-	if (gfx_textSprites[index].text && gfx_textSprites[index].image &&
-			gfx_textSprites[index].fontColor == fontColor &&
-			!strcmp(gfx_textSprites[index].text, inString))
+	// TODO: Double-check this, I think it's trying to test if gfx_textSprites[index].image is NULL.
+	// Also, check what `text` will be when "empty".
+	if (gfx_textSprites[index].text && gfx_textSprites[index].image
+			&& (gfx_textSprites[index].fontColor == fontColor)
+			&& (strcmp(gfx_textSprites[index].text, inString) == 0))
 	{
 		gfx_textSprites[index].x = x;
 		gfx_textSprites[index].y = y;
