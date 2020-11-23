@@ -754,8 +754,8 @@ static void intermission_showStatus(SDL_Surface *infoSurface)
 		for (int i = TS_STATUS_HEADER + 1 ; i < TS_STATUS_FOOTER ; i++)
 		{
 			y += 20;
-			if ((i == TS_CHRIS_HEADER) || (i == TS_PHOEBE_HEADER) ||
-					(i == TS_URSULA_HEADER))
+			if ((i == TS_CHRIS_HEADER) || (i == TS_PHOEBE_HEADER)
+					|| (i == TS_URSULA_HEADER))
 				y += 25;
 
 			gfx_textSprites[i].y = y;
@@ -1743,9 +1743,9 @@ int intermission()
 			screen_blit(gfx_sprites[SP_OPTIONS], x + 6 * w / 7, y);
 			screen_blit(gfx_sprites[SP_EXIT], x + w, y);
 
-			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x, y, 32, 32) &&
-					((game.stationedPlanet != game.destinationPlanet) ||
-						(!intermission_planets[game.stationedPlanet].missionCompleted)))
+			if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x, y, 32, 32)
+					&& ((game.stationedPlanet != game.destinationPlanet)
+						|| (!intermission_planets[game.stationedPlanet].missionCompleted)))
 			{
 				if (game.stationedPlanet == game.destinationPlanet)
 					screen_blitText(TS_INFO_START_MISSION, -1, screen->h - 25);

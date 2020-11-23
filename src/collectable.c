@@ -45,8 +45,8 @@ void collectable_add(float x, float y, int type, int value, int life)
 			&& (weapons[W_PLAYER_WEAPON].damage <= game.minPlasmaDamage))
 		|| (player.ammo[0] >= game.maxPlasmaAmmo));
 	
-	shield_useless = ((game.difficulty == DIFFICULTY_NIGHTMARE) ||
-		(player.shield >= player.maxShield));
+	shield_useless = ((game.difficulty == DIFFICULTY_NIGHTMARE)
+			|| (player.shield >= player.maxShield));
 	
 	rockets_useless = ((player.weaponType[1] == W_CHARGER)
 		|| (player.weaponType[1] == W_LASER)
@@ -187,8 +187,8 @@ void collectable_add(float x, float y, int type, int value, int life)
 	// Shield bonus is useless if you can't heal; give cash instead.
 	if ((type == P_SHIELD) && (game.difficulty != DIFFICULTY_ORIGINAL))
 	{
-		if  ((game.difficulty == DIFFICULTY_NIGHTMARE) ||
-				(player.shield >= player.maxShield))
+		if  ((game.difficulty == DIFFICULTY_NIGHTMARE)
+				|| (player.shield >= player.maxShield))
 		{
 			type = P_CASH;
 		}
@@ -338,24 +338,27 @@ int collectable_numGood()
 
 	while (col != NULL)
 	{
-		if ((col->type != P_MINE) && (col->type != P_ORE) &&
-				((col->type != P_SHIELD) || (player.shield < player.maxShield)) &&
-				((col->type != P_ROCKET) || (player.ammo[1] < game.maxRocketAmmo)) &&
-				((col->type != P_PLASMA_AMMO) || (player.ammo[0] < game.maxPlasmaAmmo)) &&
-				((col->type != P_PLASMA_SHOT) ||
-					(player.ammo[0] < game.maxPlasmaAmmo) ||
-					(weapons[W_PLAYER_WEAPON].ammo[0] < game.maxPlasmaOutput)) &&
-				((col->type != P_PLASMA_DAMAGE) ||
-					(player.ammo[0] < game.maxPlasmaAmmo) ||
-					(weapons[W_PLAYER_WEAPON].damage < game.maxPlasmaDamage)) &&
-				((col->type != P_PLASMA_RATE) ||
-					(player.ammo[0] < game.maxPlasmaAmmo) ||
-					(weapons[W_PLAYER_WEAPON].reload[0] > rate2reload[game.maxPlasmaRate])) &&
-				((col->type != P_SUPER) ||
-					(player.ammo[0] < game.maxPlasmaAmmo) ||
-					(weapons[W_PLAYER_WEAPON].ammo[0] < game.maxPlasmaOutput) ||
-					(weapons[W_PLAYER_WEAPON].damage < game.maxPlasmaDamage) ||
-					(weapons[W_PLAYER_WEAPON].reload[0] > rate2reload[game.maxPlasmaRate])))
+		if ((col->type != P_MINE) && (col->type != P_ORE)
+				&& ((col->type != P_SHIELD)
+					|| (player.shield < player.maxShield))
+				&& ((col->type != P_ROCKET)
+					|| (player.ammo[1] < game.maxRocketAmmo))
+				&& ((col->type != P_PLASMA_AMMO)
+					|| (player.ammo[0] < game.maxPlasmaAmmo))
+				&& ((col->type != P_PLASMA_SHOT)
+					|| (player.ammo[0] < game.maxPlasmaAmmo)
+					|| (weapons[W_PLAYER_WEAPON].ammo[0] < game.maxPlasmaOutput))
+				&& ((col->type != P_PLASMA_DAMAGE)
+					|| (player.ammo[0] < game.maxPlasmaAmmo)
+					|| (weapons[W_PLAYER_WEAPON].damage < game.maxPlasmaDamage))
+				&& ((col->type != P_PLASMA_RATE)
+					|| (player.ammo[0] < game.maxPlasmaAmmo)
+					|| (weapons[W_PLAYER_WEAPON].reload[0] > rate2reload[game.maxPlasmaRate]))
+				&& ((col->type != P_SUPER)
+					|| (player.ammo[0] < game.maxPlasmaAmmo)
+					|| (weapons[W_PLAYER_WEAPON].ammo[0] < game.maxPlasmaOutput)
+					|| (weapons[W_PLAYER_WEAPON].damage < game.maxPlasmaDamage)
+					|| (weapons[W_PLAYER_WEAPON].reload[0] > rate2reload[game.maxPlasmaRate])))
 		{
 			n++;
 		}

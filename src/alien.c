@@ -1144,8 +1144,8 @@ void aliens_init()
 		aliens[ALIEN_BOSS_PART2].dx = -20;
 		aliens[ALIEN_BOSS_PART2].dy = 37;
 	}
-	else if ((game.area == MISN_ELAMALE) ||
-		(game.area == MISN_FELLON))
+	else if ((game.area == MISN_ELAMALE)
+			|| (game.area == MISN_FELLON))
 	{
 		aliens[ALIEN_BOSS].target = &player;
 		aliens[ALIEN_BOSS].x = -screen->w / 2;
@@ -1194,8 +1194,8 @@ int alien_add()
 {
 	int index = alien_getFreeIndex();
 
-	if ((index == -1) || (game.area == MISN_JUPITER) ||
-			(game.area == MISN_VENUS))
+	if ((index == -1) || (game.area == MISN_JUPITER)
+			|| (game.area == MISN_VENUS))
 		return 0;
 
 	int *alienArray;
@@ -1674,9 +1674,9 @@ void alien_setKlineAI(Object *alien)
 		case 1:
 		case 2:
 			// Kline only attacks when he is ready!
-			if ((!(alien->flags & FL_NOFIRE)) &&
-					((game.area == MISN_ELAMALE) ||
-						game.difficulty != DIFFICULTY_ORIGINAL))
+			if ((!(alien->flags & FL_NOFIRE))
+					&& ((game.area == MISN_ELAMALE)
+						|| game.difficulty != DIFFICULTY_ORIGINAL))
 				alien->flags |= FL_DROPMINES;
 			break;
 		case 3:
@@ -1743,8 +1743,8 @@ void alien_searchForTarget(Object *alien)
 			if (targetEnemy->classDef == CD_BOSS)
 				return;
 
-			if ((targetEnemy->flags & FL_DISABLED) ||
-					(targetEnemy->flags & FL_NOFIRE))
+			if ((targetEnemy->flags & FL_DISABLED)
+					|| (targetEnemy->flags & FL_NOFIRE))
 				badTarget = 1;
 		}
 	}
@@ -1815,8 +1815,8 @@ int alien_checkTarget(Object *alien)
 		return 1;
 
 	// Not at the correct vertical height
-	if ((alien->y < alien->target->y - 15) ||
-			(alien->y > alien->target->y + alien->target->image[0]->h + 15))
+	if ((alien->y < alien->target->y - 15)
+			|| (alien->y > alien->target->y + alien->target->image[0]->h + 15))
 		return 0;
 
 	return 1;

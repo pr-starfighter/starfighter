@@ -645,8 +645,8 @@ static void buy(int i)
 			break;
 
 		case SHOP_ROCKET_AMMO:
-			if ((player.weaponType[1] == W_CHARGER) ||
-				(player.weaponType[1] == W_LASER))
+			if ((player.weaponType[1] == W_CHARGER)
+					|| (player.weaponType[1] == W_LASER))
 			{
 				shopSelectedItem = SHOP_ERROR_IS_NOT_ROCKETS;
 				return;
@@ -723,8 +723,8 @@ static void buy(int i)
 			break;
 
 		case SHOP_ROCKET_MAX_AMMO:
-			if ((player.weaponType[1] == W_CHARGER) ||
-				(player.weaponType[1] == W_LASER))
+			if ((player.weaponType[1] == W_CHARGER)
+					|| (player.weaponType[1] == W_LASER))
 			{
 				shopSelectedItem = SHOP_ERROR_IS_NOT_ROCKETS;
 				return;

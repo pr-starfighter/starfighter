@@ -695,8 +695,8 @@ void title_showCredits()
 		screen_unBuffer();
 
 		player_getInput();
-		if (engine.keyState[KEY_ESCAPE] || engine.keyState[KEY_FIRE] ||
-				engine.keyState[KEY_ALTFIRE])
+		if (engine.keyState[KEY_ESCAPE] || engine.keyState[KEY_FIRE]
+				|| engine.keyState[KEY_ALTFIRE])
 			break;
 
 		float speed = 0.5;

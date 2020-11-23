@@ -100,13 +100,13 @@ void player_damage(int amount, int delay)
 	player_resetDamageDelay = 0;
 
 	if ((!engine.cheatShield) && (engine.missionCompleteTimer == 0) &&
-			((!player.hit) ||
-				(game.difficulty == DIFFICULTY_ORIGINAL) ||
-				((player.shield != engine.lowShield) &&
-					(player.shield != 1))))
+			((!player.hit)
+				|| (game.difficulty == DIFFICULTY_ORIGINAL)
+				|| ((player.shield != engine.lowShield)
+					&& (player.shield != 1))))
 	{
-		if ((game.difficulty == DIFFICULTY_ORIGINAL) ||
-				(player_damageDelay >= delay))
+		if ((game.difficulty == DIFFICULTY_ORIGINAL)
+				|| (player_damageDelay >= delay))
 		{
 			player.shield -= amount;
 

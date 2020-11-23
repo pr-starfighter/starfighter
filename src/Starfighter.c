@@ -114,8 +114,8 @@ int main(int argc, char **argv)
 			cheatCount = 2;
 		if ((strcmp(argv[i], "it") == 0) && (cheatCount == 2))
 			cheatCount = 3;
-		if (((strcmp(argv[i], "better") == 0) && (cheatCount == 3)) ||
-			(strcmp(argv[i], "humansdoitbetter") == 0))
+		if (((strcmp(argv[i], "better") == 0) && (cheatCount == 3))
+				|| (strcmp(argv[i], "humansdoitbetter") == 0))
 		{
 			printf("Humans do it better! Cheats enabled.\n");
 			engine.cheat = 1;

@@ -814,9 +814,9 @@ void mission_updateRequirements(int type, int id, int value)
 	{
 		if ((mission.completed1[i] == OB_INCOMPLETE) || (mission.completed1[i] == OB_CONDITION))
 		{
-			if ((mission.primaryType[i] == type) &&
-					((mission.target1[i] == id) ||
-						(mission.target1[i] == CD_ANY)))
+			if ((mission.primaryType[i] == type)
+					&& ((mission.target1[i] == id)
+						|| (mission.target1[i] == CD_ANY)))
 			{
 				matched = 1;
 				mission.targetValue1[i] -= value;
@@ -833,9 +833,9 @@ void mission_updateRequirements(int type, int id, int value)
 	{
 		if ((mission.completed2[i] == OB_INCOMPLETE) || (mission.completed2[i] == OB_CONDITION))
 		{
-			if ((mission.secondaryType[i] == type) &&
-					((mission.target2[i] == id) ||
-						(mission.target2[i] == CD_ANY)))
+			if ((mission.secondaryType[i] == type)
+					&& ((mission.target2[i] == id)
+						|| (mission.target2[i] == CD_ANY)))
 			{
 				mission.targetValue2[i] -= value;
 				mission_evaluate(type, id, &mission.completed2[i], &mission.targetValue2[i], FONT_YELLOW);
@@ -983,10 +983,10 @@ int mission_checkCompleted()
 				mission.completed1[i] = OB_COMPLETED;
 
 				// do some area specific things
-				if ((game.area == MISN_MOEBO) ||
-					(game.area == MISN_DORIM) ||
-					(game.area == MISN_ELLESH) ||
-					(game.area == MISN_MARS))
+				if ((game.area == MISN_MOEBO)
+					|| (game.area == MISN_DORIM)
+					|| (game.area == MISN_ELLESH)
+					|| (game.area == MISN_MARS))
 				{
 					if (mission.remainingObjectives2 == 0)
 					{
@@ -1222,17 +1222,17 @@ void mission_showStartScreen()
 					break;
 			}
 
-			if ((game.area == MISN_URUSOR) ||
-					(game.area == MISN_POSWIC) ||
-					(game.area == MISN_EARTH))
+			if ((game.area == MISN_URUSOR)
+					|| (game.area == MISN_POSWIC)
+					|| (game.area == MISN_EARTH))
 				screen_renderUnicode(_("Sid Wilson will join you on this mission"), screen->w / 2 - BRIEFING_WIDTH / 2 + 20, screen->h / 2 + 175, FONT_WHITE);
 
 			renderer_update();
 
 			game_delayFrame();
 			player_getInput();
-			if ((engine.keyState[KEY_FIRE]) || (engine.keyState[KEY_ALTFIRE]) ||
-					(engine.keyState[KEY_ESCAPE]))
+			if ((engine.keyState[KEY_FIRE]) || (engine.keyState[KEY_ALTFIRE])
+					|| (engine.keyState[KEY_ESCAPE]))
 				break;
 		}
 

@@ -567,9 +567,9 @@ static void game_doCollectables()
 		if (collectable->life < 1)
 		{
 			collectable->active = 0;
-			if ((collectable->type == P_CARGO) ||
-					(collectable->type == P_ESCAPEPOD) ||
-					(collectable->type == P_SLAVES))
+			if ((collectable->type == P_CARGO)
+					|| (collectable->type == P_ESCAPEPOD)
+					|| (collectable->type == P_SLAVES))
 				mission_updateRequirements(M_PROTECT_PICKUP, collectable->type, 1);
 		}
 
@@ -708,8 +708,8 @@ static void game_doBullets()
 					okayToHit = 1;
 				if ((bullet->flags & WF_WEAPCO) && (aliens[i].flags & FL_FRIEND))
 					okayToHit = 1;
-				if ((bullet->id == WT_ROCKET) || (bullet->id == WT_LASER) ||
-						(bullet->id == WT_CHARGER))
+				if ((bullet->id == WT_ROCKET) || (bullet->id == WT_LASER)
+						|| (bullet->id == WT_CHARGER))
 					okayToHit = 1;
 
 				if (bullet->owner == aliens[i].owner)
@@ -815,8 +815,8 @@ static void game_doBullets()
 			}
 
 			// Check for bullets hitting player
-			if ((bullet->flags & WF_WEAPCO) || (bullet->id == WT_ROCKET) ||
-				(bullet->id == WT_LASER) || (bullet->id == WT_CHARGER))
+			if ((bullet->flags & WF_WEAPCO) || (bullet->id == WT_ROCKET)
+				|| (bullet->id == WT_LASER) || (bullet->id == WT_CHARGER))
 			{
 				if (bullet->active && (player.shield > 0) &&
 					(bullet->owner != &player) && bullet_collision(bullet, &player))
@@ -1101,9 +1101,9 @@ static void game_doAliens()
 					if (aliens[i].x > aliens[i].target->x) aliens[i].face = 1;
 				}
 
-				if ((game.area == MISN_ELLESH) &&
-						((aliens[i].classDef == CD_BOSS) ||
-						    (game.difficulty != DIFFICULTY_ORIGINAL)))
+				if ((game.area == MISN_ELLESH)
+						&& ((aliens[i].classDef == CD_BOSS)
+						    || (game.difficulty != DIFFICULTY_ORIGINAL)))
 					aliens[i].face = 0;
 
 				if ((aliens[i].flags & FL_DEPLOYDRONES) && ((rand() % 300) == 0))
@@ -1194,8 +1194,8 @@ static void game_doAliens()
 					for (int j = 0 ; j < 2 ; j++)
 					{
 						if ((aliens[i].reload[j] == 0) &&
-							((rand() % 1000 < aliens[i].chance[j]) ||
-								(aliens[i].flags & FL_CONTINUOUS_FIRE)))
+							((rand() % 1000 < aliens[i].chance[j])
+								|| (aliens[i].flags & FL_CONTINUOUS_FIRE)))
 						{
 							if ((aliens[i].weaponType[j] != W_ENERGYRAY) &&
 								(aliens[i].weaponType[j] != W_LASER))
@@ -1387,8 +1387,8 @@ static void game_doPlayer()
 			if (player.weaponType[1] == W_CHARGER)
 			{
 				if (engine.keyState[KEY_ALTFIRE] &&
-					((game.difficulty == DIFFICULTY_ORIGINAL) ||
-						!(engine.keyState[KEY_FIRE])))
+					((game.difficulty == DIFFICULTY_ORIGINAL)
+						|| !(engine.keyState[KEY_FIRE])))
 				{
 					if (!player_chargerFired)
 					{
@@ -1486,8 +1486,8 @@ static void game_doPlayer()
 				engine.keyState[KEY_PAUSE] = 0;
 			}
 
-			if ((game.area == MISN_ELLESH) ||
-				(game.area == MISN_MARS))
+			if ((game.area == MISN_ELLESH)
+					|| (game.area == MISN_MARS))
 			{
 				player.face = 0;
 				xmoved = 1;
@@ -1658,8 +1658,8 @@ static void game_doPlayer()
 	LIMIT(engine.ssy, -CAMERA_MAX_SPEED, CAMERA_MAX_SPEED);
 
 	// Specific for the mission were you have to chase the Executive Transport
-	if (((game.area == MISN_ELLESH) && (player.shield > 0)) ||
-			(game.area == MISN_MARS))
+	if (((game.area == MISN_ELLESH) && (player.shield > 0))
+			|| (game.area == MISN_MARS))
 	{
 		engine.ssx = -6;
 		engine.ssy = 0;
@@ -2473,9 +2473,9 @@ int game_mainLoop()
 	if (game.hasWingMate2)
 		alien_addFriendly(ALIEN_URSULA);
 
-	if ((game.area == MISN_URUSOR) ||
-			(game.area == MISN_POSWIC) ||
-			(game.area == MISN_EARTH))
+	if ((game.area == MISN_URUSOR)
+			|| (game.area == MISN_POSWIC)
+			|| (game.area == MISN_EARTH))
 		alien_addFriendly(ALIEN_SID);
 
 	// Disable Wingmates for certain missions
@@ -2651,14 +2651,14 @@ int game_mainLoop()
 			if (player.shield > 0)
 			{
 				if ((SDL_GetTicks() >= engine.missionCompleteTimer) &&
-					((game.difficulty == DIFFICULTY_ORIGINAL) ||
-						(game.difficulty == DIFFICULTY_NIGHTMARE) ||
-						(game.area == MISN_INTERCEPTION) ||
-						(game.area == MISN_ELLESH) ||
-						(game.area == MISN_MARS) ||
-						(mission_checkFailed()) ||
-						(collectable_numGood() <= 0) ||
-						(engine.done == ENGINE_SYSEXIT)))
+					((game.difficulty == DIFFICULTY_ORIGINAL)
+						|| (game.difficulty == DIFFICULTY_NIGHTMARE)
+						|| (game.area == MISN_INTERCEPTION)
+						|| (game.area == MISN_ELLESH)
+						|| (game.area == MISN_MARS)
+						|| (mission_checkFailed())
+						|| (collectable_numGood() <= 0)
+						|| (engine.done == ENGINE_SYSEXIT)))
 				{
 					if ((!mission_checkFailed()) && (game.area != MISN_VENUS))
 					{
@@ -2683,8 +2683,8 @@ int game_mainLoop()
 								aliens[ALIEN_URSULA].face = 0;
 							}
 
-							if ((game.area == MISN_URUSOR) ||
-								(game.area == MISN_POSWIC))
+							if ((game.area == MISN_URUSOR)
+									|| (game.area == MISN_POSWIC))
 							{
 								aliens[ALIEN_SID].x = player.x - 100;
 								aliens[ALIEN_SID].y = player.y;

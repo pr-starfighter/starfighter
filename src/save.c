@@ -160,42 +160,42 @@ int save_load(int slot)
 		{
 			case 4:
 			case 5:
-				if ((fscanf(fp, "%d%*c", &game.difficulty) < 1) ||
-						(fscanf(fp, "%d %d %d %d %d %d %d %d%*c",
+				if ((fscanf(fp, "%d%*c", &game.difficulty) < 1)
+						|| (fscanf(fp, "%d %d %d %d %d %d %d %d%*c",
 							&game.minPlasmaRateLimit, &game.minPlasmaDamageLimit,
 							&game.minPlasmaOutputLimit, &game.maxPlasmaRateLimit,
 							&game.maxPlasmaDamageLimit, &game.maxPlasmaOutputLimit,
-							&game.maxPlasmaAmmoLimit, &game.maxRocketAmmoLimit) < 8) ||
-						(fscanf(fp, "%d %d %d%*c%*[^\n]%*c", &game.system, &game.area,
-							&game.stationedPlanet) < 3) ||
-						(fscanf(fp, "%d %d%*c", &game.hasWingMate1, &game.hasWingMate2) < 2) ||
-						(fscanf(fp, "%d %d %d %d%*c", &player.maxShield,
-							&player.ammo[0], &player.ammo[1], &player.weaponType[1]) < 4) ||
-						(fscanf(fp, "%d %d %d%*c",
+							&game.maxPlasmaAmmoLimit, &game.maxRocketAmmoLimit) < 8)
+						|| (fscanf(fp, "%d %d %d%*c%*[^\n]%*c", &game.system, &game.area,
+							&game.stationedPlanet) < 3)
+						|| (fscanf(fp, "%d %d%*c", &game.hasWingMate1, &game.hasWingMate2) < 2)
+						|| (fscanf(fp, "%d %d %d %d%*c", &player.maxShield,
+							&player.ammo[0], &player.ammo[1], &player.weaponType[1]) < 4)
+						|| (fscanf(fp, "%d %d %d%*c",
 							&weapons[W_PLAYER_WEAPON].ammo[0],
 							&weapons[W_PLAYER_WEAPON].damage,
-							&weapons[W_PLAYER_WEAPON].reload[0]) < 3) ||
-						(fscanf(fp, "%d %d %d %d %d %d %d %d%*c",
+							&weapons[W_PLAYER_WEAPON].reload[0]) < 3)
+						|| (fscanf(fp, "%d %d %d %d %d %d %d %d%*c",
 							&game.minPlasmaRate, &game.minPlasmaDamage,
 							&game.minPlasmaOutput, &game.maxPlasmaRate,
 							&game.maxPlasmaDamage, &game.maxPlasmaOutput,
-							&game.maxPlasmaAmmo, &game.maxRocketAmmo) < 8) ||
-						(fscanf(fp, "%d %d %d %d %d %d %d %d %d %d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d%*c",
+							&game.maxPlasmaAmmo, &game.maxRocketAmmo) < 8)
+						|| (fscanf(fp, "%d %d %d %d %d %d %d %d %d %d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d%*c",
 							&game.missionCompleted[0], &game.missionCompleted[1],
 							&game.missionCompleted[2], &game.missionCompleted[3],
 							&game.missionCompleted[4], &game.missionCompleted[5],
 							&game.missionCompleted[6], &game.missionCompleted[7],
-							&game.missionCompleted[8], &game.missionCompleted[9]) < 10) ||
-						(fscanf(fp, "%d%*c", &game.experimentalShield) < 1) ||
-						(fscanf(fp, "%d %d%*c", &game.cash, &game.cashEarned) < 2) ||
-						(fscanf(fp, "%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d%*c",
+							&game.missionCompleted[8], &game.missionCompleted[9]) < 10)
+						|| (fscanf(fp, "%d%*c", &game.experimentalShield) < 1)
+						|| (fscanf(fp, "%d %d%*c", &game.cash, &game.cashEarned) < 2)
+						|| (fscanf(fp, "%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d%*c",
 							&game.shots, &game.hits, &game.accuracy, &game.totalKills,
 							&game.wingMate1Kills, &game.wingMate2Kills,
 							&game.wingMate1Ejects, &game.wingMate2Ejects,
 							&game.totalOtherKills, &game.shieldPickups,
 							&game.rocketPickups, &game.cellPickups, &game.powerups,
-							&game.minesKilled, &game.slavesRescued) < 15) ||
-						(fscanf(fp, "%lu%*c", &timeTaken) < 1))
+							&game.minesKilled, &game.slavesRescued) < 15)
+						|| (fscanf(fp, "%lu%*c", &timeTaken) < 1))
 				{
 					printf("Warning: Save data is not correctly formatted. Some data may be lost.\n");
 				}
