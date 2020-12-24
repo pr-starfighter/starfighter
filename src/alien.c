@@ -1859,7 +1859,7 @@ void alien_move(Object *alien)
 
 	if (alien->owner == alien)
 	{
-		if (alien->flags & FL_CIRCLES)
+		if ((alien->flags & FL_CIRCLES) && (!(alien->flags & FL_LEAVESECTOR)))
 		{
 			if (alien->face == 0)
 			{
