@@ -1125,8 +1125,8 @@ static void game_doAliens()
 
 					if (aliens[i].x >= 5000)
 					{
-						aliens[i].flags -= FL_LEAVESECTOR;
-						aliens[i].flags += FL_ESCAPED;
+						aliens[i].flags &= ~FL_LEAVESECTOR;
+						aliens[i].flags |= FL_ESCAPED;
 						aliens[i].active = 0;
 
 						if (aliens[i].classDef == CD_CLOAKFIGHTER)
