@@ -49,8 +49,14 @@ Initialises the player for a new game.
 void player_init()
 {
 	player.active = 1;
-	player.x = screen->w / 2;
-	player.y = screen->h / 2;
+	if (game.difficulty == DIFFICULTY_ORIGINAL) {
+		player.x = 200;
+		player.y = 200;
+	}
+	else {
+		player.x = screen->w / 2;
+		player.y = screen->h / 2;
+	}
 	player.speed = 2;
 	player.systemPower = player.maxShield;
 	player.face = 0;
