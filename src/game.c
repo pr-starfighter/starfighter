@@ -1581,7 +1581,7 @@ static void game_doPlayer()
 
 			screen_blit(gfx_shipSprites[shapeToUse], (int)player.x, (int)player.y);
 			if ((player.maxShield > 1) && (player.shield <= engine.lowShield)
-					&& CHANCE(1. / 10))
+					&& CHANCE(player.shield > 1 ? 1. / 10 : 3. / 10))
 				explosion_add(player.x + RANDRANGE(-10, 10),
 					player.y + RANDRANGE(-10, 20), SP_SMOKE);
 		}
