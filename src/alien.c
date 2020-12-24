@@ -2202,7 +2202,6 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 				&& !(alien->flags & FL_LEAVESECTOR))
 			{
 				alien->flags |= FL_LEAVESECTOR;
-				alien->flags &= ~FL_CIRCLES;
 				/// Dialog (Kline Kethlan)
 				/// Used when Kline is beaten in the Elamale mission.
 				radio_setMessage(FS_KLINE, _("Seems I underestimated you, Bainfield. We'll meet again!"), 1);
@@ -2219,7 +2218,6 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 				&& !(alien->flags & FL_LEAVESECTOR))
 			{
 				alien->flags |= FL_LEAVESECTOR;
-				alien->flags &= ~FL_CIRCLES;
 				/// Dialog (Sid Wilson)
 				/// Used when Kline is beaten in the Earth mission.
 				radio_setMessage(FS_SID, _("Chris, Kethlan is getting away!"), 1);
@@ -2261,7 +2259,6 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 				&& !(alien->flags & FL_LEAVESECTOR))
 			{
 				alien->flags |= FL_LEAVESECTOR;
-				alien->flags &= ~FL_CIRCLES;
 			}
 		}
 	}
