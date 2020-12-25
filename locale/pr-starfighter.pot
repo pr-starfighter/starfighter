@@ -21,9 +21,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.3.4\n"
+"Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
-"POT-Creation-Date: 2020-10-24 14:38-0400\n"
+"POT-Creation-Date: 2020-12-25 14:04-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,11 +51,11 @@ msgstr ""
 msgid "Very good, Bainfield. Now let's get a little more serious..."
 msgstr ""
 
-#: ../src/alien.c:1998
+#: ../src/alien.c:2002
 msgid ">> Ally has ejected! <<"
 msgstr ""
 
-#: ../src/alien.c:2000
+#: ../src/alien.c:2004
 msgid ">> Friendly craft has been destroyed! <<"
 msgstr ""
 
@@ -66,7 +66,7 @@ msgstr ""
 #. / with brag messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of brag messages is permitted.
-#: ../src/alien.c:2029
+#: ../src/alien.c:2033
 msgid ""
 "Take that, robot oppressors!\n"
 "Come on, WEAPCO, give me a challenge already!\n"
@@ -92,7 +92,7 @@ msgstr ""
 #. / with brag messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of brag messages is permitted.
-#: ../src/alien.c:2062
+#: ../src/alien.c:2066
 msgid ""
 "I got another one!\n"
 "Target destroyed!\n"
@@ -114,7 +114,7 @@ msgstr ""
 #. / with brag messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of brag messages is permitted.
-#: ../src/alien.c:2091
+#: ../src/alien.c:2095
 msgid ""
 "Kicked your ass!\n"
 "You ain't so tough!\n"
@@ -134,25 +134,25 @@ msgstr ""
 
 #. / Dialog (Chris Bainfield)
 #. / Used when Krass Tyler is beaten in the Jupiter mission.
-#: ../src/alien.c:2154
+#: ../src/alien.c:2158
 msgid "The name's CHRIS, old-timer."
 msgstr ""
 
 #. / Dialog (Kline Kethlan)
 #. / Used when Kline is killed in the Venus mission.
-#: ../src/alien.c:2161
+#: ../src/alien.c:2165
 msgid "It was an honor... to have fought you..."
 msgstr ""
 
 #. / Dialog (Kline Kethlan)
 #. / Used when Kline is beaten in the Elamale mission.
-#: ../src/alien.c:2204
+#: ../src/alien.c:2207
 msgid "Seems I underestimated you, Bainfield. We'll meet again!"
 msgstr ""
 
 #. / Dialog (Sid Wilson)
 #. / Used when Kline is beaten in the Earth mission.
-#: ../src/alien.c:2221
+#: ../src/alien.c:2223
 msgid "Chris, Kethlan is getting away!"
 msgstr ""
 
@@ -812,7 +812,7 @@ msgstr ""
 #. / with messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of messages is permitted.
-#: ../src/game.c:840
+#: ../src/game.c:841
 msgid ""
 "Oops! Sorry!\n"
 "Whoops! Are you OK, Chris?\n"
@@ -826,7 +826,7 @@ msgstr ""
 #. / with messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of messages is permitted.
-#: ../src/game.c:856
+#: ../src/game.c:857
 msgid ""
 "Get out of the way!\n"
 "Don't fly into my missiles!\n"
@@ -840,7 +840,7 @@ msgstr ""
 #. / with insults that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of insults is permitted.
-#: ../src/game.c:1603
+#: ../src/game.c:1608
 msgid ""
 "Fool.\n"
 "And now you're nothing but a DEAD hero."
@@ -853,7 +853,7 @@ msgstr ""
 #. / with insults that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of insults is permitted.
-#: ../src/game.c:1618
+#: ../src/game.c:1623
 msgid ""
 "Pathetic.\n"
 "How very disappointing...\n"
@@ -862,7 +862,7 @@ msgstr ""
 
 #. / Dialog: Krass Tyler
 #. / Used when the player is killed in the Jupiter mission.
-#: ../src/game.c:1629
+#: ../src/game.c:1634
 msgid "That was the easiest $90,000,000 I've ever earned! Bwah! Ha! Ha! Ha!"
 msgstr ""
 
@@ -874,37 +874,37 @@ msgstr ""
 #. / timer to use single-digit numbers.
 #. / The ":" can also be replaced just like any text.  For example, this would be fine:
 #. /     "Time Remaining - %d minutes and %d seconds"
-#: ../src/game.c:1942
+#: ../src/game.c:1947
 #, c-format
 msgid "Time Remaining - %.2d:%.2d"
 msgstr ""
 
 #. / "%d" must be retained.  It is replaced with the number of mission objectives remaining.
-#: ../src/game.c:1950
+#: ../src/game.c:1955
 #, c-format
 msgid "Objectives Remaining: %d"
 msgstr ""
 
 #. / "%d" must be retained.  It is replaced with the player's current total cash.
 #. / Retain "%d" as-is.  It is replaced with the player's current cash.
-#: ../src/game.c:1956 ../src/shop.c:352
+#: ../src/game.c:1961 ../src/shop.c:353
 #, c-format
 msgid "Cash: $%d"
 msgstr ""
 
 #. / "%.3d" must be retained.  It is replaced with the amount of plasma ammo.
-#: ../src/game.c:1993
+#: ../src/game.c:1998
 #, c-format
 msgid "Plasma: %.3d"
 msgstr ""
 
 #. / Used to indicate the charge meter for the charger cannon in the HUD.
-#: ../src/game.c:2000
+#: ../src/game.c:2005
 msgid "Charge"
 msgstr ""
 
 #. / Used to indicate the heat meter for the laser cannon in the HUD.
-#: ../src/game.c:2005
+#: ../src/game.c:2010
 msgid "Heat"
 msgstr ""
 
@@ -912,38 +912,38 @@ msgstr ""
 #. / Retain "%.2d".  It is replaced with the ship's current number of rockets.
 #. / "%.2d" can be changed to "%d" if you wish to not fill in space with zeroes,
 #. / e.g. render the number 3 as "3" rather than "03".
-#: ../src/game.c:2010 ../src/shop.c:362
+#: ../src/game.c:2015 ../src/shop.c:363
 #, c-format
 msgid "Rockets: %.2d"
 msgstr ""
 
 #. / DIFFICULTY_SUPEREASY
-#: ../src/game.c:2420
+#: ../src/game.c:2425
 msgid "Super-Easy"
 msgstr ""
 
 #. / DIFFICULTY_EASY
-#: ../src/game.c:2424
+#: ../src/game.c:2429
 msgid "Easy"
 msgstr ""
 
 #. / DIFFICULTY_NORMAL
-#: ../src/game.c:2428
+#: ../src/game.c:2433
 msgid "Normal"
 msgstr ""
 
 #. / DIFFICULTY_HARD
-#: ../src/game.c:2432
+#: ../src/game.c:2437
 msgid "Hard"
 msgstr ""
 
 #. / DIFFICULTY_NIGHTMARE
-#: ../src/game.c:2436
+#: ../src/game.c:2441
 msgid "Nightmare!"
 msgstr ""
 
 #. / DIFFICULTY_ORIGINAL (Classic)
-#: ../src/game.c:2440
+#: ../src/game.c:2445
 msgid "Classic"
 msgstr ""
 
@@ -2093,7 +2093,7 @@ msgstr ""
 msgid "Destroy WEAPCO frontline forces"
 msgstr ""
 
-#: ../src/mission.c:610 ../src/mission.c:980
+#: ../src/mission.c:610 ../src/mission.c:984
 msgid "*** All Primary Objectives Completed ***"
 msgstr ""
 
@@ -2294,81 +2294,81 @@ msgstr ""
 msgid "That's one less surprise that WEAPCO can spring on us!"
 msgstr ""
 
-#: ../src/mission.c:967
+#: ../src/mission.c:971
 msgid "*** Primary Objective Completed ***"
 msgstr ""
 
-#: ../src/mission.c:969
+#: ../src/mission.c:973
 msgid ">>> Primary Objective Failed <<<"
 msgstr ""
 
-#: ../src/mission.c:976
+#: ../src/mission.c:980
 msgid "Emergency warp drive activated. Press button to engage."
 msgstr ""
 
-#: ../src/mission.c:982
+#: ../src/mission.c:986
 msgid "*** Interception Destroyed ***"
 msgstr ""
 
 #. / Dialog (Chris Bainfield)
 #. / Used when the Earth mission is completed.
-#: ../src/mission.c:1002
+#: ../src/mission.c:1006
 msgid ""
 "You guys stay here and keep things under control. I'm going after Kethlan!"
 msgstr ""
 
-#: ../src/mission.c:1011
+#: ../src/mission.c:1015
 msgid "*** Secondary Objective Completed ***"
 msgstr ""
 
-#: ../src/mission.c:1016
+#: ../src/mission.c:1020
 msgid "*** All Secondary Objectives Completed ***"
 msgstr ""
 
-#: ../src/mission.c:1031
+#: ../src/mission.c:1035
 msgid ">>> MISSION FAILED <<<"
 msgstr ""
 
-#: ../src/mission.c:1037
+#: ../src/mission.c:1041
 msgid ">>> Secondary Objective Failed <<<"
 msgstr ""
 
-#: ../src/mission.c:1116
+#: ../src/mission.c:1120
 msgid "Primary Objectives"
 msgstr ""
 
-#: ../src/mission.c:1130
+#: ../src/mission.c:1134
 msgid "Secondary Objectives"
 msgstr ""
 
-#: ../src/mission.c:1144
+#: ../src/mission.c:1148
 msgid "Additional Information"
 msgstr ""
 
 #. / Used to indicate the player's shield meter in the HUD.
-#: ../src/mission.c:1161
+#: ../src/mission.c:1165
 msgid "Shield"
 msgstr ""
 
-#: ../src/mission.c:1163
+#: ../src/mission.c:1167
 msgid "Target"
 msgstr ""
 
-#: ../src/mission.c:1164
+#: ../src/mission.c:1168
 msgid "Sid"
 msgstr ""
 
-#: ../src/mission.c:1165
+#: ../src/mission.c:1169
 msgid "Phoebe"
 msgstr ""
 
-#: ../src/mission.c:1166
+#: ../src/mission.c:1170
 msgid "Kline"
 msgstr ""
 
 #. / "%d" must be retained.  It is replaced with the mission required
 #. / survival time in minutes.
-#: ../src/mission.c:1194
+#: ../src/mission.c:1198
 #, c-format
 msgid "SURVIVAL FOR %d minute"
 msgid_plural "SURVIVAL FOR %d minutes"
@@ -2377,36 +2377,36 @@ msgstr[1] ""
 
 #. / "%d" must be retained.  It is replaced with the mission time
 #. / limit in minutes.
-#: ../src/mission.c:1203
+#: ../src/mission.c:1207
 #, c-format
 msgid "TIME LIMIT: %d minute"
 msgid_plural "TIME LIMIT: %d minutes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/mission.c:1219
+#: ../src/mission.c:1223
 msgid "Phoebe Lexx will not be present"
 msgstr ""
 
-#: ../src/mission.c:1221
+#: ../src/mission.c:1225
 msgid "Ursula Lexx will not be present"
 msgstr ""
 
-#: ../src/mission.c:1228
+#: ../src/mission.c:1232
 msgid "Sid Wilson will join you on this mission"
 msgstr ""
 
-#: ../src/mission.c:1316 ../src/mission.c:1336
+#: ../src/mission.c:1320 ../src/mission.c:1340
 msgid "COMPLETED"
 msgstr ""
 
-#: ../src/mission.c:1321 ../src/mission.c:1341
+#: ../src/mission.c:1325 ../src/mission.c:1345
 msgid "FAILED"
 msgstr ""
 
 #. / "%d" must be retained.  It is replaced with the money earned
 #. / from the shield bonus.
-#: ../src/mission.c:1352
+#: ../src/mission.c:1356
 #, c-format
 msgid "Shield Bonus: $%d"
 msgstr ""
@@ -2423,7 +2423,7 @@ msgstr ""
 #. / the "%02ld" sequences may be changed to "%ld" if you wish to
 #. / not force two digits to be filled in (e.g. to render the number
 #. / 3 as "3" instead of "03").
-#: ../src/mission.c:1368
+#: ../src/mission.c:1372
 #, c-format
 msgid "Mission Time: %02ld:%02ld"
 msgstr ""
@@ -2535,86 +2535,86 @@ msgid "Mcr Homing Missiles"
 msgstr ""
 
 #. / Retain "%d" as-is.  It is replaced with the rocket capacity of the Firefly.
-#: ../src/shop.c:104
+#: ../src/shop.c:105
 #, c-format
 msgid "Capacity : %d"
 msgstr ""
 
-#: ../src/shop.c:285
+#: ../src/shop.c:286
 msgid "Primary Weapon"
 msgstr ""
 
 #. / Shop info: min plasma output
 #. / Retain "%d" as-is.  It is replaced with the min plasma output.
-#: ../src/shop.c:288
+#: ../src/shop.c:289
 #, c-format
 msgid "Cannons: %d"
 msgstr ""
 
 #. / Shop info: min plasma damage
 #. / Retain "%d" as-is.  It is replaced with the min plasma damage.
-#: ../src/shop.c:292
+#: ../src/shop.c:293
 #, c-format
 msgid "Power: Stage %d"
 msgstr ""
 
 #. / Shop info: min plasma rate
 #. / Retain "%d" as-is.  It is replaced with the min plasma cooling.
-#: ../src/shop.c:297
+#: ../src/shop.c:298
 #, c-format
 msgid "Cooling: Stage %d"
 msgstr ""
 
-#: ../src/shop.c:301
+#: ../src/shop.c:302
 msgid "Powerup Weapon"
 msgstr ""
 
 #. / Shop info: max plasma output
 #. / Retain "%d" as-is.  It is replaced with the max plasma output.
-#: ../src/shop.c:304
+#: ../src/shop.c:305
 #, c-format
 msgid "Splitter: Stage %d"
 msgstr ""
 
 #. / Shop info: max plasma damage
 #. / Retain "%d" as-is.  It is replaced with the max plasma damage.
-#: ../src/shop.c:309
+#: ../src/shop.c:310
 #, c-format
 msgid "Condensor: Stage %d"
 msgstr ""
 
 #. / Shop info: max plasma rate
 #. / Retain "%d" as-is.  It is replaced with the max plasma cooling.
-#: ../src/shop.c:314
+#: ../src/shop.c:315
 #, c-format
 msgid "L.Nitrogen: Stage %d"
 msgstr ""
 
 #. / Shop info: max plasma ammo
 #. / Retain "%d" as-is.  It is replaced with the Firefly's plasma ammo capacity.
-#: ../src/shop.c:319
+#: ../src/shop.c:320
 #, c-format
 msgid "Capacity: %d"
 msgstr ""
 
-#: ../src/shop.c:328
+#: ../src/shop.c:329
 msgid "Temporary Weapons"
 msgstr ""
 
-#: ../src/shop.c:329
+#: ../src/shop.c:330
 msgid "Ammo and Storage"
 msgstr ""
 
-#: ../src/shop.c:331
+#: ../src/shop.c:332
 msgid "Primary Weapons"
 msgstr ""
 
-#: ../src/shop.c:333
+#: ../src/shop.c:334
 msgid "Secondary Weapons"
 msgstr ""
 
 #. / Retain "%d" as-is.  It is replaced with the Firefly's max shield.
-#: ../src/shop.c:349
+#: ../src/shop.c:350
 #, c-format
 msgid "Shield: %d"
 msgstr ""
@@ -2622,246 +2622,246 @@ msgstr ""
 #. / Retain "%.3d".  It is replaced with the ship's current number of plasma cells.
 #. / "%.3d" can be changed to "%d" if you wish to not fill in space with zeroes,
 #. / e.g. render the number 5 as "5" rather than "005".
-#: ../src/shop.c:357
+#: ../src/shop.c:358
 #, c-format
 msgid "Plasma Cells: %.3d"
 msgstr ""
 
-#: ../src/shop.c:368
+#: ../src/shop.c:369
 msgid "Information"
 msgstr ""
 
 #. / For when the player attempts to buy something they can't afford.
-#: ../src/shop.c:376
+#: ../src/shop.c:377
 msgid "You don't have enough money"
 msgstr ""
 
 #. / For when the player attempts an upgrade beyond the maximum (line 1 of 2).
-#: ../src/shop.c:380
+#: ../src/shop.c:381
 msgid "Cannot upgrade ship"
 msgstr ""
 
 #. / For when the player attempts an upgrade beyond the maximum (line 2 of 2).
-#: ../src/shop.c:383
+#: ../src/shop.c:384
 msgid "Hardware capacity has been reached"
 msgstr ""
 
 #. / For when the player attempts to buy more ammo than the ship can hold.
-#: ../src/shop.c:387
+#: ../src/shop.c:388
 msgid "Ammunition limit reached"
 msgstr ""
 
 #. / For when the player attempts to sell an item they aren't allowed to sell.
-#: ../src/shop.c:391
+#: ../src/shop.c:392
 msgid "You cannot sell that item"
 msgstr ""
 
 #. / For when the player attempts to sell an item they don't have any of.
-#: ../src/shop.c:395
+#: ../src/shop.c:396
 msgid "Nothing to sell"
 msgstr ""
 
 #. / For when the player attempts to buy rockets or rocket capacity
 #. / while secondary weapon is either laser or charge cannon.
-#: ../src/shop.c:400
+#: ../src/shop.c:401
 msgid "Rockets cannot be bought for Laser or Charger Cannon"
 msgstr ""
 
 #. / For when the player attempts to buy a weapon they already have.
-#: ../src/shop.c:404
+#: ../src/shop.c:405
 msgid "You already have that weapon"
 msgstr ""
 
 #. / For when the player attempts to increase rocket capacity beyond
 #. / what is allowed for the weapon (used for homing missiles).
-#: ../src/shop.c:409
+#: ../src/shop.c:410
 msgid "This weapon's ammo limit has been reached"
 msgstr ""
 
 #. / Used to put a shop item's name next to its price.
 #. / "%s" is replaced with the item name, and "%d" is replaced
 #. / with the item price.
-#: ../src/shop.c:417
+#: ../src/shop.c:418
 #, c-format
 msgid "%s ($%d)"
 msgstr ""
 
 #. / Used for shop items that cannot be bought.
 #. / "%s" is replaced with the item name.
-#: ../src/shop.c:425
+#: ../src/shop.c:426
 #, c-format
 msgid "%s (N/A)"
 msgstr ""
 
 #. ----------- Temporary Items -----------
 #. Overwritten later
-#: ../src/shop.c:440
+#: ../src/shop.c:441
 msgid "Plasma Channel Splitter"
 msgstr ""
 
 #. / Shop item description: Plasma Channel Splitter (PLASMA_MAX_OUTPUT)
-#: ../src/shop.c:442
+#: ../src/shop.c:443
 msgid "Improves poweredup plasma output"
 msgstr ""
 
 #. Overwritten later
-#: ../src/shop.c:446
+#: ../src/shop.c:447
 msgid "Plasma Capacity Condensor"
 msgstr ""
 
 #. / Shop item description: Plasma Capacity Condensor (PLASMA_MAX_DAMAGE)
-#: ../src/shop.c:448
+#: ../src/shop.c:449
 msgid "Increases poweredup plasma damage"
 msgstr ""
 
 #. Overwritten later
-#: ../src/shop.c:452
+#: ../src/shop.c:453
 msgid "Liquid Nitrogen Capsules"
 msgstr ""
 
 #. / Shop item description: Liquid Nitrogen Capsules (PLASMA_MAX_RATE)
-#: ../src/shop.c:454
+#: ../src/shop.c:455
 msgid "Increases plasma firing rate"
 msgstr ""
 
-#: ../src/shop.c:462
+#: ../src/shop.c:463
 msgid "Plasma Cells"
 msgstr ""
 
 #. / Shop item description: Plasma Cells
-#: ../src/shop.c:464
+#: ../src/shop.c:465
 msgid "Plasma ammunition (10 cells each)"
 msgstr ""
 
-#: ../src/shop.c:472
+#: ../src/shop.c:473
 msgid "Rocket Ammo"
 msgstr ""
 
 #. / Shop item description: Rocket Ammo
-#: ../src/shop.c:474
+#: ../src/shop.c:475
 msgid "High velocity dumb fire rocket"
 msgstr ""
 
 #. ----------- Permanent Items -----------
 #. Overwritten later
-#: ../src/shop.c:480
+#: ../src/shop.c:481
 msgid "Additional Plasma Cannon"
 msgstr ""
 
 #. / Shop item description: Additional Plasma Cannon (PLASMA_MIN_OUTPUT)
-#: ../src/shop.c:482
+#: ../src/shop.c:483
 msgid "Adds an extra plasma cannon to the Firefly"
 msgstr ""
 
 #. Overwritten later
-#: ../src/shop.c:486
+#: ../src/shop.c:487
 msgid "Plasma Power Booster"
 msgstr ""
 
 #. / Shop item description: Plasma Power Booster (PLASMA_MIN_DAMAGE)
-#: ../src/shop.c:488
+#: ../src/shop.c:489
 msgid "Increases power of plasma shots"
 msgstr ""
 
 #. Overwritten later
-#: ../src/shop.c:492
+#: ../src/shop.c:493
 msgid "Plasma Cooling Booster"
 msgstr ""
 
 #. / Shop item description: Plasma Cooling Booster (PLASMA_MIN_RATE)
-#: ../src/shop.c:494
+#: ../src/shop.c:495
 msgid "Permanently increases firing rate"
 msgstr ""
 
 #. ----------- Ammo Items --------------
 #. Overwritten later
-#: ../src/shop.c:500
+#: ../src/shop.c:501
 msgid "Plasma Compressor"
 msgstr ""
 
 #. / Shop item description: Plasma Compressor (PLASMA_MAX_AMMO)
-#: ../src/shop.c:502
+#: ../src/shop.c:503
 msgid "Increases plasma ammo capacity"
 msgstr ""
 
 #. Overwritten later
-#: ../src/shop.c:506
+#: ../src/shop.c:507
 msgid "Rocket Pod"
 msgstr ""
 
 #. / Shop item description: Rocket Pod (ROCKET_MAX_AMMO)
-#: ../src/shop.c:508
+#: ../src/shop.c:509
 msgid "Allows for an additional 5 rockets to be carried"
 msgstr ""
 
-#: ../src/shop.c:514
+#: ../src/shop.c:515
 msgid "Dual Rocket Launcher"
 msgstr ""
 
 #. / Shop item description: Dual Rocket Launcher
-#: ../src/shop.c:516
+#: ../src/shop.c:517
 msgid "Launches two rockets at once"
 msgstr ""
 
-#: ../src/shop.c:520
+#: ../src/shop.c:521
 msgid "Micro Rocket Launcher"
 msgstr ""
 
 #. / Shop item description: Micro Rocket Launcher
-#: ../src/shop.c:522
+#: ../src/shop.c:523
 msgid "Launches several less powerful rockets at once"
 msgstr ""
 
-#: ../src/shop.c:526
+#: ../src/shop.c:527
 msgid "Laser Cannon"
 msgstr ""
 
 #. / Shop item description: Laser Cannon
-#: ../src/shop.c:528
+#: ../src/shop.c:529
 msgid "Fires a continuous stream of energy particles"
 msgstr ""
 
-#: ../src/shop.c:532
+#: ../src/shop.c:533
 msgid "Homing Missile Launcher"
 msgstr ""
 
 #. / Shop item description: Homing Missile Launcher
 #. / %i must be retained.  It is replaced by the maximum missile
 #. / capacity of the weapon.
-#: ../src/shop.c:536
+#: ../src/shop.c:537
 #, c-format
 msgid "Fires homing missile (max %i missiles)"
 msgstr ""
 
-#: ../src/shop.c:540
+#: ../src/shop.c:541
 msgid "Charge Cannon"
 msgstr ""
 
 #. / Shop item description: Charge Cannon
-#: ../src/shop.c:542
+#: ../src/shop.c:543
 msgid "Compacts plasma into clusters for greater damage"
 msgstr ""
 
-#: ../src/shop.c:546
+#: ../src/shop.c:547
 msgid "Dual Homing Missile Launcher"
 msgstr ""
 
 #. / Shop item description: Dual Homing Missile Launcher
 #. / %i must be retained.  It is replaced by the maximum missile
 #. / capacity of the weapon.
-#: ../src/shop.c:550
+#: ../src/shop.c:551
 #, c-format
 msgid "Fires two homing missiles (max %i missiles)"
 msgstr ""
 
-#: ../src/shop.c:554
+#: ../src/shop.c:555
 msgid "Micro Homing Missile Launcher"
 msgstr ""
 
 #. / Shop item description: Micro Homing Missile Launcher
 #. / %i must be retained.  It is replaced by the maximum missile
 #. / capacity of the weapon.
-#: ../src/shop.c:558
+#: ../src/shop.c:559
 #, c-format
 msgid "Fires several small homing missiles (max %i missiles)"
 msgstr ""
