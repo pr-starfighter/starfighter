@@ -3,7 +3,7 @@
 # http://creativecommons.org/publicdomain/zero/1.0/ for more
 # information. This file is offered as-is, without any warranty.
 
-sounddir = $(pkgdatadir)/music
+sounddir = $(pkgdatadir)/sound
 
 nobase_dist_sound_DATA = \
     beamLaser.ogg \
