@@ -1430,7 +1430,8 @@ static void game_doPlayer()
 			if ((engine.keyState[KEY_SWITCH]))
 			{
 				if ((weapons[W_PLAYER_WEAPON].ammo[0] >= 3)
-					&& (weapons[W_PLAYER_WEAPON].ammo[0] <= game.maxPlasmaOutput))
+					&& ((weapons[W_PLAYER_WEAPON].ammo[0] <= game.maxPlasmaOutput)
+						|| (game.difficulty == DIFFICULTY_ORIGINAL)))
 				{
 					weapons[W_PLAYER_WEAPON].flags ^= WF_SPREAD;
 
