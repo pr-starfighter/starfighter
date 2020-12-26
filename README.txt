@@ -24,19 +24,16 @@ compared to the original:
   project completed that work by adding music and replacing one
   non-libre graphic that got into version 1.2 by mistake.
 
-* There are several gameplay changes. These changes were mostly done to
-  balance the game better. However, if you want the original experience,
-  "Classic" difficulty emulates it as closely as possible.
-
 * Much of the dialog has been changed. There are various reasons for
   this; some of these include fixing bad writing, making the dialog
   match new music queues, and giving the characters more personality.
 
-* In many places, the interface has been considerably improved. As an
-  example, the simplistic target arrow of the original has been replaced
-  with a system of several arrows, one for each ship.
-
-* Unicode and gettext translation support have been added.
+* There are several gameplay changes. These changes were mostly done to
+  balance the game better. The original game is contained in the Classic
+  difficulty option, which is nearly identical to the original
+  experience. A few small differences (mainly old bugs that were not
+  left in) do exist, and they are explained on the following page:
+  https://pr-starfighter.github.io/old.html
 
 * Typing "humansdoitbetter" in the title screen no longer enables
   cheats. This is actually because the switch to SDL2 broke the original
