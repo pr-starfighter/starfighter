@@ -698,6 +698,13 @@ void title_showCredits()
 		if (engine.keyState[KEY_ESCAPE] || engine.keyState[KEY_FIRE]
 				|| engine.keyState[KEY_ALTFIRE])
 			break;
+		
+		// Check to see if we need to reposition credits
+		if (credit[0].x != (screen->w - credit[0].image->w) / 2) {
+			for (i=0; i< nCredit; i++) {
+				credit[i].x = (screen->w - credit[i].image->w) / 2;
+			}
+		}
 
 		float speed = 0.5;
 		if (engine.keyState[KEY_DOWN])

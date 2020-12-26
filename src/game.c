@@ -2706,6 +2706,7 @@ int game_mainLoop()
 					else if ((game.area == MISN_VENUS)
 							&& (engine.musicVolume > 0))
 					{
+						player_getInput();
 						engine.keyState[KEY_UP] = 0;
 						engine.keyState[KEY_DOWN] = 0;
 						engine.keyState[KEY_LEFT] = 0;
