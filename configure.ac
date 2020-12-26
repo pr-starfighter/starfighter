@@ -18,7 +18,6 @@ AC_PROG_CC
 AC_PROG_INSTALL
 
 STARFIGHTER_CPPFLAGS="-DVERSION=\\\"$PACKAGE_VERSION\\\""
-STARFIGHTER_LDADD="-Wl,-z,now"
 
 # Detect MacOS
 AC_CANONICAL_HOST
@@ -59,6 +58,7 @@ PKG_CHECK_MODULES([PANGO], [pango], [
 ])
 
 AC_ARG_VAR([SF_WARN], [Set to 1 to enable compiler warnings])
+AC_ARG_VAR([SF_UNHARDEN], [Set to 1 to disable hardening flags (for compatibility)])
 AC_ARG_VAR([SF_SCREEN_WIDTH], [The width of the game window in pixels])
 AC_ARG_VAR([SF_SCREEN_HEIGHT], [The height of the game window in pixels])
 AC_ARG_VAR([SF_NOFONT], [Set to 1 to manually force the compiler not to include font/Unicode support])
@@ -66,6 +66,11 @@ AC_ARG_VAR([SF_OLD_MUSIC], [Set to 1 to compile for use with the MOD-based music
 AC_ARG_VAR([SF_RUN_IN_PLACE], [Set to 1 to compile Starfighter to run in-place (instead of installing)])
 AS_IF([test -n "$SF_WARN"], [
 	STARFIGHTER_CPPFLAGS="$STARFIGHTER_CPPFLAGS -Wall -Wformat-truncation=0"
+])
+AS_IF([test -n "$SF_UNHARDEN"], [
+	echo "Building without hardening flags"
+], [
+	STARFIGHTER_LDADD="-Wl,-z,now"
 ])
 AS_IF([test -n "$SF_SCREEN_WIDTH"], [
 	STARFIGHTER_CPPFLAGS="$STARFIGHTER_CPPFLAGS -DSCREEN_WIDTH=$SF_SCREEN_WIDTH"
