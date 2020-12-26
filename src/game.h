@@ -99,6 +99,7 @@ extern Game game;
 extern char game_systemNames[SYSTEM_MAX][STRMAX_SHORT];
 
 void game_init();
+void game_setStars();
 void game_doStars();
 void game_doExplosions();
 void game_delayFrame();

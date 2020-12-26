@@ -458,6 +458,7 @@ void player_getInput()
 				if (engine.event.window.event == SDL_WINDOWEVENT_SIZE_CHANGED)
 				{
 					screen_adjustDimensions(engine.event.window.data1, engine.event.window.data2);
+					game_setStars();
 					renderer_reset();
 					gfx_scaleBackground();
 					screen_clear(black);

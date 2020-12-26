@@ -175,12 +175,7 @@ void game_init()
 	player.weaponType[0] = W_PLAYER_WEAPON;
 	player.weaponType[1] = W_ROCKETS;
 
-	for (int i = 0 ; i < STARS_NUM ; i++)
-	{
-		stars[i].x = rand() % screen->w;
-		stars[i].y = rand() % screen->h;
-		stars[i].speed = 1 + (rand() % 3);
-	}
+	game_setStars();
 
 	weapons_init();
 	mission_init();
@@ -225,6 +220,19 @@ static void game_addDebris(int x, int y, int amount)
 
 		engine.debrisTail->next = debris;
 		engine.debrisTail = debris;
+	}
+}
+
+/*
+Sets star positions. Must do this any time the window size changes.
+*/
+void game_setStars()
+{
+	for (int i = 0 ; i < STARS_NUM ; i++)
+	{
+		stars[i].x = rand() % screen->w;
+		stars[i].y = rand() % screen->h;
+		stars[i].speed = 1 + (rand() % 3);
 	}
 }
 
@@ -2789,6 +2797,7 @@ int game_mainLoop()
 			}
 			else
 			{
+				player_getInput();
 				LIMIT_ADD(engine.musicVolume, -0.2, 0, 100);
 				audio_setMusicVolume(engine.musicVolume);
 				if (SDL_GetTicks() >= engine.missionCompleteTimer)
