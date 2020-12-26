@@ -2539,8 +2539,14 @@ int game_mainLoop()
 
 	if (game.area == MISN_VENUS)
 	{
-		aliens[ALIEN_KLINE].x = player.x + 1000;
-		aliens[ALIEN_KLINE].y = player.y;
+		if (game.difficulty == DIFFICULTY_ORIGINAL) {
+			aliens[ALIEN_KLINE].flags |= FL_IMMORTAL | FL_NOFIRE | FL_NOMOVE;
+			aliens[ALIEN_KLINE].x = 600;
+			aliens[ALIEN_KLINE].y = 300;
+		} else {
+			aliens[ALIEN_KLINE].x = player.x + 1000;
+			aliens[ALIEN_KLINE].y = player.y;
+		}
 	}
 
 	for (int i = 0 ; i < ALIEN_MAX ; i++)

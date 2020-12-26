@@ -1131,8 +1131,14 @@ void aliens_init()
 	if (game.area == MISN_MOEBO)
 	{
 		aliens[ALIEN_BOSS].target = &player;
-		aliens[ALIEN_BOSS].x = -screen->w / 2;
-		aliens[ALIEN_BOSS].y = screen->h / 2;
+		if (game.difficulty == DIFFICULTY_ORIGINAL) {
+			aliens[ALIEN_BOSS].x = -400;
+			aliens[ALIEN_BOSS].y = 300;
+		}
+		else {
+			aliens[ALIEN_BOSS].x = -screen->w / 2;
+			aliens[ALIEN_BOSS].y = screen->h / 2;
+		}
 
 		aliens[ALIEN_BOSS_PART1].owner = &aliens[ALIEN_BOSS];
 		aliens[ALIEN_BOSS_PART1].target = &player;
@@ -1148,8 +1154,14 @@ void aliens_init()
 			|| (game.area == MISN_FELLON))
 	{
 		aliens[ALIEN_BOSS].target = &player;
-		aliens[ALIEN_BOSS].x = -screen->w / 2;
-		aliens[ALIEN_BOSS].y = screen->h / 2;
+		if (game.difficulty == DIFFICULTY_ORIGINAL) {
+			aliens[ALIEN_BOSS].x = -400;
+			aliens[ALIEN_BOSS].y = 300;
+		}
+		else {
+			aliens[ALIEN_BOSS].x = -screen->w / 2;
+			aliens[ALIEN_BOSS].y = screen->h / 2;
+		}
 
 		aliens[ALIEN_BOSS_PART1].owner = &aliens[ALIEN_BOSS_PART2];
 		aliens[ALIEN_BOSS_PART1].target = &player;
@@ -1179,8 +1191,14 @@ void aliens_init()
 	else if (game.area == MISN_URANUS)
 	{
 		aliens[ALIEN_BOSS].target = &player;
-		aliens[ALIEN_BOSS].x = -screen->w / 2;
-		aliens[ALIEN_BOSS].y = screen->h / 2;
+		if (game.difficulty == DIFFICULTY_ORIGINAL) {
+			aliens[ALIEN_BOSS].x = -400;
+			aliens[ALIEN_BOSS].y = 300;
+		}
+		else {
+			aliens[ALIEN_BOSS].x = -screen->w / 2;
+			aliens[ALIEN_BOSS].y = screen->h / 2;
+		}
 
 		aliens[ALIEN_BOSS_PART1].owner = &aliens[ALIEN_BOSS];
 		aliens[ALIEN_BOSS_PART1].dy = -16;

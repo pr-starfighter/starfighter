@@ -399,6 +399,10 @@ void events_init()
 			events[1].face = FS_KLINE;
 			/// Dialog (Kline Kethlan)
 			strcpy(events[1].message, _("You underestimate me, Bainfield."));
+			if (game.difficulty == DIFFICULTY_ORIGINAL) {
+				events[1].entity = ALIEN_KLINE;
+				events[1].flag = -(FL_IMMORTAL | FL_NOMOVE | FL_NOFIRE);
+			}
 
 			break;
 	}
