@@ -94,6 +94,15 @@ void bullet_add(Object *theWeapon, Object *attacker, int y, int dy)
 
 	bullet->damage = theWeapon->damage;
 
+	// Adjustments to damage for Classic difficulty (to match original)
+	if (game.difficulty == DIFFICULTY_ORIGINAL)
+	{
+		if (bullet->id == WT_MICROROCKET)
+			bullet->damage = 3;
+		else if (bullet->id == WT_SPREAD)
+			bullet->damage = 1;
+	}
+
 	if (bullet->id == WT_CHARGER)
 	{
 		if (game.difficulty == DIFFICULTY_ORIGINAL)
