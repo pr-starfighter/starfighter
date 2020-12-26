@@ -106,6 +106,17 @@ final step (moving the Starfighter binary out from the src directory) is
 required; in particular, failure to do so under MacOS leads to a failure
 to load data (images, sounds, fonts) needed by Starfighter.
 
+On Linux and most other POSIX systems, you can instead build a run in
+place build with the following commands:
+
+    ./configure SF_RUN_IN_PLACE=1
+    make
+    mv misc/starfighter.sh .
+
+For Linux, this method is preferred as the binary itself often cannot be
+run by double-clicking, and the starfighter.sh script also automatically
+sets the current working directory, making it suitable for launchers.
+
 Run "./configure --help" to see all options for compiling.
 
 ------------------------------------------------------------------------
