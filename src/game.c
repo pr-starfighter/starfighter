@@ -2595,11 +2595,14 @@ int game_mainLoop()
 
 	if (game.area == MISN_VENUS)
 	{
-		if (game.difficulty == DIFFICULTY_ORIGINAL) {
+		if (game.difficulty == DIFFICULTY_ORIGINAL)
+		{
 			aliens[ALIEN_KLINE].flags |= FL_IMMORTAL | FL_NOFIRE | FL_NOMOVE;
-			aliens[ALIEN_KLINE].x = 600;
-			aliens[ALIEN_KLINE].y = 300;
-		} else {
+			aliens[ALIEN_KLINE].x = screen->w * 3 / 4;
+			aliens[ALIEN_KLINE].y = screen->h / 2;
+		}
+		else
+		{
 			aliens[ALIEN_KLINE].x = player.x + 1000;
 			aliens[ALIEN_KLINE].y = player.y;
 		}
