@@ -188,25 +188,60 @@ void audio_playRandomTrack()
 	if ((!engine.useMusic) || (!engine.useAudio))
 		return;
 
+#ifdef OLD_MUSIC
+	int tracks = 0;
+	char track[][PATH_MAX] = {
+		"music/Frantic.mod", "music/Artificial.mod", "music/Lunatic.mod",
+		"music/ToxicFriend.mod", "music/DigitalInferno.mod",
+		"music/TempoTrance.mod", "music/IntoTheMachine.mod"
+	};
+
+	switch (game.system)
+	{
+		case SYSTEM_SPIRIT:
+			tracks = 3;
+			break;
+		case SYSTEM_EYANANTH:
+			tracks = 5;
+			break;
+		case SYSTEM_MORDOR:
+		case SYSTEM_SOL:
+			tracks = 7;
+			break;
+		default:
+			tracks = 3;
+	}
+#else
 	int tracks = 4;
-	char track[][64] = {
+	char track[][PATH_MAX] = {
 		"music/railjet_short.ogg", "music/space_dimensions.ogg",
 		"music/frozen_jam.ogg", "music/sound_and_silence.ogg"
 	};
+#endif
 
-	switch(game.area)
+	switch (game.area)
 	{
+#ifndef OLD_MUSIC
 		case MISN_START:
 			audio_playMusic("music/railjet_short.ogg", -1);
 			break;
+#endif
 		case MISN_MOEBO:
 		case MISN_ELAMALE:
 		case MISN_ELLESH:
 		case MISN_EARTH:
+#ifdef OLD_MUSIC
+			audio_playMusic("music/HardTranceDub.mod", -1);
+#else
 			audio_playMusic("music/orbital_colossus.ogg", -1);
+#endif
 			break;
 		case MISN_VENUS:
+#ifdef OLD_MUSIC
+			audio_playMusic("music/LoopsAndTings.mod", -1);
+#else
 			audio_playMusic("music/RE.ogg", -1);
+#endif
 			break;
 		default:
 			audio_playMusic(track[rand() % tracks], -1);

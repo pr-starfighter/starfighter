@@ -17,4 +17,3 @@ nobase_dist_music_DATA = \
     space_dimensions.ogg \
     through_space.ogg \
     walking_among_androids.ogg
-

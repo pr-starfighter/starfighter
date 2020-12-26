@@ -2448,7 +2448,11 @@ static void game_showGameOver()
 	screen_clear(black);
 	SDL_Delay(1000);
 
+#ifdef OLD_MUSIC
+	audio_playMusic("music/Wybierak.mod", -1);
+#else
 	audio_playMusic("music/death.ogg", -1);
+#endif
 
 	int x = (screen->w - gameover->w) / 2;
 	int y = (screen->h - gameover->h) / 2;

@@ -62,6 +62,7 @@ AC_ARG_VAR([SF_WARN], [Set to 1 to enable compiler warnings])
 AC_ARG_VAR([SF_SCREEN_WIDTH], [The width of the game window in pixels])
 AC_ARG_VAR([SF_SCREEN_HEIGHT], [The height of the game window in pixels])
 AC_ARG_VAR([SF_NOFONT], [Set to 1 to manually force the compiler not to include font/Unicode support])
+AC_ARG_VAR([SF_OLD_MUSIC], [Set to 1 to compile for use with the MOD-based music originally packaged with the game by Parallel Realities (note: you must supply said music if you use this option; all files must have the same name and format as distributed with Project: Starfighter 1.1)])
 AC_ARG_VAR([SF_RUN_IN_PLACE], [Set to 1 to compile Starfighter to run in-place (instead of installing)])
 AS_IF([test -n "$SF_WARN"], [
 	STARFIGHTER_CPPFLAGS="$STARFIGHTER_CPPFLAGS -Wall -Wformat-truncation=0"
@@ -82,6 +83,11 @@ AS_IF([test -n "$SF_SCREEN_HEIGHT"], [
 AS_IF([test -n "$SF_NOFONT"], [
 	STARFIGHTER_CPPFLAGS="$STARFIGHTER_CPPFLAGS -DNOFONT"
 	echo "Font/Unicode support manually disabled"
+])
+
+AS_IF([test -n "$SF_OLD_MUSIC"], [
+	STARFIGHTER_CPPFLAGS="$STARFIGHTER_CPPFLAGS -DOLD_MUSIC"
+    echo "Building for use with old music"
 ])
 
 AS_IF([test -n "$SF_RUN_IN_PLACE"], [

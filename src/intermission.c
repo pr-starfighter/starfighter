@@ -1318,7 +1318,11 @@ static void intermission_doOptions(SDL_Surface *optionsSurface, int x, int y)
 		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 187, y + 92, 45, 22))
 		{
 			engine.useMusic = 1;
+#ifdef OLD_MUSIC
+			audio_playMusic("music/3DParadise.mod", -1);
+#else
 			audio_playMusic("music/through_space.ogg", -1);
+#endif
 		}
 
 		if (game_collision(engine.cursor_x + 13, engine.cursor_y + 13, 6, 6, x + 248, y + 92, 45, 22))
@@ -1500,7 +1504,11 @@ int intermission()
 	}
 
 	if ((engine.useAudio) && (engine.useMusic))
+#ifdef OLD_MUSIC
+		audio_playMusic("music/3DParadise.mod", -1);
+#else
 		audio_playMusic("music/through_space.ogg", -1);
+#endif
 
 	/// Retain "%s" as-is.  It is replaced with the current system name.
 	snprintf(string, STRMAX_SHORT, _("System : %s"), game_systemNames[game.system]);
