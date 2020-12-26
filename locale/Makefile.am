@@ -14,5 +14,7 @@ nobase_dist_loc_DATA = \
 	pr-starfighter.pot \
 	en.po \
 	ja.po \
+	nl.po \
 	en/LC_MESSAGES/pr-starfighter.mo \
-	ja/LC_MESSAGES/pr-starfighter.mo
+	ja/LC_MESSAGES/pr-starfighter.mo \
+	nl/LC_MESSAGES/pr-starfighter.mo
