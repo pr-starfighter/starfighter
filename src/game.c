@@ -1913,6 +1913,7 @@ static void game_doHud()
 	int tTextIndex;
 	char text[STRMAX_SHORT];
 	float nbars; // A float for the sake of float division
+	float min_shield, max_shield;
 	float shield_pct;
 	int i;
 	int c;
@@ -2144,8 +2145,62 @@ static void game_doHud()
 			bar.x = screen->w * 11 / 16 + gfx_textSprites[tTextIndex].image->w + 10;
 			bar.y = screen->h - 50;
 			nbars = 85.;
-			shield_pct = ((float)aliens[engine.targetIndex].shield
-				/ (float)aliens[engine.targetIndex].maxShield);
+			if (engine.targetIndex == ALIEN_KLINE
+					&& game.difficulty == DIFFICULTY_ORIGINAL)
+			{
+				if (game.area == MISN_ELAMALE)
+				{
+					max_shield = aliens[engine.targetIndex].maxShield;
+					min_shield = max_shield - KLINE_SHIELD_MEDIUM;
+				}
+				else if (game.area == MISN_EARTH)
+				{
+					max_shield = aliens[engine.targetIndex].maxShield;
+					min_shield = max_shield - KLINE_SHIELD_SMALL;
+				}
+				else if (game.area == MISN_VENUS)
+				{
+					if (aliens[ALIEN_KLINE].shield > KLINE_STAGE1_SHIELD)
+					{
+						max_shield = aliens[engine.targetIndex].maxShield;
+						min_shield = KLINE_STAGE1_SHIELD;
+					}
+					else if (aliens[ALIEN_KLINE].shield > KLINE_STAGE2_SHIELD)
+					{
+						max_shield = KLINE_STAGE1_SHIELD;
+						min_shield = KLINE_STAGE2_SHIELD;
+					}
+					else if (aliens[ALIEN_KLINE].shield > KLINE_STAGE3_SHIELD)
+					{
+						max_shield = KLINE_STAGE2_SHIELD;
+						min_shield = KLINE_STAGE3_SHIELD;
+					}
+					else
+					{
+						max_shield = KLINE_STAGE3_SHIELD;
+						min_shield = 0;
+					}
+				}
+				else
+				{
+					max_shield = aliens[engine.targetIndex].maxShield;
+					min_shield = max_shield - KLINE_SHIELD_TINY;
+				}
+
+				if (min_shield > 0)
+					shield_pct = (
+						MAX((float)aliens[engine.targetIndex].shield - min_shield, 1.)
+							/ (max_shield-min_shield));
+				else
+					shield_pct = (
+						((float)aliens[engine.targetIndex].shield - min_shield)
+							/ (max_shield-min_shield));
+			}
+			else
+			{
+				shield_pct = ((float)aliens[engine.targetIndex].shield
+					/ (float)aliens[engine.targetIndex].maxShield);
+			}
 
 			for (i = 0 ; i < nbars ; i++)
 			{

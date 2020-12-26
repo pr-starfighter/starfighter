@@ -2212,9 +2212,9 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 		if (game.area == MISN_ELAMALE)
 		{
 			if (game.difficulty == DIFFICULTY_ORIGINAL)
-				stage1_shield = alien->maxShield * 3 / 8;
+				stage1_shield = KLINE_SHIELD_MEDIUM;
 			else
-				stage1_shield = alien->maxShield / 4;
+				stage1_shield = KLINE_SHIELD_SMALL;
 
 			if ((alien->shield <= alien->maxShield - stage1_shield)
 				&& !(alien->flags & FL_LEAVESECTOR))
@@ -2228,9 +2228,9 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 		else if (game.area == MISN_EARTH)
 		{
 			if (game.difficulty == DIFFICULTY_ORIGINAL)
-				stage1_shield = alien->maxShield / 4;
+				stage1_shield = KLINE_SHIELD_SMALL;
 			else
-				stage1_shield = alien->maxShield * 3 / 8;
+				stage1_shield = KLINE_SHIELD_MEDIUM;
 
 			if ((alien->shield <= alien->maxShield - stage1_shield)
 				&& !(alien->flags & FL_LEAVESECTOR))
@@ -2243,9 +2243,9 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 		}
 		else if (game.area == MISN_VENUS)
 		{
-			stage1_shield = alien->maxShield * 3 / 4;
-			stage2_shield = alien->maxShield / 2;
-			stage3_shield = alien->maxShield / 4;
+			stage1_shield = KLINE_STAGE1_SHIELD;
+			stage2_shield = KLINE_STAGE2_SHIELD;
+			stage3_shield = KLINE_STAGE3_SHIELD;
 
 			if (alien->shield + damage > stage1_shield
 					&& alien->shield <= stage1_shield)
@@ -2271,7 +2271,7 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 		}
 		else
 		{
-			stage1_shield = alien->maxShield / 20;
+			stage1_shield = KLINE_SHIELD_TINY;
 
 			if ((alien->shield <= alien->maxShield - stage1_shield)
 				&& !(alien->flags & FL_LEAVESECTOR))

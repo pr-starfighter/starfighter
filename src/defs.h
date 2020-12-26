@@ -107,6 +107,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define JS_DEADZONE 0.05
 #define JS_MAX (32767 - JS_DEADZONE*32767)
 
+#define KLINE_STAGE1_SHIELD (aliens[ALIEN_KLINE].maxShield * 3 / 4)
+#define KLINE_STAGE2_SHIELD (aliens[ALIEN_KLINE].maxShield / 2)
+#define KLINE_STAGE3_SHIELD (aliens[ALIEN_KLINE].maxShield / 4)
+#define KLINE_SHIELD_TINY (aliens[ALIEN_KLINE].maxShield / 20)
+#define KLINE_SHIELD_SMALL (aliens[ALIEN_KLINE].maxShield / 4)
+#define KLINE_SHIELD_MEDIUM (aliens[ALIEN_KLINE].maxShield * 3 / 8)
+
 // Radio life/speed
 #define RADIO_LIFE_INSTANT  60
 #define RADIO_LIFE_FAST     120
