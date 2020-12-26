@@ -50,8 +50,8 @@ void player_init()
 {
 	player.active = 1;
 	if (game.difficulty == DIFFICULTY_ORIGINAL) {
-		player.x = 200;
-		player.y = 200;
+		player.x = screen->w / 4;
+		player.y = screen->h / 3;
 	}
 	else {
 		player.x = screen->w / 2;
