@@ -10,7 +10,7 @@
 030 +++ ADDITIONAL PROGRAMMING +++
 020 Richard Sweeney
 020 Guus Sliepen
-020 Layla Marchant
+020 The Diligent Circle
 050 +++ QUALITY ASSURANCE AND ADVICE +++
 030 Sam Lantinga  Ian Bissett
 020 Chris Taylor  Xan  Christoph Reichenbach
@@ -65,5 +65,5 @@
 350 Project: Starfighter
 020 Copyright 2003 Parallel Realities
 020 Copyright 2012 Guus Sliepen, Astrid S. de Wijn and others
-020 Copyright 2015-2020 Layla Marchant
+020 Copyright 2015-2020 The Diligent Circle
 120 pr-starfighter.github.io
