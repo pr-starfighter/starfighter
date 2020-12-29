@@ -44,7 +44,7 @@ corporation which has enslaved the galaxy.
     <content_attribute id="drugs-tobacco">none</content_attribute>
     <content_attribute id="sex-nudity">none</content_attribute>
     <content_attribute id="sex-themes">none</content_attribute>
-    <content_attribute id="language-profanity">none</content_attribute>
+    <content_attribute id="language-profanity">moderate</content_attribute>
     <content_attribute id="language-humor">none</content_attribute>
     <content_attribute id="language-discrimination">none</content_attribute>
     <content_attribute id="social-chat">none</content_attribute>
