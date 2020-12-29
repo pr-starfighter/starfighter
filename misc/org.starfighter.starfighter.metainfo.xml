@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop">
-  <id>starfighter.desktop</id>
+<component type="desktop-application">
+  <id>org.starfighter.starfighter</id>
   <metadata_license>BY-SA-4.0</metadata_license>
-  <project_license>GPL-3.0</project_license>
+  <project_license>GPL-3.0-or-later</project_license>
   <name>Project: Starfighter</name>
   <summary>Space shoot 'em up game.</summary>
+  <recommends>
+    <control>keyboard</control>
+    <control>gamepad</control>
+  </recommends>
+
   <description>
     <p>
       Project: Starfighter is a space shoot 'em up game originally developed
@@ -13,8 +18,11 @@ of Chris Bainfield in his quest to put an end to WEAPCO, the weapons
 corporation which has enslaved the galaxy.
     </p>
   </description>
+
+  <launchable type="desktop-id">org.starfighter.starfighter.desktop</launchable>
+
   <screenshots>
-    <screenshot>
+    <screenshot type="default">
       <image>https://pr-starfighter.github.io/images/screenshot1.png</image>
       <caption>Explosions</caption>
     </screenshot>
@@ -31,7 +39,21 @@ corporation which has enslaved the galaxy.
       <caption>Mines and Asteroids</caption>
     </screenshot>
   </screenshots>
+
   <url type="homepage">https://pr-starfighter.github.io/</url>
+
+  <icon type="stock">starfighter</icon>
+  
+  <categories>
+    <category>Game</category>
+    <category>ActionGame</category>
+    <category>ArcadeGame</category>
+  </categories>
+  
+  <provides>
+    <binary>starfighter</binary>
+  </provides>
+
   <update_contact>diligentcircle@riseup.net</update_contact>
   <content_rating type="oars-1.0">
     <content_attribute id="violence-cartoon">none</content_attribute>
