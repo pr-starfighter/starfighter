@@ -10,3 +10,6 @@ icondir = $(datarootdir)/pixmaps
 icon_DATA = starfighter.png
 
 dist_man6_MANS = starfighter.6
+
+appdatadir = $(datarootdir)/metainfo
+appdata_DATA = starfighter.appdata.xml
