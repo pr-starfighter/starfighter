@@ -38,7 +38,7 @@ PKG_CHECK_EXISTS([SDL2_mixer], [
 	], [
 		PKG_CHECK_MODULES([SDL], [sdl2 SDL2_image SDL2_mixer])
 		STARFIGHTER_CPPFLAGS="$STARFIGHTER_CPPFLAGS -DNOFONT"
-		echo "Note: SDL_ttf not found; Unicode will not be supported."
+		echo -e "\033[1mWARNING: SDL_ttf not found; Unicode will not be supported.\033[0m"
 	])
 ], [
 	PKG_CHECK_EXISTS([SDL2_ttf], [
@@ -46,15 +46,15 @@ PKG_CHECK_EXISTS([SDL2_mixer], [
 	], [
 		PKG_CHECK_MODULES([SDL], [sdl2 SDL2_image])
 		STARFIGHTER_CPPFLAGS="$STARFIGHTER_CPPFLAGS -DNOFONT"
-		echo "Note: SDL_ttf not found; Unicode will not be supported."
+		echo -e "\033[1mWARNING: SDL_ttf not found; Unicode will not be supported.\033[0m"
 	])
 	STARFIGHTER_CPPFLAGS="$STARFIGHTER_CPPFLAGS -DNOSOUND"
-	echo "Note: SDL_mixer not found; audio will not be supported."
+	echo -e "\033[1mWARNING: SDL_mixer not found; audio will not be supported.\033[0m"
 ])
 PKG_CHECK_MODULES([PANGO], [pango], [
 ], [
 	STARFIGHTER_CPPFLAGS="$STARFIGHTER_CPPFLAGS -DNOFONT"
-	echo "Note: Pango not found; Unicode will not be supported."
+	echo -e "\033[1mWARNING: Pango not found; Unicode will not be supported.\033[0m"
 ])
 
 AC_ARG_VAR([SF_WARN], [Set to 1 to enable compiler warnings])
