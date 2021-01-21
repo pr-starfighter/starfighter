@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2020-12-25 14:04-0500\n"
-"PO-Revision-Date: 2021-01-21 18:50+0100\n"
+"PO-Revision-Date: 2021-01-21 19:41+0100\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: eo\n"
@@ -971,7 +971,7 @@ msgstr "Klasika"
 #. / before distributing to make sure you are allowed to do so.
 #: ../src/gfx.c:116
 msgid "data/TakaoPGothic.ttf"
-msgstr "data/dosis/Dosis-Medium.ttf"
+msgstr "data/TakaoPGothic.ttf"
 
 #: ../src/intermission.c:212
 msgid "No Destination"
