@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2020-12-25 14:04-0500\n"
-"PO-Revision-Date: 2021-01-21 19:41+0100\n"
+"PO-Revision-Date: 2021-01-21 21:08+0100\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: eo\n"
@@ -67,7 +67,6 @@ msgstr ""
 #. / following the English version only as a general guideline.  Any
 #. / number of brag messages is permitted.
 #: ../src/alien.c:2033
-#, fuzzy
 msgid ""
 "Take that, robot oppressors!\n"
 "Come on, WEAPCO, give me a challenge already!\n"
@@ -86,16 +85,20 @@ msgid ""
 "Maybe you should change your name to WEEPCO!"
 msgstr ""
 "Prenu tion, robotaj premantoj!\n"
-"Ek, WEAPCO, donu al mi defion!\n"
+"Ek, ARMKORP, donu al mi defion!\n"
 "Ĉu tio estas ĉio, kiun vi havas?\n"
 "Mi povus detrui tiujn robotojn kun miaj manoj ligitaj antaŭ mia dorso!\n"
 "Kaj nun vi estas nur amaso de metalaj pecoj!\n"
 "Kiu ankaŭ volas iom?!\n"
 "Homoj pli bone ĝin faras!\n"
 "Jarcento de AI-a esplorado ne estas defio por mi!\n"
-"Kio estas la problemo, WEAPCO? Ĉu ne povas daŭrigi?\n"
+"Kio estas la problemo, ARMKORP? Ĉu ne povas daŭrigi?\n"
 "Mi manĝas robotojn kiel vi matenmanĝe!\n"
 "Celo detruita!\n"
+"Ĝenu plu, ARMKORP!\n"
+"Mi dezirus, ke uloj hejme povu vidi ĉi tion!\n"
+"Kiel vi ŝatas tion, ARMKORP?\n"
+"Eble vi devus ŝanĝi vian nomon al PLORIKORP!"
 
 #. / Phoebe brag messages
 #. / This is a list of brags separated by "\n".  They are randomly
@@ -154,7 +157,7 @@ msgstr "La nomo estas KRISO, maljunulo."
 #. / Used when Kline is killed in the Venus mission.
 #: ../src/alien.c:2165
 msgid "It was an honor... to have fought you..."
-msgstr ""
+msgstr "Estis honoro... batali kontraŭ vi..."
 
 #. / Dialog (Kline Kethlan)
 #. / Used when Kline is beaten in the Elamale mission.
@@ -166,13 +169,14 @@ msgstr ""
 #. / Used when Kline is beaten in the Earth mission.
 #: ../src/alien.c:2223
 msgid "Chris, Kethlan is getting away!"
-msgstr ""
+msgstr "Kriso, Ketlano foriras!"
 
 #. / Dialog (Phoebe Lexx)
 #. / Used when Phoebe is freed in the Nerod mission.
 #: ../src/cargo.c:89
+#, fuzzy
 msgid "Thanks! Watch out, WEAPCO! Phoebe's loose and she's ANGRY!"
-msgstr ""
+msgstr "Dankon! Atentu, ARMKORP!"
 
 #. / Cutscene (narration)
 #: ../src/cutscene.c:105
@@ -230,7 +234,7 @@ msgstr ""
 #. / Cutscene (Kline Kethlan)
 #: ../src/cutscene.c:159
 msgid "What a pity I must kill him..."
-msgstr ""
+msgstr "Bedaŭrinde mi devas mortigi lin..."
 
 #. / Cutscene (Sid Wilson)
 #: ../src/cutscene.c:182
@@ -417,7 +421,7 @@ msgstr ""
 #. / Instructions for how to skip the current cutscene
 #: ../src/cutscene.c:497
 msgid "Press [Escape] to skip"
-msgstr ""
+msgstr "Prenu [Eskapklavon] por preterpasi"
 
 #. / This is a list of taunts broadcast by Kline Kethlan when he shows
 #. / up at interceptions.  Taunts are separated by a single "\n".  Instead
@@ -451,7 +455,7 @@ msgstr ""
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:91
 msgid "Chris, HURRY!"
-msgstr ""
+msgstr "Kris, RAPIDE!"
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:96
@@ -498,7 +502,7 @@ msgstr ""
 #. / Dialog (friendly transport from Eyananth, Allez mission)
 #: ../src/event.c:150
 msgid "Just a little longer..."
-msgstr ""
+msgstr "Nur iom plu..."
 
 #. / Dialog (friendly transport from Eyananth, Allez mission)
 #: ../src/event.c:155
@@ -510,7 +514,7 @@ msgstr ""
 #. / Dialog (friendly transport from Eyananth, Allez mission)
 #: ../src/event.c:162
 msgid "Engines fixed! Let's move!"
-msgstr ""
+msgstr "Motoro reparitaj! Ni moviĝu!"
 
 #. / Dialog (Phoebe Lexx)
 #: ../src/event.c:183
@@ -518,16 +522,17 @@ msgid ""
 "Ummm... something about this doesn't look right! They should be offering "
 "more resistance than this!"
 msgstr ""
+"Ummm... io pri tio ĉi ne aspektas bone! Ili devus rezisti pli ol ĉi tio!"
 
 #. / Dialog (Phoebe Lexx)
 #: ../src/event.c:188
 msgid "DAMMIT! It's a trap! Come on, Chris, we have to leave NOW!"
-msgstr ""
+msgstr "FEK! Estas kaptilo! Ek, Kris, ni devas foriri NUN!"
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:197
 msgid "Chris, wh..."
-msgstr ""
+msgstr "Kris, ki..."
 
 #. / Dialog (Kline Kethlan)
 #: ../src/event.c:202
@@ -697,8 +702,8 @@ msgstr ""
 #, c-format
 msgid "Got $%d"
 msgid_plural "Got $%d"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Akiris $%d"
+msgstr[1] "Akiris $%d"
 
 #: ../src/game.c:329
 msgid "Rocket Ammo at Maximum"
@@ -710,8 +715,8 @@ msgstr ""
 #, c-format
 msgid "Got %d rocket"
 msgid_plural "Got %d rockets"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Akiris %d raketon"
+msgstr[1] "Akiris %d raketojn"
 
 #: ../src/game.c:345
 msgid "Restored 10 shield points"
@@ -909,7 +914,7 @@ msgstr "Mono: $%d"
 #: ../src/game.c:1998
 #, c-format
 msgid "Plasma: %.3d"
-msgstr ""
+msgstr "Plasmo: %.3d"
 
 #. / Used to indicate the charge meter for the charger cannon in the HUD.
 #: ../src/game.c:2005
@@ -1072,7 +1077,7 @@ msgstr "Minoj Forigitaj : %d"
 #: ../src/intermission.c:306
 #, c-format
 msgid "Slaves Rescued : %d"
-msgstr "Savitaj Sklavoj : %d "
+msgstr "Savitaj Sklavoj : %d"
 
 #: ../src/intermission.c:311
 msgid "*** Phoebe ***"
@@ -1187,7 +1192,7 @@ msgstr ""
 #. / Eyananth, interception mission summary
 #: ../src/intermission.c:470
 msgid "Rescue slaves"
-msgstr ""
+msgstr "Savi sklavojn"
 
 #. / Eyananth, Nerod mission summary
 #: ../src/intermission.c:476
@@ -1392,7 +1397,7 @@ msgstr ""
 #. / Mission dialog: Spirit, Ceradse (Chris Bainfield)
 #: ../src/intermission.c:854
 msgid "Hey, Sid, what's up?"
-msgstr ""
+msgstr "He, Sid, kiel vi fartas?"
 
 #. / Mission dialog: Spirit, Ceradse (Sid Wilson)
 #: ../src/intermission.c:858
@@ -1405,7 +1410,7 @@ msgstr ""
 #. / Mission dialog: Spirit, Ceradse (Chris Bainfield)
 #: ../src/intermission.c:862
 msgid "How many do we need?"
-msgstr ""
+msgstr "Kiom ni bezonas?"
 
 #. / Mission dialog: Spirit, Ceradse (Sid Wilson)
 #: ../src/intermission.c:866
@@ -1496,17 +1501,18 @@ msgstr ""
 
 #. / Mission dialog: Eyananth, interceptions (Sid Wilson)
 #: ../src/intermission.c:932
+#, fuzzy
 msgid ""
 "Yes, but attacking the mines directly would be dangerous. You'd be better "
 "off intercepting slave transports. What you'll have to do is fly around and "
 "see if you can intercept a WEAPCO patrol. Of course, they might not be "
 "escorting any slave units, so be careful!"
-msgstr ""
+msgstr "Jes, sed ataki la minojn rekte estus danĝera."
 
 #. / Mission dialog: Eyananth, Nerod (Phoebe Lexx)
 #: ../src/intermission.c:939
 msgid "Help! This is an SOS! Can anyone hear me?!"
-msgstr ""
+msgstr "HELPU! Ĉi tio estas SOS! Ĉu iu povas aŭdi min?!"
 
 #. / Mission dialog: Eyananth, Nerod (Chris Bainfield)
 #: ../src/intermission.c:943
@@ -1523,7 +1529,7 @@ msgstr ""
 #. / Mission dialog: Eyananth, Nerod (Chris Bainfield)
 #: ../src/intermission.c:951
 msgid "I'm on my way!"
-msgstr ""
+msgstr "Mi nun iras!"
 
 #. / Mission dialog: Eyananth, Allez (Sid Wilson)
 #: ../src/intermission.c:958
@@ -1535,7 +1541,7 @@ msgstr ""
 #. / Mission dialog: Eyananth, Allez (Chris Bainfield)
 #: ../src/intermission.c:962
 msgid "Alright, tell 'em I'm on my way."
-msgstr ""
+msgstr "Bone, diru ilin, ke mi nun venas."
 
 #. / Mission dialog: Eyananth, Urusor (Sid Wilson)
 #: ../src/intermission.c:969
@@ -1662,7 +1668,7 @@ msgstr ""
 #. / Mission dialog: Mordor, Fellon (Chris Bainfield)
 #: ../src/intermission.c:1064
 msgid "Awesome! Let's do it!"
-msgstr ""
+msgstr "Mojose! Ni faru tion!"
 
 #. / Mission dialog: Mordor, Fellon (Sid Wilson)
 #: ../src/intermission.c:1068
@@ -1749,12 +1755,12 @@ msgstr ""
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Phoebe Lexx)
 #: ../src/intermission.c:1137
 msgid "Sounds like a plan, Sid!"
-msgstr ""
+msgstr "Sonas kiel plano, Sid!"
 
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Ursula Lexx)
 #: ../src/intermission.c:1141
 msgid "Better safe than sorry, I guess."
-msgstr ""
+msgstr "Pli bone sekura ol bedaŭra, mi supozas."
 
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Chris Bainfield)
 #: ../src/intermission.c:1145
@@ -1771,7 +1777,7 @@ msgstr ""
 #. / Mission dialog: Sol, Saturn (Ursula Lexx)
 #: ../src/intermission.c:1156
 msgid "What kind of defense system?"
-msgstr ""
+msgstr "Kia defenda sistemo?"
 
 #. / Mission dialog: Sol, Saturn (Chris Bainfield)
 #: ../src/intermission.c:1160
@@ -1939,7 +1945,7 @@ msgstr ""
 #. / Mission objective (start)
 #: ../src/mission.c:101
 msgid "Escape from WEAPCO Pursuit"
-msgstr ""
+msgstr "Forkuri de WEAPCO persekutado"
 
 #. / Mission objective (Hail)
 #: ../src/mission.c:107
@@ -2204,8 +2210,9 @@ msgstr ""
 #. / Dialog (friendly transport from Eyananth, Allez mission)
 #. / Used when the friendly transport in the Allez mission is destroyed.
 #: ../src/mission.c:730
+#, fuzzy
 msgid "No no no no no! Hull bre-..."
-msgstr ""
+msgstr "Ne ne ne ne ne!"
 
 #. / Dialog (Sid Wilson)
 #. / Used when a target transport is destroyed in the Urusor mission.
@@ -2305,7 +2312,7 @@ msgstr ""
 #. / Used when the Mordor cloak ship is destroyed.
 #: ../src/mission.c:892
 msgid "That's one less surprise that WEAPCO can spring on us!"
-msgstr ""
+msgstr "Tio estas unu surprizo malpli, kiun ARMKORP povas ĵeti al ni!"
 
 #: ../src/mission.c:971
 msgid "*** Primary Objective Completed ***"
