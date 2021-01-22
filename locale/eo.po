@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2020-12-25 14:04-0500\n"
-"PO-Revision-Date: 2021-01-21 21:08+0100\n"
+"PO-Revision-Date: 2021-01-22 13:09+0100\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: eo\n"
@@ -37,13 +37,13 @@ msgstr ""
 #. / Used when the final "stage" of the Venus fight is entered.
 #: ../src/alien.c:1593
 msgid "ENOUGH! THIS ENDS NOW!"
-msgstr ""
+msgstr "SUFIĈAS! ĈI TIO FINAS NUN!"
 
 #. / Dialog (Kline Kethlan)
 #. / Used when the third "stage" of the Vinus fight is entered.
 #: ../src/alien.c:1604
 msgid "Your ability to stay alive irritates me! Try dodging some of these!"
-msgstr ""
+msgstr "Via eblo supervivi ĝenas min! Klopodi eviti iuj el tiuj!"
 
 #. / Dialog (Kline Kethlan)
 #. / Used when the second "stage" of the Venus fight is entered.
@@ -53,11 +53,11 @@ msgstr ""
 
 #: ../src/alien.c:2002
 msgid ">> Ally has ejected! <<"
-msgstr ""
+msgstr ">> Amiko elĵetiĝis! <<"
 
 #: ../src/alien.c:2004
 msgid ">> Friendly craft has been destroyed! <<"
-msgstr ""
+msgstr ">> Amika flugilo estis detruita! <<"
 
 #. / Chris brag messages
 #. / This is a list of brags separated by "\n".  They are randomly
@@ -184,11 +184,13 @@ msgid ""
 "While escaping with his newly acquired Firefly, Chris Bainfield is "
 "intercepted by a WEAPCO patrol..."
 msgstr ""
+"Dum li forkuras per lia nova akirita Fajrflugilo, Kriso Benfeldo estas "
+"interkaptita per patrolo de ARMKORP..."
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:109
 msgid "These things just won't give up, will they?"
-msgstr ""
+msgstr "Tiuj âjoj neniam rezignos, ĉu ne?"
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:113
@@ -355,7 +357,7 @@ msgstr ""
 #. / Cutscene (Phoebe Lexx)
 #: ../src/cutscene.c:312
 msgid "I wonder if my sister will be here..."
-msgstr ""
+msgstr "Mi demandas al mi, se mia fratino estos ĉi tie..."
 
 #. / Cutscene (Phoebe Lexx)
 #: ../src/cutscene.c:341
@@ -579,7 +581,7 @@ msgstr ""
 #. / Dialog (Phoebe Lexx)
 #: ../src/event.c:245
 msgid "Just try and dodge them!"
-msgstr ""
+msgstr "Simple peni eviti ilin!"
 
 #. / Dialog (Chris Bainfield)
 #: ../src/event.c:253
@@ -631,7 +633,7 @@ msgstr "Du pli!"
 #. / Dialog (Ursula Lexx)
 #: ../src/event.c:343
 msgid "It's a trap! My God! It's Tyler!"
-msgstr ""
+msgstr "Ĝi estas kaptilo! Mia Dio! Estas Tajlo!"
 
 #. / Dialog (Krass Tyler)
 #: ../src/event.c:348
@@ -654,7 +656,7 @@ msgstr ""
 #. / Dialog (Chris Bainfield)
 #: ../src/event.c:367
 msgid "I have a name, you know. Do you remember it?"
-msgstr ""
+msgstr "Mi havas nomon, vi scias. Ĉu vi memoras ĝin?"
 
 #. / Dialog (Kline Kethlan)
 #: ../src/event.c:383
@@ -694,7 +696,7 @@ msgstr ""
 
 #: ../src/game.c:74
 msgid "Sol"
-msgstr ""
+msgstr "Suno"
 
 #. / "%d" must be retained. It is replaced with the amount of money that
 #. / was picked up.
@@ -783,16 +785,17 @@ msgstr ""
 #, c-format
 msgid "Rescued %d slave"
 msgid_plural "Rescued %d slaves"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d sklavo savita"
+msgstr[1] "%d sklavoj savitaj"
 
 #: ../src/game.c:536
 msgid "Picked up an Escape Pod"
 msgstr ""
 
 #: ../src/game.c:540
+#, fuzzy
 msgid "Picked up some Ore"
-msgstr ""
+msgstr "Akirita iom da erco"
 
 #. / Chris: Phoebe Hit Messages
 #. / This is a list of messages separated by "\n".  They are randomly
@@ -822,6 +825,10 @@ msgid ""
 "What are you doing?! Shoot THEM!\n"
 "Pay some damn attention!"
 msgstr ""
+"Mi NE estas via malamiko!\n"
+"He! Vidu ĝin!\n"
+"Kion vi faras?! Pafi ILIN!\n"
+"Damne atenti!"
 
 #. / Phoebe: Player Hit Messages
 #. / This is a list of messages separated by "\n".  They are randomly
@@ -895,13 +902,13 @@ msgstr ""
 #: ../src/game.c:1947
 #, c-format
 msgid "Time Remaining - %.2d:%.2d"
-msgstr ""
+msgstr "Restanta Tempo - %.2d:%.2d"
 
 #. / "%d" must be retained.  It is replaced with the number of mission objectives remaining.
 #: ../src/game.c:1955
 #, c-format
 msgid "Objectives Remaining: %d"
-msgstr ""
+msgstr "Restantaj Celoj: %d"
 
 #. / "%d" must be retained.  It is replaced with the player's current total cash.
 #. / Retain "%d" as-is.  It is replaced with the player's current cash.
@@ -924,7 +931,7 @@ msgstr ""
 #. / Used to indicate the heat meter for the laser cannon in the HUD.
 #: ../src/game.c:2010
 msgid "Heat"
-msgstr ""
+msgstr "Varmo"
 
 #. / "%.2d" must be retained.  It is replaced with the amount of rocket ammo.
 #. / Retain "%.2d".  It is replaced with the ship's current number of rockets.
@@ -1081,7 +1088,7 @@ msgstr "Savitaj Sklavoj : %d"
 
 #: ../src/intermission.c:311
 msgid "*** Phoebe ***"
-msgstr ""
+msgstr "*** Phoebe ***"
 
 #. / Retain
 #. / Status Screen text "%d" as-is.  It is replaced with the number of ejections.
@@ -1095,7 +1102,7 @@ msgstr ""
 #. / Status Screen text
 #: ../src/intermission.c:333
 msgid "*** Ursula ***"
-msgstr ""
+msgstr "*** Ursula ***"
 
 #: ../src/intermission.c:352 ../src/intermission.c:1512
 msgid "Current Status"
@@ -1213,7 +1220,7 @@ msgstr ""
 #. / Eyananth, Dorim mission summary
 #: ../src/intermission.c:494
 msgid "Find WEAPCO scientist"
-msgstr ""
+msgstr "Trovu scienciston de ARMKORP"
 
 #. / Eyananth, Elamale mission summary
 #: ../src/intermission.c:500
@@ -1252,7 +1259,7 @@ msgstr ""
 #. / Mordor, Odeon mission summary
 #: ../src/intermission.c:541
 msgid "Rescue Ursula"
-msgstr ""
+msgstr "Savu Ursulan"
 
 #. / Mordor, Fellon mission summary
 #: ../src/intermission.c:547
@@ -1350,13 +1357,13 @@ msgstr ""
 #. / Sol, Earth mission summary
 #: ../src/intermission.c:652
 msgid "Take back Earth"
-msgstr ""
+msgstr "Rekonkeru Teron"
 
 #. / Sol, Venus mission summary
 #. / Mission objective (Venus)
 #: ../src/intermission.c:658 ../src/mission.c:515
 msgid "Defeat Kline"
-msgstr ""
+msgstr "Venku Klinon"
 
 #: ../src/intermission.c:782
 msgid "+++ CURRENT MISSIONS +++"
@@ -1602,7 +1609,7 @@ msgstr "Mi ŝatas tiun ideon!"
 #. / Mission dialog: Eyananth, Elamale (Sid Wilson)
 #: ../src/intermission.c:1011
 msgid "It'll work, but be careful."
-msgstr ""
+msgstr "Ĝi funkcios, sed estu zorga."
 
 #. / Mission dialog: Mordor, interceptions (Chris Bainfield)
 #: ../src/intermission.c:1018
@@ -1940,7 +1947,7 @@ msgstr "Celloko: Neniu"
 #. / Mission objective
 #: ../src/mission.c:96
 msgid "Destroy all remaining WEAPCO fighters"
-msgstr ""
+msgstr "Detruu ĉiuj restantaj batalantoj de ARMKORP"
 
 #. / Mission objective (start)
 #: ../src/mission.c:101
@@ -2015,7 +2022,7 @@ msgstr ""
 #. / Mission objective (Dorim)
 #: ../src/mission.c:261
 msgid "Collect 10 pieces of Ore"
-msgstr ""
+msgstr "Kolektu 10 ercajn erojn"
 
 #. / Mission objective (Elamale)
 #: ../src/mission.c:274
@@ -2045,7 +2052,7 @@ msgstr ""
 #. / Mission objective (Odeon)
 #: ../src/mission.c:311
 msgid "Do not kill Ursula"
-msgstr ""
+msgstr "Ne mortigu Ursulan"
 
 #. / Mission objective (Fellon)
 #: ../src/mission.c:325
@@ -2060,12 +2067,12 @@ msgstr ""
 #. / Mission objective (Sivedi)
 #: ../src/mission.c:346
 msgid "Collect 25 pieces of Ore"
-msgstr ""
+msgstr "Kolektu 25 ercajn erojn"
 
 #. / Mission objective (Sivedi)
 #: ../src/mission.c:353
 msgid "Collect 50 pieces of Ore"
-msgstr ""
+msgstr "Kolektu 50 ercajn erojn"
 
 #. / Mission objective (Almartha)
 #: ../src/mission.c:363
@@ -2114,7 +2121,7 @@ msgstr ""
 
 #: ../src/mission.c:610 ../src/mission.c:984
 msgid "*** All Primary Objectives Completed ***"
-msgstr ""
+msgstr "*** Ĉiuj Ĉefaj Celoj Atingitaj ***"
 
 #. / Dialog (Sid Wilson)
 #. / Used when Sid disables the last target in the Urusor mission.
@@ -2199,13 +2206,13 @@ msgstr ""
 #. / Used when Ursula is lost in the Odeon mission.
 #: ../src/mission.c:711
 msgid "No... Ursula..."
-msgstr ""
+msgstr "Ne... Ursula..."
 
 #. / Dialog (Sid Wilson)
 #. / Used when Phoebe is killed in the Nerod mission.
 #: ../src/mission.c:725
 msgid "Dammit, Chris! We just lost her!"
-msgstr ""
+msgstr "Damne, Kriso! Ni ĵus perdis ŝin!"
 
 #. / Dialog (friendly transport from Eyananth, Allez mission)
 #. / Used when the friendly transport in the Allez mission is destroyed.
@@ -2261,7 +2268,7 @@ msgstr[1] ""
 
 #: ../src/mission.c:802
 msgid "Sid has been killed!"
-msgstr ""
+msgstr "Sid estis mortigita!"
 
 #. / Dialog (Sid Wilson)
 #. / Used when Sid is killed.
@@ -2275,7 +2282,7 @@ msgstr ""
 
 #: ../src/mission.c:856
 msgid "*** Slaves Rescued - Mission Completed ***"
-msgstr ""
+msgstr "*** Sklavoj Savitaj - Misio Finita ***"
 
 #. / Dialog (Chris Bainfield)
 #. / Used when you rescue enough slaves for the Eyananth slave rescue mission.
@@ -2306,7 +2313,7 @@ msgstr[1] ""
 
 #: ../src/mission.c:888
 msgid "*** Experimental Fighter Destroyed - Mission Completed ***"
-msgstr ""
+msgstr "*** Eksperimenta Batalilo Detruita - Misio Finita ***"
 
 #. / Dialog (Chris Bainfield)
 #. / Used when the Mordor cloak ship is destroyed.
@@ -2316,11 +2323,11 @@ msgstr "Tio estas unu surprizo malpli, kiun ARMKORP povas ĵeti al ni!"
 
 #: ../src/mission.c:971
 msgid "*** Primary Objective Completed ***"
-msgstr ""
+msgstr "*** Ĉefa Celo Finita ***"
 
 #: ../src/mission.c:973
 msgid ">>> Primary Objective Failed <<<"
-msgstr ""
+msgstr ">>> Ĉefa Celo Fiaskita <<<"
 
 #: ../src/mission.c:980
 msgid "Emergency warp drive activated. Press button to engage."
@@ -2328,7 +2335,7 @@ msgstr ""
 
 #: ../src/mission.c:986
 msgid "*** Interception Destroyed ***"
-msgstr ""
+msgstr "*** Interkapto Detruita ***"
 
 #. / Dialog (Chris Bainfield)
 #. / Used when the Earth mission is completed.
@@ -2339,11 +2346,11 @@ msgstr ""
 
 #: ../src/mission.c:1015
 msgid "*** Secondary Objective Completed ***"
-msgstr ""
+msgstr "*** Akcesora Celo Atingita ***"
 
 #: ../src/mission.c:1020
 msgid "*** All Secondary Objectives Completed ***"
-msgstr ""
+msgstr "*** Ĉiuj Akcesoraj Celoj Atingitaj *** "
 
 #: ../src/mission.c:1035
 msgid ">>> MISSION FAILED <<<"
@@ -2351,7 +2358,7 @@ msgstr ">>> MISIO FIASKITA <<<"
 
 #: ../src/mission.c:1041
 msgid ">>> Secondary Objective Failed <<<"
-msgstr ">>> Dua Celo Fiaskita <<<"
+msgstr ">>> Akcesora Celo Fiaskita <<<"
 
 #: ../src/mission.c:1120
 msgid "Primary Objectives"
@@ -2359,11 +2366,11 @@ msgstr "Ĉefaj Celoj"
 
 #: ../src/mission.c:1134
 msgid "Secondary Objectives"
-msgstr "Duaj Celoj"
+msgstr "Akcesoraj Celoj"
 
 #: ../src/mission.c:1148
 msgid "Additional Information"
-msgstr ""
+msgstr "Kroma Informo"
 
 #. / Used to indicate the player's shield meter in the HUD.
 #: ../src/mission.c:1165
@@ -2376,7 +2383,7 @@ msgstr "Celo"
 
 #: ../src/mission.c:1168
 msgid "Sid"
-msgstr ""
+msgstr "Sid"
 
 #: ../src/mission.c:1169
 msgid "Phoebe"
@@ -2414,22 +2421,22 @@ msgstr ""
 
 #: ../src/mission.c:1232
 msgid "Sid Wilson will join you on this mission"
-msgstr ""
+msgstr "Sid Vilson akompanos vin en ĉi tiu misio"
 
 #: ../src/mission.c:1320 ../src/mission.c:1340
 msgid "COMPLETED"
-msgstr ""
+msgstr "FINITA"
 
 #: ../src/mission.c:1325 ../src/mission.c:1345
 msgid "FAILED"
-msgstr ""
+msgstr "FIASKIS"
 
 #. / "%d" must be retained.  It is replaced with the money earned
 #. / from the shield bonus.
 #: ../src/mission.c:1356
 #, c-format
 msgid "Shield Bonus: $%d"
-msgstr ""
+msgstr "Ŝilda Bonuso: $%d"
 
 #. / "%02ld" sequences (which represent minutes and seconds,
 #. / respectively) must remain and stay in the same order relative
@@ -2458,12 +2465,13 @@ msgstr ""
 
 #. / Used for empty save slots.
 #: ../src/save.c:127
+#, fuzzy
 msgid "AUTOSAVE (Empty)"
-msgstr ""
+msgstr "AŬTOMATA KONSERVO (Malplena)"
 
 #: ../src/save.c:127
 msgid "Empty"
-msgstr ""
+msgstr "Malplena"
 
 #: ../src/save.c:343
 msgid "*** HELP ***"
@@ -2483,7 +2491,7 @@ msgstr "FORIGI"
 
 #: ../src/save.c:358
 msgid "SAVE will save the game"
-msgstr ""
+msgstr "SAVI savos la ludon"
 
 #: ../src/save.c:359
 msgid "CANCEL will unselect that slot"
@@ -2503,11 +2511,11 @@ msgstr "Konservita Ludo"
 
 #: ../src/save.c:369
 msgid "Save Deleted"
-msgstr ""
+msgstr "Savaĵo Forigita"
 
 #: ../src/shop.c:57
 msgid "Secondary Weapon"
-msgstr ""
+msgstr "Akcesora Armilo"
 
 #. / Shop info: current secondary: none
 #: ../src/shop.c:63
@@ -2532,7 +2540,7 @@ msgstr "Etaj Raketoj"
 #. / Shop info: current secondary: laser
 #: ../src/shop.c:79
 msgid "Laser"
-msgstr ""
+msgstr "Lasero"
 
 #. / Shop info: current secondary: charger
 #: ../src/shop.c:83
@@ -2631,7 +2639,7 @@ msgstr "Ĉefaj Armoj"
 
 #: ../src/shop.c:334
 msgid "Secondary Weapons"
-msgstr "Duaj Armoj"
+msgstr "Akcesoraj Armoj"
 
 #. / Retain "%d" as-is.  It is replaced with the Firefly's max shield.
 #: ../src/shop.c:350
@@ -2679,7 +2687,7 @@ msgstr ""
 #. / For when the player attempts to sell an item they don't have any of.
 #: ../src/shop.c:396
 msgid "Nothing to sell"
-msgstr ""
+msgstr "Neniu por vendi"
 
 #. / For when the player attempts to buy rockets or rocket capacity
 #. / while secondary weapon is either laser or charge cannon.
@@ -2704,14 +2712,14 @@ msgstr ""
 #: ../src/shop.c:418
 #, c-format
 msgid "%s ($%d)"
-msgstr ""
+msgstr "%s (%d $)"
 
 #. / Used for shop items that cannot be bought.
 #. / "%s" is replaced with the item name.
 #: ../src/shop.c:426
 #, c-format
 msgid "%s (N/A)"
-msgstr ""
+msgstr "%s (N/A)"
 
 #. ----------- Temporary Items -----------
 #. Overwritten later
@@ -2766,7 +2774,7 @@ msgstr ""
 #. Overwritten later
 #: ../src/shop.c:481
 msgid "Additional Plasma Cannon"
-msgstr ""
+msgstr "Kroma Plasma Pafilego"
 
 #. / Shop item description: Additional Plasma Cannon (PLASMA_MIN_OUTPUT)
 #: ../src/shop.c:483
@@ -2834,7 +2842,7 @@ msgstr ""
 
 #: ../src/shop.c:527
 msgid "Laser Cannon"
-msgstr ""
+msgstr "Lasera Pafilego"
 
 #. / Shop item description: Laser Cannon
 #: ../src/shop.c:529
@@ -2988,7 +2996,7 @@ msgstr "SENLIMA TEMPO - FOR"
 
 #: ../src/title.c:250
 msgid "START NEW GAME"
-msgstr "EKI NOVAN LUDON"
+msgstr "KOMENCI NOVAN LUDON"
 
 #: ../src/title.c:251
 msgid "LOAD GAME"
