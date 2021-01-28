@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2020-12-25 14:04-0500\n"
-"PO-Revision-Date: 2021-01-22 13:09+0100\n"
+"PO-Revision-Date: 2021-01-28 21:57+0100\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: eo\n"
@@ -198,11 +198,15 @@ msgid ""
 "What a dilemma! I'm not all that familiar with this ship's controls, but I "
 "can't let this patrol reach my rendezvous point..."
 msgstr ""
+"Kia dilemo! Mi tute ne konas la kontrolojn de ĉi tiu veturilo, sed mi ne "
+"povas permesi, ke tiu patrolo atingu mian rendevuan lokon..."
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:117
 msgid "I guess I'll have to fight them, then. Let's see what this ship can do!"
 msgstr ""
+"Mi supozas, ke mi devos batali ilin. Mi vidos kion povas fari ĉi tiu "
+"veturilo!"
 
 #. / Cutscene (narration)
 #: ../src/cutscene.c:143
@@ -438,6 +442,10 @@ msgid ""
 "I hope you won't disappoint me this time...\n"
 "Do you really think you can defeat us?!"
 msgstr ""
+"Kiel bone vidi vin denove, Benfeldo!\n"
+"Ĉio finas ĉi tie, ribelulo!\n"
+"I deziras, ke vi ne malkontentigos min ĉi-foje...\n"
+"Ĉu vi vere pensas, ke vi povas venkos nin?!"
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:76
@@ -552,11 +560,13 @@ msgid ""
 "I am Kline Kethlan. And I am here to put to a stop to your worthless little "
 "crusade!"
 msgstr ""
+"Mi estas Klino Kethlan. Kaj mi estas ĉi tie por finigi vian senvaloran "
+"mision!"
 
 #. / Dialog (Chris Bainfield)
 #: ../src/event.c:217
 msgid "Kline Kethlan, huh? You sure sound confident."
-msgstr ""
+msgstr "Klino, Kethlan, hah? Vi vere sonas memfida."
 
 #. / Dialog (Kline Kethlan)
 #: ../src/event.c:222
@@ -591,7 +601,7 @@ msgstr ""
 #. / Dialog (Krass Tyler)
 #: ../src/event.c:258
 msgid "Thanks, boy. Made it myself!"
-msgstr ""
+msgstr "Dankon, junulo. Faris mi mem!"
 
 #. / Dialog (Krass Tyler)
 #: ../src/event.c:263
@@ -608,7 +618,7 @@ msgstr ""
 #. / Dialog (Phoebe Lexx)
 #: ../src/event.c:283
 msgid "Hey! Did we miss anything exciting?"
-msgstr ""
+msgstr "Hej! Ĉu ni forgesis ion interesan?"
 
 #. / Dialog (Krass Tyler)
 #: ../src/event.c:294
@@ -676,11 +686,13 @@ msgid ""
 "WEAPCO is finished, Kethlan! You have nowhere to run, nowhere to hide, and "
 "no one to help you."
 msgstr ""
+"ARMKORP estas finita, Kethlan! Vi nenien povas fuĝi, nenie povas vi kaŝi, "
+"kaj neniu helpos vin."
 
 #. / Dialog (Kline Kethlan)
 #: ../src/event.c:401
 msgid "You underestimate me, Bainfield."
-msgstr ""
+msgstr "Vi subtaskas min, Benfeldo."
 
 #: ../src/game.c:71
 msgid "Spirit"
@@ -726,7 +738,7 @@ msgstr ""
 
 #: ../src/game.c:358 ../src/game.c:377
 msgid "Firing rate already at maximum"
-msgstr ""
+msgstr "Pafrapideco jam estas maksimuma"
 
 #: ../src/game.c:362 ../src/game.c:381
 msgid "Firing rate increased"
@@ -774,8 +786,8 @@ msgstr ""
 #, c-format
 msgid "Got %d plasma cell"
 msgid_plural "Got %d plasma cells"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Akiris %d plasman ĉelon"
+msgstr[1] "Akiris %d plasmajn ĉelojn"
 
 #: ../src/game.c:523
 msgid "Picked up some Cargo"
@@ -926,7 +938,7 @@ msgstr "Plasmo: %.3d"
 #. / Used to indicate the charge meter for the charger cannon in the HUD.
 #: ../src/game.c:2005
 msgid "Charge"
-msgstr ""
+msgstr "Ŝarĝo"
 
 #. / Used to indicate the heat meter for the laser cannon in the HUD.
 #: ../src/game.c:2010
@@ -987,7 +999,7 @@ msgstr "data/TakaoPGothic.ttf"
 
 #: ../src/intermission.c:212
 msgid "No Destination"
-msgstr ""
+msgstr "Neniu celloko"
 
 #. / Status Screen text
 #. / Retain "%s" as-is.  It is replaced with the current difficulty.
@@ -1150,7 +1162,7 @@ msgstr "Moebo"
 #. / Spirit, Hail mission summary
 #: ../src/intermission.c:415
 msgid "Destroy WEAPCO training ground"
-msgstr ""
+msgstr "Detruu la ekzercejon de ARMKORP"
 
 #. / Spirit, Ceradse mission summary
 #: ../src/intermission.c:421
@@ -1170,7 +1182,7 @@ msgstr ""
 #. / Spirit, Moebo mission summary
 #: ../src/intermission.c:439
 msgid "Destroy WEAPCO frigate"
-msgstr ""
+msgstr "Detruu la veturilon de ARMKORP"
 
 #: ../src/intermission.c:444 ../src/intermission.c:505
 msgid "WEAPCO interceptions"
@@ -1225,7 +1237,7 @@ msgstr "Trovu scienciston de ARMKORP"
 #. / Eyananth, Elamale mission summary
 #: ../src/intermission.c:500
 msgid "Destroy WEAPCO Ore Mining craft"
-msgstr ""
+msgstr "Detruu la Ercan Veturilon de ARMKORP"
 
 #: ../src/intermission.c:508
 msgid "Odeon"
@@ -1254,7 +1266,7 @@ msgstr ""
 #. / Mordor, incerception mission summary
 #: ../src/intermission.c:535
 msgid "Destroy experimental fighter"
-msgstr ""
+msgstr "Detruu eksperimentan batalilon"
 
 #. / Mordor, Odeon mission summary
 #: ../src/intermission.c:541
@@ -1284,7 +1296,7 @@ msgstr ""
 #. / Mordor, Ellesh mission summary
 #: ../src/intermission.c:571
 msgid "Destroy WEAPCO executive transport"
-msgstr ""
+msgstr "Detruu la estraran transportilon de ARMKORP"
 
 #: ../src/intermission.c:577
 msgid "Mercury"
@@ -1340,7 +1352,7 @@ msgstr "Sekurigi Uranon"
 #. / Sol, Saturn mission summary
 #: ../src/intermission.c:634
 msgid "Destroy outer defense system"
-msgstr ""
+msgstr "Detruu eksteran defendan sistemon"
 
 #. / Sol, Jupiter mission summary
 #. / Mission objective (Jupiter)
@@ -1504,7 +1516,7 @@ msgstr ""
 #. / Mission dialog: Eyananth, interceptions (Chris Bainfield)
 #: ../src/intermission.c:928
 msgid "Most of the slaves are working in ore mines, aren't they?"
-msgstr ""
+msgstr "La plej granda parto de la sklavoj laboras en la ercaj minejoj, ĉu ne?"
 
 #. / Mission dialog: Eyananth, interceptions (Sid Wilson)
 #: ../src/intermission.c:932
@@ -1524,14 +1536,15 @@ msgstr "HELPU! Ĉi tio estas SOS! Ĉu iu povas aŭdi min?!"
 #. / Mission dialog: Eyananth, Nerod (Chris Bainfield)
 #: ../src/intermission.c:943
 msgid "I'm hearing you loud and clear! What's up?"
-msgstr ""
+msgstr "Mi forte kaj laŭte aŭdas vin! Kio okazas?"
 
 #. / Mission dialog: Eyananth, Nerod (Phoebe Lexx)
 #: ../src/intermission.c:947
+#, fuzzy
 msgid ""
 "Oh, thank God! I was intercepted by a large WEAPCO force near Nerod! I'm in "
 "need of assistance!"
-msgstr ""
+msgstr "Ho, danke al Dio! Mi estas interkaptita de granda ARMKORP"
 
 #. / Mission dialog: Eyananth, Nerod (Chris Bainfield)
 #: ../src/intermission.c:951
@@ -1560,7 +1573,7 @@ msgstr ""
 #. / Mission dialog: Eyananth, Urusor (Chris Bainfield)
 #: ../src/intermission.c:973
 msgid "Where can we get them, then?"
-msgstr ""
+msgstr "Nu, kie ni povas akiri ilin?"
 
 #. / Mission dialog: Eyananth, Urusor (Sid Wilson)
 #: ../src/intermission.c:977
@@ -1572,7 +1585,7 @@ msgstr ""
 #. / Mission dialog: Eyananth, Urusor (Chris Bainfield)
 #: ../src/intermission.c:981
 msgid "You got it!"
-msgstr ""
+msgstr "Vi havas ĝin!"
 
 #. / Mission dialog: Eyananth, Dorim (Sid Wilson)
 #: ../src/intermission.c:988
@@ -1851,7 +1864,7 @@ msgstr ""
 #. / Mission dialog: Sol, Venus (Chris Bainfield)
 #: ../src/intermission.c:1216
 msgid "Kethlan has run off to Venus. I'm going after him."
-msgstr ""
+msgstr "Kethlan fuĝis al Venuso, mi sekvas ĝin."
 
 #. / Mission dialog: Sol, Venus (Sid Wilson)
 #: ../src/intermission.c:1220
@@ -1931,7 +1944,7 @@ msgstr "Eliri al Titola Ekrano"
 #: ../src/intermission.c:1521 ../src/intermission.c:1705
 #, c-format
 msgid "Stationed At: %s"
-msgstr ""
+msgstr "Staciita En: %s"
 
 #. / Retain "%s" as-is.  It is replaced with the name of the planet
 #. / the player's destination is currently set to.
@@ -1947,7 +1960,7 @@ msgstr "Celloko: Neniu"
 #. / Mission objective
 #: ../src/mission.c:96
 msgid "Destroy all remaining WEAPCO fighters"
-msgstr "Detruu ĉiuj restantaj batalantoj de ARMKORP"
+msgstr "Detruu ĉiujn restantajn batalantojn de ARMKORP"
 
 #. / Mission objective (start)
 #: ../src/mission.c:101
@@ -1982,7 +1995,7 @@ msgstr ""
 #. / Mission objective (Moebo)
 #: ../src/mission.c:170
 msgid "Destroy WEAPCO Frigate"
-msgstr ""
+msgstr "Detruu la Veturilon de ARMKORP"
 
 #. / Mission objective (Nerod)
 #: ../src/mission.c:182
@@ -2027,7 +2040,7 @@ msgstr "Kolektu 10 ercajn erojn"
 #. / Mission objective (Elamale)
 #: ../src/mission.c:274
 msgid "Destroy WEAPCO ore mining craft"
-msgstr ""
+msgstr "Detruu la ercan veturilon de ARMKORP"
 
 #. / Mission objective (Elamale)
 #: ../src/mission.c:281
@@ -2037,12 +2050,12 @@ msgstr ""
 #. / Mission objective (Elamale)
 #: ../src/mission.c:287
 msgid "Battle Kline"
-msgstr ""
+msgstr "Batalu kontraŭ Klino"
 
 #. / Mission objective (Odeon)
 #: ../src/mission.c:297
 msgid "Destroy Ursula's ship"
-msgstr ""
+msgstr "Detruu la veturilon de Ursula"
 
 #. / Mission objective (Odeon)
 #: ../src/mission.c:304
@@ -2082,7 +2095,7 @@ msgstr ""
 #. / Mission objective (Poswic)
 #: ../src/mission.c:377
 msgid "Destroy escorts"
-msgstr ""
+msgstr "Detruu eskortantojn"
 
 #. / Mission objective (Poswic)
 #: ../src/mission.c:384
@@ -2092,17 +2105,17 @@ msgstr ""
 #. / Mission objective (Ellesh)
 #: ../src/mission.c:398
 msgid "Destroy executive transport"
-msgstr ""
+msgstr "Detruu estraran transportilon"
 
 #. / Mission objective (Pluto, Neptune, Uranus)
 #: ../src/mission.c:408
 msgid "Destroy planetary guardian"
-msgstr ""
+msgstr "Detruu planedan gardanton"
 
 #. / Mission objective (Saturn)
 #: ../src/mission.c:457
 msgid "Destroy outer defence systems"
-msgstr ""
+msgstr "Detruu eksterajn defendajn sistemojn"
 
 #. / Mission objective (Jupiter)
 #: ../src/mission.c:476
@@ -2117,7 +2130,7 @@ msgstr ""
 #. / Mission objective (Earth)
 #: ../src/mission.c:505
 msgid "Destroy WEAPCO frontline forces"
-msgstr ""
+msgstr "Detruu la frontoliniajn malamikojn ARMKORP"
 
 #: ../src/mission.c:610 ../src/mission.c:984
 msgid "*** All Primary Objectives Completed ***"
@@ -2145,7 +2158,14 @@ msgid_plural ""
 "$%d more to collect...\n"
 "$%d more needed..."
 msgstr[0] ""
+"Collect $%d more...\n"
+"$%d more to collect...\n"
+"Just $%d more needed...\n"
+"Collect just $%d more..."
 msgstr[1] ""
+"Akiru $%d pli...\n"
+"$%d por akiri...\n"
+"Nur $%d bezonataj..."
 
 #. / Info line messages for remaining cargo pods to collect
 #. / This is a "\n"-separated list of possible choices to make.  Please feel free
@@ -2309,7 +2329,15 @@ msgid_plural ""
 "At least %d more slaves to rescue...\n"
 "At least %d more rescued slaves needed..."
 msgstr[0] ""
+"Savu %d sklavon pli...\n"
+"Savu almenaŭ %d sklavon pli...\n"
+"Almenaŭ %d sklavo restas por savi...\n"
+"Almenaŭ %d pli savita sklavo bezonata..."
 msgstr[1] ""
+"Savu %d sklavojn pli...\n"
+"Savu almenaŭ %d sklavojn pli...\n"
+"Almenaŭ %d sklavoj restas por savi...\n"
+"Almenaŭ %d pli savitaj sklavoj bezonataj..."
 
 #: ../src/mission.c:888
 msgid "*** Experimental Fighter Destroyed - Mission Completed ***"
@@ -2343,6 +2371,7 @@ msgstr "*** Interkapto Detruita ***"
 msgid ""
 "You guys stay here and keep things under control. I'm going after Kethlan!"
 msgstr ""
+"Vi restu ĉi tie kaj tenu la aferojn sub viaj regadoj. Mi sekvos Kethlan-on!"
 
 #: ../src/mission.c:1015
 msgid "*** Secondary Objective Completed ***"
@@ -2391,7 +2420,7 @@ msgstr ""
 
 #: ../src/mission.c:1170
 msgid "Kline"
-msgstr ""
+msgstr "Klino"
 
 #. / "%d" must be retained.  It is replaced with the mission required
 #. / survival time in minutes.
