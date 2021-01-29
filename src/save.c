@@ -352,9 +352,9 @@ void save_createSurface(SDL_Surface *savesSurface, int clickedSlot)
 			gfx_drawRect(savesSurface, 5, 265, 100, 25, 0x00, 0x99, 0x00);
 			gfx_drawRect(savesSurface, 125, 265, 100, 25, 0x99, 0x99, 0x00);
 			gfx_drawRect(savesSurface, 243, 265, 100, 25, 0x99, 0x00, 0x00);
-			gfx_renderUnicode(_("SAVE"), 40, 270, FONT_WHITE, 0, savesSurface);
-			gfx_renderUnicode(_("CANCEL"), 150, 270, FONT_WHITE, 0, savesSurface);
-			gfx_renderUnicode(_("DELETE"), 270, 270, FONT_WHITE, 0, savesSurface);
+			gfx_renderUnicode(_("SAVE"), 10, 270, FONT_WHITE, 0, savesSurface);
+			gfx_renderUnicode(_("CANCEL"), 130, 270, FONT_WHITE, 0, savesSurface);
+			gfx_renderUnicode(_("DELETE"), 248, 270, FONT_WHITE, 0, savesSurface);
 			gfx_renderUnicode(_("SAVE will save the game"), 17, 200, FONT_WHITE, 0, savesSurface);
 			gfx_renderUnicode(_("CANCEL will unselect that slot"), 17, 220, FONT_WHITE, 0, savesSurface);
 			gfx_renderUnicode(_("DELETE will remove the save"), 17, 240, FONT_WHITE, 0, savesSurface);
