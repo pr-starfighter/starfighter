@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2020-12-25 14:04-0500\n"
-"PO-Revision-Date: 2021-01-31 13:44+0100\n"
+"PO-Revision-Date: 2021-01-31 18:32+0100\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: eo\n"
@@ -176,9 +176,8 @@ msgstr "Kriso, Ketlano foriras!"
 #. / Dialog (Phoebe Lexx)
 #. / Used when Phoebe is freed in the Nerod mission.
 #: ../src/cargo.c:89
-#, fuzzy
 msgid "Thanks! Watch out, WEAPCO! Phoebe's loose and she's ANGRY!"
-msgstr "Dankon! Atentu, ARMKORP!"
+msgstr "Dankon! Atentu, ARMKORP! Foeba estas malstreĉa kaj ŝi estas KOLERA!"
 
 #. / Cutscene (narration)
 #: ../src/cutscene.c:105
@@ -242,6 +241,8 @@ msgid ""
 "Talent like that does not appear every day. He would be a perfect candidate "
 "for our new AI training program!"
 msgstr ""
+"Talento kiel tiu ne aperas ĉiutage. Li estus perfekta kandidato por nia AI "
+"ekzerca programo!"
 
 #. / Cutscene (Kline Kethlan)
 #: ../src/cutscene.c:159
@@ -251,22 +252,22 @@ msgstr "Bedaŭrinde mi devas mortigi lin..."
 #. / Cutscene (Sid Wilson)
 #: ../src/cutscene.c:182
 msgid "We're nearly ready to make the jump to Eyananth."
-msgstr ""
+msgstr "Ni preskaŭ estas pretaj por iri al Ejananto."
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:186
 msgid "Aren't there a lot of WEAPCO slaves in this system?"
-msgstr ""
+msgstr "Ĉu ne estas multaj sklavoj de ARMKORP en tiu sistemo?"
 
 #. / Cutscene (Sid Wilson)
 #: ../src/cutscene.c:190
 msgid "Yes. It's got one of the highest mortality rates in the galaxy."
-msgstr ""
+msgstr "Jes. Ĝi havas unu el la plej grandaj mortindicoj en la galaksio."
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:194
 msgid "You think we can use that to our advantage?"
-msgstr ""
+msgstr "Ĉu vi pensas, ke ni povas uzi tiun por nia profito?"
 
 #. / Cutscene (Sid Wilson)
 #: ../src/cutscene.c:198
@@ -275,19 +276,21 @@ msgstr "Tion mi pensas. Mi trovos agadplanon."
 
 #. / Cutscene (Phoebe Lexx)
 #: ../src/cutscene.c:227
+#, fuzzy
 msgid "Nice head gear! You shop at the same place as me, huh?"
-msgstr ""
+msgstr "Bela kapa ilaro! Vi aĉetas en la sama loko ol mi, he?"
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:231
 msgid ""
 "More importantly, what were you doing out there? You're lucky I was around!"
 msgstr ""
+"Tre grave, kion vi faris tie ĉi? Vi estis bonŝanca, ke mi estis ĉirkaŭe!"
 
 #. / Cutscene (Phoebe Lexx)
 #: ../src/cutscene.c:235
 msgid "I'm looking for my sister. She vanished about a week ago."
-msgstr ""
+msgstr "Mi serĉas mian fratinon. Ŝi malaperis antaŭ ĉirkaŭ unu semajno."
 
 #. / Cutscene (Phoebe Lexx)
 #: ../src/cutscene.c:239
@@ -307,11 +310,13 @@ msgid ""
 "I agree. I'm also interested in studying her homing missile launcher; it "
 "could come in handy."
 msgstr ""
+"Mi konsentas. Al mi ankaŭ interesas studi ŝian pafilon de gvidataj raketoj; "
+"ĝi povus esti utila."
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:251
 msgid "In that case, welcome aboard, Phoebe!"
-msgstr ""
+msgstr "Tiukaze, bonvenon al veturilo, Foeba!"
 
 #. / Cutscene (Sid Wilson)
 #: ../src/cutscene.c:280
@@ -401,8 +406,9 @@ msgstr "Tamen ŝi ankoraŭ povos veturi ŝipon."
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:392
+#, fuzzy
 msgid "Sorry folks, we just lost our bargaining chip."
-msgstr ""
+msgstr "Pardonu, homoj, ni perdis nian intertraktadan ilon."
 
 #. / Cutscene (Sid Wilson)
 #: ../src/cutscene.c:396
@@ -410,6 +416,8 @@ msgid ""
 "Don't worry about it. It's not what I hoped for, but it should still make it "
 "easier to defeat WEAPCO."
 msgstr ""
+"Ne zorgu pri tio. Ĝi ne estas, kiun mi esperis, sed ĝi iel devus faciligi "
+"venki ARMKORP-on."
 
 #. / Cutscene (Ursula Lexx)
 #: ../src/cutscene.c:400
@@ -417,11 +425,13 @@ msgid ""
 "Sol is going to be difficult. I've heard they have a lot of heavy defenses "
 "on the outer planets."
 msgstr ""
+"Sol estos malfacila. Mi aŭdis, ke ili havas multon da pezaj defendoj en la "
+"eksteraj planedoj."
 
 #. / Cutscene (Sid Wilson)
 #: ../src/cutscene.c:404
 msgid "We'll have to start there, then."
-msgstr ""
+msgstr "Ni devos komenci ĉi tie, do."
 
 #. / Cutscene (Sid Wilson)
 #: ../src/cutscene.c:408
@@ -482,12 +492,12 @@ msgstr "Ho dio mia..."
 #. / Dialog (Phoebe Lexx)
 #: ../src/event.c:106
 msgid "Hey, over here! Destroy this tug so I can break free!"
-msgstr ""
+msgstr "He, tie ĉi! Detruu ĉi tiun perfortulon, por ke mi povu eskapi!"
 
 #. / Dialog (friendly transport from Eyananth, Allez mission)
 #: ../src/event.c:114
 msgid "Thank God! Please, help us! If they destroy this ship..."
-msgstr ""
+msgstr "Danke al Dio! Bonvolu helpu nin! Se ili detruas ĉi tiun veturilon..."
 
 #. / Dialog (Chris Bainfield)
 #: ../src/event.c:119
@@ -503,18 +513,21 @@ msgstr "Nur kelkajn minutojn!"
 #: ../src/event.c:129
 msgid ""
 "Alright! We've got the weapons working again! Now to look at the engines..."
-msgstr ""
+msgstr "Bone! Niaj armoj funkcias denove! Nun mi rigardos al la motoroj..."
 
 #. / Dialog (friendly transport from Eyananth, Allez mission)
 #: ../src/event.c:136
 msgid "DAMN! The guns are offline again! What you guys doing back there?!"
 msgstr ""
+"DAMNE! La pafiloj estas senkonektaj denove! Kion vi faras, uloj, tie antaŭe?!"
 
 #. / Dialog (friendly transport from Eyananth, Allez mission)
 #: ../src/event.c:143
 msgid ""
 "Chris, HELP! We've lost all system power! We're a sitting duck out here!"
 msgstr ""
+"Kris, HELPU! Ni perdis ĉiun sisteman energion! Ni estas alpafebla anaso ĉi "
+"tie!"
 
 #. / Dialog (friendly transport from Eyananth, Allez mission)
 #: ../src/event.c:150
@@ -594,6 +607,8 @@ msgid ""
 "Looks like she's got one of those homing missile launchers too! Any advice, "
 "Phoebe?"
 msgstr ""
+"Ŝajnas, ke ŝi ankaŭ akiris unu el tiuj pafiloj de gvidataj raketoj! Ĉu iun "
+"konsilon, Foeba?"
 
 #. / Dialog (Phoebe Lexx)
 #: ../src/event.c:245
@@ -1173,7 +1188,7 @@ msgstr "Detruu la ekzercejon de ARMKORP"
 #. / Spirit, Ceradse mission summary
 #: ../src/intermission.c:421
 msgid "Collect 6 cargo pods"
-msgstr ""
+msgstr "Kolektu 6 kargajn ŝelojn"
 
 #. / Spirit, Hinstag mission summary
 #: ../src/intermission.c:427
@@ -1674,12 +1689,12 @@ msgstr ""
 #. / Mission dialog: Mordor, Odeon (Chris Bainfield)
 #: ../src/intermission.c:1045
 msgid "Do you think she's turned traitor?"
-msgstr ""
+msgstr "Ĉu vi pensas, ke ŝi iĝis perfidulo?"
 
 #. / Mission dialog: Mordor, Odeon (Phoebe Lexx)
 #: ../src/intermission.c:1049
 msgid "No way. She hates WEAPCO with a passion."
-msgstr ""
+msgstr "Neniel. Ŝi arde malamas ARMKORP."
 
 #. / Mission dialog: Mordor, Odeon (Sid Wilson)
 #: ../src/intermission.c:1053
@@ -1762,18 +1777,20 @@ msgstr ""
 msgid ""
 "Phoebe, I need you to keep an eye on things here. I'm going after that ship!"
 msgstr ""
+"Foeba, mi bezonas, ke vi kontrolas aferojn ĉi tie. Mi sekvos tiun veturilon!"
 
 #. / Mission dialog: Mordor, Ellesh (Phoebe Lexx)
 #: ../src/intermission.c:1120
 msgid "Are you sure you can catch up to it?"
-msgstr ""
+msgstr "Ĉu vi certas, ke vi atingos ĝin?"
 
 #. / Mission dialog: Mordor, Ellesh (Chris Bainfield)
 #: ../src/intermission.c:1124
+#, fuzzy
 msgid ""
 "Absolutely. One thing that's really nice about the Firefly is its speed. "
 "I'll see you in a bit!"
-msgstr ""
+msgstr "Tute."
 
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Sid Wilson)
 #: ../src/intermission.c:1133
@@ -2010,12 +2027,12 @@ msgstr "Detruu la Veturilon de ARMKORP"
 #. / Mission objective (Nerod)
 #: ../src/mission.c:182
 msgid "Rescue Phoebe Lexx"
-msgstr ""
+msgstr "Savu Foeban Leks"
 
 #. / Mission objective (Nerod)
 #: ../src/mission.c:189
 msgid "Do not allow Phoebe to be killed"
-msgstr ""
+msgstr "Ne lasu, ke Foeba estu mortigita"
 
 #. / Mission objective (Allez)
 #: ../src/mission.c:212
@@ -2157,7 +2174,7 @@ msgstr ""
 #. / to add as many as you like. Each entry must have one instance of "%d", which
 #. / is replaced with the number remaining.
 #: ../src/mission.c:645
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Collect $%d more...\n"
 "$%d more to collect...\n"
@@ -2426,7 +2443,7 @@ msgstr "Sid"
 
 #: ../src/mission.c:1169
 msgid "Phoebe"
-msgstr ""
+msgstr "Foeba"
 
 #: ../src/mission.c:1170
 msgid "Kline"
@@ -2452,11 +2469,11 @@ msgstr[1] "TEMPA LIMO: %d minutoj"
 
 #: ../src/mission.c:1223
 msgid "Phoebe Lexx will not be present"
-msgstr ""
+msgstr "Foeba Leks ne estos"
 
 #: ../src/mission.c:1225
 msgid "Ursula Lexx will not be present"
-msgstr ""
+msgstr "Ursula Leks ne estos"
 
 #: ../src/mission.c:1232
 msgid "Sid Wilson will join you on this mission"
@@ -2500,7 +2517,7 @@ msgstr "AŬTOMATA KONSERVADO"
 
 #: ../src/save.c:94 ../src/save.c:108
 msgid "Corrupt Game Data"
-msgstr ""
+msgstr "Difektitaj Ludaj Datumoj"
 
 #. / Used for empty save slots.
 #: ../src/save.c:127
@@ -2534,11 +2551,11 @@ msgstr "SAVI savos la ludon"
 
 #: ../src/save.c:359
 msgid "CANCEL will unselect that slot"
-msgstr ""
+msgstr "NULIGI malelektos tiun eron"
 
 #: ../src/save.c:360
 msgid "DELETE will remove the save"
-msgstr ""
+msgstr "FORIGI forigos la konservaĵon"
 
 #: ../src/save.c:363
 msgid "First click a Save game slot to use"
@@ -2584,7 +2601,7 @@ msgstr "Lasero"
 #. / Shop info: current secondary: charger
 #: ../src/shop.c:83
 msgid "Charger"
-msgstr ""
+msgstr "Ŝarĝilo"
 
 #. / Shop info: current secondary: homing missile
 #: ../src/shop.c:87
@@ -2797,8 +2814,9 @@ msgstr "Plasmaj Ĉeloj"
 
 #. / Shop item description: Plasma Cells
 #: ../src/shop.c:465
+#, fuzzy
 msgid "Plasma ammunition (10 cells each)"
-msgstr ""
+msgstr "Plasma municio (po 10 ŝeloj) "
 
 #: ../src/shop.c:473
 msgid "Rocket Ammo"
@@ -2890,7 +2908,7 @@ msgstr ""
 
 #: ../src/shop.c:533
 msgid "Homing Missile Launcher"
-msgstr ""
+msgstr "Pafilo de Gvidataj Raketoj"
 
 #. / Shop item description: Homing Missile Launcher
 #. / %i must be retained.  It is replaced by the maximum missile
@@ -2898,11 +2916,11 @@ msgstr ""
 #: ../src/shop.c:537
 #, c-format
 msgid "Fires homing missile (max %i missiles)"
-msgstr ""
+msgstr "Pafas gvidatan raketon (maks. %i raketoj)"
 
 #: ../src/shop.c:541
 msgid "Charge Cannon"
-msgstr ""
+msgstr "Ŝarĝa Pafilego"
 
 #. / Shop item description: Charge Cannon
 #: ../src/shop.c:543
@@ -2911,7 +2929,7 @@ msgstr ""
 
 #: ../src/shop.c:547
 msgid "Dual Homing Missile Launcher"
-msgstr ""
+msgstr "Duobla Pafilo de Gvidataj Raketoj"
 
 #. / Shop item description: Dual Homing Missile Launcher
 #. / %i must be retained.  It is replaced by the maximum missile
@@ -2919,11 +2937,11 @@ msgstr ""
 #: ../src/shop.c:551
 #, c-format
 msgid "Fires two homing missiles (max %i missiles)"
-msgstr ""
+msgstr "Pafas du gvidatajn raketojn (maks. %i raketoj)"
 
 #: ../src/shop.c:555
 msgid "Micro Homing Missile Launcher"
-msgstr ""
+msgstr "Eta Pafilo de Gvidataj Raketoj"
 
 #. / Shop item description: Micro Homing Missile Launcher
 #. / %i must be retained.  It is replaced by the maximum missile
@@ -2931,7 +2949,7 @@ msgstr ""
 #: ../src/shop.c:559
 #, c-format
 msgid "Fires several small homing missiles (max %i missiles)"
-msgstr ""
+msgstr "Pafas kelkajn etajn gvidatajn raketojn (maks. %i raketoj)"
 
 #: ../src/title.c:93
 msgid "START GAME"
