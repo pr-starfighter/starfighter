@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2020-12-25 14:04-0500\n"
-"PO-Revision-Date: 2021-01-28 21:57+0100\n"
+"PO-Revision-Date: 2021-01-31 13:44+0100\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: eo\n"
@@ -31,7 +31,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.3\n"
 
 #. / Dialog (Kline Kethlan)
 #. / Used when the final "stage" of the Venus fight is entered.
@@ -48,8 +48,9 @@ msgstr "Via eblo supervivi ĝenas min! Klopodi eviti iuj el tiuj!"
 #. / Dialog (Kline Kethlan)
 #. / Used when the second "stage" of the Venus fight is entered.
 #: ../src/alien.c:1618
+#, fuzzy
 msgid "Very good, Bainfield. Now let's get a little more serious..."
-msgstr ""
+msgstr "Tre bone, Benfeldo."
 
 #: ../src/alien.c:2002
 msgid ">> Ally has ejected! <<"
@@ -162,8 +163,9 @@ msgstr "Estis honoro... batali kontraŭ vi..."
 #. / Dialog (Kline Kethlan)
 #. / Used when Kline is beaten in the Elamale mission.
 #: ../src/alien.c:2207
+#, fuzzy
 msgid "Seems I underestimated you, Bainfield. We'll meet again!"
-msgstr ""
+msgstr "Ŝajnas, ke mi subtaskis vin, Benfeldo. Ni rekontiĝos denove."
 
 #. / Dialog (Sid Wilson)
 #. / Used when Kline is beaten in the Earth mission.
@@ -190,7 +192,7 @@ msgstr ""
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:109
 msgid "These things just won't give up, will they?"
-msgstr "Tiuj âjoj neniam rezignos, ĉu ne?"
+msgstr "Tiuj aĵoj neniam rezignos, ĉu ne?"
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:113
@@ -222,6 +224,8 @@ msgid ""
 "The Emperor will not be pleased. Spirit is now a free star system thanks to "
 "that interfering rebel pilot."
 msgstr ""
+"La Imperiestro ne estos kontenta. Spirito estas nun libera stelsistemo danke "
+"al tiu enmiskiĝita ribela veturisto."
 
 #. / Cutscene (Kline Kethlan)
 #: ../src/cutscene.c:151
@@ -229,6 +233,8 @@ msgid ""
 "It was reported that he was able to take down one of our most powerful "
 "frigates in under 3 minutes!"
 msgstr ""
+"Oni raportis, ke li povis detrui unu el niaj plej potencajn egajn veturilojn "
+"en malpli ol 3 minutojn!"
 
 #. / Cutscene (Kline Kethlan)
 #: ../src/cutscene.c:155
@@ -265,7 +271,7 @@ msgstr ""
 #. / Cutscene (Sid Wilson)
 #: ../src/cutscene.c:198
 msgid "I think so. I'll come up with a plan of action."
-msgstr ""
+msgstr "Tion mi pensas. Mi trovos agadplanon."
 
 #. / Cutscene (Phoebe Lexx)
 #: ../src/cutscene.c:227
@@ -451,16 +457,17 @@ msgstr ""
 #: ../src/event.c:76
 msgid "You should try and destroy some of the frigate's weaponry, it'll help!"
 msgstr ""
+"Vi devus provi kaj detrui iujn el la armoj de la ega veturilo, ĝi helpos!"
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:81
 msgid "Chris, get a move on! The frigate is almost in range!"
-msgstr ""
+msgstr "Kriso, rapidiĝu! La ega veturilo estas preskaŭ pafebla!"
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:86
 msgid "The frigate is charging its cannon!"
-msgstr ""
+msgstr "La ega veturilo ŝarĝas ĝian pafilegon!"
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:91
@@ -700,11 +707,11 @@ msgstr "Spirito"
 
 #: ../src/game.c:72
 msgid "Eyananth"
-msgstr ""
+msgstr "Ejananto"
 
 #: ../src/game.c:73
 msgid "Mordor"
-msgstr ""
+msgstr "Mordor"
 
 #: ../src/game.c:74
 msgid "Sol"
@@ -721,7 +728,7 @@ msgstr[1] "Akiris $%d"
 
 #: ../src/game.c:329
 msgid "Rocket Ammo at Maximum"
-msgstr ""
+msgstr "Raketa Municio Maksimume"
 
 #. / "%d" must be retained. It is replaced with the number of rockets
 #. / picked up.
@@ -734,7 +741,7 @@ msgstr[1] "Akiris %d raketojn"
 
 #: ../src/game.c:345
 msgid "Restored 10 shield points"
-msgstr ""
+msgstr "Restarigitaj 10 ŝildaj poentoj"
 
 #: ../src/game.c:358 ../src/game.c:377
 msgid "Firing rate already at maximum"
@@ -742,27 +749,27 @@ msgstr "Pafrapideco jam estas maksimuma"
 
 #: ../src/game.c:362 ../src/game.c:381
 msgid "Firing rate increased"
-msgstr ""
+msgstr "Pafrapideco pliigita"
 
 #: ../src/game.c:386 ../src/game.c:427 ../src/game.c:468
 msgid "Upgrade failed (no plasma ammo)"
-msgstr ""
+msgstr "Pliboniga eldono fiaskis (sen plasma municio)"
 
 #: ../src/game.c:399 ../src/game.c:418
 msgid "Plasma output already at maximum"
-msgstr ""
+msgstr "Plasma eligo jam maksimuma"
 
 #: ../src/game.c:403 ../src/game.c:422
 msgid "Plasma output increased"
-msgstr ""
+msgstr "Plasma eligo pliigita"
 
 #: ../src/game.c:440 ../src/game.c:459
 msgid "Plasma damage already at maximum"
-msgstr ""
+msgstr "Plasma damaĝo jam maksimuma"
 
 #: ../src/game.c:444 ../src/game.c:463
 msgid "Plasma damage increased"
-msgstr ""
+msgstr "Plasma damaĝo pliigita"
 
 #: ../src/game.c:493
 msgid "Picked up a Super Charge!"
@@ -791,7 +798,7 @@ msgstr[1] "Akiris %d plasmajn ĉelojn"
 
 #: ../src/game.c:523
 msgid "Picked up some Cargo"
-msgstr ""
+msgstr "Kolektita kelkan Kargon"
 
 #: ../src/game.c:529
 #, c-format
@@ -805,9 +812,8 @@ msgid "Picked up an Escape Pod"
 msgstr ""
 
 #: ../src/game.c:540
-#, fuzzy
 msgid "Picked up some Ore"
-msgstr "Akirita iom da erco"
+msgstr "Akirita iom da Erco"
 
 #. / Chris: Phoebe Hit Messages
 #. / This is a list of messages separated by "\n".  They are randomly
@@ -1172,7 +1178,7 @@ msgstr ""
 #. / Spirit, Hinstag mission summary
 #: ../src/intermission.c:427
 msgid "Destroy 5 WEAPCO missile boats"
-msgstr ""
+msgstr "Detruu 5 misilo-veturilojn de ARMKORP"
 
 #. / Spirit, Joldar mission summary
 #: ../src/intermission.c:433
@@ -1190,23 +1196,23 @@ msgstr ""
 
 #: ../src/intermission.c:447
 msgid "Nerod"
-msgstr ""
+msgstr "Nerodo"
 
 #: ../src/intermission.c:451
 msgid "Allez"
-msgstr ""
+msgstr "Aleco"
 
 #: ../src/intermission.c:455
 msgid "Urusor"
-msgstr ""
+msgstr "Urusoro"
 
 #: ../src/intermission.c:459
 msgid "Dorim"
-msgstr ""
+msgstr "Dorimo"
 
 #: ../src/intermission.c:463
 msgid "Elamale"
-msgstr ""
+msgstr "Elamelo"
 
 #. / Eyananth, interception mission summary
 #: ../src/intermission.c:470
@@ -1241,27 +1247,27 @@ msgstr "Detruu la Ercan Veturilon de ARMKORP"
 
 #: ../src/intermission.c:508
 msgid "Odeon"
-msgstr ""
+msgstr "Odeo"
 
 #: ../src/intermission.c:512
 msgid "Fellon"
-msgstr ""
+msgstr "Felono"
 
 #: ../src/intermission.c:516
 msgid "Sivedi"
-msgstr ""
+msgstr "Sivedo"
 
 #: ../src/intermission.c:520
 msgid "Almartha"
-msgstr ""
+msgstr "Almarza"
 
 #: ../src/intermission.c:524
 msgid "Poswic"
-msgstr ""
+msgstr "Posvico"
 
 #: ../src/intermission.c:528
 msgid "Ellesh"
-msgstr ""
+msgstr "Eleŝo"
 
 #. / Mordor, incerception mission summary
 #: ../src/intermission.c:535
@@ -1276,7 +1282,7 @@ msgstr "Savu Ursulan"
 #. / Mordor, Fellon mission summary
 #: ../src/intermission.c:547
 msgid "Assist rebel forces"
-msgstr ""
+msgstr "Asistu ribelan militistaron"
 
 #. / Mordor, Sivedi mission summary
 #: ../src/intermission.c:553
@@ -1394,6 +1400,9 @@ msgid ""
 "instead, I want you to go to the WEAPCO training ground and destroy all the "
 "craft there."
 msgstr ""
+"He, knabo! Vi ankoraŭ ŝuldas al mi monon kontraŭ la Fajrflugilo, kiun mi "
+"ŝtelis por vi! Sed anstataŭe mi volas, ke vi iru al la ekzercejo de ARMKORP "
+"kaj detruu ĉiujn veturilojn ĉi tie."
 
 #. / Mission dialog: Spirit, Hail (Chris Bainfield)
 #: ../src/intermission.c:839
@@ -1484,11 +1493,12 @@ msgstr ""
 
 #. / Mission dialog: Spirit, Moebo (Sid Wilson)
 #: ../src/intermission.c:907
+#, fuzzy
 msgid ""
 "We've got a major problem here! WEAPCO has decided to stop our resistance by "
 "destroying Spirit! The explosion will incinerate everything in the system! "
 "You've got to destroy that frigate before it gets in range!"
-msgstr ""
+msgstr "Ni havas grandan problemon ĉi tie! ARMKORP decidis"
 
 #. / Mission dialog: Spirit, Moebo (Chris Bainfield)
 #: ../src/intermission.c:911
@@ -1975,22 +1985,22 @@ msgstr "Kolektu $500 por pagi ilin al Soldulo kontraŭ FAJRFLUGILO"
 #. / Mission objective (Ceradse)
 #: ../src/mission.c:121
 msgid "Collect 6 Cargo Pods"
-msgstr ""
+msgstr "Kolektu 6 Kargajn Ŝelojn"
 
 #. / Mission objective (Ceradse)
 #: ../src/mission.c:128
 msgid "Do not destroy *ANY* Cargo Pods"
-msgstr ""
+msgstr "Detruu *NENIUN* Kargan Ŝelon"
 
 #. / Mission objective (Hinstag)
 #: ../src/mission.c:142
 msgid "Destroy 5 WEAPCO Missile Boats"
-msgstr ""
+msgstr "Detruu 5 Misilo-veturilojn de ARMKORP"
 
 #. / Mission objective (Joldar)
 #: ../src/mission.c:156
 msgid "Destroy 9 WEAPCO Mine-droppers"
-msgstr ""
+msgstr "Detruu 9 Mino-Faligilojn"
 
 #. / Mission objective (Moebo)
 #: ../src/mission.c:170
@@ -2025,12 +2035,12 @@ msgstr ""
 #. / Mission objective (Dorim)
 #: ../src/mission.c:247
 msgid "Locate doctor's escape pod"
-msgstr ""
+msgstr "Loki fuĝan ŝelon de doktoro"
 
 #. / Mission objective (Dorim)
 #: ../src/mission.c:254
 msgid "Do not destroy doctor's escape pod"
-msgstr ""
+msgstr "Ne detruu fuĝan ŝelon de doktoro"
 
 #. / Mission objective (Dorim)
 #: ../src/mission.c:261
@@ -2075,7 +2085,7 @@ msgstr ""
 #. / Mission objective (Fellon)
 #: ../src/mission.c:332
 msgid "At least 1 rebel craft must survive"
-msgstr ""
+msgstr "Almenaŭ 1 ribela veturilo devas postvivi"
 
 #. / Mission objective (Sivedi)
 #: ../src/mission.c:346
@@ -2090,7 +2100,7 @@ msgstr "Kolektu 50 ercajn erojn"
 #. / Mission objective (Almartha)
 #: ../src/mission.c:363
 msgid "Collect $2000 to pay mercenary"
-msgstr ""
+msgstr "Akiru $2000 por pagi al soldulo"
 
 #. / Mission objective (Poswic)
 #: ../src/mission.c:377
@@ -2379,7 +2389,7 @@ msgstr "*** Akcesora Celo Atingita ***"
 
 #: ../src/mission.c:1020
 msgid "*** All Secondary Objectives Completed ***"
-msgstr "*** Ĉiuj Akcesoraj Celoj Atingitaj *** "
+msgstr "*** Ĉiuj Akcesoraj Celoj Atingitaj ***"
 
 #: ../src/mission.c:1035
 msgid ">>> MISSION FAILED <<<"
@@ -2579,23 +2589,23 @@ msgstr ""
 #. / Shop info: current secondary: homing missile
 #: ../src/shop.c:87
 msgid "Homing Missile"
-msgstr ""
+msgstr "Gvidata Raketo"
 
 #. / Shop info: current secondary: double homing missiles
 #: ../src/shop.c:91
 msgid "Dbl Homing Missiles"
-msgstr ""
+msgstr "Dbl Gvidataj Raketoj"
 
 #. / Shop info: current secondary: micro homing missiles
 #: ../src/shop.c:95
 msgid "Mcr Homing Missiles"
-msgstr ""
+msgstr "Etaj Gvidataj Raketoj"
 
 #. / Retain "%d" as-is.  It is replaced with the rocket capacity of the Firefly.
 #: ../src/shop.c:105
 #, c-format
 msgid "Capacity : %d"
-msgstr ""
+msgstr "Enhaveco : %d"
 
 #: ../src/shop.c:286
 msgid "Primary Weapon"
@@ -2652,7 +2662,7 @@ msgstr ""
 #: ../src/shop.c:320
 #, c-format
 msgid "Capacity: %d"
-msgstr ""
+msgstr "Enhaveco: %d"
 
 #: ../src/shop.c:329
 msgid "Temporary Weapons"
@@ -2696,22 +2706,22 @@ msgstr "Vi ne havas sufiĉe da mono"
 #. / For when the player attempts an upgrade beyond the maximum (line 1 of 2).
 #: ../src/shop.c:381
 msgid "Cannot upgrade ship"
-msgstr ""
+msgstr "Ne eblas altgradigi veturilon"
 
 #. / For when the player attempts an upgrade beyond the maximum (line 2 of 2).
 #: ../src/shop.c:384
 msgid "Hardware capacity has been reached"
-msgstr ""
+msgstr "Aparatara enhaveco atingita"
 
 #. / For when the player attempts to buy more ammo than the ship can hold.
 #: ../src/shop.c:388
 msgid "Ammunition limit reached"
-msgstr ""
+msgstr "Limo de municio atingita"
 
 #. / For when the player attempts to sell an item they aren't allowed to sell.
 #: ../src/shop.c:392
 msgid "You cannot sell that item"
-msgstr ""
+msgstr "Vi ne povas vendi tiun eron"
 
 #. / For when the player attempts to sell an item they don't have any of.
 #: ../src/shop.c:396
@@ -2722,7 +2732,7 @@ msgstr "Neniu por vendi"
 #. / while secondary weapon is either laser or charge cannon.
 #: ../src/shop.c:401
 msgid "Rockets cannot be bought for Laser or Charger Cannon"
-msgstr ""
+msgstr "Ne eblas aĉeti Raketojn por Lasero aŭ Ŝarĝan Pafilegon"
 
 #. / For when the player attempts to buy a weapon they already have.
 #: ../src/shop.c:405
@@ -2779,7 +2789,7 @@ msgstr ""
 #. / Shop item description: Liquid Nitrogen Capsules (PLASMA_MAX_RATE)
 #: ../src/shop.c:455
 msgid "Increases plasma firing rate"
-msgstr ""
+msgstr "Pliigas plasman pafrapidecon"
 
 #: ../src/shop.c:463
 msgid "Plasma Cells"
@@ -2808,7 +2818,7 @@ msgstr "Kroma Plasma Pafilego"
 #. / Shop item description: Additional Plasma Cannon (PLASMA_MIN_OUTPUT)
 #: ../src/shop.c:483
 msgid "Adds an extra plasma cannon to the Firefly"
-msgstr ""
+msgstr "Aldonas kroman plasman pafilegon al la Fajrflugilo"
 
 #. Overwritten later
 #: ../src/shop.c:487
@@ -2828,46 +2838,46 @@ msgstr ""
 #. / Shop item description: Plasma Cooling Booster (PLASMA_MIN_RATE)
 #: ../src/shop.c:495
 msgid "Permanently increases firing rate"
-msgstr ""
+msgstr "Daŭre pliigas pafrapidecon"
 
 #. ----------- Ammo Items --------------
 #. Overwritten later
 #: ../src/shop.c:501
 msgid "Plasma Compressor"
-msgstr ""
+msgstr "Plasma Kunpremilo"
 
 #. / Shop item description: Plasma Compressor (PLASMA_MAX_AMMO)
 #: ../src/shop.c:503
 msgid "Increases plasma ammo capacity"
-msgstr ""
+msgstr "Pliigas plasman munician enhavecon"
 
 #. Overwritten later
 #: ../src/shop.c:507
 msgid "Rocket Pod"
-msgstr ""
+msgstr "Raketa Ŝelo"
 
 #. / Shop item description: Rocket Pod (ROCKET_MAX_AMMO)
 #: ../src/shop.c:509
 msgid "Allows for an additional 5 rockets to be carried"
-msgstr ""
+msgstr "Ebligas enhavi 5 kromajn raketojn"
 
 #: ../src/shop.c:515
 msgid "Dual Rocket Launcher"
-msgstr ""
+msgstr "Duobla Raketa Pafilo"
 
 #. / Shop item description: Dual Rocket Launcher
 #: ../src/shop.c:517
 msgid "Launches two rockets at once"
-msgstr ""
+msgstr "Pafas du raketojn samtempe"
 
 #: ../src/shop.c:521
 msgid "Micro Rocket Launcher"
-msgstr ""
+msgstr "Eta Raketa Pafilo"
 
 #. / Shop item description: Micro Rocket Launcher
 #: ../src/shop.c:523
 msgid "Launches several less powerful rockets at once"
-msgstr ""
+msgstr "Pafas multajn malpli potencajn raketojn samtempe"
 
 #: ../src/shop.c:527
 msgid "Laser Cannon"
