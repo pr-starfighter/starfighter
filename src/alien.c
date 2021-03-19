@@ -2067,7 +2067,7 @@ void alien_destroy(Object *alien, Object *attacker)
 					"Target destroyed!\n"
 					"One more for me!\n"
 					"Yes! Did you see that, Chris?\n"
-					"Hey Chris, remind me to check my kill count later!\n"
+					"Hey, Chris, remind me to check my kill count later!\n"
 					"Bring it on, WEAPCO!\n"
 					"Take that, WEAPCO!\n"
 					"My kill count is going up!\n"
