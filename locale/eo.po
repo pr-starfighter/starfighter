@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2020-12-25 14:04-0500\n"
-"PO-Revision-Date: 2021-02-12 22:42+0100\n"
+"PO-Revision-Date: 2021-04-01 13:14+0200\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: eo\n"
@@ -31,7 +31,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. / Dialog (Kline Kethlan)
 #. / Used when the final "stage" of the Venus fight is entered.
@@ -109,7 +109,6 @@ msgstr ""
 #. / following the English version only as a general guideline.  Any
 #. / number of brag messages is permitted.
 #: ../src/alien.c:2066
-#, fuzzy
 msgid ""
 "I got another one!\n"
 "Target destroyed!\n"
@@ -123,11 +122,17 @@ msgid ""
 "Yeah! Nothing can stand in our way!\n"
 "I got it!"
 msgstr ""
-"Vi atingis alion pli!\n"
+"Mi atingis alion pli!\n"
 "Celo detruita!\n"
 "Unu pli de mi!\n"
 "Jes! Ĉu vi vidis tion, Kris?\n"
-"He, Kris, "
+"He, Kris, memoru al mi kontroli mian mortigan nombron poste\n"
+"Venu, ARMKORP!\n"
+"Prenu tion, ARMKORP!\n"
+"Mia mortiga nombro kreskas!\n"
+"Alio mortas!\n"
+"Jes! Neniu povas haltigi nin!\n"
+"Mi havas ĝin!"
 
 #. / Ursula brag messages
 #. / This is a list of brags separated by "\n".  They are randomly
@@ -137,7 +142,6 @@ msgstr ""
 #. / following the English version only as a general guideline.  Any
 #. / number of brag messages is permitted.
 #: ../src/alien.c:2095
-#, fuzzy
 msgid ""
 "Kicked your ass!\n"
 "You ain't so tough!\n"
@@ -154,11 +158,20 @@ msgid ""
 "Die, damned WEAPCO drones!\n"
 "Don't think you can get away from me!"
 msgstr ""
-"\n"
-"\n"
-"\n"
+"Venkis vin!\n"
+"Vi ne estas tiel forta!\n"
+"Mi ĉiam estis pli bona ARMKORP veturisto ol vi!\n"
 "Celo detruita!\n"
-"Tio lernigos vin!"
+"Tio lernigos vin!\n"
+"Prenu tion, vi naŭzaj robotoj!\n"
+"Ĉu estas tio ĉio, kion vi havas?\n"
+"Kiu volas ion?!\n"
+"Mi ne lasas, ke vi venkas min, Foeba!\n"
+"Venu, vi stultaj senpilotaj aviadiloj!\n"
+"Ho, mi pardonpetas, ĉu vi ricevas viajn metalajn aĵojn?\n"
+"Neniu tuŝas la Leks-familion\n"
+"Mortu, damnitaj ARMKORPaj senpilotaj aviadiloj!\n"
+"Ne pensu, ke vi povas foriri de mi!"
 
 #. / Dialog (Chris Bainfield)
 #. / Used when Krass Tyler is beaten in the Jupiter mission.
@@ -1350,7 +1363,7 @@ msgstr ""
 #. / Mordor, Almartha mission summary
 #: ../src/intermission.c:559
 msgid "Create a diversion"
-msgstr ""
+msgstr "Kreu distron."
 
 #. / Mordor, Poswic mission summary
 #: ../src/intermission.c:565
@@ -1422,13 +1435,13 @@ msgstr "Detruu eksteran defendan sistemon"
 #. / Mission objective (Jupiter)
 #: ../src/intermission.c:640 ../src/mission.c:471
 msgid "Investigate distress call"
-msgstr ""
+msgstr "Egzamenu danĝera voko"
 
 #. / Sol, Mars mission summary
 #. / Mission objective (Mars)
 #: ../src/intermission.c:646 ../src/mission.c:493
 msgid "Navigate asteroid belt"
-msgstr ""
+msgstr "Veturu zonon de asteroidoj"
 
 #. / Sol, Earth mission summary
 #: ../src/intermission.c:652
@@ -1465,7 +1478,7 @@ msgstr ""
 #. / Mission dialog: Spirit, Hail (Chris Bainfield)
 #: ../src/intermission.c:839
 msgid "Oh? That's the job I contracted you to do, was it not?"
-msgstr ""
+msgstr "Ho? Tio estas la laboro, por kiu mi kontraktis vin, ĉu ne?"
 
 #. / Mission dialog: Spirit, Hail (Krass Tyler)
 #: ../src/intermission.c:843
@@ -1474,6 +1487,9 @@ msgid ""
 "also collect $500, and we will call it quits. And if you die... well, I "
 "guess the ship was not worth stealing! HA HA HA!"
 msgstr ""
+"Mi scias, sed ĉi-maniere ni povas solvi ŝuldon nun. Faru tiun laboron, kaj "
+"ankaŭ akiru $500, kaj ni finos. Kaj se vi mortas... nu, mi supozas, ke la "
+"veturilo ne valoras por ŝteli ĝin! HA HA HA!"
 
 #. / Mission dialog: Spirit, Hail (Chris Bainfield)
 #: ../src/intermission.c:847
@@ -1493,6 +1509,9 @@ msgid ""
 "transporting some medical supplies around Ceradse. We need to get hold of "
 "those pods to save some lives!"
 msgstr ""
+"Kris, mi interkaptis mesaĝo el ARMKORP. Ŝajnas, ke ili transigas iujn "
+"kuracajn provizojn ĉirkaŭ Ceradse. Ni bezonas konfiski tiujn ŝelojn por savi "
+"iujn vivojn!"
 
 #. / Mission dialog: Spirit, Ceradse (Chris Bainfield)
 #: ../src/intermission.c:862
@@ -1505,22 +1524,24 @@ msgid ""
 "All six, Chris! If you lose even a single one, thousands of people could "
 "perish in Spirit within the next few months."
 msgstr ""
+"Ĉiuj ses, Kris! Se vi perdas eĉ unu, miloj da homoj povus morti en Spirito "
+"ene de la sekvaj malmultaj monatoj."
 
 #. / Mission dialog: Spirit, Hinstag (Chris Bainfield)
 #: ../src/intermission.c:873
 msgid "Wow! Missile boats?"
-msgstr ""
+msgstr "Ho! Ĉu misilo-veturiloj?"
 
 #. / Mission dialog: Spirit, Hinstag (Sid Wilson)
 #: ../src/intermission.c:877
 msgid "Yup. Looks like WEAPCO is starting to take notice of your actions."
-msgstr ""
+msgstr "Jes. Ŝajnas, ke ARMKORP komencas observi viajn agojn."
 
 #. / Mission dialog: Spirit, Hinstag (Chris Bainfield)
 #: ../src/intermission.c:881
 msgid ""
 "Awesome! This will really put the Firefly's fighting ability to the test!"
-msgstr ""
+msgstr "Mojosa! Tio vere testos la batalan kapablon de la Fajrflugilo!"
 
 #. / Mission dialog: Spirit, Hinstag (Sid Wilson)
 #: ../src/intermission.c:885
@@ -1529,6 +1550,9 @@ msgid ""
 "level most major cities. Try not to face them head-on, and keep your "
 "distance."
 msgstr ""
+"Bonvolu estu gardema, Kris. Sola misilo-veturilo enhavas sufiĉajn raketojn "
+"por detrui la plej grandaj urboj. Penu eviti alfronti ilin direkte, kaj teni "
+"distancon."
 
 #. / Mission dialog: Spirit, Joldar (Sid Wilson)
 #: ../src/intermission.c:892
@@ -1536,11 +1560,13 @@ msgid ""
 "We're going to have to get rid of the mine deployment unit around Joldar. "
 "The minefield is stopping interplanetary traffic."
 msgstr ""
+"Ni devos forigi la unuo de malpako de minoj ĉirkaŭ Ĵoldaro. La minkampo "
+"ĉesigas interplaneda trafiko."
 
 #. / Mission dialog: Spirit, Joldar (Chris Bainfield)
 #: ../src/intermission.c:896
 msgid "Are any fighters around to keep me entertained?"
-msgstr ""
+msgstr "Ĉu estas luktantoj ĉirkaŭe por teni min amuza?"
 
 #. / Mission dialog: Spirit, Joldar (Sid Wilson)
 #: ../src/intermission.c:900
@@ -1549,6 +1575,9 @@ msgid ""
 "of those mines! They'll only explode when they encounter a ship that's not "
 "transmitting a WEAPCO signal. Shoot them down if they get in your way."
 msgstr ""
+"Momente ne, sed tio ne signifas, ke ili ne aperos. Estu tre gardema de tiuj "
+"minoj. Ili nur eksplodiĝas, kiam ili trafas veturilon, kiu ne elsendas "
+"ARMKORP-signalon. Pafu ilin, se ili iras al via vojo."
 
 #. / Mission dialog: Spirit, Moebo (Sid Wilson)
 #: ../src/intermission.c:907
@@ -1562,7 +1591,7 @@ msgstr "Ni havas grandan problemon ĉi tie! ARMKORP decidis"
 #. / Mission dialog: Spirit, Moebo (Chris Bainfield)
 #: ../src/intermission.c:911
 msgid "Damn! I'll get right on it, then!"
-msgstr ""
+msgstr "Damne! Tiam mi faros tuj ĝin!"
 
 #. / Mission dialog: Spirit, Moebo (Sid Wilson)
 #: ../src/intermission.c:915
@@ -1815,7 +1844,7 @@ msgstr ""
 #. / Mission dialog: Mordor, Poswic (Chris Bainfield)
 #: ../src/intermission.c:1109
 msgid "I've got you covered, Sid!"
-msgstr ""
+msgstr "Mi kovras vin, Sid!"
 
 #. / Mission dialog: Mordor, Ellesh (Chris Bainfield)
 #: ../src/intermission.c:1116
@@ -1831,11 +1860,11 @@ msgstr "Ĉu vi certas, ke vi atingos ĝin?"
 
 #. / Mission dialog: Mordor, Ellesh (Chris Bainfield)
 #: ../src/intermission.c:1124
-#, fuzzy
 msgid ""
 "Absolutely. One thing that's really nice about the Firefly is its speed. "
 "I'll see you in a bit!"
-msgstr "Tute."
+msgstr ""
+"Tute. Afero bonega de Fajrflugilo estas ĝia rapideco. Mi vidos vin baldaŭ!"
 
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Sid Wilson)
 #: ../src/intermission.c:1133
@@ -1857,7 +1886,7 @@ msgstr "Pli bone sekura ol bedaŭra, mi supozas."
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Chris Bainfield)
 #: ../src/intermission.c:1145
 msgid "Boring, but I guess you're right, Sid, as usual."
-msgstr ""
+msgstr "Malinteresa, sed mi supozas, ke vi pravas, Sid, kiel kutime."
 
 #. / Mission dialog: Sol, Saturn (Chris Bainfield)
 #: ../src/intermission.c:1152
@@ -2328,9 +2357,8 @@ msgstr "Damne, Kriso! Ni ĵus perdis ŝin!"
 #. / Dialog (friendly transport from Eyananth, Allez mission)
 #. / Used when the friendly transport in the Allez mission is destroyed.
 #: ../src/mission.c:730
-#, fuzzy
 msgid "No no no no no! Hull bre-..."
-msgstr "Ne ne ne ne ne!"
+msgstr "Ne ne ne ne ne! Ŝella bre-..."
 
 #. / Dialog (Sid Wilson)
 #. / Used when a target transport is destroyed in the Urusor mission.
@@ -2895,9 +2923,8 @@ msgstr "Plasmaj Ĉeloj"
 
 #. / Shop item description: Plasma Cells
 #: ../src/shop.c:465
-#, fuzzy
 msgid "Plasma ammunition (10 cells each)"
-msgstr "Plasma municio (po 10 ŝeloj) "
+msgstr "Plasma municio (po 10 ŝeloj)"
 
 #: ../src/shop.c:473
 msgid "Rocket Ammo"
