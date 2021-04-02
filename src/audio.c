@@ -66,7 +66,8 @@ void audio_playSound(int sid, float x, float y)
 	int angle = atanf((x - (screen->w / 2)) / (screen->w / 2)) * 180 / M_PI;
 	int attenuation = fabsf(x - (screen->w / 2)) / (screen->w / 20);
 	float distance = sqrtf(powf(fabsf(x - (screen->w / 2)), 2) + powf(fabsf(y - (screen->h / 2)), 2));
-	int volume = MIX_MAX_VOLUME - (MIX_MAX_VOLUME * distance / (3 * screen->w));
+	const int max_volume = MIX_MAX_VOLUME / 2;
+	int volume = max_volume - (max_volume * distance / (3 * screen->w));
 
 	if ((!engine.useSound) || (!engine.useAudio) || (volume <= 0))
 		return;
@@ -109,8 +110,8 @@ void audio_playSound(int sid, float x, float y)
 	}
 	else
 	{
-		if (Mix_Playing(channel) && (volume <= MIX_MAX_VOLUME / 4)
-				&& (channelVolume[channel] >= MIX_MAX_VOLUME * 3 / 4))
+		if (Mix_Playing(channel) && (volume <= max_volume / 4)
+				&& (channelVolume[channel] >= max_volume * 3 / 4))
 			return;
 		else
 			channelVolume[channel] = volume;
@@ -169,14 +170,14 @@ void audio_setMusicVolume(int volume)
 #endif
 }
 
-void audio_playMusic(const char *filename, int loops)
+void audio_playMusic(const char *filename, int loops, int amplified)
 {
 #ifndef NOSOUND
 	if (engine.useMusic && engine.useAudio)
 	{
 		audio_haltMusic();
 		music = Mix_LoadMUS(filename);
-		audio_setMusicVolume(100);
+		audio_setMusicVolume(amplified ? MIX_MAX_VOLUME : MIX_MAX_VOLUME / 2);
 		Mix_PlayMusic(music, loops);
 	}
 #endif
@@ -223,7 +224,7 @@ void audio_playRandomTrack()
 	{
 #ifndef OLD_MUSIC
 		case MISN_START:
-			audio_playMusic("music/railjet_short.ogg", -1);
+			audio_playMusic("music/railjet_short.ogg", -1, 0);
 			break;
 #endif
 		case MISN_MOEBO:
@@ -231,20 +232,20 @@ void audio_playRandomTrack()
 		case MISN_ELLESH:
 		case MISN_EARTH:
 #ifdef OLD_MUSIC
-			audio_playMusic("music/HardTranceDub.mod", -1);
+			audio_playMusic("music/HardTranceDub.mod", -1, 0);
 #else
-			audio_playMusic("music/orbital_colossus.ogg", -1);
+			audio_playMusic("music/orbital_colossus.ogg", -1, 0);
 #endif
 			break;
 		case MISN_VENUS:
 #ifdef OLD_MUSIC
-			audio_playMusic("music/LoopsAndTings.mod", -1);
+			audio_playMusic("music/LoopsAndTings.mod", -1, 0);
 #else
-			audio_playMusic("music/RE.ogg", -1);
+			audio_playMusic("music/RE.ogg", -1, 0);
 #endif
 			break;
 		default:
-			audio_playMusic(track[rand() % tracks], -1);
+			audio_playMusic(track[rand() % tracks], -1, 0);
 	}
 #endif
 }

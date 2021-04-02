@@ -925,9 +925,9 @@ static int mission_revealObjectives()
 			aliens[ALIEN_KLINE].flags |= FL_IMMORTAL | FL_NOFIRE;
 			player_setTarget(ALIEN_KLINE);
 #ifdef OLD_MUSIC
-			audio_playMusic("music/TranceGeneration.mod", -1);
+			audio_playMusic("music/TranceGeneration.mod", -1, 0);
 #else
-			audio_playMusic("music/last_cyber_dance.ogg", -1);
+			audio_playMusic("music/last_cyber_dance.ogg", -1, 0);
 #endif
 		}
 	}

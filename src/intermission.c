@@ -1319,9 +1319,9 @@ static void intermission_doOptions(SDL_Surface *optionsSurface, int x, int y)
 		{
 			engine.useMusic = 1;
 #ifdef OLD_MUSIC
-			audio_playMusic("music/3DParadise.mod", -1);
+			audio_playMusic("music/3DParadise.mod", -1, 0);
 #else
-			audio_playMusic("music/through_space.ogg", -1);
+			audio_playMusic("music/through_space.ogg", -1, 0);
 #endif
 		}
 
@@ -1505,9 +1505,9 @@ int intermission()
 
 	if ((engine.useAudio) && (engine.useMusic))
 #ifdef OLD_MUSIC
-		audio_playMusic("music/3DParadise.mod", -1);
+		audio_playMusic("music/3DParadise.mod", -1, 0);
 #else
-		audio_playMusic("music/through_space.ogg", -1);
+		audio_playMusic("music/through_space.ogg", -1, 0);
 #endif
 
 	/// Retain "%s" as-is.  It is replaced with the current system name.

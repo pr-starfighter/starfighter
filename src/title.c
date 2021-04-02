@@ -314,9 +314,9 @@ int title_show()
 	engine.keyState[KEY_FIRE] = engine.keyState[KEY_ALTFIRE] = 0;
 
 #ifdef OLD_MUSIC
-	audio_playMusic("music/Platinum.mod", 1);
+	audio_playMusic("music/Platinum.mod", 1, 0);
 #else
-	audio_playMusic("music/walking_among_androids.ogg", 1);
+	audio_playMusic("music/walking_among_androids.ogg", 1, 0);
 #endif
 
 	while (!engine.done)
@@ -515,9 +515,9 @@ int title_show()
 							if (engine.useMusic)
 							{
 #ifdef OLD_MUSIC
-								audio_playMusic("music/Platinum.mod", 1);
+								audio_playMusic("music/Platinum.mod", 1, 0);
 #else
-								audio_playMusic("music/walking_among_androids.ogg", 1);
+								audio_playMusic("music/walking_among_androids.ogg", 1, 0);
 #endif
 							}
 							else
@@ -652,9 +652,9 @@ void title_showCredits()
 	screen_drawBackground();
 
 #ifdef OLD_MUSIC
-	audio_playMusic("music/Solace.s3m", 1);
+	audio_playMusic("music/Solace.s3m", 1, 0);
 #else
-	audio_playMusic("music/rise_of_spirit.ogg", 1);
+	audio_playMusic("music/rise_of_spirit.ogg", 1, 0);
 #endif
 
 	fp = fopen("data/credits.txt", "rb");

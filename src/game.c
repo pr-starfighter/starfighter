@@ -2449,9 +2449,9 @@ static void game_showGameOver()
 	SDL_Delay(1000);
 
 #ifdef OLD_MUSIC
-	audio_playMusic("music/Wybierak.mod", -1);
+	audio_playMusic("music/Wybierak.mod", -1, 0);
 #else
-	audio_playMusic("music/death.ogg", -1);
+	audio_playMusic("music/reremix.ogg", -1, 1);
 #endif
 
 	int x = (screen->w - gameover->w) / 2;
