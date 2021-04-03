@@ -1175,10 +1175,12 @@ void mission_showStartScreen()
 	gfx_createTextObject(TS_POWER, "Power", 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_OUTPUT, "Output", 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_COOLER, "Cooler", 0, 0, FONT_WHITE);
-	audio_playRandomTrack();
 
 	if (game.area != MISN_INTERCEPTION)
 	{
+		// Note: music is started here only for regular missions.  For
+		// interceptions, it is instead started by game_mainLoop().
+		audio_playRandomTrack();
 		renderer_update();
 
 		player_flushInput();

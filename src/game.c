@@ -2577,7 +2577,7 @@ int game_mainLoop()
 	// Some specifics for interception missions
 	if (game.area == MISN_INTERCEPTION)
 	{
-		if ((game.system > SYSTEM_EYANANTH) && ((rand() % 5) == 0))
+		if ((game.system > SYSTEM_EYANANTH) && CHANCE(1. / 5.))
 		{
 			aliens[ALIEN_KLINE] = alien_defs[CD_KLINE];
 			aliens[ALIEN_KLINE].owner = &aliens[ALIEN_KLINE];
@@ -2590,7 +2590,7 @@ int game_mainLoop()
 
 		if ((game.system == SYSTEM_MORDOR) && (game.experimentalShield > 0))
 		{
-			if ((rand() % 5) > 0)
+			if (CHANCE(4. / 5.))
 			{
 				aliens[ALIEN_BOSS] = alien_defs[CD_CLOAKFIGHTER];
 				aliens[ALIEN_BOSS].owner = &aliens[ALIEN_BOSS];
@@ -2603,6 +2603,13 @@ int game_mainLoop()
 				aliens[ALIEN_BOSS].shield = game.experimentalShield;
 			}
 		}
+
+		// Note: music is started here only for interceptions.  For
+		// regular missions, it is instead started by
+		// mission_showStartScreen().  This is necessary to ensure the
+		// proper music can be played when Kline or the cloak fighter
+		// are active.
+		audio_playRandomTrack();
 	}
 
 	if (game.area == MISN_VENUS)

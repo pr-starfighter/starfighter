@@ -26,6 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "defs.h"
 #include "structs.h"
 
+#include "alien.h"
 #include "game.h"
 #include "engine.h"
 #include "screen.h"
@@ -170,6 +171,14 @@ void audio_setMusicVolume(int volume)
 #endif
 }
 
+void audio_setMusicPosition(double position)
+{
+#ifndef NOSOUND
+	if (engine.useMusic && engine.useAudio)
+		Mix_SetMusicPosition(position);
+#endif
+}
+
 void audio_playMusic(const char *filename, int loops, int amplified)
 {
 #ifndef NOSOUND
@@ -225,7 +234,15 @@ void audio_playRandomTrack()
 #ifndef OLD_MUSIC
 		case MISN_START:
 		case MISN_INTERCEPTION:
-			audio_playMusic("music/railjet_short.ogg", -1, 0);
+			if ((aliens[ALIEN_KLINE].classDef == CD_KLINE)
+					&& aliens[ALIEN_KLINE].active)
+				audio_playMusic("music/last_cyber_dance.ogg", -1, 0);
+			else if ((game.system == SYSTEM_MORDOR)
+					&& (aliens[ALIEN_BOSS].classDef == CD_CLOAKFIGHTER)
+					&& aliens[ALIEN_BOSS].active)
+				audio_playMusic("music/space_dimensions.ogg", -1, 0);
+			else
+				audio_playMusic("music/railjet_short.ogg", -1, 0);
 			break;
 		case MISN_HAIL:
 		case MISN_JOLDAR:
