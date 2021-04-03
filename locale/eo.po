@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2020-12-25 14:04-0500\n"
-"PO-Revision-Date: 2021-04-01 13:14+0200\n"
+"PO-Revision-Date: 2021-04-03 17:17+0200\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: eo\n"
@@ -370,12 +370,14 @@ msgid ""
 "I've heard of him. He's the Commander of WEAPCO's naval forces. One of the "
 "best pilots they ever had."
 msgstr ""
+"Mi aŭdis lin. Li estas la ARMKORP-aj komandanto de ŝipaj fortoj. Unu el la "
+"plej bonaj veturistoj, kiuj ili iam havis."
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:292
 msgid ""
 "He did put up one hell of a fight! He didn't stick around for long, though."
-msgstr ""
+msgstr "Li batalis aĉe! Li tamen ne restis longe."
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:296
@@ -931,6 +933,9 @@ msgid ""
 "Whoops! Are you OK, Chris?\n"
 "Oh, sorry! I didn't see you there!"
 msgstr ""
+"Fi! Pardonu!\n"
+"Fi! Ĉu vi estas bone, Kris?\n"
+"Ho, pardonu! Mi ne vidis vin tie!"
 
 #. / Ursula: Player Hit Messages
 #. / This is a list of messages separated by "\n".  They are randomly
@@ -945,6 +950,9 @@ msgid ""
 "Don't fly into my missiles!\n"
 "Dammit, Chris, you made me miss!"
 msgstr ""
+"For mia vojo!\n"
+"Ne flugi al miaj raketoj!\n"
+"Damne, Kris, vi igis min maltrafi!"
 
 #. / Kline Venus insult messages
 #. / This is a list of insults separated by "\n".  They are randomly
@@ -958,6 +966,8 @@ msgid ""
 "Fool.\n"
 "And now you're nothing but a DEAD hero."
 msgstr ""
+"Stultulo.\n"
+"Kaj nun vi nur estas MORTA heroo."
 
 #. / Kline insult messages
 #. / This is a list of insults separated by "\n".  They are randomly
@@ -972,6 +982,9 @@ msgid ""
 "How very disappointing...\n"
 "Heroic. And foolish."
 msgstr ""
+"Mizera.\n"
+"Kiel ege ĉagrena...\n"
+"Heroa. Kaj stulta."
 
 #. / Dialog: Krass Tyler
 #. / Used when the player is killed in the Jupiter mission.
@@ -1186,7 +1199,7 @@ msgstr "*** Phoebe ***"
 #: ../src/intermission.c:320 ../src/intermission.c:342
 #, c-format
 msgid "Ejections : %d"
-msgstr ""
+msgstr "Elĵetoj : %d"
 
 #. / Status Screen text
 #: ../src/intermission.c:333
@@ -1299,12 +1312,12 @@ msgstr "SOS"
 #. / Mission objective (Allez)
 #: ../src/intermission.c:482 ../src/mission.c:205
 msgid "Assist medical supply craft"
-msgstr ""
+msgstr "Helpu veturilon de medicina provizo"
 
 #. / Eyananth, Urusor mission summary
 #: ../src/intermission.c:488
 msgid "Capture five WEAPCO supply craft"
-msgstr ""
+msgstr "Kapti kvin provizajn veturilojn"
 
 #. / Eyananth, Dorim mission summary
 #: ../src/intermission.c:494
@@ -1358,7 +1371,7 @@ msgstr "Asistu ribelan militistaron"
 #. / Mordor, Sivedi mission summary
 #: ../src/intermission.c:553
 msgid "Mine ore from asteroid belt"
-msgstr ""
+msgstr "Mini ercon el zono de asteroidoj"
 
 #. / Mordor, Almartha mission summary
 #: ../src/intermission.c:559
@@ -1599,17 +1612,22 @@ msgid ""
 "We're all counting on you, Chris! But remember, they didn't call that thing "
 "\"Star Killer\" just because it sounded nice!"
 msgstr ""
+"Ni ĉiuj fidas vin, Kris! Sed memoru: ili ne nomiĝis tiu afero \"Stela "
+"Murdisto\" nur ĉar ĝi sonis bone."
 
 #. / Mission dialog: Eyananth, interceptions (Sid Wilson)
 #. / "%d" must be retained as-is. It is replaced with the number of slaves that
 #. / need to be rescued.
 #: ../src/intermission.c:924
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "As you know, WEAPCO has many slaves in this system. If we free a large "
 "number of them, it might help to spark a rebellion. I estimate that we will "
 "need to rescue around %d to make a difference."
 msgstr ""
+"Kiel vi scias, ARMKORP havas multajn sklavojn en ĉi tiu sistemo. Se ni "
+"liberigas granda kvanto el ili, ĝi povus helpi krei ribelon. Mi kalkulas, ke "
+"ni bezonas savi ĉirkaŭ %d por "
 
 #. / Mission dialog: Eyananth, interceptions (Chris Bainfield)
 #: ../src/intermission.c:928
@@ -1656,6 +1674,8 @@ msgid ""
 "I've just received another SOS. This one is coming from a supply craft "
 "carrying essential medical supplies."
 msgstr ""
+"Mi ĵus ricevis alian SOS-n. Ĉi tiu venas de veturilo de provizo, kiu havas "
+"esencajn medicinajn provizojn."
 
 #. / Mission dialog: Eyananth, Allez (Chris Bainfield)
 #: ../src/intermission.c:962
@@ -1668,6 +1688,8 @@ msgid ""
 "I need some resources before we leave. It'll make life a lot easier in "
 "Mordor. Problem is that WEAPCO hoards these parts."
 msgstr ""
+"Mi bezonas iujn risurcojn antaŭ ni foriros. Ili faciligos la vivon en "
+"Mordor. La problemo estas, ke ARMKORP amasigas tiujn aferojn."
 
 #. / Mission dialog: Eyananth, Urusor (Chris Bainfield)
 #: ../src/intermission.c:973
@@ -1680,6 +1702,9 @@ msgid ""
 "There's a big shipment of them nearby. I can disable the supply craft "
 "carrying them; I just need you to give me some cover while I do it."
 msgstr ""
+"Estas granda transŝargo de ili apude. Mi povas malebligi la provizan "
+"veturilon, kiu portas ilin; mi nur bezonas, ke vi protektas min, kiam mi "
+"faras tion."
 
 #. / Mission dialog: Eyananth, Urusor (Chris Bainfield)
 #: ../src/intermission.c:981
@@ -1692,12 +1717,14 @@ msgid ""
 "A WEAPCO scientist just ran off in an escape pod and hid in the asteroid "
 "belt. If we capture him, we may be able to get some information about Mordor."
 msgstr ""
+"ARMKORPa sciencisto ĵus forkuris en fuĝa ŝelo kaj kaŝiĝis en zono de "
+"asteroidoj. Se ni kaptas lin, ni povus havi iom da informo pri Mordor."
 
 #. / Mission dialog: Eyananth, Dorim (Chris Bainfield)
 #: ../src/intermission.c:992
 msgid ""
 "Alright, I'll go look for him. I guess I'll grab some ore along the way."
-msgstr ""
+msgstr "Bone, mi serĉos lin. Mi supozas, ke mi akiros iom da erco dum la vojo."
 
 #. / Mission dialog: Eyananth, Elamale (Sid Wilson)
 #: ../src/intermission.c:999
@@ -1705,6 +1732,8 @@ msgid ""
 "I've received word that the slaves we rescued have started a rebellion. "
 "Looks like the plan worked."
 msgstr ""
+"Mi aŭdis, ke la sklavoj, kiujn ni savis, komencis ribelo. Ŝajnas, ke la "
+"plano funkciis. "
 
 #. / Mission dialog: Eyananth, Elamale (Phoebe Lexx)
 #: ../src/intermission.c:1003
@@ -1712,6 +1741,8 @@ msgid ""
 "WEAPCO has an automated mining ship in orbit around Elamale. How about we "
 "take it out and cause some confusion?"
 msgstr ""
+"ARMKORP havas aŭtomatan minan veturilon en orbito ĉirkaŭ Elemale. Ĉu ni "
+"eligos ilin kaj kreos konfuzon?"
 
 #. / Mission dialog: Eyananth, Elamale (Chris Bainfield)
 #: ../src/intermission.c:1007
@@ -1726,7 +1757,7 @@ msgstr "Ĝi funkcios, sed estu zorga."
 #. / Mission dialog: Mordor, interceptions (Chris Bainfield)
 #: ../src/intermission.c:1018
 msgid "What have you found out about that experimental fighter?"
-msgstr ""
+msgstr "Kion vi trovis pri tiu eksperimenta batalilo?"
 
 #. / Mission dialog: Mordor, interceptions (Sid Wilson)
 #: ../src/intermission.c:1022
@@ -1734,11 +1765,13 @@ msgid ""
 "It's got some kind of cloaking device that makes it invisible to radar. "
 "Could prove hard to track down."
 msgstr ""
+"Mi havas ia manteliĝa ilo, kiu estas nevidebla de radaroj. Povus esti "
+"malfacile ĝin serĉi. "
 
 #. / Mission dialog: Mordor, interceptions (Chris Bainfield)
 #: ../src/intermission.c:1026
 msgid "I'll just have to run around the system until I find it."
-msgstr ""
+msgstr "Mi devas kuri ĉirkaŭ la sistemo ĝis mi trovas ĝin."
 
 #. / Mission dialog: Mordor, interceptions (Sid Wilson)
 #: ../src/intermission.c:1030
@@ -1746,6 +1779,7 @@ msgid ""
 "It's likely to run away if you engage it in battle, so try and do as much "
 "damage to it as possible."
 msgstr ""
+"Eble ĝi forkuras, se vi batalas ĝin, do provu fari tiel damaĝon kiel eblas."
 
 #. / Mission dialog: Mordor, Odeon (Phoebe Lexx)
 #: ../src/intermission.c:1037
@@ -1753,12 +1787,14 @@ msgid ""
 "I've located my sister's ship currently in orbit around Odeon. She's "
 "ignoring my hails though."
 msgstr ""
+"Mi trovis la veturilo de mia fratino nun en orbito ĉirkaŭ Odeon. Ŝi tamen "
+"ignoras miajn vokojn."
 
 #. / Mission dialog: Mordor, Odeon (Sid Wilson)
 #: ../src/intermission.c:1041
 msgid ""
 "Something's off here. She seems to be travelling freely with a WEAPCO group."
-msgstr ""
+msgstr "Io estas stranga. Ŝi ŝajnas veturi libere kun ARMKORPa aro."
 
 #. / Mission dialog: Mordor, Odeon (Chris Bainfield)
 #: ../src/intermission.c:1045
@@ -1776,6 +1812,8 @@ msgid ""
 "She must be under some kind of mind control. I've heard of WEAPCO developing "
 "a new \"AI training program\" recently. We'd better rescue her!"
 msgstr ""
+"Ŝi devus esti sub ia pensa kontrolo. Mi aŭdis, ke ARMKORP plenumas novan "
+"\"AI ekzerca programo\" antaŭ ne longe. Ni devas savi ŝin!"
 
 #. / Mission dialog: Mordor, Fellon (Sid Wilson)
 #: ../src/intermission.c:1060
@@ -1783,6 +1821,8 @@ msgid ""
 "A rebel group has organized a counter strike. If we can help them secure a "
 "victory it will be a real boost to morale."
 msgstr ""
+"Ribela aro organizis kontraŭa batalo. Se ni povas helpi ilin sekurigi "
+"venkon, estus vera plifortigo de moralo."
 
 #. / Mission dialog: Mordor, Fellon (Chris Bainfield)
 #: ../src/intermission.c:1064
@@ -1792,7 +1832,7 @@ msgstr "Mojose! Ni faru tion!"
 #. / Mission dialog: Mordor, Fellon (Sid Wilson)
 #: ../src/intermission.c:1068
 msgid "Just make sure the rebel ships don't all get destroyed."
-msgstr ""
+msgstr "Nur estu certa, ke oni ne detruas la ribelaj veturiloj."
 
 #. / Mission dialog: Mordor, Sivedi (Sid Wilson)
 #: ../src/intermission.c:1075
@@ -1800,18 +1840,22 @@ msgid ""
 "Seems like taking out that WEAPCO mining ship wasn't such a good idea. The "
 "ore it collected is needed in weapons production."
 msgstr ""
+"Ŝajnas, ke detrui tiu ARMKORP-a mina veturilo ne estis tiel bona ideo. La "
+"erco, kiu akiris, estas bezonata en fabrikado de armiloj."
 
 #. / Mission dialog: Mordor, Sivedi (Chris Bainfield)
 #: ../src/intermission.c:1079
 msgid "Damn! I guess that means I'll have to mine some myself, then, huh?"
 msgstr ""
+"Damne! Mi supozas, ke tio signifas, ke mi mem do devos mini ion, ĉu ne?"
 
 #. / Mission dialog: Mordor, Sivedi (Sid Wilson)
 #: ../src/intermission.c:1083
+#, fuzzy
 msgid ""
 "Yes. Be careful, Chris. Your weapons weren't designed for that sort of work, "
 "after all."
-msgstr ""
+msgstr "Jes. Estu zorge"
 
 #. / Mission dialog: Mordor, Almartha (Chris Bainfield)
 #: ../src/intermission.c:1090
@@ -1955,7 +1999,7 @@ msgstr ""
 #. / Mission dialog: Sol, Earth (Phoebe Lexx)
 #: ../src/intermission.c:1205
 msgid "Right with you, Chris!"
-msgstr ""
+msgstr "Bone kun vi, Kris!"
 
 #. / Mission dialog: Sol, Earth (Ursula Lexx)
 #: ../src/intermission.c:1209
