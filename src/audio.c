@@ -224,7 +224,33 @@ void audio_playRandomTrack()
 	{
 #ifndef OLD_MUSIC
 		case MISN_START:
+		case MISN_INTERCEPTION:
 			audio_playMusic("music/railjet_short.ogg", -1, 0);
+			break;
+		case MISN_HAIL:
+		case MISN_JOLDAR:
+		case MISN_DORIM:
+		case MISN_SIVEDI:
+		case MISN_NEPTUNE:
+		case MISN_SATURN:
+			audio_playMusic("music/frozen_jam.ogg", -1, 0);
+			break;
+		case MISN_CERADSE:
+		case MISN_ALLEZ:
+		case MISN_URUSOR:
+		case MISN_FELLON:
+		case MISN_POSWIC:
+		case MISN_MARS:
+			audio_playMusic("music/sound_and_silence.ogg", -1, 0);
+			break;
+		case MISN_HINSTAG:
+		case MISN_NEROD:
+		case MISN_ODEON:
+		case MISN_ALMARTHA:
+		case MISN_PLUTO:
+		case MISN_URANUS:
+		case MISN_JUPITER:
+			audio_playMusic("music/space_dimensions.ogg", -1, 0);
 			break;
 #endif
 		case MISN_MOEBO:
