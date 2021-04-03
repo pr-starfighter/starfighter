@@ -53,7 +53,8 @@
 020 JunglistMilitia
 020 neocrey
 020 WeskerHunter
-020 Jan125
+020 The Diligent Circle
+020 Sweetpea
 020 Alexandr Zhelanov
 050 +++ SPECIAL THANKS +++
 030 Wes Whitmore  Ceri Done
