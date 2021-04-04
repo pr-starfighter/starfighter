@@ -13,3 +13,4 @@ nobase_dist_pkgdata_DATA = \
     data/TakaoPGothic.ttf
 
 EXTRA_DIST = autogen.sh win32build.sh misc
+
