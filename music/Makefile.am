@@ -6,6 +6,7 @@
 musicdir = $(pkgdatadir)/music
 
 nobase_dist_music_DATA = \
+    first_cyber_dance.ogg \
     frozen_jam.ogg \
     last_cyber_dance.ogg \
     orbital_colossus.ogg \
