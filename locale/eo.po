@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2020-12-25 14:04-0500\n"
-"PO-Revision-Date: 2021-04-03 17:17+0200\n"
+"PO-Revision-Date: 2021-04-10 11:15+0200\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: eo\n"
@@ -1864,11 +1864,14 @@ msgid ""
 "taking out key WEAPCO plants. Can you help me create a diversion by wreaking "
 "havoc a little bit away from that?"
 msgstr ""
+"He, Kraso! Mi bezonas, ke vi helpas nin fari ion. Foeba kaj Ursula detruas "
+"gravajn fabrikojn de ARMKORP. Ĉu vi povas helpi min krei distron kaŭzante "
+"grandan damaĝon iom for de tie?"
 
 #. / Mission dialog: Mordor, Almartha (Krass Tyler)
 #: ../src/intermission.c:1094
 msgid "Sure, I can help you out, boy. But I'll be needing my fee..."
-msgstr ""
+msgstr "Certe, mi povas helpi vin, knabo. Sed mi bezonos mian pagon..."
 
 #. / Mission dialog: Mordor, Poswic (Ursula Lexx)
 #: ../src/intermission.c:1101
@@ -1877,6 +1880,9 @@ msgid ""
 "captured, I found out that WEAPCO is transporting several important "
 "executives to Poswic."
 msgstr ""
+"Mi memoro finfine revenis. Ĉi tie estas io interesa: ĵus antaŭ mi estis "
+"kaptita, mi trovis, ke ARMKORP transportas kelkajn gravajn estraranojn al "
+"Posviko."
 
 #. / Mission dialog: Mordor, Poswic (Sid Wilson)
 #: ../src/intermission.c:1105
@@ -1884,6 +1890,8 @@ msgid ""
 "We can't let a rare opportunity like this slip through our fingers! I'll "
 "need some cover so I can disable that ship."
 msgstr ""
+"Ni ne povas perdi tia rara okazo! Mi bezonos iom da protekto, por ke mi "
+"povas malebligi tiun ŝipon."
 
 #. / Mission dialog: Mordor, Poswic (Chris Bainfield)
 #: ../src/intermission.c:1109
@@ -1916,6 +1924,8 @@ msgid ""
 "We've got to start from the outside and work our way in. That will give us "
 "less chance of being flanked during the final operation."
 msgstr ""
+"Ni devas komenci ekstere kaj prilabori nian vojon ene. Tiu donos al ni "
+"malpli da ŝancoj esti atakita flanke dum la fina operacio."
 
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Phoebe Lexx)
 #: ../src/intermission.c:1137
@@ -1938,6 +1948,8 @@ msgid ""
 "WEAPCO has set up a highly dangerous defense line between Saturn and Uranus. "
 "We'll need to take it out."
 msgstr ""
+"ARMKORP kreis tre danĝera defenda linio inter Saturno kaj Urano. Ni devas "
+"fini ĝin."
 
 #. / Mission dialog: Sol, Saturn (Ursula Lexx)
 #: ../src/intermission.c:1156
@@ -1950,27 +1962,30 @@ msgid ""
 "Several mobile Energy Ray cannons, not unlike the weapon used by the Star "
 "Killer back in Spirit."
 msgstr ""
+"Kelkaj moveblaj pafilegoj de Lumradio, ne kiel la armo uzita de la Stela "
+"Murdisto en Spirito."
 
 #. / Mission dialog: Sol, Saturn (Phoebe Lexx)
 #: ../src/intermission.c:1164
 msgid "Best check my ejection system, then!"
-msgstr ""
+msgstr "Tiam mi kontrolas mian elĵetilon!"
 
 #. / Mission dialog: Sol, Jupiter (Sid Wilson)
 #: ../src/intermission.c:1171
 msgid ""
 "While you were gone I picked up a distress call coming from around Jupiter."
-msgstr ""
+msgstr "Dum vi forestis mi ricevis helpan alvokon el ĉirkaŭ Jupitero."
 
 #. / Mission dialog: Sol, Jupiter (Ursula Lexx)
 #: ../src/intermission.c:1175
 msgid "Who would be sending out a distress call within Sol?"
-msgstr ""
+msgstr "Kiu sendus helpan alvokon ene de Sol?"
 
 #. / Mission dialog: Sol, Jupiter (Chris Bainfield)
 #: ../src/intermission.c:1179
 msgid "Let's check it out. Even if it's a trap, I think we can handle it."
 msgstr ""
+"Ni kontrolu tion. Eĉ se estas kaptilo mi pensas, ke ni povas prizorgi ĝin."
 
 #. / Mission dialog: Sol, Mars (Sid Wilson)
 #: ../src/intermission.c:1186
@@ -1978,11 +1993,13 @@ msgid ""
 "Chris, we've got a small problem. WEAPCO has deployed a minefield in the "
 "asteroid belt. We'll need you to clear a way through."
 msgstr ""
+"Kris, ni havas problemeton ARMKORP malpakis minkampon en la zono de "
+"asteroidoj. Ni bezonas, ke vi purigas la vojon."
 
 #. / Mission dialog: Sol, Mars (Chris Bainfield)
 #: ../src/intermission.c:1190
 msgid "Alright. I'll radio in once I've cleared a safe path."
-msgstr ""
+msgstr "Bone. Mi radios, kiam mi purigas sekuran vojon."
 
 #. / Mission dialog: Sol, Earth (Chris Bainfield)
 #: ../src/intermission.c:1197
@@ -1990,11 +2007,13 @@ msgid ""
 "Okay people, this is the big one. We go in fast and we go in hard. Don't "
 "hold back and hit them with everything we've got!"
 msgstr ""
+"Bone, homoj, ĉi tiu estas la granda. Ni iros rapide kaj ni iros forte. Ne "
+"retenu kaj trafu ilin kun ĉio, kio ni havas!"
 
 #. / Mission dialog: Sol, Earth (Sid Wilson)
 #: ../src/intermission.c:1201
 msgid "We've come too far to turn back now. None of us better die out there!"
-msgstr ""
+msgstr "Ni iris tro for por reveni nun. Neniu el ni mortu tie!"
 
 #. / Mission dialog: Sol, Earth (Phoebe Lexx)
 #: ../src/intermission.c:1205
@@ -2003,8 +2022,9 @@ msgstr "Bone kun vi, Kris!"
 
 #. / Mission dialog: Sol, Earth (Ursula Lexx)
 #: ../src/intermission.c:1209
+#, fuzzy
 msgid "WEAPCO'll regret sticking probes into my head!"
-msgstr ""
+msgstr "ARMKORP bedaŭros "
 
 #. / Mission dialog: Sol, Venus (Chris Bainfield)
 #: ../src/intermission.c:1216
