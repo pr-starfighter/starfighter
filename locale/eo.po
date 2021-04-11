@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2020-12-25 14:04-0500\n"
-"PO-Revision-Date: 2021-04-10 11:15+0200\n"
+"PO-Revision-Date: 2021-04-11 12:25+0200\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: eo\n"
@@ -617,9 +617,8 @@ msgstr "Do finfine mi trovis la homon, kiu kaŭzis nin tiom da problemoj!"
 
 #. / Dialog (Chris Bainfield)
 #: ../src/event.c:207
-#, fuzzy
 msgid "I see you've jammed up my warp drive. Who are you?"
-msgstr "Mi vidas, ke vi ŝtopiĝis mian . Kiu vi estas?"
+msgstr "Mi vidas, ke vi ŝtopiĝis mian varpon. Kiu vi estas?"
 
 #. / Dialog (Kline Kethlan)
 #: ../src/event.c:212
@@ -2037,6 +2036,8 @@ msgid ""
 "Be careful, Chris. We've won the war, but it would be a real shame if you "
 "died now!"
 msgstr ""
+"Atentu, Kris. Ni gajnis la militon, sed estus vere bedaŭrinde, ke vi mortus "
+"nun! "
 
 #: ../src/intermission.c:1271
 msgid "++ OPTIONS ++"
@@ -2175,17 +2176,17 @@ msgstr "Ne lasu, ke Foeba estu mortigita"
 #. / Mission objective (Allez)
 #: ../src/mission.c:212
 msgid "Do not allow supply craft to be destroyed"
-msgstr ""
+msgstr "Ne lasu, ke veturilo de provizoj estu detruita"
 
 #. / Mission objective (Urusor)
 #: ../src/mission.c:226
 msgid "Disable five WEAPCO supply craft"
-msgstr ""
+msgstr "Malebligu kvin veturilo de provizoj de ARMKORP"
 
 #. / Mission objective (Urusor)
 #: ../src/mission.c:237
 msgid "Protect supply craft AND Sid Wilson"
-msgstr ""
+msgstr "Protektu veturilo de provizoj KAJ Sid Vilson"
 
 #. / Mission objective (Dorim)
 #: ../src/mission.c:247
@@ -2235,7 +2236,7 @@ msgstr "Ne mortigu Ursulan"
 #. / Mission objective (Fellon)
 #: ../src/mission.c:325
 msgid "Assist attack on WEAPCO ore mining craft"
-msgstr ""
+msgstr "Subtenu atakon al mina veturilo de erco de ARMKORP"
 
 #. / Mission objective (Fellon)
 #: ../src/mission.c:332
@@ -2498,7 +2499,7 @@ msgstr "Sid estis mortigita!"
 #. / language being similarly cut out.
 #: ../src/mission.c:810
 msgid "HULL BREACHED! SYSTEMS FAILING! F-..."
-msgstr ""
+msgstr "ŜELO BREĈIS! SISTEMOJ FIASKAS! F-..."
 
 #: ../src/mission.c:856
 msgid "*** Slaves Rescued - Mission Completed ***"
@@ -2511,6 +2512,8 @@ msgid ""
 "Alright, I think I've rescued enough slaves to stir up some trouble for "
 "WEAPCO!"
 msgstr ""
+"Bone, mi pensas, ke mi savis sufiĉe da sklavoj por krei kelkajn problemojn "
+"al ARMKORP!"
 
 #. / Info line messages for remaining slaves to rescue
 #. / This is a "\n"-separated list of possible choices to make.  Please feel free
@@ -2559,7 +2562,7 @@ msgstr ">>> Ĉefa Celo Fiaskita <<<"
 
 #: ../src/mission.c:980
 msgid "Emergency warp drive activated. Press button to engage."
-msgstr ""
+msgstr "Urĝa varpo aktivigita. Prenu butonon por engaĝi."
 
 #: ../src/mission.c:986
 msgid "*** Interception Destroyed ***"
@@ -2974,7 +2977,7 @@ msgstr "Pliigas plibonitan plasman damaĝon"
 #. Overwritten later
 #: ../src/shop.c:453
 msgid "Liquid Nitrogen Capsules"
-msgstr ""
+msgstr "Likvaj Kapsuloj de Nitrogeno"
 
 #. / Shop item description: Liquid Nitrogen Capsules (PLASMA_MAX_RATE)
 #: ../src/shop.c:455
@@ -2997,7 +3000,7 @@ msgstr "Raketaj Municioj"
 #. / Shop item description: Rocket Ammo
 #: ../src/shop.c:475
 msgid "High velocity dumb fire rocket"
-msgstr ""
+msgstr "Rapidega stulta fajra raketo"
 
 #. ----------- Permanent Items -----------
 #. Overwritten later
