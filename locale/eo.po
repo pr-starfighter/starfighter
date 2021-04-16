@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2020-12-25 14:04-0500\n"
-"PO-Revision-Date: 2021-04-11 12:25+0200\n"
+"PO-Revision-Date: 2021-04-16 17:12+0200\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: eo\n"
@@ -48,9 +48,8 @@ msgstr "Via eblo supervivi ĝenas min! Klopodi eviti iuj el tiuj!"
 #. / Dialog (Kline Kethlan)
 #. / Used when the second "stage" of the Venus fight is entered.
 #: ../src/alien.c:1618
-#, fuzzy
 msgid "Very good, Bainfield. Now let's get a little more serious..."
-msgstr "Tre bone, Benfeldo."
+msgstr "Tre bone, Benfeldo. Nun pli serioze..."
 
 #: ../src/alien.c:2002
 msgid ">> Ally has ejected! <<"
@@ -188,9 +187,8 @@ msgstr "Estis honoro... batali kontraŭ vi..."
 #. / Dialog (Kline Kethlan)
 #. / Used when Kline is beaten in the Elamale mission.
 #: ../src/alien.c:2207
-#, fuzzy
 msgid "Seems I underestimated you, Bainfield. We'll meet again!"
-msgstr "Ŝajnas, ke mi subtaskis vin, Benfeldo. Ni rekontiĝos denove."
+msgstr "Ŝajnas, ke mi subtaskis vin, Benfeldo. Ni rekontiĝos denove!"
 
 #. / Dialog (Sid Wilson)
 #. / Used when Kline is beaten in the Earth mission.
@@ -303,9 +301,8 @@ msgstr "Tion mi pensas. Mi trovos agadplanon."
 
 #. / Cutscene (Phoebe Lexx)
 #: ../src/cutscene.c:227
-#, fuzzy
 msgid "Nice head gear! You shop at the same place as me, huh?"
-msgstr "Bela kapa ilaro! Vi aĉetas en la sama loko ol mi, he?"
+msgstr "Bela kapa ilaro! Vi aĉetas en la sama loko kiel mi, he?"
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:231
@@ -330,9 +327,8 @@ msgstr ""
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:243
-#, fuzzy
 msgid "Extra firepower? I wouldn't mind one bit! What do you think, Sid?"
-msgstr "Kroma fajra potenco? Mi"
+msgstr "Kroma fajra potenco? Estas al mi egale! Kion vi pensas, Sid?"
 
 #. / Cutscene (Sid Wilson)
 #: ../src/cutscene.c:247
@@ -350,13 +346,11 @@ msgstr "Tiukaze, bonvenon al veturilo, Foeba!"
 
 #. / Cutscene (Sid Wilson)
 #: ../src/cutscene.c:280
-#, fuzzy
 msgid "What happened back there, Chris? The video feed was jammed."
 msgstr "Kio okazis tie, Kris? La videa fluo estis ŝtopita."
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:284
-#, fuzzy
 msgid ""
 "We took down the WEAPCO mining vessel and then I was jumped by a man "
 "claiming to be Kline Kethlan."
@@ -442,13 +436,11 @@ msgstr ""
 
 #. / Cutscene (Sid Wilson)
 #: ../src/cutscene.c:357
-#, fuzzy
 msgid "She'll still be able to pilot a ship though."
-msgstr "Tamen ŝi ankoraŭ povos veturi ŝipon."
+msgstr "Tamen ŝi ankoraŭ povos veturi."
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:392
-#, fuzzy
 msgid "Sorry folks, we just lost our bargaining chip."
 msgstr "Pardonu, homoj, ni perdis nian intertraktadan ilon."
 
@@ -733,10 +725,9 @@ msgstr "Bona argumento. Estus stulte atendi ion alian."
 
 #. / Dialog (Krass Tyler)
 #: ../src/event.c:362
-#, fuzzy
 msgid ""
 "Now if you'll assist me in dying quickly, I have a cheque to earn, boy..."
-msgstr "Nu, se vi helpas min mortante rapide, mi havas "
+msgstr "Nu, se vi helpas min mortante rapide, mi devas gajni ĉekon, knabo..."
 
 #. / Dialog (Chris Bainfield)
 #: ../src/event.c:367
@@ -849,9 +840,8 @@ msgstr "Akiris Egan Ŝarĝilon!"
 #. / as a little sympathetic easter egg for players unfortunate enough to
 #. / have this happen to them.
 #: ../src/game.c:501
-#, fuzzy
 msgid "Damn! Upgrade failed (no plasma ammo)"
-msgstr "Damne! "
+msgstr "Damne! Plibonigo fiaskis (sen plasma municio)"
 
 #: ../src/game.c:507
 msgid "Plasma cells already at Maximum"
@@ -893,12 +883,14 @@ msgstr "Akirita iom da Erco"
 #. / following the English version only as a general guideline.  Any
 #. / number of messages is permitted.
 #: ../src/game.c:737
-#, fuzzy
 msgid ""
 "OW! I hope that was an accident!\n"
 "Chris, please be more careful!\n"
 "Ouch! What are you shooting at me for?"
-msgstr "AJ! Mi esperas, ke tio estis "
+msgstr ""
+"AJ! Mi esperas, ke tio estis akcidento!\n"
+"Kris, bonvolu esti pli zorgema!\n"
+"AJ! Kiel vi pafas al mi?"
 
 #. / Chris: Ursula Hit Messages
 #. / This is a list of messages separated by "\n".  They are randomly
@@ -1505,9 +1497,8 @@ msgstr ""
 
 #. / Mission dialog: Spirit, Hail (Chris Bainfield)
 #: ../src/intermission.c:847
-#, fuzzy
 msgid "As usual, you take me too lightly, Krass."
-msgstr "Kiel kutime, vi , Kraso"
+msgstr "Kiel kutime, vi ne taskas min serioze, Kraso."
 
 #. / Mission dialog: Spirit, Ceradse (Chris Bainfield)
 #: ../src/intermission.c:854
@@ -1593,12 +1584,14 @@ msgstr ""
 
 #. / Mission dialog: Spirit, Moebo (Sid Wilson)
 #: ../src/intermission.c:907
-#, fuzzy
 msgid ""
 "We've got a major problem here! WEAPCO has decided to stop our resistance by "
 "destroying Spirit! The explosion will incinerate everything in the system! "
 "You've got to destroy that frigate before it gets in range!"
-msgstr "Ni havas grandan problemon ĉi tie! ARMKORP decidis"
+msgstr ""
+"Ni havas grandan problemon ĉi tie! ARMKORP decidis ĉesigi nian kontraŭstaron "
+"detruante Spiriton! La eksplodo bruligos ĉion en la sistemo! Vi devas detrui "
+"tiun egan veturilon antaŭ ĝi atingas pafdistancon!"
 
 #. / Mission dialog: Spirit, Moebo (Chris Bainfield)
 #: ../src/intermission.c:911
@@ -1618,7 +1611,7 @@ msgstr ""
 #. / "%d" must be retained as-is. It is replaced with the number of slaves that
 #. / need to be rescued.
 #: ../src/intermission.c:924
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "As you know, WEAPCO has many slaves in this system. If we free a large "
 "number of them, it might help to spark a rebellion. I estimate that we will "
@@ -1626,7 +1619,7 @@ msgid ""
 msgstr ""
 "Kiel vi scias, ARMKORP havas multajn sklavojn en ĉi tiu sistemo. Se ni "
 "liberigas granda kvanto el ili, ĝi povus helpi krei ribelon. Mi kalkulas, ke "
-"ni bezonas savi ĉirkaŭ %d por "
+"ni bezonas savi ĉirkaŭ %d por efiki."
 
 #. / Mission dialog: Eyananth, interceptions (Chris Bainfield)
 #: ../src/intermission.c:928
@@ -1635,13 +1628,16 @@ msgstr "La plej granda parto de la sklavoj laboras en la ercaj minejoj, ĉu ne?"
 
 #. / Mission dialog: Eyananth, interceptions (Sid Wilson)
 #: ../src/intermission.c:932
-#, fuzzy
 msgid ""
 "Yes, but attacking the mines directly would be dangerous. You'd be better "
 "off intercepting slave transports. What you'll have to do is fly around and "
 "see if you can intercept a WEAPCO patrol. Of course, they might not be "
 "escorting any slave units, so be careful!"
-msgstr "Jes, sed ataki la minojn rekte estus danĝera."
+msgstr ""
+"Jes, sed ataki la minojn rekte estus danĝera. Oni prefere interkaptas "
+"sklavajn veturilojn. Kion vi devas fari, estas flugi ĉirkaŭe kaj vidi se vi "
+"povas interkapti ARMKORP-an patrolon. Kompreneble ili povus ne eskorti "
+"sklavajn legiojn, do estu zorgema!"
 
 #. / Mission dialog: Eyananth, Nerod (Phoebe Lexx)
 #: ../src/intermission.c:939
@@ -1850,11 +1846,11 @@ msgstr ""
 
 #. / Mission dialog: Mordor, Sivedi (Sid Wilson)
 #: ../src/intermission.c:1083
-#, fuzzy
 msgid ""
 "Yes. Be careful, Chris. Your weapons weren't designed for that sort of work, "
 "after all."
-msgstr "Jes. Estu zorge"
+msgstr ""
+"Jes. Estu zorgema, Kris. Viaj armoj ja ne estis kreitaj por tia laboro."
 
 #. / Mission dialog: Mordor, Almartha (Chris Bainfield)
 #: ../src/intermission.c:1090
@@ -2021,9 +2017,8 @@ msgstr "Bone kun vi, Kris!"
 
 #. / Mission dialog: Sol, Earth (Ursula Lexx)
 #: ../src/intermission.c:1209
-#, fuzzy
 msgid "WEAPCO'll regret sticking probes into my head!"
-msgstr "ARMKORP bedaŭros "
+msgstr "ARMKORP bedaŭros glui sondojn en mia kapo!"
 
 #. / Mission dialog: Sol, Venus (Chris Bainfield)
 #: ../src/intermission.c:1216
@@ -2313,7 +2308,7 @@ msgstr "Ĉiuj veturiloj malebligitaj!"
 #. / to add as many as you like. Each entry must have one instance of "%d", which
 #. / is replaced with the number remaining.
 #: ../src/mission.c:645
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Collect $%d more...\n"
 "$%d more to collect...\n"
@@ -2324,10 +2319,10 @@ msgid_plural ""
 "$%d more to collect...\n"
 "$%d more needed..."
 msgstr[0] ""
-"Collect $%d more...\n"
-"$%d more to collect...\n"
-"Just $%d more needed...\n"
-"Collect just $%d more..."
+"Akiru $%d pli...\n"
+"$%d pli por akiri...\n"
+"Nur $%d pli bezonata...\n"
+"Akiru nur $%d pli..."
 msgstr[1] ""
 "Akiru $%d pli...\n"
 "$%d por akiri...\n"
@@ -2395,12 +2390,11 @@ msgstr "Karga ŝelo detruita!"
 #. / Dialog (Sid Wilson)
 #. / Used when a cargo pod is destroyed in the Ceradse mission.
 #: ../src/mission.c:703
-#, fuzzy
 msgid ""
 "Chris, we needed that pod! I told you that we couldn't afford to lose a "
 "single one!"
 msgstr ""
-"Kris, ni bezonis tiun ŝelon! Mi diris al vi, ke ni ne povis permesi nin "
+"Kris, ni bezonis tiun ŝelon! Mi diris al vi, ke ni ne povis permesi al ni "
 "perdi eĉ unu!"
 
 #: ../src/mission.c:706
@@ -2697,9 +2691,8 @@ msgstr "Difektitaj Ludaj Datumoj"
 
 #. / Used for empty save slots.
 #: ../src/save.c:127
-#, fuzzy
 msgid "AUTOSAVE (Empty)"
-msgstr "AŬTOMATA KONSERVO (Malplena)"
+msgstr "AŬTOMATA KONSERVAĴO (Malplena)"
 
 #: ../src/save.c:127
 msgid "Empty"
@@ -3100,7 +3093,7 @@ msgstr "Ŝarĝa Pafilego"
 #. / Shop item description: Charge Cannon
 #: ../src/shop.c:543
 msgid "Compacts plasma into clusters for greater damage"
-msgstr ""
+msgstr "Kuniĝas plasmo per aro por pli granda damaĝo"
 
 #: ../src/shop.c:547
 msgid "Dual Homing Missile Launcher"
