@@ -6,6 +6,7 @@
 musicdir = $(pkgdatadir)/music
 
 nobase_dist_music_DATA = \
+    android_oppression.ogg \
     first_cyber_dance.ogg \
     frozen_jam.ogg \
     last_cyber_dance.ogg \
@@ -16,8 +17,7 @@ nobase_dist_music_DATA = \
     rise_of_spirit.ogg \
     sound_and_silence.ogg \
     space_dimensions.ogg \
-    through_space.ogg \
-    walking_among_androids.ogg
+    through_space.ogg
 
 EXTRA_DIST = sources
 

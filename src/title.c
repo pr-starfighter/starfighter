@@ -245,8 +245,10 @@ int title_show()
 	prlogo = gfx_loadImage("gfx/prlogo.png");
 	sflogo = gfx_loadImage("gfx/sflogo.png");
 
+	gfx_createTextObject(TS_DILIGENTCIRCLE, "THE DILIGENT CIRCLE", 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_PRESENTS, "PRESENTS", 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_AN_SDL_GAME, "AN SDL GAME", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_ORIGINALLY_BY, "ORIGINALLY BY", 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_START_NEW_GAME, _("START NEW GAME"), 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_LOAD_GAME, _("LOAD GAME"), 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_CONTINUE_CURRENT_GAME, _("CONTINUE CURRENT GAME"), 0, 0, FONT_WHITE);
@@ -316,7 +318,7 @@ int title_show()
 #ifdef OLD_MUSIC
 	audio_playMusic("music/Platinum.mod", 1, 0);
 #else
-	audio_playMusic("music/walking_among_androids.ogg", 1, 0);
+	audio_playMusic("music/android_oppression.ogg", 1, 1);
 #endif
 
 	while (!engine.done)
@@ -342,23 +344,28 @@ int title_show()
 			}
 		}
 
-		if ((now - then > 2000) && (now - then < 8000) && (!skip))
+		if ((now - then > 2000) && (now - then < 7000) && (!skip))
 		{
-			screen_blit(prlogo, ((screen->w - prlogo->w) / 2), ((screen->h - prlogo->h) / 2));
+			screen_blitText(TS_DILIGENTCIRCLE, -1, screen->h / 2);
 		}
-		else if ((now - then > 9000) && (now - then < 15000) && (!skip))
+		else if ((now - then > 7500) && (now - then < 14250) && (!skip))
 		{
 			screen_blitText(TS_PRESENTS, -1, screen->h / 2);
 		}
-		else if ((now - then > 16000) && (now - then < 21000) && (!skip))
+		else if ((now - then > 14750) && (now - then < 21500) && (!skip))
 		{
 			screen_blitText(TS_AN_SDL_GAME, -1, screen->h / 2);
 		}
-		else if ((now - then > 25500) || (skip))
+		else if ((now - then > 22000) && (now - then < 29000) && (!skip))
+		{
+			screen_blitText(TS_ORIGINALLY_BY, -1, screen->h / 2 - MENU_SPACING);
+			screen_blit(prlogo, ((screen->w - prlogo->w) / 2), screen->h / 2);
+		}
+		else if ((now - then > 29500) || (skip))
 		{
 			screen_blit(sflogo, ((screen->w - sflogo->w) / 2), ((screen->h - sflogo->h) / 3));
 
-			if ((now - then >= 27500) || (skip))
+			if ((now - then >= 33250) || (skip))
 			{
 				optionRec.x = screen->w / 2 - optionRec.w / 2;
 				optionRec.y = (MENU_Y - 4 - MENU_SPACING) + MENU_SPACING * selectedOption;
@@ -517,7 +524,7 @@ int title_show()
 #ifdef OLD_MUSIC
 								audio_playMusic("music/Platinum.mod", 1, 0);
 #else
-								audio_playMusic("music/walking_among_androids.ogg", 1, 0);
+								audio_playMusic("music/android_oppression.ogg", 1, 1);
 #endif
 							}
 							else
