@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2020-12-25 14:04-0500\n"
-"PO-Revision-Date: 2021-06-19 15:01+0200\n"
+"PO-Revision-Date: 2021-06-25 17:06+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -542,23 +542,27 @@ msgstr "¡Solo unos minutos!"
 #: ../src/event.c:129
 msgid ""
 "Alright! We've got the weapons working again! Now to look at the engines..."
-msgstr ""
+msgstr "¡Bien! ¡Ya funcionan de nuevo las armas! Ahora a mirar los motores..."
 
 #. / Dialog (friendly transport from Eyananth, Allez mission)
 #: ../src/event.c:136
 msgid "DAMN! The guns are offline again! What you guys doing back there?!"
 msgstr ""
+"¡MALDICIÓN! ¡Las pistolas están desconectadas de nuevo! ¡¿Qué estáis "
+"haciendo ahí atrás?!"
 
 #. / Dialog (friendly transport from Eyananth, Allez mission)
 #: ../src/event.c:143
 msgid ""
 "Chris, HELP! We've lost all system power! We're a sitting duck out here!"
 msgstr ""
+"¡Cris, AYUDA! ¡Hemos perdido todo el sistema eléctrico! ¡Somos presa fácil "
+"aquí!"
 
 #. / Dialog (friendly transport from Eyananth, Allez mission)
 #: ../src/event.c:150
 msgid "Just a little longer..."
-msgstr ""
+msgstr "Solo un poco más..."
 
 #. / Dialog (friendly transport from Eyananth, Allez mission)
 #: ../src/event.c:155
@@ -566,6 +570,8 @@ msgid ""
 "Okay! We've fixed that one. We think we've found the problem with the "
 "engines too..."
 msgstr ""
+"¡Vale! Hemos arreglado eso. Creemos haber encontrado también el problema con "
+"los motores..."
 
 #. / Dialog (friendly transport from Eyananth, Allez mission)
 #: ../src/event.c:162
@@ -578,11 +584,13 @@ msgid ""
 "Ummm... something about this doesn't look right! They should be offering "
 "more resistance than this!"
 msgstr ""
+"¡Ummm... hay algo de esto que no me gusta! ¡Deberían oponer más resistencia "
+"que esto!"
 
 #. / Dialog (Phoebe Lexx)
 #: ../src/event.c:188
 msgid "DAMMIT! It's a trap! Come on, Chris, we have to leave NOW!"
-msgstr ""
+msgstr "¡MALDICIÓN! ¡Es una trampa! ¡Vamos, Cris, tenemos que irnos YA!"
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:197
@@ -593,11 +601,13 @@ msgstr "Cris, q..."
 #: ../src/event.c:202
 msgid "So finally I meet the man who has been causing us so much trouble!"
 msgstr ""
+"¡Así que finalmente me cruzo con el hombre que nos ha estado causando tantos "
+"problemas!"
 
 #. / Dialog (Chris Bainfield)
 #: ../src/event.c:207
 msgid "I see you've jammed up my warp drive. Who are you?"
-msgstr ""
+msgstr "Veo que has bloqueado mi motor warp. ¿Quién eres?"
 
 #. / Dialog (Kline Kethlan)
 #: ../src/event.c:212
@@ -605,11 +615,13 @@ msgid ""
 "I am Kline Kethlan. And I am here to put to a stop to your worthless little "
 "crusade!"
 msgstr ""
+"Soy Kline Kethlan. ¡Y estoy aquí para poner fin a vuestra pequeña cruzada "
+"inútil!"
 
 #. / Dialog (Chris Bainfield)
 #: ../src/event.c:217
 msgid "Kline Kethlan, huh? You sure sound confident."
-msgstr ""
+msgstr "Kline Kethlan, ¿eh? Si que suenas confiado."
 
 #. / Dialog (Kline Kethlan)
 #: ../src/event.c:222
@@ -617,12 +629,15 @@ msgid ""
 "Nowhere to run, nowhere to hide, and no one to help you! This will certainly "
 "be interesting..."
 msgstr ""
+"¡Ningún sitio a donde huir, ningún sitio donde esconderse, y nadie que te "
+"ayude! Seguro que esto será interesante..."
 
 #. / Dialog (Ursula Lexx under mind control)
 #. / Translation note: This should appear robotic or at least monotone.
 #: ../src/event.c:235
 msgid "Unidentified craft sighted. Will proceed to destroy all targets."
 msgstr ""
+"Avistada nave no identificada. Se procederá a destruir todos los objetivos."
 
 #. / Dialog (Chris Bainfield)
 #: ../src/event.c:240
@@ -630,21 +645,23 @@ msgid ""
 "Looks like she's got one of those homing missile launchers too! Any advice, "
 "Phoebe?"
 msgstr ""
+"¡Parece que ella también tiene uno de esos lanzadores de misiles "
+"teledirigidos! ¿Algún consejo, Phoebe?"
 
 #. / Dialog (Phoebe Lexx)
 #: ../src/event.c:245
 msgid "Just try and dodge them!"
-msgstr ""
+msgstr "¡Solo trata de esquivarlos!"
 
 #. / Dialog (Chris Bainfield)
 #: ../src/event.c:253
 msgid "That's a nice ship you got there, old-timer!"
-msgstr ""
+msgstr "¡Eso de ahí es una bonita nave, veterano!"
 
 #. / Dialog (Krass Tyler)
 #: ../src/event.c:258
 msgid "Thanks, boy. Made it myself!"
-msgstr ""
+msgstr "Gracias, chico. ¡Hecho por mí!"
 
 #. / Dialog (Krass Tyler)
 #: ../src/event.c:263
@@ -652,41 +669,43 @@ msgid ""
 "Hey, boy, we've got company! Looks like your friends didn't do a very good "
 "job after all!"
 msgstr ""
+"¡Ey, chico, tenemos compañía! ¡Parece que tus amigos no hicieron un buen "
+"trabajo después de todo!"
 
 #. / Dialog (Krass Tyler)
 #: ../src/event.c:274
 msgid "Keep those things off my back or it'll cost you extra!"
-msgstr ""
+msgstr "¡Mantén esas cosas lejos de mi espalda o te costará un plus!"
 
 #. / Dialog (Phoebe Lexx)
 #: ../src/event.c:283
 msgid "Hey! Did we miss anything exciting?"
-msgstr ""
+msgstr "¡Ey! ¿Nos perdimos algo emocionante?"
 
 #. / Dialog (Krass Tyler)
 #: ../src/event.c:294
 msgid "I've earned my fee. I'll see you around, boy!"
-msgstr ""
+msgstr "He ganado mi dinero. ¡Nos vemos, chico!"
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:304
 msgid "DAMMIT! It's getting away! We've got to stop it!"
-msgstr ""
+msgstr "¡MALDICIÓN! ¡Se está alejando! ¡Tenemos que pararlo!"
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:314
 msgid "Chris! Another two of those ray cannons just arrived in your sector!"
-msgstr ""
+msgstr "¡Cris! ¡Dos cañones más de esos han llegado a tu sector!"
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:325
 msgid "Two more!"
-msgstr ""
+msgstr "¡Dos más!"
 
 #. / Dialog (Ursula Lexx)
 #: ../src/event.c:343
 msgid "It's a trap! My God! It's Tyler!"
-msgstr ""
+msgstr "¡Es una trampa! ¡Dios mío! ¡Es Tyler!"
 
 #. / Dialog (Krass Tyler)
 #: ../src/event.c:348
@@ -694,22 +713,26 @@ msgid ""
 "I'm a mercenary, what do you expect?! WEAPCO hired me to do a job, just like "
 "you have been doing."
 msgstr ""
+"Soy un mercenario, ¡¿qué esperas?! WEAPCO me contrató para hacer un trabajo, "
+"igual que tú has estado haciendo."
 
 #. / Dialog (Chris Bainfield)
 #: ../src/event.c:353
 msgid "Good point. It would be foolish to expect anything else."
-msgstr ""
+msgstr "Buen punto. Sería estúpido esperar cualquier otra cosa."
 
 #. / Dialog (Krass Tyler)
 #: ../src/event.c:362
 msgid ""
 "Now if you'll assist me in dying quickly, I have a cheque to earn, boy..."
 msgstr ""
+"Bueno, si quieres ayudarme muriendo rápido, tengo un cheque que ganar, "
+"chico..."
 
 #. / Dialog (Chris Bainfield)
 #: ../src/event.c:367
 msgid "I have a name, you know. Do you remember it?"
-msgstr ""
+msgstr "Tengo nombre, ya sabes. ¿Lo recuerdas?"
 
 #. / Dialog (Kline Kethlan)
 #: ../src/event.c:383
@@ -717,11 +740,15 @@ msgid ""
 "That's far enough, Bainfield. You've been lucky so far, but your luck is "
 "about to run out!"
 msgstr ""
+"Suficiente, Bainfeild. Has sido afortunado hasta ahora, ¡pero tu suerte está "
+"a punto de terminar!"
 
 #. / Dialog (Chris Bainfield)
 #: ../src/event.c:388
 msgid "Yeah, right! Like I'd lose to you after coming this far!"
 msgstr ""
+"¡Sí, claro! ¡Como si fuera a perder contra ti después de haber llegado tan "
+"lejos!"
 
 #. / Dialog (Chris Bainfield)
 #: ../src/event.c:396
@@ -729,15 +756,17 @@ msgid ""
 "WEAPCO is finished, Kethlan! You have nowhere to run, nowhere to hide, and "
 "no one to help you."
 msgstr ""
+"¡WEAPCO está acabada, Kethlan! No tienes adonde huir, donde esconderte y "
+"nadie para ayudarte."
 
 #. / Dialog (Kline Kethlan)
 #: ../src/event.c:401
 msgid "You underestimate me, Bainfield."
-msgstr ""
+msgstr "Me subestimas, Bainfield."
 
 #: ../src/game.c:71
 msgid "Spirit"
-msgstr ""
+msgstr "Spirit"
 
 #: ../src/game.c:72
 msgid "Eyananth"
@@ -757,12 +786,12 @@ msgstr "Sol"
 #, c-format
 msgid "Got $%d"
 msgid_plural "Got $%d"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Conseguí $%d"
+msgstr[1] "Conseguí $%d"
 
 #: ../src/game.c:329
 msgid "Rocket Ammo at Maximum"
-msgstr ""
+msgstr "Munición de Cohetes al Máximo"
 
 #. / "%d" must be retained. It is replaced with the number of rockets
 #. / picked up.
@@ -770,40 +799,40 @@ msgstr ""
 #, c-format
 msgid "Got %d rocket"
 msgid_plural "Got %d rockets"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Conseguí %d cohete"
+msgstr[1] "Conseguí %d cohetes"
 
 #: ../src/game.c:345
 msgid "Restored 10 shield points"
-msgstr ""
+msgstr "Restablecidos 10 puntos de escudo"
 
 #: ../src/game.c:358 ../src/game.c:377
 msgid "Firing rate already at maximum"
-msgstr ""
+msgstr "Frecuencia de disparo ya al máximo"
 
 #: ../src/game.c:362 ../src/game.c:381
 msgid "Firing rate increased"
-msgstr ""
+msgstr "Frecuencia de disparo aumentada"
 
 #: ../src/game.c:386 ../src/game.c:427 ../src/game.c:468
 msgid "Upgrade failed (no plasma ammo)"
-msgstr ""
+msgstr "Mejora fallida (sin munición de plasma)"
 
 #: ../src/game.c:399 ../src/game.c:418
 msgid "Plasma output already at maximum"
-msgstr ""
+msgstr "Disparos de plasma ya al máximo"
 
 #: ../src/game.c:403 ../src/game.c:422
 msgid "Plasma output increased"
-msgstr ""
+msgstr "Aumentados disparos de plasma"
 
 #: ../src/game.c:440 ../src/game.c:459
 msgid "Plasma damage already at maximum"
-msgstr ""
+msgstr "Daño de plasma ya al máximo"
 
 #: ../src/game.c:444 ../src/game.c:463
 msgid "Plasma damage increased"
-msgstr ""
+msgstr "Daño de plasma aumentado"
 
 #: ../src/game.c:493
 msgid "Picked up a Super Charge!"
@@ -963,13 +992,13 @@ msgstr ""
 #: ../src/game.c:1961 ../src/shop.c:353
 #, c-format
 msgid "Cash: $%d"
-msgstr ""
+msgstr "Dinero: $%d"
 
 #. / "%.3d" must be retained.  It is replaced with the amount of plasma ammo.
 #: ../src/game.c:1998
 #, c-format
 msgid "Plasma: %.3d"
-msgstr ""
+msgstr "Plasma: %.3d"
 
 #. / Used to indicate the charge meter for the charger cannon in the HUD.
 #: ../src/game.c:2005
@@ -979,7 +1008,7 @@ msgstr "Carga"
 #. / Used to indicate the heat meter for the laser cannon in the HUD.
 #: ../src/game.c:2010
 msgid "Heat"
-msgstr ""
+msgstr "Calor"
 
 #. / "%.2d" must be retained.  It is replaced with the amount of rocket ammo.
 #. / Retain "%.2d".  It is replaced with the ship's current number of rockets.
@@ -988,7 +1017,7 @@ msgstr ""
 #: ../src/game.c:2015 ../src/shop.c:363
 #, c-format
 msgid "Rockets: %.2d"
-msgstr ""
+msgstr "Cohetes: %.2d"
 
 #. / DIFFICULTY_SUPEREASY
 #: ../src/game.c:2425
@@ -1031,7 +1060,7 @@ msgstr "Clásica"
 #. / before distributing to make sure you are allowed to do so.
 #: ../src/gfx.c:116
 msgid "data/TakaoPGothic.ttf"
-msgstr ""
+msgstr "data/TakaoPGothic.ttf"
 
 #: ../src/intermission.c:212
 msgid "No Destination"
@@ -1049,7 +1078,7 @@ msgstr "Dificultad : %s"
 #: ../src/intermission.c:248
 #, c-format
 msgid "Shots Fired : %d"
-msgstr ""
+msgstr "Tiros Disparados : %d"
 
 #. / Status Screen text
 #. / Retain "%d" as-is.  It is replaced with the number of hits scored.
@@ -1065,7 +1094,7 @@ msgstr ""
 #: ../src/intermission.c:260
 #, c-format
 msgid "Accuracy : %d%%"
-msgstr ""
+msgstr "Precisión : %d%%"
 
 #. / Status Screen text
 #. / Retain "%d" as-is.  It is replaced with the number of kills.
@@ -1082,7 +1111,7 @@ msgstr ""
 
 #: ../src/intermission.c:272
 msgid "*** Chris ***"
-msgstr ""
+msgstr "*** Cris ***"
 
 #. / Status Screen text
 #. / Retain "%d" as-is.  It is replaced with the number of kills.
@@ -1809,7 +1838,7 @@ msgstr ""
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Phoebe Lexx)
 #: ../src/intermission.c:1137
 msgid "Sounds like a plan, Sid!"
-msgstr ""
+msgstr "¡Suena como un plan, Sid!"
 
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Ursula Lexx)
 #: ../src/intermission.c:1141
@@ -1923,37 +1952,37 @@ msgstr ""
 
 #: ../src/intermission.c:1282
 msgid "SOUND"
-msgstr ""
+msgstr "SONIDO"
 
 #: ../src/intermission.c:1293
 msgid "MUSIC"
-msgstr ""
+msgstr "MÚSICA"
 
 #: ../src/intermission.c:1304
 msgid "FULLSCREEN"
-msgstr ""
+msgstr "PANTALLA COMPLETA"
 
 #. / Retain "%s" as-is.  It is replaced with the current system name.
 #: ../src/intermission.c:1506
 #, c-format
 msgid "System : %s"
-msgstr ""
+msgstr "Sistema : %s"
 
 #: ../src/intermission.c:1509
 msgid "Start Next Mission"
-msgstr ""
+msgstr "Comenzar Siguiente Misión"
 
 #: ../src/intermission.c:1510
 msgid "Go to Destination Planet"
-msgstr ""
+msgstr "Ir al Planeta de Destino"
 
 #: ../src/intermission.c:1511
 msgid "View System Map"
-msgstr ""
+msgstr "Ver Mapa de Sistema"
 
 #: ../src/intermission.c:1513
 msgid "Save Game"
-msgstr ""
+msgstr "Guardar Partida"
 
 #: ../src/intermission.c:1514
 msgid "Upgrade FIREFLY"
@@ -1961,15 +1990,15 @@ msgstr ""
 
 #: ../src/intermission.c:1515
 msgid "Missions"
-msgstr ""
+msgstr "Misiones"
 
 #: ../src/intermission.c:1516
 msgid "Options"
-msgstr ""
+msgstr "Opciones"
 
 #: ../src/intermission.c:1517
 msgid "Exit to Title Screen"
-msgstr ""
+msgstr "Salir a la Pantalla de Título"
 
 #. / Retain "%s" as-is.  It is replaced with the name of the planet
 #. / the player is currently stationed on.
@@ -2099,7 +2128,7 @@ msgstr ""
 #. / Mission objective (Odeon)
 #: ../src/mission.c:311
 msgid "Do not kill Ursula"
-msgstr ""
+msgstr "No mates a Ursula"
 
 #. / Mission objective (Fellon)
 #: ../src/mission.c:325
@@ -2471,11 +2500,11 @@ msgstr ""
 
 #: ../src/mission.c:1320 ../src/mission.c:1340
 msgid "COMPLETED"
-msgstr ""
+msgstr "COMPLETADA"
 
 #: ../src/mission.c:1325 ../src/mission.c:1345
 msgid "FAILED"
-msgstr ""
+msgstr "FALLADA"
 
 #. / "%d" must be retained.  It is replaced with the money earned
 #. / from the shield bonus.
@@ -2520,7 +2549,7 @@ msgstr ""
 
 #: ../src/save.c:343
 msgid "*** HELP ***"
-msgstr ""
+msgstr "*** AYUDA ***"
 
 #: ../src/save.c:355
 msgid "SAVE"
@@ -2552,30 +2581,30 @@ msgstr ""
 
 #: ../src/save.c:366
 msgid "Game Saved"
-msgstr ""
+msgstr "Partida Guardada"
 
 #: ../src/save.c:369
 msgid "Save Deleted"
-msgstr ""
+msgstr "Partida Eliminada"
 
 #: ../src/shop.c:57
 msgid "Secondary Weapon"
-msgstr ""
+msgstr "Arma Secundaria"
 
 #. / Shop info: current secondary: none
 #: ../src/shop.c:63
 msgid "Uninstalled"
-msgstr ""
+msgstr "Desinstalado"
 
 #. / Shop info: current secondary: rockets
 #: ../src/shop.c:67
 msgid "Rockets"
-msgstr ""
+msgstr "Cohotes"
 
 #. / Shop info: current secondary: double rockets
 #: ../src/shop.c:71
 msgid "Dbl Rockets"
-msgstr ""
+msgstr "Cohetes Dbl"
 
 #. / Shop info: current secondary: micro rockets
 #: ../src/shop.c:75
@@ -2585,7 +2614,7 @@ msgstr ""
 #. / Shop info: current secondary: laser
 #: ../src/shop.c:79
 msgid "Laser"
-msgstr ""
+msgstr "Láser"
 
 #. / Shop info: current secondary: charger
 #: ../src/shop.c:83
@@ -2668,7 +2697,7 @@ msgstr ""
 #: ../src/shop.c:320
 #, c-format
 msgid "Capacity: %d"
-msgstr ""
+msgstr "Capacidad: %d"
 
 #: ../src/shop.c:329
 msgid "Temporary Weapons"
@@ -2690,7 +2719,7 @@ msgstr ""
 #: ../src/shop.c:350
 #, c-format
 msgid "Shield: %d"
-msgstr ""
+msgstr "Escudo: %d"
 
 #. / Retain "%.3d".  It is replaced with the ship's current number of plasma cells.
 #. / "%.3d" can be changed to "%d" if you wish to not fill in space with zeroes,
@@ -2887,16 +2916,16 @@ msgstr ""
 
 #: ../src/shop.c:527
 msgid "Laser Cannon"
-msgstr ""
+msgstr "Cañón Láser"
 
 #. / Shop item description: Laser Cannon
 #: ../src/shop.c:529
 msgid "Fires a continuous stream of energy particles"
-msgstr ""
+msgstr "Dispara un flujo continuo de partículas de energía"
 
 #: ../src/shop.c:533
 msgid "Homing Missile Launcher"
-msgstr ""
+msgstr "Lanzador de Misiles Teledirigidos"
 
 #. / Shop item description: Homing Missile Launcher
 #. / %i must be retained.  It is replaced by the maximum missile
@@ -2904,7 +2933,7 @@ msgstr ""
 #: ../src/shop.c:537
 #, c-format
 msgid "Fires homing missile (max %i missiles)"
-msgstr ""
+msgstr "Dispara misil teledirigido (max %i misiles)"
 
 #: ../src/shop.c:541
 msgid "Charge Cannon"
@@ -2941,119 +2970,119 @@ msgstr ""
 
 #: ../src/title.c:93
 msgid "START GAME"
-msgstr ""
+msgstr "COMENZAR JUEGO"
 
 #. / Difficulty menu option.
 #. / Retain "%s" as-is.  It is replaced with the difficulty chosen.
 #: ../src/title.c:99
 #, c-format
 msgid "DIFFICULTY - %s"
-msgstr ""
+msgstr "DIFICULTAD - %s"
 
 #: ../src/title.c:116
 msgid "SOUND - ON"
-msgstr ""
+msgstr "SONIDO - ACTIVADO"
 
 #: ../src/title.c:118
 msgid "SOUND - OFF"
-msgstr ""
+msgstr "SONIDO - DESACTIVADO"
 
 #: ../src/title.c:121
 msgid "MUSIC - ON"
-msgstr ""
+msgstr "MÚSICA - ACTIVADA"
 
 #: ../src/title.c:123
 msgid "MUSIC - OFF"
-msgstr ""
+msgstr "MÚSICA - DESACTIVADA"
 
 #: ../src/title.c:126
 msgid "FULLSCREEN - ON"
-msgstr ""
+msgstr "PANTALLA COMPLETA - ACTIVADA"
 
 #: ../src/title.c:128
 msgid "FULLSCREEN - OFF"
-msgstr ""
+msgstr "PANTALLA COMPLETA - DESACTIVADA"
 
 #: ../src/title.c:131
 msgid "AUTOPAUSE - ON"
-msgstr ""
+msgstr "AUTOPAUSA - ACTIVADA"
 
 #: ../src/title.c:133
 msgid "AUTOPAUSE - OFF"
-msgstr ""
+msgstr "AUTOPAUSA - DESACTIVADA"
 
 #: ../src/title.c:136
 msgid "MESSAGE SPEED - INSTANT"
-msgstr ""
+msgstr "VELOCIDAD DE MENSAJES - INSTANTÁNEA"
 
 #: ../src/title.c:138
 msgid "MESSAGE SPEED - FAST"
-msgstr ""
+msgstr "VELOCIDAD DE MENSAJES - RÁPIDA"
 
 #: ../src/title.c:140
 msgid "MESSAGE SPEED - NORMAL"
-msgstr ""
+msgstr "VELOCIDAD DE MENSAJES - NORMAL"
 
 #: ../src/title.c:142
 msgid "MESSAGE SPEED - SLOW"
-msgstr ""
+msgstr "VELOCIDAD DE MENSAJES - LENTA"
 
 #: ../src/title.c:144
 msgid "MESSAGE SPEED - SLOTH"
-msgstr ""
+msgstr "VELOCIDAD DE MENSAJES - PEREZOSO"
 
 #. Shouldn't happen, but adding this just in case
 #: ../src/title.c:146
 msgid "MESSAGE SPEED - ERROR"
-msgstr ""
+msgstr "VELOCIDAD DE MENSAJES - ERROR"
 
 #: ../src/title.c:165
 msgid "UNLIMITED SHIELD - ON"
-msgstr ""
+msgstr "ESCUDO ILIMITADO - ACTIVADO"
 
 #: ../src/title.c:167
 msgid "UNLIMITED SHIELD - OFF"
-msgstr ""
+msgstr "ESCUDO ILIMITADO - DESACTIVADO"
 
 #: ../src/title.c:170
 msgid "UNLIMITED AMMO - ON"
-msgstr ""
+msgstr "MUNICIÓN ILIMITADA - ACTIVADA"
 
 #: ../src/title.c:172
 msgid "UNLIMITED AMMO - OFF"
-msgstr ""
+msgstr "MUNICIÓN ILIMITADA - DESACTIVADA"
 
 #: ../src/title.c:175
 msgid "UNLIMITED CASH - ON"
-msgstr ""
+msgstr "DINERO ILIMITADO - ACTIVADO"
 
 #: ../src/title.c:177
 msgid "UNLIMITED CASH - OFF"
-msgstr ""
+msgstr "DINERO ILIMITADO - DESACTIVADO"
 
 #: ../src/title.c:180
 msgid "UNLIMITED TIME - ON"
-msgstr ""
+msgstr "TIEMPO ILIMITADO - ACTIVADO"
 
 #: ../src/title.c:182
 msgid "UNLIMITED TIME - OFF"
-msgstr ""
+msgstr "TIEMPO ILIMITADO - DESACTIVADO"
 
 #: ../src/title.c:250
 msgid "START NEW GAME"
-msgstr ""
+msgstr "COMENZAR NUEVA PARTIDA"
 
 #: ../src/title.c:251
 msgid "LOAD GAME"
-msgstr ""
+msgstr "CARGAR PARTIDA"
 
 #: ../src/title.c:252
 msgid "CONTINUE CURRENT GAME"
-msgstr ""
+msgstr "CONTINUAR PARTIDA ACTUAL"
 
 #: ../src/title.c:253
 msgid "OPTIONS"
-msgstr ""
+msgstr "OPCIONES"
 
 #: ../src/title.c:254
 msgid "CREDITS"
@@ -3061,7 +3090,7 @@ msgstr "CRÉDITOS"
 
 #: ../src/title.c:255
 msgid "CHEAT OPTIONS"
-msgstr ""
+msgstr "OPCIONES DE TRAMPA"
 
 #: ../src/title.c:256
 msgid "QUIT"
@@ -3069,4 +3098,4 @@ msgstr "SALIR"
 
 #: ../src/title.c:260
 msgid "BACK TO MAIN MENU"
-msgstr ""
+msgstr "VOLVER A MENÚ PRINCIPAL"
