@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2020-12-25 14:04-0500\n"
-"PO-Revision-Date: 2021-06-25 17:06+0200\n"
+"PO-Revision-Date: 2021-07-18 15:36+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -836,7 +836,7 @@ msgstr "Daño de plasma aumentado"
 
 #: ../src/game.c:493
 msgid "Picked up a Super Charge!"
-msgstr ""
+msgstr "¡Recogida una Super Carga!"
 
 #. / Rare case of grabbing the super charge when you have no ammo at an
 #. / interception (which means it won't take effect). The "Damn!" serves
@@ -844,11 +844,11 @@ msgstr ""
 #. / have this happen to them.
 #: ../src/game.c:501
 msgid "Damn! Upgrade failed (no plasma ammo)"
-msgstr ""
+msgstr "¡Maldición! Falló la mejora (sin munición de plasma)"
 
 #: ../src/game.c:507
 msgid "Plasma cells already at Maximum"
-msgstr ""
+msgstr "Células de plasma ya al Máximo"
 
 #. / "%d" must be retained. It is replaced with the number of plasma
 #. / cells picked up.
@@ -856,27 +856,27 @@ msgstr ""
 #, c-format
 msgid "Got %d plasma cell"
 msgid_plural "Got %d plasma cells"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Obtuve %d célula de plasma"
+msgstr[1] "Obtuve %d células de plasma"
 
 #: ../src/game.c:523
 msgid "Picked up some Cargo"
-msgstr ""
+msgstr "Recogidos algunos Cargamentos"
 
 #: ../src/game.c:529
 #, c-format
 msgid "Rescued %d slave"
 msgid_plural "Rescued %d slaves"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d esclavo rescatado"
+msgstr[1] "%d esclavos rescatados"
 
 #: ../src/game.c:536
 msgid "Picked up an Escape Pod"
-msgstr ""
+msgstr "Recogida una Cápsula de Escape"
 
 #: ../src/game.c:540
 msgid "Picked up some Ore"
-msgstr ""
+msgstr "Recogido algo de Mena"
 
 #. / Chris: Phoebe Hit Messages
 #. / This is a list of messages separated by "\n".  They are randomly
@@ -891,6 +891,9 @@ msgid ""
 "Chris, please be more careful!\n"
 "Ouch! What are you shooting at me for?"
 msgstr ""
+"¡UY! ¡Espero que eso fuera un accidente!\n"
+"¡Cris, por favor, sé más cuidadoso!\n"
+"¡Ouch! ¿Por qué me disparas?"
 
 #. / Chris: Ursula Hit Messages
 #. / This is a list of messages separated by "\n".  They are randomly
@@ -906,6 +909,10 @@ msgid ""
 "What are you doing?! Shoot THEM!\n"
 "Pay some damn attention!"
 msgstr ""
+"¡NO soy tu enemigo!\n"
+"¡Ey! ¡Cuidado!\n"
+"¡¿Qué estás haciendo?! ¡DISPÁRALES!\n"
+"¡Presta maldita atención!"
 
 #. / Phoebe: Player Hit Messages
 #. / This is a list of messages separated by "\n".  They are randomly
@@ -920,6 +927,9 @@ msgid ""
 "Whoops! Are you OK, Chris?\n"
 "Oh, sorry! I didn't see you there!"
 msgstr ""
+"¡Uups! ¡Perdón!\n"
+"¡Wuuups! ¿Estás bien, Cris?\n"
+"¡Oh, perdón! ¡No te vi ahí!"
 
 #. / Ursula: Player Hit Messages
 #. / This is a list of messages separated by "\n".  They are randomly
@@ -934,6 +944,9 @@ msgid ""
 "Don't fly into my missiles!\n"
 "Dammit, Chris, you made me miss!"
 msgstr ""
+"¡Quita de en medio!\n"
+"¡No vueles hacia mis misiles!\n"
+"¡Maldición, Cris, me has hecho fallar!"
 
 #. / Kline Venus insult messages
 #. / This is a list of insults separated by "\n".  They are randomly
@@ -947,6 +960,8 @@ msgid ""
 "Fool.\n"
 "And now you're nothing but a DEAD hero."
 msgstr ""
+"Estúpido.\n"
+"Y ahora no eres más que un héroe MUERTO."
 
 #. / Kline insult messages
 #. / This is a list of insults separated by "\n".  They are randomly
@@ -961,12 +976,16 @@ msgid ""
 "How very disappointing...\n"
 "Heroic. And foolish."
 msgstr ""
+"Patético.\n"
+"Qué decepcionante...\n"
+"Heroico. Y necio."
 
 #. / Dialog: Krass Tyler
 #. / Used when the player is killed in the Jupiter mission.
 #: ../src/game.c:1634
 msgid "That was the easiest $90,000,000 I've ever earned! Bwah! Ha! Ha! Ha!"
 msgstr ""
+"¡Han sido los $90,000,000 más fáciles que he ganado! ¡Bwah! ¡Ja! ¡Ja! ¡Ja!"
 
 #. / Each "%.2d" must be retained.  They are replaced with the minutes and seconds left
 #. / to complete the mission, respectively (or, in the case of the Mars mission, the
@@ -979,13 +998,13 @@ msgstr ""
 #: ../src/game.c:1947
 #, c-format
 msgid "Time Remaining - %.2d:%.2d"
-msgstr ""
+msgstr "Tiempo Restante - %.2d:%.2d"
 
 #. / "%d" must be retained.  It is replaced with the number of mission objectives remaining.
 #: ../src/game.c:1955
 #, c-format
 msgid "Objectives Remaining: %d"
-msgstr ""
+msgstr "Objetivos Restantes: %d"
 
 #. / "%d" must be retained.  It is replaced with the player's current total cash.
 #. / Retain "%d" as-is.  It is replaced with the player's current cash.
@@ -1085,7 +1104,7 @@ msgstr "Tiros Disparados : %d"
 #: ../src/intermission.c:253
 #, c-format
 msgid "Hits Scored : %d"
-msgstr ""
+msgstr "Disparos Exitosos : %d"
 
 #. / Status Screen text
 #. / Retain "%d" as-is.  It is replaced with the firing accuracy as a percentage.
@@ -1101,13 +1120,13 @@ msgstr "Precisión : %d%%"
 #: ../src/intermission.c:265
 #, c-format
 msgid "Enemies Killed by Others : %d"
-msgstr ""
+msgstr "Enemigos Matados por Otros : %d"
 
 #. / Retain "%d" as-is.  It is replaced with the amount of cash earned.
 #: ../src/intermission.c:269
 #, c-format
 msgid "Total Cash Earned : %d"
-msgstr ""
+msgstr "Dinero Total en Efectivo : %d"
 
 #: ../src/intermission.c:272
 msgid "*** Chris ***"
@@ -1119,53 +1138,53 @@ msgstr "*** Cris ***"
 #: ../src/intermission.c:337
 #, c-format
 msgid "Enemies Killed : %d"
-msgstr ""
+msgstr "Enemigos Matados : %d"
 
 #. / Status Screen text
 #. / Retain "%d" as-is.  It is replaced with the number of shield restores picked up.
 #: ../src/intermission.c:281
 #, c-format
 msgid "Shield Restores Picked Up : %d"
-msgstr ""
+msgstr "Reparaciones de Escudo Obtenidas : %d"
 
 #. / Status Screen text
 #. / Retain "%d" as-is.  It is replaced with the number of plasma cells picked up.
 #: ../src/intermission.c:286
 #, c-format
 msgid "Plasma Cells Picked Up : %d"
-msgstr ""
+msgstr "Células de Plasma Obtenidas : %d"
 
 #. / Status Screen text
 #. / Retain "%d" as-is.  It is replaced with the number of rockets picked up.
 #: ../src/intermission.c:291
 #, c-format
 msgid "Rockets Picked Up : %d"
-msgstr ""
+msgstr "Cohetes Obtenidos : %d"
 
 #. / Status Screen text
 #. / Retain "%d" as-is.  It is replaced with the number of powerups picked up.
 #: ../src/intermission.c:296
 #, c-format
 msgid "Powerups Picked Up : %d"
-msgstr ""
+msgstr "Potenciadores Obtenidos : %d"
 
 #. / Status Screen text
 #. / Retain "%d" as-is.  It is replaced with the number of mines destroyed.
 #: ../src/intermission.c:301
 #, c-format
 msgid "Mines Destroyed : %d"
-msgstr ""
+msgstr "Minas Destruidas : %d"
 
 #. / Status Screen text
 #. / Retain "%d" as-is.  It is replaced with the number of slaves rescued.
 #: ../src/intermission.c:306
 #, c-format
 msgid "Slaves Rescued : %d"
-msgstr ""
+msgstr "Esclavos Rescatados : %d"
 
 #: ../src/intermission.c:311
 msgid "*** Phoebe ***"
-msgstr ""
+msgstr "*** Phoebe ***"
 
 #. / Retain
 #. / Status Screen text "%d" as-is.  It is replaced with the number of ejections.
@@ -1174,16 +1193,16 @@ msgstr ""
 #: ../src/intermission.c:320 ../src/intermission.c:342
 #, c-format
 msgid "Ejections : %d"
-msgstr ""
+msgstr "Eyecciones : %d"
 
 #. / Status Screen text
 #: ../src/intermission.c:333
 msgid "*** Ursula ***"
-msgstr ""
+msgstr "*** Úrsula ***"
 
 #: ../src/intermission.c:352 ../src/intermission.c:1512
 msgid "Current Status"
-msgstr ""
+msgstr "Estado Actual"
 
 #. / Status Screen footer (indicates the total time the game has been played)
 #. / "%ld" (which represents hours) and "%02ld" sequences (which
@@ -1202,7 +1221,7 @@ msgstr ""
 #: ../src/intermission.c:368
 #, c-format
 msgid "Total Time : %ld:%02ld:%02ld"
-msgstr ""
+msgstr "Tiempo Total : %ld:%02ld:%02ld"
 
 #: ../src/intermission.c:392
 msgid "Hail"
@@ -1227,31 +1246,31 @@ msgstr "Moebo"
 #. / Spirit, Hail mission summary
 #: ../src/intermission.c:415
 msgid "Destroy WEAPCO training ground"
-msgstr ""
+msgstr "Destruye el campo de entrenamiento de WEAPCO"
 
 #. / Spirit, Ceradse mission summary
 #: ../src/intermission.c:421
 msgid "Collect 6 cargo pods"
-msgstr ""
+msgstr "Recoge 6 cápsulas de cargamento"
 
 #. / Spirit, Hinstag mission summary
 #: ../src/intermission.c:427
 msgid "Destroy 5 WEAPCO missile boats"
-msgstr ""
+msgstr "Destruye 5 naves de misiles de WEAPCO"
 
 #. / Spirit, Joldar mission summary
 #: ../src/intermission.c:433
 msgid "Clear the mine field around Joldar"
-msgstr ""
+msgstr "Limpia la mina alrededor de Joldar"
 
 #. / Spirit, Moebo mission summary
 #: ../src/intermission.c:439
 msgid "Destroy WEAPCO frigate"
-msgstr ""
+msgstr "Destruye la nave grande de WEAPCO"
 
 #: ../src/intermission.c:444 ../src/intermission.c:505
 msgid "WEAPCO interceptions"
-msgstr ""
+msgstr "Intercepciones de WEAPCO"
 
 #: ../src/intermission.c:447
 msgid "Nerod"
@@ -1276,7 +1295,7 @@ msgstr "Elamale"
 #. / Eyananth, interception mission summary
 #: ../src/intermission.c:470
 msgid "Rescue slaves"
-msgstr ""
+msgstr "Rescata a esclavos"
 
 #. / Eyananth, Nerod mission summary
 #: ../src/intermission.c:476
@@ -1287,22 +1306,22 @@ msgstr "SOS"
 #. / Mission objective (Allez)
 #: ../src/intermission.c:482 ../src/mission.c:205
 msgid "Assist medical supply craft"
-msgstr ""
+msgstr "Prestar asistencia a nave de suministros médicos"
 
 #. / Eyananth, Urusor mission summary
 #: ../src/intermission.c:488
 msgid "Capture five WEAPCO supply craft"
-msgstr ""
+msgstr "Captura cinco naves de suministros de WEAPCO"
 
 #. / Eyananth, Dorim mission summary
 #: ../src/intermission.c:494
 msgid "Find WEAPCO scientist"
-msgstr ""
+msgstr "Encuentra científico de WEAPCO"
 
 #. / Eyananth, Elamale mission summary
 #: ../src/intermission.c:500
 msgid "Destroy WEAPCO Ore Mining craft"
-msgstr ""
+msgstr "Destruye nave de Extracción de Mineral de WEAPCO"
 
 #: ../src/intermission.c:508
 msgid "Odeon"
@@ -1331,7 +1350,7 @@ msgstr "Ellesh"
 #. / Mordor, incerception mission summary
 #: ../src/intermission.c:535
 msgid "Destroy experimental fighter"
-msgstr ""
+msgstr "Destruye luchador experimental"
 
 #. / Mordor, Odeon mission summary
 #: ../src/intermission.c:541
@@ -1341,27 +1360,27 @@ msgstr "Rescata a Úrsula"
 #. / Mordor, Fellon mission summary
 #: ../src/intermission.c:547
 msgid "Assist rebel forces"
-msgstr ""
+msgstr "Apoya a las fuerzas rebeldes"
 
 #. / Mordor, Sivedi mission summary
 #: ../src/intermission.c:553
 msgid "Mine ore from asteroid belt"
-msgstr ""
+msgstr "Extrae mineral del cinturón de asteroides"
 
 #. / Mordor, Almartha mission summary
 #: ../src/intermission.c:559
 msgid "Create a diversion"
-msgstr ""
+msgstr "Crea una distracción"
 
 #. / Mordor, Poswic mission summary
 #: ../src/intermission.c:565
 msgid "Capture WEAPCO executive transport"
-msgstr ""
+msgstr "Captura el transporte ejecutivo de WEAPCO"
 
 #. / Mordor, Ellesh mission summary
 #: ../src/intermission.c:571
 msgid "Destroy WEAPCO executive transport"
-msgstr ""
+msgstr "Destruye el transporte ejecutivo de WEAPCO"
 
 #: ../src/intermission.c:577
 msgid "Mercury"
@@ -1402,49 +1421,49 @@ msgstr "Plutón"
 #. / Sol, Pluto mission summary
 #: ../src/intermission.c:616
 msgid "Secure Pluto"
-msgstr ""
+msgstr "Protege Plutón"
 
 #. / Sol, Neptune mission summary
 #: ../src/intermission.c:622
 msgid "Secure Neptune"
-msgstr ""
+msgstr "Protege Neptuno"
 
 #. / Sol, Uranus mission summary
 #: ../src/intermission.c:628
 msgid "Secure Uranus"
-msgstr ""
+msgstr "Protege Urano"
 
 #. / Sol, Saturn mission summary
 #: ../src/intermission.c:634
 msgid "Destroy outer defense system"
-msgstr ""
+msgstr "Destruye sistema de defensa exterior"
 
 #. / Sol, Jupiter mission summary
 #. / Mission objective (Jupiter)
 #: ../src/intermission.c:640 ../src/mission.c:471
 msgid "Investigate distress call"
-msgstr ""
+msgstr "Investiga llamada de socorro"
 
 #. / Sol, Mars mission summary
 #. / Mission objective (Mars)
 #: ../src/intermission.c:646 ../src/mission.c:493
 msgid "Navigate asteroid belt"
-msgstr ""
+msgstr "pilota por el cinturón de asteroides"
 
 #. / Sol, Earth mission summary
 #: ../src/intermission.c:652
 msgid "Take back Earth"
-msgstr ""
+msgstr "Recupera la Tierra"
 
 #. / Sol, Venus mission summary
 #. / Mission objective (Venus)
 #: ../src/intermission.c:658 ../src/mission.c:515
 msgid "Defeat Kline"
-msgstr ""
+msgstr "Derrota a Kline"
 
 #: ../src/intermission.c:782
 msgid "+++ CURRENT MISSIONS +++"
-msgstr ""
+msgstr "+++ MISIONES ACTUALES +++"
 
 #. / Brief instructions for how to review a mission conversation, shown below the
 #. / CURRENT MISSIONS header.
@@ -1490,6 +1509,9 @@ msgid ""
 "transporting some medical supplies around Ceradse. We need to get hold of "
 "those pods to save some lives!"
 msgstr ""
+"Cris, he interceptado una transmisión de WEAPCO. Parece que están "
+"transportando algunos suministros médicos alrededor de Ceradse. ¡Necesitamos "
+"hacernos con esas cápsulas para salvar algunas vidas!"
 
 #. / Mission dialog: Spirit, Ceradse (Chris Bainfield)
 #: ../src/intermission.c:862
@@ -1661,7 +1683,7 @@ msgstr ""
 #: ../src/intermission.c:992
 msgid ""
 "Alright, I'll go look for him. I guess I'll grab some ore along the way."
-msgstr ""
+msgstr "Bien, lo buscaré. Supongo que pillaré algún mineral por el camino."
 
 #. / Mission dialog: Eyananth, Elamale (Sid Wilson)
 #: ../src/intermission.c:999
@@ -1669,6 +1691,8 @@ msgid ""
 "I've received word that the slaves we rescued have started a rebellion. "
 "Looks like the plan worked."
 msgstr ""
+"Me ha llegado la noticia de que los esclavos que rescatamos han empezado una "
+"rebelión. Parece que el plan ha funcionado."
 
 #. / Mission dialog: Eyananth, Elamale (Phoebe Lexx)
 #: ../src/intermission.c:1003
@@ -1727,7 +1751,7 @@ msgstr ""
 #. / Mission dialog: Mordor, Odeon (Chris Bainfield)
 #: ../src/intermission.c:1045
 msgid "Do you think she's turned traitor?"
-msgstr ""
+msgstr "¿Crees que nos ha traicionado?"
 
 #. / Mission dialog: Mordor, Odeon (Phoebe Lexx)
 #: ../src/intermission.c:1049
@@ -1843,7 +1867,7 @@ msgstr "¡Suena como un plan, Sid!"
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Ursula Lexx)
 #: ../src/intermission.c:1141
 msgid "Better safe than sorry, I guess."
-msgstr ""
+msgstr "Más vale prevenir que lamentar, supongo."
 
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Chris Bainfield)
 #: ../src/intermission.c:1145
@@ -1938,17 +1962,17 @@ msgstr ""
 
 #: ../src/intermission.c:1271
 msgid "++ OPTIONS ++"
-msgstr ""
+msgstr "++ OPCIONES ++"
 
 #: ../src/intermission.c:1280 ../src/intermission.c:1291
 #: ../src/intermission.c:1302
 msgid "ON"
-msgstr ""
+msgstr "ACTIVADO"
 
 #: ../src/intermission.c:1281 ../src/intermission.c:1292
 #: ../src/intermission.c:1303
 msgid "OFF"
-msgstr ""
+msgstr "DESACTIVADO"
 
 #: ../src/intermission.c:1282
 msgid "SOUND"
@@ -1986,7 +2010,7 @@ msgstr "Guardar Partida"
 
 #: ../src/intermission.c:1514
 msgid "Upgrade FIREFLY"
-msgstr ""
+msgstr "Mejorar el FIREFLY"
 
 #: ../src/intermission.c:1515
 msgid "Missions"
@@ -2023,7 +2047,7 @@ msgstr "Destino: Ninguno"
 #. / Mission objective
 #: ../src/mission.c:96
 msgid "Destroy all remaining WEAPCO fighters"
-msgstr ""
+msgstr "Destruye todos los luchadores de WEAPCO restantes"
 
 #. / Mission objective (start)
 #: ../src/mission.c:101
@@ -2033,7 +2057,7 @@ msgstr ""
 #. / Mission objective (Hail)
 #: ../src/mission.c:107
 msgid "Collect $500 to pay Mercenary for FIREFLY"
-msgstr ""
+msgstr "Reúne $500 para pagar al Mercenario el FIREFLY"
 
 #. / Mission objective (Ceradse)
 #: ../src/mission.c:121
@@ -2113,7 +2137,7 @@ msgstr ""
 #. / Mission objective (Elamale)
 #: ../src/mission.c:287
 msgid "Battle Kline"
-msgstr ""
+msgstr "Lucha contra Kline"
 
 #. / Mission objective (Odeon)
 #: ../src/mission.c:297
@@ -2500,11 +2524,11 @@ msgstr ""
 
 #: ../src/mission.c:1320 ../src/mission.c:1340
 msgid "COMPLETED"
-msgstr "COMPLETADA"
+msgstr "COMPLETADO"
 
 #: ../src/mission.c:1325 ../src/mission.c:1345
 msgid "FAILED"
-msgstr "FALLADA"
+msgstr "FALLADO"
 
 #. / "%d" must be retained.  It is replaced with the money earned
 #. / from the shield bonus.
@@ -2651,7 +2675,7 @@ msgstr ""
 #: ../src/shop.c:289
 #, c-format
 msgid "Cannons: %d"
-msgstr ""
+msgstr "Cañones: %d"
 
 #. / Shop info: min plasma damage
 #. / Retain "%d" as-is.  It is replaced with the min plasma damage.
