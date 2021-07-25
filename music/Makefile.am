@@ -7,6 +7,7 @@ musicdir = $(pkgdatadir)/music
 
 nobase_dist_music_DATA = \
     android_oppression.ogg \
+    androids_last_dance.ogg \
     first_cyber_dance.ogg \
     frozen_jam.ogg \
     last_cyber_dance.ogg \

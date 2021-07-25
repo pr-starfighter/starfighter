@@ -284,7 +284,7 @@ void audio_playRandomTrack()
 #ifdef OLD_MUSIC
 			audio_playMusic("music/LoopsAndTings.mod", -1, 0);
 #else
-			audio_playMusic("music/RE.ogg", -1, 0);
+			audio_playMusic("music/androids_last_dance.ogg", -1, 0);
 #endif
 			break;
 		default:
