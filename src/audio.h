@@ -30,7 +30,7 @@ void audio_pauseMusic();
 void audio_resumeMusic();
 void audio_setMusicVolume(int volume);
 void audio_setMusicPosition(double position);
-void audio_playMusic(const char *filename, int loops, int amplified);
+void audio_playMusic(const char *filename, int loops);
 void audio_playRandomTrack();
 void audio_free();
 

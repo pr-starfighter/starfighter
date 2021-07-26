@@ -67,7 +67,7 @@ void audio_playSound(int sid, float x, float y)
 	int angle = atanf((x - (screen->w / 2)) / (screen->w / 2)) * 180 / M_PI;
 	int attenuation = fabsf(x - (screen->w / 2)) / (screen->w / 20);
 	float distance = sqrtf(powf(fabsf(x - (screen->w / 2)), 2) + powf(fabsf(y - (screen->h / 2)), 2));
-	const int max_volume = MIX_MAX_VOLUME / 4;
+	const int max_volume = MIX_MAX_VOLUME;
 	int volume = max_volume - (max_volume * distance / (3 * screen->w));
 
 	if ((!engine.useSound) || (!engine.useAudio) || (volume <= 0))
@@ -179,14 +179,14 @@ void audio_setMusicPosition(double position)
 #endif
 }
 
-void audio_playMusic(const char *filename, int loops, int amplified)
+void audio_playMusic(const char *filename, int loops)
 {
 #ifndef NOSOUND
 	if (engine.useMusic && engine.useAudio)
 	{
 		audio_haltMusic();
 		music = Mix_LoadMUS(filename);
-		audio_setMusicVolume(amplified ? MIX_MAX_VOLUME : MIX_MAX_VOLUME / 4);
+		audio_setMusicVolume(MIX_MAX_VOLUME);
 		Mix_PlayMusic(music, loops);
 	}
 #endif
@@ -236,13 +236,13 @@ void audio_playRandomTrack()
 		case MISN_INTERCEPTION:
 			if ((aliens[ALIEN_KLINE].classDef == CD_KLINE)
 					&& aliens[ALIEN_KLINE].active)
-				audio_playMusic("music/last_cyber_dance.ogg", -1, 0);
+				audio_playMusic("music/last_cyber_dance.ogg", -1);
 			else if ((game.system == SYSTEM_MORDOR)
 					&& (aliens[ALIEN_BOSS].classDef == CD_CLOAKFIGHTER)
 					&& aliens[ALIEN_BOSS].active)
-				audio_playMusic("music/space_dimensions.ogg", -1, 0);
+				audio_playMusic("music/space_dimensions.ogg", -1);
 			else
-				audio_playMusic("music/railjet_short.ogg", -1, 0);
+				audio_playMusic("music/railjet_short.ogg", -1);
 			break;
 		case MISN_HAIL:
 		case MISN_JOLDAR:
@@ -250,7 +250,7 @@ void audio_playRandomTrack()
 		case MISN_SIVEDI:
 		case MISN_NEPTUNE:
 		case MISN_SATURN:
-			audio_playMusic("music/frozen_jam.ogg", -1, 0);
+			audio_playMusic("music/frozen_jam.ogg", -1);
 			break;
 		case MISN_CERADSE:
 		case MISN_ALLEZ:
@@ -258,7 +258,7 @@ void audio_playRandomTrack()
 		case MISN_FELLON:
 		case MISN_POSWIC:
 		case MISN_MARS:
-			audio_playMusic("music/sound_and_silence.ogg", -1, 0);
+			audio_playMusic("music/sound_and_silence.ogg", -1);
 			break;
 		case MISN_HINSTAG:
 		case MISN_NEROD:
@@ -267,7 +267,7 @@ void audio_playRandomTrack()
 		case MISN_PLUTO:
 		case MISN_URANUS:
 		case MISN_JUPITER:
-			audio_playMusic("music/space_dimensions.ogg", -1, 0);
+			audio_playMusic("music/space_dimensions.ogg", -1);
 			break;
 #endif
 		case MISN_MOEBO:
@@ -275,20 +275,20 @@ void audio_playRandomTrack()
 		case MISN_ELLESH:
 		case MISN_EARTH:
 #ifdef OLD_MUSIC
-			audio_playMusic("music/HardTranceDub.mod", -1, 0);
+			audio_playMusic("music/HardTranceDub.mod", -1);
 #else
-			audio_playMusic("music/orbital_colossus.ogg", -1, 0);
+			audio_playMusic("music/orbital_colossus.ogg", -1);
 #endif
 			break;
 		case MISN_VENUS:
 #ifdef OLD_MUSIC
-			audio_playMusic("music/LoopsAndTings.mod", -1, 0);
+			audio_playMusic("music/LoopsAndTings.mod", -1);
 #else
-			audio_playMusic("music/androids_last_dance.ogg", -1, 0);
+			audio_playMusic("music/androids_last_dance.ogg", -1);
 #endif
 			break;
 		default:
-			audio_playMusic(track[rand() % tracks], -1, 0);
+			audio_playMusic(track[rand() % tracks], -1);
 	}
 #endif
 }

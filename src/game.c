@@ -24,6 +24,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "SDL.h"
 
+#ifndef NOSOUND
+#include "SDL_mixer.h"
+#endif
+
 #include "colors.h"
 #include "defs.h"
 #include "structs.h"
@@ -2449,9 +2453,9 @@ static void game_showGameOver()
 	SDL_Delay(1000);
 
 #ifdef OLD_MUSIC
-	audio_playMusic("music/Wybierak.mod", -1, 0);
+	audio_playMusic("music/Wybierak.mod", -1);
 #else
-	audio_playMusic("music/reremix.ogg", -1, 1);
+	audio_playMusic("music/reremix.ogg", -1);
 #endif
 
 	int x = (screen->w - gameover->w) / 2;
@@ -2685,7 +2689,7 @@ int game_mainLoop()
 	engine.counter2 = (SDL_GetTicks() + 1000);
 
 	engine.missionCompleteTimer = 0;
-	engine.musicVolume = 100;
+	engine.musicVolume = MIX_MAX_VOLUME;
 
 	int rtn = 0;
 
@@ -2793,7 +2797,7 @@ int game_mainLoop()
 						engine.keyState[KEY_ALTFIRE] = 0;
 						engine.xaxis = 0;
 						engine.yaxis = 0;
-						LIMIT_ADD(engine.musicVolume, -0.2, 0, 100);
+						LIMIT_ADD(engine.musicVolume, -0.2, 0, MIX_MAX_VOLUME);
 						audio_setMusicVolume(engine.musicVolume);
 					}
 					else
@@ -2809,7 +2813,7 @@ int game_mainLoop()
 			else
 			{
 				player_getInput();
-				LIMIT_ADD(engine.musicVolume, -0.2, 0, 100);
+				LIMIT_ADD(engine.musicVolume, -0.2, 0, MIX_MAX_VOLUME);
 				audio_setMusicVolume(engine.musicVolume);
 				if (SDL_GetTicks() >= engine.missionCompleteTimer)
 				{
