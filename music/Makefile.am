@@ -13,9 +13,8 @@ nobase_dist_music_DATA = \
     last_cyber_dance.ogg \
     orbital_colossus.ogg \
     railjet_short.ogg \
-    RE.ogg \
-    reremix.ogg \
     rise_of_spirit.ogg \
+    sleeping_with_androids.ogg \
     sound_and_silence.ogg \
     space_dimensions.ogg \
     through_space.ogg

@@ -2455,7 +2455,7 @@ static void game_showGameOver()
 #ifdef OLD_MUSIC
 	audio_playMusic("music/Wybierak.mod", -1);
 #else
-	audio_playMusic("music/reremix.ogg", -1);
+	audio_playMusic("music/sleeping_with_androids.ogg", 0);
 #endif
 
 	int x = (screen->w - gameover->w) / 2;

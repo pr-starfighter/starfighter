@@ -599,6 +599,7 @@ Details: Tuned down 5 half-notes.
 ------------------------------------------------------------------------
 
 music/android_oppression.ogg
+music/sleeping_with_androids.ogg
 
 Author: The Diligent Circle <https://onpon4.github.io>
 License: CC0 <http://creativecommons.org/publicdomain/zero/1.0/>
@@ -675,15 +676,6 @@ Source: http://opengameart.org/content/last-cyber-dance
 
 ------------------------------------------------------------------------
 
-music/RE.ogg
-
-Author: WeskerHunter <http://redeclipse.net/forum/viewtopic.php?f=5&t=26>
-License: CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>
-Source: http://opengameart.org/content/fast-high-music
-Changes: Amplified -1 dB and slowed down 5% with Audacity
-
-------------------------------------------------------------------------
-
 music/first_cyber_dance.ogg
 
 Authors:
@@ -692,15 +684,6 @@ Authors:
 License: CC BY 4.0 <https://creativecommons.org/licenses/by/4.0/>
 Details:
   Remix of Last Cyber Dance. Last Cyber Dance is by neocrey.
-
-------------------------------------------------------------------------
-
-music/reremix.ogg
-
-Author: The Diligent Circle <https://onpon4.github.io>
-License: CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0/>
-Details:
-  Remix of RE.ogg. RE.ogg is composed by WeskerHunter.
 
 ------------------------------------------------------------------------
 
