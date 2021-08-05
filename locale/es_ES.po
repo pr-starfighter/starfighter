@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2020-12-25 14:04-0500\n"
-"PO-Revision-Date: 2021-07-18 15:36+0200\n"
+"PO-Revision-Date: 2021-08-05 19:40+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1478,11 +1478,14 @@ msgid ""
 "instead, I want you to go to the WEAPCO training ground and destroy all the "
 "craft there."
 msgstr ""
+"¡Ey, chico! ¡Todavía me debes dinero por el Firefly que robé para ti! Pero "
+"en su lugar quiero que vayas al lugar de entrenamiento de WEAPCO y destruyas "
+"todas las naves de allí."
 
 #. / Mission dialog: Spirit, Hail (Chris Bainfield)
 #: ../src/intermission.c:839
 msgid "Oh? That's the job I contracted you to do, was it not?"
-msgstr ""
+msgstr "¿Oh? Ese era el trabajo para el que te contrate, ¿o no?"
 
 #. / Mission dialog: Spirit, Hail (Krass Tyler)
 #: ../src/intermission.c:843
@@ -1491,11 +1494,14 @@ msgid ""
 "also collect $500, and we will call it quits. And if you die... well, I "
 "guess the ship was not worth stealing! HA HA HA!"
 msgstr ""
+"Lo sé, pero de esta forma podemos resolver tu deuda ahora. Haz este trabajo, "
+"y también recoge $500, y lo damos por zanjado. Y si mueres... bueno, "
+"¡supongo que no valió la pena robar la nave! ¡JA JA JA!"
 
 #. / Mission dialog: Spirit, Hail (Chris Bainfield)
 #: ../src/intermission.c:847
 msgid "As usual, you take me too lightly, Krass."
-msgstr ""
+msgstr "Como siempre, me tomas demasiado a la ligera, Krass"
 
 #. / Mission dialog: Spirit, Ceradse (Chris Bainfield)
 #: ../src/intermission.c:854
@@ -1528,7 +1534,7 @@ msgstr ""
 #. / Mission dialog: Spirit, Hinstag (Chris Bainfield)
 #: ../src/intermission.c:873
 msgid "Wow! Missile boats?"
-msgstr ""
+msgstr "¡Guau! ¿Naves de misiles?"
 
 #. / Mission dialog: Spirit, Hinstag (Sid Wilson)
 #: ../src/intermission.c:877
@@ -1580,7 +1586,7 @@ msgstr ""
 #. / Mission dialog: Spirit, Moebo (Chris Bainfield)
 #: ../src/intermission.c:911
 msgid "Damn! I'll get right on it, then!"
-msgstr ""
+msgstr "¡Maldición! ¡Entonces me pondré justo en eso!"
 
 #. / Mission dialog: Spirit, Moebo (Sid Wilson)
 #: ../src/intermission.c:915
@@ -1603,7 +1609,7 @@ msgstr ""
 #. / Mission dialog: Eyananth, interceptions (Chris Bainfield)
 #: ../src/intermission.c:928
 msgid "Most of the slaves are working in ore mines, aren't they?"
-msgstr ""
+msgstr "La mayoría de esclavos trabajan en las minas, ¿no?"
 
 #. / Mission dialog: Eyananth, interceptions (Sid Wilson)
 #: ../src/intermission.c:932
@@ -1613,16 +1619,20 @@ msgid ""
 "see if you can intercept a WEAPCO patrol. Of course, they might not be "
 "escorting any slave units, so be careful!"
 msgstr ""
+"Sí, pero atacar las minas directamente sería peligroso. Estarías mejor "
+"interceptando transportes de esclavos. Lo que tienes que hacer es volar por "
+"ahí y ver si puedes interceptar una patrulla de WEAPCO. Por supuesto, ellos "
+"podrían no escortar ninguna unidad de esclavos, ¡así que ten cuidado!"
 
 #. / Mission dialog: Eyananth, Nerod (Phoebe Lexx)
 #: ../src/intermission.c:939
 msgid "Help! This is an SOS! Can anyone hear me?!"
-msgstr ""
+msgstr "¡Ayuda! ¡Esto es un SOS! ¡¿Alguien me escucha?!"
 
 #. / Mission dialog: Eyananth, Nerod (Chris Bainfield)
 #: ../src/intermission.c:943
 msgid "I'm hearing you loud and clear! What's up?"
-msgstr ""
+msgstr "¡Te escucho alto y claro! ¿Qué pasa?"
 
 #. / Mission dialog: Eyananth, Nerod (Phoebe Lexx)
 #: ../src/intermission.c:947
@@ -1630,11 +1640,13 @@ msgid ""
 "Oh, thank God! I was intercepted by a large WEAPCO force near Nerod! I'm in "
 "need of assistance!"
 msgstr ""
+"¡Oh, gracias a Dios! ¡Fui interceptado por una gran fuerza de WEAPCO junto a "
+"Nerod! ¡Necesito asistencia!"
 
 #. / Mission dialog: Eyananth, Nerod (Chris Bainfield)
 #: ../src/intermission.c:951
 msgid "I'm on my way!"
-msgstr ""
+msgstr "¡Voy de camino!"
 
 #. / Mission dialog: Eyananth, Allez (Sid Wilson)
 #: ../src/intermission.c:958
@@ -1642,11 +1654,13 @@ msgid ""
 "I've just received another SOS. This one is coming from a supply craft "
 "carrying essential medical supplies."
 msgstr ""
+"Acabo de recibir otro SOS. Este viene de una nave de suministros que lleva "
+"material sanitqrio esencial."
 
 #. / Mission dialog: Eyananth, Allez (Chris Bainfield)
 #: ../src/intermission.c:962
 msgid "Alright, tell 'em I'm on my way."
-msgstr ""
+msgstr "Vale, diles que estoy de camino."
 
 #. / Mission dialog: Eyananth, Urusor (Sid Wilson)
 #: ../src/intermission.c:969
@@ -1654,11 +1668,13 @@ msgid ""
 "I need some resources before we leave. It'll make life a lot easier in "
 "Mordor. Problem is that WEAPCO hoards these parts."
 msgstr ""
+"Necesito algunos recursos antes de irnos. Harán la vida mucho más fácil en "
+"Mordor. El problema es que WEAPCO atesora estos suministros."
 
 #. / Mission dialog: Eyananth, Urusor (Chris Bainfield)
 #: ../src/intermission.c:973
 msgid "Where can we get them, then?"
-msgstr ""
+msgstr "¿Entonces dónde podemos pillarlos?"
 
 #. / Mission dialog: Eyananth, Urusor (Sid Wilson)
 #: ../src/intermission.c:977
@@ -1666,6 +1682,9 @@ msgid ""
 "There's a big shipment of them nearby. I can disable the supply craft "
 "carrying them; I just need you to give me some cover while I do it."
 msgstr ""
+"Hay un cargamento grande de ellos cerca. Puedo deshabilitar la nave de "
+"suministros llevándolos; solo necesito que me cubras un poco mientras lo "
+"hago."
 
 #. / Mission dialog: Eyananth, Urusor (Chris Bainfield)
 #: ../src/intermission.c:981
@@ -1678,6 +1697,9 @@ msgid ""
 "A WEAPCO scientist just ran off in an escape pod and hid in the asteroid "
 "belt. If we capture him, we may be able to get some information about Mordor."
 msgstr ""
+"Un científico de WEAPCO acaba de huir en una cápsula de escape y se ha "
+"escondido en el cinturón de asteroides. Si lo capturamos, puede que podamos "
+"obtener alguna información sobre Mordor."
 
 #. / Mission dialog: Eyananth, Dorim (Chris Bainfield)
 #: ../src/intermission.c:992
@@ -1700,6 +1722,8 @@ msgid ""
 "WEAPCO has an automated mining ship in orbit around Elamale. How about we "
 "take it out and cause some confusion?"
 msgstr ""
+"WEAPCO tiene una nave de minas en órbita alrededor de Elamale. ¿Qué tal si "
+"la destruimos y causamos confusión?"
 
 #. / Mission dialog: Eyananth, Elamale (Chris Bainfield)
 #: ../src/intermission.c:1007
@@ -1788,6 +1812,8 @@ msgid ""
 "Seems like taking out that WEAPCO mining ship wasn't such a good idea. The "
 "ore it collected is needed in weapons production."
 msgstr ""
+"Parece que destruir esa nave de minas de WEAPCO no fue tan buena idea. El "
+"mineral recogido se necesita para la producción de armas."
 
 #. / Mission dialog: Mordor, Sivedi (Chris Bainfield)
 #: ../src/intermission.c:1079
@@ -1821,6 +1847,9 @@ msgid ""
 "captured, I found out that WEAPCO is transporting several important "
 "executives to Poswic."
 msgstr ""
+"Por fin he recuperado la memoria. Aquí va algo interesante: justo antes de "
+"ser capturada descubrí que WEAPCO está transportando varios ejecutivos "
+"importantes a Poswic."
 
 #. / Mission dialog: Mordor, Poswic (Sid Wilson)
 #: ../src/intermission.c:1105
@@ -2112,17 +2141,17 @@ msgstr ""
 #. / Mission objective (Dorim)
 #: ../src/mission.c:247
 msgid "Locate doctor's escape pod"
-msgstr ""
+msgstr "Ubica la capsula de escape del doctor"
 
 #. / Mission objective (Dorim)
 #: ../src/mission.c:254
 msgid "Do not destroy doctor's escape pod"
-msgstr ""
+msgstr "No destruyas la cápsula de escape del doctor"
 
 #. / Mission objective (Dorim)
 #: ../src/mission.c:261
 msgid "Collect 10 pieces of Ore"
-msgstr ""
+msgstr "Recoge 10 trozos de Mineral"
 
 #. / Mission objective (Elamale)
 #: ../src/mission.c:274
@@ -2142,12 +2171,12 @@ msgstr "Lucha contra Kline"
 #. / Mission objective (Odeon)
 #: ../src/mission.c:297
 msgid "Destroy Ursula's ship"
-msgstr ""
+msgstr "Destruye nave de Úrsula"
 
 #. / Mission objective (Odeon)
 #: ../src/mission.c:304
 msgid "Capture Ursula's escape pod"
-msgstr ""
+msgstr "Captura la cápsula de escape de Ursula"
 
 #. / Mission objective (Odeon)
 #: ../src/mission.c:311
@@ -2157,77 +2186,77 @@ msgstr "No mates a Ursula"
 #. / Mission objective (Fellon)
 #: ../src/mission.c:325
 msgid "Assist attack on WEAPCO ore mining craft"
-msgstr ""
+msgstr "Apoya el ataque a la nave de minería de WEAPCO"
 
 #. / Mission objective (Fellon)
 #: ../src/mission.c:332
 msgid "At least 1 rebel craft must survive"
-msgstr ""
+msgstr "Al menos 1 nave rebelde debe sobrevivir"
 
 #. / Mission objective (Sivedi)
 #: ../src/mission.c:346
 msgid "Collect 25 pieces of Ore"
-msgstr ""
+msgstr "Recoge 10 trozos de Mineral"
 
 #. / Mission objective (Sivedi)
 #: ../src/mission.c:353
 msgid "Collect 50 pieces of Ore"
-msgstr ""
+msgstr "Recoge 50 trozos de Mineral"
 
 #. / Mission objective (Almartha)
 #: ../src/mission.c:363
 msgid "Collect $2000 to pay mercenary"
-msgstr ""
+msgstr "Obten $2000 para pagar al mercenario"
 
 #. / Mission objective (Poswic)
 #: ../src/mission.c:377
 msgid "Destroy escorts"
-msgstr ""
+msgstr "Destruye escoltas"
 
 #. / Mission objective (Poswic)
 #: ../src/mission.c:384
 msgid "Disable executive transport"
-msgstr ""
+msgstr "Deshabilita el transporte ejecutivo"
 
 #. / Mission objective (Ellesh)
 #: ../src/mission.c:398
 msgid "Destroy executive transport"
-msgstr ""
+msgstr "Destruye el transporte ejecutivo"
 
 #. / Mission objective (Pluto, Neptune, Uranus)
 #: ../src/mission.c:408
 msgid "Destroy planetary guardian"
-msgstr ""
+msgstr "Destruye guardián planetario"
 
 #. / Mission objective (Saturn)
 #: ../src/mission.c:457
 msgid "Destroy outer defence systems"
-msgstr ""
+msgstr "Destruye sistemas defensivos exteriores"
 
 #. / Mission objective (Jupiter)
 #: ../src/mission.c:476
 msgid "Defeat Krass Tyler"
-msgstr ""
+msgstr "Vence a Krass Tyler"
 
 #. / Mission objective (Jupiter)
 #: ../src/mission.c:483
 msgid "Destroy Krass' support group"
-msgstr ""
+msgstr "Destruye grupo de apoyo de Krass"
 
 #. / Mission objective (Earth)
 #: ../src/mission.c:505
 msgid "Destroy WEAPCO frontline forces"
-msgstr ""
+msgstr "Destruye la fuerzas de primera línea de WEAPCO"
 
 #: ../src/mission.c:610 ../src/mission.c:984
 msgid "*** All Primary Objectives Completed ***"
-msgstr ""
+msgstr "*** Todos los Objetivos Primarios Completados ***"
 
 #. / Dialog (Sid Wilson)
 #. / Used when Sid disables the last target in the Urusor mission.
 #: ../src/mission.c:628
 msgid "All vessels disabled!"
-msgstr ""
+msgstr "¡Todas las naves deshabilitadas!"
 
 #. / Info line messages for remaining cash to collect
 #. / This is a "\n"-separated list of possible choices to make.  Please feel free
@@ -2287,7 +2316,7 @@ msgstr[1] ""
 
 #: ../src/mission.c:699
 msgid "Cargo pod destroyed!"
-msgstr ""
+msgstr "¡Cápsula de cargamento destruida!"
 
 #. Get lectured by Sid
 #. / Dialog (Sid Wilson)
@@ -2297,10 +2326,12 @@ msgid ""
 "Chris, we needed that pod! I told you that we couldn't afford to lose a "
 "single one!"
 msgstr ""
+"¡Cris, necesitábamos esa cápsula! ¡Te dije que no podíamos permitirnos "
+"perder ninguna!"
 
 #: ../src/mission.c:706
 msgid "Escape Pod lost!"
-msgstr ""
+msgstr "¡Cápsula de Escape perdida!"
 
 #. / Dialog (Phoebe Lexx)
 #. / Used when Ursula is lost in the Odeon mission.
@@ -2318,13 +2349,13 @@ msgstr ""
 #. / Used when the friendly transport in the Allez mission is destroyed.
 #: ../src/mission.c:730
 msgid "No no no no no! Hull bre-..."
-msgstr ""
+msgstr "¡No no no no no! La coraza se rom-..."
 
 #. / Dialog (Sid Wilson)
 #. / Used when a target transport is destroyed in the Urusor mission.
 #: ../src/mission.c:735
 msgid "Chris, we've got to disable them, not destroy them!!"
-msgstr ""
+msgstr "¡¡Cris, teníamos que deshabilitarlos, no destruirlos!!"
 
 #. / Info line messages for remaining enemies to destroy
 #. / This is a "\n"-separated list of possible choices to make.  Please feel free
@@ -2367,7 +2398,7 @@ msgstr[1] ""
 
 #: ../src/mission.c:802
 msgid "Sid has been killed!"
-msgstr ""
+msgstr "¡Sid ha sido asesinado!"
 
 #. / Dialog (Sid Wilson)
 #. / Used when Sid is killed.
@@ -2961,7 +2992,7 @@ msgstr "Dispara misil teledirigido (max %i misiles)"
 
 #: ../src/shop.c:541
 msgid "Charge Cannon"
-msgstr ""
+msgstr "Carga de Cañón"
 
 #. / Shop item description: Charge Cannon
 #: ../src/shop.c:543
