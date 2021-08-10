@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2020-12-25 14:04-0500\n"
-"PO-Revision-Date: 2021-04-16 17:12+0200\n"
+"PO-Revision-Date: 2021-08-10 11:13+0200\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: eo\n"
@@ -2176,7 +2176,7 @@ msgstr "Ne lasu, ke veturilo de provizoj estu detruita"
 #. / Mission objective (Urusor)
 #: ../src/mission.c:226
 msgid "Disable five WEAPCO supply craft"
-msgstr "Malebligu kvin veturilo de provizoj de ARMKORP"
+msgstr "Malebligu kvin veturiloj de provizoj de ARMKORP"
 
 #. / Mission objective (Urusor)
 #: ../src/mission.c:237
