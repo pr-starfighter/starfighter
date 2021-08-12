@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2020-12-25 14:04-0500\n"
-"PO-Revision-Date: 2021-08-05 19:40+0200\n"
+"PO-Revision-Date: 2021-08-12 20:16+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1325,7 +1325,7 @@ msgstr "Destruye nave de Extracción de Mineral de WEAPCO"
 
 #: ../src/intermission.c:508
 msgid "Odeon"
-msgstr "Odeon"
+msgstr "Odeón"
 
 #: ../src/intermission.c:512
 msgid "Fellon"
@@ -1448,7 +1448,7 @@ msgstr "Investiga llamada de socorro"
 #. / Mission objective (Mars)
 #: ../src/intermission.c:646 ../src/mission.c:493
 msgid "Navigate asteroid belt"
-msgstr "pilota por el cinturón de asteroides"
+msgstr "Pilota por el cinturón de asteroides"
 
 #. / Sol, Earth mission summary
 #: ../src/intermission.c:652
@@ -1501,7 +1501,7 @@ msgstr ""
 #. / Mission dialog: Spirit, Hail (Chris Bainfield)
 #: ../src/intermission.c:847
 msgid "As usual, you take me too lightly, Krass."
-msgstr "Como siempre, me tomas demasiado a la ligera, Krass"
+msgstr "Como siempre, me tomas demasiado a la ligera, Krass."
 
 #. / Mission dialog: Spirit, Ceradse (Chris Bainfield)
 #: ../src/intermission.c:854
@@ -1530,6 +1530,8 @@ msgid ""
 "All six, Chris! If you lose even a single one, thousands of people could "
 "perish in Spirit within the next few months."
 msgstr ""
+"¡Los seis, Cris! Si pierdes aunque sea uno, miles de personas podrían "
+"perecer en Spirit en los próximos meses."
 
 #. / Mission dialog: Spirit, Hinstag (Chris Bainfield)
 #: ../src/intermission.c:873
@@ -1539,7 +1541,7 @@ msgstr "¡Guau! ¿Naves de misiles?"
 #. / Mission dialog: Spirit, Hinstag (Sid Wilson)
 #: ../src/intermission.c:877
 msgid "Yup. Looks like WEAPCO is starting to take notice of your actions."
-msgstr ""
+msgstr "Síp. Parece que WEAPCO está empezando a tomar nota de tus acciones."
 
 #. / Mission dialog: Spirit, Hinstag (Chris Bainfield)
 #: ../src/intermission.c:881
@@ -1594,6 +1596,8 @@ msgid ""
 "We're all counting on you, Chris! But remember, they didn't call that thing "
 "\"Star Killer\" just because it sounded nice!"
 msgstr ""
+"¡Todos contamos contigo, Cris! Pero recuerda: ¡no llamaron a esa cosa "
+"«Asesino Estelar» solo porque sonaba bien!"
 
 #. / Mission dialog: Eyananth, interceptions (Sid Wilson)
 #. / "%d" must be retained as-is. It is replaced with the number of slaves that
@@ -1605,6 +1609,9 @@ msgid ""
 "number of them, it might help to spark a rebellion. I estimate that we will "
 "need to rescue around %d to make a difference."
 msgstr ""
+"Como sabes, WEAPCO tiene muchos esclavos en este sistema. Si liberamos a un "
+"gran número, podría ayudar a provocar una rebelión. Estimo que necesitaremos "
+"rescatar cerca de %d para marcar la diferencia."
 
 #. / Mission dialog: Eyananth, interceptions (Chris Bainfield)
 #: ../src/intermission.c:928
@@ -1738,7 +1745,7 @@ msgstr "Funcionará, pero ten cuidado."
 #. / Mission dialog: Mordor, interceptions (Chris Bainfield)
 #: ../src/intermission.c:1018
 msgid "What have you found out about that experimental fighter?"
-msgstr ""
+msgstr "¿Qué has descubierto acerca de ese luchador experimental?"
 
 #. / Mission dialog: Mordor, interceptions (Sid Wilson)
 #: ../src/intermission.c:1022
@@ -1746,11 +1753,13 @@ msgid ""
 "It's got some kind of cloaking device that makes it invisible to radar. "
 "Could prove hard to track down."
 msgstr ""
+"Tiene una especie de aparato de camuflaje que lo vuelve invisible para el "
+"radar. Podría resultar difícil localizar."
 
 #. / Mission dialog: Mordor, interceptions (Chris Bainfield)
 #: ../src/intermission.c:1026
 msgid "I'll just have to run around the system until I find it."
-msgstr ""
+msgstr "Tendré que ir alrededor del sistema hasta encontrarlo."
 
 #. / Mission dialog: Mordor, interceptions (Sid Wilson)
 #: ../src/intermission.c:1030
@@ -1758,6 +1767,8 @@ msgid ""
 "It's likely to run away if you engage it in battle, so try and do as much "
 "damage to it as possible."
 msgstr ""
+"Es probable que huya si trabas batalla, así que intenta hacerle tanto daño "
+"como sea posible."
 
 #. / Mission dialog: Mordor, Odeon (Phoebe Lexx)
 #: ../src/intermission.c:1037
@@ -1765,12 +1776,15 @@ msgid ""
 "I've located my sister's ship currently in orbit around Odeon. She's "
 "ignoring my hails though."
 msgstr ""
+"He localizado la nave de mi hermana actualmente orbitando Odeón. Sin "
+"embargo, está ignorando mis llamadas."
 
 #. / Mission dialog: Mordor, Odeon (Sid Wilson)
 #: ../src/intermission.c:1041
 msgid ""
 "Something's off here. She seems to be travelling freely with a WEAPCO group."
 msgstr ""
+"Hay algo raro aquí. Parece estar viajando libremente con un grupo de WEAPCO."
 
 #. / Mission dialog: Mordor, Odeon (Chris Bainfield)
 #: ../src/intermission.c:1045
@@ -1780,7 +1794,7 @@ msgstr "¿Crees que nos ha traicionado?"
 #. / Mission dialog: Mordor, Odeon (Phoebe Lexx)
 #: ../src/intermission.c:1049
 msgid "No way. She hates WEAPCO with a passion."
-msgstr ""
+msgstr "De ninguna manera. Odia WEAPCO con pasión."
 
 #. / Mission dialog: Mordor, Odeon (Sid Wilson)
 #: ../src/intermission.c:1053
@@ -1788,6 +1802,9 @@ msgid ""
 "She must be under some kind of mind control. I've heard of WEAPCO developing "
 "a new \"AI training program\" recently. We'd better rescue her!"
 msgstr ""
+"Debe estar bajo algún tipo de control mental. He oído que WEAPCO ha "
+"desarrollado recientemente un nuevo «programa de entrenamiento de IA». ¡Más "
+"vale que la rescatemos!"
 
 #. / Mission dialog: Mordor, Fellon (Sid Wilson)
 #: ../src/intermission.c:1060
@@ -1799,12 +1816,12 @@ msgstr ""
 #. / Mission dialog: Mordor, Fellon (Chris Bainfield)
 #: ../src/intermission.c:1064
 msgid "Awesome! Let's do it!"
-msgstr ""
+msgstr "¡Genial! ¡Hagámoslo!"
 
 #. / Mission dialog: Mordor, Fellon (Sid Wilson)
 #: ../src/intermission.c:1068
 msgid "Just make sure the rebel ships don't all get destroyed."
-msgstr ""
+msgstr "Solo asegúrate de que no todas las naves rebeldes son destruidas."
 
 #. / Mission dialog: Mordor, Sivedi (Sid Wilson)
 #: ../src/intermission.c:1075
@@ -1826,6 +1843,8 @@ msgid ""
 "Yes. Be careful, Chris. Your weapons weren't designed for that sort of work, "
 "after all."
 msgstr ""
+"Sí. Ten cuidado, Cris. Tus armas no fueron diseñadas para ese tipo de "
+"trabajo, después de todo."
 
 #. / Mission dialog: Mordor, Almartha (Chris Bainfield)
 #: ../src/intermission.c:1090
@@ -1872,7 +1891,7 @@ msgstr ""
 #. / Mission dialog: Mordor, Ellesh (Phoebe Lexx)
 #: ../src/intermission.c:1120
 msgid "Are you sure you can catch up to it?"
-msgstr ""
+msgstr "¿Estás seguro de que puedes alcanzarlo?"
 
 #. / Mission dialog: Mordor, Ellesh (Chris Bainfield)
 #: ../src/intermission.c:1124
@@ -1880,6 +1899,8 @@ msgid ""
 "Absolutely. One thing that's really nice about the Firefly is its speed. "
 "I'll see you in a bit!"
 msgstr ""
+"Absolutamente. Una cosa realmente genial sobre el Firefly es su velocidad. "
+"¡Te veo en un momento!"
 
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Sid Wilson)
 #: ../src/intermission.c:1133
@@ -1901,7 +1922,7 @@ msgstr "Más vale prevenir que lamentar, supongo."
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Chris Bainfield)
 #: ../src/intermission.c:1145
 msgid "Boring, but I guess you're right, Sid, as usual."
-msgstr ""
+msgstr "Aburrido, pero supongo que tienes razón, Sid, como de costumbre."
 
 #. / Mission dialog: Sol, Saturn (Chris Bainfield)
 #: ../src/intermission.c:1152
@@ -1909,11 +1930,13 @@ msgid ""
 "WEAPCO has set up a highly dangerous defense line between Saturn and Uranus. "
 "We'll need to take it out."
 msgstr ""
+"WEAPCO ha establecido una línea de defensa altamente peligrosa entre Saturno "
+"y Urano. Tendremos que sacarla de ahí."
 
 #. / Mission dialog: Sol, Saturn (Ursula Lexx)
 #: ../src/intermission.c:1156
 msgid "What kind of defense system?"
-msgstr ""
+msgstr "¿Qué clase de sistema de defensa?"
 
 #. / Mission dialog: Sol, Saturn (Chris Bainfield)
 #: ../src/intermission.c:1160
@@ -1970,17 +1993,17 @@ msgstr ""
 #. / Mission dialog: Sol, Earth (Phoebe Lexx)
 #: ../src/intermission.c:1205
 msgid "Right with you, Chris!"
-msgstr ""
+msgstr "¡Ya voy, Cris!"
 
 #. / Mission dialog: Sol, Earth (Ursula Lexx)
 #: ../src/intermission.c:1209
 msgid "WEAPCO'll regret sticking probes into my head!"
-msgstr ""
+msgstr "¡WEAPCO lamentará sondear mi cabeza!"
 
 #. / Mission dialog: Sol, Venus (Chris Bainfield)
 #: ../src/intermission.c:1216
 msgid "Kethlan has run off to Venus. I'm going after him."
-msgstr ""
+msgstr "Kethlan se ha escapado a Venus. Voy tras él."
 
 #. / Mission dialog: Sol, Venus (Sid Wilson)
 #: ../src/intermission.c:1220
@@ -1988,6 +2011,8 @@ msgid ""
 "Be careful, Chris. We've won the war, but it would be a real shame if you "
 "died now!"
 msgstr ""
+"Ten cuidado, Cris. ¡Hemos ganado la guerra, pero sería una verdadera "
+"vergüenza que murieras ahora!"
 
 #: ../src/intermission.c:1271
 msgid "++ OPTIONS ++"
@@ -2081,7 +2106,7 @@ msgstr "Destruye todos los luchadores de WEAPCO restantes"
 #. / Mission objective (start)
 #: ../src/mission.c:101
 msgid "Escape from WEAPCO Pursuit"
-msgstr ""
+msgstr "Escapa de Persecución de WEAPCO"
 
 #. / Mission objective (Hail)
 #: ../src/mission.c:107
@@ -2091,27 +2116,27 @@ msgstr "Reúne $500 para pagar al Mercenario el FIREFLY"
 #. / Mission objective (Ceradse)
 #: ../src/mission.c:121
 msgid "Collect 6 Cargo Pods"
-msgstr ""
+msgstr "Recoge 6 Cápsulas de Cargamento"
 
 #. / Mission objective (Ceradse)
 #: ../src/mission.c:128
 msgid "Do not destroy *ANY* Cargo Pods"
-msgstr ""
+msgstr "No destruyas *NINGUNA* Cápsula de Cargamento"
 
 #. / Mission objective (Hinstag)
 #: ../src/mission.c:142
 msgid "Destroy 5 WEAPCO Missile Boats"
-msgstr ""
+msgstr "Destruye 5 Naves de Misiles de WEAPCO"
 
 #. / Mission objective (Joldar)
 #: ../src/mission.c:156
 msgid "Destroy 9 WEAPCO Mine-droppers"
-msgstr ""
+msgstr "Destruye 9 naves de minas de WEAPCO"
 
 #. / Mission objective (Moebo)
 #: ../src/mission.c:170
 msgid "Destroy WEAPCO Frigate"
-msgstr ""
+msgstr "Destruye Nave Grande de WEAPCO"
 
 #. / Mission objective (Nerod)
 #: ../src/mission.c:182
@@ -2121,22 +2146,22 @@ msgstr "Rescata a Phoebe Lexx"
 #. / Mission objective (Nerod)
 #: ../src/mission.c:189
 msgid "Do not allow Phoebe to be killed"
-msgstr ""
+msgstr "No dejes que Phoebe sea asesinada"
 
 #. / Mission objective (Allez)
 #: ../src/mission.c:212
 msgid "Do not allow supply craft to be destroyed"
-msgstr ""
+msgstr "No dejes que ninguna nave de suministros sea destruida"
 
 #. / Mission objective (Urusor)
 #: ../src/mission.c:226
 msgid "Disable five WEAPCO supply craft"
-msgstr ""
+msgstr "Deshabilita cinco naves de suministros de WEAPCO"
 
 #. / Mission objective (Urusor)
 #: ../src/mission.c:237
 msgid "Protect supply craft AND Sid Wilson"
-msgstr ""
+msgstr "Protege el vehículo de suministros Y a Sid Wilson"
 
 #. / Mission objective (Dorim)
 #: ../src/mission.c:247
@@ -2156,12 +2181,12 @@ msgstr "Recoge 10 trozos de Mineral"
 #. / Mission objective (Elamale)
 #: ../src/mission.c:274
 msgid "Destroy WEAPCO ore mining craft"
-msgstr ""
+msgstr "Destruye el vehículo de minería de WEAPCO"
 
 #. / Mission objective (Elamale)
 #: ../src/mission.c:281
 msgid "Save present slaves"
-msgstr ""
+msgstr "Salva a los esclavos presentes"
 
 #. / Mission objective (Elamale)
 #: ../src/mission.c:287
@@ -2412,7 +2437,7 @@ msgstr ""
 
 #: ../src/mission.c:856
 msgid "*** Slaves Rescued - Mission Completed ***"
-msgstr ""
+msgstr "*** Esclavos Rescatados - Misión Completada ***"
 
 #. / Dialog (Chris Bainfield)
 #. / Used when you rescue enough slaves for the Eyananth slave rescue mission.
@@ -2443,7 +2468,7 @@ msgstr[1] ""
 
 #: ../src/mission.c:888
 msgid "*** Experimental Fighter Destroyed - Mission Completed ***"
-msgstr ""
+msgstr "*** Luchador Experimental Destruido - Misión Completada ***"
 
 #. / Dialog (Chris Bainfield)
 #. / Used when the Mordor cloak ship is destroyed.
@@ -2453,11 +2478,11 @@ msgstr ""
 
 #: ../src/mission.c:971
 msgid "*** Primary Objective Completed ***"
-msgstr ""
+msgstr "*** Objetivo Principal Completado ***"
 
 #: ../src/mission.c:973
 msgid ">>> Primary Objective Failed <<<"
-msgstr ""
+msgstr ">>> Objetivo Principal Fracasado <<<"
 
 #: ../src/mission.c:980
 msgid "Emergency warp drive activated. Press button to engage."
@@ -2465,7 +2490,7 @@ msgstr ""
 
 #: ../src/mission.c:986
 msgid "*** Interception Destroyed ***"
-msgstr ""
+msgstr "*** Intercepción Destruida ***"
 
 #. / Dialog (Chris Bainfield)
 #. / Used when the Earth mission is completed.
@@ -2473,34 +2498,36 @@ msgstr ""
 msgid ""
 "You guys stay here and keep things under control. I'm going after Kethlan!"
 msgstr ""
+"Vosotros os quedáis aquí y mantenéis las cosas bajo control. ¡Voy tras "
+"Kethlan!"
 
 #: ../src/mission.c:1015
 msgid "*** Secondary Objective Completed ***"
-msgstr ""
+msgstr "*** Objetivo Secundario Completado ***"
 
 #: ../src/mission.c:1020
 msgid "*** All Secondary Objectives Completed ***"
-msgstr ""
+msgstr "*** Todos Los Objetivos Secundarios Completados ***"
 
 #: ../src/mission.c:1035
 msgid ">>> MISSION FAILED <<<"
-msgstr ""
+msgstr ">>> MISIÓN FALLADA <<<"
 
 #: ../src/mission.c:1041
 msgid ">>> Secondary Objective Failed <<<"
-msgstr ""
+msgstr ">>> Objetivo Secundario Fallado <<<"
 
 #: ../src/mission.c:1120
 msgid "Primary Objectives"
-msgstr ""
+msgstr "Objetivo Primario"
 
 #: ../src/mission.c:1134
 msgid "Secondary Objectives"
-msgstr ""
+msgstr "Objetivos Secundarios"
 
 #: ../src/mission.c:1148
 msgid "Additional Information"
-msgstr ""
+msgstr "Información Adicional"
 
 #. / Used to indicate the player's shield meter in the HUD.
 #: ../src/mission.c:1165
@@ -2529,8 +2556,8 @@ msgstr "Kline"
 #, c-format
 msgid "SURVIVAL FOR %d minute"
 msgid_plural "SURVIVAL FOR %d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "SUPERVIVENCIA DURANTE %d minuto"
+msgstr[1] "SUPERVIVENCIA DURANTE %d minutos"
 
 #. / "%d" must be retained.  It is replaced with the mission time
 #. / limit in minutes.
@@ -2538,8 +2565,8 @@ msgstr[1] ""
 #, c-format
 msgid "TIME LIMIT: %d minute"
 msgid_plural "TIME LIMIT: %d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "LÍMITE DE TIEMPO: %d minuto"
+msgstr[1] "LÍMITE DE TIEMPO: %d minutos"
 
 #: ../src/mission.c:1223
 msgid "Phoebe Lexx will not be present"
@@ -2547,11 +2574,11 @@ msgstr ""
 
 #: ../src/mission.c:1225
 msgid "Ursula Lexx will not be present"
-msgstr ""
+msgstr "Úrsula Lexx no estará presente"
 
 #: ../src/mission.c:1232
 msgid "Sid Wilson will join you on this mission"
-msgstr ""
+msgstr "Sid Wilson se te unirá en esta misión"
 
 #: ../src/mission.c:1320 ../src/mission.c:1340
 msgid "COMPLETED"
@@ -2566,7 +2593,7 @@ msgstr "FALLADO"
 #: ../src/mission.c:1356
 #, c-format
 msgid "Shield Bonus: $%d"
-msgstr ""
+msgstr "Bonus de Escudo: $%d"
 
 #. / "%02ld" sequences (which represent minutes and seconds,
 #. / respectively) must remain and stay in the same order relative
@@ -2583,24 +2610,24 @@ msgstr ""
 #: ../src/mission.c:1372
 #, c-format
 msgid "Mission Time: %02ld:%02ld"
-msgstr ""
+msgstr "Tiempo de Misión: %02ld:%02ld"
 
 #: ../src/save.c:77
 msgid "AUTOSAVE"
-msgstr ""
+msgstr "AUTOGUARDADO"
 
 #: ../src/save.c:94 ../src/save.c:108
 msgid "Corrupt Game Data"
-msgstr ""
+msgstr "Datos de Juego Corruptos"
 
 #. / Used for empty save slots.
 #: ../src/save.c:127
 msgid "AUTOSAVE (Empty)"
-msgstr ""
+msgstr "AUTOGUARDADO (Vacío)"
 
 #: ../src/save.c:127
 msgid "Empty"
-msgstr ""
+msgstr "Vacío"
 
 #: ../src/save.c:343
 msgid "*** HELP ***"
@@ -2620,7 +2647,7 @@ msgstr "ELIMINAR"
 
 #: ../src/save.c:358
 msgid "SAVE will save the game"
-msgstr ""
+msgstr "GUARDAR guardará la partida"
 
 #: ../src/save.c:359
 msgid "CANCEL will unselect that slot"
@@ -2628,7 +2655,7 @@ msgstr ""
 
 #: ../src/save.c:360
 msgid "DELETE will remove the save"
-msgstr ""
+msgstr "ELIMINAR borrará la partida guardada"
 
 #: ../src/save.c:363
 msgid "First click a Save game slot to use"
@@ -2782,16 +2809,16 @@ msgstr "Escudo: %d"
 #: ../src/shop.c:358
 #, c-format
 msgid "Plasma Cells: %.3d"
-msgstr ""
+msgstr "Células de Plasma: %.3d"
 
 #: ../src/shop.c:369
 msgid "Information"
-msgstr ""
+msgstr "Información"
 
 #. / For when the player attempts to buy something they can't afford.
 #: ../src/shop.c:377
 msgid "You don't have enough money"
-msgstr ""
+msgstr "No tienes suficiente dinero"
 
 #. / For when the player attempts an upgrade beyond the maximum (line 1 of 2).
 #: ../src/shop.c:381
@@ -2827,13 +2854,13 @@ msgstr ""
 #. / For when the player attempts to buy a weapon they already have.
 #: ../src/shop.c:405
 msgid "You already have that weapon"
-msgstr ""
+msgstr "Ya tienes ese arma"
 
 #. / For when the player attempts to increase rocket capacity beyond
 #. / what is allowed for the weapon (used for homing missiles).
 #: ../src/shop.c:410
 msgid "This weapon's ammo limit has been reached"
-msgstr ""
+msgstr "Se ha alcanzado el límite de munición del arma"
 
 #. / Used to put a shop item's name next to its price.
 #. / "%s" is replaced with the item name, and "%d" is replaced
@@ -2841,14 +2868,14 @@ msgstr ""
 #: ../src/shop.c:418
 #, c-format
 msgid "%s ($%d)"
-msgstr ""
+msgstr "%s ($%d)"
 
 #. / Used for shop items that cannot be bought.
 #. / "%s" is replaced with the item name.
 #: ../src/shop.c:426
 #, c-format
 msgid "%s (N/A)"
-msgstr ""
+msgstr "%s (N/A)"
 
 #. ----------- Temporary Items -----------
 #. Overwritten later
