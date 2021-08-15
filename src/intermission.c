@@ -1057,7 +1057,7 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 
 		case MISN_FELLON:
 			/// Mission dialog: Mordor, Fellon (Sid Wilson)
-			strcpy(string, _("A rebel group has organized a counter strike. If we can help them secure a victory it will be a real boost to morale."));
+			strcpy(string, _("A rebel group has organized a counter strike. If we can help them secure a victory, it will be a real boost to morale."));
 			y = intermission_renderDialog(comms, y, FS_SID, string);
 
 			/// Mission dialog: Mordor, Fellon (Chris Bainfield)
