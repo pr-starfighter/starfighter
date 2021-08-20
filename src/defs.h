@@ -29,8 +29,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define WRAP_ADD(x, y, a, b) x = (((x) + (y)) + \
 	((x) + (y) < (a) ? ((b) - (a)) : 0) + \
 	((x) + (y) > (b) ? ((a) - (b)) : 0))
-#define CHANCE(x) ((rand() % RAND_MAX) < ((x) * RAND_MAX))
-#define RANDRANGE(x, y) (((x) < (y)) ? ((x) + (rand() % (long)(1 + (y) - (x)))) : (x))
+#define CHANCE(x) (((double)rand() / ((double)RAND_MAX+1)) < (x))
+#define RANDRANGE(x, y) (((x) < (y)) ? \
+	((x) + (rand() % (long)(1 + (y) - (x)))) : (x))
 #define DRAND ((double)rand() / RAND_MAX)
 #define _(s) gettext(s)
 #define CSDLP(x) (((x) == SDL_PRESSED) ? 1 : 0)
