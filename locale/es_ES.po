@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2020-12-25 14:04-0500\n"
-"PO-Revision-Date: 2021-08-12 20:16+0200\n"
+"PO-Revision-Date: 2021-08-20 17:00+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1548,6 +1548,7 @@ msgstr "Síp. Parece que WEAPCO está empezando a tomar nota de tus acciones."
 msgid ""
 "Awesome! This will really put the Firefly's fighting ability to the test!"
 msgstr ""
+"¡Genial! ¡Esto realmente pondrá a prueba la habilidad de lucha del Firefly!"
 
 #. / Mission dialog: Spirit, Hinstag (Sid Wilson)
 #: ../src/intermission.c:885
@@ -1556,6 +1557,9 @@ msgid ""
 "level most major cities. Try not to face them head-on, and keep your "
 "distance."
 msgstr ""
+"Por favor, ten cuidado, Cris. Una sola nave de misiles tiene suficientes "
+"cohetes para nivelar las mayores ciudades. Intenta no hacerle frente de "
+"cara, y mantén la distancia."
 
 #. / Mission dialog: Spirit, Joldar (Sid Wilson)
 #: ../src/intermission.c:892
@@ -1563,11 +1567,13 @@ msgid ""
 "We're going to have to get rid of the mine deployment unit around Joldar. "
 "The minefield is stopping interplanetary traffic."
 msgstr ""
+"Tendremos que deshacernos de la unidad de despliegue de minas alrededor de "
+"Joldar. El campo de minas está parando el tráfico interplanetario."
 
 #. / Mission dialog: Spirit, Joldar (Chris Bainfield)
 #: ../src/intermission.c:896
 msgid "Are any fighters around to keep me entertained?"
-msgstr ""
+msgstr "¿Hay algunos luchadores alrededor para tenerme entretenido?"
 
 #. / Mission dialog: Spirit, Joldar (Sid Wilson)
 #: ../src/intermission.c:900
@@ -1576,6 +1582,9 @@ msgid ""
 "of those mines! They'll only explode when they encounter a ship that's not "
 "transmitting a WEAPCO signal. Shoot them down if they get in your way."
 msgstr ""
+"No por el momento, pero eso no significa que no aparezcan. ¡Sé muy cuidadoso "
+"con esas minas! Solo explotarán cuando se encuentren con una nave que no "
+"transmita una señal de WEAPCO. Dispáralas si se cruzan en tu camino."
 
 #. / Mission dialog: Spirit, Moebo (Sid Wilson)
 #: ../src/intermission.c:907
@@ -1584,6 +1593,9 @@ msgid ""
 "destroying Spirit! The explosion will incinerate everything in the system! "
 "You've got to destroy that frigate before it gets in range!"
 msgstr ""
+"¡Tenemos un problema grave aquí! ¡WEAPCO ha decidido parar nuestra "
+"resistencia destruyendo Spirit! ¡La explosión incinerará todo en el sistema! "
+"¡Tienes que destruir esa nave grande antes de que esté a rango de tiro!"
 
 #. / Mission dialog: Spirit, Moebo (Chris Bainfield)
 #: ../src/intermission.c:911
@@ -1812,6 +1824,8 @@ msgid ""
 "A rebel group has organized a counter strike. If we can help them secure a "
 "victory it will be a real boost to morale."
 msgstr ""
+"Un grupo rebelde ha organizado un contraataque. Si podemos ayudarles a "
+"asegurar una victoria, será un estímulo para la motivación."
 
 #. / Mission dialog: Mordor, Fellon (Chris Bainfield)
 #: ../src/intermission.c:1064
@@ -1836,6 +1850,8 @@ msgstr ""
 #: ../src/intermission.c:1079
 msgid "Damn! I guess that means I'll have to mine some myself, then, huh?"
 msgstr ""
+"¡Maldición! ¿Supongo que eso significa que tendré que minar algo por mi "
+"cuenta, entonces, hem?"
 
 #. / Mission dialog: Mordor, Sivedi (Sid Wilson)
 #: ../src/intermission.c:1083
@@ -1853,11 +1869,14 @@ msgid ""
 "taking out key WEAPCO plants. Can you help me create a diversion by wreaking "
 "havoc a little bit away from that?"
 msgstr ""
+"¡Ey, Krass! Necesito que nos ayudes con algo. Phoebe y Úrsula están "
+"destruyendo plantas clave de WEAPCO. ¿Puedes ayudarme a crear una "
+"distracción causando estragos un poco más lejos de ahí?"
 
 #. / Mission dialog: Mordor, Almartha (Krass Tyler)
 #: ../src/intermission.c:1094
 msgid "Sure, I can help you out, boy. But I'll be needing my fee..."
-msgstr ""
+msgstr "Claro, puedo ayudarte, chico. Pero necesitaré mi honorario."
 
 #. / Mission dialog: Mordor, Poswic (Ursula Lexx)
 #: ../src/intermission.c:1101
@@ -1876,17 +1895,20 @@ msgid ""
 "We can't let a rare opportunity like this slip through our fingers! I'll "
 "need some cover so I can disable that ship."
 msgstr ""
+"¡No podemos dejar que una rara oportunidad como esta se nos escape de las "
+"manos! Necesito que alguien me cubra para poder deshabilitar esa nave."
 
 #. / Mission dialog: Mordor, Poswic (Chris Bainfield)
 #: ../src/intermission.c:1109
 msgid "I've got you covered, Sid!"
-msgstr ""
+msgstr "¡Te estoy cubriendo, Sid!"
 
 #. / Mission dialog: Mordor, Ellesh (Chris Bainfield)
 #: ../src/intermission.c:1116
 msgid ""
 "Phoebe, I need you to keep an eye on things here. I'm going after that ship!"
 msgstr ""
+"Phoebe, necesito que le eches un ojo a las cosas aquí. ¡Voy tras esa nave!"
 
 #. / Mission dialog: Mordor, Ellesh (Phoebe Lexx)
 #: ../src/intermission.c:1120
@@ -1908,6 +1930,8 @@ msgid ""
 "We've got to start from the outside and work our way in. That will give us "
 "less chance of being flanked during the final operation."
 msgstr ""
+"Tenemos que empezar desde fuera y trabajarnos nuestro camino. Eso nos da "
+"menos oportunidades de ser flanqueados durante la operación final."
 
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Phoebe Lexx)
 #: ../src/intermission.c:1137
@@ -1944,27 +1968,31 @@ msgid ""
 "Several mobile Energy Ray cannons, not unlike the weapon used by the Star "
 "Killer back in Spirit."
 msgstr ""
+"Varios cañones móbiles de Rayos de Energía, no diferentes del arma usada por "
+"el Asesino Estelar en Spirit."
 
 #. / Mission dialog: Sol, Saturn (Phoebe Lexx)
 #: ../src/intermission.c:1164
 msgid "Best check my ejection system, then!"
-msgstr ""
+msgstr "¡Mejor comprobar mi sistema de eyección, entonces!"
 
 #. / Mission dialog: Sol, Jupiter (Sid Wilson)
 #: ../src/intermission.c:1171
 msgid ""
 "While you were gone I picked up a distress call coming from around Jupiter."
-msgstr ""
+msgstr "Mientras no estabas capté una llamada de socorro de cerca de Júpiter."
 
 #. / Mission dialog: Sol, Jupiter (Ursula Lexx)
 #: ../src/intermission.c:1175
 msgid "Who would be sending out a distress call within Sol?"
-msgstr ""
+msgstr "¿Quién mandaría una señal de socorro dentro de Sol?"
 
 #. / Mission dialog: Sol, Jupiter (Chris Bainfield)
 #: ../src/intermission.c:1179
 msgid "Let's check it out. Even if it's a trap, I think we can handle it."
 msgstr ""
+"Echemos un vistazo. Incluso si es una trampa, creo que podemos ocuparnos de "
+"ello."
 
 #. / Mission dialog: Sol, Mars (Sid Wilson)
 #: ../src/intermission.c:1186
@@ -1972,11 +2000,13 @@ msgid ""
 "Chris, we've got a small problem. WEAPCO has deployed a minefield in the "
 "asteroid belt. We'll need you to clear a way through."
 msgstr ""
+"Cris, tenemos un pequeño problema. WEAPCO ha desplegado un campo de minas en "
+"el cinturón de asteroides. Necesitamos que abras un camino."
 
 #. / Mission dialog: Sol, Mars (Chris Bainfield)
 #: ../src/intermission.c:1190
 msgid "Alright. I'll radio in once I've cleared a safe path."
-msgstr ""
+msgstr "Vale. Transmitiré por radio en cuanto haya despejado un camino seguro."
 
 #. / Mission dialog: Sol, Earth (Chris Bainfield)
 #: ../src/intermission.c:1197
@@ -1984,11 +2014,15 @@ msgid ""
 "Okay people, this is the big one. We go in fast and we go in hard. Don't "
 "hold back and hit them with everything we've got!"
 msgstr ""
+"Vale, gente, esto es lo más grande. Vamos rápido y vamos fuerte. ¡No nos "
+"contengamos y démosles con todo lo que tenemos!"
 
 #. / Mission dialog: Sol, Earth (Sid Wilson)
 #: ../src/intermission.c:1201
 msgid "We've come too far to turn back now. None of us better die out there!"
 msgstr ""
+"Hemos llegado muy lejos para volvernos ahora. ¡Más vale que no muera ninguno "
+"de nosotros aquí!"
 
 #. / Mission dialog: Sol, Earth (Phoebe Lexx)
 #: ../src/intermission.c:1205
@@ -2299,7 +2333,14 @@ msgid_plural ""
 "$%d more to collect...\n"
 "$%d more needed..."
 msgstr[0] ""
+"Recoge $%d más...\n"
+"$%d más por recoger...\n"
+"Solo $%d necesitado...\n"
+"Recoge solo $%d más..."
 msgstr[1] ""
+"Recoge $%d más...\n"
+"$%d más por recoger...\n"
+"Solo $%d necesitados..."
 
 #. / Info line messages for remaining cargo pods to collect
 #. / This is a "\n"-separated list of possible choices to make.  Please feel free
@@ -2319,7 +2360,16 @@ msgid_plural ""
 "%d more cargo pods needed...\n"
 "Collect %d remaining cargo pods..."
 msgstr[0] ""
+"Recoge %d cápsula de cargamento más...\n"
+"%d cápsula de cargamento más que recoger...\n"
+"%d cápsula de cargamento más necesaria...\n"
+"Recoge solo %d cápsula de cargamento más\n"
+"Solo %d cápsula de cargamento más por recoger..."
 msgstr[1] ""
+"Recoge %d cápsulas de cargamento más...\n"
+"%d cápsulas de cargamentos más que recoger...\n"
+"%d cápsulas de cargamento más necesarias...\n"
+"Recoge %d cápsulas de cargamento restantes..."
 
 #. / Info line messages for remaining ore to collect
 #. / This is a "\n"-separated list of possible choices to make.  Please feel free
@@ -2337,7 +2387,14 @@ msgid_plural ""
 "%d more pieces of ore to collect...\n"
 "%d more pieces of ore needed..."
 msgstr[0] ""
+"Recoge %d trozo de mineral más...\n"
+"%d trozo de mineral más que recoger...\n"
+"%d trozo de mineral más necesario...\n"
+"Recoge solo %d trozos de mineral más"
 msgstr[1] ""
+"Recoge %d trozos de mineral más...\n"
+"%d trozos de mineral más que recoger...\n"
+"%d trozos de mineral más necesarios..."
 
 #: ../src/mission.c:699
 msgid "Cargo pod destroyed!"
@@ -2368,7 +2425,7 @@ msgstr "No... Ursula..."
 #. / Used when Phoebe is killed in the Nerod mission.
 #: ../src/mission.c:725
 msgid "Dammit, Chris! We just lost her!"
-msgstr ""
+msgstr "¡Maldición, Cris! ¡Acabamos de perderla!"
 
 #. / Dialog (friendly transport from Eyananth, Allez mission)
 #. / Used when the friendly transport in the Allez mission is destroyed.
@@ -2401,7 +2458,17 @@ msgid_plural ""
 "%d targets remain...\n"
 "Destroy %d remaining targets..."
 msgstr[0] ""
+"Destruye %d objetivo más...\n"
+"%d objetivo más que destruir...\n"
+"Queda %d objetivo...\n"
+"Destruye solo %d más...\n"
+"Solo queda %d objetivo...\n"
+"Destruye %d último objetivo..."
 msgstr[1] ""
+"Destruye %d objetivos más...\n"
+"%d objetivos más que destruir...\n"
+"Quedan %d objetivo...\n"
+"Destruye %d objetivos restantes..."
 
 #. / Info line messages for remaining enemies to disable
 #. / This is a "\n"-separated list of possible choices to make.  Please feel free
@@ -2419,7 +2486,14 @@ msgid_plural ""
 "%d more targets to disable...\n"
 "Disable %d remaining targets..."
 msgstr[0] ""
+"Deshabilita %d objetivo más...\n"
+"%d objetivo más que deshabilitar...\n"
+"Deshabilita solo %d más...\n"
+"Deshabilita %d último objetivo..."
 msgstr[1] ""
+"Deshabilita %d objetivos más...\n"
+"%d objetivos más por deshabilitar...\n"
+"Deshabilita %d objetivos restantes..."
 
 #: ../src/mission.c:802
 msgid "Sid has been killed!"
@@ -2433,7 +2507,7 @@ msgstr "¡Sid ha sido asesinado!"
 #. / language being similarly cut out.
 #: ../src/mission.c:810
 msgid "HULL BREACHED! SYSTEMS FAILING! F-..."
-msgstr ""
+msgstr "¡CORAZA ROTA! ¡SISTEMAS FALLANDO! M-..."
 
 #: ../src/mission.c:856
 msgid "*** Slaves Rescued - Mission Completed ***"
@@ -2446,6 +2520,8 @@ msgid ""
 "Alright, I think I've rescued enough slaves to stir up some trouble for "
 "WEAPCO!"
 msgstr ""
+"¡Vale, creo que hemos rescatado suficientes esclavos para provocarle "
+"problemas a WEAPCO!"
 
 #. / Info line messages for remaining slaves to rescue
 #. / This is a "\n"-separated list of possible choices to make.  Please feel free
@@ -2464,7 +2540,15 @@ msgid_plural ""
 "At least %d more slaves to rescue...\n"
 "At least %d more rescued slaves needed..."
 msgstr[0] ""
+"Rescata %d esclavo más...\n"
+"Rescata al menos %d esclavo más...\n"
+"Al menos %d esclavo más por rescatar...\n"
+"Al menos %d esclavo rescatado más necesario..."
 msgstr[1] ""
+"Rescata %d esclavos más...\n"
+"Rescata al menos %d esclavos más...\n"
+"Al menos %d esclavos más por rescatar...\n"
+"Al menos %d esclavos rescatados más necesarios..."
 
 #: ../src/mission.c:888
 msgid "*** Experimental Fighter Destroyed - Mission Completed ***"
@@ -2474,7 +2558,7 @@ msgstr "*** Luchador Experimental Destruido - Misión Completada ***"
 #. / Used when the Mordor cloak ship is destroyed.
 #: ../src/mission.c:892
 msgid "That's one less surprise that WEAPCO can spring on us!"
-msgstr ""
+msgstr "¡Esto es una sorpresa menos que nos puede dar WEAPCO!"
 
 #: ../src/mission.c:971
 msgid "*** Primary Objective Completed ***"
@@ -2486,7 +2570,7 @@ msgstr ">>> Objetivo Principal Fracasado <<<"
 
 #: ../src/mission.c:980
 msgid "Emergency warp drive activated. Press button to engage."
-msgstr ""
+msgstr "Motor warp de emergencia activado. Pulsa botón para emplear."
 
 #: ../src/mission.c:986
 msgid "*** Interception Destroyed ***"
@@ -2570,7 +2654,7 @@ msgstr[1] "LÍMITE DE TIEMPO: %d minutos"
 
 #: ../src/mission.c:1223
 msgid "Phoebe Lexx will not be present"
-msgstr ""
+msgstr "Phoebe Lexx no estará presente"
 
 #: ../src/mission.c:1225
 msgid "Ursula Lexx will not be present"
@@ -2651,7 +2735,7 @@ msgstr "GUARDAR guardará la partida"
 
 #: ../src/save.c:359
 msgid "CANCEL will unselect that slot"
-msgstr ""
+msgstr "CANCELAR quitará la selección de esa ranura"
 
 #: ../src/save.c:360
 msgid "DELETE will remove the save"
@@ -2659,7 +2743,7 @@ msgstr "ELIMINAR borrará la partida guardada"
 
 #: ../src/save.c:363
 msgid "First click a Save game slot to use"
-msgstr ""
+msgstr "Haz clic en una ranura de Partida Guardada para usarla"
 
 #: ../src/save.c:366
 msgid "Game Saved"
@@ -2691,7 +2775,7 @@ msgstr "Cohetes Dbl"
 #. / Shop info: current secondary: micro rockets
 #: ../src/shop.c:75
 msgid "Micro Rockets"
-msgstr ""
+msgstr "Micro Cohetes"
 
 #. / Shop info: current secondary: laser
 #: ../src/shop.c:79
@@ -2701,32 +2785,32 @@ msgstr "Láser"
 #. / Shop info: current secondary: charger
 #: ../src/shop.c:83
 msgid "Charger"
-msgstr ""
+msgstr "Cargador"
 
 #. / Shop info: current secondary: homing missile
 #: ../src/shop.c:87
 msgid "Homing Missile"
-msgstr ""
+msgstr "Misil Teledirigido"
 
 #. / Shop info: current secondary: double homing missiles
 #: ../src/shop.c:91
 msgid "Dbl Homing Missiles"
-msgstr ""
+msgstr "Misiles Teledirigidos Dbl"
 
 #. / Shop info: current secondary: micro homing missiles
 #: ../src/shop.c:95
 msgid "Mcr Homing Missiles"
-msgstr ""
+msgstr "Mcr Misiles Teledirigidos"
 
 #. / Retain "%d" as-is.  It is replaced with the rocket capacity of the Firefly.
 #: ../src/shop.c:105
 #, c-format
 msgid "Capacity : %d"
-msgstr ""
+msgstr "Capacidad : %d"
 
 #: ../src/shop.c:286
 msgid "Primary Weapon"
-msgstr ""
+msgstr "Arma Primaria"
 
 #. / Shop info: min plasma output
 #. / Retain "%d" as-is.  It is replaced with the min plasma output.
@@ -2740,39 +2824,39 @@ msgstr "Cañones: %d"
 #: ../src/shop.c:293
 #, c-format
 msgid "Power: Stage %d"
-msgstr ""
+msgstr "Poder: Fase %d"
 
 #. / Shop info: min plasma rate
 #. / Retain "%d" as-is.  It is replaced with the min plasma cooling.
 #: ../src/shop.c:298
 #, c-format
 msgid "Cooling: Stage %d"
-msgstr ""
+msgstr "Refrigerante: Fase %d"
 
 #: ../src/shop.c:302
 msgid "Powerup Weapon"
-msgstr ""
+msgstr "Arma de Mejora"
 
 #. / Shop info: max plasma output
 #. / Retain "%d" as-is.  It is replaced with the max plasma output.
 #: ../src/shop.c:305
 #, c-format
 msgid "Splitter: Stage %d"
-msgstr ""
+msgstr "Separador: Fase %d"
 
 #. / Shop info: max plasma damage
 #. / Retain "%d" as-is.  It is replaced with the max plasma damage.
 #: ../src/shop.c:310
 #, c-format
 msgid "Condensor: Stage %d"
-msgstr ""
+msgstr "Condensador: Fase %d"
 
 #. / Shop info: max plasma rate
 #. / Retain "%d" as-is.  It is replaced with the max plasma cooling.
 #: ../src/shop.c:315
 #, c-format
 msgid "L.Nitrogen: Stage %d"
-msgstr ""
+msgstr "L.Nitrógeno: Fase %d"
 
 #. / Shop info: max plasma ammo
 #. / Retain "%d" as-is.  It is replaced with the Firefly's plasma ammo capacity.
@@ -2783,19 +2867,19 @@ msgstr "Capacidad: %d"
 
 #: ../src/shop.c:329
 msgid "Temporary Weapons"
-msgstr ""
+msgstr "Armas Temporales"
 
 #: ../src/shop.c:330
 msgid "Ammo and Storage"
-msgstr ""
+msgstr "Munición y Almacenamiento"
 
 #: ../src/shop.c:332
 msgid "Primary Weapons"
-msgstr ""
+msgstr "Armas Primarias"
 
 #: ../src/shop.c:334
 msgid "Secondary Weapons"
-msgstr ""
+msgstr "Armas Secundarias"
 
 #. / Retain "%d" as-is.  It is replaced with the Firefly's max shield.
 #: ../src/shop.c:350
@@ -2823,33 +2907,33 @@ msgstr "No tienes suficiente dinero"
 #. / For when the player attempts an upgrade beyond the maximum (line 1 of 2).
 #: ../src/shop.c:381
 msgid "Cannot upgrade ship"
-msgstr ""
+msgstr "No se puede mejorar nave"
 
 #. / For when the player attempts an upgrade beyond the maximum (line 2 of 2).
 #: ../src/shop.c:384
 msgid "Hardware capacity has been reached"
-msgstr ""
+msgstr "Se ha alcanzado capacidad de hardware"
 
 #. / For when the player attempts to buy more ammo than the ship can hold.
 #: ../src/shop.c:388
 msgid "Ammunition limit reached"
-msgstr ""
+msgstr "Alcanzado límite de munición"
 
 #. / For when the player attempts to sell an item they aren't allowed to sell.
 #: ../src/shop.c:392
 msgid "You cannot sell that item"
-msgstr ""
+msgstr "No puedes vender ese elemento"
 
 #. / For when the player attempts to sell an item they don't have any of.
 #: ../src/shop.c:396
 msgid "Nothing to sell"
-msgstr ""
+msgstr "Nada que vender"
 
 #. / For when the player attempts to buy rockets or rocket capacity
 #. / while secondary weapon is either laser or charge cannon.
 #: ../src/shop.c:401
 msgid "Rockets cannot be bought for Laser or Charger Cannon"
-msgstr ""
+msgstr "No se pueden comprar cohetes para el Láser o el Cañón Cargador"
 
 #. / For when the player attempts to buy a weapon they already have.
 #: ../src/shop.c:405
@@ -2881,120 +2965,120 @@ msgstr "%s (N/A)"
 #. Overwritten later
 #: ../src/shop.c:441
 msgid "Plasma Channel Splitter"
-msgstr ""
+msgstr "Separador de Canal de Plasma"
 
 #. / Shop item description: Plasma Channel Splitter (PLASMA_MAX_OUTPUT)
 #: ../src/shop.c:443
 msgid "Improves poweredup plasma output"
-msgstr ""
+msgstr "Mejora la salida de plasma mejorada"
 
 #. Overwritten later
 #: ../src/shop.c:447
 msgid "Plasma Capacity Condensor"
-msgstr ""
+msgstr "Condensador de Capacidad de Plasma"
 
 #. / Shop item description: Plasma Capacity Condensor (PLASMA_MAX_DAMAGE)
 #: ../src/shop.c:449
 msgid "Increases poweredup plasma damage"
-msgstr ""
+msgstr "Aumenta el daño de plasma aumentado"
 
 #. Overwritten later
 #: ../src/shop.c:453
 msgid "Liquid Nitrogen Capsules"
-msgstr ""
+msgstr "Cápsulas de Nitrógeno Líquido"
 
 #. / Shop item description: Liquid Nitrogen Capsules (PLASMA_MAX_RATE)
 #: ../src/shop.c:455
 msgid "Increases plasma firing rate"
-msgstr ""
+msgstr "Aumenta la frecuencia de disparo de plasma"
 
 #: ../src/shop.c:463
 msgid "Plasma Cells"
-msgstr ""
+msgstr "Células de Plasma"
 
 #. / Shop item description: Plasma Cells
 #: ../src/shop.c:465
 msgid "Plasma ammunition (10 cells each)"
-msgstr ""
+msgstr "Munición de plasma (10 células cada una)"
 
 #: ../src/shop.c:473
 msgid "Rocket Ammo"
-msgstr ""
+msgstr "Munición de Cohetes"
 
 #. / Shop item description: Rocket Ammo
 #: ../src/shop.c:475
 msgid "High velocity dumb fire rocket"
-msgstr ""
+msgstr "Cohete de fuego simple de alta velocidad"
 
 #. ----------- Permanent Items -----------
 #. Overwritten later
 #: ../src/shop.c:481
 msgid "Additional Plasma Cannon"
-msgstr ""
+msgstr "Cañón de Plasma Adicional"
 
 #. / Shop item description: Additional Plasma Cannon (PLASMA_MIN_OUTPUT)
 #: ../src/shop.c:483
 msgid "Adds an extra plasma cannon to the Firefly"
-msgstr ""
+msgstr "Añade un cañón extra al Firefly"
 
 #. Overwritten later
 #: ../src/shop.c:487
 msgid "Plasma Power Booster"
-msgstr ""
+msgstr "Potenciador de Poder de Plasma"
 
 #. / Shop item description: Plasma Power Booster (PLASMA_MIN_DAMAGE)
 #: ../src/shop.c:489
 msgid "Increases power of plasma shots"
-msgstr ""
+msgstr "Aumenta el poder de los disparos de plasma"
 
 #. Overwritten later
 #: ../src/shop.c:493
 msgid "Plasma Cooling Booster"
-msgstr ""
+msgstr "Potenciador de Refrigerante de Plasma"
 
 #. / Shop item description: Plasma Cooling Booster (PLASMA_MIN_RATE)
 #: ../src/shop.c:495
 msgid "Permanently increases firing rate"
-msgstr ""
+msgstr "Aumenta permanentemente la frecuencia de disparo"
 
 #. ----------- Ammo Items --------------
 #. Overwritten later
 #: ../src/shop.c:501
 msgid "Plasma Compressor"
-msgstr ""
+msgstr "Compresor de Plasma"
 
 #. / Shop item description: Plasma Compressor (PLASMA_MAX_AMMO)
 #: ../src/shop.c:503
 msgid "Increases plasma ammo capacity"
-msgstr ""
+msgstr "Aumenta la capacidad de munición de plasma"
 
 #. Overwritten later
 #: ../src/shop.c:507
 msgid "Rocket Pod"
-msgstr ""
+msgstr "Capsula de Cohete"
 
 #. / Shop item description: Rocket Pod (ROCKET_MAX_AMMO)
 #: ../src/shop.c:509
 msgid "Allows for an additional 5 rockets to be carried"
-msgstr ""
+msgstr "Permite transportar 5 cohetes adicionales"
 
 #: ../src/shop.c:515
 msgid "Dual Rocket Launcher"
-msgstr ""
+msgstr "Lanzador de Cohetes Doble"
 
 #. / Shop item description: Dual Rocket Launcher
 #: ../src/shop.c:517
 msgid "Launches two rockets at once"
-msgstr ""
+msgstr "Lanza dos cohetes de golpe"
 
 #: ../src/shop.c:521
 msgid "Micro Rocket Launcher"
-msgstr ""
+msgstr "Lanzador de Cohetes Micro"
 
 #. / Shop item description: Micro Rocket Launcher
 #: ../src/shop.c:523
 msgid "Launches several less powerful rockets at once"
-msgstr ""
+msgstr "Lanza varios cohetes menos poderosos de golpe"
 
 #: ../src/shop.c:527
 msgid "Laser Cannon"
@@ -3024,11 +3108,11 @@ msgstr "Carga de Cañón"
 #. / Shop item description: Charge Cannon
 #: ../src/shop.c:543
 msgid "Compacts plasma into clusters for greater damage"
-msgstr ""
+msgstr "Compacta el plasma en un grupo para mayor daño"
 
 #: ../src/shop.c:547
 msgid "Dual Homing Missile Launcher"
-msgstr ""
+msgstr "Lanzador Dual de Misiles Teledirigidos"
 
 #. / Shop item description: Dual Homing Missile Launcher
 #. / %i must be retained.  It is replaced by the maximum missile
@@ -3036,11 +3120,11 @@ msgstr ""
 #: ../src/shop.c:551
 #, c-format
 msgid "Fires two homing missiles (max %i missiles)"
-msgstr ""
+msgstr "Dispara dos misiles teledirigidos (máx %i misiles)"
 
 #: ../src/shop.c:555
 msgid "Micro Homing Missile Launcher"
-msgstr ""
+msgstr "Lanzador de Micro Misiles Teledirigidos"
 
 #. / Shop item description: Micro Homing Missile Launcher
 #. / %i must be retained.  It is replaced by the maximum missile
@@ -3048,7 +3132,7 @@ msgstr ""
 #: ../src/shop.c:559
 #, c-format
 msgid "Fires several small homing missiles (max %i missiles)"
-msgstr ""
+msgstr "Dispara varios misiles teledirigidos pequeños (máx %i misiles)"
 
 #: ../src/title.c:93
 msgid "START GAME"
