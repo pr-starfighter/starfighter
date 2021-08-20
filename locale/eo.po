@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2020-12-25 14:04-0500\n"
-"PO-Revision-Date: 2021-08-10 11:13+0200\n"
+"PO-Revision-Date: 2021-08-20 17:11+0200\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: eo\n"
@@ -31,7 +31,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.3\n"
 
 #. / Dialog (Kline Kethlan)
 #. / Used when the final "stage" of the Venus fight is entered.
@@ -1727,7 +1727,7 @@ msgid ""
 "I've received word that the slaves we rescued have started a rebellion. "
 "Looks like the plan worked."
 msgstr ""
-"Mi aŭdis, ke la sklavoj, kiujn ni savis, komencis ribelo. Ŝajnas, ke la "
+"Mi aŭdis, ke la sklavoj, kiujn ni savis, komencis ribelon. Ŝajnas, ke la "
 "plano funkciis. "
 
 #. / Mission dialog: Eyananth, Elamale (Phoebe Lexx)
