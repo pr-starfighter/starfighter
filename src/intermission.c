@@ -179,6 +179,7 @@ void intermission_updateSystemStatus()
 		game.stationedPlanet = 0;
 		game.system = 1;
 		game.area = MISN_RESCUESLAVES;
+		game.forceMisnTarget = 1;
 		intermission_initPlanets(game.system);
 
 		if (game.difficulty == DIFFICULTY_ORIGINAL)
@@ -189,6 +190,7 @@ void intermission_updateSystemStatus()
 		game.stationedPlanet = 0;
 		game.system = 2;
 		game.area = MISN_CLOAKFIGHTER;
+		game.forceMisnTarget = 1;
 		intermission_initPlanets(game.system);
 
 		if (game.difficulty == DIFFICULTY_ORIGINAL)

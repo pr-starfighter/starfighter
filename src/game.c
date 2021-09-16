@@ -104,6 +104,8 @@ void game_init()
 	game.slavesRescued = 0;
 	game.experimentalShield = 1000;
 
+	game.forceMisnTarget = 1;
+
 	game.timeTaken = 0;
 
 	game.stationedPlanet = -1;
@@ -2523,6 +2525,7 @@ void game_getDifficultyText(char *dest, int difficulty)
 
 int game_mainLoop()
 {
+	int spawnedMisnTarget;
 	float chance;
 
 	engine_resetLists();
@@ -2541,8 +2544,12 @@ int game_mainLoop()
 	if (game.area == MISN_ELAMALE)
 		aliens[ALIEN_KLINE].active = 0;
 
+	spawnedMisnTarget = 0;
 	for (int i = 0 ; i < engine.maxAliens ; i++)
-		alien_add();
+		alien_add(&spawnedMisnTarget);
+
+	if (!spawnedMisnTarget)
+		game.forceMisnTarget = 1;
 
 	if (game.hasWingMate1)
 		alien_addFriendly(ALIEN_PHOEBE);
@@ -2594,7 +2601,9 @@ int game_mainLoop()
 
 		if ((game.system == SYSTEM_MORDOR) && (game.experimentalShield > 0))
 		{
-			if (CHANCE(4. / 5.))
+			if (CHANCE(4. / 5.)
+				|| (game.difficulty != DIFFICULTY_ORIGINAL
+					&& game.forceMisnTarget))
 			{
 				aliens[ALIEN_BOSS] = alien_defs[CD_CLOAKFIGHTER];
 				aliens[ALIEN_BOSS].owner = &aliens[ALIEN_BOSS];
@@ -2605,7 +2614,10 @@ int game_mainLoop()
 				aliens[ALIEN_BOSS].y = player.y;
 				player_setTarget(ALIEN_BOSS);
 				aliens[ALIEN_BOSS].shield = game.experimentalShield;
+				game.forceMisnTarget = 0;
 			}
+			else
+				game.forceMisnTarget = 1;
 		}
 
 		// Note: music is started here only for interceptions.  For
@@ -2893,7 +2905,7 @@ int game_mainLoop()
 			WRAP_ADD(engine.addAliens, -1, 0, mission.addAliens);
 			if ((engine.addAliens == 0) && (allowableAliens > 0))
 			{
-				allowableAliens -= alien_add();
+				allowableAliens -= alien_add(NULL);
 			}
 		}
 

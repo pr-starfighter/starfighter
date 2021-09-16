@@ -29,7 +29,7 @@ extern Object aliens[ALIEN_MAX];
 void alien_nerf(int index);
 void alien_defs_init();
 void aliens_init();
-int alien_add();
+int alien_add(int *spawnedMisnTarget);
 void alien_addDrone(Object *hostAlien);
 void alien_addSmallAsteroid(Object *hostAlien);
 void alien_addFriendly(int type);

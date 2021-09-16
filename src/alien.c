@@ -1190,7 +1190,11 @@ void aliens_init()
 	}
 }
 
-int alien_add()
+/* Adds an alien.  If spawnedMisnTarget is non-NULL, it is set to 1 if
+ * a mission target which can be forced with game.forceMisnTarget was
+ * spawned (or otherwise left unchanged).
+ */
+int alien_add(int *spawnedMisnTarget)
 {
 	int index = alien_getFreeIndex();
 
@@ -1315,10 +1319,19 @@ int alien_add()
 		&& (game.area != MISN_SIVEDI)
 		&& (game.area != MISN_MARS))
 	{
-		if ((game.system == SYSTEM_EYANANTH) && (game.area == MISN_INTERCEPTION))
+		if ((game.system == SYSTEM_EYANANTH)
+			&& (game.area == MISN_INTERCEPTION))
 		{
-			if (CHANCE(1. / 5.))
+			if (CHANCE(1. / 5.)
+				|| (game.difficulty != DIFFICULTY_ORIGINAL
+					&& game.forceMisnTarget))
+			{
 				randEnemy = CD_SLAVETRANSPORT;
+				game.forceMisnTarget = 0;
+
+				if (spawnedMisnTarget != NULL)
+					*spawnedMisnTarget = 1;
+			}
 		}
 
 		if (CHANCE(1. / 6.))

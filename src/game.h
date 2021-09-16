@@ -64,6 +64,9 @@ typedef struct Game_ {
 	// remaining shield for experimental fighter
 	int experimentalShield;
 
+	// Whether to force interception targets to appear
+	int forceMisnTarget;
+
 	Uint32 timeTaken; // In seconds
 	int missionCompleted[MAX_PLANETS];
 
