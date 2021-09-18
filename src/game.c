@@ -2495,8 +2495,8 @@ void game_getDifficultyText(char *dest, int difficulty)
 	switch (difficulty)
 	{
 		case DIFFICULTY_SUPEREASY:
-			/// DIFFICULTY_SUPEREASY
-			strcpy(dest, _("Super-Easy"));
+			/// DIFFICULTY_SUPEREASY (Assisted)
+			strcpy(dest, _("Assisted"));
 			break;
 		case DIFFICULTY_EASY:
 			/// DIFFICULTY_EASY
