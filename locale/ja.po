@@ -1,7 +1,7 @@
 # Project: Starfighter Translatable Text
 # Copyright (C) 2003 Parallel Relaities
 # Copyright (C) 2011, 2012, 2013 Guus Sliepen
-# Copyright (C) 2012, 2015-2020 Layla Marchant
+# Copyright (C) 2012, 2015-2021 The Diligent Circle
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,10 +20,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.3.4\n"
+"Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
-"POT-Creation-Date: 2020-12-25 14:04-0500\n"
-"PO-Revision-Date: 2020-10-24 14:41-0400\n"
+"POT-Creation-Date: 2021-09-18 00:01-0400\n"
+"PO-Revision-Date: 2021-09-18 00:08-0400\n"
 "Last-Translator: maruhiro <maruhiro@bridge.ocn.ne.jp>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -34,27 +34,27 @@ msgstr ""
 
 #. / Dialog (Kline Kethlan)
 #. / Used when the final "stage" of the Venus fight is entered.
-#: ../src/alien.c:1593
+#: ../src/alien.c:1615
 msgid "ENOUGH! THIS ENDS NOW!"
 msgstr "もうよい!! これで終わりだ!!!"
 
 #. / Dialog (Kline Kethlan)
 #. / Used when the third "stage" of the Vinus fight is entered.
-#: ../src/alien.c:1604
+#: ../src/alien.c:1626
 msgid "Your ability to stay alive irritates me! Try dodging some of these!"
 msgstr "呆れたしぶとさだ! これでも食らえ!!"
 
 #. / Dialog (Kline Kethlan)
 #. / Used when the second "stage" of the Venus fight is entered.
-#: ../src/alien.c:1618
+#: ../src/alien.c:1640
 msgid "Very good, Bainfield. Now let's get a little more serious..."
 msgstr "すばらしいぞバンフィールド。少し本気を出してやろう…"
 
-#: ../src/alien.c:2002
+#: ../src/alien.c:2024
 msgid ">> Ally has ejected! <<"
 msgstr ">> 仲間は離脱した! <<"
 
-#: ../src/alien.c:2004
+#: ../src/alien.c:2026
 msgid ">> Friendly craft has been destroyed! <<"
 msgstr ">> 友軍の艦船が破壊された! <<"
 
@@ -65,7 +65,7 @@ msgstr ">> 友軍の艦船が破壊された! <<"
 #. / with brag messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of brag messages is permitted.
-#: ../src/alien.c:2033
+#: ../src/alien.c:2055
 msgid ""
 "Take that, robot oppressors!\n"
 "Come on, WEAPCO, give me a challenge already!\n"
@@ -104,13 +104,14 @@ msgstr ""
 #. / with brag messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of brag messages is permitted.
-#: ../src/alien.c:2066
+#: ../src/alien.c:2088
+#, fuzzy
 msgid ""
 "I got another one!\n"
 "Target destroyed!\n"
 "One more for me!\n"
 "Yes! Did you see that, Chris?\n"
-"Hey Chris, remind me to check my kill count later!\n"
+"Hey, Chris, remind me to check my kill count later!\n"
 "Bring it on, WEAPCO!\n"
 "Take that, WEAPCO!\n"
 "My kill count is going up!\n"
@@ -136,7 +137,7 @@ msgstr ""
 #. / with brag messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of brag messages is permitted.
-#: ../src/alien.c:2095
+#: ../src/alien.c:2117
 msgid ""
 "Kicked your ass!\n"
 "You ain't so tough!\n"
@@ -168,25 +169,25 @@ msgstr ""
 
 #. / Dialog (Chris Bainfield)
 #. / Used when Krass Tyler is beaten in the Jupiter mission.
-#: ../src/alien.c:2158
+#: ../src/alien.c:2180
 msgid "The name's CHRIS, old-timer."
 msgstr "俺の名はクリスだ、ジジイ。"
 
 #. / Dialog (Kline Kethlan)
 #. / Used when Kline is killed in the Venus mission.
-#: ../src/alien.c:2165
+#: ../src/alien.c:2187
 msgid "It was an honor... to have fought you..."
 msgstr "光栄に思うぞ…貴様と戦えたことを…"
 
 #. / Dialog (Kline Kethlan)
 #. / Used when Kline is beaten in the Elamale mission.
-#: ../src/alien.c:2207
+#: ../src/alien.c:2230
 msgid "Seems I underestimated you, Bainfield. We'll meet again!"
 msgstr "お前を見くびっていたようだ、バンフィールド。また会うことになるだろう!"
 
 #. / Dialog (Sid Wilson)
 #. / Used when Kline is beaten in the Earth mission.
-#: ../src/alien.c:2223
+#: ../src/alien.c:2246
 msgid "Chris, Kethlan is getting away!"
 msgstr "クリス、ケスランが逃げるぞ!"
 
@@ -734,75 +735,75 @@ msgstr ""
 msgid "You underestimate me, Bainfield."
 msgstr "お前は私を見くびっている、バンフィールド。"
 
-#: ../src/game.c:71
+#: ../src/game.c:75
 msgid "Spirit"
 msgstr "スピリット"
 
-#: ../src/game.c:72
+#: ../src/game.c:76
 msgid "Eyananth"
 msgstr "エヤナンス"
 
-#: ../src/game.c:73
+#: ../src/game.c:77
 msgid "Mordor"
 msgstr "モルドール"
 
-#: ../src/game.c:74
+#: ../src/game.c:78
 msgid "Sol"
 msgstr "太陽"
 
 #. / "%d" must be retained. It is replaced with the amount of money that
 #. / was picked up.
-#: ../src/game.c:320
+#: ../src/game.c:334
 #, c-format
 msgid "Got $%d"
 msgid_plural "Got $%d"
 msgstr[0] "$%d 獲得"
 
-#: ../src/game.c:329
+#: ../src/game.c:343
 msgid "Rocket Ammo at Maximum"
 msgstr "ロケット弾 既に最大"
 
 #. / "%d" must be retained. It is replaced with the number of rockets
 #. / picked up.
-#: ../src/game.c:335
+#: ../src/game.c:349
 #, c-format
 msgid "Got %d rocket"
 msgid_plural "Got %d rockets"
 msgstr[0] "ロケット弾 %d 獲得"
 
-#: ../src/game.c:345
+#: ../src/game.c:359
 msgid "Restored 10 shield points"
 msgstr "シールド 10 回復"
 
-#: ../src/game.c:358 ../src/game.c:377
+#: ../src/game.c:372 ../src/game.c:391
 msgid "Firing rate already at maximum"
 msgstr "連射速度 既に最大"
 
-#: ../src/game.c:362 ../src/game.c:381
+#: ../src/game.c:376 ../src/game.c:395
 msgid "Firing rate increased"
 msgstr "連射速度 増加"
 
-#: ../src/game.c:386 ../src/game.c:427 ../src/game.c:468
+#: ../src/game.c:400 ../src/game.c:441 ../src/game.c:482
 msgid "Upgrade failed (no plasma ammo)"
 msgstr "パワーアップ 失敗 (プラズマ火薬 なし)"
 
-#: ../src/game.c:399 ../src/game.c:418
+#: ../src/game.c:413 ../src/game.c:432
 msgid "Plasma output already at maximum"
 msgstr "出力範囲 既に最大"
 
-#: ../src/game.c:403 ../src/game.c:422
+#: ../src/game.c:417 ../src/game.c:436
 msgid "Plasma output increased"
 msgstr "出力範囲 増加"
 
-#: ../src/game.c:440 ../src/game.c:459
+#: ../src/game.c:454 ../src/game.c:473
 msgid "Plasma damage already at maximum"
 msgstr "火力 既に最大"
 
-#: ../src/game.c:444 ../src/game.c:463
+#: ../src/game.c:458 ../src/game.c:477
 msgid "Plasma damage increased"
 msgstr "火力 増加"
 
-#: ../src/game.c:493
+#: ../src/game.c:507
 msgid "Picked up a Super Charge!"
 msgstr "スーパーチャージ 獲得!"
 
@@ -810,37 +811,37 @@ msgstr "スーパーチャージ 獲得!"
 #. / interception (which means it won't take effect). The "Damn!" serves
 #. / as a little sympathetic easter egg for players unfortunate enough to
 #. / have this happen to them.
-#: ../src/game.c:501
+#: ../src/game.c:515
 msgid "Damn! Upgrade failed (no plasma ammo)"
 msgstr "チクショウ! パワーアップ 失敗 (プラズマ火薬 なし)"
 
-#: ../src/game.c:507
+#: ../src/game.c:521
 msgid "Plasma cells already at Maximum"
 msgstr "プラズマセル 既に最大"
 
 #. / "%d" must be retained. It is replaced with the number of plasma
 #. / cells picked up.
-#: ../src/game.c:515
+#: ../src/game.c:529
 #, c-format
 msgid "Got %d plasma cell"
 msgid_plural "Got %d plasma cells"
 msgstr[0] "プラズマセル %d 獲得"
 
-#: ../src/game.c:523
+#: ../src/game.c:537
 msgid "Picked up some Cargo"
 msgstr "貨物を回収"
 
-#: ../src/game.c:529
+#: ../src/game.c:543
 #, c-format
 msgid "Rescued %d slave"
 msgid_plural "Rescued %d slaves"
 msgstr[0] "%d人の奴隷を救出"
 
-#: ../src/game.c:536
+#: ../src/game.c:550
 msgid "Picked up an Escape Pod"
 msgstr "脱出ポッドを発見"
 
-#: ../src/game.c:540
+#: ../src/game.c:554
 msgid "Picked up some Ore"
 msgstr "鉱石を獲得"
 
@@ -851,7 +852,7 @@ msgstr "鉱石を獲得"
 #. / with messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of messages is permitted.
-#: ../src/game.c:737
+#: ../src/game.c:751
 msgid ""
 "OW! I hope that was an accident!\n"
 "Chris, please be more careful!\n"
@@ -868,7 +869,7 @@ msgstr ""
 #. / with messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of messages is permitted.
-#: ../src/game.c:753
+#: ../src/game.c:767
 msgid ""
 "I am NOT your enemy!\n"
 "Hey! Watch it!\n"
@@ -888,7 +889,7 @@ msgstr ""
 #. / with messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of messages is permitted.
-#: ../src/game.c:841
+#: ../src/game.c:855
 msgid ""
 "Oops! Sorry!\n"
 "Whoops! Are you OK, Chris?\n"
@@ -905,7 +906,7 @@ msgstr ""
 #. / with messages that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of messages is permitted.
-#: ../src/game.c:857
+#: ../src/game.c:871
 msgid ""
 "Get out of the way!\n"
 "Don't fly into my missiles!\n"
@@ -922,7 +923,7 @@ msgstr ""
 #. / with insults that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of insults is permitted.
-#: ../src/game.c:1608
+#: ../src/game.c:1622
 msgid ""
 "Fool.\n"
 "And now you're nothing but a DEAD hero."
@@ -937,7 +938,7 @@ msgstr ""
 #. / with insults that work well in the target language,
 #. / following the English version only as a general guideline.  Any
 #. / number of insults is permitted.
-#: ../src/game.c:1623
+#: ../src/game.c:1637
 msgid ""
 "Pathetic.\n"
 "How very disappointing...\n"
@@ -949,7 +950,7 @@ msgstr ""
 
 #. / Dialog: Krass Tyler
 #. / Used when the player is killed in the Jupiter mission.
-#: ../src/game.c:1634
+#: ../src/game.c:1648
 msgid "That was the easiest $90,000,000 I've ever earned! Bwah! Ha! Ha! Ha!"
 msgstr "これで$90,000,000とはチョロいもんだ! ガハハハハハッ!!"
 
@@ -961,37 +962,37 @@ msgstr "これで$90,000,000とはチョロいもんだ! ガハハハハハッ!!
 #. / timer to use single-digit numbers.
 #. / The ":" can also be replaced just like any text.  For example, this would be fine:
 #. /     "Time Remaining - %d minutes and %d seconds"
-#: ../src/game.c:1947
+#: ../src/game.c:1962
 #, c-format
 msgid "Time Remaining - %.2d:%.2d"
 msgstr "Time Remaining - %.2d:%.2d"
 
 #. / "%d" must be retained.  It is replaced with the number of mission objectives remaining.
-#: ../src/game.c:1955
+#: ../src/game.c:1970
 #, c-format
 msgid "Objectives Remaining: %d"
 msgstr "残りの作戦: %d"
 
 #. / "%d" must be retained.  It is replaced with the player's current total cash.
 #. / Retain "%d" as-is.  It is replaced with the player's current cash.
-#: ../src/game.c:1961 ../src/shop.c:353
+#: ../src/game.c:1976 ../src/shop.c:353
 #, c-format
 msgid "Cash: $%d"
 msgstr "キャッシュ: $%d"
 
 #. / "%.3d" must be retained.  It is replaced with the amount of plasma ammo.
-#: ../src/game.c:1998
+#: ../src/game.c:2013
 #, c-format
 msgid "Plasma: %.3d"
 msgstr "プラズマ: %.3d"
 
 #. / Used to indicate the charge meter for the charger cannon in the HUD.
-#: ../src/game.c:2005
+#: ../src/game.c:2020
 msgid "Charge"
 msgstr "チャージ"
 
 #. / Used to indicate the heat meter for the laser cannon in the HUD.
-#: ../src/game.c:2010
+#: ../src/game.c:2025
 msgid "Heat"
 msgstr "ヒート"
 
@@ -999,38 +1000,39 @@ msgstr "ヒート"
 #. / Retain "%.2d".  It is replaced with the ship's current number of rockets.
 #. / "%.2d" can be changed to "%d" if you wish to not fill in space with zeroes,
 #. / e.g. render the number 3 as "3" rather than "03".
-#: ../src/game.c:2015 ../src/shop.c:363
+#: ../src/game.c:2030 ../src/shop.c:363
 #, c-format
 msgid "Rockets: %.2d"
 msgstr "ロケット: %.2d"
 
-#. / DIFFICULTY_SUPEREASY
-#: ../src/game.c:2425
-msgid "Super-Easy"
+#. / DIFFICULTY_SUPEREASY (Assisted)
+#: ../src/game.c:2498
+#, fuzzy
+msgid "Assisted"
 msgstr "とても簡単"
 
 #. / DIFFICULTY_EASY
-#: ../src/game.c:2429
+#: ../src/game.c:2502
 msgid "Easy"
 msgstr "簡単"
 
 #. / DIFFICULTY_NORMAL
-#: ../src/game.c:2433
+#: ../src/game.c:2506
 msgid "Normal"
 msgstr "普通"
 
 #. / DIFFICULTY_HARD
-#: ../src/game.c:2437
+#: ../src/game.c:2510
 msgid "Hard"
 msgstr "難しい"
 
 #. / DIFFICULTY_NIGHTMARE
-#: ../src/game.c:2441
+#: ../src/game.c:2514
 msgid "Nightmare!"
 msgstr "悪夢!"
 
 #. / DIFFICULTY_ORIGINAL (Classic)
-#: ../src/game.c:2445
+#: ../src/game.c:2518
 msgid "Classic"
 msgstr "旧版"
 
@@ -1047,27 +1049,27 @@ msgstr "旧版"
 msgid "data/TakaoPGothic.ttf"
 msgstr "data/TakaoPGothic.ttf"
 
-#: ../src/intermission.c:212
+#: ../src/intermission.c:214
 msgid "No Destination"
 msgstr "なし"
 
 #. / Status Screen text
 #. / Retain "%s" as-is.  It is replaced with the current difficulty.
-#: ../src/intermission.c:243
+#: ../src/intermission.c:245
 #, c-format
 msgid "Difficulty : %s"
 msgstr "難易度 : %s"
 
 #. / Status Screen text
 #. / Retain "%d" as-is.  It is replaced with the number of shots fired.
-#: ../src/intermission.c:248
+#: ../src/intermission.c:250
 #, c-format
 msgid "Shots Fired : %d"
 msgstr "撃った弾の数 : %d"
 
 #. / Status Screen text
 #. / Retain "%d" as-is.  It is replaced with the number of hits scored.
-#: ../src/intermission.c:253
+#: ../src/intermission.c:255
 #, c-format
 msgid "Hits Scored : %d"
 msgstr "命中した弾の数 : %d"
@@ -1076,79 +1078,79 @@ msgstr "命中した弾の数 : %d"
 #. / Retain "%d" as-is.  It is replaced with the firing accuracy as a percentage.
 #. / Note: To use the "%" symbol, you must enter "%%", as you can see in
 #. / the English version.
-#: ../src/intermission.c:260
+#: ../src/intermission.c:262
 #, c-format
 msgid "Accuracy : %d%%"
 msgstr "命中率 : %d%%"
 
 #. / Status Screen text
 #. / Retain "%d" as-is.  It is replaced with the number of kills.
-#: ../src/intermission.c:265
+#: ../src/intermission.c:267
 #, c-format
 msgid "Enemies Killed by Others : %d"
 msgstr "プレイヤー以外に撃墜された敵の数 : %d"
 
 #. / Retain "%d" as-is.  It is replaced with the amount of cash earned.
-#: ../src/intermission.c:269
+#: ../src/intermission.c:271
 #, c-format
 msgid "Total Cash Earned : %d"
 msgstr "稼いだ総金額 : %d"
 
-#: ../src/intermission.c:272
+#: ../src/intermission.c:274
 msgid "*** Chris ***"
 msgstr "*** クリス ***"
 
 #. / Status Screen text
 #. / Retain "%d" as-is.  It is replaced with the number of kills.
-#: ../src/intermission.c:276 ../src/intermission.c:315
-#: ../src/intermission.c:337
+#: ../src/intermission.c:278 ../src/intermission.c:317
+#: ../src/intermission.c:339
 #, c-format
 msgid "Enemies Killed : %d"
 msgstr "撃墜数 : %d"
 
 #. / Status Screen text
 #. / Retain "%d" as-is.  It is replaced with the number of shield restores picked up.
-#: ../src/intermission.c:281
+#: ../src/intermission.c:283
 #, c-format
 msgid "Shield Restores Picked Up : %d"
 msgstr "獲得したシールド回復の数 : %d"
 
 #. / Status Screen text
 #. / Retain "%d" as-is.  It is replaced with the number of plasma cells picked up.
-#: ../src/intermission.c:286
+#: ../src/intermission.c:288
 #, c-format
 msgid "Plasma Cells Picked Up : %d"
 msgstr "獲得したプラズマセルの数 : %d"
 
 #. / Status Screen text
 #. / Retain "%d" as-is.  It is replaced with the number of rockets picked up.
-#: ../src/intermission.c:291
+#: ../src/intermission.c:293
 #, c-format
 msgid "Rockets Picked Up : %d"
 msgstr "獲得したロケット弾の数 : %d"
 
 #. / Status Screen text
 #. / Retain "%d" as-is.  It is replaced with the number of powerups picked up.
-#: ../src/intermission.c:296
+#: ../src/intermission.c:298
 #, c-format
 msgid "Powerups Picked Up : %d"
 msgstr "獲得したパワーアップの数 : %d"
 
 #. / Status Screen text
 #. / Retain "%d" as-is.  It is replaced with the number of mines destroyed.
-#: ../src/intermission.c:301
+#: ../src/intermission.c:303
 #, c-format
 msgid "Mines Destroyed : %d"
 msgstr "破壊した機雷の数 : %d"
 
 #. / Status Screen text
 #. / Retain "%d" as-is.  It is replaced with the number of slaves rescued.
-#: ../src/intermission.c:306
+#: ../src/intermission.c:308
 #, c-format
 msgid "Slaves Rescued : %d"
 msgstr "救出した奴隷の人数 : %d"
 
-#: ../src/intermission.c:311
+#: ../src/intermission.c:313
 msgid "*** Phoebe ***"
 msgstr "*** フェーベ ***"
 
@@ -1156,17 +1158,17 @@ msgstr "*** フェーベ ***"
 #. / Status Screen text "%d" as-is.  It is replaced with the number of ejections.
 #. / Status Screen text
 #. / Retain "%d" as-is.  It is replaced with the number of ejections.
-#: ../src/intermission.c:320 ../src/intermission.c:342
+#: ../src/intermission.c:322 ../src/intermission.c:344
 #, c-format
 msgid "Ejections : %d"
 msgstr "脱出した回数 : %d"
 
 #. / Status Screen text
-#: ../src/intermission.c:333
+#: ../src/intermission.c:335
 msgid "*** Ursula ***"
 msgstr "*** ウーシュラ ***"
 
-#: ../src/intermission.c:352 ../src/intermission.c:1512
+#: ../src/intermission.c:354 ../src/intermission.c:1521
 msgid "Current Status"
 msgstr "現在の状態"
 
@@ -1184,261 +1186,261 @@ msgstr "現在の状態"
 #. / For example, the "%02ld" sequences may be changed to "%ld" if
 #. / you wish to not force two digits to be filled in (e.g. to render
 #. / the number 3 as "3" instead of "03").
-#: ../src/intermission.c:368
+#: ../src/intermission.c:370
 #, c-format
 msgid "Total Time : %ld:%02ld:%02ld"
 msgstr "総時間 : %2d:%02d:%02d"
 
-#: ../src/intermission.c:392
+#: ../src/intermission.c:394
 msgid "Hail"
 msgstr "ハイル"
 
-#: ../src/intermission.c:396
+#: ../src/intermission.c:398
 msgid "Ceradse"
 msgstr "セラドセ"
 
-#: ../src/intermission.c:400
+#: ../src/intermission.c:402
 msgid "Hinstag"
 msgstr "ヒンスタグ"
 
-#: ../src/intermission.c:404
+#: ../src/intermission.c:406
 msgid "Joldar"
 msgstr "ジョルダー"
 
-#: ../src/intermission.c:408
+#: ../src/intermission.c:410
 msgid "Moebo"
 msgstr "モエボ"
 
 #. / Spirit, Hail mission summary
-#: ../src/intermission.c:415
+#: ../src/intermission.c:417
 msgid "Destroy WEAPCO training ground"
 msgstr "WEAPCOの訓練所の破壊"
 
 #. / Spirit, Ceradse mission summary
-#: ../src/intermission.c:421
+#: ../src/intermission.c:423
 msgid "Collect 6 cargo pods"
 msgstr "6つの積荷の回収"
 
 #. / Spirit, Hinstag mission summary
-#: ../src/intermission.c:427
+#: ../src/intermission.c:429
 msgid "Destroy 5 WEAPCO missile boats"
 msgstr "5隻のWEAPCOミサイル艇の破壊"
 
 #. / Spirit, Joldar mission summary
-#: ../src/intermission.c:433
+#: ../src/intermission.c:435
 msgid "Clear the mine field around Joldar"
 msgstr "ジョルダー周辺の機雷の除去"
 
 #. / Spirit, Moebo mission summary
-#: ../src/intermission.c:439
+#: ../src/intermission.c:441
 msgid "Destroy WEAPCO frigate"
 msgstr "WEAPCOフリゲートの破壊"
 
-#: ../src/intermission.c:444 ../src/intermission.c:505
+#: ../src/intermission.c:446 ../src/intermission.c:507
 msgid "WEAPCO interceptions"
 msgstr "WEAPCOの迎撃部隊"
 
-#: ../src/intermission.c:447
+#: ../src/intermission.c:449
 msgid "Nerod"
 msgstr "ネロド"
 
-#: ../src/intermission.c:451
+#: ../src/intermission.c:453
 msgid "Allez"
 msgstr "アレズ"
 
-#: ../src/intermission.c:455
+#: ../src/intermission.c:457
 msgid "Urusor"
 msgstr "ウルソル"
 
-#: ../src/intermission.c:459
+#: ../src/intermission.c:461
 msgid "Dorim"
 msgstr "ドリム"
 
-#: ../src/intermission.c:463
+#: ../src/intermission.c:465
 msgid "Elamale"
 msgstr "エラメール"
 
 #. / Eyananth, interception mission summary
-#: ../src/intermission.c:470
+#: ../src/intermission.c:472
 msgid "Rescue slaves"
 msgstr "奴隷の救出"
 
 #. / Eyananth, Nerod mission summary
-#: ../src/intermission.c:476
+#: ../src/intermission.c:478
 msgid "SOS"
 msgstr "SOS"
 
 #. / Eyananth, Allez mission summary
 #. / Mission objective (Allez)
-#: ../src/intermission.c:482 ../src/mission.c:205
+#: ../src/intermission.c:484 ../src/mission.c:205
 msgid "Assist medical supply craft"
 msgstr "医薬品の輸送船の救助"
 
 #. / Eyananth, Urusor mission summary
-#: ../src/intermission.c:488
+#: ../src/intermission.c:490
 msgid "Capture five WEAPCO supply craft"
 msgstr "5隻のWEAPCO補給艦の拿捕"
 
 #. / Eyananth, Dorim mission summary
-#: ../src/intermission.c:494
+#: ../src/intermission.c:496
 msgid "Find WEAPCO scientist"
 msgstr "WEAPCOの科学者の捜索"
 
 #. / Eyananth, Elamale mission summary
-#: ../src/intermission.c:500
+#: ../src/intermission.c:502
 msgid "Destroy WEAPCO Ore Mining craft"
 msgstr "WEAPCOの採掘船の破壊"
 
-#: ../src/intermission.c:508
+#: ../src/intermission.c:510
 msgid "Odeon"
 msgstr "オデオン"
 
-#: ../src/intermission.c:512
+#: ../src/intermission.c:514
 msgid "Fellon"
 msgstr "フェロン"
 
-#: ../src/intermission.c:516
+#: ../src/intermission.c:518
 msgid "Sivedi"
 msgstr "サイベジ"
 
-#: ../src/intermission.c:520
+#: ../src/intermission.c:522
 msgid "Almartha"
 msgstr "アルマサ"
 
-#: ../src/intermission.c:524
+#: ../src/intermission.c:526
 msgid "Poswic"
 msgstr "ポスイック"
 
-#: ../src/intermission.c:528
+#: ../src/intermission.c:530
 msgid "Ellesh"
 msgstr "エリッシュ"
 
 #. / Mordor, incerception mission summary
-#: ../src/intermission.c:535
+#: ../src/intermission.c:537
 msgid "Destroy experimental fighter"
 msgstr "試作戦闘機の破壊"
 
 #. / Mordor, Odeon mission summary
-#: ../src/intermission.c:541
+#: ../src/intermission.c:543
 msgid "Rescue Ursula"
 msgstr "ウーシュラの救出"
 
 #. / Mordor, Fellon mission summary
-#: ../src/intermission.c:547
+#: ../src/intermission.c:549
 msgid "Assist rebel forces"
 msgstr "反乱軍の支援"
 
 #. / Mordor, Sivedi mission summary
-#: ../src/intermission.c:553
+#: ../src/intermission.c:555
 msgid "Mine ore from asteroid belt"
 msgstr "アステロイドベルトでの採掘"
 
 #. / Mordor, Almartha mission summary
-#: ../src/intermission.c:559
+#: ../src/intermission.c:561
 msgid "Create a diversion"
 msgstr "代金の用意"
 
 #. / Mordor, Poswic mission summary
-#: ../src/intermission.c:565
+#: ../src/intermission.c:567
 msgid "Capture WEAPCO executive transport"
 msgstr "WEAPCOの重役の搬送の阻止"
 
 #. / Mordor, Ellesh mission summary
-#: ../src/intermission.c:571
+#: ../src/intermission.c:573
 msgid "Destroy WEAPCO executive transport"
 msgstr "WEAPCOの重役の追跡"
 
-#: ../src/intermission.c:577
+#: ../src/intermission.c:579
 msgid "Mercury"
 msgstr "水星"
 
-#: ../src/intermission.c:581
+#: ../src/intermission.c:583
 msgid "Venus"
 msgstr "金星"
 
-#: ../src/intermission.c:585
+#: ../src/intermission.c:587
 msgid "Earth"
 msgstr "地球"
 
-#: ../src/intermission.c:589
+#: ../src/intermission.c:591
 msgid "Mars"
 msgstr "火星"
 
-#: ../src/intermission.c:593
+#: ../src/intermission.c:595
 msgid "Jupiter"
 msgstr "木星"
 
-#: ../src/intermission.c:597
+#: ../src/intermission.c:599
 msgid "Saturn"
 msgstr "土星"
 
-#: ../src/intermission.c:601
+#: ../src/intermission.c:603
 msgid "Uranus"
 msgstr "天王星"
 
-#: ../src/intermission.c:605
+#: ../src/intermission.c:607
 msgid "Neptune"
 msgstr "海王星"
 
-#: ../src/intermission.c:609
+#: ../src/intermission.c:611
 msgid "Pluto"
 msgstr "冥王星"
 
 #. / Sol, Pluto mission summary
-#: ../src/intermission.c:616
+#: ../src/intermission.c:618
 msgid "Secure Pluto"
 msgstr "冥王星の制圧"
 
 #. / Sol, Neptune mission summary
-#: ../src/intermission.c:622
+#: ../src/intermission.c:624
 msgid "Secure Neptune"
 msgstr "海王星の制圧"
 
 #. / Sol, Uranus mission summary
-#: ../src/intermission.c:628
+#: ../src/intermission.c:630
 msgid "Secure Uranus"
 msgstr "天王星の制圧"
 
 #. / Sol, Saturn mission summary
-#: ../src/intermission.c:634
+#: ../src/intermission.c:636
 msgid "Destroy outer defense system"
 msgstr "外惑星防衛システムの破壊"
 
 #. / Sol, Jupiter mission summary
 #. / Mission objective (Jupiter)
-#: ../src/intermission.c:640 ../src/mission.c:471
+#: ../src/intermission.c:642 ../src/mission.c:471
 msgid "Investigate distress call"
 msgstr "救難信号の調査"
 
 #. / Sol, Mars mission summary
 #. / Mission objective (Mars)
-#: ../src/intermission.c:646 ../src/mission.c:493
+#: ../src/intermission.c:648 ../src/mission.c:493
 msgid "Navigate asteroid belt"
 msgstr "アステロイドベルトの航行"
 
 #. / Sol, Earth mission summary
-#: ../src/intermission.c:652
+#: ../src/intermission.c:654
 msgid "Take back Earth"
 msgstr "地球の奪還"
 
 #. / Sol, Venus mission summary
 #. / Mission objective (Venus)
-#: ../src/intermission.c:658 ../src/mission.c:515
+#: ../src/intermission.c:660 ../src/mission.c:515
 msgid "Defeat Kline"
 msgstr "全てを終わらせる"
 
-#: ../src/intermission.c:782
+#: ../src/intermission.c:784
 msgid "+++ CURRENT MISSIONS +++"
 msgstr "+++ 現在の作戦 +++"
 
 #. / Brief instructions for how to review a mission conversation, shown below the
 #. / CURRENT MISSIONS header.
-#: ../src/intermission.c:785
+#: ../src/intermission.c:787
 msgid "click for info"
 msgstr "クリックで詳細を表示"
 
 #. / Mission dialog: Spirit, Hail (Krass Tyler)
-#: ../src/intermission.c:835
+#: ../src/intermission.c:837
 msgid ""
 "Hey, boy! You still owe me money for the Firefly I stole for you! But "
 "instead, I want you to go to the WEAPCO training ground and destroy all the "
@@ -1448,12 +1450,12 @@ msgstr ""
 "の代わりにWEAPCOの訓練場へ行って、そこで全ての艦を破壊してくれ。"
 
 #. / Mission dialog: Spirit, Hail (Chris Bainfield)
-#: ../src/intermission.c:839
+#: ../src/intermission.c:841
 msgid "Oh? That's the job I contracted you to do, was it not?"
 msgstr "何? それは俺がお前に頼んだ仕事だろう?"
 
 #. / Mission dialog: Spirit, Hail (Krass Tyler)
-#: ../src/intermission.c:843
+#: ../src/intermission.c:845
 msgid ""
 "I know, but this way we can resolve your debt right now. Do this job, and "
 "also collect $500, and we will call it quits. And if you die... well, I "
@@ -1464,17 +1466,17 @@ msgstr ""
 "盗むだけの価値がなかったってことだ! ハッハッハッ!"
 
 #. / Mission dialog: Spirit, Hail (Chris Bainfield)
-#: ../src/intermission.c:847
+#: ../src/intermission.c:849
 msgid "As usual, you take me too lightly, Krass."
 msgstr "相変わらず人使いが荒いな、クラス。"
 
 #. / Mission dialog: Spirit, Ceradse (Chris Bainfield)
-#: ../src/intermission.c:854
+#: ../src/intermission.c:856
 msgid "Hey, Sid, what's up?"
 msgstr "よお、シド。どうかしたか?"
 
 #. / Mission dialog: Spirit, Ceradse (Sid Wilson)
-#: ../src/intermission.c:858
+#: ../src/intermission.c:860
 msgid ""
 "Chris, I've intercepted a communication from WEAPCO. Seems they're "
 "transporting some medical supplies around Ceradse. We need to get hold of "
@@ -1484,12 +1486,12 @@ msgstr ""
 "だ。多くの命を救うために積荷を取り戻さなければならない!"
 
 #. / Mission dialog: Spirit, Ceradse (Chris Bainfield)
-#: ../src/intermission.c:862
+#: ../src/intermission.c:864
 msgid "How many do we need?"
 msgstr "いくつあるんだ?"
 
 #. / Mission dialog: Spirit, Ceradse (Sid Wilson)
-#: ../src/intermission.c:866
+#: ../src/intermission.c:868
 msgid ""
 "All six, Chris! If you lose even a single one, thousands of people could "
 "perish in Spirit within the next few months."
@@ -1498,23 +1500,23 @@ msgstr ""
 "死んでしまうだろう。"
 
 #. / Mission dialog: Spirit, Hinstag (Chris Bainfield)
-#: ../src/intermission.c:873
+#: ../src/intermission.c:875
 msgid "Wow! Missile boats?"
 msgstr "おっと! ミサイル艇か?"
 
 #. / Mission dialog: Spirit, Hinstag (Sid Wilson)
-#: ../src/intermission.c:877
+#: ../src/intermission.c:879
 msgid "Yup. Looks like WEAPCO is starting to take notice of your actions."
 msgstr "そうだ。どうやらWEAPCOは君の行動に注目し始めたようだな。"
 
 #. / Mission dialog: Spirit, Hinstag (Chris Bainfield)
-#: ../src/intermission.c:881
+#: ../src/intermission.c:883
 msgid ""
 "Awesome! This will really put the Firefly's fighting ability to the test!"
 msgstr "おもしろい! ファイアフライの戦闘能力のテストにぴったりだ!"
 
 #. / Mission dialog: Spirit, Hinstag (Sid Wilson)
-#: ../src/intermission.c:885
+#: ../src/intermission.c:887
 msgid ""
 "Please be careful, Chris. A single missile boat carries enough rockets to "
 "level most major cities. Try not to face them head-on, and keep your "
@@ -1524,7 +1526,7 @@ msgstr ""
 "載している。奴らには正面から向かわず、十分な距離を保て。"
 
 #. / Mission dialog: Spirit, Joldar (Sid Wilson)
-#: ../src/intermission.c:892
+#: ../src/intermission.c:894
 msgid ""
 "We're going to have to get rid of the mine deployment unit around Joldar. "
 "The minefield is stopping interplanetary traffic."
@@ -1533,12 +1535,12 @@ msgstr ""
 "害されている。"
 
 #. / Mission dialog: Spirit, Joldar (Chris Bainfield)
-#: ../src/intermission.c:896
+#: ../src/intermission.c:898
 msgid "Are any fighters around to keep me entertained?"
 msgstr "退屈しのぎになりそうな戦闘機は近くにいないのか?"
 
 #. / Mission dialog: Spirit, Joldar (Sid Wilson)
-#: ../src/intermission.c:900
+#: ../src/intermission.c:902
 msgid ""
 "Not at the moment, but that doesn't mean they won't turn up. Be very careful "
 "of those mines! They'll only explode when they encounter a ship that's not "
@@ -1549,7 +1551,7 @@ msgstr ""
 "せ。"
 
 #. / Mission dialog: Spirit, Moebo (Sid Wilson)
-#: ../src/intermission.c:907
+#: ../src/intermission.c:909
 msgid ""
 "We've got a major problem here! WEAPCO has decided to stop our resistance by "
 "destroying Spirit! The explosion will incinerate everything in the system! "
@@ -1560,12 +1562,12 @@ msgstr ""
 "破壊しなければならない!"
 
 #. / Mission dialog: Spirit, Moebo (Chris Bainfield)
-#: ../src/intermission.c:911
+#: ../src/intermission.c:913
 msgid "Damn! I'll get right on it, then!"
 msgstr "畜生め! 今すぐ発進する!"
 
 #. / Mission dialog: Spirit, Moebo (Sid Wilson)
-#: ../src/intermission.c:915
+#: ../src/intermission.c:917
 msgid ""
 "We're all counting on you, Chris! But remember, they didn't call that thing "
 "\"Star Killer\" just because it sounded nice!"
@@ -1576,7 +1578,7 @@ msgstr ""
 #. / Mission dialog: Eyananth, interceptions (Sid Wilson)
 #. / "%d" must be retained as-is. It is replaced with the number of slaves that
 #. / need to be rescued.
-#: ../src/intermission.c:924
+#: ../src/intermission.c:926
 #, c-format
 msgid ""
 "As you know, WEAPCO has many slaves in this system. If we free a large "
@@ -1588,12 +1590,12 @@ msgstr ""
 "う。"
 
 #. / Mission dialog: Eyananth, interceptions (Chris Bainfield)
-#: ../src/intermission.c:928
+#: ../src/intermission.c:930
 msgid "Most of the slaves are working in ore mines, aren't they?"
 msgstr "ほとんどの奴隷は採掘をしているそうだな。"
 
 #. / Mission dialog: Eyananth, interceptions (Sid Wilson)
-#: ../src/intermission.c:932
+#: ../src/intermission.c:934
 msgid ""
 "Yes, but attacking the mines directly would be dangerous. You'd be better "
 "off intercepting slave transports. What you'll have to do is fly around and "
@@ -1605,41 +1607,41 @@ msgstr ""
 "いるとは限らない。十分に気をつけろ!!"
 
 #. / Mission dialog: Eyananth, Nerod (Phoebe Lexx)
-#: ../src/intermission.c:939
+#: ../src/intermission.c:941
 msgid "Help! This is an SOS! Can anyone hear me?!"
 msgstr "助けて! SOS! 誰か聞こえてる?!"
 
 #. / Mission dialog: Eyananth, Nerod (Chris Bainfield)
-#: ../src/intermission.c:943
+#: ../src/intermission.c:945
 msgid "I'm hearing you loud and clear! What's up?"
 msgstr "よく聞こえるぞ! どうした?"
 
 #. / Mission dialog: Eyananth, Nerod (Phoebe Lexx)
-#: ../src/intermission.c:947
+#: ../src/intermission.c:949
 msgid ""
 "Oh, thank God! I was intercepted by a large WEAPCO force near Nerod! I'm in "
 "need of assistance!"
 msgstr "ああ、助かったわ! ネロド周辺でWEAPCOの大軍に囲まれているの! 支援を!"
 
 #. / Mission dialog: Eyananth, Nerod (Chris Bainfield)
-#: ../src/intermission.c:951
+#: ../src/intermission.c:953
 msgid "I'm on my way!"
 msgstr "すぐ向かう!"
 
 #. / Mission dialog: Eyananth, Allez (Sid Wilson)
-#: ../src/intermission.c:958
+#: ../src/intermission.c:960
 msgid ""
 "I've just received another SOS. This one is coming from a supply craft "
 "carrying essential medical supplies."
 msgstr "今、別のSOSを受信した。重要な医薬品を運ぶ輸送艦からだ。"
 
 #. / Mission dialog: Eyananth, Allez (Chris Bainfield)
-#: ../src/intermission.c:962
+#: ../src/intermission.c:964
 msgid "Alright, tell 'em I'm on my way."
 msgstr "分かった。すぐ向かうと伝えてくれ。"
 
 #. / Mission dialog: Eyananth, Urusor (Sid Wilson)
-#: ../src/intermission.c:969
+#: ../src/intermission.c:971
 msgid ""
 "I need some resources before we leave. It'll make life a lot easier in "
 "Mordor. Problem is that WEAPCO hoards these parts."
@@ -1649,12 +1651,12 @@ msgstr ""
 "ことだ。"
 
 #. / Mission dialog: Eyananth, Urusor (Chris Bainfield)
-#: ../src/intermission.c:973
+#: ../src/intermission.c:975
 msgid "Where can we get them, then?"
 msgstr "それでどこへ行けば手に入るんだ?"
 
 #. / Mission dialog: Eyananth, Urusor (Sid Wilson)
-#: ../src/intermission.c:977
+#: ../src/intermission.c:979
 msgid ""
 "There's a big shipment of them nearby. I can disable the supply craft "
 "carrying them; I just need you to give me some cover while I do it."
@@ -1662,12 +1664,12 @@ msgstr ""
 "近くにその大型補給艦がいる。私が航行不能にする。君にはその間の援護をたのむ。"
 
 #. / Mission dialog: Eyananth, Urusor (Chris Bainfield)
-#: ../src/intermission.c:981
+#: ../src/intermission.c:983
 msgid "You got it!"
 msgstr "分かった!"
 
 #. / Mission dialog: Eyananth, Dorim (Sid Wilson)
-#: ../src/intermission.c:988
+#: ../src/intermission.c:990
 msgid ""
 "A WEAPCO scientist just ran off in an escape pod and hid in the asteroid "
 "belt. If we capture him, we may be able to get some information about Mordor."
@@ -1676,13 +1678,13 @@ msgstr ""
 "きればモルドール系の情報を聞けるかもしれない。"
 
 #. / Mission dialog: Eyananth, Dorim (Chris Bainfield)
-#: ../src/intermission.c:992
+#: ../src/intermission.c:994
 msgid ""
 "Alright, I'll go look for him. I guess I'll grab some ore along the way."
 msgstr "すぐ行こう。途中で鉱石も取れそうだ。"
 
 #. / Mission dialog: Eyananth, Elamale (Sid Wilson)
-#: ../src/intermission.c:999
+#: ../src/intermission.c:1001
 msgid ""
 "I've received word that the slaves we rescued have started a rebellion. "
 "Looks like the plan worked."
@@ -1691,7 +1693,7 @@ msgstr ""
 "るようだ。"
 
 #. / Mission dialog: Eyananth, Elamale (Phoebe Lexx)
-#: ../src/intermission.c:1003
+#: ../src/intermission.c:1005
 msgid ""
 "WEAPCO has an automated mining ship in orbit around Elamale. How about we "
 "take it out and cause some confusion?"
@@ -1700,34 +1702,34 @@ msgstr ""
 "う?"
 
 #. / Mission dialog: Eyananth, Elamale (Chris Bainfield)
-#: ../src/intermission.c:1007
+#: ../src/intermission.c:1009
 msgid "I like that idea!"
 msgstr "いいアイデアだ!"
 
 #. / Mission dialog: Eyananth, Elamale (Sid Wilson)
-#: ../src/intermission.c:1011
+#: ../src/intermission.c:1013
 msgid "It'll work, but be careful."
 msgstr "それはうまく行くだろう。だが油断するな。"
 
 #. / Mission dialog: Mordor, interceptions (Chris Bainfield)
-#: ../src/intermission.c:1018
+#: ../src/intermission.c:1020
 msgid "What have you found out about that experimental fighter?"
 msgstr "試作戦闘機のことは何か分かったか?"
 
 #. / Mission dialog: Mordor, interceptions (Sid Wilson)
-#: ../src/intermission.c:1022
+#: ../src/intermission.c:1024
 msgid ""
 "It's got some kind of cloaking device that makes it invisible to radar. "
 "Could prove hard to track down."
 msgstr "レーダーに映らない遮蔽装置の一種を搭載している。追跡は困難だ。"
 
 #. / Mission dialog: Mordor, interceptions (Chris Bainfield)
-#: ../src/intermission.c:1026
+#: ../src/intermission.c:1028
 msgid "I'll just have to run around the system until I find it."
 msgstr "偶然出会うまで飛び回るしかないな。"
 
 #. / Mission dialog: Mordor, interceptions (Sid Wilson)
-#: ../src/intermission.c:1030
+#: ../src/intermission.c:1032
 msgid ""
 "It's likely to run away if you engage it in battle, so try and do as much "
 "damage to it as possible."
@@ -1736,7 +1738,7 @@ msgstr ""
 "だ。"
 
 #. / Mission dialog: Mordor, Odeon (Phoebe Lexx)
-#: ../src/intermission.c:1037
+#: ../src/intermission.c:1039
 msgid ""
 "I've located my sister's ship currently in orbit around Odeon. She's "
 "ignoring my hails though."
@@ -1744,23 +1746,23 @@ msgstr ""
 "姉さんの艦をオデオンの軌道上で見つけた。でも、こちらの通信を無視しているの。"
 
 #. / Mission dialog: Mordor, Odeon (Sid Wilson)
-#: ../src/intermission.c:1041
+#: ../src/intermission.c:1043
 msgid ""
 "Something's off here. She seems to be travelling freely with a WEAPCO group."
 msgstr "嫌な予感がするな。彼女はWEAPCOの集団の中を自由に移動している。"
 
 #. / Mission dialog: Mordor, Odeon (Chris Bainfield)
-#: ../src/intermission.c:1045
+#: ../src/intermission.c:1047
 msgid "Do you think she's turned traitor?"
 msgstr "寝返ったのか?"
 
 #. / Mission dialog: Mordor, Odeon (Phoebe Lexx)
-#: ../src/intermission.c:1049
+#: ../src/intermission.c:1051
 msgid "No way. She hates WEAPCO with a passion."
 msgstr "ありえない。WEAPCOをとても憎んでいたもの。"
 
 #. / Mission dialog: Mordor, Odeon (Sid Wilson)
-#: ../src/intermission.c:1053
+#: ../src/intermission.c:1055
 msgid ""
 "She must be under some kind of mind control. I've heard of WEAPCO developing "
 "a new \"AI training program\" recently. We'd better rescue her!"
@@ -1769,26 +1771,27 @@ msgstr ""
 "ログラム」を開発中だと聞いた。早く助けたほうが良いな!"
 
 #. / Mission dialog: Mordor, Fellon (Sid Wilson)
-#: ../src/intermission.c:1060
+#: ../src/intermission.c:1062
+#, fuzzy
 msgid ""
 "A rebel group has organized a counter strike. If we can help them secure a "
-"victory it will be a real boost to morale."
+"victory, it will be a real boost to morale."
 msgstr ""
 "反乱軍による攻撃の計画がある。彼らを支援し勝利できれば、士気は大いに高まるだ"
 "ろう。"
 
 #. / Mission dialog: Mordor, Fellon (Chris Bainfield)
-#: ../src/intermission.c:1064
+#: ../src/intermission.c:1066
 msgid "Awesome! Let's do it!"
 msgstr "すげえ! すぐ出撃だ!"
 
 #. / Mission dialog: Mordor, Fellon (Sid Wilson)
-#: ../src/intermission.c:1068
+#: ../src/intermission.c:1070
 msgid "Just make sure the rebel ships don't all get destroyed."
 msgstr "反乱軍の艦が全て破壊されることだけは避けなければならない。"
 
 #. / Mission dialog: Mordor, Sivedi (Sid Wilson)
-#: ../src/intermission.c:1075
+#: ../src/intermission.c:1077
 msgid ""
 "Seems like taking out that WEAPCO mining ship wasn't such a good idea. The "
 "ore it collected is needed in weapons production."
@@ -1797,12 +1800,12 @@ msgstr ""
 "ドの鉱石は武器の生産に必要だ。"
 
 #. / Mission dialog: Mordor, Sivedi (Chris Bainfield)
-#: ../src/intermission.c:1079
+#: ../src/intermission.c:1081
 msgid "Damn! I guess that means I'll have to mine some myself, then, huh?"
 msgstr "おいおい! つまり、俺に取りに行けと言っているのか?"
 
 #. / Mission dialog: Mordor, Sivedi (Sid Wilson)
-#: ../src/intermission.c:1083
+#: ../src/intermission.c:1085
 msgid ""
 "Yes. Be careful, Chris. Your weapons weren't designed for that sort of work, "
 "after all."
@@ -1811,7 +1814,7 @@ msgstr ""
 "い。"
 
 #. / Mission dialog: Mordor, Almartha (Chris Bainfield)
-#: ../src/intermission.c:1090
+#: ../src/intermission.c:1092
 msgid ""
 "Hey, Krass! I need you to help us out with something. Phoebe and Ursula are "
 "taking out key WEAPCO plants. Can you help me create a diversion by wreaking "
@@ -1821,12 +1824,12 @@ msgstr ""
 "しようとしている。ちょっと騒ぎを起こして、こちらに注意を引き付けられないか?"
 
 #. / Mission dialog: Mordor, Almartha (Krass Tyler)
-#: ../src/intermission.c:1094
+#: ../src/intermission.c:1096
 msgid "Sure, I can help you out, boy. But I'll be needing my fee..."
 msgstr "いいぞ、小僧。助けてやろう。だが、金だ…"
 
 #. / Mission dialog: Mordor, Poswic (Ursula Lexx)
-#: ../src/intermission.c:1101
+#: ../src/intermission.c:1103
 msgid ""
 "My memory is finally back. Here's something interesting: just before I was "
 "captured, I found out that WEAPCO is transporting several important "
@@ -1836,7 +1839,7 @@ msgstr ""
 "前、WEAPCOが何人もの重役をポスイックに移送するのを見た。"
 
 #. / Mission dialog: Mordor, Poswic (Sid Wilson)
-#: ../src/intermission.c:1105
+#: ../src/intermission.c:1107
 msgid ""
 "We can't let a rare opportunity like this slip through our fingers! I'll "
 "need some cover so I can disable that ship."
@@ -1845,23 +1848,23 @@ msgstr ""
 "参加する。"
 
 #. / Mission dialog: Mordor, Poswic (Chris Bainfield)
-#: ../src/intermission.c:1109
+#: ../src/intermission.c:1111
 msgid "I've got you covered, Sid!"
 msgstr "頼むぞ、シド!"
 
 #. / Mission dialog: Mordor, Ellesh (Chris Bainfield)
-#: ../src/intermission.c:1116
+#: ../src/intermission.c:1118
 msgid ""
 "Phoebe, I need you to keep an eye on things here. I'm going after that ship!"
 msgstr "フェーベ、お前はここを見張っててくれ。俺はあの艦を追う!"
 
 #. / Mission dialog: Mordor, Ellesh (Phoebe Lexx)
-#: ../src/intermission.c:1120
+#: ../src/intermission.c:1122
 msgid "Are you sure you can catch up to it?"
 msgstr "追いつけると思ってるの?"
 
 #. / Mission dialog: Mordor, Ellesh (Chris Bainfield)
-#: ../src/intermission.c:1124
+#: ../src/intermission.c:1126
 msgid ""
 "Absolutely. One thing that's really nice about the Firefly is its speed. "
 "I'll see you in a bit!"
@@ -1869,7 +1872,7 @@ msgstr ""
 "もちろんだ。このファイアフライのスピードがあればな。すぐに見せてやるよ!"
 
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Sid Wilson)
-#: ../src/intermission.c:1133
+#: ../src/intermission.c:1135
 msgid ""
 "We've got to start from the outside and work our way in. That will give us "
 "less chance of being flanked during the final operation."
@@ -1878,22 +1881,22 @@ msgstr ""
 "れる危険性が小さくなる。"
 
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Phoebe Lexx)
-#: ../src/intermission.c:1137
+#: ../src/intermission.c:1139
 msgid "Sounds like a plan, Sid!"
 msgstr "それが良さそうね、シド!"
 
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Ursula Lexx)
-#: ../src/intermission.c:1141
+#: ../src/intermission.c:1143
 msgid "Better safe than sorry, I guess."
 msgstr "用心に越したことはない。"
 
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Chris Bainfield)
-#: ../src/intermission.c:1145
+#: ../src/intermission.c:1147
 msgid "Boring, but I guess you're right, Sid, as usual."
 msgstr "面倒だがそれが正しいだろうな。"
 
 #. / Mission dialog: Sol, Saturn (Chris Bainfield)
-#: ../src/intermission.c:1152
+#: ../src/intermission.c:1154
 msgid ""
 "WEAPCO has set up a highly dangerous defense line between Saturn and Uranus. "
 "We'll need to take it out."
@@ -1902,12 +1905,12 @@ msgstr ""
 "ある。"
 
 #. / Mission dialog: Sol, Saturn (Ursula Lexx)
-#: ../src/intermission.c:1156
+#: ../src/intermission.c:1158
 msgid "What kind of defense system?"
 msgstr "どのような防衛システムなのだ?"
 
 #. / Mission dialog: Sol, Saturn (Chris Bainfield)
-#: ../src/intermission.c:1160
+#: ../src/intermission.c:1162
 msgid ""
 "Several mobile Energy Ray cannons, not unlike the weapon used by the Star "
 "Killer back in Spirit."
@@ -1916,28 +1919,28 @@ msgstr ""
 "スターキラーとは全く異なる種類の兵器だ。"
 
 #. / Mission dialog: Sol, Saturn (Phoebe Lexx)
-#: ../src/intermission.c:1164
+#: ../src/intermission.c:1166
 msgid "Best check my ejection system, then!"
 msgstr "ならば、私のミサイルランチャーをよく点検しておかないとね!"
 
 #. / Mission dialog: Sol, Jupiter (Sid Wilson)
-#: ../src/intermission.c:1171
+#: ../src/intermission.c:1173
 msgid ""
 "While you were gone I picked up a distress call coming from around Jupiter."
 msgstr "皆がいない間に、木星周辺から救難信号を受信した。"
 
 #. / Mission dialog: Sol, Jupiter (Ursula Lexx)
-#: ../src/intermission.c:1175
+#: ../src/intermission.c:1177
 msgid "Who would be sending out a distress call within Sol?"
 msgstr "太陽系内の誰が信号を送る必要があるのだ?"
 
 #. / Mission dialog: Sol, Jupiter (Chris Bainfield)
-#: ../src/intermission.c:1179
+#: ../src/intermission.c:1181
 msgid "Let's check it out. Even if it's a trap, I think we can handle it."
 msgstr "調べてみよう。罠かもしれんが、何とかなるさ。"
 
 #. / Mission dialog: Sol, Mars (Sid Wilson)
-#: ../src/intermission.c:1186
+#: ../src/intermission.c:1188
 msgid ""
 "Chris, we've got a small problem. WEAPCO has deployed a minefield in the "
 "asteroid belt. We'll need you to clear a way through."
@@ -1946,12 +1949,12 @@ msgstr ""
 "を取り除かなければならない。"
 
 #. / Mission dialog: Sol, Mars (Chris Bainfield)
-#: ../src/intermission.c:1190
+#: ../src/intermission.c:1192
 msgid "Alright. I'll radio in once I've cleared a safe path."
 msgstr "分かった。安全な道を作れたら連絡する。"
 
 #. / Mission dialog: Sol, Earth (Chris Bainfield)
-#: ../src/intermission.c:1197
+#: ../src/intermission.c:1199
 msgid ""
 "Okay people, this is the big one. We go in fast and we go in hard. Don't "
 "hold back and hit them with everything we've got!"
@@ -1960,27 +1963,27 @@ msgstr ""
 "奴らを叩くしかない!"
 
 #. / Mission dialog: Sol, Earth (Sid Wilson)
-#: ../src/intermission.c:1201
+#: ../src/intermission.c:1203
 msgid "We've come too far to turn back now. None of us better die out there!"
 msgstr "引き返すには遠すぎる所まで来てしまった。全員生き残るんだ!"
 
 #. / Mission dialog: Sol, Earth (Phoebe Lexx)
-#: ../src/intermission.c:1205
+#: ../src/intermission.c:1207
 msgid "Right with you, Chris!"
 msgstr "行きましょう、クリス。"
 
 #. / Mission dialog: Sol, Earth (Ursula Lexx)
-#: ../src/intermission.c:1209
+#: ../src/intermission.c:1211
 msgid "WEAPCO'll regret sticking probes into my head!"
 msgstr "WEAPCOに私の頭脳を操ったことを後悔させてやる!"
 
 #. / Mission dialog: Sol, Venus (Chris Bainfield)
-#: ../src/intermission.c:1216
+#: ../src/intermission.c:1218
 msgid "Kethlan has run off to Venus. I'm going after him."
 msgstr "ケスランは金星へ逃げた。俺は奴を追う。"
 
 #. / Mission dialog: Sol, Venus (Sid Wilson)
-#: ../src/intermission.c:1220
+#: ../src/intermission.c:1222
 msgid ""
 "Be careful, Chris. We've won the war, but it would be a real shame if you "
 "died now!"
@@ -1988,67 +1991,67 @@ msgstr ""
 "気をつけてくれ、クリス。我々は戦争に勝利した。なのに君に死なれたとあっては耐"
 "え難い恥辱だ!"
 
-#: ../src/intermission.c:1271
+#: ../src/intermission.c:1273
 msgid "++ OPTIONS ++"
 msgstr "++ オプション ++"
 
-#: ../src/intermission.c:1280 ../src/intermission.c:1291
-#: ../src/intermission.c:1302
+#: ../src/intermission.c:1282 ../src/intermission.c:1293
+#: ../src/intermission.c:1304
 msgid "ON"
 msgstr "ON"
 
-#: ../src/intermission.c:1281 ../src/intermission.c:1292
-#: ../src/intermission.c:1303
+#: ../src/intermission.c:1283 ../src/intermission.c:1294
+#: ../src/intermission.c:1305
 msgid "OFF"
 msgstr "OFF"
 
-#: ../src/intermission.c:1282
+#: ../src/intermission.c:1284
 msgid "SOUND"
 msgstr "効果音"
 
-#: ../src/intermission.c:1293
+#: ../src/intermission.c:1295
 msgid "MUSIC"
 msgstr "音楽"
 
-#: ../src/intermission.c:1304
+#: ../src/intermission.c:1306
 msgid "FULLSCREEN"
 msgstr "フルスクリーン"
 
 #. / Retain "%s" as-is.  It is replaced with the current system name.
-#: ../src/intermission.c:1506
+#: ../src/intermission.c:1515
 #, c-format
 msgid "System : %s"
 msgstr "星系 : %s系"
 
-#: ../src/intermission.c:1509
+#: ../src/intermission.c:1518
 msgid "Start Next Mission"
 msgstr "次の作戦を開始"
 
-#: ../src/intermission.c:1510
+#: ../src/intermission.c:1519
 msgid "Go to Destination Planet"
 msgstr "目的の惑星へ向かう"
 
-#: ../src/intermission.c:1511
+#: ../src/intermission.c:1520
 msgid "View System Map"
 msgstr "星系マップ"
 
-#: ../src/intermission.c:1513
+#: ../src/intermission.c:1522
 msgid "Save Game"
 msgstr "ゲームを保存"
 
-#: ../src/intermission.c:1514
+#: ../src/intermission.c:1523
 msgid "Upgrade FIREFLY"
 msgstr "ファイアフライを強化"
 
-#: ../src/intermission.c:1515
+#: ../src/intermission.c:1524
 msgid "Missions"
 msgstr "作戦"
 
-#: ../src/intermission.c:1516
+#: ../src/intermission.c:1525
 msgid "Options"
 msgstr "オプション"
 
-#: ../src/intermission.c:1517
+#: ../src/intermission.c:1526
 msgid "Exit to Title Screen"
 msgstr "タイトルに戻る"
 
@@ -2056,19 +2059,19 @@ msgstr "タイトルに戻る"
 #. / the player is currently stationed on.
 #. / Retain "%s" as-is.  It is replaced with the name of the planet
 #. / the player's destination is currently set to.
-#: ../src/intermission.c:1521 ../src/intermission.c:1705
+#: ../src/intermission.c:1530 ../src/intermission.c:1714
 #, c-format
 msgid "Stationed At: %s"
 msgstr "現在位置: %s"
 
 #. / Retain "%s" as-is.  It is replaced with the name of the planet
 #. / the player's destination is currently set to.
-#: ../src/intermission.c:1528 ../src/intermission.c:1643
+#: ../src/intermission.c:1537 ../src/intermission.c:1652
 #, c-format
 msgid "Destination: %s"
 msgstr "目的地: %s"
 
-#: ../src/intermission.c:1532
+#: ../src/intermission.c:1541
 msgid "Destination: None"
 msgstr "目的地: なし"
 
@@ -2247,7 +2250,7 @@ msgstr "クラスの支援者を倒す"
 msgid "Destroy WEAPCO frontline forces"
 msgstr "WEAPCOの前線部隊を破壊する"
 
-#: ../src/mission.c:610 ../src/mission.c:984
+#: ../src/mission.c:610 ../src/mission.c:988
 msgid "*** All Primary Objectives Completed ***"
 msgstr "*** 主要な任務を完了 ***"
 
@@ -2454,81 +2457,81 @@ msgstr "*** 試作戦闘機を破壊 - 作戦完了 ***"
 msgid "That's one less surprise that WEAPCO can spring on us!"
 msgstr "WEAPCOの奇襲攻撃など、たいしたことはないな!"
 
-#: ../src/mission.c:971
+#: ../src/mission.c:975
 msgid "*** Primary Objective Completed ***"
 msgstr "*** 主要な任務を完了 ***"
 
-#: ../src/mission.c:973
+#: ../src/mission.c:977
 msgid ">>> Primary Objective Failed <<<"
 msgstr ">>> 主要な任務を失敗 <<<"
 
-#: ../src/mission.c:980
+#: ../src/mission.c:984
 msgid "Emergency warp drive activated. Press button to engage."
 msgstr "脱出ワープエンジンが利用可能 ESCボタンで始動する"
 
-#: ../src/mission.c:986
+#: ../src/mission.c:990
 msgid "*** Interception Destroyed ***"
 msgstr "*** 迎撃部隊を撃破 ***"
 
 #. / Dialog (Chris Bainfield)
 #. / Used when the Earth mission is completed.
-#: ../src/mission.c:1006
+#: ../src/mission.c:1010
 msgid ""
 "You guys stay here and keep things under control. I'm going after Kethlan!"
 msgstr "ここを抑えていてくれ。俺はケスランを追う!"
 
-#: ../src/mission.c:1015
+#: ../src/mission.c:1019
 msgid "*** Secondary Objective Completed ***"
 msgstr "*** 補助的な任務を完了 ***"
 
-#: ../src/mission.c:1020
+#: ../src/mission.c:1024
 msgid "*** All Secondary Objectives Completed ***"
 msgstr "*** 全ての補助的な任務を完了 ***"
 
-#: ../src/mission.c:1035
+#: ../src/mission.c:1039
 msgid ">>> MISSION FAILED <<<"
 msgstr ">>> 作戦失敗 <<<"
 
-#: ../src/mission.c:1041
+#: ../src/mission.c:1045
 msgid ">>> Secondary Objective Failed <<<"
 msgstr ">>> 補助的な任務を失敗 <<<"
 
-#: ../src/mission.c:1120
+#: ../src/mission.c:1124
 msgid "Primary Objectives"
 msgstr "主要な任務"
 
-#: ../src/mission.c:1134
+#: ../src/mission.c:1138
 msgid "Secondary Objectives"
 msgstr "補助的な任務"
 
-#: ../src/mission.c:1148
+#: ../src/mission.c:1152
 msgid "Additional Information"
 msgstr "追加の情報"
 
 #. / Used to indicate the player's shield meter in the HUD.
-#: ../src/mission.c:1165
+#: ../src/mission.c:1169
 msgid "Shield"
 msgstr "シールド"
 
-#: ../src/mission.c:1167
+#: ../src/mission.c:1171
 msgid "Target"
 msgstr "ターゲット"
 
-#: ../src/mission.c:1168
+#: ../src/mission.c:1172
 msgid "Sid"
 msgstr "シド"
 
-#: ../src/mission.c:1169
+#: ../src/mission.c:1173
 msgid "Phoebe"
 msgstr "フェーベ"
 
-#: ../src/mission.c:1170
+#: ../src/mission.c:1174
 msgid "Kline"
 msgstr "クライン"
 
 #. / "%d" must be retained.  It is replaced with the mission required
 #. / survival time in minutes.
-#: ../src/mission.c:1198
+#: ../src/mission.c:1204
 #, c-format
 msgid "SURVIVAL FOR %d minute"
 msgid_plural "SURVIVAL FOR %d minutes"
@@ -2536,35 +2539,35 @@ msgstr[0] "%d分間 生き延びる"
 
 #. / "%d" must be retained.  It is replaced with the mission time
 #. / limit in minutes.
-#: ../src/mission.c:1207
+#: ../src/mission.c:1213
 #, c-format
 msgid "TIME LIMIT: %d minute"
 msgid_plural "TIME LIMIT: %d minutes"
 msgstr[0] "制限時間: %d分"
 
-#: ../src/mission.c:1223
+#: ../src/mission.c:1229
 msgid "Phoebe Lexx will not be present"
 msgstr "フェーベ・レックスは参加しない"
 
-#: ../src/mission.c:1225
+#: ../src/mission.c:1231
 msgid "Ursula Lexx will not be present"
 msgstr "ウーシュラ・レックスは参加しない"
 
-#: ../src/mission.c:1232
+#: ../src/mission.c:1238
 msgid "Sid Wilson will join you on this mission"
 msgstr "シド・ウィルソンが作戦に参加する"
 
-#: ../src/mission.c:1320 ../src/mission.c:1340
+#: ../src/mission.c:1326 ../src/mission.c:1346
 msgid "COMPLETED"
 msgstr "完了"
 
-#: ../src/mission.c:1325 ../src/mission.c:1345
+#: ../src/mission.c:1331 ../src/mission.c:1351
 msgid "FAILED"
 msgstr "失敗"
 
 #. / "%d" must be retained.  It is replaced with the money earned
 #. / from the shield bonus.
-#: ../src/mission.c:1356
+#: ../src/mission.c:1362
 #, c-format
 msgid "Shield Bonus: $%d"
 msgstr "シールドボーナス: $%d"
@@ -2581,7 +2584,7 @@ msgstr "シールドボーナス: $%d"
 #. / the "%02ld" sequences may be changed to "%ld" if you wish to
 #. / not force two digits to be filled in (e.g. to render the number
 #. / 3 as "3" instead of "03").
-#: ../src/mission.c:1372
+#: ../src/mission.c:1378
 #, c-format
 msgid "Mission Time: %02ld:%02ld"
 msgstr "作戦時間: %2ld:%02ld:%02ld"
@@ -3124,34 +3127,34 @@ msgstr "無制限の時間 - ON"
 msgid "UNLIMITED TIME - OFF"
 msgstr "無制限の時間 - OFF"
 
-#: ../src/title.c:250
+#: ../src/title.c:252
 msgid "START NEW GAME"
 msgstr "最初から"
 
-#: ../src/title.c:251
+#: ../src/title.c:253
 msgid "LOAD GAME"
 msgstr "ロード"
 
-#: ../src/title.c:252
+#: ../src/title.c:254
 msgid "CONTINUE CURRENT GAME"
 msgstr "続き"
 
-#: ../src/title.c:253
+#: ../src/title.c:255
 msgid "OPTIONS"
 msgstr "オプション"
 
-#: ../src/title.c:254
+#: ../src/title.c:256
 msgid "CREDITS"
 msgstr "クレジット"
 
-#: ../src/title.c:255
+#: ../src/title.c:257
 msgid "CHEAT OPTIONS"
 msgstr "チートオプション"
 
-#: ../src/title.c:256
+#: ../src/title.c:258
 msgid "QUIT"
 msgstr "終了"
 
-#: ../src/title.c:260
+#: ../src/title.c:262
 msgid "BACK TO MAIN MENU"
 msgstr "メインメニューに戻る"
