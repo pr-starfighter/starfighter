@@ -2186,6 +2186,7 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 	int ai_type;
 	double run_chance;
 	int stage1_shield, stage2_shield, stage3_shield;
+	int i;
 
 	ai_type = ((game.difficulty == DIFFICULTY_ORIGINAL) ?
 		alien->AITypeOriginal : alien->AIType);
@@ -2267,21 +2268,31 @@ void alien_hurt(Object *alien, Object *attacker, int damage, int ion)
 		else
 		{
 			stage1_shield = KLINE_SHIELD_TINY;
+			if ((game.difficulty != DIFFICULTY_ORIGINAL)
+					&& (game.difficulty > DIFFICULTY_EASY))
+			{
+				for (int i = 0 ; i < ALIEN_MAX ; i++)
+				{
+					if (aliens[i].active && (i != ALIEN_KLINE)
+							&& (aliens[i].flags & FL_WEAPCO)
+							&& (aliens[i].shield > 0))
+					{
+						stage1_shield = KLINE_SHIELD_SMALL;
+						break;
+					}
+				}
+			}
 
 			if ((alien->shield <= alien->maxShield - stage1_shield)
-				&& !(alien->flags & FL_LEAVESECTOR))
-			{
+					&& !(alien->flags & FL_LEAVESECTOR))
 				alien->flags |= FL_LEAVESECTOR;
-			}
 		}
 	}
 
 	run_chance = (game.difficulty == DIFFICULTY_ORIGINAL) ? 0.02 : damage / 50.;
 
 	if ((alien->flags & FL_RUNSAWAY) && CHANCE(run_chance))
-	{
 		alien->flags |= FL_LEAVESECTOR;
-	}
 
 	audio_playSound(SFX_HIT, alien->x, alien->y);
 	if (ai_type == AI_EVASIVE)
