@@ -84,6 +84,15 @@ void alien_nerf(int index)
 			aliens[index].maxShield /= 2;
 		}
 	}
+	else if ((game.difficulty != DIFFICULTY_ORIGINAL)
+		&& (game.difficulty < DIFFICULTY_HARD)
+		&& (game.area == MISN_URUSOR)
+		&& (aliens[index].classDef == CD_CARGOSHIP))
+	{
+		// Lighter version of the Urusor cargo ship shield buff.
+		aliens[index].shield *= 3;
+		aliens[index].maxShield *= 3;
+	}
 }
 
 void alien_defs_init()
