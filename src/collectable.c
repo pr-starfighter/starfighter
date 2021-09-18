@@ -124,8 +124,7 @@ void collectable_add(float x, float y, int type, int value, int life)
 		type = P_PLASMA_RATE;
 
 		if ((game.difficulty == DIFFICULTY_NIGHTMARE)
-			|| ((game.difficulty != DIFFICULTY_SUPEREASY)
-				&& (game.difficulty != DIFFICULTY_EASY)
+			|| ((game.difficulty > DIFFICULTY_EASY)
 				&& (game.difficulty != DIFFICULTY_ORIGINAL)
 				&& ((game.area == MISN_MOEBO)
 					|| (game.area == MISN_ELAMALE)

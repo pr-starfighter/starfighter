@@ -903,8 +903,7 @@ static void game_doBullets()
 			}
 		}
 
-		if ((game.difficulty != DIFFICULTY_SUPEREASY)
-			&& (game.difficulty != DIFFICULTY_EASY)
+		if ((game.difficulty > DIFFICULTY_EASY)
 			&& ((bullet->owner == &player) || (bullet->id == WT_ROCKET)))
 		{
 			for (int j = 0 ; j < 20 ; j++)

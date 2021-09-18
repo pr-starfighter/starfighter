@@ -1467,8 +1467,7 @@ int intermission()
 	intermission_createCommsSurface(commsSurface);
 
 	// Remove the Supercharge, if it is there
-	if ((game.difficulty != DIFFICULTY_SUPEREASY)
-		&& (game.difficulty != DIFFICULTY_EASY)
+	if ((game.difficulty > DIFFICULTY_EASY)
 		&& (game.difficulty != DIFFICULTY_ORIGINAL))
 	{
 		weapons[W_PLAYER_WEAPON].reload[0] = MAX(
