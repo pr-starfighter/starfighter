@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>starfighter</id>
+  <id>io.github.pr-starfighter.starfighter</id>
   <metadata_license>BY-SA-4.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <name>Project: Starfighter</name>
@@ -19,7 +19,7 @@ corporation which has enslaved the galaxy.
     </p>
   </description>
 
-  <launchable type="desktop-id">starfighter.desktop</launchable>
+  <launchable type="desktop-id">io.github.pr-starfighter.starfighter.desktop</launchable>
 
   <screenshots>
     <screenshot type="default">
