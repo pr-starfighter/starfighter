@@ -2587,7 +2587,7 @@ msgstr "シールドボーナス: $%d"
 #: ../src/mission.c:1378
 #, c-format
 msgid "Mission Time: %02ld:%02ld"
-msgstr "作戦時間: %2ld:%02ld:%02ld"
+msgstr "作戦時間: %2ld:%02ld"
 
 #: ../src/save.c:77
 msgid "AUTOSAVE"
