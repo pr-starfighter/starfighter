@@ -4,7 +4,7 @@
 # information. This file is offered as-is, without any warranty.
 
 desktopdir = $(datarootdir)/applications
-desktop_DATA = io.github.pr-starfighter.starfighter.desktop
+desktop_DATA = io.github.pr_starfighter.starfighter.desktop
 
 icondir = $(datarootdir)/pixmaps
 icon_DATA = starfighter.png
@@ -12,4 +12,4 @@ icon_DATA = starfighter.png
 dist_man6_MANS = starfighter.6
 
 appdatadir = $(datarootdir)/metainfo
-appdata_DATA = io.github.pr-starfighter.starfighter.metainfo.xml
+appdata_DATA = io.github.pr_starfighter.starfighter.metainfo.xml
