@@ -74,6 +74,8 @@ corporation which has enslaved the galaxy.
   </releases>
 
   <url type="homepage">https://pr-starfighter.github.io/</url>
+  <url type="bugtracker">https://github.com/pr-starfighter/starfighter/issues</url>
+  <url type="donation">https://liberapay.com/diligentcircle</url>
 
   <categories>
     <category>Game</category>
