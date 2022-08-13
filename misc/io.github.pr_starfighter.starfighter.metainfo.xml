@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>io.github.pr_starfighter.starfighter</id>
-  <metadata_license>BY-SA-4.0</metadata_license>
+  <metadata_license>CC-BY-SA-4.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <name>Project: Starfighter</name>
   <summary>Space shoot 'em up game.</summary>
