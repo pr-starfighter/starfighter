@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>io.github.pr_starfighter.starfighter</id>
-  <metadata_license>BY-SA-4.0</metadata_license>
+  <metadata_license>CC-BY-SA-4.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <name>Project: Starfighter</name>
   <summary>Space shoot 'em up game.</summary>
@@ -40,7 +40,42 @@ corporation which has enslaved the galaxy.
     </screenshot>
   </screenshots>
 
+  <releases>
+    <release version="v2.4" date="2020-12-27" type="stable">
+      <url>https://github.com/pr-starfighter/starfighter/releases/tag/v2.4</url>
+    </release>
+    <release version="v2.3.3" date="2020-09-20" type="stable">
+      <url>https://github.com/pr-starfighter/starfighter/releases/tag/v2.3.3</url>
+    </release>
+    <release version="v2.3.2" date="2020-09-05" type="stable">
+      <url>https://github.com/pr-starfighter/starfighter/releases/tag/v2.3.2</url>
+    </release>
+    <release version="v2.3.1" date="2020-07-27" type="stable">
+      <url>https://github.com/pr-starfighter/starfighter/releases/tag/v2.3.1</url>
+    </release>
+    <release version="v2.3" date="2020-07-16" type="stable">
+      <url>https://github.com/pr-starfighter/starfighter/releases/tag/v2.3</url>
+    </release>
+    <release version="v2.2.1" date="2020-06-22" type="stable">
+      <url>https://github.com/pr-starfighter/starfighter/releases/tag/v2.2.1</url>
+    </release>
+    <release version="v2.2" date="2020-05-27" type="stable">
+      <url>https://github.com/pr-starfighter/starfighter/releases/tag/v2.2</url>
+    </release>
+    <release version="v2.1.1" date="2020-05-24" type="stable">
+      <url>https://github.com/pr-starfighter/starfighter/releases/tag/v2.1.1</url>
+    </release>
+    <release version="v2.1" date="2020-04-02" type="stable">
+      <url>https://github.com/pr-starfighter/starfighter/releases/tag/v2.1</url>
+    </release>
+    <release version="v2.0.0.3" date="2019-07-04" type="stable">
+      <url>https://github.com/pr-starfighter/starfighter/releases/tag/v2.0.0.3</url>
+    </release>
+  </releases>
+
   <url type="homepage">https://pr-starfighter.github.io/</url>
+  <url type="bugtracker">https://github.com/pr-starfighter/starfighter/issues</url>
+  <url type="donation">https://liberapay.com/diligentcircle</url>
 
   <categories>
     <category>Game</category>
