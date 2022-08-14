@@ -68,7 +68,7 @@ corporation which has enslaved the galaxy.
     <release version="v2.1" date="2020-04-02" type="stable">
       <url>https://github.com/pr-starfighter/starfighter/releases/tag/v2.1</url>
     </release>
-    <release version="v2.0.0.3" date="2019-07-04" type="stable">
+    <release version="v2.0" date="2019-07-04" type="stable">
       <url>https://github.com/pr-starfighter/starfighter/releases/tag/v2.0.0.3</url>
     </release>
   </releases>
