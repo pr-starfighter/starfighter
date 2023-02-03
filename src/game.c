@@ -767,7 +767,7 @@ static void game_doBullets()
 									"I am NOT your enemy!\n"
 									"Hey! Watch it!\n"
 									"What are you doing?! Shoot THEM!\n"
-									"Pay some damn attention!"
+									"Ouch! What the hell, Chris?!"
 								));
 								radio_setMessage(FS_URSULA, msg, 0);
 							}
