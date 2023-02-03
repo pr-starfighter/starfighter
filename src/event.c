@@ -350,7 +350,7 @@ void events_init()
 			events[3].time = 4 + 2*engine.radioLife/60;
 			events[3].face = FS_CHRIS;
 			/// Dialog (Chris Bainfield)
-			strcpy(events[3].message, _("Good point. It would be foolish to expect anything else."));
+			strcpy(events[3].message, _("Wow, that's cold. Just goes to show never to trust a mercenary, eh?"));
 
 			events[4].time = 15;
 			events[4].entity = ALIEN_BOSS_PART2;
