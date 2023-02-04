@@ -299,7 +299,7 @@ static void drawShop()
 		game.minPlasmaRate);
 	gfx_renderUnicode(description, 10, 52, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_PRIMARY]);
 
-	gfx_renderUnicode(_("Powerup Weapon"), 10, 3, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
+	gfx_renderUnicode(_("Powered-up Weapon"), 10, 3, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_POWERUP]);
 	/// Shop info: max plasma output
 	/// Retain "%d" as-is.  It is replaced with the max plasma output.
 	snprintf(description, STRMAX, _("Splitter: Stage %d"),
@@ -326,7 +326,7 @@ static void drawShop()
 
 	gfx_drawRect(gfx_shopSprites[SHOP_S_CATALOG], 0, 0, SHOP_WIDTH, 120, 0x00, 0x00, 0x22);
 
-	gfx_renderUnicode(_("Temporary Weapons"), 10, 2, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_CATALOG]);
+	gfx_renderUnicode(_("Powered-up Weapons"), 10, 2, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_CATALOG]);
 	gfx_renderUnicode(_("Ammo and Storage"), 260, 2, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_CATALOG]);
 
 	gfx_renderUnicode(_("Primary Weapons"), 10, 62, FONT_WHITE, 0, gfx_shopSprites[SHOP_S_CATALOG]);
@@ -440,19 +440,19 @@ void shop_init()
 	shopItems[SHOP_PLASMA_MAX_OUTPUT].price = 0; // Overwritten later
 	strcpy(shopItems[SHOP_PLASMA_MAX_OUTPUT].name, _("Plasma Channel Splitter"));
 	/// Shop item description: Plasma Channel Splitter (PLASMA_MAX_OUTPUT)
-	strcpy(shopItems[SHOP_PLASMA_MAX_OUTPUT].description, _("Improves poweredup plasma output"));
+	strcpy(shopItems[SHOP_PLASMA_MAX_OUTPUT].description, _("Increases maximum powered-up plasma output"));
 	shopItems[SHOP_PLASMA_MAX_OUTPUT].image = SP_PLASMA_MAX_OUTPUT;
 
 	shopItems[SHOP_PLASMA_MAX_DAMAGE].price = 0; // Overwritten later
 	strcpy(shopItems[SHOP_PLASMA_MAX_DAMAGE].name, _("Plasma Capacity Condensor"));
 	/// Shop item description: Plasma Capacity Condensor (PLASMA_MAX_DAMAGE)
-	strcpy(shopItems[SHOP_PLASMA_MAX_DAMAGE].description, _("Increases poweredup plasma damage"));
+	strcpy(shopItems[SHOP_PLASMA_MAX_DAMAGE].description, _("Increases maximum powered-up plasma damage"));
 	shopItems[SHOP_PLASMA_MAX_DAMAGE].image = SP_PLASMA_MAX_POWER;
 
 	shopItems[SHOP_PLASMA_MAX_RATE].price = 0; // Overwritten later
 	strcpy(shopItems[SHOP_PLASMA_MAX_RATE].name, _("Liquid Nitrogen Capsules"));
 	/// Shop item description: Liquid Nitrogen Capsules (PLASMA_MAX_RATE)
-	strcpy(shopItems[SHOP_PLASMA_MAX_RATE].description, _("Increases plasma firing rate"));
+	strcpy(shopItems[SHOP_PLASMA_MAX_RATE].description, _("Increases maximum powered-up plasma firing rate"));
 	shopItems[SHOP_PLASMA_MAX_RATE].image = SP_PLASMA_MAX_RATE;
 
 	if (game.difficulty == DIFFICULTY_ORIGINAL)
@@ -462,7 +462,7 @@ void shop_init()
 
 	strcpy(shopItems[SHOP_PLASMA_AMMO].name, _("Plasma Cells"));
 	/// Shop item description: Plasma Cells
-	strcpy(shopItems[SHOP_PLASMA_AMMO].description, _("Plasma ammunition (10 cells each)"));
+	strcpy(shopItems[SHOP_PLASMA_AMMO].description, _("Powered-up plasma ammunition (10 cells each)"));
 	shopItems[SHOP_PLASMA_AMMO].image = SP_PLASMA_AMMO;
 
 	if (game.difficulty == DIFFICULTY_ORIGINAL)
@@ -472,7 +472,7 @@ void shop_init()
 
 	strcpy(shopItems[SHOP_ROCKET_AMMO].name, _("Rocket Ammo"));
 	/// Shop item description: Rocket Ammo
-	strcpy(shopItems[SHOP_ROCKET_AMMO].description, _("High velocity dumb fire rocket"));
+	strcpy(shopItems[SHOP_ROCKET_AMMO].description, _("Rocket ammunition (1 rocket each)"));
 	shopItems[SHOP_ROCKET_AMMO].image = SP_ROCKET_AMMO;
 
 	/* ----------- Permanent Items ----------- */
@@ -480,19 +480,19 @@ void shop_init()
 	shopItems[SHOP_PLASMA_MIN_OUTPUT].price = 0; // Overwritten later
 	strcpy(shopItems[SHOP_PLASMA_MIN_OUTPUT].name, _("Additional Plasma Cannon"));
 	/// Shop item description: Additional Plasma Cannon (PLASMA_MIN_OUTPUT)
-	strcpy(shopItems[SHOP_PLASMA_MIN_OUTPUT].description, _("Adds an extra plasma cannon to the Firefly"));
+	strcpy(shopItems[SHOP_PLASMA_MIN_OUTPUT].description, _("Increases minimum plasma output"));
 	shopItems[SHOP_PLASMA_MIN_OUTPUT].image = SP_PLASMA_MIN_OUTPUT;
 
 	shopItems[SHOP_PLASMA_MIN_DAMAGE].price = 0; // Overwritten later
 	strcpy(shopItems[SHOP_PLASMA_MIN_DAMAGE].name, _("Plasma Power Booster"));
 	/// Shop item description: Plasma Power Booster (PLASMA_MIN_DAMAGE)
-	strcpy(shopItems[SHOP_PLASMA_MIN_DAMAGE].description, _("Increases power of plasma shots"));
+	strcpy(shopItems[SHOP_PLASMA_MIN_DAMAGE].description, _("Increases minimum plasma damage"));
 	shopItems[SHOP_PLASMA_MIN_DAMAGE].image = SP_PLASMA_MIN_POWER;
 
 	shopItems[SHOP_PLASMA_MIN_RATE].price = 0; // Overwritten later
 	strcpy(shopItems[SHOP_PLASMA_MIN_RATE].name, _("Plasma Cooling Booster"));
 	/// Shop item description: Plasma Cooling Booster (PLASMA_MIN_RATE)
-	strcpy(shopItems[SHOP_PLASMA_MIN_RATE].description, _("Permanently increases firing rate"));
+	strcpy(shopItems[SHOP_PLASMA_MIN_RATE].description, _("Increases minimum plasma firing rate"));
 	shopItems[SHOP_PLASMA_MIN_RATE].image = SP_PLASMA_MIN_RATE;
 
 	/* ----------- Ammo Items -------------- */
@@ -506,7 +506,7 @@ void shop_init()
 	shopItems[SHOP_ROCKET_MAX_AMMO].price = 0; // Overwritten later
 	strcpy(shopItems[SHOP_ROCKET_MAX_AMMO].name, _("Rocket Pod"));
 	/// Shop item description: Rocket Pod (ROCKET_MAX_AMMO)
-	strcpy(shopItems[SHOP_ROCKET_MAX_AMMO].description, _("Allows for an additional 5 rockets to be carried"));
+	strcpy(shopItems[SHOP_ROCKET_MAX_AMMO].description, _("Increases rocket ammo capacity"));
 	shopItems[SHOP_ROCKET_MAX_AMMO].image = SP_ROCKET_MAX_AMMO;
 
 	/* ---------- Weaponary --------------- */
