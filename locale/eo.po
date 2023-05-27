@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2021-09-18 00:01-0400\n"
-"PO-Revision-Date: 2021-09-18 00:12-0400\n"
+"PO-Revision-Date: 2023-05-28 01:33+0200\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: eo\n"
@@ -31,7 +31,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. / Dialog (Kline Kethlan)
 #. / Used when the final "stage" of the Venus fight is entered.
@@ -108,7 +108,6 @@ msgstr ""
 #. / following the English version only as a general guideline.  Any
 #. / number of brag messages is permitted.
 #: ../src/alien.c:2088
-#, fuzzy
 msgid ""
 "I got another one!\n"
 "Target destroyed!\n"
@@ -640,7 +639,7 @@ msgstr ""
 #. / Translation note: This should appear robotic or at least monotone.
 #: ../src/event.c:235
 msgid "Unidentified craft sighted. Will proceed to destroy all targets."
-msgstr "Neidentigita veturilo trovita. Ni detruos ĉiujn celojn. "
+msgstr "Neidentigita veturilo trovita. Ni detruos ĉiujn celojn."
 
 #. / Dialog (Chris Bainfield)
 #: ../src/event.c:240
@@ -1038,9 +1037,8 @@ msgstr "Raketoj: %.2d"
 
 #. / DIFFICULTY_SUPEREASY (Assisted)
 #: ../src/game.c:2498
-#, fuzzy
 msgid "Assisted"
-msgstr "Facilega"
+msgstr "Helpata"
 
 #. / DIFFICULTY_EASY
 #: ../src/game.c:2502
@@ -1369,7 +1367,7 @@ msgstr "Mini ercon el zono de asteroidoj"
 #. / Mordor, Almartha mission summary
 #: ../src/intermission.c:561
 msgid "Create a diversion"
-msgstr "Kreu distron."
+msgstr "Kreu distron"
 
 #. / Mordor, Poswic mission summary
 #: ../src/intermission.c:567
@@ -1607,7 +1605,7 @@ msgid ""
 "\"Star Killer\" just because it sounded nice!"
 msgstr ""
 "Ni ĉiuj fidas vin, Kris! Sed memoru: ili ne nomiĝis tiu afero \"Stela "
-"Murdisto\" nur ĉar ĝi sonis bone."
+"Murdisto\" nur ĉar ĝi sonis bone!"
 
 #. / Mission dialog: Eyananth, interceptions (Sid Wilson)
 #. / "%d" must be retained as-is. It is replaced with the number of slaves that
@@ -1730,7 +1728,7 @@ msgid ""
 "Looks like the plan worked."
 msgstr ""
 "Mi aŭdis, ke la sklavoj, kiujn ni savis, komencis ribelon. Ŝajnas, ke la "
-"plano funkciis. "
+"plano funkciis."
 
 #. / Mission dialog: Eyananth, Elamale (Phoebe Lexx)
 #: ../src/intermission.c:1005
@@ -1763,7 +1761,7 @@ msgid ""
 "Could prove hard to track down."
 msgstr ""
 "Mi havas ia manteliĝa ilo, kiu estas nevidebla de radaroj. Povus esti "
-"malfacile ĝin serĉi. "
+"malfacile ĝin serĉi."
 
 #. / Mission dialog: Mordor, interceptions (Chris Bainfield)
 #: ../src/intermission.c:1028
@@ -1814,13 +1812,12 @@ msgstr ""
 
 #. / Mission dialog: Mordor, Fellon (Sid Wilson)
 #: ../src/intermission.c:1062
-#, fuzzy
 msgid ""
 "A rebel group has organized a counter strike. If we can help them secure a "
 "victory, it will be a real boost to morale."
 msgstr ""
-"Ribela aro organizis kontraŭa batalo. Se ni povas helpi ilin sekurigi "
-"venkon, estus vera plifortigo de moralo."
+"Ribela aro organizis kontraŭatakon. Se ni povas helpi ilin sekurigi venkon, "
+"estus vera plifortigo de moralo."
 
 #. / Mission dialog: Mordor, Fellon (Chris Bainfield)
 #: ../src/intermission.c:1066
@@ -2035,7 +2032,7 @@ msgid ""
 "died now!"
 msgstr ""
 "Atentu, Kris. Ni gajnis la militon, sed estus vere bedaŭrinde, ke vi mortus "
-"nun! "
+"nun!"
 
 #: ../src/intermission.c:1273
 msgid "++ OPTIONS ++"
@@ -2379,7 +2376,7 @@ msgstr[0] ""
 "Kolektu %d erceron pli...\n"
 "%d pli ercero por kolekti...\n"
 "%d pli ercero bezonata...\n"
-"Kolektu nur %d eron... "
+"Kolektu nur %d eron..."
 msgstr[1] ""
 "Kolektu %d ercerojn pli...\n"
 "%d pli erceroj por kolekti...\n"
