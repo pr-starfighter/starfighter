@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2021-09-18 00:01-0400\n"
-"PO-Revision-Date: 2021-09-18 00:15-0400\n"
+"PO-Revision-Date: 2023-05-28 01:19+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -31,7 +31,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-Bookmarks: -1,26,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. / Dialog (Kline Kethlan)
@@ -102,7 +102,6 @@ msgstr ""
 #. / following the English version only as a general guideline.  Any
 #. / number of brag messages is permitted.
 #: ../src/alien.c:2088
-#, fuzzy
 msgid ""
 "I got another one!\n"
 "Target destroyed!\n"
@@ -1041,9 +1040,8 @@ msgstr "Cohetes: %.2d"
 
 #. / DIFFICULTY_SUPEREASY (Assisted)
 #: ../src/game.c:2498
-#, fuzzy
 msgid "Assisted"
-msgstr "Súper-Fácil"
+msgstr "Súper fácil"
 
 #. / DIFFICULTY_EASY
 #: ../src/game.c:2502
@@ -1822,13 +1820,12 @@ msgstr ""
 
 #. / Mission dialog: Mordor, Fellon (Sid Wilson)
 #: ../src/intermission.c:1062
-#, fuzzy
 msgid ""
 "A rebel group has organized a counter strike. If we can help them secure a "
 "victory, it will be a real boost to morale."
 msgstr ""
 "Un grupo rebelde ha organizado un contraataque. Si podemos ayudarles a "
-"asegurar una victoria, será un estímulo para la motivación."
+"asegurar una victoria, será un buen estímulo para la moral."
 
 #. / Mission dialog: Mordor, Fellon (Chris Bainfield)
 #: ../src/intermission.c:1066
@@ -2393,7 +2390,7 @@ msgstr[0] ""
 "Recoge %d trozo de mineral más...\n"
 "%d trozo de mineral más que recoger...\n"
 "%d trozo de mineral más necesario...\n"
-"Recoge solo %d trozos de mineral más"
+"Recoge solo %d trozos de mineral más..."
 msgstr[1] ""
 "Recoge %d trozos de mineral más...\n"
 "%d trozos de mineral más que recoger...\n"
