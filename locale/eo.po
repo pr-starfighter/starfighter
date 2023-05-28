@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2023-05-28 08:28+0200\n"
-"PO-Revision-Date: 2023-05-28 01:33+0200\n"
+"PO-Revision-Date: 2023-05-28 08:51+0200\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: eo\n"
@@ -722,6 +722,8 @@ msgstr ""
 #: ../src/event.c:353
 msgid "Wow, that's cold. Just goes to show never to trust a mercenary, eh?"
 msgstr ""
+"Ho, tio estas senemocia. Tio nur montras, ke vi neniam devus fidi soldulon, "
+"ĉu?"
 
 #. / Dialog (Krass Tyler)
 #: ../src/event.c:362
@@ -900,7 +902,6 @@ msgstr ""
 #. / following the English version only as a general guideline.  Any
 #. / number of messages is permitted.
 #: ../src/game.c:767
-#, fuzzy
 msgid ""
 "I am NOT your enemy!\n"
 "Hey! Watch it!\n"
@@ -909,8 +910,8 @@ msgid ""
 msgstr ""
 "Mi NE estas via malamiko!\n"
 "He! Vidu ĝin!\n"
-"Kion vi faras?! Pafi ILIN!\n"
-"Damne atenti!"
+"Kion vi faras?! Pafu ILIN!\n"
+"Aj! Kion diable, Kriso?!"
 
 #. / Phoebe: Player Hit Messages
 #. / This is a list of messages separated by "\n".  They are randomly
@@ -969,7 +970,6 @@ msgstr ""
 #. / following the English version only as a general guideline.  Any
 #. / number of insults is permitted.
 #: ../src/game.c:1637
-#, fuzzy
 msgid ""
 "Pathetic.\n"
 "How very disappointing...\n"
@@ -978,7 +978,8 @@ msgid ""
 msgstr ""
 "Mizera.\n"
 "Kiel ege ĉagrena...\n"
-"Heroa. Kaj stulta."
+"Heroa. Kaj stulta.\n"
+"Kia ŝerco."
 
 #. / Dialog: Krass Tyler
 #. / Used when the player is killed in the Jupiter mission.
@@ -2822,9 +2823,8 @@ msgid "Cooling: Stage %d"
 msgstr "Malvarmiĝo: Fazo %d"
 
 #: ../src/shop.c:302
-#, fuzzy
 msgid "Powered-up Weapon"
-msgstr "Plibonigita Armilo"
+msgstr "Plifortigita Armilo"
 
 #. / Shop info: max plasma output
 #. / Retain "%d" as-is.  It is replaced with the max plasma output.
@@ -2855,9 +2855,8 @@ msgid "Capacity: %d"
 msgstr "Enhaveco: %d"
 
 #: ../src/shop.c:329
-#, fuzzy
 msgid "Powered-up Weapons"
-msgstr "Plibonigita Armilo"
+msgstr "Plifortigitaj Armiloj"
 
 #: ../src/shop.c:330
 msgid "Ammo and Storage"
@@ -2959,9 +2958,8 @@ msgstr "Plasma Kanala Dividilo"
 
 #. / Shop item description: Plasma Channel Splitter (PLASMA_MAX_OUTPUT)
 #: ../src/shop.c:443
-#, fuzzy
 msgid "Increases maximum powered-up plasma output"
-msgstr "Pliboniĝas pliigita plasma eligo"
+msgstr "Plibonigas maksimuman plifortigitan plasman eligon"
 
 #. Overwritten later
 #: ../src/shop.c:447
@@ -2970,9 +2968,8 @@ msgstr "Kondensilo de Plasma Enhaveco"
 
 #. / Shop item description: Plasma Capacity Condensor (PLASMA_MAX_DAMAGE)
 #: ../src/shop.c:449
-#, fuzzy
 msgid "Increases maximum powered-up plasma damage"
-msgstr "Pliigas plibonitan plasman damaĝon"
+msgstr "Pliigas maksimuman plifortigitan plasman damaĝon"
 
 #. Overwritten later
 #: ../src/shop.c:453
@@ -2981,9 +2978,8 @@ msgstr "Likvaj Kapsuloj de Nitrogeno"
 
 #. / Shop item description: Liquid Nitrogen Capsules (PLASMA_MAX_RATE)
 #: ../src/shop.c:455
-#, fuzzy
 msgid "Increases maximum powered-up plasma firing rate"
-msgstr "Pliigas plasman pafrapidecon"
+msgstr "Pliigas maksimuman plifortigitan plasman pafrapidecon"
 
 #: ../src/shop.c:463
 msgid "Plasma Cells"
@@ -2991,9 +2987,8 @@ msgstr "Plasmaj Ĉeloj"
 
 #. / Shop item description: Plasma Cells
 #: ../src/shop.c:465
-#, fuzzy
 msgid "Powered-up plasma ammunition (10 cells each)"
-msgstr "Plasma municio (po 10 ŝeloj)"
+msgstr "Plifortigita plasma municio (po 10 ŝeloj)"
 
 #: ../src/shop.c:473
 msgid "Rocket Ammo"
@@ -3001,9 +2996,8 @@ msgstr "Raketaj Municioj"
 
 #. / Shop item description: Rocket Ammo
 #: ../src/shop.c:475
-#, fuzzy
 msgid "Rocket ammunition (1 rocket each)"
-msgstr "Plasma municio (po 10 ŝeloj)"
+msgstr "Plasma municio (1 raketo por ĉiu)"
 
 #. ----------- Permanent Items -----------
 #. Overwritten later
@@ -3013,9 +3007,8 @@ msgstr "Kroma Plasma Pafilego"
 
 #. / Shop item description: Additional Plasma Cannon (PLASMA_MIN_OUTPUT)
 #: ../src/shop.c:483
-#, fuzzy
 msgid "Increases minimum plasma output"
-msgstr "Pliigas plasman munician enhavecon"
+msgstr "Pliigas minimuman plasman eligon"
 
 #. Overwritten later
 #: ../src/shop.c:487
@@ -3024,9 +3017,8 @@ msgstr "Plifortigo de Plasma Potenco"
 
 #. / Shop item description: Plasma Power Booster (PLASMA_MIN_DAMAGE)
 #: ../src/shop.c:489
-#, fuzzy
 msgid "Increases minimum plasma damage"
-msgstr "Pliigas plibonitan plasman damaĝon"
+msgstr "Pliigas minimuman plasman damaĝon"
 
 #. Overwritten later
 #: ../src/shop.c:493
@@ -3035,9 +3027,8 @@ msgstr "Plifortigo de Malvarmiga Plasmo"
 
 #. / Shop item description: Plasma Cooling Booster (PLASMA_MIN_RATE)
 #: ../src/shop.c:495
-#, fuzzy
 msgid "Increases minimum plasma firing rate"
-msgstr "Pliigas plasman pafrapidecon"
+msgstr "Pliigas minimuman plasman pafrapidecon"
 
 #. ----------- Ammo Items --------------
 #. Overwritten later
@@ -3057,9 +3048,8 @@ msgstr "Raketa Ŝelo"
 
 #. / Shop item description: Rocket Pod (ROCKET_MAX_AMMO)
 #: ../src/shop.c:509
-#, fuzzy
 msgid "Increases rocket ammo capacity"
-msgstr "Pliigas plasman munician enhavecon"
+msgstr "Pliigas enhavecon de raketa municio"
 
 #: ../src/shop.c:515
 msgid "Dual Rocket Launcher"
