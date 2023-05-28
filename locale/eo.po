@@ -22,8 +22,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
-"POT-Creation-Date: 2021-09-18 00:01-0400\n"
-"PO-Revision-Date: 2021-09-18 00:12-0400\n"
+"POT-Creation-Date: 2023-05-28 08:28+0200\n"
+"PO-Revision-Date: 2023-05-28 11:47+0200\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: eo\n"
@@ -31,7 +31,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. / Dialog (Kline Kethlan)
 #. / Used when the final "stage" of the Venus fight is entered.
@@ -108,7 +108,6 @@ msgstr ""
 #. / following the English version only as a general guideline.  Any
 #. / number of brag messages is permitted.
 #: ../src/alien.c:2088
-#, fuzzy
 msgid ""
 "I got another one!\n"
 "Target destroyed!\n"
@@ -365,7 +364,7 @@ msgid ""
 "I've heard of him. He's the Commander of WEAPCO's naval forces. One of the "
 "best pilots they ever had."
 msgstr ""
-"Mi aŭdis lin. Li estas la ARMKORP-aj komandanto de ŝipaj fortoj. Unu el la "
+"Mi aŭdis lin. Li estas la komandanto de ARMKORP-aj ŝipaj fortoj. Unu el la "
 "plej bonaj veturistoj, kiuj ili iam havis."
 
 #. / Cutscene (Chris Bainfield)
@@ -640,7 +639,7 @@ msgstr ""
 #. / Translation note: This should appear robotic or at least monotone.
 #: ../src/event.c:235
 msgid "Unidentified craft sighted. Will proceed to destroy all targets."
-msgstr "Neidentigita veturilo trovita. Ni detruos ĉiujn celojn. "
+msgstr "Neidentigita veturilo trovita. Ni detruos ĉiujn celojn."
 
 #. / Dialog (Chris Bainfield)
 #: ../src/event.c:240
@@ -721,8 +720,10 @@ msgstr ""
 
 #. / Dialog (Chris Bainfield)
 #: ../src/event.c:353
-msgid "Good point. It would be foolish to expect anything else."
-msgstr "Bona argumento. Estus stulte atendi ion alian."
+msgid "Wow, that's cold. Just goes to show never to trust a mercenary, eh?"
+msgstr ""
+"Ho, tio estas senemocia. Tio nur montras, ke vi neniam devus fidi soldulon, "
+"ĉu?"
 
 #. / Dialog (Krass Tyler)
 #: ../src/event.c:362
@@ -905,12 +906,12 @@ msgid ""
 "I am NOT your enemy!\n"
 "Hey! Watch it!\n"
 "What are you doing?! Shoot THEM!\n"
-"Pay some damn attention!"
+"Ouch! What the hell, Chris?!"
 msgstr ""
 "Mi NE estas via malamiko!\n"
 "He! Vidu ĝin!\n"
-"Kion vi faras?! Pafi ILIN!\n"
-"Damne atenti!"
+"Kion vi faras?! Pafu ILIN!\n"
+"Aj! Kion diable, Kriso?!"
 
 #. / Phoebe: Player Hit Messages
 #. / This is a list of messages separated by "\n".  They are randomly
@@ -972,15 +973,17 @@ msgstr ""
 msgid ""
 "Pathetic.\n"
 "How very disappointing...\n"
-"Heroic. And foolish."
+"Heroic. And pointless.\n"
+"What a joke."
 msgstr ""
 "Mizera.\n"
 "Kiel ege ĉagrena...\n"
-"Heroa. Kaj stulta."
+"Heroa. Kaj sensenca.\n"
+"Kia ŝerco."
 
 #. / Dialog: Krass Tyler
 #. / Used when the player is killed in the Jupiter mission.
-#: ../src/game.c:1648
+#: ../src/game.c:1649
 msgid "That was the easiest $90,000,000 I've ever earned! Bwah! Ha! Ha! Ha!"
 msgstr ""
 "TIuj estas la plej facilaj $90 000 000, kiun mi gajnis! Bvah! Ha! Ha! Ha!"
@@ -993,37 +996,37 @@ msgstr ""
 #. / timer to use single-digit numbers.
 #. / The ":" can also be replaced just like any text.  For example, this would be fine:
 #. /     "Time Remaining - %d minutes and %d seconds"
-#: ../src/game.c:1962
+#: ../src/game.c:1963
 #, c-format
 msgid "Time Remaining - %.2d:%.2d"
 msgstr "Restanta Tempo - %.2d:%.2d"
 
 #. / "%d" must be retained.  It is replaced with the number of mission objectives remaining.
-#: ../src/game.c:1970
+#: ../src/game.c:1971
 #, c-format
 msgid "Objectives Remaining: %d"
 msgstr "Restantaj Celoj: %d"
 
 #. / "%d" must be retained.  It is replaced with the player's current total cash.
 #. / Retain "%d" as-is.  It is replaced with the player's current cash.
-#: ../src/game.c:1976 ../src/shop.c:353
+#: ../src/game.c:1977 ../src/shop.c:353
 #, c-format
 msgid "Cash: $%d"
 msgstr "Mono: $%d"
 
 #. / "%.3d" must be retained.  It is replaced with the amount of plasma ammo.
-#: ../src/game.c:2013
+#: ../src/game.c:2014
 #, c-format
 msgid "Plasma: %.3d"
 msgstr "Plasmo: %.3d"
 
 #. / Used to indicate the charge meter for the charger cannon in the HUD.
-#: ../src/game.c:2020
+#: ../src/game.c:2021
 msgid "Charge"
 msgstr "Ŝarĝo"
 
 #. / Used to indicate the heat meter for the laser cannon in the HUD.
-#: ../src/game.c:2025
+#: ../src/game.c:2026
 msgid "Heat"
 msgstr "Varmo"
 
@@ -1031,39 +1034,38 @@ msgstr "Varmo"
 #. / Retain "%.2d".  It is replaced with the ship's current number of rockets.
 #. / "%.2d" can be changed to "%d" if you wish to not fill in space with zeroes,
 #. / e.g. render the number 3 as "3" rather than "03".
-#: ../src/game.c:2030 ../src/shop.c:363
+#: ../src/game.c:2031 ../src/shop.c:363
 #, c-format
 msgid "Rockets: %.2d"
 msgstr "Raketoj: %.2d"
 
 #. / DIFFICULTY_SUPEREASY (Assisted)
-#: ../src/game.c:2498
-#, fuzzy
+#: ../src/game.c:2499
 msgid "Assisted"
-msgstr "Facilega"
+msgstr "Helpata"
 
 #. / DIFFICULTY_EASY
-#: ../src/game.c:2502
+#: ../src/game.c:2503
 msgid "Easy"
 msgstr "Facila"
 
 #. / DIFFICULTY_NORMAL
-#: ../src/game.c:2506
+#: ../src/game.c:2507
 msgid "Normal"
 msgstr "Normala"
 
 #. / DIFFICULTY_HARD
-#: ../src/game.c:2510
+#: ../src/game.c:2511
 msgid "Hard"
 msgstr "Malfacila"
 
 #. / DIFFICULTY_NIGHTMARE
-#: ../src/game.c:2514
+#: ../src/game.c:2515
 msgid "Nightmare!"
 msgstr "Terursonĝa!"
 
 #. / DIFFICULTY_ORIGINAL (Classic)
-#: ../src/game.c:2518
+#: ../src/game.c:2519
 msgid "Classic"
 msgstr "Klasika"
 
@@ -1369,7 +1371,7 @@ msgstr "Mini ercon el zono de asteroidoj"
 #. / Mordor, Almartha mission summary
 #: ../src/intermission.c:561
 msgid "Create a diversion"
-msgstr "Kreu distron."
+msgstr "Kreu distron"
 
 #. / Mordor, Poswic mission summary
 #: ../src/intermission.c:567
@@ -1607,7 +1609,7 @@ msgid ""
 "\"Star Killer\" just because it sounded nice!"
 msgstr ""
 "Ni ĉiuj fidas vin, Kris! Sed memoru: ili ne nomiĝis tiu afero \"Stela "
-"Murdisto\" nur ĉar ĝi sonis bone."
+"Murdisto\" nur ĉar ĝi sonis bone!"
 
 #. / Mission dialog: Eyananth, interceptions (Sid Wilson)
 #. / "%d" must be retained as-is. It is replaced with the number of slaves that
@@ -1730,7 +1732,7 @@ msgid ""
 "Looks like the plan worked."
 msgstr ""
 "Mi aŭdis, ke la sklavoj, kiujn ni savis, komencis ribelon. Ŝajnas, ke la "
-"plano funkciis. "
+"plano funkciis."
 
 #. / Mission dialog: Eyananth, Elamale (Phoebe Lexx)
 #: ../src/intermission.c:1005
@@ -1763,7 +1765,7 @@ msgid ""
 "Could prove hard to track down."
 msgstr ""
 "Mi havas ia manteliĝa ilo, kiu estas nevidebla de radaroj. Povus esti "
-"malfacile ĝin serĉi. "
+"malfacile ĝin serĉi."
 
 #. / Mission dialog: Mordor, interceptions (Chris Bainfield)
 #: ../src/intermission.c:1028
@@ -1814,13 +1816,12 @@ msgstr ""
 
 #. / Mission dialog: Mordor, Fellon (Sid Wilson)
 #: ../src/intermission.c:1062
-#, fuzzy
 msgid ""
 "A rebel group has organized a counter strike. If we can help them secure a "
 "victory, it will be a real boost to morale."
 msgstr ""
-"Ribela aro organizis kontraŭa batalo. Se ni povas helpi ilin sekurigi "
-"venkon, estus vera plifortigo de moralo."
+"Ribela aro organizis kontraŭatakon. Se ni povas helpi ilin sekurigi venkon, "
+"estus vera plifortigo de moralo."
 
 #. / Mission dialog: Mordor, Fellon (Chris Bainfield)
 #: ../src/intermission.c:1066
@@ -2035,7 +2036,7 @@ msgid ""
 "died now!"
 msgstr ""
 "Atentu, Kris. Ni gajnis la militon, sed estus vere bedaŭrinde, ke vi mortus "
-"nun! "
+"nun!"
 
 #: ../src/intermission.c:1273
 msgid "++ OPTIONS ++"
@@ -2379,7 +2380,7 @@ msgstr[0] ""
 "Kolektu %d erceron pli...\n"
 "%d pli ercero por kolekti...\n"
 "%d pli ercero bezonata...\n"
-"Kolektu nur %d eron... "
+"Kolektu nur %d eron..."
 msgstr[1] ""
 "Kolektu %d ercerojn pli...\n"
 "%d pli erceroj por kolekti...\n"
@@ -2822,8 +2823,8 @@ msgid "Cooling: Stage %d"
 msgstr "Malvarmiĝo: Fazo %d"
 
 #: ../src/shop.c:302
-msgid "Powerup Weapon"
-msgstr "Plibonigita Armilo"
+msgid "Powered-up Weapon"
+msgstr "Plifortigita Armilo"
 
 #. / Shop info: max plasma output
 #. / Retain "%d" as-is.  It is replaced with the max plasma output.
@@ -2854,8 +2855,8 @@ msgid "Capacity: %d"
 msgstr "Enhaveco: %d"
 
 #: ../src/shop.c:329
-msgid "Temporary Weapons"
-msgstr "Nedaŭraj Armoj"
+msgid "Powered-up Weapons"
+msgstr "Plifortigitaj Armiloj"
 
 #: ../src/shop.c:330
 msgid "Ammo and Storage"
@@ -2957,8 +2958,8 @@ msgstr "Plasma Kanala Dividilo"
 
 #. / Shop item description: Plasma Channel Splitter (PLASMA_MAX_OUTPUT)
 #: ../src/shop.c:443
-msgid "Improves poweredup plasma output"
-msgstr "Pliboniĝas pliigita plasma eligo"
+msgid "Increases maximum powered-up plasma output"
+msgstr "Plibonigas maksimuman plifortigitan plasman eligon"
 
 #. Overwritten later
 #: ../src/shop.c:447
@@ -2967,8 +2968,8 @@ msgstr "Kondensilo de Plasma Enhaveco"
 
 #. / Shop item description: Plasma Capacity Condensor (PLASMA_MAX_DAMAGE)
 #: ../src/shop.c:449
-msgid "Increases poweredup plasma damage"
-msgstr "Pliigas plibonitan plasman damaĝon"
+msgid "Increases maximum powered-up plasma damage"
+msgstr "Pliigas maksimuman plifortigitan plasman damaĝon"
 
 #. Overwritten later
 #: ../src/shop.c:453
@@ -2977,8 +2978,8 @@ msgstr "Likvaj Kapsuloj de Nitrogeno"
 
 #. / Shop item description: Liquid Nitrogen Capsules (PLASMA_MAX_RATE)
 #: ../src/shop.c:455
-msgid "Increases plasma firing rate"
-msgstr "Pliigas plasman pafrapidecon"
+msgid "Increases maximum powered-up plasma firing rate"
+msgstr "Pliigas maksimuman plifortigitan plasman pafrapidecon"
 
 #: ../src/shop.c:463
 msgid "Plasma Cells"
@@ -2986,8 +2987,8 @@ msgstr "Plasmaj Ĉeloj"
 
 #. / Shop item description: Plasma Cells
 #: ../src/shop.c:465
-msgid "Plasma ammunition (10 cells each)"
-msgstr "Plasma municio (po 10 ŝeloj)"
+msgid "Powered-up plasma ammunition (10 cells each)"
+msgstr "Plifortigita plasma municio (po 10 ŝeloj)"
 
 #: ../src/shop.c:473
 msgid "Rocket Ammo"
@@ -2995,8 +2996,8 @@ msgstr "Raketaj Municioj"
 
 #. / Shop item description: Rocket Ammo
 #: ../src/shop.c:475
-msgid "High velocity dumb fire rocket"
-msgstr "Rapidega stulta fajra raketo"
+msgid "Rocket ammunition (1 rocket each)"
+msgstr "Plasma municio (1 raketo por ĉiu)"
 
 #. ----------- Permanent Items -----------
 #. Overwritten later
@@ -3006,8 +3007,8 @@ msgstr "Kroma Plasma Pafilego"
 
 #. / Shop item description: Additional Plasma Cannon (PLASMA_MIN_OUTPUT)
 #: ../src/shop.c:483
-msgid "Adds an extra plasma cannon to the Firefly"
-msgstr "Aldonas kroman plasman pafilegon al la Fajrflugilo"
+msgid "Increases minimum plasma output"
+msgstr "Pliigas minimuman plasman eligon"
 
 #. Overwritten later
 #: ../src/shop.c:487
@@ -3016,8 +3017,8 @@ msgstr "Plifortigo de Plasma Potenco"
 
 #. / Shop item description: Plasma Power Booster (PLASMA_MIN_DAMAGE)
 #: ../src/shop.c:489
-msgid "Increases power of plasma shots"
-msgstr "Pliigas potencon de plasmaj pafoj"
+msgid "Increases minimum plasma damage"
+msgstr "Pliigas minimuman plasman damaĝon"
 
 #. Overwritten later
 #: ../src/shop.c:493
@@ -3026,8 +3027,8 @@ msgstr "Plifortigo de Malvarmiga Plasmo"
 
 #. / Shop item description: Plasma Cooling Booster (PLASMA_MIN_RATE)
 #: ../src/shop.c:495
-msgid "Permanently increases firing rate"
-msgstr "Daŭre pliigas pafrapidecon"
+msgid "Increases minimum plasma firing rate"
+msgstr "Pliigas minimuman plasman pafrapidecon"
 
 #. ----------- Ammo Items --------------
 #. Overwritten later
@@ -3047,8 +3048,8 @@ msgstr "Raketa Ŝelo"
 
 #. / Shop item description: Rocket Pod (ROCKET_MAX_AMMO)
 #: ../src/shop.c:509
-msgid "Allows for an additional 5 rockets to be carried"
-msgstr "Ebligas enhavi 5 kromajn raketojn"
+msgid "Increases rocket ammo capacity"
+msgstr "Pliigas enhavecon de raketa municio"
 
 #: ../src/shop.c:515
 msgid "Dual Rocket Launcher"
@@ -3253,3 +3254,24 @@ msgstr "ELIRI"
 #: ../src/title.c:262
 msgid "BACK TO MAIN MENU"
 msgstr "REIRI AL ĈEFA MENUO"
+
+#~ msgid "Good point. It would be foolish to expect anything else."
+#~ msgstr "Bona argumento. Estus stulte atendi ion alian."
+
+#~ msgid "Temporary Weapons"
+#~ msgstr "Nedaŭraj Armoj"
+
+#~ msgid "High velocity dumb fire rocket"
+#~ msgstr "Rapidega stulta fajra raketo"
+
+#~ msgid "Adds an extra plasma cannon to the Firefly"
+#~ msgstr "Aldonas kroman plasman pafilegon al la Fajrflugilo"
+
+#~ msgid "Increases power of plasma shots"
+#~ msgstr "Pliigas potencon de plasmaj pafoj"
+
+#~ msgid "Permanently increases firing rate"
+#~ msgstr "Daŭre pliigas pafrapidecon"
+
+#~ msgid "Allows for an additional 5 rockets to be carried"
+#~ msgstr "Ebligas enhavi 5 kromajn raketojn"
