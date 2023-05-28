@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
-"POT-Creation-Date: 2023-05-28 08:28+0200\n"
+"POT-Creation-Date: 2023-05-28 12:41-0400\n"
 "PO-Revision-Date: 2021-09-18 00:05-0400\n"
 "Last-Translator: Natasha <diligentcircle@riseup.net>\n"
 "Language-Team: English\n"
@@ -2691,6 +2691,14 @@ msgstr "Shield Bonus: $%d"
 #, c-format
 msgid "Mission Time: %02ld:%02ld"
 msgstr "Mission Time: %02ld:%02ld"
+
+#: ../src/player.c:127
+msgid "!!! WARNING: SHIELD LOW !!!"
+msgstr ""
+
+#: ../src/player.c:136
+msgid "!!! WARNING: SHIELD CRITICAL !!!"
+msgstr ""
 
 #: ../src/save.c:77
 msgid "AUTOSAVE"

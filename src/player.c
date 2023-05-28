@@ -124,7 +124,7 @@ void player_damage(int amount, int delay)
 			if ((oldshield > engine.lowShield)
 					&& (player.shield <= engine.lowShield))
 			{
-				info_setLine("!!! WARNING: SHIELD LOW !!!", FONT_RED);
+				info_setLine(_("!!! WARNING: SHIELD LOW !!!"), FONT_RED);
 				if (game.difficulty != DIFFICULTY_ORIGINAL)
 				{
 					player.shield = engine.lowShield;
@@ -133,7 +133,7 @@ void player_damage(int amount, int delay)
 			}
 			else if ((oldshield > 1) && (player.shield <= 1))
 			{
-				info_setLine("!!! WARNING: SHIELD CRITICAL !!!", FONT_RED);
+				info_setLine(_("!!! WARNING: SHIELD CRITICAL !!!"), FONT_RED);
 				if (game.difficulty != DIFFICULTY_ORIGINAL)
 				{
 					player.shield = 1;
