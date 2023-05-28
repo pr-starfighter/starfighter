@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2023-05-28 12:41-0400\n"
-"PO-Revision-Date: 2023-05-28 01:19+0200\n"
+"PO-Revision-Date: 2023-05-28 19:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -720,6 +720,8 @@ msgstr ""
 #: ../src/event.c:353
 msgid "Wow, that's cold. Just goes to show never to trust a mercenary, eh?"
 msgstr ""
+"Guau, ¡qué frío! Eso demuestra que nunca puedes confiar en un mercenario, "
+"¿eh?"
 
 #. / Dialog (Krass Tyler)
 #: ../src/event.c:362
@@ -903,7 +905,6 @@ msgstr ""
 #. / following the English version only as a general guideline.  Any
 #. / number of messages is permitted.
 #: ../src/game.c:767
-#, fuzzy
 msgid ""
 "I am NOT your enemy!\n"
 "Hey! Watch it!\n"
@@ -913,7 +914,7 @@ msgstr ""
 "¡NO soy tu enemigo!\n"
 "¡Ey! ¡Cuidado!\n"
 "¡¿Qué estás haciendo?! ¡DISPÁRALES!\n"
-"¡Presta maldita atención!"
+"¡Ay! ¡¿Qué diablos, Cris?!"
 
 #. / Phoebe: Player Hit Messages
 #. / This is a list of messages separated by "\n".  They are randomly
@@ -972,7 +973,6 @@ msgstr ""
 #. / following the English version only as a general guideline.  Any
 #. / number of insults is permitted.
 #: ../src/game.c:1637
-#, fuzzy
 msgid ""
 "Pathetic.\n"
 "How very disappointing...\n"
@@ -981,7 +981,8 @@ msgid ""
 msgstr ""
 "Patético.\n"
 "Qué decepcionante...\n"
-"Heroico. Y necio."
+"Heroico. Y necio.\n"
+"Menudo chiste."
 
 #. / Dialog: Krass Tyler
 #. / Used when the player is killed in the Jupiter mission.
@@ -2701,11 +2702,11 @@ msgstr "Tiempo de Misión: %02ld:%02ld"
 
 #: ../src/player.c:127
 msgid "!!! WARNING: SHIELD LOW !!!"
-msgstr ""
+msgstr "¡¡¡ ADVERTENCIA: ESCUDO BAJO !!!"
 
 #: ../src/player.c:136
 msgid "!!! WARNING: SHIELD CRITICAL !!!"
-msgstr ""
+msgstr "¡¡¡ ADVERTENCIA: ESCUDO DELICADO !!!"
 
 #: ../src/save.c:77
 msgid "AUTOSAVE"
@@ -2845,9 +2846,8 @@ msgid "Cooling: Stage %d"
 msgstr "Refrigerante: Fase %d"
 
 #: ../src/shop.c:302
-#, fuzzy
 msgid "Powered-up Weapon"
-msgstr "Arma de Mejora"
+msgstr "Arma Mejorada"
 
 #. / Shop info: max plasma output
 #. / Retain "%d" as-is.  It is replaced with the max plasma output.
@@ -2878,9 +2878,8 @@ msgid "Capacity: %d"
 msgstr "Capacidad: %d"
 
 #: ../src/shop.c:329
-#, fuzzy
 msgid "Powered-up Weapons"
-msgstr "Arma de Mejora"
+msgstr "Armas Mejoradas"
 
 #: ../src/shop.c:330
 msgid "Ammo and Storage"
@@ -2982,9 +2981,8 @@ msgstr "Separador de Canal de Plasma"
 
 #. / Shop item description: Plasma Channel Splitter (PLASMA_MAX_OUTPUT)
 #: ../src/shop.c:443
-#, fuzzy
 msgid "Increases maximum powered-up plasma output"
-msgstr "Mejora la salida de plasma mejorada"
+msgstr "Mejora la salida máxima de plasma mejorada"
 
 #. Overwritten later
 #: ../src/shop.c:447
@@ -2993,9 +2991,8 @@ msgstr "Condensador de Capacidad de Plasma"
 
 #. / Shop item description: Plasma Capacity Condensor (PLASMA_MAX_DAMAGE)
 #: ../src/shop.c:449
-#, fuzzy
 msgid "Increases maximum powered-up plasma damage"
-msgstr "Aumenta el daño de plasma aumentado"
+msgstr "Aumenta el daño máximo de plasma mejorado"
 
 #. Overwritten later
 #: ../src/shop.c:453
@@ -3004,9 +3001,8 @@ msgstr "Cápsulas de Nitrógeno Líquido"
 
 #. / Shop item description: Liquid Nitrogen Capsules (PLASMA_MAX_RATE)
 #: ../src/shop.c:455
-#, fuzzy
 msgid "Increases maximum powered-up plasma firing rate"
-msgstr "Aumenta la frecuencia de disparo de plasma"
+msgstr "Aumenta la frecuencia máxima de disparos de plasma mejorados"
 
 #: ../src/shop.c:463
 msgid "Plasma Cells"
@@ -3014,9 +3010,8 @@ msgstr "Células de Plasma"
 
 #. / Shop item description: Plasma Cells
 #: ../src/shop.c:465
-#, fuzzy
 msgid "Powered-up plasma ammunition (10 cells each)"
-msgstr "Munición de plasma (10 células cada una)"
+msgstr "Munición de plasma mejorada (10 células cada una)"
 
 #: ../src/shop.c:473
 msgid "Rocket Ammo"
@@ -3024,9 +3019,8 @@ msgstr "Munición de Cohetes"
 
 #. / Shop item description: Rocket Ammo
 #: ../src/shop.c:475
-#, fuzzy
 msgid "Rocket ammunition (1 rocket each)"
-msgstr "Munición de plasma (10 células cada una)"
+msgstr "Munición de cohetes (10 células cada una)"
 
 #. ----------- Permanent Items -----------
 #. Overwritten later
@@ -3036,9 +3030,8 @@ msgstr "Cañón de Plasma Adicional"
 
 #. / Shop item description: Additional Plasma Cannon (PLASMA_MIN_OUTPUT)
 #: ../src/shop.c:483
-#, fuzzy
 msgid "Increases minimum plasma output"
-msgstr "Aumenta la capacidad de munición de plasma"
+msgstr "Aumenta la salida mínima de plasma"
 
 #. Overwritten later
 #: ../src/shop.c:487
@@ -3047,9 +3040,8 @@ msgstr "Potenciador de Poder de Plasma"
 
 #. / Shop item description: Plasma Power Booster (PLASMA_MIN_DAMAGE)
 #: ../src/shop.c:489
-#, fuzzy
 msgid "Increases minimum plasma damage"
-msgstr "Aumenta el daño de plasma aumentado"
+msgstr "Aumenta el daño mínimo de plasma"
 
 #. Overwritten later
 #: ../src/shop.c:493
@@ -3058,9 +3050,8 @@ msgstr "Potenciador de Refrigerante de Plasma"
 
 #. / Shop item description: Plasma Cooling Booster (PLASMA_MIN_RATE)
 #: ../src/shop.c:495
-#, fuzzy
 msgid "Increases minimum plasma firing rate"
-msgstr "Aumenta la frecuencia de disparo de plasma"
+msgstr "Aumenta la frecuencia de disparo de plasma mínima"
 
 #. ----------- Ammo Items --------------
 #. Overwritten later
@@ -3080,9 +3071,8 @@ msgstr "Capsula de Cohete"
 
 #. / Shop item description: Rocket Pod (ROCKET_MAX_AMMO)
 #: ../src/shop.c:509
-#, fuzzy
 msgid "Increases rocket ammo capacity"
-msgstr "Aumenta la capacidad de munición de plasma"
+msgstr "Aumenta la capacidad de munición de cohetes"
 
 #: ../src/shop.c:515
 msgid "Dual Rocket Launcher"
