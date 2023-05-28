@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
-"POT-Creation-Date: 2021-09-18 00:01-0400\n"
+"POT-Creation-Date: 2023-05-28 08:28+0200\n"
 "PO-Revision-Date: 2023-05-28 01:19+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -718,8 +718,8 @@ msgstr ""
 
 #. / Dialog (Chris Bainfield)
 #: ../src/event.c:353
-msgid "Good point. It would be foolish to expect anything else."
-msgstr "Buen punto. Sería estúpido esperar cualquier otra cosa."
+msgid "Wow, that's cold. Just goes to show never to trust a mercenary, eh?"
+msgstr ""
 
 #. / Dialog (Krass Tyler)
 #: ../src/event.c:362
@@ -903,11 +903,12 @@ msgstr ""
 #. / following the English version only as a general guideline.  Any
 #. / number of messages is permitted.
 #: ../src/game.c:767
+#, fuzzy
 msgid ""
 "I am NOT your enemy!\n"
 "Hey! Watch it!\n"
 "What are you doing?! Shoot THEM!\n"
-"Pay some damn attention!"
+"Ouch! What the hell, Chris?!"
 msgstr ""
 "¡NO soy tu enemigo!\n"
 "¡Ey! ¡Cuidado!\n"
@@ -971,10 +972,12 @@ msgstr ""
 #. / following the English version only as a general guideline.  Any
 #. / number of insults is permitted.
 #: ../src/game.c:1637
+#, fuzzy
 msgid ""
 "Pathetic.\n"
 "How very disappointing...\n"
-"Heroic. And foolish."
+"Heroic. And pointless.\n"
+"What a joke."
 msgstr ""
 "Patético.\n"
 "Qué decepcionante...\n"
@@ -982,7 +985,7 @@ msgstr ""
 
 #. / Dialog: Krass Tyler
 #. / Used when the player is killed in the Jupiter mission.
-#: ../src/game.c:1648
+#: ../src/game.c:1649
 msgid "That was the easiest $90,000,000 I've ever earned! Bwah! Ha! Ha! Ha!"
 msgstr ""
 "¡Han sido los $90,000,000 más fáciles que he ganado! ¡Bwah! ¡Ja! ¡Ja! ¡Ja!"
@@ -995,37 +998,37 @@ msgstr ""
 #. / timer to use single-digit numbers.
 #. / The ":" can also be replaced just like any text.  For example, this would be fine:
 #. /     "Time Remaining - %d minutes and %d seconds"
-#: ../src/game.c:1962
+#: ../src/game.c:1963
 #, c-format
 msgid "Time Remaining - %.2d:%.2d"
 msgstr "Tiempo Restante - %.2d:%.2d"
 
 #. / "%d" must be retained.  It is replaced with the number of mission objectives remaining.
-#: ../src/game.c:1970
+#: ../src/game.c:1971
 #, c-format
 msgid "Objectives Remaining: %d"
 msgstr "Objetivos Restantes: %d"
 
 #. / "%d" must be retained.  It is replaced with the player's current total cash.
 #. / Retain "%d" as-is.  It is replaced with the player's current cash.
-#: ../src/game.c:1976 ../src/shop.c:353
+#: ../src/game.c:1977 ../src/shop.c:353
 #, c-format
 msgid "Cash: $%d"
 msgstr "Dinero: $%d"
 
 #. / "%.3d" must be retained.  It is replaced with the amount of plasma ammo.
-#: ../src/game.c:2013
+#: ../src/game.c:2014
 #, c-format
 msgid "Plasma: %.3d"
 msgstr "Plasma: %.3d"
 
 #. / Used to indicate the charge meter for the charger cannon in the HUD.
-#: ../src/game.c:2020
+#: ../src/game.c:2021
 msgid "Charge"
 msgstr "Carga"
 
 #. / Used to indicate the heat meter for the laser cannon in the HUD.
-#: ../src/game.c:2025
+#: ../src/game.c:2026
 msgid "Heat"
 msgstr "Calor"
 
@@ -1033,38 +1036,38 @@ msgstr "Calor"
 #. / Retain "%.2d".  It is replaced with the ship's current number of rockets.
 #. / "%.2d" can be changed to "%d" if you wish to not fill in space with zeroes,
 #. / e.g. render the number 3 as "3" rather than "03".
-#: ../src/game.c:2030 ../src/shop.c:363
+#: ../src/game.c:2031 ../src/shop.c:363
 #, c-format
 msgid "Rockets: %.2d"
 msgstr "Cohetes: %.2d"
 
 #. / DIFFICULTY_SUPEREASY (Assisted)
-#: ../src/game.c:2498
+#: ../src/game.c:2499
 msgid "Assisted"
 msgstr "Súper fácil"
 
 #. / DIFFICULTY_EASY
-#: ../src/game.c:2502
+#: ../src/game.c:2503
 msgid "Easy"
 msgstr "Fácil"
 
 #. / DIFFICULTY_NORMAL
-#: ../src/game.c:2506
+#: ../src/game.c:2507
 msgid "Normal"
 msgstr "Normal"
 
 #. / DIFFICULTY_HARD
-#: ../src/game.c:2510
+#: ../src/game.c:2511
 msgid "Hard"
 msgstr "Difícil"
 
 #. / DIFFICULTY_NIGHTMARE
-#: ../src/game.c:2514
+#: ../src/game.c:2515
 msgid "Nightmare!"
 msgstr "¡Pesadilla!"
 
 #. / DIFFICULTY_ORIGINAL (Classic)
-#: ../src/game.c:2518
+#: ../src/game.c:2519
 msgid "Classic"
 msgstr "Clásica"
 
@@ -2834,7 +2837,8 @@ msgid "Cooling: Stage %d"
 msgstr "Refrigerante: Fase %d"
 
 #: ../src/shop.c:302
-msgid "Powerup Weapon"
+#, fuzzy
+msgid "Powered-up Weapon"
 msgstr "Arma de Mejora"
 
 #. / Shop info: max plasma output
@@ -2866,8 +2870,9 @@ msgid "Capacity: %d"
 msgstr "Capacidad: %d"
 
 #: ../src/shop.c:329
-msgid "Temporary Weapons"
-msgstr "Armas Temporales"
+#, fuzzy
+msgid "Powered-up Weapons"
+msgstr "Arma de Mejora"
 
 #: ../src/shop.c:330
 msgid "Ammo and Storage"
@@ -2969,7 +2974,8 @@ msgstr "Separador de Canal de Plasma"
 
 #. / Shop item description: Plasma Channel Splitter (PLASMA_MAX_OUTPUT)
 #: ../src/shop.c:443
-msgid "Improves poweredup plasma output"
+#, fuzzy
+msgid "Increases maximum powered-up plasma output"
 msgstr "Mejora la salida de plasma mejorada"
 
 #. Overwritten later
@@ -2979,7 +2985,8 @@ msgstr "Condensador de Capacidad de Plasma"
 
 #. / Shop item description: Plasma Capacity Condensor (PLASMA_MAX_DAMAGE)
 #: ../src/shop.c:449
-msgid "Increases poweredup plasma damage"
+#, fuzzy
+msgid "Increases maximum powered-up plasma damage"
 msgstr "Aumenta el daño de plasma aumentado"
 
 #. Overwritten later
@@ -2989,7 +2996,8 @@ msgstr "Cápsulas de Nitrógeno Líquido"
 
 #. / Shop item description: Liquid Nitrogen Capsules (PLASMA_MAX_RATE)
 #: ../src/shop.c:455
-msgid "Increases plasma firing rate"
+#, fuzzy
+msgid "Increases maximum powered-up plasma firing rate"
 msgstr "Aumenta la frecuencia de disparo de plasma"
 
 #: ../src/shop.c:463
@@ -2998,7 +3006,8 @@ msgstr "Células de Plasma"
 
 #. / Shop item description: Plasma Cells
 #: ../src/shop.c:465
-msgid "Plasma ammunition (10 cells each)"
+#, fuzzy
+msgid "Powered-up plasma ammunition (10 cells each)"
 msgstr "Munición de plasma (10 células cada una)"
 
 #: ../src/shop.c:473
@@ -3007,8 +3016,9 @@ msgstr "Munición de Cohetes"
 
 #. / Shop item description: Rocket Ammo
 #: ../src/shop.c:475
-msgid "High velocity dumb fire rocket"
-msgstr "Cohete de fuego simple de alta velocidad"
+#, fuzzy
+msgid "Rocket ammunition (1 rocket each)"
+msgstr "Munición de plasma (10 células cada una)"
 
 #. ----------- Permanent Items -----------
 #. Overwritten later
@@ -3018,8 +3028,9 @@ msgstr "Cañón de Plasma Adicional"
 
 #. / Shop item description: Additional Plasma Cannon (PLASMA_MIN_OUTPUT)
 #: ../src/shop.c:483
-msgid "Adds an extra plasma cannon to the Firefly"
-msgstr "Añade un cañón extra al Firefly"
+#, fuzzy
+msgid "Increases minimum plasma output"
+msgstr "Aumenta la capacidad de munición de plasma"
 
 #. Overwritten later
 #: ../src/shop.c:487
@@ -3028,8 +3039,9 @@ msgstr "Potenciador de Poder de Plasma"
 
 #. / Shop item description: Plasma Power Booster (PLASMA_MIN_DAMAGE)
 #: ../src/shop.c:489
-msgid "Increases power of plasma shots"
-msgstr "Aumenta el poder de los disparos de plasma"
+#, fuzzy
+msgid "Increases minimum plasma damage"
+msgstr "Aumenta el daño de plasma aumentado"
 
 #. Overwritten later
 #: ../src/shop.c:493
@@ -3038,8 +3050,9 @@ msgstr "Potenciador de Refrigerante de Plasma"
 
 #. / Shop item description: Plasma Cooling Booster (PLASMA_MIN_RATE)
 #: ../src/shop.c:495
-msgid "Permanently increases firing rate"
-msgstr "Aumenta permanentemente la frecuencia de disparo"
+#, fuzzy
+msgid "Increases minimum plasma firing rate"
+msgstr "Aumenta la frecuencia de disparo de plasma"
 
 #. ----------- Ammo Items --------------
 #. Overwritten later
@@ -3059,8 +3072,9 @@ msgstr "Capsula de Cohete"
 
 #. / Shop item description: Rocket Pod (ROCKET_MAX_AMMO)
 #: ../src/shop.c:509
-msgid "Allows for an additional 5 rockets to be carried"
-msgstr "Permite transportar 5 cohetes adicionales"
+#, fuzzy
+msgid "Increases rocket ammo capacity"
+msgstr "Aumenta la capacidad de munición de plasma"
 
 #: ../src/shop.c:515
 msgid "Dual Rocket Launcher"
@@ -3265,3 +3279,24 @@ msgstr "SALIR"
 #: ../src/title.c:262
 msgid "BACK TO MAIN MENU"
 msgstr "VOLVER A MENÚ PRINCIPAL"
+
+#~ msgid "Good point. It would be foolish to expect anything else."
+#~ msgstr "Buen punto. Sería estúpido esperar cualquier otra cosa."
+
+#~ msgid "Temporary Weapons"
+#~ msgstr "Armas Temporales"
+
+#~ msgid "High velocity dumb fire rocket"
+#~ msgstr "Cohete de fuego simple de alta velocidad"
+
+#~ msgid "Adds an extra plasma cannon to the Firefly"
+#~ msgstr "Añade un cañón extra al Firefly"
+
+#~ msgid "Increases power of plasma shots"
+#~ msgstr "Aumenta el poder de los disparos de plasma"
+
+#~ msgid "Permanently increases firing rate"
+#~ msgstr "Aumenta permanentemente la frecuencia de disparo"
+
+#~ msgid "Allows for an additional 5 rockets to be carried"
+#~ msgstr "Permite transportar 5 cohetes adicionales"
