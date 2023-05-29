@@ -290,12 +290,12 @@ static int gfx_unicodeNumCharacters(const char *in)
 {
 	int i;
 	int n = 0;
-	unsigned char c;
+	char c;
 
 	for (i = 0; i < strlen(in) + 1; i++)
 	{
 		c = in[i];
-		if (gfx_charIsUTF8Start(c) || ((c > 0x20) && (c < 0x79)))
+		if (gfx_charIsUTF8Start(c))
 			n++;
 	}
 
@@ -306,13 +306,12 @@ static int gfx_unicodeCharacterCodepoint(const char *in, int u_char_index)
 {
 	int i;
 	int n = -1;
-	unsigned char c;
+	char c;
 
 	for (i = 0; i < strlen(in) + 1; i++)
 	{
 		c = in[i];
-		if ((gfx_charIsUTF8Start(c) || ((c > 0x20) && (c < 0x79)))
-				&& (++n == u_char_index))
+		if (gfx_charIsUTF8Start(c) && (++n == u_char_index))
 			return i;
 	}
 
