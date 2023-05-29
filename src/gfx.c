@@ -286,6 +286,39 @@ static int gfx_charIsUTF8Start(unsigned char c)
 	return 0;
 }
 
+static int gfx_unicodeNumCharacters(const char *in)
+{
+	int i;
+	int n = 0;
+	unsigned char c;
+
+	for (i = 0; i < strlen(in) + 1; i++)
+	{
+		c = in[i];
+		if (gfx_charIsUTF8Start(c) || ((c > 0x20) && (c < 0x79)))
+			n++;
+	}
+
+	return n;
+}
+
+static int gfx_unicodeCharacterCodepoint(const char *in, int u_char_index)
+{
+	int i;
+	int n = -1;
+	unsigned char c;
+
+	for (i = 0; i < strlen(in) + 1; i++)
+	{
+		c = in[i];
+		if ((gfx_charIsUTF8Start(c) || ((c > 0x20) && (c < 0x79)))
+				&& (++n == u_char_index))
+			return i;
+	}
+
+	return -1;
+}
+
 int gfx_unicodeWidth(const char *in)
 {
 	int w;
@@ -368,7 +401,7 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int real_x, int fontColo
 		changed = wrap;
 		while (changed && (w > avail_w))
 		{
-			nLogAttrs = strlen(remainingStr) + 1;
+			nLogAttrs = gfx_unicodeNumCharacters(remainingStr) + 1;
 			pango_get_log_attrs(remainingStr, strlen(remainingStr), -1, NULL, logAttrs, nLogAttrs);
 
 			nBreakPoints = 0;
@@ -377,7 +410,8 @@ int gfx_renderUnicodeBase(const char *in, int x, int y, int real_x, int fontColo
 				if (logAttrs[i].is_line_break
 						&& gfx_charIsUTF8Start(remainingStr[i]))
 				{
-					breakPoints[nBreakPoints] = i;
+					breakPoints[nBreakPoints] = gfx_unicodeCharacterCodepoint(
+							remainingStr, i);
 					nBreakPoints++;
 				}
 			}
