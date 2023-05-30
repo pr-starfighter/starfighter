@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.5\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
-"POT-Creation-Date: 2023-05-28 12:41-0400\n"
+"POT-Creation-Date: 2023-05-31 00:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -831,6 +831,18 @@ msgid ""
 "Get out of the way!\n"
 "Don't fly into my missiles!\n"
 "Dammit, Chris, you made me miss!"
+msgstr ""
+
+#: ../src/game.c:1399
+msgid "Laser Overheat!"
+msgstr ""
+
+#: ../src/game.c:1453
+msgid "Weapon set to Spread"
+msgstr ""
+
+#: ../src/game.c:1457
+msgid "Weapon set to Concentrate"
 msgstr ""
 
 #. / Kline Venus insult messages
