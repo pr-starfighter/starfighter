@@ -291,7 +291,7 @@ static int gfx_unicodeNumCharacters(const char *in)
 	int i;
 	int n = 0;
 
-	for (i = 0; i < strlen(in) + 1; i++)
+	for (i = 0; i < strlen(in); i++)
 	{
 		if (gfx_charIsUTF8Start(in[i]))
 			n++;
