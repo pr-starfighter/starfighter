@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2023-05-28 12:41-0400\n"
-"PO-Revision-Date: 2023-05-28 19:40+0200\n"
+"PO-Revision-Date: 2023-05-30 22:47+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -202,7 +202,7 @@ msgstr ""
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:109
 msgid "These things just won't give up, will they?"
-msgstr "Estas cosas no jamás se rendirán, ¿no?"
+msgstr "Estas cosas jamás se rendirán, ¿no?"
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:113
@@ -298,8 +298,8 @@ msgstr "¡Bonito casco! Compras en el mismo sitio que yo, ¿eh?"
 msgid ""
 "More importantly, what were you doing out there? You're lucky I was around!"
 msgstr ""
-"Más importante, ¿qué estabas haciendo allí? ¡Tienes suerte de que yo "
-"estuviera cerca!"
+"Más importante, ¿qué estabas haciendo allí? ¡Tienes suerte de que estuviera "
+"cerca!"
 
 #. / Cutscene (Phoebe Lexx)
 #: ../src/cutscene.c:235
@@ -312,8 +312,8 @@ msgid ""
 "Hey! Wait a moment! You're that rebel from Spirit! I think you're so cool! "
 "Can I come with you?"
 msgstr ""
-"¡Hey! ¡Espera un momento! ¡Tu eres aquel rebelde de Spirit! ¡Creo que eres "
-"muy guay! ¿Puedo venir contigo?"
+"¡Hey! ¡Espera un momento! ¡Tú eres aquel rebelde de Spirit! ¡Me pareces muy "
+"guay! ¿Puedo venir contigo?"
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:243
@@ -788,8 +788,8 @@ msgstr "Sol"
 #, c-format
 msgid "Got $%d"
 msgid_plural "Got $%d"
-msgstr[0] "Conseguí $%d"
-msgstr[1] "Conseguí $%d"
+msgstr[0] "Conseguiste $%d"
+msgstr[1] "Conseguiste $%d"
 
 #: ../src/game.c:343
 msgid "Rocket Ammo at Maximum"
