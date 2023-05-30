@@ -1396,7 +1396,7 @@ static void game_doPlayer()
 						if (player.ammo[1] >= 100)
 						{
 							player.ammo[1] = 200;
-							info_setLine("Laser Overheat!", FONT_WHITE);
+							info_setLine(_("Laser Overheat!"), FONT_WHITE);
 						}
 					}
 				}
@@ -1450,11 +1450,11 @@ static void game_doPlayer()
 
 					if (weapons[W_PLAYER_WEAPON].flags & WF_SPREAD)
 					{
-						info_setLine("Weapon set to Spread", FONT_WHITE);
+						info_setLine(_("Weapon set to Spread"), FONT_WHITE);
 					}
 					else
 					{
-						info_setLine("Weapon set to Concentrate", FONT_WHITE);
+						info_setLine(_("Weapon set to Concentrate"), FONT_WHITE);
 					}
 				}
 
@@ -1467,7 +1467,7 @@ static void game_doPlayer()
 			xm = engine.keyState[KEY_RIGHT] - engine.keyState[KEY_LEFT];
 			if (!xm)
 				xm = engine.xaxis;
-			
+
 			if (xm)
 			{
 				player.x += xm * player.speed;
@@ -1479,7 +1479,7 @@ static void game_doPlayer()
 			ym = engine.keyState[KEY_DOWN] - engine.keyState[KEY_UP];
 			if (!ym)
 				ym = engine.yaxis;
-			
+
 			if (ym)
 			{
 				player.y += ym * player.speed;
