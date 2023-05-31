@@ -189,13 +189,13 @@ void audio_playMusic(const char *filename, int loops)
 	{
 		/* Only play the music if it is not playing already. */
 		if ((current_music == NULL) || (strcmp(filename, current_music) != 0)
-		      || !Mix_PlayingMusic())
+				|| !Mix_PlayingMusic())
 		{
-		   audio_haltMusic();
-		   music = Mix_LoadMUS(filename);
-		   audio_setMusicVolume(MIX_MAX_VOLUME);
-		   Mix_PlayMusic(music, loops);
-		   current_music = filename;
+			audio_haltMusic();
+			music = Mix_LoadMUS(filename);
+			audio_setMusicVolume(MIX_MAX_VOLUME);
+			Mix_PlayMusic(music, loops);
+			current_music = filename;
 		}
 	}
 #endif
