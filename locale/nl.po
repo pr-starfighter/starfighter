@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.3.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
-"POT-Creation-Date: 2023-05-28 12:41-0400\n"
+"POT-Creation-Date: 2023-05-31 00:28+0200\n"
 "PO-Revision-Date: 2021-09-18 00:15-0400\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch\n"
@@ -954,6 +954,18 @@ msgstr ""
 "Uit de weg!\n"
 "Vlieg niet langs mijn raketten!\n"
 "Verdorie, Chris, dankzij jou schoot ik mis!"
+
+#: ../src/game.c:1399
+msgid "Laser Overheat!"
+msgstr ""
+
+#: ../src/game.c:1453
+msgid "Weapon set to Spread"
+msgstr ""
+
+#: ../src/game.c:1457
+msgid "Weapon set to Concentrate"
+msgstr ""
 
 #. / Kline Venus insult messages
 #. / This is a list of insults separated by "\n".  They are randomly
