@@ -34,6 +34,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef NOSOUND
 static Mix_Chunk *sound[SFX_MAX];
 static Mix_Music *music = NULL;
+static const char *current_music = NULL;
 #endif
 
 void audio_loadSounds()
@@ -145,6 +146,8 @@ void audio_haltMusic()
 		Mix_FreeMusic(music);
 		music = NULL;
 	}
+
+	current_music = NULL;
 #endif
 }
 
@@ -184,10 +187,16 @@ void audio_playMusic(const char *filename, int loops)
 #ifndef NOSOUND
 	if (engine.useMusic && engine.useAudio)
 	{
-		audio_haltMusic();
-		music = Mix_LoadMUS(filename);
-		audio_setMusicVolume(MIX_MAX_VOLUME);
-		Mix_PlayMusic(music, loops);
+		/* Only play the music if it is not playing already. */
+		if ((current_music == NULL) || (strcmp(filename, current_music) != 0)
+		      || !Mix_PlayingMusic())
+		{
+		   audio_haltMusic();
+		   music = Mix_LoadMUS(filename);
+		   audio_setMusicVolume(MIX_MAX_VOLUME);
+		   Mix_PlayMusic(music, loops);
+		   current_music = filename;
+		}
 	}
 #endif
 }
