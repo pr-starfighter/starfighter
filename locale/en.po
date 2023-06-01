@@ -3349,34 +3349,3 @@ msgstr "QUIT"
 #: ../src/title.c:262
 msgid "BACK TO MAIN MENU"
 msgstr "BACK TO MAIN MENU"
-
-#~ msgid "These things just won't give up, will they?"
-#~ msgstr "These things just won't give up, will they?"
-
-#~ msgid ""
-#~ "What a dilemma! I'm not all that familiar with this ship's controls, but "
-#~ "I can't let this patrol reach my rendezvous point..."
-#~ msgstr ""
-#~ "What a dilemma! I'm not all that familiar with this ship's controls, but "
-#~ "I can't let this patrol reach my rendezvous point..."
-
-#~ msgid "Good point. It would be foolish to expect anything else."
-#~ msgstr "Good point. It would be foolish to expect anything else."
-
-#~ msgid "Temporary Weapons"
-#~ msgstr "Temporary Weapons"
-
-#~ msgid "High velocity dumb fire rocket"
-#~ msgstr "High velocity dumb fire rocket"
-
-#~ msgid "Adds an extra plasma cannon to the Firefly"
-#~ msgstr "Adds an extra plasma cannon to the Firefly"
-
-#~ msgid "Increases power of plasma shots"
-#~ msgstr "Increases power of plasma shots"
-
-#~ msgid "Permanently increases firing rate"
-#~ msgstr "Permanently increases firing rate"
-
-#~ msgid "Allows for an additional 5 rockets to be carried"
-#~ msgstr "Allows for an additional 5 rockets to be carried"
