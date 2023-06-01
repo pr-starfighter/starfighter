@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2023-05-31 23:01-0400\n"
-"PO-Revision-Date: 2023-05-28 19:23+0200\n"
+"PO-Revision-Date: 2023-05-31 00:44+0200\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: eo\n"
@@ -1006,15 +1006,15 @@ msgstr ""
 
 #: ../src/game.c:1399
 msgid "Laser Overheat!"
-msgstr ""
+msgstr "Lasero trovarmiĝis!"
 
 #: ../src/game.c:1453
 msgid "Weapon set to Spread"
-msgstr ""
+msgstr "Armilo agordita por Disvastigi"
 
 #: ../src/game.c:1457
 msgid "Weapon set to Concentrate"
-msgstr ""
+msgstr "Armilo agordita por Koncentriĝi"
 
 #. / Kline Venus insult messages
 #. / This is a list of insults separated by "\n".  They are randomly
