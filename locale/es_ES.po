@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
-"POT-Creation-Date: 2023-05-31 00:28+0200\n"
+"POT-Creation-Date: 2023-05-31 23:01-0400\n"
 "PO-Revision-Date: 2023-05-31 00:47+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -191,7 +191,7 @@ msgid "Thanks! Watch out, WEAPCO! Phoebe's loose and she's ANGRY!"
 msgstr "¡Gracias! ¡Cuidado, WEAPCO! ¡Phoebe está suelta y está ENFADADA!"
 
 #. / Cutscene (narration)
-#: ../src/cutscene.c:105
+#: ../src/cutscene.c:107
 msgid ""
 "While escaping with his newly acquired Firefly, Chris Bainfield is "
 "intercepted by a WEAPCO patrol..."
@@ -199,29 +199,41 @@ msgstr ""
 "Mientras escapa con su recién adquirido Firefly, Cris Bainfield es "
 "interceptado por una patrulla de WEAPCO..."
 
-#. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:109
-msgid "These things just won't give up, will they?"
-msgstr "Estas cosas jamás se rendirán, ¿no?"
-
-#. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:113
+#. / Cutscene (Sid Wilson)
+#: ../src/cutscene.c:111
 msgid ""
-"What a dilemma! I'm not all that familiar with this ship's controls, but I "
-"can't let this patrol reach my rendezvous point..."
+"Damn, these things are persistent! Human pilots would have given up by now!"
 msgstr ""
-"¡Vaya dilema! No estoy tan familiarizado con los controles de esta nave, "
-"pero no puedo dejar que esta patrulla alcance mi punto de encuentro..."
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:117
-msgid "I guess I'll have to fight them, then. Let's see what this ship can do!"
+#: ../src/cutscene.c:116
+msgid "Looks like I'm stuck with some robo-passengers, eh, Sid?"
+msgstr ""
+
+#. / Cutscene (Sid Wilson)
+#: ../src/cutscene.c:121
+msgid ""
+"Chris, this is serious! You're getting too close to your rendezvous point. "
+"If you don't shake them soon, everything could be over before it begins!"
+msgstr ""
+
+#. / Cutscene (Sid Wilson)
+#: ../src/cutscene.c:128
+msgid ""
+"I know you're not familiar with the Firefly's controls, but you're going to "
+"have to fight them."
+msgstr ""
+
+#. / Cutscene (Chris Bainfield)
+#: ../src/cutscene.c:135
+#, fuzzy
+msgid "Hell yeah, now you're talking! Let's see what this ship can do!"
 msgstr ""
 "Supongo que tendré que luchar con ellos entonces. ¡Veamos lo que puede hacer "
 "esta nave!"
 
 #. / Cutscene (narration)
-#: ../src/cutscene.c:143
+#: ../src/cutscene.c:163
 msgid ""
 "A few hours later, in the Sol system, news has already spread of Chris "
 "Bainfield's heroic actions. The commander of WEAPCO's navy considers his "
@@ -232,7 +244,7 @@ msgstr ""
 "considera sus opciones."
 
 #. / Cutscene (Kline Kethlan)
-#: ../src/cutscene.c:147
+#: ../src/cutscene.c:167
 msgid ""
 "The Emperor will not be pleased. Spirit is now a free star system thanks to "
 "that interfering rebel pilot."
@@ -241,7 +253,7 @@ msgstr ""
 "gracias al entrometido piloto rebelde."
 
 #. / Cutscene (Kline Kethlan)
-#: ../src/cutscene.c:151
+#: ../src/cutscene.c:171
 msgid ""
 "It was reported that he was able to take down one of our most powerful "
 "frigates in under 3 minutes!"
@@ -250,7 +262,7 @@ msgstr ""
 "poderosas en menos de 3 minutos!"
 
 #. / Cutscene (Kline Kethlan)
-#: ../src/cutscene.c:155
+#: ../src/cutscene.c:175
 msgid ""
 "Talent like that does not appear every day. He would be a perfect candidate "
 "for our new AI training program!"
@@ -259,42 +271,42 @@ msgstr ""
 "nuestro nuevo programa de entrenamiento de IA!"
 
 #. / Cutscene (Kline Kethlan)
-#: ../src/cutscene.c:159
+#: ../src/cutscene.c:179
 msgid "What a pity I must kill him..."
 msgstr "Una pena que tenga que matarle..."
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:182
+#: ../src/cutscene.c:203
 msgid "We're nearly ready to make the jump to Eyananth."
 msgstr "Estamos casi listos para dar el salto a Eyananth."
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:186
+#: ../src/cutscene.c:207
 msgid "Aren't there a lot of WEAPCO slaves in this system?"
 msgstr "¿No hay un montón de esclavos de WEAPCO en este sistema?"
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:190
+#: ../src/cutscene.c:211
 msgid "Yes. It's got one of the highest mortality rates in the galaxy."
 msgstr "Sí. Tiene una de las tasas de mortalidad más altas en la galaxia."
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:194
+#: ../src/cutscene.c:215
 msgid "You think we can use that to our advantage?"
 msgstr "¿Piensas que podemos usar eso en nuestro favor?"
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:198
+#: ../src/cutscene.c:219
 msgid "I think so. I'll come up with a plan of action."
 msgstr "Eso creo. Idearé un plan de acción."
 
 #. / Cutscene (Phoebe Lexx)
-#: ../src/cutscene.c:227
+#: ../src/cutscene.c:249
 msgid "Nice head gear! You shop at the same place as me, huh?"
 msgstr "¡Bonito casco! Compras en el mismo sitio que yo, ¿eh?"
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:231
+#: ../src/cutscene.c:253
 msgid ""
 "More importantly, what were you doing out there? You're lucky I was around!"
 msgstr ""
@@ -302,12 +314,12 @@ msgstr ""
 "cerca!"
 
 #. / Cutscene (Phoebe Lexx)
-#: ../src/cutscene.c:235
+#: ../src/cutscene.c:257
 msgid "I'm looking for my sister. She vanished about a week ago."
 msgstr "Estoy buscando a mi hermana. Desapareció hará una semana."
 
 #. / Cutscene (Phoebe Lexx)
-#: ../src/cutscene.c:239
+#: ../src/cutscene.c:261
 msgid ""
 "Hey! Wait a moment! You're that rebel from Spirit! I think you're so cool! "
 "Can I come with you?"
@@ -316,12 +328,12 @@ msgstr ""
 "guay! ¿Puedo venir contigo?"
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:243
+#: ../src/cutscene.c:265
 msgid "Extra firepower? I wouldn't mind one bit! What do you think, Sid?"
 msgstr "¿Potencia de fuego adicional? ¡No me importaría! ¿Tú qué piensas, Sid?"
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:247
+#: ../src/cutscene.c:269
 msgid ""
 "I agree. I'm also interested in studying her homing missile launcher; it "
 "could come in handy."
@@ -330,17 +342,17 @@ msgstr ""
 "misiles teledirigidos; podría resultar útil."
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:251
+#: ../src/cutscene.c:273
 msgid "In that case, welcome aboard, Phoebe!"
 msgstr "En ese caso, ¡bienvenida a bordo, Phoebe!"
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:280
+#: ../src/cutscene.c:303
 msgid "What happened back there, Chris? The video feed was jammed."
 msgstr "¿Qué pasó ahí atrás, Cris? La señal de vídeo iba a trompicones."
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:284
+#: ../src/cutscene.c:307
 msgid ""
 "We took down the WEAPCO mining vessel and then I was jumped by a man "
 "claiming to be Kline Kethlan."
@@ -349,7 +361,7 @@ msgstr ""
 "que decía ser Kline Kethlan."
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:288
+#: ../src/cutscene.c:311
 msgid ""
 "I've heard of him. He's the Commander of WEAPCO's naval forces. One of the "
 "best pilots they ever had."
@@ -358,18 +370,18 @@ msgstr ""
 "los mejores pilotos que han tenido."
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:292
+#: ../src/cutscene.c:315
 msgid ""
 "He did put up one hell of a fight! He didn't stick around for long, though."
 msgstr "¡Luchó como una fiera! Sin embargo, no se quedó mucho tiempo."
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:296
+#: ../src/cutscene.c:319
 msgid "Anyway, what's the scoop on Mordor, Sid?"
 msgstr "¿Bueno, cuáles son las noticias en Mordor, Sid?"
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:300
+#: ../src/cutscene.c:323
 msgid ""
 "I've learned from the scientist we captured that WEAPCO is testing a new "
 "fighter craft there."
@@ -378,7 +390,7 @@ msgstr ""
 "nave de guerra allí."
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:304
+#: ../src/cutscene.c:327
 msgid ""
 "We should probably destroy that craft, then. We might be able to thwart its "
 "development somewhat."
@@ -387,7 +399,7 @@ msgstr ""
 "de ralentizar su desarrollo de alguna forma."
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:308
+#: ../src/cutscene.c:331
 msgid ""
 "Agreed. Capturing it would be better, but that's probably not going to "
 "happen."
@@ -395,17 +407,17 @@ msgstr ""
 "De acuerdo. Capturarla sería mejor, pero eso probablemente no va a ocurrir."
 
 #. / Cutscene (Phoebe Lexx)
-#: ../src/cutscene.c:312
+#: ../src/cutscene.c:335
 msgid "I wonder if my sister will be here..."
 msgstr "Me pregunto si mi hermana estará aquí..."
 
 #. / Cutscene (Phoebe Lexx)
-#: ../src/cutscene.c:341
+#: ../src/cutscene.c:365
 msgid "Will she be okay?"
 msgstr "¿Estará bien?"
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:345
+#: ../src/cutscene.c:369
 msgid ""
 "I've had a look at the implants and they should be easy to remove. She'll "
 "just have a headache for a while."
@@ -414,12 +426,12 @@ msgstr ""
 "Solo tendrá un dolor de cabeza un rato."
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:349
+#: ../src/cutscene.c:373
 msgid "Will she be able to tell us anything useful?"
 msgstr "¿Será capaz de contarnos algo útil?"
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:353
+#: ../src/cutscene.c:377
 msgid ""
 "We'll have to wait for her memory to come back. She might not be able to "
 "remember anything she did while the implants were in."
@@ -428,17 +440,17 @@ msgstr ""
 "acordarse de nada de lo que hizo cuando tenía los implantes."
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:357
+#: ../src/cutscene.c:381
 msgid "She'll still be able to pilot a ship though."
 msgstr "Aunque seguirá pudiendo pilotar una nave."
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:392
+#: ../src/cutscene.c:417
 msgid "Sorry folks, we just lost our bargaining chip."
 msgstr "Lo siento, chicos, hemos perdido nuestra baza negociadora."
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:396
+#: ../src/cutscene.c:421
 msgid ""
 "Don't worry about it. It's not what I hoped for, but it should still make it "
 "easier to defeat WEAPCO."
@@ -447,7 +459,7 @@ msgstr ""
 "derrotar a WEAPCO sea más fácil."
 
 #. / Cutscene (Ursula Lexx)
-#: ../src/cutscene.c:400
+#: ../src/cutscene.c:425
 msgid ""
 "Sol is going to be difficult. I've heard they have a lot of heavy defenses "
 "on the outer planets."
@@ -456,12 +468,12 @@ msgstr ""
 "planetas exteriores."
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:404
+#: ../src/cutscene.c:429
 msgid "We'll have to start there, then."
 msgstr "Tendremos que empezar ahí entonces."
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:408
+#: ../src/cutscene.c:433
 msgid ""
 "The forces here will be unlike anything we've met so far. Just be careful, "
 "everyone."
@@ -470,7 +482,7 @@ msgstr ""
 "Simplemente tened todos cuidado."
 
 #. / Instructions for how to skip the current cutscene
-#: ../src/cutscene.c:497
+#: ../src/cutscene.c:522
 msgid "Press [Escape] to skip"
 msgstr "Pulsa [Escape] para saltar"
 
@@ -494,65 +506,110 @@ msgstr ""
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:76
+msgid ""
+"You should be able to move with arrow keys or an analog stick, depending on "
+"the type of controls you have."
+msgstr ""
+
+#. / Dialog (Sid Wilson)
+#: ../src/event.c:83
+msgid ""
+"Try to stay clear of enemy fire while I take a look at the Firefly's "
+"manual..."
+msgstr ""
+
+#. / Dialog (Sid Wilson)
+#: ../src/event.c:89
+msgid ""
+"OK, it looks like you have two weapons: a standard plasma cannon and "
+"rockets. Dammit, it doesn't say what the controls are!"
+msgstr ""
+
+#. / Dialog (Sid Wilson)
+#: ../src/event.c:96
+msgid ""
+"If I had to guess, it's probably a Ctrl key or a B button for the plasma "
+"cannon."
+msgstr ""
+
+#. / Dialog (Sid Wilson)
+#: ../src/event.c:102
+msgid "Rockets... those would probably be a space bar or an A button."
+msgstr ""
+
+#. / Dialog (Sid Wilson)
+#: ../src/event.c:108
+msgid ""
+"Interesting... It says right here that you can power up the plasma cannon."
+msgstr ""
+
+#. / Dialog (Sid Wilson)
+#: ../src/event.c:114
+msgid ""
+"Try shooting down those WEAPCO cargo ships; they should have the upgrades."
+msgstr ""
+
+#. / Dialog (Sid Wilson)
+#: ../src/event.c:123
 msgid "You should try and destroy some of the frigate's weaponry, it'll help!"
 msgstr ""
 "Deberías intentar destruir algunas de las armas de la nave grande, ¡ayudará!"
 
 #. / Dialog (Sid Wilson)
-#: ../src/event.c:81
+#: ../src/event.c:128
 msgid "Chris, get a move on! The frigate is almost in range!"
 msgstr "¡Cris, date prisa! ¡La nave grande está casi a tu alcance!"
 
 #. / Dialog (Sid Wilson)
-#: ../src/event.c:86
+#: ../src/event.c:133
 msgid "The frigate is charging its cannon!"
 msgstr "¡La nave grande está cargando su cañón!"
 
 #. / Dialog (Sid Wilson)
-#: ../src/event.c:91
+#: ../src/event.c:138
 msgid "Chris, HURRY!"
 msgstr "¡Cris, RÁPIDO!"
 
 #. / Dialog (Sid Wilson)
-#: ../src/event.c:96
+#: ../src/event.c:143
 msgid "Oh my god..."
 msgstr "Ay dios..."
 
 #. / Dialog (Phoebe Lexx)
-#: ../src/event.c:106
+#: ../src/event.c:153
 msgid "Hey, over here! Destroy this tug so I can break free!"
 msgstr "¡Ey, por aquí! ¡Destruye este arnés para que pueda liberarme!"
 
 #. / Dialog (friendly transport from Eyananth, Allez mission)
-#: ../src/event.c:114
+#: ../src/event.c:161
 msgid "Thank God! Please, help us! If they destroy this ship..."
 msgstr "¡Gracias a Dios! ¡Por favor, ayúdanos! Si destruyen esta nave..."
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:119
+#: ../src/event.c:166
 msgid "How long do you need?"
 msgstr "¿Cuánto tiempo necesitas?"
 
 #. / Dialog (friendly transport from Eyananth, Allez mission)
-#: ../src/event.c:124
+#: ../src/event.c:171
 msgid "Just a few minutes!"
 msgstr "¡Solo unos minutos!"
 
 #. / Dialog (friendly transport from Eyananth, Allez mission)
-#: ../src/event.c:129
+#: ../src/event.c:176
 msgid ""
 "Alright! We've got the weapons working again! Now to look at the engines..."
 msgstr "¡Bien! ¡Ya funcionan de nuevo las armas! Ahora a mirar los motores..."
 
 #. / Dialog (friendly transport from Eyananth, Allez mission)
-#: ../src/event.c:136
+#: ../src/event.c:183
 msgid "DAMN! The guns are offline again! What you guys doing back there?!"
 msgstr ""
 "¡MALDICIÓN! ¡Las pistolas están desconectadas de nuevo! ¡¿Qué estáis "
 "haciendo ahí atrás?!"
 
 #. / Dialog (friendly transport from Eyananth, Allez mission)
-#: ../src/event.c:143
+#: ../src/event.c:190
 msgid ""
 "Chris, HELP! We've lost all system power! We're a sitting duck out here!"
 msgstr ""
@@ -560,12 +617,12 @@ msgstr ""
 "aquí!"
 
 #. / Dialog (friendly transport from Eyananth, Allez mission)
-#: ../src/event.c:150
+#: ../src/event.c:197
 msgid "Just a little longer..."
 msgstr "Solo un poco más..."
 
 #. / Dialog (friendly transport from Eyananth, Allez mission)
-#: ../src/event.c:155
+#: ../src/event.c:202
 msgid ""
 "Okay! We've fixed that one. We think we've found the problem with the "
 "engines too..."
@@ -574,12 +631,12 @@ msgstr ""
 "los motores..."
 
 #. / Dialog (friendly transport from Eyananth, Allez mission)
-#: ../src/event.c:162
+#: ../src/event.c:209
 msgid "Engines fixed! Let's move!"
 msgstr "¡Motores reparados! ¡Movámonos!"
 
 #. / Dialog (Phoebe Lexx)
-#: ../src/event.c:183
+#: ../src/event.c:230
 msgid ""
 "Ummm... something about this doesn't look right! They should be offering "
 "more resistance than this!"
@@ -588,29 +645,29 @@ msgstr ""
 "que esto!"
 
 #. / Dialog (Phoebe Lexx)
-#: ../src/event.c:188
+#: ../src/event.c:235
 msgid "DAMMIT! It's a trap! Come on, Chris, we have to leave NOW!"
 msgstr "¡MALDICIÓN! ¡Es una trampa! ¡Vamos, Cris, tenemos que irnos YA!"
 
 #. / Dialog (Sid Wilson)
-#: ../src/event.c:197
+#: ../src/event.c:244
 msgid "Chris, wh..."
 msgstr "Cris, q..."
 
 #. / Dialog (Kline Kethlan)
-#: ../src/event.c:202
+#: ../src/event.c:249
 msgid "So finally I meet the man who has been causing us so much trouble!"
 msgstr ""
 "¡Así que finalmente me cruzo con el hombre que nos ha estado causando tantos "
 "problemas!"
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:207
+#: ../src/event.c:254
 msgid "I see you've jammed up my warp drive. Who are you?"
 msgstr "Veo que has bloqueado mi motor warp. ¿Quién eres?"
 
 #. / Dialog (Kline Kethlan)
-#: ../src/event.c:212
+#: ../src/event.c:259
 msgid ""
 "I am Kline Kethlan. And I am here to put to a stop to your worthless little "
 "crusade!"
@@ -619,12 +676,12 @@ msgstr ""
 "inútil!"
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:217
+#: ../src/event.c:264
 msgid "Kline Kethlan, huh? You sure sound confident."
 msgstr "Kline Kethlan, ¿eh? Si que suenas confiado."
 
 #. / Dialog (Kline Kethlan)
-#: ../src/event.c:222
+#: ../src/event.c:269
 msgid ""
 "Nowhere to run, nowhere to hide, and no one to help you! This will certainly "
 "be interesting..."
@@ -634,13 +691,13 @@ msgstr ""
 
 #. / Dialog (Ursula Lexx under mind control)
 #. / Translation note: This should appear robotic or at least monotone.
-#: ../src/event.c:235
+#: ../src/event.c:282
 msgid "Unidentified craft sighted. Will proceed to destroy all targets."
 msgstr ""
 "Avistada nave no identificada. Se procederá a destruir todos los objetivos."
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:240
+#: ../src/event.c:287
 msgid ""
 "Looks like she's got one of those homing missile launchers too! Any advice, "
 "Phoebe?"
@@ -649,22 +706,22 @@ msgstr ""
 "teledirigidos! ¿Algún consejo, Phoebe?"
 
 #. / Dialog (Phoebe Lexx)
-#: ../src/event.c:245
+#: ../src/event.c:292
 msgid "Just try and dodge them!"
 msgstr "¡Solo trata de esquivarlos!"
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:253
+#: ../src/event.c:300
 msgid "That's a nice ship you got there, old-timer!"
 msgstr "¡Eso de ahí es una bonita nave, veterano!"
 
 #. / Dialog (Krass Tyler)
-#: ../src/event.c:258
+#: ../src/event.c:305
 msgid "Thanks, boy. Made it myself!"
 msgstr "Gracias, chico. ¡Hecho por mí!"
 
 #. / Dialog (Krass Tyler)
-#: ../src/event.c:263
+#: ../src/event.c:310
 msgid ""
 "Hey, boy, we've got company! Looks like your friends didn't do a very good "
 "job after all!"
@@ -673,42 +730,42 @@ msgstr ""
 "trabajo después de todo!"
 
 #. / Dialog (Krass Tyler)
-#: ../src/event.c:274
+#: ../src/event.c:321
 msgid "Keep those things off my back or it'll cost you extra!"
 msgstr "¡Mantén esas cosas lejos de mi espalda o te costará un plus!"
 
 #. / Dialog (Phoebe Lexx)
-#: ../src/event.c:283
+#: ../src/event.c:330
 msgid "Hey! Did we miss anything exciting?"
 msgstr "¡Ey! ¿Nos perdimos algo emocionante?"
 
 #. / Dialog (Krass Tyler)
-#: ../src/event.c:294
+#: ../src/event.c:341
 msgid "I've earned my fee. I'll see you around, boy!"
 msgstr "He ganado mi dinero. ¡Nos vemos, chico!"
 
 #. / Dialog (Sid Wilson)
-#: ../src/event.c:304
+#: ../src/event.c:351
 msgid "DAMMIT! It's getting away! We've got to stop it!"
 msgstr "¡MALDICIÓN! ¡Se está alejando! ¡Tenemos que pararlo!"
 
 #. / Dialog (Sid Wilson)
-#: ../src/event.c:314
+#: ../src/event.c:361
 msgid "Chris! Another two of those ray cannons just arrived in your sector!"
 msgstr "¡Cris! ¡Dos cañones más de esos han llegado a tu sector!"
 
 #. / Dialog (Sid Wilson)
-#: ../src/event.c:325
+#: ../src/event.c:372
 msgid "Two more!"
 msgstr "¡Dos más!"
 
 #. / Dialog (Ursula Lexx)
-#: ../src/event.c:343
+#: ../src/event.c:390
 msgid "It's a trap! My God! It's Tyler!"
 msgstr "¡Es una trampa! ¡Dios mío! ¡Es Tyler!"
 
 #. / Dialog (Krass Tyler)
-#: ../src/event.c:348
+#: ../src/event.c:395
 msgid ""
 "I'm a mercenary, what do you expect?! WEAPCO hired me to do a job, just like "
 "you have been doing."
@@ -717,14 +774,14 @@ msgstr ""
 "igual que tú has estado haciendo."
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:353
+#: ../src/event.c:400
 msgid "Wow, that's cold. Just goes to show never to trust a mercenary, eh?"
 msgstr ""
 "Guau, ¡qué frío! Eso demuestra que nunca puedes confiar en un mercenario, "
 "¿eh?"
 
 #. / Dialog (Krass Tyler)
-#: ../src/event.c:362
+#: ../src/event.c:409
 msgid ""
 "Now if you'll assist me in dying quickly, I have a cheque to earn, boy..."
 msgstr ""
@@ -732,12 +789,12 @@ msgstr ""
 "chico..."
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:367
+#: ../src/event.c:414
 msgid "I have a name, you know. Do you remember it?"
 msgstr "Tengo nombre, ya sabes. ¿Lo recuerdas?"
 
 #. / Dialog (Kline Kethlan)
-#: ../src/event.c:383
+#: ../src/event.c:430
 msgid ""
 "That's far enough, Bainfield. You've been lucky so far, but your luck is "
 "about to run out!"
@@ -746,14 +803,14 @@ msgstr ""
 "a punto de terminar!"
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:388
+#: ../src/event.c:435
 msgid "Yeah, right! Like I'd lose to you after coming this far!"
 msgstr ""
 "¡Sí, claro! ¡Como si fuera a perder contra ti después de haber llegado tan "
 "lejos!"
 
 #. / Dialog (Chris Bainfield)
-#: ../src/event.c:396
+#: ../src/event.c:443
 msgid ""
 "WEAPCO is finished, Kethlan! You have nowhere to run, nowhere to hide, and "
 "no one to help you."
@@ -762,7 +819,7 @@ msgstr ""
 "nadie para ayudarte."
 
 #. / Dialog (Kline Kethlan)
-#: ../src/event.c:401
+#: ../src/event.c:448
 msgid "You underestimate me, Bainfield."
 msgstr "Me subestimas, Bainfield."
 
@@ -3289,6 +3346,16 @@ msgstr "SALIR"
 #: ../src/title.c:262
 msgid "BACK TO MAIN MENU"
 msgstr "VOLVER A MENÚ PRINCIPAL"
+
+#~ msgid "These things just won't give up, will they?"
+#~ msgstr "Estas cosas jamás se rendirán, ¿no?"
+
+#~ msgid ""
+#~ "What a dilemma! I'm not all that familiar with this ship's controls, but "
+#~ "I can't let this patrol reach my rendezvous point..."
+#~ msgstr ""
+#~ "¡Vaya dilema! No estoy tan familiarizado con los controles de esta nave, "
+#~ "pero no puedo dejar que esta patrulla alcance mi punto de encuentro..."
 
 #~ msgid "Good point. It would be foolish to expect anything else."
 #~ msgstr "Buen punto. Sería estúpido esperar cualquier otra cosa."

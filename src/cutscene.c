@@ -26,6 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "structs.h"
 
 #include "alien.h"
+#include "audio.h"
 #include "engine.h"
 #include "explosion.h"
 #include "game.h"
@@ -81,6 +82,7 @@ void cutscene_init(int scene)
 	switch (scene)
 	{
 		case 0:
+		   audio_playMusic("music/railjet_short.ogg", -1);
 			gfx_loadBackground("gfx/spirit.jpg");
 			engine.ssx = -3;
 			engine.ssy = 0;
@@ -104,21 +106,39 @@ void cutscene_init(int scene)
 			/// Cutscene (narration)
 			strcpy(messages[0].message, _("While escaping with his newly acquired Firefly, Chris Bainfield is intercepted by a WEAPCO patrol..."));
 
-			messages[1].face = FS_CHRIS;
-			/// Cutscene (Chris Bainfield)
-			strcpy(messages[1].message, _("These things just won't give up, will they?"));
+			messages[1].face = FS_SID;
+			/// Cutscene (Sid Wilson)
+			strcpy(messages[1].message, _("Damn, these things are persistent!"
+					" Human pilots would have given up by now!"));
 
 			messages[2].face = FS_CHRIS;
 			/// Cutscene (Chris Bainfield)
-			strcpy(messages[2].message, _("What a dilemma! I'm not all that familiar with this ship's controls, but I can't let this patrol reach my rendezvous point..."));
+			strcpy(messages[2].message, _("Looks like I'm stuck with some"
+					" robo-passengers, eh, Sid?"));
 
-			messages[3].face = FS_CHRIS;
+			messages[3].face = FS_SID;
+			/// Cutscene (Sid Wilson)
+			strcpy(messages[3].message, _("Chris, this is serious! You're"
+					" getting too close to your rendezvous point. If you don't"
+					" shake them soon, everything could be over before it"
+					" begins!"));
+
+			messages[4].face = FS_SID;
+			/// Cutscene (Sid Wilson)
+			strcpy(messages[4].message, _("I know you're not familiar with the"
+					" Firefly's controls, but you're going to have to fight"
+					" them."));
+			
+
+			messages[5].face = FS_CHRIS;
 			/// Cutscene (Chris Bainfield)
-			strcpy(messages[3].message, _("I guess I'll have to fight them, then. Let's see what this ship can do!"));
+			strcpy(messages[5].message, _("Hell yeah, now you're talking!"
+					" Let's see what this ship can do!"));
 
 			break;
 
 		case 1:
+		   audio_playMusic("music/first_cyber_dance.ogg", -1);
 			gfx_loadBackground("gfx/sol.jpg");
 			engine.ssx = -0.5;
 			engine.ssy = 0;
@@ -161,6 +181,7 @@ void cutscene_init(int scene)
 			break;
 
 		case 2:
+		   audio_playMusic("music/first_cyber_dance.ogg", -1);
 			gfx_loadBackground("gfx/spirit.jpg");
 			engine.ssx = -1.45;
 			engine.ssy = 0;
@@ -200,6 +221,7 @@ void cutscene_init(int scene)
 			break;
 
 		case 3:
+		   audio_playMusic("music/through_space.ogg", -1);
 			gfx_loadBackground("gfx/eyananth.jpg");
 			engine.ssx = -0.5;
 			engine.ssy = 0;
@@ -253,6 +275,7 @@ void cutscene_init(int scene)
 			break;
 
 		case 4:
+		   audio_playMusic("music/first_cyber_dance.ogg", -1);
 			gfx_loadBackground("gfx/eyananth.jpg");
 			engine.ssx = -1.45;
 			engine.ssy = 0;
@@ -314,6 +337,7 @@ void cutscene_init(int scene)
 			break;
 
 		case 5:
+		   audio_playMusic("music/through_space.ogg", -1);
 			gfx_loadBackground("gfx/mordor.jpg");
 			engine.ssx = -0.5;
 			engine.ssy = 0;
@@ -359,6 +383,7 @@ void cutscene_init(int scene)
 			break;
 
 		case 6:
+		   audio_playMusic("music/first_cyber_dance.ogg", -1);
 			gfx_loadBackground("gfx/mordor.jpg");
 			engine.ssx = -1.45;
 			engine.ssy = 0;

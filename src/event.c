@@ -69,6 +69,53 @@ void events_init()
 
 			break;
 
+		case MISN_START:
+			events[0].time = 2;
+			events[0].face = FS_SID;
+			/// Dialog (Sid Wilson)
+			strcpy(events[0].message, _("You should be able to move with"
+					" arrow keys or an analog stick, depending on the type of"
+					" controls you have."));
+
+			events[1].time = 3 + engine.radioLife/60;
+			events[1].face = FS_SID;
+			/// Dialog (Sid Wilson)
+			strcpy(events[1].message, _("Try to stay clear of enemy fire while"
+					" I take a look at the Firefly's manual..."));
+
+			events[2].time = 5 + 3*engine.radioLife/60;
+			events[2].face = FS_SID;
+			/// Dialog (Sid Wilson)
+			strcpy(events[2].message, _("OK, it looks like you have two"
+					" weapons: a standard plasma cannon and rockets. Dammit,"
+					" it doesn't say what the controls are!"));
+
+			events[3].time = 6 + 4*engine.radioLife/60;
+			events[3].face = FS_SID;
+			/// Dialog (Sid Wilson)
+			strcpy(events[3].message, _("If I had to guess, it's probably"
+					" a Ctrl key or a B button for the plasma cannon."));
+
+			events[4].time = 7 + 5*engine.radioLife/60;
+			events[4].face = FS_SID;
+			/// Dialog (Sid Wilson)
+			strcpy(events[4].message, _("Rockets... those would probably be a"
+					" space bar or an A button."));
+
+			events[5].time = 9 + 7*engine.radioLife/60;
+			events[5].face = FS_SID;
+			/// Dialog (Sid Wilson)
+			strcpy(events[5].message, _("Interesting... It says right here"
+					" that you can power up the plasma cannon."));
+
+			events[6].time = 10 + 8*engine.radioLife/60;
+			events[6].face = FS_SID;
+			/// Dialog (Sid Wilson)
+			strcpy(events[6].message, _("Try shooting down those WEAPCO cargo"
+					" ships; they should have the upgrades."));
+
+			break;
+
 		case MISN_MOEBO:
 			events[0].time = 2;
 			events[0].face = FS_SID;
