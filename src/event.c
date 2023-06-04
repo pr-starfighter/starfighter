@@ -106,13 +106,13 @@ void events_init()
 			events[5].face = FS_SID;
 			/// Dialog (Sid Wilson)
 			strcpy(events[5].message, _("Interesting... It says right here"
-					" that you can power up the plasma cannon."));
+					" that you can temporarily improve the plasma cannon with powerups."));
 
 			events[6].time = 10 + 8*engine.radioLife/60;
 			events[6].face = FS_SID;
 			/// Dialog (Sid Wilson)
 			strcpy(events[6].message, _("Try shooting down those WEAPCO cargo"
-					" ships; they should have the upgrades."));
+					" ships and picking up the items they drop."));
 
 			break;
 
