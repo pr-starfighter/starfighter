@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2023-05-31 23:01-0400\n"
-"PO-Revision-Date: 2023-05-31 00:44+0200\n"
+"PO-Revision-Date: 2023-06-04 01:39+0200\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: eo\n"
@@ -216,11 +216,12 @@ msgstr ""
 msgid ""
 "Damn, these things are persistent! Human pilots would have given up by now!"
 msgstr ""
+"Damne, ĉi tiuj aferoj estas persistaj! Homaj pilotoj jam estus rezignintaj!"
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:116
 msgid "Looks like I'm stuck with some robo-passengers, eh, Sid?"
-msgstr ""
+msgstr "Ŝajnas, ke mi estas blokita per iuj robot-pasaĝeroj, he, Sid?"
 
 #. / Cutscene (Sid Wilson)
 #: ../src/cutscene.c:121
@@ -228,6 +229,8 @@ msgid ""
 "Chris, this is serious! You're getting too close to your rendezvous point. "
 "If you don't shake them soon, everything could be over before it begins!"
 msgstr ""
+"Kris, ĉi tio seriozas! Vi proksimiĝas troe al via rendevua loko. Se vi ne "
+"forigas ilin baldaŭ, ĉio povus finiĝi antaŭ ol ĝi komenciĝas!"
 
 #. / Cutscene (Sid Wilson)
 #: ../src/cutscene.c:128
@@ -235,14 +238,13 @@ msgid ""
 "I know you're not familiar with the Firefly's controls, but you're going to "
 "have to fight them."
 msgstr ""
+"Mi scias, ke vi ne konas la regilon de la Fajrflugilo, sed vi devos batali "
+"kontraŭ ili."
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:135
-#, fuzzy
 msgid "Hell yeah, now you're talking! Let's see what this ship can do!"
-msgstr ""
-"Mi supozas, ke mi devos batali ilin. Mi vidos, kion povas fari ĉi tiu "
-"veturilo!"
+msgstr "Ege jes, ni komenciĝu! Ni vidu, kion povas fari ĉi tiu veturilo!"
 
 #. / Cutscene (narration)
 #: ../src/cutscene.c:163
@@ -517,6 +519,8 @@ msgid ""
 "You should be able to move with arrow keys or an analog stick, depending on "
 "the type of controls you have."
 msgstr ""
+"Vi verŝajne povos moviĝi per la sagoklavoj aŭ stirstango, depende de la "
+"speco de regilo, kiun vi havas."
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:83
@@ -524,6 +528,7 @@ msgid ""
 "Try to stay clear of enemy fire while I take a look at the Firefly's "
 "manual..."
 msgstr ""
+"Klopodu eviti la malamikajn pafojn, dum mi legas la Fajrflugilan manlibron."
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:89
@@ -531,6 +536,8 @@ msgid ""
 "OK, it looks like you have two weapons: a standard plasma cannon and "
 "rockets. Dammit, it doesn't say what the controls are!"
 msgstr ""
+"Bone, ŝajnas, ke vi havas du armilojn: kutiman plasman pafilegon kaj "
+"raketojn. Damne, ĝi ne diras, kiuj estas la regiloj!"
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:96
@@ -538,23 +545,28 @@ msgid ""
 "If I had to guess, it's probably a Ctrl key or a B button for the plasma "
 "cannon."
 msgstr ""
+"Se mi devus diveni, probable estas la stirklavo aŭ B-butono por la plasma "
+"pafilego."
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:102
 msgid "Rockets... those would probably be a space bar or an A button."
-msgstr ""
+msgstr "Raketoj... tiuj probable estas la spacoklavo aŭ A-butono."
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:108
 msgid ""
 "Interesting... It says right here that you can power up the plasma cannon."
 msgstr ""
+"Interesa... Ĉi tie ĝi diras, ke vi povas plifortigi la plasman pafilegon."
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:114
 msgid ""
 "Try shooting down those WEAPCO cargo ships; they should have the upgrades."
 msgstr ""
+"Penu depafi tiujn ARMKORP-ajn kargajn veturilojn; ili verŝajne havas la "
+"plibonaĵojn."
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:123
