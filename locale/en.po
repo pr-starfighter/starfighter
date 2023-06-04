@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
-"POT-Creation-Date: 2023-05-31 23:01-0400\n"
+"POT-Creation-Date: 2023-06-04 01:57-0400\n"
 "PO-Revision-Date: 2021-09-18 00:05-0400\n"
 "Last-Translator: Natasha <diligentcircle@riseup.net>\n"
 "Language-Team: English\n"
@@ -551,13 +551,15 @@ msgstr ""
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:108
 msgid ""
-"Interesting... It says right here that you can power up the plasma cannon."
+"Interesting... It says right here that you can temporarily improve the "
+"plasma cannon with powerups."
 msgstr ""
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:114
 msgid ""
-"Try shooting down those WEAPCO cargo ships; they should have the upgrades."
+"Try shooting down those WEAPCO cargo ships and picking up the items they "
+"drop."
 msgstr ""
 
 #. / Dialog (Sid Wilson)
@@ -2642,66 +2644,73 @@ msgstr "Emergency warp drive activated. Press button to engage."
 msgid "*** Interception Destroyed ***"
 msgstr "*** Interception Destroyed ***"
 
+#. / Dialog (Sid Wilson)
+#. / Used when the start mission is completed.
+#: ../src/mission.c:1010
+msgid ""
+"Whew, you made it! Now hurry on over, Chris; we have a lot of work to do."
+msgstr ""
+
 #. / Dialog (Chris Bainfield)
 #. / Used when the Earth mission is completed.
-#: ../src/mission.c:1010
+#: ../src/mission.c:1018
 msgid ""
 "You guys stay here and keep things under control. I'm going after Kethlan!"
 msgstr ""
 "You guys stay here and keep things under control. I'm going after Kethlan!"
 
-#: ../src/mission.c:1019
+#: ../src/mission.c:1027
 msgid "*** Secondary Objective Completed ***"
 msgstr "*** Secondary Objective Completed ***"
 
-#: ../src/mission.c:1024
+#: ../src/mission.c:1032
 msgid "*** All Secondary Objectives Completed ***"
 msgstr "*** All Secondary Objectives Completed ***"
 
-#: ../src/mission.c:1039
+#: ../src/mission.c:1047
 msgid ">>> MISSION FAILED <<<"
 msgstr ">>> MISSION FAILED <<<"
 
-#: ../src/mission.c:1045
+#: ../src/mission.c:1053
 msgid ">>> Secondary Objective Failed <<<"
 msgstr ">>> Secondary Objective Failed <<<"
 
-#: ../src/mission.c:1124
+#: ../src/mission.c:1132
 msgid "Primary Objectives"
 msgstr "Primary Objectives"
 
-#: ../src/mission.c:1138
+#: ../src/mission.c:1146
 msgid "Secondary Objectives"
 msgstr "Secondary Objectives"
 
-#: ../src/mission.c:1152
+#: ../src/mission.c:1160
 msgid "Additional Information"
 msgstr "Additional Information"
 
 #. / Used to indicate the player's shield meter in the HUD.
-#: ../src/mission.c:1169
+#: ../src/mission.c:1177
 msgid "Shield"
 msgstr "Shield"
 
-#: ../src/mission.c:1171
+#: ../src/mission.c:1179
 msgid "Target"
 msgstr "Target"
 
-#: ../src/mission.c:1172
+#: ../src/mission.c:1180
 msgid "Sid"
 msgstr "Sid"
 
-#: ../src/mission.c:1173
+#: ../src/mission.c:1181
 msgid "Phoebe"
 msgstr "Phoebe"
 
-#: ../src/mission.c:1174
+#: ../src/mission.c:1182
 msgid "Kline"
 msgstr "Kline"
 
 #. / "%d" must be retained.  It is replaced with the mission required
 #. / survival time in minutes.
-#: ../src/mission.c:1204
+#: ../src/mission.c:1212
 #, c-format
 msgid "SURVIVAL FOR %d minute"
 msgid_plural "SURVIVAL FOR %d minutes"
@@ -2710,36 +2719,36 @@ msgstr[1] "SURVIVAL FOR %d minutes"
 
 #. / "%d" must be retained.  It is replaced with the mission time
 #. / limit in minutes.
-#: ../src/mission.c:1213
+#: ../src/mission.c:1221
 #, c-format
 msgid "TIME LIMIT: %d minute"
 msgid_plural "TIME LIMIT: %d minutes"
 msgstr[0] "TIME LIMIT: %d minute"
 msgstr[1] "TIME LIMIT: %d minutes"
 
-#: ../src/mission.c:1229
+#: ../src/mission.c:1237
 msgid "Phoebe Lexx will not be present"
 msgstr "Phoebe Lexx will not be present"
 
-#: ../src/mission.c:1231
+#: ../src/mission.c:1239
 msgid "Ursula Lexx will not be present"
 msgstr "Ursula Lexx will not be present"
 
-#: ../src/mission.c:1238
+#: ../src/mission.c:1246
 msgid "Sid Wilson will join you on this mission"
 msgstr "Sid Wilson will join you on this mission"
 
-#: ../src/mission.c:1326 ../src/mission.c:1346
+#: ../src/mission.c:1334 ../src/mission.c:1354
 msgid "COMPLETED"
 msgstr "COMPLETED"
 
-#: ../src/mission.c:1331 ../src/mission.c:1351
+#: ../src/mission.c:1339 ../src/mission.c:1359
 msgid "FAILED"
 msgstr "FAILED"
 
 #. / "%d" must be retained.  It is replaced with the money earned
 #. / from the shield bonus.
-#: ../src/mission.c:1362
+#: ../src/mission.c:1370
 #, c-format
 msgid "Shield Bonus: $%d"
 msgstr "Shield Bonus: $%d"
@@ -2756,7 +2765,7 @@ msgstr "Shield Bonus: $%d"
 #. / the "%02ld" sequences may be changed to "%ld" if you wish to
 #. / not force two digits to be filled in (e.g. to render the number
 #. / 3 as "3" instead of "03").
-#: ../src/mission.c:1378
+#: ../src/mission.c:1386
 #, c-format
 msgid "Mission Time: %02ld:%02ld"
 msgstr "Mission Time: %02ld:%02ld"

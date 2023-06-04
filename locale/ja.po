@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
-"POT-Creation-Date: 2023-05-31 23:01-0400\n"
+"POT-Creation-Date: 2023-06-04 01:57-0400\n"
 "PO-Revision-Date: 2021-09-18 00:08-0400\n"
 "Last-Translator: maruhiro <maruhiro@bridge.ocn.ne.jp>\n"
 "Language-Team: Japanese\n"
@@ -532,13 +532,15 @@ msgstr ""
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:108
 msgid ""
-"Interesting... It says right here that you can power up the plasma cannon."
+"Interesting... It says right here that you can temporarily improve the "
+"plasma cannon with powerups."
 msgstr ""
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:114
 msgid ""
-"Try shooting down those WEAPCO cargo ships; they should have the upgrades."
+"Try shooting down those WEAPCO cargo ships and picking up the items they "
+"drop."
 msgstr ""
 
 #. / Dialog (Sid Wilson)
@@ -2545,65 +2547,72 @@ msgstr "脱出ワープエンジンが利用可能 ESCボタンで始動する"
 msgid "*** Interception Destroyed ***"
 msgstr "*** 迎撃部隊を撃破 ***"
 
+#. / Dialog (Sid Wilson)
+#. / Used when the start mission is completed.
+#: ../src/mission.c:1010
+msgid ""
+"Whew, you made it! Now hurry on over, Chris; we have a lot of work to do."
+msgstr ""
+
 #. / Dialog (Chris Bainfield)
 #. / Used when the Earth mission is completed.
-#: ../src/mission.c:1010
+#: ../src/mission.c:1018
 msgid ""
 "You guys stay here and keep things under control. I'm going after Kethlan!"
 msgstr "ここを抑えていてくれ。俺はケスランを追う!"
 
-#: ../src/mission.c:1019
+#: ../src/mission.c:1027
 msgid "*** Secondary Objective Completed ***"
 msgstr "*** 補助的な任務を完了 ***"
 
-#: ../src/mission.c:1024
+#: ../src/mission.c:1032
 msgid "*** All Secondary Objectives Completed ***"
 msgstr "*** 全ての補助的な任務を完了 ***"
 
-#: ../src/mission.c:1039
+#: ../src/mission.c:1047
 msgid ">>> MISSION FAILED <<<"
 msgstr ">>> 作戦失敗 <<<"
 
-#: ../src/mission.c:1045
+#: ../src/mission.c:1053
 msgid ">>> Secondary Objective Failed <<<"
 msgstr ">>> 補助的な任務を失敗 <<<"
 
-#: ../src/mission.c:1124
+#: ../src/mission.c:1132
 msgid "Primary Objectives"
 msgstr "主要な任務"
 
-#: ../src/mission.c:1138
+#: ../src/mission.c:1146
 msgid "Secondary Objectives"
 msgstr "補助的な任務"
 
-#: ../src/mission.c:1152
+#: ../src/mission.c:1160
 msgid "Additional Information"
 msgstr "追加の情報"
 
 #. / Used to indicate the player's shield meter in the HUD.
-#: ../src/mission.c:1169
+#: ../src/mission.c:1177
 msgid "Shield"
 msgstr "シールド"
 
-#: ../src/mission.c:1171
+#: ../src/mission.c:1179
 msgid "Target"
 msgstr "ターゲット"
 
-#: ../src/mission.c:1172
+#: ../src/mission.c:1180
 msgid "Sid"
 msgstr "シド"
 
-#: ../src/mission.c:1173
+#: ../src/mission.c:1181
 msgid "Phoebe"
 msgstr "フェーベ"
 
-#: ../src/mission.c:1174
+#: ../src/mission.c:1182
 msgid "Kline"
 msgstr "クライン"
 
 #. / "%d" must be retained.  It is replaced with the mission required
 #. / survival time in minutes.
-#: ../src/mission.c:1204
+#: ../src/mission.c:1212
 #, c-format
 msgid "SURVIVAL FOR %d minute"
 msgid_plural "SURVIVAL FOR %d minutes"
@@ -2611,35 +2620,35 @@ msgstr[0] "%d分間 生き延びる"
 
 #. / "%d" must be retained.  It is replaced with the mission time
 #. / limit in minutes.
-#: ../src/mission.c:1213
+#: ../src/mission.c:1221
 #, c-format
 msgid "TIME LIMIT: %d minute"
 msgid_plural "TIME LIMIT: %d minutes"
 msgstr[0] "制限時間: %d分"
 
-#: ../src/mission.c:1229
+#: ../src/mission.c:1237
 msgid "Phoebe Lexx will not be present"
 msgstr "フェーベ・レックスは参加しない"
 
-#: ../src/mission.c:1231
+#: ../src/mission.c:1239
 msgid "Ursula Lexx will not be present"
 msgstr "ウーシュラ・レックスは参加しない"
 
-#: ../src/mission.c:1238
+#: ../src/mission.c:1246
 msgid "Sid Wilson will join you on this mission"
 msgstr "シド・ウィルソンが作戦に参加する"
 
-#: ../src/mission.c:1326 ../src/mission.c:1346
+#: ../src/mission.c:1334 ../src/mission.c:1354
 msgid "COMPLETED"
 msgstr "完了"
 
-#: ../src/mission.c:1331 ../src/mission.c:1351
+#: ../src/mission.c:1339 ../src/mission.c:1359
 msgid "FAILED"
 msgstr "失敗"
 
 #. / "%d" must be retained.  It is replaced with the money earned
 #. / from the shield bonus.
-#: ../src/mission.c:1362
+#: ../src/mission.c:1370
 #, c-format
 msgid "Shield Bonus: $%d"
 msgstr "シールドボーナス: $%d"
@@ -2656,7 +2665,7 @@ msgstr "シールドボーナス: $%d"
 #. / the "%02ld" sequences may be changed to "%ld" if you wish to
 #. / not force two digits to be filled in (e.g. to render the number
 #. / 3 as "3" instead of "03").
-#: ../src/mission.c:1378
+#: ../src/mission.c:1386
 #, c-format
 msgid "Mission Time: %02ld:%02ld"
 msgstr "作戦時間: %2ld:%02ld"
