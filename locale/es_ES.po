@@ -559,6 +559,7 @@ msgstr "Interesante... Justo aquí dice que puedes encender el cañón de plasma
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:114
+#, fuzzy
 msgid ""
 "Try shooting down those WEAPCO cargo ships and picking up the items they "
 "drop."

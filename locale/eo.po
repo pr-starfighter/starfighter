@@ -555,6 +555,7 @@ msgstr "Raketoj... tiuj probable estas la spacoklavo aŭ A-butono."
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:108
+#, fuzzy
 msgid ""
 "Interesting... It says right here that you can temporarily improve the "
 "plasma cannon with powerups."
@@ -563,6 +564,7 @@ msgstr ""
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:114
+#, fuzzy
 msgid ""
 "Try shooting down those WEAPCO cargo ships and picking up the items they "
 "drop."
