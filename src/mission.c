@@ -1003,6 +1003,14 @@ int mission_checkCompleted()
 					}
 				}
 
+				if (game.area == MISN_START)
+				{
+				   /// Dialog (Sid Wilson)
+				   /// Used when the start mission is completed.
+				   radio_setMessage(FS_SID, _("Whew, you made it! Now hurry on"
+				         " over, Chris; we have a lot of work to do."), 1);
+				}
+
 				if (game.area == MISN_EARTH)
 				{
 					/// Dialog (Chris Bainfield)
