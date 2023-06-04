@@ -23,8 +23,8 @@ msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2023-06-04 01:57-0400\n"
-"PO-Revision-Date: 2023-05-31 00:47+0200\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2023-06-04 00:57+0200\n"
+"Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
@@ -204,11 +204,13 @@ msgstr ""
 msgid ""
 "Damn, these things are persistent! Human pilots would have given up by now!"
 msgstr ""
+"¡Diablos, estas cosas son persistentes! ¡Pilotos humanos ya se habrían "
+"rendido!"
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:116
 msgid "Looks like I'm stuck with some robo-passengers, eh, Sid?"
-msgstr ""
+msgstr "Parece que estoy atascado con algunos pasajeros robot, ¿eh, Sid?"
 
 #. / Cutscene (Sid Wilson)
 #: ../src/cutscene.c:121
@@ -216,6 +218,8 @@ msgid ""
 "Chris, this is serious! You're getting too close to your rendezvous point. "
 "If you don't shake them soon, everything could be over before it begins!"
 msgstr ""
+"¡Cris, esto es serio! Te estás acercando demasiado a tu punto de encuentro. "
+"¡Si no te libras de ellos pronto, todo podría terminar antes de que empiece!"
 
 #. / Cutscene (Sid Wilson)
 #: ../src/cutscene.c:128
@@ -223,14 +227,13 @@ msgid ""
 "I know you're not familiar with the Firefly's controls, but you're going to "
 "have to fight them."
 msgstr ""
+"Sé que no estás familiarizado con los controles del Firefly, pero vas a "
+"tener que luchar contra ellos."
 
 #. / Cutscene (Chris Bainfield)
 #: ../src/cutscene.c:135
-#, fuzzy
 msgid "Hell yeah, now you're talking! Let's see what this ship can do!"
-msgstr ""
-"Supongo que tendré que luchar con ellos entonces. ¡Veamos lo que puede hacer "
-"esta nave!"
+msgstr "¡Eso es, vamos allá! ¡Veamos lo que puede hacer esta nave!"
 
 #. / Cutscene (narration)
 #: ../src/cutscene.c:163
@@ -510,6 +513,8 @@ msgid ""
 "You should be able to move with arrow keys or an analog stick, depending on "
 "the type of controls you have."
 msgstr ""
+"Deberías ser capaz de moverte con las flechas o una palanca de mando, "
+"dependiendo del tipo de controles que tengas."
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:83
@@ -517,6 +522,8 @@ msgid ""
 "Try to stay clear of enemy fire while I take a look at the Firefly's "
 "manual..."
 msgstr ""
+"Intenta mantenerte alejado del fuego enemigo mientras yo echo vistazo al "
+"manual del Firefly..."
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:89
@@ -524,6 +531,8 @@ msgid ""
 "OK, it looks like you have two weapons: a standard plasma cannon and "
 "rockets. Dammit, it doesn't say what the controls are!"
 msgstr ""
+"Vale, parece que tienes dos armas: un cañón de plasma estándar y cohetes. "
+"¡Mierda, no dice cuáles son los controles!"
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:96
@@ -531,18 +540,22 @@ msgid ""
 "If I had to guess, it's probably a Ctrl key or a B button for the plasma "
 "cannon."
 msgstr ""
+"Si tuviera que adivinar, probablemente sea la tecla Ctrl o el botón B para "
+"el cañón de plasma."
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:102
 msgid "Rockets... those would probably be a space bar or an A button."
 msgstr ""
+"Cohetes... eso probablemente sea con la barra espaciadora o el botón A."
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:108
+#, fuzzy
 msgid ""
 "Interesting... It says right here that you can temporarily improve the "
 "plasma cannon with powerups."
-msgstr ""
+msgstr "Interesante... Justo aquí dice que puedes encender el cañón de plasma."
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:114
@@ -550,6 +563,7 @@ msgid ""
 "Try shooting down those WEAPCO cargo ships and picking up the items they "
 "drop."
 msgstr ""
+"Intenta derribar esas naves de carga de ARMCORP; deben de tener las mejoras."
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:123
