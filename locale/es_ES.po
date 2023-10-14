@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2023-06-04 01:57-0400\n"
-"PO-Revision-Date: 2023-06-04 00:57+0200\n"
+"PO-Revision-Date: 2023-06-04 12:40+0200\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -551,20 +551,21 @@ msgstr ""
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:108
-#, fuzzy
 msgid ""
 "Interesting... It says right here that you can temporarily improve the "
 "plasma cannon with powerups."
-msgstr "Interesante... Justo aquí dice que puedes encender el cañón de plasma."
+msgstr ""
+"Interesante... Justo aquí dice que puedes mejorar temporalmente el cañón de "
+"plasma."
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:114
-#, fuzzy
 msgid ""
 "Try shooting down those WEAPCO cargo ships and picking up the items they "
 "drop."
 msgstr ""
-"Intenta derribar esas naves de carga de ARMCORP; deben de tener las mejoras."
+"Intenta derribar esas naves de carga de ARMCORP y recoger los objetos que "
+"sueltan."
 
 #. / Dialog (Sid Wilson)
 #: ../src/event.c:123
@@ -2672,6 +2673,8 @@ msgstr "*** Intercepción Destruida ***"
 msgid ""
 "Whew, you made it! Now hurry on over, Chris; we have a lot of work to do."
 msgstr ""
+"¡Uf, lo has conseguido! Ahora date prisa, Cris; tenemos mucho trabajo que "
+"hacer."
 
 #. / Dialog (Chris Bainfield)
 #. / Used when the Earth mission is completed.
