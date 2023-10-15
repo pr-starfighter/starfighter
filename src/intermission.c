@@ -1062,117 +1062,311 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 			break;
 
 		case MISN_RESCUESLAVES:
-			/// Mission dialog: Eyananth, interceptions (Sid Wilson)
-			/// "%d" must be retained as-is. It is replaced with the number of slaves that
-			/// need to be rescued.
-			snprintf(string, STRMAX, _("As you know, WEAPCO has many slaves in this system. If we free a large number of them, it might help to spark a rebellion. I estimate that we will need to rescue around %d to make a difference."), SLAVE_RESCUE_TARGET);
-			y = intermission_renderDialog(comms, y, FS_SID, string);
+			if (engine.oldScript)
+			{
+				strcpy(string, "WEAPCO has many slaves in this system. If we"
+						" free a large number of them, it might help to spark"
+						" a rebellion movement.");
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			/// Mission dialog: Eyananth, interceptions (Chris Bainfield)
-			strcpy(string, _("Most of the slaves are working in ore mines, aren't they?"));
-			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+				strcpy(string, "Attacking the ore mines directly would be"
+						" dangerous. You'd be better off intercepting slave"
+						" transports. What you'll have to do is fly around and"
+						" see if you can intercept a WEAPCO patrol. Of course,"
+						" they might not be escorting any slave units, so be"
+						" careful!");
+				y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			/// Mission dialog: Eyananth, interceptions (Sid Wilson)
-			strcpy(string, _("Yes, but attacking the mines directly would be dangerous. You'd be better off intercepting slave transports. What you'll have to do is fly around and see if you can intercept a WEAPCO patrol. Of course, they might not be escorting any slave units, so be careful!"));
-			y = intermission_renderDialog(comms, y, FS_SID, string);
+				snprintf(string, STRMAX, "I estimate that we will need to"
+						" rescue around %d to make a difference.",
+					SLAVE_RESCUE_TARGET);
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+			}
+			else
+			{
+				/// Mission dialog: Eyananth, interceptions (Sid Wilson)
+				/// "%d" must be retained as-is. It is replaced with the number of slaves that
+				/// need to be rescued.
+				snprintf(string, STRMAX, _("As you know, WEAPCO has many"
+						" slaves in this system. If we free a large number of"
+						" them, it might help to spark a rebellion. I estimate"
+						" that we will need to rescue around %d to make a"
+						" difference."), SLAVE_RESCUE_TARGET);
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+
+				/// Mission dialog: Eyananth, interceptions (Chris Bainfield)
+				strcpy(string, _("Most of the slaves are working in ore mines,"
+						" aren't they?"));
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+				/// Mission dialog: Eyananth, interceptions (Sid Wilson)
+				strcpy(string, _("Yes, but attacking the mines directly would"
+						" be dangerous. You'd be better off intercepting slave"
+						" transports. What you'll have to do is fly around and"
+						" see if you can intercept a WEAPCO patrol. Of course,"
+						" they might not be escorting any slave units, so be"
+						" careful!"));
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+			}
 
 			break;
 
 		case MISN_NEROD:
-			/// Mission dialog: Eyananth, Nerod (Phoebe Lexx)
-			strcpy(string, _("Help! This is an SOS! Can anyone hear me?!"));
-			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
+			if (engine.oldScript)
+			{
+				strcpy(string, "Help!! This is an SOS!! Can anyone hear"
+						" me\?\?! I was intercepted by a large WEAPCO force"
+						" near Nerod! I'm in need of assistance!!");
+				y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
 
-			/// Mission dialog: Eyananth, Nerod (Chris Bainfield)
-			strcpy(string, _("I'm hearing you loud and clear! What's up?"));
-			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+				strcpy(string, "I don't think we can help, it would attract"
+						" far too much attention.");
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			/// Mission dialog: Eyananth, Nerod (Phoebe Lexx)
-			strcpy(string, _("Oh, thank God! I was intercepted by a large WEAPCO force near Nerod! I'm in need of assistance!"));
-			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
+				strcpy(string, "Chris, our mission is to save lives.");
+				y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			/// Mission dialog: Eyananth, Nerod (Chris Bainfield)
-			strcpy(string, _("I'm on my way!"));
-			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+				strcpy(string, "Yes, but this could be a trap!");
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+				strcpy(string, "WEAPCO are building up a large force in that"
+						" area. We need to put a stop to it now, so we may as"
+						" well do her a favour.");
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+			}
+			else
+			{
+				/// Mission dialog: Eyananth, Nerod (Phoebe Lexx)
+				strcpy(string, _("Help! This is an SOS! Can anyone hear me?!"));
+				y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
+
+				/// Mission dialog: Eyananth, Nerod (Chris Bainfield)
+				strcpy(string, _("I'm hearing you loud and clear! What's up?"));
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+				/// Mission dialog: Eyananth, Nerod (Phoebe Lexx)
+				strcpy(string, _("Oh, thank God! I was intercepted by a large"
+						" WEAPCO force near Nerod! I'm in need of"
+						" assistance!"));
+				y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
+
+				/// Mission dialog: Eyananth, Nerod (Chris Bainfield)
+				strcpy(string, _("I'm on my way!"));
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+			}
 
 			break;
 
 		case MISN_ALLEZ:
-			/// Mission dialog: Eyananth, Allez (Sid Wilson)
-			strcpy(string, _("I've just received another SOS. This one is coming from a supply craft carrying essential medical supplies."));
-			y = intermission_renderDialog(comms, y, FS_SID, string);
+			if (engine.oldScript)
+			{
+				strcpy(string, "I've just recieved another SOS. This one is"
+						" coming from a supply craft that is under attack.");
+				y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			/// Mission dialog: Eyananth, Allez (Chris Bainfield)
-			strcpy(string, _("Alright, tell 'em I'm on my way."));
-			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+				strcpy(string, "What's it carrying?");
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+				strcpy(string, "A bit of everything, including some highly"
+						" radioactive materials. It's not unlikely that as a"
+						" result of the explosion some planets could be put"
+						" into a life threatening situation.");
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+
+				strcpy(string, "I'll get on it");
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+			}
+			else
+			{
+				/// Mission dialog: Eyananth, Allez (Sid Wilson)
+				strcpy(string, _("I've just received another SOS. This one is"
+						" coming from a supply craft carrying essential"
+						" medical supplies."));
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+
+				/// Mission dialog: Eyananth, Allez (Chris Bainfield)
+				strcpy(string, _("Alright, tell 'em I'm on my way."));
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+			}
 
 			break;
 
 		case MISN_URUSOR:
-			/// Mission dialog: Eyananth, Urusor (Sid Wilson)
-			strcpy(string, _("I need some resources before we leave. It'll make life a lot easier in Mordor. Problem is that WEAPCO hoards these parts."));
-			y = intermission_renderDialog(comms, y, FS_SID, string);
+			if (engine.oldScript)
+			{
+				strcpy(string, "I need some resources before we leave, it'll"
+						" make life a lot easier in Mordor. Problem is that"
+						" the parts are proprietry of WEAPCO");
+				y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			/// Mission dialog: Eyananth, Urusor (Chris Bainfield)
-			strcpy(string, _("Where can we get them, then?"));
-			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+				strcpy(string, "Can't we just salvage some from previous"
+						" encounters?");
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			/// Mission dialog: Eyananth, Urusor (Sid Wilson)
-			strcpy(string, _("There's a big shipment of them nearby. I can disable the supply craft carrying them; I just need you to give me some cover while I do it."));
-			y = intermission_renderDialog(comms, y, FS_SID, string);
+				strcpy(string, "No, even if we manage to find them in all that"
+						" space, they'll probably be too heavily damaged to be"
+						" of any use.");
+				y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			/// Mission dialog: Eyananth, Urusor (Chris Bainfield)
-			strcpy(string, _("You got it!"));
-			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+				strcpy(string, "We'll need to capture some WEAPCO supply craft"
+						" then.");
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+				strcpy(string, "Looks like I'm coming with you on this one!");
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+			}
+			else
+			{
+				/// Mission dialog: Eyananth, Urusor (Sid Wilson)
+				strcpy(string, _("I need some resources before we leave. It'll"
+						" make life a lot easier in Mordor. Problem is that"
+						" WEAPCO hoards these parts."));
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+
+				/// Mission dialog: Eyananth, Urusor (Chris Bainfield)
+				strcpy(string, _("Where can we get them, then?"));
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+				/// Mission dialog: Eyananth, Urusor (Sid Wilson)
+				strcpy(string, _("There's a big shipment of them nearby. I can"
+						" disable the supply craft carrying them; I just need"
+						" you to give me some cover while I do it."));
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+
+				/// Mission dialog: Eyananth, Urusor (Chris Bainfield)
+				strcpy(string, _("You got it!"));
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+			}
 
 			break;
 
 		case MISN_DORIM:
-			/// Mission dialog: Eyananth, Dorim (Sid Wilson)
-			strcpy(string, _("A WEAPCO scientist just ran off in an escape pod and hid in the asteroid belt. If we capture him, we may be able to get some information about Mordor."));
-			y = intermission_renderDialog(comms, y, FS_SID, string);
+			if (engine.oldScript)
+			{
+				strcpy(string, "A WEAPCO scientist just fled in an escape pod,"
+						" I'm going after them.");
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			/// Mission dialog: Eyananth, Dorim (Chris Bainfield)
-			strcpy(string, _("Alright, I'll go look for him. I guess I'll grab some ore along the way."));
-			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+				strcpy(string, "Do you need some backup?");
+				y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
+
+				strcpy(string, "No, they've headed into an asteroid belt so"
+						" I'm going to have to try and trace their signal."
+						" Having two of us there would just complicate"
+						" matters. Stay put and help Sid.");
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+			}
+			else
+			{
+				/// Mission dialog: Eyananth, Dorim (Sid Wilson)
+				strcpy(string, _("A WEAPCO scientist just ran off in an escape"
+						" pod and hid in the asteroid belt. If we capture him,"
+						" we may be able to get some information about"
+						" Mordor."));
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+
+				/// Mission dialog: Eyananth, Dorim (Chris Bainfield)
+				strcpy(string, _("Alright, I'll go look for him. I guess I'll"
+						" grab some ore along the way."));
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+			}
 
 			break;
 
 		case MISN_ELAMALE:
-			/// Mission dialog: Eyananth, Elamale (Sid Wilson)
-			strcpy(string, _("I've received word that the slaves we rescued have started a rebellion. Looks like the plan worked."));
-			y = intermission_renderDialog(comms, y, FS_SID, string);
+			if (engine.oldScript)
+			{
+				strcpy(string, "I've recieved word that a rebellion is"
+						" underway thanks to the slave being rescued.");
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			/// Mission dialog: Eyananth, Elamale (Phoebe Lexx)
-			strcpy(string, _("WEAPCO has an automated mining ship in orbit around Elamale. How about we take it out and cause some confusion?"));
-			y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
+				strcpy(string, "WEAPCO have an automated mining ship in orbit"
+						" around Elamale. I suggest we take it out and cause"
+						" confusion.");
+				y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
 
-			/// Mission dialog: Eyananth, Elamale (Chris Bainfield)
-			strcpy(string, _("I like that idea!"));
-			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+				strcpy(string, "It seems too easy. Something's not right"
+						" here.");
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			/// Mission dialog: Eyananth, Elamale (Sid Wilson)
-			strcpy(string, _("It'll work, but be careful."));
-			y = intermission_renderDialog(comms, y, FS_SID, string);
+				strcpy(string, "This is WEAPCO's blind spot. I say we hit it"
+						" now and hit it hard.");
+				y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
+
+				strcpy(string, "It'll work, but I don't like the look of it"
+						" either.");
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+			}
+			else
+			{
+				/// Mission dialog: Eyananth, Elamale (Sid Wilson)
+				strcpy(string, _("I've received word that the slaves we"
+						" rescued have started a rebellion. Looks like the"
+						" plan worked."));
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+
+				/// Mission dialog: Eyananth, Elamale (Phoebe Lexx)
+				strcpy(string, _("WEAPCO has an automated mining ship in orbit"
+						" around Elamale. How about we take it out and cause"
+						" some confusion?"));
+				y = intermission_renderDialog(comms, y, FS_PHOEBE, string);
+
+				/// Mission dialog: Eyananth, Elamale (Chris Bainfield)
+				strcpy(string, _("I like that idea!"));
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+				/// Mission dialog: Eyananth, Elamale (Sid Wilson)
+				strcpy(string, _("It'll work, but be careful."));
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+			}
 
 			break;
 
 		case MISN_CLOAKFIGHTER:
-			/// Mission dialog: Mordor, interceptions (Chris Bainfield)
-			strcpy(string, _("What have you found out about that experimental fighter?"));
-			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+			if (engine.oldScript)
+			{
+				strcpy(string, "What have you managed to find out about that"
+						" experimental fighter?");
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			/// Mission dialog: Mordor, interceptions (Sid Wilson)
-			strcpy(string, _("It's got some kind of cloaking device that makes it invisible to radar. Could prove hard to track down."));
-			y = intermission_renderDialog(comms, y, FS_SID, string);
+				strcpy(string, "It's got some kind of cloaking device that"
+						" makes it invisible to radar. Could prove hard to"
+						" trackdown.");
+				y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			/// Mission dialog: Mordor, interceptions (Chris Bainfield)
-			strcpy(string, _("I'll just have to run around the system until I find it."));
-			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+				strcpy(string, "I'll scout the system and see if I can"
+						" intercept it.");
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			/// Mission dialog: Mordor, interceptions (Sid Wilson)
-			strcpy(string, _("It's likely to run away if you engage it in battle, so try and do as much damage to it as possible."));
-			y = intermission_renderDialog(comms, y, FS_SID, string);
+				strcpy(string, "It's likely to run away if you engage it in"
+						" battle, so try and do as much damage to it as"
+						" possible.");
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+			}
+			else
+			{
+				/// Mission dialog: Mordor, interceptions (Chris Bainfield)
+				strcpy(string, _("What have you found out about that"
+						" experimental fighter?"));
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+				/// Mission dialog: Mordor, interceptions (Sid Wilson)
+				strcpy(string, _("It's got some kind of cloaking device that"
+						" makes it invisible to radar. Could prove hard to"
+						" track down."));
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+
+				/// Mission dialog: Mordor, interceptions (Chris Bainfield)
+				strcpy(string, _("I'll just have to run around the system"
+						" until I find it."));
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+				/// Mission dialog: Mordor, interceptions (Sid Wilson)
+				strcpy(string, _("It's likely to run away if you engage it in"
+						" battle, so try and do as much damage to it as"
+						" possible."));
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+			}
 
 			break;
 
