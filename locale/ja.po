@@ -2997,7 +2997,7 @@ msgstr "ロケット弾"
 #: ../src/shop.c:475
 #, fuzzy
 msgid "Rocket ammunition (1 rocket each)"
-msgstr "プラズマ火薬 (1つ10セル)"
+msgstr "無誘導高速ロケット弾"
 
 #. ----------- Permanent Items -----------
 #. Overwritten later
@@ -3009,7 +3009,7 @@ msgstr "プラズマカノンの増設"
 #: ../src/shop.c:483
 #, fuzzy
 msgid "Increases minimum plasma output"
-msgstr "プラズマ火薬の容量が増加する"
+msgstr "ファイアフライに新たなプラズマカノン砲を増設する"
 
 #. Overwritten later
 #: ../src/shop.c:487
@@ -3020,7 +3020,7 @@ msgstr "プラズマパワーブースター"
 #: ../src/shop.c:489
 #, fuzzy
 msgid "Increases minimum plasma damage"
-msgstr "一時強化時のプラズマ火力が増加する"
+msgstr "プラズマ弾の火力を増大させる"
 
 #. Overwritten later
 #: ../src/shop.c:493
@@ -3031,7 +3031,7 @@ msgstr "プラズマ冷却ブースター"
 #: ../src/shop.c:495
 #, fuzzy
 msgid "Increases minimum plasma firing rate"
-msgstr "一時強化時の連射速度が増加する"
+msgstr "連射速度を増大させる"
 
 #. ----------- Ammo Items --------------
 #. Overwritten later
@@ -3053,7 +3053,7 @@ msgstr "ロケットポッド"
 #: ../src/shop.c:509
 #, fuzzy
 msgid "Increases rocket ammo capacity"
-msgstr "プラズマ火薬の容量が増加する"
+msgstr "装備できるロケット弾が 5本 増加する"
 
 #: ../src/shop.c:515
 msgid "Dual Rocket Launcher"
@@ -3271,21 +3271,3 @@ msgstr "メインメニューに戻る"
 
 #~ msgid "Good point. It would be foolish to expect anything else."
 #~ msgstr "そうだな。お前に何か期待した俺がバカだったよ。"
-
-#~ msgid "Temporary Weapons"
-#~ msgstr "一時強化"
-
-#~ msgid "High velocity dumb fire rocket"
-#~ msgstr "無誘導高速ロケット弾"
-
-#~ msgid "Adds an extra plasma cannon to the Firefly"
-#~ msgstr "ファイアフライに新たなプラズマカノン砲を増設する"
-
-#~ msgid "Increases power of plasma shots"
-#~ msgstr "プラズマ弾の火力を増大させる"
-
-#~ msgid "Permanently increases firing rate"
-#~ msgstr "連射速度を増大させる"
-
-#~ msgid "Allows for an additional 5 rockets to be carried"
-#~ msgstr "装備できるロケット弾が 5本 増加する"
