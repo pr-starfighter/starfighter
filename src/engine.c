@@ -58,6 +58,7 @@ void engine_init()
 {
 	engine.musicVolume = MIX_MAX_VOLUME;
 	engine.useAudio = 1;
+	engine.oldScript = 0;
 
 	engine.maxAliens = 9;
 

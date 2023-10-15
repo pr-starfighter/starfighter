@@ -833,89 +833,231 @@ static void intermission_createMissionDetailSurface(SDL_Surface *comms, int miss
 	switch (misn)
 	{
 		case MISN_HAIL:
-			/// Mission dialog: Spirit, Hail (Krass Tyler)
-			strcpy(string, _("Hey, boy! You still owe me money for the Firefly I stole for you! But instead, I want you to go to the WEAPCO training ground and destroy all the craft there."));
-			y = intermission_renderDialog(comms, y, FS_KRASS, string);
+			if (engine.oldScript)
+			{
+				strcpy(string, "Hey, boy! You still owe me money for the"
+						" Firefly I stole for you! But instead, I want you to"
+						" go to the WEAPCO training ground and destroy all the"
+						" craft there.");
+				y = intermission_renderDialog(comms, y, FS_KRASS, string);
 
-			/// Mission dialog: Spirit, Hail (Chris Bainfield)
-			strcpy(string, _("Oh? That's the job I contracted you to do, was it not?"));
-			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+				strcpy(string, "Wait, I contracted YOU to do that job!");
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			/// Mission dialog: Spirit, Hail (Krass Tyler)
-			strcpy(string, _("I know, but this way we can resolve your debt right now. Do this job, and also collect $500, and we will call it quits. And if you die... well, I guess the ship was not worth stealing! HA HA HA!"));
-			y = intermission_renderDialog(comms, y, FS_KRASS, string);
+				strcpy(string, "I know, but you will still owe me money for"
+						" the Firefly. Do this job, and also collect $500, and"
+						" we will call it quits. And if you die... Well, I"
+						" guess the ship was not worth stealing! HA HA HA!!");
+				y = intermission_renderDialog(comms, y, FS_KRASS, string);
 
-			/// Mission dialog: Spirit, Hail (Chris Bainfield)
-			strcpy(string, _("As usual, you take me too lightly, Krass."));
-			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+				strcpy(string, "...");
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+			}
+			else
+			{
+				/// Mission dialog: Spirit, Hail (Krass Tyler)
+				strcpy(string, _("Hey, boy! You still owe me money for the"
+						" Firefly I stole for you! But instead, I want you to"
+						" go to the WEAPCO training ground and destroy all the"
+						" craft there."));
+				y = intermission_renderDialog(comms, y, FS_KRASS, string);
+
+				/// Mission dialog: Spirit, Hail (Chris Bainfield)
+				strcpy(string, _("Oh? That's the job I contracted you to do,"
+						" was it not?"));
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+				/// Mission dialog: Spirit, Hail (Krass Tyler)
+				strcpy(string, _("I know, but this way we can resolve your"
+						" debt right now. Do this job, and also collect $500,"
+						" and we will call it quits. And if you die... well, I"
+						" guess the ship was not worth stealing! HA HA HA!"));
+				y = intermission_renderDialog(comms, y, FS_KRASS, string);
+
+				/// Mission dialog: Spirit, Hail (Chris Bainfield)
+				strcpy(string, _("As usual, you take me too lightly, Krass."));
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+			}
 
 			break;
 
 		case MISN_CERADSE:
-			/// Mission dialog: Spirit, Ceradse (Chris Bainfield)
-			strcpy(string, _("Hey, Sid, what's up?"));
-			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+			if (engine.oldScript)
+			{
+				strcpy(string, "Hey, Sid, what's up?");
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			/// Mission dialog: Spirit, Ceradse (Sid Wilson)
-			strcpy(string, _("Chris, I've intercepted a communication from WEAPCO. Seems they're transporting some medical supplies around Ceradse. We need to get hold of those pods to save some lives!"));
-			y = intermission_renderDialog(comms, y, FS_SID, string);
+				strcpy(string, "Chris, I've intercepted a communication from"
+						" WEAPCO. Seems they're transporting some medical"
+						" supplies around Ceradse. We need to get hold of"
+						" those pods to save some lives!");
+				y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			/// Mission dialog: Spirit, Ceradse (Chris Bainfield)
-			strcpy(string, _("How many do we need?"));
-			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+				strcpy(string, "How many do we need?");
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			/// Mission dialog: Spirit, Ceradse (Sid Wilson)
-			strcpy(string, _("All six, Chris! If you lose even a single one, thousands of people could perish in Spirit within the next few months."));
-			y = intermission_renderDialog(comms, y, FS_SID, string);
+				strcpy(string, "All six, Chris! If you lose even a single"
+						" one, thousands of people could perish in Spirit"
+						" within the next few months.");
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+			}
+			else
+			{
+				/// Mission dialog: Spirit, Ceradse (Chris Bainfield)
+				strcpy(string, _("Hey, Sid, what's up?"));
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+				/// Mission dialog: Spirit, Ceradse (Sid Wilson)
+				strcpy(string, _("Chris, I've intercepted a communication from"
+						" WEAPCO. Seems they're transporting some medical"
+						" supplies around Ceradse. We need to get hold of"
+						" those pods to save some lives!"));
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+
+				/// Mission dialog: Spirit, Ceradse (Chris Bainfield)
+				strcpy(string, _("How many do we need?"));
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+				/// Mission dialog: Spirit, Ceradse (Sid Wilson)
+				strcpy(string, _("All six, Chris! If you lose even a single"
+						" one, thousands of people could perish in Spirit"
+						" within the next few months."));
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+			}
 
 			break;
 
 		case MISN_HINSTAG:
-			/// Mission dialog: Spirit, Hinstag (Chris Bainfield)
-			strcpy(string, _("Wow! Missile boats?"));
-			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+			if (engine.oldScript)
+			{
+				strcpy(string, "Missile boats?!!");
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			/// Mission dialog: Spirit, Hinstag (Sid Wilson)
-			strcpy(string, _("Yup. Looks like WEAPCO is starting to take notice of your actions."));
-			y = intermission_renderDialog(comms, y, FS_SID, string);
+				strcpy(string, "Yeah, looks like WEAPCO has decided that in"
+						" order to gain better control of Spirit they'll have"
+						" to bring out the big guns!");
+				y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			/// Mission dialog: Spirit, Hinstag (Chris Bainfield)
-			strcpy(string, _("Awesome! This will really put the Firefly's fighting ability to the test!"));
-			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+				strcpy(string, "Any more information? Did you manage to get"
+						" the analysis of that last wing we avoided?");
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			/// Mission dialog: Spirit, Hinstag (Sid Wilson)
-			strcpy(string, _("Please be careful, Chris. A single missile boat carries enough rockets to level most major cities. Try not to face them head-on, and keep your distance."));
-			y = intermission_renderDialog(comms, y, FS_SID, string);
+				strcpy(string, "A single missile boats carries enough rockets"
+						" to level most major cities! Try not to face them"
+						" head-on and keep your distance!");
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+			}
+			else
+			{
+				/// Mission dialog: Spirit, Hinstag (Chris Bainfield)
+				strcpy(string, _("Wow! Missile boats?"));
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+				/// Mission dialog: Spirit, Hinstag (Sid Wilson)
+				strcpy(string, _("Yup. Looks like WEAPCO is starting to take"
+						" notice of your actions."));
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+
+				/// Mission dialog: Spirit, Hinstag (Chris Bainfield)
+				strcpy(string, _("Awesome! This will really put the Firefly's"
+						" fighting ability to the test!"));
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+				/// Mission dialog: Spirit, Hinstag (Sid Wilson)
+				strcpy(string, _("Please be careful, Chris. A single missile"
+						" boat carries enough rockets to level most major"
+						" cities. Try not to face them head-on, and keep your"
+						" distance."));
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+			}
 
 			break;
 
 		case MISN_JOLDAR:
-			/// Mission dialog: Spirit, Joldar (Sid Wilson)
-			strcpy(string, _("We're going to have to get rid of the mine deployment unit around Joldar. The minefield is stopping interplanetary traffic."));
-			y = intermission_renderDialog(comms, y, FS_SID, string);
+			if (engine.oldScript)
+			{
+				strcpy(string, "We're going to have to clear the mine field"
+						" that's been building up here recently. I have a"
+						" feeling that WEAPCO have deployed some miners in the"
+						" area and are testing the effectiveness of the field."
+						" Removing the mines will help interplanetary traffic"
+						" to start up again.");
+				y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			/// Mission dialog: Spirit, Joldar (Chris Bainfield)
-			strcpy(string, _("Are any fighters around to keep me entertained?"));
-			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+				strcpy(string, "Any fighters?");
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			/// Mission dialog: Spirit, Joldar (Sid Wilson)
-			strcpy(string, _("Not at the moment, but that doesn't mean they won't turn up. Be very careful of those mines! They'll only explode when they encounter a ship that's not transmitting a WEAPCO signal. Shoot them down if they get in your way."));
-			y = intermission_renderDialog(comms, y, FS_SID, string);
+				strcpy(string, "Not at the moment, but that doesn't mean they"
+						" won't turn up! Be very careful of those mines!"
+						" They'll only explode when they encounter a ship"
+						" that's not transmitting a WEAPCO signal! Shoot them"
+						" down if they get in your way.");
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+			}
+			else
+			{
+				/// Mission dialog: Spirit, Joldar (Sid Wilson)
+				strcpy(string, _("We're going to have to get rid of the mine"
+						" deployment unit around Joldar. The minefield is"
+						" stopping interplanetary traffic."));
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+
+				/// Mission dialog: Spirit, Joldar (Chris Bainfield)
+				strcpy(string, _("Are any fighters around to keep me"
+						" entertained?"));
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+				/// Mission dialog: Spirit, Joldar (Sid Wilson)
+				strcpy(string, _("Not at the moment, but that doesn't mean"
+						" they won't turn up. Be very careful of those mines!"
+						" They'll only explode when they encounter a ship"
+						" that's not transmitting a WEAPCO signal. Shoot them"
+						" down if they get in your way."));
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+			}
 
 			break;
 
 		case MISN_MOEBO:
-			/// Mission dialog: Spirit, Moebo (Sid Wilson)
-			strcpy(string, _("We've got a major problem here! WEAPCO has decided to stop our resistance by destroying Spirit! The explosion will incinerate everything in the system! You've got to destroy that frigate before it gets in range!"));
-			y = intermission_renderDialog(comms, y, FS_SID, string);
+			if (engine.oldScript)
+			{
+				strcpy(string, "CHRIS!!!! We've got a major problem here!!!"
+						" WEAPCO have decided to retaliate!! But they've"
+						" decided it'll take too long to hunt you down so"
+						" instead they're going to destroy Spirit! The"
+						" explosion will destroy everything in the system!!"
+						" You've only got about 3 minutes to destroy the"
+						" frigate before it's in range!");
+				y = intermission_renderDialog(comms, y, FS_SID, string);
 
-			/// Mission dialog: Spirit, Moebo (Chris Bainfield)
-			strcpy(string, _("Damn! I'll get right on it, then!"));
-			y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+				strcpy(string, "DAMN!");
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
 
-			/// Mission dialog: Spirit, Moebo (Sid Wilson)
-			strcpy(string, _("We're all counting on you, Chris! But remember, they didn't call that thing \"Star Killer\" just because it sounded nice!"));
-			y = intermission_renderDialog(comms, y, FS_SID, string);
+				strcpy(string, "We're all counting on you, Chris! But just"
+						" remember - They didn't call that thing"
+						" \"Star Killer\" just because it sounded nice!");
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+			}
+			else
+			{
+				/// Mission dialog: Spirit, Moebo (Sid Wilson)
+				strcpy(string, _("We've got a major problem here! WEAPCO has"
+						" decided to stop our resistance by destroying Spirit!"
+						" The explosion will incinerate everything in the"
+						" system! You've got to destroy that frigate before it"
+						" gets in range!"));
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+
+				/// Mission dialog: Spirit, Moebo (Chris Bainfield)
+				strcpy(string, _("Damn! I'll get right on it, then!"));
+				y = intermission_renderDialog(comms, y, FS_CHRIS, string);
+
+				/// Mission dialog: Spirit, Moebo (Sid Wilson)
+				strcpy(string, _("We're all counting on you, Chris! But"
+						" remember, they didn't call that thing"
+						" \"Star Killer\" just because it sounded nice!"));
+				y = intermission_renderDialog(comms, y, FS_SID, string);
+			}
 
 			break;
 

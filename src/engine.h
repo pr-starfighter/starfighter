@@ -92,6 +92,8 @@ typedef struct Engine_ {
 	int radioLife;
 	char lang[STRMAX_SHORT];
 
+	int oldScript;
+
 	char configDirectory[PATH_MAX];
 	
 	int keyState[KEY_LAST];

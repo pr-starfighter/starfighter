@@ -92,7 +92,9 @@ int main(int argc, char **argv)
 			printf("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012\n");
 			printf("Additional Commands\n");
 			printf("\t-noaudio     Disables sound and music\n");
-			printf("\t-mono        Mono sound output (best for headphones)\n\n");
+			printf("\t-mono        Mono sound output (best for headphones)\n");
+			printf("\t-oldscript   Uses original script from version 1.1\n");
+			printf("\n");
 			printf("https://pr-starfighter.github.io\n");
 			printf("\n");
 			exit(0);
@@ -107,6 +109,11 @@ int main(int argc, char **argv)
 		{
 			printf("No Audio\n");
 			engine.useAudio = 0;
+		}
+		if (strcmp(argv[i], "-oldscript") == 0)
+		{
+			printf("Using script from Project: Starfighter 1.1\n");
+			engine.oldScript = 1;
 		}
 		if ((strcmp(argv[i], "humans") == 0) && (cheatCount == 0))
 			cheatCount = 1;
