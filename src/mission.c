@@ -1180,9 +1180,9 @@ void mission_showStartScreen()
 	gfx_createTextObject(TS_TARGET_SID, _("Sid"), 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_TARGET_PHOEBE, _("Phoebe"), 0, 0, FONT_WHITE);
 	gfx_createTextObject(TS_TARGET_KLINE, _("Kline"), 0, 0, FONT_WHITE);
-	gfx_createTextObject(TS_POWER, "Power", 0, 0, FONT_WHITE);
-	gfx_createTextObject(TS_OUTPUT, "Output", 0, 0, FONT_WHITE);
-	gfx_createTextObject(TS_COOLER, "Cooler", 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_POWER, _("Power"), 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_OUTPUT, _("Output"), 0, 0, FONT_WHITE);
+	gfx_createTextObject(TS_COOLER, _("Cooler"), 0, 0, FONT_WHITE);
 
 	if (game.area != MISN_INTERCEPTION)
 	{
