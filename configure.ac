@@ -92,7 +92,7 @@ AS_IF([test -n "$SF_NOFONT"], [
 
 AS_IF([test -n "$SF_OLD_MUSIC"], [
 	STARFIGHTER_CPPFLAGS="$STARFIGHTER_CPPFLAGS -DOLD_MUSIC"
-    echo "Building for use with old music"
+	echo "Building for use with old music"
 ])
 
 AS_IF([test -n "$SF_RUN_IN_PLACE"], [
