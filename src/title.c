@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012, 2013 Guus Sliepen
-Copyright (C) 2012, 2015-2020 The Diligent Circle <diligentcircle@riseup.net>
+Copyright (C) 2012, 2015-2023 Diligent Circle <diligentcircle@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -268,7 +268,7 @@ int title_show()
 		5, 0, FONT_WHITE, 0, copyrightText);
 	gfx_renderString("Copyright Guus Sliepen, Astrid S. de Wijn and others 2012",
 		5, MENU_SPACING, FONT_WHITE, 0, copyrightText);
-	gfx_renderString("Copyright 2015-2020 The Diligent Circle",
+	gfx_renderString("Copyright 2015-2023 Diligent Circle",
 		5, 2 * MENU_SPACING, FONT_WHITE, 0, copyrightText);
 
 	snprintf(buildVersion, STRMAX_SHORT, "Version %s", VERSION );
