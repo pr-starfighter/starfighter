@@ -82,7 +82,9 @@ void cutscene_init(int scene)
 	switch (scene)
 	{
 		case 0:
+#ifndef OLD_MUSIC
 		   audio_playMusic("music/railjet_short.ogg", -1);
+#endif
 			gfx_loadBackground("gfx/spirit.jpg");
 			engine.ssx = -3;
 			engine.ssy = 0;
@@ -138,7 +140,9 @@ void cutscene_init(int scene)
 			break;
 
 		case 1:
+#ifndef OLD_MUSIC
 		   audio_playMusic("music/first_cyber_dance.ogg", -1);
+#endif
 			gfx_loadBackground("gfx/sol.jpg");
 			engine.ssx = -0.5;
 			engine.ssy = 0;
@@ -181,7 +185,9 @@ void cutscene_init(int scene)
 			break;
 
 		case 2:
+#ifndef OLD_MUSIC
 		   audio_playMusic("music/first_cyber_dance.ogg", -1);
+#endif
 			gfx_loadBackground("gfx/spirit.jpg");
 			engine.ssx = -1.45;
 			engine.ssy = 0;
@@ -221,7 +227,9 @@ void cutscene_init(int scene)
 			break;
 
 		case 3:
+#ifndef OLD_MUSIC
 		   audio_playMusic("music/through_space.ogg", -1);
+#endif
 			gfx_loadBackground("gfx/eyananth.jpg");
 			engine.ssx = -0.5;
 			engine.ssy = 0;
@@ -275,7 +283,9 @@ void cutscene_init(int scene)
 			break;
 
 		case 4:
+#ifndef OLD_MUSIC
 		   audio_playMusic("music/first_cyber_dance.ogg", -1);
+#endif
 			gfx_loadBackground("gfx/eyananth.jpg");
 			engine.ssx = -1.45;
 			engine.ssy = 0;
@@ -337,7 +347,9 @@ void cutscene_init(int scene)
 			break;
 
 		case 5:
+#ifndef OLD_MUSIC
 		   audio_playMusic("music/through_space.ogg", -1);
+#endif
 			gfx_loadBackground("gfx/mordor.jpg");
 			engine.ssx = -0.5;
 			engine.ssy = 0;
@@ -383,7 +395,9 @@ void cutscene_init(int scene)
 			break;
 
 		case 6:
+#ifndef OLD_MUSIC
 		   audio_playMusic("music/first_cyber_dance.ogg", -1);
+#endif
 			gfx_loadBackground("gfx/mordor.jpg");
 			engine.ssx = -1.45;
 			engine.ssy = 0;
