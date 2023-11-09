@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
-"POT-Creation-Date: 2023-06-04 01:57-0400\n"
+"POT-Creation-Date: 2023-11-09 09:47+0100\n"
 "PO-Revision-Date: 2023-06-04 12:40+0200\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
@@ -191,7 +191,7 @@ msgid "Thanks! Watch out, WEAPCO! Phoebe's loose and she's ANGRY!"
 msgstr "¡Gracias! ¡Cuidado, WEAPCO! ¡Phoebe está suelta y está ENFADADA!"
 
 #. / Cutscene (narration)
-#: ../src/cutscene.c:107
+#: ../src/cutscene.c:109
 msgid ""
 "While escaping with his newly acquired Firefly, Chris Bainfield is "
 "intercepted by a WEAPCO patrol..."
@@ -200,7 +200,7 @@ msgstr ""
 "interceptado por una patrulla de WEAPCO..."
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:111
+#: ../src/cutscene.c:113
 msgid ""
 "Damn, these things are persistent! Human pilots would have given up by now!"
 msgstr ""
@@ -208,12 +208,12 @@ msgstr ""
 "rendido!"
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:116
+#: ../src/cutscene.c:118
 msgid "Looks like I'm stuck with some robo-passengers, eh, Sid?"
 msgstr "Parece que estoy atascado con algunos pasajeros robot, ¿eh, Sid?"
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:121
+#: ../src/cutscene.c:123
 msgid ""
 "Chris, this is serious! You're getting too close to your rendezvous point. "
 "If you don't shake them soon, everything could be over before it begins!"
@@ -222,7 +222,7 @@ msgstr ""
 "¡Si no te libras de ellos pronto, todo podría terminar antes de que empiece!"
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:128
+#: ../src/cutscene.c:130
 msgid ""
 "I know you're not familiar with the Firefly's controls, but you're going to "
 "have to fight them."
@@ -231,12 +231,12 @@ msgstr ""
 "tener que luchar contra ellos."
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:135
+#: ../src/cutscene.c:137
 msgid "Hell yeah, now you're talking! Let's see what this ship can do!"
 msgstr "¡Eso es, vamos allá! ¡Veamos lo que puede hacer esta nave!"
 
 #. / Cutscene (narration)
-#: ../src/cutscene.c:163
+#: ../src/cutscene.c:167
 msgid ""
 "A few hours later, in the Sol system, news has already spread of Chris "
 "Bainfield's heroic actions. The commander of WEAPCO's navy considers his "
@@ -247,7 +247,7 @@ msgstr ""
 "considera sus opciones."
 
 #. / Cutscene (Kline Kethlan)
-#: ../src/cutscene.c:167
+#: ../src/cutscene.c:171
 msgid ""
 "The Emperor will not be pleased. Spirit is now a free star system thanks to "
 "that interfering rebel pilot."
@@ -256,7 +256,7 @@ msgstr ""
 "gracias al entrometido piloto rebelde."
 
 #. / Cutscene (Kline Kethlan)
-#: ../src/cutscene.c:171
+#: ../src/cutscene.c:175
 msgid ""
 "It was reported that he was able to take down one of our most powerful "
 "frigates in under 3 minutes!"
@@ -265,7 +265,7 @@ msgstr ""
 "poderosas en menos de 3 minutos!"
 
 #. / Cutscene (Kline Kethlan)
-#: ../src/cutscene.c:175
+#: ../src/cutscene.c:179
 msgid ""
 "Talent like that does not appear every day. He would be a perfect candidate "
 "for our new AI training program!"
@@ -274,42 +274,42 @@ msgstr ""
 "nuestro nuevo programa de entrenamiento de IA!"
 
 #. / Cutscene (Kline Kethlan)
-#: ../src/cutscene.c:179
+#: ../src/cutscene.c:183
 msgid "What a pity I must kill him..."
 msgstr "Una pena que tenga que matarle..."
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:203
+#: ../src/cutscene.c:209
 msgid "We're nearly ready to make the jump to Eyananth."
 msgstr "Estamos casi listos para dar el salto a Eyananth."
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:207
+#: ../src/cutscene.c:213
 msgid "Aren't there a lot of WEAPCO slaves in this system?"
 msgstr "¿No hay un montón de esclavos de WEAPCO en este sistema?"
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:211
+#: ../src/cutscene.c:217
 msgid "Yes. It's got one of the highest mortality rates in the galaxy."
 msgstr "Sí. Tiene una de las tasas de mortalidad más altas en la galaxia."
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:215
+#: ../src/cutscene.c:221
 msgid "You think we can use that to our advantage?"
 msgstr "¿Piensas que podemos usar eso en nuestro favor?"
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:219
+#: ../src/cutscene.c:225
 msgid "I think so. I'll come up with a plan of action."
 msgstr "Eso creo. Idearé un plan de acción."
 
 #. / Cutscene (Phoebe Lexx)
-#: ../src/cutscene.c:249
+#: ../src/cutscene.c:257
 msgid "Nice head gear! You shop at the same place as me, huh?"
 msgstr "¡Bonito casco! Compras en el mismo sitio que yo, ¿eh?"
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:253
+#: ../src/cutscene.c:261
 msgid ""
 "More importantly, what were you doing out there? You're lucky I was around!"
 msgstr ""
@@ -317,12 +317,12 @@ msgstr ""
 "cerca!"
 
 #. / Cutscene (Phoebe Lexx)
-#: ../src/cutscene.c:257
+#: ../src/cutscene.c:265
 msgid "I'm looking for my sister. She vanished about a week ago."
 msgstr "Estoy buscando a mi hermana. Desapareció hará una semana."
 
 #. / Cutscene (Phoebe Lexx)
-#: ../src/cutscene.c:261
+#: ../src/cutscene.c:269
 msgid ""
 "Hey! Wait a moment! You're that rebel from Spirit! I think you're so cool! "
 "Can I come with you?"
@@ -331,12 +331,12 @@ msgstr ""
 "guay! ¿Puedo venir contigo?"
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:265
+#: ../src/cutscene.c:273
 msgid "Extra firepower? I wouldn't mind one bit! What do you think, Sid?"
 msgstr "¿Potencia de fuego adicional? ¡No me importaría! ¿Tú qué piensas, Sid?"
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:269
+#: ../src/cutscene.c:277
 msgid ""
 "I agree. I'm also interested in studying her homing missile launcher; it "
 "could come in handy."
@@ -345,17 +345,17 @@ msgstr ""
 "misiles teledirigidos; podría resultar útil."
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:273
+#: ../src/cutscene.c:281
 msgid "In that case, welcome aboard, Phoebe!"
 msgstr "En ese caso, ¡bienvenida a bordo, Phoebe!"
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:303
+#: ../src/cutscene.c:313
 msgid "What happened back there, Chris? The video feed was jammed."
 msgstr "¿Qué pasó ahí atrás, Cris? La señal de vídeo iba a trompicones."
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:307
+#: ../src/cutscene.c:317
 msgid ""
 "We took down the WEAPCO mining vessel and then I was jumped by a man "
 "claiming to be Kline Kethlan."
@@ -364,7 +364,7 @@ msgstr ""
 "que decía ser Kline Kethlan."
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:311
+#: ../src/cutscene.c:321
 msgid ""
 "I've heard of him. He's the Commander of WEAPCO's naval forces. One of the "
 "best pilots they ever had."
@@ -373,18 +373,18 @@ msgstr ""
 "los mejores pilotos que han tenido."
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:315
+#: ../src/cutscene.c:325
 msgid ""
 "He did put up one hell of a fight! He didn't stick around for long, though."
 msgstr "¡Luchó como una fiera! Sin embargo, no se quedó mucho tiempo."
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:319
+#: ../src/cutscene.c:329
 msgid "Anyway, what's the scoop on Mordor, Sid?"
 msgstr "¿Bueno, cuáles son las noticias en Mordor, Sid?"
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:323
+#: ../src/cutscene.c:333
 msgid ""
 "I've learned from the scientist we captured that WEAPCO is testing a new "
 "fighter craft there."
@@ -393,7 +393,7 @@ msgstr ""
 "nave de guerra allí."
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:327
+#: ../src/cutscene.c:337
 msgid ""
 "We should probably destroy that craft, then. We might be able to thwart its "
 "development somewhat."
@@ -402,7 +402,7 @@ msgstr ""
 "de ralentizar su desarrollo de alguna forma."
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:331
+#: ../src/cutscene.c:341
 msgid ""
 "Agreed. Capturing it would be better, but that's probably not going to "
 "happen."
@@ -410,17 +410,17 @@ msgstr ""
 "De acuerdo. Capturarla sería mejor, pero eso probablemente no va a ocurrir."
 
 #. / Cutscene (Phoebe Lexx)
-#: ../src/cutscene.c:335
+#: ../src/cutscene.c:345
 msgid "I wonder if my sister will be here..."
 msgstr "Me pregunto si mi hermana estará aquí..."
 
 #. / Cutscene (Phoebe Lexx)
-#: ../src/cutscene.c:365
+#: ../src/cutscene.c:377
 msgid "Will she be okay?"
 msgstr "¿Estará bien?"
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:369
+#: ../src/cutscene.c:381
 msgid ""
 "I've had a look at the implants and they should be easy to remove. She'll "
 "just have a headache for a while."
@@ -429,12 +429,12 @@ msgstr ""
 "Solo tendrá un dolor de cabeza un rato."
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:373
+#: ../src/cutscene.c:385
 msgid "Will she be able to tell us anything useful?"
 msgstr "¿Será capaz de contarnos algo útil?"
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:377
+#: ../src/cutscene.c:389
 msgid ""
 "We'll have to wait for her memory to come back. She might not be able to "
 "remember anything she did while the implants were in."
@@ -443,17 +443,17 @@ msgstr ""
 "acordarse de nada de lo que hizo cuando tenía los implantes."
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:381
+#: ../src/cutscene.c:393
 msgid "She'll still be able to pilot a ship though."
 msgstr "Aunque seguirá pudiendo pilotar una nave."
 
 #. / Cutscene (Chris Bainfield)
-#: ../src/cutscene.c:417
+#: ../src/cutscene.c:431
 msgid "Sorry folks, we just lost our bargaining chip."
 msgstr "Lo siento, chicos, hemos perdido nuestra baza negociadora."
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:421
+#: ../src/cutscene.c:435
 msgid ""
 "Don't worry about it. It's not what I hoped for, but it should still make it "
 "easier to defeat WEAPCO."
@@ -462,7 +462,7 @@ msgstr ""
 "derrotar a WEAPCO sea más fácil."
 
 #. / Cutscene (Ursula Lexx)
-#: ../src/cutscene.c:425
+#: ../src/cutscene.c:439
 msgid ""
 "Sol is going to be difficult. I've heard they have a lot of heavy defenses "
 "on the outer planets."
@@ -471,12 +471,12 @@ msgstr ""
 "planetas exteriores."
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:429
+#: ../src/cutscene.c:443
 msgid "We'll have to start there, then."
 msgstr "Tendremos que empezar ahí entonces."
 
 #. / Cutscene (Sid Wilson)
-#: ../src/cutscene.c:433
+#: ../src/cutscene.c:447
 msgid ""
 "The forces here will be unlike anything we've met so far. Just be careful, "
 "everyone."
@@ -485,7 +485,7 @@ msgstr ""
 "Simplemente tened todos cuidado."
 
 #. / Instructions for how to skip the current cutscene
-#: ../src/cutscene.c:522
+#: ../src/cutscene.c:536
 msgid "Press [Escape] to skip"
 msgstr "Pulsa [Escape] para saltar"
 
@@ -1291,7 +1291,7 @@ msgstr "Eyecciones : %d"
 msgid "*** Ursula ***"
 msgstr "*** Úrsula ***"
 
-#: ../src/intermission.c:354 ../src/intermission.c:1521
+#: ../src/intermission.c:354 ../src/intermission.c:2135
 msgid "Current Status"
 msgstr "Estado Actual"
 
@@ -1563,7 +1563,7 @@ msgid "click for info"
 msgstr "clica para información"
 
 #. / Mission dialog: Spirit, Hail (Krass Tyler)
-#: ../src/intermission.c:837
+#: ../src/intermission.c:859
 msgid ""
 "Hey, boy! You still owe me money for the Firefly I stole for you! But "
 "instead, I want you to go to the WEAPCO training ground and destroy all the "
@@ -1574,12 +1574,12 @@ msgstr ""
 "todas las naves de allí."
 
 #. / Mission dialog: Spirit, Hail (Chris Bainfield)
-#: ../src/intermission.c:841
+#: ../src/intermission.c:866
 msgid "Oh? That's the job I contracted you to do, was it not?"
 msgstr "¿Oh? Ese era el trabajo para el que te contrate, ¿o no?"
 
 #. / Mission dialog: Spirit, Hail (Krass Tyler)
-#: ../src/intermission.c:845
+#: ../src/intermission.c:871
 msgid ""
 "I know, but this way we can resolve your debt right now. Do this job, and "
 "also collect $500, and we will call it quits. And if you die... well, I "
@@ -1590,17 +1590,17 @@ msgstr ""
 "¡supongo que no valió la pena robar la nave! ¡JA JA JA!"
 
 #. / Mission dialog: Spirit, Hail (Chris Bainfield)
-#: ../src/intermission.c:849
+#: ../src/intermission.c:878
 msgid "As usual, you take me too lightly, Krass."
 msgstr "Como siempre, me tomas demasiado a la ligera, Krass."
 
 #. / Mission dialog: Spirit, Ceradse (Chris Bainfield)
-#: ../src/intermission.c:856
+#: ../src/intermission.c:907
 msgid "Hey, Sid, what's up?"
 msgstr "¿Ey, Sid, qué pasa?"
 
 #. / Mission dialog: Spirit, Ceradse (Sid Wilson)
-#: ../src/intermission.c:860
+#: ../src/intermission.c:911
 msgid ""
 "Chris, I've intercepted a communication from WEAPCO. Seems they're "
 "transporting some medical supplies around Ceradse. We need to get hold of "
@@ -1611,12 +1611,12 @@ msgstr ""
 "hacernos con esas cápsulas para salvar algunas vidas!"
 
 #. / Mission dialog: Spirit, Ceradse (Chris Bainfield)
-#: ../src/intermission.c:864
+#: ../src/intermission.c:918
 msgid "How many do we need?"
 msgstr "¿Cuántos necesitamos?"
 
 #. / Mission dialog: Spirit, Ceradse (Sid Wilson)
-#: ../src/intermission.c:868
+#: ../src/intermission.c:922
 msgid ""
 "All six, Chris! If you lose even a single one, thousands of people could "
 "perish in Spirit within the next few months."
@@ -1625,24 +1625,24 @@ msgstr ""
 "perecer en Spirit en los próximos meses."
 
 #. / Mission dialog: Spirit, Hinstag (Chris Bainfield)
-#: ../src/intermission.c:875
+#: ../src/intermission.c:953
 msgid "Wow! Missile boats?"
 msgstr "¡Guau! ¿Naves de misiles?"
 
 #. / Mission dialog: Spirit, Hinstag (Sid Wilson)
-#: ../src/intermission.c:879
+#: ../src/intermission.c:957
 msgid "Yup. Looks like WEAPCO is starting to take notice of your actions."
 msgstr "Síp. Parece que WEAPCO está empezando a tomar nota de tus acciones."
 
 #. / Mission dialog: Spirit, Hinstag (Chris Bainfield)
-#: ../src/intermission.c:883
+#: ../src/intermission.c:962
 msgid ""
 "Awesome! This will really put the Firefly's fighting ability to the test!"
 msgstr ""
 "¡Genial! ¡Esto realmente pondrá a prueba la habilidad de lucha del Firefly!"
 
 #. / Mission dialog: Spirit, Hinstag (Sid Wilson)
-#: ../src/intermission.c:887
+#: ../src/intermission.c:967
 msgid ""
 "Please be careful, Chris. A single missile boat carries enough rockets to "
 "level most major cities. Try not to face them head-on, and keep your "
@@ -1653,7 +1653,7 @@ msgstr ""
 "cara, y mantén la distancia."
 
 #. / Mission dialog: Spirit, Joldar (Sid Wilson)
-#: ../src/intermission.c:894
+#: ../src/intermission.c:1000
 msgid ""
 "We're going to have to get rid of the mine deployment unit around Joldar. "
 "The minefield is stopping interplanetary traffic."
@@ -1662,12 +1662,12 @@ msgstr ""
 "Joldar. El campo de minas está parando el tráfico interplanetario."
 
 #. / Mission dialog: Spirit, Joldar (Chris Bainfield)
-#: ../src/intermission.c:898
+#: ../src/intermission.c:1006
 msgid "Are any fighters around to keep me entertained?"
 msgstr "¿Hay algunos luchadores alrededor para tenerme entretenido?"
 
 #. / Mission dialog: Spirit, Joldar (Sid Wilson)
-#: ../src/intermission.c:902
+#: ../src/intermission.c:1011
 msgid ""
 "Not at the moment, but that doesn't mean they won't turn up. Be very careful "
 "of those mines! They'll only explode when they encounter a ship that's not "
@@ -1678,7 +1678,7 @@ msgstr ""
 "transmita una señal de WEAPCO. Dispáralas si se cruzan en tu camino."
 
 #. / Mission dialog: Spirit, Moebo (Sid Wilson)
-#: ../src/intermission.c:909
+#: ../src/intermission.c:1044
 msgid ""
 "We've got a major problem here! WEAPCO has decided to stop our resistance by "
 "destroying Spirit! The explosion will incinerate everything in the system! "
@@ -1689,12 +1689,12 @@ msgstr ""
 "¡Tienes que destruir esa nave grande antes de que esté a rango de tiro!"
 
 #. / Mission dialog: Spirit, Moebo (Chris Bainfield)
-#: ../src/intermission.c:913
+#: ../src/intermission.c:1052
 msgid "Damn! I'll get right on it, then!"
 msgstr "¡Maldición! ¡Entonces me pondré justo en eso!"
 
 #. / Mission dialog: Spirit, Moebo (Sid Wilson)
-#: ../src/intermission.c:917
+#: ../src/intermission.c:1056
 msgid ""
 "We're all counting on you, Chris! But remember, they didn't call that thing "
 "\"Star Killer\" just because it sounded nice!"
@@ -1705,7 +1705,7 @@ msgstr ""
 #. / Mission dialog: Eyananth, interceptions (Sid Wilson)
 #. / "%d" must be retained as-is. It is replaced with the number of slaves that
 #. / need to be rescued.
-#: ../src/intermission.c:926
+#: ../src/intermission.c:1090
 #, c-format
 msgid ""
 "As you know, WEAPCO has many slaves in this system. If we free a large "
@@ -1717,12 +1717,12 @@ msgstr ""
 "rescatar cerca de %d para marcar la diferencia."
 
 #. / Mission dialog: Eyananth, interceptions (Chris Bainfield)
-#: ../src/intermission.c:930
+#: ../src/intermission.c:1098
 msgid "Most of the slaves are working in ore mines, aren't they?"
 msgstr "La mayoría de esclavos trabajan en las minas, ¿no?"
 
 #. / Mission dialog: Eyananth, interceptions (Sid Wilson)
-#: ../src/intermission.c:934
+#: ../src/intermission.c:1103
 msgid ""
 "Yes, but attacking the mines directly would be dangerous. You'd be better "
 "off intercepting slave transports. What you'll have to do is fly around and "
@@ -1735,17 +1735,17 @@ msgstr ""
 "podrían no escortar ninguna unidad de esclavos, ¡así que ten cuidado!"
 
 #. / Mission dialog: Eyananth, Nerod (Phoebe Lexx)
-#: ../src/intermission.c:941
+#: ../src/intermission.c:1140
 msgid "Help! This is an SOS! Can anyone hear me?!"
 msgstr "¡Ayuda! ¡Esto es un SOS! ¡¿Alguien me escucha?!"
 
 #. / Mission dialog: Eyananth, Nerod (Chris Bainfield)
-#: ../src/intermission.c:945
+#: ../src/intermission.c:1144
 msgid "I'm hearing you loud and clear! What's up?"
 msgstr "¡Te escucho alto y claro! ¿Qué pasa?"
 
 #. / Mission dialog: Eyananth, Nerod (Phoebe Lexx)
-#: ../src/intermission.c:949
+#: ../src/intermission.c:1148
 msgid ""
 "Oh, thank God! I was intercepted by a large WEAPCO force near Nerod! I'm in "
 "need of assistance!"
@@ -1754,12 +1754,12 @@ msgstr ""
 "Nerod! ¡Necesito asistencia!"
 
 #. / Mission dialog: Eyananth, Nerod (Chris Bainfield)
-#: ../src/intermission.c:953
+#: ../src/intermission.c:1154
 msgid "I'm on my way!"
 msgstr "¡Voy de camino!"
 
 #. / Mission dialog: Eyananth, Allez (Sid Wilson)
-#: ../src/intermission.c:960
+#: ../src/intermission.c:1182
 msgid ""
 "I've just received another SOS. This one is coming from a supply craft "
 "carrying essential medical supplies."
@@ -1768,12 +1768,12 @@ msgstr ""
 "material sanitqrio esencial."
 
 #. / Mission dialog: Eyananth, Allez (Chris Bainfield)
-#: ../src/intermission.c:964
+#: ../src/intermission.c:1188
 msgid "Alright, tell 'em I'm on my way."
 msgstr "Vale, diles que estoy de camino."
 
 #. / Mission dialog: Eyananth, Urusor (Sid Wilson)
-#: ../src/intermission.c:971
+#: ../src/intermission.c:1221
 msgid ""
 "I need some resources before we leave. It'll make life a lot easier in "
 "Mordor. Problem is that WEAPCO hoards these parts."
@@ -1782,12 +1782,12 @@ msgstr ""
 "Mordor. El problema es que WEAPCO atesora estos suministros."
 
 #. / Mission dialog: Eyananth, Urusor (Chris Bainfield)
-#: ../src/intermission.c:975
+#: ../src/intermission.c:1227
 msgid "Where can we get them, then?"
 msgstr "¿Entonces dónde podemos pillarlos?"
 
 #. / Mission dialog: Eyananth, Urusor (Sid Wilson)
-#: ../src/intermission.c:979
+#: ../src/intermission.c:1231
 msgid ""
 "There's a big shipment of them nearby. I can disable the supply craft "
 "carrying them; I just need you to give me some cover while I do it."
@@ -1797,12 +1797,12 @@ msgstr ""
 "hago."
 
 #. / Mission dialog: Eyananth, Urusor (Chris Bainfield)
-#: ../src/intermission.c:983
+#: ../src/intermission.c:1237
 msgid "You got it!"
 msgstr "¡Lo tienes!"
 
 #. / Mission dialog: Eyananth, Dorim (Sid Wilson)
-#: ../src/intermission.c:990
+#: ../src/intermission.c:1262
 msgid ""
 "A WEAPCO scientist just ran off in an escape pod and hid in the asteroid "
 "belt. If we capture him, we may be able to get some information about Mordor."
@@ -1812,13 +1812,13 @@ msgstr ""
 "obtener alguna información sobre Mordor."
 
 #. / Mission dialog: Eyananth, Dorim (Chris Bainfield)
-#: ../src/intermission.c:994
+#: ../src/intermission.c:1269
 msgid ""
 "Alright, I'll go look for him. I guess I'll grab some ore along the way."
 msgstr "Bien, lo buscaré. Supongo que pillaré algún mineral por el camino."
 
 #. / Mission dialog: Eyananth, Elamale (Sid Wilson)
-#: ../src/intermission.c:1001
+#: ../src/intermission.c:1303
 msgid ""
 "I've received word that the slaves we rescued have started a rebellion. "
 "Looks like the plan worked."
@@ -1827,7 +1827,7 @@ msgstr ""
 "rebelión. Parece que el plan ha funcionado."
 
 #. / Mission dialog: Eyananth, Elamale (Phoebe Lexx)
-#: ../src/intermission.c:1005
+#: ../src/intermission.c:1309
 msgid ""
 "WEAPCO has an automated mining ship in orbit around Elamale. How about we "
 "take it out and cause some confusion?"
@@ -1836,22 +1836,22 @@ msgstr ""
 "la destruimos y causamos confusión?"
 
 #. / Mission dialog: Eyananth, Elamale (Chris Bainfield)
-#: ../src/intermission.c:1009
+#: ../src/intermission.c:1315
 msgid "I like that idea!"
 msgstr "¡Me gusta la idea!"
 
 #. / Mission dialog: Eyananth, Elamale (Sid Wilson)
-#: ../src/intermission.c:1013
+#: ../src/intermission.c:1319
 msgid "It'll work, but be careful."
 msgstr "Funcionará, pero ten cuidado."
 
 #. / Mission dialog: Mordor, interceptions (Chris Bainfield)
-#: ../src/intermission.c:1020
+#: ../src/intermission.c:1349
 msgid "What have you found out about that experimental fighter?"
 msgstr "¿Qué has descubierto acerca de ese luchador experimental?"
 
 #. / Mission dialog: Mordor, interceptions (Sid Wilson)
-#: ../src/intermission.c:1024
+#: ../src/intermission.c:1354
 msgid ""
 "It's got some kind of cloaking device that makes it invisible to radar. "
 "Could prove hard to track down."
@@ -1860,12 +1860,12 @@ msgstr ""
 "radar. Podría resultar difícil localizar."
 
 #. / Mission dialog: Mordor, interceptions (Chris Bainfield)
-#: ../src/intermission.c:1028
+#: ../src/intermission.c:1360
 msgid "I'll just have to run around the system until I find it."
 msgstr "Tendré que ir alrededor del sistema hasta encontrarlo."
 
 #. / Mission dialog: Mordor, interceptions (Sid Wilson)
-#: ../src/intermission.c:1032
+#: ../src/intermission.c:1365
 msgid ""
 "It's likely to run away if you engage it in battle, so try and do as much "
 "damage to it as possible."
@@ -1874,7 +1874,7 @@ msgstr ""
 "como sea posible."
 
 #. / Mission dialog: Mordor, Odeon (Phoebe Lexx)
-#: ../src/intermission.c:1039
+#: ../src/intermission.c:1401
 msgid ""
 "I've located my sister's ship currently in orbit around Odeon. She's "
 "ignoring my hails though."
@@ -1883,24 +1883,24 @@ msgstr ""
 "embargo, está ignorando mis llamadas."
 
 #. / Mission dialog: Mordor, Odeon (Sid Wilson)
-#: ../src/intermission.c:1043
+#: ../src/intermission.c:1407
 msgid ""
 "Something's off here. She seems to be travelling freely with a WEAPCO group."
 msgstr ""
 "Hay algo raro aquí. Parece estar viajando libremente con un grupo de WEAPCO."
 
 #. / Mission dialog: Mordor, Odeon (Chris Bainfield)
-#: ../src/intermission.c:1047
+#: ../src/intermission.c:1412
 msgid "Do you think she's turned traitor?"
 msgstr "¿Crees que nos ha traicionado?"
 
 #. / Mission dialog: Mordor, Odeon (Phoebe Lexx)
-#: ../src/intermission.c:1051
+#: ../src/intermission.c:1416
 msgid "No way. She hates WEAPCO with a passion."
 msgstr "De ninguna manera. Odia WEAPCO con pasión."
 
 #. / Mission dialog: Mordor, Odeon (Sid Wilson)
-#: ../src/intermission.c:1055
+#: ../src/intermission.c:1420
 msgid ""
 "She must be under some kind of mind control. I've heard of WEAPCO developing "
 "a new \"AI training program\" recently. We'd better rescue her!"
@@ -1910,7 +1910,7 @@ msgstr ""
 "vale que la rescatemos!"
 
 #. / Mission dialog: Mordor, Fellon (Sid Wilson)
-#: ../src/intermission.c:1062
+#: ../src/intermission.c:1444
 msgid ""
 "A rebel group has organized a counter strike. If we can help them secure a "
 "victory, it will be a real boost to morale."
@@ -1919,17 +1919,17 @@ msgstr ""
 "asegurar una victoria, será un buen estímulo para la moral."
 
 #. / Mission dialog: Mordor, Fellon (Chris Bainfield)
-#: ../src/intermission.c:1066
+#: ../src/intermission.c:1450
 msgid "Awesome! Let's do it!"
 msgstr "¡Genial! ¡Hagámoslo!"
 
 #. / Mission dialog: Mordor, Fellon (Sid Wilson)
-#: ../src/intermission.c:1070
+#: ../src/intermission.c:1454
 msgid "Just make sure the rebel ships don't all get destroyed."
 msgstr "Solo asegúrate de que no todas las naves rebeldes son destruidas."
 
 #. / Mission dialog: Mordor, Sivedi (Sid Wilson)
-#: ../src/intermission.c:1077
+#: ../src/intermission.c:1480
 msgid ""
 "Seems like taking out that WEAPCO mining ship wasn't such a good idea. The "
 "ore it collected is needed in weapons production."
@@ -1938,14 +1938,14 @@ msgstr ""
 "mineral recogido se necesita para la producción de armas."
 
 #. / Mission dialog: Mordor, Sivedi (Chris Bainfield)
-#: ../src/intermission.c:1081
+#: ../src/intermission.c:1486
 msgid "Damn! I guess that means I'll have to mine some myself, then, huh?"
 msgstr ""
 "¡Maldición! ¿Supongo que eso significa que tendré que minar algo por mi "
 "cuenta, entonces, hem?"
 
 #. / Mission dialog: Mordor, Sivedi (Sid Wilson)
-#: ../src/intermission.c:1085
+#: ../src/intermission.c:1491
 msgid ""
 "Yes. Be careful, Chris. Your weapons weren't designed for that sort of work, "
 "after all."
@@ -1954,7 +1954,7 @@ msgstr ""
 "trabajo, después de todo."
 
 #. / Mission dialog: Mordor, Almartha (Chris Bainfield)
-#: ../src/intermission.c:1092
+#: ../src/intermission.c:1521
 msgid ""
 "Hey, Krass! I need you to help us out with something. Phoebe and Ursula are "
 "taking out key WEAPCO plants. Can you help me create a diversion by wreaking "
@@ -1965,12 +1965,12 @@ msgstr ""
 "distracción causando estragos un poco más lejos de ahí?"
 
 #. / Mission dialog: Mordor, Almartha (Krass Tyler)
-#: ../src/intermission.c:1096
+#: ../src/intermission.c:1528
 msgid "Sure, I can help you out, boy. But I'll be needing my fee..."
 msgstr "Claro, puedo ayudarte, chico. Pero necesitaré mi honorario."
 
 #. / Mission dialog: Mordor, Poswic (Ursula Lexx)
-#: ../src/intermission.c:1103
+#: ../src/intermission.c:1558
 msgid ""
 "My memory is finally back. Here's something interesting: just before I was "
 "captured, I found out that WEAPCO is transporting several important "
@@ -1981,7 +1981,7 @@ msgstr ""
 "importantes a Poswic."
 
 #. / Mission dialog: Mordor, Poswic (Sid Wilson)
-#: ../src/intermission.c:1107
+#: ../src/intermission.c:1565
 msgid ""
 "We can't let a rare opportunity like this slip through our fingers! I'll "
 "need some cover so I can disable that ship."
@@ -1990,24 +1990,24 @@ msgstr ""
 "manos! Necesito que alguien me cubra para poder deshabilitar esa nave."
 
 #. / Mission dialog: Mordor, Poswic (Chris Bainfield)
-#: ../src/intermission.c:1111
+#: ../src/intermission.c:1571
 msgid "I've got you covered, Sid!"
 msgstr "¡Te estoy cubriendo, Sid!"
 
 #. / Mission dialog: Mordor, Ellesh (Chris Bainfield)
-#: ../src/intermission.c:1118
+#: ../src/intermission.c:1595
 msgid ""
 "Phoebe, I need you to keep an eye on things here. I'm going after that ship!"
 msgstr ""
 "Phoebe, necesito que le eches un ojo a las cosas aquí. ¡Voy tras esa nave!"
 
 #. / Mission dialog: Mordor, Ellesh (Phoebe Lexx)
-#: ../src/intermission.c:1122
+#: ../src/intermission.c:1600
 msgid "Are you sure you can catch up to it?"
 msgstr "¿Estás seguro de que puedes alcanzarlo?"
 
 #. / Mission dialog: Mordor, Ellesh (Chris Bainfield)
-#: ../src/intermission.c:1126
+#: ../src/intermission.c:1604
 msgid ""
 "Absolutely. One thing that's really nice about the Firefly is its speed. "
 "I'll see you in a bit!"
@@ -2016,7 +2016,7 @@ msgstr ""
 "¡Te veo en un momento!"
 
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Sid Wilson)
-#: ../src/intermission.c:1135
+#: ../src/intermission.c:1634
 msgid ""
 "We've got to start from the outside and work our way in. That will give us "
 "less chance of being flanked during the final operation."
@@ -2025,22 +2025,22 @@ msgstr ""
 "menos oportunidades de ser flanqueados durante la operación final."
 
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Phoebe Lexx)
-#: ../src/intermission.c:1139
+#: ../src/intermission.c:1640
 msgid "Sounds like a plan, Sid!"
 msgstr "¡Suena como un plan, Sid!"
 
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Ursula Lexx)
-#: ../src/intermission.c:1143
+#: ../src/intermission.c:1644
 msgid "Better safe than sorry, I guess."
 msgstr "Más vale prevenir que lamentar, supongo."
 
 #. / Mission dialog: Sol, Pluto/Neptune/Uranus (Chris Bainfield)
-#: ../src/intermission.c:1147
+#: ../src/intermission.c:1648
 msgid "Boring, but I guess you're right, Sid, as usual."
 msgstr "Aburrido, pero supongo que tienes razón, Sid, como de costumbre."
 
 #. / Mission dialog: Sol, Saturn (Chris Bainfield)
-#: ../src/intermission.c:1154
+#: ../src/intermission.c:1679
 msgid ""
 "WEAPCO has set up a highly dangerous defense line between Saturn and Uranus. "
 "We'll need to take it out."
@@ -2049,12 +2049,12 @@ msgstr ""
 "y Urano. Tendremos que sacarla de ahí."
 
 #. / Mission dialog: Sol, Saturn (Ursula Lexx)
-#: ../src/intermission.c:1158
+#: ../src/intermission.c:1685
 msgid "What kind of defense system?"
 msgstr "¿Qué clase de sistema de defensa?"
 
 #. / Mission dialog: Sol, Saturn (Chris Bainfield)
-#: ../src/intermission.c:1162
+#: ../src/intermission.c:1689
 msgid ""
 "Several mobile Energy Ray cannons, not unlike the weapon used by the Star "
 "Killer back in Spirit."
@@ -2063,30 +2063,30 @@ msgstr ""
 "el Asesino Estelar en Spirit."
 
 #. / Mission dialog: Sol, Saturn (Phoebe Lexx)
-#: ../src/intermission.c:1166
+#: ../src/intermission.c:1695
 msgid "Best check my ejection system, then!"
 msgstr "¡Mejor comprobar mi sistema de eyección, entonces!"
 
 #. / Mission dialog: Sol, Jupiter (Sid Wilson)
-#: ../src/intermission.c:1173
+#: ../src/intermission.c:1722
 msgid ""
 "While you were gone I picked up a distress call coming from around Jupiter."
 msgstr "Mientras no estabas capté una llamada de socorro de cerca de Júpiter."
 
 #. / Mission dialog: Sol, Jupiter (Ursula Lexx)
-#: ../src/intermission.c:1177
+#: ../src/intermission.c:1727
 msgid "Who would be sending out a distress call within Sol?"
 msgstr "¿Quién mandaría una señal de socorro dentro de Sol?"
 
 #. / Mission dialog: Sol, Jupiter (Chris Bainfield)
-#: ../src/intermission.c:1181
+#: ../src/intermission.c:1732
 msgid "Let's check it out. Even if it's a trap, I think we can handle it."
 msgstr ""
 "Echemos un vistazo. Incluso si es una trampa, creo que podemos ocuparnos de "
 "ello."
 
 #. / Mission dialog: Sol, Mars (Sid Wilson)
-#: ../src/intermission.c:1188
+#: ../src/intermission.c:1756
 msgid ""
 "Chris, we've got a small problem. WEAPCO has deployed a minefield in the "
 "asteroid belt. We'll need you to clear a way through."
@@ -2095,12 +2095,12 @@ msgstr ""
 "el cinturón de asteroides. Necesitamos que abras un camino."
 
 #. / Mission dialog: Sol, Mars (Chris Bainfield)
-#: ../src/intermission.c:1192
+#: ../src/intermission.c:1762
 msgid "Alright. I'll radio in once I've cleared a safe path."
 msgstr "Vale. Transmitiré por radio en cuanto haya despejado un camino seguro."
 
 #. / Mission dialog: Sol, Earth (Chris Bainfield)
-#: ../src/intermission.c:1199
+#: ../src/intermission.c:1791
 msgid ""
 "Okay people, this is the big one. We go in fast and we go in hard. Don't "
 "hold back and hit them with everything we've got!"
@@ -2109,29 +2109,29 @@ msgstr ""
 "contengamos y démosles con todo lo que tenemos!"
 
 #. / Mission dialog: Sol, Earth (Sid Wilson)
-#: ../src/intermission.c:1203
+#: ../src/intermission.c:1797
 msgid "We've come too far to turn back now. None of us better die out there!"
 msgstr ""
 "Hemos llegado muy lejos para volvernos ahora. ¡Más vale que no muera ninguno "
 "de nosotros aquí!"
 
 #. / Mission dialog: Sol, Earth (Phoebe Lexx)
-#: ../src/intermission.c:1207
+#: ../src/intermission.c:1802
 msgid "Right with you, Chris!"
 msgstr "¡Ya voy, Cris!"
 
 #. / Mission dialog: Sol, Earth (Ursula Lexx)
-#: ../src/intermission.c:1211
+#: ../src/intermission.c:1806
 msgid "WEAPCO'll regret sticking probes into my head!"
 msgstr "¡WEAPCO lamentará sondear mi cabeza!"
 
 #. / Mission dialog: Sol, Venus (Chris Bainfield)
-#: ../src/intermission.c:1218
+#: ../src/intermission.c:1829
 msgid "Kethlan has run off to Venus. I'm going after him."
 msgstr "Kethlan se ha escapado a Venus. Voy tras él."
 
 #. / Mission dialog: Sol, Venus (Sid Wilson)
-#: ../src/intermission.c:1222
+#: ../src/intermission.c:1834
 msgid ""
 "Be careful, Chris. We've won the war, but it would be a real shame if you "
 "died now!"
@@ -2139,67 +2139,67 @@ msgstr ""
 "Ten cuidado, Cris. ¡Hemos ganado la guerra, pero sería una verdadera "
 "vergüenza que murieras ahora!"
 
-#: ../src/intermission.c:1273
+#: ../src/intermission.c:1887
 msgid "++ OPTIONS ++"
 msgstr "++ OPCIONES ++"
 
-#: ../src/intermission.c:1282 ../src/intermission.c:1293
-#: ../src/intermission.c:1304
+#: ../src/intermission.c:1896 ../src/intermission.c:1907
+#: ../src/intermission.c:1918
 msgid "ON"
 msgstr "ACTIVADO"
 
-#: ../src/intermission.c:1283 ../src/intermission.c:1294
-#: ../src/intermission.c:1305
+#: ../src/intermission.c:1897 ../src/intermission.c:1908
+#: ../src/intermission.c:1919
 msgid "OFF"
 msgstr "DESACTIVADO"
 
-#: ../src/intermission.c:1284
+#: ../src/intermission.c:1898
 msgid "SOUND"
 msgstr "SONIDO"
 
-#: ../src/intermission.c:1295
+#: ../src/intermission.c:1909
 msgid "MUSIC"
 msgstr "MÚSICA"
 
-#: ../src/intermission.c:1306
+#: ../src/intermission.c:1920
 msgid "FULLSCREEN"
 msgstr "PANTALLA COMPLETA"
 
 #. / Retain "%s" as-is.  It is replaced with the current system name.
-#: ../src/intermission.c:1515
+#: ../src/intermission.c:2129
 #, c-format
 msgid "System : %s"
 msgstr "Sistema : %s"
 
-#: ../src/intermission.c:1518
+#: ../src/intermission.c:2132
 msgid "Start Next Mission"
 msgstr "Comenzar Siguiente Misión"
 
-#: ../src/intermission.c:1519
+#: ../src/intermission.c:2133
 msgid "Go to Destination Planet"
 msgstr "Ir al Planeta de Destino"
 
-#: ../src/intermission.c:1520
+#: ../src/intermission.c:2134
 msgid "View System Map"
 msgstr "Ver Mapa de Sistema"
 
-#: ../src/intermission.c:1522
+#: ../src/intermission.c:2136
 msgid "Save Game"
 msgstr "Guardar Partida"
 
-#: ../src/intermission.c:1523
+#: ../src/intermission.c:2137
 msgid "Upgrade FIREFLY"
 msgstr "Mejorar el FIREFLY"
 
-#: ../src/intermission.c:1524
+#: ../src/intermission.c:2138
 msgid "Missions"
 msgstr "Misiones"
 
-#: ../src/intermission.c:1525
+#: ../src/intermission.c:2139
 msgid "Options"
 msgstr "Opciones"
 
-#: ../src/intermission.c:1526
+#: ../src/intermission.c:2140
 msgid "Exit to Title Screen"
 msgstr "Salir a la Pantalla de Título"
 
@@ -2207,19 +2207,19 @@ msgstr "Salir a la Pantalla de Título"
 #. / the player is currently stationed on.
 #. / Retain "%s" as-is.  It is replaced with the name of the planet
 #. / the player's destination is currently set to.
-#: ../src/intermission.c:1530 ../src/intermission.c:1714
+#: ../src/intermission.c:2144 ../src/intermission.c:2328
 #, c-format
 msgid "Stationed At: %s"
 msgstr "Estacionado En: %s"
 
 #. / Retain "%s" as-is.  It is replaced with the name of the planet
 #. / the player's destination is currently set to.
-#: ../src/intermission.c:1537 ../src/intermission.c:1652
+#: ../src/intermission.c:2151 ../src/intermission.c:2266
 #, c-format
 msgid "Destination: %s"
 msgstr "Destino: %s"
 
-#: ../src/intermission.c:1541
+#: ../src/intermission.c:2155
 msgid "Destination: None"
 msgstr "Destino: Ninguno"
 
@@ -2734,6 +2734,18 @@ msgstr "Phoebe"
 msgid "Kline"
 msgstr "Kline"
 
+#: ../src/mission.c:1183
+msgid "Power"
+msgstr ""
+
+#: ../src/mission.c:1184
+msgid "Output"
+msgstr ""
+
+#: ../src/mission.c:1185
+msgid "Cooler"
+msgstr ""
+
 #. / "%d" must be retained.  It is replaced with the mission required
 #. / survival time in minutes.
 #: ../src/mission.c:1212
@@ -2796,11 +2808,11 @@ msgstr "Bonus de Escudo: $%d"
 msgid "Mission Time: %02ld:%02ld"
 msgstr "Tiempo de Misión: %02ld:%02ld"
 
-#: ../src/player.c:127
+#: ../src/player.c:128
 msgid "!!! WARNING: SHIELD LOW !!!"
 msgstr "¡¡¡ ADVERTENCIA: ESCUDO BAJO !!!"
 
-#: ../src/player.c:136
+#: ../src/player.c:137
 msgid "!!! WARNING: SHIELD CRITICAL !!!"
 msgstr "¡¡¡ ADVERTENCIA: ESCUDO DELICADO !!!"
 
