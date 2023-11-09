@@ -21,9 +21,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.4\n"
-"Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-09 09:47+0100\n"
-"PO-Revision-Date: 2023-06-04 12:51+0200\n"
+"PO-Revision-Date: 2023-11-09 10:05+0100\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: eo\n"
@@ -31,7 +31,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #. / Dialog (Kline Kethlan)
 #. / Used when the final "stage" of the Venus fight is entered.
@@ -2716,15 +2716,15 @@ msgstr "Klino"
 
 #: ../src/mission.c:1183
 msgid "Power"
-msgstr ""
+msgstr "Forto"
 
 #: ../src/mission.c:1184
 msgid "Output"
-msgstr ""
+msgstr "Eligo"
 
 #: ../src/mission.c:1185
 msgid "Cooler"
-msgstr ""
+msgstr "Malvarmigilo"
 
 #. / "%d" must be retained.  It is replaced with the mission required
 #. / survival time in minutes.
