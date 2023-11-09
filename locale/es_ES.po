@@ -21,9 +21,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.4\n"
-"Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-09 09:47+0100\n"
-"PO-Revision-Date: 2023-06-04 12:40+0200\n"
+"PO-Revision-Date: 2023-11-09 10:41+0100\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -31,7 +31,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.1\n"
 "X-Poedit-Bookmarks: -1,26,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. / Dialog (Kline Kethlan)
@@ -2736,15 +2736,15 @@ msgstr "Kline"
 
 #: ../src/mission.c:1183
 msgid "Power"
-msgstr ""
+msgstr "Potencia"
 
 #: ../src/mission.c:1184
 msgid "Output"
-msgstr ""
+msgstr "Disparos"
 
 #: ../src/mission.c:1185
 msgid "Cooler"
-msgstr ""
+msgstr "Enfriador"
 
 #. / "%d" must be retained.  It is replaced with the mission required
 #. / survival time in minutes.
@@ -3090,7 +3090,7 @@ msgstr "Separador de Canal de Plasma"
 #. / Shop item description: Plasma Channel Splitter (PLASMA_MAX_OUTPUT)
 #: ../src/shop.c:443
 msgid "Increases maximum powered-up plasma output"
-msgstr "Mejora la salida máxima de plasma mejorada"
+msgstr "Mejora los disparos máximos de plasma mejorados"
 
 #. Overwritten later
 #: ../src/shop.c:447
@@ -3139,7 +3139,7 @@ msgstr "Cañón de Plasma Adicional"
 #. / Shop item description: Additional Plasma Cannon (PLASMA_MIN_OUTPUT)
 #: ../src/shop.c:483
 msgid "Increases minimum plasma output"
-msgstr "Aumenta la salida mínima de plasma"
+msgstr "Aumenta los disparos mínimos de plasma"
 
 #. Overwritten later
 #: ../src/shop.c:487
