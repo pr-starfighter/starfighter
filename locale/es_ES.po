@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-09 09:47+0100\n"
-"PO-Revision-Date: 2023-11-09 10:41+0100\n"
+"PO-Revision-Date: 2023-11-12 10:14+0100\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -2146,12 +2146,12 @@ msgstr "++ OPCIONES ++"
 #: ../src/intermission.c:1896 ../src/intermission.c:1907
 #: ../src/intermission.c:1918
 msgid "ON"
-msgstr "ACTIVADO"
+msgstr "SÍ"
 
 #: ../src/intermission.c:1897 ../src/intermission.c:1908
 #: ../src/intermission.c:1919
 msgid "OFF"
-msgstr "DESACTIVADO"
+msgstr "NO"
 
 #: ../src/intermission.c:1898
 msgid "SOUND"
