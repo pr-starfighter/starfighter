@@ -2866,7 +2866,7 @@ int game_mainLoop()
 
 		if (engine.paused)
 		{
-			gfx_createTextObject(TS_PAUSED, "PAUSED", 0, 0, FONT_WHITE);
+			gfx_createTextObject(TS_PAUSED, _("PAUSED"), 0, 0, FONT_WHITE);
 			audio_pauseMusic();
 
 			while (engine.paused)
