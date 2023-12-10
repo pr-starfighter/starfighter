@@ -21,9 +21,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.4\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-09 09:47+0100\n"
-"PO-Revision-Date: 2023-11-12 10:14+0100\n"
+"Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
+"POT-Creation-Date: 2023-12-08 14:53+0100\n"
+"PO-Revision-Date: 2023-12-08 16:01+0100\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -1158,6 +1158,10 @@ msgstr "¡Pesadilla!"
 #: ../src/game.c:2519
 msgid "Classic"
 msgstr "Clásica"
+
+#: ../src/game.c:2869
+msgid "PAUSED"
+msgstr "EN PAUSA"
 
 #. / If the TakaoGothic font is able to display the text of the language
 #. / being translated to, DO NOT CHANGE THIS!  If, however, the language
