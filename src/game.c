@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2003 Parallel Realities
 Copyright (C) 2011, 2012, 2013 Guus Sliepen
-Copyright (C) 2012, 2014-2020 The Diligent Circle <diligentcircle@riseup.net>
+Copyright (C) 2012, 2014-2023 Diligent Circle <diligentcircle@riseup.net>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License

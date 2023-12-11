@@ -1,7 +1,7 @@
 # Project: Starfighter Translatable Text
 # Copyright (C) 2003 Parallel Relaities
 # Copyright (C) 2011, 2012, 2013 Guus Sliepen
-# Copyright (C) 2012, 2015-2021 The Diligent Circle
+# Copyright (C) 2012, 2015-2023 Diligent Circle
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# Natasha <diligentcircle@riseup.net>, 2021.
+# Diligent Circle <diligentcircle@riseup.net>, 2023.
 #
 msgid ""
 msgstr ""
@@ -24,7 +24,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2023-12-11 09:23+0100\n"
 "PO-Revision-Date: 2021-09-18 00:05-0400\n"
-"Last-Translator: Natasha <diligentcircle@riseup.net>\n"
+"Last-Translator: Diligent Circle <diligentcircle@riseup.net>\n"
 "Language-Team: English\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"

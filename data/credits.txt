@@ -10,7 +10,7 @@
 030 +++ ADDITIONAL PROGRAMMING +++
 020 Richard Sweeney
 020 Guus Sliepen
-020 The Diligent Circle
+020 Diligent Circle
 050 +++ QUALITY ASSURANCE AND ADVICE +++
 030 Sam Lantinga  Ian Bissett
 020 Chris Taylor  Xan  Christoph Reichenbach
@@ -51,9 +51,14 @@
 020 tgfcoder
 020 JunglistMilitia
 020 neocrey
-020 The Diligent Circle
+020 Diligent Circle
 020 Sweetpea
 020 Alexandr Zhelanov
+050 +++ TRANSLATIONS +++
+020 Heimen Stoffels
+020 Jorge Maldonado Ventura
+020 Diligent Circle
+020 maruhiro
 050 +++ SPECIAL THANKS +++
 030 Wes Whitmore  Ceri Done
 020 Faye Price  Emma Hamilton
@@ -64,5 +69,5 @@
 350 Project: Starfighter
 020 Copyright 2003 Parallel Realities
 020 Copyright 2012 Guus Sliepen, Astrid S. de Wijn and others
-020 Copyright 2015-2020 The Diligent Circle
+020 Copyright 2015-2023 Diligent Circle
 120 pr-starfighter.github.io
