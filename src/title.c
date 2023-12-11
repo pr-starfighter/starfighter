@@ -271,9 +271,9 @@ int title_show()
 	gfx_renderString("Copyright 2015-2023 Diligent Circle",
 		5, 2 * MENU_SPACING, FONT_WHITE, 0, copyrightText);
 
-	snprintf(buildVersion, STRMAX_SHORT, "Version %s", VERSION );
+	snprintf(buildVersion, STRMAX_SHORT, _("Version %s"), VERSION );
 	infoText = gfx_createSurface(strlen(buildVersion) * (PIXFONT_W + 1) + 6, MENU_SPACING);
-	gfx_renderString(buildVersion, 0, 0, FONT_WHITE, 0, infoText);
+	gfx_renderUnicode(buildVersion, 0, 0, FONT_WHITE, 0, infoText);
 
 	// Set the star motion
 	engine.ssx = -0.5;
@@ -717,7 +717,7 @@ void title_showCredits()
 		if (engine.keyState[KEY_ESCAPE] || engine.keyState[KEY_FIRE]
 				|| engine.keyState[KEY_ALTFIRE])
 			break;
-		
+
 		// Check to see if we need to reposition credits
 		if (credit[0].x != (screen->w - credit[0].image->w) / 2) {
 			for (i=0; i< nCredit; i++) {

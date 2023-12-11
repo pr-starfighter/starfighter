@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.3.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
-"POT-Creation-Date: 2023-11-09 09:47+0100\n"
+"POT-Creation-Date: 2023-12-11 09:23+0100\n"
 "PO-Revision-Date: 2021-09-18 00:15-0400\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch\n"
@@ -1154,6 +1154,10 @@ msgstr "Nachtmerrie!"
 #: ../src/game.c:2519
 msgid "Classic"
 msgstr "Klassiek"
+
+#: ../src/game.c:2869
+msgid "PAUSED"
+msgstr ""
 
 #. / If the TakaoGothic font is able to display the text of the language
 #. / being translated to, DO NOT CHANGE THIS!  If, however, the language
@@ -3379,6 +3383,11 @@ msgstr "AFSLUITEN"
 #: ../src/title.c:262
 msgid "BACK TO MAIN MENU"
 msgstr "TERUG NAAR HOOFDMENU"
+
+#: ../src/title.c:274
+#, c-format
+msgid "Version %s"
+msgstr ""
 
 #~ msgid "These things just won't give up, will they?"
 #~ msgstr "Ze geven maar niet op, hè?"
