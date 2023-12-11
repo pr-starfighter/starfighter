@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2023-12-11 09:23+0100\n"
-"PO-Revision-Date: 2023-12-08 16:01+0100\n"
+"PO-Revision-Date: 2023-12-11 09:31+0100\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -3393,7 +3393,7 @@ msgstr "VOLVER A MENÚ PRINCIPAL"
 #: ../src/title.c:274
 #, c-format
 msgid "Version %s"
-msgstr ""
+msgstr "Versión %s"
 
 #~ msgid "These things just won't give up, will they?"
 #~ msgstr "Estas cosas jamás se rendirán, ¿no?"
