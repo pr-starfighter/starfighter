@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright (C) 2016 Layla Marchant <diligentcircle@riseup.net>
+# Copyright (C) 2016 Diligent Circle <diligentcircle@riseup.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
