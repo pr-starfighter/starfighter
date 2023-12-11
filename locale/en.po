@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# Natasha <diligentcircle@riseup.net>, 2021.
+# Diligent Circle <diligentcircle@riseup.net>, 2023.
 #
 msgid ""
 msgstr ""
@@ -24,7 +24,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
 "POT-Creation-Date: 2023-11-09 09:47+0100\n"
 "PO-Revision-Date: 2021-09-18 00:05-0400\n"
-"Last-Translator: Natasha <diligentcircle@riseup.net>\n"
+"Last-Translator: Diligent Circle <diligentcircle@riseup.net>\n"
 "Language-Team: English\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
