@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.4\n"
 "Report-Msgid-Bugs-To: diligentcircle@riseup.net\n"
-"POT-Creation-Date: 2023-11-09 09:47+0100\n"
+"POT-Creation-Date: 2023-12-11 09:23+0100\n"
 "PO-Revision-Date: 2021-09-18 00:05-0400\n"
 "Last-Translator: Diligent Circle <diligentcircle@riseup.net>\n"
 "Language-Team: English\n"
@@ -1142,6 +1142,10 @@ msgstr "Nightmare!"
 #: ../src/game.c:2519
 msgid "Classic"
 msgstr "Classic"
+
+#: ../src/game.c:2869
+msgid "PAUSED"
+msgstr ""
 
 #. / If the TakaoGothic font is able to display the text of the language
 #. / being translated to, DO NOT CHANGE THIS!  If, however, the language
@@ -3370,3 +3374,8 @@ msgstr "QUIT"
 #: ../src/title.c:262
 msgid "BACK TO MAIN MENU"
 msgstr "BACK TO MAIN MENU"
+
+#: ../src/title.c:274
+#, c-format
+msgid "Version %s"
+msgstr ""
