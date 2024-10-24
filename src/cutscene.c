@@ -228,7 +228,7 @@ void cutscene_init(int scene)
 
 		case 3:
 #ifndef OLD_MUSIC
-		   audio_playMusic("music/through_space.ogg", -1);
+		   audio_playMusic("music/android_journey.ogg", -1);
 #endif
 			gfx_loadBackground("gfx/eyananth.jpg");
 			engine.ssx = -0.5;
@@ -348,7 +348,7 @@ void cutscene_init(int scene)
 
 		case 5:
 #ifndef OLD_MUSIC
-		   audio_playMusic("music/through_space.ogg", -1);
+		   audio_playMusic("music/android_journey.ogg", -1);
 #endif
 			gfx_loadBackground("gfx/mordor.jpg");
 			engine.ssx = -0.5;
