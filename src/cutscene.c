@@ -104,44 +104,71 @@ void cutscene_init(int scene)
 				aliens[i].active = 1;
 			}
 
-			messages[0].face = -1;
-			/// Cutscene (narration)
-			strcpy(messages[0].message, _("While escaping with his newly acquired Firefly, Chris Bainfield is intercepted by a WEAPCO patrol..."));
+			if (engine.oldScript)
+			{
+				messages[0].face = -1;
+				strcpy(messages[0].message, "Whilst escaping with his newly"
+						" acquired Firefly, Chris Bainfield is intercepted by"
+						" a WEAPCO patrol...");
 
-			messages[1].face = FS_SID;
-			/// Cutscene (Sid Wilson)
-			strcpy(messages[1].message, _("Damn, these things are persistent!"
-					" Human pilots would have given up by now!"));
+				messages[1].face = FS_CHRIS;
+				strcpy(messages[1].message, "Damn these things are persistant!"
+						" Human pilots would have given up by now!");
 
-			messages[2].face = FS_CHRIS;
-			/// Cutscene (Chris Bainfield)
-			strcpy(messages[2].message, _("Looks like I'm stuck with some"
-					" robo-passengers, eh, Sid?"));
+				messages[2].face = FS_CHRIS;
+				strcpy(messages[2].message, "I'm getting too close my the my"
+						" rendezvous point. If I don't shake these guys soon"
+						" then everything could be over before it begins!");
 
-			messages[3].face = FS_SID;
-			/// Cutscene (Sid Wilson)
-			strcpy(messages[3].message, _("Chris, this is serious! You're"
-					" getting too close to your rendezvous point. If you don't"
-					" shake them soon, everything could be over before it"
-					" begins!"));
+				messages[3].face = FS_CHRIS;
+				strcpy(messages[3].message, "This is hopeless! I've got no"
+						" choice - Even though I'm unfamiliar with this craft"
+						" I'm going to have to fight them!");
+			}
+			else
+			{
+				messages[0].face = -1;
+				/// Cutscene (narration)
+				strcpy(messages[0].message, _("While escaping with his newly"
+						" acquired Firefly, Chris Bainfield is intercepted by"
+						" a WEAPCO patrol..."));
 
-			messages[4].face = FS_SID;
-			/// Cutscene (Sid Wilson)
-			strcpy(messages[4].message, _("I know you're not familiar with the"
-					" Firefly's controls, but you're going to have to fight"
-					" them."));
-			
+				messages[1].face = FS_SID;
+				/// Cutscene (Sid Wilson)
+				strcpy(messages[1].message, _("Damn, these things are"
+						" persistent! Human pilots would have given up by"
+						" now!"));
 
-			messages[5].face = FS_CHRIS;
-			/// Cutscene (Chris Bainfield)
-			strcpy(messages[5].message, _("Hell yeah, now you're talking!"
-					" Let's see what this ship can do!"));
+				messages[2].face = FS_CHRIS;
+				/// Cutscene (Chris Bainfield)
+				strcpy(messages[2].message, _("Looks like I'm stuck with some"
+						" robo-passengers, eh, Sid?"));
+
+				messages[3].face = FS_SID;
+				/// Cutscene (Sid Wilson)
+				strcpy(messages[3].message, _("Chris, this is serious! You're"
+						" getting too close to your rendezvous point. If you"
+						" don't shake them soon, everything could be over"
+						" before it begins!"));
+
+				messages[4].face = FS_SID;
+				/// Cutscene (Sid Wilson)
+				strcpy(messages[4].message, _("I know you're not familiar with"
+						" the Firefly's controls, but you're going to have to"
+						" fight them."));
+				
+
+				messages[5].face = FS_CHRIS;
+				/// Cutscene (Chris Bainfield)
+				strcpy(messages[5].message, _("Hell yeah, now you're talking!"
+						" Let's see what this ship can do!"));
+			}
 
 			break;
 
 		case 1:
 #ifndef OLD_MUSIC
-		   audio_playMusic("music/first_cyber_dance.ogg", -1);
+			audio_playMusic("music/first_cyber_dance.ogg", -1);
 #endif
 			gfx_loadBackground("gfx/sol.jpg");
 			engine.ssx = -0.5;
@@ -162,31 +189,69 @@ void cutscene_init(int scene)
 				aliens[i].active = 1;
 			}
 
-			messages[0].face = -1;
-			/// Cutscene (narration)
-			strcpy(messages[0].message, _("A few hours later, in the Sol system, news has already spread of Chris Bainfield's heroic actions. The commander of WEAPCO's navy considers his options."));
+			if (engine.oldScript)
+			{
+				messages[0].face = -1;
+				strcpy(messages[0].message, "A few hours later, in the Sol"
+						" system, news has already spread of Chris Bainfield's"
+						" heroic actions. The commander of WEAPCO's navy"
+						" considers his options.");
 
-			messages[1].face = FS_KLINE;
-			/// Cutscene (Kline Kethlan)
-			strcpy(messages[1].message, _("The Emperor will not be pleased. Spirit is now a free star system thanks to that interfering rebel pilot."));
+				messages[1].face = FS_KLINE;
+				strcpy(messages[1].message, "The Emperor will not be pleased!"
+						" Spirit is now a free star system thanks to that"
+						" interfering rebel pilot!");
 
-			messages[2].face = FS_KLINE;
-			/// Cutscene (Kline Kethlan)
-			strcpy(messages[2].message, _("It was reported that he was able to take down one of our most powerful frigates in under 3 minutes!"));
+				messages[2].face = FS_KLINE;
+				strcpy(messages[2].message, "It was reported that he was able"
+						" to take down one of our most powerful frigates in"
+						" under 3 minutes!");
 
-			messages[3].face = FS_KLINE;
-			/// Cutscene (Kline Kethlan)
-			strcpy(messages[3].message, _("Talent like that does not appear every day. He would be a perfect candidate for our new AI training program!"));
+				messages[3].face = FS_KLINE;
+				strcpy(messages[3].message, "Talent like that does not appear"
+						" everyday. He would be a perfect candidate for our"
+						" new AI training program!");
 
-			messages[4].face = FS_KLINE;
-			/// Cutscene (Kline Kethlan)
-			strcpy(messages[4].message, _("What a pity I must kill him..."));
+				messages[4].face = FS_KLINE;
+				strcpy(messages[4].message, "What a pity I must kill him...");
+			}
+			else
+			{
+				messages[0].face = -1;
+				/// Cutscene (narration)
+				strcpy(messages[0].message, _("A few hours later, in the Sol"
+						" system, news has already spread of Chris Bainfield's"
+						" heroic actions. The commander of WEAPCO's navy"
+						" considers his options."));
+
+				messages[1].face = FS_KLINE;
+				/// Cutscene (Kline Kethlan)
+				strcpy(messages[1].message, _("The Emperor will not be"
+						" pleased. Spirit is now a free star system thanks to"
+						" that interfering rebel pilot."));
+
+				messages[2].face = FS_KLINE;
+				/// Cutscene (Kline Kethlan)
+				strcpy(messages[2].message, _("It was reported that he was"
+						" able to take down one of our most powerful frigates"
+						" in under 3 minutes!"));
+
+				messages[3].face = FS_KLINE;
+				/// Cutscene (Kline Kethlan)
+				strcpy(messages[3].message, _("Talent like that does not"
+						" appear every day. He would be a perfect candidate"
+						" for our new AI training program!"));
+
+				messages[4].face = FS_KLINE;
+				/// Cutscene (Kline Kethlan)
+				strcpy(messages[4].message, _("What a pity I must kill him..."));
+			}
 
 			break;
 
 		case 2:
 #ifndef OLD_MUSIC
-		   audio_playMusic("music/first_cyber_dance.ogg", -1);
+			audio_playMusic("music/first_cyber_dance.ogg", -1);
 #endif
 			gfx_loadBackground("gfx/spirit.jpg");
 			engine.ssx = -1.45;
@@ -228,7 +293,7 @@ void cutscene_init(int scene)
 
 		case 3:
 #ifndef OLD_MUSIC
-		   audio_playMusic("music/android_journey.ogg", -1);
+			audio_playMusic("music/android_journey.ogg", -1);
 #endif
 			gfx_loadBackground("gfx/eyananth.jpg");
 			engine.ssx = -0.5;
@@ -284,7 +349,7 @@ void cutscene_init(int scene)
 
 		case 4:
 #ifndef OLD_MUSIC
-		   audio_playMusic("music/first_cyber_dance.ogg", -1);
+			audio_playMusic("music/first_cyber_dance.ogg", -1);
 #endif
 			gfx_loadBackground("gfx/eyananth.jpg");
 			engine.ssx = -1.45;
@@ -348,7 +413,7 @@ void cutscene_init(int scene)
 
 		case 5:
 #ifndef OLD_MUSIC
-		   audio_playMusic("music/android_journey.ogg", -1);
+			audio_playMusic("music/android_journey.ogg", -1);
 #endif
 			gfx_loadBackground("gfx/mordor.jpg");
 			engine.ssx = -0.5;
@@ -396,7 +461,7 @@ void cutscene_init(int scene)
 
 		case 6:
 #ifndef OLD_MUSIC
-		   audio_playMusic("music/first_cyber_dance.ogg", -1);
+			audio_playMusic("music/first_cyber_dance.ogg", -1);
 #endif
 			gfx_loadBackground("gfx/mordor.jpg");
 			engine.ssx = -1.45;
