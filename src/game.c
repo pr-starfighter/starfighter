@@ -630,6 +630,10 @@ static void game_doBullets()
 
 	char msg[STRMAX];
 
+	int mine_killed = 0;
+	float mine_x = 0;
+	float mine_y = 0;
+
 	bullet = engine.bulletHead;
 	prevBullet = engine.bulletHead;
 	engine.bulletTail = engine.bulletHead;
@@ -960,13 +964,9 @@ static void game_doBullets()
 					{
 						game.minesKilled++;
 						game.hits++;
-
-						if ((game.difficulty != DIFFICULTY_ORIGINAL)
-							&& (CHANCE(1 / 10.)))
-						{
-							collectable_add(collectable->x, collectable->y,
-									P_SHIELD, 1, 600);
-						}
+						mine_killed = 1;
+						mine_x = collectable->x;
+						mine_y = collectable->y;
 					}
 				}
 			}
@@ -984,6 +984,13 @@ static void game_doBullets()
 				collectable = prevCollectable;
 			}
 		}
+
+		if ((game.difficulty != DIFFICULTY_ORIGINAL)
+			&& (mine_killed) && (CHANCE(1 / 10.)))
+		{
+			collectable_add(mine_x, mine_y, P_SHIELD, 1, 600);
+		}
+		mine_killed = 0;
 
 		bullet->shield--;
 
