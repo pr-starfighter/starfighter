@@ -960,6 +960,13 @@ static void game_doBullets()
 					{
 						game.minesKilled++;
 						game.hits++;
+
+						if ((game.difficulty != DIFFICULTY_ORIGINAL)
+							&& (CHANCE(1 / 10.)))
+						{
+							collectable_add(collectable->x, collectable->y,
+									P_SHIELD, 1, 600);
+						}
 					}
 				}
 			}
