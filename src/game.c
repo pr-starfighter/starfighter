@@ -986,7 +986,7 @@ static void game_doBullets()
 		}
 
 		if ((game.difficulty != DIFFICULTY_ORIGINAL)
-			&& (mine_killed) && (CHANCE(1 / 10.)))
+			&& (mine_killed) && (CHANCE(1 / 20.)))
 		{
 			collectable_add(mine_x, mine_y, P_SHIELD, 1, 600);
 		}
