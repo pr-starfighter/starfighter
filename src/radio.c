@@ -61,7 +61,7 @@ void radio_getRandomMessage(char *dest, const char *messages)
 	int choice;
 	int i;
 
-	msgs = malloc(sizeof(msgs) * strlen(messages));
+	msgs = malloc(sizeof(*msgs) * (strlen(messages)+1));
 
 	nMsg = 0;
 	strcpy(msgs, messages);
