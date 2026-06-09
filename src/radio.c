@@ -57,21 +57,24 @@ void radio_getRandomMessage(char *dest, const char *messages)
 {
 	char *msgs;
 	char *patch;
+	char *saveptr;
 	int nMsg;
 	int choice;
 	int i;
+	size_t msgsLen;
 
-	msgs = malloc(sizeof(msgs) * strlen(messages));
+	msgsLen = strlen(messages) + 1;
+	msgs = malloc(msgsLen);
 
 	nMsg = 0;
-	strcpy(msgs, messages);
-	patch = strtok(msgs, "\n");
+	memcpy(msgs, messages, msgsLen);
+	patch = strtok_r(msgs, "\n", &saveptr);
 	while (patch != NULL)
 	{
 		if (strcmp(patch, "") != 0)
 			nMsg++;
 
-		patch = strtok(NULL, "\n");
+		patch = strtok_r(NULL, "\n", &saveptr);
 	}
 
 	// Now we know how many choices we have, let's make that choice...
@@ -79,24 +82,24 @@ void radio_getRandomMessage(char *dest, const char *messages)
 
 	// And go through the search again...
 	i = 0;
-	strcpy(msgs, messages);
-	patch = strtok(msgs, "\n");
+	memcpy(msgs, messages, msgsLen);
+	patch = strtok_r(msgs, "\n", &saveptr);
 	while ((i < choice) && (patch != NULL))
 	{
 		if (strcmp(patch, "") != 0)
 			i++;
 
-		patch = strtok(NULL, "\n");
+		patch = strtok_r(NULL, "\n", &saveptr);
 	}
 
 	if (patch != NULL)
 	{
-		strcpy(dest, patch);
+		memcpy(dest, patch, strlen(patch) + 1);
 	}
 	else
 	{
 		engine_warn("Failed to grab a message! Is the list empty?");
-		strcpy(dest, "");
+		dest[0] = '\0';
 	}
 
 	free(msgs);
