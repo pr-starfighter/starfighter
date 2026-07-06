@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v7
     - name: install
-      run: sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libpango1.0-dev
+      run: sudo apt-get update && sudo apt-get install -y gettext libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libpango1.0-dev
     - name: autoconf and locale
       run: ./autogen.sh
     - name: configure
